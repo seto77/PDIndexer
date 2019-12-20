@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet" msprop:Generator_UserDSName="DataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTableCrystal" msprop:Generator_UserTableName="DataTableCrystal" msprop:Generator_RowEvArgName="DataTableCrystalRowChangeEvent" msprop:Generator_TableVarName="tableDataTableCrystal" msprop:Generator_TablePropName="DataTableCrystal" msprop:Generator_RowDeletingName="DataTableCrystalRowDeleting" msprop:Generator_RowChangingName="DataTableCrystalRowChanging" msprop:Generator_RowDeletedName="DataTableCrystalRowDeleted" msprop:Generator_RowEvHandlerName="DataTableCrystalRowChangeEventHandler" msprop:Generator_TableClassName="DataTableCrystalDataTable" msprop:Generator_RowChangedName="DataTableCrystalRowChanged" msprop:Generator_RowClassName="DataTableCrystalRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Check" msprop:Generator_ColumnVarNameInTable="columnCheck" msprop:Generator_ColumnPropNameInRow="Check" msprop:Generator_ColumnPropNameInTable="CheckColumn" msprop:Generator_UserColumnName="Check" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Crystal" msprop:Generator_ColumnVarNameInTable="columnCrystal" msprop:Generator_ColumnPropNameInRow="Crystal" msprop:Generator_ColumnPropNameInTable="CrystalColumn" msprop:Generator_UserColumnName="Crystal" type="xs:anyType" minOccurs="0" />
+              <xs:element name="PeakColor" msprop:Generator_ColumnVarNameInTable="columnPeakColor" msprop:Generator_ColumnPropNameInRow="PeakColor" msprop:Generator_ColumnPropNameInTable="PeakColorColumn" msprop:Generator_UserColumnName="PeakColor" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTableDiffractionData" msprop:Generator_UserTableName="DataTableDiffractionData" msprop:Generator_RowEvArgName="DataTableDiffractionDataRowChangeEvent" msprop:Generator_TableVarName="tableDataTableDiffractionData" msprop:Generator_TablePropName="DataTableDiffractionData" msprop:Generator_RowDeletingName="DataTableDiffractionDataRowDeleting" msprop:Generator_RowChangingName="DataTableDiffractionDataRowChanging" msprop:Generator_RowDeletedName="DataTableDiffractionDataRowDeleted" msprop:Generator_RowEvHandlerName="DataTableDiffractionDataRowChangeEventHandler" msprop:Generator_TableClassName="DataTableDiffractionDataDataTable" msprop:Generator_RowChangedName="DataTableDiffractionDataRowChanged" msprop:Generator_RowClassName="DataTableDiffractionDataRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Check" msprop:Generator_ColumnVarNameInTable="columnCheck" msprop:Generator_ColumnPropNameInRow="Check" msprop:Generator_ColumnPropNameInTable="CheckColumn" msprop:Generator_UserColumnName="Check" type="xs:boolean" minOccurs="0" />
+              <xs:element name="d" msprop:Generator_ColumnVarNameInTable="columnd" msprop:Generator_ColumnPropNameInRow="d" msprop:Generator_ColumnPropNameInTable="dColumn" msprop:Generator_UserColumnName="d" type="xs:double" minOccurs="0" />
+              <xs:element name="Intensity" msprop:Generator_ColumnVarNameInTable="columnIntensity" msprop:Generator_ColumnPropNameInRow="Intensity" msprop:Generator_ColumnPropNameInTable="IntensityColumn" msprop:Generator_UserColumnName="Intensity" type="xs:double" minOccurs="0" />
+              <xs:element name="Index" msprop:Generator_ColumnVarNameInTable="columnIndex" msprop:Generator_ColumnPropNameInRow="Index" msprop:Generator_ColumnPropNameInTable="IndexColumn" msprop:Generator_UserColumnName="Index" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTableCrystalCandidates" msprop:Generator_UserTableName="DataTableCrystalCandidates" msprop:Generator_RowEvArgName="DataTableCrystalCandidatesRowChangeEvent" msprop:Generator_TableVarName="tableDataTableCrystalCandidates" msprop:Generator_TablePropName="DataTableCrystalCandidates" msprop:Generator_RowDeletingName="DataTableCrystalCandidatesRowDeleting" msprop:Generator_RowChangingName="DataTableCrystalCandidatesRowChanging" msprop:Generator_RowDeletedName="DataTableCrystalCandidatesRowDeleted" msprop:Generator_RowEvHandlerName="DataTableCrystalCandidatesRowChangeEventHandler" msprop:Generator_TableClassName="DataTableCrystalCandidatesDataTable" msprop:Generator_RowChangedName="DataTableCrystalCandidatesRowChanged" msprop:Generator_RowClassName="DataTableCrystalCandidatesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Crystal" msprop:Generator_ColumnVarNameInTable="columnCrystal" msprop:Generator_ColumnPropNameInRow="Crystal" msprop:Generator_ColumnPropNameInTable="CrystalColumn" msprop:Generator_UserColumnName="Crystal" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Residual" msprop:Generator_ColumnVarNameInTable="columnResidual" msprop:Generator_ColumnPropNameInRow="Residual" msprop:Generator_ColumnPropNameInTable="ResidualColumn" msprop:Generator_UserColumnName="Residual" type="xs:string" minOccurs="0" />
+              <xs:element name="Info" msprop:Generator_ColumnVarNameInTable="columnInfo" msprop:Generator_ColumnPropNameInRow="Info" msprop:Generator_ColumnPropNameInTable="InfoColumn" msprop:Generator_UserColumnName="Info" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTableProfile" msprop:Generator_TableClassName="DataTableProfileDataTable" msprop:Generator_TableVarName="tableDataTableProfile" msprop:Generator_TablePropName="DataTableProfile" msprop:Generator_RowDeletingName="DataTableProfileRowDeleting" msprop:Generator_RowChangingName="DataTableProfileRowChanging" msprop:Generator_RowEvHandlerName="DataTableProfileRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTableProfileRowDeleted" msprop:Generator_UserTableName="DataTableProfile" msprop:Generator_RowChangedName="DataTableProfileRowChanged" msprop:Generator_RowEvArgName="DataTableProfileRowChangeEvent" msprop:Generator_RowClassName="DataTableProfileRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Check" msprop:Generator_ColumnVarNameInTable="columnCheck" msprop:Generator_ColumnPropNameInRow="Check" msprop:Generator_ColumnPropNameInTable="CheckColumn" msprop:Generator_UserColumnName="Check" type="xs:boolean" minOccurs="0" />
+              <xs:element name="Profile" msprop:Generator_ColumnVarNameInTable="columnProfile" msprop:Generator_ColumnPropNameInRow="Profile" msprop:Generator_ColumnPropNameInTable="ProfileColumn" msprop:Generator_UserColumnName="Profile" type="xs:anyType" minOccurs="0" />
+              <xs:element name="Color" msprop:Generator_ColumnVarNameInTable="columnColor" msprop:Generator_ColumnPropNameInRow="Color" msprop:Generator_ColumnPropNameInTable="ColorColumn" msprop:Generator_UserColumnName="Color" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataTablePeakFitting" msprop:Generator_TableClassName="DataTablePeakFittingDataTable" msprop:Generator_TableVarName="tableDataTablePeakFitting" msprop:Generator_TablePropName="DataTablePeakFitting" msprop:Generator_RowDeletingName="DataTablePeakFittingRowDeleting" msprop:Generator_RowChangingName="DataTablePeakFittingRowChanging" msprop:Generator_RowEvHandlerName="DataTablePeakFittingRowChangeEventHandler" msprop:Generator_RowDeletedName="DataTablePeakFittingRowDeleted" msprop:Generator_UserTableName="DataTablePeakFitting" msprop:Generator_RowChangedName="DataTablePeakFittingRowChanged" msprop:Generator_RowEvArgName="DataTablePeakFittingRowChangeEvent" msprop:Generator_RowClassName="DataTablePeakFittingRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Check" msprop:Generator_ColumnVarNameInTable="columnCheck" msprop:Generator_ColumnPropNameInRow="Check" msprop:Generator_ColumnPropNameInTable="CheckColumn" msprop:Generator_UserColumnName="Check" type="xs:boolean" minOccurs="0" />
+              <xs:element name="HKL" msprop:Generator_ColumnVarNameInTable="columnHKL" msprop:Generator_ColumnPropNameInRow="HKL" msprop:Generator_ColumnPropNameInTable="HKLColumn" msprop:Generator_UserColumnName="HKL" type="xs:string" minOccurs="0" />
+              <xs:element name="CalcX" msprop:Generator_ColumnVarNameInTable="columnCalcX" msprop:Generator_ColumnPropNameInRow="CalcX" msprop:Generator_ColumnPropNameInTable="CalcXColumn" msprop:Generator_UserColumnName="CalcX" type="xs:double" minOccurs="0" />
+              <xs:element name="Function" msprop:Generator_ColumnVarNameInTable="columnFunction" msprop:Generator_ColumnPropNameInRow="Function" msprop:Generator_ColumnPropNameInTable="FunctionColumn" msprop:Generator_UserColumnName="Function" type="xs:string" minOccurs="0" />
+              <xs:element name="X" msprop:Generator_ColumnVarNameInTable="columnX" msprop:Generator_ColumnPropNameInRow="X" msprop:Generator_ColumnPropNameInTable="XColumn" msprop:Generator_UserColumnName="X" type="xs:double" minOccurs="0" />
+              <xs:element name="XErr" msprop:Generator_ColumnVarNameInTable="columnXErr" msprop:Generator_ColumnPropNameInRow="XErr" msprop:Generator_ColumnPropNameInTable="XErrColumn" msprop:Generator_UserColumnName="XErr" type="xs:double" minOccurs="0" />
+              <xs:element name="FWHM" msprop:Generator_ColumnVarNameInTable="columnFWHM" msprop:Generator_ColumnPropNameInRow="FWHM" msprop:Generator_ColumnPropNameInTable="FWHMColumn" msprop:Generator_UserColumnName="FWHM" type="xs:double" minOccurs="0" />
+              <xs:element name="Intensity" msprop:Generator_ColumnVarNameInTable="columnIntensity" msprop:Generator_ColumnPropNameInRow="Intensity" msprop:Generator_ColumnPropNameInTable="IntensityColumn" msprop:Generator_UserColumnName="Intensity" type="xs:double" minOccurs="0" />
+              <xs:element name="Weight" msprop:Generator_ColumnVarNameInTable="columnWeight" msprop:Generator_ColumnPropNameInRow="Weight" msprop:Generator_ColumnPropNameInTable="WeightColumn" msprop:Generator_UserColumnName="Weight" type="xs:double" minOccurs="0" />
+              <xs:element name="R" msprop:Generator_ColumnVarNameInTable="columnR" msprop:Generator_ColumnPropNameInRow="R" msprop:Generator_ColumnPropNameInTable="RColumn" msprop:Generator_UserColumnName="R" type="xs:double" minOccurs="0" />
+              <xs:element name="PlaneObject" msprop:Generator_ColumnVarNameInTable="columnPlaneObject" msprop:Generator_ColumnPropNameInRow="PlaneObject" msprop:Generator_ColumnPropNameInTable="PlaneObjectColumn" msprop:Generator_UserColumnName="PlaneObject" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

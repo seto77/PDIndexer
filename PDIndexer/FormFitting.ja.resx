@@ -1,0 +1,448 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonCopyCellConstantsToClipboard.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 195</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 28</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
+    <value>クリップボードにコピー</value>
+  </data>
+  <data name="buttonConfirm.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonConfirm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 165</value>
+  </data>
+  <data name="buttonConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 28</value>
+  </data>
+  <data name="buttonConfirm.Text" xml:space="preserve">
+    <value>選択中の結晶に適用</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>560, 326</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>193, 228</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>最適化した格子定数</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>614, 0</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>150, 28</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
+    <value>クリップボードにコピー</value>
+  </data>
+  <data name="radioButtonEachCrystal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonEachCrystal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="radioButtonEachCrystal.Text" xml:space="preserve">
+    <value>個々の結晶に対して</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 3</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Text" xml:space="preserve">
+    <value>全ての結晶に対して</value>
+  </data>
+  <data name="flowLayoutPanelPatternDecomposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 28</value>
+  </data>
+  <data name="radioButtonSymmetricPearson.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 22</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 38</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 22</value>
+  </data>
+  <data name="radioButtonSimple.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="radioButtonSplitPearson.Location" type="System.Drawing.Point, System.Drawing">
+    <value>185, 61</value>
+  </data>
+  <data name="radioButtonSplitPearson.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 22</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 24</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
+    <value>全てのピークに適用</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 86</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>ピーク関数</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="panelFWHM.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="numericUpDownInitialFWHM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 28</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
+    <value>全てのピークに適用</value>
+  </data>
+  <data name="panelFWHM.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="panelFWHM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 31</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 22</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Text" xml:space="preserve">
+    <value>初期半値幅</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.Text" xml:space="preserve">
+    <value>パターン分解</value>
+  </data>
+  <data name="numericUpDownSearchRange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericUpDownSearchRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>93, 19</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>範囲</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonApplyRangeToAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 28</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Text" xml:space="preserve">
+    <value>全てのピークに適用</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 326</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>361, 218</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>フィッティング条件</value>
+  </data>
+  <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 322</value>
+  </data>
+  <data name="dataGridViewPlaneList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>562, 295</value>
+  </data>
+  <data name="textBoxRemovedProfileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 25</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 18</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 326</value>
+  </data>
+  <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 458</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>509, 0</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Size" type="System.Drawing.Size, System.Drawing">
+    <value>102, 28</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Text" xml:space="preserve">
+    <value>CSV形式で保存</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.Location" type="System.Drawing.Point, System.Drawing">
+    <value>367, 2</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>766, 555</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        AAAQAAAA7gQLAO7uUwAAAAAA////AIAAAAAzOP8AP/pNAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A
+        /wD//wAA////ACIiYiIiIiIiImIiIiIiKiIiImIiIiIiIiJiIiIiIioiIiJiIiIiIiIiYiIiIiIqIiIi
+        YiIiIiIiImIiIiIiKiIiImIiIiIiIiJiIiIiIioiIiJiIiIiIiIiYiIiIiIqIiIiYiIiIiIiImIiIiIi
+        KiIiImIiIiIiIiJiIiIiIioiIiJiIiIiIiIiYiIiIiIqIiIiYiIiIiIiImIiIiIiKiIiImIiIiIiIiJi
+        IiIiIioiIiJiIiIiIiIiYiIiIiIqIiIiYiIiIiIiImIiIiIiKiIiImIiIiIiIiJiIiIiIioiIiJiIiIi
+        IiIiYiIiIiIiIiIiYiIiIiIiImIiIiIiIiIiImIiIiIiIiJiIiIiIiIiIiJiIiIiIiIiYiIiIiIiIiIi
+        IiIiIiIiImIiIiIiIiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIiIiIiYiIiIiIiIiIiIiIiIiIiImIiIiIi
+        IiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIiIiIiYiIiIiIiIiIiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiJi
+        IiIiIiIiIiIiIiIiIiIiYiIiIiIiIiIiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiJiIiIiIiIiIiIiIiIi
+        IiIiYiIiIiIiIiIiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiJiIiIiIiIi////////////////////////
+        ////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////w=
+</value>
+  </data>
+</root>

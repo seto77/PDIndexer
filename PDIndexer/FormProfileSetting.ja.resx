@@ -1,0 +1,647 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dataGridViewProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 263</value>
+  </data>
+  <data name="textBoxComment.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="textBoxComment.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 96</value>
+  </data>
+  <data name="textBoxComment.Size" type="System.Drawing.Size, System.Drawing">
+    <value>252, 71</value>
+  </data>
+  <data name="textBoxProfileName.Location" type="System.Drawing.Point, System.Drawing">
+    <value>42, 48</value>
+  </data>
+  <data name="textBoxProfileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>216, 25</value>
+  </data>
+  <data name="colorControlLineColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 22</value>
+  </data>
+  <data name="numericUpDownLineWidth.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 21</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>32, 23</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>線の色</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 23</value>
+  </data>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 18</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>線の幅</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 78</value>
+  </data>
+  <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>コメント</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label8.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 50</value>
+  </data>
+  <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>32, 18</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>名前</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>212, 23</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold, Italic</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 175</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>264, 442</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>263</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 15</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>露出時間</value>
+  </data>
+  <data name="checkBoxSmoothing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxSmoothing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 21</value>
+  </data>
+  <data name="checkBoxSmoothing.Text" xml:space="preserve">
+    <value>2. スムージング</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 274</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 21</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Text" xml:space="preserve">
+    <value>4. バックグラウンド減算</value>
+  </data>
+  <data name="buttonDeleteProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt, style=Bold</value>
+  </data>
+  <data name="buttonDeleteProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 3</value>
+  </data>
+  <data name="buttonDeleteProfile.Text" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 3</value>
+  </data>
+  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>26, 25</value>
+  </data>
+  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>33, 3</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>259, 411</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 28</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
+    <value>変更</value>
+  </data>
+  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
+    <value>207, 309</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>68, 18</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>現在の単位</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>112, 308</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 308</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>87, 22</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
+    <value>横軸シフト</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 0</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>382, 340</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>横軸</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt, style=Bold</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 15</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericalTextBoxExposureTime.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.Size" type="System.Drawing.Size, System.Drawing">
+    <value>63, 25</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 348</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>縦軸</value>
+  </data>
+  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 18</value>
+  </data>
+  <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
+    <value>80, 18</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>以下の範囲の</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>168, 16</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 22</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
+    <value>最大値</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>101, 16</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 22</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
+    <value>平均値</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 18</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>(横軸単位)</value>
+  </data>
+  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 18</value>
+  </data>
+  <data name="label15.Text" xml:space="preserve">
+    <value>(縦軸単位)</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt, style=Bold</value>
+  </data>
+  <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>188, 2</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>全て削除</value>
+  </data>
+  <data name="checkBoxMaskingMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxMaskingMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 21</value>
+  </data>
+  <data name="checkBoxMaskingMode.Text" xml:space="preserve">
+    <value>1. マスクと補間</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>152, 21</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Text" xml:space="preserve">
+    <value>3. バンドパスフィルター</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>141, 21</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
+    <value>5. 強度のノーマライズ</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 23</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 21</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Text" xml:space="preserve">
+    <value>高周波をカット (右値以上)</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 46</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>162, 21</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Text" xml:space="preserve">
+    <value>低周波をカット (右値以下)</value>
+  </data>
+  <data name="groupBoxNormarizeIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="panel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>381, 411</value>
+  </data>
+  <data name="buttonApplyAllProfiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>100, 413</value>
+  </data>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 444</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>強度処理</value>
+  </data>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 444</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>軸変換</value>
+  </data>
+  <data name="listBoxTwoProfiles1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 213</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>177, 1</value>
+  </data>
+  <data name="flowLayoutPanelFourCalculator.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 213</value>
+  </data>
+  <data name="flowLayoutPanelFourCalculator.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 26</value>
+  </data>
+  <data name="listBoxTwoProfiles2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 239</value>
+  </data>
+  <data name="listBoxTwoProfiles2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 131</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 370</value>
+  </data>
+  <data name="radioButtonAverage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonAverage.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 4</value>
+  </data>
+  <data name="radioButtonAverage.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 22</value>
+  </data>
+  <data name="radioButtonAverage.Text" xml:space="preserve">
+    <value>平均化</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 3</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 22</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Text" xml:space="preserve">
+    <value>プロファイルと数値</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>214, 3</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Text" xml:space="preserve">
+    <value>プロファイル間</value>
+  </data>
+  <data name="buttonCalculate.Location" type="System.Drawing.Point, System.Drawing">
+    <value>284, 419</value>
+  </data>
+  <data name="buttonCalculate.Text" xml:space="preserve">
+    <value>計算</value>
+  </data>
+  <data name="textBoxOutputFilename.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="textBoxOutputFilename.Location" type="System.Drawing.Point, System.Drawing">
+    <value>9, 417</value>
+  </data>
+  <data name="textBoxOutputFilename.Size" type="System.Drawing.Size, System.Drawing">
+    <value>246, 25</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 401</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>164, 18</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>出力するプロファイルの名前</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 29</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>384, 444</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>プロファイル演算</value>
+  </data>
+  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 0</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 477</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>663, 477</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        ///4////+f///w==
+</value>
+  </data>
+</root>

@@ -1,0 +1,1083 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8.25pt</value>
+  </data>
+  <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>749, 17</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>Ctrl+Shift+E: 状態方程式; Ctrl+Shift+F: ピークフィッティング;  Ctrl+Shift+C: 回折線/結晶詳細情報;  Ctrl+Shift+D:  ピーク描画モードを変更</value>
+  </data>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 22</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="horizontalAxisUserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="horizontalAxisUserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>327, 22</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
+    <value>横軸を最後に読み込んだプロファイルのものにそろえる</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
+    <value>プロファイルを読み込み後、横軸モードを変更します。
+ </value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>348, 28</value>
+  </data>
+  <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 316</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>横軸</value>
+  </data>
+  <data name="radioButtonLinearity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonLinearity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonLinearity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 22</value>
+  </data>
+  <data name="radioButtonLinearity.Text" xml:space="preserve">
+    <value>リニアスケール</value>
+  </data>
+  <data name="radioButtonLogarithm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="radioButtonLogarithm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonLogarithm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 22</value>
+  </data>
+  <data name="radioButtonLogarithm.Text" xml:space="preserve">
+    <value>対数スケール</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 44</value>
+  </data>
+  <data name="radioButtonRawCounts.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonRawCounts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonRawCounts.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 22</value>
+  </data>
+  <data name="radioButtonRawCounts.Text" xml:space="preserve">
+    <value>カウント</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 22</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 22</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Text" xml:space="preserve">
+    <value>カウント/秒 (CPS)</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>128, 44</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 159</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>287, 66</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>縦軸</value>
+  </data>
+  <data name="numericalTextBoxIncreasingPixels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 82</value>
+  </data>
+  <data name="numericalTextBoxIncreasingPixels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 25</value>
+  </data>
+  <data name="numericUpDownIncreasingPixels.Location" type="System.Drawing.Point, System.Drawing">
+    <value>95, 82</value>
+  </data>
+  <data name="numericUpDownIncreasingPixels.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 25</value>
+  </data>
+  <data name="radioButtonMultiProfileMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 22</value>
+  </data>
+  <data name="radioButtonMultiProfileMode.Text" xml:space="preserve">
+    <value>複数プロファイルを表示</value>
+  </data>
+  <data name="checkBoxChangeColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 112</value>
+  </data>
+  <data name="checkBoxChangeColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxChangeColor.Text" xml:space="preserve">
+    <value>色を自動で変更</value>
+  </data>
+  <data name="radioButtonSingleProfileMode.Size" type="System.Drawing.Size, System.Drawing">
+    <value>170, 22</value>
+  </data>
+  <data name="radioButtonSingleProfileMode.Text" xml:space="preserve">
+    <value>単一プロファイルのみ表示</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>111, 87</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 18</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>カウント</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 66</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 18</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>プロファイル間の差</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>150, 10</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>178, 143</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>単/複数プロファイル設定</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>目盛文字色</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>目盛り線</value>
+  </data>
+  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>背景色</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 57</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>色設定</value>
+  </data>
+  <data name="checkBoxErrorBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 31</value>
+  </data>
+  <data name="checkBoxErrorBar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 22</value>
+  </data>
+  <data name="checkBoxErrorBar.Text" xml:space="preserve">
+    <value>エラーバーを表示</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Location" type="System.Drawing.Point, System.Drawing">
+    <value>15, 6</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 22</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Text" xml:space="preserve">
+    <value>目盛り線を表示</value>
+  </data>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 27</value>
+  </data>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>354, 316</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>色設定 + 複数プロファイル表示設定</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 27</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>362, 347</value>
+  </data>
+  <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
+    <value>138, 5</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 31</value>
+  </data>
+  <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
+    <value>142, 53</value>
+  </data>
+  <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 2</value>
+  </data>
+  <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 50</value>
+  </data>
+  <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>191, 29</value>
+  </data>
+  <data name="graphControlFrequency.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 78</value>
+  </data>
+  <data name="graphControlFrequency.Size" type="System.Drawing.Size, System.Drawing">
+    <value>282, 102</value>
+  </data>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>283, 174</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>369, 33</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>291, 202</value>
+  </data>
+  <data name="pictureBoxMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>930, 417</value>
+  </data>
+  <data name="pictureBoxMain.ToolTip" xml:space="preserve">
+    <value>プロファイルを表示します
+左ドラッグ: 回折線移動
+右クリック: 縮小 
+右ドラッグ: 拡大
+中ドラッグ: 平行移動
+</value>
+  </data>
+  <data name="labelIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>782, 0</value>
+  </data>
+  <data name="labelIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 17</value>
+  </data>
+  <data name="labelD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>632, 0</value>
+  </data>
+  <data name="labelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>482, 0</value>
+  </data>
+  <data name="labelTwoTheta.Text" xml:space="preserve">
+    <value>2θ:</value>
+  </data>
+  <data name="numericUpDownUpperY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>383, 0</value>
+  </data>
+  <data name="numericUpDownUpperY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 25</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>371, 2</value>
+  </data>
+  <data name="numericUpDownLowerY.Location" type="System.Drawing.Point, System.Drawing">
+    <value>275, 0</value>
+  </data>
+  <data name="numericUpDownLowerY.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 25</value>
+  </data>
+  <data name="numericUpDownUpperX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>131, 0</value>
+  </data>
+  <data name="numericUpDownUpperX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 25</value>
+  </data>
+  <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
+    <value>119, 2</value>
+  </data>
+  <data name="numericUpDownLowerX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>96, 25</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>237, 2</value>
+  </data>
+  <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>38, 21</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>強度</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>930, 28</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>930, 54</value>
+  </data>
+  <data name="dataGridViewProfiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 43</value>
+  </data>
+  <data name="dataGridViewProfiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 97</value>
+  </data>
+  <data name="dataGridViewProfiles.ToolTip" xml:space="preserve">
+    <value>プロファイルのリストを表示します。
+チェックされたプロファイルのみが表示されます。
+複数のプロファイルを読み込むにはメニューの｢Multi Profile」モードをONにします。
+プロファイルの詳しい情報は下の「Profile Parameter」で設定します。 </value>
+  </data>
+  <data name="checkBoxProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxProfileParameter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 140</value>
+  </data>
+  <data name="checkBoxProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 21</value>
+  </data>
+  <data name="checkBoxProfileParameter.Text" xml:space="preserve">
+    <value>プロファイル情報</value>
+  </data>
+  <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
+    <value>プロファイルの詳しい情報を表示/設定します。
+</value>
+  </data>
+  <data name="checkBoxAll.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAll.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="checkBoxAll.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 22</value>
+  </data>
+  <data name="checkBoxAll.Text" xml:space="preserve">
+    <value>すべてチェック/解除</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 164</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>プロファイルリスト</value>
+  </data>
+  <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 260</value>
+  </data>
+  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
+    <value>Crystal のリストを表示します。
+チェックされた結晶の回折線が表示されます。
+結晶の詳しい情報は下の「Crystal Parameter」で設定します。
+ </value>
+  </data>
+  <data name="checkBoxCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 281</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>244, 19</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Text" xml:space="preserve">
+    <value>回折線/結晶情報 (C)</value>
+  </data>
+  <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
+    <value>結晶の詳しい情報を表示/設定します。 </value>
+  </data>
+  <data name="groupBoxCrystalData.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBoxCrystalData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 303</value>
+  </data>
+  <data name="groupBoxCrystalData.Text" xml:space="preserve">
+    <value>結晶リスト</value>
+  </data>
+  <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 471</value>
+  </data>
+  <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
+    <value>164</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 471</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>930</value>
+  </data>
+  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 471</value>
+  </data>
+  <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 571</value>
+  </data>
+  <data name="toolStrip2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+        ZF9jQ9YWAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 46</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
+    <value>回折線
+/結晶情報 (C)</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
+    <value>結晶の詳しい情報を表示/設定します</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAYAAAC4JqlRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPzSURBVFhHxVdtS5RBFPWH9B8EP0h96IPhh8APQVGEYFAQ
+        CEkREkaBICQhRRgFQYVg9IK90AvRkhaWvRpIlkaBRJEkFRhGLxhIp3POzO4+Prubu0V64LLP3Jm598yd
+        OzN3q4oBr14BNTWIzcUHuruBZcuATGZpSKCpCTh4EGhvXyICdXXA5CTQ0PBPBPD9O3DiRHk2tFpcuuTB
+        2f1P5gFmZ8syhOFhYM+eMJ+/qK4GRkbydj59KrSD8XF41bW1wPS0f62vr89PlDHmRmyWhKKmeXj2zImM
+        K1eAtra8ndWrgc7O+XbQ0QH09NiBDTQ2BgJbtwZDc3NhJQlCxaAoedyZM8CGDUG4YqxcGexNTAT7K1ak
+        CGjlmixRJGjAeu6fSSmsItPaCkXLk4oADx+GcV++2CkGBoIdORWRU6eAri6gpQUYGgp2MDgIZb0bKeDN
+        G2RDpvzQJJGI3QVwJOPRVQL6d+5ncKw+kZNNEV23LhJguKV0owjQ3Jwb7K3gt3U7dswXGc8ajcAP5tO5
+        NfBp0DyOiV1VjiaJxWZp2GniBHibdESLifo+vwYeHAiEh/YBvauAd/fm2fgreDVfpxY0grsM9cnlgcDF
+        jcCL88DTnvwCxs4BH8cqJ4OrW4CbOxcm0LfWEcDkI+Ask+/DKHB7b54AyeHW7soI4Be34TSTkfsZVSXh
+        PX/JhKUTXGeuKHKXN3keZt4G3YX1FRLQxBvbLFFVFNoiXGMyKg+00keHguNI3Lmg6JCQTod0ZcET7+8P
+        MpW/VtNQXzbczoVvH8N3/y479P4/Pw08Pgy8vVMBgdHekEyv+6HvqC6AHVBiMweMHAcmMrxHeCpEUvnx
+        5GgFBAb5UCm8szNQZkd1Abzv3PPYzAHvn4SciHPx8yuUrKFTq1O4JHKkJElLZnvOqE5CbnxSNDcxLg2f
+        ong/CMoPRTV3vrPiTqpAvx6ZgvcyMT4pcci/A30kwIoMfLyianEBPv3gowi+IVG1uACfcVyn8L2IqsUF
+        +JSDzzd4+UXV/weO0OFAcAhWUsnfSgD+pQAPRWwWQAkeP/PwaulMK3ebBZJ/Y7sSgM8+WBKWSmDnF5+K
+        2AwASzix1tFT4oGPmPWsVUTOg8oAWA6IPFjwlMofLzS9teD/EPCGBItjHz8WONa38Zs3qAeVAc+nLX8r
+        j0jIHRGOtBZFArk+s2Yh6wYB1qAi4+8YGXeUAUePf6j8zWo8fZk5MrwwHe3sEVfilbz1WGVVchLAlzhL
+        XtA24BiFRbLbcsz9N5G4zSFpmLluFIG3h0WxVvZHkXEmX5xmOLpyuDkKnYoMWN+YLG9cls+lnQvqN+Ny
+        pNgRi7DjRE6YRCpHlgBVVb8B2AfzSY/j4+kAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>130, 46</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
+    <value>プロファイル
+情報 (P)</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
+    <value>プロファイルの詳しい情報を表示/設定します。</value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANTSURBVFhH7ZfvS1NRGMf9Q4KQCEUkYxBzP+6VCkYq3EHI
+        tIRctDcVSIUQYU4QAimiyMTKoMgfhVPJ7YVRuRJfiF4IRJCFSoFNUBNxWIRBT8957jlnu+6mOXVv6oEv
+        3t3LzudznnPuUXN2UpBIAIyPU/it7BbBi4sp/FZ2698WgNZWCZfp6MieCG1Aj8ckwB/tbR07eh/6+oFg
+        qUsAQ0N7K7C+DmALPoO86EdQ1NsyutMLCYcKKl6nRvM+hfrrEzA6ugrsu3yYzEpR68AeuAP7ACi58RVw
+        VD4mAZ/aBJeVq2kCaklqHmYuwOCusgaEfoWCgVGCsi4wEVswQp/T4DweTxfBMxI4UdqIg9dRDsTmCLg/
+        8U3OnMHFtRVcVQ1wxgKKGsbBwzjrzwRXSsJQ2DVtzLxxBj/rFM07humRYI+n24CL7ETAVTZIwMLOaZJh
+        ErbGWXBUTRC8ILzIO/MT8t8tI0g3w1PCh9266NWKxw0gl8iNr1EnDIkxgufGf0AeQkUnih7M4VKtWcJZ
+        aGwclyCblTjhhICQOKgvImAFYSNw+NYnmrWAi7BuWMHL1BaA2loAv99agD2QB0p5eZqAiD0wjD/f4l6Y
+        p6TCmRTrykZ40H0tbWwRjrcWOFPTnyYgYgvOEEzAXeUfqCNHrsSwW09wuabw+Socb4smx00ZW4TjzSWW
+        4PTJIYKVqj1wSblnik99RestOsFk2IY0OjFMcDeK5EdnoWhgEqLOUwa0ulr+AcPCkeYSm7C9fUrOOOo8
+        azLvdDXgfZ1mLCK64ajsNl5bbD/rhtgXsc4RgObmrTehKF1fkAIDrvPwHc/7jQIUDmZ7gHWFgfNw5ixi
+        OZhAJDL393BWr98sEfymu0mChUTM6UsKcIlD+BrSa4kwe6BPdkEkFFrensDS0i/8YhjOKY+kgI5rGXXW
+        oIAXn4UwvTKOqve0Ee2Bl6ZlELlwcWR7AqzEEjAJ3VmN1wwaggb3DXltlhjE1k/iUnzBN+U53quX4UNu
+        r4RAEmaVpIBS0gua1o7XSbDf35YZnJWCr5s1dGOSEpr3Bf7cwaw3K12fh5YW/A2osfZaS2haBCoq7u4+
+        XBTEYnJTUv50vu9V0Unp8xnHKku2BVil/k/Ab2W3/gvsXuXk/AZjDDpJOQqaYgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 46</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
+    <value>状態
+方程式 (E)</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
+    <value>状態方程式から圧力を算出します</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALDSURBVFhHvVe/ixNBGBX8AyR9sIjNIRGLK1MJB0rAwmKL
+        YOlxpLCw2/8gBBHsAkEtVySNCCmEFBZb2KRa1EZSLAhndSwWHofFc963803G5WJuk0zeELIzs7n3/Xjf
+        N3PXtkGCBCMz7HS/KFCgbUbfDru8P9BzEmdm0BC7vD900UVuBp+baO7fAN9r35jgiGNgMIDxeen1AOWw
+        03BIU0PcBA7af4zPXUc4xRQ9M+w0HNT7h/FX3B98coQpUnTMsNNw6HQgJPeSV3jUO/+HMLgQi6IMP58P
+        0mOoMYrgpcj8d7sw7acQAaoxCl8TQcDc86OCq0YgeCX0ekCeA7EZJOr3gSRZGsFzIWhLbrdLMlX7aAQx
+        gs8EW3LQSmDONf+cqyZk08KvBIzHJlzxbgxSMuZfxeZXhcKPgHkAGo3dGMBcM9yaf7vs0qLgPrWA+VzI
+        cXKymyiQnFGo1roK005dS8ZkAhweCjmNsNubg6HmaVftdhQiS9NO5ZLCd4SYn9lMDLHbmyHLyvDrBcQu
+        C+h9VYjUiHi/WABnZ9zczgA6IkRm8NCxyw5VHVAjPulWQlSlk7gafgWj4+vg+/wdisb1pQHbpID5JQG9
+        X3X7ZYr8NGA4xMfohrshbVwJvvfrTjoaoFFAq4UPi5ditMzZkI6O6hvge39Z7n1ooxLhGU6u0WhGYSMh
+        svHwtGNTueo5z/enx++BKJL3+VsXhToRUHIeLhTeVW+71AJTNn3z073P1szmJI3JGrYSDCNLTsk1hHZ7
+        LZjr7O7j0gjDyTVtTJKKVeXIbsZaZr5fJ79F7bS8Fjl7v/miBhgJtmj+TX4/T37gdv4A2fjp5WJkruSC
+        YQaJ6/6z6Q4eE2a75EBjKOYv+S/Rw7foDi5alX7CcFPl65ReBetdWq7JLT23y/8FuebRLWlUn6ObeDt7
+        UotzZ2Bp5pMXOB0+w1+nY/9oy5YWAAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>169, 46</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
+    <value>ピーク
+フィッティング (F)</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>73, 46</value>
+  </data>
+  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>142, 46</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 46</value>
+  </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 49</value>
+  </data>
+  <data name="toolStripButtonLPO.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonLPO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>230, 46</value>
+  </data>
+  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 0</value>
+  </data>
+  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>765, 49</value>
+  </data>
+  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>プロファイルを読込</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>プロファイルを書き込み</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>341, 26</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>341, 26</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>341, 26</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
+    <value>プロファイルをエクスポート(csv)</value>
+  </data>
+  <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 6</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶リストを読込 (現在のリストを消去)</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶リストを読込 (現在のリストに追加)</value>
+  </data>
+  <data name="toolStripMenuItemImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="toolStripMenuItemImport.Text" xml:space="preserve">
+    <value>CIF, AMC ファイルを読込</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶リストを保存</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>CIF フォーマットで出力</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>結晶リストをリセット</value>
+  </data>
+  <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 6</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.Text" xml:space="preserve">
+    <value>ページ設定</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.Text" xml:space="preserve">
+    <value>印刷プレビュー</value>
+  </data>
+  <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>印刷</value>
+  </data>
+  <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 6</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 26</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>as Bitmap</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>188, 26</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
+    <value>コピー</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>メタファイルとして保存</value>
+  </data>
+  <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>332, 6</value>
+  </data>
+  <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>335, 26</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>閉じる</value>
+  </data>
+  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="fileToolStripMenuItem.ShortcutKeyDisplayString" xml:space="preserve">
+    <value>F</value>
+  </data>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>78, 25</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイル</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 26</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>ツールチップ</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 26</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>クリップボードを監視</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>260, 26</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 26</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>ファイルを監視</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>220, 26</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>レジストリを消去</value>
+  </data>
+  <data name="optionToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 25</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>オプション</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 26</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
+    <value>PDIndexerについて</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 26</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>アップデートをチェック</value>
+  </data>
+  <data name="hintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 26</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヒント</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>234, 26</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヘルプ (web)</value>
+  </data>
+  <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>64, 25</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>ヘルプ</value>
+  </data>
+  <data name="englishToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        wAAAAMABMHffXgAAAUpJREFUOE9jYAhq+Y8Lg8A1Bk04BgFs6uAYpMCmeiFWSf+OVf+fxlcSZRhYDkxC
+        AboCYgwDOeT7+WtgeQaYIhjQzp8JV0jIMBCAyf39+u0/w00RKzDn/fx1YEkYwGeYf/uq/z/vPUYRBwGG
+        ltWH///79w9DAgSSpmzGMAwEYPxfD59CRSAAHpsgcFvBBazoTddcMB8E0A0Dsxm1wGwYUMmaCvE6lI8T
+        YHMZLgCOAGph6hr2af2e//jwA8cEuGJs8sgYJTshg+vs+v8f2MfhjU0QQMk9IAIkAAN/v/9AUYwrAp5E
+        lYDFHjjEg/lgw8AsKLjGpA1WAMoeIIAt0Ub1rwfTMIAsBzbs358/KILGpXPANuHLTsjgoWsyWJ7hBr8Z
+        mPFx1XawBEwxIcNAGJR7kAE8o8NTMRImZBgMwwDYm9gUgDCxhoFw/tyd/wHjpZDiF9mN8AAAAABJRU5E
+        rkJggg==
+</value>
+  </data>
+  <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 26</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
+        wAAAAMABMHffXgAAAG5JREFUOE/tjLsNwCAMRFNQMAyDMQMjMDSOIxHJsc9YSOmSJ11zv4Ne5D/bZ32W
+        Eje4IrXAT/WJlANOarUHWgDHVUMkgOOqIRLAcdUQCYDdMexYqvdZfMKJQ2v25FLOs2DhNKCU8OQmPtvg
+        E2dEJ41V0r+pZPOtAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 26</value>
+  </data>
+  <data name="languageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 25</value>
+  </data>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 49</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 29</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1184, 571</value>
+  </data>
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAIAICAQAAAABADoAgAAJgAAABAQEAAAAAQAKAEAAA4DAAAoAAAAIAAAAEAAAAABAAQAAAAAAAAC
+        AAAAAAAAAAAAABAAAAAQAAAA7gQLAO7uUwAAAAAA////AIAAAAAzOP8AP/pNAICAgADAwMAAAAD/AAD/
+        AAAA//8A/wAAAP8A/wD//wAA////ACIiUiIiIiIiImIiIiIiKyIiIlIiIiIiIiJiIiIiIisiIiJSIiIA
+        IiIiYiIiIAIrIgIiUiIgIgIiImIiIgIgKyACIlIiICICIiJiIiICICsgAiJSIgIiAiIiYiIiAiArICAi
+        UiICIiAiImIiICIiCwIgIlIiAiIgIiJiIiAiIgsCICJSIgIiICIiYiIgIiILAiAiUiAiIiAiImIiICIi
+        CwIgIlIgIiIgIiJiIiAiIgsCIgJSICIiICIiYiIgIiIrIiICUiAiIiICImIiAiIiKyIiAlICIiIiAiJi
+        IgIiIisiIgJSAiIiIgIiYiICIiIiIiIgUgIiIiICImIiAiIiIiIiIFAiIiIiAiJiIgIiIiIiIiJSIiIi
+        IgIiYiICIiIiIiIiIiIiIiIgImIgIiIiIiIiIiIiIiIiICJiICIiIiIiIiIiIiIiIiAiYiAiIiIiIiIi
+        IiIiIiIgImIgIiIiIiIiIiIiIiIiICJiICIiIiIiIiIiIiIiIiICYgIiIiIiIiIiIiIiIiIiAmICIiIi
+        IiIiIiIiIiIiIgJiAiIiIiIiIiIiIiIiIiICYgIiIiIiIiIiIiIiIiIiIGAiIiIiIiIiIiIiIiIiIiBg
+        IiIiIiIiIiIiIiIiIiIiYiIiIiIiIiIiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiJiIiIiIiIi9//f+/f/
+        3/v3z9+bd7ffane332p3d99qt3ve8bd73vG3e97xtvve8bb73vHW+9771v3d+9X93fvV/d3/5f3d/+P9
+        3f/3/d3///7b///+2////tv///7b///+2////1f///9X////V////1f///+P////j////9/////f////
+        3/8oAAAAEAAAACAAAAABAAQAAAAAAIAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAA
+        AACAAIAAgIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A/wD//wAA////AAAJAAwACwAMwAkAwMAL
+        AMDACQDAwAsAwAwJDADACwDADAkMAAwLDAAMCQwADAsMAADJwAAMCwwAAMnAAAwLDAAACQAADAsMAAAJ
+        AAAMCwwAAAAAAADLwAAAAAAAAMvAAAAAAAAAy8AAAAAAAADLwAAAAAAAAAsAAAAAAAAACwAA7u4AAG1t
+        AABtbQAAq20AAKurAACrqwAAx6sAAMerAADvqwAA76sAAP/HAAD/xwAA/8cAAP/HAAD/7wAA/+8AAA==
+</value>
+  </data>
+</root>
