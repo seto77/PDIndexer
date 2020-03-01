@@ -577,8 +577,8 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.horizontalAxisUserControl, "horizontalAxisUserControl");
             this.horizontalAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
-            this.horizontalAxisUserControl.ElectronAccVoltage = 4.9436741736544977E-14D;
-            this.horizontalAxisUserControl.ElectronAccVoltageText = "4.9436741736545E-14";
+            this.horizontalAxisUserControl.ElectronAccVoltage = 8.04114721308336D;
+            this.horizontalAxisUserControl.ElectronAccVoltageText = "8.04114721308336";
             this.horizontalAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
             this.horizontalAxisUserControl.Name = "horizontalAxisUserControl";
             this.horizontalAxisUserControl.TakeoffAngle = 0D;
@@ -587,11 +587,11 @@ namespace PDIndexer
             this.horizontalAxisUserControl.TofAngleText = "90";
             this.horizontalAxisUserControl.TofLength = 90D;
             this.horizontalAxisUserControl.WaveColor = Crystallography.WaveColor.Monochrome;
-            this.horizontalAxisUserControl.WaveLength = 25079347455245.6D;
-            this.horizontalAxisUserControl.WaveLengthText = "250793474552456";
+            this.horizontalAxisUserControl.WaveLength = 0.15418710666666666D;
+            this.horizontalAxisUserControl.WaveLengthText = "1.54187106666667";
             this.horizontalAxisUserControl.WaveSource = Crystallography.WaveSource.Xray;
-            this.horizontalAxisUserControl.XrayWaveSourceElementNumber = 0;
-            this.horizontalAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
+            this.horizontalAxisUserControl.XrayWaveSourceElementNumber = 29;
+            this.horizontalAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka;
             this.horizontalAxisUserControl.AxisPropertyChanged += new Crystallography.Controls.HorizontalAxisUserControl.MyEventHandler(this.horizontalAxisUserControl_AxisPropertyChanged);
             // 
             // flowLayoutPanel4
@@ -789,12 +789,14 @@ namespace PDIndexer
             // colorControlScaleText
             // 
             this.colorControlScaleText.Argb = -16777216;
+            resources.ApplyResources(this.colorControlScaleText, "colorControlScaleText");
             this.colorControlScaleText.Blue = 0;
             this.colorControlScaleText.BlueF = 0F;
             this.colorControlScaleText.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlScaleText.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControlScaleText.FooterText = "";
             this.colorControlScaleText.Green = 0;
             this.colorControlScaleText.GreenF = 0F;
-            resources.ApplyResources(this.colorControlScaleText, "colorControlScaleText");
             this.colorControlScaleText.Name = "colorControlScaleText";
             this.colorControlScaleText.Red = 0;
             this.colorControlScaleText.RedF = 0F;
@@ -805,12 +807,14 @@ namespace PDIndexer
             // colorControlScaleLine
             // 
             this.colorControlScaleLine.Argb = -2894893;
+            resources.ApplyResources(this.colorControlScaleLine, "colorControlScaleLine");
             this.colorControlScaleLine.Blue = 211;
             this.colorControlScaleLine.BlueF = 0.827451F;
             this.colorControlScaleLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.colorControlScaleLine.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControlScaleLine.FooterText = "";
             this.colorControlScaleLine.Green = 211;
             this.colorControlScaleLine.GreenF = 0.827451F;
-            resources.ApplyResources(this.colorControlScaleLine, "colorControlScaleLine");
             this.colorControlScaleLine.Name = "colorControlScaleLine";
             this.colorControlScaleLine.Red = 211;
             this.colorControlScaleLine.RedF = 0.827451F;
@@ -821,12 +825,14 @@ namespace PDIndexer
             // colorControlBack
             // 
             this.colorControlBack.Argb = -1;
+            resources.ApplyResources(this.colorControlBack, "colorControlBack");
             this.colorControlBack.Blue = 255;
             this.colorControlBack.BlueF = 1F;
             this.colorControlBack.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colorControlBack.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.colorControlBack.FooterText = "";
             this.colorControlBack.Green = 255;
             this.colorControlBack.GreenF = 1F;
-            resources.ApplyResources(this.colorControlBack, "colorControlBack");
             this.colorControlBack.Name = "colorControlBack";
             this.colorControlBack.Red = 255;
             this.colorControlBack.RedF = 1F;
@@ -3643,6 +3649,7 @@ namespace PDIndexer
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownIncreasingPixels)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();

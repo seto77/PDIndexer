@@ -307,7 +307,6 @@
             this.graphControl1.BottomMargin = 0D;
             this.graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
             this.graphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            this.graphControl1.DrawingRange = ((Crystallography.RectangleD)(resources.GetObject("graphControl1.DrawingRange")));
             this.graphControl1.FixRangeHorizontal = false;
             this.graphControl1.FixRangeVertical = false;
             this.graphControl1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

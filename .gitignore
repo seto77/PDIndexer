@@ -3,6 +3,7 @@
 
 references/
 PDindexerSetup/
+*.exe
 
 # User-specific files
 *.suo

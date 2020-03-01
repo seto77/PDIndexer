@@ -235,7 +235,7 @@
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -602,7 +602,7 @@
     <value>numericalTextBoxIncreasingPixels</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -799,6 +799,15 @@
   <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="colorControlScaleText.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlScaleText.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlScaleText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
   <data name="colorControlScaleText.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 68</value>
   </data>
@@ -806,7 +815,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScaleText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>18, 18</value>
   </data>
   <data name="colorControlScaleText.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -818,13 +827,22 @@
     <value>colorControlScaleText</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="colorControlScaleLine.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlScaleLine.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlScaleLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlScaleLine.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 44</value>
@@ -833,7 +851,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScaleLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>18, 18</value>
   </data>
   <data name="colorControlScaleLine.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -845,13 +863,22 @@
     <value>colorControlScaleLine</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="colorControlBack.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="colorControlBack.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="colorControlBack.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlBack.Location" type="System.Drawing.Point, System.Drawing">
     <value>76, 20</value>
@@ -860,7 +887,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlBack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 20</value>
+    <value>18, 18</value>
   </data>
   <data name="colorControlBack.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -872,7 +899,7 @@
     <value>colorControlBack</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1484,7 +1511,7 @@
     <value>graphControlFrequency</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -1635,7 +1662,7 @@
     <value>numericBoxUpperY</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1728,7 +1755,7 @@
     <value>numericBoxLowerY</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1821,7 +1848,7 @@
     <value>numericBoxUpperX</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1914,7 +1941,7 @@
     <value>numericBoxLowerX</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2019.11.8.51, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.2.29.707, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -2801,7 +2828,7 @@
     <value>Help</value>
   </data>
   <data name="englishToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="englishToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2816,10 +2843,10 @@
 </value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 26</value>
+    <value>213, 22</value>
   </data>
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
-    <value>English</value>
+    <value>English (need restart)</value>
   </data>
   <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -2830,10 +2857,10 @@
 </value>
   </data>
   <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>130, 26</value>
+    <value>213, 22</value>
   </data>
   <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
-    <value>Japanese</value>
+    <value>Japanese (need restart)</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 21</value>

@@ -529,6 +529,10 @@
       <Project>{6f1c3736-e86f-46b3-9ff5-1ca1a018ef02}</Project>
       <Name>Crystallography.Controls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Crystallography\Crystallography\Crystallography.csproj">
+      <Project>{433b6cbf-1e0b-4e01-ab6d-753d92dc354e}</Project>
+      <Name>Crystallography</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

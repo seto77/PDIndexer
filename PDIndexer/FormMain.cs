@@ -492,6 +492,7 @@ namespace PDIndexer
             }
 
             initialDialog = new WaitDlg();
+            initialDialog.ShowHints = false;
             initialDialog.Owner = this;
             initialDialog.Version = "PDIndexer  " + Version.VersionAndDate;
             initialDialog.Text = "Now Loading...";
@@ -1813,6 +1814,7 @@ namespace PDIndexer
         //マウスボタンが押されたとき
         private void pictureBoxMain_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
+            pictureBoxMain.Focus();
             PointD pt = ConvToRealCoord(e.X, e.Y);
             if (ShowBackgroundProfile && BackGroundPointSelectMode && formProfile.Visible)//Bg点モードのとき
             {
@@ -3602,6 +3604,9 @@ namespace PDIndexer
 
         public void FormMain_KeyDown(object sender, KeyEventArgs e)
         {
+            if (e.Control && !e.Shift && e.KeyCode == Keys.C && this.pictureBoxMain.Focused)
+                copyAsMetafileToolStripMenuItem_Click(new object(), new EventArgs());
+
             if (e.Control && e.Shift && e.KeyCode == Keys.C)
                 checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
             else if (e.Control && e.Shift&& e.KeyCode == Keys.E)
