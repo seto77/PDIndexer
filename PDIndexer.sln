@@ -4,11 +4,11 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PDIndexer", "PDIndexer\PDIndexer.csproj", "{4D8BCBC1-C27B-4C7E-9C92-67E0333E0CC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography.Controls", "..\Crystallography.Control\Crystallography.Controls\Crystallography.Controls.csproj", "{6F1C3736-E86F-46B3-9FF5-1CA1A018EF02}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{6F1C3736-E86F-46B3-9FF5-1CA1A018EF02}"
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDIndexerSetup", "PDIndexerSetup\PDIndexerSetup.vdproj", "{696F8E53-9CC1-4F96-A78F-D7F90D2C673B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography", "..\Crystallography\Crystallography\Crystallography.csproj", "{433B6CBF-1E0B-4E01-AB6D-753D92DC354E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crystallography", "Crystallography\Crystallography.csproj", "{433B6CBF-1E0B-4E01-AB6D-753D92DC354E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
