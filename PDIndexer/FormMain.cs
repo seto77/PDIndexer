@@ -4042,7 +4042,8 @@ namespace PDIndexer
                  if (numericUpDownMaxInt.Maximum <= max)
                      numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
                  else if (numericUpDownMaxInt.Minimum >= max)
-                     numericUpDownMaxInt.Value = numericUpDownMaxInt.Minimum;
+                     numericUpDownMaxInt.Value = numericUpDownMax
+Int.Minimum;
                  else
                      numericUpDownMaxInt.Value = max;
 
