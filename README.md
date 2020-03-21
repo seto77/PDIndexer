@@ -10,5 +10,5 @@ Access https://github.com/seto77/PDIndexer/releases/latest, download *PDIndexerS
 * something
   
 ## Screenshots
-<img src="Screenshots/Main.png" height="320px">
+<img src="Screenshots/Main.png" height="360px"><img src="Screenshots/CrystalParameter.png" height="360px"><img src="Screenshots/ProfileParameter.png" height="360px"><img src="Screenshots/FittingDiffractionPeaks.png" height="360px"><img src="Screenshots/EquationOfStates.png" height="360px">
 
