@@ -119,6 +119,7 @@ namespace PDIndexer
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStripStatusLabelCalcTime = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
@@ -517,12 +518,19 @@ namespace PDIndexer
             // statusStrip1
             // 
             resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripProgressBar,
             this.toolStripStatusLabelCalcTime,
             this.toolStripStatusLabel1,
             this.toolStripStatusLabel2});
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            // 
+            // toolStripProgressBar
+            // 
+            this.toolStripProgressBar.Name = "toolStripProgressBar";
+            resources.ApplyResources(this.toolStripProgressBar, "toolStripProgressBar");
             // 
             // toolStripStatusLabelCalcTime
             // 
@@ -1291,6 +1299,7 @@ namespace PDIndexer
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewProfiles.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.dataGridViewProfiles, "dataGridViewProfiles");
             this.dataGridViewProfiles.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewProfiles.ColumnHeadersVisible = false;
             this.dataGridViewProfiles.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1306,7 +1315,6 @@ namespace PDIndexer
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewProfiles.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.dataGridViewProfiles, "dataGridViewProfiles");
             this.dataGridViewProfiles.MultiSelect = false;
             this.dataGridViewProfiles.Name = "dataGridViewProfiles";
             this.dataGridViewProfiles.ReadOnly = true;
@@ -1400,6 +1408,7 @@ namespace PDIndexer
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewCrystals.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.dataGridViewCrystals, "dataGridViewCrystals");
             this.dataGridViewCrystals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridViewCrystals.ColumnHeadersVisible = false;
             this.dataGridViewCrystals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -1415,7 +1424,6 @@ namespace PDIndexer
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewCrystals.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.dataGridViewCrystals, "dataGridViewCrystals");
             this.dataGridViewCrystals.MultiSelect = false;
             this.dataGridViewCrystals.Name = "dataGridViewCrystals";
             this.dataGridViewCrystals.ReadOnly = true;
@@ -1472,6 +1480,8 @@ namespace PDIndexer
             // menuStrip
             // 
             resources.ApplyResources(this.menuStrip, "menuStrip");
+            this.menuStrip.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menuStrip.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
             this.optionToolStripMenuItem,
@@ -1789,6 +1799,7 @@ namespace PDIndexer
             // toolStrip2
             // 
             resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButtonCrystalParameter,
             this.toolStripSeparator4,
@@ -4016,5 +4027,6 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn104;
         private DataGridViewImageColumn dataGridViewImageColumn80;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
+        private ToolStripProgressBar toolStripProgressBar;
     }
 }

@@ -28,6 +28,8 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.379(2020/03/03) Fixed a minor bug on distribution problem." +
+            "\r\n ver4.378(2020/03/01) Changed: Download site is changed to GitHub." +
             "\r\n ver4.377(2019/11/08) Fixed a minor bug on 'Fitting Diffraction Peaks'." +
             "\r\n ver4.376(2019/11/07) Minor improvements when loading nxs format." +
             "\r\n ver4.375(2019/10/06) Improved. nxs format is available." +

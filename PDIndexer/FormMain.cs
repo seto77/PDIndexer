@@ -18,6 +18,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Linq;
 using IronPython.Hosting;
+using System.Net;
 
 namespace PDIndexer
 {
@@ -270,7 +271,8 @@ namespace PDIndexer
         public float BottomMargin = 0;
 
 
-        public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
+        public FileProperty[] FileProperties { get; set; } 
+            = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
 
         #endregion
 
@@ -295,8 +297,13 @@ namespace PDIndexer
 
         private Macro macro;
 
+        private Stopwatch stopwatch { get; set; } = new Stopwatch();
+
+        IProgress<(long, long, long, string)> ip;//IReport
         public FormMain()
         {
+            ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
+
             if (!this.DesignMode)
             {
                 RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
@@ -451,11 +458,11 @@ namespace PDIndexer
                 {
                     try
                     {
-                        System.IO.FileStream fs = System.IO.File.Open(e.FullPath, System.IO.FileMode.Open);
+                        var fs = File.Open(e.FullPath, FileMode.Open);
                         fs.Close();
                         break;
                     }
-                    catch { System.Threading.Thread.Sleep(100); }
+                    catch { Thread.Sleep(100); }
                 }
                 while (true);
 
@@ -494,7 +501,7 @@ namespace PDIndexer
             initialDialog = new WaitDlg();
             initialDialog.ShowHints = false;
             initialDialog.Owner = this;
-            initialDialog.Version = "PDIndexer  " + Version.VersionAndDate;
+            initialDialog.Version = $"PDIndexer  {Version.VersionAndDate}";
             initialDialog.Text = "Now Loading...";
             initialDialog.ShowVersion = true;
             initialDialog.Location = new Point(this.Location.X + this.Width / 2 - initialDialog.Width / 2, this.Location.Y + this.Height / 2 - initialDialog.Height / 2);
@@ -833,66 +840,127 @@ namespace PDIndexer
 
                 FormMacro.ZippedMacros = (byte[])regKey.GetValue("Macro", new byte[0]);
 
-
+                FormMain.FileProperty f;
                 //ここからファイルタイプごとのパラメータ読み込み
                 for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
                 {
-                    FileProperties[i].Valid = (string)regKey.GetValue("FileProperty.Valid" + i.ToString(), "False") == "True";
+                    f = FileProperties[i] = new FileProperty();
+                    f.Valid = (string)regKey.GetValue($"FileProperty.Valid{i}", "False") == "True";
 
-                    FileProperties[i].WaveSource = (WaveSource)Convert.ToInt32(regKey.GetValue("FileProperty.WaveSource" + i.ToString(), 0));
-                    FileProperties[i].WaveColor = (WaveColor)Convert.ToInt32(regKey.GetValue("FileProperty.WaveColor" + i.ToString(), 0));
-                    FileProperties[i].Wavelength = Convert.ToDouble((string)regKey.GetValue("FileProperty.Wavelength" + i.ToString(), "0"));
-                    FileProperties[i].TakeoffAngle = Convert.ToDouble((string)regKey.GetValue("FileProperty.TakeoffAngle" + i.ToString(), "0"));
+                    if (f.Valid)
+                    {
+                        f.WaveSource = (WaveSource)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveSource{i}", 0));
+                        f.WaveColor = (WaveColor)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveColor{i}", 0));
+                        f.Wavelength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.Wavelength{i}", "0"));
+                        f.TakeoffAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TakeoffAngle{i}", "0"));
 
-                    FileProperties[i].AxisMode = (HorizontalAxis)Convert.ToInt32(regKey.GetValue("FileProperty.AxisMode" + i.ToString(), 0));
+                        f.AxisMode = (HorizontalAxis)Convert.ToInt32(regKey.GetValue($"FileProperty.AxisMode{i}", 0));
 
-                    FileProperties[i].XraySourceElementNumber = Convert.ToInt32(regKey.GetValue("FileProperty.XraySourceElementNumber" + i.ToString(), 0));
-                    FileProperties[i].XrayLine = (XrayLine)Convert.ToInt32(regKey.GetValue("FileProperty.XrayLine" + i.ToString(), 0));
+                        f.XraySourceElementNumber = Convert.ToInt32(regKey.GetValue($"FileProperty.XraySourceElementNumber{i}", 0));
+                        f.XrayLine = (XrayLine)Convert.ToInt32(regKey.GetValue($"FileProperty.XrayLine{i}", 0));
 
-                    FileProperties[i].TofAngle = Convert.ToDouble((string)regKey.GetValue("FileProperty.TofAngle" + i.ToString(), "0"));
-                    FileProperties[i].TofLength = Convert.ToDouble((string)regKey.GetValue("FileProperty.TofLength" + i.ToString(), "0"));
+                        f.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0"));
+                        f.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "0"));
 
-                    FileProperties[i].EGC0 = Convert.ToDouble((string)regKey.GetValue("FileProperty.EGC0" + i.ToString(), "0"));
-                    FileProperties[i].EGC1 = Convert.ToDouble((string)regKey.GetValue("FileProperty.EGC1" + i.ToString(), "0"));
-                    FileProperties[i].EGC2 = Convert.ToDouble((string)regKey.GetValue("FileProperty.EGC2" + i.ToString(), "0"));
+                        f.EGC0 = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC0{i}", "0"));
+                        f.EGC1 = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC1{i}", "0"));
+                        f.EGC2 = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC2{i}", "0"));
 
-                    FileProperties[i].ExposureTime = Convert.ToDouble((string)regKey.GetValue("FileProperty.ExposureTime" + i.ToString(), "1"));
+                        f.ExposureTime = Convert.ToDouble((string)regKey.GetValue($"FileProperty.ExposureTime{i}", "1"));
+                    }
+                    else
+                        f = null;
                 }
+
                 #region  レジストリが存在しなかった場合あるいは無効な場合には、初期化
-                var m = (int)FileType.CSV;
-                if(!FileProperties[m].Valid)
-                {
-                    FileProperties[m].Valid = true;
-                    FileProperties[m].WaveSource =  WaveSource.Xray;
-                    FileProperties[m].WaveColor =  WaveColor.Monochrome;
-                    FileProperties[m].Wavelength = 0.4;
-                    FileProperties[m].AxisMode =  HorizontalAxis.Angle;
-                }
 
-                m = (int)FileType.RAS;
-                if (!FileProperties[m].Valid)
+                //RAS
+                FileProperties[(int)FileType.RAS] ??= new FileProperty
                 {
-                    FileProperties[m].Valid = true;
-                    FileProperties[m].WaveSource = WaveSource.Xray;
-                    FileProperties[m].WaveColor = WaveColor.Monochrome;
-                    FileProperties[m].AxisMode = HorizontalAxis.Angle;
-                    FileProperties[m].XraySourceElementNumber = 29;
-                    FileProperties[m].XrayLine = XrayLine.Ka1;
-                }
+                    Valid = true,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.Monochrome,
+                    AxisMode = HorizontalAxis.Angle,
+                    XraySourceElementNumber = 29,
+                    XrayLine = XrayLine.Ka1,
+                };
 
-                m = (int)FileType.NXS;
-                if (!FileProperties[m].Valid)
+                //CSVの場合
+                FileProperties[(int)FileType.CSV] ??= new FileProperty
                 {
-                    FileProperties[m].Valid = true;
-                    FileProperties[m].WaveSource = WaveSource.Xray;
-                    FileProperties[m].WaveColor = WaveColor.FlatWhite;
-                    FileProperties[m].TakeoffAngle = 4.95/180*Math.PI;
-                    FileProperties[m].AxisMode = HorizontalAxis.EnergyXray;
-                    FileProperties[m].EGC1 = 66.6;
-                }
+                    Valid = true,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.Monochrome,
+                    Wavelength = 0.4,
+                    AxisMode = HorizontalAxis.Angle
+                };
 
+                //NXS
+                FileProperties[(int)FileType.NXS] ??= new FileProperty
+                {
+                    Valid = true,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.FlatWhite,
+                    TakeoffAngle = 4.95 / 180 * Math.PI,
+                    AxisMode = HorizontalAxis.EnergyXray,
+                    EGC1 = 66.6,
+                };
+
+                //CHI
+                FileProperties[(int)FileType.CHI] ??= new FileProperty
+                {
+                    Valid = true,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.Monochrome,
+                    AxisMode = HorizontalAxis.Angle,
+                };
+
+                //XBM
+                FileProperties[(int)FileType.XBM] ??= new FileProperty
+                {
+                    Valid = true,
+                    AxisMode = HorizontalAxis.EnergyXray,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.FlatWhite,
+                };
+                //RPT
+                FileProperties[(int)FileType.RPT] ??= new FileProperty
+                {
+                    Valid = true,
+                    AxisMode = HorizontalAxis.EnergyXray,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.FlatWhite,
+                };
+
+                //NPD
+                FileProperties[(int)FileType.NPD] ??= new FileProperty
+                {
+                    Valid = true,
+                    AxisMode = HorizontalAxis.EnergyXray,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.FlatWhite,
+                };
+
+                //TOF
+                FileProperties[(int)FileType.TOF] ??= new FileProperty
+                {
+                    Valid = true,
+                    AxisMode = HorizontalAxis.NeutronTOF,
+                    WaveSource = WaveSource.Neutron,
+                    WaveColor = WaveColor.FlatWhite,
+                    TakeoffAngle = 90 / 180.0 * Math.PI,
+                    TofLength = 26.5,
+                };
+
+                //MISC
+                FileProperties[(int)FileType.OTHRES] ??= new FileProperty
+                {
+                    Valid = true,
+                    AxisMode = HorizontalAxis.Angle,
+                    WaveSource = WaveSource.Xray,
+                    WaveColor = WaveColor.Monochrome,
+                };
                 #endregion
-
 
                 regKey.Close();
             }
@@ -964,20 +1032,20 @@ namespace PDIndexer
             //ここからファイルタイプごとのパラメータ読み込み
             for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
             {
-                regKey.SetValue("FileProperty.Valid" + i.ToString(), true);
-                regKey.SetValue("FileProperty.WaveSource" + i.ToString(), (int)(FileProperties[i].WaveSource));
-                regKey.SetValue("FileProperty.WaveColor" + i.ToString(), (int)(FileProperties[i].WaveColor));
-                regKey.SetValue("FileProperty.Wavelength" + i.ToString(), FileProperties[i].Wavelength);
-                regKey.SetValue("FileProperty.TakeoffAngle" + i.ToString(), FileProperties[i].TakeoffAngle);
-                regKey.SetValue("FileProperty.AxisMode" + i.ToString(), (int)(FileProperties[i].AxisMode));
-                regKey.SetValue("FileProperty.XraySourceElementNumber" + i.ToString(), FileProperties[i].XraySourceElementNumber);
-                regKey.SetValue("FileProperty.XrayLine" + i.ToString(), (int)(FileProperties[i].XrayLine));
-                regKey.SetValue("FileProperty.TofAngle" + i.ToString(), FileProperties[i].TofAngle);
-                regKey.SetValue("FileProperty.TofLength" + i.ToString(), FileProperties[i].TofLength);
-                regKey.SetValue("FileProperty.ExposureTime" + i.ToString(), FileProperties[i].ExposureTime);
-                regKey.SetValue("FileProperty.EGC0" + i.ToString(), FileProperties[i].EGC0);
-                regKey.SetValue("FileProperty.EGC1" + i.ToString(), FileProperties[i].EGC1);
-                regKey.SetValue("FileProperty.EGC2" + i.ToString(), FileProperties[i].EGC2);
+                regKey.SetValue($"FileProperty.Valid{i}", true);
+                regKey.SetValue($"FileProperty.WaveSource{i}", (int)FileProperties[i].WaveSource);
+                regKey.SetValue($"FileProperty.WaveColor{i}", (int)FileProperties[i].WaveColor);
+                regKey.SetValue($"FileProperty.Wavelength{i}", FileProperties[i].Wavelength);
+                regKey.SetValue($"FileProperty.TakeoffAngle{i}", FileProperties[i].TakeoffAngle);
+                regKey.SetValue($"FileProperty.AxisMode{i}", (int)(FileProperties[i].AxisMode));
+                regKey.SetValue($"FileProperty.XraySourceElementNumber{i}", FileProperties[i].XraySourceElementNumber);
+                regKey.SetValue($"FileProperty.XrayLine{i}", (int)(FileProperties[i].XrayLine));
+                regKey.SetValue($"FileProperty.TofAngle{i}", FileProperties[i].TofAngle);
+                regKey.SetValue($"FileProperty.TofLength{i}", FileProperties[i].TofLength);
+                regKey.SetValue($"FileProperty.ExposureTime{i}", FileProperties[i].ExposureTime);
+                regKey.SetValue($"FileProperty.EGC0{i}", FileProperties[i].EGC0);
+                regKey.SetValue($"FileProperty.EGC1{i}", FileProperties[i].EGC1);
+                regKey.SetValue($"FileProperty.EGC2{i}", FileProperties[i].EGC2);
             }
 
             regKey.Close();
@@ -1876,9 +1944,8 @@ namespace PDIndexer
                 Crystal cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
                 if (e.Button == MouseButtons.Left && e.Clicks == 1)
                 {
-                    int i;
                     double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
-                    i = SearchPlaneNo(pt.X, cry, dev);//強度計算していない場合
+                    var i = SearchPlaneNo(pt.X, cry, dev);//強度計算していない場合
                     if (i >= 0)
                     {
                         SelectedPlaneIndex = i;
@@ -1968,7 +2035,6 @@ namespace PDIndexer
 
                 SetFormEOS();
                 SetFormCrystal(true);
-                //SetFormFitting();
                 formFitting.ChangeCrystalFromMainForm();
 
                 Draw();
@@ -2034,10 +2100,10 @@ namespace PDIndexer
                 }
                 else //拡大
                 {
-                    double xmax = ConvToRealCoord(Math.Max(mouseRangeStart.X, mouseRangeEnd.X), 1).X;
-                    double xmin = ConvToRealCoord(Math.Min(mouseRangeStart.X, mouseRangeEnd.X), 1).X;
-                    double ymin = ConvToRealCoord(1, Math.Max(mouseRangeStart.Y, mouseRangeEnd.Y)).Y;
-                    double ymax = ConvToRealCoord(1, Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y)).Y;
+                    var xmax = ConvToRealCoord(Math.Max(mouseRangeStart.X, mouseRangeEnd.X), 1).X;
+                    var xmin = ConvToRealCoord(Math.Min(mouseRangeStart.X, mouseRangeEnd.X), 1).X;
+                    var ymin = ConvToRealCoord(1, Math.Max(mouseRangeStart.Y, mouseRangeEnd.Y)).Y;
+                    var ymax = ConvToRealCoord(1, Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y)).Y;
                     if (xmax - xmin < 0.000001 || ymax - ymin < 0.00001) return;
                     if (xmax > MaximalX) xmax = MaximalX;
                     if (xmin < MinimalX) xmin = MinimalX;
@@ -2049,7 +2115,6 @@ namespace PDIndexer
                         foreach (Crystal crystal in dataSet.DataTableCrystal.CheckedItems)
                             crystal.DiffractionPeakIntensity = UpperY;
                     Draw();
-                  //  SetRangeTextBox();
                 }
             }
             
@@ -2156,8 +2221,8 @@ namespace PDIndexer
             {//Bgモードで、Bg点を選択していて、左ドラッグのとき
                 if (bindingSourceProfile.Position >= 0)
                 {
-                    DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-                    PointD newBgPoint = dp.ConvertDestToSrc(pt);
+                    var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                    var newBgPoint = dp.ConvertDestToSrc(pt);
                     if (!double.IsNaN(newBgPoint.X) && !double.IsInfinity(newBgPoint.X))
                     {
                         dp.BgPoints[SelectedBgPtIndex] = newBgPoint;
@@ -2455,257 +2520,190 @@ namespace PDIndexer
         }
         #endregion
 
-      
+
         #region プロファイルのファイル読み込み関連
 
         private void menuItemFileRead_Click(object sender, System.EventArgs e)
         {
-            OpenFileDialog Dlg = new OpenFileDialog();
-            Dlg.Filter = "Powder Pattern File(WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi])|*.csv;*.chi;*.pdi"
-                + "|EDX profile[*.rpt,*.npd]|*.rpt;*npd"
+            var dlg = new OpenFileDialog();
+            dlg.Filter = "Powder Pattern File(WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi])|*.csv;*.chi;*.pdi"
+                + "|EDX profile[*.rpt, *.npd, *.nxs]|*.rpt;*npd;*nxs"
                 + "|Powder Pattern File(Auto[*.*])|*.*";
-            Dlg.FilterIndex = filterIndex;
+            dlg.Multiselect = true;
+            dlg.FilterIndex = filterIndex;
             if (initialDirectory != "")
-                Dlg.InitialDirectory = initialDirectory;
-            if (Dlg.ShowDialog() == DialogResult.OK)
+                dlg.InitialDirectory = initialDirectory;
+
+
+            if (dlg.ShowDialog() == DialogResult.OK)
             {
-                readProfile(Dlg.FileName);
-                filterIndex = Dlg.FilterIndex;
-                initialDirectory = Path.GetDirectoryName(Dlg.FileName);
+                readProfile(dlg.FileNames);
+                initialDirectory = Path.GetDirectoryName(dlg.FileName);
             }
         }
 
-        delegate void readProfileCallBack(string str);
-        private void readProfile(string fileName)
+
+        private void readProfile(string[] fileNames)
         {
-            if (this.InvokeRequired)//別スレッド(ファイル更新監視スレッド)から呼び出されたとき Invokeして呼びなおす
+            bool showFormDataConverter = true;
+            for (int i = 0; i < fileNames.Length; i++)
             {
-                readProfileCallBack d = new readProfileCallBack(readProfile);
-                this.Invoke(d, new object[] { fileName });
+                readProfile(fileNames[i], showFormDataConverter);
+
+                if (i == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
+                {
+                    if (MessageBox.Show("Now loading multiple profiles. Do you continue to use this setting?",
+                        "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        showFormDataConverter = false;
+                }
+            }
+        }
+
+        private void readProfile(string fileName, bool showFormDataConverter=true)
+        {
+            if (InvokeRequired)//別スレッド(ファイル更新監視スレッド)から呼び出されたとき Invokeして呼びなおす
+            {
+                Invoke(new Action(() => readProfile(fileName, showFormDataConverter)));
                 return;
             }
 
             formDataConverter.textBox.Text = "";
-
-            DiffractionProfile[] dp;
-
-            if (fileName.EndsWith(".pdi"))
-            #region pdi形式のとき
+            var ext = Path.GetExtension(fileName).ToLower().Remove(0,1);
+            
+            var fileTypeNum = ext switch
             {
+                "csv" => (int)FileType.CSV,
+                "ras" => (int)FileType.RAS,
+                "nxs" => (int)FileType.NXS,
+                "chi" => (int)FileType.CHI,
+                "xbm" => (int)FileType.XBM,
+                "rpt" => (int)FileType.RPT,
+                "npd" => (int)FileType.NPD,
+                _ => (int)FileType.OTHRES,
+            };
 
-                dp = XYFile.ReadPdiFile(fileName);
-
-                for (int i = 0; i < dp.Length; i++)
+            if (ext == "pdi" || ext == "ras" || ext == "csv" || ext == "nxs")
+            {
+                var dp = new List<DiffractionProfile>();
+                if (ext =="pdi")
+                #region pdi形式のとき
                 {
-                    if (dp[i].WaveSource == Crystallography.WaveSource.Xray && dp[i].SrcWaveLength > 1)
-                        dp[i].SrcWaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcWaveLength * 10000);
-                    dp[i].SubtractBackground = false;
-                    for (int j = 0; j < dp[i].OriginalProfile.Pt.Count; j++)
-                        if (dp[i].OriginalProfile.Pt[j].Y == 0)
-                            dp[i].OriginalProfile.Pt.RemoveAt(j--);
-                        else break;
+                    dp.AddRange(XYFile.ReadPdiFile(fileName)); 
+                    if (dp.Count == 0)
+                        return;
+                    for (int i = 0; i < dp.Count; i++)
+                    {
+                        if (dp[i].WaveSource == WaveSource.Xray && dp[i].SrcWaveLength > 1)
+                            dp[i].SrcWaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcWaveLength * 10000);
+                        dp[i].SubtractBackground = false;
+                        for (int j = 0; j < dp[i].OriginalProfile.Pt.Count; j++)
+                            if (dp[i].OriginalProfile.Pt[j].Y == 0)
+                                dp[i].OriginalProfile.Pt.RemoveAt(j--);
+                            else break;
 
-                    for (int j = dp[i].OriginalProfile.Pt.Count - 1; j >= 0; j--)
-                        if (dp[i].OriginalProfile.Pt[j].Y == 0)
-                            dp[i].OriginalProfile.Pt.RemoveAt(j);
-                        else break;
+                        for (int j = dp[i].OriginalProfile.Pt.Count - 1; j >= 0; j--)
+                            if (dp[i].OriginalProfile.Pt[j].Y == 0)
+                                dp[i].OriginalProfile.Pt.RemoveAt(j);
+                            else break;
+                    }
                 }
+                #endregion
 
-                if (dp.Length == 0)
-                    return;
-                else if (dp.Length > 1)
+                else
+                #region RAS, CSV, NXSのいずれか
+                {
+                    formDataConverter.SetProperty(FileProperties[fileTypeNum]);
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
+                    {
+                        FileProperties[fileTypeNum] = formDataConverter.GetProperty();
 
-                    radioButtonMultiProfileMode.Checked = true;
+                        if (ext == "ras")
+                            dp.AddRange(XYFile.ReadRasFile(fileName));
+                        else if (ext == "csv")
+                            dp.AddRange(XYFile.ReadCSVFile(fileName));
+                        else if (ext == "nxs")
+                        {
+                            var nxs = new Crystallography.HDF(fileName);
+                            nxs.Move("/entry/instrument/xspress3");
+                            double a0 = formDataConverter.EGC0, a1 = formDataConverter.EGC1, a2 = formDataConverter.EGC2;
+                            foreach (var channel in nxs.GetGroups())
+                            {
+                                var (data, result) = nxs.GetValue2<int>(channel + "/histogram");
+                                if (result && data.Length > 0)
+                                {
+                                    var diffProf = new DiffractionProfile { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {channel}" };
+
+                                    var sumData = new int[data[0].Length];
+                                    foreach (var d in data)
+                                        for (int i = 0; i < sumData.Length; i++)
+                                            sumData[i] += d[i];
+
+                                    var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).ToList();
+                                    pts.RemoveAt(pts.Count - 1);
+                                    diffProf.OriginalProfile.Pt = pts;
+                                    dp.Add(diffProf);
+                                }
+                            }
+                        }
+                        if (dp.Count == 0)
+                            return;
+
+                        for (int i = 0; i < dp.Count; i++)
+                        {
+                            dp[i].WaveSource = formDataConverter.WaveSource;
+                            dp[i].WaveColor = formDataConverter.WaveColor;
+                            dp[i].SrcWaveLength = formDataConverter.Wavelength;
+                            dp[i].SrcTakeoffAngle = formDataConverter.TakeoffAngle;
+                            dp[i].SrcAxisMode = formDataConverter.AxisMode;
+                            dp[i].XrayElementNumber = formDataConverter.XraySourceElementNumber;
+                            dp[i].XrayLine = formDataConverter.XrayLine;
+                            dp[i].ExposureTime = formDataConverter.ExposureTime;
+                            dp[i].SubtractBackground = false;
+                        }
+                    }
+                }
+                
+                #endregion
+
+                radioButtonMultiProfileMode.Checked = dp.Count > 1;
 
                 //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
                 skipAxisPropertyChangedEvent = true;
-                for (int i = 0; i < dp.Length - 1; i++)
+                for (int i = 0; i < dp.Count - 1; i++)
                     AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
                 skipAxisPropertyChangedEvent = false;
-                AddProfileToCheckedListBox(dp[dp.Length - 1], checkBoxAll.Checked, true);
+                AddProfileToCheckedListBox(dp[dp.Count - 1], checkBoxAll.Checked, true);
 
-                this.Text = "PDIndexer   " + Version.VersionAndDate + "   " + dp[dp.Length - 1].Name;
-
-
+                Text = $"PDIndexer   {Version.VersionAndDate}   {dp[dp.Count - 1].Name}";
             }
-            #endregion
+            
 
-            else if (fileName.EndsWith("ras"))
-            #region RASファイル
-            {
-                formDataConverter.SetProperty(FileProperties[(int)FileType.RAS]);
-                if (formDataConverter.ShowDialog() == DialogResult.OK)
-                {
-                    dp = XYFile.ReadRasFile(fileName);
-                    if (dp.Length == 0)
-                        return;
-
-                    for (int i = 0; i < dp.Length; i++)
-                    {
-                        dp[i].WaveSource = formDataConverter.WaveSource;
-                        dp[i].WaveColor = formDataConverter.WaveColor;
-                        dp[i].SrcWaveLength = formDataConverter.Wavelength;
-                        dp[i].SrcTakeoffAngle = formDataConverter.TakeoffAngle;
-                        dp[i].SrcAxisMode = formDataConverter.AxisMode;
-                        dp[i].XrayElementNumber = formDataConverter.XraySourceElementNumber;
-                        dp[i].XrayLine = formDataConverter.XrayLine;
-                        dp[i].ExposureTime = formDataConverter.ExposureTime;
-                        dp[i].Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1) + " " + i.ToString("##");
-
-                        //線源が特性X線で、Kα2を除去する場合
-                        if (formDataConverter.WaveSource == Crystallography.WaveSource.Xray
-                           && formDataConverter.horizontalAxisUserControl.XrayWaveSourceLine == XrayLine.Ka
-                           && formDataConverter.RemoveKalpha2)
-                            dp[i].RemoveKalpha2();
-
-                        dp[i].SubtractBackground = false;
-                    }
-
-                    radioButtonMultiProfileMode.Checked = true;
-
-                    //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
-                    skipAxisPropertyChangedEvent = true;
-                    for (int i = 0; i < dp.Length - 1; i++)
-                        AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
-                    skipAxisPropertyChangedEvent = false;
-                    AddProfileToCheckedListBox(dp[dp.Length - 1], checkBoxAll.Checked, true);
-
-                    this.Text = "PDIndexer   " + Version.VersionAndDate + "   " + dp[dp.Length - 1].Name;
-
-                    FileProperties[(int)FileType.RAS] = formDataConverter.GetProperty();
-                }
-
-            }
-            #endregion
-
-            else if (fileName.EndsWith("csv") && (dp = XYFile.ReadCSVFile(fileName)).Length > 0)
-            #region CSV形式
-            {
-                formDataConverter.SetProperty(FileProperties[(int)FileType.CSV]);
-                if (formDataConverter.ShowDialog() == DialogResult.OK)
-                {
-                    for (int i = 0; i < dp.Length; i++)
-                    {
-                        dp[i].WaveSource = formDataConverter.WaveSource;
-                        dp[i].WaveColor = formDataConverter.WaveColor;
-                        dp[i].SrcWaveLength = formDataConverter.Wavelength;
-                        dp[i].SrcTakeoffAngle = formDataConverter.TakeoffAngle;
-                        dp[i].SrcAxisMode = formDataConverter.AxisMode;
-                        dp[i].XrayElementNumber = formDataConverter.XraySourceElementNumber;
-                        dp[i].XrayLine = formDataConverter.XrayLine;
-                        dp[i].ExposureTime = formDataConverter.ExposureTime;
-                        //dp[i].Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1) + " " + i.ToString("##");
-
-                        dp[i].SubtractBackground = false;
-                    }
-                    radioButtonMultiProfileMode.Checked = true;
-
-                    //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
-                    skipAxisPropertyChangedEvent = true;
-                    for (int i = 0; i < dp.Length - 1; i++)
-                        AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
-                    skipAxisPropertyChangedEvent = false;
-                    AddProfileToCheckedListBox(dp[dp.Length - 1], checkBoxAll.Checked, true);
-
-                    this.Text = "PDIndexer   " + Version.VersionAndDate + "   " + dp[dp.Length - 1].Name;
-
-                    FileProperties[(int)FileType.CSV] = formDataConverter.GetProperty();
-                }
-            }
-            #endregion
-
-
-            else if (fileName.EndsWith("nxs"))
-            #region nxs形式 (DESY, Quantum Xspress 3 digital analyser & Ge-detectors, 2019/10/01 17:19のRobert Farlaさんのメール)
-            {
-
-
-                var nxs = new Crystallography.HDF(fileName);
-                nxs.Move("/entry/instrument/xspress3");
-
-                formDataConverter.SetProperty(FileProperties[(int)FileType.NXS]);
-
-
-                if (formDataConverter.ShowDialog() == DialogResult.OK)
-                {
-
-                    double a0 = formDataConverter.EGC0, a1 = formDataConverter.EGC1, a2 = formDataConverter.EGC2;
-
-                    foreach (var channel in nxs.GetGroups())
-                    {
-                        var (data, result) = nxs.GetValue2<int>(channel + "/histogram");
-                        if (result && data.Length > 0)
-                        {
-                            DiffractionProfile diffProf = new DiffractionProfile
-                            {
-                                WaveSource = formDataConverter.WaveSource,
-                                WaveColor = formDataConverter.WaveColor,
-                                SrcWaveLength = formDataConverter.Wavelength,
-                                SrcTakeoffAngle = formDataConverter.TakeoffAngle,
-                                SrcAxisMode = formDataConverter.AxisMode,
-                                XrayElementNumber = formDataConverter.XraySourceElementNumber,
-                                XrayLine = formDataConverter.XrayLine,
-                                ExposureTime = formDataConverter.ExposureTime,
-                                Name = Path.GetFileNameWithoutExtension(fileName) + " - " + channel
-                            };
-
-                            var sumData = new int[data[0].Length];
-                            foreach (var d in data)
-                                for (int i = 0; i < sumData.Length; i++)
-                                    sumData[i] += d[i];
-
-                            var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).ToList();
-                            pts.RemoveAt(pts.Count - 1);
-                            diffProf.OriginalProfile.Pt =pts;
-
-                            AddProfileToCheckedListBox(diffProf, checkBoxAll.Checked, true);
-                        }
-                    }
-
-                    FileProperties[(int)FileType.NXS] = formDataConverter.GetProperty();
-
-                    this.Text = "PDIndexer   " + Version.VersionAndDate + "   " + Path.GetFileNameWithoutExtension(fileName);
-
-                    formDataConverter.VisibleEDXSetting = true;
-                    return;
-                }
-            }
-            #endregion
-
-
-            //pdi,ras形式ではないとき
+            //pdi,ras, 拡張csv, nxs 形式ではないとき
             else
             {
-                StreamReader reader = new StreamReader(fileName);
-                List<string> strList = new List<string>();
-                string tempstr;
-                while ((tempstr = reader.ReadLine()) != null)
-                    strList.Add(tempstr);
-                reader.Close();
+                var strList = new List<string>();
+                using (var reader = new StreamReader(fileName))
+                    while (!reader.EndOfStream)
+                        strList.Add(reader.ReadLine());
+
                 if (strList.Count <= 3)
                     return;
 
-                DiffractionProfile diffProf = new DiffractionProfile();
-                formDataConverter.XraySourceElementNumber = XraySourceElementNumber;
-                if (XraySourceElementNumber == 0)
-                    formDataConverter.Wavelength = WaveLength;
-                formDataConverter.TakeoffAngle = TakeoffAngle;
+                var diffProf = new DiffractionProfile();
                 formDataConverter.textBox.Lines = strList.ToArray();
 
-                string[] str;
-
                 #region Fit2Dデータ
-                if (fileName.EndsWith(".chi"))
+                if (ext=="chi")
                 {
-                    formDataConverter.AxisMode = HorizontalAxis.Angle;
-                    formDataConverter.WaveSource = Crystallography.WaveSource.Xray;
-                    formDataConverter.WaveColor = Crystallography.WaveColor.Monochrome;
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.CHI]);
 
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
+                    {
+                        FileProperties[(int)FileType.CHI] = formDataConverter.GetProperty();
 
-                    if (formDataConverter.ShowDialog() == DialogResult.OK)
                         for (int i = 4; i < strList.Count; i++)
                         {
-                            str = strList[i].Split(' ');
+                            var str = strList[i].Split(' ');
                             if (str.Length == 4)
                             {
                                 var str1 = str[1];
@@ -2715,121 +2713,106 @@ namespace PDIndexer
                                     str1 = str1.Replace('.', ',');
                                     str3 = str3.Replace('.', ',');
                                 }
-                                var x = Convert.ToDouble(str1);
-                                var y = Convert.ToDouble(str3);
-
                                 diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str1), Convert.ToDouble(str3)));
                             }
                             else
                                 break;
                         }
+                    }
                     else return;
                 }
                 #endregion
 
                 #region XBM形式 SP8_BL4B2のデータらしい
-                else if (fileName.EndsWith("XBM") || fileName.EndsWith("xbm"))
+                else if (fileName.ToLower().EndsWith("xbm"))
                 {
-                    formDataConverter.AxisMode = HorizontalAxis.EnergyXray;
-                    formDataConverter.WaveSource = Crystallography.WaveSource.Xray;
-                    formDataConverter.WaveColor = Crystallography.WaveColor.FlatWhite;
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.XBM]);
 
-                    BinaryReader br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
-
-                    var getString = new Func<int, int, string>((position, count) =>
+                    using (var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read)))
                     {
-                        char[] temp = new char[count];
-                        br.BaseStream.Position = position;
-                        br.Read(temp, 0, temp.Length);
-                        return new string(temp).TrimEnd();
-                    });
-
-                    var getDouble = new Func<int, double>((position) =>
-                    {
-                        br.BaseStream.Position = position;
-                        return br.ReadDouble();
-                    });
-
-                    var getInt16 = new Func<int, short>((position) =>
-                    {
-                        br.BaseStream.Position = position;
-                        return br.ReadInt16();
-                    });
-
-
-                    diffProf.Comment = "Sample name: " + getString(0x4, 64);
-                    diffProf.Comment += "\r\nProfile number: " + getString(0x44, 64);
-                    diffProf.Comment += "\r\nDate,Time,Span: " + getString(0x84, 8) + ", " + getString(0x8c, 6) + ", " + getString(0x92, 6);
-                    diffProf.Comment += "\r\nOperator name: " + getString(0x98, 30);
-                    diffProf.Comment += "\r\nComment: " + getString(0xB6, 100);
-                    diffProf.Comment += "\r\nEGC1,2,3: " + getDouble(0x59A) + ", " + getDouble(0x5A2) + ", " + getDouble(0x5AA);
-                    diffProf.Comment += "\r\n2Theta(deg): " + getDouble(0x05B2);
-                    diffProf.Comment += "\r\nLive/Real time (sec): " + getDouble(0x05F4) + "/" + getDouble(0x05EC);
-                    diffProf.Comment += "\r\nDead time (%): " + getDouble(0x0686);
-                    diffProf.Comment += "\r\nTemperature (degC): " + getDouble(0x05D2);
-                    diffProf.Comment += "\r\nRing current (mA): " + getDouble(0x05C2) * 10;
-                    diffProf.Comment += "\r\nCounting rate: " + getDouble(0x05E2);
-                    diffProf.Comment += "\r\nPress conditions X:NA, Y:NA, Z:NA, Phi(deg): " + getDouble(0x0616);
-                    diffProf.Comment += "\r\nIncident slit conditions (mm) V: " + getDouble(0x068E) + ", H: " + getDouble(0x0696);
-                    diffProf.Comment += "\r\nReceiving slit conditions (mm) V: " + getDouble(0x06B6) + ", H: " + getDouble(0x06BE) + ", Collimator:NA";
-                    diffProf.Comment += "\r\nHeating conditions  V(V): " + getDouble(0x05BA) + ", C(A): " + getDouble(0x06E6) + ", P(W): " + getDouble(0x066E) + ", R(OHM): " + getDouble(0x0676);
-
-
-
-                    formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
-                    formDataConverter.ExposureTime = getDouble(0x05F4);
-
-                    formDataConverter.EGC0 = getDouble(0x59A);
-                    formDataConverter.EGC1 = getDouble(0x5A2);
-                    formDataConverter.EGC2 = getDouble(0x5AA);
-                    formDataConverter.VisibleEDXSetting = true;
-
-                    int length = getInt16(0x814);
-                    br.BaseStream.Position = 0x816;
-
-                    if (formDataConverter.ShowDialog() == DialogResult.OK)
-                    {
-                        for (int n = 1; n < length; n++)
+                        var getString = new Func<int, int, string>((position, count) =>
                         {
-                            double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n + formDataConverter.EGC2 * n * n) * 1000;
-                            double y = br.ReadUInt32();
-                            //    if (x > formDataConverter.LowEnergyCutoff)
-                            diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
+                            char[] temp = new char[count];
+                            br.BaseStream.Position = position;
+                            br.Read(temp, 0, temp.Length);
+                            return new string(temp).TrimEnd();
+                        });
+
+                        var getDouble = new Func<int, double>((position) =>
+                        {
+                            br.BaseStream.Position = position;
+                            return br.ReadDouble();
+                        });
+
+                        var getInt16 = new Func<int, short>((position) =>
+                        {
+                            br.BaseStream.Position = position;
+                            return br.ReadInt16();
+                        });
+
+                        diffProf.Comment = "Sample name: " + getString(0x4, 64);
+                        diffProf.Comment += "\r\nProfile number: " + getString(0x44, 64);
+                        diffProf.Comment += "\r\nDate,Time,Span: " + getString(0x84, 8) + ", " + getString(0x8c, 6) + ", " + getString(0x92, 6);
+                        diffProf.Comment += "\r\nOperator name: " + getString(0x98, 30);
+                        diffProf.Comment += "\r\nComment: " + getString(0xB6, 100);
+                        diffProf.Comment += "\r\nEGC1,2,3: " + getDouble(0x59A) + ", " + getDouble(0x5A2) + ", " + getDouble(0x5AA);
+                        diffProf.Comment += "\r\n2Theta(deg): " + getDouble(0x05B2);
+                        diffProf.Comment += "\r\nLive/Real time (sec): " + getDouble(0x05F4) + "/" + getDouble(0x05EC);
+                        diffProf.Comment += "\r\nDead time (%): " + getDouble(0x0686);
+                        diffProf.Comment += "\r\nTemperature (degC): " + getDouble(0x05D2);
+                        diffProf.Comment += "\r\nRing current (mA): " + getDouble(0x05C2) * 10;
+                        diffProf.Comment += "\r\nCounting rate: " + getDouble(0x05E2);
+                        diffProf.Comment += "\r\nPress conditions X:NA, Y:NA, Z:NA, Phi(deg): " + getDouble(0x0616);
+                        diffProf.Comment += "\r\nIncident slit conditions (mm) V: " + getDouble(0x068E) + ", H: " + getDouble(0x0696);
+                        diffProf.Comment += "\r\nReceiving slit conditions (mm) V: " + getDouble(0x06B6) + ", H: " + getDouble(0x06BE) + ", Collimator:NA";
+                        diffProf.Comment += "\r\nHeating conditions  V(V): " + getDouble(0x05BA) + ", C(A): " + getDouble(0x06E6) + ", P(W): " + getDouble(0x066E) + ", R(OHM): " + getDouble(0x0676);
+
+                        formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
+                        formDataConverter.ExposureTime = getDouble(0x05F4);
+
+                        formDataConverter.EGC0 = getDouble(0x59A);
+                        formDataConverter.EGC1 = getDouble(0x5A2);
+                        formDataConverter.EGC2 = getDouble(0x5AA);
+                        formDataConverter.VisibleEDXSetting = true;
+
+                        int length = getInt16(0x814);
+                        br.BaseStream.Position = 0x816;
+
+                        if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
+                        {
+                            FileProperties[(int)FileType.XBM] = formDataConverter.GetProperty();
+                            for (int n = 1; n < length; n++)
+                            {
+                                double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n + formDataConverter.EGC2 * n * n) * 1000;
+                                double y = br.ReadUInt32();
+                                diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
+                            }
                         }
-                        formDataConverter.VisibleEDXSetting = false;
-                        br.Close();
-                    }
-                    else
-                    {
-                        formDataConverter.VisibleEDXSetting = false;
-                        br.Close();
-                        return;
+                        else
+                            return;
                     }
                 }
                 #endregion
 
                 #region RPT形式 (gennie file)
-                else if (fileName.EndsWith("RPT") || fileName.EndsWith("rpt"))
+                else if (ext=="rpt")
                 {
-                    formDataConverter.AxisMode = HorizontalAxis.EnergyXray;
-                    formDataConverter.WaveSource = Crystallography.WaveSource.Xray;
-                    formDataConverter.WaveColor = Crystallography.WaveColor.FlatWhite;
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.RPT]);
+
                     //TakeoffAngle
                     formDataConverter.TakeoffAngleText = strList[strList.Count - 4].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[0];
                     formDataConverter.ExposureTime = Convert.ToDouble(strList[strList.Count - 5].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1]);
 
                     formDataConverter.EGC0 = Convert.ToDouble(strList[strList.Count - 1].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[0]);
                     formDataConverter.EGC1 = Convert.ToDouble(strList[strList.Count - 1].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
-                    formDataConverter.VisibleEDXSetting = true;
 
-                    // string[] s = strList[strList.Count - 5].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
-
-                    if (formDataConverter.ShowDialog() == DialogResult.OK)
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
+                        FileProperties[(int)FileType.RPT] = formDataConverter.GetProperty();
                         int n = 1;
                         for (int i = 1; i < strList.Count - 6; i++)
                         {
-                            str = strList[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            var str = strList[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                             for (int j = 0; j < str.Length; j++)
                             {
                                 double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n) * 1000;
@@ -2838,21 +2821,17 @@ namespace PDIndexer
                                     diffProf.OriginalProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
                             }
                         }
-                        formDataConverter.VisibleEDXSetting = false;
-
                     }
                     else
-                    {
-                        formDataConverter.VisibleEDXSetting = false;
                         return;
-                    }
                 }
                 #endregion
 
-
                 #region npd形式
-                else if (fileName.EndsWith("npd") || fileName.EndsWith("NPD"))
+                else if (ext=="npd")
                 {
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.NPD]);
+
                     formDataConverter.EGC0 = formDataConverter.EGC1 = formDataConverter.EGC2 = 0;
                     for (int i = 0; i < strList.Count || i < 25; i++)
                     {
@@ -2866,16 +2845,11 @@ namespace PDIndexer
                             formDataConverter.TakeoffAngleText = strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1];
                         if (strList[i].StartsWith("Live time"))
                             formDataConverter.ExposureTime = Convert.ToDouble(strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
-
                     }
-                    formDataConverter.AxisMode = HorizontalAxis.EnergyXray;
-                    formDataConverter.WaveSource = Crystallography.WaveSource.Xray;
-                    formDataConverter.WaveColor = Crystallography.WaveColor.FlatWhite;
-                    formDataConverter.VisibleEDXSetting = true;
 
-                    if (formDataConverter.ShowDialog() == DialogResult.OK)
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
-                        formDataConverter.VisibleEDXSetting = true;
+                        FileProperties[(int)FileType.NPD] = formDataConverter.GetProperty();
                         for (int i = 0; i < strList.Count; i++)
                         {
                             int length = 0;
@@ -2894,37 +2868,32 @@ namespace PDIndexer
                                 break;
                             }
                         }
+
                     }
                     else
-                    {
-                        formDataConverter.VisibleEDXSetting = true;
                         return;
-                    }
                 }
                 #endregion
 
                 #region 中性子TOFデータ
                 else if (strList[0].StartsWith("**  MPLOT FILE **"))//中性子TOFデータの時
                 {
-                    formDataConverter.WaveSource = Crystallography.WaveSource.Neutron;
-                    formDataConverter.WaveColor = Crystallography.WaveColor.FlatWhite;
-                    formDataConverter.TakeoffAngleText = "90";
-                    formDataConverter.TofLength = 26.5;
-                    formDataConverter.horizontalAxisUserControl.AxisMode = HorizontalAxis.NeutronTOF;
-                    if (formDataConverter.ShowDialog() == DialogResult.OK)
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.TOF]);
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
+                        FileProperties[(int)FileType.TOF] = formDataConverter.GetProperty();
+
                         for (int i = 0; i < strList.Count; i++)
                             if (strList[i].StartsWith("-----------------------------------------------"))
                             {
                                 for (int j = i + 1; j < strList.Count - 1; j++)
                                 {
-                                    str = strList[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-                                    double x = Convert.ToDouble(str[0]);
-                                    double y = Convert.ToDouble(str[1]);
-                                    double err = Convert.ToDouble(str[2]);
+                                    var str = strList[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                                    var x = Convert.ToDouble(str[0]);
+                                    var y = Convert.ToDouble(str[1]);
+                                    var err = Convert.ToDouble(str[2]);
                                     diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
                                     diffProf.OriginalProfile.Err.Add(new PointD(x, err));
-
                                 }
                                 break;
                             }
@@ -2954,9 +2923,12 @@ namespace PDIndexer
                 #region そのほかのファイル形式のとき
                 else//
                 {
-                    if (formDataConverter.ShowDialog() == DialogResult.OK)
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.OTHRES]);
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
-                        if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ',')) == null)
+                        FileProperties[(int)FileType.OTHRES] = formDataConverter.GetProperty();
+
+                        if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ',')) != null)
                             if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ' ')) == null)
                                 if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, '\t')) == null)
                                     return;
@@ -2986,7 +2958,6 @@ namespace PDIndexer
                            && formDataConverter.EnergyUnit == EnergyUnitEnum.KeV)
                 {
                     for (int i = 0; i < diffProf.OriginalProfile.Pt.Count; i++)
-                        //diffProf.OriginalProfile.Pt[i].X *= 1000;
                         diffProf.OriginalProfile.Pt[i] = new PointD(1000 * diffProf.OriginalProfile.Pt[i].X, diffProf.OriginalProfile.Pt[i].Y);
                 }
 
@@ -2995,19 +2966,18 @@ namespace PDIndexer
                     if (diffProf.SrcAxisMode == HorizontalAxis.NeutronTOF)
                         if (formDataConverter.TofUnitNanoSec)//単位を変換する必要がある場合は
                             for (int i = 0; i < diffProf.OriginalProfile.Pt.Count; i++)
-                                //diffProf.OriginalProfile.Pt[i].X /= 1000;
                                 diffProf.OriginalProfile.Pt[i] = new PointD(diffProf.OriginalProfile.Pt[i].X / 1000, diffProf.OriginalProfile.Pt[i].Y);
 
                     AddProfileToCheckedListBox(diffProf, true, true);
-
                 }
 
-                this.Text = "PDIndexer   " + Version.VersionAndDate + "   " + fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
+                Text = $"PDIndexer   {Version.VersionAndDate}   {Path.GetFileName(fileName)}";
             }
         }
 
+        #endregion
 
-      
+
 
 
         /// <summary>
@@ -3029,12 +2999,12 @@ namespace PDIndexer
                     if (WaveSource != dp.WaveSource) WaveSource = dp.WaveSource;
                     if (AxisMode != dp.SrcAxisMode) AxisMode = dp.SrcAxisMode;
                     if (WaveLength != dp.SrcWaveLength) WaveLength = dp.SrcWaveLength;
-                    if (WaveSource == Crystallography.WaveSource.Xray)
+                    if (WaveSource == WaveSource.Xray)
                     {
-                        if (WaveColor == Crystallography.WaveColor.Monochrome)
+                        if (WaveColor == WaveColor.Monochrome)
                         {
                             if (XraySourceElementNumber != dp.XrayElementNumber) XraySourceElementNumber = dp.XrayElementNumber;
-                           if( XraySourceLine != dp.XrayLine) XraySourceLine = dp.XrayLine;
+                            if (XraySourceLine != dp.XrayLine) XraySourceLine = dp.XrayLine;
                         }
                     }
 
@@ -3051,19 +3021,20 @@ namespace PDIndexer
                     else//デフォルトカラーを設定
                         dp.ColorARGB = Color.Blue.ToArgb();
 
-                Bitmap bmp = new Bitmap(18, 18);
-                Graphics g = Graphics.FromImage(bmp);
-                g.Clear(Color.FromArgb((int)dp.ColorARGB));
+                var bmp = new Bitmap(18, 18);
+                using (var g = Graphics.FromImage(bmp))
+                    g.Clear(Color.FromArgb((int)dp.ColorARGB));
 
                 if (radioButtonSingleProfileMode.Checked)//シングルパターンモードのとき
                     dataSet.DataTableProfile.Rows.Clear();
+
                 dataSet.DataTableProfile.Rows.Add(new object[] { isChecked, dp, bmp });
                 bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
-               // if (radioButtonMultiProfileMode.Checked)//マルチパターンモードのとき
-               // {
-               //     if (dp.IsLPOchild)
-               //         formProfile.checkedListBoxProfiles_SelectedIndexChanged(this, new EventArgs());
-               // }
+                // if (radioButtonMultiProfileMode.Checked)//マルチパターンモードのとき
+                // {
+                //     if (dp.IsLPOchild)
+                //         formProfile.checkedListBoxProfiles_SelectedIndexChanged(this, new EventArgs());
+                // }
 
                 if (isDraw)
                 {
@@ -3096,9 +3067,9 @@ namespace PDIndexer
                     else//デフォルトカラーを設定
                         dp.ColorARGB = Color.Blue.ToArgb();
 
-                Bitmap bmp = new Bitmap(18, 18);
-                Graphics g = Graphics.FromImage(bmp);
-                g.Clear(Color.FromArgb((int)dp.ColorARGB));
+                var bmp = new Bitmap(18, 18);
+                using (var g = Graphics.FromImage(bmp))
+                    g.Clear(Color.FromArgb((int)dp.ColorARGB));
 
                 if (radioButtonSingleProfileMode.Checked)//シングルパターンモードのとき
                     dataSet.DataTableProfile.Rows.Clear();//消去
@@ -3117,17 +3088,17 @@ namespace PDIndexer
 
         public Color generateRandomColor()
         {
-            Random r = new Random();
-            int max = 192 + r.Next(64); 
-            int mid1 = r.Next(128);             
-            int mid2 = r.Next(128);
+            var r = new Random();
+            var max = 192 + r.Next(64); 
+            var mid1 = r.Next(128);             
+            var mid2 = r.Next(128);
             if (dataSet.DataTableProfile.Items.Count == 0)//直前のプロファイルがない時はR>G>Bの色を返す
                 return Color.FromArgb(max, mid1, mid2);
             else//直前のプロファイルがある時はその色となるべく違う色を返す  
             {
-                int red = Color.FromArgb(((DiffractionProfile)(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1])).ColorARGB.Value).R;
-                int green = Color.FromArgb(((DiffractionProfile)(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1])).ColorARGB.Value).G;
-                int blue = Color.FromArgb(((DiffractionProfile)(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1])).ColorARGB.Value).B;
+                int red = Color.FromArgb(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1].ColorARGB.Value).R;
+                int green = Color.FromArgb(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1].ColorARGB.Value).G;
+                int blue = Color.FromArgb(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1].ColorARGB.Value).B;
 
                 if (red >= green && red >= blue)//直前が赤優勢のとき
                     return Color.FromArgb(mid1, max, mid2);//緑優勢を返す
@@ -3140,15 +3111,15 @@ namespace PDIndexer
             }
         }
 
-#endregion 
+
 
         #region 結晶データ読み書き
         //結晶データのセーブ
         private void menuItemSaveCrystalData_Click(object sender, System.EventArgs e)
         {
-            List<Crystal> cry = new List<Crystal>();
+            var cry = new List<Crystal>();
             for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
-                cry.Add((Crystal)dataSet.DataTableCrystal.Items[i]);
+                cry.Add(dataSet.DataTableCrystal.Items[i]);
 
             FormCrystalSelection formCrystalSelection = new FormCrystalSelection();
             formCrystalSelection.LoadMode = false;
@@ -3294,10 +3265,7 @@ namespace PDIndexer
         #endregion
 
         //MenuItemから終了処理
-        private void menuItemClose_Click(object sender, System.EventArgs e)
-        {
-            this.Close();
-        }
+        private void menuItemClose_Click(object sender, EventArgs e) => this.Close();
 
         #region 印刷関係
         //MenuItemから印刷処理
@@ -3514,10 +3482,6 @@ namespace PDIndexer
             radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
         }
 
-        private void checkBoxShowScaleLine_CheckedChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
 
         private void savePatternProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3547,10 +3511,8 @@ namespace PDIndexer
         }
 
 
-        private void toolTipToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            toolTip.Active = toolTipToolStripMenuItem.Checked;
-        }
+        private void toolTipToolStripMenuItem_Click(object sender, EventArgs e) 
+            => toolTip.Active = toolTipToolStripMenuItem.Checked;
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
@@ -3571,7 +3533,9 @@ namespace PDIndexer
 
                 }
                 else
-                    readProfile(fileName[0]);
+                {
+                    readProfile(fileName);
+                }
             }
         }
 
@@ -3585,9 +3549,7 @@ namespace PDIndexer
 
         //結晶データをリセットする
         private void resetInitialCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            readCrystal(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\default.Xml", false, true);
-        }
+            => readCrystal(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\default.Xml", false, true);
 
         private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3656,7 +3618,6 @@ namespace PDIndexer
                     readProfile("clipbord.txt");
                     File.Delete("clipboard.txt");
                 }
-
             }
 
 
@@ -3674,10 +3635,8 @@ namespace PDIndexer
             }
         }
 
-        private void checkedListBoxCrystals_KeyDown(object sender, KeyEventArgs e)
-        {
-            e.SuppressKeyPress = true;
-        }
+        private void CheckedListBoxCrystals_KeyDown(object sender, KeyEventArgs e)
+            => e.SuppressKeyPress = true;
 
 
         private void watchReadANewProfileToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
@@ -3688,15 +3647,12 @@ namespace PDIndexer
                     watcher.EnableRaisingEvents = true;
             }
             else
-            {
                 watcher.EnableRaisingEvents = false;
-            }
         }
 
         private void setDirectoryToTheWatchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FolderBrowserDialog dlg = new FolderBrowserDialog();
-            
+            var dlg = new FolderBrowserDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
                 toolStripTextBoxDirectoryToWatch.Text = dlg.SelectedPath;
             
@@ -3727,9 +3683,7 @@ namespace PDIndexer
 
 
         private void tabControl_Click(object sender, EventArgs e)
-        {
-            tabControl.BringToFront();
-        }
+            => tabControl.BringToFront();
 
 
 
@@ -3847,14 +3801,10 @@ namespace PDIndexer
         #endregion
 
         private void toolStripButtonCrystalParameter_Click(object sender, EventArgs e)
-        {
-            checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
-        }
+            => checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
 
-        private void toolStripButtonProfileParameter_Click(object sender, EventArgs e)
-        {
-            checkBoxProfileParameter.Checked = !checkBoxProfileParameter.Checked;
-        }
+        private void toolStripButtonProfileParameter_Click(object sender, EventArgs e) 
+            => checkBoxProfileParameter.Checked = !checkBoxProfileParameter.Checked;
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -3896,16 +3846,13 @@ namespace PDIndexer
             catch { }
         }
 
-        private void checkBoxShowScaleLine_CheckedChanged_1(object sender, EventArgs e)
-        {
-            Draw();
-        }
+        private void checkBoxShowScaleLine_CheckedChanged_1(object sender, EventArgs e) => Draw();
 
 
 
         #region DataGridViewCrystal関係のイベント
 
-          List<int> blinkingCrystals = new List<int>();
+        List<int> blinkingCrystals = new List<int>();
         bool blinkFlag = false;
         public void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -4042,8 +3989,7 @@ namespace PDIndexer
                  if (numericUpDownMaxInt.Maximum <= max)
                      numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
                  else if (numericUpDownMaxInt.Minimum >= max)
-                     numericUpDownMaxInt.Value = numericUpDownMax
-Int.Minimum;
+                     numericUpDownMaxInt.Value = numericUpDownMaxInt.Minimum;
                  else
                      numericUpDownMaxInt.Value = max;
 
@@ -4131,10 +4077,7 @@ Int.Minimum;
         }
         #endregion
 
-        private void tabControl1_Click(object sender, EventArgs e)
-        {
-            tabControl1.BringToFront();
-        }
+        private void tabControl1_Click(object sender, EventArgs e) => tabControl1.BringToFront();
 
         private void languageToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4217,10 +4160,7 @@ Int.Minimum;
             skipProfileCheckedEvent = false;
 
             Draw();
-
         }
-
-       
 
         bool skipProfileCheckedEvent = false;
         /// <summary>
@@ -4239,25 +4179,92 @@ Int.Minimum;
             Draw();
         }
 
-
-
         private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
-        {
-            formCrystal.crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
-        }
+            => formCrystal.crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
 
         private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Ngen.Compile();
-        }
+            => Ngen.Compile();
 
-        
-
+        #region プログラムアップデート
         private void programUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (ProgramUpdates.CheckUpdate(Version.Software, Version.VersionAndDate))
-                Close();
+            (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
+
+            if (!NeedUpdate)
+                MessageBox.Show(Message, Title, MessageBoxButtons.OK);
+            else if (MessageBox.Show(Message, Title, MessageBoxButtons.YesNo) == DialogResult.Yes)
+                using (var wc = new WebClient())
+                {
+                    long counter = 1;
+                    wc.DownloadProgressChanged += (s, ev) =>
+                    {
+                        if (counter++ % 10 == 0)
+                            ip.Report(ProgramUpdates.ProgressMessage(ev, stopwatch));
+                    };
+
+                    wc.DownloadFileCompleted += (s, ev) =>
+                    {
+                        if (ProgramUpdates.Execute(Path))
+                            Close();
+                        else
+                            MessageBox.Show($"Failed to downlod {Path}. \r\nSorry!", "Error!");
+                    };
+                    stopwatch.Restart();
+                    wc.DownloadFileAsync(new Uri(URL), Path);
+                }
         }
+
+
+        private bool skipProgressEvent { get; set; } = false;
+        /// <summary>
+        /// 進捗状況を更新
+        /// </summary>
+        /// <param name="current"></param>
+        /// <param name="total"></param>
+        /// <param name="elapsedMilliseconds">経過時間</param>
+        /// <param name="message">メッセージ</param>
+        /// <param name="interval">何回に一回更新するか</param>
+        /// <param name="sleep"></param>
+        /// <param name="showPercentage"></param>
+        /// <param name="showEllapsedTime"></param>
+        /// <param name="showRemainTime"></param>
+        /// <param name="digit"></param>
+        private void reportProgress(long current, long total, long elapsedMilliseconds, string message,
+            int sleep = 0, bool showPercentage = true, bool showEllapsedTime = true, bool showRemainTime = true, int digit = 1)
+        {
+            if (skipProgressEvent || current > total)
+                return;
+            skipProgressEvent = true;
+            try
+            {
+                toolStripProgressBar.Maximum = int.MaxValue;
+                var ratio = (double)current / total;
+                toolStripProgressBar.Value = (int)(ratio * toolStripProgressBar.Maximum);
+                var ellapsedSec = elapsedMilliseconds / 1000.0;
+                var format = $"f{digit}";
+
+                if (showPercentage) message += $" Completed: {(ratio * 100).ToString(format)} %.";
+                if (showEllapsedTime) message += $" Elappsed time: {ellapsedSec.ToString(format)} sec.";
+                if (showRemainTime) message += $" Remaining time: {(ellapsedSec / current * (total - current)).ToString(format)} sec.";
+
+                //toolStripStatusLabel.Text = message;
+
+                Application.DoEvents();
+
+                if (sleep != 0) Thread.Sleep(sleep);
+            }
+            catch (Exception e)
+            {
+
+            }
+            skipProgressEvent = false;
+        }
+
+        private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
+    => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
+
+        #endregion プログラムアップデート
+
 
         private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4308,10 +4315,8 @@ Int.Minimum;
             }
         }
 
-        private void editorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            FormMacro.Visible = true;
-        }
+        private void editorToolStripMenuItem_Click(object sender, EventArgs e) 
+            => FormMacro.Visible = true;
 
         public void SetMacroToMenu(string[] name)
         {
@@ -4330,19 +4335,23 @@ Int.Minimum;
             }
         }
         void macroMenuItem_Click(object sender, EventArgs e)
-        {
-            FormMacro.RunMacroName(((ToolStripMenuItem)sender).Name, false);
-        }
+            => FormMacro.RunMacroName(((ToolStripMenuItem)sender).Name, false);
 
 
         public enum FileType
         {
             CSV,
             RAS,
-            NXS
+            NXS,
+            CHI,
+            XBM,
+            RPT,
+            NPD,
+            TOF,
+            OTHRES,
         }
 
-        public struct FileProperty
+        public class FileProperty
         {
             public bool Valid;
             public WaveSource WaveSource;
@@ -4509,15 +4518,15 @@ Int.Minimum;
 
                 }
 
-                public double MaxX { get { return Execute(new Func<double>(() => p.main.MaximalX)); } set { Execute(new Action(() => p.main.MaximalX = value)); } }
-                public double MinX { get { return Execute(new Func<double>(() => p.main.MinimalX)); } set { Execute(new Action(() => p.main.MinimalX = value)); } }
-                public double MaxY { get { return Execute(new Func<double>(() => p.main.MaximalY)); } set { Execute(new Action(() => p.main.MaximalY = value)); } }
-                public double MinY { get { return Execute(new Func<double>(() => p.main.MinimalY)); } set { Execute(new Action(() => p.main.MinimalY = value)); } }
+                public double MaxX { get => Execute(new Func<double>(() => p.main.MaximalX)); set => Execute(new Action(() => p.main.MaximalX = value)); }
+                public double MinX { get => Execute(new Func<double>(() => p.main.MinimalX)); set => Execute(new Action(() => p.main.MinimalX = value)); }
+                public double MaxY { get => Execute(new Func<double>(() => p.main.MaximalY)); set => Execute(new Action(() => p.main.MaximalY = value)); }
+                public double MinY { get => Execute(new Func<double>(() => p.main.MinimalY)); set => Execute(new Action(() => p.main.MinimalY = value)); }
 
-                public double EndX { get { return Execute(new Func<double>(() => p.main.UpperX)); } set { Execute(new Action(() => p.main.UpperX = value)); } }
-                public double StartX { get { return Execute(new Func<double>(() => p.main.LowerX)); } set { Execute(new Action(() => p.main.LowerX = value)); } }
-                public double EndY { get { return Execute(new Func<double>(() => p.main.UpperY)); } set { Execute(new Action(() => p.main.UpperY = value)); } }
-                public double StartY { get { return Execute(new Func<double>(() => p.main.LowerY)); } set { Execute(new Action(() => p.main.LowerY = value)); } }
+                public double EndX { get => Execute(new Func<double>(() => p.main.UpperX)); set => Execute(new Action(() => p.main.UpperX = value)); }
+                public double StartX { get => Execute(new Func<double>(() => p.main.LowerX)); set => Execute(new Action(() => p.main.LowerX = value)); }
+                public double EndY { get => Execute(new Func<double>(() => p.main.UpperY)); set { Execute(new Action(() => p.main.UpperY = value)); } }
+                public double StartY { get => Execute(new Func<double>(() => p.main.LowerY)); set => Execute(new Action(() => p.main.LowerY = value)); }
 
                 public void SetBounds(double xStart, double xEnd, double yStart, double yEnd)
                 {
@@ -4538,7 +4547,7 @@ Int.Minimum;
                     p.help.Add("PDI.Crystal.Check(int index) # Check a crystal assigned by 'index'.");
                     p.help.Add("PDI.Crystal.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
                 }
-                public int Count { get { return Execute(new Func<int>(() =>  p.main.bindingSourceCrystal.Count)); } }
+                public int Count => Execute(new Func<int>(() => p.main.bindingSourceCrystal.Count));
                 public string SelectedName { get { return Execute(new Func<string>(() =>  (SelectedIndex >= 0) ? ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Name : "")); } }
 
                 public int SelectedIndex
@@ -4551,7 +4560,7 @@ Int.Minimum;
                                 p.main.bindingSourceCrystal.Position = value;
                         }));
                     }
-                    get { return Execute(new Func<int>(() => p.main.bindingSourceCrystal.Position)); }
+                    get => Execute(new Func<int>(() => p.main.bindingSourceCrystal.Position));
                 }
 
                 public void Select(int n) { Execute(() => select(n)); }

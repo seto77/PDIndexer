@@ -11,32 +11,57 @@ namespace PDIndexer
             InitializeComponent();
         }
 
+        /// <summary>
+        /// 露出時間
+        /// </summary>
         public double ExposureTime { set => numericalTextBox1.Value = value; get => numericalTextBox1.Value; }
 
-        public HorizontalAxis AxisMode { set => horizontalAxisUserControl.AxisMode = value; get => horizontalAxisUserControl.AxisMode; }
+        public HorizontalAxis AxisMode
+        {
+            set
+            {
+                horizontalAxisUserControl.AxisMode = value;
+                VisibleEDXSetting = HorizontalAxis.EnergyXray == value;
+            }
+            get => horizontalAxisUserControl.AxisMode;
+        }
 
         public int XraySourceElementNumber { set => horizontalAxisUserControl.XrayWaveSourceElementNumber = value; get => horizontalAxisUserControl.XrayWaveSourceElementNumber; }
 
         public XrayLine XrayLine { set => horizontalAxisUserControl.XrayWaveSourceLine = value; get => horizontalAxisUserControl.XrayWaveSourceLine; }
-
+        /// <summary>
+        /// 電子線加速電圧(kV)を取得/設定
+        /// </summary>
         public double ElectronAccVolatage { set => horizontalAxisUserControl.ElectronAccVoltage = value; get => horizontalAxisUserControl.ElectronAccVoltage; }
 
         public WaveSource WaveSource { set => horizontalAxisUserControl.WaveSource = value; get => horizontalAxisUserControl.WaveSource; }
 
         public WaveColor WaveColor { set => horizontalAxisUserControl.WaveColor = value; get => horizontalAxisUserControl.WaveColor; }
-
+        /// <summary>
+        /// nm単位の実数で取得/設定
+        /// </summary>
         public double Wavelength { set => horizontalAxisUserControl.WaveLength = value; get => horizontalAxisUserControl.WaveLength; }
-
+        /// <summary>
+        /// EDXの取り出し角 ラジアン単位で取得/設定
+        /// </summary>
         public double TakeoffAngle { set => horizontalAxisUserControl.TakeoffAngle = value; get => horizontalAxisUserControl.TakeoffAngle; }
-
+        /// <summary>
+        /// EDXの取り出し角 度単位で取得/設定
+        /// </summary>
         public string TakeoffAngleText { set => horizontalAxisUserControl.TakeoffAngleText = value; get => horizontalAxisUserControl.TakeoffAngleText; }
 
         public EnergyUnitEnum EnergyUnit { set => horizontalAxisUserControl.EnergyUnit = value; get => horizontalAxisUserControl.EnergyUnit; }
-
+        /// <summary>
+        /// TOFの取り出し角 ラジアン単位で取得/設定
+        /// </summary>
         public double TofAngle { set => horizontalAxisUserControl.TofAngle = value; get => horizontalAxisUserControl.TofAngle; }
-
+        /// <summary>
+        /// TOFの取り出し角 度単位で取得/設定
+        /// </summary>
         public string TofAngleText { set => horizontalAxisUserControl.TofAngleText = value; get => horizontalAxisUserControl.TofAngleText; }
-
+        /// <summary>
+        /// TOFの検出距離 mm単位で取得/設定
+        /// </summary>
         public double TofLength { set => horizontalAxisUserControl.TofLength = value; get => horizontalAxisUserControl.TofLength; }
 
         public bool TofUnitMicroSec { set => horizontalAxisUserControl.radioButtonTofUnitMicroSec.Checked = value; get => horizontalAxisUserControl.radioButtonTofUnitMicroSec.Checked; }
@@ -78,8 +103,8 @@ namespace PDIndexer
             EGC0 = property.EGC0;
             EGC1 = property.EGC1;
             EGC2 = property.EGC2;
+            
         }
-
         public FormMain.FileProperty GetProperty()
         {
             return new FormMain.FileProperty()

@@ -164,8 +164,8 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HDF.PInvoke, Version=1.10.5.2, Culture=neutral, PublicKeyToken=18793c1fcffe58a3, processorArchitecture=MSIL">
-      <HintPath>..\packages\HDF.PInvoke.1.10.5.2\lib\HDF.PInvoke.dll</HintPath>
+    <Reference Include="HDF.PInvoke, Version=1.10.6.1, Culture=neutral, PublicKeyToken=18793c1fcffe58a3, processorArchitecture=MSIL">
+      <HintPath>..\packages\HDF.PInvoke.1.10.6.1\lib\HDF.PInvoke.dll</HintPath>
     </Reference>
     <Reference Include="IronPython, Version=2.7.10.0, Culture=neutral, PublicKeyToken=7f709c5b713576e1, processorArchitecture=MSIL">
       <HintPath>..\packages\IronPython.2.7.10-candidate1\lib\net45\IronPython.dll</HintPath>
@@ -478,7 +478,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SetoSoft.pfx" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
@@ -542,11 +541,11 @@
     <PostBuildEvent>move /Y "$(TargetDir)*.dll" "$(TargetDir)dll"
 if "$(ConfigurationName)" =="Release"  "$(ProjectDir)"Updater.exe /v $(ProjectName)  "$(ProjectDir)"</PostBuildEvent>
   </PropertyGroup>
-  <Import Project="..\packages\HDF.PInvoke.1.10.5.2\build\HDF.PInvoke.targets" Condition="Exists('..\packages\HDF.PInvoke.1.10.5.2\build\HDF.PInvoke.targets')" />
+  <Import Project="..\packages\HDF.PInvoke.1.10.6.1\build\HDF.PInvoke.targets" Condition="Exists('..\packages\HDF.PInvoke.1.10.6.1\build\HDF.PInvoke.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
       <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\HDF.PInvoke.1.10.5.2\build\HDF.PInvoke.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HDF.PInvoke.1.10.5.2\build\HDF.PInvoke.targets'))" />
+    <Error Condition="!Exists('..\packages\HDF.PInvoke.1.10.6.1\build\HDF.PInvoke.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\HDF.PInvoke.1.10.6.1\build\HDF.PInvoke.targets'))" />
   </Target>
 </Project>

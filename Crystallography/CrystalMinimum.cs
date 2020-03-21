@@ -1,38 +1,75 @@
 using System;
 using System.Collections.Generic;
+//using ProtoBuf;
+using MessagePack;
+
 
 namespace Crystallography
 {
     //Saveのために必要最小限の情報だけを保存するクラス
+    //[ProtoContract]
     [Serializable()]
+    [MessagePackObject]
+    public class Crystal2Array
+    {
+        [Key(0)]
+        public Crystal2[] Array;
+
+        public Crystal2Array(Crystal2[] array)
+        {
+            Array = array;
+        }
+    }
+
+    //必要最小限の情報だけを保存するクラス
+    //[ProtoContract]
+    [Serializable()]
+    [MessagePackObject]
     public class Crystal2
     {
+        [Key(0)]
         public double a;
+        [Key(1)]
         public double b;
+        [Key(2)]
         public double c;
+        [Key(3)]
         public double alpha;
+        [Key(4)]
         public double beta;
+        [Key(5)]
         public double gamma;
+        [Key(6)]
         public int argb;
+        [Key(7)]
         public double density;
+        [Key(8)]
         public string name;
+        [Key(9)]
         public string note;
+        [Key(10)]
         public string jour;
+        [Key(11)]
         public string auth;
+        [Key(12)]
         public string sect;
+        [Key(13)]
         public string formula;//計算可能な場合は。
-
-        //public string[] elStr;//元素の記号
-        //public double[] elNum;//元素の数
-        public Int16 sym;//対称性の通し番号
-
+        [Key(14)]
+        public Int16 sym;
+        [Key(15)]
         public List<Atoms2> atoms;
-        public List<Bonds> bonds = new List<Bonds>();
-        public double[] d = new double[0];//強度8位までのd値
-        public string fileName = "";
+        [Key(16)]
+        public List<Bonds> bonds;
+        [Key(17)]
+        public double[] d;//強度8位までのd値
+        [Key(18)]
+        public string fileName;
 
         public Crystal2()
         {
+            atoms = new List<Atoms2>();
+            bonds = new List<Bonds>();
         }
 
         public static Crystal GetCrystal(Crystal2 c)
@@ -311,24 +348,41 @@ namespace Crystallography
         }
     }
 
+    //[ProtoContract]
     [Serializable()]
+    [MessagePackObject]
     public class Atoms2
     {
+        [Key(0)]
         public string Label;
-        public float[] X = new float[3];
-        public float[] X_err = null;
-        public float[] Occ = null;//Occ, Occ_errの順番
-        public byte SubXray;//SubNumberForXray
-        public byte SubElectron;//SubNumberForElectron
-        public byte AtomNo; //atomic number
+        [Key(1)]
+        public float[] X;
+        [Key(2)]
+        public float[] X_err;
+        [Key(3)]
+        public float[] Occ;//Occ, Occ_errの順番
+        [Key(4)]
+        public byte SubXray;
+        [Key(5)]
+        public byte SubElectron;
+        [Key(6)]
+        public byte AtomNo;
+        [Key(7)]
         public bool IsIso;
-        public float[] Biso = null;//Biso, Biso_errの順番
-        public float[] Baniso = null;//B11, B22, B33, B12, B23, B31, B11_err, B22_err, B33_err, B12_err, B23_err, B31_errの順番
-
+        [Key(8)]
+        public float[] Biso;//Biso, Biso_errの順番
+        [Key(9)]
+        public float[] Baniso;//B11, B22, B33, B12, B23, B31, B11_err, B22_err, B33_err, B12_err, B23_err, B31_errの順番
+        [Key(10)]
         public float Rad;
-        public int Argb;//色
-        public byte[] Mat = null;//amb,dif,emi,shi,spe,traの順番
-        public double[] Isotope = null;
+        [Key(11)]
+        public int Argb;
+        [Key(12)]
+        public byte[] Mat;//amb,dif,emi,shi,spe,traの順番
+        [Key(13)]
+        public double[] Isotope;
+
+
 
         /*public float amb = 0.1f;//環境光
         public float dif = 0.8f;//拡散光
@@ -338,23 +392,21 @@ namespace Crystallography
         public float tra = 1f;//透明度
         */
 
+        public Atoms2()
+        {
+            
+        }
         public Atoms2(string label, int atomNo, int sfx, int sfe, Vector3D pos, Vector3D pos_err, double occ, double occ_err,
             DiffuseScatteringFactor dsf
             , AtomMaterial mat, float radius)
         {
-            X[0] = (float)pos.X;
-            X[1] = (float)pos.Y;
-            X[2] = (float)pos.Z;
+             X = new float[] {  (float)pos.X, (float)pos.Y,  (float)pos.Z };
 
             if (pos_err.X != 0 || pos_err.Y != 0 || pos_err.Z != 0)
-            {
-                X_err = new float[3];
-                X_err[0] = (float)pos_err.X;
-                X_err[1] = (float)pos_err.Y;
-                X_err[2] = (float)pos_err.Z;
-            }
+                X_err = new float[] { (float)pos_err.X , (float)pos_err.Y, (float)pos_err.Z };
 
             Label = label;
+
             if (occ_err == 0)
                 Occ = new float[] { (float)occ };
             else

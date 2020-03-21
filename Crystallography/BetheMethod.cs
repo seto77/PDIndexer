@@ -29,8 +29,6 @@ namespace Crystallography
         private static readonly Complex PiI = Math.PI * ImaginaryOne;
         private static readonly double PiSq = Math.PI * Math.PI;
         private static readonly Vector3DBase zNorm = new Vector3DBase(0, 0, 1);
-
-        //private double Wavelength { get; set; } = 0;
         private double AccVoltage { get; set; }
         private Crystal Crystal { get; set; } = null;
         private Matrix3D BaseRotation { get; set; } = null;
@@ -66,7 +64,7 @@ namespace Crystallography
 
         public double SemianglePED { get; set; }
 
-        public bool IsBusy { get => bwCBED == null ? true : bwCBED.IsBusy; }
+        public bool IsBusy => bwCBED == null ? true : bwCBED.IsBusy;
 
         /// <summary>
         /// Disks[Z_index][G_index]
@@ -296,42 +294,6 @@ namespace Crystallography
 
 
 
-        public (DMat,DVec)  RefineEigenProblem(DMat mat, DMat eigenVectors, DVec eigenValues)
-        {
-            for(int i=0; i<eigenValues.Count; i++)
-            {
-                var val = eigenValues[i];
-                var vec = eigenVectors.Column(i);
-
-                var sum = 0.0;
-                foreach (var v in vec) sum += v.Magnitude2();
-
-                var result = mat * vec - val * vec;
-                var bestR = result.L2Norm();
-
-                
-
-                for (int n = -5; n > -10; n--)
-                {
-                    for (int j = 0; j < eigenValues.Count; j++)
-                    {
-                        //j番目の要素を 1 + 10^n 倍して計算してみる
-                        vec[j] *= 1 + Math.Pow(10, n);
-
-
-                    }
-                }
-
-
-            }
-
-
-
-
-            return (eigenVectors, eigenValues);
-        }
-
-
         /// <summary>
         /// 平行ビームの電子回折計算
         /// </summary>
@@ -342,9 +304,8 @@ namespace Crystallography
         /// <returns></returns>
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
-            MathNet.Numerics.Control.TryUseNativeMKL();
-            //MathNet.Numerics.Control.UseManaged();
-
+            var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
+            
             if (AccVoltage != voltage)
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
 
@@ -368,11 +329,15 @@ namespace Crystallography
 
                 var potentialMatrix = getEigenProblemMatrix(Beams);
 
-                //A行列に関する固有値、固有ベクトルを取得 //ここは必ずMKLで。
-                var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-
-                EigenValues = evd.EigenValues.AsArray();
-                EigenVectors = (DMat)evd.EigenVectors;
+                //A行列に関する固有値、固有ベクトルを取得 
+                if (useEigen)
+                    (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(potentialMatrix);
+                else
+                {
+                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
+                    EigenValues = evd.EigenValues.AsArray();
+                    EigenVectors = (DMat)evd.EigenVectors;
+                }
 
                 //(EigenVectors, EigenValues) = RefineEigenProblem(DMat.OfArray(potentialMatrix), (DMat)evd.EigenVectors, evd.EigenValues.ToArray());
             }
@@ -547,8 +512,6 @@ namespace Crystallography
         #endregion Image Simulation
 
 
-
-
         /// <summary>
         /// PEDの計算
         /// </summary>
@@ -561,7 +524,6 @@ namespace Crystallography
         /// <returns></returns>
         public Beam[] GetPrecessionElectronDiffraction(int maxNumOfBloch, double voltage, Matrix3D baseRotation, double thickness, double semiangle, int step)
         {
-            MathNet.Numerics.Control.TryUseNativeMKL();
 
             //波数を計算
             var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(voltage);
@@ -572,6 +534,8 @@ namespace Crystallography
                 uDictionary = new Dictionary<int, (Complex, Complex)>();
 
             var useEigen = EigenEnabled && maxNumOfBloch < 400;
+            if (!MathNet.Numerics.Control.TryUseNativeMKL())
+                useEigen = true;
 
             var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
             if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
@@ -685,7 +649,8 @@ namespace Crystallography
             Complex fReal = 0, fImag = 0;
             foreach (var atoms in Crystal.Atoms)
             {
-                var real = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
+                //var real = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
+                var real = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].Factor(s2 * 0.01) * 0.1;//Factorの答えはAなので, 0.1倍してnmに変換
                 // 等方散乱因子の時 あるいは非等方でg=0の時
                 if (atoms.Dsf.IsIso || (index == (0, 0, 0)))
                 {
@@ -696,7 +661,8 @@ namespace Crystallography
                         double a = Crystal.A, b = Crystal.B, c = Crystal.C;
                         m = (atoms.Dsf.B11 * a * a + atoms.Dsf.B22 * b * b + atoms.Dsf.B33 * c * c + 2 * atoms.Dsf.B12 * a * b + 2 * atoms.Dsf.B23 * b * c + 2 * atoms.Dsf.B31 * c * a) * 4.0 / 3.0;
                     }
-                    var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2 * 0.01, m);//答えは無次元
+                    //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2 * 0.01, m);//答えは無次元
+                    var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2 * 0.01, m);//答えは無次元
                     foreach (var atom in atoms.Atom)
                     {
                         var d = t * Exp(TwoPiI * (atom * index)) * atoms.Occ;
@@ -711,7 +677,8 @@ namespace Crystallography
                     {
                         var (H, K, L) = atom.Operation.ConvertPlaneIndex(index);
                         var m = atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H;
-                        var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2 * 0.01, m / s2 * 100);//答えは無次元
+                        //var imag = AtomConstants.ElectronScatteringEightGaussian[atoms.AtomicNumber].FactorImaginary(s2 * 0.01, m / s2 * 100);//答えは無次元
+                        var imag = AtomConstants.ElectronScattering[atoms.AtomicNumber][atoms.SubNumberElectron].FactorImaginary(s2 * 0.01, m / s2 * 100);//答えは無次元
                         var d = Math.Exp(-m) * Exp(TwoPiI * (atom * index)) * atoms.Occ;
                         fReal += real * d;
                         fImag += imag * d;
@@ -741,7 +708,7 @@ namespace Crystallography
                 //Kirklandの教科書のp120参照
                 var coeff1 = 1 / Math.PI / Crystal.Volume;
                 //相対論補正
-                var gamma = 1 + UniversalConstants.e0 * kV * 1000 / UniversalConstants.m0 / UniversalConstants.c2;
+                var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
                 var beta = Math.Sqrt(1 - 1 / gamma / gamma);
                 var coeff2 = 2 * UniversalConstants.h / UniversalConstants.m0 / beta / UniversalConstants.c * 1E9;
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
@@ -813,7 +780,6 @@ namespace Crystallography
             var direction = new List<(int h, int k, int l)>();
 
             #region directionを初期化
-
             if (Crystal.Symmetry.LatticeTypeStr == "F")
                 direction.AddRange(new (int h, int k, int l)[] { (1, 1, 1), (1, 1, -1), (1, -1, 1), (1, -1, -1), (-1, 1, 1), (-1, 1, -1), (-1, -1, 1), (-1, -1, -1) });
             else if (Crystal.Symmetry.LatticeTypeStr == "A")
@@ -979,10 +945,10 @@ namespace Crystallography
             /// <summary>
             /// 指数
             /// </summary>
-            public int H { get => Index.H; }
-            public int K { get => Index.K; }
-            public int L { get => Index.L; }
-                
+            public int H => Index.H;
+            public int K => Index.K;
+            public int L => Index.L;
+
             /// <summary>
             /// 指数
             /// </summary>
@@ -996,7 +962,7 @@ namespace Crystallography
             /// <summary>
             /// 励起誤差
             /// </summary>
-            public double S { get => Math.Sqrt(P * P / 4 + Q) - P / 2; }
+            public double S => Math.Sqrt(P * P / 4 + Q) - P / 2;
 
             public Complex Freal;
 
