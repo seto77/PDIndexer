@@ -10,5 +10,5 @@ Access https://github.com/seto77/PDIndexer/releases/latest, download *PDIndexerS
 * something
   
 ## Screenshots
-<img src="" height="320px"
+<img src="Screenshots/Main.png" height="320px">
 
