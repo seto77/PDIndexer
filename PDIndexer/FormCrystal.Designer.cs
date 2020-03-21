@@ -203,7 +203,7 @@ namespace PDIndexer
             this.dataGridViewCrystal.DataSource = this.bindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -315,11 +315,19 @@ namespace PDIndexer
             // 
             this.crystalControl.AllowDrop = true;
             resources.ApplyResources(this.crystalControl, "crystalControl");
+            this.crystalControl.CellConstants = new double[] {
+        0D,
+        0D,
+        0D,
+        0D,
+        0D,
+        0D};
             this.crystalControl.Crystal = null;
             this.crystalControl.DefaultTabNumber = 0;
             this.crystalControl.Name = "crystalControl";
             this.crystalControl.ScatteringFactorVisible = false;
             this.crystalControl.SymmetryInformationVisible = false;
+            this.crystalControl.SymmetrySeriesNumber = 0;
             this.crystalControl.VisibleAtomAdvancedTab = false;
             this.crystalControl.VisibleAtomTab = true;
             this.crystalControl.VisibleBasicInfoTab = true;
@@ -407,6 +415,7 @@ namespace PDIndexer
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.incrementToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -537,6 +546,7 @@ namespace PDIndexer
             this.checkBoxCalculateIntensity.Checked = true;
             this.checkBoxCalculateIntensity.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCalculateIntensity.Name = "checkBoxCalculateIntensity";
+            this.toolTip.SetToolTip(this.checkBoxCalculateIntensity, resources.GetString("checkBoxCalculateIntensity.ToolTip"));
             this.checkBoxCalculateIntensity.UseVisualStyleBackColor = true;
             this.checkBoxCalculateIntensity.CheckedChanged += new System.EventHandler(this.checkBoxCalculateIntensity_CheckedChanged);
             // 
