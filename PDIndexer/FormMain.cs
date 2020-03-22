@@ -4216,7 +4216,7 @@ namespace PDIndexer
                     }
                     catch
                     {
-                        MessageBox.Show("Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/PDindexer/releases/latest", Error);
+                        MessageBox.Show("Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/PDindexer/releases/latest", "Error");
                     }
                 }
         }
