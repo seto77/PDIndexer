@@ -101,13 +101,13 @@ namespace PDIndexer
         }
         public double UpperX
         {
-            set { numericBoxUpperX.Value = value; if (UpperX <= LowerX)LowerX++; }
-            get { return numericBoxUpperX.Value; }
+            set { numericBoxUpperX.Value = value; if (UpperX <= LowerX) LowerX++; }
+            get => numericBoxUpperX.Value;
         }
         public double LowerY
         {
-            set { numericBoxLowerY.Value = value; if (UpperY <= LowerY)UpperY++; }
-            get { return numericBoxLowerY.Value; }
+            set { numericBoxLowerY.Value = value; if (UpperY <= LowerY) UpperY++; }
+            get => numericBoxLowerY.Value;
         }
         public double UpperY
         {
@@ -122,12 +122,9 @@ namespace PDIndexer
                 if (numericBoxUpperX.Minimum > value)
                     numericBoxUpperX.Minimum = numericBoxLowerX.Minimum = value - 1;
 
-                numericBoxUpperX.Maximum =  numericBoxLowerX.Maximum = value;
+                numericBoxUpperX.Maximum = numericBoxLowerX.Maximum = value;
             }
-            get
-            {
-                return numericBoxUpperX.Maximum;
-            }
+            get => numericBoxUpperX.Maximum;
         }
         public double MinimalX
         {
@@ -136,12 +133,9 @@ namespace PDIndexer
                 if (numericBoxUpperX.Maximum < value)
                     numericBoxUpperX.Maximum = numericBoxLowerX.Maximum = value + 1;
 
-                numericBoxUpperX.Minimum =     numericBoxLowerX.Minimum = value;
+                numericBoxUpperX.Minimum = numericBoxLowerX.Minimum = value;
             }
-            get
-            {
-                return numericBoxLowerX.Minimum;
-            }
+            get => numericBoxLowerX.Minimum;
         }
         public double MaximalY
         {
@@ -152,7 +146,7 @@ namespace PDIndexer
 
                 numericBoxUpperY.Maximum = numericBoxLowerY.Maximum = value;
             }
-            get { return numericBoxUpperY.Maximum; }
+            get => numericBoxUpperY.Maximum;
         }
         public double MinimalY
         {
@@ -163,9 +157,9 @@ namespace PDIndexer
 
                 numericBoxUpperY.Minimum = numericBoxLowerY.Minimum = value;
             }
-            get { return numericBoxLowerY.Minimum; }
+            get => numericBoxLowerY.Minimum;
         }
-        
+
         public Bitmap BmpMain, BmpIntensity, BmpAngle;
         public Graphics gMain, gAngle, gIntensity;
         
@@ -179,16 +173,19 @@ namespace PDIndexer
                 if (horizontalAxisUserControl.WaveSource != value)
                     horizontalAxisUserControl.WaveSource = value;
             }
-            get { return horizontalAxisUserControl.WaveSource; }
+            get => horizontalAxisUserControl.WaveSource;
         }
         /// <summary>
         /// 入射線の色
         /// </summary>
         public WaveColor WaveColor
         {
-            set { if(horizontalAxisUserControl.WaveColor != value)
-                horizontalAxisUserControl.WaveColor = value; }
-            get { return horizontalAxisUserControl.WaveColor; }
+            set
+            {
+                if (horizontalAxisUserControl.WaveColor != value)
+                    horizontalAxisUserControl.WaveColor = value;
+            }
+            get => horizontalAxisUserControl.WaveColor;
         }
 
         /// <summary>
@@ -201,21 +198,27 @@ namespace PDIndexer
                 if (horizontalAxisUserControl.WaveLength != value)
                     horizontalAxisUserControl.WaveLength = value;
             }
-            get { return horizontalAxisUserControl.WaveLength; }
+            get => horizontalAxisUserControl.WaveLength;
         }
         //X線の元素
         public int XraySourceElementNumber
         {
-            set { if (horizontalAxisUserControl.XrayWaveSourceElementNumber != value)
-                horizontalAxisUserControl.XrayWaveSourceElementNumber = value; }
-            get { return horizontalAxisUserControl.XrayWaveSourceElementNumber; }
+            set
+            {
+                if (horizontalAxisUserControl.XrayWaveSourceElementNumber != value)
+                    horizontalAxisUserControl.XrayWaveSourceElementNumber = value;
+            }
+            get => horizontalAxisUserControl.XrayWaveSourceElementNumber;
         }
         //X線の元素
         public XrayLine XraySourceLine
         {
-            set { if(horizontalAxisUserControl.XrayWaveSourceLine != value)
-                horizontalAxisUserControl.XrayWaveSourceLine = value; }
-            get { return horizontalAxisUserControl.XrayWaveSourceLine; }
+            set
+            {
+                if (horizontalAxisUserControl.XrayWaveSourceLine != value)
+                    horizontalAxisUserControl.XrayWaveSourceLine = value;
+            }
+            get => horizontalAxisUserControl.XrayWaveSourceLine;
         }
 
         //EDX取り出し角
@@ -226,7 +229,7 @@ namespace PDIndexer
                 if (horizontalAxisUserControl.TakeoffAngle != value)
                     horizontalAxisUserControl.TakeoffAngle = value;
             }
-            get { return horizontalAxisUserControl.TakeoffAngle; }
+            get => horizontalAxisUserControl.TakeoffAngle;
         }
 
         //TOF取り出し角
@@ -237,7 +240,7 @@ namespace PDIndexer
                 if (horizontalAxisUserControl.TofAngle != value)
                     horizontalAxisUserControl.TofAngle = value;
             }
-            get { return horizontalAxisUserControl.TofAngle; }
+            get => horizontalAxisUserControl.TofAngle;
         }
 
         //TOF取り出し距離
@@ -248,15 +251,18 @@ namespace PDIndexer
                 if (horizontalAxisUserControl.TofLength != value)
                     horizontalAxisUserControl.TofLength = value;
             }
-            get { return horizontalAxisUserControl.TofLength; }
+            get => horizontalAxisUserControl.TofLength;
         }
 
         //軸の状態
         public HorizontalAxis AxisMode
         {
-            set { if (horizontalAxisUserControl.AxisMode != value)
-                horizontalAxisUserControl.AxisMode = value; }
-            get { return horizontalAxisUserControl.AxisMode; }
+            set
+            {
+                if (horizontalAxisUserControl.AxisMode != value)
+                    horizontalAxisUserControl.AxisMode = value;
+            }
+            get => horizontalAxisUserControl.AxisMode;
         }
 
         public bool IsBgPtSelected = false;
@@ -2676,8 +2682,6 @@ namespace PDIndexer
 
                 Text = $"PDIndexer   {Version.VersionAndDate}   {dp[dp.Count - 1].Name}";
             }
-            
-
             //pdi,ras, 拡張csv, nxs 形式ではないとき
             else
             {
@@ -3710,29 +3714,29 @@ namespace PDIndexer
                 if (merge)//ひとつのファイルにマージする場合
                     using (StreamWriter writer = new StreamWriter(dlg.FileName))
                     {
-                        dp.ForEach(d => writer.Write(d.Name + s + s + s)); //一行目
+                        dp.ForEach(d => writer.Write($"{d.Name}{s}{s}{s}")); //一行目
                         writer.Write("\r\n");
-                        dp.ForEach(d => writer.Write("X" + s + "Y" + s + s));//二行目
+                        dp.ForEach(d => writer.Write($"X{s}Y{s}{s}"));//二行目
                         writer.Write("\r\n");
 
                         for (int j = 0, max = dp.Max(d => d.Profile.Pt.Count); j < max; j++)//三行目以降
                         {
                             for (int i = 0; i < dp.Count; i++)
                                 writer.Write(j < dp[i].Profile.Pt.Count ?
-                                     dp[i].Profile.Pt[j].X.ToString() + s + dp[i].Profile.Pt[j].Y.ToString() + s + s :
-                                     s + s + s);
+                                     $"{dp[i].Profile.Pt[j].X}{s}{dp[i].Profile.Pt[j].Y}{s}{s}" :
+                                     $"{s}{s}{s}");
                             writer.Write("\r\n");
                         }
                     }
                 else//個別のファイルに分ける場合
                     dp.ForEach(d =>
                     {
-                        var filename = dlg.FileName.Substring(0, dlg.FileName.Length-4) + " + " + d.Name + (s == "," ? ".csv" : ".tsv");
+                        var filename = $"{dlg.FileName.Substring(0, dlg.FileName.Length-4)} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
                         using (StreamWriter writer = new StreamWriter(filename))
                         {
-                            writer.WriteLine("X" + s + "Y");//一行目
+                            writer.WriteLine($"X{s}Y");//一行目
                             for (int i = 0; i < d.Profile.Pt.Count; i++)
-                                writer.WriteLine(d.Profile.Pt[i].X.ToString() + s + d.Profile.Pt[i].Y.ToString());
+                                writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}");
                         }
                     });
             }
@@ -3749,17 +3753,17 @@ namespace PDIndexer
             dlg.FileName = Path.GetFileNameWithoutExtension(dp.Name);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                StreamWriter writer = new StreamWriter(dlg.FileName);
+                using var writer = new StreamWriter(dlg.FileName);
                 double div = AxisMode == HorizontalAxis.NeutronTOF ? 1 : 100;
 
                 //一行目
                 writer.WriteLine(dp.Name);
 
                 //二行目
-                int ptCount = dp.Profile.Pt.Count;
-                double startAngle = dp.Profile.Pt[0].X * div;
-                double stepAngle = (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X) * div;
-                writer.WriteLine( "BANK 1 " + ptCount.ToString() + " " + ptCount.ToString() + " CONST " + startAngle.ToString("f2") + " " + stepAngle.ToString("f2") + " 0 0 FXYE");
+                var ptCount = dp.Profile.Pt.Count;
+                var startAngle = dp.Profile.Pt[0].X * div;
+                var stepAngle = (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X) * div;
+                writer.WriteLine("BANK 1 " + ptCount.ToString() + " " + ptCount.ToString() + " CONST " + startAngle.ToString("f2") + " " + stepAngle.ToString("f2") + " 0 0 FXYE");
 
                 //errが有効なデータかどうかを判定
                 bool validErr = true;
@@ -3774,7 +3778,7 @@ namespace PDIndexer
 
                 for (int i = 0; i < ptCount; i++)
                 {
-                    string[] value = new string[3];
+                    var value = new string[3];
                     value[0] = (dp.Profile.Pt[i].X * div).ToString("g12");
                     value[1] = dp.Profile.Pt[i].Y.ToString("g12");
                     if (validErr)
@@ -3782,7 +3786,7 @@ namespace PDIndexer
                     else
                         value[2] = Math.Sqrt(dp.Profile.Pt[i].Y).ToString("g12");
 
-                    string y = dp.Profile.Pt[i].Y.ToString("g7");
+                    var y = dp.Profile.Pt[i].Y.ToString("g7");
 
                     for (int j = 0; j < value.Length; j++)
                     {
@@ -3793,7 +3797,7 @@ namespace PDIndexer
                         while (value[j].Length < 11)
                             value[j] = " " + value[j];
                     }
-                    writer.WriteLine(" " + value[0] + " " + value[1] + " " + value[2]);
+                    writer.WriteLine($" {value[0]} {value[1]} {value[2]}");
                 }
                 writer.Close();
             }
@@ -3826,10 +3830,10 @@ namespace PDIndexer
         {
             try
             {
-                Graphics grfx = CreateGraphics();
-                IntPtr ipHdc = grfx.GetHdc();
-                MemoryStream ms = new MemoryStream();
-                Metafile mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
+                using var grfx = CreateGraphics();
+                var ipHdc = grfx.GetHdc();
+                using var ms = new MemoryStream();
+                using var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
                 grfx.ReleaseHdc(ipHdc);
                 grfx.Dispose();
                 DrawMetafile(mf);
@@ -3837,9 +3841,11 @@ namespace PDIndexer
                 if (!filename.ToLower().EndsWith(".emf"))
                     filename += ".emf";
 
-                FileStream fsm = new FileStream(filename, FileMode.Create, FileAccess.Write);
-                fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                fsm.Close();
+                using (var fsm = new FileStream(filename, FileMode.Create, FileAccess.Write))
+                {
+                    fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
+                    fsm.Close();
+                }
 
                 mf.Dispose();
             }
@@ -4093,7 +4099,7 @@ namespace PDIndexer
             InitializeCrystalPlane();
             for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
             {
-                DiffractionProfile d = (DiffractionProfile)dataSet.DataTableProfile.Items[i];
+                var d = dataSet.DataTableProfile.Items[i];
                 d.IsCPS = radioButtonCountsPerStep.Checked;
                 d.IsLogIntensity = radioButtonLogarithm.Checked;
                 d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
@@ -4268,21 +4274,27 @@ namespace PDIndexer
         }
 
         private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
-    => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
+             => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
 
         #endregion プログラムアップデート
 
 
         private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Graphics grfx = CreateGraphics();
-            IntPtr ipHdc = grfx.GetHdc();
-            MemoryStream ms = new MemoryStream();
-            Metafile mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-            grfx.ReleaseHdc(ipHdc);
-            grfx.Dispose();
-            DrawMetafile(mf);
-            ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+            using (var grfx = CreateGraphics())
+            {
+                var ipHdc = grfx.GetHdc();
+                using (var ms = new MemoryStream())
+                {
+                    using (var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual))
+                    {
+                        grfx.ReleaseHdc(ipHdc);
+                        grfx.Dispose();
+                        DrawMetafile(mf);
+                        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+                    }
+                }
+            }
         }
 
         /* http://classicalprogrammer.wikidot.com/copy-gdi-drawing-to-clipboard */
