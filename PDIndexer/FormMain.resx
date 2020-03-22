@@ -210,875 +210,32 @@
   <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Name" xml:space="preserve">
-    <value>tabPage1</value>
+  <data name="horizontalAxisUserControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="horizontalAxisUserControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;tabPage1.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 62</value>
-  </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>732, 630</value>
-  </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tabControl1.ItemSize" type="System.Drawing.Size, System.Drawing">
-    <value>91, 20</value>
-  </data>
-  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>740, 62</value>
-  </data>
-  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="tabControl1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 424</value>
-  </data>
-  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="tabControl1.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
-    <value>tabControl1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="pictureBoxMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="horizontalAxisUserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="pictureBoxMain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="horizontalAxisUserControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
   </data>
-  <data name="pictureBoxMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 108</value>
+  <data name="horizontalAxisUserControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 47</value>
   </data>
-  <data name="pictureBoxMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+  <data name="horizontalAxisUserControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 8, 6, 8</value>
   </data>
-  <data name="pictureBoxMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1500, 1121</value>
+  <data name="horizontalAxisUserControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>720, 600</value>
   </data>
-  <data name="pictureBoxMain.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="horizontalAxisUserControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>720, 600</value>
   </data>
-  <data name="pictureBoxMain.ToolTip" xml:space="preserve">
-    <value>Main profile viewer
-  Left button drag: move a diffraction peak position of a checked  &amp; selected crystal
-  Right button click: Shrink 
-  Right button drag: Zoom
-  Middle button drag: Translation</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMain.Name" xml:space="preserve">
-    <value>pictureBoxMain</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMain.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMain.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;pictureBoxMain.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,Percent,17.64706,Percent,17.64706,Percent,17.64706" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1500, 108</value>
-  </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>32</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+  <data name="horizontalAxisUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="splitContainer2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewProfiles.Name" xml:space="preserve">
-    <value>dataGridViewProfiles</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewProfiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewProfiles.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewProfiles.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxProfileParameter.Name" xml:space="preserve">
-    <value>checkBoxProfileParameter</value>
-  </data>
-  <data name="&gt;&gt;checkBoxProfileParameter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxProfileParameter.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxProfileParameter.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAll.Name" xml:space="preserve">
-    <value>checkBoxAll</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAll.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAll.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 428</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Profile</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.Name" xml:space="preserve">
-    <value>splitContainer2.Panel1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystals.Name" xml:space="preserve">
-    <value>dataGridViewCrystals</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystals.Parent" xml:space="preserve">
-    <value>groupBoxCrystalData</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystals.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCrystalParameter.Name" xml:space="preserve">
-    <value>checkBoxCrystalParameter</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCrystalParameter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCrystalParameter.Parent" xml:space="preserve">
-    <value>groupBoxCrystalData</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCrystalParameter.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBoxCrystalData.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="groupBoxCrystalData.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBoxCrystalData.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="groupBoxCrystalData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBoxCrystalData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBoxCrystalData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 793</value>
-  </data>
-  <data name="groupBoxCrystalData.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="groupBoxCrystalData.Text" xml:space="preserve">
-    <value>Crystals</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCrystalData.Name" xml:space="preserve">
-    <value>groupBoxCrystalData</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCrystalData.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCrystalData.Parent" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCrystalData.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.Name" xml:space="preserve">
-    <value>splitContainer2.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 1229</value>
-  </data>
-  <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>428</value>
-  </data>
-  <data name="splitContainer2.SplitterWidth" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Name" xml:space="preserve">
-    <value>splitContainer2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1229</value>
-  </data>
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>1500</value>
-  </data>
-  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>29</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
-    <value>toolStripContainer1.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="toolStripContainer1.ContentPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1229</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.ContentPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="toolStripContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.LeftToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="toolStripContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.RightToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1392</value>
-  </data>
-  <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="toolStripContainer1.Text" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>256, 13</value>
-  </metadata>
-  <data name="toolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="toolStrip2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAWDSURBVFhH1VdrTFRHFJ69d9+LRqUWVLQqaGOiIo3+QCNR
-        qG/QNjFREB9BYkxAgeVhJRJSUEkkpLWPxAbCDxQBgcUHlEeLSllZXRWRkgYLIlopbEVFDMqrfD132BIs
-        NLqLNek3mczee+d+55sz55y5y/7XOMIYrD/fLXp7enCZjFtkMtTQ2NXRgdqMDJRv3YqWmhr7RLXW1eH2
-        iRN40dmJ/v5+5Ds6opzIqw4fHkF4t7wc9+gZdu/GfZUO6StX4g5dP5XLUUVjz8uXtok4uWQJaunFVlpR
-        MY0X9+yBhcZeV1eYaLROG4IksITuP6T5m2UbECr7AE9VKgz4++Mu3f+jvt42Ad/TSx2iCJDhAypP7BI+
-        xO9E3jtjBoyjCJAgiUj97Cto1fFw1exGBc1roG5Qq/GosZF70Tr19cj38+N7KRmdJQRAqwpHMtPhHN37
-        wj8CzSYTGkpLRxAWF9dCq02AWh2HcaqDmKPagffFXfiV3rtI3TrtzSAFlrm8igjjoNEcojGJejycZCG4
-        K6jQRh4yUFxYp3M0NLRyAZMm6WlMhEb9Oc4yFwwEBOCRINgm4G9IAiZPDiXCZN63MD/0TJmCgWXLUDls
-        VVUJCSil6zS5FjpNAqZNS0JWlhnnlEq0kHGzrR6QcM9oxF5xEeZN2MWNe3h8i7yQSPxMZFKUGzw9Oank
-        rRt03Ucx0q5QwHjk6JAxae9r09PR2dZmm4AH16/jFpE+plSS1JedvcYJJMKKxETU5OYOEXZ3dw8KcHPD
-        Y9oac3KybcZGw7WjR9FGQTgQFMRdeCstjZOeJZdK6VZHBk3ffIc1a4rJO7mYpziGPDYVBU5OYzcuoa+3
-        F+fJmORug07H0+hFVxe/HvDxQdf48Tgum8qNa7U50OnOwNXV8HaMD0f3P6qYwcWFp5W0LV7jfKDVnIIo
-        llmFZL99AaNBKizGlBQsVHtgzoSlVCfSyXgWlirD8fDmzTcTkUVZcY96uR3ZIaHQ2RndEyciY/YSaISl
-        +Fpw4OdBPfVf8vNfT3qHYR811sbQaGm0XUSRry8PRilQDXRGXCXDfy5fzmtEkZfXqIQLchZg8ZnFg8/y
-        aeW/Ua+w0wMSfoqJQaVezwM0j6piC4lpIiG3UlNHkM7MmAnxmQjZYxnW+SUhJKQSO/cXYPXqIPsFvCma
-        25vBjjO4mGdgY2QKtkXnkoAKhIYaMX/+JgRkb4NbppttB9a/Qgqueuq5g67lpLWMr5wVMvgfyubG9+2v
-        RGRkLWa7r8D4tGkQngtQZivHJoAHUzPDIWrswaCA6ofVENoFbKfGbjOEhV2FXl+NPSFl0EdVY0LQdLhs
-        8YBjPx1sF+yMh82FmxH2Y9jgy5dotRZa7fDgOk+/yQuapInw9o7FunXx9Klxgc+RtdPcK/S8lCprk8l2
-        AcpMJVRdKohNIgJ3ZCI8/Br2hv2AwMCoEWRGYw28vPRYtSoWvr7HwJoYQqmx+5S+bTZ+NUno6OoAS2X4
-        oH4WPo3+EkExReTiK4iIMPPgiquMQ3Bp8BCxpdOCRRt3wv2THfD5OAa6LB1YHa3+tB2uTylLgVRMhCf0
-        oZHHsDO+gFZfhcgoM2Jj6zH9I0/oLr0H+XM5nE5ZD6gCyoQ+FyheKOBwysF2o6+A0kp4JiCYGjMzREff
-        RFT0DYRGXMbBg3WYtMEN0xPd4dzvDJYzuEKH0w5QdCr4vrvnuI9RgIQiIq5mcNS70b7GY+3aWMrtErDr
-        DOITEVJASpFteWYZMhZcEsy3xnr5dpCUdBIrVhzgwbV2UwJYC0MUNdbA8LLbxv8E9sDUbMLCrYE8uNav
-        PwBejCjnHTNe/Wj971DC4NTnBHmHHN4F3u/I6HBQFoidtOetDNuLqOK9a0j1fm7mXPgX+o/ROGN/AVUR
-        ZF9jQ9YWAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>White</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 76</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
-    <value>Crystal
- Parameter (C)</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
-    <value>Display the detailed crystal information</value>
-  </data>
-  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAYAAAC4JqlRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAPzSURBVFhHxVdtS5RBFPWH9B8EP0h96IPhh8APQVGEYFAQ
-        CEkREkaBICQhRRgFQYVg9IK90AvRkhaWvRpIlkaBRJEkFRhGLxhIp3POzO4+Prubu0V64LLP3Jm598yd
-        OzN3q4oBr14BNTWIzcUHuruBZcuATGZpSKCpCTh4EGhvXyICdXXA5CTQ0PBPBPD9O3DiRHk2tFpcuuTB
-        2f1P5gFmZ8syhOFhYM+eMJ+/qK4GRkbydj59KrSD8XF41bW1wPS0f62vr89PlDHmRmyWhKKmeXj2zImM
-        K1eAtra8ndWrgc7O+XbQ0QH09NiBDTQ2BgJbtwZDc3NhJQlCxaAoedyZM8CGDUG4YqxcGexNTAT7K1ak
-        CGjlmixRJGjAeu6fSSmsItPaCkXLk4oADx+GcV++2CkGBoIdORWRU6eAri6gpQUYGgp2MDgIZb0bKeDN
-        G2RDpvzQJJGI3QVwJOPRVQL6d+5ncKw+kZNNEV23LhJguKV0owjQ3Jwb7K3gt3U7dswXGc8ajcAP5tO5
-        NfBp0DyOiV1VjiaJxWZp2GniBHibdESLifo+vwYeHAiEh/YBvauAd/fm2fgreDVfpxY0grsM9cnlgcDF
-        jcCL88DTnvwCxs4BH8cqJ4OrW4CbOxcm0LfWEcDkI+Ask+/DKHB7b54AyeHW7soI4Be34TSTkfsZVSXh
-        PX/JhKUTXGeuKHKXN3keZt4G3YX1FRLQxBvbLFFVFNoiXGMyKg+00keHguNI3Lmg6JCQTod0ZcET7+8P
-        MpW/VtNQXzbczoVvH8N3/y479P4/Pw08Pgy8vVMBgdHekEyv+6HvqC6AHVBiMweMHAcmMrxHeCpEUvnx
-        5GgFBAb5UCm8szNQZkd1Abzv3PPYzAHvn4SciHPx8yuUrKFTq1O4JHKkJElLZnvOqE5CbnxSNDcxLg2f
-        ong/CMoPRTV3vrPiTqpAvx6ZgvcyMT4pcci/A30kwIoMfLyianEBPv3gowi+IVG1uACfcVyn8L2IqsUF
-        +JSDzzd4+UXV/weO0OFAcAhWUsnfSgD+pQAPRWwWQAkeP/PwaulMK3ebBZJ/Y7sSgM8+WBKWSmDnF5+K
-        2AwASzix1tFT4oGPmPWsVUTOg8oAWA6IPFjwlMofLzS9teD/EPCGBItjHz8WONa38Zs3qAeVAc+nLX8r
-        j0jIHRGOtBZFArk+s2Yh6wYB1qAi4+8YGXeUAUePf6j8zWo8fZk5MrwwHe3sEVfilbz1WGVVchLAlzhL
-        XtA24BiFRbLbcsz9N5G4zSFpmLluFIG3h0WxVvZHkXEmX5xmOLpyuDkKnYoMWN+YLG9cls+lnQvqN+Ny
-        pNgRi7DjRE6YRCpHlgBVVb8B2AfzSY/j4+kAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>White</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 76</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
-    <value>Profile
- Parameter (P)</value>
-  </data>
-  <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
-    <value>Display the detailde profile parameters </value>
-  </data>
-  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAANTSURBVFhH7ZfvS1NRGMf9Q4KQCEUkYxBzP+6VCkYq3EHI
-        tIRctDcVSIUQYU4QAimiyMTKoMgfhVPJ7YVRuRJfiF4IRJCFSoFNUBNxWIRBT8957jlnu+6mOXVv6oEv
-        3t3LzudznnPuUXN2UpBIAIyPU/it7BbBi4sp/FZ2698WgNZWCZfp6MieCG1Aj8ckwB/tbR07eh/6+oFg
-        qUsAQ0N7K7C+DmALPoO86EdQ1NsyutMLCYcKKl6nRvM+hfrrEzA6ugrsu3yYzEpR68AeuAP7ACi58RVw
-        VD4mAZ/aBJeVq2kCaklqHmYuwOCusgaEfoWCgVGCsi4wEVswQp/T4DweTxfBMxI4UdqIg9dRDsTmCLg/
-        8U3OnMHFtRVcVQ1wxgKKGsbBwzjrzwRXSsJQ2DVtzLxxBj/rFM07humRYI+n24CL7ETAVTZIwMLOaZJh
-        ErbGWXBUTRC8ILzIO/MT8t8tI0g3w1PCh9266NWKxw0gl8iNr1EnDIkxgufGf0AeQkUnih7M4VKtWcJZ
-        aGwclyCblTjhhICQOKgvImAFYSNw+NYnmrWAi7BuWMHL1BaA2loAv99agD2QB0p5eZqAiD0wjD/f4l6Y
-        p6TCmRTrykZ40H0tbWwRjrcWOFPTnyYgYgvOEEzAXeUfqCNHrsSwW09wuabw+Socb4smx00ZW4TjzSWW
-        4PTJIYKVqj1wSblnik99RestOsFk2IY0OjFMcDeK5EdnoWhgEqLOUwa0ulr+AcPCkeYSm7C9fUrOOOo8
-        azLvdDXgfZ1mLCK64ajsNl5bbD/rhtgXsc4RgObmrTehKF1fkAIDrvPwHc/7jQIUDmZ7gHWFgfNw5ixi
-        OZhAJDL393BWr98sEfymu0mChUTM6UsKcIlD+BrSa4kwe6BPdkEkFFrensDS0i/8YhjOKY+kgI5rGXXW
-        oIAXn4UwvTKOqve0Ee2Bl6ZlELlwcWR7AqzEEjAJ3VmN1wwaggb3DXltlhjE1k/iUnzBN+U53quX4UNu
-        r4RAEmaVpIBS0gua1o7XSbDf35YZnJWCr5s1dGOSEpr3Bf7cwaw3K12fh5YW/A2osfZaS2haBCoq7u4+
-        XBTEYnJTUv50vu9V0Unp8xnHKku2BVil/k/Ab2W3/gvsXuXk/AZjDDpJOQqaYgAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>White</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 76</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
-    <value>Equation of
- State (E)</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
-    <value>Calculate the pressure using equation of state</value>
-  </data>
-  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAALDSURBVFhHvVe/ixNBGBX8AyR9sIjNIRGLK1MJB0rAwmKL
-        YOlxpLCw2/8gBBHsAkEtVySNCCmEFBZb2KRa1EZSLAhndSwWHofFc963803G5WJuk0zeELIzs7n3/Xjf
-        N3PXtkGCBCMz7HS/KFCgbUbfDru8P9BzEmdm0BC7vD900UVuBp+baO7fAN9r35jgiGNgMIDxeen1AOWw
-        03BIU0PcBA7af4zPXUc4xRQ9M+w0HNT7h/FX3B98coQpUnTMsNNw6HQgJPeSV3jUO/+HMLgQi6IMP58P
-        0mOoMYrgpcj8d7sw7acQAaoxCl8TQcDc86OCq0YgeCX0ekCeA7EZJOr3gSRZGsFzIWhLbrdLMlX7aAQx
-        gs8EW3LQSmDONf+cqyZk08KvBIzHJlzxbgxSMuZfxeZXhcKPgHkAGo3dGMBcM9yaf7vs0qLgPrWA+VzI
-        cXKymyiQnFGo1roK005dS8ZkAhweCjmNsNubg6HmaVftdhQiS9NO5ZLCd4SYn9lMDLHbmyHLyvDrBcQu
-        C+h9VYjUiHi/WABnZ9zczgA6IkRm8NCxyw5VHVAjPulWQlSlk7gafgWj4+vg+/wdisb1pQHbpID5JQG9
-        X3X7ZYr8NGA4xMfohrshbVwJvvfrTjoaoFFAq4UPi5ditMzZkI6O6hvge39Z7n1ooxLhGU6u0WhGYSMh
-        svHwtGNTueo5z/enx++BKJL3+VsXhToRUHIeLhTeVW+71AJTNn3z073P1szmJI3JGrYSDCNLTsk1hHZ7
-        LZjr7O7j0gjDyTVtTJKKVeXIbsZaZr5fJ79F7bS8Fjl7v/miBhgJtmj+TX4/T37gdv4A2fjp5WJkruSC
-        YQaJ6/6z6Q4eE2a75EBjKOYv+S/Rw7foDi5alX7CcFPl65ReBetdWq7JLT23y/8FuebRLWlUn6ObeDt7
-        UotzZ2Bp5pMXOB0+w1+nY/9oy5YWAAAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>White</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 76</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
-    <value>Fitting Diffraction
- Peaks (F)</value>
-  </data>
-  <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
-    <value>Fit the diffraction peaks</value>
-  </data>
-  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripButtonCellFinder.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonCellFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonCellFinder.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripButtonCellFinder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 76</value>
-  </data>
-  <data name="toolStripButtonCellFinder.Text" xml:space="preserve">
-    <value>Cell Finder</value>
-  </data>
-  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripSeparator11.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripButtonStressAnalysis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonStressAnalysis.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonStressAnalysis.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripButtonStressAnalysis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 76</value>
-  </data>
-  <data name="toolStripButtonStressAnalysis.Text" xml:space="preserve">
-    <value>Stress Analysis</value>
-  </data>
-  <data name="toolStripButtonAtomicPositonFinder.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="toolStripButtonAtomicPositonFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonAtomicPositonFinder.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripButtonAtomicPositonFinder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 76</value>
-  </data>
-  <data name="toolStripButtonAtomicPositonFinder.Text" xml:space="preserve">
-    <value>Atomic Position Finder</value>
-  </data>
-  <data name="toolStripButtonAtomicPositonFinder.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
-  </data>
-  <data name="toolStripButtonLPO.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
-        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
-        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
-        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
-        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
-        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
-        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
-        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
-        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
-        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <data name="toolStripButtonLPO.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
-    <value>Magenta</value>
-  </data>
-  <data name="toolStripButtonLPO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 31</value>
-  </data>
-  <data name="toolStripButtonLPO.Text" xml:space="preserve">
-    <value>Lattice Preferred Orientation Analysis</value>
-  </data>
-  <data name="toolStripButtonLPO.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 0</value>
-  </data>
-  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1932, 82</value>
-  </data>
-  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
-    <value>41</value>
-  </data>
-  <data name="toolStrip2.Text" xml:space="preserve">
-    <value>toolStrip1</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
-    <value>toolStrip2</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
-    <value>toolStripContainer1.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>10, 10</value>
-  </metadata>
-  <data name="menuStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 82</value>
-  </data>
-  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 44</value>
-  </data>
-  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="menuStrip.Text" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
-    <value>menuStrip</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
-    <value>toolStripContainer1.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Name" xml:space="preserve">
-    <value>toolStripContainer1.TopToolStripPanel</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Parent" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.Name" xml:space="preserve">
-    <value>toolStripContainer1</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Name" xml:space="preserve">
     <value>horizontalAxisUserControl</value>
@@ -1091,6 +248,67 @@
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 8.25pt</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Size" type="System.Drawing.Size, System.Drawing">
+    <value>469, 29</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
+    <value>After reading profile, change horizontanl axis</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>379, 10</value>
+  </metadata>
+  <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
+    <value>プロファイルを読み込み後、横軸モードを変更します。
+</value>
+  </data>
+  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Name" xml:space="preserve">
+    <value>checkBoxChangeHorizontalAppearance</value>
+  </data>
+  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Parent" xml:space="preserve">
+    <value>flowLayoutPanel4</value>
+  </data>
+  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 6</value>
+  </data>
+  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>704, 41</value>
+  </data>
+  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
     <value>flowLayoutPanel4</value>
@@ -1134,333 +352,11 @@
   <data name="&gt;&gt;tabPage1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="horizontalAxisUserControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="horizontalAxisUserControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="horizontalAxisUserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="horizontalAxisUserControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="horizontalAxisUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 47</value>
-  </data>
-  <data name="horizontalAxisUserControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
-  </data>
-  <data name="horizontalAxisUserControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>720, 600</value>
-  </data>
-  <data name="horizontalAxisUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>720, 600</value>
-  </data>
-  <data name="horizontalAxisUserControl.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;horizontalAxisUserControl.Name" xml:space="preserve">
-    <value>horizontalAxisUserControl</value>
-  </data>
-  <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;horizontalAxisUserControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Name" xml:space="preserve">
-    <value>checkBoxChangeHorizontalAppearance</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 41</value>
-  </data>
-  <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Name" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.Parent" xml:space="preserve">
-    <value>tabPage1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>379, 10</value>
-  </metadata>
-  <data name="checkBoxChangeHorizontalAppearance.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 8.25pt</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 29</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
-    <value>After reading profile, change horizontanl axis</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
-    <value>プロファイルを読み込み後、横軸モードを変更します。
-</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Name" xml:space="preserve">
-    <value>checkBoxChangeHorizontalAppearance</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Parent" xml:space="preserve">
-    <value>flowLayoutPanel4</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxErrorBar.Name" xml:space="preserve">
-    <value>checkBoxErrorBar</value>
-  </data>
-  <data name="&gt;&gt;checkBoxErrorBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxErrorBar.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxErrorBar.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowScaleLine.Name" xml:space="preserve">
-    <value>checkBoxShowScaleLine</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowScaleLine.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowScaleLine.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowScaleLine.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 50</value>
-  </data>
-  <data name="tabPage2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>716, 572</value>
-  </data>
-  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPage2.Text" xml:space="preserve">
-    <value>Appearance &amp; Single/Multi Profile</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 324</value>
-  </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>620, 166</value>
-  </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Vertical Axis</value>
-  </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value>Choose vertical axis mode. </value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>tabPage2</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="flowLayoutPanel2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLinearity.Name" xml:space="preserve">
-    <value>radioButtonLinearity</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLinearity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLinearity.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLinearity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLogarithm.Name" xml:space="preserve">
-    <value>radioButtonLogarithm</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLogarithm.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLogarithm.Parent" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonLogarithm.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 40</value>
-  </data>
-  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 104</value>
-  </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
-    <value>flowLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>0</value>
   </data>
   <data name="radioButtonLinearity.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1534,62 +430,38 @@
   <data name="&gt;&gt;radioButtonLogarithm.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="flowLayoutPanel2.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>340, 40</value>
+  </data>
+  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 104</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="flowLayoutPanel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRawCounts.Name" xml:space="preserve">
-    <value>radioButtonRawCounts</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRawCounts.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRawCounts.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonRawCounts.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCountsPerStep.Name" xml:space="preserve">
-    <value>radioButtonCountsPerStep</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCountsPerStep.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCountsPerStep.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonCountsPerStep.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 40</value>
-  </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 104</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="radioButtonRawCounts.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1663,119 +535,65 @@
   <data name="&gt;&gt;radioButtonCountsPerStep.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Name" xml:space="preserve">
-    <value>numericalTextBoxIncreasingPixels</value>
+  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 40</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxIncreasingPixels.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>300, 104</value>
   </data>
-  <data name="&gt;&gt;numericUpDownIncreasingPixels.Name" xml:space="preserve">
-    <value>numericUpDownIncreasingPixels</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownIncreasingPixels.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownIncreasingPixels.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownIncreasingPixels.ZOrder" xml:space="preserve">
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;radioButtonMultiProfileMode.Name" xml:space="preserve">
-    <value>radioButtonMultiProfileMode</value>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;radioButtonMultiProfileMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButtonMultiProfileMode.Parent" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
   </data>
-  <data name="&gt;&gt;radioButtonMultiProfileMode.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
-  <data name="&gt;&gt;checkBoxChangeColor.Name" xml:space="preserve">
-    <value>checkBoxChangeColor</value>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 324</value>
   </data>
-  <data name="&gt;&gt;checkBoxChangeColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeColor.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxChangeColor.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSingleProfileMode.Name" xml:space="preserve">
-    <value>radioButtonSingleProfileMode</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSingleProfileMode.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSingleProfileMode.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSingleProfileMode.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 14</value>
-  </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 290</value>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>620, 166</value>
   </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Single/Multi Profile</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Vertical Axis</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>Choose vertical axis mode. </value>
   </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
     <value>tabPage2</value>
   </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2014,107 +832,35 @@
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
-  <data name="&gt;&gt;colorControlScaleText.Name" xml:space="preserve">
-    <value>colorControlScaleText</value>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>230, 14</value>
   </data>
-  <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleText.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleLine.Name" xml:space="preserve">
-    <value>colorControlScaleLine</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;colorControlScaleLine.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;colorControlBack.Name" xml:space="preserve">
-    <value>colorControlBack</value>
-  </data>
-  <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;colorControlBack.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;label2.Name" xml:space="preserve">
-    <value>label2</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 116</value>
-  </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 190</value>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>396, 290</value>
   </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Color</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Single/Multi Profile</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>tabPage2</value>
   </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="colorControlScaleText.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2323,6 +1069,36 @@
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 116</value>
+  </data>
+  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 190</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>tabPage2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
   <data name="checkBoxErrorBar.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -2395,178 +1171,61 @@
   <data name="&gt;&gt;checkBoxShowScaleLine.ZOrder" xml:space="preserve">
     <value>4</value>
   </data>
-  <data name="&gt;&gt;numericUpDownMaxInt.Name" xml:space="preserve">
-    <value>numericUpDownMaxInt</value>
+  <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 50</value>
   </data>
-  <data name="&gt;&gt;numericUpDownMaxInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="tabPage2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
-  <data name="&gt;&gt;numericUpDownMaxInt.Parent" xml:space="preserve">
-    <value>tabPage3</value>
+  <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
-  <data name="&gt;&gt;numericUpDownMaxInt.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>716, 572</value>
   </data>
-  <data name="&gt;&gt;label7.Name" xml:space="preserve">
-    <value>label7</value>
-  </data>
-  <data name="&gt;&gt;label7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+  <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label21.Name" xml:space="preserve">
-    <value>label21</value>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Appearance &amp; Single/Multi Profile</value>
   </data>
-  <data name="&gt;&gt;label21.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;tabPage2.Name" xml:space="preserve">
+    <value>tabPage2</value>
   </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownMinInt.Name" xml:space="preserve">
-    <value>numericUpDownMinInt</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownMinInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownMinInt.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownMinInt.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowUnrolledImage.Name" xml:space="preserve">
-    <value>checkBoxShowUnrolledImage</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowUnrolledImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowUnrolledImage.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowUnrolledImage.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;label24.Name" xml:space="preserve">
-    <value>label24</value>
-  </data>
-  <data name="&gt;&gt;label24.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;label23.Name" xml:space="preserve">
-    <value>label23</value>
-  </data>
-  <data name="&gt;&gt;label23.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
-  </data>
-  <data name="&gt;&gt;label22.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Name" xml:space="preserve">
-    <value>comboBoxGradient</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;comboBoxGradient.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale2.Name" xml:space="preserve">
-    <value>comboBoxScale2</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale2.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale2.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale1.Name" xml:space="preserve">
-    <value>comboBoxScale1</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale1.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;comboBoxScale1.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;graphControlFrequency.Name" xml:space="preserve">
-    <value>graphControlFrequency</value>
-  </data>
-  <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;graphControlFrequency.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 388</value>
-  </data>
-  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Unrolled Image</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
-    <value>tabPage3</value>
-  </data>
-  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPage2.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
-    <value>tabControl1</value>
+  <data name="&gt;&gt;tabPage2.Parent" xml:space="preserve">
+    <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;tabPage2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 62</value>
+  </data>
+  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>732, 630</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericUpDownMaxInt.Font" type="System.Drawing.Font, System.Drawing">
@@ -2968,173 +1627,108 @@
   <data name="&gt;&gt;graphControlFrequency.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 28</value>
   </data>
-  <data name="&gt;&gt;numericBoxUpperY.Name" xml:space="preserve">
-    <value>numericBoxUpperY</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperY.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.Name" xml:space="preserve">
-    <value>labelIntensity</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerY.Name" xml:space="preserve">
-    <value>numericBoxLowerY</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerY.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;labelD.Name" xml:space="preserve">
-    <value>labelD</value>
-  </data>
-  <data name="&gt;&gt;labelD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelD.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelD.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.Name" xml:space="preserve">
-    <value>numericBoxUpperX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;labelTwoTheta.Name" xml:space="preserve">
-    <value>labelTwoTheta</value>
-  </data>
-  <data name="&gt;&gt;labelTwoTheta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelTwoTheta.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelTwoTheta.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.Name" xml:space="preserve">
-    <value>numericBoxLowerX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
-  </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;label10.Name" xml:space="preserve">
-    <value>label10</value>
-  </data>
-  <data name="&gt;&gt;label10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;labelX.Name" xml:space="preserve">
-    <value>labelX</value>
-  </data>
-  <data name="&gt;&gt;labelX.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelX.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelX.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="&gt;&gt;label9.Name" xml:space="preserve">
-    <value>label9</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>6, 6, 6, 6</value>
   </data>
-  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
   </data>
-  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1500, 56</value>
+  <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>614, 388</value>
   </data>
-  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>33</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
+  <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,Percent,17.64706,Percent,17.64706,Percent,17.64706" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Unrolled Image</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Name" xml:space="preserve">
+    <value>tabPage3</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.Parent" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabPage3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tabControl1.ItemSize" type="System.Drawing.Size, System.Drawing">
+    <value>91, 20</value>
+  </data>
+  <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>740, 62</value>
+  </data>
+  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tabControl1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>630, 424</value>
+  </data>
+  <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="tabControl1.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Name" xml:space="preserve">
+    <value>tabControl1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;tabControl1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pictureBoxMain.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="pictureBoxMain.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="pictureBoxMain.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 108</value>
+  </data>
+  <data name="pictureBoxMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="pictureBoxMain.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1500, 1121</value>
+  </data>
+  <data name="pictureBoxMain.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="pictureBoxMain.ToolTip" xml:space="preserve">
+    <value>Main profile viewer
+  Left button drag: move a diffraction peak position of a checked  &amp; selected crystal
+  Right button click: Shrink 
+  Right button drag: Zoom
+  Middle button drag: Translation</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxMain.Name" xml:space="preserve">
+    <value>pictureBoxMain</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxMain.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxMain.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;pictureBoxMain.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
+    <value>11</value>
   </data>
   <data name="numericBoxUpperY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3619,6 +2213,90 @@
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
     <value>10</value>
   </data>
+  <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1500, 56</value>
+  </data>
+  <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>33</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Name" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TableLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;tableLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,Percent,17.64706,Percent,17.64706,Percent,17.64706" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1500, 108</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>32</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainer2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="splitContainer2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
+  </data>
   <data name="dataGridViewProfiles.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>46</value>
   </data>
@@ -3670,9 +2348,6 @@
   <data name="dataGridViewProfiles.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
   </data>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>379, 10</value>
-  </metadata>
   <data name="dataGridViewProfiles.ToolTip" xml:space="preserve">
     <value>Profile list.
  Checked profiles are visible on the main profile viewer.
@@ -3690,9 +2365,6 @@
   <data name="&gt;&gt;dataGridViewProfiles.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>984, 9</value>
-  </metadata>
   <data name="checkBoxProfileParameter.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Bottom</value>
   </data>
@@ -3770,6 +2442,54 @@
   </data>
   <data name="&gt;&gt;checkBoxAll.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 428</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>splitContainer2.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel1.Name" xml:space="preserve">
+    <value>splitContainer2.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="dataGridViewCrystals.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>46</value>
@@ -3882,14 +2602,517 @@
   <data name="&gt;&gt;checkBoxCrystalParameter.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="groupBoxCrystalData.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBoxCrystalData.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 40</value>
+  <data name="groupBoxCrystalData.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
-  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
-    <value>File</value>
+  <data name="groupBoxCrystalData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBoxCrystalData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="groupBoxCrystalData.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 793</value>
+  </data>
+  <data name="groupBoxCrystalData.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="groupBoxCrystalData.Text" xml:space="preserve">
+    <value>Crystals</value>
+  </data>
+  <data name="&gt;&gt;groupBoxCrystalData.Name" xml:space="preserve">
+    <value>groupBoxCrystalData</value>
+  </data>
+  <data name="&gt;&gt;groupBoxCrystalData.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxCrystalData.Parent" xml:space="preserve">
+    <value>splitContainer2.Panel2</value>
+  </data>
+  <data name="&gt;&gt;groupBoxCrystalData.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel2.Name" xml:space="preserve">
+    <value>splitContainer2.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>430, 1229</value>
+  </data>
+  <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
+    <value>428</value>
+  </data>
+  <data name="splitContainer2.SplitterWidth" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Name" xml:space="preserve">
+    <value>splitContainer2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1938, 1229</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>1500</value>
+  </data>
+  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>29</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>toolStripContainer1.ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="toolStripContainer1.ContentPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1938, 1229</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.ContentPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContentPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ContentPanel.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="toolStripContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.LeftToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.LeftToolStripPanel.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="toolStripContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.RightToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1938, 1392</value>
+  </data>
+  <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="toolStripContainer1.Text" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>256, 13</value>
+  </metadata>
+  <data name="toolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStrip2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAWDSURBVFhH1VdrTFRHFJ69d9+LRqUWVLQqaGOiIo3+QCNR
+        qG/QNjFREB9BYkxAgeVhJRJSUEkkpLWPxAbCDxQBgcUHlEeLSllZXRWRkgYLIlopbEVFDMqrfD132BIs
+        NLqLNek3mczee+d+55sz55y5y/7XOMIYrD/fLXp7enCZjFtkMtTQ2NXRgdqMDJRv3YqWmhr7RLXW1eH2
+        iRN40dmJ/v5+5Ds6opzIqw4fHkF4t7wc9+gZdu/GfZUO6StX4g5dP5XLUUVjz8uXtok4uWQJaunFVlpR
+        MY0X9+yBhcZeV1eYaLROG4IksITuP6T5m2UbECr7AE9VKgz4++Mu3f+jvt42Ad/TSx2iCJDhAypP7BI+
+        xO9E3jtjBoyjCJAgiUj97Cto1fFw1exGBc1roG5Qq/GosZF70Tr19cj38+N7KRmdJQRAqwpHMtPhHN37
+        wj8CzSYTGkpLRxAWF9dCq02AWh2HcaqDmKPagffFXfiV3rtI3TrtzSAFlrm8igjjoNEcojGJejycZCG4
+        K6jQRh4yUFxYp3M0NLRyAZMm6WlMhEb9Oc4yFwwEBOCRINgm4G9IAiZPDiXCZN63MD/0TJmCgWXLUDls
+        VVUJCSil6zS5FjpNAqZNS0JWlhnnlEq0kHGzrR6QcM9oxF5xEeZN2MWNe3h8i7yQSPxMZFKUGzw9Oank
+        rRt03Ucx0q5QwHjk6JAxae9r09PR2dZmm4AH16/jFpE+plSS1JedvcYJJMKKxETU5OYOEXZ3dw8KcHPD
+        Y9oac3KybcZGw7WjR9FGQTgQFMRdeCstjZOeJZdK6VZHBk3ffIc1a4rJO7mYpziGPDYVBU5OYzcuoa+3
+        F+fJmORug07H0+hFVxe/HvDxQdf48Tgum8qNa7U50OnOwNXV8HaMD0f3P6qYwcWFp5W0LV7jfKDVnIIo
+        llmFZL99AaNBKizGlBQsVHtgzoSlVCfSyXgWlirD8fDmzTcTkUVZcY96uR3ZIaHQ2RndEyciY/YSaISl
+        +Fpw4OdBPfVf8vNfT3qHYR811sbQaGm0XUSRry8PRilQDXRGXCXDfy5fzmtEkZfXqIQLchZg8ZnFg8/y
+        aeW/Ua+w0wMSfoqJQaVezwM0j6piC4lpIiG3UlNHkM7MmAnxmQjZYxnW+SUhJKQSO/cXYPXqIPsFvCma
+        25vBjjO4mGdgY2QKtkXnkoAKhIYaMX/+JgRkb4NbppttB9a/Qgqueuq5g67lpLWMr5wVMvgfyubG9+2v
+        RGRkLWa7r8D4tGkQngtQZivHJoAHUzPDIWrswaCA6ofVENoFbKfGbjOEhV2FXl+NPSFl0EdVY0LQdLhs
+        8YBjPx1sF+yMh82FmxH2Y9jgy5dotRZa7fDgOk+/yQuapInw9o7FunXx9Klxgc+RtdPcK/S8lCprk8l2
+        AcpMJVRdKohNIgJ3ZCI8/Br2hv2AwMCoEWRGYw28vPRYtSoWvr7HwJoYQqmx+5S+bTZ+NUno6OoAS2X4
+        oH4WPo3+EkExReTiK4iIMPPgiquMQ3Bp8BCxpdOCRRt3wv2THfD5OAa6LB1YHa3+tB2uTylLgVRMhCf0
+        oZHHsDO+gFZfhcgoM2Jj6zH9I0/oLr0H+XM5nE5ZD6gCyoQ+FyheKOBwysF2o6+A0kp4JiCYGjMzREff
+        RFT0DYRGXMbBg3WYtMEN0xPd4dzvDJYzuEKH0w5QdCr4vrvnuI9RgIQiIq5mcNS70b7GY+3aWMrtErDr
+        DOITEVJASpFteWYZMhZcEsy3xnr5dpCUdBIrVhzgwbV2UwJYC0MUNdbA8LLbxv8E9sDUbMLCrYE8uNav
+        PwBejCjnHTNe/Wj971DC4NTnBHmHHN4F3u/I6HBQFoidtOetDNuLqOK9a0j1fm7mXPgX+o/ROGN/AVUR
+        ZF9jQ9YWAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>White</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>215, 76</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
+    <value>Crystal
+ Parameter (C)</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
+    <value>Display the detailed crystal information</value>
+  </data>
+  <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAYAAAC4JqlRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAPzSURBVFhHxVdtS5RBFPWH9B8EP0h96IPhh8APQVGEYFAQ
+        CEkREkaBICQhRRgFQYVg9IK90AvRkhaWvRpIlkaBRJEkFRhGLxhIp3POzO4+Prubu0V64LLP3Jm598yd
+        OzN3q4oBr14BNTWIzcUHuruBZcuATGZpSKCpCTh4EGhvXyICdXXA5CTQ0PBPBPD9O3DiRHk2tFpcuuTB
+        2f1P5gFmZ8syhOFhYM+eMJ+/qK4GRkbydj59KrSD8XF41bW1wPS0f62vr89PlDHmRmyWhKKmeXj2zImM
+        K1eAtra8ndWrgc7O+XbQ0QH09NiBDTQ2BgJbtwZDc3NhJQlCxaAoedyZM8CGDUG4YqxcGexNTAT7K1ak
+        CGjlmixRJGjAeu6fSSmsItPaCkXLk4oADx+GcV++2CkGBoIdORWRU6eAri6gpQUYGgp2MDgIZb0bKeDN
+        G2RDpvzQJJGI3QVwJOPRVQL6d+5ncKw+kZNNEV23LhJguKV0owjQ3Jwb7K3gt3U7dswXGc8ajcAP5tO5
+        NfBp0DyOiV1VjiaJxWZp2GniBHibdESLifo+vwYeHAiEh/YBvauAd/fm2fgreDVfpxY0grsM9cnlgcDF
+        jcCL88DTnvwCxs4BH8cqJ4OrW4CbOxcm0LfWEcDkI+Ask+/DKHB7b54AyeHW7soI4Be34TSTkfsZVSXh
+        PX/JhKUTXGeuKHKXN3keZt4G3YX1FRLQxBvbLFFVFNoiXGMyKg+00keHguNI3Lmg6JCQTod0ZcET7+8P
+        MpW/VtNQXzbczoVvH8N3/y479P4/Pw08Pgy8vVMBgdHekEyv+6HvqC6AHVBiMweMHAcmMrxHeCpEUvnx
+        5GgFBAb5UCm8szNQZkd1Abzv3PPYzAHvn4SciHPx8yuUrKFTq1O4JHKkJElLZnvOqE5CbnxSNDcxLg2f
+        ong/CMoPRTV3vrPiTqpAvx6ZgvcyMT4pcci/A30kwIoMfLyianEBPv3gowi+IVG1uACfcVyn8L2IqsUF
+        +JSDzzd4+UXV/weO0OFAcAhWUsnfSgD+pQAPRWwWQAkeP/PwaulMK3ebBZJ/Y7sSgM8+WBKWSmDnF5+K
+        2AwASzix1tFT4oGPmPWsVUTOg8oAWA6IPFjwlMofLzS9teD/EPCGBItjHz8WONa38Zs3qAeVAc+nLX8r
+        j0jIHRGOtBZFArk+s2Yh6wYB1qAi4+8YGXeUAUePf6j8zWo8fZk5MrwwHe3sEVfilbz1WGVVchLAlzhL
+        XtA24BiFRbLbcsz9N5G4zSFpmLluFIG3h0WxVvZHkXEmX5xmOLpyuDkKnYoMWN+YLG9cls+lnQvqN+Ny
+        pNgRi7DjRE6YRCpHlgBVVb8B2AfzSY/j4+kAAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>White</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 76</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
+    <value>Profile
+ Parameter (P)</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
+    <value>Display the detailde profile parameters </value>
+  </data>
+  <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAANTSURBVFhH7ZfvS1NRGMf9Q4KQCEUkYxBzP+6VCkYq3EHI
+        tIRctDcVSIUQYU4QAimiyMTKoMgfhVPJ7YVRuRJfiF4IRJCFSoFNUBNxWIRBT8957jlnu+6mOXVv6oEv
+        3t3LzudznnPuUXN2UpBIAIyPU/it7BbBi4sp/FZ2698WgNZWCZfp6MieCG1Aj8ckwB/tbR07eh/6+oFg
+        qUsAQ0N7K7C+DmALPoO86EdQ1NsyutMLCYcKKl6nRvM+hfrrEzA6ugrsu3yYzEpR68AeuAP7ACi58RVw
+        VD4mAZ/aBJeVq2kCaklqHmYuwOCusgaEfoWCgVGCsi4wEVswQp/T4DweTxfBMxI4UdqIg9dRDsTmCLg/
+        8U3OnMHFtRVcVQ1wxgKKGsbBwzjrzwRXSsJQ2DVtzLxxBj/rFM07humRYI+n24CL7ETAVTZIwMLOaZJh
+        ErbGWXBUTRC8ILzIO/MT8t8tI0g3w1PCh9266NWKxw0gl8iNr1EnDIkxgufGf0AeQkUnih7M4VKtWcJZ
+        aGwclyCblTjhhICQOKgvImAFYSNw+NYnmrWAi7BuWMHL1BaA2loAv99agD2QB0p5eZqAiD0wjD/f4l6Y
+        p6TCmRTrykZ40H0tbWwRjrcWOFPTnyYgYgvOEEzAXeUfqCNHrsSwW09wuabw+Socb4smx00ZW4TjzSWW
+        4PTJIYKVqj1wSblnik99RestOsFk2IY0OjFMcDeK5EdnoWhgEqLOUwa0ulr+AcPCkeYSm7C9fUrOOOo8
+        azLvdDXgfZ1mLCK64ajsNl5bbD/rhtgXsc4RgObmrTehKF1fkAIDrvPwHc/7jQIUDmZ7gHWFgfNw5ixi
+        OZhAJDL393BWr98sEfymu0mChUTM6UsKcIlD+BrSa4kwe6BPdkEkFFrensDS0i/8YhjOKY+kgI5rGXXW
+        oIAXn4UwvTKOqve0Ee2Bl6ZlELlwcWR7AqzEEjAJ3VmN1wwaggb3DXltlhjE1k/iUnzBN+U53quX4UNu
+        r4RAEmaVpIBS0gua1o7XSbDf35YZnJWCr5s1dGOSEpr3Bf7cwaw3K12fh5YW/A2osfZaS2haBCoq7u4+
+        XBTEYnJTUv50vu9V0Unp8xnHKku2BVil/k/Ab2W3/gvsXuXk/AZjDDpJOQqaYgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>White</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 76</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
+    <value>Equation of
+ State (E)</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
+    <value>Calculate the pressure using equation of state</value>
+  </data>
+  <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAALDSURBVFhHvVe/ixNBGBX8AyR9sIjNIRGLK1MJB0rAwmKL
+        YOlxpLCw2/8gBBHsAkEtVySNCCmEFBZb2KRa1EZSLAhndSwWHofFc963803G5WJuk0zeELIzs7n3/Xjf
+        N3PXtkGCBCMz7HS/KFCgbUbfDru8P9BzEmdm0BC7vD900UVuBp+baO7fAN9r35jgiGNgMIDxeen1AOWw
+        03BIU0PcBA7af4zPXUc4xRQ9M+w0HNT7h/FX3B98coQpUnTMsNNw6HQgJPeSV3jUO/+HMLgQi6IMP58P
+        0mOoMYrgpcj8d7sw7acQAaoxCl8TQcDc86OCq0YgeCX0ekCeA7EZJOr3gSRZGsFzIWhLbrdLMlX7aAQx
+        gs8EW3LQSmDONf+cqyZk08KvBIzHJlzxbgxSMuZfxeZXhcKPgHkAGo3dGMBcM9yaf7vs0qLgPrWA+VzI
+        cXKymyiQnFGo1roK005dS8ZkAhweCjmNsNubg6HmaVftdhQiS9NO5ZLCd4SYn9lMDLHbmyHLyvDrBcQu
+        C+h9VYjUiHi/WABnZ9zczgA6IkRm8NCxyw5VHVAjPulWQlSlk7gafgWj4+vg+/wdisb1pQHbpID5JQG9
+        X3X7ZYr8NGA4xMfohrshbVwJvvfrTjoaoFFAq4UPi5ditMzZkI6O6hvge39Z7n1ooxLhGU6u0WhGYSMh
+        svHwtGNTueo5z/enx++BKJL3+VsXhToRUHIeLhTeVW+71AJTNn3z073P1szmJI3JGrYSDCNLTsk1hHZ7
+        LZjr7O7j0gjDyTVtTJKKVeXIbsZaZr5fJ79F7bS8Fjl7v/miBhgJtmj+TX4/T37gdv4A2fjp5WJkruSC
+        YQaJ6/6z6Q4eE2a75EBjKOYv+S/Rw7foDi5alX7CcFPl65ReBetdWq7JLT23y/8FuebRLWlUn6ObeDt7
+        UotzZ2Bp5pMXOB0+w1+nY/9oy5YWAAAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ImageScaling" type="System.Windows.Forms.ToolStripItemImageScaling, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>White</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>250, 76</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
+    <value>Fitting Diffraction
+ Peaks (F)</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
+    <value>Fit the diffraction peaks</value>
+  </data>
+  <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonCellFinder.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>140, 76</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Text" xml:space="preserve">
+    <value>Cell Finder</value>
+  </data>
+  <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripSeparator11.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.Size" type="System.Drawing.Size, System.Drawing">
+    <value>186, 76</value>
+  </data>
+  <data name="toolStripButtonStressAnalysis.Text" xml:space="preserve">
+    <value>Stress Analysis</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>278, 76</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Text" xml:space="preserve">
+    <value>Atomic Position Finder</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>6, 82</value>
+  </data>
+  <data name="toolStripButtonLPO.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
+        0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
+        bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
+        VzOOpHI7Jr376Hi9ogHqFIANO0/MmmmbmSmm9a8ze+I4MrNWAdjtoJgWcx+PSzg166yZZ8xM8XvXDix9
+        c4jIqFYAjoriBV9AhEPv1mH/sonogha0afbZMMZz+yreTGyhpusHwtNNCsA5U1zS4BLxzJIfg299qO32
+        Ir7UJtZfftyATqeT+8o2D8JSjQrAJblrncYL7ZJ2+bfaFnC/1S1NjL3diRat7qrO7wLRP3HjWsojBeCo
+        mDEo5mNjuweFGvjWg2EBhCbpkW78htSHHwRyNdmgAFzPEee2iFkzayy2OLXzT4gr6UdUnlXrullsxxQ+
+        kx0g8BTA3aZlButjSTyjODq/WcQcW/B/Je4OQhLvKQDnzN1mp0nnkvAhR8VuMzNrpm1mpjgkoVwB/v8D
+        TgDQASA1MVpwzwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolStripButtonLPO.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Magenta</value>
+  </data>
+  <data name="toolStripButtonLPO.Size" type="System.Drawing.Size, System.Drawing">
+    <value>413, 76</value>
+  </data>
+  <data name="toolStripButtonLPO.Text" xml:space="preserve">
+    <value>Lattice Preferred Orientation Analysis</value>
+  </data>
+  <data name="toolStripButtonLPO.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 0</value>
+  </data>
+  <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1245, 82</value>
+  </data>
+  <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
+    <value>41</value>
+  </data>
+  <data name="toolStrip2.Text" xml:space="preserve">
+    <value>toolStrip1</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Name" xml:space="preserve">
+    <value>toolStrip2</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.Parent" xml:space="preserve">
+    <value>toolStripContainer1.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStrip2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>10, 10</value>
+  </metadata>
+  <data name="menuStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="readPatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>694, 44</value>
@@ -3902,12 +3125,6 @@
   </data>
   <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Profile(s)</value>
-  </data>
-  <data name="toolStripMenuItemExportExcelFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
-  </data>
-  <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
-    <value>Export the selected Profile(s)</value>
   </data>
   <data name="asCSVcommaSeperatedFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>572, 44</value>
@@ -3926,6 +3143,12 @@
   </data>
   <data name="asGSASFileToolStripMenuItem.Text" xml:space="preserve">
     <value>as GSAS file</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>694, 44</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
+    <value>Export the selected Profile(s)</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
     <value>691, 6</value>
@@ -3993,12 +3216,6 @@
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
     <value>691, 6</value>
   </data>
-  <data name="コピーToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
-  </data>
-  <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy to Clipboard</value>
-  </data>
   <data name="BitmapToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
@@ -4013,6 +3230,12 @@
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>as Metafile data</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>694, 44</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copy to Clipboard</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
     <value>694, 44</value>
@@ -4029,14 +3252,14 @@
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
     <value>Close</value>
   </data>
-  <data name="optionToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 40</value>
+  <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 40</value>
   </data>
-  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
-    <value>Option</value>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>File</value>
   </data>
   <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 44</value>
@@ -4050,12 +3273,6 @@
   <data name="watchReadClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>Watch Clipboard</value>
   </data>
-  <data name="watchReadANewProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
-  </data>
-  <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Watch File</value>
-  </data>
   <data name="setDirectoryToTheWatchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>449, 44</value>
   </data>
@@ -4067,6 +3284,12 @@
   </data>
   <data name="toolStripTextBoxDirectoryToWatch.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 39</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>339, 44</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Watch File</value>
   </data>
   <data name="clearRegistryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>339, 44</value>
@@ -4083,11 +3306,14 @@
   <data name="ngenCompileToolStripMenuItem.Text" xml:space="preserve">
     <value>Ngen Compile</value>
   </data>
-  <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 40</value>
+  <data name="optionToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
-    <value>Macro</value>
+  <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>115, 40</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Option</value>
   </data>
   <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 44</value>
@@ -4095,14 +3321,11 @@
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>Editor</value>
   </data>
-  <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 40</value>
   </data>
-  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 40</value>
-  </data>
-  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
-    <value>Help</value>
+  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
+    <value>Macro</value>
   </data>
   <data name="aboutMeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>349, 44</value>
@@ -4128,11 +3351,14 @@
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>Help (web)</value>
   </data>
-  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 40</value>
+  <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
-    <value>Language</value>
+  <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>88, 40</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Help</value>
   </data>
   <data name="englishToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -4168,6 +3394,63 @@
   </data>
   <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
     <value>Japanese (need restart)</value>
+  </data>
+  <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>147, 40</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 82</value>
+  </data>
+  <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1938, 44</value>
+  </data>
+  <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>23</value>
+  </data>
+  <data name="menuStrip.Text" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Name" xml:space="preserve">
+    <value>menuStrip</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.Parent" xml:space="preserve">
+    <value>toolStripContainer1.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;menuStrip.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Name" xml:space="preserve">
+    <value>toolStripContainer1.TopToolStripPanel</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.Parent" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.TopToolStripPanel.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Name" xml:space="preserve">
+    <value>toolStripContainer1</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripContainer, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;toolStripContainer1.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="button2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -5736,6 +5019,96 @@
   <data name="&gt;&gt;bindingSourceCrystal.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;toolStripButtonCrystalParameter.Name" xml:space="preserve">
+    <value>toolStripButtonCrystalParameter</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonCrystalParameter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
+    <value>toolStripSeparator4</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonProfileParameter.Name" xml:space="preserve">
+    <value>toolStripButtonProfileParameter</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonProfileParameter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
+    <value>toolStripSeparator6</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonEquationOfState.Name" xml:space="preserve">
+    <value>toolStripButtonEquationOfState</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonEquationOfState.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
+    <value>toolStripSeparator8</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonFittingParameter.Name" xml:space="preserve">
+    <value>toolStripButtonFittingParameter</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonFittingParameter.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
+    <value>toolStripSeparator5</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonCellFinder.Name" xml:space="preserve">
+    <value>toolStripButtonCellFinder</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonCellFinder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
+    <value>toolStripSeparator11</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonStressAnalysis.Name" xml:space="preserve">
+    <value>toolStripButtonStressAnalysis</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonStressAnalysis.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonAtomicPositonFinder.Name" xml:space="preserve">
+    <value>toolStripButtonAtomicPositonFinder</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonAtomicPositonFinder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
+    <value>toolStripSeparator10</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator12.Name" xml:space="preserve">
+    <value>toolStripSeparator12</value>
+  </data>
+  <data name="&gt;&gt;toolStripSeparator12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonLPO.Name" xml:space="preserve">
+    <value>toolStripButtonLPO</value>
+  </data>
+  <data name="&gt;&gt;toolStripButtonLPO.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
   </data>
@@ -5999,96 +5372,6 @@
   </data>
   <data name="&gt;&gt;japaneseToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonCrystalParameter.Name" xml:space="preserve">
-    <value>toolStripButtonCrystalParameter</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonCrystalParameter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Name" xml:space="preserve">
-    <value>toolStripSeparator4</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonProfileParameter.Name" xml:space="preserve">
-    <value>toolStripButtonProfileParameter</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonProfileParameter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator6.Name" xml:space="preserve">
-    <value>toolStripSeparator6</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonEquationOfState.Name" xml:space="preserve">
-    <value>toolStripButtonEquationOfState</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonEquationOfState.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Name" xml:space="preserve">
-    <value>toolStripSeparator8</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonFittingParameter.Name" xml:space="preserve">
-    <value>toolStripButtonFittingParameter</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonFittingParameter.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Name" xml:space="preserve">
-    <value>toolStripSeparator5</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonCellFinder.Name" xml:space="preserve">
-    <value>toolStripButtonCellFinder</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonCellFinder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator11.Name" xml:space="preserve">
-    <value>toolStripSeparator11</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonAtomicPositonFinder.Name" xml:space="preserve">
-    <value>toolStripButtonAtomicPositonFinder</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonAtomicPositonFinder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator10.Name" xml:space="preserve">
-    <value>toolStripSeparator10</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonStressAnalysis.Name" xml:space="preserve">
-    <value>toolStripButtonStressAnalysis</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonStressAnalysis.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator12.Name" xml:space="preserve">
-    <value>toolStripSeparator12</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonLPO.Name" xml:space="preserve">
-    <value>toolStripButtonLPO</value>
-  </data>
-  <data name="&gt;&gt;toolStripButtonLPO.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>

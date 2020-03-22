@@ -4210,7 +4210,14 @@ namespace PDIndexer
                             MessageBox.Show($"Failed to downlod {Path}. \r\nSorry!", "Error!");
                     };
                     stopwatch.Restart();
-                    wc.DownloadFileAsync(new Uri(URL), Path);
+                    try
+                    {
+                        wc.DownloadFileAsync(new Uri(URL), Path);
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/PDindexer/releases/latest", Error);
+                    }
                 }
         }
 
