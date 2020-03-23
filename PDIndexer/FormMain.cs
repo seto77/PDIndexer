@@ -661,8 +661,7 @@ namespace PDIndexer
 
             initialDialog.Text = "Now Loading... Initializing file system watcher.";
             //ファイル更新監視
-            watcher = new System.IO.FileSystemWatcher();
-            watcher.IncludeSubdirectories = true;
+            watcher = new FileSystemWatcher            {                IncludeSubdirectories = true            };
             watcher.Created += new System.IO.FileSystemEventHandler(watcher_Created);
             watcher.Path = "";
             watcher.EnableRaisingEvents = false;
@@ -3732,12 +3731,10 @@ namespace PDIndexer
                     dp.ForEach(d =>
                     {
                         var filename = $"{dlg.FileName.Substring(0, dlg.FileName.Length-4)} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
-                        using (StreamWriter writer = new StreamWriter(filename))
-                        {
-                            writer.WriteLine($"X{s}Y");//一行目
-                            for (int i = 0; i < d.Profile.Pt.Count; i++)
-                                writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}");
-                        }
+                        using var writer = new StreamWriter(filename);
+                        writer.WriteLine($"X{s}Y");//一行目
+                        for (int i = 0; i < d.Profile.Pt.Count; i++)
+                            writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}");
                     });
             }
         }
@@ -4132,7 +4129,7 @@ namespace PDIndexer
             
             for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
             {
-                DiffractionProfile d = dataSet.DataTableProfile.Items[i];
+                var d = dataSet.DataTableProfile.Items[i];
                 d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
             }
             SetDrawRangeLimit();
@@ -4281,20 +4278,14 @@ namespace PDIndexer
 
         private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (var grfx = CreateGraphics())
-            {
-                var ipHdc = grfx.GetHdc();
-                using (var ms = new MemoryStream())
-                {
-                    using (var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual))
-                    {
-                        grfx.ReleaseHdc(ipHdc);
-                        grfx.Dispose();
-                        DrawMetafile(mf);
-                        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
-                    }
-                }
-            }
+            using var grfx = CreateGraphics();
+            var ipHdc = grfx.GetHdc();
+            using var ms = new MemoryStream();
+            using var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
+            grfx.ReleaseHdc(ipHdc);
+            grfx.Dispose();
+            DrawMetafile(mf);
+            ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
         }
 
         /* http://classicalprogrammer.wikidot.com/copy-gdi-drawing-to-clipboard */
