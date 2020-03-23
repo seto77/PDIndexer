@@ -7,11 +7,13 @@
 
 ## Main features
 * Works with diffractometry of (synchrotron-) X-ray or neutron-TOF.
-  * Displays and processes profile(s) (smoothing, removal of K_alpha2, interpolation...) 
+  * Displays profile(s) and processes it (e.g., smoothing, removal of K_alpha2, interpolation...) 
   * Supports many file formats (e.g., csv, tsv, ras, nxs, npd, chi, xbm, rpt, ...).
-* Fitting of diffraction peaks of crystals.
-  * Includes crystal database function. Initially ~80 crystal data are bundled. 
-  * CIF and AMCSD data acceptable.
+  * Possible to receive a profile from IPAnalyzer (https://github.com/seto77/IPanalyzer/) via clipboard.
+  
+* Fitting of diffraction peaks.
+  * Includes crystal database function. ~80 crystal data are initially bundled. 
+  * Accepts import/export CIF and AMCSD formats.
   * Calculates pressure using EOS (equation of states)
   
 ## Screenshots
