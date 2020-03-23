@@ -5753,7 +5753,7 @@ new ElasticScattering(  1.59158 ,   2.99874 ,   0.556367    ,   3.41054 ,   0.18
 		#endregion
 
 		public static readonly Complex[][] NeutronCoherentScattering = new Complex[][]{
-			#region
+			#region 単位はfm
 					new Complex[]{new Complex(  0   ,   0   )},
 					new Complex[]{new Complex(  -3.739  ,   0   ),
 					new Complex(    -3.7406 ,   0   ),
