@@ -1,9 +1,10 @@
 # PDIndexer
 
-The software *PDIndexer* is a windows application (.Net Framework 4.8), which analyzes powder diffraction patterns.
+* *PDIndexer* is powder diffraction patterns.
 
 ## Install
-Access https://github.com/seto77/PDIndexer/releases/latest, download *PDIndexerSetup.msi*, and execute it.
+* Windows application (.Net Framework 4.8).
+* Access https://github.com/seto77/PDIndexer/releases/latest, download *PDIndexerSetup.msi*, and execute it.
 
 ## Main features
 * something
