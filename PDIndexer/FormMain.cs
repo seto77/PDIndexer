@@ -2558,7 +2558,7 @@ namespace PDIndexer
 
                 if (i == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
                 {
-                    if (MessageBox.Show("Now loading multiple profiles. Do you continue to use this setting?",
+                    if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following pfofiles?",
                         "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         showFormDataConverter = false;
                 }
@@ -2588,6 +2588,8 @@ namespace PDIndexer
                 _ => (int)FileType.OTHRES,
             };
 
+
+            //pdi, ras, nxs 形式の時. csvは拡張の場合
             if (ext == "pdi" || ext == "ras" || ext == "csv" || ext == "nxs")
             {
                 var dp = new List<DiffractionProfile>();
@@ -2651,40 +2653,44 @@ namespace PDIndexer
                                 }
                             }
                         }
-                        if (dp.Count == 0)
-                            return;
 
-                        for (int i = 0; i < dp.Count; i++)
-                        {
-                            dp[i].WaveSource = formDataConverter.WaveSource;
-                            dp[i].WaveColor = formDataConverter.WaveColor;
-                            dp[i].SrcWaveLength = formDataConverter.Wavelength;
-                            dp[i].SrcTakeoffAngle = formDataConverter.TakeoffAngle;
-                            dp[i].SrcAxisMode = formDataConverter.AxisMode;
-                            dp[i].XrayElementNumber = formDataConverter.XraySourceElementNumber;
-                            dp[i].XrayLine = formDataConverter.XrayLine;
-                            dp[i].ExposureTime = formDataConverter.ExposureTime;
-                            dp[i].SubtractBackground = false;
-                        }
+                        if (dp.Count > 0)
+                            for (int i = 0; i < dp.Count; i++)
+                            {
+                                dp[i].WaveSource = formDataConverter.WaveSource;
+                                dp[i].WaveColor = formDataConverter.WaveColor;
+                                dp[i].SrcWaveLength = formDataConverter.Wavelength;
+                                dp[i].SrcTakeoffAngle = formDataConverter.TakeoffAngle;
+                                dp[i].SrcAxisMode = formDataConverter.AxisMode;
+                                dp[i].XrayElementNumber = formDataConverter.XraySourceElementNumber;
+                                dp[i].XrayLine = formDataConverter.XrayLine;
+                                dp[i].ExposureTime = formDataConverter.ExposureTime;
+                                dp[i].SubtractBackground = false;
+                            }
                     }
                 }
-                
+
                 #endregion
 
-                radioButtonMultiProfileMode.Checked = dp.Count > 1;
+                if (dp.Count > 0)
+                {
+                    radioButtonMultiProfileMode.Checked = dp.Count > 1;
 
-                //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
-                skipAxisPropertyChangedEvent = true;
-                for (int i = 0; i < dp.Count - 1; i++)
-                    AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
-                skipAxisPropertyChangedEvent = false;
-                AddProfileToCheckedListBox(dp[dp.Count - 1], checkBoxAll.Checked, true);
+                    //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
+                    skipAxisPropertyChangedEvent = true;
+                    for (int i = 0; i < dp.Count - 1; i++)
+                        AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
+                    skipAxisPropertyChangedEvent = false;
+                    AddProfileToCheckedListBox(dp[dp.Count - 1], checkBoxAll.Checked, true);
 
-                Text = $"PDIndexer   {Version.VersionAndDate}   {dp[dp.Count - 1].Name}";
+                    Text = $"PDIndexer   {Version.VersionAndDate}   {dp[dp.Count - 1].Name}";
+
+                    return;
+                }
             }
-            //pdi,ras, 拡張csv, nxs 形式ではないとき
-            else
-            {
+            //pdi,ras, nxs 形式ではないとき. csvは通常の場合はこちらに入ってくる
+            if (ext != "pdi" && ext != "ras" && ext != "nxs")
+                {
                 var strList = new List<string>();
                 using (var reader = new StreamReader(fileName))
                     while (!reader.EndOfStream)
@@ -2929,7 +2935,7 @@ namespace PDIndexer
                     {
                         FileProperties[(int)FileType.OTHRES] = formDataConverter.GetProperty();
 
-                        if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ',')) != null)
+                        if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ',')) == null)
                             if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ' ')) == null)
                                 if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, '\t')) == null)
                                     return;
