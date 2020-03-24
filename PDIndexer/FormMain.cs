@@ -549,12 +549,13 @@ namespace PDIndexer
             initialDialog.Text = "Now Loading... Initializing 'Peak Fitting' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.45);
             formFitting = new FormFitting();
-            this.AddOwnedForm(formFitting);
+            
             formFitting.formMain = this;
             formFitting.Opacity = 0;
             formFitting.Visible=true;
             formFitting.Visible = false;
             formFitting.Opacity = 1;
+            this.AddOwnedForm(formFitting);
 
             initialDialog.Text = "Now Loading... Initializing 'LPO' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.55);
@@ -2731,69 +2732,67 @@ namespace PDIndexer
                 {
                     formDataConverter.SetProperty(FileProperties[(int)FileType.XBM]);
 
-                    using (var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read)))
+                    using var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
+                    var getString = new Func<int, int, string>((position, count) =>
                     {
-                        var getString = new Func<int, int, string>((position, count) =>
+                        char[] temp = new char[count];
+                        br.BaseStream.Position = position;
+                        br.Read(temp, 0, temp.Length);
+                        return new string(temp).TrimEnd();
+                    });
+
+                    var getDouble = new Func<int, double>((position) =>
+                    {
+                        br.BaseStream.Position = position;
+                        return br.ReadDouble();
+                    });
+
+                    var getInt16 = new Func<int, short>((position) =>
+                    {
+                        br.BaseStream.Position = position;
+                        return br.ReadInt16();
+                    });
+
+                    diffProf.Comment = "Sample name: " + getString(0x4, 64);
+                    diffProf.Comment += "\r\nProfile number: " + getString(0x44, 64);
+                    diffProf.Comment += "\r\nDate,Time,Span: " + getString(0x84, 8) + ", " + getString(0x8c, 6) + ", " + getString(0x92, 6);
+                    diffProf.Comment += "\r\nOperator name: " + getString(0x98, 30);
+                    diffProf.Comment += "\r\nComment: " + getString(0xB6, 100);
+                    diffProf.Comment += "\r\nEGC1,2,3: " + getDouble(0x59A) + ", " + getDouble(0x5A2) + ", " + getDouble(0x5AA);
+                    diffProf.Comment += "\r\n2Theta(deg): " + getDouble(0x05B2);
+                    diffProf.Comment += "\r\nLive/Real time (sec): " + getDouble(0x05F4) + "/" + getDouble(0x05EC);
+                    diffProf.Comment += "\r\nDead time (%): " + getDouble(0x0686);
+                    diffProf.Comment += "\r\nTemperature (degC): " + getDouble(0x05D2);
+                    diffProf.Comment += "\r\nRing current (mA): " + getDouble(0x05C2) * 10;
+                    diffProf.Comment += "\r\nCounting rate: " + getDouble(0x05E2);
+                    diffProf.Comment += "\r\nPress conditions X:NA, Y:NA, Z:NA, Phi(deg): " + getDouble(0x0616);
+                    diffProf.Comment += "\r\nIncident slit conditions (mm) V: " + getDouble(0x068E) + ", H: " + getDouble(0x0696);
+                    diffProf.Comment += "\r\nReceiving slit conditions (mm) V: " + getDouble(0x06B6) + ", H: " + getDouble(0x06BE) + ", Collimator:NA";
+                    diffProf.Comment += "\r\nHeating conditions  V(V): " + getDouble(0x05BA) + ", C(A): " + getDouble(0x06E6) + ", P(W): " + getDouble(0x066E) + ", R(OHM): " + getDouble(0x0676);
+
+                    formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
+                    formDataConverter.ExposureTime = getDouble(0x05F4);
+
+                    formDataConverter.EGC0 = getDouble(0x59A);
+                    formDataConverter.EGC1 = getDouble(0x5A2);
+                    formDataConverter.EGC2 = getDouble(0x5AA);
+                    formDataConverter.VisibleEDXSetting = true;
+
+                    int length = getInt16(0x814);
+                    br.BaseStream.Position = 0x816;
+
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
+                    {
+                        FileProperties[(int)FileType.XBM] = formDataConverter.GetProperty();
+                        for (int n = 1; n < length; n++)
                         {
-                            char[] temp = new char[count];
-                            br.BaseStream.Position = position;
-                            br.Read(temp, 0, temp.Length);
-                            return new string(temp).TrimEnd();
-                        });
-
-                        var getDouble = new Func<int, double>((position) =>
-                        {
-                            br.BaseStream.Position = position;
-                            return br.ReadDouble();
-                        });
-
-                        var getInt16 = new Func<int, short>((position) =>
-                        {
-                            br.BaseStream.Position = position;
-                            return br.ReadInt16();
-                        });
-
-                        diffProf.Comment = "Sample name: " + getString(0x4, 64);
-                        diffProf.Comment += "\r\nProfile number: " + getString(0x44, 64);
-                        diffProf.Comment += "\r\nDate,Time,Span: " + getString(0x84, 8) + ", " + getString(0x8c, 6) + ", " + getString(0x92, 6);
-                        diffProf.Comment += "\r\nOperator name: " + getString(0x98, 30);
-                        diffProf.Comment += "\r\nComment: " + getString(0xB6, 100);
-                        diffProf.Comment += "\r\nEGC1,2,3: " + getDouble(0x59A) + ", " + getDouble(0x5A2) + ", " + getDouble(0x5AA);
-                        diffProf.Comment += "\r\n2Theta(deg): " + getDouble(0x05B2);
-                        diffProf.Comment += "\r\nLive/Real time (sec): " + getDouble(0x05F4) + "/" + getDouble(0x05EC);
-                        diffProf.Comment += "\r\nDead time (%): " + getDouble(0x0686);
-                        diffProf.Comment += "\r\nTemperature (degC): " + getDouble(0x05D2);
-                        diffProf.Comment += "\r\nRing current (mA): " + getDouble(0x05C2) * 10;
-                        diffProf.Comment += "\r\nCounting rate: " + getDouble(0x05E2);
-                        diffProf.Comment += "\r\nPress conditions X:NA, Y:NA, Z:NA, Phi(deg): " + getDouble(0x0616);
-                        diffProf.Comment += "\r\nIncident slit conditions (mm) V: " + getDouble(0x068E) + ", H: " + getDouble(0x0696);
-                        diffProf.Comment += "\r\nReceiving slit conditions (mm) V: " + getDouble(0x06B6) + ", H: " + getDouble(0x06BE) + ", Collimator:NA";
-                        diffProf.Comment += "\r\nHeating conditions  V(V): " + getDouble(0x05BA) + ", C(A): " + getDouble(0x06E6) + ", P(W): " + getDouble(0x066E) + ", R(OHM): " + getDouble(0x0676);
-
-                        formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
-                        formDataConverter.ExposureTime = getDouble(0x05F4);
-
-                        formDataConverter.EGC0 = getDouble(0x59A);
-                        formDataConverter.EGC1 = getDouble(0x5A2);
-                        formDataConverter.EGC2 = getDouble(0x5AA);
-                        formDataConverter.VisibleEDXSetting = true;
-
-                        int length = getInt16(0x814);
-                        br.BaseStream.Position = 0x816;
-
-                        if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
-                        {
-                            FileProperties[(int)FileType.XBM] = formDataConverter.GetProperty();
-                            for (int n = 1; n < length; n++)
-                            {
-                                double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n + formDataConverter.EGC2 * n * n) * 1000;
-                                double y = br.ReadUInt32();
-                                diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
-                            }
+                            double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n + formDataConverter.EGC2 * n * n) * 1000;
+                            double y = br.ReadUInt32();
+                            diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
                         }
-                        else
-                            return;
                     }
+                    else
+                        return;
                 }
                 #endregion
 
@@ -2803,11 +2802,11 @@ namespace PDIndexer
                     formDataConverter.SetProperty(FileProperties[(int)FileType.RPT]);
 
                     //TakeoffAngle
-                    formDataConverter.TakeoffAngleText = strList[strList.Count - 4].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[0];
-                    formDataConverter.ExposureTime = Convert.ToDouble(strList[strList.Count - 5].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                    formDataConverter.TakeoffAngleText = strList[strList.Count - 4].Split(',')[0];
+                    formDataConverter.ExposureTime = Convert.ToDouble(strList[strList.Count - 5].Split(' ' )[1]);
 
-                    formDataConverter.EGC0 = Convert.ToDouble(strList[strList.Count - 1].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[0]);
-                    formDataConverter.EGC1 = Convert.ToDouble(strList[strList.Count - 1].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                    formDataConverter.EGC0 = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[0]);
+                    formDataConverter.EGC1 = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[1]);
 
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
@@ -2815,7 +2814,7 @@ namespace PDIndexer
                         int n = 1;
                         for (int i = 1; i < strList.Count - 6; i++)
                         {
-                            var str = strList[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                            var str = strList[i].Split( ' ');
                             for (int j = 0; j < str.Length; j++)
                             {
                                 double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n) * 1000;
@@ -2839,15 +2838,15 @@ namespace PDIndexer
                     for (int i = 0; i < strList.Count || i < 25; i++)
                     {
                         if (strList[i].StartsWith("EGC0"))
-                            formDataConverter.EGC0 = Convert.ToDouble(strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                            formDataConverter.EGC0 = strList[i].Split(',')[1].ToDouble();
                         if (strList[i].StartsWith("EGC1"))
-                            formDataConverter.EGC1 = Convert.ToDouble(strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                            formDataConverter.EGC1 = strList[i].Split(',')[1].ToDouble();
                         if (strList[i].StartsWith("EGC2"))
-                            formDataConverter.EGC2 = Convert.ToDouble(strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                            formDataConverter.EGC2 = strList[i].Split(',')[1].ToDouble();
                         if (strList[i].StartsWith("2Theta"))
-                            formDataConverter.TakeoffAngleText = strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1];
+                            formDataConverter.TakeoffAngleText = strList[i].Split(',')[1];
                         if (strList[i].StartsWith("Live time"))
-                            formDataConverter.ExposureTime = Convert.ToDouble(strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                            formDataConverter.ExposureTime = strList[i].Split(',')[1].ToDouble();
                     }
 
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
@@ -2858,13 +2857,12 @@ namespace PDIndexer
                             int length = 0;
                             if (strList[i].StartsWith("Data length"))
                             {
-                                length = Convert.ToInt32(strList[i].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]);
+                                length = strList[i].Split( ',' )[1].ToInt();
 
                                 for (int j = i + 2; j < i + 2 + length; j++)
                                 {
-
-                                    double x = Convert.ToDouble(strList[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[1]) * 1000;
-                                    double y = Convert.ToDouble(strList[j].Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)[2]);
+                                    var x = Convert.ToDouble(strList[j].Split(',')[1]) * 1000;
+                                    var y = Convert.ToDouble(strList[j].Split(',')[2]);
                                     if (x > formDataConverter.LowEnergyCutoff)
                                         diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
                                 }
@@ -2891,7 +2889,7 @@ namespace PDIndexer
                             {
                                 for (int j = i + 1; j < strList.Count - 1; j++)
                                 {
-                                    var str = strList[j].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+                                    var str = strList[j].Split( ' ' );
                                     var x = Convert.ToDouble(str[0]);
                                     var y = Convert.ToDouble(str[1]);
                                     var err = Convert.ToDouble(str[2]);
