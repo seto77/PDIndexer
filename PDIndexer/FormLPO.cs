@@ -198,7 +198,7 @@ namespace PDIndexer
             int endCount = 40;
             crystal[] tempCrystals = (crystal[])crystals.Clone();//•ÏX‘O‚ğ•Û‚·‚étempCrystals
             double[] countCrystal = new double[crystals.Length];
-            WaitDlg dlg = new WaitDlg();
+            var dlg = new Crystallography.Controls.CommonDialog();
             dlg.progressBar.Maximum = endCount;
             dlg.Show();
             double residual;

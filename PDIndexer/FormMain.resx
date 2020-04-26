@@ -136,7 +136,7 @@
     <value>100, 25</value>
   </data>
   <data name="toolStripStatusLabelCalcTime.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 27</value>
+    <value>88, 26</value>
   </data>
   <data name="toolStripStatusLabelCalcTime.Text" xml:space="preserve">
     <value>Calculating Time:</value>
@@ -145,7 +145,7 @@
     <value>False</value>
   </data>
   <data name="toolStripStatusLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 27</value>
+    <value>22, 26</value>
   </data>
   <data name="toolStripStatusLabel1.Text" xml:space="preserve">
     <value>     </value>
@@ -157,7 +157,7 @@
     <value>Arial, 8.25pt</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1286, 27</value>
+    <value>629, 26</value>
   </data>
   <data name="toolStripStatusLabel2.Text" xml:space="preserve">
     <value>Ctrl+Shift+E: Equation of States; Ctrl+Shift+F: Fitting Parameter;  Ctrl+Shift+C: Crystal Parameter;  Ctrl+Shift+D:  change peak mode</value>
@@ -166,7 +166,7 @@
     <value>0, 0</value>
   </data>
   <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 37</value>
+    <value>969, 31</value>
   </data>
   <data name="statusStrip1.TabIndex" type="System.Int32, mscorlib">
     <value>24</value>
@@ -207,9 +207,6 @@
   <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="horizontalAxisUserControl.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -223,16 +220,16 @@
     <value>Microsoft Sans Serif, 9pt</value>
   </data>
   <data name="horizontalAxisUserControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 47</value>
+    <value>3, 27</value>
   </data>
   <data name="horizontalAxisUserControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="horizontalAxisUserControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>720, 600</value>
+    <value>360, 300</value>
   </data>
   <data name="horizontalAxisUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>720, 600</value>
+    <value>360, 300</value>
   </data>
   <data name="horizontalAxisUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -241,7 +238,7 @@
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -262,13 +259,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.Size" type="System.Drawing.Size, System.Drawing">
-    <value>469, 29</value>
+    <value>244, 18</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -299,13 +293,10 @@
     <value>Top</value>
   </data>
   <data name="flowLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="flowLayoutPanel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>704, 41</value>
+    <value>352, 24</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -323,16 +314,13 @@
     <value>1</value>
   </data>
   <data name="tabPage1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 50</value>
-  </data>
-  <data name="tabPage1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 26</value>
   </data>
   <data name="tabPage1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>716, 572</value>
+    <value>358, 285</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -365,13 +353,10 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonLinearity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="radioButtonLinearity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3</value>
   </data>
   <data name="radioButtonLinearity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 40</value>
+    <value>74, 21</value>
   </data>
   <data name="radioButtonLinearity.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -401,13 +386,10 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonLogarithm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 58</value>
-  </data>
-  <data name="radioButtonLogarithm.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 30</value>
   </data>
   <data name="radioButtonLogarithm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>162, 40</value>
+    <value>85, 21</value>
   </data>
   <data name="radioButtonLogarithm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -434,13 +416,10 @@
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>340, 40</value>
-  </data>
-  <data name="flowLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>170, 20</value>
   </data>
   <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 104</value>
+    <value>91, 54</value>
   </data>
   <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -470,13 +449,10 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonRawCounts.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 6</value>
-  </data>
-  <data name="radioButtonRawCounts.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3</value>
   </data>
   <data name="radioButtonRawCounts.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 40</value>
+    <value>94, 21</value>
   </data>
   <data name="radioButtonRawCounts.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -506,13 +482,10 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonCountsPerStep.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 58</value>
-  </data>
-  <data name="radioButtonCountsPerStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 30</value>
   </data>
   <data name="radioButtonCountsPerStep.Size" type="System.Drawing.Size, System.Drawing">
-    <value>288, 40</value>
+    <value>148, 21</value>
   </data>
   <data name="radioButtonCountsPerStep.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -539,13 +512,10 @@
     <value>TopDown</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 40</value>
-  </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>15, 20</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>300, 104</value>
+    <value>154, 54</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -563,16 +533,10 @@
     <value>1</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 324</value>
-  </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 162</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>620, 166</value>
+    <value>310, 83</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -614,22 +578,22 @@
     <value />
   </data>
   <data name="numericalTextBoxIncreasingPixels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 172</value>
+    <value>13, 86</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 42</value>
+    <value>500, 12</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 42</value>
+    <value>0, 12</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>2, 2, 2, 2</value>
+    <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 42</value>
+    <value>74, 25</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -641,7 +605,7 @@
     <value>numericalTextBoxIncreasingPixels</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -650,13 +614,10 @@
     <value>0</value>
   </data>
   <data name="numericUpDownIncreasingPixels.Location" type="System.Drawing.Point, System.Drawing">
-    <value>168, 172</value>
-  </data>
-  <data name="numericUpDownIncreasingPixels.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>84, 86</value>
   </data>
   <data name="numericUpDownIncreasingPixels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 42</value>
+    <value>20, 25</value>
   </data>
   <data name="numericUpDownIncreasingPixels.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -680,13 +641,10 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonMultiProfileMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 92</value>
-  </data>
-  <data name="radioButtonMultiProfileMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>6, 46</value>
   </data>
   <data name="radioButtonMultiProfileMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 40</value>
+    <value>102, 21</value>
   </data>
   <data name="radioButtonMultiProfileMode.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -713,13 +671,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxChangeColor.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 230</value>
-  </data>
-  <data name="checkBoxChangeColor.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>15, 115</value>
   </data>
   <data name="checkBoxChangeColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>352, 40</value>
+    <value>182, 21</value>
   </data>
   <data name="checkBoxChangeColor.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -746,13 +701,10 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonSingleProfileMode.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 40</value>
-  </data>
-  <data name="radioButtonSingleProfileMode.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>6, 20</value>
   </data>
   <data name="radioButtonSingleProfileMode.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 40</value>
+    <value>102, 21</value>
   </data>
   <data name="radioButtonSingleProfileMode.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -776,13 +728,10 @@
     <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 184</value>
-  </data>
-  <data name="label6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>107, 92</value>
   </data>
   <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 36</value>
+    <value>55, 18</value>
   </data>
   <data name="label6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -806,13 +755,10 @@
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 130</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>12, 65</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 36</value>
+    <value>181, 18</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -833,16 +779,10 @@
     <value>6</value>
   </data>
   <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>230, 14</value>
-  </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>115, 7</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>396, 290</value>
+    <value>198, 145</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -872,13 +812,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlScaleText.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 136</value>
+    <value>76, 68</value>
   </data>
   <data name="colorControlScaleText.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScaleText.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 36</value>
+    <value>18, 18</value>
   </data>
   <data name="colorControlScaleText.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -890,7 +830,7 @@
     <value>colorControlScaleText</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -908,13 +848,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlScaleLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 88</value>
+    <value>76, 44</value>
   </data>
   <data name="colorControlScaleLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlScaleLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 36</value>
+    <value>18, 18</value>
   </data>
   <data name="colorControlScaleLine.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -926,7 +866,7 @@
     <value>colorControlScaleLine</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -944,13 +884,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="colorControlBack.Location" type="System.Drawing.Point, System.Drawing">
-    <value>152, 40</value>
+    <value>76, 20</value>
   </data>
   <data name="colorControlBack.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlBack.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 36</value>
+    <value>18, 18</value>
   </data>
   <data name="colorControlBack.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -962,7 +902,7 @@
     <value>colorControlBack</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -974,13 +914,10 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 138</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>3, 69</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 34</value>
+    <value>73, 17</value>
   </data>
   <data name="label5.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1007,13 +944,10 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 92</value>
-  </data>
-  <data name="label2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>3, 46</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 34</value>
+    <value>73, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1040,13 +974,10 @@
     <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 44</value>
-  </data>
-  <data name="label4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>2, 22</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 34</value>
+    <value>74, 17</value>
   </data>
   <data name="label4.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1070,16 +1001,10 @@
     <value>5</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 116</value>
-  </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>6, 58</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 190</value>
+    <value>100, 95</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1106,13 +1031,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxErrorBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 62</value>
-  </data>
-  <data name="checkBoxErrorBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>5, 31</value>
   </data>
   <data name="checkBoxErrorBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 40</value>
+    <value>81, 21</value>
   </data>
   <data name="checkBoxErrorBar.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1142,13 +1064,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowScaleLine.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 12</value>
-  </data>
-  <data name="checkBoxShowScaleLine.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>5, 6</value>
   </data>
   <data name="checkBoxShowScaleLine.Size" type="System.Drawing.Size, System.Drawing">
-    <value>160, 40</value>
+    <value>84, 21</value>
   </data>
   <data name="checkBoxShowScaleLine.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1172,16 +1091,13 @@
     <value>4</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 50</value>
-  </data>
-  <data name="tabPage2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 26</value>
   </data>
   <data name="tabPage2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>716, 572</value>
+    <value>358, 285</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1205,13 +1121,10 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 62</value>
-  </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>2, 31</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>732, 630</value>
+    <value>366, 315</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -1232,13 +1145,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownMaxInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 102</value>
+    <value>55, 51</value>
   </data>
   <data name="numericUpDownMaxInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="numericUpDownMaxInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 42</value>
+    <value>90, 25</value>
   </data>
   <data name="numericUpDownMaxInt.TabIndex" type="System.Int32, mscorlib">
     <value>135</value>
@@ -1265,13 +1178,10 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>-2, 52</value>
-  </data>
-  <data name="label7.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>-1, 26</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 36</value>
+    <value>50, 17</value>
   </data>
   <data name="label7.TabIndex" type="System.Int32, mscorlib">
     <value>134</value>
@@ -1301,13 +1211,10 @@
     <value>NoControl</value>
   </data>
   <data name="label21.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 106</value>
-  </data>
-  <data name="label21.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>4, 53</value>
   </data>
   <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>106, 36</value>
+    <value>53, 17</value>
   </data>
   <data name="label21.TabIndex" type="System.Int32, mscorlib">
     <value>133</value>
@@ -1331,13 +1238,13 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownMinInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 50</value>
+    <value>55, 25</value>
   </data>
   <data name="numericUpDownMinInt.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="numericUpDownMinInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 42</value>
+    <value>90, 25</value>
   </data>
   <data name="numericUpDownMinInt.TabIndex" type="System.Int32, mscorlib">
     <value>136</value>
@@ -1364,13 +1271,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxShowUnrolledImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 0</value>
-  </data>
-  <data name="checkBoxShowUnrolledImage.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>2, 0</value>
   </data>
   <data name="checkBoxShowUnrolledImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>289, 40</value>
+    <value>150, 21</value>
   </data>
   <data name="checkBoxShowUnrolledImage.TabIndex" type="System.Int32, mscorlib">
     <value>132</value>
@@ -1400,13 +1304,10 @@
     <value>NoControl</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
-    <value>300, 10</value>
-  </data>
-  <data name="label24.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>150, 5</value>
   </data>
   <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 36</value>
+    <value>58, 17</value>
   </data>
   <data name="label24.TabIndex" type="System.Int32, mscorlib">
     <value>128</value>
@@ -1436,13 +1337,10 @@
     <value>NoControl</value>
   </data>
   <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 58</value>
-  </data>
-  <data name="label23.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>155, 29</value>
   </data>
   <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 36</value>
+    <value>49, 17</value>
   </data>
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>129</value>
@@ -1472,13 +1370,10 @@
     <value>NoControl</value>
   </data>
   <data name="label22.Location" type="System.Drawing.Point, System.Drawing">
-    <value>310, 108</value>
-  </data>
-  <data name="label22.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>155, 54</value>
   </data>
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
-    <value>95, 36</value>
+    <value>49, 17</value>
   </data>
   <data name="label22.TabIndex" type="System.Int32, mscorlib">
     <value>130</value>
@@ -1508,13 +1403,13 @@
     <value>Negative Film</value>
   </data>
   <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 4</value>
+    <value>212, 2</value>
   </data>
   <data name="comboBoxGradient.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="comboBoxGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 44</value>
+    <value>86, 25</value>
   </data>
   <data name="comboBoxGradient.TabIndex" type="System.Int32, mscorlib">
     <value>125</value>
@@ -1541,13 +1436,13 @@
     <value>Cold-Warm scale</value>
   </data>
   <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 100</value>
+    <value>212, 50</value>
   </data>
   <data name="comboBoxScale2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="comboBoxScale2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 44</value>
+    <value>86, 25</value>
   </data>
   <data name="comboBoxScale2.TabIndex" type="System.Int32, mscorlib">
     <value>127</value>
@@ -1574,13 +1469,13 @@
     <value>Liner Scale</value>
   </data>
   <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>424, 52</value>
+    <value>212, 26</value>
   </data>
   <data name="comboBoxScale1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="comboBoxScale1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>168, 44</value>
+    <value>86, 25</value>
   </data>
   <data name="comboBoxScale1.TabIndex" type="System.Int32, mscorlib">
     <value>126</value>
@@ -1604,13 +1499,13 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="graphControlFrequency.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 160</value>
+    <value>0, 80</value>
   </data>
   <data name="graphControlFrequency.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 8, 6, 8</value>
+    <value>3, 4, 3, 4</value>
   </data>
   <data name="graphControlFrequency.Size" type="System.Drawing.Size, System.Drawing">
-    <value>592, 196</value>
+    <value>300, 102</value>
   </data>
   <data name="graphControlFrequency.TabIndex" type="System.Int32, mscorlib">
     <value>131</value>
@@ -1619,7 +1514,7 @@
     <value>graphControlFrequency</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -1628,16 +1523,13 @@
     <value>11</value>
   </data>
   <data name="tabPage3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 28</value>
-  </data>
-  <data name="tabPage3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>4, 24</value>
   </data>
   <data name="tabPage3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>614, 388</value>
+    <value>307, 184</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1661,16 +1553,13 @@
     <value>91, 20</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>740, 62</value>
-  </data>
-  <data name="tabControl1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>370, 31</value>
   </data>
   <data name="tabControl1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>No</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>630, 424</value>
+    <value>315, 212</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>30</value>
@@ -1697,13 +1586,10 @@
     <value>NoControl</value>
   </data>
   <data name="pictureBoxMain.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 108</value>
-  </data>
-  <data name="pictureBoxMain.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>0, 54</value>
   </data>
   <data name="pictureBoxMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1500, 1121</value>
+    <value>750, 545</value>
   </data>
   <data name="pictureBoxMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1752,22 +1638,22 @@
     <value />
   </data>
   <data name="numericBoxUpperY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>673, 0</value>
+    <value>337, 0</value>
   </data>
   <data name="numericBoxUpperY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxUpperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 42</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxUpperY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 42</value>
+    <value>1, 25</value>
   </data>
   <data name="numericBoxUpperY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 2, 0</value>
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxUpperY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 42</value>
+    <value>75, 25</value>
   </data>
   <data name="numericBoxUpperY.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1779,7 +1665,7 @@
     <value>numericBoxUpperY</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1797,16 +1683,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1276, 0</value>
-  </data>
-  <data name="labelIntensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>639, 0</value>
   </data>
   <data name="labelIntensity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 0, 0</value>
+    <value>5, 0, 0, 0</value>
   </data>
   <data name="labelIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 50</value>
+    <value>108, 25</value>
   </data>
   <data name="labelIntensity.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1848,22 +1731,22 @@
     <value />
   </data>
   <data name="numericBoxLowerY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>500, 0</value>
+    <value>250, 0</value>
   </data>
   <data name="numericBoxLowerY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLowerY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 42</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxLowerY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 42</value>
+    <value>1, 25</value>
   </data>
   <data name="numericBoxLowerY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 2, 0</value>
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLowerY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 42</value>
+    <value>75, 25</value>
   </data>
   <data name="numericBoxLowerY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1875,7 +1758,7 @@
     <value>numericBoxLowerY</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1893,16 +1776,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1052, 0</value>
-  </data>
-  <data name="labelD.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>527, 0</value>
   </data>
   <data name="labelD.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 0, 0</value>
+    <value>5, 0, 0, 0</value>
   </data>
   <data name="labelD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 50</value>
+    <value>106, 25</value>
   </data>
   <data name="labelD.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1944,22 +1824,22 @@
     <value />
   </data>
   <data name="numericBoxUpperX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>217, 0</value>
+    <value>110, 0</value>
   </data>
   <data name="numericBoxUpperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxUpperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 42</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxUpperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 42</value>
+    <value>1, 25</value>
   </data>
   <data name="numericBoxUpperX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 2, 0</value>
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxUpperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 42</value>
+    <value>75, 25</value>
   </data>
   <data name="numericBoxUpperX.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -1971,7 +1851,7 @@
     <value>numericBoxUpperX</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1989,16 +1869,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>828, 0</value>
-  </data>
-  <data name="labelTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 0, 6, 0</value>
+    <value>415, 0</value>
   </data>
   <data name="labelTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 0, 0</value>
+    <value>5, 0, 0, 0</value>
   </data>
   <data name="labelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 50</value>
+    <value>106, 25</value>
   </data>
   <data name="labelTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -2040,22 +1917,22 @@
     <value />
   </data>
   <data name="numericBoxLowerX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>44, 0</value>
+    <value>23, 0</value>
   </data>
   <data name="numericBoxLowerX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLowerX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 42</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxLowerX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 42</value>
+    <value>1, 25</value>
   </data>
   <data name="numericBoxLowerX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 2, 0</value>
+    <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLowerX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>149, 42</value>
+    <value>75, 25</value>
   </data>
   <data name="numericBoxLowerX.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2067,7 +1944,7 @@
     <value>numericBoxLowerX</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.3.1.854, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.212, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -2082,13 +1959,13 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>649, 4</value>
+    <value>325, 2</value>
   </data>
   <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 32</value>
+    <value>12, 16</value>
   </data>
   <data name="label11.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -2115,13 +1992,13 @@
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>193, 4</value>
+    <value>98, 2</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 40</value>
+    <value>12, 20</value>
   </data>
   <data name="label10.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -2151,13 +2028,13 @@
     <value>NoControl</value>
   </data>
   <data name="labelX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 4</value>
+    <value>0, 2</value>
   </data>
   <data name="labelX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
+    <value>0, 2, 0, 0</value>
   </data>
   <data name="labelX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 36</value>
+    <value>23, 17</value>
   </data>
   <data name="labelX.TabIndex" type="System.Int32, mscorlib">
     <value>16</value>
@@ -2187,13 +2064,13 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>386, 4</value>
+    <value>195, 2</value>
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>20, 4, 0, 0</value>
+    <value>10, 2, 0, 0</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 36</value>
+    <value>55, 17</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -2219,14 +2096,11 @@
   <data name="tableLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="tableLayoutPanel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="tableLayoutPanel2.RowCount" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="tableLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1500, 56</value>
+    <value>750, 28</value>
   </data>
   <data name="tableLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
     <value>33</value>
@@ -2252,11 +2126,8 @@
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1500, 108</value>
+    <value>750, 54</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2290,9 +2161,6 @@
   </data>
   <data name="splitContainer2.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
-  </data>
-  <data name="splitContainer2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
   </data>
   <data name="splitContainer2.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
@@ -2334,16 +2202,13 @@
     <value>Fill</value>
   </data>
   <data name="dataGridViewProfiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 89</value>
-  </data>
-  <data name="dataGridViewProfiles.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 45</value>
   </data>
   <data name="dataGridViewProfiles.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="dataGridViewProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 291</value>
+    <value>209, 139</value>
   </data>
   <data name="dataGridViewProfiles.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2375,13 +2240,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxProfileParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 380</value>
-  </data>
-  <data name="checkBoxProfileParameter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 184</value>
   </data>
   <data name="checkBoxProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 42</value>
+    <value>209, 21</value>
   </data>
   <data name="checkBoxProfileParameter.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2414,13 +2276,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 41</value>
-  </data>
-  <data name="checkBoxAll.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 21</value>
   </data>
   <data name="checkBoxAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 48</value>
+    <value>209, 24</value>
   </data>
   <data name="checkBoxAll.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -2452,14 +2311,8 @@
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 428</value>
+    <value>215, 208</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2531,16 +2384,13 @@
     <value>Fill</value>
   </data>
   <data name="dataGridViewCrystals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 41</value>
-  </data>
-  <data name="dataGridViewCrystals.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 21</value>
   </data>
   <data name="dataGridViewCrystals.RowHeadersWidth" type="System.Int32, mscorlib">
     <value>22</value>
   </data>
   <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 708</value>
+    <value>209, 344</value>
   </data>
   <data name="dataGridViewCrystals.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2573,13 +2423,10 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxCrystalParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 749</value>
-  </data>
-  <data name="checkBoxCrystalParameter.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
+    <value>3, 365</value>
   </data>
   <data name="checkBoxCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>418, 38</value>
+    <value>209, 19</value>
   </data>
   <data name="checkBoxCrystalParameter.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
@@ -2611,14 +2458,8 @@
   <data name="groupBoxCrystalData.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="groupBoxCrystalData.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
-  <data name="groupBoxCrystalData.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="groupBoxCrystalData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 793</value>
+    <value>215, 387</value>
   </data>
   <data name="groupBoxCrystalData.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2651,13 +2492,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 1229</value>
+    <value>215, 599</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>428</value>
-  </data>
-  <data name="splitContainer2.SplitterWidth" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>208</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2687,13 +2525,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1229</value>
+    <value>969, 599</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>1500</value>
-  </data>
-  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
-    <value>8</value>
+    <value>750</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>29</value>
@@ -2710,11 +2545,8 @@
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="toolStripContainer1.ContentPanel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1229</value>
+    <value>969, 599</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -2746,9 +2578,6 @@
   <data name="toolStripContainer1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
-  <data name="toolStripContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="&gt;&gt;toolStripContainer1.RightToolStripPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.RightToolStripPanel</value>
   </data>
@@ -2762,7 +2591,7 @@
     <value>2</value>
   </data>
   <data name="toolStripContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1392</value>
+    <value>969, 696</value>
   </data>
   <data name="toolStripContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
@@ -2785,7 +2614,7 @@
   <data name="toolStripButtonCrystalParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAWDSURBVFhH1VdrTFRHFJ69d9+LRqUWVLQqaGOiIo3+QCNR
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAWDSURBVFhH1VdrTFRHFJ69d9+LRqUWVLQqaGOiIo3+QCNR
         qG/QNjFREB9BYkxAgeVhJRJSUEkkpLWPxAbCDxQBgcUHlEeLSllZXRWRkgYLIlopbEVFDMqrfD132BIs
         NLqLNek3mczee+d+55sz55y5y/7XOMIYrD/fLXp7enCZjFtkMtTQ2NXRgdqMDJRv3YqWmhr7RLXW1eH2
         iRN40dmJ/v5+5Ds6opzIqw4fHkF4t7wc9+gZdu/GfZUO6StX4g5dP5XLUUVjz8uXtok4uWQJaunFVlpR
@@ -2819,7 +2648,7 @@
     <value>White</value>
   </data>
   <data name="toolStripButtonCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 76</value>
+    <value>128, 38</value>
   </data>
   <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
     <value>Crystal
@@ -2829,7 +2658,7 @@
     <value>Display the detailed crystal information</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripButtonProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2837,7 +2666,7 @@
   <data name="toolStripButtonProfileParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAhCAYAAAC4JqlRAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAPzSURBVFhHxVdtS5RBFPWH9B8EP0h96IPhh8APQVGEYFAQ
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPzSURBVFhHxVdtS5RBFPWH9B8EP0h96IPhh8APQVGEYFAQ
         CEkREkaBICQhRRgFQYVg9IK90AvRkhaWvRpIlkaBRJEkFRhGLxhIp3POzO4+Prubu0V64LLP3Jm598yd
         OzN3q4oBr14BNTWIzcUHuruBZcuATGZpSKCpCTh4EGhvXyICdXXA5CTQ0PBPBPD9O3DiRHk2tFpcuuTB
         2f1P5gFmZ8syhOFhYM+eMJ+/qK4GRkbydj59KrSD8XF41bW1wPS0f62vr89PlDHmRmyWhKKmeXj2zImM
@@ -2864,7 +2693,7 @@
     <value>White</value>
   </data>
   <data name="toolStripButtonProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>214, 76</value>
+    <value>127, 38</value>
   </data>
   <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
     <value>Profile
@@ -2874,7 +2703,7 @@
     <value>Display the detailde profile parameters </value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripButtonEquationOfState.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2882,7 +2711,7 @@
   <data name="toolStripButtonEquationOfState.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAANTSURBVFhH7ZfvS1NRGMf9Q4KQCEUkYxBzP+6VCkYq3EHI
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANTSURBVFhH7ZfvS1NRGMf9Q4KQCEUkYxBzP+6VCkYq3EHI
         tIRctDcVSIUQYU4QAimiyMTKoMgfhVPJ7YVRuRJfiF4IRJCFSoFNUBNxWIRBT8957jlnu+6mOXVv6oEv
         3t3LzudznnPuUXN2UpBIAIyPU/it7BbBi4sp/FZ2698WgNZWCZfp6MieCG1Aj8ckwB/tbR07eh/6+oFg
         qUsAQ0N7K7C+DmALPoO86EdQ1NsyutMLCYcKKl6nRvM+hfrrEzA6ugrsu3yYzEpR68AeuAP7ACi58RVw
@@ -2906,7 +2735,7 @@
     <value>White</value>
   </data>
   <data name="toolStripButtonEquationOfState.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 76</value>
+    <value>111, 38</value>
   </data>
   <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
     <value>Equation of
@@ -2916,7 +2745,7 @@
     <value>Calculate the pressure using equation of state</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripButtonFittingParameter.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2924,7 +2753,7 @@
   <data name="toolStripButtonFittingParameter.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAALDSURBVFhHvVe/ixNBGBX8AyR9sIjNIRGLK1MJB0rAwmKL
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALDSURBVFhHvVe/ixNBGBX8AyR9sIjNIRGLK1MJB0rAwmKL
         YOlxpLCw2/8gBBHsAkEtVySNCCmEFBZb2KRa1EZSLAhndSwWHofFc963803G5WJuk0zeELIzs7n3/Xjf
         N3PXtkGCBCMz7HS/KFCgbUbfDru8P9BzEmdm0BC7vD900UVuBp+baO7fAN9r35jgiGNgMIDxeen1AOWw
         03BIU0PcBA7af4zPXUc4xRQ9M+w0HNT7h/FX3B98coQpUnTMsNNw6HQgJPeSV3jUO/+HMLgQi6IMP58P
@@ -2946,7 +2775,7 @@
     <value>White</value>
   </data>
   <data name="toolStripButtonFittingParameter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 76</value>
+    <value>143, 38</value>
   </data>
   <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
     <value>Fitting Diffraction
@@ -2956,7 +2785,7 @@
     <value>Fit the diffraction peaks</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripButtonCellFinder.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -2964,7 +2793,7 @@
   <data name="toolStripButtonCellFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -2980,13 +2809,13 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonCellFinder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>140, 76</value>
+    <value>73, 38</value>
   </data>
   <data name="toolStripButtonCellFinder.Text" xml:space="preserve">
     <value>Cell Finder</value>
   </data>
   <data name="toolStripSeparator11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripSeparator11.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2997,7 +2826,7 @@
   <data name="toolStripButtonStressAnalysis.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -3013,7 +2842,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonStressAnalysis.Size" type="System.Drawing.Size, System.Drawing">
-    <value>186, 76</value>
+    <value>97, 38</value>
   </data>
   <data name="toolStripButtonStressAnalysis.Text" xml:space="preserve">
     <value>Stress Analysis</value>
@@ -3024,7 +2853,7 @@
   <data name="toolStripButtonAtomicPositonFinder.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -3040,7 +2869,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonAtomicPositonFinder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 76</value>
+    <value>142, 38</value>
   </data>
   <data name="toolStripButtonAtomicPositonFinder.Text" xml:space="preserve">
     <value>Atomic Position Finder</value>
@@ -3049,15 +2878,15 @@
     <value>False</value>
   </data>
   <data name="toolStripSeparator10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripSeparator12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>6, 82</value>
+    <value>6, 41</value>
   </data>
   <data name="toolStripButtonLPO.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAHYcAAB2HAY/l8WUAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAIDSURBVDhPpZLrS5NhGMb3j4SWh0oRQVExD4gonkDpg4hG
         YKxG6WBogkMZKgPNCEVJFBGdGETEvgwyO9DJE5syZw3PIlPEE9pgBCLZ5XvdMB8Ew8gXbl54nuf63dd9
         0OGSnwCahxbPRNPAPMw9Xpg6ZmF46kZZ0xSKzJPIrhpDWsVnpBhGkKx3nAX8Pv7z1zg8OoY/cITdn4fw
         bf/C0kYAN3Ma/w3gWfZL5kzTKBxjWyK2DftwI9tyMYCZKXbNHaD91bLYJrDXsYbrWfUKwJrPE9M2M1Oc
@@ -3073,7 +2902,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonLPO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>413, 76</value>
+    <value>212, 38</value>
   </data>
   <data name="toolStripButtonLPO.Text" xml:space="preserve">
     <value>Lattice Preferred Orientation Analysis</value>
@@ -3082,10 +2911,10 @@
     <value>False</value>
   </data>
   <data name="toolStrip2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 0</value>
+    <value>3, 25</value>
   </data>
   <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1245, 82</value>
+    <value>727, 41</value>
   </data>
   <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -3115,70 +2944,70 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="readPatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="readPatternProfileToolStripMenuItem.Text" xml:space="preserve">
     <value>Read Profile(s)</value>
   </data>
   <data name="savePatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Profile(s)</value>
   </data>
   <data name="asCSVcommaSeperatedFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 44</value>
+    <value>295, 22</value>
   </data>
   <data name="asCSVcommaSeperatedFileToolStripMenuItem.Text" xml:space="preserve">
     <value>as CSV (comma separated values) file</value>
   </data>
   <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 44</value>
+    <value>295, 22</value>
   </data>
   <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.Text" xml:space="preserve">
     <value>as TSV (tab separated values) file</value>
   </data>
   <data name="asGSASFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>572, 44</value>
+    <value>295, 22</value>
   </data>
   <data name="asGSASFileToolStripMenuItem.Text" xml:space="preserve">
     <value>as GSAS file</value>
   </data>
   <data name="toolStripMenuItemExportExcelFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
     <value>Export the selected Profile(s)</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>691, 6</value>
+    <value>354, 6</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>Read Crystal Data (as a new list)</value>
   </data>
   <data name="readAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="readAndAddToolStripMenuItem.Text" xml:space="preserve">
     <value>Read Crystal Data (and add to the present data)</value>
   </data>
   <data name="toolStripMenuItemImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="toolStripMenuItemImport.Text" xml:space="preserve">
     <value>Import CIF, AMC...</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>Save Crystal Data</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
     <value>Export CIF format</value>
@@ -3187,67 +3016,67 @@
     <value>The selected crrystal will be saved as CIF format</value>
   </data>
   <data name="resetInitialCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="resetInitialCrystalDataToolStripMenuItem.Text" xml:space="preserve">
     <value>Reset Initial Crystal Data</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>691, 6</value>
+    <value>354, 6</value>
   </data>
   <data name="toolStripMenuItemPageSetup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="toolStripMenuItemPageSetup.Text" xml:space="preserve">
     <value>Page Setup</value>
   </data>
   <data name="toolStripMenuItemPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="toolStripMenuItemPrintPreview.Text" xml:space="preserve">
     <value>Print Preview</value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>Print</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>691, 6</value>
+    <value>354, 6</value>
   </data>
   <data name="BitmapToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
   <data name="BitmapToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 44</value>
+    <value>170, 22</value>
   </data>
   <data name="BitmapToolStripMenuItem.Text" xml:space="preserve">
     <value>as Bitmap data</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>330, 44</value>
+    <value>170, 22</value>
   </data>
   <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
     <value>as Metafile data</value>
   </data>
   <data name="コピーToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy to Clipboard</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
     <value>Save as Metafile</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>691, 6</value>
+    <value>354, 6</value>
   </data>
   <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>694, 44</value>
+    <value>357, 22</value>
   </data>
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
     <value>Close</value>
@@ -3256,25 +3085,25 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 40</value>
+    <value>39, 21</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>File</value>
   </data>
   <data name="toolTipToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
+    <value>174, 22</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>Tool Tip</value>
   </data>
   <data name="watchReadClipboardToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
+    <value>174, 22</value>
   </data>
   <data name="watchReadClipboardToolStripMenuItem.Text" xml:space="preserve">
     <value>Watch Clipboard</value>
   </data>
   <data name="setDirectoryToTheWatchToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>449, 44</value>
+    <value>226, 22</value>
   </data>
   <data name="setDirectoryToTheWatchToolStripMenuItem.Text" xml:space="preserve">
     <value>Set Directory to the watch</value>
@@ -3283,25 +3112,25 @@
     <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="toolStripTextBoxDirectoryToWatch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 39</value>
+    <value>100, 23</value>
   </data>
   <data name="watchReadANewProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
+    <value>174, 22</value>
   </data>
   <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
     <value>Watch File</value>
   </data>
   <data name="clearRegistryToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
+    <value>174, 22</value>
   </data>
   <data name="clearRegistryToolStripMenuItem.Text" xml:space="preserve">
     <value>Clear Registry</value>
   </data>
   <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>336, 6</value>
+    <value>171, 6</value>
   </data>
   <data name="ngenCompileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 44</value>
+    <value>174, 22</value>
   </data>
   <data name="ngenCompileToolStripMenuItem.Text" xml:space="preserve">
     <value>Ngen Compile</value>
@@ -3310,43 +3139,43 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 40</value>
+    <value>60, 21</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>Option</value>
   </data>
   <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 44</value>
+    <value>111, 22</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>Editor</value>
   </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 40</value>
+    <value>58, 21</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
     <value>Macro</value>
   </data>
   <data name="aboutMeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 44</value>
+    <value>180, 22</value>
   </data>
   <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
     <value>About Me</value>
   </data>
   <data name="programUpdatesToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 44</value>
+    <value>180, 22</value>
   </data>
   <data name="programUpdatesToolStripMenuItem.Text" xml:space="preserve">
     <value>Program Updates</value>
   </data>
   <data name="hintToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 44</value>
+    <value>180, 22</value>
   </data>
   <data name="hintToolStripMenuItem.Text" xml:space="preserve">
     <value>Hint</value>
   </data>
   <data name="helpwebToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>349, 44</value>
+    <value>180, 22</value>
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>Help (web)</value>
@@ -3355,7 +3184,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>88, 40</value>
+    <value>47, 21</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Help</value>
@@ -3376,7 +3205,7 @@
 </value>
   </data>
   <data name="englishToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 44</value>
+    <value>229, 38</value>
   </data>
   <data name="englishToolStripMenuItem.Text" xml:space="preserve">
     <value>English (need restart)</value>
@@ -3390,22 +3219,22 @@
 </value>
   </data>
   <data name="japaneseToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>415, 44</value>
+    <value>229, 38</value>
   </data>
   <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
     <value>Japanese (need restart)</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>147, 40</value>
+    <value>77, 21</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Language</value>
   </data>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 82</value>
+    <value>0, 0</value>
   </data>
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 44</value>
+    <value>969, 25</value>
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>
@@ -4902,10 +4731,10 @@
     <value>75</value>
   </metadata>
   <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>192, 192</value>
+    <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1938, 1392</value>
+    <value>969, 696</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
@@ -4932,11 +4761,8 @@
         AABtbQAAq20AAKurAACrqwAAx6sAAMerAADvqwAA76sAAP/HAAD/xwAA/8cAAP/HAAD/7wAA/+8AAA==
 </value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>6, 6, 6, 6</value>
-  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1574, 925</value>
+    <value>795, 482</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>PDIndexer</value>

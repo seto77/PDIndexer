@@ -46,7 +46,7 @@ namespace PDIndexer
 
         bool clearRegistryFlag = false;
 
-        WaitDlg initialDialog;
+        Crystallography.Controls.CommonDialog initialDialog;
 
         
         public bool BackGroundPointSelectMode { get; set; } = false;
@@ -504,13 +504,18 @@ namespace PDIndexer
                 }
             }
 
-            initialDialog = new WaitDlg();
-            initialDialog.ShowHints = false;
-            initialDialog.Owner = this;
-            initialDialog.Version = $"PDIndexer  {Version.VersionAndDate}";
-            initialDialog.Text = "Now Loading...";
-            initialDialog.ShowVersion = true;
-            initialDialog.Location = new Point(this.Location.X + this.Width / 2 - initialDialog.Width / 2, this.Location.Y + this.Height / 2 - initialDialog.Height / 2);
+            initialDialog = new Crystallography.Controls.CommonDialog()
+            {
+                Owner = this,
+                DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Initialize,
+                VersionAndDate = Version.VersionAndDate,
+                Hint = Version.HintEn,
+                Software = Version.Software,
+                History = Version.History,
+
+                Location = new Point(this.Location.X , this.Location.Y ),
+            };
+
             if (Thread.CurrentThread.CurrentUICulture.ToString().Contains("ja"))
                 initialDialog.Hint = Version.HintJa;
             else
@@ -2885,6 +2890,10 @@ namespace PDIndexer
                 #region 中性子TOFデータ
                 else if (strList[0].StartsWith("**  MPLOT FILE **"))//中性子TOFデータの時
                 {
+                    formDataConverter.WaveSource = WaveSource.Neutron;
+                    formDataConverter.WaveColor = WaveColor.FlatWhite;
+                    formDataConverter.AxisMode = HorizontalAxis.NeutronTOF;
+                   
                     formDataConverter.SetProperty(FileProperties[(int)FileType.TOF]);
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
@@ -2895,7 +2904,7 @@ namespace PDIndexer
                             {
                                 for (int j = i + 1; j < strList.Count - 1; j++)
                                 {
-                                    var str = strList[j].Split( ' ' );
+                                    var str = strList[j].Split(" ");
                                     var x = Convert.ToDouble(str[0]);
                                     var y = Convert.ToDouble(str[1]);
                                     var err = Convert.ToDouble(str[2]);
@@ -3813,8 +3822,7 @@ namespace PDIndexer
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            initialDialog.ShowProgressBar = false;
-            initialDialog.Text = "Hint";
+            initialDialog.DialogMode= Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
             initialDialog.Visible = true;
         }
 
