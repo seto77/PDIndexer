@@ -227,7 +227,7 @@
     <value>numericBoxEGC2</value>
   </data>
   <data name="&gt;&gt;numericBoxEGC2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.217, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEGC2.Parent" xml:space="preserve">
     <value>groupBoxEDX</value>
@@ -281,7 +281,7 @@
     <value>numericBoxEGC1</value>
   </data>
   <data name="&gt;&gt;numericBoxEGC1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.217, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEGC1.Parent" xml:space="preserve">
     <value>groupBoxEDX</value>
@@ -335,7 +335,7 @@
     <value>numericBoxEGC0</value>
   </data>
   <data name="&gt;&gt;numericBoxEGC0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.217, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxEGC0.Parent" xml:space="preserve">
     <value>groupBoxEDX</value>
@@ -736,7 +736,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>numericalTextBox1</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.26.217, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -805,7 +805,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.4.26.217, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>$this</value>

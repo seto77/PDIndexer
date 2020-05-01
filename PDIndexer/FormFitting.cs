@@ -1230,14 +1230,12 @@ namespace PDIndexer
                     break;
 #endregion
             }
-            temp_crystal = new Crystal(a, b, c, alfa, beta, gamma, 0, "", "", Color.Black);
-            temp_crystal.A_err = a_err;
-            temp_crystal.B_err = b_err;
-            temp_crystal.C_err = c_err;
+            temp_crystal = new Crystal(
+                (a, b, c, alfa, beta, gamma),
+                (a_err, b_err, c_err, alpha_err, beta_err, gamma_err),
+                
+                0, "", Color.Black);
             temp_crystal.Volume = V;
-            temp_crystal.Alpha_err = alpha_err;
-            temp_crystal.Beta_err = beta_err;
-            temp_crystal.Gamma_err = gamma_err;
             temp_crystal.Volume_err = V_err;
             SetTextBox(temp_crystal);
         }

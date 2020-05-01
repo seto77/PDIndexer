@@ -42,7 +42,7 @@ namespace PDIndexer{
         }
         private void buttonAddCrystal_Click(object sender, System.EventArgs e)
         {
-            crystalControl.GenerateCrystal();
+            crystalControl.GenerateFromInterface();
             if (crystalControl.Crystal != null)
             {
                 crystalControl.Crystal.SaveInitialCellConstants();
@@ -53,7 +53,7 @@ namespace PDIndexer{
         private void buttonChangeCrystal_Click(object sender, System.EventArgs e)
         {
             if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved) return;
-            crystalControl.GenerateCrystal();
+            crystalControl.GenerateFromInterface();
             formMain.InitializeCrystalPlane();
             if (crystalControl.Crystal != null) 
                 ChangeCrystal(crystalControl.Crystal);

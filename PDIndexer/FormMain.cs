@@ -50,24 +50,13 @@ namespace PDIndexer
 
         
         public bool BackGroundPointSelectMode { get; set; } = false;
-       
+        public int[] SelectedMaskingBoundaryIndex { set; get; } = new int[] { -1, -1 };
 
-        private int[] selectedMaskingBoundaryIndex = new int[] { -1, -1 };
-        public int[] SelectedMaskingBoundaryIndex
-        {
-            set { selectedMaskingBoundaryIndex = value; }
-            get { return selectedMaskingBoundaryIndex; }
-        }
-        
         public bool MaskingMode { get; set; } = false;
         
         private Point mouseRangeStart, mouseRangeEnd;
-        private bool mouseRangingMode=false;
-        public bool MouseRangingMode
-        {
-            set { mouseRangingMode = value; }
-            get { return mouseRangingMode; }
-        }
+
+        public bool MouseRangingMode { set; get; } = false;
 
         private PointD mouseMovingStartPt;
         public bool MouseMovingMode { set; get; } = false;
@@ -265,22 +254,27 @@ namespace PDIndexer
             get => horizontalAxisUserControl.AxisMode;
         }
 
+      
+
+
+        public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
+
+        private Stopwatch stopwatch { get; set; } = new Stopwatch();
+
+
+        #endregion
+
+        #region フィールド
         public bool IsBgPtSelected = false;
         public int SelectedBgPtIndex = -1;
         public int SelectedProfileIndex = -1;
 
         public bool IsSkipTextBoxChange = false;
 
-        Point OriginPos= new Point(40,24); //原点の位置
+        Point OriginPos = new Point(40, 24); //原点の位置
         public float IntervalOfProfiles = 0;
         public float HeightOfBottomPeaks = 0;
         public float BottomMargin = 0;
-
-
-        public FileProperty[] FileProperties { get; set; } 
-            = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
-
-        #endregion
 
         public DataGridViewCellStyle cellStyle1 = new DataGridViewCellStyle();
         public DataGridViewCellStyle cellStyle2 = new DataGridViewCellStyle();
@@ -303,7 +297,7 @@ namespace PDIndexer
 
         private Macro macro;
 
-        private Stopwatch stopwatch { get; set; } = new Stopwatch();
+        #endregion
 
         IProgress<(long, long, long, string)> ip;//IReport
         public FormMain()
@@ -483,6 +477,8 @@ namespace PDIndexer
         //メインがロードされたときに実行
         private void FormMain_Load(object sender, System.EventArgs e)
         {
+            stopwatch.Start();
+
             if (this.DesignMode)
                 return;
 
@@ -615,19 +611,30 @@ namespace PDIndexer
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.90);
 
             //ユーザーパスにxmlファイルをコピー
-            File.Copy("default.xml", UserAppDataPath + "initial.xml", true);
-            if (!File.Exists(UserAppDataPath + "default.xml"))
-                File.Copy("default.xml", UserAppDataPath + "default.xml", true);
-            Directory.Delete(Application.UserAppDataPath, true);
+            var appPath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location)+@"\";
+            if (File.Exists(appPath + "default.xml"))
+                File.Copy(appPath + "default.xml", UserAppDataPath + "initial.xml", true);
+            if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length <200)
+                File.Copy(appPath + "default.xml", UserAppDataPath + "default.xml", true);
+
             if (!File.Exists(UserAppDataPath + "PDIndexerSetup.msi"))
                 File.Delete(UserAppDataPath + "PDIndexerSetup.msi");
 
+            //UserAppDataPathに空フォルダがあったら削除
+            foreach (var dir in Directory.GetDirectories(UserAppDataPath))
+                if (!Directory.EnumerateFileSystemEntries(dir).Any())
+                    Directory.Delete(dir);
+
 
             //結晶ファイル読み込み
-            //  try { 
-            readCrystal(UserAppDataPath + "default.Xml", false, true);
-            //  }
-            //  catch { }
+            try
+            {
+                readCrystal(UserAppDataPath + "default.Xml", false, true);
+            }
+            catch
+            {
+                readCrystal(UserAppDataPath + "initial.Xml", false, true);
+            }
 
             initialDialog.Text = "Now Loading... Binding dataset between forms.";
             //formCrystalとの連携
@@ -678,18 +685,6 @@ namespace PDIndexer
 
             initialDialog.Text = "Now Loading... Generating 'ReadMe.txt'.";
 
-
-            /*ReadMeGenerator.WriteReadMeFile(
-                "PDIndexer   " + Version.VersionAndDate,
-                Version.Introduction,
-                Version.Manual,
-                Version.CopyRight,
-                Version.Condition,
-                Version.Exemption,
-                Version.Adress,
-                Version.Acknowledge,
-                Version.History);
-                */
             initialDialog.Text = "Now Loading... Initializing print function.";
             //プリント関係  
             printDocument = new System.Drawing.Printing.PrintDocument();
@@ -734,6 +729,8 @@ namespace PDIndexer
             initialDialog.Text = "Initializing has been finished successfully. You can close this window.";
             if (initialDialog.AutomaricallyClose)
                 initialDialog.Visible = false;
+
+            toolStripStatusLabelCalcTime.Text = "Initial loading time: " + stopwatch.ElapsedMilliseconds + " ms.";
 
         }
 
@@ -2024,7 +2021,7 @@ namespace PDIndexer
                 }
                 if (i[0] >= 0)
                     SelectedMaskingBoundaryIndex = i;
-                formProfile.SelectedMaskIndex = selectedMaskingBoundaryIndex[0];
+                formProfile.SelectedMaskIndex = SelectedMaskingBoundaryIndex[0];
             }
         }
 
@@ -2057,13 +2054,13 @@ namespace PDIndexer
 
             if (MaskingMode)
             {
-                if (selectedMaskingBoundaryIndex[0] >= 0)
+                if (SelectedMaskingBoundaryIndex[0] >= 0)
                 {
                     var ranges = formProfile.GetMaskRanges();
-                    if (ranges[selectedMaskingBoundaryIndex[0]].Maximum == ranges[selectedMaskingBoundaryIndex[0]].Minimum)
-                        formProfile.DeleteMaskRange(selectedMaskingBoundaryIndex[0]);
+                    if (ranges[SelectedMaskingBoundaryIndex[0]].Maximum == ranges[SelectedMaskingBoundaryIndex[0]].Minimum)
+                        formProfile.DeleteMaskRange(SelectedMaskingBoundaryIndex[0]);
                 }
-                selectedMaskingBoundaryIndex = new int[] { -1, -1 };
+                SelectedMaskingBoundaryIndex = new int[] { -1, -1 };
                 Draw();
             }
 
@@ -2311,11 +2308,11 @@ namespace PDIndexer
                 Draw();
             }
             //マスキングモードのとき
-            else if (MaskingMode && selectedMaskingBoundaryIndex[0]>=0)
+            else if (MaskingMode && SelectedMaskingBoundaryIndex[0]>=0)
             {
-                formProfile.SetMaskRange(selectedMaskingBoundaryIndex, ConvToRealCoord(e.X, 0).X);
+                formProfile.SetMaskRange(SelectedMaskingBoundaryIndex, ConvToRealCoord(e.X, 0).X);
                 if (formProfile.SortMaskRanges())
-                    selectedMaskingBoundaryIndex = SearchMaskBoundary(pt.X, formProfile.GetMaskRanges(), dev);
+                    SelectedMaskingBoundaryIndex = SearchMaskBoundary(pt.X, formProfile.GetMaskRanges(), dev);
                 DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
                 dp.SetMaskingProfile();
                 Draw();

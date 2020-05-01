@@ -499,43 +499,43 @@ namespace PDIndexer
 
         private void setnumericTextBoxState()
         {
-            numericTextBoxA.ReadOnly = numericTextBoxB.ReadOnly = numericTextBoxC.ReadOnly = numericTextBoxAlpha.ReadOnly = numericTextBoxBeta.ReadOnly = numericTextBoxGamma.ReadOnly = false;
+            numericBoxA.ReadOnly = numericBoxB.ReadOnly = numericBoxC.ReadOnly = numericBoxAlpha.ReadOnly = numericBoxBeta.ReadOnly = numericBoxGamma.ReadOnly = false;
             switch (comboBoxCrystalSystem.SelectedIndex)
             {
                 case 0: break;
                 case 1:
-                    numericTextBoxAlpha.ReadOnly = numericTextBoxGamma.ReadOnly = true;
-                    numericTextBoxAlpha.Value = numericTextBoxGamma.Value = 90;
+                    numericBoxAlpha.ReadOnly = numericBoxGamma.ReadOnly = true;
+                    numericBoxAlpha.Value = numericBoxGamma.Value = 90;
                     break;
 
                 case 2:
-                    numericTextBoxAlpha.ReadOnly = numericTextBoxBeta.ReadOnly = numericTextBoxGamma.ReadOnly = true;
-                    numericTextBoxAlpha.Value = numericTextBoxBeta.Value = numericTextBoxGamma.Value = 90;
+                    numericBoxAlpha.ReadOnly = numericBoxBeta.ReadOnly = numericBoxGamma.ReadOnly = true;
+                    numericBoxAlpha.Value = numericBoxBeta.Value = numericBoxGamma.Value = 90;
 
                     break;
                 case 3:
-                    numericTextBoxB.ReadOnly = true;
-                    numericTextBoxB.Value = numericTextBoxA.Value;
-                    numericTextBoxAlpha.ReadOnly = numericTextBoxBeta.ReadOnly = numericTextBoxGamma.ReadOnly = true;
-                    numericTextBoxAlpha.Value = numericTextBoxBeta.Value = numericTextBoxGamma.Value = 90;
+                    numericBoxB.ReadOnly = true;
+                    numericBoxB.Value = numericBoxA.Value;
+                    numericBoxAlpha.ReadOnly = numericBoxBeta.ReadOnly = numericBoxGamma.ReadOnly = true;
+                    numericBoxAlpha.Value = numericBoxBeta.Value = numericBoxGamma.Value = 90;
                     break;
                 case 4:
-                    numericTextBoxB.ReadOnly = true;
-                    numericTextBoxB.Value = numericTextBoxA.Value;
-                    numericTextBoxAlpha.ReadOnly = numericTextBoxBeta.ReadOnly = numericTextBoxGamma.ReadOnly = true;
-                    numericTextBoxAlpha.Value = numericTextBoxBeta.Value = 90; numericTextBoxGamma.Value = 120;
+                    numericBoxB.ReadOnly = true;
+                    numericBoxB.Value = numericBoxA.Value;
+                    numericBoxAlpha.ReadOnly = numericBoxBeta.ReadOnly = numericBoxGamma.ReadOnly = true;
+                    numericBoxAlpha.Value = numericBoxBeta.Value = 90; numericBoxGamma.Value = 120;
                     break;
                 case 5:
-                    numericTextBoxB.ReadOnly = true;
-                    numericTextBoxB.Value = numericTextBoxA.Value;
-                    numericTextBoxAlpha.ReadOnly = numericTextBoxBeta.ReadOnly = numericTextBoxGamma.ReadOnly = true;
-                    numericTextBoxAlpha.Value = numericTextBoxBeta.Value = 90; numericTextBoxGamma.Value = 120;
+                    numericBoxB.ReadOnly = true;
+                    numericBoxB.Value = numericBoxA.Value;
+                    numericBoxAlpha.ReadOnly = numericBoxBeta.ReadOnly = numericBoxGamma.ReadOnly = true;
+                    numericBoxAlpha.Value = numericBoxBeta.Value = 90; numericBoxGamma.Value = 120;
                     break;
                 case 6:
-                    numericTextBoxB.ReadOnly = numericTextBoxC.ReadOnly = true;
-                    numericTextBoxC.Value = numericTextBoxB.Value = numericTextBoxA.Value;
-                    numericTextBoxAlpha.ReadOnly = numericTextBoxBeta.ReadOnly = numericTextBoxGamma.ReadOnly = true;
-                    numericTextBoxAlpha.Value = numericTextBoxBeta.Value = numericTextBoxGamma.Value = 90;
+                    numericBoxB.ReadOnly = numericBoxC.ReadOnly = true;
+                    numericBoxC.Value = numericBoxB.Value = numericBoxA.Value;
+                    numericBoxAlpha.ReadOnly = numericBoxBeta.ReadOnly = numericBoxGamma.ReadOnly = true;
+                    numericBoxAlpha.Value = numericBoxBeta.Value = numericBoxGamma.Value = 90;
                     break;
             }
 
@@ -657,7 +657,7 @@ namespace PDIndexer
                 double d = (double)dr["d"];
 
                 //結晶の格子定数がきちんと入力されているかどうかをチェック
-                if (numericTextBoxA.Value * numericTextBoxB.Value * numericTextBoxC.Value != 0 && numericTextBoxAlpha.Value * numericTextBoxBeta.Value * numericTextBoxGamma.Value != 0)
+                if (numericBoxA.Value * numericBoxB.Value * numericBoxC.Value != 0 && numericBoxAlpha.Value * numericBoxBeta.Value * numericBoxGamma.Value != 0)
                 {
                     //dの値に近い指数をさがす
                 }
@@ -715,7 +715,9 @@ namespace PDIndexer
                 {
                     Symmetry s = SymmetryStatic.Get_Symmetry(j);
                     if (s.SpaceGroupNumber == sg_num && s.SpaceGroupSubNumber == sg_sub_num)
-                        crystal.Add(new Crystal(numericTextBoxA.Value / 10.0, numericTextBoxB.Value / 10.0, numericTextBoxC.Value / 10.0, numericTextBoxAlpha.RadianValue, numericTextBoxBeta.RadianValue, numericTextBoxGamma.RadianValue, s.SeriesNumber, "", "", Color.Black));
+                        crystal.Add(new Crystal(
+                            (numericBoxA.Value / 10.0, numericBoxB.Value / 10.0, numericBoxC.Value / 10.0, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue)
+                            , s.SeriesNumber, "", Color.Black));
                 }
             }
 
@@ -1347,12 +1349,12 @@ namespace PDIndexer
 
                     //対称性
                     comboBoxCrystalSystem.SelectedIndex = a.CrystalSystem;
-                    numericTextBoxA.Value = a.A; ;
-                    numericTextBoxB.Value = a.B; ;
-                    numericTextBoxC.Value = a.C;
-                    numericTextBoxAlpha.Value = a.Alpha;
-                    numericTextBoxBeta.Value = a.Beta;
-                    numericTextBoxGamma.Value = a.Gamma;
+                    numericBoxA.Value = a.A; ;
+                    numericBoxB.Value = a.B; ;
+                    numericBoxC.Value = a.C;
+                    numericBoxAlpha.Value = a.Alpha;
+                    numericBoxBeta.Value = a.Beta;
+                    numericBoxGamma.Value = a.Gamma;
 
                     for (int i = 0; i < a.SpaceGroupList.Length; i++)
                         listBoxSpaceGroupCandidate.SelectedIndex = a.SpaceGroupList[i];
@@ -1412,12 +1414,12 @@ namespace PDIndexer
 
             //対称性
             a.CrystalSystem = comboBoxCrystalSystem.SelectedIndex;
-            a.A = numericTextBoxA.Value;
-            a.B = numericTextBoxB.Value;
-            a.C = numericTextBoxC.Value;
-            a.Alpha = numericTextBoxAlpha.Value;
-            a.Beta = numericTextBoxBeta.Value;
-            a.Gamma = numericTextBoxGamma.Value;
+            a.A = numericBoxA.Value;
+            a.B = numericBoxB.Value;
+            a.C = numericBoxC.Value;
+            a.Alpha = numericBoxAlpha.Value;
+            a.Beta = numericBoxBeta.Value;
+            a.Gamma = numericBoxGamma.Value;
 
             List<int> sg = new List<int>();
             for (int i = 0; i < listBoxSpaceGroupCandidate.SelectedIndices.Count; i++)
@@ -1533,7 +1535,7 @@ namespace PDIndexer
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             formMain.formCrystal.crystalControl.Crystal = (Crystal)((DataRowView)bindingSourceCrysatalCandidates.Current).Row[0];
-            formMain.formCrystal.crystalControl.GenerateCrystal();
+            formMain.formCrystal.crystalControl.GenerateFromInterface();
             Clipboard.SetDataObject(formMain.formCrystal.crystalControl.Crystal);
         }
 

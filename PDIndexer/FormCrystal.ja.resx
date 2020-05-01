@@ -117,62 +117,129 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Column1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="Column1.Width" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="dataGridViewCrystal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 50</value>
+  </data>
   <data name="dataGridViewCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>228, 251</value>
+    <value>250, 299</value>
+  </data>
+  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>59, 27</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>削除</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonAllClear.AutoSize" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>157, 0</value>
   </data>
   <data name="buttonAllClear.Text" xml:space="preserve">
     <value>全削除</value>
   </data>
-  <data name="button4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="button4.Text" xml:space="preserve">
-    <value>削除</value>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>メイリオ, 10pt, style=Bold</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 309</value>
+    <value>256, 352</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>結晶リスト</value>
   </data>
+  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 23</value>
+  </data>
+  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>551, 326</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt, style=Bold</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>48, 0</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>557, 352</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>結晶情報</value>
+  </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 68</value>
   </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>← 
 追加
- ←</value>
+←</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>メイリオ, 9.75pt</value>
+  </data>
+  <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 88</value>
+  </data>
+  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>46, 68</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>← 
 更新
 ←</value>
   </data>
-  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>492, 286</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>498, 307</value>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>48, 352</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>813, 309</value>
+    <value>865, 352</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 67</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
+    <value>強度を変更可</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 48</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 22</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
+    <value>強度比を計算</value>
   </data>
   <data name="radioButtonAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -205,13 +272,13 @@
     <value>170, 23</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 169</value>
+    <value>10, 184</value>
   </data>
   <data name="checkBoxCombineSameDspacingPeaks.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxCombineSameDspacingPeaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 146</value>
+    <value>8, 161</value>
   </data>
   <data name="checkBoxCombineSameDspacingPeaks.Size" type="System.Drawing.Size, System.Drawing">
     <value>152, 22</value>
@@ -220,16 +287,13 @@
     <value>近接するピークを結合:</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>178, 82</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 14</value>
+    <value>178, 101</value>
   </data>
   <data name="radioButtonAllCheckedCrystals.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="radioButtonAllCheckedCrystals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 259</value>
+    <value>51, 274</value>
   </data>
   <data name="radioButtonAllCheckedCrystals.Size" type="System.Drawing.Size, System.Drawing">
     <value>158, 22</value>
@@ -241,7 +305,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="radioButtonOnlySelectedCrystal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>52, 281</value>
+    <value>52, 296</value>
   </data>
   <data name="radioButtonOnlySelectedCrystal.Size" type="System.Drawing.Size, System.Drawing">
     <value>122, 22</value>
@@ -250,16 +314,16 @@
     <value>選択した結晶のみ</value>
   </data>
   <data name="numericUpDownThresholdIntesity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>140, 112</value>
+    <value>140, 127</value>
   </data>
   <data name="numericUpDownHeightOfBottomPeak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 80</value>
+    <value>136, 99</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 19</value>
+    <value>8, 24</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
@@ -274,7 +338,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowPeakIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 239</value>
+    <value>8, 254</value>
   </data>
   <data name="checkBoxShowPeakIndices.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>
@@ -286,7 +350,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 112</value>
+    <value>7, 127</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 22</value>
@@ -294,29 +358,14 @@
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
     <value>弱いピークを非表示</value>
   </data>
-  <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
-    <value>強度を変更可</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
-    <value>強度比を計算</value>
-  </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>179, 117</value>
+    <value>179, 132</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 101</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 22</value>
@@ -325,22 +374,28 @@
     <value>回折線を下に表示</value>
   </data>
   <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
+    <value>メイリオ, 10pt, style=Bold</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>216, 310</value>
+    <value>216, 352</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>回折線オプション</value>
   </data>
-  <data name="dataGridViewImageColumn4.MinimumWidth" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
   </data>
-  <data name="dataGridViewImageColumn5.MinimumWidth" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="dataGridViewImageColumn2.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1034, 317</value>
+    <value>1081, 352</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

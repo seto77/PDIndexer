@@ -28,6 +28,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.383(2020/05/01) Fixed GUIs." +
             "\r\n ver4.382(2020/04/26) Fixed a problem on loading Neutron TOF data." +
             "\r\n ver4.381(2020/03/27) Refixed a bug on loading multiple profiles." +
             "\r\n ver4.380(2020/03/22) Fixed a bug on loading multiple profiles." +
