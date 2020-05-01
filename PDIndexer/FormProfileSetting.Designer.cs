@@ -150,18 +150,7 @@
             this.buttonCalculate = new System.Windows.Forms.Button();
             this.textBoxOutputFilename = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.dataSet = new System.Data.DataSet();
-            this.dataTable1 = new System.Data.DataTable();
-            this.dataTable2 = new System.Data.DataTable();
-            this.dataTable3 = new System.Data.DataTable();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -201,10 +190,6 @@
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanelFourCalculator.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable3)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -334,10 +319,12 @@
             // colorControlLineColor
             // 
             this.colorControlLineColor.Argb = -986896;
+            resources.ApplyResources(this.colorControlLineColor, "colorControlLineColor");
             this.colorControlLineColor.Blue = 240;
             this.colorControlLineColor.BlueF = 0.9411765F;
             this.colorControlLineColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            resources.ApplyResources(this.colorControlLineColor, "colorControlLineColor");
+            this.colorControlLineColor.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            this.colorControlLineColor.FooterText = "";
             this.colorControlLineColor.Green = 240;
             this.colorControlLineColor.GreenF = 0.9411765F;
             this.colorControlLineColor.Name = "colorControlLineColor";
@@ -694,6 +681,10 @@
             resources.ApplyResources(this.numericalTextBoxExposureTime, "numericalTextBoxExposureTime");
             this.numericalTextBoxExposureTime.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxExposureTime.DecimalPlaces = -1;
+            this.numericalTextBoxExposureTime.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxExposureTime.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxExposureTime.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxExposureTime.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxExposureTime.Maximum = double.PositiveInfinity;
             this.numericalTextBoxExposureTime.Minimum = double.NegativeInfinity;
             this.numericalTextBoxExposureTime.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -866,6 +857,10 @@
             resources.ApplyResources(this.numericBoxTwhoThetaOffsetCoeff2, "numericBoxTwhoThetaOffsetCoeff2");
             this.numericBoxTwhoThetaOffsetCoeff2.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff2.DecimalPlaces = 5;
+            this.numericBoxTwhoThetaOffsetCoeff2.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwhoThetaOffsetCoeff2.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxTwhoThetaOffsetCoeff2.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwhoThetaOffsetCoeff2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff2.Maximum = double.PositiveInfinity;
             this.numericBoxTwhoThetaOffsetCoeff2.Minimum = double.NegativeInfinity;
             this.numericBoxTwhoThetaOffsetCoeff2.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -895,6 +890,10 @@
             resources.ApplyResources(this.numericBoxTwhoThetaOffsetCoeff0, "numericBoxTwhoThetaOffsetCoeff0");
             this.numericBoxTwhoThetaOffsetCoeff0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff0.DecimalPlaces = 5;
+            this.numericBoxTwhoThetaOffsetCoeff0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwhoThetaOffsetCoeff0.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxTwhoThetaOffsetCoeff0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwhoThetaOffsetCoeff0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff0.Maximum = double.PositiveInfinity;
             this.numericBoxTwhoThetaOffsetCoeff0.Minimum = double.NegativeInfinity;
             this.numericBoxTwhoThetaOffsetCoeff0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -938,6 +937,10 @@
             resources.ApplyResources(this.numericBoxTwhoThetaOffsetCoeff1, "numericBoxTwhoThetaOffsetCoeff1");
             this.numericBoxTwhoThetaOffsetCoeff1.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff1.DecimalPlaces = 5;
+            this.numericBoxTwhoThetaOffsetCoeff1.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwhoThetaOffsetCoeff1.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericBoxTwhoThetaOffsetCoeff1.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTwhoThetaOffsetCoeff1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff1.Maximum = double.PositiveInfinity;
             this.numericBoxTwhoThetaOffsetCoeff1.Minimum = double.NegativeInfinity;
             this.numericBoxTwhoThetaOffsetCoeff1.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1311,6 +1314,10 @@
             resources.ApplyResources(this.numericalTextBoxTargetValue, "numericalTextBoxTargetValue");
             this.numericalTextBoxTargetValue.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxTargetValue.DecimalPlaces = -1;
+            this.numericalTextBoxTargetValue.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTargetValue.FooterForeColor = System.Drawing.SystemColors.ControlText;
+            this.numericalTextBoxTargetValue.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxTargetValue.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxTargetValue.Maximum = double.PositiveInfinity;
             this.numericalTextBoxTargetValue.Minimum = double.NegativeInfinity;
             this.numericalTextBoxTargetValue.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
@@ -1381,83 +1388,6 @@
             resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
             // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn2, "dataGridViewTextBoxColumn2");
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn1, "dataGridViewImageColumn1");
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.ReadOnly = true;
-            this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn1.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Profile";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn1, "dataGridViewTextBoxColumn1");
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // dataGridViewImageColumn2
-            // 
-            this.dataGridViewImageColumn2.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn2, "dataGridViewImageColumn2");
-            this.dataGridViewImageColumn2.Name = "dataGridViewImageColumn2";
-            this.dataGridViewImageColumn2.ReadOnly = true;
-            this.dataGridViewImageColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn2.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.DataPropertyName = "Profile";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn3, "dataGridViewTextBoxColumn3");
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            // 
-            // dataGridViewImageColumn3
-            // 
-            this.dataGridViewImageColumn3.DataPropertyName = "Color";
-            resources.ApplyResources(this.dataGridViewImageColumn3, "dataGridViewImageColumn3");
-            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
-            this.dataGridViewImageColumn3.ReadOnly = true;
-            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn4.DataPropertyName = "Profile";
-            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "NewDataSet";
-            this.dataSet.Tables.AddRange(new System.Data.DataTable[] {
-            this.dataTable1,
-            this.dataTable2,
-            this.dataTable3});
-            // 
-            // dataTable1
-            // 
-            this.dataTable1.TableName = "Table1";
-            // 
-            // dataTable2
-            // 
-            this.dataTable2.TableName = "Table2";
-            // 
-            // dataTable3
-            // 
-            this.dataTable3.TableName = "Table3";
-            // 
             // FormProfileSetting
             // 
             resources.ApplyResources(this, "$this");
@@ -1526,10 +1456,6 @@
             this.panel1.PerformLayout();
             this.flowLayoutPanelFourCalculator.ResumeLayout(false);
             this.flowLayoutPanelFourCalculator.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable3)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1600,13 +1526,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn;
         private System.Windows.Forms.DataGridViewImageColumn colorDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn profileDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
         private Crystallography.Controls.ColorControl colorControlLineColor;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label18;
@@ -1622,10 +1541,6 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
-        private System.Data.DataSet dataSet;
-        private System.Data.DataTable dataTable1;
-        private System.Data.DataTable dataTable2;
-        private System.Data.DataTable dataTable3;
         private System.Windows.Forms.ListBox listBoxMaskRanges;
         private System.Windows.Forms.Button buttonDeleteMask;
         private System.Windows.Forms.Button buttonDeleteAllMask;
