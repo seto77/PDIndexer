@@ -27,7 +27,7 @@ namespace PDIndexer{
             
         }
 
-        void crystalControl_CrystalChanged(Crystal crystal)
+        void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
             formMain.InitializeCrystalPlane();
             formMain.Draw();

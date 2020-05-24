@@ -691,9 +691,7 @@ namespace PDIndexer
             printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(pd_PrintPage);
 
             // PrintPreviewDialogオブジェクトの生成
-            printPreviewDialog = new PrintPreviewDialog();
-            // Documentプロパティの設定
-            printPreviewDialog.Document = printDocument;
+            printPreviewDialog = new PrintPreviewDialog { Document = printDocument };
 
             initialDialog.Text = "Now Loading... Starting clipboard wather.";
             //クリップボード監視
@@ -1348,10 +1346,10 @@ namespace PDIndexer
 
                     double startX = ConvToPicBoxCoord(ranges[i].Minimum, 0).X;
                     double endX = ConvToPicBoxCoord(ranges[i].Maximum, 0).X;
-                    if(startX>OriginPos.X)
-                    gMain.DrawLine(pen, startX, top, startX, zero);
+                    if (startX > OriginPos.X)
+                        gMain.DrawLine(pen, startX, top, startX, zero);
                     if (endX > OriginPos.X)
-                    gMain.DrawLine(pen, endX, top, endX, zero);
+                        gMain.DrawLine(pen, endX, top, endX, zero);
                     gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
 
                     DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
@@ -1374,12 +1372,11 @@ namespace PDIndexer
                     gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
 
                     startX = ConvToPicBoxCoord(dp.Profile.Pt[endIndex].X, 0).X;
-                    endX = ConvToPicBoxCoord(dp.Profile.Pt[Math.Min(endIndex + dp.InterpolationPoints, dp.Profile.Pt.Count-1)].X, 0).X;
+                    endX = ConvToPicBoxCoord(dp.Profile.Pt[Math.Min(endIndex + dp.InterpolationPoints, dp.Profile.Pt.Count - 1)].X, 0).X;
                     gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
 
 
-                    pen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1);
-                    pen.DashStyle = DashStyle.Dash;
+                    pen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1) { DashStyle = DashStyle.Dash };
                     if (original.Count > 1)
                         gMain.DrawLines(pen, original.ToArray());
                 }
@@ -1731,7 +1728,7 @@ namespace PDIndexer
                 gMain.DrawLine(pen, x, pictureBoxMain.Height - OriginPos.Y, x, pictureBoxMain.Height - OriginPos.Y + 5);
                 if (i * AngleGradiation > 1000)
                     format = "#," + format;
-                gMain.DrawString(Math.Round(i * AngleGradiation, 5).ToString(format), strFont, colorControlScaleText.SolidBrush, x - 2, pictureBoxMain.Height - OriginPos.Y + 5);
+                gMain.DrawString(Math.Round(i * AngleGradiation, 5).ToString(format), strFont,new SolidBrush(colorControlScaleText.Color), x - 2, pictureBoxMain.Height - OriginPos.Y + 5);
                 pen = new Pen(colorControlScaleLine.Color, 1);
                 if (checkBoxShowScaleLine.Checked)
                     gMain.DrawLine(pen, ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBoxMain.Height - OriginPos.Y, x, 0);
@@ -1764,7 +1761,7 @@ namespace PDIndexer
                 gMain.DrawLine(pen, OriginPos.X - 8, y, OriginPos.X, y);
                 if(i * IntensityGradiation>1000)
                     format = "#," + format;
-                gMain.DrawString((i * IntensityGradiation).ToString(format), strFont, colorControlScaleText.SolidBrush, 0, y - 6);
+                gMain.DrawString((i * IntensityGradiation).ToString(format), strFont, new SolidBrush(colorControlScaleText.Color), 0, y - 6);
                 pen = new Pen(colorControlScaleLine.Color, 1);
                 if (checkBoxShowScaleLine.Checked)
                     gMain.DrawLine(pen, OriginPos.X - 8, y, pictureBoxMain.Width, y);
@@ -3638,8 +3635,7 @@ namespace PDIndexer
 
         private void toolStripMenuItemImport_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "cif, amc file | *.amc;*.cif";
+            OpenFileDialog dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 Crystal c = ConvertCrystalData.ConvertToCrystal(dlg.FileName);

@@ -1,6 +1,7 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -10,77 +11,20 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
+    [TypeConverter(typeof(DefinitionOrderTypeConverter))]
     public partial class CrystalControl : UserControl
     {
-        public CrystalControl()
-        {
-            InitializeComponent();
+        #region プロパティ、フィールド、イベントハンドラ
 
-            formScatteringFactor = new FormScatteringFactor
-            {
-                crystalControl = this,
-                Visible = false
-            };
+        public bool SkipEvent { get; set; } = false;
 
-            formSymmetryInformation = new FormSymmetryInformation
-            {
-                crystalControl = this,
-                Visible = false
-            };
+        public bool SymmetryInformationVisible { set => formSymmetryInformation.Visible = value; get => formSymmetryInformation.Visible; }
 
-            formStrain = new FormStrain
-            {
-                crystalControl = this,
-                Visible = false
-            };
-        }
-
-        public bool SymmetryInformationVisible
-        {
-            set
-            {
-                if (formSymmetryInformation.crystal == null)
-                    formSymmetryInformation.crystal = Crystal;
-                formSymmetryInformation.Visible = value;
-            }
-            get => formSymmetryInformation.Visible;
-        }
-
-        public bool ScatteringFactorVisible
-        {
-            set
-            {
-                if (formScatteringFactor.crystal == null)
-                    formScatteringFactor.crystal = Crystal;
-                formScatteringFactor.Visible = value;
-            }
-            get => formScatteringFactor.Visible;
-        }
+        public bool ScatteringFactorVisible { set { formScatteringFactor.Visible = value; } get => formScatteringFactor.Visible; }
 
         public bool StrainControlVisible { get => formStrain.Visible; }
 
-        public int atomSeriesNum;
-
-        public int SymmetrySeriesNumber
-        {
-            get
-            {
-                if (comboBoxCrystalSystem.SelectedIndex >= 0 && comboBoxPointGroup.SelectedIndex >= 0 && comboBoxSpaceGroup.SelectedIndex >= 0)
-                    return SymmetryStatic.BelongingNumberOfSymmetry[comboBoxCrystalSystem.SelectedIndex][comboBoxPointGroup.SelectedIndex][comboBoxSpaceGroup.SelectedIndex];
-                else return 0;
-            }
-            set
-            {
-                if (crystal != null && value >= 0 && value <= SymmetryStatic.TotalSpaceGroupNumber)
-                {
-                    crystal.SymmetrySeriesNumber = value;
-                    (int CrystalSystem, int PointGroup, int SpaceGroup) = SymmetryStatic.GetSytemAndGroupFromSeriesNumber(value);
-                    comboBoxCrystalSystem.SelectedIndex = CrystalSystem;
-                    comboBoxPointGroup.SelectedIndex = PointGroup;
-                    comboBoxSpaceGroup.SelectedIndex = SpaceGroup;
-                }
-            }
-        }
+        public int SymmetrySeriesNumber { get => symmetryControl.SymmetrySeriesNumber; set => symmetryControl.SymmetrySeriesNumber = value; }
 
         #region Tabページの表示/非表示プロパティ
 
@@ -98,7 +42,7 @@ namespace Crystallography.Controls
 
         public bool VisibleReferenceTab { set { visibleReferenceTab = value; setTabPages(); } get => visibleReferenceTab; }
         private bool visibleReferenceTab = true;
-        
+
         public bool VisibleEOSTab { set { visibleEOSTab = value; setTabPages(); } get => visibleEOSTab; }
         private bool visibleEOSTab = true;
 
@@ -130,32 +74,6 @@ namespace Crystallography.Controls
 
         #endregion Tabページの表示/非表示プロパティ
 
-
-        public double[] CellConstants
-        {
-            get => new[] { numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue };
-            set
-            {
-                if (value != null && value.Length == 6)
-                {
-                    SkipCellConstantsChangedEvent = true;
-                    SkipGenerateCrystal = true;
-                    numericBoxA.Value = value[0];
-                    numericBoxB.Value = value[1];
-                    numericBoxC.Value = value[2];
-                    numericBoxAlpha.RadianValue = value[3];
-                    numericBoxBeta.RadianValue = value[4];
-                    numericBoxGamma.RadianValue = value[5];
-                    SkipCellConstantsChangedEvent = false;
-                    SkipGenerateCrystal = false;
-                    GenerateFromInterface();
-                    //CrystalChanged?.Invoke(crystal);
-                }
-            }
-        }
-
-        private Crystal crystal;
-
         public Crystal Crystal
         {
             set
@@ -164,7 +82,6 @@ namespace Crystallography.Controls
                 if (crystal != null)
                 {
                     Enabled = !crystal.FlexibleMode;
-                    checkSpecialNumber();
 
                     SetToInterface();
                     //原子位置チェック (strain controlで選択した後、原子位置が変になってしまう問題の修正. 2017/05/29)
@@ -177,17 +94,20 @@ namespace Crystallography.Controls
                         SetToInterface();
                     }
 
-                    CrystalChanged?.Invoke(crystal);
+                    CrystalChanged?.Invoke(this,new EventArgs());
                 }
             }
             get => crystal;
         }
+        private Crystal crystal;
+
+
+        public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
+        { get => symmetryControl.CellConstants; set => symmetryControl.CellConstants = value; }
 
         public int DefaultTabNumber { set => tabControl.SelectedIndex = value; get => tabControl.SelectedIndex; }
 
-        public delegate void MyEventHandler(Crystal crystal);
-
-        public event MyEventHandler CrystalChanged;
+        public event EventHandler CrystalChanged;
 
         public FormScatteringFactor formScatteringFactor;
         public FormSymmetryInformation formSymmetryInformation;
@@ -195,259 +115,59 @@ namespace Crystallography.Controls
 
         public FormStrain formStrain;
 
+
+        //候補の数値
+        private readonly double[] rationalNumbers = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
+
+        #endregion
+
+        #region コンストラクタ、Loadイベント
+        public CrystalControl()
+        {
+            InitializeComponent();
+
+            formScatteringFactor = new FormScatteringFactor { CrystalControl = this, Visible = false };
+            formSymmetryInformation = new FormSymmetryInformation { CrystalControl = this, Visible = false };
+            formStrain = new FormStrain { CrystalControl = this, Visible = false };
+        }
+        
         private void CrystalForm_Load(object sender, System.EventArgs e)
         {
             textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
             formScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
             formSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
+            //atomControl.dataGridView.Columns["enabledColumn"].Visible = false;
         }
+        #endregion
 
+        #region イベントハンドラ
 
         public event EventHandler ScatteringFactor_VisibleChanged;
-        private void formScatteringFactor_VisibleChanged(object sender, EventArgs e) => ScatteringFactor_VisibleChanged?.Invoke(sender, e);
-
-
         public event EventHandler SymmetryInformation_VisibleChanged;
-        private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e) => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
 
-        //候補の数値
-        private double[] rationalNumbers = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
+        #endregion
 
-        private void checkSpecialNumber()
-        {
-            //三方あるいは六方
-            // if (crystal.Symmetry.SeriesNumber < 430 && crystal.Symmetry.SeriesNumber > 488) return;
-            for (int i = 0; i < crystal.Atoms.Length; i++)
-            {
-                var pos = new Vector3D(
-                    ((int)Math.Round(crystal.Atoms[i].X * 1000000)) / 1000000.0,
-                    ((int)Math.Round(crystal.Atoms[i].Y * 1000000)) / 1000000.0,
-                    ((int)Math.Round(crystal.Atoms[i].Z * 1000000)) / 1000000.0);
-                var occ = ((int)Math.Round(crystal.Atoms[i].Occ * 1000000)) / 1000000.0;
+        private void formScatteringFactor_VisibleChanged(object sender, EventArgs e) 
+            => ScatteringFactor_VisibleChanged?.Invoke(sender, e);
+        private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e)
+            => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
 
-                //bool flag = false;
-                for (int j = 0; j < rationalNumbers.Length; j++)
-                {
-                    if (Math.Abs(rationalNumbers[j] - pos.X) < 0.0001) { pos.X = rationalNumbers[j]; }
-                    if (Math.Abs(rationalNumbers[j] - pos.Y) < 0.0001) { pos.Y = rationalNumbers[j]; }
-                    if (Math.Abs(rationalNumbers[j] - pos.Z) < 0.0001) { pos.Z = rationalNumbers[j]; }
-                    if (Math.Abs(rationalNumbers[j] - occ) < 0.0001) { occ = rationalNumbers[j]; }
-                }
-                //if (flag)
-                {
-                    //  Atoms temp = SymmetryStatic.GetEquivalentAtomsPosition(pos, crystal.SymmetrySeriesNumber);
-                    //  if (temp.Atom.Count != crystal.Atoms[i].Atom.Count)
-                    {
-                        Atoms a = crystal.Atoms[i];
-                        crystal.Atoms[i] = new Atoms(a.Label, a.AtomicNumber, a.SubNumberXray, a.SubNumberElectron, a.Isotope, a.SymmetrySeriesNumber,
-                            pos, new Vector3D(a.X_err, a.Y_err, a.Z_err), occ, a.Occ_err, a.Dsf, new AtomMaterial(a.Argb, a.Ambient, a.Diffusion, a.Specular, a.Shininess, a.Emission, a.Transparency), a.Radius);
-                        crystal.GetFormulaAndDensity();
-                    }
-                }
-            }
-        }
+        #region Crystalクラスを画面下部 から生成/にセット
 
-        #region 対称性コンボの変更イベント
-
-        private bool SkipComboBoxChangeEvent = false;
-
-        private void comboBoxCrystalSystem_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            SkipComboBoxChangeEvent = true;
-            comboBoxPointGroup.Items.Clear();
-            comboBoxSpaceGroup.Items.Clear();
-            Symmetry symmetry;
-            for (int n = 0; n < SymmetryStatic.BelongingNumberOfSymmetry[comboBoxCrystalSystem.SelectedIndex].Length; n++)
-            {
-                symmetry = SymmetryStatic.Get_Symmetry(SymmetryStatic.BelongingNumberOfSymmetry[comboBoxCrystalSystem.SelectedIndex][n][0]);
-                if (symmetry.CrystalSystemStr == comboBoxCrystalSystem.Text)
-                    if (comboBoxPointGroup.Items.Contains(symmetry.PointGroupHMStr) == false)
-                        comboBoxPointGroup.Items.Add(symmetry.PointGroupHMStr);
-            }
-            SkipComboBoxChangeEvent = false;
-            comboBoxPointGroup.SelectedIndex = 0;
-            comboBoxPointGroup_SelectedIndexChanged(new object(), new System.EventArgs());
-        }
-
-        private void comboBoxPointGroup_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (SkipComboBoxChangeEvent) return;
-            SkipComboBoxChangeEvent = true;
-            comboBoxSpaceGroup.Items.Clear();
-            Symmetry symmetry;
-            for (int n = 0; n < SymmetryStatic.BelongingNumberOfSymmetry[comboBoxCrystalSystem.SelectedIndex][comboBoxPointGroup.SelectedIndex].Length; n++)
-            {
-                symmetry = SymmetryStatic.Get_Symmetry(SymmetryStatic.BelongingNumberOfSymmetry[comboBoxCrystalSystem.SelectedIndex][comboBoxPointGroup.SelectedIndex][n]);
-                if (symmetry.PointGroupHMStr == comboBoxPointGroup.Text)
-                    comboBoxSpaceGroup.Items.Add(symmetry.SpaceGroupHMStr);
-            }
-            SkipComboBoxChangeEvent = false;
-            comboBoxSpaceGroup.SelectedIndex = 0;
-            comboBoxSpaceGroup_SelectedIndexChanged(new object(), new System.EventArgs());
-        }
-
-        public void comboBoxSpaceGroup_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            if (SkipComboBoxChangeEvent) return;
-            //SymmetrySeriesNumber = SymmetryStatic.BelongingNumberOfSymmetry[comboBoxCrystalSystem.SelectedIndex][comboBoxPointGroup.SelectedIndex][comboBoxSpaceGroup.SelectedIndex];
-            SetCellParameterReadOnlyStatus();
-            elasticityControl1.SymmetrySeriesNumber = SymmetrySeriesNumber;
-            atomControl.SymmetrySeriesNumber = SymmetrySeriesNumber;
-
-
-        }
-
-        #endregion 対称性コンボの変更イベント
-
-        #region 対称性に従って格子定数コントロールのReadOnlyを変更
-
-        private bool SkipCellConstantsChangedEvent = false;
-
-        private void SetCellParameterReadOnlyStatus()
-        {
-            if (SkipCellConstantsChangedEvent) return;
-            Symmetry tempSym = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
-            SkipCellConstantsChangedEvent = true;
-            //いったんすべてをreadonly=falseにする
-            //numericTextBoxA.Enabled = numericTextBoxB.Enabled = numericTextBoxC.Enabled = numericTextBoxAlpha.Enabled = numericTextBoxBeta.Enabled = numericTextBoxGamma.Enabled = true;
-            //numericTextBoxAErr.Enabled = numericTextBoxBErr.Enabled = numericTextBoxCErr.Enabled = numericTextBoxAlphaErr.Enabled = numericTextBoxBetaErr.Enabled = numericTextBoxGammaErr.Enabled = true;
-            switch (tempSym.CrystalSystemStr)
-            {
-                case "Unknown": break;
-                case "triclinic":
-                    numericBoxA.Enabled = numericBoxB.Enabled = numericBoxC.Enabled = numericBoxAlpha.Enabled = numericBoxBeta.Enabled = numericBoxGamma.Enabled = true;
-                    break;
-
-                case "monoclinic":
-                    numericBoxA.Enabled = numericBoxB.Enabled = numericBoxC.Enabled = true;
-                    switch (tempSym.MainAxis)
-                    {
-                        case "a":
-                            numericBoxAlpha.Enabled = true;
-                            numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                            numericBoxBeta.Value = numericBoxGamma.Value = 90;
-                            numericBoxBetaErr.Value = numericBoxGammaErr.Value = 0;
-                            break;
-
-                        case "b":
-                            numericBoxBeta.Enabled = true;
-                            numericBoxAlpha.Enabled = numericBoxGamma.Enabled = false;
-                            numericBoxAlpha.Value = numericBoxGamma.Value = 90;
-                            numericBoxAlphaErr.Value = numericBoxGammaErr.Value = 0;
-
-                            break;
-
-                        case "c":
-                            numericBoxGamma.Enabled = true;
-                            numericBoxAlpha.Enabled = numericBoxBeta.Enabled = false;
-                            numericBoxAlpha.Value = numericBoxBeta.Value = 90;
-                            numericBoxAlphaErr.Value = numericBoxBetaErr.Value = 0;
-                            break;
-                    }
-                    break;
-
-                case "orthorhombic":
-                    numericBoxA.Enabled = numericBoxB.Enabled = numericBoxC.Enabled = true;
-                    numericBoxAlpha.Enabled = numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                    numericBoxAlpha.Value = numericBoxBeta.Value = numericBoxGamma.Value = 90;
-                    numericBoxAlphaErr.Value = numericBoxBetaErr.Value = numericBoxGammaErr.Value = 0;
-
-                    break;
-
-                case "tetragonal":
-                    numericBoxA.Enabled = numericBoxC.Enabled = true;
-                    numericBoxB.Enabled = false;
-                    numericBoxB.Value = numericBoxA.Value;
-                    numericBoxBErr.Value = numericBoxAErr.Value;
-                    numericBoxAlpha.Enabled = numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                    numericBoxAlpha.Value = numericBoxBeta.Value = numericBoxGamma.Value = 90;
-                    numericBoxAlphaErr.Value = numericBoxBetaErr.Value = numericBoxGammaErr.Value = 0;
-                    break;
-
-                case "trigonal":
-                    switch (tempSym.SpaceGroupHMStr.IndexOf("Rho") >= 0 && tempSym.SpaceGroupHMStr.IndexOf("R") >= 0)
-                    {
-                        case false:
-                            numericBoxA.Enabled = numericBoxC.Enabled = true;
-                            numericBoxB.Enabled = false;
-                            numericBoxB.Value = numericBoxA.Value;
-                            numericBoxBErr.Value = numericBoxAErr.Value;
-                            numericBoxAlpha.Enabled = numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                            numericBoxAlpha.Value = numericBoxBeta.Value = 90; numericBoxGamma.Value = 120;
-                            numericBoxAlphaErr.Value = numericBoxBetaErr.Value = numericBoxGammaErr.Value = 0;
-                            break;
-
-                        case true:
-                            numericBoxA.Enabled = true;
-                            numericBoxB.Enabled = numericBoxC.Enabled = false;
-                            numericBoxC.Value = numericBoxB.Value = numericBoxA.Value;
-                            numericBoxCErr.Value = numericBoxBErr.Value = numericBoxAErr.Value;
-
-                            numericBoxAlpha.Enabled = true;
-                            numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                            numericBoxGamma.Value = numericBoxBeta.Value = numericBoxAlpha.Value;
-                            break;
-                    }
-                    break;
-
-                case "hexagonal":
-                    numericBoxA.Enabled = numericBoxC.Enabled = true;
-                    numericBoxB.Enabled = false;
-                    numericBoxB.Value = numericBoxA.Value;
-                    numericBoxBErr.Value = numericBoxAErr.Value;
-                    numericBoxAlpha.Enabled = numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                    numericBoxAlpha.Value = numericBoxBeta.Value = 90; numericBoxGamma.Value = 120;
-                    numericBoxAlphaErr.Value = numericBoxBetaErr.Value = numericBoxGammaErr.Value = 0;
-                    break;
-
-                case "cubic":
-                    numericBoxA.Enabled = true;
-                    numericBoxB.Enabled = numericBoxC.Enabled = false;
-                    numericBoxC.Value = numericBoxB.Value = numericBoxA.Value;
-                    numericBoxCErr.Value = numericBoxBErr.Value = numericBoxAErr.Value;
-                    numericBoxAlpha.Enabled = numericBoxBeta.Enabled = numericBoxGamma.Enabled = false;
-                    numericBoxAlpha.Value = numericBoxBeta.Value = numericBoxGamma.Value = 90;
-                    numericBoxAlphaErr.Value = numericBoxBetaErr.Value = numericBoxGammaErr.Value = 0;
-                    break;
-            }
-            numericBoxAErr.Enabled = numericBoxA.Enabled;
-            numericBoxBErr.Enabled = numericBoxB.Enabled;
-            numericBoxCErr.Enabled = numericBoxC.Enabled;
-            numericBoxAlphaErr.Enabled = numericBoxAlpha.Enabled;
-            numericBoxBetaErr.Enabled = numericBoxBeta.Enabled;
-            numericBoxGammaErr.Enabled = numericBoxGamma.Enabled;
-
-            SkipCellConstantsChangedEvent = false;
-
-            GenerateFromInterface();
-        }
-
-        private void numericTextBoxErr_ReadOnlyChanged(object sender, EventArgs e)
-        {
-            numericBoxAErr.ReadOnly = numericBoxA.ReadOnly;
-            numericBoxBErr.ReadOnly = numericBoxB.ReadOnly;
-            numericBoxCErr.ReadOnly = numericBoxC.ReadOnly;
-            numericBoxAlphaErr.ReadOnly = numericBoxAlpha.ReadOnly;
-            numericBoxBetaErr.ReadOnly = numericBoxBeta.ReadOnly;
-            numericBoxGammaErr.ReadOnly = numericBoxGamma.ReadOnly;
-        }
-
-        #endregion 対称性に従って格子定数コントロールのReadOnlyを変更
-
-        private bool SkipGenerateCrystal = false;
 
         /// <summary>
         /// Formに入力された内容からからCrystalを生成する
         /// </summary>
         public void GenerateFromInterface()
         {
-            if (SkipGenerateCrystal) return;
-            SkipSetForm = true;
-            SkipGenerateCrystal = true;
+            if (SkipEvent) return;
+            SkipEvent = true;
 
-            if (numericBoxA.Value < 0 || numericBoxB.Value < 0 || numericBoxC.Value < 0 || numericBoxAlpha.Value > 180 || numericBoxBeta.Value > 180 || numericBoxGamma.Value > 180)
+            var (A, B, C, Alpha, Beta, Gamma) = symmetryControl.CellConstants;
+            if (A < 0 || B < 0 || C < 0 || Alpha > Math.PI || Beta > Math.PI || Gamma > Math.PI)
             {
-                MessageBox.Show("0～180の範囲で入力してください");
+                SkipEvent = false;
+                MessageBox.Show("Input valid cell constants");
                 return;
             }
 
@@ -457,9 +177,8 @@ namespace Crystallography.Controls
             var rot = crystal != null ? crystal.RotationMatrix : new Matrix3D();
 
             crystal = new Crystal(
-                (numericBoxA.Value / 10, numericBoxB.Value / 10, numericBoxC.Value / 10, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue),
-                (numericBoxAErr.Value / 10, numericBoxBErr.Value / 10, numericBoxCErr.Value / 10, numericBoxAlphaErr.RadianValue, numericBoxBetaErr.RadianValue, numericBoxGammaErr.RadianValue),
-                SymmetrySeriesNumber, textBoxName.Text,  colorControl.Color, rot, atomControl.GetAll(),
+                symmetryControl.CellConstants, symmetryControl.CellConstantsErr,
+                SymmetrySeriesNumber, textBoxName.Text, colorControl.Color, rot, atomControl.GetAll(),
                 (textBoxMemo.Text, textBoxAuthor.Text, textBoxJournal.Text, textBoxTitle.Text),
                 bondControl.GetAll(), boundControl.GetAll(), latticePlaneControl.GetAll());
 
@@ -488,7 +207,7 @@ namespace Crystallography.Controls
                 crystal.EOSCondition.N = n / crystal.ChemicalFormulaZ;
             crystal.DoesUseEOS = checkBoxUseEOS.Checked;
             crystal.EOSCondition.Note = textBoxEOS_Note.Text;
-            crystal.EOSCondition.Temperature = numericalTextBoxTemperature.Value;
+            crystal.EOSCondition.Temperature = numericBoxTemperature.Value;
             #endregion
 
 
@@ -500,15 +219,12 @@ namespace Crystallography.Controls
                 crystal.Crystallites = poleFigureControl.Crystal.Crystallites;
             #endregion
 
-            SkipSetForm = false;
-
+            SkipEvent = false;
             SetToInterface(false);
 
-            CrystalChanged?.Invoke(Crystal);
-            SkipGenerateCrystal = false;
+            CrystalChanged?.Invoke(this, new EventArgs());
         }
 
-         public bool SkipSetForm = false;
 
         /// <summary>
         /// 現在のCrystalによってFormのテキストボックスなどを設定する。
@@ -516,8 +232,8 @@ namespace Crystallography.Controls
         /// <param name="ChangeCellParameter">コントロールのCellParaterを変化させた時はFalse</param>
         public void SetToInterface(bool ChangeCellParameter = true)
         {
-            if (SkipSetForm) return;
-            SkipGenerateCrystal = true;
+            if (SkipEvent) return;
+            SkipEvent = true;
 
             colorControl.Color = Color.FromArgb(Crystal.Argb);
             textBoxName.Text = Crystal.Name;
@@ -528,50 +244,33 @@ namespace Crystallography.Controls
             textBoxFormula.Text = Crystal.ChemicalFormulaSum;
             textBoxTitle.Text = Crystal.PublSectionTitle;
 
-            textBoxDensity.Text = Crystal.Density.ToString("f5");
-            numericalTextBoxVolume.Text = (Crystal.Volume * 1000).ToString("f5");
-            textBoxZnumber.Text = Crystal.ChemicalFormulaZ.ToString();
+            numericBoxDensity.Value = Crystal.Density;
+            numericBoxVolume.Value = Crystal.Volume * 1000;
+            numericBoxZnumber.Value = Crystal.ChemicalFormulaZ;
 
             SymmetrySeriesNumber = Crystal.SymmetrySeriesNumber;//SymmetrySeriesNumberをフィールドからプロパティに変更。set{}の所でコンボボックスをセットする。(20170526)
 
             if (ChangeCellParameter)
             {
-                numericBoxA.Value = Crystal.A * 10;
-                numericBoxB.Value = Crystal.B * 10;
-                numericBoxC.Value = Crystal.C * 10;
-                numericBoxAlpha.RadianValue = Crystal.Alpha;
-                numericBoxBeta.RadianValue = Crystal.Beta;
-                numericBoxGamma.RadianValue = Crystal.Gamma;
-
-                numericBoxAErr.Value = Crystal.A_err * 10;
-                numericBoxBErr.Value = Crystal.B_err * 10;
-                numericBoxCErr.Value = Crystal.C_err * 10;
-                numericBoxAlphaErr.RadianValue = Crystal.Alpha_err;
-                numericBoxBetaErr.RadianValue = Crystal.Beta_err;
-                numericBoxGammaErr.RadianValue = Crystal.Gamma_err;
+                symmetryControl.CellConstants = (Crystal.A, Crystal.B, Crystal.C, Crystal.Alpha, Crystal.Beta, Crystal.Gamma);
+                symmetryControl.CellConstantsErr = (Crystal.A_err, Crystal.B_err, Crystal.C_err, Crystal.Alpha_err, Crystal.Beta_err, Crystal.Gamma_err);
             }
 
             //Atomsコントロール
-            atomControl.Clear();
-            atomControl.AddRange(Crystal.Atoms);
-
+            atomControl.Crystal = crystal;
 
             //Bondコントロール
-            bondControl.ElementList = Crystal.Atoms.Select(a => a.ElementName).ToArray();//Bonds&Polyhedra中のコンボボックスの変更
-
-            bondControl.Clear();//listBoxBondsAndPolyhedraにBondsを追加
-            bondControl.AddRange(Crystal.Bonds);
+            bondControl.Crystal = crystal;
 
             //Boundsコントロール
-            boundControl.Clear();
-            boundControl.AddRange(Crystal.Bounds);
+            boundControl.Crystal = crystal;
 
             //LatticePlaneコントロール
-            latticePlaneControl.Clear();
-            latticePlaneControl.AddRange(crystal.LatticePlanes);
+            latticePlaneControl.Crystal = Crystal;
+            //latticePlaneControl.Clear();
+            //latticePlaneControl.AddRange(crystal.LatticePlanes);
 
             //EOS関連
-            skipEOSEvent = true;
             numericBoxPressure.Value = 0;
             numericBoxEOS_A.Value = crystal.EOSCondition.A;
             numericBoxEOS_B.Value = crystal.EOSCondition.B;
@@ -590,9 +289,8 @@ namespace Crystallography.Controls
             radioButtonBirchMurnaghan.Checked = crystal.EOSCondition.IsothermalPressureApproach == IsothermalPressure.Birch_Murnaghan;
             radioButtonVinet.Checked = crystal.EOSCondition.IsothermalPressureApproach == IsothermalPressure.Vinet;
             textBoxEOS_Note.Text = crystal.EOSCondition.Note;
-            numericalTextBoxTemperature.Value = crystal.EOSCondition.Temperature;
-            skipEOSEvent = false;
-            numericalTextBoxEOS_State_ValueChanged(new object(), new EventArgs());
+            numericBoxTemperature.Value = crystal.EOSCondition.Temperature;
+            numericBoxEOS_State_ValueChanged(new object(), new EventArgs());
 
             //弾性定数関連
             elasticityControl1.Stiffness = DenseMatrix.OfArray(crystal.ElasticStiffness);
@@ -602,66 +300,12 @@ namespace Crystallography.Controls
             numericUpDownAngleSubDivision.Value = (decimal)crystal.SubDivision;
             poleFigureControl.Crystal = crystal;
 
-            SkipGenerateCrystal = false;
+            SkipEvent = false;
+
         }
 
-        private void textBoxName_TextChanged(object sender, System.EventArgs e)
-        {
-            GenerateFromInterface();
-        }
-
-        #region 空間群検索
-
-        private void textBoxSearch_TextChanged(object sender, System.EventArgs e)
-        {
-            comboBoxSearchResult.Items.Clear();
-            comboBoxSearchResult.Enabled = false;
-            char[] c;
-            if (textBoxSearch.Text.Length == 0)
-                return;
-            else
-                c = textBoxSearch.Text.ToCharArray();
-            Symmetry sym;
-            int startIndex = 0;
-            int index;
-            for (int n = 0; n < SymmetryStatic.TotalSpaceGroupNumber; n++)
-            {
-                sym = SymmetryStatic.Get_Symmetry(n);
-                startIndex = -1;
-                for (int i = 0; i < c.Length; i++)
-                {
-                    index = sym.SpaceGroupHMStr.IndexOf(c[i], startIndex + 1);
-                    if (index >= 0)
-                        startIndex = index;
-                    else
-                    {
-                        startIndex = -1;
-                        break;
-                    }
-                }
-                if (startIndex >= 0)
-                    comboBoxSearchResult.Items.Add(sym.SpaceGroupHMStr);
-            }
-            if (comboBoxSearchResult.Items.Count > 0)
-                comboBoxSearchResult.Enabled = true;
-        }
-
-        private void comboBoxSearchResult_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            Symmetry sym = SymmetryStatic.Get_Symmetry(0);
-            for (int n = 0; n <= SymmetryStatic.TotalSpaceGroupNumber; n++)
-            {
-                sym = SymmetryStatic.Get_Symmetry(n);
-                if (comboBoxSearchResult.Text == sym.SpaceGroupHMStr)
-                    break;
-            }
-            comboBoxCrystalSystem.Text = sym.CrystalSystemStr;
-            comboBoxPointGroup.Text = sym.PointGroupHMStr;
-            comboBoxSpaceGroup.Text = sym.SpaceGroupHMStr;
-        }
-
-        #endregion 空間群検索
-
+        #endregion
+    
         #region ドラッグドロップイベント
 
         public void FormCrystal_DragDrop(object sender, DragEventArgs e)
@@ -681,13 +325,6 @@ namespace Crystallography.Controls
 
         #endregion ドラッグドロップイベント
 
-        private void numericalTextBoxUnitCell_ValueChanged(object sender, EventArgs e)
-        {
-            if (!(sender as NumericBox).ReadOnly)//自分が読み込み専用でなければ
-                SetCellParameterReadOnlyStatus();
-        }
-
-
 
         private void buttonReset_Click(object sender, EventArgs e) => Crystal = new Crystal();
 
@@ -695,8 +332,7 @@ namespace Crystallography.Controls
 
         private void importCrystalFromCIFAMCToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = " *.cif; *.amc | *.cif;*.amc";
+            var dlg = new OpenFileDialog { Filter = " *.cif; *.amc | *.cif;*.amc" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -722,27 +358,17 @@ namespace Crystallography.Controls
             }
         }
 
-        private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (formScatteringFactor.crystal == null)
-                formScatteringFactor.crystal = Crystal;
+        private void scatteringFactorToolStripMenuItem_Click(object sender, EventArgs e) 
+            => formScatteringFactor.Visible = !formScatteringFactor.Visible;
 
-            formScatteringFactor.Visible = !formScatteringFactor.Visible;
-        }
-
-        private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (formSymmetryInformation.crystal == null)
-                formSymmetryInformation.crystal = Crystal;
-
-            formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
-        }
+        private void symmetryInformationToolStripMenuItem_Click(object sender, EventArgs e) 
+            => formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
 
         private void sendThisCrystalToOtherSoftwareToolStripMenuItem_Click(object sender, EventArgs e)
         {
             GenerateFromInterface();
             if (crystal != null)
-                Clipboard.SetDataObject(Crystal2.GetCrystal2(crystal), true, 3, 10);
+                Clipboard.SetDataObject(Crystal2.FromCrystal(crystal), true, 3, 10);
         }
 
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
@@ -759,115 +385,47 @@ namespace Crystallography.Controls
                 crystal.Reserved = !crystal.Reserved;
         }
 
-        #region 空間群を表示するコンボボックスのオーナードロー関係
-
-        private void comboBoxSpaceGroup_DrawItem(object sender, DrawItemEventArgs e)
-        {
-            if (e.Index < 0) return;
-            e.DrawBackground();
-            string txt = ((ComboBox)sender).Items[e.Index].ToString();
-
-            //下付き文字用フォント
-            Font sub = new Font("Times New Roman", 8f, FontStyle.Regular);
-            //斜体
-            Font italic = new Font("Times New Roman", 11f, FontStyle.Italic);
-            //普通
-            Font regular = new Font("Times New Roman", 11f, FontStyle.Regular);
-
-            Font bold = new Font("Times New Roman", 10f, FontStyle.Bold);
-
-            float xPos = e.Bounds.Left;
-            Brush b = null;
-
-            if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
-                b = new SolidBrush(Color.Black);
-            else
-                b = new SolidBrush(Color.White);
-            e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-
-            //最初に数値を書く
-            while (txt.Length > 0)
-            {
-                if (txt.StartsWith(" "))
-                    xPos += 0;
-                else if (txt.StartsWith("sub"))//subで始まる時は
-                {
-                    xPos -= 1;
-                    txt = txt.Substring(3, txt.Length - 3);
-                    e.Graphics.DrawString(txt[0].ToString(), sub, b, xPos, e.Bounds.Y + 3);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), sub).Width - 2;
-                }
-                else if (txt.StartsWith("-"))//-で始まる時は
-                {
-                    float x = e.Graphics.MeasureString(txt[1].ToString(), regular).Width;
-                    e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1));
-                }
-                else if (txt.StartsWith("Hex") || txt.StartsWith("Rho") || txt.StartsWith("(1)") || txt.StartsWith("(2)"))
-                {
-                    xPos += 2;
-                    e.Graphics.DrawString(txt.Substring(0, 3), sub, b, xPos, e.Bounds.Y + 3);
-                    xPos += e.Graphics.MeasureString(txt.Substring(0, 3), sub).Width - 2;
-                    txt = txt.Substring(2);
-                }
-                else if (txt[0] == '/')
-                {
-                    xPos -= 1;
-                    e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 5;
-                }
-                else if (('0' <= txt[0] && '9' >= txt[0]) || txt[0] == '(' || txt[0] == ')')
-                {
-                    e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 2;
-                }
-                else
-                {
-                    e.Graphics.DrawString(txt[0].ToString(), italic, b, xPos, e.Bounds.Y);
-                    xPos += e.Graphics.MeasureString(txt[0].ToString(), italic).Width - 2;
-                }
-                txt = txt.Substring(1);
-            }
-
-            b.Dispose();
-        }
-
-        #endregion 空間群を表示するコンボボックスのオーナードロー関係
-
         #region EOSタブの入力設定
-
-        private bool skipEOSEvent = false;
-
-        private void numericalTextBoxEOS_State_ValueChanged(object sender, EventArgs e)
+        private void numericBoxEOS_State_ValueChanged(object sender, EventArgs e)
         {
-            if (skipEOSEvent) return;
-
-            if (numericalTextBoxEOS_V0perMol.ReadOnly && !double.IsNaN(numericBoxEOS_V0perCell.Value))
-            {
-                skipEOSEvent = true;
-                numericalTextBoxEOS_V0perMol.Value = numericBoxEOS_V0perCell.Value * 6.0221367 / crystal.ChemicalFormulaZ / 10;
-                skipEOSEvent = false;
-            }
+            if (SkipEvent) return;
+            SkipEvent = true;
+            if (numericBoxEOS_V0perMol.ReadOnly && !double.IsNaN(numericBoxEOS_V0perCell.Value))
+                numericBoxEOS_V0perMol.Value = numericBoxEOS_V0perCell.Value * 6.0221367 / crystal.ChemicalFormulaZ / 10;
+            SkipEvent = false;
             GenerateFromInterface();
+
+            SkipEvent = false;
             if (checkBoxUseEOS.Checked)
                 numericBoxPressure.Value = crystal.EOSCondition.GetPressure(crystal.Volume * 1000);
+            SkipEvent = false;
         }
 
-        private void numericalTextBoxEOS_V0perCell_Click2(object sender, EventArgs e)
+        private void numericBoxEOS_V0perCell_Click2(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
+            SkipEvent = true;
             numericBoxEOS_V0perCell.ReadOnly = false;
-            numericalTextBoxEOS_V0perMol.ReadOnly = true;
+            numericBoxEOS_V0perMol.ReadOnly = true;
+            SkipEvent = false;
         }
 
-        private void numericalTextBoxEOS_V0perMol_Click2(object sender, EventArgs e)
+        private void numericBoxEOS_V0perMol_Click2(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
+            SkipEvent = true;
             numericBoxEOS_V0perCell.ReadOnly = true;
-            numericalTextBoxEOS_V0perMol.ReadOnly = false;
+            numericBoxEOS_V0perMol.ReadOnly = false;
+            SkipEvent = false;
         }
 
-        private void numericalTextBoxEOS_V0perMol_ValueChanged(object sender, EventArgs e)
+        private void numericBoxEOS_V0perMol_ValueChanged(object sender, EventArgs e)
         {
-            if (numericalTextBoxEOS_V0perMol.ReadOnly == false)
-                numericBoxEOS_V0perCell.Value = numericalTextBoxEOS_V0perMol.Value / 6.0221367 * 10 * crystal.ChemicalFormulaZ;
+            if (SkipEvent) return;
+            SkipEvent = true;
+            if (numericBoxEOS_V0perMol.ReadOnly == false)
+                numericBoxEOS_V0perCell.Value = numericBoxEOS_V0perMol.Value / 6.0221367 * 10 * crystal.ChemicalFormulaZ;
+            SkipEvent = false;
         }
 
         #endregion EOSタブの入力設定
@@ -902,13 +460,10 @@ namespace Crystallography.Controls
 
         #endregion Polycrystalline関連
 
-        private void textBoxReferenfeChanged_TextChanged(object sender, EventArgs e)
-        {
-            //GenerateFromInterface();
-        }
 
         private void numericUpDownAngleResolution_ValueChanged(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
             GenerateFromInterface();
         }
 
@@ -1019,20 +574,20 @@ namespace Crystallography.Controls
                         seed++;
                     }
 
-                    var euler1 = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[seed]);
-                    var euler = new double[] { euler1.Phi, euler1.Theta, euler1.Psi };
+                    var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[seed]);
+                    var euler = new double[] { Phi, Theta, Psi };
                     string str = "";
                     foreach (double angle in euler)
                     {
                         double d = (angle > 0 ? angle : angle + 2 * Math.PI) / Math.PI * 180;
                         if (d >= 100)
-                            str += d.ToString("000.00") + "\t";
+                            str += $"{d:000.00}\t";
                         else if (d >= 10)
-                            str += d.ToString("00.000") + "\t";
+                            str += $"{d:00.000}\t";
                         else
-                            str += d.ToString("0.0000") + "\t";
+                            str += $"{d:0.0000}\t";
                     }
-                    sw.WriteLine("1\t0\t0\t0\t0\t" + str + "0\t0\t0");
+                    sw.WriteLine($"1\t0\t0\t0\t0\t{str}0\t0\t0");
                 }
                 sw.Close();
             }
@@ -1055,9 +610,7 @@ namespace Crystallography.Controls
                 using (StreamWriter sw = new StreamWriter(dlg.FileName))
                 {
                     sw.WriteLine("Sample Name:\t" + Crystal.Name);
-                    sw.WriteLine("Cell constants:\t"
-                        + Crystal.A.ToString() + "\t" + Crystal.B.ToString() + "\t" + Crystal.C.ToString() + "\t"
-                        + (crystal.Alpha / Math.PI * 180).ToString() + "\t" + (crystal.Beta / Math.PI * 180).ToString() + "\t" + (crystal.Gamma / Math.PI * 180).ToString());
+                    sw.WriteLine($"Cell constants:\t{Crystal.A}\t{Crystal.B}\t{Crystal.C}\t{crystal.Alpha / Math.PI * 180}\t{crystal.Beta / Math.PI * 180}\t{crystal.Gamma / Math.PI * 180}");
                     sw.WriteLine("Space group:\t" + Crystal.Symmetry.SpaceGroupHMfullStr);
                     sw.WriteLine("");
                     sw.WriteLine("Euler angles refer to Sample Coordinate system");
@@ -1083,8 +636,8 @@ namespace Crystallography.Controls
                     for (int i = 0; i < Crystal.Crystallites.TotalCrystalline; i++)
                     {
                         string str = i.ToString() + "\t";
-                        var euler1 = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
-                        var euler = new double[] { euler1.Phi, euler1.Theta, euler1.Psi };
+                        var (Phi, Theta, Psi) = Euler.GetEulerAngle(Crystal.Crystallites.Rotations[index[i]]);
+                        var euler = new double[] { Phi, Theta, Psi };
 
                         foreach (double angle in euler)
                         {
@@ -1116,6 +669,8 @@ namespace Crystallography.Controls
 
         private void elasticityControl1_ValueChanged(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
+
             if (elasticityControl1.Mode == Elasticity.Mode.Compliance)
                 formStrain.Compliance = elasticityControl1.Compliance;
             else
@@ -1126,7 +681,19 @@ namespace Crystallography.Controls
 
         private void atomControl_AtomsChanged(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
             GenerateFromInterface();
+        }
+
+        private void symmetryControl_ItemChanged(object sender, EventArgs e)
+        {
+            if (SkipEvent) return;
+            GenerateFromInterface();
+        }
+
+        private void bondControl_ItemsChanged(object sender, EventArgs e)
+        {
+          //このイベントは、StructureViewerなどから直接呼び出される。
         }
     }
 }

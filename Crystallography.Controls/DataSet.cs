@@ -61,7 +61,7 @@ namespace Crystallography.Controls
                 dr.k = bound.Index.K;
                 dr.l = bound.Index.L;
                 dr.Equivalency = bound.Equivalency;
-                dr.Distance = bound.Distance.ToString("f3");
+                dr.Distance = (bound.Distance * 10).ToString("f3");
                 dr.MultipleOfD = bound.MultipleOfD.ToString("f3");
 
                 dr.Color = ColorImage(bound.ColorArgb);
@@ -110,10 +110,10 @@ namespace Crystallography.Controls
                 dr[EnabledColumn] = bonds.Enabled;
                 dr[CenterColumn] = bonds.Element1;
                 dr[VertexColumn] = bonds.Element2;
-                dr[_Max_len_Column] = bonds.MaxLength;
-                dr[_Min_len_Column] = bonds.MinLength;
-                dr[Bond_colorColumn] = ColorImage(bonds.ArgbBond);
-                dr[Polyhedron_colorColumn] = ColorImage(bonds.ArgbPolyhedron);
+                dr[_Max_len_Column] = (bonds.MaxLength * 10.0).ToString("f4");//表示はÅ単位
+                dr[_Min_len_Column] = (bonds.MinLength * 10.0).ToString("f4");//表示はÅ単位
+                dr[Show_bondsColumn] = bonds.ShowBond;
+                dr[Show_PolyhedronColumn] = bonds.ShowPolyhedron;
 
                 return dr;
             }
@@ -133,6 +133,7 @@ namespace Crystallography.Controls
             {
                 var dr = this.NewDataTableAtomRow();
                 dr[this.AtomColumn] = atom;
+                dr[this.EnabledColumn] = atom.GLEnabled;
                 dr[this.LabelColumn] = atom.Label;
                 dr[this._Site_Sym_Column] = atom.SiteSymmetry;
                 dr[this._Wyck__Let_Column] = atom.WyckoffLeter;

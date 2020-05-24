@@ -375,109 +375,108 @@ namespace PDIndexer
         #region イオン半径　スイッチ　いずれちゃんと作りなおそう
         private double getIonRadius(int atomicNumber)
         {
-            switch (atomicNumber)
+            return atomicNumber switch
             {
-                case 1: return 0.001;
-                case 2: return 0.01;
-                case 3: return 0.076;
-                case 4: return 0.027;
-                case 5: return 0.011;
-                case 6: return 0.015;
-                case 7: return 0.016;
-                case 8: return 0.142;
-                case 9: return 0.133;
-                case 10: return 0.001;
-                case 11: return 0.118;
-                case 12: return 0.089;
-                case 13: return 0.039;
-                case 14: return 0.026;
-                case 15: return 0.029;
-                case 16: return 0.184;
-                case 17: return 0.181;
-                case 18: return 0.01;
-                case 19: return 0.151;
-                case 20: return 0.112;
-                case 21: return 0.087;
-                case 22: return 0.042;
-                case 23: return 0.058;
-                case 24: return 0.0615;
-                case 25: return 0.058;
-                case 26: return 0.055;
-                case 27: return 0.061;
-                case 28: return 0.06;
-                case 29: return 0.057;
-                case 30: return 0.074;
-                case 31: return 0.062;
-                case 32: return 0.053;
-                case 33: return 0.046;
-                case 34: return 0.198;
-                case 35: return 0.196;
-                case 36: return 0.01;
-                case 37: return 0.161;
-                case 38: return 0.126;
-                case 39: return 0.09;
-                case 40: return 0.072;
-                case 41: return 0.064;
-                case 42: return 0.059;
-                case 43: return 0.06;
-                case 44: return 0.036;
-                case 45: return 0.055;
-                case 46: return 0.0615;
-                case 47: return 0.094;
-                case 48: return 0.095;
-                case 49: return 0.08;
-                case 50: return 0.069;
-                case 51: return 0.076;
-                case 52: return 0.097;
-                case 53: return 0.22;
-                case 54: return 0.04;
-                case 55: return 0.174;
-                case 56: return 0.142;
-                case 57: return 0.116;
-                case 58: return 0.1143;
-                case 59: return 0.1126;
-                case 60: return 0.0983;
-                case 61: return 0.1093;
-                case 62: return 0.0958;
-                case 63: return 0.125;
-                case 64: return 0.1053;
-                case 65: return 0.104;
-                case 66: return 0.097;
-                case 67: return 0.1015;
-                case 68: return 0.1004;
-                case 69: return 0.0994;
-                case 70: return 0.0868;
-                case 71: return 0.0861;
-                case 72: return 0.071;
-                case 73: return 0.068;
-                case 74: return 0.042;
-                case 75: return 0.055;
-                case 76: return 0.049;
-                case 77: return 0.0625;
-                case 78: return 0.0625;
-                case 79: return 0.085;
-                case 80: return 0.096;
-                case 81: return 0.075;
-                case 82: return 0.129;
-                case 83: return 0.103;
-                case 84: return 0.067;
-                case 85: return 0.062;
-                case 86: return 0.01;
-                case 87: return 0.18;
-                case 88: return 0.17;
-                case 89: return 0.112;
-                case 90: return 0.105;
-                case 91: return 0.09;
-                case 92: return 0.073;
-                case 93: return 0.098;
-                case 94: return 0.096;
-                case 95: return 0.085;
-                case 96: return 0.085;
-                case 97: return 0.083;
-                case 98: return 0.0821;
-
-            }
-            return 0;
+                1 => 0.001,
+                2 => 0.01,
+                3 => 0.076,
+                4 => 0.027,
+                5 => 0.011,
+                6 => 0.015,
+                7 => 0.016,
+                8 => 0.142,
+                9 => 0.133,
+                10 => 0.001,
+                11 => 0.118,
+                12 => 0.089,
+                13 => 0.039,
+                14 => 0.026,
+                15 => 0.029,
+                16 => 0.184,
+                17 => 0.181,
+                18 => 0.01,
+                19 => 0.151,
+                20 => 0.112,
+                21 => 0.087,
+                22 => 0.042,
+                23 => 0.058,
+                24 => 0.0615,
+                25 => 0.058,
+                26 => 0.055,
+                27 => 0.061,
+                28 => 0.06,
+                29 => 0.057,
+                30 => 0.074,
+                31 => 0.062,
+                32 => 0.053,
+                33 => 0.046,
+                34 => 0.198,
+                35 => 0.196,
+                36 => 0.01,
+                37 => 0.161,
+                38 => 0.126,
+                39 => 0.09,
+                40 => 0.072,
+                41 => 0.064,
+                42 => 0.059,
+                43 => 0.06,
+                44 => 0.036,
+                45 => 0.055,
+                46 => 0.0615,
+                47 => 0.094,
+                48 => 0.095,
+                49 => 0.08,
+                50 => 0.069,
+                51 => 0.076,
+                52 => 0.097,
+                53 => 0.22,
+                54 => 0.04,
+                55 => 0.174,
+                56 => 0.142,
+                57 => 0.116,
+                58 => 0.1143,
+                59 => 0.1126,
+                60 => 0.0983,
+                61 => 0.1093,
+                62 => 0.0958,
+                63 => 0.125,
+                64 => 0.1053,
+                65 => 0.104,
+                66 => 0.097,
+                67 => 0.1015,
+                68 => 0.1004,
+                69 => 0.0994,
+                70 => 0.0868,
+                71 => 0.0861,
+                72 => 0.071,
+                73 => 0.068,
+                74 => 0.042,
+                75 => 0.055,
+                76 => 0.049,
+                77 => 0.0625,
+                78 => 0.0625,
+                79 => 0.085,
+                80 => 0.096,
+                81 => 0.075,
+                82 => 0.129,
+                83 => 0.103,
+                84 => 0.067,
+                85 => 0.062,
+                86 => 0.01,
+                87 => 0.18,
+                88 => 0.17,
+                89 => 0.112,
+                90 => 0.105,
+                91 => 0.09,
+                92 => 0.073,
+                93 => 0.098,
+                94 => 0.096,
+                95 => 0.085,
+                96 => 0.085,
+                97 => 0.083,
+                98 => 0.0821,
+                _ => 0,
+            };
         }
 
         # endregion

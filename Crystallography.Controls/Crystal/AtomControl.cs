@@ -1,22 +1,41 @@
 ﻿using Microsoft.Scripting.Utils;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class AtomInputControl : UserControl
+    public partial class AtomControl : UserControl
     {
-        #region プロパティ
+        #region プロパティ, フィールド, イベントハンドラ
 
+        public Crystal Crystal
+        {
+            get => crystal; set
+            {
+                crystal = value;
+                
+                if (crystal != null)
+                {
+                    table.Clear();
+                    AddRange(Crystal.Atoms);
+                    //なぜかEnabledカラムのVisibleが予期せず変わってしまうことがあるので、appearanceTabVisibleを使う.
+                    dataGridView.Columns["enabledColumn"].Visible = appearanceTabVisible;
+                }
+            }
+        }
+        private Crystal crystal = null;
+
+        public int SymmetrySeriesNumber { get=> crystal !=null ? crystal.SymmetrySeriesNumber: 0;} 
+
+        DataSet.DataTableAtomDataTable table;
         public bool SkipEvent { get; set; } = false;
-        public int SymmetrySeriesNumber { get; set; } = 0;
+        
 
         private bool details1 = false;
-
         public bool AtomicPositionError
         {
             set
@@ -27,7 +46,7 @@ namespace Crystallography.Controls
                     tableLayoutPanel1.ColumnStyles[4].SizeType = tableLayoutPanel1.ColumnStyles[7].SizeType = SizeType.Absolute;
                     tableLayoutPanel1.ColumnStyles[4].Width = tableLayoutPanel1.ColumnStyles[7].Width = 0;
 
-                    numericalTextBoxXerr.TabStop = numericalTextBoxYerr.TabStop = numericalTextBoxZerr.TabStop = numericalTextBoxOccerr.TabStop = false;
+                    numericBoxXerr.TabStop = numericBoxYerr.TabStop = numericBoxZerr.TabStop = numericBoxOccerr.TabStop = false;
                 }
                 else
                 {
@@ -37,14 +56,13 @@ namespace Crystallography.Controls
                     tableLayoutPanel1.ColumnStyles[1].Width = tableLayoutPanel1.ColumnStyles[3].Width = tableLayoutPanel1.ColumnStyles[4].Width
                         = tableLayoutPanel1.ColumnStyles[6].Width = tableLayoutPanel1.ColumnStyles[7].Width = 20;
 
-                    numericalTextBoxXerr.TabStop = numericalTextBoxYerr.TabStop = numericalTextBoxZerr.TabStop = numericalTextBoxOccerr.TabStop = true;
+                    numericBoxXerr.TabStop = numericBoxYerr.TabStop = numericBoxZerr.TabStop = numericBoxOccerr.TabStop = true;
                 }
             }
             get => details1;
         }
 
         private bool details2 = false;
-
         public bool DebyeWallerError
         {
             set
@@ -52,27 +70,25 @@ namespace Crystallography.Controls
                 details2 = value;
                 if (value == false)
                 {
-                    numericalTextBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
-                        numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 60;
+                    numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
+                        numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 60;
 
-                    labelBiso_.Visible = labelB11_.Visible = labelB12_.Visible = labelB13_.Visible = labelB22_.Visible = labelB23_.Visible = labelB33_.Visible =
-                        numericalTextBoxBisoerr.Visible = numericalTextBoxB11err.Visible = numericalTextBoxB12err.Visible = numericalTextBoxB13err.Visible = numericalTextBoxB22err.Visible
-                 = numericalTextBoxB23err.Visible = numericalTextBoxB33err.Visible = false;
+                    numericBoxBisoerr.Visible = numericBoxB11err.Visible = numericBoxB12err.Visible = numericBoxB13err.Visible = numericBoxB22err.Visible
+                    = numericBoxB23err.Visible = numericBoxB33err.Visible = false;
                 }
                 else
                 {
-                    numericalTextBoxBiso.Width = numericalTextBoxB11.Width = numericalTextBoxB12.Width =
-                        numericalTextBoxB13.Width = numericalTextBoxB22.Width = numericalTextBoxB23.Width = numericalTextBoxB33.Width = 45;
+                    numericBoxBiso.Width = numericBoxB11.Width = numericBoxB12.Width =
+                        numericBoxB13.Width = numericBoxB22.Width = numericBoxB23.Width = numericBoxB33.Width = 45;
 
-                    numericalTextBoxBisoerr.Visible = labelBiso_.Visible = numericalTextBoxBiso.Visible =
-                    numericalTextBoxB33err.Visible = labelB33_.Visible = numericalTextBoxB23err.Visible = labelB23_.Visible =
-                    numericalTextBoxB22err.Visible = labelB22_.Visible = numericalTextBoxB13err.Visible = labelB13_.Visible =
-                    numericalTextBoxB12err.Visible = labelB12_.Visible = numericalTextBoxB11err.Visible = labelB11_.Visible = true;
+                    numericBoxBisoerr.Visible = numericBoxBiso.Visible =
+                    numericBoxB33err.Visible = numericBoxB23err.Visible =
+                    numericBoxB22err.Visible = numericBoxB13err.Visible =
+                    numericBoxB12err.Visible = numericBoxB11err.Visible = true;
                 }
             }
             get => details2;
         }
-
         public bool Istoropy
         {
             set
@@ -87,59 +103,59 @@ namespace Crystallography.Controls
 
         #region 温度因子 プロパティ
         [Category("Atom")]
-        public double Biso { set => numericalTextBoxBiso.Value = value; get => numericalTextBoxBiso.Value; }
+        public double Biso { set => numericBoxBiso.Value = value; get => numericBoxBiso.Value; }
         [Category("Atom")]
-        public double BisoErr { set => numericalTextBoxBisoerr.Value = value; get => numericalTextBoxBisoerr.Value; }
+        public double BisoErr { set => numericBoxBisoerr.Value = value; get => numericBoxBisoerr.Value; }
         [Category("Atom")]
-        public double B11 { set => numericalTextBoxB11.Value = value; get => numericalTextBoxB11.Value; }
+        public double B11 { set => numericBoxB11.Value = value; get => numericBoxB11.Value; }
         [Category("Atom")]
-        public double B11Err { set => numericalTextBoxB11err.Value = value; get => numericalTextBoxB11err.Value; }
+        public double B11Err { set => numericBoxB11err.Value = value; get => numericBoxB11err.Value; }
         [Category("Atom")]
-        public double B12 { set => numericalTextBoxB12.Value = value; get => numericalTextBoxB12.Value; }
+        public double B12 { set => numericBoxB12.Value = value; get => numericBoxB12.Value; }
         [Category("Atom")]
-        public double B12Err { set => numericalTextBoxB12err.Value = value; get => numericalTextBoxB12err.Value; }
+        public double B12Err { set => numericBoxB12err.Value = value; get => numericBoxB12err.Value; }
         [Category("Atom")]
-        public double B13 { set => numericalTextBoxB13.Value = value; get => numericalTextBoxB13.Value; }
+        public double B13 { set => numericBoxB13.Value = value; get => numericBoxB13.Value; }
         [Category("Atom")]
-        public double B13Err { set => numericalTextBoxB13err.Value = value; get => numericalTextBoxB13err.Value; }
+        public double B13Err { set => numericBoxB13err.Value = value; get => numericBoxB13err.Value; }
         [Category("Atom")]
-        public double B22 { set => numericalTextBoxB22.Value = value; get => numericalTextBoxB22.Value; }
+        public double B22 { set => numericBoxB22.Value = value; get => numericBoxB22.Value; }
         [Category("Atom")]
-        public double B22Err { set => numericalTextBoxB22err.Value = value; get => numericalTextBoxB22err.Value; }
+        public double B22Err { set => numericBoxB22err.Value = value; get => numericBoxB22err.Value; }
         [Category("Atom")]
-        public double B23 { set => numericalTextBoxB23.Value = value; get { return numericalTextBoxB23.Value; } }
+        public double B23 { set => numericBoxB23.Value = value; get { return numericBoxB23.Value; } }
         [Category("Atom")]
-        public double B23Err { set { numericalTextBoxB23err.Value = value; } get { return numericalTextBoxB23err.Value; } }
+        public double B23Err { set { numericBoxB23err.Value = value; } get { return numericBoxB23err.Value; } }
         [Category("Atom")]
-        public double B33 { set { numericalTextBoxB33.Value = value; } get { return numericalTextBoxB33.Value; } }
+        public double B33 { set { numericBoxB33.Value = value; } get { return numericBoxB33.Value; } }
         [Category("Atom")]
-        public double B33Err { set { numericalTextBoxB33err.Value = value; } get { return numericalTextBoxB33err.Value; } }
+        public double B33Err { set { numericBoxB33err.Value = value; } get { return numericBoxB33err.Value; } }
         #endregion
 
         #region 原子位置 プロパティ
         [Category("Atom")]
-        public double X { set { numericTextBoxX.Value = value; } get { return numericTextBoxX.Value; } }
+        public double X { set { numericBoxX.Value = value; } get { return numericBoxX.Value; } }
 
         [Category("Atom")]
-        public double XErr { set { numericalTextBoxXerr.Value = value; } get { return numericalTextBoxXerr.Value; } }
+        public double XErr { set { numericBoxXerr.Value = value; } get { return numericBoxXerr.Value; } }
 
         [Category("Atom")]
-        public double Y { set { numericTextBoxY.Value = value; } get { return numericTextBoxY.Value; } }
+        public double Y { set { numericBoxY.Value = value; } get { return numericBoxY.Value; } }
 
         [Category("Atom")]
-        public double YErr { set { numericalTextBoxYerr.Value = value; } get { return numericalTextBoxYerr.Value; } }
+        public double YErr { set { numericBoxYerr.Value = value; } get { return numericBoxYerr.Value; } }
 
         [Category("Atom")]
-        public double Z { set { numericTextBoxZ.Value = value; } get { return numericTextBoxZ.Value; } }
+        public double Z { set { numericBoxZ.Value = value; } get { return numericBoxZ.Value; } }
 
         [Category("Atom")]
-        public double ZErr { set => numericalTextBoxZerr.Value = value; get => numericalTextBoxZerr.Value; }
+        public double ZErr { set => numericBoxZerr.Value = value; get => numericBoxZerr.Value; }
         #endregion
 
         [Category("Atom")]
-        public double Occ { set => numericTextBoxOcc.Value = value; get => numericTextBoxOcc.Value; }
+        public double Occ { set => numericBoxOcc.Value = value; get => numericBoxOcc.Value; }
         [Category("Atom")]
-        public double OccErr { set => numericalTextBoxOccerr.Value = value; get => numericalTextBoxOccerr.Value; }
+        public double OccErr { set => numericBoxOccerr.Value = value; get => numericBoxOccerr.Value; }
         [Category("Atom")]
         public string Label { set => textBoxLabel.Text = value; get => textBoxLabel.Text; }
         [Category("Atom")]
@@ -167,101 +183,112 @@ namespace Crystallography.Controls
             get => isotopicComposition;
         }
 
-       
-
-
-
         #region マテリアル プロパティ
         [Category("Material properties")]
-        public double Ambient { get => numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
+        public float Ambient { get => (float)numericBoxAmbient.Value; set => numericBoxAmbient.Value = value; }
         [Category("Material properties")]
-        public double Diffusion { get => numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; }
+        public float Diffusion { get => (float)numericBoxDiffusion.Value; set => numericBoxDiffusion.Value = value; }
         [Category("Material properties")]
-        public double Specular { get => numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; }
+        public float Specular { get => (float)numericBoxSpecular.Value; set => numericBoxSpecular.Value = value; }
         [Category("Material properties")]
-        public double Shininess { get => numericBoxShininess.Value; set => numericBoxShininess.Value = value; }
+        public float Shininess { get => (float)numericBoxShininess.Value; set => numericBoxShininess.Value = value; }
         [Category("Material properties")]
-        public double Emission { get => numericBoxEmission.Value; set => numericBoxEmission.Value = value; }
+        public float Emission { get => (float)numericBoxEmission.Value; set => numericBoxEmission.Value = value; }
         [Category("Material properties")]
-        public double Alpha { get => numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; }
+        public float Alpha { get => (float)numericBoxAlpha.Value; set => numericBoxAlpha.Value = value; }
         [Category("Material properties")]
         public double Radius { get => numericBoxAtomRadius.Value; set => numericBoxAtomRadius.Value = value; }
         [Category("Material properties")]
         public Color AtomColor { get => colorControlAtomColor.Color; set => colorControlAtomColor.Color = value; }
+        [Category("Material properties")]
+        public bool ShowLabel { get => checkBoxShowLabel.Checked; set => checkBoxShowLabel.Checked = value; }
+
 
         #endregion
 
 
-        #region TabVisibleプロパティ
+        #region Tabの表示/非表示 プロパティ
+        [Category("Tab")]
+        public bool ElementAndPositionTabVisible { set { elementAndPositionTabVisible = value; setTabPages(); } get => elementAndPositionTabVisible; }
         private bool elementAndPositionTabVisible = true;
-        public bool ElementAndPositionTabVisible
-        {
-            set { elementAndPositionTabVisible = value; setTabPages(); }
-            get { return elementAndPositionTabVisible; }
-        }
 
+        [Category("Tab")]
+        public bool OriginShiftVisible { set { originShiftTabVisible = value; setTabPages(); } get => originShiftTabVisible; }
+        private bool originShiftTabVisible = true;
+
+        [Category("Tab")]
+        public bool DebyeWallerTabVisible { set { debyeWallerTabVisible = value; setTabPages(); } get => debyeWallerTabVisible; }
         private bool debyeWallerTabVisible = true;
-        public bool DebyeWallerTabVisible
-        {
-            set { debyeWallerTabVisible = value; setTabPages(); }
-            get { return debyeWallerTabVisible; }
-        }
 
+        [Category("Tab")]
+        public bool ScatteringFactorTabVisible { set { scatteringFactorTabVisible = value; setTabPages(); } get => scatteringFactorTabVisible; }
         private bool scatteringFactorTabVisible = true;
-        public bool ScatteringFactorTabVisible
-        {
-            set { scatteringFactorTabVisible = value; setTabPages(); }
-            get { return scatteringFactorTabVisible; }
-        }
 
+        [Category("Tab")]
+        public bool AppearanceTabVisible { set { appearanceTabVisible = value; setTabPages(); } get => appearanceTabVisible; }
         private bool appearanceTabVisible = true;
-        public bool AppearanceTabVisible
-        {
-            set { appearanceTabVisible = value; setTabPages(); }
-            get { return appearanceTabVisible; }
-        }
+
+        [Category("Tab")]
+        public int SelectedTabIndex { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
         #endregion
 
-        public int TabNumber { get => tabControl.SelectedIndex; set => tabControl.SelectedIndex = value; }
+        /// <summary>
+        /// 原子のパラメータが変更された時のイベント
+        /// </summary>
+        public event EventHandler ItemsChanged;
 
+        /// <summary>
+        /// GLEnabledチェックが変更された時だけのイベント. (今のところFormStructureだけが受け取る)
+        /// </summary>
+        public event EventHandler GLEnableChanged;
 
         #endregion プロパティ
 
-
-        #region イベント
-        public event EventHandler DataChanged;
-        #endregion
-
-        public AtomInputControl()
+        #region コンストラクタ
+        public AtomControl()
         {
             InitializeComponent();
+            table = dataSet.DataTableAtom;
             comboBoxAtom.SelectedIndex = 0;
+            comboBoxNeutron.SelectedIndex = 0;
             //   toolTip.SetTooltipToUsercontrol(this);
+
+            //なぜか一部のnumericBoxのUp/Downが消えてしまうので、対処
+            numericBoxAmbient.ShowUpDown = numericBoxDiffusion.ShowUpDown = numericBoxSpecular.ShowUpDown = numericBoxShininess.ShowUpDown =
+                numericBoxEmission.ShowUpDown = numericBoxAlpha.ShowUpDown = numericBoxAtomRadius.ShowUpDown = true;
+
+            dataGridView.Columns["enabledColumn"].Visible = false;
         }
 
-        private void radioButtonIsotoropy_CheckedChanged(object sender, EventArgs e)
-        {
-            flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
-            flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
-        }
+        #endregion
 
+        #region タブベージの表示/非表示制御
         private void setTabPages()
         {
             tabControl.TabPages.Clear();
             if (ElementAndPositionTabVisible)
                 tabControl.TabPages.Add(tabPageElementAndPosition);
 
+            if (originShiftTabVisible)
+                tabControl.TabPages.Add(tabPageOriginShift);
+
             if (DebyeWallerTabVisible)
                 tabControl.TabPages.Add(tabPageDebyeWaller);
 
-            if (ScatteringFactorTabVisible) 
+            if (ScatteringFactorTabVisible)
                 tabControl.TabPages.Add(tabPageScatteringFactor);
 
             if (AppearanceTabVisible)
                 tabControl.TabPages.Add(tabPageAppearance);
         }
 
-      
+        #endregion
+
+        private void radioButtonIsotoropy_CheckedChanged(object sender, EventArgs e)
+        {
+            flowLayoutPanelAniso1.Visible = flowLayoutPanelAniso2.Visible = !radioButtonIsotoropy.Checked;
+            flowLayoutPanelIso.Visible = radioButtonIsotoropy.Checked;
+        }
 
         //原子番号コンボ
         private void comboBoxAtom_SelectedIndexChanged(object sender, System.EventArgs e)
@@ -299,7 +326,6 @@ namespace Crystallography.Controls
 
         private void checkBoxDebyeWallerError_CheckedChanged(object sender, EventArgs e) => DebyeWallerError = checkBoxDetailsDebyeWallerError.Checked;
 
-        private void AtomInputControl_Load(object sender, EventArgs e) => comboBoxNeutron.SelectedIndex = 0;
 
         #region 中性子関連
         private void comboBoxNeutron_SelectedIndexChanged(object sender, EventArgs e)
@@ -337,18 +363,11 @@ namespace Crystallography.Controls
 
         private void buttonEditIsotopeAbundance_Click(object sender, EventArgs e)
         {
-            FormIsotopeComposition formIsotopeComposition = new FormIsotopeComposition();
-            formIsotopeComposition.AtomNumber = AtomNo;
-            formIsotopeComposition.IsotopicComposition = isotopicComposition;
+            var formIsotopeComposition = new FormIsotopeComposition { AtomNumber = AtomNo, IsotopicComposition = isotopicComposition };
             if (formIsotopeComposition.ShowDialog() == DialogResult.OK)
                 IsotopicComposition = formIsotopeComposition.IsotopicComposition;
         }
         #endregion
-
-        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
 
 
         #region データベース操作
@@ -358,10 +377,10 @@ namespace Crystallography.Controls
         /// <param name="atoms"></param>
         public void Add(Atoms atoms)
         {
-            if(atoms!=null)
-                dataSet.DataTableAtom.Add(atoms);
+            if (atoms != null)
+                table.Add(atoms);
 
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -370,9 +389,16 @@ namespace Crystallography.Controls
         /// <param name="atoms"></param>
         public void AddRange(IEnumerable<Atoms> atoms)
         {
-            foreach (var a in atoms)
-                dataSet.DataTableAtom.Add(a);
-            DataChanged?.Invoke(this, new EventArgs());
+            if (atoms != null)
+            {
+                SkipEvent = true;
+                foreach (var a in atoms)
+                    table.Add(a);
+                SkipEvent = false;
+                ItemsChanged?.Invoke(this, new EventArgs());
+                bindingSource_PositionChanged(new object(), new EventArgs());
+            }
+            
         }
 
         /// <summary>
@@ -381,14 +407,37 @@ namespace Crystallography.Controls
         /// <param name="i"></param>
         public void Delete(int i)
         {
-            dataSet.DataTableAtom.Remove(i);
-            DataChanged?.Invoke(this, new EventArgs());
+            table.Remove(i);
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
+        /// <summary>
+        /// 引数の原子をi番目と入れ替え
+        /// </summary>
+        /// <param name="atoms"></param>
+        /// <param name="i"></param>
         public void Replace(Atoms atoms, int i)
         {
-            dataSet.DataTableAtom.Replace(atoms, i);
-            DataChanged?.Invoke(this, new EventArgs());
+            table.Replace(atoms, i);
+            ItemsChanged?.Invoke(this, new EventArgs());
+        }
+
+        /// <summary>
+        /// 引数原子をi番目に設定し、そのMaterial Propertyをさらに引数と同じ元素に対して適用
+        /// </summary>
+        /// <param name="atoms"></param>
+        public void ReplaceAndCopyMaterial(Atoms atoms, int i)
+        {
+            table.Replace(atoms, i);
+            var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
+            foreach (var a in dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber))
+            { 
+                a.Texture = atoms.Texture;
+                a.Radius = atoms.Radius;
+                a.Argb = atoms.Argb;
+                a.ShowLabel = atoms.ShowLabel;
+            }
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -397,8 +446,8 @@ namespace Crystallography.Controls
         /// <param name="atoms"></param>
         public void Clear()
         {
-            dataSet.DataTableAtom.Rows.Clear();
-            DataChanged?.Invoke(this, new EventArgs());
+            table.Rows.Clear();
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
@@ -406,25 +455,29 @@ namespace Crystallography.Controls
         /// </summary>
         public void ResetSymmetry(int symmetrySeriesNumber)
         {
-            SymmetrySeriesNumber = symmetrySeriesNumber;
-            for (int i = 0; i < dataSet.DataTableAtom.Rows.Count; i++)
+            //SymmetrySeriesNumber = symmetrySeriesNumber;
+            for (int i = 0; i < table.Rows.Count; i++)
             {
-                var a = dataSet.DataTableAtom.Get(i);
+                var a = table.Get(i);
                 a.ResetSymmetry(SymmetrySeriesNumber);
-                dataSet.DataTableAtom.Replace(a, i);
+                table.Replace(a, i);
             }
-            DataChanged?.Invoke(this, new EventArgs());
+            ItemsChanged?.Invoke(this, new EventArgs());
         }
 
         /// <summary>
         /// データベース中の全ての原子を取得
         /// </summary>
         /// <returns></returns>
-        public Atoms[] GetAll() => dataSet.DataTableAtom.GetAll();
+        public Atoms[] GetAll() => table.GetAll();
+
+
+        
 
         #endregion
 
 
+        #region Atomクラスを画面下部から生成/に表示
         /// <summary>
         /// 引数のAtomを、画面下部に表示する
         /// </summary>
@@ -446,7 +499,10 @@ namespace Crystallography.Controls
 
             Ambient = atoms.Ambient; Diffusion = atoms.Diffusion; Emission = atoms.Emission; Shininess = atoms.Shininess; Specular = atoms.Specular;
 
-            Radius = atoms.Radius; Alpha = atoms.Transparency; AtomColor = Color.FromArgb(atoms.Argb);
+            Radius = atoms.Radius; AtomColor = Color.FromArgb(atoms.Argb); Alpha = Color.FromArgb(atoms.Argb).A / 255f;
+
+            ShowLabel = atoms.ShowLabel;
+           
         }
 
 
@@ -457,15 +513,17 @@ namespace Crystallography.Controls
         private Atoms GetFromInterface()
         {
             var dsf = new DiffuseScatteringFactor(Istoropy, Biso, B11, B22, B33, B12, B23, B13, BisoErr, B11Err, B22Err, B33Err, B12Err, B23Err, B13Err);
-            var material = new AtomMaterial(AtomColor.ToArgb(), Ambient, Diffusion, Specular, Shininess, Emission, Alpha);
+            var material = new Material(AtomColor.ToArgb(), (Ambient, Diffusion, Specular, Shininess, Emission), Alpha);
 
             var atoms = new Atoms(Label, AtomNo, AtomSubNoXray, AtomSubNoElectron, IsotopicComposition,
                 SymmetrySeriesNumber, new Vector3D(X, Y, Z), new Vector3D(XErr, YErr, ZErr), Occ, OccErr, dsf,
-                material, (float)Radius);
+                material, (float)Radius, true, ShowLabel);
             return atoms;
         }
+        #endregion
 
 
+        #region 原子追加、削除などのボタン
         //原子追加ボタン
         private void buttonAdd_Click(object sender, System.EventArgs e)
         {
@@ -488,6 +546,17 @@ namespace Crystallography.Controls
             }
         }
 
+        //編集内容を同種の元素にすべて適用する
+        private void buttonChangeToSameElement_Click(object sender, EventArgs e)
+        {
+            var pos = bindingSource.Position;
+            if (pos >= 0)
+            {
+                ReplaceAndCopyMaterial(GetFromInterface(), pos);
+                bindingSource.Position = pos;
+            }
+        }
+
         //原子削除ボタン
         private void buttonDelete_Click(object sender, System.EventArgs e)
         {
@@ -496,59 +565,15 @@ namespace Crystallography.Controls
             {
                 SkipEvent = true;//bindingSourceAtoms_PositionChangedが呼ばれるのを防ぐ
                 Delete(pos);
-                bindingSource.Position = bindingSource.Count > pos ? pos :  pos - 1;//選択列を選択しなおす
                 SkipEvent = false;
+                bindingSource.Position = bindingSource.Count > pos ? pos : pos - 1;//選択列を選択しなおす
             }
         }
-
-        //選択Atomが変更されたとき
-        private void bindingSource_PositionChanged(object sender, System.EventArgs e)
-        {
-            if (SkipEvent) return;
-         
-            if (bindingSource.Position >= 0 && bindingSource.Count > 0)
-                SetToInterface(dataSet.DataTableAtom.Get(bindingSource.Position));
-        }
-
-
-
-        //編集内容を同種の元素にすべて適用する
-        private void buttonChangeToSameElement_Click(object sender, EventArgs e)
-        {
-            /*       buttonChangeAtom_Click(new object(), new EventArgs());
-                   if (listBoxAtoms.SelectedIndex > 0)
-                   {
-                       Atoms source = (Atoms)listBoxAtoms.SelectedItem;
-                       int selectedIndex = listBoxAtoms.SelectedIndex;
-                       for (int i = 0; i < listBoxAtoms.Items.Count; i++)
-                       {
-                           if (i != listBoxAtoms.SelectedIndex)
-                           {
-                               Atoms a = (Atoms)listBoxAtoms.Items[i];
-                               if (a.AtomicNumber == source.AtomicNumber)
-                               {
-                                   a.Radius = source.Radius;
-                                   a.Argb = source.Argb;
-                                   a.Diffusion = source.Diffusion;
-                                   a.Emission = source.Emission;
-                                   a.Specular = source.Specular;
-                                   a.Transparency = source.Transparency;
-                                   a.Shininess = source.Shininess;
-                                   a.Ambient = source.Ambient;
-                               }
-                           }
-                       }
-                       GenerateCrystal();
-                       listBoxAtoms.SelectedIndex = selectedIndex;
-                   }
-                */
-        }
-        
         private void buttonUp_Click(object sender, EventArgs e)
         {
             int n = bindingSource.Position;
             if (n <= 0) return;
-            dataSet.DataTableAtom.MoveItem(n, n - 1);
+            table.MoveItem(n, n - 1);
             bindingSource.Position = n - 1;
         }
 
@@ -556,13 +581,21 @@ namespace Crystallography.Controls
         {
             int n = bindingSource.Position;
             if (n >= bindingSource.Count - 1) return;
-            dataSet.DataTableAtom.MoveItem(n, n + 1);
+            table.MoveItem(n, n + 1);
             bindingSource.Position = n + 1;
         }
 
+        #endregion
 
 
+        //選択Atomが変更されたとき
+        private void bindingSource_PositionChanged(object sender, System.EventArgs e)
+        {
+            if (SkipEvent) return;
 
+            if (bindingSource.Position >= 0 && bindingSource.Count > 0)
+                SetToInterface(dataSet.DataTableAtom.Get(bindingSource.Position));
+        }
 
         private void listBoxAtoms_MouseUp(object sender, MouseEventArgs e)
         {
@@ -612,6 +645,56 @@ namespace Crystallography.Controls
         private void listBoxAtoms_MouseLeave(object sender, EventArgs e)
         {
             //  this.toolTip.SetToolTip(this.listBoxAtoms, "displya element, position, symmetry seeting for each atoms.");
+        }
+
+        private void buttonOriginShift_Click(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            var shift = button.Name.Contains("Custom") ?
+                new Vector3DBase(numericBoxOriginShiftX.Value, numericBoxOriginShiftY.Value, numericBoxOriginShiftZ.Value) :
+                new Vector3DBase((button.Tag as string).Split().Select(s => s.ToDouble()).ToArray()) * (radioButtonOriginShiftPlus.Checked ? 1 : -1);
+
+            SkipEvent = true;
+            var atomArray = GetAll();
+            for (int i = 0; i < atomArray.Length; i++)
+            //foreach(var atoms in GetAll())
+            {
+                var atoms = atomArray[i];
+                atoms = Deep.Copy(atoms);
+                atoms.X += shift.X;
+                atoms.Y += shift.Y;
+                atoms.Z += shift.Y;
+                atoms.ResetSymmetry(SymmetrySeriesNumber);
+                table.Replace(atoms, i);
+            }
+            SkipEvent = false;
+            bindingSource_PositionChanged(sender, e);
+
+            ItemsChanged?.Invoke(this, e);
+
+        }
+
+        private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            buttonChangeToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance;
+        }
+
+        private void dataGridViewAtom_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == 0)
+            {
+               Crystal.Atoms[e.RowIndex].GLEnabled= table.Get(e.RowIndex).GLEnabled 
+                    = (bool)dataGridView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
+                GLEnableChanged?.Invoke(this, new EventArgs());
+            }
+        }
+
+        private void dataGridView_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            //チェックボックスが変わると即座に反映させる
+            var x = dataGridView.CurrentCellAddress.X;
+            if ((x == 0) && dataGridView.IsCurrentCellDirty)
+                dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
         }
     }
 }

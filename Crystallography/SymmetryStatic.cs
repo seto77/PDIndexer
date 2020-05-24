@@ -14,8 +14,12 @@ namespace Crystallography
         private const double d18 = 1.0 / 8.0, d38 = 3.0 / 8.0, d58 = 5.0 / 8.0, d78 = 7.0 / 8.0;
         private const double d1_12 = 1.0 / 12.0, d5_12 = 5.0 / 12.0, d7_12 = 7.0 / 12.0, d11_12 = 11.0 / 12.0;
 
-        public const double Th = 0.00000001;
+        /// <summary>
+        /// 原子の等価位置を判定する閾値 (単位は単位格子の分率)
+        /// </summary>
+        public const double Th = 0.0001;
 
+        
         public static readonly int[][][] PositionsDictionary = new int[][][]{
              #region positions
 //0 unk
@@ -4191,7 +4195,7 @@ new int[][]{ new[]{ 915}}
         public static readonly Func<double, double, double, (double X, double Y, double Z)>[] PositionGeneratorList = new Func<double, double, double, (double X, double Y, double Z)>[]
         {
             #region Coordinates
-    (x, y, z)=> (0.0,0.0,0.0),
+            (x, y, z)=> (0.0,0.0,0.0),
             (x, y, z)=> (0.0,0.0,d12),
             (x, y, z)=> (0.0,0.0,d13),
             (x, y, z)=> (0,0,d14),
@@ -13626,6 +13630,9 @@ new[]{535,2,6,2,1,1}
             return result;
             #endregion
         }
+
+        public static (int H, int K, int L)[] GenerateEquivalentPlanes((int H, int K, int L) index, Symmetry sym)
+            => GenerateEquivalentPlanes(index.H, index.K, index.L, sym);
 
         /// <summary>
         /// 対称性symに従って(hkl)と等価な結晶軸を生成する

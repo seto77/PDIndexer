@@ -255,13 +255,6 @@ namespace PDIndexer
             // 
             this.crystalControl.AllowDrop = true;
             resources.ApplyResources(this.crystalControl, "crystalControl");
-            this.crystalControl.CellConstants = new double[] {
-        0D,
-        0D,
-        0D,
-        0D,
-        0D,
-        0D};
             this.crystalControl.Crystal = null;
             this.crystalControl.DefaultTabNumber = 0;
             this.crystalControl.Name = "crystalControl";

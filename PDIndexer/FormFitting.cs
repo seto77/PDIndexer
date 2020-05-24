@@ -191,8 +191,7 @@ namespace PDIndexer
             var text = generateTableText();
             if (text != "")
             {
-                var dlg = new SaveFileDialog();
-                dlg.Filter = "*.csv|*.csv";
+                var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
                 if (dlg.ShowDialog() == DialogResult.OK)
                     using (StreamWriter sw = new StreamWriter(dlg.FileName, false))
                         sw.Write(text.Replace("\t", ","));

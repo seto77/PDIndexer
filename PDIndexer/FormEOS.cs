@@ -20,14 +20,14 @@ namespace PDIndexer
            
 		}
 
-        void crystalControl_CrystalChanged(Crystal crystal)
+        void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
         }
 
 
         private void FormEOS_Load(object sender, System.EventArgs e)
         {
-            formMain.formCrystal.crystalControl.CrystalChanged += new Crystallography.Controls.CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
+            formMain.formCrystal.crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
         }
 
 	    public bool skipTextChangeEvent = false;

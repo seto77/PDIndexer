@@ -262,6 +262,13 @@ namespace Crystallography
         public Atoms[] Atoms = new Atoms[0];
 
         /// <summary>
+        /// 原子の情報を取り扱うAtomsクラスのParallelQuery
+        /// </summary>
+        [NonSerialized]
+        [XmlIgnore]
+        public ParallelQuery<Atoms> AtomsP;
+
+        /// <summary>
         /// 結合の情報を取り扱うBondクラスの配列
         /// </summary>
         public Bonds[] Bonds = new Bonds[0];
@@ -397,7 +404,9 @@ namespace Crystallography
             : this(cell, symmetrySeriesNumber, name, col)
         {
             if (err != null)
+            {
                 A_err = err.Value.A; B_err = err.Value.B; C_err = err.Value.C; Alpha_err = err.Value.Alpha; Beta_err = err.Value.Beta; Gamma_err = err.Value.Gamma;
+            }
         }
 
 
@@ -416,6 +425,8 @@ namespace Crystallography
             Atoms = atoms;
             for (int i = 0; i < atoms.Length; i++)
                 Atoms[i].ResetSymmetry(symmetrySeriesNumber);
+
+            AtomsP = Atoms.AsParallel();
 
             Note = reference.Note; PublAuthorName = reference.Authors; Journal = reference.Journal; PublSectionTitle = reference.Title;
             RotationMatrix = new Matrix3D(rot);
@@ -479,7 +490,7 @@ namespace Crystallography
         /// <summary>
         /// Crystal2クラスに変換します。
         /// </summary>
-        public Crystal2 ToCrystal2() => Crystal2.GetCrystal2(this);
+        public Crystal2 ToCrystal2() => Crystal2.FromCrystal(this);
 
         /// <summary>
         /// 格子定数から、各軸のベクトルや補助定数(sigmaなど)を設定する
@@ -618,7 +629,7 @@ namespace Crystallography
             for (z = 2; z <= Math.Abs(u) || z <= Math.Abs(v) || z <= Math.Abs(w); z++)
                 if ((u % z == 0) && (v % z == 0) && (w % z == 0))
                 {
-                    u = u / z; v = v / z; w = w / z; z = 1;
+                    u /= z; v /= z; w /= z; z = 1;
                 }
             return $" {u} {v} {w}";
         }
@@ -797,7 +808,7 @@ namespace Crystallography
                         for (int l = -lMax; l <= lMax; l++)
                             if ((d = GetLengthPlane(h, k, l)) > dMin && d < dMax && SymmetryStatic.IsRootIndex(h, k, l, Symmetry, ref multi))
                             {
-                                Plane temp = new Plane();
+                                var temp = new Plane();
                                 // if (!excludeForbiddenPlane | (temp.strCondition = SymmetryStatic.CheckExtinctionRule(h, k, l, Symmetry)).Length == 0)
                                 if (!excludeForbiddenPlane | (temp.strCondition = Symmetry.CheckExtinctionRule(h, k, l)).Length == 0)
                                 {
@@ -1133,7 +1144,7 @@ namespace Crystallography
             SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLentgh, null);
 
             //強度の順にソート
-            SortPlaneByIntensity[] s = new SortPlaneByIntensity[this.Plane.Count];
+            var s = new SortPlaneByIntensity[this.Plane.Count];
             for (int i = 0; i < Plane.Count; i++)
                 s[i] = new SortPlaneByIntensity(Plane[i].d, Plane[i].Intensity);
 
@@ -1350,7 +1361,7 @@ namespace Crystallography
                             i--;
                         }
                     }
-                    denom = denom / (int)Num[0];
+                    denom /= (int)Num[0];
                 }
 
                 ChemicalFormulaSum = "";

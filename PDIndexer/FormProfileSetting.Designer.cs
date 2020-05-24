@@ -1,4 +1,6 @@
-﻿namespace PDIndexer
+﻿using System;
+
+namespace PDIndexer
 {
     partial class FormProfileSetting
     {
@@ -331,7 +333,7 @@
             this.colorControlLineColor.Red = 240;
             this.colorControlLineColor.RedF = 0.9411765F;
             this.colorControlLineColor.ToolTip = "";
-            this.colorControlLineColor.ColorChanged += new Crystallography.Controls.ColorControl.MyEventHandler(this.colorControlLineColor_ColorChanged);
+            this.colorControlLineColor.ColorChanged += new EventHandler(this.colorControlLineColor_ColorChanged);
             // 
             // numericUpDownLineWidth
             // 
@@ -677,7 +679,6 @@
             // 
             // numericalTextBoxExposureTime
             // 
-            this.numericalTextBoxExposureTime.AllowMouseControl = false;
             resources.ApplyResources(this.numericalTextBoxExposureTime, "numericalTextBoxExposureTime");
             this.numericalTextBoxExposureTime.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxExposureTime.DecimalPlaces = -1;
@@ -687,8 +688,6 @@
             this.numericalTextBoxExposureTime.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxExposureTime.Maximum = double.PositiveInfinity;
             this.numericalTextBoxExposureTime.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxExposureTime.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxExposureTime.MouseSpeed = 1D;
             this.numericalTextBoxExposureTime.Multiline = false;
             this.numericalTextBoxExposureTime.Name = "numericalTextBoxExposureTime";
             this.numericalTextBoxExposureTime.RadianValue = 0D;
@@ -853,7 +852,6 @@
             // 
             // numericBoxTwhoThetaOffsetCoeff2
             // 
-            this.numericBoxTwhoThetaOffsetCoeff2.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxTwhoThetaOffsetCoeff2, "numericBoxTwhoThetaOffsetCoeff2");
             this.numericBoxTwhoThetaOffsetCoeff2.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff2.DecimalPlaces = 5;
@@ -863,8 +861,6 @@
             this.numericBoxTwhoThetaOffsetCoeff2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff2.Maximum = double.PositiveInfinity;
             this.numericBoxTwhoThetaOffsetCoeff2.Minimum = double.NegativeInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff2.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxTwhoThetaOffsetCoeff2.MouseSpeed = 1D;
             this.numericBoxTwhoThetaOffsetCoeff2.Multiline = false;
             this.numericBoxTwhoThetaOffsetCoeff2.Name = "numericBoxTwhoThetaOffsetCoeff2";
             this.numericBoxTwhoThetaOffsetCoeff2.RadianValue = 0D;
@@ -886,7 +882,6 @@
             // 
             // numericBoxTwhoThetaOffsetCoeff0
             // 
-            this.numericBoxTwhoThetaOffsetCoeff0.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxTwhoThetaOffsetCoeff0, "numericBoxTwhoThetaOffsetCoeff0");
             this.numericBoxTwhoThetaOffsetCoeff0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff0.DecimalPlaces = 5;
@@ -896,8 +891,6 @@
             this.numericBoxTwhoThetaOffsetCoeff0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff0.Maximum = double.PositiveInfinity;
             this.numericBoxTwhoThetaOffsetCoeff0.Minimum = double.NegativeInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxTwhoThetaOffsetCoeff0.MouseSpeed = 1D;
             this.numericBoxTwhoThetaOffsetCoeff0.Multiline = false;
             this.numericBoxTwhoThetaOffsetCoeff0.Name = "numericBoxTwhoThetaOffsetCoeff0";
             this.numericBoxTwhoThetaOffsetCoeff0.RadianValue = 0D;
@@ -933,7 +926,6 @@
             // 
             // numericBoxTwhoThetaOffsetCoeff1
             // 
-            this.numericBoxTwhoThetaOffsetCoeff1.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxTwhoThetaOffsetCoeff1, "numericBoxTwhoThetaOffsetCoeff1");
             this.numericBoxTwhoThetaOffsetCoeff1.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff1.DecimalPlaces = 5;
@@ -943,8 +935,6 @@
             this.numericBoxTwhoThetaOffsetCoeff1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff1.Maximum = double.PositiveInfinity;
             this.numericBoxTwhoThetaOffsetCoeff1.Minimum = double.NegativeInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff1.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxTwhoThetaOffsetCoeff1.MouseSpeed = 1D;
             this.numericBoxTwhoThetaOffsetCoeff1.Multiline = false;
             this.numericBoxTwhoThetaOffsetCoeff1.Name = "numericBoxTwhoThetaOffsetCoeff1";
             this.numericBoxTwhoThetaOffsetCoeff1.RadianValue = 0D;
@@ -1310,7 +1300,6 @@
             // 
             // numericalTextBoxTargetValue
             // 
-            this.numericalTextBoxTargetValue.AllowMouseControl = false;
             resources.ApplyResources(this.numericalTextBoxTargetValue, "numericalTextBoxTargetValue");
             this.numericalTextBoxTargetValue.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxTargetValue.DecimalPlaces = -1;
@@ -1320,8 +1309,6 @@
             this.numericalTextBoxTargetValue.HeaderForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxTargetValue.Maximum = double.PositiveInfinity;
             this.numericalTextBoxTargetValue.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxTargetValue.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBoxTargetValue.MouseSpeed = 1D;
             this.numericalTextBoxTargetValue.Multiline = false;
             this.numericalTextBoxTargetValue.Name = "numericalTextBoxTargetValue";
             this.numericalTextBoxTargetValue.RadianValue = 0D;

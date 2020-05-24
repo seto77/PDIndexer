@@ -883,14 +883,11 @@ namespace PDIndexer
             // 
             // numericBoxEffectiveDigit
             // 
-            this.numericBoxEffectiveDigit.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxEffectiveDigit, "numericBoxEffectiveDigit");
             this.numericBoxEffectiveDigit.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEffectiveDigit.DecimalPlaces = -2;
             this.numericBoxEffectiveDigit.Maximum = 16D;
             this.numericBoxEffectiveDigit.Minimum = 1D;
-            this.numericBoxEffectiveDigit.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEffectiveDigit.MouseSpeed = 1D;
             this.numericBoxEffectiveDigit.Multiline = false;
             this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
             this.numericBoxEffectiveDigit.RadianValue = 0.087266462599716474D;

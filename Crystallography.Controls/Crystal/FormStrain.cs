@@ -7,7 +7,7 @@ namespace Crystallography.Controls
 {
     public partial class FormStrain : Form
     {
-        public CrystalControl crystalControl;
+        public CrystalControl CrystalControl;
         public Crystal crystal;
 
         public Matrix3D StrainMatrix
@@ -41,7 +41,7 @@ namespace Crystallography.Controls
 
         private void FormStrain_Load(object sender, EventArgs e)
         {
-            crystalControl.CrystalChanged += new CrystalControl.MyEventHandler(crystalControl_CrystalChanged);
+            CrystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
         }
 
         private void FormStrain_FormClosing(object sender, FormClosingEventArgs e)
@@ -52,23 +52,23 @@ namespace Crystallography.Controls
 
         private bool skipCrystalChangedEvent = false;
 
-        private void crystalControl_CrystalChanged(Crystal crystal)
+        private void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
             if (skipCrystalChangedEvent || !this.Visible) return;
 
             //ここが呼ばれるのは、crystalControl側が操作されて結晶が変更される場合のみ。
             //このformStrainがcrystalControlを変更する時は、その時だけこのイベントを無視する
             skipCrystalChangedEvent = true;
-            crystalControl.GenerateFromInterface();
-            originalCrystal = Deep.Copy(crystal);
+            CrystalControl.GenerateFromInterface();
+            originalCrystal = Deep.Copy(CrystalControl.Crystal);
 
             SetStrainedCrystal();
             skipCrystalChangedEvent = false;
 
-            numericalTextBoxStrain_ValueChanged(new object(), new EventArgs());
+            numericBoxStrain_ValueChanged(new object(), new EventArgs());
         }
 
-        private void numericalTextBoxStrain_ValueChanged(object sender, EventArgs e)
+        private void numericBoxStrain_ValueChanged(object sender, EventArgs e)
         {
             skipCrystalChangedEvent = true;
             var m = StrainMatrix * new Matrix3D(originalCrystal.A_Axis, originalCrystal.B_Axis, originalCrystal.C_Axis);//この歪の計算は間違っている！直さなければ。。。
@@ -84,7 +84,7 @@ namespace Crystallography.Controls
             numericBoxBeta.RadianValue = Vector3DBase.AngleBetVectors(c, a);
             numericBoxGamma.RadianValue = Vector3DBase.AngleBetVectors(a, b);
 
-            crystalControl.CellConstants = new double[] { numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue };
+            CrystalControl.symmetryControl.CellConstants = ( numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue );
             Application.DoEvents();
             skipCrystalChangedEvent = false;
 
@@ -120,8 +120,8 @@ namespace Crystallography.Controls
             if (this.Visible)
             {
                 skipCrystalChangedEvent = true;
-                crystalControl.GenerateFromInterface();
-                originalCrystal = Deep.Copy(crystalControl.Crystal);
+                CrystalControl.GenerateFromInterface();
+                originalCrystal = Deep.Copy(CrystalControl.Crystal);
 
                 SetStrainedCrystal();
                 skipCrystalChangedEvent = false;
@@ -136,7 +136,7 @@ namespace Crystallography.Controls
         {
             if (originalCrystal == null) return;
             skipCrystalChangedEvent = true;
-            crystalControl.Crystal = originalCrystal;
+            CrystalControl.Crystal = originalCrystal;
             skipCrystalChangedEvent = false;
         }
 
@@ -144,8 +144,8 @@ namespace Crystallography.Controls
         {
             skipCrystalChangedEvent = true;
 
-            crystalControl.SymmetrySeriesNumber = 1;
-            crystalControl.Crystal.Atoms = new Atoms[0];
+            CrystalControl.SymmetrySeriesNumber = 1;
+            CrystalControl.Crystal.Atoms = new Atoms[0];
             for (int i = 0; i < originalCrystal.Atoms.Length; i++)
                 for (int j = 0; j < originalCrystal.Atoms[i].Atom.Count; j++)
                 {
@@ -153,10 +153,10 @@ namespace Crystallography.Controls
                     atom.X = originalCrystal.Atoms[i].Atom[j].X;
                     atom.Y = originalCrystal.Atoms[i].Atom[j].Y;
                     atom.Z = originalCrystal.Atoms[i].Atom[j].Z;
-                    crystalControl.Crystal.AddAtoms(atom);
+                    CrystalControl.Crystal.AddAtoms(atom);
                 }
-            crystalControl.SetToInterface();
-            numericalTextBoxStrain_ValueChanged(new object(), new EventArgs());
+            CrystalControl.SetToInterface();
+            numericBoxStrain_ValueChanged(new object(), new EventArgs());
 
             skipCrystalChangedEvent = false;
         }
@@ -168,7 +168,7 @@ namespace Crystallography.Controls
 
         private void buttonApply_Click(object sender, EventArgs e)
         {
-            originalCrystal = crystalControl.Crystal;
+            originalCrystal = CrystalControl.Crystal;
             this.Visible = false;
         }
     }

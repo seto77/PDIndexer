@@ -96,14 +96,11 @@
             // 
             // numericBoxEGC2
             // 
-            this.numericBoxEGC2.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxEGC2, "numericBoxEGC2");
             this.numericBoxEGC2.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEGC2.DecimalPlaces = -1;
             this.numericBoxEGC2.Maximum = double.PositiveInfinity;
             this.numericBoxEGC2.Minimum = double.NegativeInfinity;
-            this.numericBoxEGC2.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEGC2.MouseSpeed = 1D;
             this.numericBoxEGC2.Multiline = false;
             this.numericBoxEGC2.Name = "numericBoxEGC2";
             this.numericBoxEGC2.RadianValue = 0.00058855993035752778D;
@@ -124,14 +121,11 @@
             // 
             // numericBoxEGC1
             // 
-            this.numericBoxEGC1.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxEGC1, "numericBoxEGC1");
             this.numericBoxEGC1.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEGC1.DecimalPlaces = -1;
             this.numericBoxEGC1.Maximum = double.PositiveInfinity;
             this.numericBoxEGC1.Minimum = double.NegativeInfinity;
-            this.numericBoxEGC1.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEGC1.MouseSpeed = 1D;
             this.numericBoxEGC1.Multiline = false;
             this.numericBoxEGC1.Name = "numericBoxEGC1";
             this.numericBoxEGC1.RadianValue = 0.00058855993035752778D;
@@ -152,14 +146,11 @@
             // 
             // numericBoxEGC0
             // 
-            this.numericBoxEGC0.AllowMouseControl = false;
             resources.ApplyResources(this.numericBoxEGC0, "numericBoxEGC0");
             this.numericBoxEGC0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxEGC0.DecimalPlaces = -1;
             this.numericBoxEGC0.Maximum = double.PositiveInfinity;
             this.numericBoxEGC0.Minimum = double.NegativeInfinity;
-            this.numericBoxEGC0.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericBoxEGC0.MouseSpeed = 1D;
             this.numericBoxEGC0.Multiline = false;
             this.numericBoxEGC0.Name = "numericBoxEGC0";
             this.numericBoxEGC0.RadianValue = -0.02005191324323765D;
@@ -249,14 +240,11 @@
             // 
             // numericalTextBox1
             // 
-            this.numericalTextBox1.AllowMouseControl = false;
             resources.ApplyResources(this.numericalTextBox1, "numericalTextBox1");
             this.numericalTextBox1.BackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBox1.DecimalPlaces = -1;
             this.numericalTextBox1.Maximum = double.PositiveInfinity;
             this.numericalTextBox1.Minimum = double.NegativeInfinity;
-            this.numericalTextBox1.MouseDirection = Crystallography.VH_DirectionEnum.Vertical;
-            this.numericalTextBox1.MouseSpeed = 1D;
             this.numericalTextBox1.Multiline = false;
             this.numericalTextBox1.Name = "numericalTextBox1";
             this.numericalTextBox1.RadianValue = 0.017453292519943295D;

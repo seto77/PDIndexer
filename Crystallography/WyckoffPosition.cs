@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Serialization;
 
 namespace Crystallography
@@ -153,16 +154,14 @@ namespace Crystallography
             return false;
         }
 
-        private const double Th = 0.00001;
-
         private static bool chk(double d1, double d2)
         {
             double d = d1 - d2;
-            while (d > 0.999)
+            while (d > 0.5)
                 d--;
-            while (d < -0.001)
+            while (d < -0.5)
                 d++;
-            return Math.Abs(d) < Th;
+            return Math.Abs(d) < SymmetryStatic.Th;
         }
 
         /// <summary>
@@ -171,7 +170,7 @@ namespace Crystallography
         /// <param name="Pos"></param>
         /// <param name="SymmetrySeriesNumber"></param>
         /// <returns></returns>
-        public static Atoms GetEquivalentAtomsPosition(Vector3D Pos, int SymmetrySeriesNumber)
+        public static Atoms GetEquivalentAtomsPosition((double X, double Y, double Z) Pos, int SymmetrySeriesNumber)
         {
             Atoms atoms = new Atoms();
             var wykc = SymmetryStatic.WyckoffPositions[SymmetrySeriesNumber];
@@ -189,14 +188,27 @@ namespace Crystallography
 
             for (int j = wykc.Length - 1; j >= 0; j--)
             {
-                if (wykc[j].CheckPosition(Pos.X, Pos.Y, Pos.Z))
-                {
-                    multi = wykc[j].Multiplicity;
-                    wyckLet = wykc[j].WyckoffLetter;
-                    siteSym = wykc[j].SiteSymmetry;
-                    wyckNum = j;
+
+                //2020/05/15 一部のtrigonal, hexagonalで正しい判定が出来ない問題の対応
+                // (0.2, 0.1, 0)という座標は (x, -x, 0), (x, 2x, 0), (-2x, -x, 0)というワイコフ位置 (P321, 3j)
+                // にもかかわらず、正しく判定することが出来ない. そのため、もっとも低対称性で再生した位置全てに対して判定を
+                // おこない、一回でもOKだったらそのワイコフ位置だと判定する
+
+                var pos = SymmetrySeriesNumber >= 438 && SymmetrySeriesNumber <= 488 ?
+                    atoms.Atom.Select(a => (a.X, a.Y, a.Z)).ToArray() : new[] { (Pos.X, Pos.Y, Pos.Z) };
+
+
+                foreach (var p in pos)
+                    if (wykc[j].CheckPosition(p.X,p.Y,p.Z))
+                    {
+                        multi = wykc[j].Multiplicity;
+                        wyckLet = wykc[j].WyckoffLetter;
+                        siteSym = wykc[j].SiteSymmetry;
+                        wyckNum = j;
+                        break;
+                    }
+                if (multi != 0)
                     break;
-                }
             }
 
             if (atoms.WyckoffLeter.ToCharArray()[0] > wyckLet.ToCharArray()[0])
@@ -208,5 +220,7 @@ namespace Crystallography
             }
             return atoms;
         }
+        public static Atoms GetEquivalentAtomsPosition(Vector3D Pos, int SymmetrySeriesNumber)
+            => GetEquivalentAtomsPosition((Pos.X, Pos.Y, Pos.Z), SymmetrySeriesNumber);
     }
 }
