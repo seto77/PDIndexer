@@ -1,6 +1,5 @@
 ﻿using MathNet.Numerics.LinearAlgebra.Double;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -246,7 +245,11 @@ namespace Crystallography.Controls
 
             numericBoxDensity.Value = Crystal.Density;
             numericBoxVolume.Value = Crystal.Volume * 1000;
+            numericBoxMolarVolume.Value = Crystal.Volume * UniversalConstants.A / Crystal.ChemicalFormulaZ * 1E-21;
             numericBoxZnumber.Value = Crystal.ChemicalFormulaZ;
+
+            numericBoxMolarMass.Value = numericBoxDensity.Value * numericBoxMolarVolume.Value;
+            numericBoxCellMass.Value = numericBoxDensity.Value * numericBoxVolume.Value;
 
             SymmetrySeriesNumber = Crystal.SymmetrySeriesNumber;//SymmetrySeriesNumberをフィールドからプロパティに変更。set{}の所でコンボボックスをセットする。(20170526)
 
@@ -313,8 +316,16 @@ namespace Crystallography.Controls
             string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             if (fileName.Length == 1)
             {
-                try { Crystal = ConvertCrystalData.ConvertToCrystal(fileName[0]); }
-                catch { return; }
+                try {
+                    Crystal = ConvertCrystalData.ConvertToCrystal(fileName[0]); 
+                }
+                catch (Exception ex)
+                {
+#if DEBUG
+                    MessageBox.Show(ex.ToString());
+#endif
+                    return;
+                }
             }
         }
 
@@ -324,7 +335,6 @@ namespace Crystallography.Controls
         }
 
         #endregion ドラッグドロップイベント
-
 
         private void buttonReset_Click(object sender, EventArgs e) => Crystal = new Crystal();
 
@@ -374,7 +384,7 @@ namespace Crystallography.Controls
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
             for (int i = 0; i < crystal.Atoms.Length; i++)
-                crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(true, 0, 0, 0, 0, 0, 0, 0);
+                crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, 0, 0, null, null, Crystal.CellValue);
         }
 
         #endregion 右クリックメニュー

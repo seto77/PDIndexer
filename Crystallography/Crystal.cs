@@ -364,6 +364,8 @@ namespace Crystallography
 
         public int id = 0;
 
+        public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue => (A, B, C, Alpha, Beta, Gamma);
+
         #endregion プロパティ、フィールド
 
         #region コンストラクタ
@@ -719,7 +721,7 @@ namespace Crystallography
             for (int u = -uMax; u <= uMax; u++)
                 for (int v = -vMax; v <= vMax; v++)
                     for (int w = -wMax; w <= wMax; w++)
-                        if (Crystal.CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
+                        if (CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
                         {
                             vec = u * A_Axis + v * B_Axis + w * C_Axis;
                             vec.Index = $"[{u}{v}{w}]";
@@ -983,8 +985,6 @@ namespace Crystallography
         #endregion
 
         #region 逆格子ベクトルの計算
-
-        private readonly object lockThis = new object();
 
         /// <summary>
         /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
@@ -1426,7 +1426,7 @@ namespace Crystallography
                     _ => 0,
                 };
                     
-                if (atoms.Dsf.IsIso)
+                if (atoms.Dsf.UseIso)
                 {
                     var T = Math.Exp(-atoms.Dsf.Biso * s2);
                     foreach (var atom in atoms.Atom)
@@ -1437,7 +1437,8 @@ namespace Crystallography
                     foreach (var atom in atoms.Atom)
                     {
                         var (H, K, L) = atom.Operation.ConvertPlaneIndex(h, k, l);
-                        var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
+                        var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L 
+                            + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
                         F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z)) ;
                     }
                 }

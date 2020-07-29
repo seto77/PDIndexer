@@ -96,6 +96,13 @@
             this.numericBoxOriginShiftY = new Crystallography.Controls.NumericBox();
             this.numericBoxOriginShiftX = new Crystallography.Controls.NumericBox();
             this.tabPageDebyeWaller = new System.Windows.Forms.TabPage();
+            this.labelDimension = new System.Windows.Forms.Label();
+            this.flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.radioButtonDebyeWallerTypeU = new System.Windows.Forms.RadioButton();
+            this.radioButtonDebyeWallerTypeB = new System.Windows.Forms.RadioButton();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            this.label13 = new System.Windows.Forms.Label();
             this.checkBoxDetailsDebyeWallerError = new System.Windows.Forms.CheckBox();
             this.flowLayoutPanelAniso2 = new System.Windows.Forms.FlowLayoutPanel();
             this.numericBoxB22 = new Crystallography.Controls.NumericBox();
@@ -123,6 +130,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.tabPageAppearance = new System.Windows.Forms.TabPage();
             this.checkBoxShowLabel = new System.Windows.Forms.CheckBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label36 = new System.Windows.Forms.Label();
             this.numericBoxAlpha = new Crystallography.Controls.NumericBox();
             this.numericBoxEmission = new Crystallography.Controls.NumericBox();
             this.numericBoxShininess = new Crystallography.Controls.NumericBox();
@@ -130,12 +143,6 @@
             this.numericBoxDiffusion = new Crystallography.Controls.NumericBox();
             this.numericBoxAmbient = new Crystallography.Controls.NumericBox();
             this.numericBoxAtomRadius = new Crystallography.Controls.NumericBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label37 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label35 = new System.Windows.Forms.Label();
-            this.label36 = new System.Windows.Forms.Label();
             this.colorControlAtomColor = new Crystallography.Controls.ColorControl();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.buttonChangeToSameElement = new System.Windows.Forms.Button();
@@ -169,6 +176,8 @@
             this.tabPageOriginShift.SuspendLayout();
             this.flowLayoutPanel3.SuspendLayout();
             this.tabPageDebyeWaller.SuspendLayout();
+            this.flowLayoutPanel5.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.flowLayoutPanelAniso2.SuspendLayout();
             this.flowLayoutPanelAniso1.SuspendLayout();
             this.tabPageScatteringFactor.SuspendLayout();
@@ -520,6 +529,7 @@
             // numericBoxOccerr
             // 
             this.numericBoxOccerr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxOccerr.DecimalPlaces = 6;
             resources.ApplyResources(this.numericBoxOccerr, "numericBoxOccerr");
             this.numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -528,11 +538,13 @@
             this.numericBoxOccerr.SmartIncrement = true;
             this.numericBoxOccerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxOccerr.ThonsandsSeparator = true;
+            this.numericBoxOccerr.TrimEndZero = true;
             // 
             // numericBoxOcc
             // 
             resources.ApplyResources(this.numericBoxOcc, "numericBoxOcc");
             this.numericBoxOcc.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxOcc.DecimalPlaces = 6;
             this.numericBoxOcc.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOcc.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOcc.Name = "numericBoxOcc";
@@ -541,11 +553,13 @@
             this.numericBoxOcc.SmartIncrement = true;
             this.numericBoxOcc.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxOcc.ThonsandsSeparator = true;
+            this.numericBoxOcc.TrimEndZero = true;
             // 
             // numericBoxZ
             // 
             resources.ApplyResources(this.numericBoxZ, "numericBoxZ");
             this.numericBoxZ.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxZ.DecimalPlaces = 6;
             this.numericBoxZ.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZ.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZ.Name = "numericBoxZ";
@@ -554,10 +568,12 @@
             this.numericBoxZ.SmartIncrement = true;
             this.numericBoxZ.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxZ.ThonsandsSeparator = true;
+            this.numericBoxZ.TrimEndZero = true;
             // 
             // numericBoxYerr
             // 
             this.numericBoxYerr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxYerr.DecimalPlaces = 6;
             resources.ApplyResources(this.numericBoxYerr, "numericBoxYerr");
             this.numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -566,10 +582,12 @@
             this.numericBoxYerr.SmartIncrement = true;
             this.numericBoxYerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxYerr.ThonsandsSeparator = true;
+            this.numericBoxYerr.TrimEndZero = true;
             // 
             // numericBoxXerr
             // 
             this.numericBoxXerr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxXerr.DecimalPlaces = 6;
             resources.ApplyResources(this.numericBoxXerr, "numericBoxXerr");
             this.numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -578,11 +596,13 @@
             this.numericBoxXerr.SmartIncrement = true;
             this.numericBoxXerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxXerr.ThonsandsSeparator = true;
+            this.numericBoxXerr.TrimEndZero = true;
             // 
             // numericBoxY
             // 
             resources.ApplyResources(this.numericBoxY, "numericBoxY");
             this.numericBoxY.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxY.DecimalPlaces = 6;
             this.numericBoxY.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxY.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxY.Name = "numericBoxY";
@@ -591,11 +611,13 @@
             this.numericBoxY.SmartIncrement = true;
             this.numericBoxY.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxY.ThonsandsSeparator = true;
+            this.numericBoxY.TrimEndZero = true;
             // 
             // numericBoxX
             // 
             resources.ApplyResources(this.numericBoxX, "numericBoxX");
             this.numericBoxX.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxX.DecimalPlaces = 6;
             this.numericBoxX.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxX.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxX.Name = "numericBoxX";
@@ -604,10 +626,12 @@
             this.numericBoxX.SmartIncrement = true;
             this.numericBoxX.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxX.ThonsandsSeparator = true;
+            this.numericBoxX.TrimEndZero = true;
             // 
             // numericBoxZerr
             // 
             this.numericBoxZerr.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxZerr.DecimalPlaces = 6;
             resources.ApplyResources(this.numericBoxZerr, "numericBoxZerr");
             this.numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -616,6 +640,7 @@
             this.numericBoxZerr.SmartIncrement = true;
             this.numericBoxZerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericBoxZerr.ThonsandsSeparator = true;
+            this.numericBoxZerr.TrimEndZero = true;
             // 
             // tabPageOriginShift
             // 
@@ -814,15 +839,60 @@
             // tabPageDebyeWaller
             // 
             this.tabPageDebyeWaller.BackColor = System.Drawing.Color.Transparent;
+            this.tabPageDebyeWaller.Controls.Add(this.labelDimension);
+            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelIso);
+            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanel5);
+            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanel4);
             this.tabPageDebyeWaller.Controls.Add(this.checkBoxDetailsDebyeWallerError);
             this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso2);
             this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelAniso1);
-            this.tabPageDebyeWaller.Controls.Add(this.radioButtonAnisotropy);
-            this.tabPageDebyeWaller.Controls.Add(this.radioButtonIsotoropy);
-            this.tabPageDebyeWaller.Controls.Add(this.flowLayoutPanelIso);
             resources.ApplyResources(this.tabPageDebyeWaller, "tabPageDebyeWaller");
             this.tabPageDebyeWaller.Name = "tabPageDebyeWaller";
             this.toolTip.SetToolTip(this.tabPageDebyeWaller, resources.GetString("tabPageDebyeWaller.ToolTip"));
+            // 
+            // labelDimension
+            // 
+            resources.ApplyResources(this.labelDimension, "labelDimension");
+            this.labelDimension.Name = "labelDimension";
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(this.flowLayoutPanel5, "flowLayoutPanel5");
+            this.flowLayoutPanel5.Controls.Add(this.label3);
+            this.flowLayoutPanel5.Controls.Add(this.radioButtonDebyeWallerTypeU);
+            this.flowLayoutPanel5.Controls.Add(this.radioButtonDebyeWallerTypeB);
+            this.flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // radioButtonDebyeWallerTypeU
+            // 
+            resources.ApplyResources(this.radioButtonDebyeWallerTypeU, "radioButtonDebyeWallerTypeU");
+            this.radioButtonDebyeWallerTypeU.Name = "radioButtonDebyeWallerTypeU";
+            this.radioButtonDebyeWallerTypeU.CheckedChanged += new System.EventHandler(this.radioButtonDebyeWallerTypeU_CheckedChanged);
+            // 
+            // radioButtonDebyeWallerTypeB
+            // 
+            resources.ApplyResources(this.radioButtonDebyeWallerTypeB, "radioButtonDebyeWallerTypeB");
+            this.radioButtonDebyeWallerTypeB.Checked = true;
+            this.radioButtonDebyeWallerTypeB.Name = "radioButtonDebyeWallerTypeB";
+            this.radioButtonDebyeWallerTypeB.TabStop = true;
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(this.flowLayoutPanel4, "flowLayoutPanel4");
+            this.flowLayoutPanel4.Controls.Add(this.label13);
+            this.flowLayoutPanel4.Controls.Add(this.radioButtonIsotoropy);
+            this.flowLayoutPanel4.Controls.Add(this.radioButtonAnisotropy);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
             // 
             // checkBoxDetailsDebyeWallerError
             // 
@@ -1087,6 +1157,12 @@
             // tabPageAppearance
             // 
             this.tabPageAppearance.Controls.Add(this.checkBoxShowLabel);
+            this.tabPageAppearance.Controls.Add(this.label10);
+            this.tabPageAppearance.Controls.Add(this.label37);
+            this.tabPageAppearance.Controls.Add(this.label38);
+            this.tabPageAppearance.Controls.Add(this.label11);
+            this.tabPageAppearance.Controls.Add(this.label35);
+            this.tabPageAppearance.Controls.Add(this.label36);
             this.tabPageAppearance.Controls.Add(this.numericBoxAlpha);
             this.tabPageAppearance.Controls.Add(this.numericBoxEmission);
             this.tabPageAppearance.Controls.Add(this.numericBoxShininess);
@@ -1094,12 +1170,6 @@
             this.tabPageAppearance.Controls.Add(this.numericBoxDiffusion);
             this.tabPageAppearance.Controls.Add(this.numericBoxAmbient);
             this.tabPageAppearance.Controls.Add(this.numericBoxAtomRadius);
-            this.tabPageAppearance.Controls.Add(this.label10);
-            this.tabPageAppearance.Controls.Add(this.label37);
-            this.tabPageAppearance.Controls.Add(this.label38);
-            this.tabPageAppearance.Controls.Add(this.label11);
-            this.tabPageAppearance.Controls.Add(this.label35);
-            this.tabPageAppearance.Controls.Add(this.label36);
             this.tabPageAppearance.Controls.Add(this.colorControlAtomColor);
             resources.ApplyResources(this.tabPageAppearance, "tabPageAppearance");
             this.tabPageAppearance.Name = "tabPageAppearance";
@@ -1109,6 +1179,36 @@
             resources.ApplyResources(this.checkBoxShowLabel, "checkBoxShowLabel");
             this.checkBoxShowLabel.Name = "checkBoxShowLabel";
             this.checkBoxShowLabel.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            // 
+            // label37
+            // 
+            resources.ApplyResources(this.label37, "label37");
+            this.label37.Name = "label37";
+            // 
+            // label38
+            // 
+            resources.ApplyResources(this.label38, "label38");
+            this.label38.Name = "label38";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            // 
+            // label35
+            // 
+            resources.ApplyResources(this.label35, "label35");
+            this.label35.Name = "label35";
+            // 
+            // label36
+            // 
+            resources.ApplyResources(this.label36, "label36");
+            this.label36.Name = "label36";
             // 
             // numericBoxAlpha
             // 
@@ -1232,36 +1332,6 @@
             this.numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxAtomRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxAtomRadius.ThonsandsSeparator = true;
-            // 
-            // label10
-            // 
-            resources.ApplyResources(this.label10, "label10");
-            this.label10.Name = "label10";
-            // 
-            // label37
-            // 
-            resources.ApplyResources(this.label37, "label37");
-            this.label37.Name = "label37";
-            // 
-            // label38
-            // 
-            resources.ApplyResources(this.label38, "label38");
-            this.label38.Name = "label38";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // label35
-            // 
-            resources.ApplyResources(this.label35, "label35");
-            this.label35.Name = "label35";
-            // 
-            // label36
-            // 
-            resources.ApplyResources(this.label36, "label36");
-            this.label36.Name = "label36";
             // 
             // colorControlAtomColor
             // 
@@ -1525,6 +1595,10 @@
             this.flowLayoutPanel3.PerformLayout();
             this.tabPageDebyeWaller.ResumeLayout(false);
             this.tabPageDebyeWaller.PerformLayout();
+            this.flowLayoutPanel5.ResumeLayout(false);
+            this.flowLayoutPanel5.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
+            this.flowLayoutPanel4.PerformLayout();
             this.flowLayoutPanelAniso2.ResumeLayout(false);
             this.flowLayoutPanelAniso1.ResumeLayout(false);
             this.tabPageScatteringFactor.ResumeLayout(false);
@@ -1660,5 +1734,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn siteSymDataGridViewTextBoxColumn;
         public System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.CheckBox checkBoxShowLabel;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RadioButton radioButtonDebyeWallerTypeU;
+        private System.Windows.Forms.RadioButton radioButtonDebyeWallerTypeB;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label labelDimension;
     }
 }

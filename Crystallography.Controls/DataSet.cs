@@ -6,6 +6,10 @@ using System.Linq;
 using System.Numerics;
 using Crystallography;
 using Microsoft.Scripting.Utils;
+using MessagePack.Resolvers;
+using MessagePack;
+using System.Threading;
+using System.Text;
 
 namespace Crystallography.Controls
 {
@@ -15,6 +19,7 @@ namespace Crystallography.Controls
 {
     public partial class DataSet
     {
+
         #region 共通の静的関数
         public static Bitmap ColorImage(int argb)
         {
@@ -138,41 +143,32 @@ namespace Crystallography.Controls
                 dr[this._Site_Sym_Column] = atom.SiteSymmetry;
                 dr[this._Wyck__Let_Column] = atom.WyckoffLeter;
                 dr[this.ElementColumn] = atom.ElementName;
-                dr[this.XColumn] = GetStringFromDouble(atom.X);
-                dr[this.YColumn] = GetStringFromDouble(atom.Y);
-                dr[this.ZColumn] = GetStringFromDouble(atom.Z);
+                dr[this.XColumn] = GetStringFromDouble(atom.X, 6, true);
+                dr[this.YColumn] = GetStringFromDouble(atom.Y, 6, true);
+                dr[this.ZColumn] = GetStringFromDouble(atom.Z, 6, true);
                 dr[this._columnMulti_] = atom.Multiplicity;
-                dr[this._Occ_Column] = atom.Occ;
+                dr[this._Occ_Column] = GetStringFromDouble(atom.Occ, 6, false);
                 return dr;
             }
 
-            public static string GetStringFromDouble(double d)
+
+            public static string GetStringFromDouble(double d, int decimalPlaces, bool fraction)
             {
                 #region 
-                if (Math.Abs(d - 0.125) < 0.000000001) return "1/8";
-                else if (Math.Abs(d - 0.375) < 0.000000001) return "3/8";
-                else if (Math.Abs(d - 0.625) < 0.000000001) return "5/8";
-                else if (Math.Abs(d - 0.875) < 0.000000001) return "7/8";
-                else if (Math.Abs(d - 0.25) < 0.000000001) return "1/4";
-                else if (Math.Abs(d - 0.75) < 0.000000001) return "3/4";
-                else if (Math.Abs(d - 0.5) < 0.000000001) return "1/2";
-                else if (Math.Abs(d - 1.0 / 3.0) < 0.000000001) return "1/3";
-                else if (Math.Abs(d - 2.0 / 3.0) < 0.000000001) return "2/3";
-                else if (Math.Abs(d - 1.0 / 6.0) < 0.000000001) return "1/6";
-                else if (Math.Abs(d - 5.0 / 6.0) < 0.000000001) return "5/6";
-                else if (Math.Abs(d - 1.0 / 12.0) < 0.000000001) return "1/12";
-                else if (Math.Abs(d - 5.0 / 12.0) < 0.000000001) return "5/12";
-                else if (Math.Abs(d - 7.0 / 12.0) < 0.000000001) return "7/12";
-                else if (Math.Abs(d - 11.0 / 12.0) < 0.000000001) return "11/12";
-                else if (Math.Abs(d - 1.0 / 24.0) < 0.000000001) return "1/24";
-                else if (Math.Abs(d - 5.0 / 24.0) < 0.000000001) return "5/24";
-                else if (Math.Abs(d - 7.0 / 24.0) < 0.000000001) return "7/24";
-                else if (Math.Abs(d - 11.0 / 24.0) < 0.000000001) return "11/24";
-                else if (Math.Abs(d - 13.0 / 24.0) < 0.000000001) return "13/24";
-                else if (Math.Abs(d - 17.0 / 24.0) < 0.000000001) return "17/24";
-                else if (Math.Abs(d - 19.0 / 24.0) < 0.000000001) return "19/24";
-                else if (Math.Abs(d - 23.0 / 24.0) < 0.000000001) return "23/24";
-                else return d.ToString("g6");
+
+                var threshold = Math.Pow(10, -decimalPlaces);
+
+                var text = "";
+                if (d != 0 && fraction) //分数で表示するとき
+                {
+                    int j = (int)Math.Ceiling(d - 1);
+                    foreach (var denom in new[] { 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 16, 24 })
+                        for (int i = 1; i < denom && text == ""; i++)
+                            if ((i == 1 || denom % i != 0) && Math.Abs(d - j - i / (double)denom) < threshold)
+                                text = $"{i + (denom * j)}/{denom}";
+                }
+
+                return text != "" ? text : d.ToString($"g{decimalPlaces}");
                 #endregion
             }
         }
@@ -205,6 +201,98 @@ namespace Crystallography.Controls
             }
 
             public new void Clear() => Rows.Clear();
+        }
+
+
+        partial class DataTableCrystalDatabaseDataTable
+        {
+
+            readonly ReaderWriterLockSlim rwlock = new ReaderWriterLockSlim();
+
+            readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
+            byte[] serialize<T>(T c) => MessagePackSerializer.Serialize(c, msgOptions);
+            T deserialize<T>(object obj) => MessagePackSerializer.Deserialize<T>((byte[])obj, msgOptions);
+
+
+            /// <summary>
+            /// 引数はbindingSourceMain.Currentオブジェクト. 
+            /// </summary>
+            /// <param name="o"></param>
+            /// <returns></returns>
+            public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? deserialize<Crystal2>(r[SerializedCrystal2Column]) : null;
+
+            public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
+            public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);
+
+            public new void Clear() => Rows.Clear();
+
+            public void Remove(int i) => Rows.RemoveAt(i);
+
+            /// <summary>
+            /// srcCrystalはbindingSourceMain.Currentオブジェクト. 
+            /// </summary>
+            /// <param name="srcCrystal"></param>
+            /// <param name="targetcrystal"></param>
+            public void Replace(object srcCrystal, Crystal2 targetcrystal)
+            {
+                if (srcCrystal is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow src)
+                {
+                    var target = CreateRow(targetcrystal);
+                    for (int j = 0; j < drv.Row.ItemArray.Length; j++)
+                        src[j] = target[j];
+                }
+            }
+            public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
+            {
+                var elementList = new StringBuilder();
+                foreach (var n in c.atoms.Select(a => a.AtomNo).Distinct())
+                    elementList.Append($"{n:000} ");
+
+                var d = new float[8];
+                if (c.d != null)
+                    Array.Copy(c.d, d, c.d.Length);
+
+                DataTableCrystalDatabaseRow dr;
+                try
+                {
+
+                    rwlock.EnterWriteLock();
+                    dr = NewDataTableCrystalDatabaseRow();
+                }
+                finally { rwlock.ExitWriteLock(); }
+
+                var (cellValues, _) = c.Cell;
+
+                dr.SerializedCrystal2 = serialize(c);
+                dr.Name = c.name;
+                dr.Formula = c.formula;
+                dr.Density = c.density;
+                dr.A = cellValues.A;
+                dr.B = cellValues.B;
+                dr.C = cellValues.C;
+                dr.Alpha = cellValues.Alpha;
+                dr.Beta = cellValues.Beta;
+                dr.Gamma = cellValues.Gamma;
+                dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
+                dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
+                dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
+                dr.Authors = c.auth;
+                dr.Title = Crystal2.GetFullTitle(c.sect);
+                dr.Journal = Crystal2.GetFullJournal(c.jour);
+                dr.Elements = elementList.ToString();
+                dr.D1 = d[0];
+                dr.D2 = d[1];
+                dr.D3 = d[2];
+                dr.D4 = d[3];
+                dr.D5 = d[4];
+                dr.D6 = d[5];
+                dr.D7 = d[6];
+                dr.D8 = d[7];
+
+                return dr;
+            }
+
+
         }
     }
 }
