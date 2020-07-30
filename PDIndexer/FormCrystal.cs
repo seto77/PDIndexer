@@ -8,6 +8,7 @@ using System.Data.OleDb;
 using Crystallography;
 using Crystallography.Controls;
 using System.Collections.Generic;
+using System.IO;
 
 namespace PDIndexer{
 	/// <summary>
@@ -25,6 +26,12 @@ namespace PDIndexer{
             InitializeComponent();
             crystalControl.CrystalChanged += crystalControl_CrystalChanged;
             
+        }
+
+        private void FormCrystal_Load(object sender, EventArgs e)
+        {
+            if (File.Exists(formMain.UserAppDataPath + "StdDB.cdb3"))
+                crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "StdDB.cdb3");
         }
 
         void crystalControl_CrystalChanged(object sender, EventArgs e)
@@ -241,8 +248,11 @@ namespace PDIndexer{
             formMain.dataGridViewCrystals_CellMouseClick(sender, e);
         }
 
-   
+        private void buttonSearch_Click(object sender, EventArgs e)
+            => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
 
+        private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
+            => crystalControl.Crystal = crystalDatabaseControl.Crystal;
 
     }
 }

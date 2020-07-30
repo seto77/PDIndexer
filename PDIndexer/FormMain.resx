@@ -154,10 +154,10 @@
     <value>False</value>
   </data>
   <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 8.25pt</value>
+    <value>Tahoma, 8.25pt</value>
   </data>
   <data name="toolStripStatusLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>629, 26</value>
+    <value>660, 26</value>
   </data>
   <data name="toolStripStatusLabel2.Text" xml:space="preserve">
     <value>Ctrl+Shift+E: Equation of States; Ctrl+Shift+F: Fitting Parameter;  Ctrl+Shift+C: Crystal Parameter;  Ctrl+Shift+D:  change peak mode</value>
@@ -238,7 +238,7 @@
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -572,7 +572,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -581,7 +581,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+    <value>74, 25</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -590,7 +590,7 @@
     <value>numericalTextBoxIncreasingPixels</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -836,7 +836,7 @@
     <value>colorControlScaleText</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -893,7 +893,7 @@
     <value>colorControlScaleLine</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -950,7 +950,7 @@
     <value>colorControlBack</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1562,7 +1562,7 @@
     <value>graphControlFrequency</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -1698,7 +1698,7 @@
     <value>numericBoxUpperY</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1776,7 +1776,7 @@
     <value>numericBoxLowerY</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1854,7 +1854,7 @@
     <value>numericBoxUpperX</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1932,7 +1932,7 @@
     <value>numericBoxLowerX</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.28.916, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.7.29.1123, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -4712,6 +4712,51 @@
   <data name="dataGridViewTextBoxColumn105.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
+  <data name="dataGridViewImageColumn82.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewImageColumn82.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn82.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn107.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn107.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn81.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="dataGridViewImageColumn81.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn81.Width" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn106.HeaderText" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn106.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn83.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewImageColumn83.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn83.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn108.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn108.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4749,6 +4794,9 @@
         AABtbQAAq20AAKurAACrqwAAx6sAAMerAADvqwAA76sAAP/HAAD/xwAA/8cAAP/HAAD/7wAA/+8AAA==
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>795, 482</value>
   </data>
@@ -4778,60 +4826,6 @@
   </data>
   <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>colorDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>profileDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bindingSourceProfile.Name" xml:space="preserve">
-    <value>bindingSourceProfile</value>
-  </data>
-  <data name="&gt;&gt;bindingSourceProfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataSet.Name" xml:space="preserve">
-    <value>dataSet</value>
-  </data>
-  <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
-    <value>PDIndexer.DataSet, DataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;bindingSourceCrystal.Name" xml:space="preserve">
-    <value>bindingSourceCrystal</value>
-  </data>
-  <data name="&gt;&gt;bindingSourceCrystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;fileToolStripMenuItem.Name" xml:space="preserve">
     <value>fileToolStripMenuItem</value>
@@ -6331,6 +6325,96 @@
     <value>dataGridViewTextBoxColumn105</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn105.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn82.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn82</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn82.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn107.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn107</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn107.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bindingSourceProfile.Name" xml:space="preserve">
+    <value>bindingSourceProfile</value>
+  </data>
+  <data name="&gt;&gt;bindingSourceProfile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataSet.Name" xml:space="preserve">
+    <value>dataSet</value>
+  </data>
+  <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
+    <value>PDIndexer.DataSet, DataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;bindingSourceCrystal.Name" xml:space="preserve">
+    <value>bindingSourceCrystal</value>
+  </data>
+  <data name="&gt;&gt;bindingSourceCrystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn81.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn81</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn81.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn106.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn106</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn106.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn83.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn83</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn83.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn108.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn108</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn108.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>profileDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

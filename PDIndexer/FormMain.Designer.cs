@@ -54,7 +54,6 @@ namespace PDIndexer
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -117,6 +116,10 @@ namespace PDIndexer
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle67 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle68 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle69 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle70 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle71 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle72 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStripContainer1 = new System.Windows.Forms.ToolStripContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -126,7 +129,6 @@ namespace PDIndexer
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.horizontalAxisUserControl = new Crystallography.Controls.HorizontalAxisUserControl();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.checkBoxChangeHorizontalAppearance = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -138,7 +140,6 @@ namespace PDIndexer
             this.radioButtonRawCounts = new System.Windows.Forms.RadioButton();
             this.radioButtonCountsPerStep = new System.Windows.Forms.RadioButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.numericalTextBoxIncreasingPixels = new Crystallography.Controls.NumericBox();
             this.numericUpDownIncreasingPixels = new System.Windows.Forms.NumericUpDown();
             this.radioButtonMultiProfileMode = new System.Windows.Forms.RadioButton();
             this.checkBoxChangeColor = new System.Windows.Forms.CheckBox();
@@ -146,9 +147,6 @@ namespace PDIndexer
             this.label6 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.colorControlScaleText = new Crystallography.Controls.ColorControl();
-            this.colorControlScaleLine = new Crystallography.Controls.ColorControl();
-            this.colorControlBack = new Crystallography.Controls.ColorControl();
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -167,17 +165,12 @@ namespace PDIndexer
             this.comboBoxGradient = new System.Windows.Forms.ComboBox();
             this.comboBoxScale2 = new System.Windows.Forms.ComboBox();
             this.comboBoxScale1 = new System.Windows.Forms.ComboBox();
-            this.graphControlFrequency = new Crystallography.Controls.GraphControl();
             this.pictureBoxMain = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericBoxUpperY = new Crystallography.Controls.NumericBox();
             this.labelIntensity = new System.Windows.Forms.Label();
-            this.numericBoxLowerY = new Crystallography.Controls.NumericBox();
             this.labelD = new System.Windows.Forms.Label();
-            this.numericBoxUpperX = new Crystallography.Controls.NumericBox();
             this.labelTwoTheta = new System.Windows.Forms.Label();
-            this.numericBoxLowerX = new Crystallography.Controls.NumericBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.labelX = new System.Windows.Forms.Label();
@@ -185,19 +178,10 @@ namespace PDIndexer
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
-            this.checkDataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
-            this.profileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceProfile = new System.Windows.Forms.BindingSource(this.components);
-            this.dataSet = new PDIndexer.DataSet();
             this.checkBoxProfileParameter = new System.Windows.Forms.CheckBox();
             this.checkBoxAll = new System.Windows.Forms.CheckBox();
             this.groupBoxCrystalData = new System.Windows.Forms.GroupBox();
             this.dataGridViewCrystals = new System.Windows.Forms.DataGridView();
-            this.checkDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Crystal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSourceCrystal = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxCrystalParameter = new System.Windows.Forms.CheckBox();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -454,6 +438,31 @@ namespace PDIndexer
             this.dataGridViewTextBoxColumn104 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn80 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.checkDataGridViewCheckBoxColumn2 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.checkDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewImageColumn82 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn107 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceProfile = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new PDIndexer.DataSet();
+            this.bindingSourceCrystal = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewImageColumn81 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn106 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn83 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn108 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.horizontalAxisUserControl = new Crystallography.Controls.HorizontalAxisUserControl();
+            this.numericalTextBoxIncreasingPixels = new Crystallography.Controls.NumericBox();
+            this.colorControlScaleText = new Crystallography.Controls.ColorControl();
+            this.colorControlScaleLine = new Crystallography.Controls.ColorControl();
+            this.colorControlBack = new Crystallography.Controls.ColorControl();
+            this.graphControlFrequency = new Crystallography.Controls.GraphControl();
+            this.numericBoxUpperY = new Crystallography.Controls.NumericBox();
+            this.numericBoxLowerY = new Crystallography.Controls.NumericBox();
+            this.numericBoxUpperX = new Crystallography.Controls.NumericBox();
+            this.numericBoxLowerX = new Crystallography.Controls.NumericBox();
+            this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.profileDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Crystal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -486,13 +495,13 @@ namespace PDIndexer
             this.splitContainer2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProfile)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
             this.groupBoxCrystalData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrystals)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystal)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProfile)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystal)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -580,27 +589,6 @@ namespace PDIndexer
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // horizontalAxisUserControl
-            // 
-            resources.ApplyResources(this.horizontalAxisUserControl, "horizontalAxisUserControl");
-            this.horizontalAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
-            this.horizontalAxisUserControl.ElectronAccVoltage = 8.04114721308336D;
-            this.horizontalAxisUserControl.ElectronAccVoltageText = "8.04114721308336";
-            this.horizontalAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
-            this.horizontalAxisUserControl.Name = "horizontalAxisUserControl";
-            this.horizontalAxisUserControl.TakeoffAngle = 0D;
-            this.horizontalAxisUserControl.TakeoffAngleText = "0";
-            this.horizontalAxisUserControl.TofAngle = 1.5707963267948966D;
-            this.horizontalAxisUserControl.TofAngleText = "90";
-            this.horizontalAxisUserControl.TofLength = 90D;
-            this.horizontalAxisUserControl.WaveColor = Crystallography.WaveColor.Monochrome;
-            this.horizontalAxisUserControl.WaveLength = 0.15418710666666666D;
-            this.horizontalAxisUserControl.WaveLengthText = "1.54187106666667";
-            this.horizontalAxisUserControl.WaveSource = Crystallography.WaveSource.Xray;
-            this.horizontalAxisUserControl.XrayWaveSourceElementNumber = 29;
-            this.horizontalAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka;
-            this.horizontalAxisUserControl.AxisPropertyChanged += new Crystallography.Controls.HorizontalAxisUserControl.MyEventHandler(this.horizontalAxisUserControl_AxisPropertyChanged);
             // 
             // flowLayoutPanel4
             // 
@@ -698,20 +686,6 @@ namespace PDIndexer
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
-            // numericalTextBoxIncreasingPixels
-            // 
-            resources.ApplyResources(this.numericalTextBoxIncreasingPixels, "numericalTextBoxIncreasingPixels");
-            this.numericalTextBoxIncreasingPixels.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxIncreasingPixels.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxIncreasingPixels.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxIncreasingPixels.Name = "numericalTextBoxIncreasingPixels";
-            this.numericalTextBoxIncreasingPixels.RadianValue = 17.872171540421935D;
-            this.numericalTextBoxIncreasingPixels.RestrictLimitValue = false;
-            this.numericalTextBoxIncreasingPixels.SkipEventDuringInput = false;
-            this.numericalTextBoxIncreasingPixels.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxIncreasingPixels.Value = 1024D;
-            this.numericalTextBoxIncreasingPixels.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.radioButtonMultiProfileMode_CheckChanged);
-            // 
             // numericUpDownIncreasingPixels
             // 
             resources.ApplyResources(this.numericUpDownIncreasingPixels, "numericUpDownIncreasingPixels");
@@ -778,57 +752,6 @@ namespace PDIndexer
             resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
-            // 
-            // colorControlScaleText
-            // 
-            this.colorControlScaleText.Argb = -16777216;
-            resources.ApplyResources(this.colorControlScaleText, "colorControlScaleText");
-            this.colorControlScaleText.Blue = 0;
-            this.colorControlScaleText.BlueF = 0F;
-            this.colorControlScaleText.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlScaleText.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.colorControlScaleText.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlScaleText.Green = 0;
-            this.colorControlScaleText.GreenF = 0F;
-            this.colorControlScaleText.Name = "colorControlScaleText";
-            this.colorControlScaleText.Red = 0;
-            this.colorControlScaleText.RedF = 0F;
-            this.toolTip.SetToolTip(this.colorControlScaleText, resources.GetString("colorControlScaleText.ToolTip"));
-            this.colorControlScaleText.ColorChanged += new System.EventHandler(this.Draw);
-            // 
-            // colorControlScaleLine
-            // 
-            this.colorControlScaleLine.Argb = -2894893;
-            resources.ApplyResources(this.colorControlScaleLine, "colorControlScaleLine");
-            this.colorControlScaleLine.Blue = 211;
-            this.colorControlScaleLine.BlueF = 0.827451F;
-            this.colorControlScaleLine.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlScaleLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
-            this.colorControlScaleLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlScaleLine.Green = 211;
-            this.colorControlScaleLine.GreenF = 0.827451F;
-            this.colorControlScaleLine.Name = "colorControlScaleLine";
-            this.colorControlScaleLine.Red = 211;
-            this.colorControlScaleLine.RedF = 0.827451F;
-            this.toolTip.SetToolTip(this.colorControlScaleLine, resources.GetString("colorControlScaleLine.ToolTip"));
-            this.colorControlScaleLine.ColorChanged += new System.EventHandler(this.Draw);
-            // 
-            // colorControlBack
-            // 
-            this.colorControlBack.Argb = -1;
-            resources.ApplyResources(this.colorControlBack, "colorControlBack");
-            this.colorControlBack.Blue = 255;
-            this.colorControlBack.BlueF = 1F;
-            this.colorControlBack.BoxSize = new System.Drawing.Size(20, 20);
-            this.colorControlBack.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.colorControlBack.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
-            this.colorControlBack.Green = 255;
-            this.colorControlBack.GreenF = 1F;
-            this.colorControlBack.Name = "colorControlBack";
-            this.colorControlBack.Red = 255;
-            this.colorControlBack.RedF = 1F;
-            this.toolTip.SetToolTip(this.colorControlBack, resources.GetString("colorControlBack.ToolTip"));
-            this.colorControlBack.ColorChanged += new System.EventHandler(this.Draw);
             // 
             // label5
             // 
@@ -1001,52 +924,6 @@ namespace PDIndexer
             this.comboBoxScale1.Name = "comboBoxScale1";
             this.comboBoxScale1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBoxScale_SelectedIndexChanged);
             // 
-            // graphControlFrequency
-            // 
-            this.graphControlFrequency.AllowMouseOperation = true;
-            resources.ApplyResources(this.graphControlFrequency, "graphControlFrequency");
-            this.graphControlFrequency.BackgroundColor = System.Drawing.Color.White;
-            this.graphControlFrequency.BottomMargin = 0D;
-            this.graphControlFrequency.DivisionLineColor = System.Drawing.Color.Gray;
-            this.graphControlFrequency.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            this.graphControlFrequency.FixRangeHorizontal = false;
-            this.graphControlFrequency.FixRangeVertical = false;
-            this.graphControlFrequency.GraphName = "";
-            this.graphControlFrequency.HorizontalGradiationTextVisivle = true;
-            this.graphControlFrequency.Interpolation = false;
-            this.graphControlFrequency.IsIntegerX = true;
-            this.graphControlFrequency.IsIntegerY = true;
-            this.graphControlFrequency.LabelX = "X:";
-            this.graphControlFrequency.LabelY = "Y:";
-            this.graphControlFrequency.LeftMargin = 0F;
-            this.graphControlFrequency.LineColor = System.Drawing.Color.Red;
-            this.graphControlFrequency.LineWidth = 1F;
-            this.graphControlFrequency.LowerX = 0D;
-            this.graphControlFrequency.LowerY = 0D;
-            this.graphControlFrequency.MaximalX = 1D;
-            this.graphControlFrequency.MaximalY = 1D;
-            this.graphControlFrequency.MinimalX = 0D;
-            this.graphControlFrequency.MinimalY = 0D;
-            this.graphControlFrequency.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            this.graphControlFrequency.MousePositionVisible = true;
-            this.graphControlFrequency.Name = "graphControlFrequency";
-            this.graphControlFrequency.OriginPosition = new System.Drawing.Point(40, 20);
-            this.graphControlFrequency.Smoothing = false;
-            this.graphControlFrequency.TextFont = new System.Drawing.Font("Arial", 9F);
-            this.graphControlFrequency.UnitX = "";
-            this.graphControlFrequency.UnitY = "";
-            this.graphControlFrequency.UpperText = "";
-            this.graphControlFrequency.UpperTextVisible = true;
-            this.graphControlFrequency.UpperX = 1D;
-            this.graphControlFrequency.UpperY = 1D;
-            this.graphControlFrequency.UseLineWidth = true;
-            this.graphControlFrequency.VerticalGradiationTextVisivle = true;
-            this.graphControlFrequency.XLog = true;
-            this.graphControlFrequency.XScaleLineVisible = true;
-            this.graphControlFrequency.YLog = true;
-            this.graphControlFrequency.YScaleLineVisible = true;
-            this.graphControlFrequency.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(this.graphControlFrequency_LinePositionChanged);
-            // 
             // pictureBoxMain
             // 
             this.pictureBoxMain.BackColor = System.Drawing.Color.White;
@@ -1082,94 +959,20 @@ namespace PDIndexer
             this.tableLayoutPanel2.Controls.Add(this.label9, 4, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
-            // numericBoxUpperY
-            // 
-            resources.ApplyResources(this.numericBoxUpperY, "numericBoxUpperY");
-            this.numericBoxUpperY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxUpperY.DecimalPlaces = 2;
-            this.numericBoxUpperY.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxUpperY.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxUpperY.Maximum = 1000D;
-            this.numericBoxUpperY.Minimum = 0D;
-            this.numericBoxUpperY.Name = "numericBoxUpperY";
-            this.numericBoxUpperY.RadianValue = 17.453292519943293D;
-            this.numericBoxUpperY.ShowUpDown = true;
-            this.numericBoxUpperY.SmartIncrement = true;
-            this.numericBoxUpperY.ThonsandsSeparator = true;
-            this.numericBoxUpperY.Value = 1000D;
-            this.numericBoxUpperY.WordWrap = false;
-            this.numericBoxUpperY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
-            this.numericBoxUpperY.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
-            // 
             // labelIntensity
             // 
             resources.ApplyResources(this.labelIntensity, "labelIntensity");
             this.labelIntensity.Name = "labelIntensity";
-            // 
-            // numericBoxLowerY
-            // 
-            resources.ApplyResources(this.numericBoxLowerY, "numericBoxLowerY");
-            this.numericBoxLowerY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLowerY.DecimalPlaces = 2;
-            this.numericBoxLowerY.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLowerY.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLowerY.Maximum = 1000D;
-            this.numericBoxLowerY.Minimum = 0D;
-            this.numericBoxLowerY.Name = "numericBoxLowerY";
-            this.numericBoxLowerY.ShowUpDown = true;
-            this.numericBoxLowerY.SmartIncrement = true;
-            this.numericBoxLowerY.ThonsandsSeparator = true;
-            this.numericBoxLowerY.WordWrap = false;
-            this.numericBoxLowerY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
-            this.numericBoxLowerY.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
             // 
             // labelD
             // 
             resources.ApplyResources(this.labelD, "labelD");
             this.labelD.Name = "labelD";
             // 
-            // numericBoxUpperX
-            // 
-            resources.ApplyResources(this.numericBoxUpperX, "numericBoxUpperX");
-            this.numericBoxUpperX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxUpperX.DecimalPlaces = 2;
-            this.numericBoxUpperX.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxUpperX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxUpperX.Maximum = 30D;
-            this.numericBoxUpperX.Minimum = 0D;
-            this.numericBoxUpperX.Name = "numericBoxUpperX";
-            this.numericBoxUpperX.RadianValue = 0.52359877559829882D;
-            this.numericBoxUpperX.ShowUpDown = true;
-            this.numericBoxUpperX.SmartIncrement = true;
-            this.numericBoxUpperX.ThonsandsSeparator = true;
-            this.numericBoxUpperX.Value = 30D;
-            this.numericBoxUpperX.WordWrap = false;
-            this.numericBoxUpperX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
-            this.numericBoxUpperX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
-            this.numericBoxUpperX.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
-            // 
             // labelTwoTheta
             // 
             resources.ApplyResources(this.labelTwoTheta, "labelTwoTheta");
             this.labelTwoTheta.Name = "labelTwoTheta";
-            // 
-            // numericBoxLowerX
-            // 
-            resources.ApplyResources(this.numericBoxLowerX, "numericBoxLowerX");
-            this.numericBoxLowerX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLowerX.DecimalPlaces = 2;
-            this.numericBoxLowerX.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLowerX.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxLowerX.Maximum = 30D;
-            this.numericBoxLowerX.Minimum = 0D;
-            this.numericBoxLowerX.Name = "numericBoxLowerX";
-            this.numericBoxLowerX.ShowUpDown = true;
-            this.numericBoxLowerX.SmartIncrement = true;
-            this.numericBoxLowerX.ThonsandsSeparator = true;
-            this.numericBoxLowerX.WordWrap = false;
-            this.numericBoxLowerX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
-            this.numericBoxLowerX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
-            this.numericBoxLowerX.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
             // 
             // label11
             // 
@@ -1262,41 +1065,6 @@ namespace PDIndexer
             this.dataGridViewProfiles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProfiles_CellClick);
             this.dataGridViewProfiles.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyUp);
             // 
-            // checkDataGridViewCheckBoxColumn2
-            // 
-            this.checkDataGridViewCheckBoxColumn2.DataPropertyName = "Check";
-            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn2, "checkDataGridViewCheckBoxColumn2");
-            this.checkDataGridViewCheckBoxColumn2.Name = "checkDataGridViewCheckBoxColumn2";
-            this.checkDataGridViewCheckBoxColumn2.ReadOnly = true;
-            // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            resources.ApplyResources(this.colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
-            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
-            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // profileDataGridViewTextBoxColumn
-            // 
-            this.profileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.profileDataGridViewTextBoxColumn.DataPropertyName = "Profile";
-            resources.ApplyResources(this.profileDataGridViewTextBoxColumn, "profileDataGridViewTextBoxColumn");
-            this.profileDataGridViewTextBoxColumn.Name = "profileDataGridViewTextBoxColumn";
-            this.profileDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // bindingSourceProfile
-            // 
-            this.bindingSourceProfile.DataMember = "DataTableProfile";
-            this.bindingSourceProfile.DataSource = this.dataSet;
-            // 
-            // dataSet
-            // 
-            this.dataSet.DataSetName = "DataSet1";
-            this.dataSet.Locale = new System.Globalization.CultureInfo("ja");
-            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // checkBoxProfileParameter
             // 
             resources.ApplyResources(this.checkBoxProfileParameter, "checkBoxProfileParameter");
@@ -1370,39 +1138,6 @@ namespace PDIndexer
             this.dataGridViewCrystals.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
             this.dataGridViewCrystals.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
             this.dataGridViewCrystals.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyUp);
-            // 
-            // checkDataGridViewCheckBoxColumn1
-            // 
-            this.checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
-            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
-            this.checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
-            this.checkDataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.checkDataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PeakColor
-            // 
-            this.PeakColor.DataPropertyName = "PeakColor";
-            resources.ApplyResources(this.PeakColor, "PeakColor");
-            this.PeakColor.Name = "PeakColor";
-            this.PeakColor.ReadOnly = true;
-            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Crystal
-            // 
-            this.Crystal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Crystal.DataPropertyName = "Crystal";
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Crystal.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.Crystal, "Crystal");
-            this.Crystal.Name = "Crystal";
-            this.Crystal.ReadOnly = true;
-            this.Crystal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // bindingSourceCrystal
-            // 
-            this.bindingSourceCrystal.DataMember = "DataTableCrystal";
-            this.bindingSourceCrystal.DataSource = this.dataSet;
             // 
             // checkBoxCrystalParameter
             // 
@@ -3549,6 +3284,338 @@ namespace PDIndexer
             this.dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
             this.dataGridViewTextBoxColumn105.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
+            // checkDataGridViewCheckBoxColumn2
+            // 
+            this.checkDataGridViewCheckBoxColumn2.DataPropertyName = "Check";
+            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn2, "checkDataGridViewCheckBoxColumn2");
+            this.checkDataGridViewCheckBoxColumn2.Name = "checkDataGridViewCheckBoxColumn2";
+            this.checkDataGridViewCheckBoxColumn2.ReadOnly = true;
+            // 
+            // checkDataGridViewCheckBoxColumn1
+            // 
+            this.checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
+            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
+            this.checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
+            this.checkDataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.checkDataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewImageColumn82
+            // 
+            this.dataGridViewImageColumn82.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.dataGridViewImageColumn82, "dataGridViewImageColumn82");
+            this.dataGridViewImageColumn82.Name = "dataGridViewImageColumn82";
+            this.dataGridViewImageColumn82.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn82.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn107
+            // 
+            this.dataGridViewTextBoxColumn107.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn107.DataPropertyName = "Crystal";
+            dataGridViewCellStyle70.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn107.DefaultCellStyle = dataGridViewCellStyle70;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn107, "dataGridViewTextBoxColumn107");
+            this.dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
+            this.dataGridViewTextBoxColumn107.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // bindingSourceProfile
+            // 
+            this.bindingSourceProfile.DataMember = "DataTableProfile";
+            this.bindingSourceProfile.DataSource = this.dataSet;
+            // 
+            // dataSet
+            // 
+            this.dataSet.DataSetName = "DataSet1";
+            this.dataSet.Locale = new System.Globalization.CultureInfo("ja");
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // bindingSourceCrystal
+            // 
+            this.bindingSourceCrystal.DataMember = "DataTableCrystal";
+            this.bindingSourceCrystal.DataSource = this.dataSet;
+            // 
+            // dataGridViewImageColumn81
+            // 
+            this.dataGridViewImageColumn81.DataPropertyName = "Color";
+            resources.ApplyResources(this.dataGridViewImageColumn81, "dataGridViewImageColumn81");
+            this.dataGridViewImageColumn81.Name = "dataGridViewImageColumn81";
+            this.dataGridViewImageColumn81.ReadOnly = true;
+            this.dataGridViewImageColumn81.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn81.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn106
+            // 
+            this.dataGridViewTextBoxColumn106.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn106.DataPropertyName = "Profile";
+            dataGridViewCellStyle71.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn106.DefaultCellStyle = dataGridViewCellStyle71;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn106, "dataGridViewTextBoxColumn106");
+            this.dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
+            this.dataGridViewTextBoxColumn106.ReadOnly = true;
+            this.dataGridViewTextBoxColumn106.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewImageColumn83
+            // 
+            this.dataGridViewImageColumn83.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.dataGridViewImageColumn83, "dataGridViewImageColumn83");
+            this.dataGridViewImageColumn83.Name = "dataGridViewImageColumn83";
+            this.dataGridViewImageColumn83.ReadOnly = true;
+            this.dataGridViewImageColumn83.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewImageColumn83.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn108
+            // 
+            this.dataGridViewTextBoxColumn108.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn108.DataPropertyName = "Crystal";
+            dataGridViewCellStyle72.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn108.DefaultCellStyle = dataGridViewCellStyle72;
+            resources.ApplyResources(this.dataGridViewTextBoxColumn108, "dataGridViewTextBoxColumn108");
+            this.dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
+            this.dataGridViewTextBoxColumn108.ReadOnly = true;
+            this.dataGridViewTextBoxColumn108.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // horizontalAxisUserControl
+            // 
+            resources.ApplyResources(this.horizontalAxisUserControl, "horizontalAxisUserControl");
+            this.horizontalAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
+            this.horizontalAxisUserControl.ElectronAccVoltage = 8.04114721308336D;
+            this.horizontalAxisUserControl.ElectronAccVoltageText = "8.04114721308336";
+            this.horizontalAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
+            this.horizontalAxisUserControl.Name = "horizontalAxisUserControl";
+            this.horizontalAxisUserControl.TakeoffAngle = 0D;
+            this.horizontalAxisUserControl.TakeoffAngleText = "0";
+            this.horizontalAxisUserControl.TofAngle = 1.5707963267948966D;
+            this.horizontalAxisUserControl.TofAngleText = "90";
+            this.horizontalAxisUserControl.TofLength = 90D;
+            this.horizontalAxisUserControl.WaveColor = Crystallography.WaveColor.Monochrome;
+            this.horizontalAxisUserControl.WaveLength = 0.15418710666666666D;
+            this.horizontalAxisUserControl.WaveLengthText = "1.54187106666667";
+            this.horizontalAxisUserControl.WaveSource = Crystallography.WaveSource.Xray;
+            this.horizontalAxisUserControl.XrayWaveSourceElementNumber = 29;
+            this.horizontalAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka;
+            this.horizontalAxisUserControl.AxisPropertyChanged += new Crystallography.Controls.HorizontalAxisUserControl.MyEventHandler(this.horizontalAxisUserControl_AxisPropertyChanged);
+            // 
+            // numericalTextBoxIncreasingPixels
+            // 
+            resources.ApplyResources(this.numericalTextBoxIncreasingPixels, "numericalTextBoxIncreasingPixels");
+            this.numericalTextBoxIncreasingPixels.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxIncreasingPixels.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxIncreasingPixels.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxIncreasingPixels.Name = "numericalTextBoxIncreasingPixels";
+            this.numericalTextBoxIncreasingPixels.RadianValue = 17.872171540421935D;
+            this.numericalTextBoxIncreasingPixels.RestrictLimitValue = false;
+            this.numericalTextBoxIncreasingPixels.SkipEventDuringInput = false;
+            this.numericalTextBoxIncreasingPixels.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxIncreasingPixels.Value = 1024D;
+            this.numericalTextBoxIncreasingPixels.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.radioButtonMultiProfileMode_CheckChanged);
+            // 
+            // colorControlScaleText
+            // 
+            this.colorControlScaleText.Argb = -16777216;
+            resources.ApplyResources(this.colorControlScaleText, "colorControlScaleText");
+            this.colorControlScaleText.Blue = 0;
+            this.colorControlScaleText.BlueF = 0F;
+            this.colorControlScaleText.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlScaleText.Color = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.colorControlScaleText.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlScaleText.Green = 0;
+            this.colorControlScaleText.GreenF = 0F;
+            this.colorControlScaleText.Name = "colorControlScaleText";
+            this.colorControlScaleText.Red = 0;
+            this.colorControlScaleText.RedF = 0F;
+            this.toolTip.SetToolTip(this.colorControlScaleText, resources.GetString("colorControlScaleText.ToolTip"));
+            this.colorControlScaleText.ColorChanged += new System.EventHandler(this.Draw);
+            // 
+            // colorControlScaleLine
+            // 
+            this.colorControlScaleLine.Argb = -2894893;
+            resources.ApplyResources(this.colorControlScaleLine, "colorControlScaleLine");
+            this.colorControlScaleLine.Blue = 211;
+            this.colorControlScaleLine.BlueF = 0.827451F;
+            this.colorControlScaleLine.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlScaleLine.Color = System.Drawing.Color.FromArgb(((int)(((byte)(211)))), ((int)(((byte)(211)))), ((int)(((byte)(211)))));
+            this.colorControlScaleLine.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlScaleLine.Green = 211;
+            this.colorControlScaleLine.GreenF = 0.827451F;
+            this.colorControlScaleLine.Name = "colorControlScaleLine";
+            this.colorControlScaleLine.Red = 211;
+            this.colorControlScaleLine.RedF = 0.827451F;
+            this.toolTip.SetToolTip(this.colorControlScaleLine, resources.GetString("colorControlScaleLine.ToolTip"));
+            this.colorControlScaleLine.ColorChanged += new System.EventHandler(this.Draw);
+            // 
+            // colorControlBack
+            // 
+            this.colorControlBack.Argb = -1;
+            resources.ApplyResources(this.colorControlBack, "colorControlBack");
+            this.colorControlBack.Blue = 255;
+            this.colorControlBack.BlueF = 1F;
+            this.colorControlBack.BoxSize = new System.Drawing.Size(20, 20);
+            this.colorControlBack.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.colorControlBack.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
+            this.colorControlBack.Green = 255;
+            this.colorControlBack.GreenF = 1F;
+            this.colorControlBack.Name = "colorControlBack";
+            this.colorControlBack.Red = 255;
+            this.colorControlBack.RedF = 1F;
+            this.toolTip.SetToolTip(this.colorControlBack, resources.GetString("colorControlBack.ToolTip"));
+            this.colorControlBack.ColorChanged += new System.EventHandler(this.Draw);
+            // 
+            // graphControlFrequency
+            // 
+            this.graphControlFrequency.AllowMouseOperation = true;
+            resources.ApplyResources(this.graphControlFrequency, "graphControlFrequency");
+            this.graphControlFrequency.BackgroundColor = System.Drawing.Color.White;
+            this.graphControlFrequency.BottomMargin = 0D;
+            this.graphControlFrequency.DivisionLineColor = System.Drawing.Color.Gray;
+            this.graphControlFrequency.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            this.graphControlFrequency.FixRangeHorizontal = false;
+            this.graphControlFrequency.FixRangeVertical = false;
+            this.graphControlFrequency.GraphName = "";
+            this.graphControlFrequency.HorizontalGradiationTextVisivle = true;
+            this.graphControlFrequency.Interpolation = false;
+            this.graphControlFrequency.IsIntegerX = true;
+            this.graphControlFrequency.IsIntegerY = true;
+            this.graphControlFrequency.LabelX = "X:";
+            this.graphControlFrequency.LabelY = "Y:";
+            this.graphControlFrequency.LeftMargin = 0F;
+            this.graphControlFrequency.LineColor = System.Drawing.Color.Red;
+            this.graphControlFrequency.LineWidth = 1F;
+            this.graphControlFrequency.LowerX = 0D;
+            this.graphControlFrequency.LowerY = 0D;
+            this.graphControlFrequency.MaximalX = 1D;
+            this.graphControlFrequency.MaximalY = 1D;
+            this.graphControlFrequency.MinimalX = 0D;
+            this.graphControlFrequency.MinimalY = 0D;
+            this.graphControlFrequency.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
+            this.graphControlFrequency.MousePositionVisible = true;
+            this.graphControlFrequency.Name = "graphControlFrequency";
+            this.graphControlFrequency.OriginPosition = new System.Drawing.Point(40, 20);
+            this.graphControlFrequency.Smoothing = false;
+            this.graphControlFrequency.TextFont = new System.Drawing.Font("Arial", 9F);
+            this.graphControlFrequency.UnitX = "";
+            this.graphControlFrequency.UnitY = "";
+            this.graphControlFrequency.UpperText = "";
+            this.graphControlFrequency.UpperTextVisible = true;
+            this.graphControlFrequency.UpperX = 1D;
+            this.graphControlFrequency.UpperY = 1D;
+            this.graphControlFrequency.UseLineWidth = true;
+            this.graphControlFrequency.VerticalGradiationTextVisivle = true;
+            this.graphControlFrequency.XLog = true;
+            this.graphControlFrequency.XScaleLineVisible = true;
+            this.graphControlFrequency.YLog = true;
+            this.graphControlFrequency.YScaleLineVisible = true;
+            this.graphControlFrequency.LinePositionChanged += new Crystallography.Controls.GraphControl.LinePositionChengedEventHandler(this.graphControlFrequency_LinePositionChanged);
+            // 
+            // numericBoxUpperY
+            // 
+            resources.ApplyResources(this.numericBoxUpperY, "numericBoxUpperY");
+            this.numericBoxUpperY.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxUpperY.DecimalPlaces = 2;
+            this.numericBoxUpperY.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxUpperY.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxUpperY.Maximum = 1000D;
+            this.numericBoxUpperY.Minimum = 0D;
+            this.numericBoxUpperY.Name = "numericBoxUpperY";
+            this.numericBoxUpperY.RadianValue = 17.453292519943293D;
+            this.numericBoxUpperY.ShowUpDown = true;
+            this.numericBoxUpperY.SmartIncrement = true;
+            this.numericBoxUpperY.ThonsandsSeparator = true;
+            this.numericBoxUpperY.Value = 1000D;
+            this.numericBoxUpperY.WordWrap = false;
+            this.numericBoxUpperY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
+            this.numericBoxUpperY.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
+            // 
+            // numericBoxLowerY
+            // 
+            resources.ApplyResources(this.numericBoxLowerY, "numericBoxLowerY");
+            this.numericBoxLowerY.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLowerY.DecimalPlaces = 2;
+            this.numericBoxLowerY.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLowerY.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLowerY.Maximum = 1000D;
+            this.numericBoxLowerY.Minimum = 0D;
+            this.numericBoxLowerY.Name = "numericBoxLowerY";
+            this.numericBoxLowerY.ShowUpDown = true;
+            this.numericBoxLowerY.SmartIncrement = true;
+            this.numericBoxLowerY.ThonsandsSeparator = true;
+            this.numericBoxLowerY.WordWrap = false;
+            this.numericBoxLowerY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
+            this.numericBoxLowerY.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
+            // 
+            // numericBoxUpperX
+            // 
+            resources.ApplyResources(this.numericBoxUpperX, "numericBoxUpperX");
+            this.numericBoxUpperX.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxUpperX.DecimalPlaces = 2;
+            this.numericBoxUpperX.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxUpperX.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxUpperX.Maximum = 30D;
+            this.numericBoxUpperX.Minimum = 0D;
+            this.numericBoxUpperX.Name = "numericBoxUpperX";
+            this.numericBoxUpperX.RadianValue = 0.52359877559829882D;
+            this.numericBoxUpperX.ShowUpDown = true;
+            this.numericBoxUpperX.SmartIncrement = true;
+            this.numericBoxUpperX.ThonsandsSeparator = true;
+            this.numericBoxUpperX.Value = 30D;
+            this.numericBoxUpperX.WordWrap = false;
+            this.numericBoxUpperX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
+            this.numericBoxUpperX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
+            this.numericBoxUpperX.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
+            // 
+            // numericBoxLowerX
+            // 
+            resources.ApplyResources(this.numericBoxLowerX, "numericBoxLowerX");
+            this.numericBoxLowerX.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLowerX.DecimalPlaces = 2;
+            this.numericBoxLowerX.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLowerX.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxLowerX.Maximum = 30D;
+            this.numericBoxLowerX.Minimum = 0D;
+            this.numericBoxLowerX.Name = "numericBoxLowerX";
+            this.numericBoxLowerX.ShowUpDown = true;
+            this.numericBoxLowerX.SmartIncrement = true;
+            this.numericBoxLowerX.ThonsandsSeparator = true;
+            this.numericBoxLowerX.WordWrap = false;
+            this.numericBoxLowerX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
+            this.numericBoxLowerX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
+            this.numericBoxLowerX.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            this.colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            resources.ApplyResources(this.colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
+            this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            this.colorDataGridViewTextBoxColumn.ReadOnly = true;
+            this.colorDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colorDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // profileDataGridViewTextBoxColumn
+            // 
+            this.profileDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.profileDataGridViewTextBoxColumn.DataPropertyName = "Profile";
+            resources.ApplyResources(this.profileDataGridViewTextBoxColumn, "profileDataGridViewTextBoxColumn");
+            this.profileDataGridViewTextBoxColumn.Name = "profileDataGridViewTextBoxColumn";
+            this.profileDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // PeakColor
+            // 
+            this.PeakColor.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.PeakColor, "PeakColor");
+            this.PeakColor.Name = "PeakColor";
+            this.PeakColor.ReadOnly = true;
+            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Crystal
+            // 
+            this.Crystal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Crystal.DataPropertyName = "Crystal";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Crystal.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.Crystal, "Crystal");
+            this.Crystal.Name = "Crystal";
+            this.Crystal.ReadOnly = true;
+            this.Crystal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
             // FormMain
             // 
             this.AllowDrop = true;
@@ -3609,15 +3676,15 @@ namespace PDIndexer
             this.splitContainer2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProfiles)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProfile)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
             this.groupBoxCrystalData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrystals)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystal)).EndInit();
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceProfile)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystal)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -3961,5 +4028,11 @@ namespace PDIndexer
         private DataGridViewImageColumn dataGridViewImageColumn80;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn105;
         private ToolStripProgressBar toolStripProgressBar;
+        private DataGridViewImageColumn dataGridViewImageColumn82;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn107;
+        private DataGridViewImageColumn dataGridViewImageColumn81;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn106;
+        private DataGridViewImageColumn dataGridViewImageColumn83;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn108;
     }
 }

@@ -28,6 +28,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.384(2020/07/30) Added the AMCSD crystal database to 'Crystal Parameter' window." +
             "\r\n ver4.383(2020/05/01) Fixed GUIs." +
             "\r\n ver4.382(2020/04/26) Fixed a problem on loading Neutron TOF data." +
             "\r\n ver4.381(2020/03/27) Refixed a bug on loading multiple profiles." +
