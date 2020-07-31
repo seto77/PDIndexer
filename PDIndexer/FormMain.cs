@@ -620,6 +620,9 @@ namespace PDIndexer
             if (!File.Exists(UserAppDataPath + "PDIndexerSetup.msi"))
                 File.Delete(UserAppDataPath + "PDIndexerSetup.msi");
 
+            //StdDbをコピー
+            File.Copy(appPath + "StdDb.cdb3", UserAppDataPath + "StdDb.cdb3", true);
+
             //UserAppDataPathに空フォルダがあったら削除
             foreach (var dir in Directory.GetDirectories(UserAppDataPath))
                 if (!Directory.EnumerateFileSystemEntries(dir).Any())

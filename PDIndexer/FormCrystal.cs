@@ -20,18 +20,33 @@ namespace PDIndexer{
         public int atomSeriesNum;
         public int SymmetrySeriesNumber;
         public bool[] IsHitCrystal;
+        public bool SkipEvent = false;
+
 
         public FormCrystal()
         {
             InitializeComponent();
             crystalControl.CrystalChanged += crystalControl_CrystalChanged;
             
+            crystalDatabaseControl.ProgressChanged += CrystalDatabaseControl_ProgressChanged;
+        }
+
+        private void CrystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
+        {
+            if (message.Contains("Total"))
+                crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;
         }
 
         private void FormCrystal_Load(object sender, EventArgs e)
         {
             if (File.Exists(formMain.UserAppDataPath + "StdDB.cdb3"))
                 crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "StdDB.cdb3");
+        }
+
+        private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
+        {
+            if(SkipEvent)return;
+            crystalControl.Crystal = crystalDatabaseControl.Crystal;
         }
 
         void crystalControl_CrystalChanged(object sender, EventArgs e)
@@ -251,8 +266,7 @@ namespace PDIndexer{
         private void buttonSearch_Click(object sender, EventArgs e)
             => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
 
-        private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
-            => crystalControl.Crystal = crystalDatabaseControl.Crystal;
+      
 
     }
 }
