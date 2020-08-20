@@ -40,10 +40,6 @@
             this.numericBoxMolarMass = new Crystallography.Controls.NumericBox();
             this.numericBoxDensity = new Crystallography.Controls.NumericBox();
             this.colorControl = new Crystallography.Controls.ColorControl();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.textBoxFormula = new System.Windows.Forms.TextBox();
-            this.numericBoxZnumber = new Crystallography.Controls.NumericBox();
-            this.label90 = new System.Windows.Forms.Label();
             this.symmetryControl = new Crystallography.Controls.SymmetryControl();
             this.tabPageAtom = new System.Windows.Forms.TabPage();
             this.atomControl = new Crystallography.Controls.AtomControl();
@@ -108,8 +104,6 @@
             this.numericBoxEOS_V0perCell = new Crystallography.Controls.NumericBox();
             this.numericBoxEOS_KT0 = new Crystallography.Controls.NumericBox();
             this.label70 = new System.Windows.Forms.Label();
-            this.label81 = new System.Windows.Forms.Label();
-            this.label71 = new System.Windows.Forms.Label();
             this.label80 = new System.Windows.Forms.Label();
             this.label68 = new System.Windows.Forms.Label();
             this.numericBoxEOS_KprimeT0 = new Crystallography.Controls.NumericBox();
@@ -173,6 +167,10 @@
             this.boundControl = new Crystallography.Controls.BoundControl();
             this.tabPageLatticePlane = new System.Windows.Forms.TabPage();
             this.latticePlaneControl = new Crystallography.Controls.LatticePlaneControl();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.textBoxFormula = new System.Windows.Forms.TextBox();
+            this.numericBoxZnumber = new Crystallography.Controls.NumericBox();
+            this.label90 = new System.Windows.Forms.Label();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.scatteringFactorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.symmetryInformationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -188,14 +186,14 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label22 = new System.Windows.Forms.Label();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonScatteringFactor = new System.Windows.Forms.Button();
+            this.buttonSymmetryInfo = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tabControl.SuspendLayout();
             this.tabPageBasicInfo.SuspendLayout();
             this.panel5.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.tabPageAtom.SuspendLayout();
             this.panelAtom.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
@@ -219,6 +217,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrystallineSize)).BeginInit();
             this.tabPageBounds.SuspendLayout();
             this.tabPageLatticePlane.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.contextMenuStrip.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -253,7 +252,6 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.flowLayoutPanel4);
-            this.panel5.Controls.Add(this.panel1);
             this.panel5.Controls.Add(this.symmetryControl);
             resources.ApplyResources(this.panel5, "panel5");
             this.panel5.Name = "panel5";
@@ -355,36 +353,6 @@
             this.colorControl.Name = "colorControl";
             this.colorControl.Red = 240;
             this.colorControl.RedF = 0.9411765F;
-            // 
-            // panel1
-            // 
-            resources.ApplyResources(this.panel1, "panel1");
-            this.panel1.Controls.Add(this.textBoxFormula);
-            this.panel1.Controls.Add(this.numericBoxZnumber);
-            this.panel1.Controls.Add(this.label90);
-            this.panel1.Name = "panel1";
-            // 
-            // textBoxFormula
-            // 
-            resources.ApplyResources(this.textBoxFormula, "textBoxFormula");
-            this.textBoxFormula.Name = "textBoxFormula";
-            this.textBoxFormula.ReadOnly = true;
-            // 
-            // numericBoxZnumber
-            // 
-            resources.ApplyResources(this.numericBoxZnumber, "numericBoxZnumber");
-            this.numericBoxZnumber.BackColor = System.Drawing.Color.Transparent;
-            this.numericBoxZnumber.Name = "numericBoxZnumber";
-            this.numericBoxZnumber.ReadOnly = true;
-            this.numericBoxZnumber.SkipEventDuringInput = false;
-            this.numericBoxZnumber.SmartIncrement = true;
-            this.numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxZnumber.ThonsandsSeparator = true;
-            // 
-            // label90
-            // 
-            resources.ApplyResources(this.label90, "label90");
-            this.label90.Name = "label90";
             // 
             // symmetryControl
             // 
@@ -862,8 +830,6 @@
             this.groupBox2.Controls.Add(this.numericBoxEOS_V0perCell);
             this.groupBox2.Controls.Add(this.numericBoxEOS_KT0);
             this.groupBox2.Controls.Add(this.label70);
-            this.groupBox2.Controls.Add(this.label81);
-            this.groupBox2.Controls.Add(this.label71);
             this.groupBox2.Controls.Add(this.label80);
             this.groupBox2.Controls.Add(this.label68);
             this.groupBox2.Controls.Add(this.numericBoxEOS_KprimeT0);
@@ -949,16 +915,6 @@
             // 
             resources.ApplyResources(this.label70, "label70");
             this.label70.Name = "label70";
-            // 
-            // label81
-            // 
-            resources.ApplyResources(this.label81, "label81");
-            this.label81.Name = "label81";
-            // 
-            // label71
-            // 
-            resources.ApplyResources(this.label71, "label71");
-            this.label71.Name = "label71";
             // 
             // label80
             // 
@@ -1540,6 +1496,36 @@
             this.latticePlaneControl.Name = "latticePlaneControl";
             this.latticePlaneControl.SkipEvent = false;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.textBoxFormula);
+            this.panel1.Controls.Add(this.numericBoxZnumber);
+            this.panel1.Controls.Add(this.label90);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
+            // 
+            // textBoxFormula
+            // 
+            resources.ApplyResources(this.textBoxFormula, "textBoxFormula");
+            this.textBoxFormula.Name = "textBoxFormula";
+            this.textBoxFormula.ReadOnly = true;
+            // 
+            // numericBoxZnumber
+            // 
+            resources.ApplyResources(this.numericBoxZnumber, "numericBoxZnumber");
+            this.numericBoxZnumber.BackColor = System.Drawing.Color.Transparent;
+            this.numericBoxZnumber.Name = "numericBoxZnumber";
+            this.numericBoxZnumber.ReadOnly = true;
+            this.numericBoxZnumber.SkipEventDuringInput = false;
+            this.numericBoxZnumber.SmartIncrement = true;
+            this.numericBoxZnumber.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxZnumber.ThonsandsSeparator = true;
+            // 
+            // label90
+            // 
+            resources.ApplyResources(this.label90, "label90");
+            this.label90.Name = "label90";
+            // 
             // contextMenuStrip
             // 
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1633,15 +1619,25 @@
             // 
             this.toolTip.IsBalloon = true;
             // 
-            // buttonReset
+            // buttonScatteringFactor
             // 
-            resources.ApplyResources(this.buttonReset, "buttonReset");
-            this.buttonReset.BackColor = System.Drawing.Color.IndianRed;
-            this.buttonReset.ForeColor = System.Drawing.Color.White;
-            this.buttonReset.Name = "buttonReset";
-            this.toolTip.SetToolTip(this.buttonReset, resources.GetString("buttonReset.ToolTip"));
-            this.buttonReset.UseVisualStyleBackColor = false;
-            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
+            resources.ApplyResources(this.buttonScatteringFactor, "buttonScatteringFactor");
+            this.buttonScatteringFactor.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonScatteringFactor.ForeColor = System.Drawing.Color.White;
+            this.buttonScatteringFactor.Name = "buttonScatteringFactor";
+            this.toolTip.SetToolTip(this.buttonScatteringFactor, resources.GetString("buttonScatteringFactor.ToolTip"));
+            this.buttonScatteringFactor.UseVisualStyleBackColor = false;
+            this.buttonScatteringFactor.Click += new System.EventHandler(this.buttonScatteringFactor_Click);
+            // 
+            // buttonSymmetryInfo
+            // 
+            resources.ApplyResources(this.buttonSymmetryInfo, "buttonSymmetryInfo");
+            this.buttonSymmetryInfo.BackColor = System.Drawing.Color.SteelBlue;
+            this.buttonSymmetryInfo.ForeColor = System.Drawing.Color.White;
+            this.buttonSymmetryInfo.Name = "buttonSymmetryInfo";
+            this.toolTip.SetToolTip(this.buttonSymmetryInfo, resources.GetString("buttonSymmetryInfo.ToolTip"));
+            this.buttonSymmetryInfo.UseVisualStyleBackColor = false;
+            this.buttonSymmetryInfo.Click += new System.EventHandler(this.buttonSymmetryInfo_Click);
             // 
             // flowLayoutPanel1
             // 
@@ -1651,8 +1647,9 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.textBoxName);
+            this.panel4.Controls.Add(this.buttonSymmetryInfo);
+            this.panel4.Controls.Add(this.buttonScatteringFactor);
             this.panel4.Controls.Add(this.label22);
-            this.panel4.Controls.Add(this.buttonReset);
             resources.ApplyResources(this.panel4, "panel4");
             this.panel4.Name = "panel4";
             // 
@@ -1663,6 +1660,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ContextMenuStrip = this.contextMenuStrip;
             this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Name = "CrystalControl";
@@ -1670,15 +1668,12 @@
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormCrystal_DragEnter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CrystalControl_KeyDown);
-            this.Resize += new System.EventHandler(this.CrystalControl_Resize);
+            this.Resize += new System.EventHandler(this.CrystalControl_Resize_1);
             this.tabControl.ResumeLayout(false);
             this.tabPageBasicInfo.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.flowLayoutPanel4.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.tabPageAtom.ResumeLayout(false);
             this.tabPageAtom.PerformLayout();
             this.panelAtom.ResumeLayout(false);
@@ -1717,6 +1712,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownCrystallineSize)).EndInit();
             this.tabPageBounds.ResumeLayout(false);
             this.tabPageLatticePlane.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.contextMenuStrip.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -1768,7 +1765,6 @@
         private System.Windows.Forms.Label label66;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label71;
         private System.Windows.Forms.Label label68;
         private System.Windows.Forms.RadioButton radioButtonMieGruneisen;
         private System.Windows.Forms.RadioButton radioButtonTdependenceK0andV0;
@@ -1788,7 +1784,6 @@
         private NumericBox numericBoxTemperature;
         private NumericBox numericBoxVolume;
         private NumericBox numericBoxEOS_V0perMol;
-        private System.Windows.Forms.Label label81;
         private System.Windows.Forms.Label label80;
         private System.Windows.Forms.Label label83;
         private System.Windows.Forms.TextBox textBoxEOS_Note;
@@ -1868,7 +1863,6 @@
         private System.Windows.Forms.ToolStripMenuItem asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asTXTFileAllEulerAngleAndDensityToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem;
-        private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.ToolStripMenuItem revertCellConstantsToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem strainControlToolStripMenuItem;
@@ -1887,5 +1881,7 @@
         private NumericBox numericBoxMolarVolume;
         private NumericBox numericBoxCellMass;
         private NumericBox numericBoxMolarMass;
+        private System.Windows.Forms.Button buttonSymmetryInfo;
+        private System.Windows.Forms.Button buttonScatteringFactor;
     }
 }

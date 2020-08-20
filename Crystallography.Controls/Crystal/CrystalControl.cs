@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Security.Permissions;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
@@ -135,8 +136,12 @@ namespace Crystallography.Controls
             textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
             formScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
             formSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
-            //atomControl.dataGridView.Columns["enabledColumn"].Visible = false;
+
+         
         }
+
+
+
         #endregion
 
         #region イベントハンドラ
@@ -360,8 +365,8 @@ namespace Crystallography.Controls
                 var dlg = new SaveFileDialog { Filter = " *.cif| *.cif" };
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    StreamWriter sw = new StreamWriter(dlg.FileName, false);
-                    string str = ConvertCrystalData.ConvertToCIF(Crystal);
+                    var sw = new StreamWriter(dlg.FileName, false);
+                    var str = ConvertCrystalData.ConvertToCIF(Crystal);
                     sw.Write(str);
                     sw.Close();
                 }
@@ -440,7 +445,6 @@ namespace Crystallography.Controls
 
         #endregion EOSタブの入力設定
 
-        private void CrystalControl_Resize(object sender, EventArgs e) => tabControl.Size = new Size(Size.Width, Size.Height - 30);
 
         #region Polycrystalline関連
 
@@ -705,5 +709,34 @@ namespace Crystallography.Controls
         {
           //このイベントは、StructureViewerなどから直接呼び出される。
         }
+
+        private void buttonSymmetryInfo_Click(object sender, EventArgs e) => formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
+
+        private void buttonScatteringFactor_Click(object sender, EventArgs e) => formScatteringFactor.Visible = !formScatteringFactor.Visible;
+
+        private void flowLayoutPanel4_VisibleChanged(object sender, EventArgs e)
+        {
+
+        }
+
+
+        #region リサイズイベント中は描画を停止する
+        bool registResizeEvent = false;
+        private void CrystalControl_Resize_1(object sender, EventArgs e)
+        {
+            if (!this.DesignMode && !registResizeEvent)
+            {
+                var parent = this.Parent;
+                while (!(parent is Form) && parent!=null)
+                    parent = parent.Parent;
+                if (parent == null) 
+                    return;
+                var form = parent as Form;
+                form.ResizeBegin += (s, ea) => SuspendLayout();
+                form.ResizeEnd += (s, ea) => ResumeLayout();
+                registResizeEvent = true;
+            }
+        }
+        #endregion
     }
 }

@@ -4536,15 +4536,15 @@ namespace PDIndexer
 
                 }
 
-                public double MaxX { get => Execute(new Func<double>(() => p.main.MaximalX)); set => Execute(new Action(() => p.main.MaximalX = value)); }
-                public double MinX { get => Execute(new Func<double>(() => p.main.MinimalX)); set => Execute(new Action(() => p.main.MinimalX = value)); }
-                public double MaxY { get => Execute(new Func<double>(() => p.main.MaximalY)); set => Execute(new Action(() => p.main.MaximalY = value)); }
-                public double MinY { get => Execute(new Func<double>(() => p.main.MinimalY)); set => Execute(new Action(() => p.main.MinimalY = value)); }
+                public double MaxX { get => Execute(() => p.main.MaximalX); set => Execute(new Action(() => p.main.MaximalX = value)); }
+                public double MinX { get => Execute(() => p.main.MinimalX); set => Execute(new Action(() => p.main.MinimalX = value)); }
+                public double MaxY { get => Execute(() => p.main.MaximalY); set => Execute(new Action(() => p.main.MaximalY = value)); }
+                public double MinY { get => Execute(() => p.main.MinimalY); set => Execute(new Action(() => p.main.MinimalY = value)); }
 
-                public double EndX { get => Execute(new Func<double>(() => p.main.UpperX)); set => Execute(new Action(() => p.main.UpperX = value)); }
-                public double StartX { get => Execute(new Func<double>(() => p.main.LowerX)); set => Execute(new Action(() => p.main.LowerX = value)); }
-                public double EndY { get => Execute(new Func<double>(() => p.main.UpperY)); set { Execute(new Action(() => p.main.UpperY = value)); } }
-                public double StartY { get => Execute(new Func<double>(() => p.main.LowerY)); set => Execute(new Action(() => p.main.LowerY = value)); }
+                public double EndX { get => Execute(() => p.main.UpperX); set => Execute(new Action(() => p.main.UpperX = value)); }
+                public double StartX { get => Execute(() => p.main.LowerX); set => Execute(new Action(() => p.main.LowerX = value)); }
+                public double EndY { get => Execute(() => p.main.UpperY); set { Execute(new Action(() => p.main.UpperY = value)); } }
+                public double StartY { get => Execute(() => p.main.LowerY); set => Execute(new Action(() => p.main.LowerY = value)); }
 
                 public void SetBounds(double xStart, double xEnd, double yStart, double yEnd)
                 {
@@ -4565,8 +4565,8 @@ namespace PDIndexer
                     p.help.Add("PDI.Crystal.Check(int index) # Check a crystal assigned by 'index'.");
                     p.help.Add("PDI.Crystal.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
                 }
-                public int Count => Execute(new Func<int>(() => p.main.bindingSourceCrystal.Count));
-                public string SelectedName { get { return Execute(new Func<string>(() =>  (SelectedIndex >= 0) ? ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Name : "")); } }
+                public int Count => Execute(() => p.main.bindingSourceCrystal.Count);
+                public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Name : "");
 
                 public int SelectedIndex
                 {
@@ -4578,7 +4578,7 @@ namespace PDIndexer
                                 p.main.bindingSourceCrystal.Position = value;
                         }));
                     }
-                    get => Execute(new Func<int>(() => p.main.bindingSourceCrystal.Position));
+                    get => Execute(() => p.main.bindingSourceCrystal.Position);
                 }
 
                 public void Select(int n) { Execute(() => select(n)); }
@@ -4704,25 +4704,9 @@ namespace PDIndexer
                     }));
                 }
 
-                public int Count
-                {
-                    get
-                    {
-                        return Execute(new Func<int>(() =>
-                            p.main.bindingSourceProfile.Count
-                            ));
-                    }
-                }
+                public int Count => Execute(() => p.main.bindingSourceProfile.Count);
 
-                public string SelectedName
-                {
-                    get
-                    {
-                        return Execute(new Func<string>(() =>
-                            (SelectedIndex >= 0) ? ((DiffractionProfile)((DataRowView)p.main.bindingSourceProfile.Current).Row[1]).Name : ""
-                            ));
-                    }
-                }
+                public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((DiffractionProfile)((DataRowView)p.main.bindingSourceProfile.Current).Row[1]).Name : "");
 
                 public int SelectedIndex
                 {
@@ -4734,10 +4718,7 @@ namespace PDIndexer
                                 p.main.bindingSourceProfile.Position = value;
                         }));
                     }
-                    get
-                    {
-                        return Execute(new Func<int>(() => p.main.bindingSourceProfile.Position));
-                    }
+                    get => Execute(() => p.main.bindingSourceProfile.Position);
                 }
 
                 public void Select(int n)
@@ -4750,20 +4731,10 @@ namespace PDIndexer
                 }
 
 
-                public void Check(int n)
-                {
-                    Execute(new Action(() =>
-                        Check(n, true)
-                        ));
-                }
-                public void Uncheck(int n)
-                {
-                    Execute(new Action(() =>
-                        Check(n, false)
-                        ));
-                }
+                public void Check(int n) => Execute(new Action(() => Check(n, true)));
+                public void Uncheck(int n) => Execute(new Action(() => Check(n, false)));
 
-                public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
+                public void Check(int n, bool checkState) => Execute(() => check(n, checkState));
                 private void check(int n, bool checkState)
                 {
                     if (n >= 0 && n < p.main.bindingSourceProfile.Count)
