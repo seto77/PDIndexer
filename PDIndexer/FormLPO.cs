@@ -196,8 +196,8 @@ namespace PDIndexer
 
             //これでlist[i][m][?]とすればi番目のリングのm番目の角度の回折に寄与する結晶の番号とその結晶の中でのContributionの番号がわかる
             int endCount = 40;
-            crystal[] tempCrystals = (crystal[])crystals.Clone();//変更前を保持するtempCrystals
-            double[] countCrystal = new double[crystals.Length];
+            var tempCrystals = (crystal[])crystals.Clone();//変更前を保持するtempCrystals
+            var countCrystal = new double[crystals.Length];
             var dlg = new Crystallography.Controls.CommonDialog();
             dlg.progressBar.Maximum = endCount;
             dlg.Show();

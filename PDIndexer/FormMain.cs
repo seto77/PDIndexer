@@ -28,6 +28,38 @@ namespace PDIndexer
     /// 
     public partial class FormMain : System.Windows.Forms.Form
     {
+        #region enum
+        public enum FileType
+        {
+            CSV,
+            RAS,
+            NXS,
+            CHI,
+            XBM,
+            RPT,
+            NPD,
+            TOF,
+            OTHRES,
+        }
+        #endregion
+
+        #region FilePropertyクラス
+        public class FileProperty
+        {
+            public bool Valid;
+            public WaveSource WaveSource;
+            public WaveColor WaveColor;
+            public double Wavelength;
+            public double TakeoffAngle;
+            public HorizontalAxis AxisMode;
+            public int XraySourceElementNumber;
+            public XrayLine XrayLine;
+            public double TofAngle;
+            public double TofLength;
+            public double ExposureTime;
+            public double EGC0, EGC1, EGC2;
+        }
+        #endregion
 
         #region プロパティ
 
@@ -297,45 +329,13 @@ namespace PDIndexer
 
         private Macro macro;
 
+        IProgress<(long, long, long, string)> ip;//IReport
+
+        public string UserAppDataPath = new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
+
+
         #endregion
 
-        IProgress<(long, long, long, string)> ip;//IReport
-        public FormMain()
-        {
-            ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
-
-            if (!this.DesignMode)
-            {
-                RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-                try
-                {
-                    string culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-                    if (culture.ToLower().StartsWith("ja"))
-                        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja");
-                    else
-                        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-                }
-                catch { }
-            }
-
-            InitializeComponent();
-
-            if(!this.DesignMode)
-                setScale();
-
-            mutex = new Mutex(true, "PDIndexer");
-       }
-
-        /// <summary>
-        /// アプリケーションのメイン エントリ ポイントです。
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            Application.Run(new FormMain());
-        }
-        
-        
         #region クリップボード監視
         protected override void WndProc(ref Message msg)
         {
@@ -447,6 +447,7 @@ namespace PDIndexer
         }
         #endregion
 
+        #region ファイル更新監視ウォッチャー
         //ファイル更新監視ウォッチャー
         System.IO.FileSystemWatcher watcher;
         void watcher_Created(object sender, System.IO.FileSystemEventArgs e)
@@ -470,10 +471,35 @@ namespace PDIndexer
                 watcher.EnableRaisingEvents = true;
             }
         }
+        #endregion
 
-        public string UserAppDataPath = new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
+        #region コンストラクタ、ロード、クローズ
+        public FormMain()
+        {
+            ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
 
-        #region フォームがロードまたはクローズしたとき
+            if (!this.DesignMode)
+            {
+                RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
+                try
+                {
+                    string culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
+                    if (culture.ToLower().StartsWith("ja"))
+                        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja");
+                    else
+                        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
+                }
+                catch { }
+            }
+
+            InitializeComponent();
+
+            if (!this.DesignMode)
+                setScale();
+
+            mutex = new Mutex(true, "PDIndexer");
+        }
+
         //メインがロードされたときに実行
         private void FormMain_Load(object sender, System.EventArgs e)
         {
@@ -1066,8 +1092,6 @@ namespace PDIndexer
         #endregion
 
         #region 描画範囲の設定をする関数
-
-
 
         /// <summary>
         /// 現在のプロファイルから描画範囲の上限、下限値を設定　描画範囲は変更しない
@@ -1774,6 +1798,8 @@ namespace PDIndexer
         }
         #endregion
 
+        #region 各結晶の描画範囲内の回折線の位置計算
+
         //各結晶の描画範囲内の回折線の位置計算
         public void InitializeCrystalPlane()
         {
@@ -1840,18 +1866,20 @@ namespace PDIndexer
             }
         }
 
+        #endregion
+
+        #region その他イベント
         //pictureBoxの再描画時に呼び出される
         private void pictureBoxMain_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
             if (MouseRangingMode)
             {
-                Pen pen = new Pen(Brushes.Gray);
-                pen.DashStyle = DashStyle.Dash;
+                var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
                 e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
                     Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y));
             }
         }
-
+        #endregion
 
         #region 座標変換関係
         private PointF ConvToPicBoxCoord(double x, double y)
@@ -2341,6 +2369,12 @@ namespace PDIndexer
 
         #region 子フォームの起動終了チェックボックスイベント
 
+        private void toolStripButtonCrystalParameter_Click(object sender, EventArgs e)
+          => checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
+
+        private void toolStripButtonProfileParameter_Click(object sender, EventArgs e)
+            => checkBoxProfileParameter.Checked = !checkBoxProfileParameter.Checked;
+
         private void checkBoxProfileParameter_CheckedChanged(object sender, EventArgs e)
         {
             toolStripButtonProfileParameter.Checked = checkBoxProfileParameter.Checked;
@@ -2527,7 +2561,6 @@ namespace PDIndexer
         {	
         }
         #endregion
-
 
         #region プロファイルのファイル読み込み関連
 
@@ -2991,7 +3024,7 @@ namespace PDIndexer
         #endregion
 
 
-
+        #region プロファイルのチェックボックスへの追加
 
         /// <summary>
         /// 新しいDiffractionProfileをチェックリストボックスに加える
@@ -3098,6 +3131,8 @@ namespace PDIndexer
                 }
             }
         }
+
+        #endregion
 
         public Color generateRandomColor()
         {
@@ -3277,9 +3312,6 @@ namespace PDIndexer
 
         #endregion
 
-        //MenuItemから終了処理
-        private void menuItemClose_Click(object sender, EventArgs e) => this.Close();
-
         #region 印刷関係
         //MenuItemから印刷処理
         private void menuItemPrint_Click(object sender, System.EventArgs e)
@@ -3449,225 +3481,21 @@ namespace PDIndexer
         #endregion
 
 
-        private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
+        #region ToolStrip メニュー
+
+        private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
+             => formCrystal.crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
+
+        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)
+            => Ngen.Compile();
+
+
+        private void languageToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new FormAboutMe().ShowDialog();
-        }
-
-        private void textBoxNumOnly_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-        {
-            if ((e.KeyChar < '.' || e.KeyChar > '9') && e.KeyChar != '\b')
-                e.Handled = true;
-        }
-        
-        private void radioButtonMultiProfileMode_CheckChanged(object sender, EventArgs e)
-        {
-            radioButtonSingleProfileMode.Checked = !radioButtonMultiProfileMode.Checked;
-           
-            if (numericalTextBoxIncreasingPixels.Value > float.MaxValue)
-                numericalTextBoxIncreasingPixels.Value = numericalTextBoxIncreasingPixels.Value;
-
-            IntervalOfProfiles = (float)numericalTextBoxIncreasingPixels.Value;           
-            //checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
-            //formProfile.checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
-            SetDrawRangeLimit(); 
-            Draw();
-            
-            formProfile.Refresh();
-        }
-        private void numericUpDownIncreasingPixels_ValueChanged(object sender, EventArgs e)
-        {
-            if (numericUpDownIncreasingPixels.Value ==-1)
-                numericalTextBoxIncreasingPixels.Value = 0.5;
-            else if (numericUpDownIncreasingPixels.Value == -2)
-                numericalTextBoxIncreasingPixels.Value = 0.1;
-            else if (numericUpDownIncreasingPixels.Value == -3)
-                numericalTextBoxIncreasingPixels.Value = 0.05;
-            else if (numericUpDownIncreasingPixels.Value == -4)
-                numericalTextBoxIncreasingPixels.Value = 0.01;
-            else if (numericUpDownIncreasingPixels.Value == -5)
-                numericalTextBoxIncreasingPixels.Value = 0;
-            else
-                numericalTextBoxIncreasingPixels.Value = Math.Pow(2, (double)numericUpDownIncreasingPixels.Value);
-         
-            if (numericalTextBoxIncreasingPixels.Value > float.MaxValue)
-                numericalTextBoxIncreasingPixels.Value = numericalTextBoxIncreasingPixels.Value;
-            radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
-        }
-
-
-        private void savePatternProfileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-            if (dataSet.DataTableProfile.Items.Count > 0)
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "*.pdi|*.pdi";
-                if (dialog.ShowDialog() == DialogResult.OK)
-                    SaveProfile(dialog.FileName);
-            }
-        }
-
-        private void SaveProfile(string filename)
-        {
-            if (dataSet.DataTableProfile.Items.Count > 0)
-            {
-                List<DiffractionProfile> dp = new List<DiffractionProfile>();
-                for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
-                    dp.Add((DiffractionProfile)dataSet.DataTableProfile.Items[i]);
-                if (!filename.ToLower().EndsWith(".pdi"))
-                    filename += ".pdi";
-
-                XYFile.SavePdiFile(dp.ToArray(), filename);
-            }
-
-        }
-
-
-        private void toolTipToolStripMenuItem_Click(object sender, EventArgs e) 
-            => toolTip.Active = toolTipToolStripMenuItem.Checked;
-
-        private void FormMain_DragDrop(object sender, DragEventArgs e)
-        {
-            //コントロール内にドロップされたとき実行される
-            //ドロップされたすべてのファイル名を取得する
-            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            //ListBoxに追加する
-            if (fileName.Length == 1)
-            {
-                if (fileName[0].ToLower().EndsWith("xml"))
-                    readCrystal(fileName[0], true, false);
-
-                else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
-                {
-                    if (formCrystal.Visible == false)
-                        checkBoxCrystalParameter.Checked = true;
-                    formCrystal.crystalControl.FormCrystal_DragDrop(sender, e);
-
-                }
-                else
-                {
-                    readProfile(fileName);
-                }
-            }
-        }
-
-        private void FormMain_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
-            else
-                e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
-        }
-
-        //結晶データをリセットする
-        private void resetInitialCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
-            => readCrystal(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\default.Xml", false, true);
-
-        private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (japaneseToolStripMenuItem.Checked)
-                    System.Diagnostics.Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/ja/PDIndexerHelp.html");
-                else
-                    System.Diagnostics.Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/en/PDIndexerHelp.html");
-
-            }
-            catch { }
-        }
-
-        public void FormMain_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Control && !e.Shift && e.KeyCode == Keys.C && this.pictureBoxMain.Focused)
-                copyAsMetafileToolStripMenuItem_Click(new object(), new EventArgs());
-
-            if (e.Control && e.Shift && e.KeyCode == Keys.C)
-                checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
-            else if (e.Control && e.Shift&& e.KeyCode == Keys.E)
-                toolStripButtonEquationOfState.Checked = !toolStripButtonEquationOfState.Checked;
-            else if (e.Control && e.Shift && e.KeyCode == Keys.F)
-                toolStripButtonFittingParameter.Checked = !toolStripButtonFittingParameter.Checked;
-            else if (e.Control && e.Shift && e.KeyCode == Keys.D)
-            {
-                if (!formCrystal.checkBoxShowPeakOverProfiles.Checked)
-                {
-                    formCrystal.checkBoxShowPeakOverProfiles.Checked = true;
-                    formCrystal.checkBoxCalculateIntensity.Checked = false;
-                }
-                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && !formCrystal.checkBoxCalculateIntensity.Checked)
-                {
-                    formCrystal.checkBoxCalculateIntensity.Checked = true;
-                }
-                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && formCrystal.checkBoxCalculateIntensity.Checked)
-                {
-                    formCrystal.checkBoxShowPeakOverProfiles.Checked = false;
-                }
-            }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.S)
-            {
-                formStressAnalysis.Visible = !formStressAnalysis.Visible;
-            }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.Space)
-            {
-                if(bindingSourceCrystal.Current != null && bindingSourceCrystal.Position>=0)
-                    ((DataRowView)bindingSourceCrystal.Current).Row[0] = !(bool)((DataRowView)bindingSourceCrystal.Current).Row[0];
-            }
-            else if (e.Control && e.Alt && e.KeyCode == Keys.Space && formFitting.Visible)
-            {
-                if (formFitting.bindingSourcePlanes.Current != null && formFitting.bindingSourcePlanes.Position >= 0)
-                    ((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0] = !(bool)((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0];
-            }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.V)//クリップボードから、プロファイルや結晶を貼り付け
-            {
-                if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(string)))
-                {
-                    IDataObject data = Clipboard.GetDataObject();
-                    string str = (string)data.GetData(typeof(string));
-                    //StreamWriter
-                    var sw = new StreamWriter("clipbord.txt");
-                    sw.Write(str);
-                    sw.Close();
-                    readProfile("clipbord.txt");
-                    File.Delete("clipboard.txt");
-                }
-            }
-
-
-        }
-
-        private void toolStripMenuItemImport_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" };
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                Crystal c = ConvertCrystalData.ConvertToCrystal(dlg.FileName);
-                if (c != null)
-                    formCrystal.AddCrystal(c);
-            }
-        }
-
-        private void CheckedListBoxCrystals_KeyDown(object sender, KeyEventArgs e)
-            => e.SuppressKeyPress = true;
-
-
-        private void watchReadANewProfileToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
-        {
-            if (watchReadANewProfileToolStripMenuItem.Checked)
-            {
-                if (Directory.Exists(watcher.Path))
-                    watcher.EnableRaisingEvents = true;
-            }
-            else
-                watcher.EnableRaisingEvents = false;
-        }
-
-        private void setDirectoryToTheWatchToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            var dlg = new FolderBrowserDialog();
-            if (dlg.ShowDialog() == DialogResult.OK)
-                toolStripTextBoxDirectoryToWatch.Text = dlg.SelectedPath;
-            
+            englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
+            japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
+            Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
+            Language.Change(this);
         }
 
         private void watchReadClipboardToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
@@ -3675,7 +3503,7 @@ namespace PDIndexer
             ChangeClipboardChain(this.Handle, NextHandle);//とりあえず切って
             if (watchReadClipboardToolStripMenuItem.Checked)//必要であればつなげる
                 NextHandle = SetClipboardViewer(this.Handle);
-                
+
         }
         private void resetClipboardViewer()
         {
@@ -3693,11 +3521,92 @@ namespace PDIndexer
             }
         }
 
+        private void toolTipToolStripMenuItem_Click(object sender, EventArgs e)
+            => toolTip.Active = toolTipToolStripMenuItem.Checked;
 
-        private void tabControl_Click(object sender, EventArgs e)
-            => tabControl.BringToFront();
+        //MenuItemから終了処理
+        private void menuItemClose_Click(object sender, EventArgs e) => this.Close();
+       
+        private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e) => new FormAboutMe().ShowDialog();
+
+        //結晶データをリセットする
+        private void resetInitialCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
+            => readCrystal(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\default.Xml", false, true);
 
 
+        //プロファイル保存
+        private void savePatternProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dataSet.DataTableProfile.Items.Count > 0)
+            {
+                var dialog = new SaveFileDialog { Filter = "*.pdi|*.pdi" };
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    SaveProfile(dialog.FileName);
+            }
+        }
+
+        private void SaveProfile(string filename)
+        {
+            if (dataSet.DataTableProfile.Items.Count > 0)
+            {
+                var dp = new List<DiffractionProfile>();
+                for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
+                    dp.Add(dataSet.DataTableProfile.Items[i]);
+                if (!filename.ToLower().EndsWith(".pdi"))
+                    filename += ".pdi";
+
+                XYFile.SavePdiFile(dp.ToArray(), filename);
+            }
+        }
+
+        /// <summary>
+        /// ヘルプ
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (japaneseToolStripMenuItem.Checked)
+                    System.Diagnostics.Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/ja/PDIndexerHelp.html");
+                else
+                    System.Diagnostics.Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/en/PDIndexerHelp.html");
+
+            }
+            catch { }
+        }
+
+
+        private void toolStripMenuItemImport_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" };
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Crystal c = ConvertCrystalData.ConvertToCrystal(dlg.FileName);
+                if (c != null)
+                    formCrystal.AddCrystal(c);
+            }
+        }
+
+        private void watchReadANewProfileToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            if (watchReadANewProfileToolStripMenuItem.Checked)
+            {
+                if (Directory.Exists(watcher.Path))
+                    watcher.EnableRaisingEvents = true;
+            }
+            else
+                watcher.EnableRaisingEvents = false;
+        }
+
+        private void setDirectoryToTheWatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+                toolStripTextBoxDirectoryToWatch.Text = dlg.SelectedPath;
+
+        }
 
         #region export関連
         private void toolStripMenuItemExportCSVFile_Click(object sender, EventArgs e)
@@ -3718,7 +3627,7 @@ namespace PDIndexer
                     return;
 
                 var dp = dataSet.DataTableProfile.CheckedItems;
-                
+
                 if (merge)//ひとつのファイルにマージする場合
                     using (StreamWriter writer = new StreamWriter(dlg.FileName))
                     {
@@ -3739,7 +3648,7 @@ namespace PDIndexer
                 else//個別のファイルに分ける場合
                     dp.ForEach(d =>
                     {
-                        var filename = $"{dlg.FileName.Substring(0, dlg.FileName.Length-4)} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
+                        var filename = $"{dlg.FileName.Substring(0, dlg.FileName.Length - 4)} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
                         using var writer = new StreamWriter(filename);
                         writer.WriteLine($"X{s}Y");//一行目
                         for (int i = 0; i < d.Profile.Pt.Count; i++)
@@ -3810,15 +3719,10 @@ namespace PDIndexer
         }
         #endregion
 
-        private void toolStripButtonCrystalParameter_Click(object sender, EventArgs e)
-            => checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
-
-        private void toolStripButtonProfileParameter_Click(object sender, EventArgs e) 
-            => checkBoxProfileParameter.Checked = !checkBoxProfileParameter.Checked;
 
         private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            initialDialog.DialogMode= Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
+            initialDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
             initialDialog.Visible = true;
         }
 
@@ -3856,6 +3760,146 @@ namespace PDIndexer
             }
             catch { }
         }
+
+        #endregion
+
+        private void radioButtonMultiProfileMode_CheckChanged(object sender, EventArgs e)
+        {
+            radioButtonSingleProfileMode.Checked = !radioButtonMultiProfileMode.Checked;
+           
+            if (numericalTextBoxIncreasingPixels.Value > float.MaxValue)
+                numericalTextBoxIncreasingPixels.Value = numericalTextBoxIncreasingPixels.Value;
+
+            IntervalOfProfiles = (float)numericalTextBoxIncreasingPixels.Value;           
+            //checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
+            //formProfile.checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
+            SetDrawRangeLimit(); 
+            Draw();
+            
+            formProfile.Refresh();
+        }
+        private void numericUpDownIncreasingPixels_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownIncreasingPixels.Value ==-1)
+                numericalTextBoxIncreasingPixels.Value = 0.5;
+            else if (numericUpDownIncreasingPixels.Value == -2)
+                numericalTextBoxIncreasingPixels.Value = 0.1;
+            else if (numericUpDownIncreasingPixels.Value == -3)
+                numericalTextBoxIncreasingPixels.Value = 0.05;
+            else if (numericUpDownIncreasingPixels.Value == -4)
+                numericalTextBoxIncreasingPixels.Value = 0.01;
+            else if (numericUpDownIncreasingPixels.Value == -5)
+                numericalTextBoxIncreasingPixels.Value = 0;
+            else
+                numericalTextBoxIncreasingPixels.Value = Math.Pow(2, (double)numericUpDownIncreasingPixels.Value);
+         
+            if (numericalTextBoxIncreasingPixels.Value > float.MaxValue)
+                numericalTextBoxIncreasingPixels.Value = numericalTextBoxIncreasingPixels.Value;
+            radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
+        }
+
+        #region ドラッグドロップ
+        private void FormMain_DragDrop(object sender, DragEventArgs e)
+        {
+            //コントロール内にドロップされたとき実行される
+            //ドロップされたすべてのファイル名を取得する
+            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            //ListBoxに追加する
+            if (fileName.Length == 1)
+            {
+                if (fileName[0].ToLower().EndsWith("xml"))
+                    readCrystal(fileName[0], true, false);
+
+                else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
+                {
+                    if (formCrystal.Visible == false)
+                        checkBoxCrystalParameter.Checked = true;
+                    formCrystal.crystalControl.FormCrystal_DragDrop(sender, e);
+
+                }
+                else
+                {
+                    readProfile(fileName);
+                }
+            }
+        }
+
+        private void FormMain_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
+            else
+                e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
+        }
+
+        #endregion
+
+
+        #region KeyDownイベント 
+        public void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && !e.Shift && e.KeyCode == Keys.C && this.pictureBoxMain.Focused)
+                copyAsMetafileToolStripMenuItem_Click(new object(), new EventArgs());
+
+            if (e.Control && e.Shift && e.KeyCode == Keys.C)
+                checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
+            else if (e.Control && e.Shift&& e.KeyCode == Keys.E)
+                toolStripButtonEquationOfState.Checked = !toolStripButtonEquationOfState.Checked;
+            else if (e.Control && e.Shift && e.KeyCode == Keys.F)
+                toolStripButtonFittingParameter.Checked = !toolStripButtonFittingParameter.Checked;
+            else if (e.Control && e.Shift && e.KeyCode == Keys.D)
+            {
+                if (!formCrystal.checkBoxShowPeakOverProfiles.Checked)
+                {
+                    formCrystal.checkBoxShowPeakOverProfiles.Checked = true;
+                    formCrystal.checkBoxCalculateIntensity.Checked = false;
+                }
+                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && !formCrystal.checkBoxCalculateIntensity.Checked)
+                {
+                    formCrystal.checkBoxCalculateIntensity.Checked = true;
+                }
+                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && formCrystal.checkBoxCalculateIntensity.Checked)
+                {
+                    formCrystal.checkBoxShowPeakOverProfiles.Checked = false;
+                }
+            }
+            else if (e.Control && e.Shift && e.KeyCode == Keys.S)
+            {
+                formStressAnalysis.Visible = !formStressAnalysis.Visible;
+            }
+            else if (e.Control && e.Shift && e.KeyCode == Keys.Space)
+            {
+                if(bindingSourceCrystal.Current != null && bindingSourceCrystal.Position>=0)
+                    ((DataRowView)bindingSourceCrystal.Current).Row[0] = !(bool)((DataRowView)bindingSourceCrystal.Current).Row[0];
+            }
+            else if (e.Control && e.Alt && e.KeyCode == Keys.Space && formFitting.Visible)
+            {
+                if (formFitting.bindingSourcePlanes.Current != null && formFitting.bindingSourcePlanes.Position >= 0)
+                    ((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0] = !(bool)((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0];
+            }
+            else if (e.Control && e.Shift && e.KeyCode == Keys.V)//クリップボードから、プロファイルや結晶を貼り付け
+            {
+                if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(string)))
+                {
+                    IDataObject data = Clipboard.GetDataObject();
+                    string str = (string)data.GetData(typeof(string));
+                    //StreamWriter
+                    var sw = new StreamWriter("clipbord.txt");
+                    sw.Write(str);
+                    sw.Close();
+                    readProfile("clipbord.txt");
+                    File.Delete("clipboard.txt");
+                }
+            }
+
+
+        }
+        #endregion
+
+
+        private void tabControl_Click(object sender, EventArgs e)
+            => tabControl.BringToFront();
+
 
         private void checkBoxShowScaleLine_CheckedChanged_1(object sender, EventArgs e) => Draw();
 
@@ -3930,7 +3974,7 @@ namespace PDIndexer
 
 
     
-        public bool StopCycling = false;
+        public bool StopCycling { get; set; } = false;
 
          private void dataGridViewCrystals_KeyUp(object sender, KeyEventArgs e)
         {
@@ -4090,13 +4134,7 @@ namespace PDIndexer
 
         private void tabControl1_Click(object sender, EventArgs e) => tabControl1.BringToFront();
 
-        private void languageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
-            japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
-            Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
-            Language.Change(this);
-        }
+      
 
         private void radioButtonRawCounts_CheckedChanged(object sender, EventArgs e)
         {
@@ -4116,7 +4154,7 @@ namespace PDIndexer
             formFitting.ChangeHorizontalAxis();
         }
 
-        bool skipAxisPropertyChangedEvent = false;
+        bool skipAxisPropertyChangedEvent { get; set; } = false;
         /// <summary>
         /// 軸モードが変更されたときに呼び出される
         /// </summary>
@@ -4150,6 +4188,8 @@ namespace PDIndexer
             if (formFitting.Visible)
                 formFitting.Fitting();
         }
+
+        #region dataGridViewProfiles関連のイベント
 
         public void dataGridViewProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -4190,12 +4230,9 @@ namespace PDIndexer
             Draw();
         }
 
-        private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
-            => formCrystal.crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
+        #endregion
 
-        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)
-            => Ngen.Compile();
-
+  
         #region プログラムアップデート
         private void programUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4284,6 +4321,7 @@ namespace PDIndexer
         #endregion プログラムアップデート
 
 
+        #region プロファイルをメタファイルで出力
         private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             using var grfx = CreateGraphics();
@@ -4332,6 +4370,7 @@ namespace PDIndexer
                 return bResult;
             }
         }
+        #endregion
 
         private void editorToolStripMenuItem_Click(object sender, EventArgs e) 
             => FormMacro.Visible = true;
@@ -4356,34 +4395,7 @@ namespace PDIndexer
             => FormMacro.RunMacroName(((ToolStripMenuItem)sender).Name, false);
 
 
-        public enum FileType
-        {
-            CSV,
-            RAS,
-            NXS,
-            CHI,
-            XBM,
-            RPT,
-            NPD,
-            TOF,
-            OTHRES,
-        }
-
-        public class FileProperty
-        {
-            public bool Valid;
-            public WaveSource WaveSource;
-            public WaveColor WaveColor;
-            public double Wavelength;
-            public double TakeoffAngle;
-            public HorizontalAxis AxisMode;
-            public int XraySourceElementNumber;
-            public XrayLine XrayLine;
-            public double TofAngle;
-            public double TofLength;
-            public double ExposureTime;
-            public double EGC0, EGC1, EGC2;
-        }
+   
 
 
 
