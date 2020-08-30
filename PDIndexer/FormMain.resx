@@ -238,7 +238,7 @@
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -572,7 +572,7 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -581,7 +581,7 @@
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 27</value>
+    <value>74, 25</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -590,7 +590,7 @@
     <value>numericalTextBoxIncreasingPixels</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -836,7 +836,7 @@
     <value>colorControlScaleText</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -893,7 +893,7 @@
     <value>colorControlScaleLine</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -950,7 +950,7 @@
     <value>colorControlBack</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1562,7 +1562,7 @@
     <value>graphControlFrequency</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -1664,6 +1664,42 @@
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
     <value>11</value>
   </data>
+  <data name="numericBoxUpperX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="numericBoxUpperX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxUpperX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 0</value>
+  </data>
+  <data name="numericBoxUpperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxUpperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxUpperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxUpperX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="numericBoxUpperX.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="&gt;&gt;numericBoxUpperX.Name" xml:space="preserve">
+    <value>numericBoxUpperX</value>
+  </data>
+  <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBoxWithMenu, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxUpperX.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxUpperY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1698,13 +1734,49 @@
     <value>numericBoxUpperY</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
+  </data>
+  <data name="numericBoxLowerX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="numericBoxLowerX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxLowerX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 0</value>
+  </data>
+  <data name="numericBoxLowerX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxLowerX.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxLowerX.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxLowerX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 25</value>
+  </data>
+  <data name="numericBoxLowerX.TabIndex" type="System.Int32, mscorlib">
+    <value>89</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowerX.Name" xml:space="preserve">
+    <value>numericBoxLowerX</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBoxWithMenu, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowerX.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="labelIntensity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1740,7 +1812,7 @@
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelIntensity.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="numericBoxLowerY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1776,13 +1848,13 @@
     <value>numericBoxLowerY</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.30.345, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="labelD.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1818,49 +1890,7 @@
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelD.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxUpperX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxUpperX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxUpperX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxUpperX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 0</value>
-  </data>
-  <data name="numericBoxUpperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxUpperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxUpperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxUpperX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxUpperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="numericBoxUpperX.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.Name" xml:space="preserve">
-    <value>numericBoxUpperX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxUpperX.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="labelTwoTheta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1896,48 +1926,6 @@
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelTwoTheta.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="numericBoxLowerX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxLowerX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericBoxLowerX.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxLowerX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>23, 0</value>
-  </data>
-  <data name="numericBoxLowerX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="numericBoxLowerX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxLowerX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxLowerX.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxLowerX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="numericBoxLowerX.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.Name" xml:space="preserve">
-    <value>numericBoxLowerX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxLowerX.ZOrder" xml:space="preserve">
     <value>6</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
@@ -2106,7 +2094,7 @@
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,Percent,17.64706,Percent,17.64706,Percent,17.64706" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,AutoSize,0,Percent,11.76471,Percent,17.64706,Percent,17.64706,Percent,17.64706" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -4748,6 +4736,36 @@
   <data name="dataGridViewTextBoxColumn108.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
+  <data name="dataGridViewImageColumn84.HeaderText" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="dataGridViewImageColumn84.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn84.Width" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn109.HeaderText" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn109.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn85.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewImageColumn85.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn85.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn110.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn110.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4785,6 +4803,9 @@
         AABtbQAAq20AAKurAACrqwAAx6sAAMerAADvqwAA76sAAP/HAAD/xwAA/8cAAP/HAAD/7wAA/+8AAA==
 </value>
   </data>
+  <data name="$this.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>795, 482</value>
   </data>
@@ -4821,18 +4842,6 @@
   <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>colorDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>profileDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;bindingSourceProfile.Name" xml:space="preserve">
     <value>bindingSourceProfile</value>
   </data>
@@ -4850,18 +4859,6 @@
   </data>
   <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bindingSourceCrystal.Name" xml:space="preserve">
     <value>bindingSourceCrystal</value>
@@ -6391,6 +6388,54 @@
     <value>dataGridViewTextBoxColumn108</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn108.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn84.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn84</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn84.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn109.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn109</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn109.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn85.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn85</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewImageColumn85.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn110.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn110</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn110.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>profileDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

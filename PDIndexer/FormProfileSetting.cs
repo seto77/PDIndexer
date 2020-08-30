@@ -15,78 +15,41 @@ namespace PDIndexer
 {
     public partial class FormProfileSetting : Form
     {
-        public double TwoThetaOffsetCoeff0 { set { numericBoxTwhoThetaOffsetCoeff0.Value=value; }get { return numericBoxTwhoThetaOffsetCoeff0.Value; } }
-        public double TwoThetaOffsetCoeff1 { set { numericBoxTwhoThetaOffsetCoeff1.Value=value; }get { return numericBoxTwhoThetaOffsetCoeff1.Value; } }
-        public double TwoThetaOffsetCoeff2 { set { numericBoxTwhoThetaOffsetCoeff2.Value=value; }get { return numericBoxTwhoThetaOffsetCoeff2.Value; } }
+        #region プロパティ、フィールド
+        public double TwoThetaOffsetCoeff0 { set => numericBoxTwhoThetaOffsetCoeff0.Value = value; get => numericBoxTwhoThetaOffsetCoeff0.Value; }
+        public double TwoThetaOffsetCoeff1 { set => numericBoxTwhoThetaOffsetCoeff1.Value = value; get => numericBoxTwhoThetaOffsetCoeff1.Value; }
+        public double TwoThetaOffsetCoeff2 { set => numericBoxTwhoThetaOffsetCoeff2.Value = value; get => numericBoxTwhoThetaOffsetCoeff2.Value; }
 
         public int SelectedMaskIndex
         {
             set
             {
                 if (listBoxMaskRanges.Items.Count > value && listBoxMaskRanges.SelectedIndex != value)
-                        listBoxMaskRanges.SelectedIndex = value;
+                    listBoxMaskRanges.SelectedIndex = value;
             }
-            get { return listBoxMaskRanges.SelectedIndex; }
+            get => listBoxMaskRanges.SelectedIndex;
         }
-
-
-        public void AddMaskRange(DiffractionProfile.MaskingRange range)
-        {
-            if (bindingSourceProfile.Position < 0) return;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            dp.maskingRanges.Add(range);
-            listBoxMaskRanges.Items.Add(range);
-        }
-        public DiffractionProfile.MaskingRange[] GetMaskRanges()
-        {
-            if (bindingSourceProfile.Position < 0) return null;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            return dp.maskingRanges.ToArray();
-        }
-        public bool SortMaskRanges()
-        {
-            if (bindingSourceProfile.Position < 0) return false;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            bool flag = dp.SortMaskRanges();
-            skipEvent = true;
-            for(int i= 0 ; i< dp.maskingRanges.Count; i++)
-                listBoxMaskRanges.Items[i] = dp.maskingRanges[i];
-            skipEvent = false;
-            return flag;
-        }
-        public void SetMaskRange(int[] index, double x)
-        {
-            skipEvent = true;
-            if (index == null || index.Length != 2) return;
-            if (bindingSourceProfile.Position < 0) return;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            if (index[0] >= 0 && index[0] < dp.maskingRanges.Count && index[1] >= 0 && index[1] < 2)
-            {
-                dp.maskingRanges[index[0]].X[index[1]] = x;
-                listBoxMaskRanges.Items[index[0]] = dp.maskingRanges[index[0]];
-            }
-            skipEvent = false;
-        }
-        public void DeleteMaskRange(int index)
-        {
-            if (bindingSourceProfile.Position < 0) return;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            if (listBoxMaskRanges.Items.Count > index && dp.maskingRanges.Count > index)
-            {
-                dp.maskingRanges.RemoveAt(index);
-                listBoxMaskRanges.Items.RemoveAt(index);
-            }
-        }
-
 
         public FormMain formMain;
-      
+        #endregion
+
         public FormProfileSetting()
         {
             InitializeComponent();
             bindingSourceProfile.CurrentChanged += new EventHandler(bindingSource_CurrentChanged);
         }
+        private void FormProfileSetting_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            formMain.checkBoxProfileParameter.Checked = false;
+        }
+
      
+
+
+     
+
+
         //プロファイル削除ボタンが押されたとき
         private void buttonDeleteProfile_Click(object sender, EventArgs e)
         {
@@ -113,10 +76,7 @@ namespace PDIndexer
         }
 
 
-        private void buttonDeleteAllProfiles_Click(object sender, EventArgs e)
-        {
-            DeleteAllProfiles();
-        }
+        private void buttonDeleteAllProfiles_Click(object sender, EventArgs e) => DeleteAllProfiles();
         public void DeleteAllProfiles(bool alert = true)
         {
             if (alert && MessageBox.Show("Do you want to delete all profiles?", "Warning", MessageBoxButtons.OKCancel) != DialogResult.OK) return;
@@ -336,17 +296,9 @@ namespace PDIndexer
             dp.SetConvertedProfile(formMain.AxisMode, formMain.WaveLength, formMain.TakeoffAngle, formMain.TofAngle, formMain.TofLength);
         }
 
-        private void setCommentOption(DiffractionProfile dp)
-        {
-            dp.Comment = textBoxComment.Text;
-        }
+        private void setCommentOption(DiffractionProfile dp) => dp.Comment = textBoxComment.Text;
 
-
-        private void FormProfileSetting_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            e.Cancel = true;
-            formMain.checkBoxProfileParameter.Checked = false;
-        }
+ 
 
         private void buttonSetDefaultProfile_Click(object sender, EventArgs e)
         {
@@ -491,6 +443,7 @@ namespace PDIndexer
              //       numericBoxKalpha1.Value = 
 
                 textBoxProfileName.Text = dp.Name;
+                numericUpDownLineWidth.Value = (decimal)dp.LineWidth;
                 skipEvent = false;
 
                 formMain.setFrequencyProfile();
@@ -757,6 +710,55 @@ namespace PDIndexer
             catch { }
         }
 
+        #region マスク関連
+
+        public void AddMaskRange(DiffractionProfile.MaskingRange range)
+        {
+            if (bindingSourceProfile.Position < 0) return;
+            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            dp.maskingRanges.Add(range);
+            listBoxMaskRanges.Items.Add(range);
+        }
+        public DiffractionProfile.MaskingRange[] GetMaskRanges()
+        {
+            if (bindingSourceProfile.Position < 0) return null;
+            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            return dp.maskingRanges.ToArray();
+        }
+        public bool SortMaskRanges()
+        {
+            if (bindingSourceProfile.Position < 0) return false;
+            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            bool flag = dp.SortMaskRanges();
+            skipEvent = true;
+            for (int i = 0; i < dp.maskingRanges.Count; i++)
+                listBoxMaskRanges.Items[i] = dp.maskingRanges[i];
+            skipEvent = false;
+            return flag;
+        }
+        public void SetMaskRange(int[] index, double x)
+        {
+            skipEvent = true;
+            if (index == null || index.Length != 2) return;
+            if (bindingSourceProfile.Position < 0) return;
+            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            if (index[0] >= 0 && index[0] < dp.maskingRanges.Count && index[1] >= 0 && index[1] < 2)
+            {
+                dp.maskingRanges[index[0]].X[index[1]] = x;
+                listBoxMaskRanges.Items[index[0]] = dp.maskingRanges[index[0]];
+            }
+            skipEvent = false;
+        }
+        public void DeleteMaskRange(int index)
+        {
+            if (bindingSourceProfile.Position < 0) return;
+            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            if (listBoxMaskRanges.Items.Count > index && dp.maskingRanges.Count > index)
+            {
+                dp.maskingRanges.RemoveAt(index);
+                listBoxMaskRanges.Items.RemoveAt(index);
+            }
+        }
         private void buttonDeleteMask_Click(object sender, EventArgs e)
         {
             if (bindingSourceProfile.Position < 0 || listBoxMaskRanges.SelectedIndex < 0) return;
@@ -873,20 +875,11 @@ namespace PDIndexer
             else
                 e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
         }
-
-        private void checkBoxAll_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonTwoThetaCalibration_Click(object sender, EventArgs e)
-        {
-            formMain.formTwoThetaCalibration.Visible = !formMain.formTwoThetaCalibration.Visible;
-        }
+        #endregion
+        private void buttonTwoThetaCalibration_Click(object sender, EventArgs e) 
+            => formMain.formTwoThetaCalibration.Visible = !formMain.formTwoThetaCalibration.Visible;
 
         private void buttonTwoThetaOffsetReset_Click(object sender, EventArgs e)
-        {
-            TwoThetaOffsetCoeff0 = TwoThetaOffsetCoeff1 = TwoThetaOffsetCoeff2 = 0;
-        }
+            => TwoThetaOffsetCoeff0 = TwoThetaOffsetCoeff1 = TwoThetaOffsetCoeff2 = 0;
     }
 }

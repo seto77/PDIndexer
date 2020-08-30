@@ -1,4 +1,6 @@
-﻿using System;
+﻿#region using
+
+using System;
 using System.Drawing;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -20,13 +22,15 @@ using System.Linq;
 using IronPython.Hosting;
 using System.Net;
 
+#endregion
+
 namespace PDIndexer
 {
     /// <summary>
     /// PDIndexer の概要の説明です。
     /// </summary>
     /// 
-    public partial class FormMain : System.Windows.Forms.Form
+    public partial class FormMain : Form
     {
         #region enum
         public enum FileType
@@ -120,21 +124,9 @@ namespace PDIndexer
             }
             get { return numericBoxLowerX.Value; }
         }
-        public double UpperX
-        {
-            set { numericBoxUpperX.Value = value; if (UpperX <= LowerX) LowerX++; }
-            get => numericBoxUpperX.Value;
-        }
-        public double LowerY
-        {
-            set { numericBoxLowerY.Value = value; if (UpperY <= LowerY) UpperY++; }
-            get => numericBoxLowerY.Value;
-        }
-        public double UpperY
-        {
-            set { numericBoxUpperY.Value = value; if (UpperY <= LowerY)LowerY--; }
-            get { return numericBoxUpperY.Value; }
-        }
+        public double UpperX { set { numericBoxUpperX.Value = value; if (UpperX <= LowerX) LowerX++; } get => numericBoxUpperX.Value; }
+        public double LowerY { set { numericBoxLowerY.Value = value; if (UpperY <= LowerY) UpperY++; } get => numericBoxLowerY.Value; }
+        public double UpperY { set { numericBoxUpperY.Value = value; if (UpperY <= LowerY) LowerY--; } get { return numericBoxUpperY.Value; } }
 
         public double MaximalX
         {
