@@ -238,7 +238,7 @@
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -590,7 +590,7 @@
     <value>numericalTextBoxIncreasingPixels</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -836,7 +836,7 @@
     <value>colorControlScaleText</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -893,7 +893,7 @@
     <value>colorControlScaleLine</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -950,7 +950,7 @@
     <value>colorControlBack</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1562,7 +1562,7 @@
     <value>graphControlFrequency</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -1698,7 +1698,7 @@
     <value>numericBoxUpperY</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1776,7 +1776,7 @@
     <value>numericBoxLowerY</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1854,7 +1854,7 @@
     <value>numericBoxUpperX</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1932,7 +1932,7 @@
     <value>numericBoxLowerX</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.28.609, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.8.29.1033, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -2597,16 +2597,16 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="readPatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="readPatternProfileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read Profile(s)</value>
+    <value>Read profile(s)</value>
   </data>
   <data name="savePatternProfileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save Profile(s)</value>
+    <value>Save profile(s)</value>
   </data>
   <data name="asCSVcommaSeperatedFileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>295, 22</value>
@@ -2627,76 +2627,76 @@
     <value>as GSAS file</value>
   </data>
   <data name="toolStripMenuItemExportExcelFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
-    <value>Export the selected Profile(s)</value>
+    <value>Export the selected profile(s)</value>
   </data>
   <data name="toolStripSeparator1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 6</value>
+    <value>317, 6</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read Crystal Data (as a new list)</value>
+    <value>Read crystals (as a new list)</value>
   </data>
   <data name="readAndAddToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="readAndAddToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read Crystal Data (and add to the present data)</value>
+    <value>Read crystals (and add to the present list)</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>320, 22</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Save crystals</value>
   </data>
   <data name="toolStripMenuItemImport.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="toolStripMenuItemImport.Text" xml:space="preserve">
     <value>Import CIF, AMC...</value>
   </data>
-  <data name="saveCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
-  </data>
-  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Save Crystal Data</value>
-  </data>
   <data name="toolStripMenuItemExportCIF.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
-    <value>Export CIF format</value>
+    <value>Export the selected crystal to CIF</value>
   </data>
   <data name="toolStripMenuItemExportCIF.ToolTipText" xml:space="preserve">
     <value>The selected crrystal will be saved as CIF format</value>
   </data>
   <data name="resetInitialCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="resetInitialCrystalDataToolStripMenuItem.Text" xml:space="preserve">
-    <value>Reset Initial Crystal Data</value>
+    <value>Revert crystals to the initial state</value>
   </data>
   <data name="toolStripSeparator3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 6</value>
+    <value>317, 6</value>
   </data>
   <data name="toolStripMenuItemPageSetup.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="toolStripMenuItemPageSetup.Text" xml:space="preserve">
     <value>Page Setup</value>
   </data>
   <data name="toolStripMenuItemPrintPreview.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="toolStripMenuItemPrintPreview.Text" xml:space="preserve">
     <value>Print Preview</value>
   </data>
   <data name="printToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="printToolStripMenuItem.Text" xml:space="preserve">
     <value>Print</value>
   </data>
   <data name="toolStripSeparator9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 6</value>
+    <value>317, 6</value>
   </data>
   <data name="BitmapToolStripMenuItem.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -2714,22 +2714,22 @@
     <value>as Metafile data</value>
   </data>
   <data name="コピーToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy to Clipboard</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
     <value>Save as Metafile</value>
   </data>
   <data name="toolStripSeparator2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>354, 6</value>
+    <value>317, 6</value>
   </data>
   <data name="closeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>357, 22</value>
+    <value>320, 22</value>
   </data>
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
     <value>Close</value>
@@ -2778,15 +2778,6 @@
   </data>
   <data name="clearRegistryToolStripMenuItem.Text" xml:space="preserve">
     <value>Clear Registry</value>
-  </data>
-  <data name="toolStripSeparator7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>171, 6</value>
-  </data>
-  <data name="ngenCompileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 22</value>
-  </data>
-  <data name="ngenCompileToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ngen Compile</value>
   </data>
   <data name="optionToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -3210,7 +3201,7 @@
     <value>Magenta</value>
   </data>
   <data name="toolStripButtonLPO.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 19</value>
+    <value>212, 38</value>
   </data>
   <data name="toolStripButtonLPO.Text" xml:space="preserve">
     <value>Lattice Preferred Orientation Analysis</value>
@@ -3222,7 +3213,7 @@
     <value>3, 25</value>
   </data>
   <data name="toolStrip2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>966, 41</value>
+    <value>727, 41</value>
   </data>
   <data name="toolStrip2.TabIndex" type="System.Int32, mscorlib">
     <value>41</value>
@@ -4938,16 +4929,16 @@
   <data name="&gt;&gt;readAndAddToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;toolStripMenuItemImport.Name" xml:space="preserve">
-    <value>toolStripMenuItemImport</value>
-  </data>
-  <data name="&gt;&gt;toolStripMenuItemImport.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;saveCrystalDataToolStripMenuItem.Name" xml:space="preserve">
     <value>saveCrystalDataToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;saveCrystalDataToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemImport.Name" xml:space="preserve">
+    <value>toolStripMenuItemImport</value>
+  </data>
+  <data name="&gt;&gt;toolStripMenuItemImport.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolStripMenuItemExportCIF.Name" xml:space="preserve">
@@ -5068,18 +5059,6 @@
     <value>clearRegistryToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;clearRegistryToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Name" xml:space="preserve">
-    <value>toolStripSeparator7</value>
-  </data>
-  <data name="&gt;&gt;toolStripSeparator7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripSeparator, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ngenCompileToolStripMenuItem.Name" xml:space="preserve">
-    <value>ngenCompileToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ngenCompileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;macroToolStripMenuItem.Name" xml:space="preserve">

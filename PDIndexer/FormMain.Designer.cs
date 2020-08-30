@@ -213,8 +213,8 @@ namespace PDIndexer
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.readCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readAndAddToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItemImport = new System.Windows.Forms.ToolStripMenuItem();
             this.saveCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItemImport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItemExportCIF = new System.Windows.Forms.ToolStripMenuItem();
             this.resetInitialCrystalDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -235,8 +235,6 @@ namespace PDIndexer
             this.setDirectoryToTheWatchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripTextBoxDirectoryToWatch = new System.Windows.Forms.ToolStripTextBox();
             this.clearRegistryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.ngenCompileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.macroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -1108,7 +1106,6 @@ namespace PDIndexer
             this.numericBoxUpperY.Value = 1000D;
             this.numericBoxUpperY.WordWrap = false;
             this.numericBoxUpperY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
-            this.numericBoxUpperY.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
             // 
             // labelIntensity
             // 
@@ -1130,7 +1127,6 @@ namespace PDIndexer
             this.numericBoxLowerY.ThonsandsSeparator = true;
             this.numericBoxLowerY.WordWrap = false;
             this.numericBoxLowerY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
-            this.numericBoxLowerY.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
             // 
             // labelD
             // 
@@ -1155,7 +1151,6 @@ namespace PDIndexer
             this.numericBoxUpperX.WordWrap = false;
             this.numericBoxUpperX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             this.numericBoxUpperX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
-            this.numericBoxUpperX.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
             // 
             // labelTwoTheta
             // 
@@ -1178,7 +1173,6 @@ namespace PDIndexer
             this.numericBoxLowerX.WordWrap = false;
             this.numericBoxLowerX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             this.numericBoxLowerX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
-            this.numericBoxLowerX.MouseDown += new System.Windows.Forms.MouseEventHandler(this.numericUpDownLimitChange_MouseDown);
             // 
             // label11
             // 
@@ -1441,8 +1435,8 @@ namespace PDIndexer
             this.toolStripSeparator1,
             this.readCrystalDataToolStripMenuItem,
             this.readAndAddToolStripMenuItem,
-            this.toolStripMenuItemImport,
             this.saveCrystalDataToolStripMenuItem,
+            this.toolStripMenuItemImport,
             this.toolStripMenuItemExportCIF,
             this.resetInitialCrystalDataToolStripMenuItem,
             this.toolStripSeparator3,
@@ -1513,17 +1507,17 @@ namespace PDIndexer
             resources.ApplyResources(this.readAndAddToolStripMenuItem, "readAndAddToolStripMenuItem");
             this.readAndAddToolStripMenuItem.Click += new System.EventHandler(this.readAndAddToolStripMenuItem_Click);
             // 
-            // toolStripMenuItemImport
-            // 
-            this.toolStripMenuItemImport.Name = "toolStripMenuItemImport";
-            resources.ApplyResources(this.toolStripMenuItemImport, "toolStripMenuItemImport");
-            this.toolStripMenuItemImport.Click += new System.EventHandler(this.toolStripMenuItemImport_Click);
-            // 
             // saveCrystalDataToolStripMenuItem
             // 
             this.saveCrystalDataToolStripMenuItem.Name = "saveCrystalDataToolStripMenuItem";
             resources.ApplyResources(this.saveCrystalDataToolStripMenuItem, "saveCrystalDataToolStripMenuItem");
             this.saveCrystalDataToolStripMenuItem.Click += new System.EventHandler(this.menuItemSaveCrystalData_Click);
+            // 
+            // toolStripMenuItemImport
+            // 
+            this.toolStripMenuItemImport.Name = "toolStripMenuItemImport";
+            resources.ApplyResources(this.toolStripMenuItemImport, "toolStripMenuItemImport");
+            this.toolStripMenuItemImport.Click += new System.EventHandler(this.toolStripMenuItemImport_Click);
             // 
             // toolStripMenuItemExportCIF
             // 
@@ -1607,9 +1601,7 @@ namespace PDIndexer
             this.toolTipToolStripMenuItem,
             this.watchReadClipboardToolStripMenuItem,
             this.watchReadANewProfileToolStripMenuItem,
-            this.clearRegistryToolStripMenuItem,
-            this.toolStripSeparator7,
-            this.ngenCompileToolStripMenuItem});
+            this.clearRegistryToolStripMenuItem});
             resources.ApplyResources(this.optionToolStripMenuItem, "optionToolStripMenuItem");
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             // 
@@ -1658,17 +1650,6 @@ namespace PDIndexer
             this.clearRegistryToolStripMenuItem.Name = "clearRegistryToolStripMenuItem";
             resources.ApplyResources(this.clearRegistryToolStripMenuItem, "clearRegistryToolStripMenuItem");
             this.clearRegistryToolStripMenuItem.Click += new System.EventHandler(this.clearRegistryToolStripMenuItem_Click_1);
-            // 
-            // toolStripSeparator7
-            // 
-            this.toolStripSeparator7.Name = "toolStripSeparator7";
-            resources.ApplyResources(this.toolStripSeparator7, "toolStripSeparator7");
-            // 
-            // ngenCompileToolStripMenuItem
-            // 
-            this.ngenCompileToolStripMenuItem.Name = "ngenCompileToolStripMenuItem";
-            resources.ApplyResources(this.ngenCompileToolStripMenuItem, "ngenCompileToolStripMenuItem");
-            this.ngenCompileToolStripMenuItem.Click += new System.EventHandler(this.ngenCompileToolStripMenuItem_Click);
             // 
             // macroToolStripMenuItem
             // 
@@ -4017,8 +3998,6 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn100;
         private DataGridViewImageColumn dataGridViewImageColumn76;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn101;
-        private ToolStripSeparator toolStripSeparator7;
-        private ToolStripMenuItem ngenCompileToolStripMenuItem;
         private DataGridViewImageColumn dataGridViewImageColumn77;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn102;
         private DataGridViewImageColumn dataGridViewImageColumn78;

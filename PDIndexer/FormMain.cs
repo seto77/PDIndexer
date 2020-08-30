@@ -336,7 +336,7 @@ namespace PDIndexer
 
         #endregion
 
-        #region クリップボード監視
+        #region クリップボードおよびディレクトリの監視
         protected override void WndProc(ref Message msg)
         {
             switch (msg.Msg)
@@ -445,9 +445,7 @@ namespace PDIndexer
             }
             base.WndProc(ref msg);
         }
-        #endregion
 
-        #region ファイル更新監視ウォッチャー
         //ファイル更新監視ウォッチャー
         System.IO.FileSystemWatcher watcher;
         void watcher_Created(object sender, System.IO.FileSystemEventArgs e)
@@ -1868,20 +1866,7 @@ namespace PDIndexer
 
         #endregion
 
-        #region その他イベント
-        //pictureBoxの再描画時に呼び出される
-        private void pictureBoxMain_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
-        {
-            if (MouseRangingMode)
-            {
-                var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
-                e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
-                    Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y));
-            }
-        }
-        #endregion
-
-        #region 座標変換関係
+        #region 座標変換関数
         private PointF ConvToPicBoxCoord(double x, double y)
         {//プロファイル座標をピクチャーボックスの座標系に変換
             return new PointF(
@@ -1919,7 +1904,7 @@ namespace PDIndexer
         private void pictureBoxMain_MouseDown(object sender, System.Windows.Forms.MouseEventArgs e)
         {
             pictureBoxMain.Focus();
-            PointD pt = ConvToRealCoord(e.X, e.Y);
+            var pt = ConvToRealCoord(e.X, e.Y);
             if (ShowBackgroundProfile && BackGroundPointSelectMode && formProfile.Visible)//Bg点モードのとき
             {
                 if (e.Button == MouseButtons.Left && e.Clicks == 2 && bindingSourceProfile.Position >= 0)
@@ -2353,6 +2338,104 @@ namespace PDIndexer
 
         #endregion
 
+        #region マウスクリック位置に近い回折線、Bg点、MaskRangeを返す関数群
+
+        //もっともptに近いpts配列内の要素番号を返す。その差がdev以下が必須条件
+        public int SearchPt(PointD clientPt, PointD[] pts, double dev)
+        {
+            double R2 = double.PositiveInfinity;
+            double temp;
+            int n = -1;
+            PointF p;
+            for (int i = 0; i < pts.Length; i++)
+            {
+                p = ConvToPicBoxCoord(pts[i]);
+                if ((temp = (clientPt.X - p.X) * (clientPt.X - p.X) + (clientPt.Y - p.Y) * (clientPt.Y - p.Y)) < R2)
+                {
+                    R2 = temp;
+                    n = i;
+                }
+            }
+            if (R2 < dev * dev) return n;
+            else return -1;
+        }
+
+        /// <summary>
+        /// もっともdに近いcry.Planeの要素番号を返す。その差がdev以下が必須条件
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="cry"></param>
+        /// <param name="dev"></param>
+        /// <returns></returns>
+        public int SearchPlaneNo(double x, Crystal cry, double dev)
+        {
+            if (cry == null || cry.Plane == null) return -1;
+            double temp = double.PositiveInfinity;
+            int n = 0;
+            for (int i = 0; i < cry.Plane.Count; i++)
+            {
+                if (Math.Abs(cry.Plane[i].XCalc - x) < temp)
+                {
+                    temp = Math.Abs(cry.Plane[i].XCalc - x);
+                    n = i;
+                }
+            }
+            if (temp < dev) return n;
+            else return -1;
+        }
+
+        /// <summary>
+        /// もっともdに近く、y以下強度のpt配列内の要素番号を返す。その差がdev以下が必須条件
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="cry"></param>
+        /// <param name="dev"></param>
+        /// <returns></returns>
+        public int SearchPlaneNo(double x, double y, Crystal cry, double dev)
+        {
+            if (cry.Plane == null) return -1;
+            double temp = double.PositiveInfinity;
+            int n = 0;
+            double Intensity;
+            for (int i = 0; i < cry.Plane.Count; i++)
+            {
+                if (formCrystal.checkBoxVariableRatioOfIntensity.Checked)//強度比を変えているとき(画面に固定されていないとき)
+                    Intensity = cry.Plane[i].Intensity * cry.DiffractionPeakIntensity;
+                else
+                    Intensity = cry.Plane[i].Intensity * (UpperY - LowerY) + LowerY;
+
+                if (Math.Abs(cry.Plane[i].XCalc - x) < temp && y < Intensity)
+                {
+                    temp = Math.Abs(cry.Plane[i].XCalc - x);
+                    n = i;
+                }
+
+            }
+            if (temp < dev) return n;
+            else return -1;
+        }
+
+        public int[] SearchMaskBoundary(double x, DiffractionProfile.MaskingRange[] ranges, double dev)
+        {
+            if (ranges == null) return new int[] { -1, -1 };
+            int index1 = 0;
+            int index2 = 0;
+            double temp = double.PositiveInfinity;
+            for (int i = 0; i < ranges.Length; i++)
+                for (int j = 0; j < ranges[i].X.Length; j++)
+                    if (Math.Abs(ranges[i].X[j] - x) < temp)
+                    {
+                        index1 = i;
+                        index2 = j;
+                        temp = Math.Abs(ranges[i].X[j] - x);
+                    }
+            if (temp < dev)
+                return new int[] { index1, index2 };
+            return new int[] { -1, -1 };
+        }
+        #endregion
+
         #region FormFittingからの呼び出し
         //formFiitingから呼び出されたとき
         public void ChangeCrystalFromFitting(/*Crystal cry*/)
@@ -2387,7 +2470,7 @@ namespace PDIndexer
             }
             Draw();
         }
-        //Crystalボタンクリック時
+        //Crystalボタンチェック変化時
         private void checkBoxCrystalParameter_CheckedChanged(object sender, EventArgs e)
         {
             toolStripButtonCrystalParameter.Checked = checkBoxCrystalParameter.Checked;
@@ -2400,7 +2483,7 @@ namespace PDIndexer
             }
         }
 
-        //EOSチェックボックスクリック時
+        //EOSチェックボックスチェック変化時
         private void toolStripButtonEquationOfState_CheckedChanged(object sender, EventArgs e)
         {
             if (toolStripButtonEquationOfState.Checked == false && formEOS.WindowState == FormWindowState.Minimized)
@@ -3023,7 +3106,6 @@ namespace PDIndexer
 
         #endregion
 
-
         #region プロファイルのチェックボックスへの追加
 
         /// <summary>
@@ -3132,13 +3214,11 @@ namespace PDIndexer
             }
         }
 
-        #endregion
-
         public Color generateRandomColor()
         {
             var r = new Random();
-            var max = 192 + r.Next(64); 
-            var mid1 = r.Next(128);             
+            var max = 192 + r.Next(64);
+            var mid1 = r.Next(128);
             var mid2 = r.Next(128);
             if (dataSet.DataTableProfile.Items.Count == 0)//直前のプロファイルがない時はR>G>Bの色を返す
                 return Color.FromArgb(max, mid1, mid2);
@@ -3160,6 +3240,7 @@ namespace PDIndexer
         }
 
 
+        #endregion
 
         #region 結晶データ読み書き
         //結晶データのセーブ
@@ -3346,150 +3427,46 @@ namespace PDIndexer
         }
         #endregion
 
-        #region ピクチャーボックスのContextMenu
-        private void menuItemScaleUp_Click(object sender, System.EventArgs e)
-        {
-            //拡大
-            LowerX = LowerX * 0.75f + UpperX * 0.25f;
-            //if(LowerAngleLimit<0) LowerAngleLimit=0;
-            UpperX = UpperX * 0.75f + LowerX * 0.25f;
-            //if(UpperAngleLimit>UppestAngleLimit)UpperAngleLimit=UppestAngleLimit;
-            LowerY = (int)(LowerY * 0.25f + UpperY * 0.75f + 0.5f);
-            //if(LowerIntensityLimit<0)LowerIntensityLimit=0;
-            UpperY = (int)(UpperY * 0.25f + LowerY * 0.75f + 0.5f);
-            //if(UpperIntensityLimit>UppestIntensityLimit)UpperIntensityLimit=UppestIntensityLimit;
-            InitializeCrystalPlane();
-            Draw();
-            //SetRangeTextBox();
-        }
+        #region マクロメニュー関連
+        private void editorToolStripMenuItem_Click(object sender, EventArgs e)
+            => FormMacro.Visible = true;
 
-        private void menuItemScaleDown_Click(object sender, System.EventArgs e)
+        public void SetMacroToMenu(string[] name)
         {
-            //縮小
-            LowerX = LowerX * 1.5f - UpperX * 0.5f;
-            if (LowerX < 0) LowerX = 0;
-            UpperX = UpperX * 1.5f - LowerX * 0.5f;
-            if (UpperX > MaximalX) UpperX = MaximalX;
-            LowerY = (int)(LowerY * 1.5f - UpperY * 0.5f + 0.5f);
-            if (LowerY < 0) LowerY = 0;
-            UpperY = (int)(UpperY * 1.5f - LowerY * 0.5f + 0.5f);
-            if (UpperY > MaximalY) UpperY = MaximalY;
-            InitializeCrystalPlane();
-            Draw();
-           // SetRangeTextBox();
-        }
+            if (macroToolStripMenuItem.DropDownItems.Count == 1)
+                macroToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+            for (int i = macroToolStripMenuItem.DropDownItems.Count - 1; i > 1; i--)
+                macroToolStripMenuItem.DropDownItems.RemoveAt(i);
 
+
+            for (int i = 0; i < name.Length; i++)
+            {
+                var item = new ToolStripMenuItem(name[i]);
+                item.Name = name[i];
+                item.Click += macroMenuItem_Click;
+                macroToolStripMenuItem.DropDownItems.Add(item);
+            }
+        }
+        void macroMenuItem_Click(object sender, EventArgs e)
+            => FormMacro.RunMacroName(((ToolStripMenuItem)sender).Name, false);
 
         #endregion
-
-        #region マウスクリック位置に近い回折線、Bg点、MaskRangeを返す関数群
-        
-        //もっともptに近いpts配列内の要素番号を返す。その差がdev以下が必須条件
-        public int SearchPt(PointD clientPt, PointD[] pts, double dev)
-        {
-            double R2 = double.PositiveInfinity;
-            double temp;
-            int n = -1;
-            PointF p;
-            for (int i = 0; i < pts.Length; i++)
-            {
-                p = ConvToPicBoxCoord(pts[i]);
-                if ((temp = (clientPt.X - p.X) * (clientPt.X - p.X) + (clientPt.Y - p.Y) * (clientPt.Y - p.Y)) < R2)
-                {
-                    R2 = temp;
-                    n = i;
-                }
-            }
-            if (R2 < dev * dev) return n;
-            else return -1;
-        }
-
-       /// <summary>
-        /// もっともdに近いcry.Planeの要素番号を返す。その差がdev以下が必須条件
-       /// </summary>
-       /// <param name="x"></param>
-       /// <param name="cry"></param>
-       /// <param name="dev"></param>
-       /// <returns></returns>
-        public int SearchPlaneNo(double x, Crystal cry, double dev)
-        {
-            if (cry==null || cry.Plane == null) return -1;
-            double temp = double.PositiveInfinity;
-            int n = 0;
-            for (int i = 0; i < cry.Plane.Count; i++)
-            {
-                if (Math.Abs(cry.Plane[i].XCalc - x) < temp)
-                {
-                    temp = Math.Abs(cry.Plane[i].XCalc - x);
-                    n = i;
-                }
-            }
-            if (temp < dev) return n;
-            else return -1;
-        }
-
-        /// <summary>
-        /// もっともdに近く、y以下強度のpt配列内の要素番号を返す。その差がdev以下が必須条件
-        /// </summary>
-        /// <param name="x"></param>
-        /// <param name="y"></param>
-        /// <param name="cry"></param>
-        /// <param name="dev"></param>
-        /// <returns></returns>
-        public int SearchPlaneNo(double x, double y, Crystal cry, double dev)
-        {
-            if (cry.Plane == null) return -1;
-            double temp = double.PositiveInfinity;
-            int n = 0;
-            double Intensity;
-            for (int i = 0; i < cry.Plane.Count; i++)
-            {
-                if (formCrystal.checkBoxVariableRatioOfIntensity.Checked)//強度比を変えているとき(画面に固定されていないとき)
-                    Intensity = cry.Plane[i].Intensity * cry.DiffractionPeakIntensity;
-                else
-                    Intensity = cry.Plane[i].Intensity * (UpperY - LowerY) + LowerY;
-
-                if (Math.Abs(cry.Plane[i].XCalc - x) < temp && y < Intensity)
-                {
-                    temp = Math.Abs(cry.Plane[i].XCalc - x);
-                    n = i;
-                }
-
-            }
-            if (temp < dev) return n;
-            else return -1;
-        }
-
-        public int[] SearchMaskBoundary(double x, DiffractionProfile.MaskingRange[] ranges, double dev)
-        {
-            if (ranges == null) return new int[] { -1, -1 };
-            int index1 = 0;
-            int index2 = 0;
-            double temp = double.PositiveInfinity;
-            for (int i = 0; i < ranges.Length; i++)
-                for (int j = 0; j < ranges[i].X.Length; j++ )
-                    if (Math.Abs(ranges[i].X[j] - x) < temp)
-                    {
-                        index1 = i;
-                        index2 = j;
-                        temp = Math.Abs(ranges[i].X[j] - x);
-                    }
-            if (temp < dev)
-                return new int[]{index1,index2};
-            return new int[]{-1,-1};
-        }
-        #endregion
-
 
         #region ToolStrip メニュー
 
+        /// <summary>
+        /// 選択中の結晶をCIFファイルへ変換
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripMenuItemExportCIF_Click(object sender, EventArgs e)
              => formCrystal.crystalControl.exportThisCrystalAsCIFToolStripMenuItem_Click(sender, e);
 
-        private void ngenCompileToolStripMenuItem_Click(object sender, EventArgs e)
-            => Ngen.Compile();
-
-
+        /// <summary>
+        /// 言語変更
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void languageToolStripMenuItem_Click(object sender, EventArgs e)
         {
             englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
@@ -3498,6 +3475,11 @@ namespace PDIndexer
             Language.Change(this);
         }
 
+        /// <summary>
+        /// クリップボード監視
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void watchReadClipboardToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
             ChangeClipboardChain(this.Handle, NextHandle);//とりあえず切って
@@ -3512,6 +3494,11 @@ namespace PDIndexer
             NextHandle = SetClipboardViewer(this.Handle);
         }
 
+        /// <summary>
+        /// ディレクトリ監視
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolStripTextBoxDirectoryToWatch_TextChanged(object sender, EventArgs e)
         {
             if (toolStripTextBoxDirectoryToWatch.Text != "")
@@ -3521,6 +3508,23 @@ namespace PDIndexer
             }
         }
 
+        private void watchReadANewProfileToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+        {
+            watcher.EnableRaisingEvents = watchReadANewProfileToolStripMenuItem.Checked && Directory.Exists(watcher.Path);
+        }
+
+        private void setDirectoryToTheWatchToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new FolderBrowserDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+                toolStripTextBoxDirectoryToWatch.Text = dlg.SelectedPath;
+        }
+
+        /// <summary>
+        /// ツールチップ 有効/無効
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void toolTipToolStripMenuItem_Click(object sender, EventArgs e)
             => toolTip.Active = toolTipToolStripMenuItem.Checked;
 
@@ -3569,9 +3573,9 @@ namespace PDIndexer
             try
             {
                 if (japaneseToolStripMenuItem.Checked)
-                    System.Diagnostics.Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/ja/PDIndexerHelp.html");
+                    Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/ja/PDIndexerHelp.html");
                 else
-                    System.Diagnostics.Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/en/PDIndexerHelp.html");
+                    Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/en/PDIndexerHelp.html");
 
             }
             catch { }
@@ -3580,33 +3584,114 @@ namespace PDIndexer
 
         private void toolStripMenuItemImport_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" };
+            var dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                Crystal c = ConvertCrystalData.ConvertToCrystal(dlg.FileName);
+                var c = ConvertCrystalData.ConvertToCrystal(dlg.FileName);
                 if (c != null)
                     formCrystal.AddCrystal(c);
             }
         }
 
-        private void watchReadANewProfileToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
+       
+
+
+
+        private void hintToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (watchReadANewProfileToolStripMenuItem.Checked)
-            {
-                if (Directory.Exists(watcher.Path))
-                    watcher.EnableRaisingEvents = true;
-            }
-            else
-                watcher.EnableRaisingEvents = false;
+            initialDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
+            initialDialog.Visible = true;
         }
 
-        private void setDirectoryToTheWatchToolStripMenuItem_Click(object sender, EventArgs e)
+        private void toolStripMenuItemSaveMetafile_Click(object sender, EventArgs e)
         {
-            var dlg = new FolderBrowserDialog();
+            SaveFileDialog dlg = new SaveFileDialog();
+            dlg.Filter = "*.emf|*.emf";
             if (dlg.ShowDialog() == DialogResult.OK)
-                toolStripTextBoxDirectoryToWatch.Text = dlg.SelectedPath;
-
+            {
+                saveMetafile(dlg.FileName);
+            }
         }
+        private void saveMetafile(string filename)
+        {
+            try
+            {
+                using var grfx = CreateGraphics();
+                var ipHdc = grfx.GetHdc();
+                using var ms = new MemoryStream();
+                using var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
+                grfx.ReleaseHdc(ipHdc);
+                grfx.Dispose();
+                DrawMetafile(mf);
+
+                if (!filename.ToLower().EndsWith(".emf"))
+                    filename += ".emf";
+
+                using (var fsm = new FileStream(filename, FileMode.Create, FileAccess.Write))
+                {
+                    fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
+                    fsm.Close();
+                }
+
+                mf.Dispose();
+            }
+            catch { }
+        }
+
+
+
+        #endregion
+
+        #region プロファイルをメタファイルで出力
+        private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var grfx = CreateGraphics();
+            var ipHdc = grfx.GetHdc();
+            using var ms = new MemoryStream();
+            using var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
+            grfx.ReleaseHdc(ipHdc);
+            grfx.Dispose();
+            DrawMetafile(mf);
+            ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+        }
+
+        /* http://classicalprogrammer.wikidot.com/copy-gdi-drawing-to-clipboard */
+        public class ClipboardMetafileHelper
+        {
+            [DllImport("user32.dll")]
+            static extern bool OpenClipboard(IntPtr hWndNewOwner);
+            [DllImport("user32.dll")]
+            static extern bool EmptyClipboard();
+            [DllImport("user32.dll")]
+            static extern IntPtr SetClipboardData(uint uFormat, IntPtr hMem);
+            [DllImport("user32.dll")]
+            static extern bool CloseClipboard();
+            [DllImport("gdi32.dll")]
+            static extern IntPtr CopyEnhMetaFile(IntPtr hemfSrc, IntPtr hNULL);
+            [DllImport("gdi32.dll")]
+            static extern bool DeleteEnhMetaFile(IntPtr hemf);
+
+            // Metafile mf is set to an invalid state inside this function
+            static public bool PutEnhMetafileOnClipboard(IntPtr hWnd, Metafile mf)
+            {
+                bool bResult = false;
+                IntPtr hEMF, hEMF2;
+                hEMF = mf.GetHenhmetafile(); // invalidates mf
+                if (!hEMF.Equals(IntPtr.Zero))
+                {
+                    hEMF2 = CopyEnhMetaFile(hEMF, new IntPtr(0));
+                    if (!hEMF2.Equals(IntPtr.Zero) && OpenClipboard(hWnd) && EmptyClipboard())
+                    {
+                        IntPtr hRes = SetClipboardData(14 /*CF_ENHMETAFILE*/, hEMF2);
+                        bResult = hRes.Equals(hEMF2);
+                        CloseClipboard();
+                    }
+                    DeleteEnhMetaFile(hEMF);
+                }
+                return bResult;
+            }
+        }
+        #endregion
 
         #region export関連
         private void toolStripMenuItemExportCSVFile_Click(object sender, EventArgs e)
@@ -3657,14 +3742,13 @@ namespace PDIndexer
             }
         }
 
-        //GSASフォーマットとして吐き出す
+        //プロファイルをGSASフォーマットとしてエクスポート
         private void exportGSASFormatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (bindingSourceProfile.Position < 0) return;
 
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "*.gsa|*.gsa";
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1]; ;
+            var dlg = new SaveFileDialog { Filter = "*.gsa|*.gsa" };
+            var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1]; ;
             dlg.FileName = Path.GetFileNameWithoutExtension(dp.Name);
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -3719,49 +3803,49 @@ namespace PDIndexer
         }
         #endregion
 
-
-        private void hintToolStripMenuItem_Click(object sender, EventArgs e)
+        #region Horizontal Axis タブ
+        bool skipAxisPropertyChangedEvent { get; set; } = false;
+        /// <summary>
+        /// 軸モードが変更されたときに呼び出される
+        /// </summary>
+        public void horizontalAxisUserControl_AxisPropertyChanged()
         {
-            initialDialog.DialogMode = Crystallography.Controls.CommonDialog.DialogModeEnum.Hint;
-            initialDialog.Visible = true;
-        }
+            if (AxisMode == HorizontalAxis.Angle)
+                labelX.Text = "2θ(deg.): ";
+            else if (AxisMode == HorizontalAxis.d)
+                labelX.Text = "d (Å): ";
+            else if (AxisMode == HorizontalAxis.WaveNumber)
+                labelX.Text = "q (/Å)";
+            else if (AxisMode == HorizontalAxis.EnergyXray || AxisMode == HorizontalAxis.EnergyElectron || AxisMode == HorizontalAxis.EnergyNeutron)
+                labelX.Text = "Energy (eV): ";
+            else if (AxisMode == HorizontalAxis.NeutronTOF)
+                labelX.Text = "TOF (μs)";
 
-        private void toolStripMenuItemSaveMetafile_Click(object sender, EventArgs e)
-        {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "*.emf|*.emf";
-            if (dlg.ShowDialog() == DialogResult.OK)
+            if (skipAxisPropertyChangedEvent) return;
+
+            for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
             {
-                saveMetafile(dlg.FileName);
+                var d = dataSet.DataTableProfile.Items[i];
+                d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
             }
+            SetDrawRangeLimit();
+            ResetDrawRange();
+            InitializeCrystalPlane();
+            Draw();
+
+            //formFittingにも知らせる
+            formFitting.ChangeHorizontalAxis();
+            if (formFitting.Visible)
+                formFitting.Fitting();
         }
-        private void saveMetafile(string filename)
-        {
-            try
-            {
-                using var grfx = CreateGraphics();
-                var ipHdc = grfx.GetHdc();
-                using var ms = new MemoryStream();
-                using var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-                grfx.ReleaseHdc(ipHdc);
-                grfx.Dispose();
-                DrawMetafile(mf);
-
-                if (!filename.ToLower().EndsWith(".emf"))
-                    filename += ".emf";
-
-                using (var fsm = new FileStream(filename, FileMode.Create, FileAccess.Write))
-                {
-                    fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                    fsm.Close();
-                }
-
-                mf.Dispose();
-            }
-            catch { }
-        }
-
         #endregion
+
+        #region Appearance & Single/Multi タブ
+
+        private void tabControl_Click(object sender, EventArgs e)
+            => tabControl.BringToFront();
+
+        private void checkBoxShowScaleLine_CheckedChanged_1(object sender, EventArgs e) => Draw();
 
         private void radioButtonMultiProfileMode_CheckChanged(object sender, EventArgs e)
         {
@@ -3798,112 +3882,153 @@ namespace PDIndexer
             radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
         }
 
-        #region ドラッグドロップ
-        private void FormMain_DragDrop(object sender, DragEventArgs e)
+        private void radioButtonRawCounts_CheckedChanged(object sender, EventArgs e)
         {
-            //コントロール内にドロップされたとき実行される
-            //ドロップされたすべてのファイル名を取得する
-            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            //ListBoxに追加する
-            if (fileName.Length == 1)
+
+            InitializeCrystalPlane();
+            for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
             {
-                if (fileName[0].ToLower().EndsWith("xml"))
-                    readCrystal(fileName[0], true, false);
+                var d = dataSet.DataTableProfile.Items[i];
+                d.IsCPS = radioButtonCountsPerStep.Checked;
+                d.IsLogIntensity = radioButtonLogarithm.Checked;
+                d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
+            }
+            SetDrawRangeLimit();
+            ResetDrawRange();
+            Draw();
 
-                else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
+            formFitting.ChangeHorizontalAxis();
+        }
+
+        #endregion
+
+        #region UnrolledImage関連
+        public void setFrequencyProfile()
+        {
+            if (dataSet.DataTableProfile.GetItemChecked(bindingSourceProfile.Position))
+            {
+
+                var dif = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                if (dif.ImageArray != null)
                 {
-                    if (formCrystal.Visible == false)
-                        checkBoxCrystalParameter.Checked = true;
-                    formCrystal.crystalControl.FormCrystal_DragDrop(sender, e);
+                    tabControl1.Visible = true;
+                    Ring.Intensity.Clear();
+                    Ring.Intensity.AddRange(dif.ImageArray);
+                    Ring.CalcFreq();
 
+                    Profile frequencyProfile = new Profile();
+                    frequencyProfile.Pt = new List<PointD>();
+
+                    for (int i = 0; i < Ring.Frequency.Count; i++)
+                        frequencyProfile.Pt.Add(new PointD(Ring.Frequency.Keys[i], Ring.Frequency[Ring.Frequency.Keys[i]]));
+                    graphControlFrequency.Profile = frequencyProfile;
+                    graphControlFrequency.LineList = new PointD[2] { new PointD((double)0, double.NaN), new PointD((double)frequencyProfile.Pt[frequencyProfile.Pt.Count - 1].X, double.NaN) };
+                    graphControlFrequency.Draw();
+                    uint max = uint.MinValue;
+                    foreach (uint u in dif.ImageArray)
+                        max = Math.Max(u, max);
+                    numericUpDownMaxInt.Maximum = (decimal)max;
+                    numericUpDownMinInt.Maximum = (decimal)max - 1;
+                    numericUpDownMaxInt.Minimum = 0;
+                    numericUpDownMinInt.Minimum = 0;
+
+                    setScale();
                 }
                 else
-                {
-                    readProfile(fileName);
-                }
+                    tabControl1.Visible = false;
             }
-        }
-
-        private void FormMain_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
             else
-                e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
+                tabControl1.Visible = false;
+
         }
 
-        #endregion
 
-
-        #region KeyDownイベント 
-        public void FormMain_KeyDown(object sender, KeyEventArgs e)
+        private void numericUpDownMinInt_ValueChanged(object sender, EventArgs e)
         {
-            if (e.Control && !e.Shift && e.KeyCode == Keys.C && this.pictureBoxMain.Focused)
-                copyAsMetafileToolStripMenuItem_Click(new object(), new EventArgs());
-
-            if (e.Control && e.Shift && e.KeyCode == Keys.C)
-                checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
-            else if (e.Control && e.Shift&& e.KeyCode == Keys.E)
-                toolStripButtonEquationOfState.Checked = !toolStripButtonEquationOfState.Checked;
-            else if (e.Control && e.Shift && e.KeyCode == Keys.F)
-                toolStripButtonFittingParameter.Checked = !toolStripButtonFittingParameter.Checked;
-            else if (e.Control && e.Shift && e.KeyCode == Keys.D)
+            if (numericUpDownMaxInt.Value <= numericUpDownMinInt.Value)
             {
-                if (!formCrystal.checkBoxShowPeakOverProfiles.Checked)
-                {
-                    formCrystal.checkBoxShowPeakOverProfiles.Checked = true;
-                    formCrystal.checkBoxCalculateIntensity.Checked = false;
-                }
-                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && !formCrystal.checkBoxCalculateIntensity.Checked)
-                {
-                    formCrystal.checkBoxCalculateIntensity.Checked = true;
-                }
-                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && formCrystal.checkBoxCalculateIntensity.Checked)
-                {
-                    formCrystal.checkBoxShowPeakOverProfiles.Checked = false;
-                }
+                numericUpDownMaxInt.Value = numericUpDownMinInt.Value + 1;
+                return;
             }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.S)
+            if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
             {
-                formStressAnalysis.Visible = !formStressAnalysis.Visible;
+                graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
+                graphControlFrequency.Draw();
             }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.Space)
-            {
-                if(bindingSourceCrystal.Current != null && bindingSourceCrystal.Position>=0)
-                    ((DataRowView)bindingSourceCrystal.Current).Row[0] = !(bool)((DataRowView)bindingSourceCrystal.Current).Row[0];
-            }
-            else if (e.Control && e.Alt && e.KeyCode == Keys.Space && formFitting.Visible)
-            {
-                if (formFitting.bindingSourcePlanes.Current != null && formFitting.bindingSourcePlanes.Position >= 0)
-                    ((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0] = !(bool)((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0];
-            }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.V)//クリップボードから、プロファイルや結晶を貼り付け
-            {
-                if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(string)))
-                {
-                    IDataObject data = Clipboard.GetDataObject();
-                    string str = (string)data.GetData(typeof(string));
-                    //StreamWriter
-                    var sw = new StreamWriter("clipbord.txt");
-                    sw.Write(str);
-                    sw.Close();
-                    readProfile("clipbord.txt");
-                    File.Delete("clipboard.txt");
-                }
-            }
-
-
+            Draw();
         }
+
+        private void numericUpDownMaxInt_ValueChanged(object sender, EventArgs e)
+        {
+            if (numericUpDownMaxInt.Value <= numericUpDownMinInt.Value)
+            {
+                numericUpDownMinInt.Value = numericUpDownMaxInt.Value - 1;
+                return;
+            }
+            if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
+            {
+                graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
+                graphControlFrequency.Draw();
+            }
+            Draw();
+        }
+
+        private void toolStripComboBoxScale_SelectedIndexChanged(object sender, EventArgs e) => setScale();
+        private void toolStripComboBoxScale2_SelectedIndexChanged(object sender, EventArgs e) => setScale();
+        private void toolStripComboBoxGradient_SelectedIndexChanged(object sender, EventArgs e) => setScale();
+
+        private byte[] scaleR, scaleG, scaleB;
+        private void setScale()
+        {
+            //スケールをセット
+            if (comboBoxScale1.SelectedIndex == 0)//ログスケール
+                if (comboBoxScale2.SelectedIndex == 0)//グレー
+                    scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLog;
+                else
+                {
+                    scaleR = PseudoBitmap.BrightnessScaleLogColorR;
+                    scaleG = PseudoBitmap.BrightnessScaleLogColorG;
+                    scaleB = PseudoBitmap.BrightnessScaleLogColorB;
+                }
+            else//リニア
+                if (comboBoxScale2.SelectedIndex == 0)//グレー
+                scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLiner;
+            else//color
+            {
+                scaleR = PseudoBitmap.BrightnessScaleLinerColorR;
+                scaleG = PseudoBitmap.BrightnessScaleLinerColorG;
+                scaleB = PseudoBitmap.BrightnessScaleLinerColorB;
+            }
+
+            Draw();
+        }
+        private void checkBoxShowUnrolledImage_CheckedChanged(object sender, EventArgs e) => Draw();
+
+        private void tabControl1_Click(object sender, EventArgs e) => tabControl1.BringToFront();
+
+        private void graphControlFrequency_LinePositionChanged()
+        {
+            if (graphControlFrequency.LineList.Length == 2)
+            {
+                decimal max = (decimal)((int)Math.Max(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
+                if (numericUpDownMaxInt.Maximum <= max)
+                    numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
+                else if (numericUpDownMaxInt.Minimum >= max)
+                    numericUpDownMaxInt.Value = numericUpDownMaxInt.Minimum;
+                else
+                    numericUpDownMaxInt.Value = max;
+
+                decimal min = (decimal)((int)Math.Min(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
+                if (numericUpDownMinInt.Maximum <= min)
+                    numericUpDownMinInt.Value = numericUpDownMinInt.Maximum;
+                else if (numericUpDownMinInt.Minimum >= min)
+                    numericUpDownMinInt.Value = numericUpDownMinInt.Minimum;
+                else
+                    numericUpDownMinInt.Value = min;
+            }
+        }
+
         #endregion
-
-
-        private void tabControl_Click(object sender, EventArgs e)
-            => tabControl.BringToFront();
-
-
-        private void checkBoxShowScaleLine_CheckedChanged_1(object sender, EventArgs e) => Draw();
-
-
 
         #region DataGridViewCrystal関係のイベント
 
@@ -3991,204 +4116,6 @@ namespace PDIndexer
 
         #endregion
 
-         private void numericUpDownLimitChange_MouseDown(object sender, MouseEventArgs e)
-         {
-             int x = ((NumericUpDown)sender).Width;
-         }
-
-         #region UnrolledImage関連
-         public void setFrequencyProfile()
-         {
-             if (dataSet.DataTableProfile.GetItemChecked(bindingSourceProfile.Position))
-             {
-                 
-                 var dif = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1]; 
-                 if (dif.ImageArray != null)
-                 {
-                     tabControl1.Visible = true;
-                     Ring.Intensity.Clear();
-                     Ring.Intensity.AddRange(dif.ImageArray);
-                     Ring.CalcFreq();
-
-                     Profile frequencyProfile = new Profile();
-                     frequencyProfile.Pt = new List<PointD>();
-
-                     for (int i = 0; i < Ring.Frequency.Count; i++)
-                         frequencyProfile.Pt.Add(new PointD(Ring.Frequency.Keys[i], Ring.Frequency[Ring.Frequency.Keys[i]]));
-                     graphControlFrequency.Profile = frequencyProfile;
-                     graphControlFrequency.LineList = new PointD[2] { new PointD((double)0, double.NaN), new PointD((double)frequencyProfile.Pt[frequencyProfile.Pt.Count - 1].X, double.NaN) };
-                     graphControlFrequency.Draw();
-                     uint max = uint.MinValue;
-                     foreach (uint u in dif.ImageArray)
-                         max = Math.Max(u, max);
-                     numericUpDownMaxInt.Maximum = (decimal)max;
-                     numericUpDownMinInt.Maximum = (decimal)max - 1;
-                     numericUpDownMaxInt.Minimum = 0;
-                     numericUpDownMinInt.Minimum = 0;
-
-                     setScale();
-                 }
-                 else
-                     tabControl1.Visible = false;
-             }
-             else
-                 tabControl1.Visible = false;
-
-         }
-
-         private void graphControlFrequency_LinePositionChanged()
-         {
-             if (graphControlFrequency.LineList.Length == 2)
-             {
-                 decimal max = (decimal)((int)Math.Max(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
-                 if (numericUpDownMaxInt.Maximum <= max)
-                     numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
-                 else if (numericUpDownMaxInt.Minimum >= max)
-                     numericUpDownMaxInt.Value = numericUpDownMaxInt.Minimum;
-                 else
-                     numericUpDownMaxInt.Value = max;
-
-                 decimal min = (decimal)((int)Math.Min(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
-                 if (numericUpDownMinInt.Maximum <= min)
-                     numericUpDownMinInt.Value = numericUpDownMinInt.Maximum;
-                 else if (numericUpDownMinInt.Minimum >= min)
-                     numericUpDownMinInt.Value = numericUpDownMinInt.Minimum;
-                 else
-                     numericUpDownMinInt.Value = min;
-             }
-         }
-
-         private void numericUpDownMinInt_ValueChanged(object sender, EventArgs e)
-         {
-                 if (numericUpDownMaxInt.Value <= numericUpDownMinInt.Value)
-                 {
-                     numericUpDownMaxInt.Value = numericUpDownMinInt.Value + 1;
-                     return;
-                 }
-                 if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
-                 {
-                     graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
-                     graphControlFrequency.Draw();
-                 }
-                 Draw();
-         }
-
-         private void numericUpDownMaxInt_ValueChanged(object sender, EventArgs e)
-         {
-                 if (numericUpDownMaxInt.Value <= numericUpDownMinInt.Value)
-                 {
-                     numericUpDownMinInt.Value = numericUpDownMaxInt.Value - 1;
-                     return;
-                 }
-                 if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
-                 {
-                     graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
-                     graphControlFrequency.Draw();
-                 }
-                 Draw();
-         }
-
-          private void toolStripComboBoxScale_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
-        private void toolStripComboBoxScale2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
-        private void toolStripComboBoxGradient_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            setScale();
-        }
-
-        private byte[] scaleR,scaleG,scaleB;
-        private void setScale()
-        {
-            //スケールをセット
-            if (comboBoxScale1.SelectedIndex == 0)//ログスケール
-                if (comboBoxScale2.SelectedIndex == 0)//グレー
-                    scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLog;
-                else
-                {
-                    scaleR = PseudoBitmap.BrightnessScaleLogColorR;
-                    scaleG = PseudoBitmap.BrightnessScaleLogColorG;
-                    scaleB = PseudoBitmap.BrightnessScaleLogColorB;
-                }
-            else//リニア
-                if (comboBoxScale2.SelectedIndex == 0)//グレー
-                    scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLiner;
-                else//color
-                {
-                    scaleR = PseudoBitmap.BrightnessScaleLinerColorR;
-                    scaleG = PseudoBitmap.BrightnessScaleLinerColorG;
-                    scaleB = PseudoBitmap.BrightnessScaleLinerColorB;
-                }
-
-            Draw();
-        }
-        private void checkBoxShowUnrolledImage_CheckedChanged(object sender, EventArgs e)
-        {
-            Draw();
-        }
-        #endregion
-
-        private void tabControl1_Click(object sender, EventArgs e) => tabControl1.BringToFront();
-
-      
-
-        private void radioButtonRawCounts_CheckedChanged(object sender, EventArgs e)
-        {
-
-            InitializeCrystalPlane();
-            for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
-            {
-                var d = dataSet.DataTableProfile.Items[i];
-                d.IsCPS = radioButtonCountsPerStep.Checked;
-                d.IsLogIntensity = radioButtonLogarithm.Checked;
-                d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
-            }
-            SetDrawRangeLimit();
-            ResetDrawRange();
-            Draw();
-
-            formFitting.ChangeHorizontalAxis();
-        }
-
-        bool skipAxisPropertyChangedEvent { get; set; } = false;
-        /// <summary>
-        /// 軸モードが変更されたときに呼び出される
-        /// </summary>
-        public void horizontalAxisUserControl_AxisPropertyChanged()
-        {
-            if (AxisMode == HorizontalAxis.Angle)
-                labelX.Text = "2θ(deg.): ";
-            else if (AxisMode == HorizontalAxis.d)
-                labelX.Text = "d (Å): ";
-            else if (AxisMode == HorizontalAxis.WaveNumber)
-                labelX.Text = "q (/Å)";
-            else if (AxisMode == HorizontalAxis.EnergyXray|| AxisMode == HorizontalAxis.EnergyElectron|| AxisMode == HorizontalAxis.EnergyNeutron)
-                labelX.Text = "Energy (eV): ";
-            else if (AxisMode == HorizontalAxis.NeutronTOF)
-                labelX.Text = "TOF (μs)";
-            
-            if (skipAxisPropertyChangedEvent) return;
-            
-            for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
-            {
-                var d = dataSet.DataTableProfile.Items[i];
-                d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
-            }
-            SetDrawRangeLimit();
-            ResetDrawRange();
-            InitializeCrystalPlane();
-            Draw();
-
-            //formFittingにも知らせる
-            formFitting.ChangeHorizontalAxis();
-            if (formFitting.Visible)
-                formFitting.Fitting();
-        }
-
         #region dataGridViewProfiles関連のイベント
 
         public void dataGridViewProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -4232,7 +4159,6 @@ namespace PDIndexer
 
         #endregion
 
-  
         #region プログラムアップデート
         private void programUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -4320,84 +4246,107 @@ namespace PDIndexer
 
         #endregion プログラムアップデート
 
-
-        #region プロファイルをメタファイルで出力
-        private void copyAsMetafileToolStripMenuItem_Click(object sender, EventArgs e)
+        #region その他イベント
+        //pictureBoxの再描画時に呼び出される
+        private void pictureBoxMain_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-            using var grfx = CreateGraphics();
-            var ipHdc = grfx.GetHdc();
-            using var ms = new MemoryStream();
-            using var mf = new Metafile(ms, ipHdc, EmfType.EmfPlusDual);
-            grfx.ReleaseHdc(ipHdc);
-            grfx.Dispose();
-            DrawMetafile(mf);
-            ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+            if (MouseRangingMode)
+            {
+                var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
+                e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
+                    Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y));
+            }
         }
 
-        /* http://classicalprogrammer.wikidot.com/copy-gdi-drawing-to-clipboard */
-        public class ClipboardMetafileHelper
+        private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
-            [DllImport("user32.dll")]
-            static extern bool OpenClipboard(IntPtr hWndNewOwner);
-            [DllImport("user32.dll")]
-            static extern bool EmptyClipboard();
-            [DllImport("user32.dll")]
-            static extern IntPtr SetClipboardData(uint uFormat, IntPtr hMem);
-            [DllImport("user32.dll")]
-            static extern bool CloseClipboard();
-            [DllImport("gdi32.dll")]
-            static extern IntPtr CopyEnhMetaFile(IntPtr hemfSrc, IntPtr hNULL);
-            [DllImport("gdi32.dll")]
-            static extern bool DeleteEnhMetaFile(IntPtr hemf);
-
-            // Metafile mf is set to an invalid state inside this function
-            static public bool PutEnhMetafileOnClipboard(IntPtr hWnd, Metafile mf)
+            //コントロール内にドロップされたとき実行される
+            //ドロップされたすべてのファイル名を取得する
+            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            //ListBoxに追加する
+            if (fileName.Length == 1)
             {
-                bool bResult = false;
-                IntPtr hEMF, hEMF2;
-                hEMF = mf.GetHenhmetafile(); // invalidates mf
-                if (!hEMF.Equals(IntPtr.Zero))
+                if (fileName[0].ToLower().EndsWith("xml"))
+                    readCrystal(fileName[0], true, false);
+
+                else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
                 {
-                    hEMF2 = CopyEnhMetaFile(hEMF, new IntPtr(0));
-                    if (!hEMF2.Equals(IntPtr.Zero) && OpenClipboard(hWnd) && EmptyClipboard())
-                    {
-                        IntPtr hRes = SetClipboardData(14 /*CF_ENHMETAFILE*/, hEMF2);
-                        bResult = hRes.Equals(hEMF2);
-                        CloseClipboard();
-                    }
-                    DeleteEnhMetaFile(hEMF);
+                    if (formCrystal.Visible == false)
+                        checkBoxCrystalParameter.Checked = true;
+                    formCrystal.crystalControl.FormCrystal_DragDrop(sender, e);
+
                 }
-                return bResult;
+                else
+                {
+                    readProfile(fileName);
+                }
+            }
+        }
+
+        /// <summary>
+        /// ドラッグされたデータ形式を調べ、ファイルのときはコピーとする. ファイル以外は受け付けない.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FormMain_DragEnter(object sender, DragEventArgs e)
+            => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
+
+        /// <summary>
+        /// KeyDownイベント
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void FormMain_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && !e.Shift && e.KeyCode == Keys.C && this.pictureBoxMain.Focused)
+                copyAsMetafileToolStripMenuItem_Click(new object(), new EventArgs());
+
+            if (e.Control && e.Shift && e.KeyCode == Keys.C)
+                checkBoxCrystalParameter.Checked = !checkBoxCrystalParameter.Checked;
+            else if (e.Control && e.Shift && e.KeyCode == Keys.E)
+                toolStripButtonEquationOfState.Checked = !toolStripButtonEquationOfState.Checked;
+            else if (e.Control && e.Shift && e.KeyCode == Keys.F)
+                toolStripButtonFittingParameter.Checked = !toolStripButtonFittingParameter.Checked;
+            else if (e.Control && e.Shift && e.KeyCode == Keys.D)
+            {
+                if (!formCrystal.checkBoxShowPeakOverProfiles.Checked)
+                {
+                    formCrystal.checkBoxShowPeakOverProfiles.Checked = true;
+                    formCrystal.checkBoxCalculateIntensity.Checked = false;
+                }
+                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && !formCrystal.checkBoxCalculateIntensity.Checked)
+                    formCrystal.checkBoxCalculateIntensity.Checked = true;
+                else if (formCrystal.checkBoxShowPeakOverProfiles.Checked && formCrystal.checkBoxCalculateIntensity.Checked)
+                    formCrystal.checkBoxShowPeakOverProfiles.Checked = false;
+            }
+            else if (e.Control && e.Shift && e.KeyCode == Keys.S)
+                formStressAnalysis.Visible = !formStressAnalysis.Visible;
+            else if (e.Control && e.Shift && e.KeyCode == Keys.Space)
+            {
+                if (bindingSourceCrystal.Current != null && bindingSourceCrystal.Position >= 0)
+                    ((DataRowView)bindingSourceCrystal.Current).Row[0] = !(bool)((DataRowView)bindingSourceCrystal.Current).Row[0];
+            }
+            else if (e.Control && e.Alt && e.KeyCode == Keys.Space && formFitting.Visible)
+            {
+                if (formFitting.bindingSourcePlanes.Current != null && formFitting.bindingSourcePlanes.Position >= 0)
+                    ((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0] = !(bool)((DataRowView)formFitting.bindingSourcePlanes.Current).Row[0];
+            }
+            else if (e.Control && e.Shift && e.KeyCode == Keys.V)//クリップボードから、プロファイルや結晶を貼り付け
+            {
+                if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(string)))
+                {
+                    IDataObject data = Clipboard.GetDataObject();
+                    string str = (string)data.GetData(typeof(string));
+                    //StreamWriter
+                    var sw = new StreamWriter("clipbord.txt");
+                    sw.Write(str);
+                    sw.Close();
+                    readProfile("clipbord.txt");
+                    File.Delete("clipboard.txt");
+                }
             }
         }
         #endregion
-
-        private void editorToolStripMenuItem_Click(object sender, EventArgs e) 
-            => FormMacro.Visible = true;
-
-        public void SetMacroToMenu(string[] name)
-        {
-            if (macroToolStripMenuItem.DropDownItems.Count == 1)
-                macroToolStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
-            for (int i = macroToolStripMenuItem.DropDownItems.Count - 1; i > 1; i--)
-                macroToolStripMenuItem.DropDownItems.RemoveAt(i);
-
-
-            for (int i = 0; i < name.Length; i++)
-            {
-                var item = new ToolStripMenuItem(name[i]);
-                item.Name = name[i];
-                item.Click += macroMenuItem_Click;
-                macroToolStripMenuItem.DropDownItems.Add(item);
-            }
-        }
-        void macroMenuItem_Click(object sender, EventArgs e)
-            => FormMacro.RunMacroName(((ToolStripMenuItem)sender).Name, false);
-
-
-   
-
-
 
         /// <summary>
         /// PDIのマクロ操作を提供する
