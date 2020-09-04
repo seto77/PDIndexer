@@ -266,7 +266,7 @@ namespace PDIndexer{
         private void buttonSearch_Click(object sender, EventArgs e)
             => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
 
-      
-
+        private void searchCrystalControl_FilterChanged(object sender, EventArgs e)
+            => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
     }
 }

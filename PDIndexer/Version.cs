@@ -28,6 +28,8 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.386(2020/09/04) Fixed minor bugs. Thank you, Dr. Farla!" +
+            "\r\n ver4.385(2020/09/03) Fixed minor bugs." +
             "\r\n ver4.384(2020/07/30) Added the AMCSD crystal database to 'Crystal Parameter' window." +
             "\r\n ver4.383(2020/05/01) Fixed GUIs." +
             "\r\n ver4.382(2020/04/26) Fixed a problem on loading Neutron TOF data." +

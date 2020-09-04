@@ -552,18 +552,18 @@ namespace PDIndexer
 
         public void buttonCalculate_Click(object sender, EventArgs e)
         {
-            Bitmap bmp = new Bitmap(18, 18);
-            Graphics g = Graphics.FromImage(bmp);
-            Color c = formMain.generateRandomColor();
+            var bmp = new Bitmap(18, 18);
+            var g = Graphics.FromImage(bmp);
+            var c = formMain.generateRandomColor();
             g.Clear(c);
 
-            Profile p = new Profile();
+            var p = new Profile();
 
             if (radioButtonAverage.Checked && listBoxTwoProfiles1.SelectedIndices.Count >= 1)
             {
-                int baseIndex = 0;
-                double max = double.NegativeInfinity;
-                DiffractionProfile[] dp = new DiffractionProfile[listBoxTwoProfiles1.SelectedIndices.Count];
+                var baseIndex = 0;
+                var max = double.NegativeInfinity;
+                var dp = new DiffractionProfile[listBoxTwoProfiles1.SelectedIndices.Count];
                 for (int i = 0; i < listBoxTwoProfiles1.SelectedIndices.Count; i++)
                 {
                     dp[i] = (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndices[i]][1];

@@ -1974,6 +1974,7 @@ namespace PDIndexer
                     PointD tempPt = ConvToDspacing(pt);
                     Plane p = new Plane();
                     p.d = tempPt.X;
+                    p.Intensity = 1;
                     p.SerchOption = PeakFunctionForm.PseudoVoigt;
                     cry.Plane.Add(p);
                     cry.Plane.Sort();
@@ -2013,7 +2014,7 @@ namespace PDIndexer
                 return;
             }
 
-            if (MaskingMode && formProfile.Visible && formProfile.checkBoxShowMaskedRange.Checked && e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (MaskingMode && formProfile.Visible && formProfile.checkBoxShowMaskedRange.Checked && e.Button == MouseButtons.Left)
             {
                 double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
                 int[] i = SearchMaskBoundary(pt.X, formProfile.GetMaskRanges(), dev);//強度計算していない場合
@@ -2047,7 +2048,7 @@ namespace PDIndexer
                 InitializeCrystalPlane();
 
                 SetFormEOS();
-                SetFormCrystal(true);
+                SetFormCrystal(false);
                 formFitting.ChangeCrystalFromMainForm();
 
                 Draw();
@@ -2433,7 +2434,7 @@ namespace PDIndexer
         public void ChangeCrystalFromFitting(/*Crystal cry*/)
         {
             InitializeCrystalPlane();
-            SetFormCrystal(true);
+            SetFormCrystal(false);
             SetFormEOS();
 
             formFitting.ChangeCrystalFromMainForm();
@@ -2619,14 +2620,21 @@ namespace PDIndexer
         /// <summary>
         /// FormCrystalをセット
         /// </summary>
-        /// <param name="ReCalcDensity">密度などを計算する必要があるときはTrue</param>
-        public void SetFormCrystal(bool ReCalcDensity)
+        /// <param name="ReCalcDensity">格子定数のみを変更する場合はTrue</param>
+        public void SetFormCrystal(bool changeCellConstantsOnly = false)
         {
             if (SelectedCrysatlIndex < 0) return;
-            if (ReCalcDensity)
-                dataSet.DataTableCrystal.Items[bindingSourceCrystal.Position].GetFormulaAndDensity();
-            if(formCrystal.crystalControl != null)
-                formCrystal.crystalControl.Crystal = dataSet.DataTableCrystal.Items[bindingSourceCrystal.Position];
+            if (formCrystal.crystalControl != null)
+            {
+                var c = dataSet.DataTableCrystal.Items[bindingSourceCrystal.Position];
+                if (changeCellConstantsOnly)
+                    formCrystal.crystalControl.CellConstants = c.CellValue;
+                else
+                {
+                    c.GetFormulaAndDensity();
+                    formCrystal.crystalControl.Crystal = c;
+                }
+            }
         }
 
         /// <summary>
@@ -2784,7 +2792,7 @@ namespace PDIndexer
 
                 if (dp.Count > 0)
                 {
-                    radioButtonMultiProfileMode.Checked = dp.Count > 1;
+                    //radioButtonMultiProfileMode.Checked = dp.Count > 1;
 
                     //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
                     skipAxisPropertyChangedEvent = true;
@@ -3150,11 +3158,6 @@ namespace PDIndexer
 
                 dataSet.DataTableProfile.Rows.Add(new object[] { isChecked, dp, bmp });
                 bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
-                // if (radioButtonMultiProfileMode.Checked)//マルチパターンモードのとき
-                // {
-                //     if (dp.IsLPOchild)
-                //         formProfile.checkedListBoxProfiles_SelectedIndexChanged(this, new EventArgs());
-                // }
 
                 if (isDraw)
                 {
@@ -4064,7 +4067,7 @@ namespace PDIndexer
                 BottomMargin = 0;
             InitializeCrystalPlane();
 
-            SetFormCrystal(false);
+            SetFormCrystal();
             SetFormEOS();
             Draw();
 
@@ -4099,7 +4102,7 @@ namespace PDIndexer
             if (SelectedCrysatlIndex != bindingSourceCrystal.Position)
             {
                 SelectedCrysatlIndex = bindingSourceCrystal.Position;
-                SetFormCrystal(false);
+                SetFormCrystal();
                 SelectedPlaneIndex = -1;
             }
             Draw();

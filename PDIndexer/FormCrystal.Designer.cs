@@ -44,15 +44,12 @@ namespace PDIndexer
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.crystalControl = new Crystallography.Controls.CrystalControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonChange = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewCrystal = new System.Windows.Forms.DataGridView();
             this.checkDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
-            this.crystalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new PDIndexer.DataSet();
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
@@ -85,9 +82,7 @@ namespace PDIndexer
             this.label6 = new System.Windows.Forms.Label();
             this.checkBoxShowPeakUnderProfile = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.crystalDatabaseControl = new Crystallography.Controls.CrystalDatabaseControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.searchCrystalControl = new Crystallography.Controls.SearchCrystalControl();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
@@ -95,6 +90,13 @@ namespace PDIndexer
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crystalControl = new Crystallography.Controls.CrystalControl();
+            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
+            this.crystalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.crystalDatabaseControl = new Crystallography.Controls.CrystalDatabaseControl();
+            this.searchCrystalControl = new Crystallography.Controls.SearchCrystalControl();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -141,29 +143,6 @@ namespace PDIndexer
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
-            // 
-            // crystalControl
-            // 
-            this.crystalControl.AllowDrop = true;
-            resources.ApplyResources(this.crystalControl, "crystalControl");
-            this.crystalControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("crystalControl.CellConstants")));
-            this.crystalControl.Crystal = ((Crystallography.Crystal)(resources.GetObject("crystalControl.Crystal")));
-            this.crystalControl.DefaultTabNumber = 0;
-            this.crystalControl.Name = "crystalControl";
-            this.crystalControl.ScatteringFactorVisible = false;
-            this.crystalControl.SkipEvent = false;
-            this.crystalControl.SymmetryInformationVisible = false;
-            this.crystalControl.SymmetrySeriesNumber = 0;
-            this.crystalControl.VisibleAtomTab = true;
-            this.crystalControl.VisibleBasicInfoTab = true;
-            this.crystalControl.VisibleBondsPolyhedraTab = false;
-            this.crystalControl.VisibleBoundTab = false;
-            this.crystalControl.VisibleElasticityTab = false;
-            this.crystalControl.VisibleEOSTab = true;
-            this.crystalControl.VisibleLatticePlaneTab = false;
-            this.crystalControl.VisiblePolycrystallineTab = false;
-            this.crystalControl.VisibleReferenceTab = true;
-            this.crystalControl.VisibleStressStrainTab = false;
             // 
             // panel2
             // 
@@ -218,7 +197,7 @@ namespace PDIndexer
             this.dataGridViewCrystal.DataSource = this.bindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -242,24 +221,6 @@ namespace PDIndexer
             this.checkDataGridViewCheckBoxColumn.Name = "checkDataGridViewCheckBoxColumn";
             this.checkDataGridViewCheckBoxColumn.ReadOnly = true;
             this.checkDataGridViewCheckBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PeakColor
-            // 
-            this.PeakColor.DataPropertyName = "PeakColor";
-            resources.ApplyResources(this.PeakColor, "PeakColor");
-            this.PeakColor.Name = "PeakColor";
-            this.PeakColor.ReadOnly = true;
-            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // crystalDataGridViewTextBoxColumn
-            // 
-            this.crystalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.crystalDataGridViewTextBoxColumn.DataPropertyName = "Crystal";
-            resources.ApplyResources(this.crystalDataGridViewTextBoxColumn, "crystalDataGridViewTextBoxColumn");
-            this.crystalDataGridViewTextBoxColumn.Name = "crystalDataGridViewTextBoxColumn";
-            this.crystalDataGridViewTextBoxColumn.ReadOnly = true;
-            this.crystalDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // bindingSource
             // 
@@ -544,24 +505,12 @@ namespace PDIndexer
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
-            // crystalDatabaseControl
-            // 
-            resources.ApplyResources(this.crystalDatabaseControl, "crystalDatabaseControl");
-            this.crystalDatabaseControl.Filter = null;
-            this.crystalDatabaseControl.FontSize = 9.75F;
-            this.crystalDatabaseControl.Name = "crystalDatabaseControl";
-            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.searchCrystalControl);
             this.panel1.Controls.Add(this.buttonSearch);
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
-            // 
-            // searchCrystalControl
-            // 
-            resources.ApplyResources(this.searchCrystalControl, "searchCrystalControl");
-            this.searchCrystalControl.Name = "searchCrystalControl";
             // 
             // buttonSearch
             // 
@@ -619,6 +568,76 @@ namespace PDIndexer
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewImageColumn3
+            // 
+            this.dataGridViewImageColumn3.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.dataGridViewImageColumn3, "dataGridViewImageColumn3");
+            this.dataGridViewImageColumn3.Name = "dataGridViewImageColumn3";
+            this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewImageColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Crystal";
+            resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // crystalControl
+            // 
+            this.crystalControl.AllowDrop = true;
+            resources.ApplyResources(this.crystalControl, "crystalControl");
+            this.crystalControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("crystalControl.CellConstants")));
+            this.crystalControl.Crystal = ((Crystallography.Crystal)(resources.GetObject("crystalControl.Crystal")));
+            this.crystalControl.DefaultTabNumber = 0;
+            this.crystalControl.Name = "crystalControl";
+            this.crystalControl.ScatteringFactorVisible = false;
+            this.crystalControl.SkipEvent = false;
+            this.crystalControl.SymmetryInformationVisible = false;
+            this.crystalControl.SymmetrySeriesNumber = 0;
+            this.crystalControl.VisibleAtomTab = true;
+            this.crystalControl.VisibleBasicInfoTab = true;
+            this.crystalControl.VisibleBondsPolyhedraTab = false;
+            this.crystalControl.VisibleBoundTab = false;
+            this.crystalControl.VisibleElasticityTab = false;
+            this.crystalControl.VisibleEOSTab = true;
+            this.crystalControl.VisibleLatticePlaneTab = false;
+            this.crystalControl.VisiblePolycrystallineTab = false;
+            this.crystalControl.VisibleReferenceTab = true;
+            this.crystalControl.VisibleStressStrainTab = false;
+            // 
+            // PeakColor
+            // 
+            this.PeakColor.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.PeakColor, "PeakColor");
+            this.PeakColor.Name = "PeakColor";
+            this.PeakColor.ReadOnly = true;
+            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // crystalDataGridViewTextBoxColumn
+            // 
+            this.crystalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.crystalDataGridViewTextBoxColumn.DataPropertyName = "Crystal";
+            resources.ApplyResources(this.crystalDataGridViewTextBoxColumn, "crystalDataGridViewTextBoxColumn");
+            this.crystalDataGridViewTextBoxColumn.Name = "crystalDataGridViewTextBoxColumn";
+            this.crystalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.crystalDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // crystalDatabaseControl
+            // 
+            resources.ApplyResources(this.crystalDatabaseControl, "crystalDatabaseControl");
+            this.crystalDatabaseControl.Filter = null;
+            this.crystalDatabaseControl.FontSize = 9.75F;
+            this.crystalDatabaseControl.Name = "crystalDatabaseControl";
+            // 
+            // searchCrystalControl
+            // 
+            resources.ApplyResources(this.searchCrystalControl, "searchCrystalControl");
+            this.searchCrystalControl.Name = "searchCrystalControl";
+            this.searchCrystalControl.FilterChanged += new System.EventHandler(this.searchCrystalControl_FilterChanged);
             // 
             // FormCrystal
             // 
@@ -718,6 +737,8 @@ namespace PDIndexer
         private SplitContainer splitContainer1;
         private Panel panel2;
         private Panel panel3;
+        private DataGridViewImageColumn dataGridViewImageColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 
 
