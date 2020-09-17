@@ -2669,7 +2669,7 @@ namespace PDIndexer
 
         private void readProfile(string[] fileNames)
         {
-            bool showFormDataConverter = true;
+            var showFormDataConverter = true;
             for (int i = 0; i < fileNames.Length; i++)
             {
                 readProfile(fileNames[i], showFormDataConverter);
@@ -3248,19 +3248,18 @@ namespace PDIndexer
             FormCrystalSelection formCrystalSelection = new FormCrystalSelection();
             formCrystalSelection.LoadMode = false;
             formCrystalSelection.SetCrystalList(cry);
-            if (formCrystalSelection.ShowDialog() == DialogResult.OK && formCrystalSelection.CheckedCrystalList.Length>0)
+            if (formCrystalSelection.ShowDialog() == DialogResult.OK && formCrystalSelection.CheckedCrystalList.Length > 0)
             {
-                SaveFileDialog Dlg = new SaveFileDialog();
-                Dlg.Filter = "xml|*.Xml";
-                try
-                {
-                    if (Dlg.ShowDialog() == DialogResult.OK)
+                var Dlg = new SaveFileDialog() { Filter = "xml|*.Xml" };
+                if (Dlg.ShowDialog() == DialogResult.OK)
+                    try
+                    {
                         ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName);
-                }
-                catch
-                {
-                    MessageBox.Show("ファイルが書き込みません");
-                }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("ファイルが書き込みません");
+                    }
             }
         }
 
@@ -3270,9 +3269,9 @@ namespace PDIndexer
             {
                 if (crystals == null)
                 {
-                    List<Crystal> cry = new List<Crystal>();
+                    var cry = new List<Crystal>();
                     for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
-                        cry.Add((Crystal)dataSet.DataTableCrystal.Items[i]);
+                        cry.Add(dataSet.DataTableCrystal.Items[i]);
                     crystals = cry.ToArray();
                 }
                 if (!filename.ToLower().EndsWith(".xml"))
@@ -3290,15 +3289,13 @@ namespace PDIndexer
         //結晶データの読み込み
         private void menuItemReadCrystalData_Click(object sender, System.EventArgs e)
         {
-            OpenFileDialog Dlg = new OpenFileDialog();
-            Dlg.Filter = "xml|*.Xml";
+            var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" };
             if (Dlg.ShowDialog() == DialogResult.OK)
                 readCrystal(Dlg.FileName, true, true);
         }
         private void readAndAddToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog Dlg = new OpenFileDialog();
-            Dlg.Filter = "xml|*.Xml";
+            var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" };
             if (Dlg.ShowDialog() == DialogResult.OK)
                 readCrystal(Dlg.FileName,true,false);
         }
@@ -3306,7 +3303,7 @@ namespace PDIndexer
         private void readCrystal(string fileName, bool showSelectionDialog, bool clearPresentData)
         {
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             var sr = new StreamReader(fileName, Encoding.UTF8);
             while (sr.Peek()>-1)
                 sb.AppendLine(sr.ReadLine());
@@ -3316,8 +3313,8 @@ namespace PDIndexer
             sw.WriteLine(sb);
             sw.Close();
 
-            
-            List<Crystal> crystalArray =  new List<Crystal>();
+
+            var crystalArray = new List<Crystal>();
 
 
             crystalArray.AddRange(ConvertCrystalData.ConvertToCrystalList(fileName));
@@ -3327,7 +3324,7 @@ namespace PDIndexer
 
             if (showSelectionDialog)
             {
-                FormCrystalSelection formCrystalSelection = new FormCrystalSelection();
+                var formCrystalSelection = new FormCrystalSelection();
                 formCrystalSelection.LoadMode = true;
                 formCrystalSelection.SetCrystalList(crystalArray);
 
@@ -3351,7 +3348,7 @@ namespace PDIndexer
             crystalArray[0].FlexibleMode = true;
             for (int j = 0; j < dataSet.DataTableCrystal.Rows.Count; j++)
             {
-                Crystal c = (Crystal)dataSet.DataTableCrystal.Rows[j][1];
+                var c = (Crystal)dataSet.DataTableCrystal.Rows[j][1];
                 if (c.Reserved)
                     for (int i = 0; i < crystalArray.Count; i++)
                     {
@@ -3367,8 +3364,8 @@ namespace PDIndexer
 
             foreach (Crystal c in crystalArray)
             {
-               Bitmap bmp = new Bitmap(22, 22);
-               Graphics g = Graphics.FromImage(bmp);
+               var bmp = new Bitmap(22, 22);
+               var g = Graphics.FromImage(bmp);
                 g.Clear(Color.FromArgb(c.Argb));
                 dataSet.DataTableCrystal.Rows.Add(new object[] { false, c, bmp });
             }
@@ -4090,9 +4087,6 @@ namespace PDIndexer
                 timerBlinkDiffraction.Stop();
         }
     
- 
-
-
     
         public bool StopCycling { get; set; } = false;
 
@@ -4255,15 +4249,12 @@ namespace PDIndexer
 
         private void FormMain_DragDrop(object sender, DragEventArgs e)
         {
-            //コントロール内にドロップされたとき実行される
-            //ドロップされたすべてのファイル名を取得する
-            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            var fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             //ListBoxに追加する
             if (fileName.Length == 1)
             {
                 if (fileName[0].ToLower().EndsWith("xml"))
                     readCrystal(fileName[0], true, false);
-
                 else if (fileName[0].ToLower().EndsWith("cif") || fileName[0].ToLower().EndsWith("amc"))
                 {
                     if (formCrystal.Visible == false)
@@ -4272,9 +4263,7 @@ namespace PDIndexer
 
                 }
                 else
-                {
                     readProfile(fileName);
-                }
             }
         }
 
