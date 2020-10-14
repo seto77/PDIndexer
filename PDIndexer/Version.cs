@@ -28,6 +28,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.387(2020/10/14) Added three EOS for Re (Thank you, Dr. Sakai), and fixed minor bugs." +
             "\r\n ver4.386(2020/09/04) Fixed minor bugs. Thank you, Dr. Farla!" +
             "\r\n ver4.385(2020/09/03) Fixed minor bugs." +
             "\r\n ver4.384(2020/07/30) Added the AMCSD crystal database to 'Crystal Parameter' window." +

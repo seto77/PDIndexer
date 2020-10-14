@@ -2627,13 +2627,13 @@ namespace PDIndexer
             if (formCrystal.crystalControl != null)
             {
                 var c = dataSet.DataTableCrystal.Items[bindingSourceCrystal.Position];
+                c.GetFormulaAndDensity();
                 if (changeCellConstantsOnly)
                     formCrystal.crystalControl.CellConstants = c.CellValue;
                 else
-                {
-                    c.GetFormulaAndDensity();
                     formCrystal.crystalControl.Crystal = c;
-                }
+
+                formCrystal.crystalControl.CalculateEOS();//これを入れておかないと、EOS有効の時に反映されない
             }
         }
 

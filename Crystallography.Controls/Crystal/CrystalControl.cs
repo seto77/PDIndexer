@@ -403,7 +403,17 @@ namespace Crystallography.Controls
                 crystal.Reserved = !crystal.Reserved;
         }
 
-        #region EOSタブの入力設定
+        #region EOS関連
+
+        /// <summary>
+        /// 外部から呼び出されることを想定.
+        /// </summary>
+        public void CalculateEOS()
+        {
+            if (checkBoxUseEOS.Checked)
+                numericBoxPressure.Value = crystal.EOSCondition.GetPressure(crystal.Volume * 1000);
+        }
+
         private void numericBoxEOS_State_ValueChanged(object sender, EventArgs e)
         {
             if (SkipEvent) return;

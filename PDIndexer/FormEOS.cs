@@ -168,6 +168,10 @@ namespace PDIndexer
             double t = numericalTextBoxTemperature.Value;
             //Zha
             numericalTextBoxReZha.Value = EOS.Re_Zha(v0, v, t);
+
+            numericBoxReAnz.Value = EOS.Vinet(352.6, 4.56, 29.467, v);
+            numericBoxReSakai.Value = EOS.Vinet(358, 4.8, 29.47, v);
+            numericBoxReDub.Value = EOS.FourthBirchMurnaghan(342,6.15,-0.029, 29.46/v);
         }
 
 
