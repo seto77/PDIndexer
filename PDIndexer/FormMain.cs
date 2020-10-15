@@ -644,16 +644,18 @@ namespace PDIndexer
                 if (!Directory.EnumerateFileSystemEntries(dir).Any())
                     Directory.Delete(dir);
 
-
             //結晶ファイル読み込み
             try
             {
                 readCrystal(UserAppDataPath + "default.Xml", false, true);
+                if (bindingSourceCrystal.Count == 0)
+                    readCrystal(UserAppDataPath + "initial.Xml", false, true);
             }
             catch
             {
                 readCrystal(UserAppDataPath + "initial.Xml", false, true);
             }
+            
 
             initialDialog.Text = "Now Loading... Binding dataset between forms.";
             //formCrystalとの連携
@@ -727,8 +729,8 @@ namespace PDIndexer
             initialDialog.Text = "Now Loading... Reading registry.";
             if (dataGridViewCrystals.Columns.Count > 0)
             {
-                dataGridViewCrystals_CellMouseClick(new object(), 
-                    new DataGridViewCellMouseEventArgs(1, 2, 0, 0,new MouseEventArgs(MouseButtons.Left,1,0,0,0)));
+                //dataGridViewCrystals_CellMouseClick(new object(), 
+                //    new DataGridViewCellMouseEventArgs(1, 2, 0, 0,new MouseEventArgs(MouseButtons.Left,1,0,0,0)));
                     //dataGridViewCrystals_CellContentClick(new object(), new DataGridViewCellEventArgs(1, 2));
             }
 
@@ -738,11 +740,6 @@ namespace PDIndexer
             comboBoxScale2.SelectedIndex = 0;
 
             initialDialog.Text = "Now Loading... Trying dummy mouse operation.";
-            if (System.Deployment.Application.ApplicationDeployment.IsNetworkDeployed)
-            {
-                programUpdatesToolStripMenuItem.Visible = false;//click onceの場合
-                this.Text += "   Caution! ClickOnce vesion will be not maintained in the future.";
-            }
             initialDialog.Text = "Initializing has been finished successfully. You can close this window.";
             if (initialDialog.AutomaricallyClose)
                 initialDialog.Visible = false;
@@ -4030,7 +4027,7 @@ namespace PDIndexer
         {
             //チェックボックスが直接クリックされた場合か、セレクションを変更せずに結晶の名前をクリックしたとき、現在チェック状況を逆転させる。
             //if(sender != formFitting)
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
+            if (e.Button == MouseButtons.Left)
             {
                 if ((e.ColumnIndex == 0 && e.RowIndex >= 0) || (e.ColumnIndex != 0 && e.RowIndex >= 0 && SelectedCrysatlIndex == bindingSourceCrystal.Position))
                     ((DataRowView)bindingSourceCrystal.Current).Row[0] = !(bool)((DataRowView)bindingSourceCrystal.Current).Row[0];
@@ -4066,6 +4063,7 @@ namespace PDIndexer
 
             SetFormCrystal();
             SetFormEOS();
+            formFitting.ChangeCrystalFromMainForm();
             Draw();
 
             formFitting.SetPlanes(true);

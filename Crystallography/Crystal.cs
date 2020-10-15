@@ -434,6 +434,7 @@ namespace Crystallography
             RotationMatrix = new Matrix3D(rot);
             GetFormulaAndDensity();
             Bonds = bonds;
+            
         }
 
 
@@ -448,7 +449,8 @@ namespace Crystallography
           (string Note, string Authors, string Journal, string Title) reference,
           Bonds[] bonds,
           Bound[] bounds,
-          LatticePlane[] latticePlane)
+          LatticePlane[] latticePlane,
+          EOS eos)
           : this(cell, err, symmetrySeriesNumber, name, col, rot, atoms,reference,bonds)
         {
           
@@ -458,6 +460,8 @@ namespace Crystallography
             LatticePlanes = latticePlane;
             for (int i = 0; i < LatticePlanes.Length; i++)
                 LatticePlanes[i].Reset(this);
+
+            EOSCondition = eos;
         }
 
 

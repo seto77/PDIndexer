@@ -9,7 +9,6 @@ namespace PDIndexer
         static public string Software =
             "PDIndexer"
             ;
-
         static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
         static public string RecentHistory
         {
@@ -28,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.388(2020/10/15) Added new EOS foumulae (4th BM, AP2, Keane)." +
             "\r\n ver4.387(2020/10/14) Added three EOS for Re (Thank you, Dr. Sakai), and fixed minor bugs." +
             "\r\n ver4.386(2020/09/04) Fixed minor bugs. Thank you, Dr. Farla!" +
             "\r\n ver4.385(2020/09/03) Fixed minor bugs." +

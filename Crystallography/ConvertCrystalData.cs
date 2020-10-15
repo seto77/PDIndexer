@@ -34,50 +34,31 @@ namespace Crystallography
             Crystal[] cry = new Crystal[0];
             if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
             {
-                #region old code
-                //プロパティ文字列が変更にたいする対処
-                /*    try
+				#region old code
+				//プロパティ文字列が変更にたいする対処
+				try
+				{
+					var reader = new StreamReader(filename, Encoding.GetEncoding("Shift_JIS"));
+					var strList = new List<string>();
+					string tempstr;
+					while ((tempstr = reader.ReadLine()) != null)
 					{
-						StreamReader reader = new StreamReader(filename, Encoding.GetEncoding("Shift_JIS"));
-						List<string> strList = new List<string>();
-						string tempstr;
-						while ((tempstr = reader.ReadLine()) != null)
-						{
-							// "<" あるいは "</" の直後を大文字に変換
-							int index = 0;
-
-							index = tempstr.IndexOf("<");
-							if (index >= 0 && tempstr.Length > index + 1)
-							{
-								string targetString = tempstr.Substring(index + 1, 1);
-								tempstr = tempstr.Replace("<" + targetString, "<" + targetString.ToUpper());
-							}
-
-							index = tempstr.IndexOf("</");
-							if (index >= 0 && tempstr.Length > index + 2)
-							{
-								string targetString = tempstr.Substring(index + 2, 1);
-								tempstr = tempstr.Replace("</" + targetString, "</" + targetString.ToUpper());
-							}
-
-							tempstr = tempstr.Replace("Alfa", "Alpha");
-
-							//if(tempstr.IndexOf("")>0)
-
-							strList.Add(tempstr);
-						}
-
-						reader.Close();
-
-						//filename = filename + "_";//検証のためファイルネーム変更
-
-						StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("Shift_JIS"));
-						for (int i = 0; i < strList.Count; i++)
-							writer.WriteLine(strList[i]);
-						writer.Flush();
-						writer.Close();
+						tempstr = tempstr.Replace("Kprime0", "Kp0");
+						tempstr = tempstr.Replace("Birch_Murnaghan", "BM3");
+						strList.Add(tempstr);
 					}
-					catch { return null; };*/
+
+					reader.Close();
+
+					//filename = filename + "_";//検証のためファイルネーム変更
+
+					StreamWriter writer = new StreamWriter(filename, false, Encoding.GetEncoding("Shift_JIS"));
+					for (int i = 0; i < strList.Count; i++)
+						writer.WriteLine(strList[i]);
+					writer.Flush();
+					writer.Close();
+				}
+				catch { return null; };
                 //プロパティ文字列が変更にたいする対処　ここまで
                 #endregion old code
                 try
