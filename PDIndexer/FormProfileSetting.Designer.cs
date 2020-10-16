@@ -1379,7 +1379,6 @@ namespace PDIndexer
         private Crystallography.Controls.HorizontalAxisUserControl xAxisUserControl;
         private System.Windows.Forms.Button buttonChangeSourceXAxis;
         private System.Windows.Forms.Button buttonBackgroundAutoDetectBG;
-        private System.Windows.Forms.TextBox textBoxProfileName;
         private System.Windows.Forms.NumericUpDown numericUpDownLineWidth;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -1450,7 +1449,6 @@ namespace PDIndexer
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemSaveMaskingRange;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReadMaskingRange;
         private System.Windows.Forms.Label label24;
-        private System.Windows.Forms.TextBox textBoxComment;
         private System.Windows.Forms.Label label22;
         public System.Windows.Forms.TextBox textBoxOutputFilename;
         public System.Windows.Forms.RadioButton radioButtonDivision;
@@ -1480,5 +1478,7 @@ namespace PDIndexer
         private System.Windows.Forms.Panel panelBackgroundSubtraction;
         private System.Windows.Forms.Panel panelNormarizeIntensity;
         private System.Windows.Forms.Button buttonTwoThetaOffsetReset;
+        public System.Windows.Forms.TextBox textBoxComment;
+        public System.Windows.Forms.TextBox textBoxProfileName;
     }
 }

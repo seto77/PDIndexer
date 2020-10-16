@@ -4361,8 +4361,6 @@ namespace PDIndexer
         }
         #endregion
 
-
-
         /// <summary>
         /// PDIのマクロ操作を提供する
         /// </summary>
@@ -4372,6 +4370,7 @@ namespace PDIndexer
             
             public DrawingClass Drawing;
             public ProfileListClass ProfileList;
+            public ProfileClass Profile;
             public ProfileOperatorClass ProfileOperator;
             public FileClass File;
             public CrystalListClass CrystalList;
@@ -4383,6 +4382,7 @@ namespace PDIndexer
                 main = _main;
                 Drawing = new DrawingClass(this);
                 ProfileList = new ProfileListClass(this);
+                Profile = new ProfileClass(this);
                 ProfileOperator = new ProfileOperatorClass(this);
                 File = new FileClass(this);
                 CrystalList = new CrystalListClass(this);
@@ -4390,10 +4390,10 @@ namespace PDIndexer
                 Fitting = new FittingClass(this);
                 
                 help.Add("PDI.Obj[] # Get object sent from other program.");
+                help.Add("PDI.Sleep(int millisec) # Sleep.");
             }
 
             public void Sleep(int millisec) => Thread.Sleep(millisec);
-
             public object[] Obj { get; set; }
 
             public class FileClass : MacroSub
@@ -4412,6 +4412,8 @@ namespace PDIndexer
                     p.help.Add("PDI.File.ReadCrystals(string filename) # Read crystal data. \r\n If filename is omitted, selection dialog will open.");
                     p.help.Add("PDI.File.SaveCrystals(string filename) # Save crystal data. \r\n If filename is omitted, selection dialog will open.");
                     p.help.Add("PDI.File.SaveMetafile(string filename) # Save metafile object. \r\n If filename is omitted, selection dialog will open.");
+                  
+                    p.help.Add("PDI.File.SaveText(string text, string filename) # Save textfile object. \r\n If filename is omitted, selection dialog will open.");
                 }
 
                 public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
@@ -4489,6 +4491,22 @@ namespace PDIndexer
                         p.main.saveMetafile(filename);
                 }
 
+                public void SaveText(string text, string filename = "") { Execute(new Action(() => saveText(text, filename))); }
+                private void saveText(string text, string filename = "")
+                {
+                    if (filename == "")
+                    {
+                        var dlg = new SaveFileDialog() { Filter="*.txt|*.txt"};
+                        if (dlg.ShowDialog() != DialogResult.OK)
+                            return;
+                        filename = dlg.FileName;
+                    }
+                    var sw = new StreamWriter(filename);
+                    sw.Write(text);
+                    sw.Flush();
+                    sw.Close();
+                }
+
             }
 
             public class DrawingClass : MacroSub
@@ -4526,6 +4544,85 @@ namespace PDIndexer
                     StartX = xStart; EndX = xEnd; StartY = yStart; EndY = yEnd;
                 }
             }
+            public class CrystalClass : MacroSub
+            {
+                private readonly Macro p;
+                public CrystalClass(Macro _p) : base(_p.main)
+                {
+                    p = _p;
+                    p.help.Add("PDI.Crystal.Name # Get/Set the name of the selected crystal.");
+                    p.help.Add("PDI.Crystal.CellVolume # Get the cell volume (Å^3) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.Pressure(float CellVolume) # Get the pressure (GPa) of the selected crystal by EOS.");
+                    p.help.Add("PDI.Crystal.CellA # Get/Set the cell constant a (Å) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.CellB # Get/Set the cell constant b (Å) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.CellC # Get/Set the cell constant c (Å) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.CellAlpha # Get/Set the cell constant alpha (deg) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.CellBeta # Get/Set the cell constant beta (deg) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.CellGamma # Get/Set the cell constant gamma (deg) of the selected crystal.");
+                }
+
+                private Crystal SelectedCrystal => (Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1];
+                public double CellVolume => Execute(() => SelectedCrystal.Volume * 1000);
+                public double Pressure(double volume = 0) => Execute<double>(new Func<double>(()
+                    => SelectedCrystal.EOSCondition.GetPressure(volume == 0 ? SelectedCrystal.Volume * 1000 : volume)));
+
+                public string Name
+                {
+                    get => Execute(() => SelectedCrystal.Name);
+                    set => Execute(new Action(() => p.main.formCrystal.crystalControl.Name = value));
+                }
+
+                #region 格子定数
+                public double CellA
+                {
+                    set => Execute(new Action(() =>changeCellConstants(0, value)));
+                    get => Execute(() => SelectedCrystal.A * 10);
+                }
+                public double CellB
+                {
+                    set => Execute(new Action(() => changeCellConstants(1, value)));
+                    get => Execute(() => SelectedCrystal.B * 10);
+                }
+                public double CellC
+                {
+                    set => Execute(new Action(() => changeCellConstants(2, value)));
+                    get => Execute(() => SelectedCrystal.C * 10);
+                }
+                public double CellAlpha
+                {
+                    set => Execute(new Action(() => changeCellConstants(3, value)));
+                    get => Execute(() => SelectedCrystal.Alpha / Math.PI * 180);
+                }
+                public double CellBeta
+                {
+                    set => Execute(new Action(() => changeCellConstants(4, value)));
+                    get => Execute(() => SelectedCrystal.Beta / Math.PI * 180);
+                }
+                public double CellGamma
+                {
+                    set => Execute(new Action(() => changeCellConstants(5, value)));
+                    get => Execute(() => SelectedCrystal.Gamma / Math.PI * 180);
+                }
+
+                private void changeCellConstants(int index, double val)
+                {
+                    if (index == 0) SelectedCrystal.A = val / 10;
+                    if (index == 1) SelectedCrystal.B = val / 10;
+                    if (index == 2) SelectedCrystal.C = val / 10;
+                    if (index == 3) SelectedCrystal.Alpha = val / 180.0 * Math.PI;
+                    if (index == 4) SelectedCrystal.Beta = val / 180.0 * Math.PI;
+                    if (index == 5) SelectedCrystal.Gamma = val / 180.0 * Math.PI;
+                    
+                    SelectedCrystal.SetAxis();
+                    SelectedCrystal.SetPlanes();
+                    p.main.SetFormEOS();
+                    p.main.SetFormCrystal(true);
+                    p.main.InitializeCrystalPlane();
+                    p.main.Draw();
+                }
+                #endregion
+
+            }
 
             public class CrystalListClass:MacroSub
             {
@@ -4539,6 +4636,7 @@ namespace PDIndexer
                     p.help.Add("PDI.CrystalList.Select(int index) # Set index of a selected crystal.");
                     p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'.");
                     p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
+                    p.help.Add("PDI.CrystalList.Add() # Add the crystal to 'index'.");
 
                 }
                 public int Count => Execute(() => p.main.bindingSourceCrystal.Count);
@@ -4579,23 +4677,27 @@ namespace PDIndexer
                 public double GetCellVolume=> Execute(() => p.main.bindingSourceCrystal.Count);
             }
 
-            public class CrystalClass : MacroSub
+            public class ProfileClass : MacroSub
             {
                 private readonly Macro p;
-                public CrystalClass(Macro _p) : base(_p.main)
+                public ProfileClass(Macro _p) : base(_p.main)
                 {
                     p = _p;
-                    p.help.Add("PDI.Crystal.CellVolume # Get the cell volume (Å^3) of the selected crystal.");
-                    p.help.Add("PDI.Crystal.Pressure # Get the pressure (GPa) of the selected crystal by EOS.");
-                    
+                    p.help.Add("PDI.Profile.Comment #  Set/get the comment of the selected profile.");
+                    p.help.Add("PDI.Profile.Name #  Set/get the comment of the selected profile.");
+                }
+                public string Comment
+                {
+                    get => Execute(() => p.main.formProfile.textBoxComment.Text);
+                    set => Execute(new Action(() => p.main.formProfile.textBoxComment.Text = value));
                 }
 
-                private Crystal SelectedCrystal => (Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1];
-                public double CellVolume => Execute(() => SelectedCrystal.Volume * 1000);
-                public double Pressure => Execute(() => SelectedCrystal.EOSCondition.GetPressure(SelectedCrystal.Volume * 1000));
-
+                public string Name
+                {
+                    get => Execute(() => p.main.formProfile.textBoxProfileName.Text);
+                    set => Execute(new Action(() => p.main.formProfile.textBoxProfileName.Text = value));
+                }
             }
-
 
             public class ProfileOperatorClass: MacroSub
             {
@@ -4672,7 +4774,7 @@ namespace PDIndexer
                 public ProfileListClass(Macro _p) : base(_p.main)
                 {
                     p = _p;
-                    p.help.Add("PDI.ProfileList.Conut # Get total count of profiles.");
+                    p.help.Add("PDI.ProfileList.Count # Get total count of profiles.");
                     p.help.Add("PDI.ProfileList.SelectedName # Get name of a selected profile.");
                     p.help.Add("PDI.ProfileList.SelectedIndex # Set/get index of a selected profile.");
                     p.help.Add("PDI.ProfileList.Select(int index) # Set index of a selected profile.");
@@ -4747,14 +4849,13 @@ namespace PDIndexer
                     p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
                     p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
                     p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
+                   
                 }
 
                 public void Apply() => Execute(() => p.main.formFitting.buttonConfirm_Click(new object(), new EventArgs()));
 
-
-
-                public void Check(int n) { Check(n, true); }
-                public void Uncheck(int n) { Check(n, false); }
+                public void Check(int n) => Check(n, true);
+                public void Uncheck(int n) => Check(n, false);
 
                 public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
                 private void check(int n, bool checkState)
@@ -4765,6 +4866,8 @@ namespace PDIndexer
                         p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
                     }
                 }
+
+           
             }
 
 

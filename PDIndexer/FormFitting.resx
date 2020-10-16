@@ -140,11 +140,11 @@
   <data name="numericBoxEffectiveDigit.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 23</value>
   </data>
-  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 142</value>
+  <data name="&gt;&gt;textBoxB_err.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
-    <value>25</value>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>23</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonApplyFunctionToAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
@@ -165,14 +165,14 @@
   <data name="buttonCopyCellConstantsToClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;radioButtonBetweenCrystals.Name" xml:space="preserve">
-    <value>radioButtonBetweenCrystals</value>
-  </data>
   <data name="label21.Text" xml:space="preserve">
     <value>Å</value>
   </data>
   <data name="buttonSaveTableAsCSV.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 25</value>
+  </data>
+  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 22</value>
   </data>
   <data name="&gt;&gt;textBoxRemovedProfileName.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -186,9 +186,6 @@
   <data name="&gt;&gt;buttonConfirm.ZOrder" xml:space="preserve">
     <value>31</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>312, 299</value>
   </data>
@@ -201,11 +198,8 @@
   <data name="buttonCopyCellConstantsToClipboard.Location" type="System.Drawing.Point, System.Drawing">
     <value>137, 161</value>
   </data>
-  <data name="&gt;&gt;textBoxV.Name" xml:space="preserve">
-    <value>textBoxV</value>
-  </data>
-  <data name="buttonSendToCellFinder.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
+  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
   </data>
   <data name="groupBox5.ToolTip" xml:space="preserve">
     <value />
@@ -234,6 +228,9 @@
   <data name="&gt;&gt;weightDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label28.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
@@ -243,35 +240,23 @@
   <data name="&gt;&gt;label4.Parent" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="checkBoxUseInitialFWHM.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="buttonResetTakeoffAngle.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="&gt;&gt;label7.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="PeakColor.Width" type="System.Int32, mscorlib">
-    <value>15</value>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
-  <data name="&gt;&gt;buttonResetTakeoffAngle.ZOrder" xml:space="preserve">
-    <value>29</value>
-  </data>
-  <data name="buttonSendToCellFinder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="label17.Text" xml:space="preserve">
     <value>±</value>
   </data>
-  <data name="label27.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxPatternDecomposition.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Remove peaks</value>
   </data>
   <data name="&gt;&gt;label13.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -279,8 +264,8 @@
   <data name="radioButtonPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
     <value>155, 19</value>
   </data>
-  <data name="&gt;&gt;panelFWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxEffectiveDigit.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="radioButtonPseudoVoigt.TabIndex" type="System.Int32, mscorlib">
     <value>46</value>
@@ -288,14 +273,14 @@
   <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
     <value>17</value>
   </data>
-  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 101</value>
-  </data>
   <data name="radioButtonSplitPearson.Text" xml:space="preserve">
     <value>Split Pearson VII</value>
   </data>
   <data name="buttonConfirm.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewPlaneList.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="&gt;&gt;radioButtonEachCrystal.Parent" xml:space="preserve">
     <value>flowLayoutPanelPatternDecomposition</value>
@@ -315,8 +300,11 @@
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label22.Name" xml:space="preserve">
-    <value>label22</value>
+  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="buttonSendToCellFinder.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="radioButtonSplitPseudoVoigt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -327,17 +315,11 @@
   <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
     <value>16</value>
   </data>
-  <data name="&gt;&gt;Check.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="radioButtonSplitPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 19</value>
   </data>
-  <data name="&gt;&gt;textBoxBeta_err.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 61</value>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonSplitPseudoVoigt.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 38</value>
@@ -354,17 +336,20 @@
   <data name="label8.Text" xml:space="preserve">
     <value>a</value>
   </data>
+  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 123</value>
+  </data>
   <data name="buttonResetTakeoffAngle.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="&gt;&gt;textBoxC.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
   <data name="&gt;&gt;label23.Name" xml:space="preserve">
     <value>label23</value>
+  </data>
+  <data name="textBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
   </data>
   <data name="&gt;&gt;radioButtonEachCrystal.Name" xml:space="preserve">
     <value>radioButtonEachCrystal</value>
@@ -384,11 +369,11 @@
   <data name="groupBox4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Left</value>
   </data>
-  <data name="flowLayoutPanelPatternDecomposition.TabIndex" type="System.Int32, mscorlib">
-    <value>62</value>
+  <data name="&gt;&gt;textBoxGamma_err.Name" xml:space="preserve">
+    <value>textBoxGamma_err</value>
   </data>
-  <data name="textBoxRemovedProfileName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 23</value>
+  <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
+    <value>Set effective digit</value>
   </data>
   <data name="xDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>X</value>
@@ -405,26 +390,35 @@
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 19</value>
   </data>
-  <data name="&gt;&gt;radioButtonSymmetricPearson.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBoxGamma_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
+  <data name="&gt;&gt;buttonApplyFunctionToAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
     <value>219, 142</value>
   </data>
-  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;bindingSourceCrystals.Name" xml:space="preserve">
+    <value>bindingSourceCrystals</value>
   </data>
   <data name="label9.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
     <value>15</value>
   </data>
   <data name="radioButtonSplitPearson.Location" type="System.Drawing.Point, System.Drawing">
     <value>169, 61</value>
+  </data>
+  <data name="textBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
   </data>
   <data name="copyToClipboradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>168, 22</value>
@@ -477,14 +471,14 @@
   <data name="textBoxBeta.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 100</value>
   </data>
+  <data name="&gt;&gt;buttonApplyRangeToAll.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="&gt;&gt;label26.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;textBoxA_err.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormFitting</value>
@@ -495,6 +489,9 @@
   <data name="R.Width" type="System.Int32, mscorlib">
     <value>39</value>
   </data>
+  <data name="&gt;&gt;checkBoxUseInitialFWHM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;label14.Name" xml:space="preserve">
     <value>label14</value>
   </data>
@@ -502,6 +499,9 @@
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxBeta.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBoxAlpha.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
@@ -516,26 +516,20 @@
   <data name="textBoxA.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
-  <data name="&gt;&gt;textBoxC.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="label4.Text" xml:space="preserve">
+    <value>New profile name</value>
+  </data>
+  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="&gt;&gt;label27.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="radioButtonSymmetricPearson.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 61</value>
-  </data>
   <data name="&gt;&gt;flowLayoutPanelPatternDecomposition.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="textBoxAlpha_err.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="&gt;&gt;textBoxV_err.ZOrder" xml:space="preserve">
     <value>6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
@@ -561,8 +555,8 @@
   <data name="&gt;&gt;textBoxGamma.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;buttonRemovePeaks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;Check.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBoxAlpha.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 19</value>
@@ -573,11 +567,14 @@
   <data name="textBoxB.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
   </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
   <data name="buttonSendToCellFinder.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Bottom, Right</value>
   </data>
-  <data name="&gt;&gt;bindingSourceCrystals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;buttonConfirm.Name" xml:space="preserve">
+    <value>buttonConfirm</value>
   </data>
   <data name="label17.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -600,6 +597,9 @@
   <data name="label22.Text" xml:space="preserve">
     <value>Å</value>
   </data>
+  <data name="&gt;&gt;textBoxAlpha.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="buttonResetTakeoffAngle.Size" type="System.Drawing.Size, System.Drawing">
     <value>120, 25</value>
   </data>
@@ -621,26 +621,17 @@
   <data name="label13.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;dataGridViewCrystals.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
   <data name="radioButtonSymmetricPearson.Text" xml:space="preserve">
     <value>Symmetric Pearson VII</value>
   </data>
   <data name="checkBoxUseInitialFWHM.Text" xml:space="preserve">
     <value>Initial FWHM</value>
   </data>
-  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
-    <value>23</value>
-  </data>
   <data name="textBoxA_err.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
   <data name="&gt;&gt;textBoxBeta_err.Name" xml:space="preserve">
     <value>textBoxBeta_err</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseInitialFWHM.ZOrder" xml:space="preserve">
-    <value>3</value>
   </data>
   <data name="label22.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -666,17 +657,14 @@
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
     <value>24</value>
   </data>
-  <data name="label2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="label25.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 8.25pt</value>
   </data>
   <data name="radioButtonSymmetricPearson.Size" type="System.Drawing.Size, System.Drawing">
     <value>143, 19</value>
   </data>
-  <data name="numericBoxEffectiveDigit.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="&gt;&gt;buttonApplyFunctionToAll.Parent" xml:space="preserve">
+    <value>groupBox2</value>
   </data>
   <data name="flowLayoutPanelPatternDecomposition.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -689,9 +677,6 @@
   </data>
   <data name="label29.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
-  </data>
-  <data name="radioButtonEachCrystal.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;label23.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -711,8 +696,8 @@
   <data name="copyToClipboradToolStripMenuItem.Text" xml:space="preserve">
     <value>Copy to clipborad</value>
   </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
     <value>38</value>
@@ -723,8 +708,8 @@
   <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="numericBoxEffectiveDigit.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
   </data>
   <data name="textBoxA_err.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 18</value>
@@ -732,11 +717,17 @@
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
+  <data name="textBoxAlpha.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
   <data name="&gt;&gt;buttonResetTakeoffAngle.Name" xml:space="preserve">
     <value>buttonResetTakeoffAngle</value>
   </data>
   <data name="numericUpDownInitialFWHM.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
+  </data>
+  <data name="&gt;&gt;textBoxC.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="buttonSaveTableAsCSV.Text" xml:space="preserve">
     <value>Save as CSV</value>
@@ -758,9 +749,6 @@
   </data>
   <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
     <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;panelFWHM.ZOrder" xml:space="preserve">
-    <value>2</value>
   </data>
   <data name="numericBoxEffectiveDigit.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -785,9 +773,6 @@
   </data>
   <data name="radioButtonBetweenCrystals.Size" type="System.Drawing.Size, System.Drawing">
     <value>112, 19</value>
-  </data>
-  <data name="&gt;&gt;bindingSourceCrystals.Name" xml:space="preserve">
-    <value>bindingSourceCrystals</value>
   </data>
   <data name="label20.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -816,8 +801,8 @@
   <data name="&gt;&gt;label17.Name" xml:space="preserve">
     <value>label17</value>
   </data>
-  <data name="buttonRemovePeaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 23</value>
+  <data name="&gt;&gt;buttonCopyTableToClipboard.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
   <data name="&gt;&gt;textBoxB_err.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -825,14 +810,14 @@
   <data name="radioButtonBetweenCrystals.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="radioButtonPseudoVoigt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
   </data>
-  <data name="textBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 80</value>
+  <data name="textBoxRemovedProfileName.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBoxAlpha.ToolTip" xml:space="preserve">
     <value />
@@ -845,9 +830,6 @@
   </data>
   <data name="&gt;&gt;textBoxAlpha_err.Name" xml:space="preserve">
     <value>textBoxAlpha_err</value>
-  </data>
-  <data name="textBoxB.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="Check.HeaderText" xml:space="preserve">
     <value>Check</value>
@@ -868,8 +850,8 @@
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
   </data>
-  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 87</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>±</value>
@@ -880,8 +862,14 @@
   <data name="&gt;&gt;textBoxBeta.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>76, 5</value>
+  </data>
   <data name="&gt;&gt;textBoxBeta_err.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="label29.ToolTip" xml:space="preserve">
     <value />
@@ -907,8 +895,8 @@
   <data name="&gt;&gt;label25.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="buttonSendToCellFinder.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 57</value>
   </data>
   <data name="&gt;&gt;buttonCopyCellConstantsToClipboard.Name" xml:space="preserve">
     <value>buttonCopyCellConstantsToClipboard</value>
@@ -916,8 +904,8 @@
   <data name="&gt;&gt;buttonCopyTableToClipboard.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 16</value>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
   </data>
   <data name="textBoxB_err.TabIndex" type="System.Int32, mscorlib">
     <value>9</value>
@@ -927,9 +915,6 @@
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 16</value>
-  </data>
-  <data name="textBoxGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
   </data>
   <data name="&gt;&gt;label12.Name" xml:space="preserve">
     <value>label12</value>
@@ -943,8 +928,8 @@
   <data name="&gt;&gt;textBoxBeta_err.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="R.HeaderText" xml:space="preserve">
-    <value>R</value>
+  <data name="&gt;&gt;panelFWHM.Name" xml:space="preserve">
+    <value>panelFWHM</value>
   </data>
   <data name="buttonApplyFunctionToAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 24</value>
@@ -994,26 +979,17 @@
   <data name="&gt;&gt;label13.Name" xml:space="preserve">
     <value>label13</value>
   </data>
-  <data name="buttonSaveTableAsCSV.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
   <data name="textBoxC_err.Size" type="System.Drawing.Size, System.Drawing">
     <value>85, 19</value>
   </data>
-  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="dataGridViewPlaneList.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>22</value>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="&gt;&gt;label16.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;buttonApplyRangeToAll.Name" xml:space="preserve">
     <value>buttonApplyRangeToAll</value>
-  </data>
-  <data name="radioButtonSimple.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 19</value>
   </data>
   <data name="label27.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -1027,6 +1003,9 @@
   <data name="textBoxA.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
+  <data name="radioButtonEachCrystal.TabIndex" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
   <data name="&gt;&gt;textBoxB_err.Name" xml:space="preserve">
     <value>textBoxB_err</value>
   </data>
@@ -1035,6 +1014,9 @@
   </data>
   <data name="&gt;&gt;groupBox5.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>514, 299</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelPatternDecomposition.Type" xml:space="preserve">
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1053,9 +1035,6 @@
   </data>
   <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
     <value>Apply to all</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>New profile name</value>
   </data>
   <data name="buttonCopyCellConstantsToClipboard.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1081,6 +1060,9 @@
   <data name="&gt;&gt;checkBoxPatternDecomposition.Name" xml:space="preserve">
     <value>checkBoxPatternDecomposition</value>
   </data>
+  <data name="buttonApplyRangeToAll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 24</value>
+  </data>
   <data name="label15.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -1096,14 +1078,17 @@
   <data name="&gt;&gt;flowLayoutPanelPatternDecomposition.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;buttonApplyFWHMToAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="&gt;&gt;functionDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>functionDataGridViewTextBoxColumn</value>
   </data>
   <data name="label11.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="functionDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>58</value>
   </data>
   <data name="textBoxA.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1114,8 +1099,8 @@
   <data name="&gt;&gt;textBoxC_err.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;useForCalcDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>useForCalcDataGridViewCheckBoxColumn</value>
+  <data name="buttonCopyCellConstantsToClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="contextMenuStrip1.ToolTip" xml:space="preserve">
     <value />
@@ -1129,8 +1114,11 @@
   <data name="&gt;&gt;buttonApplyFWHMToAll.Parent" xml:space="preserve">
     <value>panelFWHM</value>
   </data>
-  <data name="textBoxA.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
+  <data name="radioButtonSimple.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 19</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownInitialFWHM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label26.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1147,9 +1135,6 @@
   <data name="buttonApplyFunctionToAll.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 12</value>
   </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
   <data name="textBoxC.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 59</value>
   </data>
@@ -1164,9 +1149,6 @@
   </data>
   <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Italic</value>
-  </data>
-  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>8</value>
   </data>
   <data name="label27.Size" type="System.Drawing.Size, System.Drawing">
     <value>12, 16</value>
@@ -1183,14 +1165,11 @@
   <data name="&gt;&gt;calcXDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>calcXDataGridViewTextBoxColumn</value>
   </data>
+  <data name="flowLayoutPanelPatternDecomposition.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
   <data name="label19.Text" xml:space="preserve">
     <value>±</value>
-  </data>
-  <data name="radioButtonSplitPearson.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;textBoxB_err.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="&gt;&gt;label12.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1228,8 +1207,8 @@
   <data name="textBoxRemovedProfileName.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
   </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 16</value>
+  <data name="&gt;&gt;dataGridViewPlaneList.Name" xml:space="preserve">
+    <value>dataGridViewPlaneList</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Optimized cell constants</value>
@@ -1252,8 +1231,8 @@
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>107, 103</value>
   </data>
-  <data name="&gt;&gt;radioButtonPseudoVoigt.Name" xml:space="preserve">
-    <value>radioButtonPseudoVoigt</value>
+  <data name="buttonRemovePeaks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 23</value>
   </data>
   <data name="label28.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Italic</value>
@@ -1282,11 +1261,17 @@
   <data name="textBoxA.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 19</value>
   </data>
+  <data name="buttonCopyTableToClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="&gt;&gt;label18.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
   <data name="dataGridViewPlaneList.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
+    <value>186, 19</value>
   </data>
   <data name="textBoxAlpha.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>Disable</value>
@@ -1297,6 +1282,9 @@
   <data name="label22.Size" type="System.Drawing.Size, System.Drawing">
     <value>16, 16</value>
   </data>
+  <data name="R.HeaderText" xml:space="preserve">
+    <value>R</value>
+  </data>
   <data name="&gt;&gt;hKLDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -1306,8 +1294,8 @@
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
   </data>
-  <data name="buttonSendToCellFinder.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="checkBoxPatternDecomposition.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 122</value>
@@ -1315,8 +1303,8 @@
   <data name="&gt;&gt;label22.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="label26.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
   </data>
   <data name="label22.ToolTip" xml:space="preserve">
     <value />
@@ -1324,8 +1312,11 @@
   <data name="label19.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Fitting option</value>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="textBoxC_err.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 58</value>
@@ -1351,29 +1342,734 @@
   <data name="fWHMDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>69</value>
   </data>
-  <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
   <data name="&gt;&gt;label23.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="textBoxBeta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
+  <data name="&gt;&gt;buttonSaveTableAsCSV.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;textBoxA_err.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="textBoxC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="&gt;&gt;numericUpDownSearchRange.Name" xml:space="preserve">
-    <value>numericUpDownSearchRange</value>
+  <data name="label25.Location" type="System.Drawing.Point, System.Drawing">
+    <value>210, 101</value>
   </data>
   <data name="textBoxV.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>101, 15</value>
+  </data>
+  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSimple.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Send d-values</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>31, 16</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.TabIndex" type="System.Int32, mscorlib">
+    <value>42</value>
+  </data>
+  <data name="buttonResetTakeoffAngle.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
+    <value>Copy to Clipboard</value>
+  </data>
+  <data name="&gt;&gt;radioButtonPseudoVoigt.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dataGridViewCrystals.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 16</value>
+  </data>
+  <data name="textBoxGamma_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
+    <value>16, 16</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEffectiveDigit.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonEachCrystal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 19</value>
+  </data>
+  <data name="textBoxV.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUseInitialFWHM.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="textBoxGamma_err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
+  </data>
+  <data name="hKLDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="numericUpDownSearchRange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 17</value>
+  </data>
+  <data name="&gt;&gt;textBoxGamma_err.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="textBoxAlpha_err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
+  </data>
+  <data name="&gt;&gt;copyToClipboradToolStripMenuItem.Name" xml:space="preserve">
+    <value>copyToClipboradToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;buttonSendToCellFinder.Name" xml:space="preserve">
+    <value>buttonSendToCellFinder</value>
+  </data>
+  <data name="&gt;&gt;buttonApplyFWHMToAll.Name" xml:space="preserve">
+    <value>buttonApplyFWHMToAll</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSplitPseudoVoigt.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;fWHMDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxBeta_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPatternDecomposition.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>unit</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="&gt;&gt;buttonResetTakeoffAngle.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonEachCrystal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxV_err.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridViewPlaneList.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>Set effective digit</value>
+  </data>
+  <data name="&gt;&gt;buttonApplyFWHMToAll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridViewPlaneList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>61</value>
+  </data>
+  <data name="buttonConfirm.Text" xml:space="preserve">
+    <value>Apply to the crystal</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimple.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxC.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label12.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSymmetricPearson.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="panelFWHM.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="label7.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSymmetricPearson.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="xErrDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>56</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Location" type="System.Drawing.Point, System.Drawing">
+    <value>677, 0</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="label17.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="&gt;&gt;textBoxB.ZOrder" xml:space="preserve">
+    <value>26</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSplitPearson.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="textBoxGamma.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxAlpha.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="&gt;&gt;buttonResetTakeoffAngle.ZOrder" xml:space="preserve">
+    <value>29</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>216, 14</value>
+  </data>
+  <data name="&gt;&gt;useForCalcDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>useForCalcDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;textBoxC_err.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="textBoxB_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;textBoxC.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;textBoxB.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyTableToClipboard.Name" xml:space="preserve">
+    <value>buttonCopyTableToClipboard</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="radioButtonSymmetricPearson.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="xDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>39</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBoxRemovedProfileName.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEffectiveDigit.Name" xml:space="preserve">
+    <value>numericBoxEffectiveDigit</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxV_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>25</value>
+  </data>
+  <data name="buttonConfirm.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="panelFWHM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 40</value>
+  </data>
+  <data name="weightDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>70</value>
+  </data>
+  <data name="&gt;&gt;textBoxAlpha.Name" xml:space="preserve">
+    <value>textBoxAlpha</value>
+  </data>
+  <data name="&gt;&gt;numericBoxEffectiveDigit.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;buttonSendToCellFinder.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
+    <value>18</value>
+  </data>
+  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonConfirm.Size" type="System.Drawing.Size, System.Drawing">
+    <value>119, 25</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>20</value>
+  </data>
+  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxBeta.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;textBoxC_err.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>±</value>
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;textBoxBeta_err.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="&gt;&gt;textBoxAlpha_err.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="textBoxV_err.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimple.Name" xml:space="preserve">
+    <value>radioButtonSimple</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>106, 0</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxB_err.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;functionDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSendToCellFinder.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonSaveTableAsCSV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="textBoxB.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;textBoxGamma.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxV_err.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxBeta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PeakColor.Width" type="System.Int32, mscorlib">
+    <value>15</value>
+  </data>
+  <data name="&gt;&gt;bindingSourcePlanes.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="textBoxGamma_err.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBetweenCrystals.Parent" xml:space="preserve">
+    <value>flowLayoutPanelPatternDecomposition</value>
+  </data>
+  <data name="buttonConfirm.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 161</value>
+  </data>
+  <data name="label25.Text" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 299</value>
+  </data>
+  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 83</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="&gt;&gt;textBoxAlpha_err.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>312, 415</value>
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;buttonSendToCellFinder.Parent" xml:space="preserve">
+    <value>groupBox5</value>
+  </data>
+  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>93, 16</value>
+  </data>
+  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;textBoxA_err.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;intensityDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>intensityDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="textBoxA_err.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;hKLDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>hKLDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
+    <value>Apply to all</value>
+  </data>
+  <data name="radioButtonSymmetricPearson.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSymmetricPearson.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSymmetricPearson.Name" xml:space="preserve">
+    <value>radioButtonSymmetricPearson</value>
+  </data>
+  <data name="radioButtonSplitPearson.TabIndex" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <data name="textBoxGamma_err.TabIndex" type="System.Int32, mscorlib">
+    <value>13</value>
+  </data>
+  <data name="textBoxV_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 16</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSimple.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxV.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 141</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="radioButtonPseudoVoigt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
+  </data>
+  <data name="weightDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Weight</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="buttonConfirm.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUseInitialFWHM.Name" xml:space="preserve">
+    <value>checkBoxUseInitialFWHM</value>
+  </data>
+  <data name="functionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Func</value>
+  </data>
+  <data name="&gt;&gt;buttonResetTakeoffAngle.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonBetweenCrystals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;R.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label21.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 11pt</value>
+  </data>
+  <data name="&gt;&gt;buttonCopyCellConstantsToClipboard.ZOrder" xml:space="preserve">
+    <value>30</value>
+  </data>
+  <data name="flowLayoutPanelPatternDecomposition.TabIndex" type="System.Int32, mscorlib">
+    <value>62</value>
+  </data>
+  <data name="textBoxV_err.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 140</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSplitPseudoVoigt.Name" xml:space="preserve">
+    <value>radioButtonSplitPseudoVoigt</value>
+  </data>
+  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 42</value>
+  </data>
+  <data name="numericUpDownInitialFWHM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 3</value>
+  </data>
+  <data name="textBoxAlpha_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
+  </data>
+  <data name="&gt;&gt;buttonApplyRangeToAll.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
+    <value>PDIndexer.DataSet, DataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="textBoxAlpha_err.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>107, 62</value>
+  </data>
+  <data name="panelFWHM.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>α</value>
+  </data>
+  <data name="dataGridViewPlaneList.Size" type="System.Drawing.Size, System.Drawing">
+    <value>589, 265</value>
+  </data>
+  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>crystalDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.TabIndex" type="System.Int32, mscorlib">
+    <value>57</value>
+  </data>
+  <data name="&gt;&gt;radioButtonSplitPearson.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="textBoxA.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 25</value>
+  </data>
+  <data name="buttonSendToCellFinder.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 44</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>795, 514</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.TabIndex" type="System.Int32, mscorlib">
+    <value>54</value>
+  </data>
+  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="&gt;&gt;buttonSaveTableAsCSV.Name" xml:space="preserve">
+    <value>buttonSaveTableAsCSV</value>
+  </data>
+  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Times New Roman, 9pt, style=Italic</value>
+  </data>
+  <data name="numericUpDownSearchRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxC.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="textBoxRemovedProfileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 23</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="numericUpDownSearchRange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>75, 23</value>
+  </data>
+  <data name="&gt;&gt;xDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label10.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;textBoxA.Name" xml:space="preserve">
+    <value>textBoxA</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -1461,759 +2157,17 @@
         //////////////////////////////////////////////////////////////////w=
 </value>
   </data>
-  <data name="label23.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
-  </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Send d-values</value>
-  </data>
-  <data name="textBoxC_err.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
-    <value>31, 16</value>
-  </data>
-  <data name="buttonCopyCellConstantsToClipboard.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="buttonResetTakeoffAngle.Visible" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
-    <value>Copy to Clipboard</value>
-  </data>
-  <data name="dataGridViewCrystals.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
-  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 16</value>
-  </data>
-  <data name="textBoxGamma_err.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label21.Size" type="System.Drawing.Size, System.Drawing">
-    <value>16, 16</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>25</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEffectiveDigit.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxA.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonEachCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 19</value>
-  </data>
-  <data name="textBoxV.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseInitialFWHM.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
-    <value>contextMenuStrip1</value>
-  </data>
-  <data name="buttonApplyFWHMToAll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="textBoxGamma_err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
-  </data>
-  <data name="hKLDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="weightDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>70</value>
-  </data>
-  <data name="numericUpDownSearchRange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 17</value>
-  </data>
-  <data name="&gt;&gt;textBoxGamma_err.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="textBoxAlpha_err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
-  </data>
-  <data name="&gt;&gt;copyToClipboradToolStripMenuItem.Name" xml:space="preserve">
-    <value>copyToClipboradToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;buttonSendToCellFinder.Name" xml:space="preserve">
-    <value>buttonSendToCellFinder</value>
-  </data>
-  <data name="&gt;&gt;buttonApplyFWHMToAll.Name" xml:space="preserve">
-    <value>buttonApplyFWHMToAll</value>
-  </data>
-  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSplitPseudoVoigt.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;fWHMDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxBeta_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;panelFWHM.Name" xml:space="preserve">
-    <value>panelFWHM</value>
-  </data>
-  <data name="&gt;&gt;radioButtonPseudoVoigt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>unit</value>
-  </data>
-  <data name="label23.Text" xml:space="preserve">
-    <value>Å</value>
-  </data>
-  <data name="&gt;&gt;buttonResetTakeoffAngle.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonEachCrystal.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxV_err.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;label2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonApplyRangeToAll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 24</value>
-  </data>
-  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
-    <value>Set effective digit</value>
-  </data>
-  <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
-    <value>Copy below table data to clipboard. 
-You can paste it to Excel directly.</value>
-  </data>
-  <data name="dataGridViewPlaneList.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="radioButtonBetweenCrystals.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>61</value>
-  </data>
-  <data name="checkBoxPatternDecomposition.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonConfirm.Text" xml:space="preserve">
-    <value>Apply to the crystal</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimple.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="textBoxC.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonPseudoVoigt.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSymmetricPearson.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="panelFWHM.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label7.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="checkBoxUseInitialFWHM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSymmetricPearson.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="xErrDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>56</value>
-  </data>
-  <data name="buttonCopyTableToClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>677, 0</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;buttonApplyFunctionToAll.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;textBoxB.ZOrder" xml:space="preserve">
-    <value>26</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="buttonCopyTableToClipboard.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
-    <value>Set effective digit</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSplitPearson.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="textBoxGamma.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="textBoxV_err.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="buttonApplyRangeToAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>216, 14</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewPlaneList.Name" xml:space="preserve">
-    <value>dataGridViewPlaneList</value>
-  </data>
-  <data name="buttonSendToCellFinder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 57</value>
-  </data>
-  <data name="&gt;&gt;textBoxC_err.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="textBoxB_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;label8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 105</value>
-  </data>
-  <data name="&gt;&gt;textBoxC.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;textBoxB.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="label16.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="label12.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonSaveTableAsCSV.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyTableToClipboard.Name" xml:space="preserve">
-    <value>buttonCopyTableToClipboard</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonSymmetricPearson.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="label9.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label18.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="xDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>39</value>
-  </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonCopyTableToClipboard.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBoxRemovedProfileName.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEffectiveDigit.Name" xml:space="preserve">
-    <value>numericBoxEffectiveDigit</value>
-  </data>
-  <data name="textBoxBeta_err.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="textBoxV_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="buttonConfirm.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="panelFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 40</value>
-  </data>
-  <data name="&gt;&gt;label25.Name" xml:space="preserve">
-    <value>label25</value>
-  </data>
-  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 16</value>
-  </data>
-  <data name="&gt;&gt;textBoxAlpha.Name" xml:space="preserve">
-    <value>textBoxAlpha</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonSendToCellFinder.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;textBoxGamma_err.Name" xml:space="preserve">
-    <value>textBoxGamma_err</value>
-  </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonConfirm.Size" type="System.Drawing.Size, System.Drawing">
-    <value>119, 25</value>
-  </data>
-  <data name="label29.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="textBoxBeta.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;label9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>±</value>
-  </data>
-  <data name="label10.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;buttonSaveTableAsCSV.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label28.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label25.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonSplitPseudoVoigt.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="&gt;&gt;textBoxAlpha_err.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label20.Name" xml:space="preserve">
-    <value>label20</value>
-  </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="checkBoxPatternDecomposition.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimple.Name" xml:space="preserve">
-    <value>radioButtonSimple</value>
-  </data>
-  <data name="buttonApplyFWHMToAll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>106, 0</value>
-  </data>
-  <data name="checkBoxUseInitialFWHM.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="&gt;&gt;label8.Name" xml:space="preserve">
-    <value>label8</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxB_err.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;functionDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonSendToCellFinder.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonSaveTableAsCSV.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 16</value>
-  </data>
-  <data name="textBoxB.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;textBoxGamma.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;xErrDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>xErrDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="textBoxV_err.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="numericBoxEffectiveDigit.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="textBoxBeta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="radioButtonPseudoVoigt.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;bindingSourcePlanes.Type" xml:space="preserve">
-    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonBetweenCrystals.Parent" xml:space="preserve">
-    <value>flowLayoutPanelPatternDecomposition</value>
-  </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Remove peaks</value>
-  </data>
-  <data name="label25.Text" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 299</value>
-  </data>
-  <data name="label17.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 83</value>
-  </data>
-  <data name="numericBoxEffectiveDigit.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 16</value>
-  </data>
-  <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 415</value>
-  </data>
   <data name="&gt;&gt;buttonSendToCellFinder.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBoxAlpha.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonSendToCellFinder.Parent" xml:space="preserve">
-    <value>groupBox5</value>
-  </data>
-  <data name="label7.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonBetweenCrystals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 16</value>
-  </data>
-  <data name="label17.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;textBoxA_err.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;buttonApplyFunctionToAll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;intensityDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>intensityDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="textBoxA_err.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;hKLDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>hKLDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
-    <value>Apply to all</value>
-  </data>
-  <data name="radioButtonSymmetricPearson.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;label17.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSymmetricPearson.Name" xml:space="preserve">
-    <value>radioButtonSymmetricPearson</value>
-  </data>
-  <data name="radioButtonSplitPearson.TabIndex" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="textBoxBeta.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 87</value>
-  </data>
-  <data name="textBoxGamma_err.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="textBoxV_err.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericUpDownSearchRange.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label19.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 16</value>
-  </data>
-  <data name="label24.Size" type="System.Drawing.Size, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSimple.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="radioButtonSplitPseudoVoigt.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 141</value>
-  </data>
-  <data name="radioButtonSimple.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="weightDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Weight</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="buttonResetTakeoffAngle.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonConfirm.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;checkBoxUseInitialFWHM.Name" xml:space="preserve">
-    <value>checkBoxUseInitialFWHM</value>
-  </data>
-  <data name="textBoxRemovedProfileName.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEffectiveDigit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="functionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Func</value>
-  </data>
-  <data name="&gt;&gt;label18.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;R.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label21.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxEffectiveDigit.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11pt</value>
-  </data>
-  <data name="&gt;&gt;buttonCopyCellConstantsToClipboard.ZOrder" xml:space="preserve">
-    <value>30</value>
-  </data>
-  <data name="numericUpDownInitialFWHM.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label9.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="textBoxV_err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 140</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSplitPseudoVoigt.Name" xml:space="preserve">
-    <value>radioButtonSplitPseudoVoigt</value>
-  </data>
-  <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 42</value>
-  </data>
-  <data name="numericUpDownInitialFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 3</value>
-  </data>
-  <data name="textBoxAlpha_err.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;buttonApplyRangeToAll.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
-    <value>PDIndexer.DataSet, DataSet.Designer.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 62</value>
-  </data>
-  <data name="panelFWHM.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>α</value>
-  </data>
-  <data name="dataGridViewPlaneList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>589, 265</value>
-  </data>
-  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>crystalDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="radioButtonBetweenCrystals.TabIndex" type="System.Int32, mscorlib">
-    <value>57</value>
-  </data>
-  <data name="&gt;&gt;radioButtonSplitPearson.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="textBoxA.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="buttonCopyTableToClipboard.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 25</value>
-  </data>
-  <data name="textBoxAlpha_err.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="checkBoxUseInitialFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 44</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>795, 514</value>
-  </data>
-  <data name="buttonSaveTableAsCSV.TabIndex" type="System.Int32, mscorlib">
-    <value>54</value>
-  </data>
-  <data name="groupBox5.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="checkBoxPatternDecomposition.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonSaveTableAsCSV.Name" xml:space="preserve">
-    <value>buttonSaveTableAsCSV</value>
-  </data>
-  <data name="textBoxV_err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="textBoxC.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
-  </data>
-  <data name="label29.Text" xml:space="preserve">
-    <value>Å</value>
-  </data>
-  <data name="label10.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label10.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="textBoxC.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>Disable</value>
-  </data>
-  <data name="&gt;&gt;label18.Name" xml:space="preserve">
-    <value>label18</value>
-  </data>
-  <data name="numericUpDownSearchRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 23</value>
-  </data>
-  <data name="&gt;&gt;xDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="functionDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>58</value>
-  </data>
-  <data name="&gt;&gt;textBoxA.Name" xml:space="preserve">
-    <value>textBoxA</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonConfirm.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 161</value>
-  </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="textBoxA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>85, 19</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 26</value>
   </data>
-  <data name="&gt;&gt;buttonCopyTableToClipboard.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="radioButtonSymmetricPearson.Location" type="System.Drawing.Point, System.Drawing">
+    <value>6, 61</value>
   </data>
   <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2221,8 +2175,11 @@ You can paste it to Excel directly.</value>
   <data name="label27.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="radioButtonSplitPseudoVoigt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="textBoxBeta_err.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;checkBoxUseInitialFWHM.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="groupBox3.ToolTip" xml:space="preserve">
     <value />
@@ -2230,8 +2187,11 @@ You can paste it to Excel directly.</value>
   <data name="textBoxB_err.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 38</value>
   </data>
-  <data name="label25.Size" type="System.Drawing.Size, System.Drawing">
-    <value>8, 16</value>
+  <data name="&gt;&gt;xErrDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>xErrDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
+    <value>Copy to Clipboard</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2254,20 +2214,23 @@ You can paste it to Excel directly.</value>
   <data name="&gt;&gt;label9.Name" xml:space="preserve">
     <value>label9</value>
   </data>
-  <data name="&gt;&gt;radioButtonPseudoVoigt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;radioButtonBetweenCrystals.Name" xml:space="preserve">
+    <value>radioButtonBetweenCrystals</value>
   </data>
   <data name="textBoxB_err.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;textBoxAlpha_err.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="textBoxB.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="&gt;&gt;buttonConfirm.Name" xml:space="preserve">
-    <value>buttonConfirm</value>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
   </data>
   <data name="label23.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="label18.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="&gt;&gt;intensityDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -2278,11 +2241,14 @@ You can paste it to Excel directly.</value>
   <data name="radioButtonBetweenCrystals.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <data name="textBoxAlpha_err.Location" type="System.Drawing.Point, System.Drawing">
+    <value>123, 79</value>
+  </data>
   <data name="textBoxA_err.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>255, 212</value>
+  <data name="&gt;&gt;radioButtonPseudoVoigt.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="textBoxBeta_err.Location" type="System.Drawing.Point, System.Drawing">
     <value>123, 99</value>
@@ -2293,38 +2259,45 @@ You can paste it to Excel directly.</value>
   <data name="&gt;&gt;useForCalcDataGridViewCheckBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonResetTakeoffAngle.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="numericUpDownInitialFWHM.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="radioButtonPseudoVoigt.Text" xml:space="preserve">
     <value>Symmetric Pseudo Voigt</value>
   </data>
-  <data name="textBoxGamma.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 19</value>
+  <data name="&gt;&gt;textBoxA_err.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
-  <data name="label12.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
+    <value>Copy below table data to clipboard. 
+You can paste it to Excel directly.</value>
   </data>
-  <data name="label18.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="radioButtonSplitPearson.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>76, 5</value>
+  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;textBoxV_err.Parent" xml:space="preserve">
     <value>groupBox1</value>
   </data>
-  <data name="flowLayoutPanelPatternDecomposition.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>255, 212</value>
   </data>
   <data name="&gt;&gt;fWHMDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>fWHMDataGridViewTextBoxColumn</value>
   </data>
+  <data name="label26.Size" type="System.Drawing.Size, System.Drawing">
+    <value>8, 16</value>
+  </data>
   <data name="buttonConfirm.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
-    <value>107, 123</value>
+  <data name="&gt;&gt;bindingSourceCrystals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonBetweenCrystals.Location" type="System.Drawing.Point, System.Drawing">
     <value>109, 3</value>
@@ -2338,17 +2311,20 @@ You can paste it to Excel directly.</value>
   <data name="buttonRemovePeaks.Text" xml:space="preserve">
     <value>Remove fitted peaks</value>
   </data>
-  <data name="&gt;&gt;numericUpDownInitialFWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 61</value>
   </data>
-  <data name="&gt;&gt;textBoxC_err.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="textBoxAlpha_err.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="flowLayoutPanelPatternDecomposition.Location" type="System.Drawing.Point, System.Drawing">
     <value>36, 179</value>
   </data>
   <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Italic</value>
+  </data>
+  <data name="buttonSendToCellFinder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="textBoxB.Location" type="System.Drawing.Point, System.Drawing">
     <value>20, 39</value>
@@ -2359,29 +2335,32 @@ You can paste it to Excel directly.</value>
   <data name="buttonRemovePeaks.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
   </data>
-  <data name="buttonCopyTableToClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="groupBox3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Bottom, Left</value>
   </data>
   <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 293</value>
   </data>
-  <data name="&gt;&gt;textBoxC_err.Name" xml:space="preserve">
-    <value>textBoxC_err</value>
+  <data name="&gt;&gt;panelFWHM.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label16.Font" type="System.Drawing.Font, System.Drawing">
     <value>Times New Roman, 9pt, style=Italic</value>
   </data>
-  <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>186, 19</value>
+  <data name="&gt;&gt;panelFWHM.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="radioButtonEachCrystal.TabIndex" type="System.Int32, mscorlib">
-    <value>56</value>
+  <data name="&gt;&gt;buttonSaveTableAsCSV.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;buttonRemovePeaks.Name" xml:space="preserve">
-    <value>buttonRemovePeaks</value>
+  <data name="label27.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="numericBoxEffectiveDigit.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -2395,11 +2374,17 @@ You can paste it to Excel directly.</value>
   <data name="&gt;&gt;numericUpDownInitialFWHM.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;textBoxAlpha.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBoxGamma.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>Disable</value>
   </data>
   <data name="checkBoxPatternDecomposition.Text" xml:space="preserve">
     <value>Pattern Decomposition</value>
+  </data>
+  <data name="&gt;&gt;buttonApplyFunctionToAll.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Fitting option</value>
   </data>
   <data name="&gt;&gt;dataGridViewCrystals.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2410,20 +2395,20 @@ You can paste it to Excel directly.</value>
   <data name="textBoxC.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="numericBoxEffectiveDigit.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
     <value>306, 212</value>
   </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
+  <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>12, 16</value>
   </data>
   <data name="buttonResetTakeoffAngle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="buttonCopyCellConstantsToClipboard.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;dataGridViewCrystals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
     <value>20, 16</value>
@@ -2443,17 +2428,20 @@ You can paste it to Excel directly.</value>
   <data name="dataGridViewCrystals.TabIndex" type="System.Int32, mscorlib">
     <value>53</value>
   </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
   <data name="label16.Text" xml:space="preserve">
     <value>γ</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 105</value>
   </data>
   <data name="&gt;&gt;textBoxB_err.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
-    <value>Copy to Clipboard</value>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="calcXDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>65</value>
@@ -2466,14 +2454,14 @@ to CellFinder
   <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;checkBoxUseInitialFWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value />
   </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 299</value>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;dataGridViewPlaneList.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="buttonSaveTableAsCSV.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="dataGridViewPlaneList.Location" type="System.Drawing.Point, System.Drawing">
     <value>202, 28</value>
@@ -2493,6 +2481,9 @@ to CellFinder
   <data name="buttonRemovePeaks.Location" type="System.Drawing.Point, System.Drawing">
     <value>43, 68</value>
   </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;label14.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -2502,14 +2493,14 @@ to CellFinder
   <data name="label8.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="&gt;&gt;textBoxA.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;panelFWHM.Parent" xml:space="preserve">
     <value>groupBox3</value>
   </data>
-  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Times New Roman, 9pt, style=Italic</value>
+  <data name="&gt;&gt;textBoxV.Name" xml:space="preserve">
+    <value>textBoxV</value>
   </data>
   <data name="&gt;&gt;radioButtonBetweenCrystals.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -2535,8 +2526,8 @@ to CellFinder
   <data name="&gt;&gt;buttonCopyCellConstantsToClipboard.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="buttonCopyTableToClipboard.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="textBoxC_err.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="buttonResetTakeoffAngle.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2547,8 +2538,8 @@ to CellFinder
   <data name="&gt;&gt;label15.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
-    <value>13</value>
+  <data name="checkBoxUseInitialFWHM.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBoxGamma.ToolTip" xml:space="preserve">
     <value />
@@ -2574,6 +2565,9 @@ to CellFinder
   <data name="xErrDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>X Err</value>
   </data>
+  <data name="label29.Location" type="System.Drawing.Point, System.Drawing">
+    <value>208, 142</value>
+  </data>
   <data name="radioButtonSymmetricPearson.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -2586,8 +2580,8 @@ to CellFinder
   <data name="&gt;&gt;textBoxBeta.ZOrder" xml:space="preserve">
     <value>28</value>
   </data>
-  <data name="label10.Size" type="System.Drawing.Size, System.Drawing">
-    <value>12, 16</value>
+  <data name="&gt;&gt;radioButtonPseudoVoigt.Name" xml:space="preserve">
+    <value>radioButtonPseudoVoigt</value>
   </data>
   <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
     <value>33</value>
@@ -2616,8 +2610,8 @@ to CellFinder
   <data name="checkBoxPatternDecomposition.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="textBoxAlpha_err.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 79</value>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="label29.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -2628,8 +2622,8 @@ to CellFinder
   <data name="label17.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>6, 22</value>
+  <data name="&gt;&gt;numericUpDownSearchRange.Name" xml:space="preserve">
+    <value>numericUpDownSearchRange</value>
   </data>
   <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 9pt</value>
@@ -2637,8 +2631,11 @@ to CellFinder
   <data name="buttonConfirm.TabIndex" type="System.Int32, mscorlib">
     <value>42</value>
   </data>
-  <data name="&gt;&gt;buttonApplyRangeToAll.ZOrder" xml:space="preserve">
-    <value>9</value>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
   </data>
   <data name="&gt;&gt;groupBox5.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2652,8 +2649,11 @@ to CellFinder
   <data name="textBoxBeta_err.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
   </data>
-  <data name="textBoxGamma_err.Multiline" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 16</value>
+  </data>
+  <data name="textBoxC_err.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
   </data>
   <data name="&gt;&gt;textBoxV.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -2661,8 +2661,8 @@ to CellFinder
   <data name="label23.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="textBoxAlpha.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 80</value>
   </data>
   <data name="label24.Location" type="System.Drawing.Point, System.Drawing">
     <value>210, 81</value>
@@ -2676,11 +2676,8 @@ to CellFinder
   <data name="dataGridViewPlaneList.TabIndex" type="System.Int32, mscorlib">
     <value>55</value>
   </data>
-  <data name="&gt;&gt;radioButtonBetweenCrystals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEffectiveDigit.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+  <data name="radioButtonEachCrystal.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBoxBeta.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2721,8 +2718,8 @@ to CellFinder
   <data name="&gt;&gt;label11.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
-    <value>20</value>
+  <data name="buttonResetTakeoffAngle.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="textBoxC_err.ToolTip" xml:space="preserve">
     <value />
@@ -2732,6 +2729,9 @@ to CellFinder
   </data>
   <data name="textBoxC_err.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="label26.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
   <data name="label20.Text" xml:space="preserve">
     <value>±</value>
@@ -2751,8 +2751,8 @@ to CellFinder
   <data name="radioButtonEachCrystal.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="label28.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
+  <data name="&gt;&gt;dataGridViewCrystals.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="textBoxB_err.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
@@ -2763,17 +2763,17 @@ to CellFinder
   <data name="&gt;&gt;textBoxC.Name" xml:space="preserve">
     <value>textBoxC</value>
   </data>
-  <data name="&gt;&gt;label16.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;textBoxC_err.Name" xml:space="preserve">
+    <value>textBoxC_err</value>
   </data>
   <data name="label16.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;buttonApplyFunctionToAll.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
   </data>
-  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
-    <value>18</value>
+  <data name="textBoxV_err.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="numericBoxEffectiveDigit.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2805,8 +2805,8 @@ to CellFinder
   <data name="label19.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label12.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;buttonRemovePeaks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>unit</value>
@@ -2814,11 +2814,11 @@ to CellFinder
   <data name="numericUpDownSearchRange.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
   </data>
-  <data name="textBoxAlpha.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+  <data name="&gt;&gt;buttonRemovePeaks.Name" xml:space="preserve">
+    <value>buttonRemovePeaks</value>
   </data>
-  <data name="PeakColor.HeaderText" xml:space="preserve">
-    <value>PeakColor</value>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;numericBoxEffectiveDigit.Parent" xml:space="preserve">
     <value>$this</value>
@@ -2835,8 +2835,8 @@ to CellFinder
   <data name="checkBoxUseInitialFWHM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="textBoxC_err.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
+  <data name="label21.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9pt</value>
@@ -2844,11 +2844,14 @@ to CellFinder
   <data name="buttonResetTakeoffAngle.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
+  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>131, 15</value>
+  </metadata>
   <metadata name="PeakColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Check.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>ja</value>
   </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -2856,8 +2859,8 @@ to CellFinder
   <metadata name="bindingSourceCrystals.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>462, 17</value>
   </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>740, 17</value>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>647, 17</value>
   </metadata>
   <metadata name="bindingSourcePlanes.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>286, 17</value>
@@ -2865,14 +2868,11 @@ to CellFinder
   <metadata name="R.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>131, 15</value>
+  <metadata name="Check.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
   </metadata>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>647, 17</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ja</value>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>740, 17</value>
   </metadata>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>101</value>

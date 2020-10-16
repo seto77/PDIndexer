@@ -72,7 +72,7 @@ namespace PDIndexer{
             }
         }
 
-        private void buttonChangeCrystal_Click(object sender, System.EventArgs e)
+        public void buttonChangeCrystal_Click(object sender, System.EventArgs e)
         {
             if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved) return;
             crystalControl.GenerateFromInterface();

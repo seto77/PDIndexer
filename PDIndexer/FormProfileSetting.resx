@@ -298,7 +298,7 @@
     <value>colorControlLineColor</value>
   </data>
   <data name="&gt;&gt;colorControlLineColor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlLineColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1336,7 +1336,7 @@
     <value>xAxisUserControl</value>
   </data>
   <data name="&gt;&gt;xAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xAxisUserControl.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1495,7 +1495,7 @@
     <value>numericalTextBoxExposureTime</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1951,7 +1951,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff2.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff2.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -1960,7 +1960,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 27</value>
+    <value>110, 25</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff2.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -1969,7 +1969,7 @@
     <value>numericBoxTwhoThetaOffsetCoeff2</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -1999,7 +1999,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff0.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2008,7 +2008,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 27</value>
+    <value>71, 25</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff0.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -2017,7 +2017,7 @@
     <value>numericBoxTwhoThetaOffsetCoeff0</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2119,7 +2119,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 25</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
@@ -2128,7 +2128,7 @@
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>105, 27</value>
+    <value>105, 25</value>
   </data>
   <data name="numericBoxTwhoThetaOffsetCoeff1.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
@@ -2137,7 +2137,7 @@
     <value>numericBoxTwhoThetaOffsetCoeff1</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2353,7 +2353,7 @@
     <value>Read Masking Ranges</value>
   </data>
   <data name="contextMenuStripMaskRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 70</value>
+    <value>190, 48</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMaskRange.Name" xml:space="preserve">
     <value>contextMenuStripMaskRange</value>
@@ -3334,7 +3334,7 @@
     <value>numericalTextBoxTargetValue</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Parent" xml:space="preserve">
     <value>flowLayoutPanelFourCalculator</value>

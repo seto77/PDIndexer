@@ -238,7 +238,7 @@
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>tabPage1</value>
@@ -590,7 +590,7 @@
     <value>numericalTextBoxIncreasingPixels</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxIncreasingPixels.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -839,7 +839,7 @@
     <value>colorControlScaleText</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -896,7 +896,7 @@
     <value>colorControlScaleLine</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -953,7 +953,7 @@
     <value>colorControlBack</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1565,7 +1565,7 @@
     <value>graphControlFrequency</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;graphControlFrequency.Parent" xml:space="preserve">
     <value>tabPage3</value>
@@ -1703,7 +1703,7 @@ You can set the limit value in right-click menu.</value>
     <value>numericBoxUpperX</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBoxWithMenu, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBoxWithMenu, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1753,7 +1753,7 @@ You can set the limit value in right-click menu.</value>
     <value>numericBoxUpperY</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1797,7 +1797,7 @@ You can set the limit value in right-click menu.</value>
     <value>numericBoxLowerX</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBoxWithMenu, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBoxWithMenu, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>
@@ -1883,7 +1883,7 @@ You can set the limit value in right-click menu.</value>
     <value>numericBoxLowerY</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.943, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Parent" xml:space="preserve">
     <value>tableLayoutPanel2</value>

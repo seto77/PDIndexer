@@ -104,6 +104,15 @@ namespace Crystallography.Controls
 
         public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
         { get => symmetryControl.CellConstants; set => symmetryControl.CellConstants = value; }
+        
+        public double A { get => symmetryControl.A; set => symmetryControl.A = value; }
+        public double B { get => symmetryControl.B; set => symmetryControl.B = value; }
+        public double C { get => symmetryControl.C; set => symmetryControl.C = value; }
+        public double Alpha { get => symmetryControl.Alpha; set => symmetryControl.Alpha = value; }
+        public double Beta { get => symmetryControl.Beta; set => symmetryControl.Beta = value; }
+        public double Gamma { get => symmetryControl.Gamma; set => symmetryControl.Gamma = value; }
+
+
 
         public int DefaultTabNumber { set => tabControl.SelectedIndex = value; get => tabControl.SelectedIndex; }
 
@@ -111,7 +120,7 @@ namespace Crystallography.Controls
 
         public FormScatteringFactor formScatteringFactor;
         public FormSymmetryInformation formSymmetryInformation;
-        private FormAtomDetailedInfo formAtomDetailedInfo;
+        //private FormAtomDetailedInfo formAtomDetailedInfo;
 
         public FormStrain formStrain;
 
@@ -200,7 +209,7 @@ namespace Crystallography.Controls
             SkipEvent = false;
             SetToInterface(false);
 
-            CrystalChanged?.Invoke(this, new EventArgs());
+           CrystalChanged?.Invoke(this, new EventArgs());
         }
 
 

@@ -504,6 +504,82 @@ namespace Crystallography
         /// </summary>
         public void SetAxis()
         {
+            # region ‚Ü‚¸A‘ÎÌ«‚É‘¦‚µ‚½ŠiŽq’è”‚É‚È‚é‚æ‚¤‚É‹­§‚·‚é
+            switch (Symmetry.CrystalSystemStr)
+            {
+                case "monoclinic":
+                    switch (Symmetry.MainAxis)
+                    {
+                        case "a":
+                            Beta = Gamma = Math.PI/2;
+                            Beta_err = Gamma_err = 0;
+                            break;
+
+                        case "b":
+                            Alpha = Gamma = Math.PI / 2;
+                            Alpha_err = Gamma_err = 0;
+
+                            break;
+
+                        case "c":
+                            Alpha = Beta = Math.PI / 2;
+                            Alpha_err = Beta_err = 0;
+                            break;
+                    }
+                    break;
+
+                case "orthorhombic":
+                    Alpha = Beta = Gamma = Math.PI / 2;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+
+                case "tetragonal":
+                    B = A;
+                    B_err = A_err;
+                    Alpha = Beta = Gamma = Math.PI / 2;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+
+                case "trigonal":
+                    switch (Symmetry.SpaceGroupHMStr.IndexOf("Rho") >= 0 && Symmetry.SpaceGroupHMStr.IndexOf("R") >= 0)
+                    {
+                        case false:
+                            B = A;
+                            B_err = A_err;
+                            Alpha = Beta = Math.PI / 2;
+                            Gamma = Math.PI * 2.0 / 3.0;
+                            Alpha_err = Beta_err = Gamma_err = 0;
+                            break;
+
+                        case true:
+                            C = B = A;
+                            C_err = B_err = A_err;
+
+                            Alpha = Beta = Gamma;
+                            Alpha_err = Beta_err = Gamma_err;
+                            break;
+                    }
+                    break;
+
+                case "hexagonal":
+                    B = A;
+                    B_err = A_err;
+                    Alpha = Beta =  Math.PI / 2;
+                    Gamma = Math.PI * 2.0 / 3.0;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+
+                case "cubic":
+                    C = B = A;
+                    C_err = B_err = A_err;
+                    Alpha = Beta = Gamma = Math.PI / 2;
+                    Alpha_err = Beta_err = Gamma_err = 0;
+                    break;
+            }
+            #endregion
+
+
+
             double SinAlfa = Math.Sin(Alpha); double SinBeta = Math.Sin(Beta); double SinGamma = Math.Sin(Gamma);
             double CosAlfa = Math.Cos(Alpha); double CosBeta = Math.Cos(Beta); double CosGamma = Math.Cos(Gamma);
             double a2 = A * A; double b2 = B * B; var c2 = C * C;
