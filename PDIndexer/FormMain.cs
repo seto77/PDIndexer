@@ -1198,7 +1198,7 @@ namespace PDIndexer
                 return;
             }
 
-            FormPrintOption formPrintOption = new FormPrintOption();
+            var formPrintOption = new FormPrintOption();
 
             if (formPrintOption.ShowDialog() == DialogResult.OK)
             {
@@ -1418,6 +1418,7 @@ namespace PDIndexer
                      foreach (var trimmedPts in Geometriy.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
                      {
                          var finalPts = ConvToPicBoxCoord(trimmedPts);
+                         //var finalPts = trimmedPts.Select(p => ConvToPicBoxCoord(p)).ToArray();
                          lock (lockObj)
                              profiles.Add((pen, finalPts));
                      }
@@ -1888,9 +1889,10 @@ namespace PDIndexer
             var coeffX2 =  - coeffX1 * LowerX + OriginPos.X;
             var coeffY1 = pictureBoxMain.Height - OriginPos.Y - BottomMargin;
             var coeffY2 = - coeffY1 / (UpperY - LowerY);
-            var coeffY3 = coeffY1 + coeffY2 * LowerY;
+            var coeffY3 = coeffY1 - coeffY2 * LowerY;
             for (int i= 0; i< result.Length; i++)
-                result[i] = new PointF((float)(coeffX1 * p[i].X + coeffX2), (float)(coeffY3 + coeffY2 * p[i].Y));
+                result[i] = new PointF((float)(coeffX1 * p[i].X + coeffX2),
+                    (float)(coeffY3 + coeffY2 * p[i].Y));
 
             return result;
         }
@@ -4587,8 +4589,11 @@ namespace PDIndexer
                     p.help.Add("PDI.Crystal.Pressure # Get the pressure (GPa) of the selected crystal by EOS.");
                     
                 }
-                public double CellVolume => Execute(() => ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Volume * 1000);
-               
+
+                private Crystal SelectedCrystal => (Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1];
+                public double CellVolume => Execute(() => SelectedCrystal.Volume * 1000);
+                public double Pressure => Execute(() => SelectedCrystal.EOSCondition.GetPressure(SelectedCrystal.Volume * 1000));
+
             }
 
 

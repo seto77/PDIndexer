@@ -324,16 +324,15 @@ namespace PDIndexer
             resources.ApplyResources(this.colorControlLineColor, "colorControlLineColor");
             this.colorControlLineColor.Blue = 240;
             this.colorControlLineColor.BlueF = 0.9411765F;
+            this.colorControlLineColor.BoxSize = new System.Drawing.Size(20, 20);
             this.colorControlLineColor.Color = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.colorControlLineColor.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.colorControlLineColor.FooterText = "";
+            this.colorControlLineColor.FlowDirection = System.Windows.Forms.FlowDirection.LeftToRight;
             this.colorControlLineColor.Green = 240;
             this.colorControlLineColor.GreenF = 0.9411765F;
             this.colorControlLineColor.Name = "colorControlLineColor";
             this.colorControlLineColor.Red = 240;
             this.colorControlLineColor.RedF = 0.9411765F;
-            this.colorControlLineColor.ToolTip = "";
-            this.colorControlLineColor.ColorChanged += new EventHandler(this.colorControlLineColor_ColorChanged);
+            this.colorControlLineColor.ColorChanged += new System.EventHandler(this.colorControlLineColor_ColorChanged);
             // 
             // numericUpDownLineWidth
             // 
@@ -681,30 +680,13 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.numericalTextBoxExposureTime, "numericalTextBoxExposureTime");
             this.numericalTextBoxExposureTime.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxExposureTime.DecimalPlaces = -1;
             this.numericalTextBoxExposureTime.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxExposureTime.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxExposureTime.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxExposureTime.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBoxExposureTime.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxExposureTime.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxExposureTime.Multiline = false;
             this.numericalTextBoxExposureTime.Name = "numericalTextBoxExposureTime";
-            this.numericalTextBoxExposureTime.RadianValue = 0D;
-            this.numericalTextBoxExposureTime.ReadOnly = false;
-            this.numericalTextBoxExposureTime.RestrictLimitValue = true;
-            this.numericalTextBoxExposureTime.ShowFraction = false;
-            this.numericalTextBoxExposureTime.ShowPositiveSign = false;
-            this.numericalTextBoxExposureTime.ShowUpDown = false;
             this.numericalTextBoxExposureTime.SkipEventDuringInput = false;
             this.numericalTextBoxExposureTime.SmartIncrement = true;
-            this.numericalTextBoxExposureTime.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxExposureTime.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericalTextBoxExposureTime.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericalTextBoxExposureTime.ThonsandsSeparator = true;
-            this.numericalTextBoxExposureTime.UpDown_Increment = 1D;
-            this.numericalTextBoxExposureTime.Value = 0D;
-            this.numericalTextBoxExposureTime.WordWrap = true;
             // 
             // label24
             // 
@@ -856,28 +838,11 @@ namespace PDIndexer
             this.numericBoxTwhoThetaOffsetCoeff2.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff2.DecimalPlaces = 5;
             this.numericBoxTwhoThetaOffsetCoeff2.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwhoThetaOffsetCoeff2.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff2.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwhoThetaOffsetCoeff2.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxTwhoThetaOffsetCoeff2.Maximum = double.PositiveInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff2.Minimum = double.NegativeInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff2.Multiline = false;
             this.numericBoxTwhoThetaOffsetCoeff2.Name = "numericBoxTwhoThetaOffsetCoeff2";
-            this.numericBoxTwhoThetaOffsetCoeff2.RadianValue = 0D;
-            this.numericBoxTwhoThetaOffsetCoeff2.ReadOnly = false;
-            this.numericBoxTwhoThetaOffsetCoeff2.RestrictLimitValue = true;
-            this.numericBoxTwhoThetaOffsetCoeff2.ShowFraction = false;
-            this.numericBoxTwhoThetaOffsetCoeff2.ShowPositiveSign = false;
-            this.numericBoxTwhoThetaOffsetCoeff2.ShowUpDown = false;
             this.numericBoxTwhoThetaOffsetCoeff2.SkipEventDuringInput = false;
             this.numericBoxTwhoThetaOffsetCoeff2.SmartIncrement = true;
-            this.numericBoxTwhoThetaOffsetCoeff2.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxTwhoThetaOffsetCoeff2.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxTwhoThetaOffsetCoeff2.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxTwhoThetaOffsetCoeff2.ThonsandsSeparator = true;
-            this.numericBoxTwhoThetaOffsetCoeff2.UpDown_Increment = 1D;
-            this.numericBoxTwhoThetaOffsetCoeff2.Value = 0D;
-            this.numericBoxTwhoThetaOffsetCoeff2.WordWrap = true;
             this.numericBoxTwhoThetaOffsetCoeff2.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxTwoThetaOffset_CheckedChanged);
             // 
             // numericBoxTwhoThetaOffsetCoeff0
@@ -886,28 +851,11 @@ namespace PDIndexer
             this.numericBoxTwhoThetaOffsetCoeff0.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff0.DecimalPlaces = 5;
             this.numericBoxTwhoThetaOffsetCoeff0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwhoThetaOffsetCoeff0.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwhoThetaOffsetCoeff0.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxTwhoThetaOffsetCoeff0.Maximum = double.PositiveInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff0.Minimum = double.NegativeInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff0.Multiline = false;
             this.numericBoxTwhoThetaOffsetCoeff0.Name = "numericBoxTwhoThetaOffsetCoeff0";
-            this.numericBoxTwhoThetaOffsetCoeff0.RadianValue = 0D;
-            this.numericBoxTwhoThetaOffsetCoeff0.ReadOnly = false;
-            this.numericBoxTwhoThetaOffsetCoeff0.RestrictLimitValue = true;
-            this.numericBoxTwhoThetaOffsetCoeff0.ShowFraction = false;
-            this.numericBoxTwhoThetaOffsetCoeff0.ShowPositiveSign = false;
-            this.numericBoxTwhoThetaOffsetCoeff0.ShowUpDown = false;
             this.numericBoxTwhoThetaOffsetCoeff0.SkipEventDuringInput = false;
             this.numericBoxTwhoThetaOffsetCoeff0.SmartIncrement = true;
-            this.numericBoxTwhoThetaOffsetCoeff0.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxTwhoThetaOffsetCoeff0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxTwhoThetaOffsetCoeff0.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxTwhoThetaOffsetCoeff0.ThonsandsSeparator = true;
-            this.numericBoxTwhoThetaOffsetCoeff0.UpDown_Increment = 1D;
-            this.numericBoxTwhoThetaOffsetCoeff0.Value = 0D;
-            this.numericBoxTwhoThetaOffsetCoeff0.WordWrap = true;
             this.numericBoxTwhoThetaOffsetCoeff0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxTwoThetaOffset_CheckedChanged);
             // 
             // buttonTwoThetaOffsetReset
@@ -930,28 +878,11 @@ namespace PDIndexer
             this.numericBoxTwhoThetaOffsetCoeff1.BackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff1.DecimalPlaces = 5;
             this.numericBoxTwhoThetaOffsetCoeff1.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwhoThetaOffsetCoeff1.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxTwhoThetaOffsetCoeff1.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTwhoThetaOffsetCoeff1.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericBoxTwhoThetaOffsetCoeff1.Maximum = double.PositiveInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff1.Minimum = double.NegativeInfinity;
-            this.numericBoxTwhoThetaOffsetCoeff1.Multiline = false;
             this.numericBoxTwhoThetaOffsetCoeff1.Name = "numericBoxTwhoThetaOffsetCoeff1";
-            this.numericBoxTwhoThetaOffsetCoeff1.RadianValue = 0D;
-            this.numericBoxTwhoThetaOffsetCoeff1.ReadOnly = false;
-            this.numericBoxTwhoThetaOffsetCoeff1.RestrictLimitValue = true;
-            this.numericBoxTwhoThetaOffsetCoeff1.ShowFraction = false;
-            this.numericBoxTwhoThetaOffsetCoeff1.ShowPositiveSign = false;
-            this.numericBoxTwhoThetaOffsetCoeff1.ShowUpDown = false;
             this.numericBoxTwhoThetaOffsetCoeff1.SkipEventDuringInput = false;
             this.numericBoxTwhoThetaOffsetCoeff1.SmartIncrement = true;
-            this.numericBoxTwhoThetaOffsetCoeff1.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericBoxTwhoThetaOffsetCoeff1.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
-            this.numericBoxTwhoThetaOffsetCoeff1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             this.numericBoxTwhoThetaOffsetCoeff1.ThonsandsSeparator = true;
-            this.numericBoxTwhoThetaOffsetCoeff1.UpDown_Increment = 1D;
-            this.numericBoxTwhoThetaOffsetCoeff1.Value = 0D;
-            this.numericBoxTwhoThetaOffsetCoeff1.WordWrap = true;
             this.numericBoxTwhoThetaOffsetCoeff1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxTwoThetaOffset_CheckedChanged);
             // 
             // label25
@@ -1302,30 +1233,13 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.numericalTextBoxTargetValue, "numericalTextBoxTargetValue");
             this.numericalTextBoxTargetValue.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTargetValue.DecimalPlaces = -1;
             this.numericalTextBoxTargetValue.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTargetValue.FooterForeColor = System.Drawing.SystemColors.ControlText;
             this.numericalTextBoxTargetValue.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTargetValue.HeaderForeColor = System.Drawing.SystemColors.ControlText;
-            this.numericalTextBoxTargetValue.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxTargetValue.Minimum = double.NegativeInfinity;
-            this.numericalTextBoxTargetValue.Multiline = false;
             this.numericalTextBoxTargetValue.Name = "numericalTextBoxTargetValue";
-            this.numericalTextBoxTargetValue.RadianValue = 0D;
-            this.numericalTextBoxTargetValue.ReadOnly = false;
-            this.numericalTextBoxTargetValue.RestrictLimitValue = true;
-            this.numericalTextBoxTargetValue.ShowFraction = false;
-            this.numericalTextBoxTargetValue.ShowPositiveSign = false;
-            this.numericalTextBoxTargetValue.ShowUpDown = false;
             this.numericalTextBoxTargetValue.SkipEventDuringInput = false;
             this.numericalTextBoxTargetValue.SmartIncrement = true;
-            this.numericalTextBoxTargetValue.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxTargetValue.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericalTextBoxTargetValue.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericalTextBoxTargetValue.ThonsandsSeparator = true;
-            this.numericalTextBoxTargetValue.UpDown_Increment = 1D;
-            this.numericalTextBoxTargetValue.Value = 0D;
-            this.numericalTextBoxTargetValue.WordWrap = true;
             // 
             // listBoxTwoProfiles2
             // 

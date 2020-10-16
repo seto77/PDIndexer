@@ -261,6 +261,24 @@
   <data name="colorControlLineColor.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
+  <data name="colorControlLineColor.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlLineColor.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlLineColor.FooterText" xml:space="preserve">
+    <value />
+  </data>
+  <data name="colorControlLineColor.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlLineColor.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="colorControlLineColor.HeaderText" xml:space="preserve">
+    <value />
+  </data>
   <data name="colorControlLineColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>74, 20</value>
   </data>
@@ -268,16 +286,19 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="colorControlLineColor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>18, 18</value>
+    <value>20, 20</value>
   </data>
   <data name="colorControlLineColor.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="&gt;&gt;colorControlLineColor.Name" xml:space="preserve">
     <value>colorControlLineColor</value>
   </data>
   <data name="&gt;&gt;colorControlLineColor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlLineColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -1315,7 +1336,7 @@
     <value>xAxisUserControl</value>
   </data>
   <data name="&gt;&gt;xAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xAxisUserControl.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1449,18 +1470,6 @@
   <data name="numericalTextBoxExposureTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxExposureTime.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericalTextBoxExposureTime.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericalTextBoxExposureTime.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericalTextBoxExposureTime.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericalTextBoxExposureTime.Location" type="System.Drawing.Point, System.Drawing">
     <value>112, 26</value>
   </data>
@@ -1482,14 +1491,11 @@
   <data name="numericalTextBoxExposureTime.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Name" xml:space="preserve">
     <value>numericalTextBoxExposureTime</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1938,9 +1944,6 @@
   <data name="numericBoxTwhoThetaOffsetCoeff2.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff2.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxTwhoThetaOffsetCoeff2.Location" type="System.Drawing.Point, System.Drawing">
     <value>223, 5</value>
   </data>
@@ -1962,14 +1965,11 @@
   <data name="numericBoxTwhoThetaOffsetCoeff2.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Name" xml:space="preserve">
     <value>numericBoxTwhoThetaOffsetCoeff2</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -1992,9 +1992,6 @@
   <data name="numericBoxTwhoThetaOffsetCoeff0.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff0.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxTwhoThetaOffsetCoeff0.Location" type="System.Drawing.Point, System.Drawing">
     <value>50, 5</value>
   </data>
@@ -2016,14 +2013,11 @@
   <data name="numericBoxTwhoThetaOffsetCoeff0.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Name" xml:space="preserve">
     <value>numericBoxTwhoThetaOffsetCoeff0</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2118,9 +2112,6 @@
   <data name="numericBoxTwhoThetaOffsetCoeff1.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff1.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericBoxTwhoThetaOffsetCoeff1.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 5</value>
   </data>
@@ -2142,14 +2133,11 @@
   <data name="numericBoxTwhoThetaOffsetCoeff1.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Name" xml:space="preserve">
     <value>numericBoxTwhoThetaOffsetCoeff1</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2350,7 +2338,7 @@
     <value>2</value>
   </data>
   <metadata name="contextMenuStripMaskRange.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>523, 22</value>
+    <value>431, 19</value>
   </metadata>
   <data name="toolStripMenuItemSaveMaskingRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>189, 22</value>
@@ -2365,7 +2353,7 @@
     <value>Read Masking Ranges</value>
   </data>
   <data name="contextMenuStripMaskRange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 48</value>
+    <value>190, 70</value>
   </data>
   <data name="&gt;&gt;contextMenuStripMaskRange.Name" xml:space="preserve">
     <value>contextMenuStripMaskRange</value>
@@ -3321,18 +3309,6 @@
   <data name="numericalTextBoxTargetValue.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTargetValue.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericalTextBoxTargetValue.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericalTextBoxTargetValue.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericalTextBoxTargetValue.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericalTextBoxTargetValue.Location" type="System.Drawing.Point, System.Drawing">
     <value>177, 1</value>
   </data>
@@ -3354,14 +3330,11 @@
   <data name="numericalTextBoxTargetValue.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
-    <value />
-  </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Name" xml:space="preserve">
     <value>numericalTextBoxTargetValue</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.5.1.707, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.836, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Parent" xml:space="preserve">
     <value>flowLayoutPanelFourCalculator</value>

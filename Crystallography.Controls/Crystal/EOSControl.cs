@@ -141,7 +141,8 @@ namespace Crystallography.Controls
                 numericBoxEOS_V0perMol.Value = numericBoxEOS_V0perCell.Value * 6.0221367 / crystal.ChemicalFormulaZ / 10;
 
             if (checkBoxUseEOS.Checked)
-                numericBoxPressure.Value = crystal.EOSCondition.GetPressure(crystal.Volume * 1000);
+                EOScondition.Pressure = numericBoxPressure.Value = crystal.EOSCondition.GetPressure(crystal.Volume * 1000);
+
             SkipEvent = false;
         }
 

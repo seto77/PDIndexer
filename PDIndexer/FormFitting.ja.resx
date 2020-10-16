@@ -117,7 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="textBoxGamma_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxAlpha_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxBeta_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxC_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxB_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxV.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxV_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxC.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxGamma.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxA_err.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxA.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label26.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label25.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label24.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label29.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label23.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label22.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label10.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label19.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label17.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label27.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label11.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxB.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxAlpha.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="textBoxBeta.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonResetTakeoffAngle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>171, 193</value>
+  </data>
+  <data name="buttonResetTakeoffAngle.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonCopyCellConstantsToClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -129,6 +222,9 @@
   </data>
   <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
     <value>クリップボードにコピー</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonConfirm.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -142,6 +238,30 @@
   <data name="buttonConfirm.Text" xml:space="preserve">
     <value>選択中の結晶に適用</value>
   </data>
+  <data name="buttonConfirm.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label8.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label12.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label28.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label13.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label15.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label16.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -149,16 +269,19 @@
     <value>560, 326</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>193, 228</value>
+    <value>232, 228</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>最適化した格子定数</value>
+  </data>
+  <data name="groupBox1.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonCopyTableToClipboard.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonCopyTableToClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>614, 0</value>
+    <value>650, 0</value>
   </data>
   <data name="buttonCopyTableToClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>150, 28</value>
@@ -175,6 +298,9 @@
   <data name="radioButtonEachCrystal.Text" xml:space="preserve">
     <value>個々の結晶に対して</value>
   </data>
+  <data name="radioButtonEachCrystal.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="radioButtonBetweenCrystals.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -187,14 +313,26 @@
   <data name="radioButtonBetweenCrystals.Text" xml:space="preserve">
     <value>全ての結晶に対して</value>
   </data>
+  <data name="radioButtonBetweenCrystals.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="flowLayoutPanelPatternDecomposition.Size" type="System.Drawing.Size, System.Drawing">
     <value>280, 28</value>
+  </data>
+  <data name="flowLayoutPanelPatternDecomposition.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="radioButtonSymmetricPearson.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
   </data>
+  <data name="radioButtonSymmetricPearson.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="radioButtonPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 22</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="radioButtonSplitPseudoVoigt.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 38</value>
@@ -202,8 +340,14 @@
   <data name="radioButtonSplitPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
     <value>130, 22</value>
   </data>
+  <data name="radioButtonSplitPseudoVoigt.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="radioButtonSimple.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 22</value>
+  </data>
+  <data name="radioButtonSimple.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="radioButtonSplitPearson.Location" type="System.Drawing.Point, System.Drawing">
     <value>185, 61</value>
@@ -211,11 +355,17 @@
   <data name="radioButtonSplitPearson.Size" type="System.Drawing.Size, System.Drawing">
     <value>124, 22</value>
   </data>
+  <data name="radioButtonSplitPearson.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonApplyFunctionToAll.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 24</value>
   </data>
   <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
     <value>全てのピークに適用</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -226,12 +376,18 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>ピーク関数</value>
   </data>
+  <data name="groupBox2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panelFWHM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="numericUpDownInitialFWHM.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 25</value>
+  </data>
+  <data name="numericUpDownInitialFWHM.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonApplyFWHMToAll.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -242,11 +398,20 @@
   <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
     <value>全てのピークに適用</value>
   </data>
+  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="panelFWHM.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="panelFWHM.Size" type="System.Drawing.Size, System.Drawing">
     <value>235, 31</value>
+  </data>
+  <data name="panelFWHM.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="checkBoxUseInitialFWHM.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -257,6 +422,9 @@
   <data name="checkBoxUseInitialFWHM.Text" xml:space="preserve">
     <value>初期半値幅</value>
   </data>
+  <data name="checkBoxUseInitialFWHM.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="checkBoxPatternDecomposition.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -266,17 +434,26 @@
   <data name="checkBoxPatternDecomposition.Text" xml:space="preserve">
     <value>パターン分解</value>
   </data>
+  <data name="checkBoxPatternDecomposition.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="numericUpDownSearchRange.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericUpDownSearchRange.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 25</value>
   </data>
+  <data name="numericUpDownSearchRange.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
     <value>93, 19</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -290,8 +467,14 @@
   <data name="label2.Text" xml:space="preserve">
     <value>範囲</value>
   </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
+  </data>
+  <data name="label18.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="buttonApplyRangeToAll.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -305,6 +488,9 @@
   <data name="buttonApplyRangeToAll.Text" xml:space="preserve">
     <value>全てのピークに適用</value>
   </data>
+  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -317,17 +503,38 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>フィッティング条件</value>
   </data>
+  <data name="groupBox3.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 322</value>
   </data>
+  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="contextMenuStrip1.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="dataGridViewPlaneList.Size" type="System.Drawing.Size, System.Drawing">
-    <value>562, 295</value>
+    <value>598, 295</value>
+  </data>
+  <data name="dataGridViewPlaneList.ToolTip" xml:space="preserve">
+    <value />
+  </data>
+  <data name="buttonSendToCellFinder.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="textBoxRemovedProfileName.Size" type="System.Drawing.Size, System.Drawing">
     <value>172, 25</value>
   </data>
+  <data name="textBoxRemovedProfileName.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
     <value>111, 18</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value />
   </data>
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -335,17 +542,23 @@
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 326</value>
   </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 458</value>
   </data>
+  <data name="groupBox5.ToolTip" xml:space="preserve">
+    <value />
+  </data>
   <data name="buttonSaveTableAsCSV.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonSaveTableAsCSV.Location" type="System.Drawing.Point, System.Drawing">
-    <value>509, 0</value>
+    <value>545, 0</value>
   </data>
   <data name="buttonSaveTableAsCSV.Size" type="System.Drawing.Size, System.Drawing">
     <value>102, 28</value>
@@ -353,11 +566,23 @@
   <data name="buttonSaveTableAsCSV.Text" xml:space="preserve">
     <value>CSV形式で保存</value>
   </data>
+  <data name="numericBoxEffectiveDigit.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.HeaderText" xml:space="preserve">
+    <value>小数点以下桁数</value>
+  </data>
   <data name="numericBoxEffectiveDigit.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 2</value>
+    <value>396, 2</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 23</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.Size" type="System.Drawing.Size, System.Drawing">
+    <value>146, 23</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>766, 555</value>
+    <value>802, 555</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -444,5 +669,8 @@
         ////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////w=
 </value>
+  </data>
+  <data name="$this.ToolTip" xml:space="preserve">
+    <value />
   </data>
 </root>
