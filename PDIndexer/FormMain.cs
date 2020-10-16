@@ -21,6 +21,7 @@ using System.Diagnostics;
 using System.Linq;
 using IronPython.Hosting;
 using System.Net;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -1398,41 +1399,52 @@ namespace PDIndexer
             
         }
 
+
+        object lockObj=new object();
         //プロファイルの描画
         private void DrawProfile()
         {
             var rect = new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY);
-            for (int j = 0; j < dataSet.DataTableProfile.CheckedItems.Count; j++)
-            {
-                DiffractionProfile dp = dataSet.DataTableProfile.CheckedItems[j];
-                PointD[] pt = dp.Profile.Pt.Select(p=> new PointD(p.X,p.Y + IntervalOfProfiles * j)).ToArray();
-                if (pt.Length > 2)
-                {
-                    Pen pen = new Pen(Color.FromArgb(((DiffractionProfile)dataSet.DataTableProfile.CheckedItems[j]).ColorARGB.Value), ((DiffractionProfile)dataSet.DataTableProfile.CheckedItems[j]).LineWidth);
-                    pen.LineJoin = LineJoin.Round;
-                    foreach(var pts in Geometriy.GetPointsWithinRectangle(pt, rect))
-                        if(pts.Count() > 1)
-                            gMain.DrawLines(pen, pts.Select(p => ConvToPicBoxCoord(p)).ToArray());
+            var profiles = new List<(Pen pen, PointF[] points)>();
 
-                    //エラーバー描画
-                    if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
-                    {
-                        Pen penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
-                        float errbarWidth = Math.Abs(ConvToPicBoxCoord(pt[0]).X - ConvToPicBoxCoord(pt[1]).X) / 4;
-                        for (int i = 0; i < pt.Length; i++)
-                            if (!double.IsNaN(dp.OriginalProfile.Err[i].Y) && rect.IsInsde(pt[i]))
-                            {
-                                PointF maxErr = ConvToPicBoxCoord(pt[i].X, pt[i].Y + dp.OriginalProfile.Err[i].Y);
-                                PointF minErr = ConvToPicBoxCoord(pt[i].X, pt[i].Y - dp.OriginalProfile.Err[i].Y);
-                                gMain.DrawLine(penErr, maxErr, minErr);
-                                gMain.DrawLine(penErr, new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y));
-                                gMain.DrawLine(penErr, new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y));
-                            }
-                    }
+            Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
+             {
+                 var dp = dataSet.DataTableProfile.CheckedItems[j];
+                 var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
+                 if (srcPts.Length > 2)
+                 {
+                     var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
 
-                
-                }
-            }
+                     foreach (var trimmedPts in Geometriy.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
+                     {
+                         var finalPts = ConvToPicBoxCoord(trimmedPts);
+                         lock (lockObj)
+                             profiles.Add((pen, finalPts));
+                     }
+
+                     //エラーバー描画
+                     if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
+                     {
+                         var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
+                         var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
+                         for (int i = 0; i < srcPts.Length; i++)
+                             if (!double.IsNaN(dp.OriginalProfile.Err[i].Y) && rect.IsInsde(srcPts[i]))
+                             {
+                                 var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.OriginalProfile.Err[i].Y);
+                                 var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.OriginalProfile.Err[i].Y);
+                                 lock (lockObj)
+                                 {
+                                     profiles.Add((penErr, new[] { maxErr, minErr }));
+                                     profiles.Add((penErr, new[] { new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y) }));
+                                     profiles.Add((penErr, new[] { new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y) }));
+                                 }
+                             }
+                     }
+                 }
+             });
+
+            for (int j = 0; j < profiles.Count; j++)
+                gMain.DrawLines(profiles[j].pen, profiles[j].points);
         }
 
 
@@ -1860,13 +1872,30 @@ namespace PDIndexer
         {//プロファイル座標をピクチャーボックスの座標系に変換
             return new PointF(
                 (float)((pictureBoxMain.Width - OriginPos.X) / (UpperX - LowerX) * (x - LowerX)) + OriginPos.X,
-                (float)(pictureBoxMain.Height - OriginPos.Y - BottomMargin - (pictureBoxMain.Height - OriginPos.Y - BottomMargin) / (UpperY - LowerY) * (y - LowerY)));
+                (float)(pictureBoxMain.Height - OriginPos.Y - BottomMargin - (pictureBoxMain.Height - OriginPos.Y - BottomMargin) * (y - LowerY) / (UpperY - LowerY) ));
         }
         private PointF ConvToPicBoxCoord(PointD p)
         {//プロファイル座標をピクチャーボックスの座標系に変換
-            return new PointF((float)((pictureBoxMain.Width - OriginPos.X) / (UpperX - LowerX) * (p.X - LowerX)) + OriginPos.X,
-                (float)(pictureBoxMain.Height - OriginPos.Y - BottomMargin - (pictureBoxMain.Height - OriginPos.Y - BottomMargin) / (UpperY - LowerY) * (p.Y - LowerY)));
+            return new PointF(
+                (float)((pictureBoxMain.Width - OriginPos.X) / (UpperX - LowerX) * (p.X - LowerX)) + OriginPos.X,
+                (float)((pictureBoxMain.Height - OriginPos.Y - BottomMargin) * (1 - (p.Y - LowerY) / (UpperY - LowerY))));
         }
+        private PointF[] ConvToPicBoxCoord(PointD[] p)
+        {//プロファイル座標をピクチャーボックスの座標系に変換 (配列から配列へ)
+
+            var result = new PointF[p.Length];
+            var coeffX1 = (pictureBoxMain.Width - OriginPos.X) / (UpperX - LowerX);
+            var coeffX2 =  - coeffX1 * LowerX + OriginPos.X;
+            var coeffY1 = pictureBoxMain.Height - OriginPos.Y - BottomMargin;
+            var coeffY2 = - coeffY1 / (UpperY - LowerY);
+            var coeffY3 = coeffY1 + coeffY2 * LowerY;
+            for (int i= 0; i< result.Length; i++)
+                result[i] = new PointF((float)(coeffX1 * p[i].X + coeffX2), (float)(coeffY3 + coeffY2 * p[i].Y));
+
+            return result;
+        }
+
+
         private PointD ConvToRealCoord(int x, int y)
         {//ピクチャーボックスの座標系をプロファイル座標に変換
             return new PointD(
@@ -4330,6 +4359,8 @@ namespace PDIndexer
         }
         #endregion
 
+
+
         /// <summary>
         /// PDIのマクロ操作を提供する
         /// </summary>
@@ -4338,28 +4369,28 @@ namespace PDIndexer
             private FormMain main;
             
             public DrawingClass Drawing;
-            public ProfileClass Profile;
+            public ProfileListClass ProfileList;
             public ProfileOperatorClass ProfileOperator;
             public FileClass File;
+            public CrystalListClass CrystalList;
             public CrystalClass Crystal;
+            public FittingClass Fitting;
 
-            public Macro(FormMain _main)
-                : base(_main, "PDI")
+            public Macro(FormMain _main) : base(_main, "PDI")
             {
                 main = _main;
                 Drawing = new DrawingClass(this);
-                Profile = new ProfileClass(this);
+                ProfileList = new ProfileListClass(this);
                 ProfileOperator = new ProfileOperatorClass(this);
                 File = new FileClass(this);
+                CrystalList = new CrystalListClass(this);
                 Crystal = new CrystalClass(this);
+                Fitting = new FittingClass(this);
                 
                 help.Add("PDI.Obj[] # Get object sent from other program.");
             }
 
-            public void Sleep(int millisec)
-            {
-                Thread.Sleep(millisec);
-            }
+            public void Sleep(int millisec) => Thread.Sleep(millisec);
 
             public object[] Obj { get; set; }
 
@@ -4381,7 +4412,7 @@ namespace PDIndexer
                     p.help.Add("PDI.File.SaveMetafile(string filename) # Save metafile object. \r\n If filename is omitted, selection dialog will open.");
                 }
 
-                public string GetDirectoryPath(string filename = "") { return Execute<string>(new Func<string>(() => getDirectoryPath(filename))); }
+                public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
                 private string getDirectoryPath(string filename = "")
                 {
                     string path = "";
@@ -4396,22 +4427,21 @@ namespace PDIndexer
                 }
 
 
-                public string GetFileName() { return Execute<string>(() => getFileName()); }
+                public string GetFileName() => Execute(() => getFileName());
                 private string getFileName()
                 {
                     var dlg = new OpenFileDialog();
                     return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : "";
                 }
 
-                public string[] GetFileNames() { return Execute<string[]>(new Func<string[]>(() => getFileNames())); }
+                public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames()));
                 private string[] getFileNames()
                 {
-                    var dlg = new OpenFileDialog();
-                    dlg.Multiselect = true;
+                    var dlg = new OpenFileDialog() { Multiselect = true };
                     return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : new string[0];
                 }
 
-                public void ReadProfiles(string fileName = "") { Execute(() => readProfiles(fileName)); }
+                public void ReadProfiles(string fileName = "") => Execute(() => readProfiles(fileName));
                 private void readProfiles(string fileName = "")
                 {
                     if (!System.IO.File.Exists(fileName))
@@ -4421,7 +4451,7 @@ namespace PDIndexer
                 }
 
 
-                public void SaveProfiles(string filename = "") { Execute(new Action(() => saveProfiles(filename))); }
+                public void SaveProfiles(string filename = "") => Execute(new Action(() => saveProfiles(filename)));
                 private void saveProfiles(string filename = "")
                 {
                     if (filename == "")
@@ -4430,7 +4460,7 @@ namespace PDIndexer
                         p.main.SaveProfile(filename);
                 }
 
-                public void ReadCrystals(string filename = "") { Execute(new Action(() => readCrystals(filename))); }
+                public void ReadCrystals(string filename = "") => Execute(new Action(() => readCrystals(filename)));
                 private void readCrystals(string filename = "")
                 {
                     if (!System.IO.File.Exists(filename))
@@ -4439,7 +4469,7 @@ namespace PDIndexer
                         p.main.readCrystal(filename, false, true);
                 }
 
-                public void SaveCrystals(string filename = "") { Execute(new Action(() => saveCrystals(filename))); }
+                public void SaveCrystals(string filename = "") => Execute(new Action(() => saveCrystals(filename)));
                 private void saveCrystals(string filename = "")
                 {
                     if (filename == "")
@@ -4495,22 +4525,22 @@ namespace PDIndexer
                 }
             }
 
-            public class CrystalClass:MacroSub
+            public class CrystalListClass:MacroSub
             {
-                private Macro p;
-                public CrystalClass(Macro _p):base(_p.main)
+                private readonly Macro p;
+                public CrystalListClass(Macro _p):base(_p.main)
                 {
                     p = _p;
-                    p.help.Add("PDI.Crystal.Count # Get total count of crystals.");
-                    p.help.Add("PDI.Crystal.SelectedName # Get name of a selected crystal.");
-                    p.help.Add("PDI.Crystal.SelectedIndex # Set/get index of a selected crystal.");
-                    p.help.Add("PDI.Crystal.Select(int index) # Set index of a selected crystal.");
-                    p.help.Add("PDI.Crystal.Check(int index) # Check a crystal assigned by 'index'.");
-                    p.help.Add("PDI.Crystal.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
+                    p.help.Add("PDI.CrystalList.Count # Get total count of crystals.");
+                    p.help.Add("PDI.CrystalList.SelectedName # Get name of the selected crystal.");
+                    p.help.Add("PDI.CrystalList.SelectedIndex # Set/get index of the selected crystal.");
+                    p.help.Add("PDI.CrystalList.Select(int index) # Set index of a selected crystal.");
+                    p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'.");
+                    p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
+
                 }
                 public int Count => Execute(() => p.main.bindingSourceCrystal.Count);
                 public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Name : "");
-
                 public int SelectedIndex
                 {
                     set
@@ -4531,11 +4561,10 @@ namespace PDIndexer
                         p.main.bindingSourceCrystal.Position = n;
                 }
 
-                
-                public void Check(int n) { Check(n, true); }
-                public void Uncheck(int n) { Check(n, false); }
+                public void Check(int n) => Check(n, true);
+                public void Uncheck(int n) => Check(n, false);
 
-                public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
+                public void Check(int n, bool checkState) => Execute(() => check(n, checkState));
                 private void check(int n, bool checkState)
                 {
                     if (n >= 0 && n < p.main.bindingSourceCrystal.Count)
@@ -4544,11 +4573,28 @@ namespace PDIndexer
                         p.main.dataGridViewCrystals_CellMouseClick(new object(), new DataGridViewCellMouseEventArgs(-1, -1, 0, 0, new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 0, 0, 0, 0)));
                     }
                 }
+
+                public double GetCellVolume=> Execute(() => p.main.bindingSourceCrystal.Count);
             }
+
+            public class CrystalClass : MacroSub
+            {
+                private readonly Macro p;
+                public CrystalClass(Macro _p) : base(_p.main)
+                {
+                    p = _p;
+                    p.help.Add("PDI.Crystal.CellVolume # Get the cell volume (Å^3) of the selected crystal.");
+                    p.help.Add("PDI.Crystal.Pressure # Get the pressure (GPa) of the selected crystal by EOS.");
+                    
+                }
+                public double CellVolume => Execute(() => ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Volume * 1000);
+               
+            }
+
 
             public class ProfileOperatorClass: MacroSub
             {
-                private Macro p;
+                private readonly Macro p;
                 public ProfileOperatorClass(Macro _p): base(_p.main)
                 {
                     p = _p;
@@ -4613,39 +4659,33 @@ namespace PDIndexer
                         p.main.formProfile.buttonCalculate_Click(new object(), new EventArgs());
                     }
                 }
-
             }
 
-            public class ProfileClass : MacroSub
+            public class ProfileListClass : MacroSub
             {
-                private Macro p;
-                public ProfileClass(Macro _p) : base(_p.main)
+                private readonly Macro p;
+                public ProfileListClass(Macro _p) : base(_p.main)
                 {
                     p = _p;
-                    p.help.Add("PDI.Profile.Conut # Get total count of profiles.");
-                    p.help.Add("PDI.Profile.SelectedName # Get name of a selected profile.");
-                    p.help.Add("PDI.Profile.SelectedIndex # Set/get index of a selected profile.");
-                    p.help.Add("PDI.Profile.Select(int index) # Set index of a selected profile.");
-                    p.help.Add("PDI.Profile.Check(int index) # Check a profile assigned by index.");
-                    p.help.Add("PDI.Profile.Uncheck(int index) # Uncheck a profile assigned by index.");
-                    p.help.Add("PDI.Profile.CheckAll() # Check all profiles.");
-                    p.help.Add("PDI.Profile.UncheckAll() # Uncheck all profiles.");
-                    p.help.Add("PDI.Profile.DeleteAll() # Delete all profiles.");
-                    p.help.Add("PDI.Profile.Delete(int index) # Delete a profile assigned by index.");
+                    p.help.Add("PDI.ProfileList.Conut # Get total count of profiles.");
+                    p.help.Add("PDI.ProfileList.SelectedName # Get name of a selected profile.");
+                    p.help.Add("PDI.ProfileList.SelectedIndex # Set/get index of a selected profile.");
+                    p.help.Add("PDI.ProfileList.Select(int index) # Set index of a selected profile.");
+                    p.help.Add("PDI.ProfileList.Check(int index) # Check a profile assigned by index.");
+                    p.help.Add("PDI.ProfileList.Uncheck(int index) # Uncheck a profile assigned by index.");
+                    p.help.Add("PDI.ProfileList.CheckAll() # Check all profiles.");
+                    p.help.Add("PDI.ProfileList.UncheckAll() # Uncheck all profiles.");
+                    p.help.Add("PDI.ProfileList.DeleteAll() # Delete all profiles.");
+                    p.help.Add("PDI.ProfileList.Delete(int index) # Delete a profile assigned by index.");
                 }
 
-                public void DeleteAll()
-                {
-                    Execute(() => p.main.formProfile.DeleteAllProfiles(false));
-                }
+                public void DeleteAll() => Execute(() => p.main.formProfile.DeleteAllProfiles(false));
                 public void Delete(int n)
-                {
-                    Execute(new Action(() =>
-                    {
-                        Select(n);
-                        p.main.formProfile.DeleteProfiles(n);
-                    }));
-                }
+                    => Execute(new Action(() =>
+                                           {
+                                               Select(n);
+                                               p.main.formProfile.DeleteProfiles(n);
+                                           }));
 
                 public int Count => Execute(() => p.main.bindingSourceProfile.Count);
 
@@ -4687,13 +4727,42 @@ namespace PDIndexer
                     }
                 }
 
-
-
                 public void CheckAll() => Execute(new Action(() => p.main.checkBoxAll.Checked = true));
 
                 public void UncheckAll() => Execute(new Action(() => p.main.checkBoxAll.Checked = false));
 
             }
+
+            public class FittingClass : MacroSub
+            {
+                private readonly Macro p;
+                public FittingClass(Macro _p) : base(_p.main)
+                {
+                    p = _p;
+                    p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
+                    p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
+                    p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
+                }
+
+                public void Apply() => Execute(() => p.main.formFitting.buttonConfirm_Click(new object(), new EventArgs()));
+
+
+
+                public void Check(int n) { Check(n, true); }
+                public void Uncheck(int n) { Check(n, false); }
+
+                public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
+                private void check(int n, bool checkState)
+                {
+                    if (n >= 0 && n < p.main.formFitting.bindingSourcePlanes.Count)
+                    {
+                        ((DataRowView)p.main.formFitting.bindingSourcePlanes[n]).Row[0] = checkState;
+                        p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
+                    }
+                }
+            }
+
+
         }
 
   

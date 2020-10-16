@@ -706,7 +706,7 @@ namespace PDIndexer
             this.dataGridViewPlaneList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridViewPlaneList.RowTemplate.Height = 21;
             this.dataGridViewPlaneList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPlaneList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridViewPlaneList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanes_CellContentClick);
             this.dataGridViewPlaneList.SelectionChanged += new System.EventHandler(this.dataGridViewPlaneList_SelectionChanged);
             // 
             // checkDataGridViewCheckBoxColumn

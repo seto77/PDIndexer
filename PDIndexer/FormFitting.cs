@@ -21,6 +21,7 @@ namespace PDIndexer
     /// </summary>
     public partial class FormFitting : System.Windows.Forms.Form
     {
+        #region フィールド、プロパティ
         public Crystal TargetCrystal = new Crystal();
         public Profile TargetProfile = new Profile();
 
@@ -41,22 +42,20 @@ namespace PDIndexer
                 if (selectedPlaneIndex >= 0 && selectedPlaneIndex != bindingSourcePlanes.Position)
                     bindingSourcePlanes.Position = selectedPlaneIndex;
             }
-            get { return selectedPlaneIndex; }
-
+            get => selectedPlaneIndex;
         }
 
-        public string RemovedProfileName
-        {
-            set { textBoxRemovedProfileName.Text = value; }
-            get { return textBoxRemovedProfileName.Text; }
-
-        }
+        public string RemovedProfileName { set => textBoxRemovedProfileName.Text = value; get => textBoxRemovedProfileName.Text; }
 
         /// <summary>
         /// Angleモード、Energyモード、d値モードのときにそれぞれSearchRangeにかける係数 (Angle:1, Energy:500, d:0.2)
         /// </summary>
         public double SerchRangeFactor = 1;
-      
+
+        #endregion
+
+
+        #region コンストラクタ、ロード、クローズ
         public FormFitting()
         {
             InitializeComponent();
@@ -74,6 +73,7 @@ namespace PDIndexer
             formMain.toolStripButtonFittingParameter.Checked = false;
         }
 
+        #endregion
 
         //メインフォームやFormCrystalで結晶の格子定数などが変更されたとき呼ばれる。選択列やチェック状態が変更されただけではよばれない
         public void ChangeCrystalFromMainForm()
@@ -131,6 +131,7 @@ namespace PDIndexer
             IsCheckedListBoxSelectIndexChangeEventSkip = false;
         }
 
+        #region 結晶面リストの保存、コピー
         private string generateTableText()
         {
             if (TargetCrystal == null)
@@ -197,6 +198,10 @@ namespace PDIndexer
                         sw.Write(text.Replace("\t", ","));
             }
         }
+        #endregion
+
+
+        #region Drag & Dropイベント
         /// <summary>
         /// コントロールにCSVファイルがドロップされたとき
         /// </summary>
@@ -246,19 +251,12 @@ namespace PDIndexer
                 }
             }
         }
-    
 
-    private void FormFitting_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
-            else
-                e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
-        }
+        //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
+        private void FormFitting_DragEnter(object sender, DragEventArgs e)
+            => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
-       
-
-
+        #endregion
 
         public void Fitting()
         {
@@ -267,10 +265,10 @@ namespace PDIndexer
             if (!(formMain.bindingSourceProfile.Position >= 0 && (dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]) != null)) return;
 
             TargetProfile = dp.Profile;
-            System.Diagnostics.Stopwatch sw = new Stopwatch();
+            var sw = new Stopwatch();
             sw.Start();
 
-            List<Crystal> listCrystal = formMain.dataSet.DataTableCrystal.CheckedItems;
+            var listCrystal = formMain.dataSet.DataTableCrystal.CheckedItems;
 
             int groupIndex = 0;
 
@@ -312,7 +310,7 @@ namespace PDIndexer
                             listCrystal[h].Plane[i].peakFunction.GroupIndex = groupIndex++;
                     }
                 }
-            
+
 
 
             if (!checkBoxPatternDecomposition.Checked)
@@ -449,19 +447,19 @@ namespace PDIndexer
                 #endregion
                 {
                     #region すべてをまとめてフィッティング
-                  /*  for (int h = 0; h < listCrystal.Count; h++)
-                    {
-                        for (int i = 0; i < listCrystal[h].Plane.Count; i++)
-                        {
-                            //Simpleモードはここで処理
-                            if (listCrystal[h].Plane[i].IsFittingChecked && listCrystal[h].Plane[i].SerchOption == PeakFunctionForm.Simple)
-                            {
-                                listCrystal[h].Plane[i].simpleParameter = FittingPeak.FitPeakAsSimple(listCrystal[h].Plane[i].XCalc, targetCrystal.Plane[i].SerchRange, targetProfile.Pt.ToArray());
-                                listCrystal[h].Plane[i].XObs = listCrystal[h].Plane[i].simpleParameter.X;
-                                listCrystal[h].Plane[i].peakFunction.Xerr = targetProfile.Pt[1].X - targetProfile.Pt[0].X;
-                            }
-                        }
-                    }*/
+                    /*  for (int h = 0; h < listCrystal.Count; h++)
+                      {
+                          for (int i = 0; i < listCrystal[h].Plane.Count; i++)
+                          {
+                              //Simpleモードはここで処理
+                              if (listCrystal[h].Plane[i].IsFittingChecked && listCrystal[h].Plane[i].SerchOption == PeakFunctionForm.Simple)
+                              {
+                                  listCrystal[h].Plane[i].simpleParameter = FittingPeak.FitPeakAsSimple(listCrystal[h].Plane[i].XCalc, targetCrystal.Plane[i].SerchRange, targetProfile.Pt.ToArray());
+                                  listCrystal[h].Plane[i].XObs = listCrystal[h].Plane[i].simpleParameter.X;
+                                  listCrystal[h].Plane[i].peakFunction.Xerr = targetProfile.Pt[1].X - targetProfile.Pt[0].X;
+                              }
+                          }
+                      }*/
 
                     //全てのフィッティング対象ピークをいったん格納
                     List<PeakFunction> pvpTemp2 = new List<PeakFunction>();
@@ -530,7 +528,7 @@ namespace PDIndexer
                         }
                         else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
                         {
-                            listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.WaveNumberToD(listCrystal[h].Plane[i].XObs*10);
+                            listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.WaveNumberToD(listCrystal[h].Plane[i].XObs * 10);
                             listCrystal[h].Plane[i].Weight = 1;
                         }
                     }
@@ -538,15 +536,12 @@ namespace PDIndexer
                         listCrystal[h].Plane[i].dObs = double.NaN;
                 }
 
-            
+
             formMain.toolStripStatusLabelCalcTime.Text = "Calculating Time (Peak Fitting) : " + sw.ElapsedMilliseconds.ToString() + "ms";
 
             //フィッティング結果を
 
-            try
-            {
-                FittingDiffraction();
-            }
+            try { FittingDiffraction(); }
             catch { }
 
             refleshTable();
@@ -555,11 +550,10 @@ namespace PDIndexer
 
         }
 
-        //現在のチェック状況と空間群から最小２乗法によるフィッティング
-        #region 
+        #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
         public void FittingDiffraction()
         {
-            List<Plane> p = new List<Plane>();
+            var p = new List<Plane>();
             for (int i = 0; i < TargetCrystal.Plane.Count; i++)
                 if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption == PeakFunctionForm.Simple || TargetCrystal.Plane[i].observedIntensity > 0)
                     p.Add(TargetCrystal.Plane[i]);
@@ -628,7 +622,7 @@ namespace PDIndexer
                         V_err = Math.Sqrt(3) * a * a_err;
                     }
                     break;
-                    #endregion
+                #endregion
                 case "tetragonal":
                     #region tetragonal
                     Q = new DenseMatrix(column, 2);
@@ -671,7 +665,7 @@ namespace PDIndexer
                         V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err);
                     }
                     break;
-                    #endregion
+                #endregion
                 case "hexagonal":
                     #region hexagonal
                     Q = new DenseMatrix(column, 2);
@@ -716,7 +710,7 @@ namespace PDIndexer
                     }
 
                     break;
-                    #endregion
+                #endregion
                 case "trigonal":
                     #region trigonal
                     Q = new DenseMatrix(column, 2);
@@ -761,7 +755,7 @@ namespace PDIndexer
                     }
 
                     break;
-                    #endregion
+                #endregion
                 case "orthorhombic":
                     #region orthorhombic
                     Q = new DenseMatrix(column, 3);
@@ -807,7 +801,7 @@ namespace PDIndexer
                         V_err = Math.Sqrt(b * c * a_err * a_err + c * a * b_err * b_err + a * b * c_err * c_err);
                     }
                     break;
-                    #endregion
+                #endregion
                 case "monoclinic":
                     #region monoclinic
                     Q = new DenseMatrix(column, 4);
@@ -997,7 +991,7 @@ namespace PDIndexer
                             break;
                     }
                     break;
-                    #endregion
+                #endregion
                 case "triclinic":
                     #region triclinic
 
@@ -1227,14 +1221,25 @@ namespace PDIndexer
                         alfa = Math.PI - alfa; beta = Math.PI - beta; gamma = Math.PI - gamma;
                     }*/
                     break;
-#endregion
+                    #endregion
             }
-            temp_crystal = new Crystal(
-                (a, b, c, alfa, beta, gamma),
-                (a_err, b_err, c_err, alpha_err, beta_err, gamma_err),
-                
-                0, "", Color.Black);
-            temp_crystal.Volume = V;
+            
+            //解けなかった場合は、格子定数を定数倍したものを求める 2020/10/16
+            if(a==0 && p.Count>0)
+            {
+
+                double coeff = p.Sum(e => e.Weight * e.d * e.dObs) / p.Sum(e => e.Weight * e.d * e.d);
+                a = coeff * TargetCrystal.A;
+                b = coeff * TargetCrystal.B;
+                c = coeff * TargetCrystal.C;
+                alfa = TargetCrystal.Alpha;
+                beta = TargetCrystal.Beta;
+                gamma = TargetCrystal.Gamma;
+
+            }
+
+            temp_crystal = new Crystal((a, b, c, alfa, beta, gamma), (a_err, b_err, c_err, alpha_err, beta_err, gamma_err), 0, "", Color.Black);
+            //temp_crystal.Volume = V;
             temp_crystal.Volume_err = V_err;
             SetTextBox(temp_crystal);
         }
@@ -1274,7 +1279,7 @@ namespace PDIndexer
         }
 
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridViewPlanes_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0 && e.RowIndex >= 0)
             {
@@ -1285,7 +1290,7 @@ namespace PDIndexer
             dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
         }
 
-        private void dataGridViewPlaneList_SelectionChanged(object sender, EventArgs e)
+        public void dataGridViewPlaneList_SelectionChanged(object sender, EventArgs e)
         {
             if (IsCheckedListBoxSelectIndexChangeEventSkip || TargetCrystal==null) return;
             if (bindingSourcePlanes.Position >= 0)
@@ -1323,40 +1328,15 @@ namespace PDIndexer
             textBoxBeta.Text = (c.Beta * 180 / Math.PI).ToString("f5");
             textBoxGamma.Text = (c.Gamma * 180 / Math.PI).ToString("f5");
 
+            textBoxA_err.Text = (c.A_err > -1) ? (c.A_err * 10).ToString("f6") : "NA";
+            textBoxB_err.Text = (c.B_err > -1) ? (c.B_err * 10).ToString("f6") : "NA";
+            textBoxC_err.Text = (c.C_err > -1) ? (c.C_err * 10).ToString("f6") : "NA";
+            textBoxAlpha_err.Text = (c.Alpha_err > -1) ? (c.Alpha_err * 180 / Math.PI).ToString("f5") : "NA";
+            textBoxBeta_err.Text = (c.Beta_err > -1) ? (c.Beta_err * 180 / Math.PI).ToString("f5") : "NA";
+            textBoxGamma_err.Text = (c.Gamma_err > -1) ? (c.Gamma_err * 180 / Math.PI).ToString("f5") : "NA";
+
             textBoxV.Text = (c.Volume * 1000).ToString("f6");
-            
-            if (c.A_err > -1)
-                textBoxA_err.Text = (c.A_err * 10).ToString("f6");
-            else
-                textBoxA_err.Text = "";
-            if (c.B_err > -1)
-                textBoxB_err.Text = (c.B_err * 10).ToString("f6");
-            else
-                textBoxB_err.Text = "";
-            if (c.C_err > -1)
-                textBoxC_err.Text = (c.C_err * 10).ToString("f6");
-            else
-                textBoxC_err.Text = "";
-
-            if (c.Alpha_err > -1)
-                textBoxAlpha_err.Text = (c.Alpha_err * 180 / Math.PI).ToString("f5");
-            else
-                textBoxAlpha_err.Text = "";
-            
-            if (c.Beta_err > -1)
-                textBoxBeta_err.Text = (c.Beta_err * 180 / Math.PI).ToString("f5");
-            else
-                textBoxBeta_err.Text = "";
-
-            if (c.Gamma_err > -1)
-                textBoxGamma_err.Text = (c.Gamma_err * 180 / Math.PI).ToString("f5");
-            else
-                textBoxGamma_err.Text = "";
-
-            if (c.Volume_err > -1)
-                textBoxV_err.Text = (c.Volume_err * 1000).ToString("f6");
-            else
-                textBoxV_err.Text = "";
+            textBoxV_err.Text = (c.Volume_err > -1) ? (c.Volume_err * 1000).ToString("f6") : "NA";
         }
 
         private void textBoxA_TextChanged(object sender, System.EventArgs e)
@@ -1517,7 +1497,7 @@ namespace PDIndexer
         {
             if (TargetCrystal == null || TargetProfile == null) return;
 
-            Profile p = new Profile();
+            var p = new Profile();
             p.Pt.AddRange(TargetProfile.Pt.ToArray());
             if (TargetCrystal.Plane != null)
                 foreach (Plane plane in TargetCrystal.Plane)
@@ -1535,20 +1515,21 @@ namespace PDIndexer
                     }
 
 
-            DiffractionProfile output = new DiffractionProfile();
-            output.OriginalProfile = p;
-            output.Name = RemovedProfileName;
-            output.ColorARGB = formMain.generateRandomColor().ToArgb();
-
-            output.WaveSource = formMain.WaveSource;
-            output.WaveColor = formMain.WaveColor;
-            output.SrcAxisMode = formMain.AxisMode;
-            output.XrayElementNumber = formMain.XraySourceElementNumber;
-            output.XrayLine = formMain.XraySourceLine;
-            output.SrcWaveLength = formMain.WaveLength;
-            output.SrcTakeoffAngle = formMain.TakeoffAngle;
-            output.SrcTofAngle = formMain.TakeoffAngle;
-            output.SrcTofLength = formMain.TofLength;
+            var output = new DiffractionProfile
+            {
+                OriginalProfile = p,
+                Name = RemovedProfileName,
+                ColorARGB = formMain.generateRandomColor().ToArgb(),
+                WaveSource = formMain.WaveSource,
+                WaveColor = formMain.WaveColor,
+                SrcAxisMode = formMain.AxisMode,
+                XrayElementNumber = formMain.XraySourceElementNumber,
+                XrayLine = formMain.XraySourceLine,
+                SrcWaveLength = formMain.WaveLength,
+                SrcTakeoffAngle = formMain.TakeoffAngle,
+                SrcTofAngle = formMain.TakeoffAngle,
+                SrcTofLength = formMain.TofLength
+            };
 
             formMain.AddProfileToCheckedListBox(output, true, true);
         }
@@ -1568,18 +1549,8 @@ namespace PDIndexer
             if (formMain.AxisMode == HorizontalAxis.EnergyXray)
             {
                 DiffractionProfile dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
-
-                
-                
                 //dp.SrcTakeoffAngle = xAxisUserControl.TakeoffAngle;
-
-                
-
-
                 formMain.horizontalAxisUserControl_AxisPropertyChanged();
-
-
-
             }
         }
     }
