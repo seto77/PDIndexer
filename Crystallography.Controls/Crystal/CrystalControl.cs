@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.LinearAlgebra.Double;
+﻿#region Using
+using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -6,8 +7,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Permissions;
-using System.Windows.Forms;
+using System.Windows.Forms; 
+#endregion
 
 namespace Crystallography.Controls
 {
@@ -30,12 +31,10 @@ namespace Crystallography.Controls
 
         public bool VisibleBasicInfoTab { set { visibleBasicInfoTab = value; setTabPages(); } get => visibleBasicInfoTab; }
         private bool visibleBasicInfoTab = true;
-
-        public bool VisibleElasticityTab { set { visibleElasticityTab = value; setTabPages(); } get { return visibleElasticityTab; } }
-        private bool visibleElasticityTab = true;
-
         public bool VisibleAtomTab { set { visibleAtomTab = value; setTabPages(); } get => visibleAtomTab; }
         private bool visibleAtomTab = true;
+        public bool VisibleElasticityTab { set { visibleElasticityTab = value; setTabPages(); } get { return visibleElasticityTab; } }
+        private bool visibleElasticityTab = true;
 
         public bool VisibleBondsPolyhedraTab { set { visibleBondsPolyhedraTab = value; setTabPages(); } get => visibleBondsPolyhedraTab; }
         private bool visibleBondsPolyhedraTab = true;
@@ -51,7 +50,6 @@ namespace Crystallography.Controls
 
         public bool VisiblePolycrystallineTab { set { visiblePolycrystallineTab = value; setTabPages(); } get => visiblePolycrystallineTab; }
         private bool visiblePolycrystallineTab = false;
-
         public bool VisibleBoundTab { set { visibleBoundTab = value; setTabPages(); } get => visibleBoundTab; }
         private bool visibleBoundTab = false;
         public bool VisibleLatticePlaneTab { set { visibleLatticePlaneTab = value; setTabPages(); } get => visibleLatticePlaneTab; }
@@ -62,7 +60,7 @@ namespace Crystallography.Controls
             tabControl.TabPages.Clear();
             if (VisibleBasicInfoTab) tabControl.TabPages.Add(tabPageBasicInfo);
             if (VisibleAtomTab) tabControl.TabPages.Add(tabPageAtom);
-            if (VisiblePolycrystallineTab) tabControl.TabPages.Add(tabPagePolycrystalline);
+            if (visibleBondsPolyhedraTab) tabControl.TabPages.Add(tabPageBondsPolyhedra);
             if (VisibleBoundTab) tabControl.TabPages.Add(tabPageBounds);
             if (VisibleLatticePlaneTab) tabControl.TabPages.Add(tabPageLatticePlane);
             if (VisibleReferenceTab) tabControl.TabPages.Add(tabPageReference);
@@ -126,7 +124,8 @@ namespace Crystallography.Controls
 
 
         //候補の数値
-        private readonly double[] rationalNumbers = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
+        private readonly double[] rationalNumbers
+            = new double[] { 1.0 / 12.0, 1.0 / 8.0, 1.0 / 6.0, 1.0 / 4.0, 1.0 / 3.0, 3.0 / 8.0, 5.0 / 12.0, 1.0 / 2.0, 7.0 / 12.0, 5.0 / 8.0, 2.0 / 3.0, 3.0 / 4.0, 5.0 / 6.0, 7.0 / 8.0, 11.0 / 12.0 };
 
         #endregion
 
@@ -145,8 +144,6 @@ namespace Crystallography.Controls
             textBoxTitle.Size = new Size(tabPageReference.Width - textBoxTitle.Location.X - 2, tabPageReference.Height - textBoxTitle.Location.Y - 2);
             formScatteringFactor.VisibleChanged += new EventHandler(formScatteringFactor_VisibleChanged);
             formSymmetryInformation.VisibleChanged += new EventHandler(formSymmetryInformation_VisibleChanged);
-
-         
         }
 
 
@@ -159,11 +156,6 @@ namespace Crystallography.Controls
         public event EventHandler SymmetryInformation_VisibleChanged;
 
         #endregion
-
-        private void formScatteringFactor_VisibleChanged(object sender, EventArgs e) 
-            => ScatteringFactor_VisibleChanged?.Invoke(sender, e);
-        private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e)
-            => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
 
         #region Crystalクラスを画面下部 から生成/にセット
 
@@ -196,7 +188,6 @@ namespace Crystallography.Controls
                 bondControl.GetAll(), boundControl.GetAll(), latticePlaneControl.GetAll(), eosControl.EOScondition);
 
             crystal.ElasticStiffness = elasticityControl1.Stiffness.ToArray();
-
 
             #region PolyCrystallineProperty
             crystal.AngleResolution = (double)numericUpDownAngleResolution.Value;
@@ -258,8 +249,6 @@ namespace Crystallography.Controls
 
             //LatticePlaneコントロール
             latticePlaneControl.Crystal = crystal;
-            //latticePlaneControl.Clear();
-            //latticePlaneControl.AddRange(crystal.LatticePlanes);
 
             //EOS関連
             eosControl.Crystal = crystal;
@@ -305,7 +294,6 @@ namespace Crystallography.Controls
         }
 
         #endregion ドラッグドロップイベント
-
    
         #region 右クリックメニュー
 
@@ -356,68 +344,38 @@ namespace Crystallography.Controls
                 crystal.Atoms[i].Dsf = new DiffuseScatteringFactor(DiffuseScatteringFactor.Type.B, true, 0, 0, null, null, Crystal.CellValue);
         }
 
+        private void revertCellConstantsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            crystal.RevertInitialCellConstants();
+            Crystal = crystal;
+        }
+
+        private void strainControlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (formStrain.crystal == null)
+                formStrain.crystal = Crystal;
+
+            formStrain.Visible = !formStrain.Visible;
+        }
+
         #endregion 右クリックメニュー
+
+        #region キーボードイベント
 
         private void CrystalControl_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.Shift && e.KeyCode == Keys.R)
                 crystal.Reserved = !crystal.Reserved;
-        }
+        } 
+        #endregion
 
         #region EOS関連
-
         /// <summary>
         /// 外部から呼び出されることを想定.
         /// </summary>
-        public void CalculateEOS()
-        {
-            eosControl.CalculatePressure();
-        }
-
-        //private void numericBoxEOS_State_ValueChanged(object sender, EventArgs e)
-        //{
-        //    if (SkipEvent) return;
-        //    SkipEvent = true;
-        //    if (numericBoxEOS_V0perMol.ReadOnly && !double.IsNaN(numericBoxEOS_V0perCell.Value))
-        //        numericBoxEOS_V0perMol.Value = numericBoxEOS_V0perCell.Value * 6.0221367 / crystal.ChemicalFormulaZ / 10;
-        //    SkipEvent = false;
-        //    GenerateFromInterface();
-
-        //    SkipEvent = false;
-        //    if (checkBoxUseEOS.Checked)
-        //        numericBoxPressure.Value = crystal.EOSCondition.GetPressure(crystal.Volume * 1000);
-        //    SkipEvent = false;
-        //}
-
-        //private void numericBoxEOS_V0perCell_Click2(object sender, EventArgs e)
-        //{
-        //    if (SkipEvent) return;
-        //    SkipEvent = true;
-        //    numericBoxEOS_V0perCell.ReadOnly = false;
-        //    numericBoxEOS_V0perMol.ReadOnly = true;
-        //    SkipEvent = false;
-        //}
-
-        //private void numericBoxEOS_V0perMol_Click2(object sender, EventArgs e)
-        //{
-        //    if (SkipEvent) return;
-        //    SkipEvent = true;
-        //    numericBoxEOS_V0perCell.ReadOnly = true;
-        //    numericBoxEOS_V0perMol.ReadOnly = false;
-        //    SkipEvent = false;
-        //}
-
-        //private void numericBoxEOS_V0perMol_ValueChanged(object sender, EventArgs e)
-        //{
-        //    if (SkipEvent) return;
-        //    SkipEvent = true;
-        //    if (numericBoxEOS_V0perMol.ReadOnly == false)
-        //        numericBoxEOS_V0perCell.Value = numericBoxEOS_V0perMol.Value / 6.0221367 * 10 * crystal.ChemicalFormulaZ;
-        //    SkipEvent = false;
-        //}
+        public void CalculateEOS() => eosControl.CalculatePressure();
 
         #endregion EOSタブの入力設定
-
 
         #region Polycrystalline関連
 
@@ -445,14 +403,13 @@ namespace Crystallography.Controls
             poleFigureControl.Draw(true);
         }
 
-        #endregion Polycrystalline関連
-
-
         private void numericUpDownAngleResolution_ValueChanged(object sender, EventArgs e)
         {
             if (SkipEvent) return;
             GenerateFromInterface();
         }
+
+        #endregion Polycrystalline関連
 
         #region poleFigureの右クリックメニュー
         /// <summary>
@@ -640,18 +597,15 @@ namespace Crystallography.Controls
 
         #endregion
 
-        private void revertCellConstantsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            crystal.RevertInitialCellConstants();
-            Crystal = crystal;
-        }
+        #region 子コントロールからの変化イベント
 
-        private void strainControlToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (formStrain.crystal == null)
-                formStrain.crystal = Crystal;
+        private void atomControl_AtomsChanged(object sender, EventArgs e) => GenerateFromInterface();
 
-            formStrain.Visible = !formStrain.Visible;
+        private void symmetryControl_ItemChanged(object sender, EventArgs e) => GenerateFromInterface();
+
+        private void bondControl_ItemsChanged(object sender, EventArgs e)
+        {
+            //bondControlのItemChangedイベントは、StructureViewerなどに直接登録されている。
         }
 
         private void elasticityControl1_ValueChanged(object sender, EventArgs e)
@@ -665,28 +619,18 @@ namespace Crystallography.Controls
 
             formStrain.ElasticityMode = elasticityControl1.Mode;
         }
+        #endregion
 
-        private void atomControl_AtomsChanged(object sender, EventArgs e)
-        {
-            if (SkipEvent) return;
-            GenerateFromInterface();
-        }
-
-        private void symmetryControl_ItemChanged(object sender, EventArgs e)
-        {
-            if (SkipEvent) return;
-            GenerateFromInterface();
-        }
-
-        private void bondControl_ItemsChanged(object sender, EventArgs e)
-        {
-          //このイベントは、StructureViewerなどから直接呼び出される。
-        }
+        #region Symmetry Information と Scatetring Factorの立ち上げ、イベント
 
         private void buttonSymmetryInfo_Click(object sender, EventArgs e) => formSymmetryInformation.Visible = !formSymmetryInformation.Visible;
+        private void formSymmetryInformation_VisibleChanged(object sender, EventArgs e) => SymmetryInformation_VisibleChanged?.Invoke(sender, e);
 
         private void buttonScatteringFactor_Click(object sender, EventArgs e) => formScatteringFactor.Visible = !formScatteringFactor.Visible;
 
+        private void formScatteringFactor_VisibleChanged(object sender, EventArgs e) => ScatteringFactor_VisibleChanged?.Invoke(sender, e);
+
+        #endregion
 
         #region リサイズイベント中は描画を停止する
         bool registResizeEvent = false;
@@ -707,9 +651,5 @@ namespace Crystallography.Controls
         }
         #endregion
 
-        private void flowLayoutPanel5_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

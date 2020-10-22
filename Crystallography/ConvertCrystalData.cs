@@ -6,7 +6,11 @@ using System.Linq;
 using System.IO;
 using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
+using System.Threading;
 using V3 = OpenTK.Vector3d;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using System.ComponentModel;
 
 namespace Crystallography
 {
@@ -34,6 +38,9 @@ namespace Crystallography
             Crystal[] cry = new Crystal[0];
             if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
             {
+				if (new FileInfo(filename).Length > 10000000)//なぜかファイルが3GBとかになったことが有ったので、それに対する対処. 10MB以上だったらスキップすることにした.
+					return cry;
+
 				#region old code
 				//プロパティ文字列が変更にたいする対処
 				try
@@ -65,7 +72,25 @@ namespace Crystallography
                 {
                     using var fs = new FileStream(filename, FileMode.Open);
                     System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(Crystal[]));
-                    cry = (Crystal[])serializer.Deserialize(fs);
+
+
+					var worker = new BackgroundWorker();
+					worker.DoWork += (sender, e) => cry = (Crystal[])serializer.Deserialize(fs);
+					worker.RunWorkerAsync();
+
+					var timeout = 10000;
+					var sw = new Stopwatch();
+					for(int i=0; i< timeout; i++)
+                    {
+						if (cry.Length != 0)
+							break;
+						if (i == timeout - 1) { 
+							throw new Exception();
+						}
+						Thread.Sleep(1);
+                    }
+
+
                     #region //Bondクラスの単位を オングストロームからnmに変更したための対処
                     foreach (var c in cry)
                     {
@@ -100,7 +125,9 @@ namespace Crystallography
             }
 
             return cry;
-        } 
+        }
+
+        private static void Worker_DoWork1(object sender, DoWorkEventArgs e) => throw new NotImplementedException();
         #endregion
 
         #region SMAPの出力ファイル(*.out)読込

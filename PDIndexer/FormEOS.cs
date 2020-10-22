@@ -64,7 +64,7 @@ namespace PDIndexer
             //Jamieson
             numericalTextBoxGoldJamieson.Value = EOS.Au_Jamieson(a / 10, a0 / 10, t);
             //Sim
-            numericalTextBoxGoldSim.Value = EOS.ThirdBirchMurnaghan(167, 5.0, v0, v) + EOS.MieGruneisen(4, 1, 170, 2.97, 1.0, 300, v0, t, v);
+            numericalTextBoxGoldSim.Value = EOS.BirchMurnaghan3rd(167, 5.0, v0, v) + EOS.MieGruneisen(4, 1, 170, 2.97, 1.0, 300, v0, t, v);
             //Anderson
             numericalTextBoxGoldAnderson.Value = EOS.Au_Anderson(t, a / 10, a0 / 10);
             //Tsuchiya
@@ -91,11 +91,11 @@ namespace PDIndexer
             double a0 = numericalTextBoxMgOA0.Value, v0 = a0 * a0 * a0;
             double t = numericalTextBoxTemperature.Value;
             //Aizawa
-            numericalTextBoxMgOAizawa.Value = EOS.ThirdBirchMurnaghan(160, 4.15, v0, v) + EOS.MieGruneisen(4, 2, 773, 1.41, 0.7, 300, v0, t, v);
+            numericalTextBoxMgOAizawa.Value = EOS.BirchMurnaghan3rd(160, 4.15, v0, v) + EOS.MieGruneisen(4, 2, 773, 1.41, 0.7, 300, v0, t, v);
             //Dewaele
-            numericalTextBoxMgODewaele.Value = EOS.ThirdBirchMurnaghan(161, 3.94, v0, v) + EOS.MieGruneisen(4, 2, 800, 1.45, 0.8, 300, v0, t, v);
+            numericalTextBoxMgODewaele.Value = EOS.BirchMurnaghan3rd(161, 3.94, v0, v) + EOS.MieGruneisen(4, 2, 800, 1.45, 0.8, 300, v0, t, v);
             //Jacson
-            numericalTextBoxMgOJacson.Value = EOS.ThirdBirchMurnaghan(162.5, 4.13, v0, v) + EOS.MieGruneisen(4, 2, 673, 1.41, 1.3, 300, v0, t, v);
+            numericalTextBoxMgOJacson.Value = EOS.BirchMurnaghan3rd(162.5, 4.13, v0, v) + EOS.MieGruneisen(4, 2, 673, 1.41, 1.3, 300, v0, t, v);
             numericBoxMgOTangeVinet.Value = EOS.MgO_Tange_Vinet(t, v0, v);
             numericBoxMgOTangeBM.Value = EOS.MgO_Tange_BM(t, v0, v);
             
@@ -171,7 +171,7 @@ namespace PDIndexer
 
             numericBoxReAnz.Value = EOS.Vinet(352.6, 4.56, 29.467, v);
             numericBoxReSakai.Value = EOS.Vinet(358, 4.8, 29.47, v);
-            numericBoxReDub.Value = EOS.FourthBirchMurnaghan(342,6.15,-0.029, 29.46/v);
+            numericBoxReDub.Value = EOS.BirchMurnaghan4th(342,6.15,-0.029, 29.46/v);
         }
 
 

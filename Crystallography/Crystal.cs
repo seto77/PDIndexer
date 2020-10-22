@@ -351,7 +351,8 @@ namespace Crystallography
         /// <summary>
         /// 方位とサイズを保持したCrystalliteクラス配列 (多結晶体計算時に用いる)
         /// </summary>
-       //[NonSerialized] [XmlIgnore]
+        [NonSerialized] 
+        [XmlIgnore]
         public Crystallite Crystallites;
 
         public double AngleResolution = 2;
