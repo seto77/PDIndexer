@@ -3371,9 +3371,24 @@ namespace PDIndexer
                         dataSet.DataTableCrystal.Rows.RemoveAt(i--);
             }
 
-            //もし読み込んだ結晶リストにReservedされたCrystalがあれば入れ替える
 
-            crystalArray[0].FlexibleMode = true;
+            //何らかの原因で同一のReserved結晶が存在する場合は、片方(大きなインデックス)を削除
+            for (int j = 0; j < dataSet.DataTableCrystal.Rows.Count; j++)
+            {
+                var c1 = (Crystal)dataSet.DataTableCrystal.Rows[j][1];
+                if (c1.Reserved)
+                    for (int i = j + 1; i < dataSet.DataTableCrystal.Rows.Count; i++)
+                    {
+                        var c2 = (Crystal)dataSet.DataTableCrystal.Rows[i][1];
+                        if (c2.Reserved && c2.Name == c1.Name && c2.Journal == c1.Journal)
+                            dataGridViewCrystals.Rows.RemoveAt(i);
+                    }
+            }
+
+
+
+                //もし読み込んだ結晶リストにReservedされたCrystalがあれば入れ替える
+                crystalArray[0].FlexibleMode = true;
             for (int j = 0; j < dataSet.DataTableCrystal.Rows.Count; j++)
             {
                 var c = (Crystal)dataSet.DataTableCrystal.Rows[j][1];
@@ -3385,7 +3400,7 @@ namespace PDIndexer
                             crystalArray[i].Reserved = true;
                             dataSet.DataTableCrystal.Rows[j][1] = crystalArray[i];
                             crystalArray.RemoveAt(i);
-                            break;
+                            //break;
                         }
                     }
             }

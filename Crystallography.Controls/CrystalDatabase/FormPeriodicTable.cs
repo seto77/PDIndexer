@@ -15,11 +15,11 @@ namespace Crystallography.Controls
         public string[] ExcludesStr => Excludes.Select(i => i.ToString("000")).ToArray();
 
 
-        private List<Button> button = new List<Button>();
+        private readonly List<Button> button = new List<Button>();
 
-        private Color ExcludeColor = Color.LightCoral;
-        private Color IncludeColor = Color.LightBlue;
-        private Color NeutralColor = Color.LightYellow;
+        private readonly Color ExcludeColor = Color.LightCoral;
+        private readonly Color IncludeColor = Color.LightBlue;
+        private readonly Color NeutralColor = Color.LightYellow;
 
         public FormPeriodicTable()
         {
@@ -194,6 +194,8 @@ namespace Crystallography.Controls
 
             labelAc.Location = new Point(14, height * 8 + 4);
             for (int i = 89; i <= 103; i++) button[i].Location = new Point((i - 89 + 3) * width, height * 8);//Ac~Lr
+
+            this.ClientSize = new Size(18 * width , height * 9 + buttonOK.Height + 5);
 
            // buttonOK.Location = new Point(button[103].Location.X + width - buttonOK.Width,
           //      button[103].Location.Y + height + 4);

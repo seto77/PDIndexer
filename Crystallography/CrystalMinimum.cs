@@ -102,7 +102,6 @@ namespace Crystallography
             {
                 var pos = a.PositionTexts.Select(x => Decompose(x, c.sym)).ToArray();
                 var occ = Decompose(a.OccText);
-
                 var iso = Decompose(a.IsoText);
                 //Atoms2の単位はA^2なので、nm^2に変換
                 iso = (iso.Value / 100, double.IsNaN(iso.Error) ? iso.Error : iso.Error / 100);
@@ -127,7 +126,6 @@ namespace Crystallography
             }
 
             var bonds = Bonds.GetVestaBonds(atom.Select(a => a.AtomicNumber));
-            
 
             var crystal = new Crystal(cell.Values, cell.Errors,
                 c.sym, c.name, System.Drawing.Color.FromArgb(c.argb), new Matrix3D(),
@@ -408,9 +406,8 @@ namespace Crystallography
                 }
                 catch (Exception e)
                 {
-#if DEBUG
-                    MessageBox.Show(e.ToString());
-#endif
+                    if(AssemblyState.IsDebug)
+                        MessageBox.Show(e.ToString());
                     return new[] { (byte)255 };
                 }
             }
@@ -543,10 +540,6 @@ namespace Crystallography
                 return result;
             }
         }
-
-
-       
-
     }
 
 
@@ -598,16 +591,11 @@ namespace Crystallography
         [IgnoreMember]
         public string OccText { get => Crystal2.ToString(occBytes); set => occBytes = Crystal2.ToBytes(value); }
 
-
         /// <summary>
         /// 単位は Å^2. 
         /// </summary>
         [IgnoreMember]
-        public string IsoText
-        {
-            get => Crystal2.ToString(isoBytes);
-            set => isoBytes = Crystal2.ToBytes(value);
-        }
+        public string IsoText { get => Crystal2.ToString(isoBytes); set => isoBytes = Crystal2.ToBytes(value); }
 
         /// <summary>
         /// Bの場合は、無次元. Uの場合、Å^2. 

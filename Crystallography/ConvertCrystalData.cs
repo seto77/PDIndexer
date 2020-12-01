@@ -8,7 +8,6 @@ using System.Linq.Expressions;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using V3 = OpenTK.Vector3d;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using System.ComponentModel;
 
@@ -35,7 +34,7 @@ namespace Crystallography
 		//CrystalListを読み込むとき
 		public static Crystal[] ConvertToCrystalList(string filename)
         {
-            Crystal[] cry = new Crystal[0];
+            var cry = new Crystal[0];
             if (filename.ToLower().EndsWith("xml"))//XML形式のリストを読み込んだとき
             {
 				if (new FileInfo(filename).Length > 10000000)//なぜかファイルが3GBとかになったことが有ったので、それに対する対処. 10MB以上だったらスキップすることにした.
@@ -127,7 +126,6 @@ namespace Crystallography
             return cry;
         }
 
-        private static void Worker_DoWork1(object sender, DoWorkEventArgs e) => throw new NotImplementedException();
         #endregion
 
         #region SMAPの出力ファイル(*.out)読込
@@ -268,9 +266,8 @@ namespace Crystallography
 			}
 			catch (Exception e)
 			{
-				#if DEBUG
+				if(AssemblyState.IsDebug)
 					System.Windows.Forms.MessageBox.Show(fileName +" " + e.Message);
-				#endif
 				return null;
 			}
 		}
@@ -288,9 +285,8 @@ namespace Crystallography
 			}
 			catch (Exception e)
 			{
-				#if DEBUG
-				System.Windows.Forms.MessageBox.Show(e.Message);
-				#endif
+				if (Crystallography.AssemblyState.IsDebug)
+					System.Windows.Forms.MessageBox.Show(e.Message);
 				return null;
 			}
 
@@ -1009,9 +1005,8 @@ namespace Crystallography
 					}
 					catch (Exception e)
 					{
-						#if DEBUG
-                        System.Windows.Forms.MessageBox.Show( e.Message);
-						#endif
+						if (AssemblyState.IsDebug)
+							System.Windows.Forms.MessageBox.Show( e.Message);
 						return null;
 					}
 				}

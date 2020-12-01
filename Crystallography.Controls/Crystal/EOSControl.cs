@@ -26,6 +26,8 @@ namespace Crystallography.Controls
         {
             get
             {
+                if (crystal == null)
+                    return null;
                 var eos = new EOS
                 {
                     A = numericBoxEOS_A.Value,
@@ -94,6 +96,9 @@ namespace Crystallography.Controls
 
         public void setParameters()
         {
+            if (crystal == null || crystal.EOSCondition == null)
+                return;
+
             //EOS関連
             SkipEvent = true;
 
