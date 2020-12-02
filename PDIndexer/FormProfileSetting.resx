@@ -160,7 +160,7 @@
     <value>22</value>
   </data>
   <data name="dataGridViewProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 459</value>
+    <value>352, 553</value>
   </data>
   <data name="dataGridViewProfile.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -208,7 +208,7 @@
     <value>Vertical</value>
   </data>
   <data name="textBoxComment.Size" type="System.Drawing.Size, System.Drawing">
-    <value>278, 42</value>
+    <value>340, 42</value>
   </data>
   <data name="textBoxComment.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -235,7 +235,7 @@
     <value>10, 61</value>
   </data>
   <data name="textBoxProfileName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>274, 25</value>
+    <value>336, 25</value>
   </data>
   <data name="textBoxProfileName.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -298,7 +298,7 @@
     <value>colorControlLineColor</value>
   </data>
   <data name="&gt;&gt;colorControlLineColor.Type" xml:space="preserve">
-    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.ColorControl, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;colorControlLineColor.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -505,7 +505,7 @@
     <value>0, 0</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 152</value>
+    <value>352, 152</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>82</value>
@@ -538,10 +538,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>290, 615</value>
+    <value>352, 709</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>459</value>
+    <value>553</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
@@ -1135,7 +1135,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 3</value>
+    <value>205, 3</value>
   </data>
   <data name="buttonDeleteProfile.Size" type="System.Drawing.Size, System.Drawing">
     <value>70, 25</value>
@@ -1231,7 +1231,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownNormarizeRangeHigh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>105, 23</value>
+    <value>105, 31</value>
   </data>
   <data name="numericUpDownNormarizeRangeHigh.Size" type="System.Drawing.Size, System.Drawing">
     <value>78, 25</value>
@@ -1249,13 +1249,13 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;numericUpDownNormarizeRangeHigh.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="numericUpDownNormarizeRangeLow.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownNormarizeRangeLow.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 23</value>
+    <value>21, 31</value>
   </data>
   <data name="numericUpDownNormarizeRangeLow.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
@@ -1273,7 +1273,7 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;numericUpDownNormarizeRangeLow.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
   <data name="buttonChangeSourceXAxis.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1336,7 +1336,7 @@
     <value>xAxisUserControl</value>
   </data>
   <data name="&gt;&gt;xAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;xAxisUserControl.Parent" xml:space="preserve">
     <value>groupBox1</value>
@@ -1495,7 +1495,7 @@
     <value>numericalTextBoxExposureTime</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -1596,39 +1596,6 @@
   <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
-    <value>189, 25</value>
-  </data>
-  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 17</value>
-  </data>
-  <data name="label14.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>to</value>
-  </data>
-  <data name="&gt;&gt;label14.Name" xml:space="preserve">
-    <value>label14</value>
-  </data>
-  <data name="&gt;&gt;label14.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
-    <value>panelNormarizeIntensity</value>
-  </data>
-  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -1639,7 +1606,7 @@
     <value>NoControl</value>
   </data>
   <data name="label16.Location" type="System.Drawing.Point, System.Drawing">
-    <value>91, 25</value>
+    <value>91, 33</value>
   </data>
   <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
     <value>13, 17</value>
@@ -1660,7 +1627,7 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="label13.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1672,7 +1639,7 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 5</value>
+    <value>172, 5</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>108, 17</value>
@@ -1726,7 +1693,7 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;radioButtonNormarizeMaximum.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="radioButtonNormarizeAverage.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1759,13 +1726,13 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;radioButtonNormarizeAverage.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="numericUpDownNormarizeIntensity.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericUpDownNormarizeIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>214, 23</value>
+    <value>238, 31</value>
   </data>
   <data name="numericUpDownNormarizeIntensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>87, 25</value>
@@ -1786,7 +1753,7 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;numericUpDownNormarizeIntensity.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1798,7 +1765,7 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>55, 46</value>
+    <value>55, 54</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
     <value>99, 17</value>
@@ -1819,39 +1786,6 @@
     <value>panelNormarizeIntensity</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="label15.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label15.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label15.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>218, 46</value>
-  </data>
-  <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 17</value>
-  </data>
-  <data name="label15.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="label15.Text" xml:space="preserve">
-    <value>(vertical unit)</value>
-  </data>
-  <data name="&gt;&gt;label15.Name" xml:space="preserve">
-    <value>label15</value>
-  </data>
-  <data name="&gt;&gt;label15.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
-    <value>panelNormarizeIntensity</value>
-  </data>
-  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
   <data name="button1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -1864,7 +1798,7 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 3</value>
+    <value>275, 3</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 25</value>
@@ -1969,7 +1903,7 @@
     <value>numericBoxTwhoThetaOffsetCoeff2</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2017,7 +1951,7 @@
     <value>numericBoxTwhoThetaOffsetCoeff0</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2137,7 +2071,7 @@
     <value>numericBoxTwhoThetaOffsetCoeff1</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Parent" xml:space="preserve">
     <value>panelTwoThetaOffset</value>
@@ -2437,7 +2371,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteAllMask.Location" type="System.Drawing.Point, System.Drawing">
-    <value>254, 3</value>
+    <value>252, 3</value>
   </data>
   <data name="buttonDeleteAllMask.Size" type="System.Drawing.Size, System.Drawing">
     <value>77, 25</value>
@@ -2527,7 +2461,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteMask.Location" type="System.Drawing.Point, System.Drawing">
-    <value>182, 2</value>
+    <value>180, 2</value>
   </data>
   <data name="buttonDeleteMask.Size" type="System.Drawing.Size, System.Drawing">
     <value>69, 25</value>
@@ -2967,6 +2901,60 @@
   <data name="&gt;&gt;checkBoxNormarizeIntensity.ZOrder" xml:space="preserve">
     <value>12</value>
   </data>
+  <data name="label14.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label14.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label14.Location" type="System.Drawing.Point, System.Drawing">
+    <value>220, 33</value>
+  </data>
+  <data name="label14.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 17</value>
+  </data>
+  <data name="label14.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>to</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>panelNormarizeIntensity</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="label23.Location" type="System.Drawing.Point, System.Drawing">
+    <value>181, 55</value>
+  </data>
+  <data name="label23.Size" type="System.Drawing.Size, System.Drawing">
+    <value>100, 23</value>
+  </data>
+  <data name="label23.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>panelNormarizeIntensity</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
   <data name="panelNormarizeIntensity.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 543</value>
   </data>
@@ -2974,7 +2962,7 @@
     <value>10, 0, 3, 3</value>
   </data>
   <data name="panelNormarizeIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>339, 70</value>
+    <value>339, 79</value>
   </data>
   <data name="panelNormarizeIntensity.TabIndex" type="System.Int32, mscorlib">
     <value>86</value>
@@ -3004,7 +2992,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 587</value>
+    <value>373, 681</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -3040,7 +3028,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonApplyAllProfiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 594</value>
+    <value>57, 688</value>
   </data>
   <data name="buttonApplyAllProfiles.Size" type="System.Drawing.Size, System.Drawing">
     <value>308, 27</value>
@@ -3070,7 +3058,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 622</value>
+    <value>373, 716</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -3097,7 +3085,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 622</value>
+    <value>373, 716</value>
   </data>
   <data name="tabPage3.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3139,7 +3127,7 @@
     <value>0, 0</value>
   </data>
   <data name="listBoxTwoProfiles1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 391</value>
+    <value>364, 485</value>
   </data>
   <data name="listBoxTwoProfiles1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -3334,7 +3322,7 @@
     <value>numericalTextBoxTargetValue</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.10.16.1430, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.12.2.847, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Parent" xml:space="preserve">
     <value>flowLayoutPanelFourCalculator</value>
@@ -3346,7 +3334,7 @@
     <value>Bottom</value>
   </data>
   <data name="flowLayoutPanelFourCalculator.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 391</value>
+    <value>0, 485</value>
   </data>
   <data name="flowLayoutPanelFourCalculator.Size" type="System.Drawing.Size, System.Drawing">
     <value>364, 26</value>
@@ -3388,7 +3376,7 @@
     <value>test</value>
   </data>
   <data name="listBoxTwoProfiles2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 417</value>
+    <value>0, 511</value>
   </data>
   <data name="listBoxTwoProfiles2.Size" type="System.Drawing.Size, System.Drawing">
     <value>364, 131</value>
@@ -3418,7 +3406,7 @@
     <value>4, 27</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>364, 548</value>
+    <value>364, 642</value>
   </data>
   <data name="panel1.TabIndex" type="System.Int32, mscorlib">
     <value>87</value>
@@ -3538,7 +3526,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="buttonCalculate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>268, 595</value>
+    <value>268, 689</value>
   </data>
   <data name="buttonCalculate.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 23</value>
@@ -3568,7 +3556,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="textBoxOutputFilename.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 594</value>
+    <value>4, 688</value>
   </data>
   <data name="textBoxOutputFilename.Size" type="System.Drawing.Size, System.Drawing">
     <value>258, 25</value>
@@ -3604,7 +3592,7 @@
     <value>NoControl</value>
   </data>
   <data name="label18.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 577</value>
+    <value>3, 671</value>
   </data>
   <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
     <value>164, 17</value>
@@ -3637,7 +3625,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>373, 622</value>
+    <value>373, 716</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -3664,10 +3652,10 @@
     <value>Arial, 10pt</value>
   </data>
   <data name="tabControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>298, 0</value>
+    <value>360, 0</value>
   </data>
   <data name="tabControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>381, 651</value>
+    <value>381, 745</value>
   </data>
   <data name="tabControl1.TabIndex" type="System.Int32, mscorlib">
     <value>85</value>
@@ -3691,7 +3679,7 @@
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>679, 651</value>
+    <value>741, 745</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

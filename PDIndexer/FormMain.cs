@@ -645,10 +645,15 @@ namespace PDIndexer
                 if (!Directory.EnumerateFileSystemEntries(dir).Any())
                     Directory.Delete(dir);
 
+
             //結晶ファイル読み込み
             try
             {
-                readCrystal(UserAppDataPath + "default.Xml", false, true);
+                if(automaticallySaveTheCrystalListToolStripMenuItem.Checked)
+                    readCrystal(UserAppDataPath + "default.Xml", false, true);
+                else
+                    readCrystal(UserAppDataPath + "initial.Xml", false, true);
+
                 if (bindingSourceCrystal.Count == 0)
                     readCrystal(UserAppDataPath + "initial.Xml", false, true);
             }
@@ -757,12 +762,14 @@ namespace PDIndexer
             formProfile.Close();
             formEOS.Close();
             e.Cancel = false;
+            if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
+            {
+                var cry = new List<Crystal>();
+                for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
+                    cry.Add(dataSet.DataTableCrystal.Items[i]);
+                ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
 
-            List<Crystal> cry = new List<Crystal>();
-            for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
-                cry.Add((Crystal)dataSet.DataTableCrystal.Items[i]);
-            ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
-
+            }
         }
         //フォームクローズ時
         private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
@@ -831,6 +838,7 @@ namespace PDIndexer
                 this.horizontalAxisUserControl.XrayWaveSourceElementNumber = (int)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayWaveSourceElementNumber);
                 this.horizontalAxisUserControl.XrayWaveSourceLine = (XrayLine)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayWaveSourceLine);
 
+                
 
                 this.numericalTextBoxIncreasingPixels.Text = (string)regKey.GetValue("numericalTextBoxIncreasingPixelsText", (string)this.numericalTextBoxIncreasingPixels.Text);
                 if (numericalTextBoxIncreasingPixels.Value > 1)
@@ -845,6 +853,8 @@ namespace PDIndexer
                     numericUpDownIncreasingPixels.Value = -4;
                 else
                     numericUpDownIncreasingPixels.Value = -5;
+
+                this.automaticallySaveTheCrystalListToolStripMenuItem.Checked = (string)regKey.GetValue("automaticallySaveTheCrystal", "True") == "True";
 
 
                 formCrystal.checkBoxShowPeakOverProfiles.Checked = (string)regKey.GetValue("formCrystal.checkBoxShowPeakOverProfiles.Checked", "True") == "True";
@@ -1018,6 +1028,8 @@ namespace PDIndexer
             regKey.SetValue("formProfileSettingHeight", this.formProfile.Height);
             regKey.SetValue("formProfileSettingLocationX", this.formProfile.Location.X);
             regKey.SetValue("formProfileSettingLocationY", this.formProfile.Location.Y);
+
+            regKey.SetValue("automaticallySaveTheCrystal", this.automaticallySaveTheCrystalListToolStripMenuItem.Checked);
 
             regKey.SetValue("horizontalAxisUserControlWaveLengthText", this.horizontalAxisUserControl.WaveLengthText);
             regKey.SetValue("horizontalAxisUserControlTakeoffAngleText", this.horizontalAxisUserControl.TakeoffAngleText);

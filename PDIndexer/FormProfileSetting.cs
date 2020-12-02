@@ -881,5 +881,10 @@ namespace PDIndexer
 
         private void buttonTwoThetaOffsetReset_Click(object sender, EventArgs e)
             => TwoThetaOffsetCoeff0 = TwoThetaOffsetCoeff1 = TwoThetaOffsetCoeff2 = 0;
+
+        private void panelNormarizeIntensity_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

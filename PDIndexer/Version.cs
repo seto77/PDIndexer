@@ -27,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.394(2020/12/02) Fixed a GUI bug. Added the option: 'Save the crystal list when closing'" +
             "\r\n ver4.393(2020/12/01) Fixed a minor bug when loading crystal list." +
             "\r\n ver4.392(2020/10/22) Added: 3rd order Vinet equation to the EOS function." +
             "\r\n ver4.391(2020/10/17) Improved: Macro functions." +

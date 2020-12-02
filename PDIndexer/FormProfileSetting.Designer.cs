@@ -86,14 +86,12 @@ namespace PDIndexer
             this.numericalTextBoxExposureTime = new Crystallography.Controls.NumericBox();
             this.label24 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.radioButtonNormarizeMaximum = new System.Windows.Forms.RadioButton();
             this.radioButtonNormarizeAverage = new System.Windows.Forms.RadioButton();
             this.numericUpDownNormarizeIntensity = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -134,6 +132,8 @@ namespace PDIndexer
             this.panelBackgroundSubtraction = new System.Windows.Forms.Panel();
             this.checkBoxNormarizeIntensity = new System.Windows.Forms.CheckBox();
             this.panelNormarizeIntensity = new System.Windows.Forms.Panel();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.buttonApplyAllProfiles = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -698,11 +698,6 @@ namespace PDIndexer
             resources.ApplyResources(this.label6, "label6");
             this.label6.Name = "label6";
             // 
-            // label14
-            // 
-            resources.ApplyResources(this.label14, "label14");
-            this.label14.Name = "label14";
-            // 
             // label16
             // 
             resources.ApplyResources(this.label16, "label16");
@@ -760,11 +755,6 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
-            // label15
-            // 
-            resources.ApplyResources(this.label15, "label15");
-            this.label15.Name = "label15";
             // 
             // button1
             // 
@@ -1136,18 +1126,29 @@ namespace PDIndexer
             // panelNormarizeIntensity
             // 
             this.panelNormarizeIntensity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelNormarizeIntensity.Controls.Add(this.label14);
             this.panelNormarizeIntensity.Controls.Add(this.radioButtonNormarizeAverage);
             this.panelNormarizeIntensity.Controls.Add(this.label16);
             this.panelNormarizeIntensity.Controls.Add(this.numericUpDownNormarizeRangeLow);
             this.panelNormarizeIntensity.Controls.Add(this.numericUpDownNormarizeRangeHigh);
             this.panelNormarizeIntensity.Controls.Add(this.radioButtonNormarizeMaximum);
             this.panelNormarizeIntensity.Controls.Add(this.numericUpDownNormarizeIntensity);
+            this.panelNormarizeIntensity.Controls.Add(this.label14);
             this.panelNormarizeIntensity.Controls.Add(this.label13);
-            this.panelNormarizeIntensity.Controls.Add(this.label15);
             this.panelNormarizeIntensity.Controls.Add(this.label3);
+            this.panelNormarizeIntensity.Controls.Add(this.label23);
             resources.ApplyResources(this.panelNormarizeIntensity, "panelNormarizeIntensity");
             this.panelNormarizeIntensity.Name = "panelNormarizeIntensity";
+            this.panelNormarizeIntensity.Paint += new System.Windows.Forms.PaintEventHandler(this.panelNormarizeIntensity_Paint);
+            // 
+            // label14
+            // 
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            // 
+            // label23
+            // 
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
             // 
             // buttonApplyAllProfiles
             // 
@@ -1393,13 +1394,11 @@ namespace PDIndexer
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.RadioButton radioButtonNormarizeAverage;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.RadioButton radioButtonNormarizeMaximum;
         private System.Windows.Forms.NumericUpDown numericUpDownNormarizeIntensity;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.RadioButton radioButtonBackgroundReferrence;
         private System.Windows.Forms.RadioButton radioButtonBagkgroundBSpline;
         private System.Windows.Forms.Panel panelBackgroundBSpline;
@@ -1480,5 +1479,7 @@ namespace PDIndexer
         private System.Windows.Forms.Button buttonTwoThetaOffsetReset;
         public System.Windows.Forms.TextBox textBoxComment;
         public System.Windows.Forms.TextBox textBoxProfileName;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label14;
     }
 }
