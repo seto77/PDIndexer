@@ -62,7 +62,11 @@ namespace PDIndexer
             public double TofAngle;
             public double TofLength;
             public double ExposureTime;
-            public double EGC0, EGC1, EGC2;
+            
+            /// <summary>
+            /// EDX detector用の変換係数 E  = (a₀ + a₁ n + a₂ n²) * 10³　多チャンネルを考慮して配列として用意しておく
+            /// </summary>
+            public double[][] EGC =  new[] { new[] { 0.0, 0.0, 0.0 } };
         }
         #endregion
 
@@ -278,9 +282,6 @@ namespace PDIndexer
             }
             get => horizontalAxisUserControl.AxisMode;
         }
-
-      
-
 
         public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
 
@@ -779,6 +780,10 @@ namespace PDIndexer
             if(!clearRegistryFlag)//Flagが立っていなければレジストリに書き込み
                 SaveInitialRegistry();
         }
+
+
+        #endregion
+
         #region レジストリ操作
         private void clearRegistryToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -838,7 +843,7 @@ namespace PDIndexer
                 this.horizontalAxisUserControl.XrayWaveSourceElementNumber = (int)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayWaveSourceElementNumber);
                 this.horizontalAxisUserControl.XrayWaveSourceLine = (XrayLine)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayWaveSourceLine);
 
-                
+
 
                 this.numericalTextBoxIncreasingPixels.Text = (string)regKey.GetValue("numericalTextBoxIncreasingPixelsText", (string)this.numericalTextBoxIncreasingPixels.Text);
                 if (numericalTextBoxIncreasingPixels.Value > 1)
@@ -873,7 +878,7 @@ namespace PDIndexer
 
                 FormMacro.ZippedMacros = (byte[])regKey.GetValue("Macro", new byte[0]);
 
-                FormMain.FileProperty f;
+                FileProperty f;
                 //ここからファイルタイプごとのパラメータ読み込み
                 for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
                 {
@@ -895,10 +900,20 @@ namespace PDIndexer
                         f.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0"));
                         f.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "0"));
 
-                        f.EGC0 = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC0{i}", "0"));
-                        f.EGC1 = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC1{i}", "0"));
-                        f.EGC2 = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC2{i}", "0"));
+                        //EGCは、1.1,　2.2,　3.2 ,, 4.5, 5.7, 0.2みたいな感じで格納されている
+                        var egc = (string)regKey.GetValue($"FileProperty.EGC{i}", "0.0,0.0,0.0");
 
+                        f.EGC = egc.Split(",,").Select(str => str.Split(",").Select(e => Convert.ToDouble(e)).ToArray()).ToArray();
+
+                        if ((string)regKey.GetValue($"FileProperty.EGC0{i}", "0") != "0")
+                        {
+                            f.EGC[0][0] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC0{i}", "0"));
+                            f.EGC[0][1] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC1{i}", "0"));
+                            f.EGC[0][2] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC2{i}", "0"));
+                            regKey.DeleteSubKey($"FileProperty.EGC0{i}");
+                            regKey.DeleteSubKey($"FileProperty.EGC1{i}");
+                            regKey.DeleteSubKey($"FileProperty.EGC2{i}");
+                        }
                         f.ExposureTime = Convert.ToDouble((string)regKey.GetValue($"FileProperty.ExposureTime{i}", "1"));
                     }
                     else
@@ -936,7 +951,7 @@ namespace PDIndexer
                     WaveColor = WaveColor.FlatWhite,
                     TakeoffAngle = 4.95 / 180 * Math.PI,
                     AxisMode = HorizontalAxis.EnergyXray,
-                    EGC1 = 66.6,
+                    EGC = new[] { new[] { 0, 0, 66.6, 0.0 } }
                 };
 
                 //CHI
@@ -1007,7 +1022,7 @@ namespace PDIndexer
             if (regKey == null) return;
 
             regKey.SetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-            
+
             regKey.SetValue("formMainWidth", this.Width);
             regKey.SetValue("formMainHeight", this.Height);
             regKey.SetValue("formMainLocationX", this.Location.X);
@@ -1068,26 +1083,38 @@ namespace PDIndexer
             for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
             {
                 regKey.SetValue($"FileProperty.Valid{i}", true);
-                regKey.SetValue($"FileProperty.WaveSource{i}", (int)FileProperties[i].WaveSource);
-                regKey.SetValue($"FileProperty.WaveColor{i}", (int)FileProperties[i].WaveColor);
-                regKey.SetValue($"FileProperty.Wavelength{i}", FileProperties[i].Wavelength);
-                regKey.SetValue($"FileProperty.TakeoffAngle{i}", FileProperties[i].TakeoffAngle);
-                regKey.SetValue($"FileProperty.AxisMode{i}", (int)(FileProperties[i].AxisMode));
-                regKey.SetValue($"FileProperty.XraySourceElementNumber{i}", FileProperties[i].XraySourceElementNumber);
-                regKey.SetValue($"FileProperty.XrayLine{i}", (int)(FileProperties[i].XrayLine));
-                regKey.SetValue($"FileProperty.TofAngle{i}", FileProperties[i].TofAngle);
-                regKey.SetValue($"FileProperty.TofLength{i}", FileProperties[i].TofLength);
-                regKey.SetValue($"FileProperty.ExposureTime{i}", FileProperties[i].ExposureTime);
-                regKey.SetValue($"FileProperty.EGC0{i}", FileProperties[i].EGC0);
-                regKey.SetValue($"FileProperty.EGC1{i}", FileProperties[i].EGC1);
-                regKey.SetValue($"FileProperty.EGC2{i}", FileProperties[i].EGC2);
+
+                if (FileProperties[i] != null)
+                {
+
+                    regKey.SetValue($"FileProperty.WaveSource{i}", (int)FileProperties[i].WaveSource);
+                    regKey.SetValue($"FileProperty.WaveColor{i}", (int)FileProperties[i].WaveColor);
+                    regKey.SetValue($"FileProperty.Wavelength{i}", FileProperties[i].Wavelength);
+                    regKey.SetValue($"FileProperty.TakeoffAngle{i}", FileProperties[i].TakeoffAngle);
+                    regKey.SetValue($"FileProperty.AxisMode{i}", (int)(FileProperties[i].AxisMode));
+                    regKey.SetValue($"FileProperty.XraySourceElementNumber{i}", FileProperties[i].XraySourceElementNumber);
+                    regKey.SetValue($"FileProperty.XrayLine{i}", (int)(FileProperties[i].XrayLine));
+                    regKey.SetValue($"FileProperty.TofAngle{i}", FileProperties[i].TofAngle);
+                    regKey.SetValue($"FileProperty.TofLength{i}", FileProperties[i].TofLength);
+                    regKey.SetValue($"FileProperty.ExposureTime{i}", FileProperties[i].ExposureTime);
+
+                    var sb = new StringBuilder();
+                    foreach (var egcs in FileProperties[i].EGC)
+                        sb.Append(egcs[0].ToString() + "," + egcs[1].ToString() + "," + egcs[2].ToString() + ",,");
+
+                    regKey.SetValue($"FileProperty.EGC{i}", sb.ToString().TrimEnd(new[] { ',' }));
+
+                    sb = new StringBuilder();
+                    foreach (var egcs in FileProperties[i].EGC)
+                        sb.Append(egcs[0].ToString() + "," + egcs[1].ToString() + "," + egcs[2].ToString() + ",,");
+
+                    regKey.SetValue($"FileProperty.EGC{i}", sb.ToString().TrimEnd(new[] { ',' }));
+                }
             }
 
             regKey.Close();
         }
 
-        
-        #endregion
 
         #endregion
 
@@ -2207,8 +2234,11 @@ namespace PDIndexer
                 labelTwoTheta.Text = "TOF: ";
             else if (AxisMode == HorizontalAxis.WaveNumber)
                 labelTwoTheta.Text = "q: ";
+            if (pt.X < 10000)
+                labelTwoTheta.Text += pt.X.ToString("g6");
+            else
+                labelTwoTheta.Text += pt.X.ToString("#,0");
 
-            labelTwoTheta.Text += pt.X.ToString("g6");
 
             if (AxisMode == HorizontalAxis.Angle)
                 labelTwoTheta.Text += " °";
@@ -2637,21 +2667,29 @@ namespace PDIndexer
             if (formEOS.checkBoxNaClB1.Checked = dataSet.DataTableCrystal.GetItemChecked(3))
                 formEOS.numericalTextBoxNaClB1A.Text = (dataSet.DataTableCrystal.Items[3].A * 10).ToString("f5");
 
+            //NaCl B2
             if (formEOS.checkBoxNaClB2.Checked = dataSet.DataTableCrystal.GetItemChecked(4))
-                formEOS.numericalTextBoxNaClB2A.Text = (dataSet.DataTableCrystal.Items[4].A * 10).ToString("f5");//NaCl B2
+                formEOS.numericalTextBoxNaClB2A.Text = (dataSet.DataTableCrystal.Items[4].A * 10).ToString("f5");
 
+            //MgO
             if (formEOS.checkBoxPericlase.Checked = dataSet.DataTableCrystal.GetItemChecked(5))
-                formEOS.numericalTextBoxMgOA.Text = (dataSet.DataTableCrystal.Items[5].A * 10).ToString("f5");//MgO
+                formEOS.numericalTextBoxMgOA.Text = (dataSet.DataTableCrystal.Items[5].A * 10).ToString("f5");
 
+            //Corundum
             if (formEOS.checkBoxCorundum.Checked = dataSet.DataTableCrystal.GetItemChecked(6))
-                formEOS.numericalTextBoxColundumV.Text = (dataSet.DataTableCrystal.Items[6].Volume * 1000).ToString("f5");//Corundum
+                formEOS.numericalTextBoxColundumV.Text = (dataSet.DataTableCrystal.Items[6].Volume * 1000).ToString("f5");
 
+            //Ar
             if (formEOS.checkBoxAr.Checked = dataSet.DataTableCrystal.GetItemChecked(7))
-                formEOS.numericalTextBoxArA.Text = (dataSet.DataTableCrystal.Items[7].A * 10).ToString("f5");//Ar
+                formEOS.numericalTextBoxArA.Text = (dataSet.DataTableCrystal.Items[7].A * 10).ToString("f5");
 
+            //Re
             if (formEOS.checkBoxRe.Checked = dataSet.DataTableCrystal.GetItemChecked(8))
-                formEOS.numericalTextBoxReV.Text = (dataSet.DataTableCrystal.Items[8].Volume * 1000).ToString("f5");//Re
+                formEOS.numericBoxReV.Text = (dataSet.DataTableCrystal.Items[8].Volume * 1000).ToString("f5");
 
+            //Mo
+            if (formEOS.checkBoxMo.Checked = dataSet.DataTableCrystal.GetItemChecked(9))
+                formEOS.numericBoxMoV.Text = (dataSet.DataTableCrystal.Items[9].Volume * 1000).ToString("f5");
 
             formEOS.skipTextChangeEvent = false;
             formEOS.numericalTextBox_ValueChanged(new object(), new EventArgs());
@@ -2778,7 +2816,18 @@ namespace PDIndexer
                 else
                 #region RAS, CSV, NXSのいずれか
                 {
+                    var detectorNum = 1;
+                    
+                    if (ext == "nxs")//NXSファイルの場合は事前にチャンネル数を確認
+                    {
+                        var nxs = new Crystallography.HDF(fileName);
+                        nxs.Move("/entry/instrument/xspress3");
+                        detectorNum = nxs.GetGroups().Length;
+                    }
+
+                    formDataConverter.EDXDetectorNumber = detectorNum;
                     formDataConverter.SetProperty(FileProperties[fileTypeNum]);
+
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
                         FileProperties[fileTypeNum] = formDataConverter.GetProperty();
@@ -2791,24 +2840,34 @@ namespace PDIndexer
                         {
                             var nxs = new Crystallography.HDF(fileName);
                             nxs.Move("/entry/instrument/xspress3");
-                            double a0 = formDataConverter.EGC0, a1 = formDataConverter.EGC1, a2 = formDataConverter.EGC2;
+                            int n = 0;
                             foreach (var channel in nxs.GetGroups())
                             {
-                                var (data, result) = nxs.GetValue2<int>(channel + "/histogram");
-                                if (result && data.Length > 0)
+                                if (formDataConverter.EDXDetectorValid[n])
                                 {
-                                    var diffProf = new DiffractionProfile { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {channel}" };
+                                    double a0 = formDataConverter.EGC[n][0], a1 = formDataConverter.EGC[n][1], a2 = formDataConverter.EGC[n][2];
+                                    var (data, result) = nxs.GetValue2<int>(channel + "/histogram");
+                                    if (result && data.Length > 0)
+                                    {
+                                        var diffProf = new DiffractionProfile { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {channel}" };
 
-                                    var sumData = new int[data[0].Length];
-                                    foreach (var d in data)
-                                        for (int i = 0; i < sumData.Length; i++)
-                                            sumData[i] += d[i];
+                                        var sumData = new int[data[0].Length];
+                                        foreach (var d in data)
+                                            for (int i = 0; i < sumData.Length; i++)
+                                                sumData[i] += d[i];
 
-                                    var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).ToList();
-                                    pts.RemoveAt(pts.Count - 1);
-                                    diffProf.OriginalProfile.Pt = pts;
-                                    dp.Add(diffProf);
+                                        var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).ToList();
+                                        if (formDataConverter.LowEnergyCutoff && pts[0].X < formDataConverter.LowEnergyCutoffValue)
+                                            for (int i = 0; i < pts.Count; i++)
+                                                if (pts[i].X < formDataConverter.LowEnergyCutoffValue)
+                                                    pts.RemoveAt(i--);
+                                        
+                                        pts.RemoveAt(pts.Count - 1);
+                                        diffProf.OriginalProfile.Pt = pts;
+                                        dp.Add(diffProf);
+                                    }
                                 }
+                                n++;
                             }
                         }
 
@@ -2937,9 +2996,9 @@ namespace PDIndexer
                     formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
                     formDataConverter.ExposureTime = getDouble(0x05F4);
 
-                    formDataConverter.EGC0 = getDouble(0x59A);
-                    formDataConverter.EGC1 = getDouble(0x5A2);
-                    formDataConverter.EGC2 = getDouble(0x5AA);
+                    formDataConverter.EGC[0][0] = getDouble(0x59A);
+                    formDataConverter.EGC[0][1] = getDouble(0x5A2);
+                    formDataConverter.EGC[0][2] = getDouble(0x5AA);
                     formDataConverter.VisibleEDXSetting = true;
 
                     int length = getInt16(0x814);
@@ -2950,9 +3009,10 @@ namespace PDIndexer
                         FileProperties[(int)FileType.XBM] = formDataConverter.GetProperty();
                         for (int n = 1; n < length; n++)
                         {
-                            double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n + formDataConverter.EGC2 * n * n) * 1000;
+                            double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n + formDataConverter.EGC[0][2] * n * n) * 1000;
                             double y = br.ReadUInt32();
-                            diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
+                            if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue/1000)
+                                diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
                         }
                     }
                     else
@@ -2969,8 +3029,9 @@ namespace PDIndexer
                     formDataConverter.TakeoffAngleText = strList[strList.Count - 4].Split(',')[0];
                     formDataConverter.ExposureTime = Convert.ToDouble(strList[strList.Count - 5].Split(' ' )[1]);
 
-                    formDataConverter.EGC0 = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[0]);
-                    formDataConverter.EGC1 = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[1]);
+                    formDataConverter.EGC[0][0] = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[0]);
+                    formDataConverter.EGC[0][1] = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[1]);
+                    formDataConverter.EGC[0][2] = 0;
 
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                     {
@@ -2981,9 +3042,9 @@ namespace PDIndexer
                             var str = strList[i].Split( ' ');
                             for (int j = 0; j < str.Length; j++)
                             {
-                                double x = (formDataConverter.EGC0 + formDataConverter.EGC1 * n) * 1000;
+                                double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n) * 1000;
                                 n++;
-                                if (x > formDataConverter.LowEnergyCutoff)
+                                if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue/1000)
                                     diffProf.OriginalProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
                             }
                         }
@@ -2998,15 +3059,15 @@ namespace PDIndexer
                 {
                     formDataConverter.SetProperty(FileProperties[(int)FileType.NPD]);
 
-                    formDataConverter.EGC0 = formDataConverter.EGC1 = formDataConverter.EGC2 = 0;
+                    formDataConverter.EGC[0][0] = formDataConverter.EGC[0][1] = formDataConverter.EGC[0][2] = 0;
                     for (int i = 0; i < strList.Count || i < 25; i++)
                     {
                         if (strList[i].StartsWith("EGC0"))
-                            formDataConverter.EGC0 = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.EGC[0][0] = strList[i].Split(',')[1].ToDouble();
                         if (strList[i].StartsWith("EGC1"))
-                            formDataConverter.EGC1 = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.EGC[0][1] = strList[i].Split(',')[1].ToDouble();
                         if (strList[i].StartsWith("EGC2"))
-                            formDataConverter.EGC2 = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.EGC[0][2] = strList[i].Split(',')[1].ToDouble();
                         if (strList[i].StartsWith("2Theta"))
                             formDataConverter.TakeoffAngleText = strList[i].Split(',')[1];
                         if (strList[i].StartsWith("Live time"))
@@ -3027,7 +3088,7 @@ namespace PDIndexer
                                 {
                                     var x = Convert.ToDouble(strList[j].Split(',')[1]) * 1000;
                                     var y = Convert.ToDouble(strList[j].Split(',')[2]);
-                                    if (x > formDataConverter.LowEnergyCutoff)
+                                    if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue/1000)
                                         diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
                                 }
                                 break;
@@ -3399,8 +3460,8 @@ namespace PDIndexer
 
 
 
-                //もし読み込んだ結晶リストにReservedされたCrystalがあれば入れ替える
-                crystalArray[0].FlexibleMode = true;
+            //もし読み込んだ結晶リストにReservedされたCrystalがあれば入れ替える
+            crystalArray[0].FlexibleMode = true;
             for (int j = 0; j < dataSet.DataTableCrystal.Rows.Count; j++)
             {
                 var c = (Crystal)dataSet.DataTableCrystal.Rows[j][1];

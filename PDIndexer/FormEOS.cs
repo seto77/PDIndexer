@@ -52,6 +52,10 @@ namespace PDIndexer
                 Ar();
             if (groupBoxRe.Visible)
                 Re();
+
+            if (groupBoxMo.Visible)
+                Mo();
+
         }
 
 
@@ -163,8 +167,8 @@ namespace PDIndexer
 
         private void Re()
         {
-            double v = numericalTextBoxReV.Value;
-            double v0 = numericalTextBoxReV0.Value;
+            double v = numericBoxReV.Value;
+            double v0 = numerictBoxReV0.Value;
             double t = numericalTextBoxTemperature.Value;
             //Zha
             numericalTextBoxReZha.Value = EOS.Re_Zha(v0, v, t);
@@ -174,8 +178,40 @@ namespace PDIndexer
             numericBoxReDub.Value = EOS.BirchMurnaghan4th(342,6.15,-0.029, 29.46/v);
         }
 
+        private void Mo()
+        {
+            double v = numericBoxMoV.Value;
+            double v0 = numericBoxMoV0.Value;
+            double t = numericalTextBoxTemperature.Value;
 
-		private void FormEOS_Closed(object sender, System.EventArgs e) {
+            //Huang+16
+            numericBoxMoHuang.Value = EOS.BirchMurnaghan3rd(255, 4.25, v0 / v) + EOS.MieGruneisen(2, 1, 470, 2.01, 0.6, 300, v0, t, v);
+            //Zhao+00
+
+            numericBoxMoZhao.Value =
+            new EOS()
+            {
+                Z = 2,
+                K0 = 268,
+                Kp0 = 3.81,
+                Kpp0 = -1.41E-2,
+                KperT = -2.13E-2,
+                A = 1.31,
+                B = 11.2,
+                T0 = 300,
+                Temperature = t,
+                CellVolume0 = v0,
+                ThermalPressureApproach = ThermalPressure.T_dependence_BM,
+                IsothermalPressureApproach =  IsothermalPressure.BM4
+            }.GetPressure(v);
+
+             //EOS.BirchMurnaghan3rd(266, 4.1, v0 / v) + EOS.MieGruneisen(2, 1, 470, 2.01, 0.6, 300, v0, t, v);
+        }
+
+        
+       
+
+        private void FormEOS_Closed(object sender, System.EventArgs e) {
 			formMain.toolStripButtonEquationOfState.Checked=false;
 		}
 
@@ -201,6 +237,7 @@ namespace PDIndexer
             groupBoxCorundum.Visible = checkBoxCorundum.Checked;
             groupBoxAr.Visible = checkBoxAr.Checked;
             groupBoxRe.Visible = checkBoxRe.Checked;
+            groupBoxMo.Visible = checkBoxMo.Checked;
 
         }
 

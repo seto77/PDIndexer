@@ -1,9 +1,9 @@
-﻿using MathNet.Numerics.LinearAlgebra;
+﻿#region using
+using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
 using static System.Numerics.Complex;
+#endregion
 
 namespace Crystallography
 {
@@ -54,10 +55,11 @@ namespace Crystallography
         public int MaxNumOfBloch { get; set; }
         public double Thickness { get; set; }
         public double[] Thicknesses { get; set; }
-        public enum Solver { Managed, MKL, Eigen, OpenCV, Auto }
+        public enum Solver { Eigen_MKL, Eigen_Eigen, MtxExp_MKL, MtxExp_Eigen, Auto }
 
         public DVec EigenValues { get; set; }
         public DMat EigenVectors { get; set; }
+        public Matrix<Complex> EigenVectorsInverse { get; set; }
 
         public DVec[] EigenValuesPED { get; set; }
         public DMat[] EigenVectorsPED { get; set; }
@@ -156,89 +158,104 @@ namespace Crystallography
             var factorMatrix = getPotentialMatrix(Beams);
             //有効なRotationだけを選択
             var beamRotationsValid = BeamRotations.Where(rot => rot != null).ToList();
-            
+
             RotationArrayValidLength = beamRotationsValid.Count;
-            //rotationsValidに対応するdiskValidを定義
-            var diskValid = new List<Complex[][]>();
+
             //進捗状況報告用の各種定数を初期化
-            int count = 0, total = beamRotationsValid.Count;
-            var sw = new Stopwatch();
-            var bLen = Beams.Length;
+            int count = 0;
 
-            //ローカル関数. RotationsValid(の一部)を対象にdisks[t][g]を計算し、diskValidに追加し、最後にかかった時間を返す
-            long func (Solver solver, int thread, bool speedTest = true)
+            #region solver, thread の設定
+            var solver = (Solver)((object[])e.Argument)[0];
+            var thread = (int)((object[])e.Argument)[1];
+
+            if(solver== Solver.Auto)
             {
-                if (solver == Solver.MKL)
-                    MathNet.Numerics.Control.TryUseNativeMKL();
-                else if (solver == Solver.Managed)
-                    MathNet.Numerics.Control.UseManaged();
-
-                var reportString = (solver == Solver.MKL ? "MKL" : "EIG") + thread.ToString();
-                var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
-                if (speedTest)//スピードテストのとき
+                if (NativeWrapper.Enabled)
                 {
-                    var n = Math.Min(bLen < 64 ? 512 : bLen < 128 ? 256 : bLen < 256 ? 128 : bLen < 512 ? 64 : 32, beamRotationsValid.Count);
-                    if (n == 0)
-                        return 0;
-                    beamRotationsP = beamRotationsValid.Take(n).ToArray().AsParallel().WithDegreeOfParallelism(thread);
-                    beamRotationsValid.RemoveRange(0, n);
+                    solver = Solver.MtxExp_Eigen;
+                    thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
                 }
-                sw.Restart();
-                //disks[t][g]を計算.
-                var disk = beamRotationsP.Select(beamRotation =>  
+                else
                 {
-                    if (bwCBED.CancellationPending) return null;
-                    var rotZ = beamRotation * zNorm;
-                    var coeff = 1.0 / rotZ.Z; // = 1/cosTau
-
-                    var vecK0 = getVecK0(kvac, u0, beamRotation);
-
-                    var beams = reset_gVectors(Beams,BaseRotation, vecK0);//BeamsのPやQをリセット
-                    var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット
-                    Complex[][] result;
-
-                    //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
-                    if (solver == Solver.Eigen)
-                        result = NativeWrapper.CBEDSolver(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
-                    else
-                    {
-                        var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Unknown);
-                        var alpha = evd.EigenVectors.Inverse() * psi0;
-                        result = Thicknesses.Select(t =>
-                        {
-                            //ガンマの対称行列×アルファを作成
-                            var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
-                            //深さtにおけるψを求める
-                            return (evd.EigenVectors * gammmaAlpha).ToArray();
-                        }).ToArray();
-                    }
-                    bwCBED.ReportProgress(Interlocked.Increment(ref count),  reportString);//進捗状況を報告
-                    return result;
-                }).ToArray();
+                    solver = Solver.Eigen_MKL;
+                    thread = MathNet.Numerics.Control.TryUseNativeMKL() ?
+                        Math.Max(1, (int)(Environment.ProcessorCount * 0.25)) :
+                        thread = Math.Max(1, (int)(Environment.ProcessorCount * 0.75));
+                }
                 
-                diskValid.AddRange(disk);//diskをdiskValidに加える
-                return sw.ElapsedTicks;//経過時間を返す
             }
+            #endregion
 
-            //ここからチューニング＆本番
+            var reportString = solver.ToString() + thread.ToString();
 
-            if ((Solver)((object[])e.Argument)[0] == Solver.Auto)
+            var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(thread);
+            //var beamRotationsP = beamRotationsValid.AsParallel().WithDegreeOfParallelism(1);
+
+            //ここからdiskValid[t][g]を計算.
+            
+            var diskValid = beamRotationsP.Select(beamRotation =>
             {
-                if (EigenEnabled && bLen < 512 && func(Solver.Eigen, Environment.ProcessorCount) < func(Solver.MKL, 8))//eigenの方が早い場合
-                    func(Solver.Eigen, Environment.ProcessorCount, false);
-                else if (Environment.ProcessorCount <= 4)//MKLでコア数が4以下の場合
-                    func(Solver.MKL, Environment.ProcessorCount, false);
-                else//コア数4,6,8,10,12,14,16を試して最速のもので
+                if (bwCBED.CancellationPending) return null;
+                var rotZ = beamRotation * zNorm;
+                var coeff = 1.0 / rotZ.Z; // = 1/cosTau
+
+                var vecK0 = getVecK0(kvac, u0, beamRotation);
+
+                var beams = reset_gVectors(Beams, BaseRotation, vecK0);//BeamsのPやQをリセット
+                var potentialMatrix = getEigenProblemMatrix(beams, factorMatrix);//ポテンシャル行列をセット //コスト高い
+                Complex[][] result;
+
+                //ポテンシャル行列の固有値、固有ベクトルを取得し、resultに格納
+
+                //Eigen＿Eigenの場合
+                if (solver == Solver.Eigen_Eigen)
                 {
-                    var list = new SortedList<long, int>();
-                    foreach (var t in new[] { 4, 6, 8, 10, 12, 14, 16 })
-                        if (t <= Environment.ProcessorCount)
-                            list.Add(func(Solver.MKL, t), t);
-                    func(Solver.MKL, list.Values[0], false);
+                    result = NativeWrapper.CBEDSolver_Eigen(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
                 }
-            }
-            else
-                func((Solver)((object[])e.Argument)[0], (int)((object[])e.Argument)[1], false);
+                //Eigen_MKL あるいは Eigen_Managedの場合    
+                else if (solver == Solver.Eigen_MKL)
+                {
+                    var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
+                    //var alpha = evd.EigenVectors.Inverse().Multiply(psi0);
+                    var alpha = evd.EigenVectors.LU().Solve(psi0);
+                    result = Thicknesses.Select(t =>
+                    {
+                        //ガンマの対称行列×アルファを作成
+                        var gammmaAlpha = DVec.OfArray(evd.EigenValues.Select((ev, i) => Exp(TwoPiI * ev * t * coeff) * alpha[i]).ToArray());
+                        //深さtにおけるψを求める
+                        return evd.EigenVectors.Multiply(gammmaAlpha).ToArray();
+                    }).ToArray();
+                }
+                //MtxExp_Eigenの場合
+                else if (solver == Solver.MtxExp_Eigen)
+                {
+                    result = NativeWrapper.CBEDSolver_MatExp(potentialMatrix, psi0.ToArray(), Thicknesses, coeff);
+                }
+                //MtxExp_MKLの場合 あるいは MtxExp_Managedの場合 
+                else
+                {
+                    DMat matExpStart = (DMat)(TwoPiI * coeff * Thicknesses[0] * DMat.OfArray(potentialMatrix)).Exponential();
+                    var vec = matExpStart.Multiply(psi0);
+
+                    DMat matExpStep;
+                    if (Thicknesses.Length == 1)
+                        matExpStep = null;
+                    else if (Thicknesses[1] - Thicknesses[0] == Thicknesses[0])
+                        matExpStep = matExpStart;
+                    else
+                        matExpStep = (DMat)(TwoPiI * coeff * (Thicknesses[1] - Thicknesses[0]) * DMat.OfArray(potentialMatrix)).Exponential();
+
+                    result = new Complex[Thicknesses.Length][];
+                    for (int i = 0; i < Thicknesses.Length; i++)
+                    {
+                        if (i != 0)
+                            vec = (DVec)matExpStep.Multiply(vec);
+                        result[i] = vec.ToArray();
+                    }
+                }
+                bwCBED.ReportProgress(Interlocked.Increment(ref count), reportString);//進捗状況を報告
+                return result;
+            }).ToArray();
 
 
             //無効なRotationも考慮してdisk[RotationIndex][Z_index][G_index]を構築
@@ -280,6 +297,7 @@ namespace Crystallography
         /// <returns></returns>
         public Beam[] GetDifractedBeamAmpriltudes(int maxNumOfBloch, double voltage, Matrix3D rotation, double thickness)
         {
+
             var useEigen = !MathNet.Numerics.Control.TryUseNativeMKL();
 
             if (AccVoltage != voltage)
@@ -290,6 +308,7 @@ namespace Crystallography
             //U0を計算
             var u0 = getU(voltage, (0, 0, 0), 0).Real.Real;
             var vecK0 = getVecK0(k_vac, u0);
+
 
             if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValues == null || EigenVectors == null || !rotation.Equals(BaseRotation))
             {
@@ -306,37 +325,164 @@ namespace Crystallography
                 var potentialMatrix = getEigenProblemMatrix(Beams);
 
                 //A行列に関する固有値、固有ベクトルを取得 
-                if (useEigen)
+                if (useEigen) { 
                     (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(potentialMatrix);
+                    EigenVectorsInverse = NativeWrapper.Inverse(EigenVectors);
+                }
                 else
                 {
                     var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
                     EigenValues = evd.EigenValues.AsArray();
                     EigenVectors = (DMat)evd.EigenVectors;
+                    EigenVectorsInverse = EigenVectors.Inverse();
                 }
-
-                //(EigenVectors, EigenValues) = RefineEigenProblem(DMat.OfArray(potentialMatrix), (DMat)evd.EigenVectors, evd.EigenValues.ToArray());
             }
-            int len = EigenValues.Count();
+
+            int len = Beams.Length;
 
             var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
             psi0[0] = 1;
 
-            var alpha = EigenVectors.Inverse() * psi0;//アルファベクトルを求める
+            var alpha = EigenVectorsInverse.Multiply(psi0);//アルファベクトルを求める
 
             //ガンマの対称行列×アルファを作成
             var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValues[n] * thickness) * alpha[n]).ToArray());
 
             //出射面での境界条件を考慮した位相にするため、以下の1行を追加 (20190827)
             var p = new DiagonalMatrix(len, len, Beams.Select(b => Exp(PiI * (b.P - 2 * k_vac * Surface.Z) * thickness)).ToArray());
-            //var p = new DiagonalMatrix(len, len, Beams.Select(b => new Complex(1, 0)).ToArray());
 
             //深さZにおけるψを求める
-            var psi_atZ = p * EigenVectors * gamma_alpha;
+            var psi_atZ = p * EigenVectors.Multiply(gamma_alpha);
 
             for (int i = 0; i < Beams.Length && i < len; i++)
                 Beams[i].Psi = psi_atZ[i];
 
+            return Beams;
+        }
+
+        #endregion
+
+        #region Precession electron diffraction
+
+        /// <summary>
+        /// PEDの計算
+        /// </summary>
+        /// <param name="maxNumOfBloch"></param>
+        /// <param name="voltage"></param>
+        /// <param name="baseRotation"></param>
+        /// <param name="thickness"></param>
+        /// <param name="semiangle"></param>
+        /// <param name="step"></param>
+        /// <returns></returns>
+        public Beam[] GetPrecessionElectronDiffraction(int maxNumOfBloch, double voltage, Matrix3D baseRotation, double thickness, double semiangle, int step)
+        {
+
+            //波数を計算
+            var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(voltage);
+            //U0を計算
+            var u0 = getU(voltage, (0, 0, 0), 0).Real.Real;
+
+            if (AccVoltage != voltage)
+                uDictionary = new Dictionary<int, (Complex, Complex)>();
+
+            var useEigen = EigenEnabled && maxNumOfBloch < 400;
+            if (!MathNet.Numerics.Control.TryUseNativeMKL())
+                useEigen = true;
+
+            var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
+            if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
+                || EigenVectorsPED == null || EigenVectorsPED.Length != step || semiangle != SemianglePED || !baseRotation.Equals(BaseRotation))
+            {
+                MaxNumOfBloch = maxNumOfBloch;
+                AccVoltage = voltage;
+                BaseRotation = new Matrix3D(baseRotation);
+                Thickness = thickness;
+                SemianglePED = semiangle;
+
+                EigenValuesPED = new DVec[step];
+                EigenVectorsPED = new DMat[step];
+                EigenVectorsInversePED = new DMat[step];
+                BeamsPED = new Beam[step][];
+
+                stepP.ForAll(k =>
+                   {
+                       var rotAngle = 2.0 * Math.PI * k / step;
+                       var beamRotation = Matrix3D.Rot(new Vector3DBase(Math.Cos(rotAngle), Math.Sin(rotAngle), 0), SemianglePED);
+                       //計算対象のg-Vectorsを決める。
+                       var potentialMatrix = new Complex[0, 0];
+                       var vecK0 = getVecK0(kvac, u0, beamRotation);
+                       lock (lockObj)
+                       {
+                           BeamsPED[k] = Find_gVectors(BaseRotation, vecK0);
+                           potentialMatrix = getEigenProblemMatrix(BeamsPED[k]);
+                       }
+
+                       //A行列に関する固有値、固有ベクトルを取得 
+                       if (useEigen)
+                       {//Eigenを使う場合
+                           (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(potentialMatrix);
+                           EigenVectorsInversePED[k] = NativeWrapper.Inverse(EigenVectorsPED[k]);
+                       }
+                       else
+                       {//MKLを使う場合
+                           var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
+                           EigenValuesPED[k] = evd.EigenValues.AsArray();
+                           EigenVectorsPED[k] = (DMat)evd.EigenVectors;
+                           EigenVectorsInversePED[k] = (DMat)EigenVectorsPED[k].Inverse();
+                       }
+                   });
+            }
+
+            //各方向でのbeamの振幅を求める
+            stepP.ForAll(k =>
+            {
+                if (EigenValuesPED[k] != null)
+                {
+                    var len = EigenValuesPED[k].Count();
+                    var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
+                    psi0[0] = 1;
+                    var alpha = EigenVectorsInversePED[k].Multiply(psi0);//アルファベクトルを求める
+                    //ガンマの対称行列×アルファを作成
+                    var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValuesPED[k][n] * thickness) * alpha[n]).ToArray());
+                    //深さZにおけるψを求める
+                    var psi_atZ = EigenVectorsPED[k].Multiply(gamma_alpha);
+                    for (int i = 0; i < BeamsPED[k].Length && i < len; i++)
+                        BeamsPED[k][i].Psi = psi_atZ[i];
+                }
+            });
+
+            //最後に全てのビームをまとめる
+            var compiled = new Dictionary<(int h, int k, int l), Beam>();
+            foreach (var beamsEach in BeamsPED.Where(beams => beams != null))
+                foreach (var beam in beamsEach)
+                {
+                    if (!compiled.ContainsKey(beam.Index))
+                    {
+                        compiled.Add(beam.Index, beam);
+                        compiled[beam.Index].intensity = beam.Psi.Magnitude2() / step;
+                    }
+                    else
+                        compiled[beam.Index].intensity += beam.Psi.Magnitude2() / step;
+                }
+
+            //基準の方位でP,Q,Sなどを再セット
+            var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
+            var beams = compiled.Values.ToList();
+            for (int i = 0; i < beams.Count; i++)
+            {
+                var g = mat * beams[i].Index;
+                var (Q, P) = getQP(g, kvac, u0);
+                var psi = new Complex(Math.Sqrt(beams[i].intensity), 0);
+                beams[i] = new Beam(beams[i].Index, g, (beams[i].Freal, beams[i].Fimag), (Q, P)) { Psi = psi };
+            }
+
+            //並び替え
+            beams.Sort((a, b) =>
+            {
+                var c = a.Rating - b.Rating;
+                return (c > 0) ? 1 : (c < 0) ? -1 : 0;
+            });
+            Beams = beams.ToArray();
             return Beams;
         }
 
@@ -439,7 +585,7 @@ namespace Crystallography
                     }
             }
             //gListを並び替え
-            gList.Sort((g1, g2) => 
+            gList.Sort((g1, g2) =>
             {
                 double x = g1.Vec.X - g2.Vec.X, y = g1.Vec.Y - g2.Vec.Y;
                 return (y > 0 || (y == 0 && x > 0)) ? 1 : (y < 0 || (y == 0 && x < 0)) ? -1 : 0;
@@ -474,7 +620,7 @@ namespace Crystallography
                     {
                         if (_vec != Vec)
                             exp = Exp(Vec * r * TwoPiI);
-                        
+
                         for (var (i, f) = (0, Psi * exp); i < defLen; i++)
                             sums[i] += f * Lenz[i];
 
@@ -487,132 +633,6 @@ namespace Crystallography
             return images;
         }
         #endregion Image Simulation
-
-        #region Precession electron diffraction
-
-        /// <summary>
-        /// PEDの計算
-        /// </summary>
-        /// <param name="maxNumOfBloch"></param>
-        /// <param name="voltage"></param>
-        /// <param name="baseRotation"></param>
-        /// <param name="thickness"></param>
-        /// <param name="semiangle"></param>
-        /// <param name="step"></param>
-        /// <returns></returns>
-        public Beam[] GetPrecessionElectronDiffraction(int maxNumOfBloch, double voltage, Matrix3D baseRotation, double thickness, double semiangle, int step)
-        {
-
-            //波数を計算
-            var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(voltage);
-            //U0を計算
-            var u0 = getU(voltage, (0, 0, 0), 0).Real.Real;
-
-            if (AccVoltage != voltage)
-                uDictionary = new Dictionary<int, (Complex, Complex)>();
-
-            var useEigen = EigenEnabled && maxNumOfBloch < 400;
-            if (!MathNet.Numerics.Control.TryUseNativeMKL())
-                useEigen = true;
-
-            var stepP = Enumerable.Range(0, step).ToList().AsParallel().WithDegreeOfParallelism(useEigen ? Environment.ProcessorCount : Math.Max(1, Environment.ProcessorCount / 4));
-            if (MaxNumOfBloch != maxNumOfBloch || AccVoltage != voltage || EigenValuesPED == null || EigenValuesPED.Length != step
-                || EigenVectorsPED == null || EigenVectorsPED.Length != step || semiangle != SemianglePED || !baseRotation.Equals(BaseRotation))
-            {
-                MaxNumOfBloch = maxNumOfBloch;
-                AccVoltage = voltage;
-                BaseRotation = new Matrix3D(baseRotation);
-                Thickness = thickness;
-                SemianglePED = semiangle;
-
-                EigenValuesPED = new DVec[step];
-                EigenVectorsPED = new DMat[step];
-                EigenVectorsInversePED = new DMat[step];
-                BeamsPED = new Beam[step][];
-
-                stepP.ForAll(k =>
-                   {
-                       var rotAngle = 2.0 * Math.PI * k / step;
-                       var beamRotation = Matrix3D.Rot(new Vector3DBase(Math.Cos(rotAngle), Math.Sin(rotAngle), 0), SemianglePED);
-                       //計算対象のg-Vectorsを決める。
-                       var potentialMatrix = new Complex[0, 0];
-                       var vecK0 = getVecK0(kvac, u0, beamRotation);
-                       lock (lockObj)
-                       {
-                           BeamsPED[k] = Find_gVectors(BaseRotation, vecK0);
-                           potentialMatrix = getEigenProblemMatrix(BeamsPED[k]);
-                       }
-
-                       //A行列に関する固有値、固有ベクトルを取得 
-                       if (useEigen)
-                       {//Eigenを使う場合
-                           (EigenValuesPED[k], EigenVectorsPED[k]) = NativeWrapper.EigenSolver(potentialMatrix);
-                           EigenVectorsInversePED[k] = NativeWrapper.Inverse(EigenVectorsPED[k]);
-                       }
-                       else
-                       {//MKLを使う場合
-                           var evd = DMat.OfArray(potentialMatrix).Evd(Symmetricity.Asymmetric);
-                           EigenValuesPED[k] = evd.EigenValues.AsArray();
-                           EigenVectorsPED[k] = (DMat)evd.EigenVectors;
-                           EigenVectorsInversePED[k] = (DMat)EigenVectorsPED[k].Inverse();
-                       }
-                   });
-            }
-
-            //各方向でのbeamの振幅を求める
-            stepP.ForAll(k =>
-            {
-                if (EigenValuesPED[k] != null)
-                {
-                    var len = EigenValuesPED[k].Count();
-                    var psi0 = DVec.OfArray(new Complex[len]);//入射面での波動関数を定義
-                    psi0[0] = 1;
-                    var alpha = EigenVectorsInversePED[k] * psi0;//アルファベクトルを求める
-                    //ガンマの対称行列×アルファを作成
-                    var gamma_alpha = new DVec(Enumerable.Range(0, len).Select(n => Exp(TwoPiI * EigenValuesPED[k][n] * thickness) * alpha[n]).ToArray());
-                    //深さZにおけるψを求める
-                    var psi_atZ = EigenVectorsPED[k] * gamma_alpha;
-                    for (int i = 0; i < BeamsPED[k].Length && i < len; i++)
-                        BeamsPED[k][i].Psi = psi_atZ[i];
-                }
-            });
-
-            //最後に全てのビームをまとめる
-            var compiled = new Dictionary<(int h, int k, int l), Beam>();
-            foreach (var beamsEach in BeamsPED.Where(beams => beams != null))
-                foreach (var beam in beamsEach)
-                {
-                    if (!compiled.ContainsKey(beam.Index))
-                    {
-                        compiled.Add(beam.Index, beam);
-                        compiled[beam.Index].intensity = beam.Psi.Magnitude2() / step;
-                    }
-                    else
-                        compiled[beam.Index].intensity += beam.Psi.Magnitude2() / step;
-                }
-
-            //基準の方位でP,Q,Sなどを再セット
-            var mat = BaseRotation * Crystal.MatrixInverse.Transpose();
-            var beams = compiled.Values.ToList();
-            for (int i = 0; i < beams.Count; i++)
-            {
-                var g = mat * beams[i].Index;
-                var (Q, P) = getQP(g, kvac, u0);
-                var psi = new Complex(Math.Sqrt(beams[i].intensity), 0);
-                beams[i] = new Beam(beams[i].Index, g, (beams[i].Freal, beams[i].Fimag), (Q, P)) { Psi = psi };
-            }
-
-            //並び替え
-            beams.Sort((a, b) =>
-            {
-                var c = a.Rating - b.Rating;
-                return (c > 0) ? 1 : (c < 0) ? -1 : 0;
-            });
-            Beams = beams.ToArray();
-            return Beams;
-        }
-
-        #endregion
 
         #region 構造因子 F
         /// <summary>
@@ -696,13 +716,6 @@ namespace Crystallography
                 u = (fReal * coeff1 * gamma, fImag * coeff1 * coeff2 * gamma);
                 uDictionary.Add(key, u);
             }
-            if(double.IsNaN(u.real.Real))
-            {
-
-
-            }
-
-
             return u;
         }
         private (Complex Real, Complex Imag) getU((int H, int K, int L) index, double s2) => getU(AccVoltage, index, s2);
@@ -724,7 +737,9 @@ namespace Crystallography
                 for (int j = 0; j < b.Length; j++)
                 {
                     var (Real, Imag) = getU((b[i].H - b[j].H, b[i].K - b[j].K, b[i].L - b[j].L), (b[i].Vec - b[j].Vec).Length2 / 4);
-                    potentialMatrix[i, j] = i == j ? ImaginaryOne * Imag : Real + ImaginaryOne * Imag;
+                    potentialMatrix[i, j] = i == j ? 
+                        ImaginaryOne * Imag : 
+                        Real + ImaginaryOne * Imag;
                 }
             return potentialMatrix;
         }
@@ -1038,6 +1053,7 @@ namespace Crystallography
                 Vector3D g = new Vector3D(Vec.X, Vec.Y, Vec.Z);
                 g.d = 1 / g.Length;
                 g.Text = $"{H} {K} {L}";
+                g.Index = (H, K, L);
                 g.F = Psi;
                 g.RawIntensity = Psi.Magnitude2();
                 g.Tag = S;

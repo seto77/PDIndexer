@@ -94,6 +94,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -107,6 +110,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -260,6 +264,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -273,6 +280,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -426,6 +434,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -439,6 +450,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -642,6 +654,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -655,6 +670,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -858,6 +874,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -871,6 +890,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -1074,6 +1094,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -1087,6 +1110,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -1313,6 +1337,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -1326,6 +1353,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -1479,6 +1507,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -1492,6 +1523,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -1645,6 +1677,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -1658,6 +1693,184 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
+    </EOSCondition>
+    <DoesUseEOS>false</DoesUseEOS>
+    <AngleResolution>2</AngleResolution>
+    <SubDivision>4</SubDivision>
+    <GrainSize>100</GrainSize>
+    <id>0</id>
+  </Crystal>
+  <Crystal>
+    <Residual>0</Residual>
+    <Bounds />
+    <LatticePlanes />
+    <A>0.31473</A>
+    <B>0.31473</B>
+    <C>0.31473</C>
+    <Alpha>1.5707963267948966</Alpha>
+    <Beta>1.5707963267948966</Beta>
+    <Gamma>1.5707963267948966</Gamma>
+    <A_err>NaN</A_err>
+    <B_err>NaN</B_err>
+    <C_err>NaN</C_err>
+    <Alpha_err>0</Alpha_err>
+    <Beta_err>0</Beta_err>
+    <Gamma_err>0</Gamma_err>
+    <RotationMatrix>
+      <E11>1</E11>
+      <E12>0</E12>
+      <E13>0</E13>
+      <E21>0</E21>
+      <E22>1</E22>
+      <E23>0</E23>
+      <E31>0</E31>
+      <E32>0</E32>
+      <E33>1</E33>
+    </RotationMatrix>
+    <Argb>-16450417</Argb>
+    <Reserved>true</Reserved>
+    <Name>Mo</Name>
+    <Note />
+    <PublAuthorName>Wyckoff R W G</PublAuthorName>
+    <PublSectionTitle>Second edition. Interscience Publishers, New York, New York
+Body centered cubic, bcc, structure
+
+_database_code_amcsd 0011221</PublSectionTitle>
+    <SymmetrySeriesNumber>529</SymmetrySeriesNumber>
+    <Journal>Crystal Structures 1 (1963) 7-83</Journal>
+    <JournalName />
+    <JournalVolume />
+    <JournalIssue />
+    <JournalYear />
+    <JournalPageFirst />
+    <JournalPageLast />
+    <Atoms>
+      <Atoms>
+        <ID>0</ID>
+        <X>0</X>
+        <Y>0</Y>
+        <Z>0</Z>
+        <X_err>NaN</X_err>
+        <Y_err>NaN</Y_err>
+        <Z_err>NaN</Z_err>
+        <Occ>1</Occ>
+        <Occ_err>NaN</Occ_err>
+        <AtomicNumber>42</AtomicNumber>
+        <SubNumberXray>0</SubNumberXray>
+        <SubNumberElectron>0</SubNumberElectron>
+        <Isotope />
+        <Label>Mo</Label>
+        <Dsf>
+          <Iso>0</Iso>
+          <Iso_err>NaN</Iso_err>
+          <Aniso11>0</Aniso11>
+          <Aniso22>0</Aniso22>
+          <Aniso33>0</Aniso33>
+          <Aniso12>0</Aniso12>
+          <Aniso23>0</Aniso23>
+          <Aniso31>0</Aniso31>
+          <Aniso11_err>NaN</Aniso11_err>
+          <Aniso22_err>NaN</Aniso22_err>
+          <Aniso33_err>NaN</Aniso33_err>
+          <Aniso12_err>NaN</Aniso12_err>
+          <Aniso23_err>NaN</Aniso23_err>
+          <Aniso31_err>NaN</Aniso31_err>
+          <UseIso>true</UseIso>
+          <OriginalType>B</OriginalType>
+          <Cell>
+            <Item1>0.31473</Item1>
+            <Item2>0.31473</Item2>
+            <Item3>0.31473</Item3>
+            <Item4>1.5707963267948966</Item4>
+            <Item5>1.5707963267948966</Item5>
+            <Item6>1.5707963267948966</Item6>
+          </Cell>
+        </Dsf>
+        <Argb>-4946256</Argb>
+        <Radius>0.56</Radius>
+        <Ambient>0.2</Ambient>
+        <Diffusion>0.5</Diffusion>
+        <Emission>0.4</Emission>
+        <Shininess>4</Shininess>
+        <Specular>0.6</Specular>
+        <ShowLabel>false</ShowLabel>
+        <GLEnabled>true</GLEnabled>
+      </Atoms>
+    </Atoms>
+    <Bonds />
+    <Strain>
+      <E11>0</E11>
+      <E12>0</E12>
+      <E13>0</E13>
+      <E21>0</E21>
+      <E22>0</E22>
+      <E23>0</E23>
+      <E31>0</E31>
+      <E32>0</E32>
+      <E33>0</E33>
+    </Strain>
+    <Stress>
+      <E11>0</E11>
+      <E12>0</E12>
+      <E13>0</E13>
+      <E21>0</E21>
+      <E22>0</E22>
+      <E23>0</E23>
+      <E31>0</E31>
+      <E32>0</E32>
+      <E33>0</E33>
+    </Stress>
+    <HillCoefficient>0</HillCoefficient>
+    <ElasticStiffnessArray>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+      <double>0</double>
+    </ElasticStiffnessArray>
+    <EOSCondition>
+      <Enabled>false</Enabled>
+      <CellVolume0>0</CellVolume0>
+      <T0>300</T0>
+      <K0>0</K0>
+      <Kp0>0</Kp0>
+      <KpInfinity>0</KpInfinity>
+      <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
+      <Gamma0>0</Gamma0>
+      <Theta0>0</Theta0>
+      <Q>0</Q>
+      <KperT>0</KperT>
+      <A>0</A>
+      <B>0</B>
+      <C>0</C>
+      <ThermalPressureApproach>MieGruneisen</ThermalPressureApproach>
+      <IsothermalPressureApproach>BM3</IsothermalPressureApproach>
+      <Z>2</Z>
+      <Ze>84</Ze>
+      <N>1</N>
+      <Note />
+      <Temperature>300</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -1811,6 +2024,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -1824,6 +2040,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -1977,6 +2194,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -1990,6 +2210,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -2193,6 +2414,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -2206,6 +2430,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -2356,9 +2581,12 @@
       <CellVolume0>45.392526542946129</CellVolume0>
       <T0>300</T0>
       <K0>446</K0>
-      <Kp0>0</Kp0>
+      <Kp0>3</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>1</Q>
@@ -2373,6 +2601,7 @@
       <N>1</N>
       <Note>Occeli, Loubeyre, Le Toullec, 2003, Nat.Mat.</Note>
       <Temperature>300</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>true</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -2525,6 +2754,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -2538,6 +2770,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -2691,6 +2924,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -2704,6 +2940,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -2857,6 +3094,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -2870,6 +3110,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -3023,6 +3264,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -3036,6 +3280,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -3239,6 +3484,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -3252,6 +3500,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -3755,6 +4004,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -3768,6 +4020,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -3971,6 +4224,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -3984,6 +4240,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -4987,6 +5244,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -5000,6 +5260,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -5203,6 +5464,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -5216,6 +5480,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -5419,6 +5684,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -5432,6 +5700,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -5635,6 +5904,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -5648,6 +5920,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -5851,6 +6124,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -5864,6 +6140,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -6067,6 +6344,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -6080,6 +6360,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -6333,6 +6614,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -6346,6 +6630,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -6649,6 +6934,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -6662,6 +6950,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -6965,6 +7254,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -6978,6 +7270,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -7281,6 +7574,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -7294,6 +7590,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -7547,6 +7844,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -7560,6 +7860,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -7813,6 +8114,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -7826,6 +8130,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -8079,6 +8384,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -8092,6 +8400,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -8318,6 +8627,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -8331,6 +8643,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -8807,6 +9120,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -8820,6 +9136,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -9043,9 +9360,12 @@
       <CellVolume0>46.56</CellVolume0>
       <T0>300</T0>
       <K0>296</K0>
-      <Kp0>0</Kp0>
+      <Kp0>4.2</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>1.33</Gamma0>
       <Theta0>1160</Theta0>
       <Q>6.1</Q>
@@ -9060,6 +9380,7 @@
       <N>3</N>
       <Note>Nishihara, Nakayama, Takahashi, Iguchi, Funakoshi. 2004, PCM</Note>
       <Temperature>300</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>true</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -9286,6 +9607,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -9299,6 +9623,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -9525,6 +9850,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -9538,6 +9866,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -9764,6 +10093,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -9777,6 +10109,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -10003,6 +10336,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -10016,6 +10352,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -10242,6 +10579,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -10255,6 +10595,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -10481,6 +10822,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -10494,6 +10838,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -11142,6 +11487,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -11155,6 +11503,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -11781,6 +12130,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -11794,6 +12146,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -11803,8 +12156,6 @@
   </Crystal>
   <Crystal>
     <Residual>0</Residual>
-    <Bounds />
-    <LatticePlanes />
     <A>0.47754</A>
     <B>0.49291999999999997</B>
     <C>0.68968999999999991</C>
@@ -12122,6 +12473,9 @@
       <Kp0>4.7</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>1.68</Gamma0>
       <Theta0>1000</Theta0>
       <Q>2.3</Q>
@@ -12136,8 +12490,9 @@
       <N>5</N>
       <Note />
       <Temperature>300</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
-    <DoesUseEOS>false</DoesUseEOS>
+    <DoesUseEOS>true</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
     <SubDivision>4</SubDivision>
     <GrainSize>100</GrainSize>
@@ -12462,6 +12817,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -12475,6 +12833,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -12801,6 +13160,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -12814,6 +13176,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -13240,6 +13603,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -13253,6 +13619,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -13779,6 +14146,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -13792,6 +14162,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -14318,6 +14689,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -14331,6 +14705,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -14605,9 +14980,12 @@
       <CellVolume0>45.581828124227073</CellVolume0>
       <T0>300</T0>
       <K0>236</K0>
-      <Kp0>0</Kp0>
+      <Kp0>3.9</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>1.92</Gamma0>
       <Theta0>1000</Theta0>
       <Q>0.6</Q>
@@ -14622,6 +15000,7 @@
       <N>5</N>
       <Note>Shim, Duffy, Shen 2000. JGR (pure CaSiO3)</Note>
       <Temperature>1980</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>true</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -14775,6 +15154,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -14788,6 +15170,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -14941,6 +15324,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -14954,6 +15340,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -15104,9 +15491,12 @@
       <CellVolume0>22.417292520111673</CellVolume0>
       <T0>300</T0>
       <K0>164.8</K0>
-      <Kp0>0</Kp0>
+      <Kp0>5.33</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -15121,6 +15511,7 @@
       <N>1</N>
       <Note>Dubrovinsky, Saxena, Lazor 1998 PCM</Note>
       <Temperature>300</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>true</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -15324,6 +15715,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -15337,6 +15731,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -15590,6 +15985,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -15603,6 +16001,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -15806,6 +16205,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -15819,6 +16221,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -16445,6 +16848,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -16458,6 +16864,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -16884,6 +17291,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -16897,6 +17307,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -17323,6 +17734,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -17336,6 +17750,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -17662,6 +18077,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -17675,6 +18093,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -18051,6 +18470,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -18064,6 +18486,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -18390,6 +18813,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -18403,6 +18829,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -18706,6 +19133,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -18719,6 +19149,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -18972,6 +19403,9 @@
       <Kp0>0</Kp0>
       <KpInfinity>0</KpInfinity>
       <Kpp0>0</Kpp0>
+      <Vinet3rd_Ita>0</Vinet3rd_Ita>
+      <Vinet3rd_Beta>0</Vinet3rd_Beta>
+      <Vinet3rd_Psi>0</Vinet3rd_Psi>
       <Gamma0>0</Gamma0>
       <Theta0>0</Theta0>
       <Q>0</Q>
@@ -18985,6 +19419,7 @@
       <Ze>0</Ze>
       <N>0</N>
       <Temperature>0</Temperature>
+      <Pressure>0</Pressure>
     </EOSCondition>
     <DoesUseEOS>false</DoesUseEOS>
     <AngleResolution>2</AngleResolution>
@@ -18993,3 +19428,4 @@
     <id>0</id>
   </Crystal>
 </ArrayOfCrystal>
+

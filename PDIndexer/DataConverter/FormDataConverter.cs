@@ -1,5 +1,8 @@
 ﻿using Crystallography;
+using Microsoft.Scripting.Utils;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace PDIndexer
@@ -8,6 +11,9 @@ namespace PDIndexer
     {
         public FormDataConverter()
         {
+            EGC = new[] { new[] { 0.0, 0.0, 0.0 } };
+            EDXDetectorNumber = 1;
+
             InitializeComponent();
         }
 
@@ -68,19 +74,64 @@ namespace PDIndexer
 
         public bool TofUnitNanoSec { set => horizontalAxisUserControl.radioButtonTofUnitNanoSec.Checked = value; get => horizontalAxisUserControl.radioButtonTofUnitNanoSec.Checked; }
 
-        public double EGC0 { set => numericBoxEGC0.Value = value; get => numericBoxEGC0.Value; }
+        public double[][] EGC
+        {
+            get => EDXControls.Select(c => c.EGC).ToArray();
+            set
+            {
+                for (int i = 0; i < EDXControls.Count && i < value.Length; i++)
+                    EDXControls[i].EGC = value[i];
+            }
+        }
 
-        public double EGC1 { set => numericBoxEGC1.Value = value; get => numericBoxEGC1.Value; }
+        public bool[] EDXDetectorValid
+        {
+            get => EDXControls.Select(c => c.Valid).ToArray();
+            set
+            {
+                for (int i = 0; i < EDXControls.Count && i < value.Length; i++)
+                    EDXControls[i].Valid = value[i];
+            }
+        }
 
-        public double EGC2 { set => numericBoxEGC2.Value = value; get => numericBoxEGC2.Value; }
+        public List<EDXControl> EDXControls = new List<EDXControl>();
+        public int EDXDetectorNumber
+        {
+            get => EDXControls.Count;
+            set
+            {
+                if (value > 0 && flowLayoutPanelEDX!=null)
+                {
+                    if(value < EDXControls.Count)
+                            EDXControls.RemoveRange(value, EDXControls.Count - value);
+                    else if (value > EDXControls.Count)
+                    {
+                        flowLayoutPanelEDX.SuspendLayout();
+                        while(value!=EDXControls.Count)
+                        {
+                            EDXControls.Add(new EDXControl() { DetectorName="#"+ EDXControls.Count.ToString()});
+                            flowLayoutPanelEDX.Controls.Add(EDXControls[EDXControls.Count - 1]);
+                        }
+                        flowLayoutPanelEDX.ResumeLayout();
+                    }
 
-        public double LowEnergyCutoff { set => numericUpDownLowEnergyCutoff.Value = (decimal)value; get => (double)numericUpDownLowEnergyCutoff.Value; }
+                    if (value == 1)
+                    {
+                        EDXControls[0].CheckBoxVisible = false;
+                        EDXControls[0].Valid = true;
+                    }
+                }
+            }
+        }
+
+        public double LowEnergyCutoffValue { set => numericBoxLowEnergyCutoff.Value = value; get => numericBoxLowEnergyCutoff.Value; }
+        public bool LowEnergyCutoff { set => checkBoxLowEnergyCutoff.Checked = value; get => checkBoxLowEnergyCutoff.Checked; }
 
         public bool VisibleEDXSetting { set => groupBoxEDX.Visible = value; get => groupBoxEDX.Visible; }
 
         public bool VisibleTextBox { set => textBox.Visible = value; get => textBox.Visible; }
 
-        public bool RemoveKalpha2 { set => checkBoxRemoveKalpha2.Checked = value; get => checkBoxRemoveKalpha2.Checked; }
+        //public bool RemoveKalpha2 { set => checkBoxRemoveKalpha2.Checked = value; get => checkBoxRemoveKalpha2.Checked; }
 
         private void horizontalAxisUserControl_AxisPropertyChanged()
         {
@@ -100,9 +151,7 @@ namespace PDIndexer
             TofAngle = property.TofAngle;
             TofLength = property.TofLength;
             ExposureTime = property.ExposureTime;
-            EGC0 = property.EGC0;
-            EGC1 = property.EGC1;
-            EGC2 = property.EGC2;
+            EGC = property.EGC;
             
         }
         public FormMain.FileProperty GetProperty()
@@ -121,9 +170,7 @@ namespace PDIndexer
                 TofAngle = TofAngle,
                 TofLength = TofLength,
                 ExposureTime = ExposureTime,
-                EGC0 = EGC0,
-                EGC1 = EGC1,
-                EGC2 = EGC2
+                EGC = EGC,
             };
         }
     }

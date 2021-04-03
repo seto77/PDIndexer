@@ -131,110 +131,6 @@
   <data name="crystalControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="crystalControl.CellConstants" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAOsEbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1u
-        ZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRvdWJsZSwgbXNj
-        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
-        NWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRvdWJsZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3Vs
-        dHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRvdWJs
-        ZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-        bj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkRvdWJsZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAu
-        MCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVt
-        LkRvdWJsZSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNL
-        ZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1
-        cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OQUBAAAAIlN5c3RlbS5WYWx1
-        ZVR1cGxlYDZbW1N5c3RlbS5Eb3VibGUGAAAABUl0ZW0xBUl0ZW0yBUl0ZW0zBUl0ZW00BUl0ZW01BUl0
-        ZW02AAAAAAAABgYGBgYGAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAs=
-</value>
-  </data>
-  <data name="crystalControl.Crystal" mimetype="application/x-microsoft.net.object.binary.base64">
-    <value>
-        AAEAAAD/////AQAAAAAAAAAMAgAAAE1DcnlzdGFsbG9ncmFwaHksIFZlcnNpb249MjAyMC4xMC4xNi44
-        MjQsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAUBAAAAF0NyeXN0YWxsb2dyYXBo
-        eS5DcnlzdGFsLAAAAAhSZXNpZHVhbAZCb3VuZHMNTGF0dGljZVBsYW5lcwFBAUIBQwVBbHBoYQRCZXRh
-        BUdhbW1hBUFfZXJyBUJfZXJyBUNfZXJyCUFscGhhX2VycghCZXRhX2VycglHYW1tYV9lcnIOUm90YXRp
-        b25NYXRyaXgEQXJnYghSZXNlcnZlZAROYW1lBE5vdGUOUHVibEF1dGhvck5hbWUQUHVibFNlY3Rpb25U
-        aXRsZRRTeW1tZXRyeVNlcmllc051bWJlcgdKb3VybmFsC0pvdXJuYWxOYW1lDUpvdXJuYWxWb2x1bWUM
-        Sm91cm5hbElzc3VlC0pvdXJuYWxZZWFyEEpvdXJuYWxQYWdlRmlyc3QPSm91cm5hbFBhZ2VMYXN0CFN5
-        bW1ldHJ5BUF0b21zBUJvbmRzBlN0cmFpbgZTdHJlc3MPSGlsbENvZWZmaWNpZW50FUVsYXN0aWNTdGlm
-        Zm5lc3NBcnJheQxFT1NDb25kaXRpb24KRG9lc1VzZUVPUwxDcnlzdGFsbGl0ZXMPQW5nbGVSZXNvbHV0
-        aW9uC1N1YkRpdmlzaW9uCUdyYWluU2l6ZQJpZAAEBAAAAAAAAAAAAAAAAAQAAAEBAQEAAQEBAQEBAQQE
-        BAQEAAcEAAQAAAAABhdDcnlzdGFsbG9ncmFwaHkuQm91bmRbXQIAAAAeQ3J5c3RhbGxvZ3JhcGh5Lkxh
-        dHRpY2VQbGFuZVtdAgAAAAYGBgYGBgYGBgYGBhhDcnlzdGFsbG9ncmFwaHkuTWF0cml4M0QCAAAACAEI
-        GENyeXN0YWxsb2dyYXBoeS5TeW1tZXRyeQIAAAAXQ3J5c3RhbGxvZ3JhcGh5LkF0b21zW10CAAAAF0Ny
-        eXN0YWxsb2dyYXBoeS5Cb25kc1tdAgAAABhDcnlzdGFsbG9ncmFwaHkuTWF0cml4M0QCAAAAGENyeXN0
-        YWxsb2dyYXBoeS5NYXRyaXgzRAIAAAAGBhNDcnlzdGFsbG9ncmFwaHkuRU9TAgAAAAEbQ3J5c3RhbGxv
-        Z3JhcGh5LkNyeXN0YWxsaXRlAgAAAAYIBggCAAAAAAAAAAAAAAAJAwAAAAkEAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACQUAAADw8PD/AAYGAAAAAAkGAAAACQYAAAAJBgAAAAAAAAAJ
-        BgAAAAkGAAAACQYAAAAJBgAAAAkGAAAACQYAAAAJBgAAAAkHAAAACQgAAAAJCQAAAAkKAAAACQsAAAAA
-        AAAAAAAAAAkMAAAACQ0AAAAACgAAAAAAAABABAAAAAAAAAAAAFlAAAAAAAcDAAAAAAEAAAAAAAAABBVD
-        cnlzdGFsbG9ncmFwaHkuQm91bmQCAAAABwQAAAAAAQAAAAAAAAAEHENyeXN0YWxsb2dyYXBoeS5MYXR0
-        aWNlUGxhbmUCAAAABQUAAAAYQ3J5c3RhbGxvZ3JhcGh5Lk1hdHJpeDNECQAAAANFMTEDRTEyA0UxMwNF
-        MjEDRTIyA0UyMwNFMzEDRTMyA0UzMwAAAAAAAAAAAAYGBgYGBgYGBgIAAAAAAAAAAADwPwAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAPA/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8D8MDgAA
-        AP4DbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-        bj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0u
-        SW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5
-        VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5TdHJpbmcsIG1zY29ybGliLCBWZXJzaW9uPTQu
-        MC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV1dLCBt
-        c2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3
-        N2E1YzU2MTkzNGUwODldXSwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFs
-        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQcAAAAYQ3J5c3RhbGxvZ3JhcGh5LlN5bW1l
-        dHJ5GQAAABJTcGFjZUdyb3VwSE1zdWJTdHIPU3BhY2VHcm91cFNGU3RyEVNwYWNlR3JvdXBIYWxsU3Ry
-        D1NwYWNlR3JvdXBITVN0chNTcGFjZUdyb3VwSE1mdWxsU3RyCE1haW5BeGlzDkxhdHRpY2VUeXBlU3Ry
-        B1N0clNFMXAHU3RyU0UxdgdTdHJTRTJwB1N0clNFMnYHU3RyU0UzcAdTdHJTRTN2D1BvaW50R3JvdXBI
-        TVN0cg9Qb2ludEdyb3VwU0ZTdHIMTGF1ZUdyb3VwU3RyEENyeXN0YWxTeXN0ZW1TdHIMU2VyaWVzTnVt
-        YmVyEFNwYWNlR3JvdXBOdW1iZXITU3BhY2VHcm91cFN1Yk51bWJlchBQb2ludEdyb3VwTnVtYmVyD0xh
-        dWVHcm91cE51bWJlchNDcnlzdGFsU3lzdGVtTnVtYmVyEUV4dGluY3Rpb25SdWxlU3RyE0NoZWNrRXh0
-        aW5jdGlvbkZ1bmMBAQEBAQEBAQEBAQEBAQEBAQAAAAAAAAYECAgICAgIPlN5c3RlbS5Db2xsZWN0aW9u
-        cy5HZW5lcmljLkxpc3RgMVtbU3lzdGVtLkZ1bmNgNFtbU3lzdGVtLkludDMyDgAAAAIAAAAJBgAAAAYQ
-        AAAAB1Vua25vd24JEAAAAAkQAAAACRAAAAAJBgAAAAkQAAAACRAAAAAJEAAAAAkQAAAACRAAAAAJEAAA
-        AAkQAAAACRAAAAAJEAAAAAkQAAAACRAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJEwAAAAkUAAAA
-        BwgAAAAAAQAAAAAAAAAEFUNyeXN0YWxsb2dyYXBoeS5BdG9tcwIAAAAHCQAAAAABAAAAAAAAAAQVQ3J5
-        c3RhbGxvZ3JhcGh5LkJvbmRzAgAAAAEKAAAABQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAELAAAABQAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAA8MAAAAFQAAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAFDQAAABNDcnlzdGFsbG9ncmFwaHkuRU9TFQAAABg8RW5hYmxlZD5rX19CYWNraW5nRmllbGQcPENl
-        bGxWb2x1bWUwPmtfX0JhY2tpbmdGaWVsZBM8VDA+a19fQmFja2luZ0ZpZWxkEzxLMD5rX19CYWNraW5n
-        RmllbGQUPEtwMD5rX19CYWNraW5nRmllbGQbPEtwSW5maW5pdHk+a19fQmFja2luZ0ZpZWxkFTxLcHAw
-        PmtfX0JhY2tpbmdGaWVsZBc8R2FtbWEwPmtfX0JhY2tpbmdGaWVsZBc8VGhldGEwPmtfX0JhY2tpbmdG
-        aWVsZBI8UT5rX19CYWNraW5nRmllbGQWPEtwZXJUPmtfX0JhY2tpbmdGaWVsZBI8QT5rX19CYWNraW5n
-        RmllbGQSPEI+a19fQmFja2luZ0ZpZWxkEjxDPmtfX0JhY2tpbmdGaWVsZCg8VGhlcm1hbFByZXNzdXJl
-        QXBwcm9hY2g+a19fQmFja2luZ0ZpZWxkKzxJc290aGVybWFsUHJlc3N1cmVBcHByb2FjaD5rX19CYWNr
-        aW5nRmllbGQSPFo+a19fQmFja2luZ0ZpZWxkEzxaZT5rX19CYWNraW5nRmllbGQSPE4+a19fQmFja2lu
-        Z0ZpZWxkFTxOb3RlPmtfX0JhY2tpbmdGaWVsZBw8VGVtcGVyYXR1cmU+a19fQmFja2luZ0ZpZWxkAAAA
-        AAAAAAAAAAAAAAAEBAAAAAEAAQYGBgYGBgYGBgYGBgYfQ3J5c3RhbGxvZ3JhcGh5LlRoZXJtYWxQcmVz
-        c3VyZQIAAAAiQ3J5c3RhbGxvZ3JhcGh5Lklzb3RoZXJtYWxQcmVzc3VyZQIAAAAGBggGAgAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAXr////H0NyeXN0YWxsb2dyYXBo
-        eS5UaGVybWFsUHJlc3N1cmUBAAAAB3ZhbHVlX18ACAIAAAAAAAAABer///8iQ3J5c3RhbGxvZ3JhcGh5
-        Lklzb3RoZXJtYWxQcmVzc3VyZQEAAAAHdmFsdWVfXwAIAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-        AAkGAAAAAAAAAAAAAAAREwAAAAAAAAAFFAAAAD5TeXN0ZW0uQ29sbGVjdGlvbnMuR2VuZXJpYy5MaXN0
-        YDFbW1N5c3RlbS5GdW5jYDRbW1N5c3RlbS5JbnQzMgMAAAAGX2l0ZW1zBV9zaXplCF92ZXJzaW9uAwAA
-        gQNTeXN0ZW0uRnVuY2A0W1tTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
-        bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQz
-        MiwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tl
-        bj1iNzdhNWM1NjE5MzRlMDg5XSxbU3lzdGVtLkludDMyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4w
-        LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODldLFtTeXN0ZW0u
-        U3RyaW5nLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tl
-        eVRva2VuPWI3N2E1YzU2MTkzNGUwODldXVtdCAgOAAAACRgAAAAAAAAAAAAAAAwZAAAArwNtc2Nvcmxp
-        YiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2
-        MTkzNGUwODldLFtTeXN0ZW0uSW50MzIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9
-        bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OV0sW1N5c3RlbS5JbnQzMiwgbXNj
-        b3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdh
-        NWM1NjE5MzRlMDg5XSxbU3lzdGVtLlN0cmluZywgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3Vs
-        dHVyZT1uZXV0cmFsLCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5XV0sIG1zY29ybGliLCBW
-        ZXJzaW9uPTQuMC4wLjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0
-        ZTA4OQcYAAAAAAEAAAAAAAAABBtTeXN0ZW0uRnVuY2A0W1tTeXN0ZW0uSW50MzIZAAAACw==
-</value>
-  </data>
   <data name="crystalControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -258,7 +154,7 @@
     <value>crystalControl</value>
   </data>
   <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2020.10.16.824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
     <value>groupBox3</value>
@@ -321,10 +217,9 @@
     <value>59</value>
   </data>
   <data name="buttonAdd.Text" xml:space="preserve">
-    <value>
+    <value>⇐
 Add
-
-</value>
+⇐</value>
   </data>
   <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
     <value>buttonAdd</value>
@@ -351,14 +246,16 @@ Add
     <value>2, 88</value>
   </data>
   <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 61</value>
+    <value>47, 77</value>
   </data>
   <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
-    <value>Re-
-place</value>
+    <value>⇔
+Re-
+place
+⇔</value>
   </data>
   <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
     <value>buttonChange</value>
@@ -1451,7 +1348,7 @@ of  diffraction peaks based on crystal structures</value>
     <value>crystalDatabaseControl</value>
   </data>
   <data name="&gt;&gt;crystalDatabaseControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalDatabaseControl, Crystallography.Controls, Version=2020.10.16.824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.CrystalDatabaseControl, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;crystalDatabaseControl.Parent" xml:space="preserve">
     <value>groupBox4</value>
@@ -1481,7 +1378,7 @@ of  diffraction peaks based on crystal structures</value>
     <value>searchCrystalControl</value>
   </data>
   <data name="&gt;&gt;searchCrystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.SearchCrystalControl, Crystallography.Controls, Version=2020.10.16.824, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.SearchCrystalControl, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;searchCrystalControl.Parent" xml:space="preserve">
     <value>panel1</value>

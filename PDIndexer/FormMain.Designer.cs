@@ -205,6 +205,22 @@ namespace PDIndexer
             this.Crystal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSourceCrystal = new System.Windows.Forms.BindingSource(this.components);
             this.checkBoxCrystalParameter = new System.Windows.Forms.CheckBox();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButtonCrystalParameter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonProfileParameter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonEquationOfState = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonFittingParameter = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonCellFinder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonStressAnalysis = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonAtomicPositonFinder = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButtonLPO = new System.Windows.Forms.ToolStripButton();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readPatternProfileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -249,22 +265,6 @@ namespace PDIndexer
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.englishToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.japaneseToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButtonCrystalParameter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonProfileParameter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonEquationOfState = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonFittingParameter = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonCellFinder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonStressAnalysis = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonAtomicPositonFinder = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonLPO = new System.Windows.Forms.ToolStripButton();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.buttonAu = new System.Windows.Forms.Button();
@@ -514,8 +514,8 @@ namespace PDIndexer
             this.groupBoxCrystalData.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrystals)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystal)).BeginInit();
-            this.menuStrip.SuspendLayout();
             this.toolStrip2.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStripContainer1
@@ -1437,6 +1437,121 @@ namespace PDIndexer
             this.toolTip.SetToolTip(this.checkBoxCrystalParameter, resources.GetString("checkBoxCrystalParameter.ToolTip"));
             this.checkBoxCrystalParameter.CheckedChanged += new System.EventHandler(this.checkBoxCrystalParameter_CheckedChanged);
             // 
+            // toolStrip2
+            // 
+            resources.ApplyResources(this.toolStrip2, "toolStrip2");
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButtonCrystalParameter,
+            this.toolStripSeparator4,
+            this.toolStripButtonProfileParameter,
+            this.toolStripSeparator6,
+            this.toolStripButtonEquationOfState,
+            this.toolStripSeparator8,
+            this.toolStripButtonFittingParameter,
+            this.toolStripSeparator5,
+            this.toolStripButtonCellFinder,
+            this.toolStripSeparator11,
+            this.toolStripButtonStressAnalysis,
+            this.toolStripSeparator10,
+            this.toolStripButtonAtomicPositonFinder,
+            this.toolStripSeparator12,
+            this.toolStripButtonLPO});
+            this.toolStrip2.Name = "toolStrip2";
+            // 
+            // toolStripButtonCrystalParameter
+            // 
+            resources.ApplyResources(this.toolStripButtonCrystalParameter, "toolStripButtonCrystalParameter");
+            this.toolStripButtonCrystalParameter.Name = "toolStripButtonCrystalParameter";
+            this.toolStripButtonCrystalParameter.Click += new System.EventHandler(this.toolStripButtonCrystalParameter_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
+            // 
+            // toolStripButtonProfileParameter
+            // 
+            resources.ApplyResources(this.toolStripButtonProfileParameter, "toolStripButtonProfileParameter");
+            this.toolStripButtonProfileParameter.Name = "toolStripButtonProfileParameter";
+            this.toolStripButtonProfileParameter.Click += new System.EventHandler(this.toolStripButtonProfileParameter_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
+            // 
+            // toolStripButtonEquationOfState
+            // 
+            this.toolStripButtonEquationOfState.CheckOnClick = true;
+            resources.ApplyResources(this.toolStripButtonEquationOfState, "toolStripButtonEquationOfState");
+            this.toolStripButtonEquationOfState.Name = "toolStripButtonEquationOfState";
+            this.toolStripButtonEquationOfState.CheckedChanged += new System.EventHandler(this.toolStripButtonEquationOfState_CheckedChanged);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
+            // 
+            // toolStripButtonFittingParameter
+            // 
+            this.toolStripButtonFittingParameter.CheckOnClick = true;
+            resources.ApplyResources(this.toolStripButtonFittingParameter, "toolStripButtonFittingParameter");
+            this.toolStripButtonFittingParameter.Name = "toolStripButtonFittingParameter";
+            this.toolStripButtonFittingParameter.CheckedChanged += new System.EventHandler(this.toolStripButtonFittingParameter_CheckedChanged);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
+            // 
+            // toolStripButtonCellFinder
+            // 
+            this.toolStripButtonCellFinder.CheckOnClick = true;
+            this.toolStripButtonCellFinder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.toolStripButtonCellFinder, "toolStripButtonCellFinder");
+            this.toolStripButtonCellFinder.Name = "toolStripButtonCellFinder";
+            this.toolStripButtonCellFinder.CheckedChanged += new System.EventHandler(this.toolStripButtonCellFinder_CheckedChanged);
+            // 
+            // toolStripSeparator11
+            // 
+            this.toolStripSeparator11.Name = "toolStripSeparator11";
+            resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
+            // 
+            // toolStripButtonStressAnalysis
+            // 
+            this.toolStripButtonStressAnalysis.CheckOnClick = true;
+            this.toolStripButtonStressAnalysis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.toolStripButtonStressAnalysis, "toolStripButtonStressAnalysis");
+            this.toolStripButtonStressAnalysis.Name = "toolStripButtonStressAnalysis";
+            this.toolStripButtonStressAnalysis.CheckedChanged += new System.EventHandler(this.toolStripButtonStressAnalysis_CheckedChanged);
+            // 
+            // toolStripSeparator10
+            // 
+            this.toolStripSeparator10.Name = "toolStripSeparator10";
+            resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
+            // 
+            // toolStripButtonAtomicPositonFinder
+            // 
+            this.toolStripButtonAtomicPositonFinder.CheckOnClick = true;
+            this.toolStripButtonAtomicPositonFinder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.toolStripButtonAtomicPositonFinder, "toolStripButtonAtomicPositonFinder");
+            this.toolStripButtonAtomicPositonFinder.Name = "toolStripButtonAtomicPositonFinder";
+            this.toolStripButtonAtomicPositonFinder.CheckedChanged += new System.EventHandler(this.toolStripButtonAtomicPositonFinder_CheckedChanged);
+            // 
+            // toolStripSeparator12
+            // 
+            this.toolStripSeparator12.Name = "toolStripSeparator12";
+            resources.ApplyResources(this.toolStripSeparator12, "toolStripSeparator12");
+            // 
+            // toolStripButtonLPO
+            // 
+            this.toolStripButtonLPO.CheckOnClick = true;
+            this.toolStripButtonLPO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            resources.ApplyResources(this.toolStripButtonLPO, "toolStripButtonLPO");
+            this.toolStripButtonLPO.Name = "toolStripButtonLPO";
+            this.toolStripButtonLPO.CheckedChanged += new System.EventHandler(this.toolStripButtonLPO_CheckedChanged);
+            // 
             // menuStrip
             // 
             resources.ApplyResources(this.menuStrip, "menuStrip");
@@ -1620,6 +1735,7 @@ namespace PDIndexer
             // 
             // optionToolStripMenuItem
             // 
+            this.optionToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolTipToolStripMenuItem,
             this.watchReadClipboardToolStripMenuItem,
@@ -1627,6 +1743,7 @@ namespace PDIndexer
             this.clearRegistryToolStripMenuItem,
             this.automaticallySaveTheCrystalListToolStripMenuItem});
             resources.ApplyResources(this.optionToolStripMenuItem, "optionToolStripMenuItem");
+            this.optionToolStripMenuItem.Margin = new System.Windows.Forms.Padding(4);
             this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             // 
             // toolTipToolStripMenuItem
@@ -1634,8 +1751,8 @@ namespace PDIndexer
             this.toolTipToolStripMenuItem.Checked = true;
             this.toolTipToolStripMenuItem.CheckOnClick = true;
             this.toolTipToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.toolTipToolStripMenuItem.Name = "toolTipToolStripMenuItem";
             resources.ApplyResources(this.toolTipToolStripMenuItem, "toolTipToolStripMenuItem");
+            this.toolTipToolStripMenuItem.Name = "toolTipToolStripMenuItem";
             this.toolTipToolStripMenuItem.Click += new System.EventHandler(this.toolTipToolStripMenuItem_Click);
             // 
             // watchReadClipboardToolStripMenuItem
@@ -1665,8 +1782,8 @@ namespace PDIndexer
             // 
             // toolStripTextBoxDirectoryToWatch
             // 
-            resources.ApplyResources(this.toolStripTextBoxDirectoryToWatch, "toolStripTextBoxDirectoryToWatch");
             this.toolStripTextBoxDirectoryToWatch.Name = "toolStripTextBoxDirectoryToWatch";
+            resources.ApplyResources(this.toolStripTextBoxDirectoryToWatch, "toolStripTextBoxDirectoryToWatch");
             this.toolStripTextBoxDirectoryToWatch.TextChanged += new System.EventHandler(this.toolStripTextBoxDirectoryToWatch_TextChanged);
             // 
             // clearRegistryToolStripMenuItem
@@ -1680,6 +1797,7 @@ namespace PDIndexer
             this.automaticallySaveTheCrystalListToolStripMenuItem.Checked = true;
             this.automaticallySaveTheCrystalListToolStripMenuItem.CheckOnClick = true;
             this.automaticallySaveTheCrystalListToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.automaticallySaveTheCrystalListToolStripMenuItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.automaticallySaveTheCrystalListToolStripMenuItem.Name = "automaticallySaveTheCrystalListToolStripMenuItem";
             resources.ApplyResources(this.automaticallySaveTheCrystalListToolStripMenuItem, "automaticallySaveTheCrystalListToolStripMenuItem");
             // 
@@ -1750,121 +1868,6 @@ namespace PDIndexer
             resources.ApplyResources(this.japaneseToolStripMenuItem, "japaneseToolStripMenuItem");
             this.japaneseToolStripMenuItem.Name = "japaneseToolStripMenuItem";
             this.japaneseToolStripMenuItem.Click += new System.EventHandler(this.languageToolStripMenuItem_Click);
-            // 
-            // toolStrip2
-            // 
-            resources.ApplyResources(this.toolStrip2, "toolStrip2");
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButtonCrystalParameter,
-            this.toolStripSeparator4,
-            this.toolStripButtonProfileParameter,
-            this.toolStripSeparator6,
-            this.toolStripButtonEquationOfState,
-            this.toolStripSeparator8,
-            this.toolStripButtonFittingParameter,
-            this.toolStripSeparator5,
-            this.toolStripButtonCellFinder,
-            this.toolStripSeparator11,
-            this.toolStripButtonStressAnalysis,
-            this.toolStripSeparator10,
-            this.toolStripButtonAtomicPositonFinder,
-            this.toolStripSeparator12,
-            this.toolStripButtonLPO});
-            this.toolStrip2.Name = "toolStrip2";
-            // 
-            // toolStripButtonCrystalParameter
-            // 
-            resources.ApplyResources(this.toolStripButtonCrystalParameter, "toolStripButtonCrystalParameter");
-            this.toolStripButtonCrystalParameter.Name = "toolStripButtonCrystalParameter";
-            this.toolStripButtonCrystalParameter.Click += new System.EventHandler(this.toolStripButtonCrystalParameter_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(this.toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // toolStripButtonProfileParameter
-            // 
-            resources.ApplyResources(this.toolStripButtonProfileParameter, "toolStripButtonProfileParameter");
-            this.toolStripButtonProfileParameter.Name = "toolStripButtonProfileParameter";
-            this.toolStripButtonProfileParameter.Click += new System.EventHandler(this.toolStripButtonProfileParameter_Click);
-            // 
-            // toolStripSeparator6
-            // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            resources.ApplyResources(this.toolStripSeparator6, "toolStripSeparator6");
-            // 
-            // toolStripButtonEquationOfState
-            // 
-            this.toolStripButtonEquationOfState.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonEquationOfState, "toolStripButtonEquationOfState");
-            this.toolStripButtonEquationOfState.Name = "toolStripButtonEquationOfState";
-            this.toolStripButtonEquationOfState.CheckedChanged += new System.EventHandler(this.toolStripButtonEquationOfState_CheckedChanged);
-            // 
-            // toolStripSeparator8
-            // 
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            resources.ApplyResources(this.toolStripSeparator8, "toolStripSeparator8");
-            // 
-            // toolStripButtonFittingParameter
-            // 
-            this.toolStripButtonFittingParameter.CheckOnClick = true;
-            resources.ApplyResources(this.toolStripButtonFittingParameter, "toolStripButtonFittingParameter");
-            this.toolStripButtonFittingParameter.Name = "toolStripButtonFittingParameter";
-            this.toolStripButtonFittingParameter.CheckedChanged += new System.EventHandler(this.toolStripButtonFittingParameter_CheckedChanged);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            resources.ApplyResources(this.toolStripSeparator5, "toolStripSeparator5");
-            // 
-            // toolStripButtonCellFinder
-            // 
-            this.toolStripButtonCellFinder.CheckOnClick = true;
-            this.toolStripButtonCellFinder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.toolStripButtonCellFinder, "toolStripButtonCellFinder");
-            this.toolStripButtonCellFinder.Name = "toolStripButtonCellFinder";
-            this.toolStripButtonCellFinder.CheckedChanged += new System.EventHandler(this.toolStripButtonCellFinder_CheckedChanged);
-            // 
-            // toolStripSeparator11
-            // 
-            this.toolStripSeparator11.Name = "toolStripSeparator11";
-            resources.ApplyResources(this.toolStripSeparator11, "toolStripSeparator11");
-            // 
-            // toolStripButtonStressAnalysis
-            // 
-            this.toolStripButtonStressAnalysis.CheckOnClick = true;
-            this.toolStripButtonStressAnalysis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.toolStripButtonStressAnalysis, "toolStripButtonStressAnalysis");
-            this.toolStripButtonStressAnalysis.Name = "toolStripButtonStressAnalysis";
-            this.toolStripButtonStressAnalysis.CheckedChanged += new System.EventHandler(this.toolStripButtonStressAnalysis_CheckedChanged);
-            // 
-            // toolStripSeparator10
-            // 
-            this.toolStripSeparator10.Name = "toolStripSeparator10";
-            resources.ApplyResources(this.toolStripSeparator10, "toolStripSeparator10");
-            // 
-            // toolStripButtonAtomicPositonFinder
-            // 
-            this.toolStripButtonAtomicPositonFinder.CheckOnClick = true;
-            this.toolStripButtonAtomicPositonFinder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.toolStripButtonAtomicPositonFinder, "toolStripButtonAtomicPositonFinder");
-            this.toolStripButtonAtomicPositonFinder.Name = "toolStripButtonAtomicPositonFinder";
-            this.toolStripButtonAtomicPositonFinder.CheckedChanged += new System.EventHandler(this.toolStripButtonAtomicPositonFinder_CheckedChanged);
-            // 
-            // toolStripSeparator12
-            // 
-            this.toolStripSeparator12.Name = "toolStripSeparator12";
-            resources.ApplyResources(this.toolStripSeparator12, "toolStripSeparator12");
-            // 
-            // toolStripButtonLPO
-            // 
-            this.toolStripButtonLPO.CheckOnClick = true;
-            this.toolStripButtonLPO.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            resources.ApplyResources(this.toolStripButtonLPO, "toolStripButtonLPO");
-            this.toolStripButtonLPO.Name = "toolStripButtonLPO";
-            this.toolStripButtonLPO.CheckedChanged += new System.EventHandler(this.toolStripButtonLPO_CheckedChanged);
             // 
             // button2
             // 
@@ -3797,10 +3800,10 @@ namespace PDIndexer
             this.groupBoxCrystalData.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrystals)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystal)).EndInit();
-            this.menuStrip.ResumeLayout(false);
-            this.menuStrip.PerformLayout();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
 
         }

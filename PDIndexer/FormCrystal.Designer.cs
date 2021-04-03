@@ -146,11 +146,15 @@ namespace PDIndexer
             // 
             // crystalControl
             // 
+            this.crystalControl.A = 0D;
             this.crystalControl.AllowDrop = true;
+            this.crystalControl.Alpha = 0D;
             resources.ApplyResources(this.crystalControl, "crystalControl");
-            this.crystalControl.CellConstants = ((System.ValueTuple<double, double, double, double, double, double>)(resources.GetObject("crystalControl.CellConstants")));
-            this.crystalControl.Crystal = ((Crystallography.Crystal)(resources.GetObject("crystalControl.Crystal")));
+            this.crystalControl.B = 0D;
+            this.crystalControl.Beta = 0D;
+            this.crystalControl.C = 0D;
             this.crystalControl.DefaultTabNumber = 0;
+            this.crystalControl.Gamma = 0D;
             this.crystalControl.Name = "crystalControl";
             this.crystalControl.ScatteringFactorVisible = false;
             this.crystalControl.SkipEvent = false;
@@ -220,7 +224,7 @@ namespace PDIndexer
             this.dataGridViewCrystal.DataSource = this.bindingSource;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;

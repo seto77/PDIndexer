@@ -118,29 +118,154 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+  <data name="groupBoxEDX.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxEDX.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="panel1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="checkBoxLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 5</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>131, 21</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.Text" xml:space="preserve">
+    <value>Low energy cutoff</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLowEnergyCutoff.Name" xml:space="preserve">
+    <value>checkBoxLowEnergyCutoff</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLowEnergyCutoff.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLowEnergyCutoff.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;checkBoxLowEnergyCutoff.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.FooterText" xml:space="preserve">
+    <value>eV</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>148, 3</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 25</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 25</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowEnergyCutoff.Name" xml:space="preserve">
+    <value>numericBoxLowEnergyCutoff</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowEnergyCutoff.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowEnergyCutoff.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxLowEnergyCutoff.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 39</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 28</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBoxEDX</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanelEDX.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanelEDX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanelEDX.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 39</value>
+  </data>
+  <data name="flowLayoutPanelEDX.Size" type="System.Drawing.Size, System.Drawing">
+    <value>366, 0</value>
+  </data>
+  <data name="flowLayoutPanelEDX.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEDX.Name" xml:space="preserve">
+    <value>flowLayoutPanelEDX</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEDX.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEDX.Parent" xml:space="preserve">
+    <value>groupBoxEDX</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanelEDX.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 81</value>
+    <value>3, 22</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>231, 34</value>
+    <value>358, 17</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>E = (a0 + a1 * n + a2 * n^2) * 10^3
-     E: energy (kev),  n: channel number</value>
+    <value>E  = a₀ + a₁ n + a₂ n²    E: energy in eV,  n : channel number</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -152,262 +277,13 @@
     <value>groupBoxEDX</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="numericUpDownLowEnergyCutoff.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericUpDownLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>129, 127</value>
-  </data>
-  <data name="numericUpDownLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="numericUpDownLowEnergyCutoff.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
-  </data>
-  <data name="numericUpDownLowEnergyCutoff.ThousandsSeparator" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownLowEnergyCutoff.Name" xml:space="preserve">
-    <value>numericUpDownLowEnergyCutoff</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownLowEnergyCutoff.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownLowEnergyCutoff.Parent" xml:space="preserve">
-    <value>groupBoxEDX</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownLowEnergyCutoff.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="numericBoxEGC2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxEGC2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC2.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC2.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEGC2.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC2.HeaderText" xml:space="preserve">
-    <value>a2 (EGC2)</value>
-  </data>
-  <data name="numericBoxEGC2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 52</value>
-  </data>
-  <data name="numericBoxEGC2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericBoxEGC2.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxEGC2.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxEGC2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxEGC2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 25</value>
-  </data>
-  <data name="numericBoxEGC2.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxEGC2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxEGC2.Name" xml:space="preserve">
-    <value>numericBoxEGC2</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC2.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC2.Parent" xml:space="preserve">
-    <value>groupBoxEDX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="numericBoxEGC1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxEGC1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC1.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC1.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEGC1.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC1.HeaderText" xml:space="preserve">
-    <value>a1 (EGC1)</value>
-  </data>
-  <data name="numericBoxEGC1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 23</value>
-  </data>
-  <data name="numericBoxEGC1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericBoxEGC1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxEGC1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxEGC1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxEGC1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 25</value>
-  </data>
-  <data name="numericBoxEGC1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxEGC1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxEGC1.Name" xml:space="preserve">
-    <value>numericBoxEGC1</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC1.Parent" xml:space="preserve">
-    <value>groupBoxEDX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="numericBoxEGC0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxEGC0.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC0.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC0.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericBoxEGC0.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxEGC0.HeaderText" xml:space="preserve">
-    <value>a0 (EGC0)</value>
-  </data>
-  <data name="numericBoxEGC0.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 23</value>
-  </data>
-  <data name="numericBoxEGC0.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericBoxEGC0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
-  </data>
-  <data name="numericBoxEGC0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
-  </data>
-  <data name="numericBoxEGC0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxEGC0.Size" type="System.Drawing.Size, System.Drawing">
-    <value>151, 25</value>
-  </data>
-  <data name="numericBoxEGC0.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="numericBoxEGC0.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericBoxEGC0.Name" xml:space="preserve">
-    <value>numericBoxEGC0</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC0.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC0.Parent" xml:space="preserve">
-    <value>groupBoxEDX</value>
-  </data>
-  <data name="&gt;&gt;numericBoxEGC0.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>210, 133</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>23, 17</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>eV</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>groupBoxEDX</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 130</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>112, 17</value>
-  </data>
-  <data name="label3.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>Low energy cutoff</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBoxEDX</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>6</value>
   </data>
   <data name="groupBoxEDX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="groupBoxEDX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 342</value>
+    <value>2, 311</value>
   </data>
   <data name="groupBoxEDX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -416,13 +292,13 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="groupBoxEDX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 160</value>
+    <value>372, 71</value>
   </data>
   <data name="groupBoxEDX.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="groupBoxEDX.Text" xml:space="preserve">
-    <value>For SSD data (*.rpf, *.npd, xbm)</value>
+    <value>For SSD data (*.rpf, *.npd, *.xbm, *.nxs)</value>
   </data>
   <data name="groupBoxEDX.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -443,7 +319,7 @@
     <value>Fill</value>
   </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 555</value>
+    <value>2, 431</value>
   </data>
   <data name="textBox.MaxLength" type="System.Int32, mscorlib">
     <value>0</value>
@@ -455,7 +331,7 @@
     <value>Both</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 105</value>
+    <value>372, 259</value>
   </data>
   <data name="textBox.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -481,8 +357,11 @@
   <data name="buttonOK.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="buttonOK.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 3</value>
+    <value>213, 3</value>
   </data>
   <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 27</value>
@@ -511,8 +390,11 @@
   <data name="buttonCancel.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="buttonCancel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>272, 3</value>
+    <value>294, 3</value>
   </data>
   <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 27</value>
@@ -545,10 +427,13 @@
     <value>RightToLeft</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 660</value>
+    <value>2, 690</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 33</value>
+    <value>372, 33</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -570,6 +455,9 @@
   </data>
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 24</value>
@@ -599,16 +487,16 @@
     <value>True</value>
   </data>
   <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 41</value>
+    <value>14, 18</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>304, 34</value>
+    <value>268, 30</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -630,47 +518,20 @@ If need to remove Kα2, select Kα1 as X-ray source.
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="checkBoxRemoveKalpha2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="checkBoxRemoveKalpha2.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="checkBoxRemoveKalpha2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxRemoveKalpha2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 20</value>
-  </data>
-  <data name="checkBoxRemoveKalpha2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>101, 21</value>
-  </data>
-  <data name="checkBoxRemoveKalpha2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxRemoveKalpha2.Text" xml:space="preserve">
-    <value>Remove Kα2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRemoveKalpha2.Name" xml:space="preserve">
-    <value>checkBoxRemoveKalpha2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRemoveKalpha2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRemoveKalpha2.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxRemoveKalpha2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 257</value>
   </data>
+  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 85</value>
+    <value>372, 54</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -696,18 +557,6 @@ If need to remove Kα2, select Kα1 as X-ray source.
   <data name="numericalTextBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBox1.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericalTextBox1.FooterText" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericalTextBox1.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericalTextBox1.HeaderText" xml:space="preserve">
-    <value />
-  </data>
   <data name="numericalTextBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>56, 21</value>
   </data>
@@ -715,7 +564,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericalTextBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 22</value>
+    <value>1000, 24</value>
   </data>
   <data name="numericalTextBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 22</value>
@@ -724,19 +573,16 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>1, 1, 1, 1</value>
   </data>
   <data name="numericalTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+    <value>66, 24</value>
   </data>
   <data name="numericalTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
-  </data>
-  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
-    <value />
   </data>
   <data name="&gt;&gt;numericalTextBox1.Name" xml:space="preserve">
     <value>numericalTextBox1</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -751,10 +597,10 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 502</value>
+    <value>2, 382</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>350, 53</value>
+    <value>372, 49</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
@@ -796,7 +642,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>352, 255</value>
   </data>
   <data name="horizontalAxisUserControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>352, 255</value>
+    <value>372, 255</value>
   </data>
   <data name="horizontalAxisUserControl.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -805,7 +651,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2020.4.27.1452, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>$this</value>
@@ -820,7 +666,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>354, 695</value>
+    <value>376, 725</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

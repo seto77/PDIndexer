@@ -226,7 +226,7 @@
             this.numericBoxVolume.SkipEventDuringInput = false;
             this.numericBoxVolume.SmartIncrement = true;
             this.numericBoxVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F);
             this.toolTip.SetToolTip(this.numericBoxVolume, resources.GetString("numericBoxVolume.ToolTip"));
             // 
             // numericBoxCellMass
@@ -242,7 +242,7 @@
             this.numericBoxCellMass.SkipEventDuringInput = false;
             this.numericBoxCellMass.SmartIncrement = true;
             this.numericBoxCellMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxCellMass.TextFont = new System.Drawing.Font("Segoe UI", 9F);
             this.toolTip.SetToolTip(this.numericBoxCellMass, resources.GetString("numericBoxCellMass.ToolTip"));
             // 
             // numericBoxMolarVolume
@@ -258,7 +258,7 @@
             this.numericBoxMolarVolume.SkipEventDuringInput = false;
             this.numericBoxMolarVolume.SmartIncrement = true;
             this.numericBoxMolarVolume.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxMolarVolume.TextFont = new System.Drawing.Font("Segoe UI", 9F);
             this.toolTip.SetToolTip(this.numericBoxMolarVolume, resources.GetString("numericBoxMolarVolume.ToolTip"));
             // 
             // numericBoxMolarMass
@@ -274,7 +274,7 @@
             this.numericBoxMolarMass.SkipEventDuringInput = false;
             this.numericBoxMolarMass.SmartIncrement = true;
             this.numericBoxMolarMass.TextBoxBackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericBoxMolarMass.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.toolTip.SetToolTip(this.numericBoxMolarMass, resources.GetString("numericBoxMolarMass.ToolTip"));
             // 
             // numericBoxDensity
@@ -287,6 +287,7 @@
             this.numericBoxDensity.SkipEventDuringInput = false;
             this.numericBoxDensity.SmartIncrement = true;
             this.numericBoxDensity.TextBoxBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxDensity.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F);
             this.numericBoxDensity.ThonsandsSeparator = true;
             this.toolTip.SetToolTip(this.numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip"));
             // 
