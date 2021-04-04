@@ -27,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.396(2021/04/04) Fixed a minor bug on the below update." +
             "\r\n ver4.395(2021/04/04) Improved loading of mutiple-EDX.  Added EOSs of molybdenum." +
             "\r\n ver4.394(2020/12/02) Fixed a GUI bug. Added the option: 'Save the crystal list when closing'" +
             "\r\n ver4.393(2020/12/01) Fixed a minor bug when loading crystal list." +

@@ -905,7 +905,7 @@ namespace PDIndexer
 
                         f.EGC = egc.Split(",,").Select(str => str.Split(",").Select(e => Convert.ToDouble(e)).ToArray()).ToArray();
 
-                        if ((string)regKey.GetValue($"FileProperty.EGC0{i}", "0") != "0")
+                        /*if ((string)regKey.GetValue($"FileProperty.EGC0{i}", "0") != "0")
                         {
                             f.EGC[0][0] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC0{i}", "0"));
                             f.EGC[0][1] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC1{i}", "0"));
@@ -913,7 +913,7 @@ namespace PDIndexer
                             regKey.DeleteSubKey($"FileProperty.EGC0{i}");
                             regKey.DeleteSubKey($"FileProperty.EGC1{i}");
                             regKey.DeleteSubKey($"FileProperty.EGC2{i}");
-                        }
+                        }*/
                         f.ExposureTime = Convert.ToDouble((string)regKey.GetValue($"FileProperty.ExposureTime{i}", "1"));
                     }
                     else
@@ -1099,12 +1099,6 @@ namespace PDIndexer
                     regKey.SetValue($"FileProperty.ExposureTime{i}", FileProperties[i].ExposureTime);
 
                     var sb = new StringBuilder();
-                    foreach (var egcs in FileProperties[i].EGC)
-                        sb.Append(egcs[0].ToString() + "," + egcs[1].ToString() + "," + egcs[2].ToString() + ",,");
-
-                    regKey.SetValue($"FileProperty.EGC{i}", sb.ToString().TrimEnd(new[] { ',' }));
-
-                    sb = new StringBuilder();
                     foreach (var egcs in FileProperties[i].EGC)
                         sb.Append(egcs[0].ToString() + "," + egcs[1].ToString() + "," + egcs[2].ToString() + ",,");
 
