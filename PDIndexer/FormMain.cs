@@ -343,18 +343,19 @@ namespace PDIndexer
                         {
                             try
                             {
-                                if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(DiffractionProfile)))
+                                if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile)))
                                 {
-                                    IDataObject data = Clipboard.GetDataObject();
-                                    DiffractionProfile dp = (DiffractionProfile)data.GetData(typeof(DiffractionProfile));
+                                    var data = Clipboard.GetDataObject();
+                                    var dp = (DiffractionProfile)data.GetData(typeof(DiffractionProfile));
                                     clipboard.ReleaseMutex();
                                     if (dp != null)
                                         AddProfileToCheckedListBox(dp, true, true);
                                 }
-                                else if (((IDataObject)Clipboard.GetDataObject()).GetDataPresent(typeof(DiffractionProfile[])))
+                                else if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile[])))
                                 {
-                                    IDataObject data = Clipboard.GetDataObject();
-                                    DiffractionProfile[] dp = (DiffractionProfile[])data.GetData(typeof(DiffractionProfile[]));
+                                    var dataObject = Clipboard.GetDataObject();
+                                    var data = dataObject;
+                                    var dp = (DiffractionProfile[])data.GetData(typeof(DiffractionProfile[]));
                                     clipboard.ReleaseMutex();
                                     if (dp != null && dp.Length >= 1)
                                     {
@@ -386,7 +387,7 @@ namespace PDIndexer
                                     }
                                 }
 
-                                else if ((Clipboard.GetDataObject()).GetDataPresent(typeof(Crystal2)) && formCrystal.Visible)
+                                else if (Clipboard.GetDataObject().GetDataPresent(typeof(Crystal2)) && formCrystal.Visible)
                                 {
                                     IDataObject data = Clipboard.GetDataObject();
                                     var c2 = (Crystal2)data.GetData(typeof(Crystal2));
@@ -758,10 +759,12 @@ namespace PDIndexer
         private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             timerBlinkDiffraction.Stop();
-            formFitting.Close();
-            formCrystal.Close();
-            formProfile.Close();
-            formEOS.Close();
+            //formFitting.Close();
+            //formCrystal.Close();
+            //formProfile.Close();
+            //formEOS.Close();
+            dataSet.DataTableProfile.Clear();
+
             e.Cancel = false;
             if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
             {
@@ -905,15 +908,6 @@ namespace PDIndexer
 
                         f.EGC = egc.Split(",,").Select(str => str.Split(",").Select(e => Convert.ToDouble(e)).ToArray()).ToArray();
 
-                        /*if ((string)regKey.GetValue($"FileProperty.EGC0{i}", "0") != "0")
-                        {
-                            f.EGC[0][0] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC0{i}", "0"));
-                            f.EGC[0][1] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC1{i}", "0"));
-                            f.EGC[0][2] = Convert.ToDouble((string)regKey.GetValue($"FileProperty.EGC2{i}", "0"));
-                            regKey.DeleteSubKey($"FileProperty.EGC0{i}");
-                            regKey.DeleteSubKey($"FileProperty.EGC1{i}");
-                            regKey.DeleteSubKey($"FileProperty.EGC2{i}");
-                        }*/
                         f.ExposureTime = Convert.ToDouble((string)regKey.GetValue($"FileProperty.ExposureTime{i}", "1"));
                     }
                     else
@@ -1210,8 +1204,13 @@ namespace PDIndexer
         {
             Draw();
         }
+
+        public bool SkipDrawing = false;
+
         public void Draw()
         {
+            if (SkipDrawing) 
+                return;
             if (pictureBoxMain.Width <= 0 || pictureBoxMain.Height <= 0) return;
             BmpMain = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
             gMain = Graphics.FromImage(BmpMain);
@@ -1299,7 +1298,6 @@ namespace PDIndexer
             DrawPictureBoxes();
             gMain.Dispose();
         }
-
 
         //ピクチャーボックスの描画
         private void DrawPictureBoxes()
@@ -4934,7 +4932,7 @@ namespace PDIndexer
                    
                 }
 
-                public void Apply() => Execute(() => p.main.formFitting.buttonConfirm_Click(new object(), new EventArgs()));
+                public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
 
                 public void Check(int n) => Check(n, true);
                 public void Uncheck(int n) => Check(n, false);

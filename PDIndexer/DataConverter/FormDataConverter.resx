@@ -184,7 +184,7 @@
     <value>numericBoxLowEnergyCutoff</value>
   </data>
   <data name="&gt;&gt;numericBoxLowEnergyCutoff.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.1.437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericBoxLowEnergyCutoff.Parent" xml:space="preserve">
     <value>panel1</value>
@@ -582,7 +582,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>numericalTextBox1</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Version=2021.5.1.437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Parent" xml:space="preserve">
     <value>groupBox2</value>
@@ -651,7 +651,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
     <value>horizontalAxisUserControl</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2021.4.3.704, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.HorizontalAxisUserControl, Crystallography.Controls, Version=2021.5.1.437, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;horizontalAxisUserControl.Parent" xml:space="preserve">
     <value>$this</value>

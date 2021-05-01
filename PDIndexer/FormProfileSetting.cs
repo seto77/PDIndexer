@@ -394,28 +394,30 @@ namespace PDIndexer
                 checkBoxBandPassFilter.Checked = panelBandPassFilter.Visible = dp.DoesBandpassFilter;
                 checkBoxHighPassFilter.Checked = dp.DoesHighPath;
                 checkBoxLowPassFilter.Checked = dp.DoesLowPath;
-                
-                double max = 1 / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
-                double min = 1 / (dp.Profile.Pt[dp.Profile.Pt.Count - 1].X - dp.Profile.Pt[0].X);
-                int decimalPlaces = min > 1 ? 0 : -(int)Math.Log10(min) + 1;
-
-                if (!double.IsInfinity(max) && !double.IsInfinity(min))
+                if (dp.Profile.Pt.Count > 2)
                 {
-                    numericUpDownHighPass.Maximum = !double.IsInfinity(max) ? (decimal)max : numericUpDownHighPass.Maximum;
-                    numericUpDownHighPass.Minimum = !double.IsInfinity(min) ? (decimal)min : numericUpDownHighPass.Minimum;
-                    numericUpDownHighPass.DecimalPlaces = decimalPlaces;
-                    numericUpDownHighPass.Increment = !double.IsInfinity(min) ? (decimal)min : numericUpDownHighPass.Increment;
-                    if (double.IsNaN(dp.HighPathLimit) || dp.HighPathLimit > max || dp.HighPathLimit < min)
-                        dp.HighPathLimit = min;
-                    numericUpDownHighPass.Value = (decimal)dp.HighPathLimit;
+                    double max = 1 / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
+                    double min = 1 / (dp.Profile.Pt[dp.Profile.Pt.Count - 1].X - dp.Profile.Pt[0].X);
+                    int decimalPlaces = min > 1 ? 0 : -(int)Math.Log10(min) + 1;
 
-                    numericUpDownLowPass.Maximum = !double.IsInfinity(max) ? (decimal)max : numericUpDownHighPass.Maximum;
-                    numericUpDownLowPass.Minimum = (decimal)min;
-                    numericUpDownLowPass.DecimalPlaces = decimalPlaces;
-                    numericUpDownLowPass.Increment = !double.IsInfinity(max) ? (decimal)(max / 100) : (decimal)(numericUpDownHighPass.Maximum / 100);
-                    if (double.IsNaN(dp.LowPathLimit) || dp.LowPathLimit > max || dp.LowPathLimit < min)
-                        dp.LowPathLimit = max;
-                    numericUpDownLowPass.Value = (decimal)dp.LowPathLimit;
+                    if (!double.IsInfinity(max) && !double.IsInfinity(min))
+                    {
+                        numericUpDownHighPass.Maximum = !double.IsInfinity(max) ? (decimal)max : numericUpDownHighPass.Maximum;
+                        numericUpDownHighPass.Minimum = !double.IsInfinity(min) ? (decimal)min : numericUpDownHighPass.Minimum;
+                        numericUpDownHighPass.DecimalPlaces = decimalPlaces;
+                        numericUpDownHighPass.Increment = !double.IsInfinity(min) ? (decimal)min : numericUpDownHighPass.Increment;
+                        if (double.IsNaN(dp.HighPathLimit) || dp.HighPathLimit > max || dp.HighPathLimit < min)
+                            dp.HighPathLimit = min;
+                        numericUpDownHighPass.Value = (decimal)dp.HighPathLimit;
+
+                        numericUpDownLowPass.Maximum = !double.IsInfinity(max) ? (decimal)max : numericUpDownHighPass.Maximum;
+                        numericUpDownLowPass.Minimum = (decimal)min;
+                        numericUpDownLowPass.DecimalPlaces = decimalPlaces;
+                        numericUpDownLowPass.Increment = !double.IsInfinity(max) ? (decimal)(max / 100) : (decimal)(numericUpDownHighPass.Maximum / 100);
+                        if (double.IsNaN(dp.LowPathLimit) || dp.LowPathLimit > max || dp.LowPathLimit < min)
+                            dp.LowPathLimit = max;
+                        numericUpDownLowPass.Value = (decimal)dp.LowPathLimit;
+                    }
                 }
                 //FFTŠÖ˜A‚±‚±‚Ü‚Å
 

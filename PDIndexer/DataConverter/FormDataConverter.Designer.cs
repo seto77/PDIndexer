@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDataConverter));
             this.groupBoxEDX = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.checkBoxLowEnergyCutoff = new System.Windows.Forms.CheckBox();
             this.numericBoxLowEnergyCutoff = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanelEDX = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,7 +45,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.numericalTextBox1 = new Crystallography.Controls.NumericBox();
             this.horizontalAxisUserControl = new Crystallography.Controls.HorizontalAxisUserControl();
-            this.checkBoxLowEnergyCutoff = new System.Windows.Forms.CheckBox();
             this.groupBoxEDX.SuspendLayout();
             this.panel1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -67,6 +67,12 @@
             this.panel1.Controls.Add(this.checkBoxLowEnergyCutoff);
             this.panel1.Controls.Add(this.numericBoxLowEnergyCutoff);
             this.panel1.Name = "panel1";
+            // 
+            // checkBoxLowEnergyCutoff
+            // 
+            resources.ApplyResources(this.checkBoxLowEnergyCutoff, "checkBoxLowEnergyCutoff");
+            this.checkBoxLowEnergyCutoff.Name = "checkBoxLowEnergyCutoff";
+            this.checkBoxLowEnergyCutoff.UseVisualStyleBackColor = true;
             // 
             // numericBoxLowEnergyCutoff
             // 
@@ -174,12 +180,6 @@
             this.horizontalAxisUserControl.XrayWaveSourceElementNumber = 0;
             this.horizontalAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
             this.horizontalAxisUserControl.AxisPropertyChanged += new Crystallography.Controls.HorizontalAxisUserControl.MyEventHandler(this.horizontalAxisUserControl_AxisPropertyChanged);
-            // 
-            // checkBoxLowEnergyCutoff
-            // 
-            resources.ApplyResources(this.checkBoxLowEnergyCutoff, "checkBoxLowEnergyCutoff");
-            this.checkBoxLowEnergyCutoff.Name = "checkBoxLowEnergyCutoff";
-            this.checkBoxLowEnergyCutoff.UseVisualStyleBackColor = true;
             // 
             // FormDataConverter
             // 

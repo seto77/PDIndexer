@@ -1782,8 +1782,8 @@ namespace PDIndexer
             // 
             // toolStripTextBoxDirectoryToWatch
             // 
-            this.toolStripTextBoxDirectoryToWatch.Name = "toolStripTextBoxDirectoryToWatch";
             resources.ApplyResources(this.toolStripTextBoxDirectoryToWatch, "toolStripTextBoxDirectoryToWatch");
+            this.toolStripTextBoxDirectoryToWatch.Name = "toolStripTextBoxDirectoryToWatch";
             this.toolStripTextBoxDirectoryToWatch.TextChanged += new System.EventHandler(this.toolStripTextBoxDirectoryToWatch_TextChanged);
             // 
             // clearRegistryToolStripMenuItem

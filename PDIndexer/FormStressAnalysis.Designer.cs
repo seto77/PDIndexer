@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormStressAnalysis));
             this.button1 = new System.Windows.Forms.Button();
             this.textBox2theta = new System.Windows.Forms.TextBox();
             this.tabControl = new System.Windows.Forms.TabControl();
@@ -55,7 +54,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(4, 4);
+            this.button1.Location = new System.Drawing.Point(1, 1);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(100, 25);
@@ -71,22 +70,24 @@
             this.textBox2theta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2theta.Multiline = true;
             this.textBox2theta.Name = "textBox2theta";
-            this.textBox2theta.Size = new System.Drawing.Size(975, 322);
+            this.textBox2theta.Size = new System.Drawing.Size(975, 330);
             this.textBox2theta.TabIndex = 1;
             // 
             // tabControl
             // 
+            this.tabControl.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl.Controls.Add(this.tabPage1);
             this.tabControl.Controls.Add(this.tabPage2);
             this.tabControl.Controls.Add(this.tabPage3);
             this.tabControl.Controls.Add(this.tabPage4);
             this.tabControl.Controls.Add(this.tabPage5);
-            this.tabControl.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabControl.Location = new System.Drawing.Point(0, 48);
+            this.tabControl.Location = new System.Drawing.Point(0, 28);
             this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(991, 365);
+            this.tabControl.Size = new System.Drawing.Size(991, 373);
             this.tabControl.TabIndex = 2;
             // 
             // tabPage1
@@ -96,7 +97,7 @@
             this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage1.Size = new System.Drawing.Size(983, 332);
+            this.tabPage1.Size = new System.Drawing.Size(983, 340);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "2theta (deree)";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -182,39 +183,21 @@
             this.numericalTextBoxAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericalTextBoxAlpha.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.numericalTextBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxAlpha.DecimalPlaces = -1;
             this.numericalTextBoxAlpha.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxAlpha.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxAlpha.FooterText = "";
-            this.numericalTextBoxAlpha.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxAlpha.HeaderText = "";
+            this.numericalTextBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxAlpha.Location = new System.Drawing.Point(937, 305);
             this.numericalTextBoxAlpha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxAlpha.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxAlpha.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxAlpha.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxAlpha.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxAlpha.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxAlpha.Multiline = false;
             this.numericalTextBoxAlpha.Name = "numericalTextBoxAlpha";
             this.numericalTextBoxAlpha.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericalTextBoxAlpha.RadianValue = 0D;
-            this.numericalTextBoxAlpha.ReadOnly = false;
-            this.numericalTextBoxAlpha.RestrictLimitValue = true;
-            this.numericalTextBoxAlpha.ShowFraction = false;
-            this.numericalTextBoxAlpha.ShowPositiveSign = false;
-            this.numericalTextBoxAlpha.ShowUpDown = false;
-            this.numericalTextBoxAlpha.Size = new System.Drawing.Size(43, 22);
+            this.numericalTextBoxAlpha.Size = new System.Drawing.Size(43, 24);
             this.numericalTextBoxAlpha.SkipEventDuringInput = false;
             this.numericalTextBoxAlpha.SmartIncrement = true;
             this.numericalTextBoxAlpha.TabIndex = 5;
-            this.numericalTextBoxAlpha.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxAlpha.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericalTextBoxAlpha.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericalTextBoxAlpha.ThonsandsSeparator = true;
-            this.numericalTextBoxAlpha.ToolTip = "";
-            this.numericalTextBoxAlpha.UpDown_Increment = 1D;
-            this.numericalTextBoxAlpha.Value = 0D;
-            this.numericalTextBoxAlpha.WordWrap = true;
             this.numericalTextBoxAlpha.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxD0_ValueChanged);
             // 
             // numericalTextBoxPsimax
@@ -222,39 +205,21 @@
             this.numericalTextBoxPsimax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericalTextBoxPsimax.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.numericalTextBoxPsimax.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPsimax.DecimalPlaces = -1;
             this.numericalTextBoxPsimax.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxPsimax.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxPsimax.FooterText = "";
-            this.numericalTextBoxPsimax.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxPsimax.HeaderText = "";
+            this.numericalTextBoxPsimax.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxPsimax.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPsimax.Location = new System.Drawing.Point(891, 305);
             this.numericalTextBoxPsimax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxPsimax.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxPsimax.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxPsimax.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxPsimax.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxPsimax.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxPsimax.Multiline = false;
             this.numericalTextBoxPsimax.Name = "numericalTextBoxPsimax";
             this.numericalTextBoxPsimax.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericalTextBoxPsimax.RadianValue = 0D;
-            this.numericalTextBoxPsimax.ReadOnly = false;
-            this.numericalTextBoxPsimax.RestrictLimitValue = true;
-            this.numericalTextBoxPsimax.ShowFraction = false;
-            this.numericalTextBoxPsimax.ShowPositiveSign = false;
-            this.numericalTextBoxPsimax.ShowUpDown = false;
-            this.numericalTextBoxPsimax.Size = new System.Drawing.Size(40, 22);
+            this.numericalTextBoxPsimax.Size = new System.Drawing.Size(40, 24);
             this.numericalTextBoxPsimax.SkipEventDuringInput = false;
             this.numericalTextBoxPsimax.SmartIncrement = true;
             this.numericalTextBoxPsimax.TabIndex = 5;
-            this.numericalTextBoxPsimax.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxPsimax.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericalTextBoxPsimax.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericalTextBoxPsimax.ThonsandsSeparator = true;
-            this.numericalTextBoxPsimax.ToolTip = "";
-            this.numericalTextBoxPsimax.UpDown_Increment = 1D;
-            this.numericalTextBoxPsimax.Value = 0D;
-            this.numericalTextBoxPsimax.WordWrap = true;
             this.numericalTextBoxPsimax.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxD0_ValueChanged);
             // 
             // numericalTextBoxD0
@@ -262,39 +227,21 @@
             this.numericalTextBoxD0.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.numericalTextBoxD0.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.numericalTextBoxD0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxD0.DecimalPlaces = -1;
             this.numericalTextBoxD0.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBoxD0.FooterFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxD0.FooterText = "";
-            this.numericalTextBoxD0.HeaderFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
-            this.numericalTextBoxD0.HeaderText = "";
+            this.numericalTextBoxD0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxD0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxD0.Location = new System.Drawing.Point(818, 305);
             this.numericalTextBoxD0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBoxD0.Maximum = double.PositiveInfinity;
-            this.numericalTextBoxD0.MaximumSize = new System.Drawing.Size(1000, 22);
-            this.numericalTextBoxD0.Minimum = double.NegativeInfinity;
+            this.numericalTextBoxD0.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxD0.MinimumSize = new System.Drawing.Size(1, 22);
-            this.numericalTextBoxD0.Multiline = false;
             this.numericalTextBoxD0.Name = "numericalTextBoxD0";
             this.numericalTextBoxD0.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
-            this.numericalTextBoxD0.RadianValue = 0D;
-            this.numericalTextBoxD0.ReadOnly = false;
-            this.numericalTextBoxD0.RestrictLimitValue = true;
-            this.numericalTextBoxD0.ShowFraction = false;
-            this.numericalTextBoxD0.ShowPositiveSign = false;
-            this.numericalTextBoxD0.ShowUpDown = false;
-            this.numericalTextBoxD0.Size = new System.Drawing.Size(67, 22);
+            this.numericalTextBoxD0.Size = new System.Drawing.Size(67, 24);
             this.numericalTextBoxD0.SkipEventDuringInput = false;
             this.numericalTextBoxD0.SmartIncrement = true;
             this.numericalTextBoxD0.TabIndex = 5;
-            this.numericalTextBoxD0.TextBoxBackColor = System.Drawing.SystemColors.Window;
-            this.numericalTextBoxD0.TextBoxForeColor = System.Drawing.SystemColors.WindowText;
             this.numericalTextBoxD0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericalTextBoxD0.ThonsandsSeparator = true;
-            this.numericalTextBoxD0.ToolTip = "";
-            this.numericalTextBoxD0.UpDown_Increment = 1D;
-            this.numericalTextBoxD0.Value = 0D;
-            this.numericalTextBoxD0.WordWrap = true;
             this.numericalTextBoxD0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBoxD0_ValueChanged);
             this.numericalTextBoxD0.Load += new System.EventHandler(this.numericalTextBoxD0_Load);
             // 
@@ -319,7 +266,6 @@
             this.graphControl1.LabelY = "Y:";
             this.graphControl1.LeftMargin = 0F;
             this.graphControl1.LineColor = System.Drawing.Color.Red;
-            this.graphControl1.LineList = new Crystallography.PointD[0];
             this.graphControl1.LineWidth = 1F;
             this.graphControl1.Location = new System.Drawing.Point(626, 8);
             this.graphControl1.LowerX = 0D;
@@ -332,8 +278,6 @@
             this.graphControl1.MousePositionVisible = true;
             this.graphControl1.Name = "graphControl1";
             this.graphControl1.OriginPosition = new System.Drawing.Point(40, 20);
-            this.graphControl1.Peaks = new Crystallography.PeakFunction[0];
-            this.graphControl1.Profile = null;
             this.graphControl1.Size = new System.Drawing.Size(349, 283);
             this.graphControl1.Smoothing = false;
             this.graphControl1.TabIndex = 4;
@@ -367,7 +311,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(991, 413);
+            this.ClientSize = new System.Drawing.Size(991, 401);
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));

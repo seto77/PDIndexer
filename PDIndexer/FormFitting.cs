@@ -1246,23 +1246,34 @@ namespace PDIndexer
         #endregion
 
         //Confirmを押したときの動作
-        public void buttonConfirm_Click(object sender, System.EventArgs e)
+        private void buttonConfirm_Click(object sender, System.EventArgs e)
+        {
+            Confirm(true);
+        }
+
+        public void Confirm(bool copy = true)
         {
             TargetCrystal.A = temp_crystal.A;
-            TargetCrystal.B = temp_crystal.B; 
+            TargetCrystal.B = temp_crystal.B;
             TargetCrystal.C = temp_crystal.C;
             TargetCrystal.Alpha = temp_crystal.Alpha;
             TargetCrystal.Beta = temp_crystal.Beta;
             TargetCrystal.Gamma = temp_crystal.Gamma;
-            
+
             TargetCrystal.SetAxis();
             formMain.ChangeCrystalFromFitting();
-
-            buttonCopyClipboard_Click(sender, e);
+            if(copy)
+                CopyClipboard();
         }
 
-        public void buttonCopyClipboard_Click(object sender, System.EventArgs e)
+        private void buttonCopyClipboard_Click(object sender, System.EventArgs e)
         {
+            CopyClipboard();
+        }
+
+        public void CopyClipboard()
+        {
+
             //クリップボードに転送
             string str = "";
             if (textBoxA.Text != "0.000000")
@@ -1274,7 +1285,11 @@ namespace PDIndexer
                 str += textBoxBeta.Text + "\t" + textBoxBeta_err.Text + "\t";
                 str += textBoxGamma.Text + "\t" + textBoxGamma_err.Text + "\t";
                 str += textBoxV.Text + "\t" + textBoxV_err.Text + "\t";
-                Clipboard.SetDataObject(str, true);
+                try
+                {
+                    Clipboard.SetDataObject(str, true);
+                }
+                catch { }
             }
         }
 

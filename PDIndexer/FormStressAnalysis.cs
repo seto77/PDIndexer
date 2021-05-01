@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Media;
 using Crystallography;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
@@ -80,6 +81,7 @@ namespace PDIndexer
 
                 for (int i = 0; i < formMain.dataSet.DataTableProfile.Items.Count-1; i++)
                 {
+                    formMain.SkipDrawing = true;//メイン画面の描画
                     if (i + initialPosition < formMain.dataSet.DataTableProfile.Items.Count)
                         formMain.bindingSourceProfile.Position = i + initialPosition;
                     else
@@ -87,10 +89,12 @@ namespace PDIndexer
 
                     for (int n = 0; n < 2; n++)
                     {
+                        
                         formMain.formFitting.Fitting();
                         if (formMain.formFitting.textBoxA.Text != "0.000000")//最小2乗法がうまくいった場合は
                         {
-                            formMain.formFitting.buttonConfirm_Click(new object(), new EventArgs());
+                            
+                            formMain.formFitting.Confirm(false);
                         }
                         else
                         {//もし最小2乗法がうまくいかない場合は
@@ -119,6 +123,7 @@ namespace PDIndexer
                                 {
                                     for (int j = 0; j < tempRatio.Count; j++)
                                         ratio += tempRatio[j] / tempRatio.Count;
+
                                     formMain.formFitting.TargetCrystal.A *= ratio;
                                     formMain.formFitting.TargetCrystal.B *= ratio;
                                     formMain.formFitting.TargetCrystal.C *= ratio;
@@ -128,12 +133,17 @@ namespace PDIndexer
                             }
                         }
                     }
+                    formMain.SkipDrawing = false;
                     formMain.Draw();
-                    Application.DoEvents();
+                    
+                    //if(i%4==0)//4回に一回くらい、描画
+                        Application.DoEvents();
 
                     string[] temp = ((DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]).Name.Split(new char[] { '-' }, StringSplitOptions.RemoveEmptyEntries);
                     text = temp[temp.Length - 1];
-                    double angle = Convert.ToDouble(text) / 180 * Math.PI;
+                    if (!double.TryParse(text, out var angle))
+                        return;
+                    angle = angle / 180 * Math.PI;
                     textBox2theta.Text += text;
                     textBoxDspacing.Text += text;
                     textBoxFWHM.Text += text;
@@ -173,6 +183,7 @@ namespace PDIndexer
                     text = "";
                     
                 }
+                Application.DoEvents();
 
 
                 Clipboard.SetDataObject(
