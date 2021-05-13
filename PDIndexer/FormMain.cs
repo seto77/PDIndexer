@@ -3021,6 +3021,7 @@ namespace PDIndexer
                     formDataConverter.TakeoffAngleText = strList[strList.Count - 4].Split(',')[0];
                     formDataConverter.ExposureTime = Convert.ToDouble(strList[strList.Count - 5].Split(' ' )[1]);
 
+                    formDataConverter.EDXDetectorNumber = 1;
                     formDataConverter.EGC[0][0] = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[0]);
                     formDataConverter.EGC[0][1] = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[1]);
                     formDataConverter.EGC[0][2] = 0;
@@ -3051,7 +3052,9 @@ namespace PDIndexer
                 {
                     formDataConverter.SetProperty(FileProperties[(int)FileType.NPD]);
 
+                    formDataConverter.EDXDetectorNumber = 1;
                     formDataConverter.EGC[0][0] = formDataConverter.EGC[0][1] = formDataConverter.EGC[0][2] = 0;
+                    
                     for (int i = 0; i < strList.Count || i < 25; i++)
                     {
                         if (strList[i].StartsWith("EGC0"))
