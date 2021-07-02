@@ -27,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.399(2021/07/02) Target framework is changed to .Net5.0. Added new EOSs (Fratanduono+ 2021)." +
             "\r\n ver4.398(2021/05/13) Fixed a bug on loading 'NPD' format files." +
             "\r\n ver4.397(2021/05/01) Fixed minor bugs and improved computation speed on 'Stress Analysis'." +
             "\r\n ver4.396(2021/04/04) Fixed a minor bug on the recent update." +

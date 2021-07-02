@@ -10,12 +10,12 @@ namespace Crystallography
     {
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
         {
-            return sourceType == typeof(string) ? true : base.CanConvertFrom(context, sourceType);// stringからなら変換可能
+            return sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);// stringからなら変換可能
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
         {
-            return destinationType == typeof(string) ? true : base.CanConvertTo(context, destinationType);// stringへなら変換可能
+            return destinationType == typeof(string) || base.CanConvertTo(context, destinationType);// stringへなら変換可能
         }
     }
 
@@ -28,19 +28,18 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is RectangleD)
+            if (destinationType == typeof(string) && value is RectangleD d)
             {
-                RectangleD g = (RectangleD)value;
-                return string.Format("{0}, {1}, {2}, {3}", g.X, g.Y, g.Width, g.Height);
+                return string.Format("{0}, {1}, {2}, {3}", d.X, d.Y, d.Width, d.Height);
             }
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)
         {
-            if (value is string)
+            if (value is string @string)
             {
-                string[] ss = ((string)value).Split(new char[] { ',' }, 4);
+                string[] ss = @string.Split(new char[] { ',' }, 4);
                 return new RectangleD(Convert.ToDouble(ss[0]), Convert.ToDouble(ss[1]), Convert.ToDouble(ss[2]), Convert.ToDouble(ss[3]));
             }
             return base.ConvertFrom(context, culture, value);
@@ -56,11 +55,8 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is PointD)
-            {
-                PointD g = (PointD)value;
+            if (destinationType == typeof(string) && value is PointD g)
                 return string.Format("{0}, {1}", g.X, g.Y);
-            }
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
@@ -84,11 +80,8 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is SizeD)
-            {
-                SizeD g = (SizeD)value;
-                return string.Format("{0}, {1}", g.Width, g.Height);
-            }
+            if (destinationType == typeof(string) && value is SizeD d)
+                return string.Format("{0}, {1}", d.Width, d.Height);
             return base.ConvertTo(context, culture, value, destinationType);
         }
 
@@ -112,12 +105,10 @@ namespace Crystallography
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType)
         {
-            if (destinationType == typeof(string) && value is Vector3DBase)
-            {
-                Vector3DBase g = (Vector3DBase)value;
-                return string.Format("{0}, {1}, {2}", g.X, g.Y, g.Z);
-            }
-            return base.ConvertTo(context, culture, value, destinationType);
+            if (destinationType != typeof(string) || value is not Vector3DBase)
+                return base.ConvertTo(context, culture, value, destinationType);
+            Vector3DBase g = (Vector3DBase)value;
+            return string.Format("{0}, {1}, {2}", g.X, g.Y, g.Z);
         }
 
         public override object ConvertFrom(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value)

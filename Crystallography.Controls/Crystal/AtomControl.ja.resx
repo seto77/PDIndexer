@@ -1,64 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<root>
-  <!-- 
-    Microsoft ResX Schema 
-    
-    Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
-    associated with the data types.
-    
-    Example:
-    
-    ... ado.net/XML headers & schema ...
-    <resheader name="resmimetype">text/microsoft-resx</resheader>
-    <resheader name="version">2.0</resheader>
-    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
-    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
-                
-    There are any number of "resheader" rows that contain simple 
-    name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
-    mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
-    extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
-    read any of the formats listed below.
-    
-    mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
-            : and then encoded with base64 encoding.
-    
-    mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
-            : and then encoded with base64 encoding.
-
-    mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
-            : using a System.ComponentModel.TypeConverter
-            : and then encoded with base64 encoding.
-    -->
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -140,7 +80,7 @@
     <value>非等方</value>
   </data>
   <data name="flowLayoutPanelIso.Location" type="System.Drawing.Point, System.Drawing">
-    <value>77, 24</value>
+    <value>13, 24</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>-236, -25</value>
@@ -381,19 +321,20 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Location" type="System.Drawing.Point, System.Drawing">
-    <value>469, 0</value>
+    <value>486, 24</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Size" type="System.Drawing.Size, System.Drawing">
-    <value>87, 22</value>
+    <value>63, 40</value>
   </data>
   <data name="checkBoxDetailsDebyeWallerError.Text" xml:space="preserve">
-    <value>誤差を表示</value>
+    <value>誤差を
+表示</value>
   </data>
   <data name="flowLayoutPanelAniso2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 48</value>
+    <value>16, 48</value>
   </data>
   <data name="flowLayoutPanelAniso1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>80, 24</value>
+    <value>16, 24</value>
   </data>
   <data name="tabPageDebyeWaller.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -551,19 +492,25 @@
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>563, 103</value>
   </data>
-  <data name="buttonChangeToSameElement.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="buttonApplyToSameElement.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonChangeToSameElement.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="buttonApplyToSameElement.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 0</value>
   </data>
-  <data name="buttonChangeToSameElement.Text" xml:space="preserve">
-    <value>同種の原子に適用</value>
+  <data name="buttonApplyToSameElement.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 28</value>
+  </data>
+  <data name="buttonApplyToSameElement.Text" xml:space="preserve">
+    <value>同種の原子を更新</value>
   </data>
   <data name="buttonAddAtom.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="buttonAddAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="buttonAddAtom.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
@@ -573,20 +520,35 @@
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
+  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
+  </data>
   <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>更新</value>
   </data>
+  <data name="buttonApplyToAllElements.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="buttonApplyToAllElements.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 0</value>
+  </data>
+  <data name="buttonApplyToAllElements.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 28</value>
+  </data>
+  <data name="buttonApplyToAllElements.Text" xml:space="preserve">
+    <value>全ての原子を更新</value>
+  </data>
   <data name="buttonAtomUp.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonAtomUp.Location" type="System.Drawing.Point, System.Drawing">
-    <value>343, 3</value>
+    <value>389, 0</value>
   </data>
   <data name="buttonAtomUp.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 28</value>
+    <value>66, 28</value>
   </data>
   <data name="buttonAtomUp.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -598,10 +560,10 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonAtomDown.Location" type="System.Drawing.Point, System.Drawing">
-    <value>413, 2</value>
+    <value>455, 0</value>
   </data>
   <data name="buttonAtomDown.Size" type="System.Drawing.Size, System.Drawing">
-    <value>86, 28</value>
+    <value>66, 28</value>
   </data>
   <data name="buttonAtomDown.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -613,7 +575,10 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonDeleteAtom.Location" type="System.Drawing.Point, System.Drawing">
-    <value>499, 2</value>
+    <value>521, 0</value>
+  </data>
+  <data name="buttonDeleteAtom.Size" type="System.Drawing.Size, System.Drawing">
+    <value>42, 28</value>
   </data>
   <data name="buttonDeleteAtom.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -670,13 +635,13 @@
     <value>6</value>
   </data>
   <data name="dataGridView.Size" type="System.Drawing.Size, System.Drawing">
-    <value>563, 185</value>
+    <value>563, 190</value>
   </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 185</value>
+    <value>0, 190</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>563, 33</value>
+    <value>563, 28</value>
   </data>
   <data name="dataGridViewTextBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
     <value>6</value>

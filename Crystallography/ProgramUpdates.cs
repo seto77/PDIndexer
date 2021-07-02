@@ -43,14 +43,14 @@ namespace Crystallography
             }
         }
 
-
+        [System.Runtime.Versioning.SupportedOSPlatform("windows")]
         public static bool Execute(string path)
         {
             try
             {
                 if (File.Exists(path))
                 {
-                    Process.Start(path);
+                    Process.Start(new ProcessStartInfo(path) { UseShellExecute = true });
                     return true;
                 }
                 return false;

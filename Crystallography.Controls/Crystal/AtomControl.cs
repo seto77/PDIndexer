@@ -188,7 +188,7 @@ namespace Crystallography.Controls
             set
             {
                 isotopicComposition = value;
-                if (isotopicComposition == null || isotopicComposition.Length != AtomConstants.IsotopeAbundance[AtomNo].Count)
+                if (isotopicComposition == null || isotopicComposition.Length != AtomStatic.IsotopeAbundance[AtomNo].Count)
                     comboBoxNeutron.SelectedIndex = 0;
                 else
                     comboBoxNeutron.SelectedIndex = 1;
@@ -263,6 +263,7 @@ namespace Crystallography.Controls
         public AtomControl()
         {
             InitializeComponent();
+            SkipEvent = true;
             table = dataSet.DataTableAtom;
             comboBoxAtom.SelectedIndex = 0;
             comboBoxNeutron.SelectedIndex = 0;
@@ -273,6 +274,7 @@ namespace Crystallography.Controls
                 numericBoxEmission.ShowUpDown = numericBoxAlpha.ShowUpDown = numericBoxAtomRadius.ShowUpDown = true;
 
             dataGridView.Columns["enabledColumn"].Visible = false;
+            SkipEvent = false;
         }
 
         #endregion
@@ -325,15 +327,16 @@ namespace Crystallography.Controls
         //原子番号コンボ
         private void comboBoxAtom_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            if (SkipEvent) return;
             if (comboBoxAtom.SelectedIndex < 0) return;
             comboBoxScatteringFactorXray.Items.Clear();
             comboBoxScatteringFactorElectron.Items.Clear();
 
-            for (int i = 0; i < AtomConstants.XrayScattering[AtomNo].Length; i++)
-                comboBoxScatteringFactorXray.Items.Add(AtomConstants.XrayScattering[AtomNo][i].Method);
+            for (int i = 0; i < AtomStatic.XrayScatteringWK[AtomNo].Length; i++)
+                comboBoxScatteringFactorXray.Items.Add(AtomStatic.XrayScatteringWK[AtomNo][i].Method);
 
-            for (int i = 0; i < AtomConstants.ElectronScattering[AtomNo].Length; i++)
-                comboBoxScatteringFactorElectron.Items.Add(AtomConstants.ElectronScattering[AtomNo][i].Method);
+            for (int i = 0; i < AtomStatic.ElectronScatteringPeng[AtomNo].Length; i++)
+                comboBoxScatteringFactorElectron.Items.Add(AtomStatic.ElectronScatteringPeng[AtomNo][i].Method);
 
             comboBoxScatteringFactorXray.SelectedIndex = 0;
             comboBoxScatteringFactorElectron.SelectedIndex = 0;
@@ -362,11 +365,13 @@ namespace Crystallography.Controls
         #region 中性子関連
         private void comboBoxNeutron_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (SkipEvent) return;
+
             buttonEditIsotopeAbundance.Enabled = comboBoxNeutron.SelectedIndex == 1;
 
             richTextBoxIsotope.Clear();
             int n = 0;
-            foreach (int z in AtomConstants.IsotopeAbundance[AtomNo].Keys)
+            foreach (int z in AtomStatic.IsotopeAbundance[AtomNo].Keys)
             {
                 richTextBoxIsotope.SelectionColor = Color.DarkBlue;
                 if (richTextBoxIsotope.Text != "")
@@ -378,11 +383,11 @@ namespace Crystallography.Controls
 
                 richTextBoxIsotope.SelectionCharOffset = 0;
                 richTextBoxIsotope.SelectionFont = new Font("Tahoma", 9f, FontStyle.Regular);
-                richTextBoxIsotope.SelectedText = AtomConstants.AtomicName(AtomNo) + ": ";
+                richTextBoxIsotope.SelectedText = AtomStatic.AtomicName(AtomNo) + ": ";
 
                 richTextBoxIsotope.SelectionColor = Color.Black;
-                if (comboBoxNeutron.SelectedIndex == 0 || isotopicComposition == null || isotopicComposition.Length != AtomConstants.IsotopeAbundance[AtomNo].Count)
-                    richTextBoxIsotope.SelectedText = AtomConstants.IsotopeAbundance[AtomNo][z].ToString();
+                if (comboBoxNeutron.SelectedIndex == 0 || isotopicComposition == null || isotopicComposition.Length != AtomStatic.IsotopeAbundance[AtomNo].Count)
+                    richTextBoxIsotope.SelectedText = AtomStatic.IsotopeAbundance[AtomNo][z].ToString();
                 else
                     richTextBoxIsotope.SelectedText = isotopicComposition[n++].ToString();
 
@@ -430,7 +435,6 @@ namespace Crystallography.Controls
                 ItemsChanged?.Invoke(this, new EventArgs());
                 bindingSource_PositionChanged(new object(), new EventArgs());
             }
-            
         }
 
         /// <summary>
@@ -454,23 +458,7 @@ namespace Crystallography.Controls
             ItemsChanged?.Invoke(this, new EventArgs());
         }
 
-        /// <summary>
-        /// 引数原子をi番目に設定し、そのMaterial Propertyをさらに引数と同じ元素に対して適用
-        /// </summary>
-        /// <param name="atoms"></param>
-        public void ReplaceAndCopyMaterial(Atoms atoms, int i)
-        {
-            table.Replace(atoms, i);
-            var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
-            foreach (var a in dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber))
-            { 
-                a.Texture = atoms.Texture;
-                a.Radius = atoms.Radius;
-                a.Argb = atoms.Argb;
-                a.ShowLabel = atoms.ShowLabel;
-            }
-            ItemsChanged?.Invoke(this, new EventArgs());
-        }
+      
 
         /// <summary>
         /// データベースの原子を削除する
@@ -628,10 +616,65 @@ namespace Crystallography.Controls
             var pos = bindingSource.Position;
             if (pos >= 0)
             {
-                ReplaceAndCopyMaterial(GetFromInterface(), pos);
+                var atoms = GetFromInterface();
+                Replace(atoms, pos);
+
+                if (tabControl.SelectedTab == tabPageAppearance)
+                    CopyAppearance(atoms, pos);
+                else if (tabControl.SelectedTab == tabPageDebyeWaller)
+                    CopyDebyeWaller(atoms, pos, true);
+                
                 bindingSource.Position = pos;
             }
         }
+
+        //編集内容を全ての原子に適用する
+        private void buttonApplyToAllElements_Click(object sender, EventArgs e)
+        {
+            var pos = bindingSource.Position;
+            if (pos >= 0)
+            {
+                var atoms = GetFromInterface();
+                Replace(atoms, pos);
+
+                if (tabControl.SelectedTab == tabPageDebyeWaller)
+                    CopyDebyeWaller(atoms, pos, false);
+
+                bindingSource.Position = pos;
+            }
+        }
+
+        /// <summary>
+        /// 引数原子をi番目に設定し、そのAppearance (Material Property)をさらに引数と同じ元素に対して適用
+        /// </summary>
+        /// <param name="atoms"></param>
+        public void CopyAppearance(Atoms atoms, int i)
+        {
+            var others = dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber);
+            foreach (var a in others)
+            {
+                a.Texture = atoms.Texture;
+                a.Radius = atoms.Radius;
+                a.Argb = atoms.Argb;
+                a.ShowLabel = atoms.ShowLabel;
+            }
+            ItemsChanged?.Invoke(this, new EventArgs());
+        }
+        /// <summary>
+        /// 引数原子をi番目に設定し、さらにそのDebyeWaller因子を　同じ元素　あるいは　全元素 に対して適用
+        /// </summary>
+        /// <param name="atoms"></param>
+        public void CopyDebyeWaller(Atoms atoms, int i, bool onlySameElements)
+        {
+            var others = onlySameElements ?
+                dataSet.DataTableAtom.GetAll().Where(a => a.AtomicNumber == atoms.AtomicNumber):
+                dataSet.DataTableAtom.GetAll();
+            
+            foreach (var a in others)
+                a.Dsf = atoms.Dsf;
+            ItemsChanged?.Invoke(this, new EventArgs());
+        }
+
 
         //原子削除ボタン
         private void buttonDelete_Click(object sender, System.EventArgs e)
@@ -755,7 +798,8 @@ namespace Crystallography.Controls
 
         private void tabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
-            buttonChangeToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance;
+            buttonApplyToSameElement.Visible = tabControl.SelectedTab == tabPageAppearance || tabControl.SelectedTab == tabPageDebyeWaller;
+            buttonApplyToAllElements.Visible = tabControl.SelectedTab == tabPageDebyeWaller;
         }
 
         private void dataGridViewAtom_CellValueChanged(object sender, DataGridViewCellEventArgs e)
@@ -775,5 +819,7 @@ namespace Crystallography.Controls
             if ((x == 0) && dataGridView.IsCurrentCellDirty)
                 dataGridView.CommitEdit(DataGridViewDataErrorContexts.Commit);//コミットする
         }
+
+     
     }
 }

@@ -138,7 +138,7 @@ namespace Crystallography.Controls
         private Graphics g;
         private Point OriginPos = new Point(30, 30);
         private double UpperX, LowerX, UpperY, LowerY;
-        private Profile profile = new Profile();
+        private Profile profile = new();
         private double BottomMargin = 0;
 
         private void DrawGraph(List<(string Label, double Distance)> atoms)
@@ -152,7 +152,7 @@ namespace Crystallography.Controls
             //上限、下限を決める
             double width = (double)numericUpDownWidth.Value;
             LowerX = 0;
-            UpperX = atoms[atoms.Count - 1].Distance + width * 2;
+            UpperX = atoms[^1].Distance + width * 2;
             LowerY = 0;
 
             List<ControlPoint> controlPoint = new List<ControlPoint>();

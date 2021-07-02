@@ -548,7 +548,7 @@ namespace PDIndexer
 
             for (int i = 0; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
             {
-                Symmetry s = SymmetryStatic.Get_Symmetry(i);
+                Symmetry s = SymmetryStatic.Symmetries[i];
                 if (s.CrystalSystemNumber == comboBoxCrystalSystem.SelectedIndex + 1)
                 {
                     string str = "";
@@ -712,7 +712,7 @@ namespace PDIndexer
                 int sg_sub_num = Convert.ToInt32(tempstr.Split(new char[] { '.' })[1]);
                 for (int j = 0; j < SymmetryStatic.TotalSpaceGroupNumber; j++)
                 {
-                    Symmetry s = SymmetryStatic.Get_Symmetry(j);
+                    var s = SymmetryStatic.Symmetries[j];
                     if (s.SpaceGroupNumber == sg_num && s.SpaceGroupSubNumber == sg_sub_num)
                         crystal.Add(new Crystal(
                             (numericBoxA.Value / 10.0, numericBoxB.Value / 10.0, numericBoxC.Value / 10.0, numericBoxAlpha.RadianValue, numericBoxBeta.RadianValue, numericBoxGamma.RadianValue)
@@ -1203,12 +1203,12 @@ namespace PDIndexer
 
         public Crystal generateCrystalTemplates(Crystal crystal, int[][] wykcoffCandidate, int[] atomSpecies)
         {
-            List<Atoms> atoms = new List<Atoms>();
-            WyckoffPosition[] wyk = SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber];
+            var atoms = new List<Atoms>();
+            var wyk = SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber];
             for (int i = 0; i < wykcoffCandidate.Length; i++)
                 for (int j = 0; j < wykcoffCandidate[i].Length; j++)
                     for (int k = 0; k < wykcoffCandidate[i][j]; k++)
-                        atoms.Add(new Atoms(wyk[j], AtomConstants.AtomicName(atomSpecies[i]), atomSpecies[i], 0, 0,null, 1, new DiffuseScatteringFactor()));
+                        atoms.Add(new Atoms(wyk[j], AtomStatic.AtomicName(atomSpecies[i]), atomSpecies[i], 0, 0,null, 1, new DiffuseScatteringFactor()));
             crystal.Atoms = atoms.ToArray();
             return crystal;
         }
@@ -1223,14 +1223,14 @@ namespace PDIndexer
         /// <returns>int[i][j][k] i番目のワイコフ配列候補の、j番目の原子がk番目のワイコフ位置に何個あるか</returns>
         public List<int[][]> GenerateWyckoff(int spaceGroupNumber, int[] atomNumber)
         {
-            WyckoffPosition[] wyk = SymmetryStatic.WyckoffPositions[spaceGroupNumber];
+            var wyk = SymmetryStatic.WyckoffPositions[spaceGroupNumber];
 
             int[] multiplicity = new int[wyk.Length];
             bool[] freedom = new bool[multiplicity.Length];
             for (int i = 0; i < multiplicity.Length; i++)
             {
                 multiplicity[i] = wyk[i].Multiplicity;
-                freedom[i] = wyk[i].FreedomX || wyk[i].FreedomY || wyk[i].FreedomZ;
+                freedom[i] = wyk[i].Free.X || wyk[i].Free.Y || wyk[i].Free.Z;
             }
             return GenerateWyckoff(atomNumber, multiplicity, freedom);
         }

@@ -19,7 +19,7 @@ namespace Crystallography.Controls
             ChangeCrystal();
         }
 
-        private void ConvertRichTextBox1(ref RichTextBox rTB)
+        private static void ConvertRichTextBox1(ref RichTextBox rTB)
         {
             ConvertRichTextBoxOffsetSub(ref rTB, "sub1", 12); ConvertRichTextBoxOffsetSub(ref rTB, "sub2", 12); ConvertRichTextBoxOffsetSub(ref rTB, "sub3", 12);
             ConvertRichTextBoxOffsetSub(ref rTB, "sub4", 12); ConvertRichTextBoxOffsetSub(ref rTB, "sub5", 12);
@@ -32,7 +32,7 @@ namespace Crystallography.Controls
             ConvertRichTextBoxItalic(ref rTB, "x", 14); ConvertRichTextBoxItalic(ref rTB, "y", 14); ConvertRichTextBoxItalic(ref rTB, "z", 14);
         }
 
-        private void ConvertRichTextBox2(ref RichTextBox rTB)
+        private static void ConvertRichTextBox2(ref RichTextBox rTB)
         {
             rTB.SelectAll();
             rTB.SelectionFont = new Font("Times New Roman", 12, FontStyle.Regular);
@@ -50,7 +50,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void ConvertRichTextBox3(ref RichTextBox rTB)
+        private static void ConvertRichTextBox3(ref RichTextBox rTB)
         {
             rTB.SelectAll();
             rTB.SelectionFont = new Font("Times New Roman", 13, FontStyle.Regular);
@@ -65,7 +65,7 @@ namespace Crystallography.Controls
             ConvertRichTextBoxItalic(ref rTB, "d", 12); ConvertRichTextBoxItalic(ref rTB, " n", 12);
         }
 
-        private void ConvertRichTextBoxItalic(ref RichTextBox rTB, string s, int size)
+        private static void ConvertRichTextBoxItalic(ref RichTextBox rTB, string s, int size)
         {
             int n = -1;
             while (rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase) > n)
@@ -76,7 +76,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void ConvertRichTextBoxItalicSub(ref RichTextBox rTB, string s, int size)
+        private static void ConvertRichTextBoxItalicSub(ref RichTextBox rTB, string s, int size)
         {
             int n = -1;
             while (rTB.Find(s, n + 1, RichTextBoxFinds.MatchCase) > n)
@@ -87,7 +87,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void ConvertRichTextBoxOffsetSub(ref RichTextBox rTB, string s, int size)
+        private static void ConvertRichTextBoxOffsetSub(ref RichTextBox rTB, string s, int size)
         {
             if (rTB.Find(s, 0, RichTextBoxFinds.MatchCase) > -1)
             {
@@ -102,7 +102,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void ConvertRichTextBoxOffsetSup(ref RichTextBox rTB, string s, int size)
+        private static void ConvertRichTextBoxOffsetSup(ref RichTextBox rTB, string s, int size)
         {
             if (rTB.Find(s, 0, RichTextBoxFinds.MatchCase) > -1)
             {
@@ -117,7 +117,7 @@ namespace Crystallography.Controls
             }
         }
 
-        private void ConvertRichTextBoxReset(ref RichTextBox rTB)
+        private static void ConvertRichTextBoxReset(ref RichTextBox rTB)
         {
             rTB.SelectAll();
             rTB.SelectionFont = new Font("Times New Roman", 14, FontStyle.Regular);
@@ -156,8 +156,8 @@ namespace Crystallography.Controls
             richTextBoxLG.Text = Crystal.Symmetry.LaueGroupStr;
             richTextBoxCS.Text = Crystal.Symmetry.CrystalSystemStr;
             richTextBoxExtinctionRule.Text = "";
-            for (int n = 0; n < (SymmetryStatic.ExtinctionRule(Crystal.Symmetry)).Length; n++)
-                richTextBoxExtinctionRule.Text += (SymmetryStatic.ExtinctionRule(Crystal.Symmetry))[n] + "\r\n";
+            for (int n = 0; n < Crystal.Symmetry.ExtinctionRuleStr.Length; n++)
+                richTextBoxExtinctionRule.Text += Crystal.Symmetry.ExtinctionRuleStr[n] + "\r\n";
             if (richTextBoxExtinctionRule.Text == "")
                 richTextBoxExtinctionRule.Text = "No Condition";
             ConvertRichTextBox3(ref richTextBoxExtinctionRule);
@@ -224,7 +224,7 @@ namespace Crystallography.Controls
             else if (Crystal.Symmetry.LatticeTypeStr == "H")
                 dataSet.Tables[0].Rows.Add(new object[] { "-", "-", "-", "(0,0,0)+", "(1/3,2/3,2/3)+", "(2/3,1/3,1/3)+", "" });
 
-            Crystal.Symmetry = SymmetryStatic.Get_Symmetry(Crystal.SymmetrySeriesNumber);
+            Crystal.Symmetry = SymmetryStatic.Symmetries[Crystal.SymmetrySeriesNumber];
 
             for (int i = 0; i < SymmetryStatic.WyckoffPositions[Crystal.SymmetrySeriesNumber].Length; i++)
             {

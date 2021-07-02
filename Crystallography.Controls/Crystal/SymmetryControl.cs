@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Windows.Forms;
 using System.ComponentModel;
+using IronPython.Runtime.Operations;
 
 namespace Crystallography.Controls
 {
@@ -35,7 +36,7 @@ namespace Crystallography.Controls
                     comboBoxPointGroup.SelectedIndex = PointGroup;
 
                     comboBoxSpaceGroup.Items.Clear();
-                    comboBoxSpaceGroup.Items.AddRange(SpaceGroupArray(CrystalSystem, PointGroup));
+                    comboBoxSpaceGroup.Items.AddRange(spaceGroupArray(CrystalSystem, PointGroup));
                     comboBoxSpaceGroup.SelectedIndex = SpaceGroup;
 
                     SkipEvent = false;
@@ -133,7 +134,7 @@ namespace Crystallography.Controls
                 c = textBoxSearch.Text.ToCharArray();
             for (int n = 0; n < SymmetryStatic.TotalSpaceGroupNumber; n++)
             {
-                var sym = SymmetryStatic.Get_Symmetry(n);
+                var sym = SymmetryStatic.Symmetries[n];
                 var startIndex = -1;
                 for (int i = 0; i < c.Length; i++)
                 {
@@ -156,7 +157,7 @@ namespace Crystallography.Controls
         private void comboBoxSearchResult_SelectedIndexChanged(object sender, EventArgs e)
         {
             var sym = Enumerable.Range(0, SymmetryStatic.TotalSpaceGroupNumber)
-                .Select(n => SymmetryStatic.Get_Symmetry(n))
+                .Select(n => SymmetryStatic.Symmetries[n])
                 .First(sym => sym.SpaceGroupHMStr == comboBoxSearchResult.Text);
 
             comboBoxCrystalSystem.Text = sym.CrystalSystemStr;
@@ -181,9 +182,9 @@ namespace Crystallography.Controls
             comboBoxPointGroup.SelectedIndex = 0;
         }
 
-        private string[] PointGroupArray(int crystalSystemIndex)
+        private static string[] PointGroupArray(int crystalSystemIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex]
-                .Select(n => SymmetryStatic.Get_Symmetry(n[0]).PointGroupHMStr).Distinct().ToArray();
+                .Select(n => SymmetryStatic.Symmetries[n[0]].PointGroupHMStr).Distinct().ToArray();
             
 
         private void comboBoxPointGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -192,15 +193,21 @@ namespace Crystallography.Controls
             
             SkipEvent = true;
             comboBoxSpaceGroup.Items.Clear();
-            comboBoxSpaceGroup.Items.AddRange(SpaceGroupArray(CrystalSystemIndex, PointGroupIndex));
+            comboBoxSpaceGroup.Items.AddRange(spaceGroupArray(CrystalSystemIndex, PointGroupIndex));
             SkipEvent = false;
 
             comboBoxSpaceGroup.SelectedIndex = 0;
         }
 
-        private string[] SpaceGroupArray(int crystalSystemIndex, int pointGroupIndex)
+        private static string[] spaceGroupArray(int crystalSystemIndex, int pointGroupIndex)
         => SymmetryStatic.BelongingNumberOfSymmetry[crystalSystemIndex][pointGroupIndex]
-                .Select(n => SymmetryStatic.Get_Symmetry(n).SpaceGroupHMStr).ToArray();
+                .Select(n =>
+                {
+                    var s = SymmetryStatic.Symmetries[n];
+                    return s.SpaceGroupNumber + ":" + s.SpaceGroupHMStr;
+                    
+                    
+                    }).ToArray();
 
 
         private void comboBoxSpaceGroup_SelectedIndexChanged(object sender, EventArgs e)
@@ -217,7 +224,7 @@ namespace Crystallography.Controls
             if (SkipEvent) return;
             SkipEvent = true;
 
-            var tempSym = SymmetryStatic.Get_Symmetry(SymmetrySeriesNumber);
+            var tempSym = SymmetryStatic.Symmetries[SymmetrySeriesNumber];
             //いったんすべてをreadonly=falseにする
             //numericTextBoxA.Enabled = numericTextBoxB.Enabled = numericTextBoxC.Enabled = numericTextBoxAlpha.Enabled = numericTextBoxBeta.Enabled = numericTextBoxGamma.Enabled = true;
             //numericTextBoxAErr.Enabled = numericTextBoxBErr.Enabled = numericTextBoxCErr.Enabled = numericTextBoxAlphaErr.Enabled = numericTextBoxBetaErr.Enabled = numericTextBoxGammaErr.Enabled = true;
@@ -275,7 +282,7 @@ namespace Crystallography.Controls
                     break;
 
                 case "trigonal":
-                    switch (tempSym.SpaceGroupHMStr.IndexOf("Rho") >= 0 && tempSym.SpaceGroupHMStr.IndexOf("R") >= 0)
+                    switch (tempSym.SpaceGroupHMStr.Contains("Rho") && tempSym.SpaceGroupHMStr.Contains("R"))
                     {
                         case false:
                             numericBoxA.Enabled = numericBoxC.Enabled = true;
@@ -335,7 +342,6 @@ namespace Crystallography.Controls
         #endregion
 
         #region 群の記号を斜体、上付き、下付などに整形する
-
         private void comboBoxSpaceGroup_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return;
@@ -343,13 +349,13 @@ namespace Crystallography.Controls
             string txt = ((ComboBox)sender).Items[e.Index].ToString();
 
             //下付き文字用フォント
-            Font sub = new Font("Times New Roman", 8f, FontStyle.Regular);
+            var sub = new Font("Times New Roman", 8f, FontStyle.Regular);
             //斜体
-            Font italic = new Font("Times New Roman", 11f, FontStyle.Italic);
+            var italic = new Font("Times New Roman", 11f, FontStyle.Italic);
             //普通
-            Font regular = new Font("Times New Roman", 11f, FontStyle.Regular);
+            var regular = new Font("Times New Roman", 11f, FontStyle.Regular);
 
-            Font bold = new Font("Times New Roman", 10f, FontStyle.Bold);
+            var bold = new Font("Times New Roman", 10f, FontStyle.Bold);
 
             float xPos = e.Bounds.Left;
             Brush b = null;
@@ -360,7 +366,18 @@ namespace Crystallography.Controls
                 b = new SolidBrush(Color.White);
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
-            //最初に数値を書く
+
+            //「:」が含まれている場合は、空間群番号を表すので、先に「:」までを処理する。
+            if(txt.Contains(":"))
+            {
+                var i = txt.find(":")+1;
+                    
+                e.Graphics.DrawString(txt[0..i].ToString(), regular, b, xPos, e.Bounds.Y);
+                xPos += e.Graphics.MeasureString(txt[0..i].ToString(), regular).Width - 2;
+                txt = txt[i..];
+            }
+
+
             while (txt.Length > 0)
             {
                 if (txt.StartsWith(" "))
@@ -368,7 +385,7 @@ namespace Crystallography.Controls
                 else if (txt.StartsWith("sub"))//subで始まる時は
                 {
                     xPos -= 1;
-                    txt = txt.Substring(3, txt.Length - 3);
+                    txt = txt[3..];
                     e.Graphics.DrawString(txt[0].ToString(), sub, b, xPos, e.Bounds.Y + 3);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), sub).Width - 2;
                 }
@@ -382,7 +399,7 @@ namespace Crystallography.Controls
                     xPos += 2;
                     e.Graphics.DrawString(txt.Substring(0, 3), sub, b, xPos, e.Bounds.Y + 3);
                     xPos += e.Graphics.MeasureString(txt.Substring(0, 3), sub).Width - 2;
-                    txt = txt.Substring(2);
+                    txt = txt[2..];
                 }
                 else if (txt[0] == '/')
                 {
@@ -400,7 +417,7 @@ namespace Crystallography.Controls
                     e.Graphics.DrawString(txt[0].ToString(), italic, b, xPos, e.Bounds.Y);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), italic).Width - 2;
                 }
-                txt = txt.Substring(1);
+                txt = txt[1..];
             }
 
             b.Dispose();

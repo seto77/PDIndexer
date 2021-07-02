@@ -207,7 +207,7 @@ namespace Crystallography.Controls
             get { return _Zoom; }
         }
 
-        private PointD _Center = new PointD(double.NaN, double.NaN);
+        private PointD _Center = new(double.NaN, double.NaN);
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         /// <summary>
@@ -233,7 +233,7 @@ namespace Crystallography.Controls
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        private Vector3DBase zoomAndCenter = new Vector3DBase(1, 0, 0);
+        private Vector3DBase zoomAndCenter = new(1, 0, 0);
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public (double Zoom, PointD Center) ZoomAndCenter
@@ -274,7 +274,7 @@ namespace Crystallography.Controls
         /// </summary>
         public bool ShowRimRentangle
         {
-            get { return showFocusRectangle; }
+            get => showFocusRectangle;
             set
             {
                 if (showFocusRectangle != value)
@@ -300,7 +300,7 @@ namespace Crystallography.Controls
                     this.Refresh();
                 }
             }
-            get { return showAreaRectangle; }
+            get => showAreaRectangle;
         }
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
@@ -309,10 +309,10 @@ namespace Crystallography.Controls
         public RectangleD AreaRectangle
         {
             set { areaRentagle = value; this.Refresh(); }
-            get { return areaRentagle; }
+            get => areaRentagle;
         }
 
-    
+
 
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public List<Symbol> Symbols { set; get; } = new List<Symbol>();
@@ -320,13 +320,13 @@ namespace Crystallography.Controls
         /// <summary>
         /// 左上に表示するテキスト
         /// </summary>
-        public override string Text { get { return label.Text; } set { label.Text = value; } }
+        public override string Text { get => label.Text; set => label.Text = value; }
 
         /// <summary>
         /// 左上に表示するテキストの色
         /// </summary>
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-        public Color TextColor { get { return label.ForeColor; } set { label.ForeColor = value; } }
+        public Color TextColor { get => label.ForeColor; set => label.ForeColor = value; }
 
         private PseudoBitmap _pseudoBitmap = new PseudoBitmap();
 
@@ -364,8 +364,7 @@ namespace Crystallography.Controls
         /// <summary>
         /// スクロールバーが表示されているかどうかを取得する。読み取り専用.
         /// </summary>
-        public bool ScrollBarVisible
-        { get { return hScrollBar.Visible || vScrollBarVisible; } }
+        public bool ScrollBarVisible => hScrollBar.Visible || vScrollBarVisible;
 
         /// <summary>
         /// 現在のソース画像中の描画範囲 RectangleD　を得る。読み取り専用.
@@ -459,7 +458,7 @@ namespace Crystallography.Controls
             this.Refresh();
         }
 
-        public void DrawAreaRectangle()
+        public static void DrawAreaRectangle()
         {
             //if (justBeforeImage == null)
             //    justBeforeImage = PseudoBitmap.GetImage(Center, Zoom, pictureBox.ClientSize);
@@ -609,8 +608,8 @@ namespace Crystallography.Controls
 
             if (MouseRangeMode)
             {
-                Pen pen = new Pen(Brushes.Pink);
-                if ((Control.ModifierKeys & Keys.Control) == Keys.Control)
+                var pen = new Pen(Brushes.Pink);
+                if ((ModifierKeys & Keys.Control) == Keys.Control)
                     pen = new Pen(Brushes.Yellow);
                 pen.DashStyle = DashStyle.Dash;
                 e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
@@ -623,8 +622,8 @@ namespace Crystallography.Controls
             }
             if (ShowAreaRectangle)
             {
-                Pen pen = new Pen(Brushes.Yellow);
-                RectangleF rect = ConvertToClientRect(areaRentagle).ToRectangleF();
+                var pen = new Pen(Brushes.Yellow);
+                var rect = ConvertToClientRect(areaRentagle).ToRectangleF();
                 e.Graphics.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
             }
 
@@ -637,7 +636,7 @@ namespace Crystallography.Controls
                         FontFamily ff = new FontFamily("Arial");
                         if (s.Shape == SymbolShape.Cross || s.Shape == SymbolShape.CircleAndCross)
                         {
-                            Pen pen1 = new Pen(new SolidBrush(s.CrossColor1)), pen2 = new Pen(new SolidBrush(s.CrossColor2));
+                            Pen pen1 = new(new SolidBrush(s.CrossColor1)), pen2 = new(new SolidBrush(s.CrossColor2));
                             pen1.Width = pen2.Width = s.Bold ? 2f : 1f;
                             var pt = ConvertToClientPt(s.CrossPosition).ToPointF();
                             if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
@@ -708,7 +707,7 @@ namespace Crystallography.Controls
         {
             var gp = new GraphicsPath();
             FontFamily ff = new FontFamily("Arial");
-            Pen pen1 = new Pen(brush1), pen2 = new Pen(brush2);
+            Pen pen1 = new(brush1), pen2 = new(brush2);
             if (spot != null && spot.Count > 0)
                 for (int i = 0; i < spot.Count; i++)
                 {

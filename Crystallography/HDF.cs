@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using HDF.PInvoke;
 
 namespace Crystallography
@@ -30,8 +28,8 @@ namespace Crystallography
 
             var rootId = H5G.open(h5, "/");
 
-            List<string> datasetNames = new List<string>();
-            List<string> groupNames = new List<string>();
+            List<string> datasetNames = new();
+            List<string> groupNames = new();
 
 
             H5O.visit(h5, H5.index_t.NAME, H5.iter_order_t.INC, new H5O.iterate_t(

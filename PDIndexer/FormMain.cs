@@ -62,7 +62,6 @@ namespace PDIndexer
             public double TofAngle;
             public double TofLength;
             public double ExposureTime;
-            
             /// <summary>
             /// EDX detector用の変換係数 E  = (a₀ + a₁ n + a₂ n²) * 10³　多チャンネルを考慮して配列として用意しておく
             /// </summary>
@@ -115,7 +114,7 @@ namespace PDIndexer
 
         public bool IsPlaneSelected = false;
 
-        public DiffractionProfile defaultDP = new DiffractionProfile();
+        public DiffractionProfile defaultDP = new();
         int filterIndex;
         string initialDirectory="";
 
@@ -297,14 +296,14 @@ namespace PDIndexer
 
         public bool IsSkipTextBoxChange = false;
 
-        Point OriginPos = new Point(40, 24); //原点の位置
+        Point OriginPos = new(40, 24); //原点の位置
         public float IntervalOfProfiles = 0;
         public float HeightOfBottomPeaks = 0;
         public float BottomMargin = 0;
 
-        public DataGridViewCellStyle cellStyle1 = new DataGridViewCellStyle();
-        public DataGridViewCellStyle cellStyle2 = new DataGridViewCellStyle();
-        public DataGridViewCellStyle cellStyleBlink = new DataGridViewCellStyle();
+        public DataGridViewCellStyle cellStyle1 = new();
+        public DataGridViewCellStyle cellStyle2 = new();
+        public DataGridViewCellStyle cellStyleBlink = new();
 
         public bool IsLoaded = false;
         private IntPtr NextHandle;
@@ -322,8 +321,7 @@ namespace PDIndexer
         private PrintPreviewDialog printPreviewDialog;
 
         private Macro macro;
-
-        IProgress<(long, long, long, string)> ip;//IReport
+        readonly IProgress<(long, long, long, string)> ip;//IReport
 
         public string UserAppDataPath = new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
 
@@ -380,7 +378,7 @@ namespace PDIndexer
                                                 for (int i = 0; i < dp.Length - 1; i++)
                                                     AddProfileToCheckedListBox(dp[i], false, false);
                                                 skipAxisPropertyChangedEvent = false;
-                                                AddProfileToCheckedListBox(dp[dp.Length - 1], false, true);
+                                                AddProfileToCheckedListBox(dp[^1], false, true);
                                                 horizontalAxisUserControl_AxisPropertyChanged();
                                             }
                                         }
@@ -536,81 +534,52 @@ namespace PDIndexer
             else
                 initialDialog.Hint = Version.HintEn;
               
-            initialDialog.AutomaricallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "True") == "True";
+            initialDialog.AutomaticallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "True") == "True";
             initialDialog.Show();
             Application.DoEvents();
 
             initialDialog.Text = "Now Loading... Initializing 'Profile Parameter' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.1);
-            formProfile = new FormProfileSetting();
-            this.AddOwnedForm(formProfile);
-            formProfile.formMain = this;
-            formProfile.Visible = false;
+            formProfile = new FormProfileSetting { formMain = this, Visible = false, Owner = this };
 
 
             initialDialog.Text = "Now Loading... Initializing 'Crystal Parameter' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.25);
-            formCrystal = new FormCrystal();
-            this.AddOwnedForm(formCrystal);
-            formCrystal.formMain = this;
-            formCrystal.Visible = false;
+            formCrystal = new FormCrystal { formMain = this, Visible = false, Owner =this };
 
-            
+
             initialDialog.Text = "Now Loading... Initializing 'Equation of States' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.4);
 
-            formEOS = new FormEOS();
-            
-            formEOS.formMain = this;
+            formEOS = new FormEOS { formMain = this, Visible = false, Owner =this };
             formEOS.numericalTextBox_ValueChanged(new object(), new EventArgs());
-            formEOS.Visible = false;
-            this.AddOwnedForm(formEOS);
 
             initialDialog.Text = "Now Loading... Initializing 'Peak Fitting' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.45);
-            formFitting = new FormFitting();
-            
-            formFitting.formMain = this;
-            formFitting.Opacity = 0;
-            formFitting.Visible=true;
+
+            formFitting = new FormFitting            {                formMain = this,                Opacity = 0,                Visible = true,                Owner = this            };
             formFitting.Visible = false;
             formFitting.Opacity = 1;
-            this.AddOwnedForm(formFitting);
 
             initialDialog.Text = "Now Loading... Initializing 'LPO' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.55);
-            formLPO = new FormLPO();
-            this.AddOwnedForm(formLPO);
-            formLPO.formMain = this;
-            formLPO.Visible = false;
+            formLPO = new FormLPO { formMain = this, Visible = false, Owner = this };
 
             initialDialog.Text = "Now Loading... Initializing 'Cell Finder' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.65);
-            formCellFinder = new FormCellFinder();
-            this.AddOwnedForm(formCellFinder);
-            formCellFinder.formMain = this;
-            formCellFinder.Visible = false;
+            formCellFinder = new FormCellFinder            {                formMain = this,                Visible = false, Owner=this            };
 
             initialDialog.Text = "Now Loading... Initializing 'Atomic Position Finder' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.75);
-            formAtomicPositionFinder = new FormAtomicPositionFinder();
-            this.AddOwnedForm(formAtomicPositionFinder);
-            formAtomicPositionFinder.formMain = this;
-            formAtomicPositionFinder.Visible = false;
+            formAtomicPositionFinder = new FormAtomicPositionFinder            {                formMain = this,                Visible = false,Owner =this            };
 
             initialDialog.Text = "Now Loading... Initializing 'Stress Analysis' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.85);
-            formStressAnalysis = new  FormStressAnalysis();
-            this.AddOwnedForm(formStressAnalysis);
-            formStressAnalysis.formMain = this;
-            formStressAnalysis.Visible = false;
+            formStressAnalysis = new FormStressAnalysis            {                formMain = this,                Visible = false,                Owner=this      };
 
             initialDialog.Text = "Now Loading... Initializing '2θ calibration' form.";
             initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.87);
-            formTwoThetaCalibration = new FormTwoThetaCalibration();
-            this.AddOwnedForm(formTwoThetaCalibration);
-            formTwoThetaCalibration.formMain = this;
-            formStressAnalysis.Visible = false;
+            formTwoThetaCalibration = new FormTwoThetaCalibration { formMain = this, Visible = false, Owner = this };
 
 
             initialDialog.Text = "Now Loading... Initializing 'Data Converter' form.";
@@ -618,8 +587,7 @@ namespace PDIndexer
 
             initialDialog.Text = "Now Loading... Initializing macro functions.";
             macro = new Macro(this);
-            FormMacro = new FormMacro(Python.CreateEngine(), macro);
-            FormMacro.Visible = false;
+            FormMacro = new FormMacro(Python.CreateEngine(), macro)            {                Visible = false            };
 
             this.Text = "PDIndexer   " + Version.VersionAndDate;
 #if DEBUG
@@ -749,7 +717,7 @@ namespace PDIndexer
 
             initialDialog.Text = "Now Loading... Trying dummy mouse operation.";
             initialDialog.Text = "Initializing has been finished successfully. You can close this window.";
-            if (initialDialog.AutomaricallyClose)
+            if (initialDialog.AutomaticallyClose)
                 initialDialog.Visible = false;
 
             toolStripStatusLabelCalcTime.Text = "Initial loading time: " + stopwatch.ElapsedMilliseconds + " ms.";
@@ -879,7 +847,7 @@ namespace PDIndexer
                 colorControlScaleLine.Color = Color.FromArgb((int)regKey.GetValue("colorControlScaleLine.Color", colorControlScaleLine.Color.ToArgb()));
                 colorControlScaleText.Color = Color.FromArgb((int)regKey.GetValue("colorControlScaleText.Color", colorControlScaleText.Color.ToArgb()));
 
-                FormMacro.ZippedMacros = (byte[])regKey.GetValue("Macro", new byte[0]);
+                FormMacro.ZippedMacros = (byte[])regKey.GetValue("Macro", Array.Empty<byte>());
 
                 FileProperty f;
                 //ここからファイルタイプごとのパラメータ読み込み
@@ -1063,7 +1031,7 @@ namespace PDIndexer
             regKey.SetValue("initialDirectory", initialDirectory);
             regKey.SetValue("filterIndex", filterIndex);
 
-            regKey.SetValue("initialDialog.AutomaricallyClose", initialDialog.AutomaricallyClose);
+            regKey.SetValue("initialDialog.AutomaricallyClose", initialDialog.AutomaticallyClose);
 
             regKey.SetValue("colorControlBack.Color", colorControlBack.Color.ToArgb());
             regKey.SetValue("colorControlScaleLine.Color", colorControlScaleLine.Color.ToArgb());
@@ -1120,13 +1088,13 @@ namespace PDIndexer
             double maximalY = double.NegativeInfinity;
             for (int n = 0; n < dataSet.DataTableProfile.Items.Count; n++)
             {
-                DiffractionProfile diffProf = (DiffractionProfile)dataSet.DataTableProfile.Items[n];
+                var diffProf = (DiffractionProfile)dataSet.DataTableProfile.Items[n];
                 if (diffProf.Profile.Pt.Count > 2)
                 {
                     if (minimalX > diffProf.Profile.Pt[0].X)
                         minimalX = diffProf.Profile.Pt[0].X;
-                    if (maximalX < diffProf.Profile.Pt[diffProf.Profile.Pt.Count - 1].X)
-                        maximalX = diffProf.Profile.Pt[diffProf.Profile.Pt.Count - 1].X;
+                    if (maximalX < diffProf.Profile.Pt[^1].X)
+                        maximalX = diffProf.Profile.Pt[^1].X;
                     for (int i = 0; i < diffProf.Profile.Pt.Count; i++)
                     {
                         minimalY = Math.Min(minimalY, diffProf.Profile.Pt[i].Y + n * IntervalOfProfiles);
@@ -1333,7 +1301,7 @@ namespace PDIndexer
                         byte* p = (byte*)(void*)bmpData.Scan0;
                         int nResidual = bmpData.Stride - bmp.Width * 3;
 
-                        double endX = dif.Profile.Pt[dif.Profile.Pt.Count - 1].X;
+                        double endX = dif.Profile.Pt[^1].X;
                         double startX = dif.Profile.Pt[0].X;
                         bool negative = comboBoxGradient.SelectedIndex == 1;
                         double maxInt = (double)numericUpDownMaxInt.Value;
@@ -1430,8 +1398,7 @@ namespace PDIndexer
             
         }
 
-
-        object lockObj=new object();
+        readonly object lockObj=new();
         //プロファイルの描画
         private void DrawProfile()
         {
@@ -1531,7 +1498,7 @@ namespace PDIndexer
         //結晶の計算上のピーク位置の描画
         private void DrawProfile_diffraction()
         {
-            Pen pen = new Pen(Brushes.Silver);
+            Pen pen;
 
             //チェックしている結晶の描画位置を計算
             foreach (int i in dataSet.DataTableCrystal.CheckedIndices)
@@ -1659,14 +1626,14 @@ namespace PDIndexer
             float basePosition = dataSet.DataTableProfile.ConvertRawIndexToCheckedIndex(bindingSourceProfile.Position) * IntervalOfProfiles;
             if (basePosition < 0) return;
 
-            DiffractionProfile dp = (DiffractionProfile)dataSet.DataTableProfile.Rows[bindingSourceProfile.Position][1];
+            var dp = (DiffractionProfile)dataSet.DataTableProfile.Rows[bindingSourceProfile.Position][1];
 
-            Color color = Color.FromArgb(dp.ColorARGB.Value);
-            Pen penSubtraction = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.3)), (255 - (int)((255 - color.G) * 0.3)), (255 - (int)((255 - color.B) * 0.3))), dp.LineWidth);
+            var color = Color.FromArgb(dp.ColorARGB.Value);
+            var penSubtraction = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.3)), (255 - (int)((255 - color.G) * 0.3)), (255 - (int)((255 - color.B) * 0.3))), dp.LineWidth);
             penSubtraction.LineJoin = LineJoin.Round;
 
 
-            List<Plane> planeList = new List<Plane>();
+            var planeList = new List<Plane>();
 
             //先ず、fittigチェックの結晶面を探す。
             for (int c = 0; c < dataSet.DataTableCrystal.CheckedItems.Count; c++)
@@ -2031,10 +1998,12 @@ namespace PDIndexer
                 if (e.Button == MouseButtons.Left && e.Clicks == 2)//何もないところでダブルクリックした場合
                 {
                     PointD tempPt = ConvToDspacing(pt);
-                    Plane p = new Plane();
-                    p.d = tempPt.X;
-                    p.Intensity = 1;
-                    p.SerchOption = PeakFunctionForm.PseudoVoigt;
+                    Plane p = new Plane
+                    {
+                        d = tempPt.X,
+                        Intensity = 1,
+                        SerchOption = PeakFunctionForm.PseudoVoigt
+                    };
                     cry.Plane.Add(p);
                     cry.Plane.Sort();
                     Draw();
@@ -2719,15 +2688,16 @@ namespace PDIndexer
 
         private void menuItemFileRead_Click(object sender, System.EventArgs e)
         {
-            var dlg = new OpenFileDialog();
-            dlg.Filter = "Powder Pattern File(WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi])|*.csv;*.chi;*.pdi"
+            var dlg = new OpenFileDialog
+            {
+                Filter = "Powder Pattern File(WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi])|*.csv;*.chi;*.pdi"
                 + "|EDX profile[*.rpt, *.npd, *.nxs]|*.rpt;*npd;*nxs"
-                + "|Powder Pattern File(Auto[*.*])|*.*";
-            dlg.Multiselect = true;
-            dlg.FilterIndex = filterIndex;
+                + "|Powder Pattern File(Auto[*.*])|*.*",
+                Multiselect = true,
+                FilterIndex = filterIndex
+            };
             if (initialDirectory != "")
                 dlg.InitialDirectory = initialDirectory;
-
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -2890,9 +2860,9 @@ namespace PDIndexer
                     for (int i = 0; i < dp.Count - 1; i++)
                         AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
                     skipAxisPropertyChangedEvent = false;
-                    AddProfileToCheckedListBox(dp[dp.Count - 1], checkBoxAll.Checked, true);
+                    AddProfileToCheckedListBox(dp[^1], checkBoxAll.Checked, true);
 
-                    Text = $"PDIndexer   {Version.VersionAndDate}   {dp[dp.Count - 1].Name}";
+                    Text = $"PDIndexer   {Version.VersionAndDate}   {dp[^1].Name}";
 
                     return;
                 }
@@ -3018,12 +2988,12 @@ namespace PDIndexer
                     formDataConverter.SetProperty(FileProperties[(int)FileType.RPT]);
 
                     //TakeoffAngle
-                    formDataConverter.TakeoffAngleText = strList[strList.Count - 4].Split(',')[0];
-                    formDataConverter.ExposureTime = Convert.ToDouble(strList[strList.Count - 5].Split(' ' )[1]);
+                    formDataConverter.TakeoffAngleText = strList[^4].Split(',')[0];
+                    formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ' )[1]);
 
                     formDataConverter.EDXDetectorNumber = 1;
-                    formDataConverter.EGC[0][0] = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[0]);
-                    formDataConverter.EGC[0][1] = Convert.ToDouble(strList[strList.Count - 1].Split( ',')[1]);
+                    formDataConverter.EGC[0][0] = Convert.ToDouble(strList[^1].Split( ',')[0]);
+                    formDataConverter.EGC[0][1] = Convert.ToDouble(strList[^1].Split( ',')[1]);
                     formDataConverter.EGC[0][2] = 0;
 
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
@@ -3315,9 +3285,9 @@ namespace PDIndexer
                 return Color.FromArgb(max, mid1, mid2);
             else//直前のプロファイルがある時はその色となるべく違う色を返す  
             {
-                int red = Color.FromArgb(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1].ColorARGB.Value).R;
-                int green = Color.FromArgb(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1].ColorARGB.Value).G;
-                int blue = Color.FromArgb(dataSet.DataTableProfile.Items[dataSet.DataTableProfile.Items.Count - 1].ColorARGB.Value).B;
+                int red = Color.FromArgb(dataSet.DataTableProfile.Items[^1].ColorARGB.Value).R;
+                int green = Color.FromArgb(dataSet.DataTableProfile.Items[^1].ColorARGB.Value).G;
+                int blue = Color.FromArgb(dataSet.DataTableProfile.Items[^1].ColorARGB.Value).B;
 
                 if (red >= green && red >= blue)//直前が赤優勢のとき
                     return Color.FromArgb(mid1, max, mid2);//緑優勢を返す
@@ -3341,8 +3311,7 @@ namespace PDIndexer
             for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
                 cry.Add(dataSet.DataTableCrystal.Items[i]);
 
-            FormCrystalSelection formCrystalSelection = new FormCrystalSelection();
-            formCrystalSelection.LoadMode = false;
+            var formCrystalSelection = new FormCrystalSelection { LoadMode = false };
             formCrystalSelection.SetCrystalList(cry);
             if (formCrystalSelection.ShowDialog() == DialogResult.OK && formCrystalSelection.CheckedCrystalList.Length > 0)
             {
@@ -3420,8 +3389,7 @@ namespace PDIndexer
 
             if (showSelectionDialog)
             {
-                var formCrystalSelection = new FormCrystalSelection();
-                formCrystalSelection.LoadMode = true;
+                var formCrystalSelection = new FormCrystalSelection { LoadMode = true };
                 formCrystalSelection.SetCrystalList(crystalArray);
 
                 if (formCrystalSelection.ShowDialog() == DialogResult.OK)//セレクションダイアログを表示
@@ -3500,13 +3468,9 @@ namespace PDIndexer
         //MenuItemから印刷処理
         private void menuItemPrint_Click(object sender, System.EventArgs e)
         {
-            
-            PrintDialog pdlg = new PrintDialog();
-            pdlg.Document = printDocument;
+            var pdlg = new PrintDialog { Document = printDocument };
             if (pdlg.ShowDialog() == DialogResult.OK)
-            {
                 printDocument.Print();
-            }
         }
 
         private void menuItemPrintPreview_Click(object sender, System.EventArgs e)
@@ -3544,8 +3508,7 @@ namespace PDIndexer
 
             for (int i = 0; i < name.Length; i++)
             {
-                var item = new ToolStripMenuItem(name[i]);
-                item.Name = name[i];
+                var item = new ToolStripMenuItem(name[i]) { Name = name[i] };
                 item.Click += macroMenuItem_Click;
                 macroToolStripMenuItem.DropDownItems.Add(item);
             }
@@ -3708,12 +3671,9 @@ namespace PDIndexer
 
         private void toolStripMenuItemSaveMetafile_Click(object sender, EventArgs e)
         {
-            SaveFileDialog dlg = new SaveFileDialog();
-            dlg.Filter = "*.emf|*.emf";
+            var dlg = new SaveFileDialog { Filter = "*.emf|*.emf" };
             if (dlg.ShowDialog() == DialogResult.OK)
-            {
                 saveMetafile(dlg.FileName);
-            }
         }
         private void saveMetafile(string filename)
         {
@@ -3802,8 +3762,7 @@ namespace PDIndexer
             if (dataSet.DataTableProfile.Items.Count == 0) return;
 
             var s = ((ToolStripMenuItem)sender).Name.Contains("CSV") ? "," : "\t";
-            var dlg = new SaveFileDialog();
-            dlg.Filter = s == "," ? "*.csv|*.csv" : "*.tsv|*.tsv";
+            var dlg = new SaveFileDialog { Filter = s == "," ? "*.csv|*.csv" : "*.tsv|*.tsv" };
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
@@ -4025,7 +3984,7 @@ namespace PDIndexer
                     for (int i = 0; i < Ring.Frequency.Count; i++)
                         frequencyProfile.Pt.Add(new PointD(Ring.Frequency.Keys[i], Ring.Frequency[Ring.Frequency.Keys[i]]));
                     graphControlFrequency.Profile = frequencyProfile;
-                    graphControlFrequency.LineList = new PointD[2] { new PointD((double)0, double.NaN), new PointD((double)frequencyProfile.Pt[frequencyProfile.Pt.Count - 1].X, double.NaN) };
+                    graphControlFrequency.LineList = new PointD[2] { new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN) };
                     graphControlFrequency.Draw();
                     uint max = uint.MinValue;
                     foreach (uint u in dif.ImageArray)
@@ -4500,7 +4459,7 @@ namespace PDIndexer
                 }
 
                 public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
-                private string getDirectoryPath(string filename = "")
+                private static string getDirectoryPath(string filename = "")
                 {
                     string path = "";
                     if (filename == "")
@@ -4522,10 +4481,10 @@ namespace PDIndexer
                 }
 
                 public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames()));
-                private string[] getFileNames()
+                private static string[] getFileNames()
                 {
                     var dlg = new OpenFileDialog() { Multiselect = true };
-                    return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : new string[0];
+                    return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : Array.Empty<string>();
                 }
 
                 public void ReadProfiles(string fileName = "") => Execute(() => readProfiles(fileName));
@@ -4575,7 +4534,7 @@ namespace PDIndexer
                 }
 
                 public void SaveText(string text, string filename = "") { Execute(new Action(() => saveText(text, filename))); }
-                private void saveText(string text, string filename = "")
+                private static void saveText(string text, string filename = "")
                 {
                     if (filename == "")
                     {

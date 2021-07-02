@@ -65,8 +65,8 @@ namespace Crystallography.Controls
             else if (z == 84) numericBoxValence.Value = 4;
             else if (z == 87) numericBoxValence.Value = 1;
             else if (z == 91) numericBoxValence.Value = 5;
-            else if (AtomConstants.XrayScattering[z][AtomConstants.XrayScattering[z].Length - 1].Valence > 0)
-                numericBoxValence.Value = AtomConstants.XrayScattering[z][AtomConstants.XrayScattering[z].Length - 1].Valence;
+            else if (AtomStatic.XrayScatteringWK[z][^1].Valence > 0)
+                numericBoxValence.Value = AtomStatic.XrayScatteringWK[z][^1].Valence;
             else
                 numericBoxValence.Value = 0;
             numericBoxValence_ValueChanged(sender, e);
@@ -80,7 +80,7 @@ namespace Crystallography.Controls
                 //string[] s = comboBoxCompound.Text.Split(new char[] { ' ' });
                 //double accesoryValence = Convert.ToDouble((s[1].Substring(s[1].Length - 1, 1) + s[1].Substring(0, s[1].Length - 1)));
                 //ElementProperty ep = new ElementProperty(z, numericBoxValence.Value, checkBoxCompound.Checked,"", s[0], accesoryValence, 0, 0, XrayLine.Ka, 0, 0);
-                Molecule m = new Molecule(z, numericBoxValence.Value);
+                var m = new Molecule(z, numericBoxValence.Value);
 
                 textBoxCompoundForm.Text = Molecule.CombineCationAndAnion(m, Molecule.DefinedIon[comboBoxCompound.SelectedIndex]);
             }
@@ -108,7 +108,7 @@ namespace Crystallography.Controls
             {
                 string[] s = comboBoxCompound.Text.Split(new char[] { ' ' });
                 accesoryFormula = s[0];
-                accesoryValence = Convert.ToDouble((s[1].Substring(s[1].Length - 1, 1) + s[1].Substring(0, s[1].Length - 1)));
+                accesoryValence = Convert.ToDouble(s[1].Substring(s[1].Length - 1, 1) + s[1][0..^1]);
             }
             //ElementProperty ep = new ElementProperty(
             //    z, numericBoxValence.Value, checkBoxCompound.Checked, textBoxCompoundForm.Text,
@@ -118,12 +118,12 @@ namespace Crystallography.Controls
             return null;
         }
 
-        public void SetMolecule(Molecule ep)
-        {
-            //comboBoxElement.SelectedIndex = ep.AtomicNumber - 1;
-            //numericBoxValence.Value = ep.Valence;
+        //public void SetMolecule(Molecule ep)
+        //{
+        //    //comboBoxElement.SelectedIndex = ep.AtomicNumber - 1;
+        //    //numericBoxValence.Value = ep.Valence;
 
-            //numericBoxCountTime.Value = ep.CountTime;
-        }
+        //    //numericBoxCountTime.Value = ep.CountTime;
+        //}
     }
 }

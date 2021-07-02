@@ -16,8 +16,8 @@ namespace Crystallography
             Pt = sort(pt);
 
             //í[ì_ÇÃèàóù
-            Pt.Insert(0, edgePoint(Pt[0], Pt[1], Pt[2]));
-            Pt.Add(edgePoint(Pt[Pt.Count - 1], Pt[Pt.Count - 2], Pt[Pt.Count - 3]));
+            Pt.Insert(0, EdgePoint(Pt[0], Pt[1], Pt[2]));
+            Pt.Add(EdgePoint(Pt[^1], Pt[^2], Pt[^3]));
 
             //A,BÇÃåvéZ
             A = new List<double>(); B = new List<double>();
@@ -85,9 +85,9 @@ namespace Crystallography
                         minDistanceLower = (destPt[0] - tempPt[i]).Length;
                         lower = i;
                     }
-                    if (minDistanceUpper > (destPt[destPt.Count - 1] - tempPt[i]).Length)
+                    if (minDistanceUpper > (destPt[^1] - tempPt[i]).Length)
                     {
-                        minDistanceUpper = (destPt[destPt.Count - 1] - tempPt[i]).Length;
+                        minDistanceUpper = (destPt[^1] - tempPt[i]).Length;
                         upper = i;
                     }
                 }
@@ -112,7 +112,7 @@ namespace Crystallography
         /// <param name="pt2"></param>
         /// <param name="pt3"></param>
         /// <returns></returns>
-        public PointD edgePoint(PointD pt1, PointD pt2, PointD pt3)
+        public static PointD EdgePoint(PointD pt1, PointD pt2, PointD pt3)
         {
             double X = pt1.X - pt2.X;
             double Y = pt1.Y - pt2.Y;
@@ -156,8 +156,8 @@ namespace Crystallography
 
             if (x <= p[0])
                 return c[0] * x * x * x + c[1] * x * x + c[2] * x + c[3];
-            else if (x >= p[p.Length - 1])
-                return c[c.Length - 4] * x * x * x + c[c.Length - 3] * x * x + c[c.Length - 2] * x + c[c.Length - 1];
+            else if (x >= p[^1])
+                return c[^4] * x * x * x + c[^3] * x * x + c[^2] * x + c[^1];
             else
                 for (int j = 0; j < p.Length - 1; j++)
                     if (x >= p[j] && x <= p[j + 1])
@@ -248,7 +248,7 @@ namespace Crystallography
                 if (X <= pt[0].X)
                     y = c[0] * X3 + c[1] * X2 + c[2] * X + c[3];
                 else if (X >= pt[length - 1].X)
-                    y = c[c.Length - 4] * X3 + c[c.Length - 3] * X2 + c[c.Length - 2] * X + c[c.Length - 1];
+                    y = c[^4] * X3 + c[^3] * X2 + c[^2] * X + c[^1];
                 else
                     for (int j = 0; j < length - 1; j++)
                         if (x[i] >= pt[j].X && x[i] <= pt[j + 1].X)
