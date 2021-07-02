@@ -405,9 +405,9 @@ namespace PDIndexer
             double CellVolumeSqure = a2 * b2 * c2 * (1 - CosAlpha * CosAlpha - CosBeta * CosBeta - CosGamma * CosGamma + 2 * CosAlpha * CosBeta * CosGamma);
 
             //検索する指数範囲を設定
-            int hMax = Math.Min((int)(c.A / (condition.SortedD[condition.SortedD.Length - 1].D * 0.9)), 30);
-            int kMax = Math.Min((int)(c.B / (condition.SortedD[condition.SortedD.Length - 1].D * 0.9)), 30);
-            int lMax = Math.Min((int)(c.C / (condition.SortedD[condition.SortedD.Length - 1].D * 0.9)), 30);
+            int hMax = Math.Min((int)(c.A / (condition.SortedD[^1].D * 0.9)), 30);
+            int kMax = Math.Min((int)(c.B / (condition.SortedD[^1].D * 0.9)), 30);
+            int lMax = Math.Min((int)(c.C / (condition.SortedD[^1].D * 0.9)), 30);
 
             Plane[] obs = new Plane[condition.SortedD.Length];
             for (int i = 0; i < obs.Length; i++)

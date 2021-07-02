@@ -109,8 +109,8 @@ namespace PDIndexer
                         flowLayoutPanelEDX.SuspendLayout();
                         while(value!=EDXControls.Count)
                         {
-                            EDXControls.Add(new EDXControl() { DetectorName="#"+ EDXControls.Count.ToString()});
-                            flowLayoutPanelEDX.Controls.Add(EDXControls[EDXControls.Count - 1]);
+                            EDXControls.Add(new EDXControl() { DetectorName= $"#{EDXControls.Count}" });
+                            flowLayoutPanelEDX.Controls.Add(EDXControls[^1]);
                         }
                         flowLayoutPanelEDX.ResumeLayout();
                     }

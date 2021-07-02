@@ -335,7 +335,7 @@ namespace PDIndexer
             {
                 case WM_DRAWCLIPBOARD:
 
-                    using (Mutex clipboard = new Mutex(false, "ClipboardOperation"))
+                    using (var clipboard = new Mutex(false, "ClipboardOperation"))
                     {
                         if (clipboard.WaitOne(500, false))
                         {
@@ -1212,9 +1212,9 @@ namespace PDIndexer
                     DrawProfile_Bg();
                     if (formPrintOption.checkBoxPrintProfileName.Checked)
                     {
-                        Font font = new Font("Tahoma", 8);
+                        var font = new Font("Tahoma", 8);
                         //まず字の最大長さ(pixel)を求める
-                        SizeF maxSizeF = new SizeF(0, 0);
+                        var maxSizeF = new SizeF(0, 0);
                         for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
                         {
                             maxSizeF.Width = Math.Max(maxSizeF.Width, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Width);
@@ -3795,7 +3795,7 @@ namespace PDIndexer
                 else//個別のファイルに分ける場合
                     dp.ForEach(d =>
                     {
-                        var filename = $"{dlg.FileName.Substring(0, dlg.FileName.Length - 4)} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
+                        var filename = $"{dlg.FileName[0..^4]} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
                         using var writer = new StreamWriter(filename);
                         writer.WriteLine($"X{s}Y");//一行目
                         for (int i = 0; i < d.Profile.Pt.Count; i++)
@@ -3978,7 +3978,7 @@ namespace PDIndexer
                     Ring.Intensity.AddRange(dif.ImageArray);
                     Ring.CalcFreq();
 
-                    Profile frequencyProfile = new Profile();
+                    var frequencyProfile = new Profile();
                     frequencyProfile.Pt = new List<PointD>();
 
                     for (int i = 0; i < Ring.Frequency.Count; i++)
@@ -4094,7 +4094,7 @@ namespace PDIndexer
 
         #region DataGridViewCrystal関係のイベント
 
-        List<int> blinkingCrystals = new List<int>();
+        List<int> blinkingCrystals = new();
         bool blinkFlag = false;
         public void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

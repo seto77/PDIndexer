@@ -75,6 +75,8 @@ namespace PDIndexer
             numericalTextBoxGoldTsuchiya.Value = EOS.Au_Tsuchiya(a / 10, a0 / 10, t);
             //Yokoo
             numericBoxAuYokoo.Value = EOS.AuYokoo(v0, v, t);
+            //Fratanduono
+            numericBoxAuFratanduono.Value = EOS.Au_Fratanduono_Vinet(v0, v);
         }
 
         private void Ar()
@@ -137,9 +139,10 @@ namespace PDIndexer
 
         private void Pt()
         {
-
             double a = numericalTextBoxPtA.Value;
+            var v = a * a * a;
             double a0 = numericalTextBoxPtA0.Value;
+            var v0 = a0 * a0 * a0;
             double t0 = numericalTextBoxPtT0.Value;
             double t = numericalTextBoxTemperature.Value;
 
@@ -150,11 +153,13 @@ namespace PDIndexer
             //Matsui
             numericalTextBoxPtMatsui.Value = EOS.Pt_Matsui(t, t0, a / 10, a0 / 10);
             //Yokoo
-            numericBoxPtYokoo.Value = EOS.PtYokoo(a0 * a0 * a0, a * a * a, t);
+            numericBoxPtYokoo.Value = EOS.PtYokoo(v0, v, t);
+            //Fratanduono
+            numericBoxPtFratanduono.Value = EOS.Pt_Fratanduono_Vinet(v0, v);
         }
 
 
-	
+
         private void Corundum()
         {
             double v = numericalTextBoxColundumV.Value;

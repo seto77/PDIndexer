@@ -357,10 +357,10 @@ namespace PDIndexer
                 if (numericTexBox[i].Value > 0)
                 {
                     ionicRadius.Add(new UserControlIonicRadius());
-                    ionicRadius[ionicRadius.Count - 1].Element = label[i].Text;
-                    ionicRadius[ionicRadius.Count - 1].AtomicNumber = i;
+                    ionicRadius[^1].Element = label[i].Text;
+                    ionicRadius[^1].AtomicNumber = i;
 
-                    ionicRadius[ionicRadius.Count - 1].Radius = getIonRadius(i);
+                    ionicRadius[^1].Radius = getIonRadius(i);
                 }
             //既に配置済みのものがあれば回収する
             for (int i = 0; i < flowLayoutPanelIonicRadius.Controls.Count; i++)
@@ -724,7 +724,7 @@ namespace PDIndexer
             for (int i = 0; i < crystal.Count; i++)
                 //if (radioButtonAngleThreshold.Checked)
                 {
-                    crystal[i].SetPlanes(double.MaxValue, peaks[peaks.Count - 1].X * 0.8, true, true, false, true,HorizontalAxis.Angle,
+                    crystal[i].SetPlanes(double.MaxValue, peaks[^1].X * 0.8, true, true, false, true,HorizontalAxis.Angle,
                         (double)numericUpDownAngleThreshold.Value / 180.0 * Math.PI, waveLengthControl1.WaveLength);
                 }
                 //else if (radioButtonAngleThreshold.Checked)
