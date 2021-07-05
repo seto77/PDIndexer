@@ -266,7 +266,7 @@ namespace Crystallography
         public static DiffractionProfile ConvertUnknownFileToProfileData(string fileName, char separater)
         {
             var strArray = new List<string>();
-            var reader = new StreamReader(fileName, Encoding.GetEncoding("Shift_JIS"));
+            var reader = new StreamReader(fileName, Encoding.GetEncoding("UTF-8"));
             string tempstr;
             while ((tempstr = reader.ReadLine()) != null)
                 strArray.Add(tempstr);
@@ -352,26 +352,35 @@ namespace Crystallography
             doubleList.RemoveRange(0, startColumn);
 
             //y軸を決める 標準偏差が一番大きい数が格納されている
-            int yRow = -1;
-            double Sum, SumSquare, Deviation, DeviationMax;
-            DeviationMax = double.NegativeInfinity;
-            for (int i = 0; i < doubleList[0].Length; i++)
-                if (i != xRow)
-                {
-                    Sum = SumSquare = 0;
-                    for (int j = 0; j < doubleList.Count; j++)
-                    {
-                        Sum += doubleList[j][i];
-                        SumSquare += doubleList[j][i] * doubleList[j][i];
-                    }
-                    Deviation = (doubleList.Count * SumSquare - Sum * Sum) / doubleList.Count / (doubleList.Count - 1);
-                    if (DeviationMax < Deviation)
-                    {
-                        DeviationMax = Deviation;
-                        yRow = i;
-                    }
-                }
-            if (yRow == -1) return null;
+            //↑のやり方だと、間違ってしまうことがあるみたい。
+            //単にxRowの次(+1)のインデックスにしてみる。もし+1がダメだったら、-1にする。
+            int yRow;
+
+            if (xRow + 1 < doubleList[0].Length)
+                yRow = xRow + 1;
+            else if (xRow - 1 > -1)
+                yRow = xRow - 1;
+            else
+                return null;
+            //double Sum, SumSquare, Deviation, DeviationMax;
+            //DeviationMax = double.NegativeInfinity;
+            //for (int i = 0; i < doubleList[0].Length; i++)
+            //    if (i != xRow)
+            //    {
+            //        Sum = SumSquare = 0;
+            //        for (int j = 0; j < doubleList.Count; j++)
+            //        {
+            //            Sum += doubleList[j][i];
+            //            SumSquare += doubleList[j][i] * doubleList[j][i];
+            //        }
+            //        Deviation = (doubleList.Count * SumSquare - Sum * Sum) / doubleList.Count / (doubleList.Count - 1);
+            //        if (DeviationMax < Deviation)
+            //        {
+            //            DeviationMax = Deviation;
+            //            yRow = i;
+            //        }
+            //    }
+            //if (yRow == -1) return null;
 
             //最後に値を代入
             DiffractionProfile dif = new DiffractionProfile();

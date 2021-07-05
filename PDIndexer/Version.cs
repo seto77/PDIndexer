@@ -27,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.400(2021/07/05) Fixed a minor bug when loading gsa files." +
             "\r\n ver4.399(2021/07/02) Target framework is changed to .Net 5.0. Added new EOSs (Fratanduono+ 2021)." +
             "\r\n ver4.398(2021/05/13) Fixed a bug on loading 'NPD' format files." +
             "\r\n ver4.397(2021/05/01) Fixed minor bugs and improved computation speed on 'Stress Analysis'." +
