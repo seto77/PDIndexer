@@ -125,23 +125,23 @@ namespace Crystallography
                         if (strList[0].Contains("Wave Length", StringComparison.CurrentCulture))
                         {
                             if (strList[0].Contains("(nm)", StringComparison.CurrentCulture))
-                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':'))[1]);
+                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
                             else if (strList[0].IndexOf("(0.1nm)") >= 0)
-                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':'))[1]) / 10.0;
+                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
                         }
 
-                        if ((strList[4].Split(':'))[1] == "Angle")
+                        if ((strList[4].Split(':', true))[1] == "Angle")
                             diffProf.SrcAxisMode = HorizontalAxis.Angle;
-                        else if ((strList[4].Split(':'))[1] == "d-spacing")
+                        else if ((strList[4].Split(':', true))[1] == "d-spacing")
                             diffProf.SrcAxisMode = HorizontalAxis.d;
-                        else if ((strList[4].Split(':'))[1] == "Energy")
+                        else if ((strList[4].Split(':', true))[1] == "Energy")
                             diffProf.SrcAxisMode = HorizontalAxis.EnergyXray;
                         else
                             return Array.Empty<DiffractionProfile>();
 
                         for (int i = 5; i < strList.Count; i++)
                         {
-                            string[] str = strList[i].Split(',');
+                            string[] str = strList[i].Split(',', true);
                             diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
                         }
                         diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);

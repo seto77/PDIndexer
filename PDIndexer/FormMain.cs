@@ -874,7 +874,7 @@ namespace PDIndexer
                         //EGCは、1.1,　2.2,　3.2 ,, 4.5, 5.7, 0.2みたいな感じで格納されている
                         var egc = (string)regKey.GetValue($"FileProperty.EGC{i}", "0.0,0.0,0.0");
 
-                        f.EGC = egc.Split(",,").Select(str => str.Split(",").Select(e => Convert.ToDouble(e)).ToArray()).ToArray();
+                        f.EGC = egc.Split(",,",true).Select(str => str.Split(",",true).Select(e => Convert.ToDouble(e)).ToArray()).ToArray();
 
                         f.ExposureTime = Convert.ToDouble((string)regKey.GetValue($"FileProperty.ExposureTime{i}", "1"));
                     }
@@ -2892,7 +2892,7 @@ namespace PDIndexer
 
                         for (int i = 4; i < strList.Count; i++)
                         {
-                            var str = strList[i].Split(' ');
+                            var str = strList[i].Split(' ', true);
                             if (str.Length == 4)
                             {
                                 var str1 = str[1];
@@ -2988,12 +2988,12 @@ namespace PDIndexer
                     formDataConverter.SetProperty(FileProperties[(int)FileType.RPT]);
 
                     //TakeoffAngle
-                    formDataConverter.TakeoffAngleText = strList[^4].Split(',')[0];
-                    formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ' )[1]);
+                    formDataConverter.TakeoffAngleText = strList[^4].Split(',', true)[0];
+                    formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ', true)[1]);
 
                     formDataConverter.EDXDetectorNumber = 1;
-                    formDataConverter.EGC[0][0] = Convert.ToDouble(strList[^1].Split( ',')[0]);
-                    formDataConverter.EGC[0][1] = Convert.ToDouble(strList[^1].Split( ',')[1]);
+                    formDataConverter.EGC[0][0] = Convert.ToDouble(strList[^1].Split( ',', true)[0]);
+                    formDataConverter.EGC[0][1] = Convert.ToDouble(strList[^1].Split( ',', true)[1]);
                     formDataConverter.EGC[0][2] = 0;
 
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
@@ -3002,7 +3002,7 @@ namespace PDIndexer
                         int n = 1;
                         for (int i = 1; i < strList.Count - 6; i++)
                         {
-                            var str = strList[i].Split( ' ');
+                            var str = strList[i].Split( ' ', true);
                             for (int j = 0; j < str.Length; j++)
                             {
                                 double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n) * 1000;
@@ -3028,15 +3028,15 @@ namespace PDIndexer
                     for (int i = 0; i < strList.Count || i < 25; i++)
                     {
                         if (strList[i].StartsWith("EGC0"))
-                            formDataConverter.EGC[0][0] = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.EGC[0][0] = strList[i].Split(',', true)[1].ToDouble();
                         if (strList[i].StartsWith("EGC1"))
-                            formDataConverter.EGC[0][1] = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.EGC[0][1] = strList[i].Split(',', true)[1].ToDouble();
                         if (strList[i].StartsWith("EGC2"))
-                            formDataConverter.EGC[0][2] = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.EGC[0][2] = strList[i].Split(',', true)[1].ToDouble();
                         if (strList[i].StartsWith("2Theta"))
-                            formDataConverter.TakeoffAngleText = strList[i].Split(',')[1];
+                            formDataConverter.TakeoffAngleText = strList[i].Split(',', true)[1];
                         if (strList[i].StartsWith("Live time"))
-                            formDataConverter.ExposureTime = strList[i].Split(',')[1].ToDouble();
+                            formDataConverter.ExposureTime = strList[i].Split(',', true)[1].ToDouble();
                     }
 
                     if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
@@ -3047,12 +3047,12 @@ namespace PDIndexer
                             int length = 0;
                             if (strList[i].StartsWith("Data length"))
                             {
-                                length = strList[i].Split( ',' )[1].ToInt();
+                                length = strList[i].Split( ',', true)[1].ToInt();
 
                                 for (int j = i + 2; j < i + 2 + length; j++)
                                 {
-                                    var x = Convert.ToDouble(strList[j].Split(',')[1]) * 1000;
-                                    var y = Convert.ToDouble(strList[j].Split(',')[2]);
+                                    var x = Convert.ToDouble(strList[j].Split(',', true)[1]) * 1000;
+                                    var y = Convert.ToDouble(strList[j].Split(',', true)[2]);
                                     if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue/1000)
                                         diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
                                 }
@@ -3083,7 +3083,7 @@ namespace PDIndexer
                             {
                                 for (int j = i + 1; j < strList.Count - 1; j++)
                                 {
-                                    var str = strList[j].Split(" ");
+                                    var str = strList[j].Split(" ", true);
                                     var x = Convert.ToDouble(str[0]);
                                     var y = Convert.ToDouble(str[1]);
                                     var err = Convert.ToDouble(str[2]);
