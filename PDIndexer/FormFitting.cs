@@ -316,26 +316,30 @@ namespace PDIndexer
             if (!checkBoxPatternDecomposition.Checked)
             {
                 #region ピーク分離モードではないとき
-                List<FittingPeak.FitPeakDelegate> d = new List<FittingPeak.FitPeakDelegate>();
-                List<IAsyncResult> ar = new List<IAsyncResult>();
+                //List<FittingPeak.FitPeakDelegate> d = new List<FittingPeak.FitPeakDelegate>();
+                //List<IAsyncResult> ar = new List<IAsyncResult>();
 
-                for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-                    if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
-                    {
-                        d.Add(new FittingPeak.FitPeakDelegate(FittingPeak.FitPeakThread));
-                        ar.Add(d[d.Count - 1].BeginInvoke(TargetProfile.Pt.ToArray(), true, 0, ref TargetCrystal.Plane[i].peakFunction, null, null));
+                Parallel.For(0, TargetCrystal.Plane.Count, i =>
+               {
+                   if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
+                   {
+
+                       FittingPeak.FitPeakThread(TargetProfile.Pt.ToArray(), true, 0, ref TargetCrystal.Plane[i].peakFunction);
+                        //d.Add(new FittingPeak.FitPeakDelegate(FittingPeak.FitPeakThread));
+                        //ar.Add(d[d.Count - 1].BeginInvoke(TargetProfile.Pt.ToArray(), true, 0, ref TargetCrystal.Plane[i].peakFunction, null, null));
                     }
-                int n = 0;
-                for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-                {
-                    if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
-                    {
-                        d[n].EndInvoke(ref TargetCrystal.Plane[i].peakFunction, ar[n]);
-                        TargetCrystal.Plane[i].XObs = TargetCrystal.Plane[i].peakFunction.X;
-                        TargetCrystal.Plane[i].observedIntensity = TargetCrystal.Plane[i].peakFunction.GetIntegral() / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
-                        n++;
-                    }
-                }
+               });
+                //int n = 0;
+                //for (int i = 0; i < TargetCrystal.Plane.Count; i++)
+                //{
+                //    if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
+                //    {
+                //        d[n].EndInvoke(ref TargetCrystal.Plane[i].peakFunction, ar[n]);
+                //        TargetCrystal.Plane[i].XObs = TargetCrystal.Plane[i].peakFunction.X;
+                //        TargetCrystal.Plane[i].observedIntensity = TargetCrystal.Plane[i].peakFunction.GetIntegral() / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
+                //        n++;
+                //    }
+                //}
                 #endregion
             }
             //ピーク分離フィッティングモードのとき
