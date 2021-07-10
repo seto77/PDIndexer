@@ -1,6 +1,6 @@
 # PDIndexer
 * *PDIndexer* is an analysis software for powder diffraction studies.
-* Runs only on Windows OS with .Net Framework 4.8.
+* Runs only on Windows OS with .Net 5.0.
 
 ## Install
 * Access https://github.com/seto77/PDIndexer/releases/latest, download *PDIndexerSetup.msi*, and execute it.
