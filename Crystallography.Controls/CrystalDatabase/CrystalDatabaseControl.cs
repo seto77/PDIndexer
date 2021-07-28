@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Drawing;
 using MessagePack;
 using MessagePack.Resolvers;
+using System.Threading.Tasks;
 
 #endregion
 
@@ -95,22 +96,6 @@ namespace Crystallography.Controls
             try
             {
                 sw.Restart();
-                //if (filename.ToLower().EndsWith("cdb2"))
-                //{
-                //    var progressStep = 500;
-                //    using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
-                //    var formatter = new BinaryFormatter();
-                //    var total = (int)formatter.Deserialize(fs);
-                //    for (int i = 0; i < total; i++)
-                //    {
-                //        var c = (Crystal2)formatter.Deserialize(fs);
-                //        dataTable.Add(c);
-
-                //        if (i > progressStep * 2 && i % progressStep == 0)
-                //            report(i, total, sw.ElapsedMilliseconds, "Loading database...");
-                //    }
-                //}
-                //else 
                 if (filename.ToLower().EndsWith("cdb3"))
                 {
                     using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
@@ -134,11 +119,13 @@ namespace Crystallography.Controls
                                 $"{filename.Remove(filename.Length - 5, 5)}\\{Path.GetFileNameWithoutExtension(filename)}.{i:000}").AsParallel();
 
                         fileNames.ForAll(fn =>
+                        //fileNames.ToList().ForEach(fn =>
                         {
                             var b = new ReadOnlyMemory<byte>(File.ReadAllBytes(fn));
                             while (b.Length != 0)
                             {
-                                var rows = Array.ConvertAll(deserialize<Crystal2[]>(b, out var byteRead), dataTable.CreateRow);
+                                var c2 = deserialize<Crystal2[]>(b, out var byteRead);
+                                var rows = c2.Select(c => dataTable.CreateRow(c)).ToArray();//Array.ConvertAll(c2, dataTable.CreateRow);
                                 rwlock.EnterWriteLock();
                                 try { foreach (var r in rows) dataTable.Rows.Add(r); }
                                 finally { rwlock.ExitWriteLock(); }
@@ -373,8 +360,26 @@ namespace Crystallography.Controls
         #region 結晶の追加、削除、変更
         public void AddCrystal(Crystal2 crystal2)
         {
-
             dataTable.Add(crystal2);
+        }
+
+        public void AddCrystals(IEnumerable< Crystal2> crystal2)
+        {
+            var originalDataMember = dataGridView.DataMember;
+            dataGridView.DataMember = "";
+
+            var originalAutoSizeColumnsMode = dataGridView.AutoSizeColumnsMode;
+            dataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            var originalAutoSizeRowsMode = dataGridView.AutoSizeRowsMode;
+            dataGridView.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.None;
+
+            foreach (var c in crystal2)
+                dataTable.Add(c);
+
+            dataGridView.DataMember = originalDataMember;
+            dataGridView.AutoSizeColumnsMode = originalAutoSizeColumnsMode;
+            dataGridView.AutoSizeRowsMode = originalAutoSizeRowsMode;
         }
 
         public void ChangeCrystal(Crystal2 crystal2)
@@ -395,6 +400,27 @@ namespace Crystallography.Controls
         private void bindingSource_CurrentChanged(object sender, EventArgs e)
         {
             CrystalChanged?.Invoke(sender, e);
+        }
+
+        public void RecalculateDensityAndFormula()
+        {
+            var sw = new Stopwatch();
+            sw.Restart();
+            for(int i= 0; i<dataSet.DataTableCrystalDatabase.Count; i++)
+            {
+                var c = dataSet.DataTableCrystalDatabase.Get(i).ToCrystal();
+                //c.GetFormulaAndDensity();
+                dataSet.DataTableCrystalDatabase.Rows[i]["Formula"] = c.ChemicalFormulaSum;
+                dataSet.DataTableCrystalDatabase.Rows[i]["Density"] = c.Density;
+
+                if (i % 200 == 0)
+                {
+                    (double progress, string message)= report(i, dataSet.DataTableCrystalDatabase.Count, sw.ElapsedMilliseconds, "Now recalculating Density and Formula. ");
+
+                    ProgressChanged?.Invoke(this, progress, message);
+                    Application.DoEvents();
+                }
+            }
         }
         #endregion
 

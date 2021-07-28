@@ -835,7 +835,7 @@ namespace PDIndexer
             {
                 try
                 {
-                    StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("Shift_JIS"));
+                    StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8"));
                     List<string> strList = new List<string>();
                     string tempstr;
                     while ((tempstr = reader.ReadLine()) != null)
