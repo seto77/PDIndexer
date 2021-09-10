@@ -738,31 +738,42 @@ namespace Crystallography
 
                 //パルスパワー読込
                 (float[] dataPulsePower, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/bm_2_pulse_energy_in_joule");
-                Ring.SequentialImagePulsePower = new List<double>();
-                for (int i = 0; i < dataPulsePower.Length; i++)
-                    Ring.SequentialImagePulsePower.Add(dataPulsePower[i]);
+                if (dataPulsePower != null)
+                {
+                    Ring.SequentialImagePulsePower = new List<double>();
+                    for (int i = 0; i < dataPulsePower.Length; i++)
+                        Ring.SequentialImagePulsePower.Add(dataPulsePower[i]);
+                }
+                else//佐野さんから依頼された検出器
+                    normarize = false;
 
                 //X線エネルギー読込
                 (float[] dataPhotonEnergy, _) = hdf.GetValue1<float>(groupID2name + "/event_info/bl_3/oh_2/photon_energy_in_eV");
-
-                Ring.SequentialImageEnergy = new List<double>();
-                for (int i = 0; i < dataPhotonEnergy.Length; i++)
-                    Ring.SequentialImageEnergy.Add(dataPhotonEnergy[i]);
-
+                if (dataPhotonEnergy != null)
+                {
+                    Ring.SequentialImageEnergy = new List<double>();
+                    for (int i = 0; i < dataPhotonEnergy.Length; i++)
+                        Ring.SequentialImageEnergy.Add(dataPhotonEnergy[i]);
+                }
                 //左側イメージ検出器、右側イメージ検出器、エネルギースペクトルがどの検出器番号に対応するかを判定
                 int leftDetector = -1, rightDetector = -1, energySpectrum = -1;
 
                 for (int i = 1; i < 4; i++)
                 {
-                    (int detectorType, _) = hdf.GetValue0<int>(groupID2name + "/detector_2d_" + i.ToString() + "/detector_info/detector_type");
+                    (int detectorType, _) = hdf.GetValue0<int>($"{groupID2name}/detector_2d_{i}/detector_info/detector_type");
 
-                    if (detectorType == 1)//イメージ検出器の場合
+                    if (detectorType == 1 || detectorType ==0)//イメージ検出器の場合
                     {
                         //detector_2d_1　と _2の位置関係を調べる
 
-                        (float[] dataCoordinate, _) = hdf.GetValue1<float>(groupID2name + "/detector_2d_" + i.ToString() + "/detector_info/detector_coordinate_in_micro_meter");
+                        (float[] dataCoordinate, _) = hdf.GetValue1<float>($"{groupID2name}/detector_2d_{i}/detector_info/detector_coordinate_in_micro_meter");
 
-                        if (dataCoordinate[0] == 0)
+                        if (dataCoordinate == null)//佐野さんから依頼された検出器
+                        {
+                            leftDetector = 1;
+                            rightDetector = 2;
+                        }
+                        else if (dataCoordinate[0] == 0)
                             leftDetector = i;
                         else
                             rightDetector = i;
@@ -773,9 +784,17 @@ namespace Crystallography
 
                 //ピクセルサイズ読み込み
                 (float[] dataPixelSize, _) = hdf.GetValue1<float>(groupID2name + "/detector_2d_1/detector_info/pixel_size_in_micro_meter");
-
-                Ring.IP.PixSizeX = dataPixelSize[0] * 0.001;
-                Ring.IP.PixSizeY = dataPixelSize[1] * 0.001;
+                if (dataPixelSize != null)
+                { 
+                    Ring.IP.PixSizeX = dataPixelSize[0] * 0.001;
+                    Ring.IP.PixSizeY = dataPixelSize[1] * 0.001;
+                }
+                else//佐野さんから依頼された検出器
+                {
+                    (var data_size, _)=hdf.GetValue1<float>(groupID2name + "/detector_2d_1/detector_info/data_scale(XYZT)");
+                    Ring.IP.PixSizeX = data_size[0] * 0.001;
+                    Ring.IP.PixSizeY = data_size[1] * 0.001;
+                }
 
                 //tag番号を調べる
                 var tag = new List<string>();
@@ -792,20 +811,30 @@ namespace Crystallography
                 int imageWidth = 1024, imageHeight = 1024;
                 for (int i = 0; i < tag.Count; i++)
                 {
+                    (float[][] dataImageLeft, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{leftDetector}/{tag[i]}/detector_data");
 
-                    (float[][] dataImageLeft, _) = hdf.GetValue2<float>(groupID2name + "/detector_2d_" + leftDetector.ToString() + "/" + tag[i] + "/detector_data");
-
-                    (float[][] dataImageRight, _) = hdf.GetValue2<float>(groupID2name + "/detector_2d_" + rightDetector.ToString() + "/" + tag[i] + "/detector_data");
+                    (float[][] dataImageRight, _) = hdf.GetValue2<float>($"{groupID2name}/detector_2d_{rightDetector}/{tag[i]}/detector_data");
 
                     Ring.SequentialImageIntensities.Add(new List<double>());
-                    for (int h = 0; h < imageHeight; h++)
-                    {
-                        for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
-                        for (int w = 0; w < imageWidth / 2; w++)
-                            Ring.SequentialImageIntensities[i].Add(dataImageRight[h][w]);
-                    }
 
+                    if (dataImageLeft != null && dataImageRight != null)
+                    {
+                        for (int h = 0; h < imageHeight; h++)
+                        {
+                            for (int w = 0; w < imageWidth / 2; w++)
+                                Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
+                            for (int w = 0; w < imageWidth / 2; w++)
+                                Ring.SequentialImageIntensities[i].Add(dataImageRight[h][w]);
+                        }
+                    }
+                    else if (dataImageLeft != null)
+                    {
+                        imageWidth = 512;
+                        for (int h = 0; h < imageHeight; h++)
+                            for (int w = 0; w < imageWidth; w++)
+                                Ring.SequentialImageIntensities[i].Add(dataImageLeft[h][w]);
+
+                    }
                     //強度をノーマライズする場合
                     if (normarize == null)
                         normarize = MessageBox.Show("Normarize intensities by pulse power?", "HDF file option", MessageBoxButtons.YesNo) == DialogResult.Yes;
@@ -1520,7 +1549,7 @@ namespace Crystallography
                     if (!double.IsNaN(t.Images[j].PulsePower))
                         Ring.SequentialImagePulsePower.Add(t.Images[j].PulsePower);
 
-                    if (t.Images[j].Name == "")
+                    if (t.Images[j].Name.Length == 0)
                         Ring.SequentialImageNames.Add(j.ToString("000"));
                     else
                         Ring.SequentialImageNames.Add(t.Images[j].Name);

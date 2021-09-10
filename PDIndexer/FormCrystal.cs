@@ -9,6 +9,7 @@ using Crystallography;
 using Crystallography.Controls;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 
 namespace PDIndexer{
 	/// <summary>
@@ -29,6 +30,9 @@ namespace PDIndexer{
             crystalControl.CrystalChanged += crystalControl_CrystalChanged;
             
             crystalDatabaseControl.ProgressChanged += CrystalDatabaseControl_ProgressChanged;
+
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
+
         }
 
         private void CrystalDatabaseControl_ProgressChanged(object sender, double progress, string message)

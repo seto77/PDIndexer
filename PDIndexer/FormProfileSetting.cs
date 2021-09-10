@@ -10,6 +10,7 @@ using System.Threading;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Reflection;
 
 namespace PDIndexer
 {
@@ -37,6 +38,8 @@ namespace PDIndexer
         {
             InitializeComponent();
             bindingSourceProfile.CurrentChanged += new EventHandler(bindingSource_CurrentChanged);
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewProfile, true, null);
+
         }
         private void FormProfileSetting_FormClosing(object sender, FormClosingEventArgs e)
         {

@@ -392,7 +392,8 @@
     <value />
   </data>
   <data name="colorControl.ToolTip1" xml:space="preserve">
-    <value>Profile color</value>
+    <value>Profile color
+</value>
   </data>
   <data name="&gt;&gt;colorControl.Name" xml:space="preserve">
     <value>colorControl</value>
@@ -1111,6 +1112,45 @@
   <data name="&gt;&gt;tabPageElasticity.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="numericBoxStrain33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxStrain33.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
+    <value>120, 121</value>
+  </data>
+  <data name="numericBoxStrain33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>1, 1, 1, 1</value>
+  </data>
+  <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 24</value>
+  </data>
+  <data name="numericBoxStrain33.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 22</value>
+  </data>
+  <data name="numericBoxStrain33.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 24</value>
+  </data>
+  <data name="numericBoxStrain33.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.Name" xml:space="preserve">
+    <value>numericBoxStrain33</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.Parent" xml:space="preserve">
+    <value>tabPageStrainStress</value>
+  </data>
+  <data name="&gt;&gt;numericBoxStrain33.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="numericBoxHill.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1148,7 +1188,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxHill.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="label116.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1184,7 +1224,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label116.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label117.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1220,7 +1260,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label117.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="label109.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1257,7 +1297,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label109.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="label110.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1293,7 +1333,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label110.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label111.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1329,7 +1369,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label111.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label112.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1365,7 +1405,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label112.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
   <data name="label113.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1401,7 +1441,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label113.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="label114.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1437,7 +1477,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label114.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>9</value>
   </data>
   <data name="label115.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1473,7 +1513,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label115.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>10</value>
   </data>
   <data name="label102.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1509,7 +1549,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label102.ZOrder" xml:space="preserve">
-    <value>10</value>
+    <value>11</value>
   </data>
   <data name="label103.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1545,7 +1585,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label103.ZOrder" xml:space="preserve">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="label104.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1581,7 +1621,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label104.ZOrder" xml:space="preserve">
-    <value>12</value>
+    <value>13</value>
   </data>
   <data name="label105.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1617,7 +1657,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label105.ZOrder" xml:space="preserve">
-    <value>13</value>
+    <value>14</value>
   </data>
   <data name="label106.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1653,7 +1693,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label106.ZOrder" xml:space="preserve">
-    <value>14</value>
+    <value>15</value>
   </data>
   <data name="label107.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1689,7 +1729,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label107.ZOrder" xml:space="preserve">
-    <value>15</value>
+    <value>16</value>
   </data>
   <data name="label108.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1725,7 +1765,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;label108.ZOrder" xml:space="preserve">
-    <value>16</value>
+    <value>17</value>
   </data>
   <data name="numericBoxStress33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1764,7 +1804,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress33.ZOrder" xml:space="preserve">
-    <value>17</value>
+    <value>18</value>
   </data>
   <data name="numericBoxStress22.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1803,7 +1843,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress22.ZOrder" xml:space="preserve">
-    <value>18</value>
+    <value>19</value>
   </data>
   <data name="numericBoxStress11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1842,7 +1882,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress11.ZOrder" xml:space="preserve">
-    <value>19</value>
+    <value>20</value>
   </data>
   <data name="numericBoxStress23.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1881,7 +1921,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress23.ZOrder" xml:space="preserve">
-    <value>20</value>
+    <value>21</value>
   </data>
   <data name="numericBoxStress13.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1920,7 +1960,7 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress13.ZOrder" xml:space="preserve">
-    <value>21</value>
+    <value>22</value>
   </data>
   <data name="numericBoxStress12.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1959,45 +1999,6 @@
     <value>tabPageStrainStress</value>
   </data>
   <data name="&gt;&gt;numericBoxStress12.ZOrder" xml:space="preserve">
-    <value>22</value>
-  </data>
-  <data name="numericBoxStrain33.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="numericBoxStrain33.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="numericBoxStrain33.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 121</value>
-  </data>
-  <data name="numericBoxStrain33.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>1, 1, 1, 1</value>
-  </data>
-  <data name="numericBoxStrain33.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 24</value>
-  </data>
-  <data name="numericBoxStrain33.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 22</value>
-  </data>
-  <data name="numericBoxStrain33.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 1, 0</value>
-  </data>
-  <data name="numericBoxStrain33.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 24</value>
-  </data>
-  <data name="numericBoxStrain33.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain33.Name" xml:space="preserve">
-    <value>numericBoxStrain33</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain33.Type" xml:space="preserve">
-    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain33.Parent" xml:space="preserve">
-    <value>tabPageStrainStress</value>
-  </data>
-  <data name="&gt;&gt;numericBoxStrain33.ZOrder" xml:space="preserve">
     <value>23</value>
   </data>
   <data name="numericBoxStrain11.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -2238,19 +2239,19 @@
     <value>Save</value>
   </data>
   <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem.Text" xml:space="preserve">
     <value>as CTF file (comatible to CHANNEL 5 file)</value>
   </data>
   <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="asTXTFileAllEulerAngleAndDensityToolStripMenuItem.Text" xml:space="preserve">
     <value>as TXT file (all Euler angle and density)</value>
   </data>
   <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>310, 22</value>
+    <value>309, 22</value>
   </data>
   <data name="asTXTFileallEulerAngleAndDensitySortedToolStripMenuItem.Text" xml:space="preserve">
     <value>as TXT file (all Euler angle and density) sorted</value>
@@ -2826,7 +2827,7 @@
     <value>76</value>
   </data>
   <data name="textBoxFormula.ToolTip" xml:space="preserve">
-    <value>Chemical formulae</value>
+    <value>Chemical formula</value>
   </data>
   <data name="&gt;&gt;textBoxFormula.Name" xml:space="preserve">
     <value>textBoxFormula</value>
@@ -2874,10 +2875,10 @@
     <value>95</value>
   </data>
   <data name="numericBoxZnumber.ToolTip" xml:space="preserve">
-    <value>Z (Number of formula in unit cell)</value>
+    <value>Z (Number of formula in the unit cell)</value>
   </data>
   <data name="numericBoxZnumber.ToolTip1" xml:space="preserve">
-    <value>Z (Number of formula in unit cell)</value>
+    <value>Z (Number of formula in the unit cell)</value>
   </data>
   <data name="&gt;&gt;numericBoxZnumber.Name" xml:space="preserve">
     <value>numericBoxZnumber</value>
@@ -2922,7 +2923,7 @@
     <value>Formula</value>
   </data>
   <data name="label90.ToolTip" xml:space="preserve">
-    <value>Chemical formulae</value>
+    <value>Chemical formula</value>
   </data>
   <data name="&gt;&gt;label90.Name" xml:space="preserve">
     <value>label90</value>
@@ -3047,6 +3048,9 @@
   <data name="textBoxName.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
+  <data name="textBoxName.ToolTip" xml:space="preserve">
+    <value>Name of the crystal</value>
+  </data>
   <data name="&gt;&gt;textBoxName.Name" xml:space="preserve">
     <value>textBoxName</value>
   </data>
@@ -3135,7 +3139,7 @@
     <value>Scattering factor</value>
   </data>
   <data name="buttonScatteringFactor.ToolTip" xml:space="preserve">
-    <value>Show scattering factor</value>
+    <value>Open another window with the structure factors</value>
   </data>
   <data name="&gt;&gt;buttonScatteringFactor.Name" xml:space="preserve">
     <value>buttonScatteringFactor</value>
@@ -3180,7 +3184,7 @@
     <value>Symmetry info.</value>
   </data>
   <data name="buttonSymmetryInfo.ToolTip" xml:space="preserve">
-    <value>Show symmetry information</value>
+    <value>Open another window with the detailed symmetry information</value>
   </data>
   <data name="&gt;&gt;buttonSymmetryInfo.Name" xml:space="preserve">
     <value>buttonSymmetryInfo</value>

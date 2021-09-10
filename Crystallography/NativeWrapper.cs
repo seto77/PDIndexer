@@ -143,14 +143,23 @@ namespace Crystallography
         #region 変換関数
         unsafe readonly static int sizeOfComplex = sizeof(Complex);
 
-        unsafe private static void toDoubleArray(int dim, Complex[,] mat, out double[] dest)
+        unsafe private static void toDoubleArray(int dim, Complex[,] mat, ref double[] dest)
         {
-            fixed (Complex* pSrc = mat)
-            fixed (double* pDest = dest)
-                Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
+            //fixed (Complex* pSrc = mat)
+            //fixed (double* pDest = dest)
+            //    Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
+
+            //　[,]の配列については、格納順の問題から、全体に対するMemcpyは使えない
+            int n = 0;
+            for (int j = 0; j < dim; j++)
+                for (int i = 0; i < dim; i++)
+                {
+                    dest[n++] = mat[i, j].Real;
+                    dest[n++] = mat[i, j].Imaginary;
+                }
         }
         
-        unsafe private static void toDoubleArray(int dim, Complex[] vec, out double[] dest)
+        unsafe private static void toDoubleArray(int dim, Complex[] vec, ref double[] dest)
         {
             fixed (Complex* pSrc = vec)
             fixed (double* pDest = dest)
@@ -163,6 +172,7 @@ namespace Crystallography
             fixed (double* pSrc = src)
             fixed (Complex* pDest = dest)
                 Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * dim * sizeOfComplex));
+           
             return new DenseMatrix(dim, dim, dest);
         }
 
@@ -172,6 +182,7 @@ namespace Crystallography
             fixed (double* pSrc = src)
             fixed (Complex* pDest = dest)
                 Memcpy((IntPtr)pDest, (IntPtr)pSrc, (UIntPtr)(dim * sizeOfComplex));
+
             return new DenseVector(dest);
         }
         #endregion
@@ -196,7 +207,7 @@ namespace Crystallography
             var _inv = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             try
             {
-                toDoubleArray(dim, mat, out _mat);
+                toDoubleArray(dim, mat, ref _mat);
                 _Inverse(dim, _mat, _inv);
                 return toDenseMatrix(dim, in _inv);
             }
@@ -218,7 +229,7 @@ namespace Crystallography
             var _inv = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             try
             {
-                toDoubleArray(dim * dim, mat, out _mat);
+                toDoubleArray(dim * dim, mat, ref _mat);
                 _Inverse(dim, _mat, _inv);
                 return toDenseMatrix(dim, in _inv);
             }
@@ -245,7 +256,7 @@ namespace Crystallography
             var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             try
             {
-                toDoubleArray(dim, mat, out _mat);//matをdouble[]に変換
+                toDoubleArray(dim, mat, ref _mat);//matをdouble[]に変換
                 _EigenSolver(dim, _mat, values, vectors);
                 return (toDenseVector(dim, in values), toDenseMatrix(dim, in vectors));
             }
@@ -264,7 +275,7 @@ namespace Crystallography
             var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             try
             {
-                toDoubleArray(dim * dim, mat, out _mat);//matをdouble[]に変換
+                toDoubleArray(dim * dim, mat, ref _mat);//matをdouble[]に変換
                 _EigenSolver(dim, _mat, values, vectors);
                 return (toDenseVector(dim, in values), toDenseMatrix(dim, in vectors));
             }
@@ -286,7 +297,7 @@ namespace Crystallography
             var vectors = ArrayPool<double>.Shared.Rent(dim * dim * 2);
             try
             {
-                toDoubleArray(dim, mat.ToArray(), out _mat);//matをdouble[]に変換
+                toDoubleArray(dim, mat.ToArray(), ref _mat);//matをdouble[]に変換
                 _MatrixExponential(dim, _mat, vectors);
                 return toDenseMatrix(dim, in vectors);
             }
@@ -330,8 +341,8 @@ namespace Crystallography
             var tempResult = ArrayPool<double>.Shared.Rent(dim * thickness.Length * 2);
             try
             {
-                toDoubleArray(dim * dim, potential, out _potential);
-                toDoubleArray(dim, psi0, out _psi0);
+                toDoubleArray(dim * dim, potential, ref _potential);
+                toDoubleArray(dim, psi0, ref _psi0);
 
                 if (eigen)
                     _CBEDSolver_Eigen(dim, _potential, _psi0, thickness.Length, thickness, coeff, tempResult);

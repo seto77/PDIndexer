@@ -220,6 +220,7 @@
             this.numericBoxBiso.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBiso.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBiso.Name = "numericBoxBiso";
+            this.numericBoxBiso.RoundErrorAccuracy = -1;
             this.numericBoxBiso.SkipEventDuringInput = false;
             this.numericBoxBiso.SmartIncrement = true;
             this.numericBoxBiso.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -232,6 +233,7 @@
             this.numericBoxBisoerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBisoerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxBisoerr.Name = "numericBoxBisoerr";
+            this.numericBoxBisoerr.RoundErrorAccuracy = -1;
             this.numericBoxBisoerr.SkipEventDuringInput = false;
             this.numericBoxBisoerr.SmartIncrement = true;
             this.numericBoxBisoerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -409,6 +411,7 @@
             this.numericBox1.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox1.Name = "numericBox1";
+            this.numericBox1.RoundErrorAccuracy = -1;
             this.numericBox1.ShowFraction = true;
             this.numericBox1.SkipEventDuringInput = false;
             this.numericBox1.SmartIncrement = true;
@@ -427,6 +430,7 @@
             this.numericBox2.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBox2.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox2.Name = "numericBox2";
+            this.numericBox2.RoundErrorAccuracy = -1;
             this.numericBox2.ShowFraction = true;
             this.numericBox2.SkipEventDuringInput = false;
             this.numericBox2.SmartIncrement = true;
@@ -454,6 +458,7 @@
             this.numericBox3.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBox3.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox3.Name = "numericBox3";
+            this.numericBox3.RoundErrorAccuracy = -1;
             this.numericBox3.ShowFraction = true;
             this.numericBox3.SkipEventDuringInput = false;
             this.numericBox3.SmartIncrement = true;
@@ -472,6 +477,7 @@
             this.numericBox4.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBox4.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBox4.Name = "numericBox4";
+            this.numericBox4.RoundErrorAccuracy = -1;
             this.numericBox4.ShowFraction = true;
             this.numericBox4.SkipEventDuringInput = false;
             this.numericBox4.SmartIncrement = true;
@@ -540,6 +546,7 @@
             this.numericBoxOccerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOccerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOccerr.Name = "numericBoxOccerr";
+            this.numericBoxOccerr.RoundErrorAccuracy = -1;
             this.numericBoxOccerr.SkipEventDuringInput = false;
             this.numericBoxOccerr.SmartIncrement = true;
             this.numericBoxOccerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -554,12 +561,13 @@
             this.numericBoxOcc.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOcc.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxOcc.Name = "numericBoxOcc";
+            this.numericBoxOcc.RoundErrorAccuracy = -1;
             this.numericBoxOcc.ShowFraction = true;
             this.numericBoxOcc.SkipEventDuringInput = false;
             this.numericBoxOcc.SmartIncrement = true;
             this.numericBoxOcc.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxOcc.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxOcc, resources.GetString("numericBoxOcc.ToolTip"));
             this.numericBoxOcc.TrimEndZero = true;
             // 
             // numericBoxZ
@@ -570,6 +578,7 @@
             this.numericBoxZ.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZ.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZ.Name = "numericBoxZ";
+            this.numericBoxZ.RoundErrorAccuracy = -1;
             this.numericBoxZ.ShowFraction = true;
             this.numericBoxZ.SkipEventDuringInput = false;
             this.numericBoxZ.SmartIncrement = true;
@@ -585,6 +594,7 @@
             this.numericBoxYerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxYerr.Name = "numericBoxYerr";
+            this.numericBoxYerr.RoundErrorAccuracy = -1;
             this.numericBoxYerr.SkipEventDuringInput = false;
             this.numericBoxYerr.SmartIncrement = true;
             this.numericBoxYerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -599,6 +609,7 @@
             this.numericBoxXerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxXerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxXerr.Name = "numericBoxXerr";
+            this.numericBoxXerr.RoundErrorAccuracy = -1;
             this.numericBoxXerr.SkipEventDuringInput = false;
             this.numericBoxXerr.SmartIncrement = true;
             this.numericBoxXerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -613,6 +624,7 @@
             this.numericBoxY.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxY.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxY.Name = "numericBoxY";
+            this.numericBoxY.RoundErrorAccuracy = -1;
             this.numericBoxY.ShowFraction = true;
             this.numericBoxY.SkipEventDuringInput = false;
             this.numericBoxY.SmartIncrement = true;
@@ -628,6 +640,7 @@
             this.numericBoxX.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxX.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxX.Name = "numericBoxX";
+            this.numericBoxX.RoundErrorAccuracy = -1;
             this.numericBoxX.ShowFraction = true;
             this.numericBoxX.SkipEventDuringInput = false;
             this.numericBoxX.SmartIncrement = true;
@@ -643,6 +656,7 @@
             this.numericBoxZerr.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZerr.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxZerr.Name = "numericBoxZerr";
+            this.numericBoxZerr.RoundErrorAccuracy = -1;
             this.numericBoxZerr.SkipEventDuringInput = false;
             this.numericBoxZerr.SmartIncrement = true;
             this.numericBoxZerr.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -805,6 +819,7 @@
             this.numericBoxOriginShiftZ.Maximum = 1D;
             this.numericBoxOriginShiftZ.Minimum = -1D;
             this.numericBoxOriginShiftZ.Name = "numericBoxOriginShiftZ";
+            this.numericBoxOriginShiftZ.RoundErrorAccuracy = -1;
             this.numericBoxOriginShiftZ.ShowFraction = true;
             this.numericBoxOriginShiftZ.SkipEventDuringInput = false;
             this.numericBoxOriginShiftZ.SmartIncrement = true;
@@ -821,6 +836,7 @@
             this.numericBoxOriginShiftY.Maximum = 1D;
             this.numericBoxOriginShiftY.Minimum = -1D;
             this.numericBoxOriginShiftY.Name = "numericBoxOriginShiftY";
+            this.numericBoxOriginShiftY.RoundErrorAccuracy = -1;
             this.numericBoxOriginShiftY.ShowFraction = true;
             this.numericBoxOriginShiftY.SkipEventDuringInput = false;
             this.numericBoxOriginShiftY.SmartIncrement = true;
@@ -837,6 +853,7 @@
             this.numericBoxOriginShiftX.Maximum = 1D;
             this.numericBoxOriginShiftX.Minimum = -1D;
             this.numericBoxOriginShiftX.Name = "numericBoxOriginShiftX";
+            this.numericBoxOriginShiftX.RoundErrorAccuracy = -1;
             this.numericBoxOriginShiftX.ShowFraction = true;
             this.numericBoxOriginShiftX.SkipEventDuringInput = false;
             this.numericBoxOriginShiftX.SmartIncrement = true;
@@ -891,6 +908,7 @@
             // 
             resources.ApplyResources(this.radioButtonDebyeWallerTypeU, "radioButtonDebyeWallerTypeU");
             this.radioButtonDebyeWallerTypeU.Name = "radioButtonDebyeWallerTypeU";
+            this.toolTip.SetToolTip(this.radioButtonDebyeWallerTypeU, resources.GetString("radioButtonDebyeWallerTypeU.ToolTip"));
             this.radioButtonDebyeWallerTypeU.CheckedChanged += new System.EventHandler(this.radioButtonDebyeWallerTypeU_CheckedChanged);
             // 
             // radioButtonDebyeWallerTypeB
@@ -899,6 +917,7 @@
             this.radioButtonDebyeWallerTypeB.Checked = true;
             this.radioButtonDebyeWallerTypeB.Name = "radioButtonDebyeWallerTypeB";
             this.radioButtonDebyeWallerTypeB.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonDebyeWallerTypeB, resources.GetString("radioButtonDebyeWallerTypeB.ToolTip"));
             // 
             // flowLayoutPanel4
             // 
@@ -938,6 +957,7 @@
             this.numericBoxB22.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB22.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB22.Name = "numericBoxB22";
+            this.numericBoxB22.RoundErrorAccuracy = -1;
             this.numericBoxB22.SkipEventDuringInput = false;
             this.numericBoxB22.SmartIncrement = true;
             this.numericBoxB22.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -950,6 +970,7 @@
             this.numericBoxB22err.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB22err.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB22err.Name = "numericBoxB22err";
+            this.numericBoxB22err.RoundErrorAccuracy = -1;
             this.numericBoxB22err.SkipEventDuringInput = false;
             this.numericBoxB22err.SmartIncrement = true;
             this.numericBoxB22err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -962,6 +983,7 @@
             this.numericBoxB23.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB23.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB23.Name = "numericBoxB23";
+            this.numericBoxB23.RoundErrorAccuracy = -1;
             this.numericBoxB23.SkipEventDuringInput = false;
             this.numericBoxB23.SmartIncrement = true;
             this.numericBoxB23.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -974,6 +996,7 @@
             this.numericBoxB23err.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB23err.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB23err.Name = "numericBoxB23err";
+            this.numericBoxB23err.RoundErrorAccuracy = -1;
             this.numericBoxB23err.SkipEventDuringInput = false;
             this.numericBoxB23err.SmartIncrement = true;
             this.numericBoxB23err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -986,6 +1009,7 @@
             this.numericBoxB33.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB33.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB33.Name = "numericBoxB33";
+            this.numericBoxB33.RoundErrorAccuracy = -1;
             this.numericBoxB33.SkipEventDuringInput = false;
             this.numericBoxB33.SmartIncrement = true;
             this.numericBoxB33.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -998,6 +1022,7 @@
             this.numericBoxB33err.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB33err.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB33err.Name = "numericBoxB33err";
+            this.numericBoxB33err.RoundErrorAccuracy = -1;
             this.numericBoxB33err.SkipEventDuringInput = false;
             this.numericBoxB33err.SmartIncrement = true;
             this.numericBoxB33err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1021,6 +1046,7 @@
             this.numericBoxB11.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB11.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB11.Name = "numericBoxB11";
+            this.numericBoxB11.RoundErrorAccuracy = -1;
             this.numericBoxB11.SkipEventDuringInput = false;
             this.numericBoxB11.SmartIncrement = true;
             this.numericBoxB11.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1033,6 +1059,7 @@
             this.numericBoxB11err.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB11err.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB11err.Name = "numericBoxB11err";
+            this.numericBoxB11err.RoundErrorAccuracy = -1;
             this.numericBoxB11err.SkipEventDuringInput = false;
             this.numericBoxB11err.SmartIncrement = true;
             this.numericBoxB11err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1045,6 +1072,7 @@
             this.numericBoxB12.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB12.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB12.Name = "numericBoxB12";
+            this.numericBoxB12.RoundErrorAccuracy = -1;
             this.numericBoxB12.SkipEventDuringInput = false;
             this.numericBoxB12.SmartIncrement = true;
             this.numericBoxB12.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1057,6 +1085,7 @@
             this.numericBoxB12err.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB12err.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB12err.Name = "numericBoxB12err";
+            this.numericBoxB12err.RoundErrorAccuracy = -1;
             this.numericBoxB12err.SkipEventDuringInput = false;
             this.numericBoxB12err.SmartIncrement = true;
             this.numericBoxB12err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1069,6 +1098,7 @@
             this.numericBoxB13.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB13.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB13.Name = "numericBoxB13";
+            this.numericBoxB13.RoundErrorAccuracy = -1;
             this.numericBoxB13.SkipEventDuringInput = false;
             this.numericBoxB13.SmartIncrement = true;
             this.numericBoxB13.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1081,6 +1111,7 @@
             this.numericBoxB13err.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB13err.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxB13err.Name = "numericBoxB13err";
+            this.numericBoxB13err.RoundErrorAccuracy = -1;
             this.numericBoxB13err.SkipEventDuringInput = false;
             this.numericBoxB13err.SmartIncrement = true;
             this.numericBoxB13err.TextFont = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1140,6 +1171,7 @@
             this.comboBoxScatteringFactorElectron.DropDownWidth = 120;
             resources.ApplyResources(this.comboBoxScatteringFactorElectron, "comboBoxScatteringFactorElectron");
             this.comboBoxScatteringFactorElectron.Name = "comboBoxScatteringFactorElectron";
+            this.toolTip.SetToolTip(this.comboBoxScatteringFactorElectron, resources.GetString("comboBoxScatteringFactorElectron.ToolTip"));
             this.comboBoxScatteringFactorElectron.UseWaitCursor = true;
             this.comboBoxScatteringFactorElectron.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
             // 
@@ -1163,6 +1195,7 @@
             this.comboBoxScatteringFactorXray.DropDownWidth = 120;
             resources.ApplyResources(this.comboBoxScatteringFactorXray, "comboBoxScatteringFactorXray");
             this.comboBoxScatteringFactorXray.Name = "comboBoxScatteringFactorXray";
+            this.toolTip.SetToolTip(this.comboBoxScatteringFactorXray, resources.GetString("comboBoxScatteringFactorXray.ToolTip"));
             this.comboBoxScatteringFactorXray.UseWaitCursor = true;
             this.comboBoxScatteringFactorXray.SelectedIndexChanged += new System.EventHandler(this.comboBoxAtomSub_SelectedIndexChanged);
             // 
@@ -1210,6 +1243,7 @@
             this.numericBoxAlpha.Maximum = 1D;
             this.numericBoxAlpha.Minimum = 0D;
             this.numericBoxAlpha.Name = "numericBoxAlpha";
+            this.numericBoxAlpha.RoundErrorAccuracy = -1;
             this.numericBoxAlpha.ShowUpDown = true;
             this.numericBoxAlpha.SkipEventDuringInput = false;
             this.numericBoxAlpha.SmartIncrement = true;
@@ -1228,6 +1262,7 @@
             this.numericBoxEmission.Maximum = 1D;
             this.numericBoxEmission.Minimum = 0D;
             this.numericBoxEmission.Name = "numericBoxEmission";
+            this.numericBoxEmission.RoundErrorAccuracy = -1;
             this.numericBoxEmission.ShowUpDown = true;
             this.numericBoxEmission.SkipEventDuringInput = false;
             this.numericBoxEmission.SmartIncrement = true;
@@ -1246,6 +1281,7 @@
             this.numericBoxShininess.Maximum = 20D;
             this.numericBoxShininess.Minimum = 0D;
             this.numericBoxShininess.Name = "numericBoxShininess";
+            this.numericBoxShininess.RoundErrorAccuracy = -1;
             this.numericBoxShininess.ShowUpDown = true;
             this.numericBoxShininess.SkipEventDuringInput = false;
             this.numericBoxShininess.SmartIncrement = true;
@@ -1264,6 +1300,7 @@
             this.numericBoxSpecular.Maximum = 1D;
             this.numericBoxSpecular.Minimum = 0D;
             this.numericBoxSpecular.Name = "numericBoxSpecular";
+            this.numericBoxSpecular.RoundErrorAccuracy = -1;
             this.numericBoxSpecular.ShowUpDown = true;
             this.numericBoxSpecular.SkipEventDuringInput = false;
             this.numericBoxSpecular.SmartIncrement = true;
@@ -1282,6 +1319,7 @@
             this.numericBoxDiffusion.Maximum = 1D;
             this.numericBoxDiffusion.Minimum = 0D;
             this.numericBoxDiffusion.Name = "numericBoxDiffusion";
+            this.numericBoxDiffusion.RoundErrorAccuracy = -1;
             this.numericBoxDiffusion.ShowUpDown = true;
             this.numericBoxDiffusion.SkipEventDuringInput = false;
             this.numericBoxDiffusion.SmartIncrement = true;
@@ -1300,6 +1338,7 @@
             this.numericBoxAmbient.Maximum = 1D;
             this.numericBoxAmbient.Minimum = 0D;
             this.numericBoxAmbient.Name = "numericBoxAmbient";
+            this.numericBoxAmbient.RoundErrorAccuracy = -1;
             this.numericBoxAmbient.ShowUpDown = true;
             this.numericBoxAmbient.SkipEventDuringInput = false;
             this.numericBoxAmbient.SmartIncrement = true;
@@ -1352,12 +1391,14 @@
             this.numericBoxAtomRadius.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAtomRadius.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAtomRadius.Name = "numericBoxAtomRadius";
+            this.numericBoxAtomRadius.RoundErrorAccuracy = -1;
             this.numericBoxAtomRadius.ShowUpDown = true;
             this.numericBoxAtomRadius.SkipEventDuringInput = false;
             this.numericBoxAtomRadius.SmartIncrement = true;
             this.numericBoxAtomRadius.TextBoxForeColor = System.Drawing.SystemColors.ControlText;
             this.numericBoxAtomRadius.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxAtomRadius.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxAtomRadius, resources.GetString("numericBoxAtomRadius.ToolTip"));
             // 
             // colorControlAtomColor
             // 
@@ -1420,6 +1461,7 @@
             this.buttonAtomUp.BackColor = System.Drawing.SystemColors.Control;
             this.buttonAtomUp.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonAtomUp.Name = "buttonAtomUp";
+            this.toolTip.SetToolTip(this.buttonAtomUp, resources.GetString("buttonAtomUp.ToolTip"));
             this.buttonAtomUp.UseVisualStyleBackColor = true;
             this.buttonAtomUp.Click += new System.EventHandler(this.buttonUp_Click);
             // 
@@ -1429,6 +1471,7 @@
             this.buttonAtomDown.BackColor = System.Drawing.SystemColors.Control;
             this.buttonAtomDown.ForeColor = System.Drawing.SystemColors.ControlText;
             this.buttonAtomDown.Name = "buttonAtomDown";
+            this.toolTip.SetToolTip(this.buttonAtomDown, resources.GetString("buttonAtomDown.ToolTip"));
             this.buttonAtomDown.UseVisualStyleBackColor = true;
             this.buttonAtomDown.Click += new System.EventHandler(this.buttonDown_Click);
             // 
@@ -1438,6 +1481,7 @@
             this.buttonDeleteAtom.BackColor = System.Drawing.Color.IndianRed;
             this.buttonDeleteAtom.ForeColor = System.Drawing.Color.White;
             this.buttonDeleteAtom.Name = "buttonDeleteAtom";
+            this.toolTip.SetToolTip(this.buttonDeleteAtom, resources.GetString("buttonDeleteAtom.ToolTip"));
             this.buttonDeleteAtom.UseVisualStyleBackColor = false;
             this.buttonDeleteAtom.Click += new System.EventHandler(this.buttonDelete_Click);
             // 

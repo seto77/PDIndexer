@@ -489,6 +489,10 @@ namespace PDIndexer
                 setScale();
 
             mutex = new Mutex(true, "PDIndexer");
+
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystals, true, null);
+            typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewProfiles, true, null);
+
         }
 
         //メインがロードされたときに実行

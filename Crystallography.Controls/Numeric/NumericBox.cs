@@ -144,11 +144,13 @@ namespace Crystallography.Controls
                 toolTip.SetToolTip(textBox, value);
                 toolTip.SetToolTip(labelFooter, value);
                 toolTip.SetToolTip(labelHeader, value);
+                toolTip.SetToolTip(this, value);
+
             }
         }
 
         [Category("Value properties")]
-        public double MinimalStep { get { return DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1; } }
+        public double MinimalStep => DecimalPlaces >= 0 ? Math.Pow(10, -DecimalPlaces) : 1;
 
         #region ヘッダー＆フッター の文字、フォント、色
         /// <summary>
@@ -385,7 +387,19 @@ namespace Crystallography.Controls
         public bool ShowTrigonomeric { set; get; } = false;
 
         [DefaultValue("0")]
-        public new string Text { set => textBox.Text = value; get => numericalValue.ToString(); }
+        public new string Text {
+            set
+            {
+                textBox.Text = value;
+                if (RoundErrorAccuracy > 0)
+                {
+                    var val = Value;
+                    Value = val;
+                }
+
+            }
+            get => numericalValue.ToString(); 
+        }
 
         [Category("Appearance properties")]
         [DefaultValue(true)]
@@ -487,8 +501,8 @@ namespace Crystallography.Controls
                 this.numericalValue = d;
                 if (textBox.Multiline)
                 {
-                    if (textBox.Text.IndexOf("\r\n", textBox.SelectionStart) >= 0)
-                        textBox.Text = textBox.Text.Remove(textBox.Text.IndexOf("\r\n", textBox.SelectionStart));
+                    if (textBox.Text.IndexOf("\r\n", textBox.SelectionStart,StringComparison.Ordinal) >= 0)
+                        textBox.Text = textBox.Text.Remove(textBox.Text.IndexOf("\r\n", textBox.SelectionStart, StringComparison.Ordinal));
 
                     textBox.Text += "\r\n" + GetString();
                 }
@@ -541,7 +555,7 @@ namespace Crystallography.Controls
                     }
             }
 
-            if (text == "")
+            if (text.Length == 0)
             {
                 text = numericalValue.ToString(DecimalPlaces >= 0 ? $"f{DecimalPlaces}" : "");
                 if(TrimEndZero && text.Contains("."))

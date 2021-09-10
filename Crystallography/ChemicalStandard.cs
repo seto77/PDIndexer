@@ -110,7 +110,7 @@ namespace Crystallography
                 s += " Ka";
             else
                 s += " La";
-            if (StandardName == null || StandardName == "")
+            if (StandardName == null || StandardName.Length == 0)
                 return s;
             else
                 return s + " in " + StandardName;
@@ -263,8 +263,8 @@ namespace Crystallography
                         for (int i = (int)Math.Max(a, b); i >= 1; i--)
                             if (a / i % 1 == 0 && b / i % 1 == 0)
                             {
-                                a = a / i;
-                                b = b / i;
+                                a /= i;
+                                b /= i;
                             }
                         break;
                     }
@@ -301,7 +301,7 @@ namespace Crystallography
                     string numStr = "";
                     while (i + 1 < str.Length && str[i + 1] >= '0' && str[i + 1] <= '9')//次に続く文字が数字の時
                         numStr += str[i++ + 1];
-                    int num = numStr == "" ? 1 : Convert.ToInt32(numStr);
+                    int num = numStr.Length == 0 ? 1 : Convert.ToInt32(numStr);
 
                     if (formula.ContainsKey(z))
                         formula[z] += num;
@@ -322,7 +322,7 @@ namespace Crystallography
                             string numStr = "";
                             while (j + 1 < str.Length && str[j + 1] >= '0' && str[j + 1] <= '9')// ")"のあとが数値だったら
                                 numStr += str[j++ + 1];
-                            int num = numStr == "" ? 1 : Convert.ToInt32(numStr);
+                            int num = numStr.Length == 0 ? 1 : Convert.ToInt32(numStr);
 
                             foreach (int n in temp.Keys)
                             {

@@ -760,7 +760,7 @@ namespace Crystallography
         /// <returns></returns>
         public static bool CheckIrreducible(int a, int b, int c)
         {
-            for (int n = 2; n <= new[] { a, b, c }.Max(); n++)
+            for (int n = 2; n <= new[] { Math.Abs(a), Math.Abs(b), Math.Abs(c) }.Max(); n++)
                 if (a % n == 0 && b % n == 0 && c % n == 0)
                     return false;
             return true;
@@ -854,7 +854,8 @@ namespace Crystallography
             for (int h = -hMax; h <= hMax; h++)
                 for (int k = -kMax; k <= kMax; k++)
                     for (int l = -lMax; l <= lMax; l++)
-                        if (Crystal.CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
+                 
+                        if (CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
                         {
                             vec = CalcHklVector(h, k, l);
                             vec = vec * GetLengthPlane(h, k, l) / vec.d;
@@ -1420,7 +1421,6 @@ namespace Crystallography
         #endregion
 
         #region \‘¢ˆöŽq‚ÌŒvŽZ
-
        
         [NonSerialized]
         [XmlIgnore]
@@ -1503,7 +1503,7 @@ namespace Crystallography
         public void SetPeakIntensity(WaveSource waveSource, WaveColor waveColor, double ramda, Profile whiteProfile)
         {
             #region
-            if (Atoms == null || Atoms.Length == 0 || Plane == null) return;
+            if (Atoms == null || Atoms.Length == 0 || Plane == null|| Plane.Count ==0) return;
 
             for (int i = 0; i < Plane.Count; i++)
             {
@@ -1528,7 +1528,6 @@ namespace Crystallography
                         int h = Convert.ToInt32(hkl[0]), k = Convert.ToInt32(hkl[1]), l = Convert.ToInt32(hkl[2]);
                         Plane[i].F[j] = GetStructureFactor(waveSource, Atoms, (h, k, l), 1 / d2 / 4.0);
                     }
-
 
                     Plane[i].F2[j] = Plane[i].F[j].MagnitudeSquared();
 
@@ -1556,7 +1555,7 @@ namespace Crystallography
                 for (int j = 0; j < s.Length; j++)
                     Plane[i].RawIntensity += Plane[i].eachIntensity[j];
             }
-
+           
             var max = Plane.Max(p => p.RawIntensity);
             for (int i = 0; i < Plane.Count; i++)
             {

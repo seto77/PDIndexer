@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Crystallography;
 
 namespace Crystallography.Controls
 {
@@ -34,6 +33,32 @@ namespace Crystallography.Controls
             }
         }
 
+        public FlowDirection Direction
+        {
+            set
+            {
+                direction = value;
+                if(direction == FlowDirection.LeftToRight)
+                {
+                    flowLayoutPanelWaveSource.FlowDirection = FlowDirection.TopDown;
+                    flowLayoutPanelWaveSource.Dock = DockStyle.Left;
+                }
+                else
+                {
+                    flowLayoutPanelWaveSource.FlowDirection = FlowDirection.LeftToRight;
+                    flowLayoutPanelWaveSource.Dock = DockStyle.Top;
+                }
+            }
+            get
+            {
+                if (direction == FlowDirection.LeftToRight)
+                    return FlowDirection.LeftToRight;
+                else
+                    return FlowDirection.TopDown;
+            }
+        }
+        public FlowDirection direction = FlowDirection.TopDown;
+
         public Font TextFont
         {
             set
@@ -41,7 +66,7 @@ namespace Crystallography.Controls
                 numericBoxEnergy.TextFont = value;
                 numericBoxWaveLength.TextFont = value;
             }
-            get { return numericBoxWaveLength.TextFont; }
+            get => numericBoxWaveLength.TextFont;
         }
 
         public bool showWaveSource = true;
@@ -75,10 +100,7 @@ namespace Crystallography.Controls
                 {
                 }
             }
-            get
-            {
-                return numericBoxWaveLength.Text;
-            }
+            get => numericBoxWaveLength.Text;
         }
 
         /// <summary>
@@ -178,14 +200,11 @@ namespace Crystallography.Controls
                 if (value > 0)
                     numericBoxEnergy.Value = value;
             }
-            get
-            {
-                return numericBoxEnergy.Value;
-            }
+            get => numericBoxEnergy.Value;
         }
 
 
-      
+
         /// <summary>
         /// 電子線加速電圧(kV)をテキスト形式で取得/設定
         /// </summary>
@@ -251,18 +270,20 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void comboBoxXRayElement_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (!radioButtonXray.Checked) return;
+
             if (comboBoxXRayElement.SelectedIndex == 0)//Customが選択されたとき
             {
                 comboBoxXrayLine.Visible = false;
                 comboBoxXRayElement.Width = 100;
-                flowLayoutPanelEnergy.Enabled = true;
+                numericBoxEnergy.Enabled = true;
                 numericBoxWaveLength.Enabled = true;
             }
             else
             {
                 comboBoxXRayElement.Width = 70;
                 comboBoxXrayLine.Visible = true;
-                flowLayoutPanelEnergy.Enabled = false;
+                numericBoxEnergy.Enabled = false;
 
                 numericBoxWaveLength.Enabled = false;
 
@@ -317,12 +338,13 @@ namespace Crystallography.Controls
             {
                 flowLayoutPanelElement.Visible = true;
                 numericBoxEnergy.FooterText = "keV";
+                comboBoxXRayElement_SelectedIndexChanged(sender, e);
             }
             else
             {
                 flowLayoutPanelElement.Visible = false;
-                flowLayoutPanelEnergy.Visible = true;
-                flowLayoutPanelEnergy.Enabled = true;
+                numericBoxEnergy.Visible = true;
+                numericBoxEnergy.Enabled = true;
                 numericBoxWaveLength.Enabled = true;
 
                 if (radioButtonElectron.Checked)

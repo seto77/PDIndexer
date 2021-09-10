@@ -10,6 +10,7 @@ using MessagePack.Resolvers;
 using MessagePack;
 using System.Threading;
 using System.Text;
+using System.Buffers;
 
 namespace Crystallography.Controls
 {
@@ -163,7 +164,7 @@ namespace Crystallography.Controls
                 {
                     int j = (int)Math.Ceiling(d - 1);
                     foreach (var denom in new[] { 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 16, 24 })
-                        for (int i = 1; i < denom && text == ""; i++)
+                        for (int i = 1; i < denom && text.Length == 0; i++)
                             if ((i == 1 || denom % i != 0) && Math.Abs(d - j - i / (double)denom) < threshold)
                                 text = $"{i + (denom * j)}/{denom}";
                 }
@@ -206,8 +207,9 @@ namespace Crystallography.Controls
 
         partial class DataTableCrystalDatabaseDataTable
         {
+
             static readonly MessagePackSerializerOptions msgOptions = StandardResolverAllowPrivate.Options.WithCompression(MessagePackCompression.Lz4BlockArray);
-            static byte[] serialize<T>(T c) => MessagePackSerializer.Serialize(c, msgOptions);
+            static byte[] serialize(Crystal2 c) => MessagePackSerializer.Serialize(c, msgOptions);
             static T deserialize<T>(object obj) => MessagePackSerializer.Deserialize<T>((byte[])obj, msgOptions);
 
 
@@ -268,7 +270,8 @@ namespace Crystallography.Controls
                 dr.Journal = Crystal2.GetFullJournal(c.jour);
                 dr.Elements = string.Join(' ', c.atoms.Select(a => a.AtomNo).Distinct().Select(b => b.ToString("000")));
 
-                var d = new float[8];
+                
+                var d = ArrayPool<float>.Shared.Rent(8);
                 if (c.d != null)
                     Array.Copy(c.d, d, c.d.Length);
                 dr.D1 = d[0] * 10;
@@ -279,6 +282,7 @@ namespace Crystallography.Controls
                 dr.D6 = d[5] * 10;
                 dr.D7 = d[6] * 10;
                 dr.D8 = d[7] * 10;
+                ArrayPool<float>.Shared.Return(d);
 
                 return dr;
             }
