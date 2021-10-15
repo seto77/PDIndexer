@@ -10,16 +10,29 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
     public partial class FormMacro : Form
     {
+        #region フィールド、プロパティ
         private const uint IMF_DUALFONT = 0x80;// //Font抑制の為の
         private const uint WM_USER = 0x400;////Font抑制の為の
         private const uint EM_SETLANGOPTIONS = (WM_USER + 120);//Font抑制の為の
         private const uint EM_GETLANGOPTIONS = (WM_USER + 121); //Font抑制の為の
+        //private Thread t;
+        private Task task;
+        private CancellationTokenSource _cancelSource;
+        public bool stepByStepMode;
+
+        private readonly dynamic obj;
+        private readonly ScriptEngine Engine;
+        private readonly ScriptScope Scope;
+        private readonly string ScopeName;
+
+        #endregion
 
         public string[] HelpItems
         {
@@ -47,11 +60,6 @@ namespace Crystallography.Controls
             }
         }
 
-        private readonly dynamic obj;
-        private readonly ScriptEngine Engine;
-        private readonly ScriptScope Scope;
-        private readonly string ScopeName;
-
         public FormMacro(ScriptEngine engine, object scopeObject)
         {
             InitializeComponent();
@@ -68,12 +76,14 @@ namespace Crystallography.Controls
             splitContainer2.SplitterDistance = splitContainer2.Width;
         }
 
+        private void FormMacro_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            e.Cancel = true;
+            this.Visible = false;
+        }
+
         [System.Runtime.InteropServices.DllImport("USER32.dll")]
-        private static extern uint SendMessage(
-            System.IntPtr hWnd,
-            uint msg,
-            uint wParam,
-            uint lParam);
+        private static extern uint SendMessage(System.IntPtr hWnd, uint msg, uint wParam, uint lParam);
 
         /// <summary>
         /// リッチエディットボックスのフォントが勝手に変わるのを抑制する
@@ -89,10 +99,14 @@ namespace Crystallography.Controls
 
         private IronPython.Runtime.Exceptions.TracebackDelegate OnTraceback(IronPython.Runtime.Exceptions.TraceBackFrame frame, string result, object payload)
         {
-            setDebugInfo(frame, result);
-            while (nextStepFlag == false)
+            if (stepByStepMode)
+                setDebugInfo(frame, result);
+
+            while (stepByStepMode && nextStepFlag == false)
             {
-                Application.DoEvents();
+                _cancelSource.Token.ThrowIfCancellationRequested();
+                try { Application.DoEvents(); }
+                catch { }
                 Thread.Sleep(50);
             }
             nextStepFlag = false;
@@ -108,6 +122,9 @@ namespace Crystallography.Controls
                 this.Invoke(new setDebugInfoCallBack(setDebugInfo), frame, result);
                 return;
             }
+            if (!stepByStepMode)
+                return;
+
             this.Focus();
             int i = (int)frame.f_lineno;
             dataGridViewDebug.Rows.Clear();
@@ -124,12 +141,12 @@ namespace Crystallography.Controls
                 {
                     try
                     {
-                        KeyValuePair<object, object> kv = (KeyValuePair<object, object>)o;
-                        string key = (string)kv.Key;
+                        var kv = (KeyValuePair<object, object>)o;
+                        var key = (string)kv.Key;
                         if (!(key.StartsWith("__") && key.EndsWith("__")) && key != ScopeName)
                         {
-                            string value = kv.Value.ToString();
-                            if (kv.Value is System.Int32[])
+                            var value = kv.Value.ToString();
+                            if (kv.Value is int[])
                             {
                                 var v = (int[])kv.Value;
                                 if (v.Length != 0)
@@ -156,29 +173,29 @@ namespace Crystallography.Controls
 
         private void buttonCancelStep_Click(object sender, EventArgs e)
         {
-            if (t != null && t.IsAlive)
-                t.Abort();
+            if (task != null && task.Status == TaskStatus.Running)
+                _cancelSource.Cancel(true);
         }
 
         private void buttonRunMacro_Click(object sender, EventArgs e)
         {
+            stepByStepMode = false;
+
             buttonCancelStep.Visible = true;
             buttonStepByStep.Visible = buttonRunMacro.Visible = false;
-            RunMacro(exRichTextBox.Text, false);
+            RunMacro(exRichTextBox.Text);
             buttonCancelStep.Visible = false;
             buttonStepByStep.Visible = buttonRunMacro.Visible = true;
         }
 
         private void buttonStepByStep_Click(object sender, EventArgs e)
         {
+            stepByStepMode = true;
+
             buttonCancelStep.Visible = buttonNextStep.Visible = true;
             buttonStepByStep.Visible = buttonRunMacro.Visible = false;
-            try
-            {
-                RunMacro(exRichTextBox.Text, true);
-            }
-            catch (Exception ex)
-            { MessageBox.Show(ex.Message); }
+            try { RunMacro(exRichTextBox.Text); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
             buttonCancelStep.Visible = buttonNextStep.Visible = false;
             buttonStepByStep.Visible = buttonRunMacro.Visible = true;
         }
@@ -189,91 +206,85 @@ namespace Crystallography.Controls
                 listBoxMacro.SelectedIndex = listBoxMacro.Items.IndexOf(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName));
         }
 
-        public void RunMacroName(string macroName, bool debug = false)
+        public void RunMacroName(string macroName, bool _stepByStepMode = false)
         {
+            stepByStepMode = _stepByStepMode;
             if (!listBoxMacro.Items.Cast<macro>().Any(m => m.Name == macroName))
             {
                 MessageBox.Show("The macro name is not found");
                 return;
             }
-            RunMacro(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName).Body, debug);
+            RunMacro(listBoxMacro.Items.Cast<macro>().First(m => m.Name == macroName).Body);
         }
 
-        public void RunMacro(bool debug = false)
-        {
-            RunMacro(exRichTextBox.Text, debug);
-        }
+        public void RunMacro() => RunMacro(exRichTextBox.Text);
 
-        private Thread t;
-
-        public void RunMacro(string srcCode, bool debug = false)
+        public void RunMacro(string srcCode)
         {
             try
             {
-                if (debug)
-                {
+                var a = Engine.CreateScriptSourceFromString(srcCode).Compile();
+
+                dataGridViewDebug.Rows.Clear();
+
+                if (stepByStepMode)
                     splitContainer2.SplitterDistance = splitContainer2.Width - 220;
-                    IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
-                }
+                IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
 
                 void thread()
                 {
-                    try
-                    {
-                        if (debug)
-                            IronPython.Hosting.Python.SetTrace(Engine, this.OnTraceback);
-                        Engine.CreateScriptSourceFromString(srcCode).Execute(Scope);
-                    }
+                    try { Engine.CreateScriptSourceFromString(srcCode).Execute(Scope); }
                     catch { }
                 }
 
-                t = new Thread(new ThreadStart(thread));
-                t.Start();
-                while (t.IsAlive)
-                {
-                    Application.DoEvents();
-                    Thread.Sleep(50);
-                }
+                _cancelSource = new CancellationTokenSource();
+                task = new Task(thread, _cancelSource.Token);
+
+                task.RunSynchronously();
             }
-            catch (Microsoft.Scripting.ArgumentTypeException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Microsoft.Scripting.SyntaxErrorException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (MissingMemberException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception)
-            {
-                //MessageBox.Show(ex.Message);
-            }
+            catch (Microsoft.Scripting.ArgumentTypeException ex) { MessageBox.Show(ex.Message); }
+            catch (Microsoft.Scripting.SyntaxErrorException ex) { MessageBox.Show("Syntax error in line " +ex.Line.ToString()); }
+            catch (MissingMemberException ex) { MessageBox.Show(ex.Message); }
+            catch (Exception e) { MessageBox.Show(e.Message); }
             splitContainer2.SplitterDistance = splitContainer2.Width;
         }
 
-        private void FormMacro_FormClosing(object sender, FormClosingEventArgs e)
+
+        #region マクロファイルを読み込み・書き込み
+        private void FormMacro_DragDrop(object sender, DragEventArgs e)
         {
-            e.Cancel = true;
-            this.Visible = false;
+            string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            if (fileName.Length == 1 && fileName[0].EndsWith(".mcr"))
+                readMacroFile(fileName[0]);
+        }
+
+        private void FormMacro_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
+            else
+
+                e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
         }
 
         private void readToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var dlg = new OpenFileDialog { Filter = "*.mcr|*.mcr" };
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                exRichTextBox.Text = "";
-                var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8"));
-                string tempstr;
-                while ((tempstr = reader.ReadLine()) != null)
-                    exRichTextBox.AppendText(tempstr + "\n");
-                textBoxMacroName.Text = Path.GetFileNameWithoutExtension(dlg.FileName);
-                reader.Close();
-                buttonAdd_Click(sender, e);
-            }
+            if (dlg.ShowDialog() == DialogResult.OK)
+                readMacroFile(dlg.FileName);
+        }
+
+        private void readMacroFile (string filename)
+        {
+            exRichTextBox.Text = "";
+            var reader = new StreamReader(filename, Encoding.GetEncoding("UTF-8"));
+            string tempstr;
+            while ((tempstr = reader.ReadLine()) != null)
+                exRichTextBox.AppendText(tempstr + "\n");
+            textBoxMacroName.Text = Path.GetFileNameWithoutExtension(filename);
+            reader.Close();
+            buttonAddMacro_Click(new object(), new EventArgs());
+
         }
 
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -291,6 +302,7 @@ namespace Crystallography.Controls
                 writer.Close();
             }
         }
+        #endregion
 
         private void dataGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -314,7 +326,8 @@ namespace Crystallography.Controls
             obj.ReadFromMenuItem();
         }
 
-        private void buttonAdd_Click(object sender, EventArgs e)
+        #region リストボックス操作
+        private void buttonAddMacro_Click(object sender, EventArgs e)
         {
             var m = new macro(textBoxMacroName.Text, exRichTextBox.Text);
             var items = listBoxMacro.Items;
@@ -336,12 +349,25 @@ namespace Crystallography.Controls
             }
         }
 
-        private void buttonChange_Click(object sender, EventArgs e)
+        private void buttonChangeMacro_Click(object sender, EventArgs e)
         {
             if (listBoxMacro.SelectedIndex >= 0)
             {
                 listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
                 setMenuItemOfMain();
+            }
+        }
+
+        private void buttonDeleteMacro_Click(object sender, EventArgs e)
+        {
+            int n = listBoxMacro.SelectedIndex;
+            if (n >= 0)
+            {
+                listBoxMacro.Items.RemoveAt(n);
+                if (n < listBoxMacro.Items.Count)
+                    listBoxMacro.SelectedIndex = n;
+                else if (n - 1 < listBoxMacro.Items.Count)
+                    listBoxMacro.SelectedIndex = n - 1;
             }
         }
 
@@ -385,6 +411,25 @@ namespace Crystallography.Controls
             listBoxMacro.SelectedIndex = n + 1;
             setMenuItemOfMain();
         }
+
+        #endregion
+
+        #region KeyDownイベント
+        private void FormMacro_KeyDown(object sender, KeyEventArgs e)
+        {
+            //CTRL+S 上書き
+            if (e.Modifiers == Keys.Control & e.KeyCode == Keys.S)
+            {
+                if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((macro)listBoxMacro.SelectedItem).Name)
+                {
+                    listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
+                }
+            }
+            //F10 次のステップに進む
+            if (e.KeyCode == Keys.F10 && buttonNextStep.Visible)
+                buttonNextStep_Click(sender, new EventArgs());
+        }
+        #endregion
 
         private void setMenuItemOfMain()
         {
@@ -454,44 +499,10 @@ namespace Crystallography.Controls
                 Body = body;
             }
 
-            public override string ToString()
-            {
-                return Name;
-            }
+            public override string ToString() => Name;
         }
 
-        private void buttonDeleteProfile_Click(object sender, EventArgs e)
-        {
-            int n = listBoxMacro.SelectedIndex;
-            if (n >= 0)
-            {
-                listBoxMacro.Items.RemoveAt(n);
-                if (n < listBoxMacro.Items.Count)
-                    listBoxMacro.SelectedIndex = n;
-                else if (n - 1 < listBoxMacro.Items.Count)
-                    listBoxMacro.SelectedIndex = n - 1;
-            }
-        }
-
-        private void FormMacro_KeyPress(object sender, KeyPressEventArgs e)
-        {
-        }
-
-        private void FormMacro_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Modifiers == Keys.Control & e.KeyCode == Keys.S)
-            {
-                if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((macro)listBoxMacro.SelectedItem).Name)
-                {
-                    listBoxMacro.Items[listBoxMacro.SelectedIndex] = new macro(textBoxMacroName.Text, exRichTextBox.Text);
-                }
-            }
-            if (e.KeyCode == Keys.F10 && buttonNextStep.Visible)
-                buttonNextStep_Click(sender, new EventArgs());
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-        }
+       
+    
     }
 }

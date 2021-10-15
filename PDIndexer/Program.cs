@@ -11,6 +11,7 @@ namespace PDIndexer
         [STAThread]
         private static void Main()
         {
+            Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
             Application.Run(new FormMain());
