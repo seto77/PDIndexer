@@ -1606,7 +1606,7 @@
     <value>2</value>
   </data>
   <data name="tableLayoutPanel2.ColumnCount" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>12</value>
   </data>
   <data name="numericBoxUpperX.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1615,7 +1615,7 @@
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxUpperX.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 0</value>
+    <value>108, 0</value>
   </data>
   <data name="numericBoxUpperX.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1627,7 +1627,7 @@
     <value>1, 25</value>
   </data>
   <data name="numericBoxUpperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>73, 27</value>
   </data>
   <data name="numericBoxUpperX.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -1662,7 +1662,7 @@ You can set the limit value in right-click menu.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxUpperY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>367, 0</value>
+    <value>331, 0</value>
   </data>
   <data name="numericBoxUpperY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1677,7 +1677,7 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxUpperY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>73, 27</value>
   </data>
   <data name="numericBoxUpperY.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1721,7 +1721,7 @@ You can set the limit value in right-click menu.</value>
     <value>1, 25</value>
   </data>
   <data name="numericBoxLowerX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>73, 27</value>
   </data>
   <data name="numericBoxLowerX.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -1746,42 +1746,6 @@ You can set the limit value in right-click menu.</value>
   <data name="&gt;&gt;numericBoxLowerX.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="labelIntensity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Left, Right</value>
-  </data>
-  <data name="labelIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
-  </data>
-  <data name="labelIntensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="labelIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 0</value>
-  </data>
-  <data name="labelIntensity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 0, 0, 0</value>
-  </data>
-  <data name="labelIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 25</value>
-  </data>
-  <data name="labelIntensity.TabIndex" type="System.Int32, mscorlib">
-    <value>28</value>
-  </data>
-  <data name="labelIntensity.Text" xml:space="preserve">
-    <value>Int.:</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.Name" xml:space="preserve">
-    <value>labelIntensity</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.Parent" xml:space="preserve">
-    <value>tableLayoutPanel2</value>
-  </data>
-  <data name="&gt;&gt;labelIntensity.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
   <data name="numericBoxLowerY.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -1792,7 +1756,7 @@ You can set the limit value in right-click menu.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="numericBoxLowerY.Location" type="System.Drawing.Point, System.Drawing">
-    <value>270, 0</value>
+    <value>246, 0</value>
   </data>
   <data name="numericBoxLowerY.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1807,7 +1771,7 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLowerY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>85, 27</value>
+    <value>73, 27</value>
   </data>
   <data name="numericBoxLowerY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
@@ -1830,7 +1794,7 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>3</value>
   </data>
   <data name="labelD.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1842,13 +1806,13 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="labelD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>605, 0</value>
+    <value>535, 0</value>
   </data>
   <data name="labelD.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
   </data>
   <data name="labelD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 25</value>
+    <value>103, 25</value>
   </data>
   <data name="labelD.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1866,7 +1830,7 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelD.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="labelTwoTheta.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
@@ -1878,13 +1842,13 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="labelTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>455, 0</value>
+    <value>407, 0</value>
   </data>
   <data name="labelTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>5, 0, 0, 0</value>
   </data>
   <data name="labelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>144, 25</value>
+    <value>122, 25</value>
   </data>
   <data name="labelTwoTheta.TabIndex" type="System.Int32, mscorlib">
     <value>28</value>
@@ -1902,7 +1866,7 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelTwoTheta.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>5</value>
   </data>
   <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1911,7 +1875,7 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>355, 2</value>
+    <value>319, 2</value>
   </data>
   <data name="label11.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1935,7 +1899,7 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>6</value>
   </data>
   <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
@@ -1944,7 +1908,7 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="label10.Location" type="System.Drawing.Point, System.Drawing">
-    <value>108, 2</value>
+    <value>96, 2</value>
   </data>
   <data name="label10.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1968,7 +1932,7 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
-    <value>8</value>
+    <value>7</value>
   </data>
   <data name="labelX.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2004,7 +1968,7 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;labelX.ZOrder" xml:space="preserve">
-    <value>9</value>
+    <value>8</value>
   </data>
   <data name="label9.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -2016,7 +1980,7 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>215, 2</value>
+    <value>191, 2</value>
   </data>
   <data name="label9.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>10, 2, 0, 0</value>
@@ -2040,7 +2004,79 @@ You can set the limit value in right-click menu.</value>
     <value>tableLayoutPanel2</value>
   </data>
   <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="labelIntensity.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="labelIntensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>753, 0</value>
+  </data>
+  <data name="labelIntensity.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="labelIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>106, 25</value>
+  </data>
+  <data name="labelIntensity.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="labelIntensity.Text" xml:space="preserve">
+    <value>Int.:</value>
+  </data>
+  <data name="&gt;&gt;labelIntensity.Name" xml:space="preserve">
+    <value>labelIntensity</value>
+  </data>
+  <data name="&gt;&gt;labelIntensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelIntensity.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;labelIntensity.ZOrder" xml:space="preserve">
     <value>10</value>
+  </data>
+  <data name="labelQ.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Left, Right</value>
+  </data>
+  <data name="labelQ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="labelQ.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="labelQ.Location" type="System.Drawing.Point, System.Drawing">
+    <value>644, 0</value>
+  </data>
+  <data name="labelQ.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>5, 0, 0, 0</value>
+  </data>
+  <data name="labelQ.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 25</value>
+  </data>
+  <data name="labelQ.TabIndex" type="System.Int32, mscorlib">
+    <value>28</value>
+  </data>
+  <data name="labelQ.Text" xml:space="preserve">
+    <value>q:</value>
+  </data>
+  <data name="&gt;&gt;labelQ.Name" xml:space="preserve">
+    <value>labelQ</value>
+  </data>
+  <data name="&gt;&gt;labelQ.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;labelQ.Parent" xml:space="preserve">
+    <value>tableLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;labelQ.ZOrder" xml:space="preserve">
+    <value>11</value>
   </data>
   <data name="tableLayoutPanel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -2070,7 +2106,7 @@ You can set the limit value in right-click menu.</value>
     <value>0</value>
   </data>
   <data name="tableLayoutPanel2.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
-    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,11.42205,AutoSize,0,Percent,11.42205,AutoSize,0,Percent,11.42205,AutoSize,0,Percent,11.42205,Percent,20.04568,Percent,17.13306,Percent,17.13306" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
+    <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="numericBoxUpperX" Row="0" RowSpan="1" Column="3" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxUpperY" Row="0" RowSpan="1" Column="7" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerX" Row="0" RowSpan="1" Column="1" ColumnSpan="1" /&gt;&lt;Control Name="numericBoxLowerY" Row="0" RowSpan="1" Column="5" ColumnSpan="1" /&gt;&lt;Control Name="labelD" Row="0" RowSpan="1" Column="9" ColumnSpan="1" /&gt;&lt;Control Name="labelTwoTheta" Row="0" RowSpan="1" Column="8" ColumnSpan="1" /&gt;&lt;Control Name="label11" Row="0" RowSpan="1" Column="6" ColumnSpan="1" /&gt;&lt;Control Name="label10" Row="0" RowSpan="1" Column="2" ColumnSpan="1" /&gt;&lt;Control Name="labelX" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="label9" Row="0" RowSpan="1" Column="4" ColumnSpan="1" /&gt;&lt;Control Name="labelIntensity" Row="0" RowSpan="1" Column="11" ColumnSpan="1" /&gt;&lt;Control Name="labelQ" Row="0" RowSpan="1" Column="10" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="AutoSize,0,Percent,9.751601,AutoSize,0,Percent,9.751601,AutoSize,0,Percent,9.751601,AutoSize,0,Percent,9.751601,Percent,17.114044,Percent,14.627389,Percent,14.627389,Percent,14.624775" /&gt;&lt;Rows Styles="Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Top</value>
@@ -3150,7 +3186,7 @@ You can set the limit value in right-click menu.</value>
   <data name="englishToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        ugAAALoBTx5ghQAAAUpJREFUOE9jYAhq+Y8Lg8A1Bk04BgFs6uAYpMCmeiFWSf+OVf+fxlcSZRhYDkxC
+        twAAALcBRi4NFgAAAUpJREFUOE9jYAhq+Y8Lg8A1Bk04BgFs6uAYpMCmeiFWSf+OVf+fxlcSZRhYDkxC
         AboCYgwDOeT7+WtgeQaYIhjQzp8JV0jIMBCAyf39+u0/w00RKzDn/fx1YEkYwGeYf/uq/z/vPUYRBwGG
         ltWH///79w9DAgSSpmzGMAwEYPxfD59CRSAAHpsgcFvBBazoTddcMB8E0A0Dsxm1wGwYUMmaCvE6lI8T
         YHMZLgCOAGph6hr2af2e//jwA8cEuGJs8sgYJTshg+vs+v8f2MfhjU0QQMk9IAIkAAN/v/9AUYwrAp5E
@@ -3168,7 +3204,7 @@ You can set the limit value in right-click menu.</value>
   <data name="japaneseToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABMAAAASCAYAAAC5DOVpAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        ugAAALoBTx5ghQAAAG5JREFUOE/tjLsNwCAMRFNQMAyDMQMjMDSOIxHJsc9YSOmSJ11zv4Ne5D/bZ32W
+        twAAALcBRi4NFgAAAG5JREFUOE/tjLsNwCAMRFNQMAyDMQMjMDSOIxHJsc9YSOmSJ11zv4Ne5D/bZ32W
         Eje4IrXAT/WJlANOarUHWgDHVUMkgOOqIRLAcdUQCYDdMexYqvdZfMKJQ2v25FLOs2DhNKCU8OQmPtvg
         E2dEJ41V0r+pZPOtAAAAAElFTkSuQmCC
 </value>

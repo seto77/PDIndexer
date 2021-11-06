@@ -180,7 +180,6 @@ namespace PDIndexer
             this.numericBoxUpperX = new Crystallography.Controls.NumericBoxWithMenu();
             this.numericBoxUpperY = new Crystallography.Controls.NumericBox();
             this.numericBoxLowerX = new Crystallography.Controls.NumericBoxWithMenu();
-            this.labelIntensity = new System.Windows.Forms.Label();
             this.numericBoxLowerY = new Crystallography.Controls.NumericBox();
             this.labelD = new System.Windows.Forms.Label();
             this.labelTwoTheta = new System.Windows.Forms.Label();
@@ -188,6 +187,8 @@ namespace PDIndexer
             this.label10 = new System.Windows.Forms.Label();
             this.labelX = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.labelIntensity = new System.Windows.Forms.Label();
+            this.labelQ = new System.Windows.Forms.Label();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewProfiles = new System.Windows.Forms.DataGridView();
@@ -1097,7 +1098,6 @@ namespace PDIndexer
             this.tableLayoutPanel2.Controls.Add(this.numericBoxUpperX, 3, 0);
             this.tableLayoutPanel2.Controls.Add(this.numericBoxUpperY, 7, 0);
             this.tableLayoutPanel2.Controls.Add(this.numericBoxLowerX, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.labelIntensity, 10, 0);
             this.tableLayoutPanel2.Controls.Add(this.numericBoxLowerY, 5, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelD, 9, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelTwoTheta, 8, 0);
@@ -1105,6 +1105,8 @@ namespace PDIndexer
             this.tableLayoutPanel2.Controls.Add(this.label10, 2, 0);
             this.tableLayoutPanel2.Controls.Add(this.labelX, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.label9, 4, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelIntensity, 11, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelQ, 10, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             // 
             // numericBoxUpperX
@@ -1172,11 +1174,6 @@ namespace PDIndexer
             this.numericBoxLowerX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
             this.numericBoxLowerX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);
             // 
-            // labelIntensity
-            // 
-            resources.ApplyResources(this.labelIntensity, "labelIntensity");
-            this.labelIntensity.Name = "labelIntensity";
-            // 
             // numericBoxLowerY
             // 
             resources.ApplyResources(this.numericBoxLowerY, "numericBoxLowerY");
@@ -1225,6 +1222,16 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.label9, "label9");
             this.label9.Name = "label9";
+            // 
+            // labelIntensity
+            // 
+            resources.ApplyResources(this.labelIntensity, "labelIntensity");
+            this.labelIntensity.Name = "labelIntensity";
+            // 
+            // labelQ
+            // 
+            resources.ApplyResources(this.labelQ, "labelQ");
+            this.labelQ.Name = "labelQ";
             // 
             // splitContainer2
             // 
@@ -4174,5 +4181,6 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn113;
         private DataGridViewImageColumn dataGridViewImageColumn89;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn114;
+        private Label labelQ;
     }
 }

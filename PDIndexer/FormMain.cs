@@ -2216,17 +2216,18 @@ namespace PDIndexer
             else if (AxisMode == HorizontalAxis.WaveNumber)
                 labelTwoTheta.Text += " /Å";
 
-            if (AxisMode == HorizontalAxis.Angle)
-                labelD.Text = "d: " + (10 * WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI)).ToString("g5") + " Å";
-            else if (AxisMode == HorizontalAxis.EnergyXray)
-                labelD.Text = "d: " + (10 * HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle)).ToString("g5") + " Å";
-            else if (AxisMode == HorizontalAxis.d)
-                labelD.Text = "";//"d: " + pt.X.ToString("g6");
-            else if (AxisMode == HorizontalAxis.NeutronTOF)
-                labelD.Text = "d: " + (10 * HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength)).ToString("g5") + " Å";
-            else if(AxisMode == HorizontalAxis.WaveNumber)
-                labelD.Text = "d: " + HorizontalAxisConverter.WaveNumberToD(pt.X).ToString("g5") + " Å";
-                
+            var d = AxisMode switch
+            {
+                HorizontalAxis.Angle => 10 * WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI),
+                HorizontalAxis.EnergyXray => 10 * HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle),
+                HorizontalAxis.d => pt.X,
+                HorizontalAxis.NeutronTOF => 10 * HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength),
+                HorizontalAxis.WaveNumber => HorizontalAxisConverter.WaveNumberToD(pt.X),
+                _ => pt.X
+            };
+
+            labelD.Text = $"d: { d:g5} Å";
+            labelQ.Text = $"q: { 2 * Math.PI / d:g5} Å⁻¹";
 
             labelIntensity.Text = "Int: " + pt.Y.ToString("g6");
 

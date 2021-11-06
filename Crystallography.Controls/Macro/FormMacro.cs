@@ -218,7 +218,11 @@ namespace Crystallography.Controls
         }
 
         public void RunMacro() => RunMacro(exRichTextBox.Text);
-
+        public void RunMacro(bool _stepByStepMode) 
+        {
+            stepByStepMode = _stepByStepMode;
+            RunMacro(exRichTextBox.Text);
+        }
         public void RunMacro(string srcCode)
         {
             try
