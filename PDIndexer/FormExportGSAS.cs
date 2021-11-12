@@ -139,14 +139,12 @@ namespace PDIndexer
  
         private void buttonOpen_Click(object sender, EventArgs e)
         {
-            using (var dlg = new OpenFileDialog())
-            {
-                dlg.Filter = "*.exp|*.exp";
-                if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    textBoxExpFilePath.Text = dlg.FileName;
-                else
-                    textBoxExpFilePath.Text = "";
-            }
+            using var dlg = new OpenFileDialog();
+            dlg.Filter = "*.exp|*.exp";
+            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                textBoxExpFilePath.Text = dlg.FileName;
+            else
+                textBoxExpFilePath.Text = "";
         }
 
         private void textBoxExpFilePath_TextChanged(object sender, EventArgs e)

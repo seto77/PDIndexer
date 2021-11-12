@@ -400,7 +400,7 @@ namespace PDIndexer
                 if (dp.Profile.Pt.Count > 2)
                 {
                     double max = 1 / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
-                    double min = 1 / (dp.Profile.Pt[dp.Profile.Pt.Count - 1].X - dp.Profile.Pt[0].X);
+                    double min = 1 / (dp.Profile.Pt[^1].X - dp.Profile.Pt[0].X);
                     int decimalPlaces = min > 1 ? 0 : -(int)Math.Log10(min) + 1;
 
                     if (!double.IsInfinity(max) && !double.IsInfinity(min))
@@ -572,9 +572,9 @@ namespace PDIndexer
                 for (int i = 0; i < listBoxTwoProfiles1.SelectedIndices.Count; i++)
                 {
                     dp[i] = (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndices[i]][1];
-                    if (max < dp[i].Profile.Pt[dp[i].Profile.Pt.Count - 1].X - dp[i].Profile.Pt[0].X)
+                    if (max < dp[i].Profile.Pt[^1].X - dp[i].Profile.Pt[0].X)
                     {
-                        max = dp[i].Profile.Pt[dp[i].Profile.Pt.Count - 1].X - dp[i].Profile.Pt[0].X;
+                        max = dp[i].Profile.Pt[^1].X - dp[i].Profile.Pt[0].X;
                         baseIndex = i;
                     }
                 }

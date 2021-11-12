@@ -27,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.405(2021/11/12) Target framework is changed to .Net 6.0." +
             "\r\n ver4.404(2021/10/15) Fixed minor bugs on the Macro function." +
             "\r\n ver4.403(2021/07/28) Fixed a minor bug when loading CSV file. Renewed AMCSD database." +
             "\r\n ver4.402(2021/07/09) Fixed a minor bug when fitting peaks." +
