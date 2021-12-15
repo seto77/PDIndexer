@@ -63,4 +63,8 @@
     </None>
   </ItemGroup>
 
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="AssemblyVersionUpdate" />
+  </Target>
+
 </Project>

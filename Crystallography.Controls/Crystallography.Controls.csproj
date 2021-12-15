@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.11.6.2255</AssemblyVersion>
-    <FileVersion>2021.11.6.2255</FileVersion>
+    <AssemblyVersion>2021.12.15.1237</AssemblyVersion>
+    <FileVersion>2021.12.15.1237</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -23,5 +23,9 @@
   <ItemGroup>
     <ProjectReference Include="..\Crystallography\Crystallography.csproj" />
   </ItemGroup>
+
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+    <Exec Command="AssemblyVersionUpdate" />
+  </Target>
 
 </Project>
