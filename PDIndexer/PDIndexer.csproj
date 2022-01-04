@@ -1,11 +1,11 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2021.11.6.2030</AssemblyVersion>
-    <FileVersion>2021.11.6.2030</FileVersion>
+    <AssemblyVersion>2021.12.15.1746</AssemblyVersion>
+    <FileVersion>2021.12.15.1746</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 

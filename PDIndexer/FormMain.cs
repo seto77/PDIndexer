@@ -1327,9 +1327,7 @@ public partial class FormMain : Form
                                 if (index < 0) index = 0;
                                 if (negative) index = 65535 - index;
 
-                                p[0] = scaleB[index];
-                                p[1] = scaleG[index];
-                                p[2] = scaleR[index];
+                                (p[0], p[1], p[2]) = scale[index];
                             }
                             p += 3;
                         }
@@ -4040,27 +4038,23 @@ public partial class FormMain : Form
     private void toolStripComboBoxScale2_SelectedIndexChanged(object sender, EventArgs e) => setScale();
     private void toolStripComboBoxGradient_SelectedIndexChanged(object sender, EventArgs e) => setScale();
 
-    private byte[] scaleR, scaleG, scaleB;
+    private (byte R, byte G, byte B)[] scale;
     private void setScale()
     {
         //スケールをセット
         if (comboBoxScale1.SelectedIndex == 0)//ログスケール
-            if (comboBoxScale2.SelectedIndex == 0)//グレー
-                scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLog;
-            else
-            {
-                scaleR = PseudoBitmap.BrightnessScaleLogColorR;
-                scaleG = PseudoBitmap.BrightnessScaleLogColorG;
-                scaleB = PseudoBitmap.BrightnessScaleLogColorB;
-            }
-        else//リニア
-            if (comboBoxScale2.SelectedIndex == 0)//グレー
-            scaleR = scaleG = scaleB = PseudoBitmap.BrightnessScaleLiner;
-        else//color
         {
-            scaleR = PseudoBitmap.BrightnessScaleLinerColorR;
-            scaleG = PseudoBitmap.BrightnessScaleLinerColorG;
-            scaleB = PseudoBitmap.BrightnessScaleLinerColorB;
+            if (comboBoxScale2.SelectedIndex == 0)//グレー
+                scale = PseudoBitmap.ColorScaleGrayLog;
+            else
+                scale = PseudoBitmap.ColorScaleColdWarmLog;
+        }
+        else//リニア
+        {
+            if (comboBoxScale2.SelectedIndex == 0)//グレー
+                scale = PseudoBitmap.ColorScaleGrayLiner;
+            else//color
+                scale = PseudoBitmap.ColorScaleColdWarmLiner;
         }
 
         Draw();
