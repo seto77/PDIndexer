@@ -3638,9 +3638,9 @@ public partial class FormMain : Form
         try
         {
             if (japaneseToolStripMenuItem.Checked)
-                Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/ja/PDIndexerHelp.html");
+                Process.Start("https://raw.githubusercontent.com/seto77/PDIndexer/master/PDIndexer/doc/PDIndexerManual(ja).pdf");
             else
-                Process.Start("http://pmsl.planet.sci.kobe-u.ac.jp/~seto/software/PDIndexer/en/PDIndexerHelp.html");
+                Process.Start("https://raw.githubusercontent.com/seto77/PDIndexer/master/PDIndexer/doc/PDIndexerManual(en).pdf");
 
         }
         catch { }

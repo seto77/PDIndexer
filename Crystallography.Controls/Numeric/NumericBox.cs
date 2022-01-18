@@ -273,9 +273,9 @@ namespace Crystallography.Controls
 
                     if (RestrictLimitValue)
                     {
-                        if (Maximum <= value)
+                        if (Maximum < value)
                             value = Maximum;
-                        if (Minimum >= value)
+                        if (Minimum > value)
                             value = Minimum;
                     }
                     this.numericalValue = value;
