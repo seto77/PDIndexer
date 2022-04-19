@@ -1126,7 +1126,7 @@ namespace PDIndexer
             this.numericBoxUpperX.SmartIncrement = true;
             this.numericBoxUpperX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxUpperX.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxUpperX, resources.GetString("numericBoxUpperX.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxUpperX, resources.GetString("numericBoxUpperX.ToolTip"));
             this.numericBoxUpperX.Value = 30D;
             this.numericBoxUpperX.WordWrap = false;
             this.numericBoxUpperX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
@@ -1169,7 +1169,7 @@ namespace PDIndexer
             this.numericBoxLowerX.SmartIncrement = true;
             this.numericBoxLowerX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxLowerX.ThonsandsSeparator = true;
-            this.toolTip.SetToolTip(this.numericBoxLowerX, resources.GetString("numericBoxLowerX.ToolTip1"));
+            this.toolTip.SetToolTip(this.numericBoxLowerX, resources.GetString("numericBoxLowerX.ToolTip"));
             this.numericBoxLowerX.WordWrap = false;
             this.numericBoxLowerX.LimitChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxUpperX_LimitChanged);
             this.numericBoxLowerX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBox_ValueChanged);

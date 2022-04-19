@@ -2866,7 +2866,7 @@ public partial class FormMain : Form
                 return;
             }
         }
-        //pdi,ras, nxs 形式ではないとき. csvは通常の場合はこちらに入ってくる
+        //pdi,ras, csv, nxs 形式ではないとき. csvは通常の場合はこちらに入ってくる
         if (ext != "pdi" && ext != "ras" && ext != "nxs")
         {
             var strList = new List<string>();
@@ -2957,9 +2957,12 @@ public partial class FormMain : Form
                 formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
                 formDataConverter.ExposureTime = getDouble(0x05F4);
 
-                formDataConverter.EGC[0][0] = getDouble(0x59A);
-                formDataConverter.EGC[0][1] = getDouble(0x5A2);
-                formDataConverter.EGC[0][2] = getDouble(0x5AA);
+                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } };
+                egc[0][0] = getDouble(0x59A);
+                egc[0][1] = getDouble(0x5A2);
+                egc[0][2] = getDouble(0x5AA);
+                formDataConverter.EGC = egc;
+
                 formDataConverter.VisibleEDXSetting = true;
 
                 int length = getInt16(0x814);
@@ -2991,9 +2994,10 @@ public partial class FormMain : Form
                 formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ', true)[1]);
 
                 formDataConverter.EDXDetectorNumber = 1;
-                formDataConverter.EGC[0][0] = Convert.ToDouble(strList[^1].Split(',', true)[0]);
-                formDataConverter.EGC[0][1] = Convert.ToDouble(strList[^1].Split(',', true)[1]);
-                formDataConverter.EGC[0][2] = 0;
+                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } };
+                egc[0][0] = Convert.ToDouble(strList[^1].Split(',', true)[0]);
+                egc[0][1] = Convert.ToDouble(strList[^1].Split(',', true)[1]);
+                formDataConverter.EGC = egc;
 
                 if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                 {
@@ -3022,21 +3026,22 @@ public partial class FormMain : Form
                 formDataConverter.SetProperty(FileProperties[(int)FileType.NPD]);
 
                 formDataConverter.EDXDetectorNumber = 1;
-                formDataConverter.EGC[0][0] = formDataConverter.EGC[0][1] = formDataConverter.EGC[0][2] = 0;
 
+                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } }; 
                 for (int i = 0; i < strList.Count || i < 25; i++)
                 {
                     if (strList[i].StartsWith("EGC0"))
-                        formDataConverter.EGC[0][0] = strList[i].Split(',', true)[1].ToDouble();
+                        egc[0][0] = strList[i].Split(',', true)[1].ToDouble();
                     if (strList[i].StartsWith("EGC1"))
-                        formDataConverter.EGC[0][1] = strList[i].Split(',', true)[1].ToDouble();
+                        egc[0][1] = strList[i].Split(',', true)[1].ToDouble();
                     if (strList[i].StartsWith("EGC2"))
-                        formDataConverter.EGC[0][2] = strList[i].Split(',', true)[1].ToDouble();
+                        egc[0][2] = strList[i].Split(',', true)[1].ToDouble();
                     if (strList[i].StartsWith("2Theta"))
                         formDataConverter.TakeoffAngleText = strList[i].Split(',', true)[1];
                     if (strList[i].StartsWith("Live time"))
                         formDataConverter.ExposureTime = strList[i].Split(',', true)[1].ToDouble();
                 }
+                formDataConverter.EGC = egc;
 
                 if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
                 {
@@ -3637,11 +3642,10 @@ public partial class FormMain : Form
     {
         try
         {
-            if (japaneseToolStripMenuItem.Checked)
-                Process.Start("https://raw.githubusercontent.com/seto77/PDIndexer/master/PDIndexer/doc/PDIndexerManual(ja).pdf");
-            else
-                Process.Start("https://raw.githubusercontent.com/seto77/PDIndexer/master/PDIndexer/doc/PDIndexerManual(en).pdf");
-
+            var fn = "\\doc\\PDIndexerManual(" + (japaneseToolStripMenuItem.Checked ? "ja" : "en") + ").pdf";
+            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var f = new FormPDF(appPath + fn) { Text = "PDIndexer manual" };
+            f.Show();
         }
         catch { }
     }

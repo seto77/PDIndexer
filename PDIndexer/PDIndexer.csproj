@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.01.18.1933</AssemblyVersion>
-    <FileVersion>2022.01.18.1933</FileVersion>
+    <AssemblyVersion>2022.04.19.1522</AssemblyVersion>
+    <FileVersion>2022.04.19.1522</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -57,6 +57,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="doc\PDIndexerAlgorithm.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="doc\PDIndexerManual%28ja%29.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
