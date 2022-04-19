@@ -49,7 +49,6 @@ namespace PDIndexer
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxReadMe = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.linkLabelHomePage = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
@@ -92,11 +91,6 @@ namespace PDIndexer
             this.textBoxReadMe.Name = "textBoxReadMe";
             this.textBoxReadMe.ReadOnly = true;
             // 
-            // label7
-            // 
-            resources.ApplyResources(this.label7, "label7");
-            this.label7.Name = "label7";
-            // 
             // label4
             // 
             resources.ApplyResources(this.label4, "label4");
@@ -122,7 +116,6 @@ namespace PDIndexer
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label7);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -141,7 +134,6 @@ namespace PDIndexer
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxReadMe;
-        private System.Windows.Forms.Label label7;
         public System.Windows.Forms.Label labelVersion;
         private Label label4;
         private LinkLabel linkLabelHomePage;
