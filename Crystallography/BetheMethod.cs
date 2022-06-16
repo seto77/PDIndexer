@@ -877,6 +877,12 @@ public class BetheMethod
                     images[i][n] = quasiMode ? sums[i].MagnitudeSquared() : Math.Abs(sums[i].Real);
             });
         }
+
+        //20220519 上下左右が反転しているみたいなので、その対処
+        for(int i=0; i< images.Length; i++)
+            Array.Reverse(images[i]);
+
+
         return images;
     }
     #endregion Image Simulation

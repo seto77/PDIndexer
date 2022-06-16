@@ -470,7 +470,7 @@ public class ConvertCrystalData
                 if (temp == "OH") //OHŠî‚Ì‚Æ‚«
                     atomicNumber = -1;
                 else if (temp == "D") //d…‘f‚Ì‚Æ‚«
-                    atomicNumber = 1;
+                    atomicNumber = 255;
                 else if (temp == "Wat" || temp == "WAT" || temp == "wat") //…‚Ì‚Æ‚«
                     atomicNumber = -2;
             }
@@ -1174,6 +1174,11 @@ public class ConvertCrystalData
                 if (temp == "OH")
                 {
                     atomicNumber = -1;
+                    break;
+                }
+                else if(temp =="D")
+                {
+                    atomicNumber = 255;
                     break;
                 }
             }
