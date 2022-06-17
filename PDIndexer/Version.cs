@@ -27,7 +27,8 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
-            "\r\n ver4.408(2022/06/16) Fixed an issue where Wykoff positions were incorrectly displayed in some space groups. Support for CIF containing a 'D' deuterium" +
+            "\r\n ver4.409(2022/06/17) Improved space group decoding when importing CIF files." +
+            "\r\n ver4.408(2022/06/16) Fixed an issue where Wykoff positions were incorrectly displayed in some space groups. Support for CIF containing \"D\" (deuterium)" +
             "\r\n ver4.407(2022/04/19) Fixed a minor bug on loading *.npd, *.rpt, and *.xbm files." +
             "\r\n ver4.406(2021/12/15) Renewed the crystal database." + 
             "\r\n ver4.405(2021/11/12) Target framework is changed to .Net 6.0." +

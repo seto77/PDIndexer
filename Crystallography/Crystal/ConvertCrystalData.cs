@@ -1250,18 +1250,13 @@ public class ConvertCrystalData
         int symmetrySeriesNumber = -1;
         if (SgNameHall != "")
         {
+            var hall = SgNameHall.Replace(" ", "");
             for (int i = 0; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
-            {
-                var hall = SymmetryStatic.Symmetries[i].SpaceGroupHallStr;
-                if (hall != "")
-                    if ((hall.IndexOf(SgNameHall.Trim(), 0) != -1) ||
-                    (hall.IndexOf(SgNameHall.Replace(" ", ""), 0) != -1) ||
-                    (hall.Replace("\"", "").IndexOf(SgNameHall, 0) != -1))
-                    {
-                        symmetrySeriesNumber = i;
-                        break;
-                    }
-            }
+                if (hall == SymmetryStatic.Symmetries[i].SpaceGroupHallStr)
+                {
+                    symmetrySeriesNumber = i;
+                    break;
+                }
             if (symmetrySeriesNumber != -1)
                 return symmetrySeriesNumber;
         }
