@@ -44,6 +44,7 @@ public partial class FormMain : Form
         RPT,
         NPD,
         TOF,
+        XY,
         OTHRES,
     }
     #endregion
@@ -2742,6 +2743,7 @@ public partial class FormMain : Form
             "xbm" => (int)FileType.XBM,
             "rpt" => (int)FileType.RPT,
             "npd" => (int)FileType.NPD,
+            "xy" => (int)FileType.XY,
             _ => (int)FileType.OTHRES,
         };
 
@@ -2911,6 +2913,8 @@ public partial class FormMain : Form
             }
             #endregion
 
+
+
             #region XBM形式 SP8_BL4B2のデータらしい
             else if (fileName.ToLower().EndsWith("xbm"))
             {
@@ -3027,7 +3031,7 @@ public partial class FormMain : Form
 
                 formDataConverter.EDXDetectorNumber = 1;
 
-                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } }; 
+                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } };
                 for (int i = 0; i < strList.Count || i < 25; i++)
                 {
                     if (strList[i].StartsWith("EGC0"))
@@ -3115,6 +3119,41 @@ public partial class FormMain : Form
                             diffProf.Comment = sb.ToString();
                         }
                     }
+                }
+            }
+            #endregion
+
+            #region xy形式 
+            else if (ext == "xy" && strList[0] == "# == pyFAI calibration ==")
+            {
+                if (double.TryParse(strList[15].Split(" ")[2], out var wave))
+                {
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.XY]);
+
+                    formDataConverter.WaveSource = WaveSource.Xray;
+                    formDataConverter.Wavelength = wave * 1e9;
+
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
+                    {
+                        FileProperties[(int)FileType.XY] = formDataConverter.GetProperty();
+
+                        for (int i = 23; i < strList.Count; i++)
+                        {
+                            var str = strList[i].Split(' ',true);
+                            if (str.Length == 2)
+                            {
+                                if (Miscellaneous.IsDecimalPointComma)
+                                {
+                                    str[0] = str[0].Replace('.', ',');
+                                    str[1] = str[1].Replace('.', ',');
+                                }
+                                diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                            }
+                            else
+                                break;
+                        }
+                    }
+                    else return;
                 }
             }
             #endregion
