@@ -27,6 +27,7 @@ namespace PDIndexer
         /// </summary>
         static public string History = 
             "History" +
+            "\r\n ver4.411(2022/06/22) Fixed a bun related to multiplicity calculations for point group -3 (hexagonal setting)." +
             "\r\n ver4.410(2022/06/21) Improved: Support for *.xy file." +
             "\r\n ver4.409(2022/06/17) Improved decoding of CIF files." +
             "\r\n ver4.408(2022/06/16) Fixed an issue where Wykoff positions were incorrectly displayed in some space groups. Support for CIF containing \"D\" (deuterium)" +

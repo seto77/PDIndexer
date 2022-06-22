@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.06.21.1935</AssemblyVersion>
-    <FileVersion>2022.06.21.1935</FileVersion>
+    <AssemblyVersion>2022.06.22.2059</AssemblyVersion>
+    <FileVersion>2022.06.22.2059</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
