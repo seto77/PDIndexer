@@ -57,11 +57,183 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;numericBoxPtFratanduono.Name" xml:space="preserve">
+    <value>numericBoxPtFratanduono</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtFratanduono.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtFratanduono.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtFratanduono.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtYokoo.Name" xml:space="preserve">
+    <value>numericBoxPtYokoo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtYokoo.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtYokoo.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPtYokoo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtMatsui.Name" xml:space="preserve">
+    <value>numericalTextBoxPtMatsui</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtMatsui.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtMatsui.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtMatsui.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtHolmes.Name" xml:space="preserve">
+    <value>numericalTextBoxPtHolmes</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtHolmes.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtHolmes.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtHolmes.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label20.Name" xml:space="preserve">
+    <value>label20</value>
+  </data>
+  <data name="&gt;&gt;label20.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label20.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;label20.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtJamieson.Name" xml:space="preserve">
+    <value>numericalTextBoxPtJamieson</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtJamieson.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtJamieson.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtJamieson.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label9.Name" xml:space="preserve">
+    <value>label9</value>
+  </data>
+  <data name="&gt;&gt;label9.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label9.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;label9.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label8.Name" xml:space="preserve">
+    <value>label8</value>
+  </data>
+  <data name="&gt;&gt;label8.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label8.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;label8.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA.Name" xml:space="preserve">
+    <value>numericalTextBoxPtA</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA0.Name" xml:space="preserve">
+    <value>numericalTextBoxPtA0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA0.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxPtA0.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label30.Name" xml:space="preserve">
+    <value>label30</value>
+  </data>
+  <data name="&gt;&gt;label30.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label30.Parent" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="groupBoxPlatinum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxPlatinum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 217</value>
+  </data>
+  <data name="groupBoxPlatinum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 178</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="groupBoxPlatinum.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxPlatinum.Text" xml:space="preserve">
+    <value>Platinum</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPlatinum.Name" xml:space="preserve">
+    <value>groupBoxPlatinum</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPlatinum.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPlatinum.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPlatinum.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxPtFratanduono.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="numericBoxPtFratanduono.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -93,7 +265,6 @@
   <data name="numericBoxPtFratanduono.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 27</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxPtFratanduono.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
@@ -556,33 +727,6 @@
   <data name="&gt;&gt;label30.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="groupBoxPlatinum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBoxPlatinum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 217</value>
-  </data>
-  <data name="groupBoxPlatinum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 178</value>
-  </data>
-  <data name="groupBoxPlatinum.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="groupBoxPlatinum.Text" xml:space="preserve">
-    <value>Platinum</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPlatinum.Name" xml:space="preserve">
-    <value>groupBoxPlatinum</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPlatinum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPlatinum.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;groupBoxPlatinum.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="numericalTextBoxPtT0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -626,6 +770,105 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtT0.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB1Matsui</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Brown.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB1Brown</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Brown.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Brown.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1Brown.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label4.Name" xml:space="preserve">
+    <value>label4</value>
+  </data>
+  <data name="&gt;&gt;label4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB1A</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A0.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB1A0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A0.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB1A0.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBoxNaClB1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxNaClB1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 401</value>
+  </data>
+  <data name="groupBoxNaClB1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 104</value>
+  </data>
+  <data name="groupBoxNaClB1.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxNaClB1.Text" xml:space="preserve">
+    <value>NaCl B1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxNaClB1.Name" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxNaClB1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxNaClB1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxNaClB1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
   <data name="numericalTextBoxNaClB1Matsui.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -880,32 +1123,200 @@
   <data name="&gt;&gt;numericalTextBoxNaClB1A0.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBoxNaClB1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;numericBoxAuFratanduono.Name" xml:space="preserve">
+    <value>numericBoxAuFratanduono</value>
   </data>
-  <data name="groupBoxNaClB1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 401</value>
+  <data name="&gt;&gt;numericBoxAuFratanduono.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="groupBoxNaClB1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 104</value>
+  <data name="&gt;&gt;numericBoxAuFratanduono.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
   </data>
-  <data name="groupBoxNaClB1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;numericBoxAuFratanduono.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAuYokoo.Name" xml:space="preserve">
+    <value>numericBoxAuYokoo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAuYokoo.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAuYokoo.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericBoxAuYokoo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldJamieson.Name" xml:space="preserve">
+    <value>numericalTextBoxGoldJamieson</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldJamieson.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldJamieson.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldJamieson.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldTsuchiya.Name" xml:space="preserve">
+    <value>numericalTextBoxGoldTsuchiya</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldTsuchiya.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldTsuchiya.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldTsuchiya.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldSim.Name" xml:space="preserve">
+    <value>numericalTextBoxGoldSim</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldSim.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldSim.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldSim.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label19.Name" xml:space="preserve">
+    <value>label19</value>
+  </data>
+  <data name="&gt;&gt;label19.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label19.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;label19.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldAnderson.Name" xml:space="preserve">
+    <value>numericalTextBoxGoldAnderson</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldAnderson.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldAnderson.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldAnderson.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label49.Name" xml:space="preserve">
+    <value>label49</value>
+  </data>
+  <data name="&gt;&gt;label49.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label49.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;label49.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldA.Name" xml:space="preserve">
+    <value>numericalTextBoxGoldA</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldA.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldA.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBoxNaClB1.Text" xml:space="preserve">
-    <value>NaCl B1</value>
+  <data name="&gt;&gt;numericalTextBoxGoldA0.Name" xml:space="preserve">
+    <value>numericalTextBoxGoldA0</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB1.Name" xml:space="preserve">
-    <value>groupBoxNaClB1</value>
+  <data name="&gt;&gt;numericalTextBoxGoldA0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB1.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericalTextBoxGoldA0.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxGoldA0.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label22.Name" xml:space="preserve">
+    <value>label22</value>
+  </data>
+  <data name="&gt;&gt;label22.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label22.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;label22.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;label69.Name" xml:space="preserve">
+    <value>label69</value>
+  </data>
+  <data name="&gt;&gt;label69.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label69.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;label69.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="&gt;&gt;label15.Name" xml:space="preserve">
+    <value>label15</value>
+  </data>
+  <data name="&gt;&gt;label15.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label15.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;label15.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;label27.Name" xml:space="preserve">
+    <value>label27</value>
+  </data>
+  <data name="&gt;&gt;label27.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label27.Parent" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="groupBoxGold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxGold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="groupBoxGold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 208</value>
+  </data>
+  <data name="groupBoxGold.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxGold.Text" xml:space="preserve">
+    <value>Gold</value>
+  </data>
+  <data name="&gt;&gt;groupBoxGold.Name" xml:space="preserve">
+    <value>groupBoxGold</value>
+  </data>
+  <data name="&gt;&gt;groupBoxGold.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxGold.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB1.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;groupBoxGold.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="numericBoxAuFratanduono.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1483,32 +1894,176 @@
   <data name="&gt;&gt;label27.ZOrder" xml:space="preserve">
     <value>13</value>
   </data>
-  <data name="groupBoxGold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;numericBoxMgOTangeBM.Name" xml:space="preserve">
+    <value>numericBoxMgOTangeBM</value>
   </data>
-  <data name="groupBoxGold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="&gt;&gt;numericBoxMgOTangeBM.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="groupBoxGold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 208</value>
+  <data name="&gt;&gt;numericBoxMgOTangeBM.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
   </data>
-  <data name="groupBoxGold.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;numericBoxMgOTangeBM.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMgOTangeVinet.Name" xml:space="preserve">
+    <value>numericBoxMgOTangeVinet</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMgOTangeVinet.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMgOTangeVinet.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMgOTangeVinet.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOAizawa.Name" xml:space="preserve">
+    <value>numericalTextBoxMgOAizawa</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOAizawa.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOAizawa.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOAizawa.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label16.Name" xml:space="preserve">
+    <value>label16</value>
+  </data>
+  <data name="&gt;&gt;label16.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label16.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgODewaele.Name" xml:space="preserve">
+    <value>numericalTextBoxMgODewaele</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgODewaele.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgODewaele.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgODewaele.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label13.Name" xml:space="preserve">
+    <value>label13</value>
+  </data>
+  <data name="&gt;&gt;label13.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label13.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;label13.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOJacson.Name" xml:space="preserve">
+    <value>numericalTextBoxMgOJacson</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOJacson.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOJacson.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOJacson.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label23.Name" xml:space="preserve">
+    <value>label23</value>
+  </data>
+  <data name="&gt;&gt;label23.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label23.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;label23.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label21.Name" xml:space="preserve">
+    <value>label21</value>
+  </data>
+  <data name="&gt;&gt;label21.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label21.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;label21.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBoxGold.Text" xml:space="preserve">
-    <value>Gold</value>
+  <data name="&gt;&gt;numericalTextBoxMgOA.Name" xml:space="preserve">
+    <value>numericalTextBoxMgOA</value>
   </data>
-  <data name="&gt;&gt;groupBoxGold.Name" xml:space="preserve">
-    <value>groupBoxGold</value>
+  <data name="&gt;&gt;numericalTextBoxMgOA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;groupBoxGold.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericalTextBoxMgOA.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOA.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label2.Name" xml:space="preserve">
+    <value>label2</value>
+  </data>
+  <data name="&gt;&gt;label2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label2.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOA0.Name" xml:space="preserve">
+    <value>numericalTextBoxMgOA0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOA0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOA0.Parent" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxMgOA0.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="groupBoxPericlase.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxPericlase.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 190</value>
+  </data>
+  <data name="groupBoxPericlase.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 181</value>
+  </data>
+  <data name="groupBoxPericlase.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxPericlase.Text" xml:space="preserve">
+    <value>Periclase</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPericlase.Name" xml:space="preserve">
+    <value>groupBoxPericlase</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPericlase.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxGold.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxPericlase.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxGold.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;groupBoxPericlase.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="numericBoxMgOTangeBM.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2005,32 +2560,176 @@
   <data name="&gt;&gt;numericalTextBoxMgOA0.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="groupBoxPericlase.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiVinet.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2SakaiVinet</value>
   </data>
-  <data name="groupBoxPericlase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 190</value>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiVinet.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="groupBoxPericlase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 181</value>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiVinet.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
   </data>
-  <data name="groupBoxPericlase.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiVinet.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiBM.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2SakaiBM</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiBM.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiBM.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SakaiBM.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2Ueda.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2Ueda</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2Ueda.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2Ueda.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2Ueda.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label12.Name" xml:space="preserve">
+    <value>label12</value>
+  </data>
+  <data name="&gt;&gt;label12.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label12.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;label12.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataMgO.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2SataMgO</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataMgO.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataMgO.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataMgO.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;label11.Name" xml:space="preserve">
+    <value>label11</value>
+  </data>
+  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataPt.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2SataPt</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataPt.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataPt.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2SataPt.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;label10.Name" xml:space="preserve">
+    <value>label10</value>
+  </data>
+  <data name="&gt;&gt;label10.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label10.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;label10.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label7.Name" xml:space="preserve">
+    <value>label7</value>
+  </data>
+  <data name="&gt;&gt;label7.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label7.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;label7.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBoxPericlase.Text" xml:space="preserve">
-    <value>Periclase</value>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2A</value>
   </data>
-  <data name="&gt;&gt;groupBoxPericlase.Name" xml:space="preserve">
-    <value>groupBoxPericlase</value>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;groupBoxPericlase.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericalTextBoxNaClB2A.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A0.Name" xml:space="preserve">
+    <value>numericalTextBoxNaClB2A0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A0.Parent" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxNaClB2A0.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="groupBoxNaClB2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxNaClB2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 3</value>
+  </data>
+  <data name="groupBoxNaClB2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 181</value>
+  </data>
+  <data name="groupBoxNaClB2.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxNaClB2.Text" xml:space="preserve">
+    <value>NaCl B2</value>
+  </data>
+  <data name="&gt;&gt;groupBoxNaClB2.Name" xml:space="preserve">
+    <value>groupBoxNaClB2</value>
+  </data>
+  <data name="&gt;&gt;groupBoxNaClB2.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxPericlase.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxNaClB2.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxPericlase.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;groupBoxNaClB2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiVinet.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2530,32 +3229,80 @@
   <data name="&gt;&gt;numericalTextBoxNaClB2A0.ZOrder" xml:space="preserve">
     <value>11</value>
   </data>
-  <data name="groupBoxNaClB2.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.Name" xml:space="preserve">
+    <value>numericalTextBoxCorundumDubrovinsky</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.Parent" xml:space="preserve">
+    <value>groupBoxCorundum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV.Name" xml:space="preserve">
+    <value>numericalTextBoxColundumV</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV.Parent" xml:space="preserve">
+    <value>groupBoxCorundum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>groupBoxCorundum</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV0.Name" xml:space="preserve">
+    <value>numericalTextBoxColundumV0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV0.Parent" xml:space="preserve">
+    <value>groupBoxCorundum</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxColundumV0.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBoxCorundum.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBoxNaClB2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 3</value>
+  <data name="groupBoxCorundum.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 377</value>
   </data>
-  <data name="groupBoxNaClB2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 181</value>
+  <data name="groupBoxCorundum.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 80</value>
   </data>
-  <data name="groupBoxNaClB2.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxCorundum.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="groupBoxNaClB2.Text" xml:space="preserve">
-    <value>NaCl B2</value>
+  <data name="groupBoxCorundum.Text" xml:space="preserve">
+    <value>Corundum</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB2.Name" xml:space="preserve">
-    <value>groupBoxNaClB2</value>
+  <data name="&gt;&gt;groupBoxCorundum.Name" xml:space="preserve">
+    <value>groupBoxCorundum</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB2.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxCorundum.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxCorundum.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxNaClB2.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;groupBoxCorundum.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="numericalTextBoxCorundumDubrovinsky.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -2612,7 +3359,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericalTextBoxColundumV.FooterText" xml:space="preserve">
-    <value>Å^3</value>
+    <value>Å³</value>
   </data>
   <data name="numericalTextBoxColundumV.HeaderText" xml:space="preserve">
     <value>V</value>
@@ -2690,7 +3437,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericalTextBoxColundumV0.FooterText" xml:space="preserve">
-    <value>Å^3</value>
+    <value>Å³</value>
   </data>
   <data name="numericalTextBoxColundumV0.HeaderText" xml:space="preserve">
     <value>V0</value>
@@ -2728,35 +3475,185 @@
   <data name="&gt;&gt;numericalTextBoxColundumV0.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="groupBoxCorundum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="groupBoxCorundum.Location" type="System.Drawing.Point, System.Drawing">
-    <value>227, 377</value>
-  </data>
-  <data name="groupBoxCorundum.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 80</value>
-  </data>
-  <data name="groupBoxCorundum.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="groupBoxCorundum.Text" xml:space="preserve">
-    <value>Corundum</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCorundum.Name" xml:space="preserve">
-    <value>groupBoxCorundum</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCorundum.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCorundum.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;groupBoxCorundum.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="flowLayoutPanel1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.Name" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;groupBoxRe.Name" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;groupBoxRe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxRe.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxRe.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMo.Name" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMo.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMo.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPb.Name" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPb.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxPb.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
+    <value>TopDown</value>
+  </data>
+  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 59</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>689, 551</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArRoss.Name" xml:space="preserve">
+    <value>numericalTextBoxArRoss</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArRoss.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArRoss.Parent" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArRoss.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArJephcoat.Name" xml:space="preserve">
+    <value>numericalTextBoxArJephcoat</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArJephcoat.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArJephcoat.Parent" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArJephcoat.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA.Name" xml:space="preserve">
+    <value>numericalTextBoxArA</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA.Parent" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;label17.Name" xml:space="preserve">
+    <value>label17</value>
+  </data>
+  <data name="&gt;&gt;label17.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label17.Parent" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;label17.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label14.Name" xml:space="preserve">
+    <value>label14</value>
+  </data>
+  <data name="&gt;&gt;label14.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label14.Parent" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;label14.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA0.Name" xml:space="preserve">
+    <value>numericalTextBoxArA0</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA0.Parent" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxArA0.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBoxAr.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxAr.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 3</value>
+  </data>
+  <data name="groupBoxAr.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 100</value>
+  </data>
+  <data name="groupBoxAr.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxAr.Text" xml:space="preserve">
+    <value>Ar</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.Name" xml:space="preserve">
+    <value>groupBoxAr</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;groupBoxAr.ZOrder" xml:space="preserve">
+    <value>6</value>
   </data>
   <data name="numericalTextBoxArRoss.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3010,32 +3907,152 @@
   <data name="&gt;&gt;numericalTextBoxArA0.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBoxAr.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;numericBoxReDub.Name" xml:space="preserve">
+    <value>numericBoxReDub</value>
   </data>
-  <data name="groupBoxAr.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 3</value>
+  <data name="&gt;&gt;numericBoxReDub.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="groupBoxAr.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 100</value>
+  <data name="&gt;&gt;numericBoxReDub.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
   </data>
-  <data name="groupBoxAr.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;numericBoxReDub.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReSakai.Name" xml:space="preserve">
+    <value>numericBoxReSakai</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReSakai.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReSakai.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReSakai.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label26.Name" xml:space="preserve">
+    <value>label26</value>
+  </data>
+  <data name="&gt;&gt;label26.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label26.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;label26.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReAnz.Name" xml:space="preserve">
+    <value>numericBoxReAnz</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReAnz.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReAnz.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReAnz.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label25.Name" xml:space="preserve">
+    <value>label25</value>
+  </data>
+  <data name="&gt;&gt;label25.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label25.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;label25.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxReZha.Name" xml:space="preserve">
+    <value>numericalTextBoxReZha</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxReZha.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxReZha.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;numericalTextBoxReZha.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;label24.Name" xml:space="preserve">
+    <value>label24</value>
+  </data>
+  <data name="&gt;&gt;label24.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label24.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;label24.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReV.Name" xml:space="preserve">
+    <value>numericBoxReV</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReV.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReV.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;numericBoxReV.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;label18.Name" xml:space="preserve">
+    <value>label18</value>
+  </data>
+  <data name="&gt;&gt;label18.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label18.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="groupBoxAr.Text" xml:space="preserve">
-    <value>Ar</value>
+  <data name="&gt;&gt;numerictBoxReV0.Name" xml:space="preserve">
+    <value>numerictBoxReV0</value>
   </data>
-  <data name="&gt;&gt;groupBoxAr.Name" xml:space="preserve">
-    <value>groupBoxAr</value>
+  <data name="&gt;&gt;numerictBoxReV0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;groupBoxAr.Type" xml:space="preserve">
+  <data name="&gt;&gt;numerictBoxReV0.Parent" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;numerictBoxReV0.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="groupBoxRe.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxRe.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 109</value>
+  </data>
+  <data name="groupBoxRe.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 157</value>
+  </data>
+  <data name="groupBoxRe.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="groupBoxRe.Text" xml:space="preserve">
+    <value>Re</value>
+  </data>
+  <data name="&gt;&gt;groupBoxRe.Name" xml:space="preserve">
+    <value>groupBoxRe</value>
+  </data>
+  <data name="&gt;&gt;groupBoxRe.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxAr.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxRe.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxAr.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;groupBoxRe.ZOrder" xml:space="preserve">
+    <value>7</value>
   </data>
   <data name="numericBoxReDub.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3335,7 +4352,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxReV.FooterText" xml:space="preserve">
-    <value>Å^3</value>
+    <value>Å³</value>
   </data>
   <data name="numericBoxReV.HeaderText" xml:space="preserve">
     <value>V</value>
@@ -3413,7 +4430,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numerictBoxReV0.FooterText" xml:space="preserve">
-    <value>Å^3</value>
+    <value>Å³</value>
   </data>
   <data name="numerictBoxReV0.HeaderText" xml:space="preserve">
     <value>V0</value>
@@ -3451,32 +4468,107 @@
   <data name="&gt;&gt;numerictBoxReV0.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="groupBoxRe.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="&gt;&gt;numericBoxMoZhao.Name" xml:space="preserve">
+    <value>numericBoxMoZhao</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoZhao.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoZhao.Parent" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoZhao.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoHuang.Name" xml:space="preserve">
+    <value>numericBoxMoHuang</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoHuang.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoHuang.Parent" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoHuang.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label29.Name" xml:space="preserve">
+    <value>label29</value>
+  </data>
+  <data name="&gt;&gt;label29.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label29.Parent" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;label29.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV.Name" xml:space="preserve">
+    <value>numericBoxMoV</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV.Parent" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;label28.Name" xml:space="preserve">
+    <value>label28</value>
+  </data>
+  <data name="&gt;&gt;label28.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label28.Parent" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;label28.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV0.Name" xml:space="preserve">
+    <value>numericBoxMoV0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV0.Parent" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;numericBoxMoV0.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="groupBoxMo.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBoxRe.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 109</value>
+  <data name="groupBoxMo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 272</value>
   </data>
-  <data name="groupBoxRe.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 157</value>
+  <data name="groupBoxMo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 103</value>
   </data>
-  <data name="groupBoxRe.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxMo.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="groupBoxRe.Text" xml:space="preserve">
-    <value>Re</value>
+  <data name="groupBoxMo.Text" xml:space="preserve">
+    <value>Mo</value>
   </data>
-  <data name="&gt;&gt;groupBoxRe.Name" xml:space="preserve">
-    <value>groupBoxRe</value>
+  <data name="groupBoxMo.Visible" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
-  <data name="&gt;&gt;groupBoxRe.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxMo.Name" xml:space="preserve">
+    <value>groupBoxMo</value>
+  </data>
+  <data name="&gt;&gt;groupBoxMo.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxRe.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxMo.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxRe.ZOrder" xml:space="preserve">
-    <value>7</value>
+  <data name="&gt;&gt;groupBoxMo.ZOrder" xml:space="preserve">
+    <value>8</value>
   </data>
   <data name="numericBoxMoZhao.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -3614,7 +4706,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxMoV.FooterText" xml:space="preserve">
-    <value>Å^3</value>
+    <value>Å³</value>
   </data>
   <data name="numericBoxMoV.HeaderText" xml:space="preserve">
     <value>V</value>
@@ -3692,7 +4784,7 @@
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="numericBoxMoV0.FooterText" xml:space="preserve">
-    <value>Å^3</value>
+    <value>Å³</value>
   </data>
   <data name="numericBoxMoV0.HeaderText" xml:space="preserve">
     <value>V0</value>
@@ -3730,65 +4822,254 @@
   <data name="&gt;&gt;numericBoxMoV0.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
-  <data name="groupBoxMo.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="&gt;&gt;numericBoxPbStrassle.Name" xml:space="preserve">
+    <value>numericBoxPbStrassle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.Name" xml:space="preserve">
+    <value>numericBoxPbA</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;label32.Name" xml:space="preserve">
+    <value>label32</value>
+  </data>
+  <data name="&gt;&gt;label32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.Name" xml:space="preserve">
+    <value>numericBoxPbA0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="groupBoxPb.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="groupBoxMo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>451, 272</value>
+  <data name="groupBoxPb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>451, 381</value>
   </data>
-  <data name="groupBoxMo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 103</value>
+  <data name="groupBoxPb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 76</value>
   </data>
-  <data name="groupBoxMo.TabIndex" type="System.Int32, mscorlib">
+  <data name="groupBoxPb.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
-  <data name="groupBoxMo.Text" xml:space="preserve">
-    <value>Mo</value>
+  <data name="groupBoxPb.Text" xml:space="preserve">
+    <value>Pb</value>
   </data>
-  <data name="groupBoxMo.Visible" type="System.Boolean, mscorlib">
+  <data name="groupBoxPb.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;groupBoxMo.Name" xml:space="preserve">
-    <value>groupBoxMo</value>
+  <data name="&gt;&gt;groupBoxPb.Name" xml:space="preserve">
+    <value>groupBoxPb</value>
   </data>
-  <data name="&gt;&gt;groupBoxMo.Type" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxPb.Type" xml:space="preserve">
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;groupBoxMo.Parent" xml:space="preserve">
+  <data name="&gt;&gt;groupBoxPb.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;groupBoxMo.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
-    <value>TopDown</value>
-  </data>
-  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 59</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>689, 551</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;groupBoxPb.ZOrder" xml:space="preserve">
     <value>9</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
+  <data name="numericBoxPbStrassle.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="numericBoxPbStrassle.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
+  <data name="numericBoxPbStrassle.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+  <data name="numericBoxPbStrassle.FooterText" xml:space="preserve">
+    <value>GPa</value>
+  </data>
+  <data name="numericBoxPbStrassle.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxPbStrassle.Location" type="System.Drawing.Point, System.Drawing">
+    <value>105, 50</value>
+  </data>
+  <data name="numericBoxPbStrassle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPbStrassle.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxPbStrassle.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxPbStrassle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPbStrassle.Size" type="System.Drawing.Size, System.Drawing">
+    <value>110, 27</value>
+  </data>
+  <data name="numericBoxPbStrassle.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.Name" xml:space="preserve">
+    <value>numericBoxPbStrassle</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbStrassle.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="numericBoxPbA.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPbA.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxPbA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxPbA.HeaderText" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="numericBoxPbA.Location" type="System.Drawing.Point, System.Drawing">
+    <value>110, 20</value>
+  </data>
+  <data name="numericBoxPbA.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPbA.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxPbA.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxPbA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPbA.Size" type="System.Drawing.Size, System.Drawing">
+    <value>105, 27</value>
+  </data>
+  <data name="numericBoxPbA.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.Name" xml:space="preserve">
+    <value>numericBoxPbA</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label32.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label32.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label32.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label32.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 54</value>
+  </data>
+  <data name="label32.Size" type="System.Drawing.Size, System.Drawing">
+    <value>74, 15</value>
+  </data>
+  <data name="label32.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label32.Text" xml:space="preserve">
+    <value>Strässle+(14)</value>
+  </data>
+  <data name="&gt;&gt;label32.Name" xml:space="preserve">
+    <value>label32</value>
+  </data>
+  <data name="&gt;&gt;label32.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label32.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;label32.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="numericBoxPbA0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxPbA0.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxPbA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxPbA0.HeaderText" xml:space="preserve">
+    <value>a0</value>
+  </data>
+  <data name="numericBoxPbA0.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 20</value>
+  </data>
+  <data name="numericBoxPbA0.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxPbA0.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericBoxPbA0.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 25</value>
+  </data>
+  <data name="numericBoxPbA0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxPbA0.Size" type="System.Drawing.Size, System.Drawing">
+    <value>108, 27</value>
+  </data>
+  <data name="numericBoxPbA0.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.Name" xml:space="preserve">
+    <value>numericBoxPbA0</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.Parent" xml:space="preserve">
+    <value>groupBoxPb</value>
+  </data>
+  <data name="&gt;&gt;numericBoxPbA0.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="checkBoxPlatinum.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -3985,6 +5266,75 @@
   <data name="flowLayoutPanel2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
+  <data name="&gt;&gt;checkBoxAr.Name" xml:space="preserve">
+    <value>checkBoxAr</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAr.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAr.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxAr.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRe.Name" xml:space="preserve">
+    <value>checkBoxRe</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRe.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRe.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxRe.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMo.Name" xml:space="preserve">
+    <value>checkBoxMo</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMo.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxMo.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.Name" xml:space="preserve">
+    <value>checkBoxPb</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.Parent" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
+  </data>
+  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>681, 50</value>
+  </data>
+  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+    <value>flowLayoutPanel2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
+    <value>tableLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="checkBoxAr.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -4081,26 +5431,38 @@
   <data name="&gt;&gt;checkBoxMo.ZOrder" xml:space="preserve">
     <value>8</value>
   </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
+  <data name="checkBoxPb.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>681, 50</value>
+  <data name="checkBoxPb.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="flowLayoutPanel2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="checkBoxPb.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Name" xml:space="preserve">
+  <data name="checkBoxPb.Location" type="System.Drawing.Point, System.Drawing">
+    <value>53, 28</value>
+  </data>
+  <data name="checkBoxPb.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 19</value>
+  </data>
+  <data name="checkBoxPb.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="checkBoxPb.Text" xml:space="preserve">
+    <value>Pb</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.Name" xml:space="preserve">
+    <value>checkBoxPb</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxPb.Parent" xml:space="preserve">
     <value>flowLayoutPanel2</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.Parent" xml:space="preserve">
-    <value>tableLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel2.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;checkBoxPb.ZOrder" xml:space="preserve">
+    <value>9</value>
   </data>
   <data name="checkBoxHBN.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>

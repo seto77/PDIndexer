@@ -13126,20 +13126,12 @@ new ushort[]{535,2,6,2,1,1}
                 break;
 
             case 2:// 2/m
-                switch (sym.MainAxis)
+                result = sym.MainAxis switch
                 {
-                    case "a":
-                        result = h >= 0 && (k > 0 || (k == 0 && l >= 0));
-                        break;
-
-                    case "b":
-                        result = (k >= 0 && (h > 0 || (h == 0 && l >= 0)));
-                        break;
-
-                    case "c":
-                        result = (l >= 0 && (h > 0 || (h == 0 && k >= 0)));
-                        break;
-                }
+                    "a" => h >= 0 && (k > 0 || (k == 0 && l >= 0)),
+                    "b" => (k >= 0 && (h > 0 || (h == 0 && l >= 0))),
+                    _ => (l >= 0 && (h > 0 || (h == 0 && k >= 0)))
+                };
                 break;
 
             case 3:// mmm
@@ -13169,8 +13161,7 @@ new ushort[]{535,2,6,2,1,1}
                 break;
 
             case 8://6/m
-                result = (l >= 0 && h > 0 && k >= 0)
-                    || (l > 0 && h == 0 && k == 0);
+                result = (l >= 0 && h > 0 && k >= 0) || (l > 0 && h == 0 && k == 0);
                 break;
 
             case 9://6/mmm

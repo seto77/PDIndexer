@@ -49,10 +49,10 @@ namespace PDIndexer
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.numericalTextBoxPtT0 = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxPtA = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxPtA0 = new Crystallography.Controls.NumericBox();
             this.label30 = new System.Windows.Forms.Label();
+            this.numericalTextBoxPtT0 = new Crystallography.Controls.NumericBox();
             this.groupBoxNaClB1 = new System.Windows.Forms.GroupBox();
             this.numericalTextBoxNaClB1Matsui = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxNaClB1Brown = new Crystallography.Controls.NumericBox();
@@ -132,6 +132,11 @@ namespace PDIndexer
             this.numericBoxMoV = new Crystallography.Controls.NumericBox();
             this.label28 = new System.Windows.Forms.Label();
             this.numericBoxMoV0 = new Crystallography.Controls.NumericBox();
+            this.groupBoxPb = new System.Windows.Forms.GroupBox();
+            this.numericBoxPbStrassle = new Crystallography.Controls.NumericBox();
+            this.numericBoxPbA = new Crystallography.Controls.NumericBox();
+            this.label32 = new System.Windows.Forms.Label();
+            this.numericBoxPbA0 = new Crystallography.Controls.NumericBox();
             this.checkBoxPlatinum = new System.Windows.Forms.CheckBox();
             this.checkBoxGold = new System.Windows.Forms.CheckBox();
             this.checkBoxNaClB1 = new System.Windows.Forms.CheckBox();
@@ -142,6 +147,7 @@ namespace PDIndexer
             this.checkBoxAr = new System.Windows.Forms.CheckBox();
             this.checkBoxRe = new System.Windows.Forms.CheckBox();
             this.checkBoxMo = new System.Windows.Forms.CheckBox();
+            this.checkBoxPb = new System.Windows.Forms.CheckBox();
             this.checkBoxHBN = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.numericalTextBoxTemperature = new Crystallography.Controls.NumericBox();
@@ -155,6 +161,7 @@ namespace PDIndexer
             this.groupBoxAr.SuspendLayout();
             this.groupBoxRe.SuspendLayout();
             this.groupBoxMo.SuspendLayout();
+            this.groupBoxPb.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -185,6 +192,7 @@ namespace PDIndexer
             this.numericBoxPtFratanduono.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPtFratanduono.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPtFratanduono.Name = "numericBoxPtFratanduono";
+            this.numericBoxPtFratanduono.RoundErrorAccuracy = -1;
             this.numericBoxPtFratanduono.SkipEventDuringInput = false;
             this.numericBoxPtFratanduono.SmartIncrement = true;
             this.numericBoxPtFratanduono.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -200,6 +208,7 @@ namespace PDIndexer
             this.numericBoxPtYokoo.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPtYokoo.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPtYokoo.Name = "numericBoxPtYokoo";
+            this.numericBoxPtYokoo.RoundErrorAccuracy = -1;
             this.numericBoxPtYokoo.SkipEventDuringInput = false;
             this.numericBoxPtYokoo.SmartIncrement = true;
             this.numericBoxPtYokoo.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -215,6 +224,7 @@ namespace PDIndexer
             this.numericalTextBoxPtMatsui.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtMatsui.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtMatsui.Name = "numericalTextBoxPtMatsui";
+            this.numericalTextBoxPtMatsui.RoundErrorAccuracy = -1;
             this.numericalTextBoxPtMatsui.SkipEventDuringInput = false;
             this.numericalTextBoxPtMatsui.SmartIncrement = true;
             this.numericalTextBoxPtMatsui.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -230,6 +240,7 @@ namespace PDIndexer
             this.numericalTextBoxPtHolmes.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtHolmes.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtHolmes.Name = "numericalTextBoxPtHolmes";
+            this.numericalTextBoxPtHolmes.RoundErrorAccuracy = -1;
             this.numericalTextBoxPtHolmes.SkipEventDuringInput = false;
             this.numericalTextBoxPtHolmes.SmartIncrement = true;
             this.numericalTextBoxPtHolmes.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -250,6 +261,7 @@ namespace PDIndexer
             this.numericalTextBoxPtJamieson.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtJamieson.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtJamieson.Name = "numericalTextBoxPtJamieson";
+            this.numericalTextBoxPtJamieson.RoundErrorAccuracy = -1;
             this.numericalTextBoxPtJamieson.SkipEventDuringInput = false;
             this.numericalTextBoxPtJamieson.SmartIncrement = true;
             this.numericalTextBoxPtJamieson.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -272,21 +284,6 @@ namespace PDIndexer
             resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
             // 
-            // numericalTextBoxPtT0
-            // 
-            resources.ApplyResources(this.numericalTextBoxPtT0, "numericalTextBoxPtT0");
-            this.numericalTextBoxPtT0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtT0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtT0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtT0.Name = "numericalTextBoxPtT0";
-            this.numericalTextBoxPtT0.RadianValue = 5.2359877559829888D;
-            this.numericalTextBoxPtT0.SkipEventDuringInput = false;
-            this.numericalTextBoxPtT0.SmartIncrement = true;
-            this.numericalTextBoxPtT0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxPtT0.ThonsandsSeparator = true;
-            this.numericalTextBoxPtT0.Value = 300D;
-            this.numericalTextBoxPtT0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
-            // 
             // numericalTextBoxPtA
             // 
             resources.ApplyResources(this.numericalTextBoxPtA, "numericalTextBoxPtA");
@@ -295,6 +292,7 @@ namespace PDIndexer
             this.numericalTextBoxPtA.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtA.Name = "numericalTextBoxPtA";
             this.numericalTextBoxPtA.RadianValue = 0.068471011884989538D;
+            this.numericalTextBoxPtA.RoundErrorAccuracy = -1;
             this.numericalTextBoxPtA.SkipEventDuringInput = false;
             this.numericalTextBoxPtA.SmartIncrement = true;
             this.numericalTextBoxPtA.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -310,6 +308,7 @@ namespace PDIndexer
             this.numericalTextBoxPtA0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPtA0.Name = "numericalTextBoxPtA0";
             this.numericalTextBoxPtA0.RadianValue = 0.068471011884989538D;
+            this.numericalTextBoxPtA0.RoundErrorAccuracy = -1;
             this.numericalTextBoxPtA0.SkipEventDuringInput = false;
             this.numericalTextBoxPtA0.SmartIncrement = true;
             this.numericalTextBoxPtA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -321,6 +320,22 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.label30, "label30");
             this.label30.Name = "label30";
+            // 
+            // numericalTextBoxPtT0
+            // 
+            resources.ApplyResources(this.numericalTextBoxPtT0, "numericalTextBoxPtT0");
+            this.numericalTextBoxPtT0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxPtT0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxPtT0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericalTextBoxPtT0.Name = "numericalTextBoxPtT0";
+            this.numericalTextBoxPtT0.RadianValue = 5.2359877559829888D;
+            this.numericalTextBoxPtT0.RoundErrorAccuracy = -1;
+            this.numericalTextBoxPtT0.SkipEventDuringInput = false;
+            this.numericalTextBoxPtT0.SmartIncrement = true;
+            this.numericalTextBoxPtT0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericalTextBoxPtT0.ThonsandsSeparator = true;
+            this.numericalTextBoxPtT0.Value = 300D;
+            this.numericalTextBoxPtT0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // groupBoxNaClB1
             // 
@@ -342,6 +357,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB1Matsui.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB1Matsui.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB1Matsui.Name = "numericalTextBoxNaClB1Matsui";
+            this.numericalTextBoxNaClB1Matsui.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB1Matsui.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB1Matsui.SmartIncrement = true;
             this.numericalTextBoxNaClB1Matsui.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -357,6 +373,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB1Brown.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB1Brown.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB1Brown.Name = "numericalTextBoxNaClB1Brown";
+            this.numericalTextBoxNaClB1Brown.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB1Brown.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB1Brown.SmartIncrement = true;
             this.numericalTextBoxNaClB1Brown.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -382,6 +399,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB1A.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB1A.Name = "numericalTextBoxNaClB1A";
             this.numericalTextBoxNaClB1A.RadianValue = 0.098419116519960256D;
+            this.numericalTextBoxNaClB1A.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB1A.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB1A.SmartIncrement = true;
             this.numericalTextBoxNaClB1A.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -397,6 +415,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB1A0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB1A0.Name = "numericalTextBoxNaClB1A0";
             this.numericalTextBoxNaClB1A0.RadianValue = 0.098419116519960256D;
+            this.numericalTextBoxNaClB1A0.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB1A0.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB1A0.SmartIncrement = true;
             this.numericalTextBoxNaClB1A0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -432,6 +451,7 @@ namespace PDIndexer
             this.numericBoxAuFratanduono.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAuFratanduono.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAuFratanduono.Name = "numericBoxAuFratanduono";
+            this.numericBoxAuFratanduono.RoundErrorAccuracy = -1;
             this.numericBoxAuFratanduono.SkipEventDuringInput = false;
             this.numericBoxAuFratanduono.SmartIncrement = true;
             this.numericBoxAuFratanduono.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -447,6 +467,7 @@ namespace PDIndexer
             this.numericBoxAuYokoo.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAuYokoo.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxAuYokoo.Name = "numericBoxAuYokoo";
+            this.numericBoxAuYokoo.RoundErrorAccuracy = -1;
             this.numericBoxAuYokoo.SkipEventDuringInput = false;
             this.numericBoxAuYokoo.SmartIncrement = true;
             this.numericBoxAuYokoo.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -462,6 +483,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldJamieson.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldJamieson.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldJamieson.Name = "numericalTextBoxGoldJamieson";
+            this.numericalTextBoxGoldJamieson.RoundErrorAccuracy = -1;
             this.numericalTextBoxGoldJamieson.SkipEventDuringInput = false;
             this.numericalTextBoxGoldJamieson.SmartIncrement = true;
             this.numericalTextBoxGoldJamieson.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -477,6 +499,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldTsuchiya.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldTsuchiya.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldTsuchiya.Name = "numericalTextBoxGoldTsuchiya";
+            this.numericalTextBoxGoldTsuchiya.RoundErrorAccuracy = -1;
             this.numericalTextBoxGoldTsuchiya.SkipEventDuringInput = false;
             this.numericalTextBoxGoldTsuchiya.SmartIncrement = true;
             this.numericalTextBoxGoldTsuchiya.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -492,6 +515,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldSim.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldSim.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldSim.Name = "numericalTextBoxGoldSim";
+            this.numericalTextBoxGoldSim.RoundErrorAccuracy = -1;
             this.numericalTextBoxGoldSim.SkipEventDuringInput = false;
             this.numericalTextBoxGoldSim.SmartIncrement = true;
             this.numericalTextBoxGoldSim.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -512,6 +536,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldAnderson.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldAnderson.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldAnderson.Name = "numericalTextBoxGoldAnderson";
+            this.numericalTextBoxGoldAnderson.RoundErrorAccuracy = -1;
             this.numericalTextBoxGoldAnderson.SkipEventDuringInput = false;
             this.numericalTextBoxGoldAnderson.SmartIncrement = true;
             this.numericalTextBoxGoldAnderson.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -532,6 +557,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldA.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldA.Name = "numericalTextBoxGoldA";
             this.numericalTextBoxGoldA.RadianValue = 0.071178890219458738D;
+            this.numericalTextBoxGoldA.RoundErrorAccuracy = -1;
             this.numericalTextBoxGoldA.SkipEventDuringInput = false;
             this.numericalTextBoxGoldA.SmartIncrement = true;
             this.numericalTextBoxGoldA.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -547,6 +573,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldA0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxGoldA0.Name = "numericalTextBoxGoldA0";
             this.numericalTextBoxGoldA0.RadianValue = 0.071178890219458738D;
+            this.numericalTextBoxGoldA0.RoundErrorAccuracy = -1;
             this.numericalTextBoxGoldA0.SkipEventDuringInput = false;
             this.numericalTextBoxGoldA0.SmartIncrement = true;
             this.numericalTextBoxGoldA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -601,6 +628,7 @@ namespace PDIndexer
             this.numericBoxMgOTangeBM.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMgOTangeBM.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMgOTangeBM.Name = "numericBoxMgOTangeBM";
+            this.numericBoxMgOTangeBM.RoundErrorAccuracy = -1;
             this.numericBoxMgOTangeBM.SkipEventDuringInput = false;
             this.numericBoxMgOTangeBM.SmartIncrement = true;
             this.numericBoxMgOTangeBM.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -616,6 +644,7 @@ namespace PDIndexer
             this.numericBoxMgOTangeVinet.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMgOTangeVinet.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMgOTangeVinet.Name = "numericBoxMgOTangeVinet";
+            this.numericBoxMgOTangeVinet.RoundErrorAccuracy = -1;
             this.numericBoxMgOTangeVinet.SkipEventDuringInput = false;
             this.numericBoxMgOTangeVinet.SmartIncrement = true;
             this.numericBoxMgOTangeVinet.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -631,6 +660,7 @@ namespace PDIndexer
             this.numericalTextBoxMgOAizawa.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgOAizawa.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgOAizawa.Name = "numericalTextBoxMgOAizawa";
+            this.numericalTextBoxMgOAizawa.RoundErrorAccuracy = -1;
             this.numericalTextBoxMgOAizawa.SkipEventDuringInput = false;
             this.numericalTextBoxMgOAizawa.SmartIncrement = true;
             this.numericalTextBoxMgOAizawa.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -651,6 +681,7 @@ namespace PDIndexer
             this.numericalTextBoxMgODewaele.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgODewaele.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgODewaele.Name = "numericalTextBoxMgODewaele";
+            this.numericalTextBoxMgODewaele.RoundErrorAccuracy = -1;
             this.numericalTextBoxMgODewaele.SkipEventDuringInput = false;
             this.numericalTextBoxMgODewaele.SmartIncrement = true;
             this.numericalTextBoxMgODewaele.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -671,6 +702,7 @@ namespace PDIndexer
             this.numericalTextBoxMgOJacson.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgOJacson.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgOJacson.Name = "numericalTextBoxMgOJacson";
+            this.numericalTextBoxMgOJacson.RoundErrorAccuracy = -1;
             this.numericalTextBoxMgOJacson.SkipEventDuringInput = false;
             this.numericalTextBoxMgOJacson.SmartIncrement = true;
             this.numericalTextBoxMgOJacson.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -696,6 +728,7 @@ namespace PDIndexer
             this.numericalTextBoxMgOA.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgOA.Name = "numericalTextBoxMgOA";
             this.numericalTextBoxMgOA.RadianValue = 0.0734993054599852D;
+            this.numericalTextBoxMgOA.RoundErrorAccuracy = -1;
             this.numericalTextBoxMgOA.SkipEventDuringInput = false;
             this.numericalTextBoxMgOA.SmartIncrement = true;
             this.numericalTextBoxMgOA.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -716,6 +749,7 @@ namespace PDIndexer
             this.numericalTextBoxMgOA0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxMgOA0.Name = "numericalTextBoxMgOA0";
             this.numericalTextBoxMgOA0.RadianValue = 0.0734993054599852D;
+            this.numericalTextBoxMgOA0.RoundErrorAccuracy = -1;
             this.numericalTextBoxMgOA0.SkipEventDuringInput = false;
             this.numericalTextBoxMgOA0.SmartIncrement = true;
             this.numericalTextBoxMgOA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -749,6 +783,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2SakaiVinet.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SakaiVinet.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SakaiVinet.Name = "numericalTextBoxNaClB2SakaiVinet";
+            this.numericalTextBoxNaClB2SakaiVinet.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2SakaiVinet.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2SakaiVinet.SmartIncrement = true;
             this.numericalTextBoxNaClB2SakaiVinet.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -764,6 +799,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2SakaiBM.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SakaiBM.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SakaiBM.Name = "numericalTextBoxNaClB2SakaiBM";
+            this.numericalTextBoxNaClB2SakaiBM.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2SakaiBM.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2SakaiBM.SmartIncrement = true;
             this.numericalTextBoxNaClB2SakaiBM.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -779,6 +815,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2Ueda.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2Ueda.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2Ueda.Name = "numericalTextBoxNaClB2Ueda";
+            this.numericalTextBoxNaClB2Ueda.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2Ueda.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2Ueda.SmartIncrement = true;
             this.numericalTextBoxNaClB2Ueda.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -799,6 +836,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2SataMgO.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SataMgO.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SataMgO.Name = "numericalTextBoxNaClB2SataMgO";
+            this.numericalTextBoxNaClB2SataMgO.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2SataMgO.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2SataMgO.SmartIncrement = true;
             this.numericalTextBoxNaClB2SataMgO.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -819,6 +857,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2SataPt.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SataPt.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2SataPt.Name = "numericalTextBoxNaClB2SataPt";
+            this.numericalTextBoxNaClB2SataPt.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2SataPt.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2SataPt.SmartIncrement = true;
             this.numericalTextBoxNaClB2SataPt.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -844,6 +883,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2A.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2A.Name = "numericalTextBoxNaClB2A";
             this.numericalTextBoxNaClB2A.RadianValue = 0.051138147083433859D;
+            this.numericalTextBoxNaClB2A.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2A.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2A.SmartIncrement = true;
             this.numericalTextBoxNaClB2A.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -864,6 +904,7 @@ namespace PDIndexer
             this.numericalTextBoxNaClB2A0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxNaClB2A0.Name = "numericalTextBoxNaClB2A0";
             this.numericalTextBoxNaClB2A0.ReadOnly = true;
+            this.numericalTextBoxNaClB2A0.RoundErrorAccuracy = -1;
             this.numericalTextBoxNaClB2A0.SkipEventDuringInput = false;
             this.numericalTextBoxNaClB2A0.SmartIncrement = true;
             this.numericalTextBoxNaClB2A0.TextBoxBackColor = System.Drawing.SystemColors.Control;
@@ -889,6 +930,7 @@ namespace PDIndexer
             this.numericalTextBoxCorundumDubrovinsky.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxCorundumDubrovinsky.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxCorundumDubrovinsky.Name = "numericalTextBoxCorundumDubrovinsky";
+            this.numericalTextBoxCorundumDubrovinsky.RoundErrorAccuracy = -1;
             this.numericalTextBoxCorundumDubrovinsky.SkipEventDuringInput = false;
             this.numericalTextBoxCorundumDubrovinsky.SmartIncrement = true;
             this.numericalTextBoxCorundumDubrovinsky.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -904,6 +946,7 @@ namespace PDIndexer
             this.numericalTextBoxColundumV.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxColundumV.Name = "numericalTextBoxColundumV";
             this.numericalTextBoxColundumV.RadianValue = 4.4662054024689839D;
+            this.numericalTextBoxColundumV.RoundErrorAccuracy = -1;
             this.numericalTextBoxColundumV.SkipEventDuringInput = false;
             this.numericalTextBoxColundumV.SmartIncrement = true;
             this.numericalTextBoxColundumV.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -924,6 +967,7 @@ namespace PDIndexer
             this.numericalTextBoxColundumV0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxColundumV0.Name = "numericalTextBoxColundumV0";
             this.numericalTextBoxColundumV0.RadianValue = 4.4662054024689839D;
+            this.numericalTextBoxColundumV0.RoundErrorAccuracy = -1;
             this.numericalTextBoxColundumV0.SkipEventDuringInput = false;
             this.numericalTextBoxColundumV0.SmartIncrement = true;
             this.numericalTextBoxColundumV0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -943,6 +987,7 @@ namespace PDIndexer
             this.flowLayoutPanel1.Controls.Add(this.groupBoxAr);
             this.flowLayoutPanel1.Controls.Add(this.groupBoxRe);
             this.flowLayoutPanel1.Controls.Add(this.groupBoxMo);
+            this.flowLayoutPanel1.Controls.Add(this.groupBoxPb);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // groupBoxAr
@@ -965,6 +1010,7 @@ namespace PDIndexer
             this.numericalTextBoxArRoss.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArRoss.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArRoss.Name = "numericalTextBoxArRoss";
+            this.numericalTextBoxArRoss.RoundErrorAccuracy = -1;
             this.numericalTextBoxArRoss.SkipEventDuringInput = false;
             this.numericalTextBoxArRoss.SmartIncrement = true;
             this.numericalTextBoxArRoss.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -980,6 +1026,7 @@ namespace PDIndexer
             this.numericalTextBoxArJephcoat.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArJephcoat.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArJephcoat.Name = "numericalTextBoxArJephcoat";
+            this.numericalTextBoxArJephcoat.RoundErrorAccuracy = -1;
             this.numericalTextBoxArJephcoat.SkipEventDuringInput = false;
             this.numericalTextBoxArJephcoat.SmartIncrement = true;
             this.numericalTextBoxArJephcoat.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -995,6 +1042,7 @@ namespace PDIndexer
             this.numericalTextBoxArA.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArA.Name = "numericalTextBoxArA";
             this.numericalTextBoxArA.RadianValue = 0.071184998871840724D;
+            this.numericalTextBoxArA.RoundErrorAccuracy = -1;
             this.numericalTextBoxArA.SkipEventDuringInput = false;
             this.numericalTextBoxArA.SmartIncrement = true;
             this.numericalTextBoxArA.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1019,6 +1067,7 @@ namespace PDIndexer
             this.numericalTextBoxArA0.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArA0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxArA0.Name = "numericalTextBoxArA0";
+            this.numericalTextBoxArA0.RoundErrorAccuracy = -1;
             this.numericalTextBoxArA0.SkipEventDuringInput = false;
             this.numericalTextBoxArA0.SmartIncrement = true;
             this.numericalTextBoxArA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1049,6 +1098,7 @@ namespace PDIndexer
             this.numericBoxReDub.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReDub.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReDub.Name = "numericBoxReDub";
+            this.numericBoxReDub.RoundErrorAccuracy = -1;
             this.numericBoxReDub.SkipEventDuringInput = false;
             this.numericBoxReDub.SmartIncrement = true;
             this.numericBoxReDub.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1064,6 +1114,7 @@ namespace PDIndexer
             this.numericBoxReSakai.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReSakai.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReSakai.Name = "numericBoxReSakai";
+            this.numericBoxReSakai.RoundErrorAccuracy = -1;
             this.numericBoxReSakai.SkipEventDuringInput = false;
             this.numericBoxReSakai.SmartIncrement = true;
             this.numericBoxReSakai.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1084,6 +1135,7 @@ namespace PDIndexer
             this.numericBoxReAnz.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReAnz.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReAnz.Name = "numericBoxReAnz";
+            this.numericBoxReAnz.RoundErrorAccuracy = -1;
             this.numericBoxReAnz.SkipEventDuringInput = false;
             this.numericBoxReAnz.SmartIncrement = true;
             this.numericBoxReAnz.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1104,6 +1156,7 @@ namespace PDIndexer
             this.numericalTextBoxReZha.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxReZha.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxReZha.Name = "numericalTextBoxReZha";
+            this.numericalTextBoxReZha.RoundErrorAccuracy = -1;
             this.numericalTextBoxReZha.SkipEventDuringInput = false;
             this.numericalTextBoxReZha.SmartIncrement = true;
             this.numericalTextBoxReZha.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1124,6 +1177,7 @@ namespace PDIndexer
             this.numericBoxReV.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxReV.Name = "numericBoxReV";
             this.numericBoxReV.RadianValue = 0.51361461961226529D;
+            this.numericBoxReV.RoundErrorAccuracy = -1;
             this.numericBoxReV.SkipEventDuringInput = false;
             this.numericBoxReV.SmartIncrement = true;
             this.numericBoxReV.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1144,6 +1198,7 @@ namespace PDIndexer
             this.numerictBoxReV0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numerictBoxReV0.Name = "numerictBoxReV0";
             this.numerictBoxReV0.RadianValue = 0.51361461961226529D;
+            this.numerictBoxReV0.RoundErrorAccuracy = -1;
             this.numerictBoxReV0.SkipEventDuringInput = false;
             this.numerictBoxReV0.SmartIncrement = true;
             this.numerictBoxReV0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1171,6 +1226,7 @@ namespace PDIndexer
             this.numericBoxMoZhao.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMoZhao.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMoZhao.Name = "numericBoxMoZhao";
+            this.numericBoxMoZhao.RoundErrorAccuracy = -1;
             this.numericBoxMoZhao.SkipEventDuringInput = false;
             this.numericBoxMoZhao.SmartIncrement = true;
             this.numericBoxMoZhao.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1186,6 +1242,7 @@ namespace PDIndexer
             this.numericBoxMoHuang.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMoHuang.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMoHuang.Name = "numericBoxMoHuang";
+            this.numericBoxMoHuang.RoundErrorAccuracy = -1;
             this.numericBoxMoHuang.SkipEventDuringInput = false;
             this.numericBoxMoHuang.SmartIncrement = true;
             this.numericBoxMoHuang.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -1206,6 +1263,7 @@ namespace PDIndexer
             this.numericBoxMoV.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMoV.Name = "numericBoxMoV";
             this.numericBoxMoV.RadianValue = 0.54349552907103427D;
+            this.numericBoxMoV.RoundErrorAccuracy = -1;
             this.numericBoxMoV.SkipEventDuringInput = false;
             this.numericBoxMoV.SmartIncrement = true;
             this.numericBoxMoV.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1226,12 +1284,76 @@ namespace PDIndexer
             this.numericBoxMoV0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxMoV0.Name = "numericBoxMoV0";
             this.numericBoxMoV0.RadianValue = 0.54349552907103427D;
+            this.numericBoxMoV0.RoundErrorAccuracy = -1;
             this.numericBoxMoV0.SkipEventDuringInput = false;
             this.numericBoxMoV0.SmartIncrement = true;
             this.numericBoxMoV0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxMoV0.ThonsandsSeparator = true;
             this.numericBoxMoV0.Value = 31.14D;
             this.numericBoxMoV0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            // 
+            // groupBoxPb
+            // 
+            this.groupBoxPb.Controls.Add(this.numericBoxPbStrassle);
+            this.groupBoxPb.Controls.Add(this.numericBoxPbA);
+            this.groupBoxPb.Controls.Add(this.label32);
+            this.groupBoxPb.Controls.Add(this.numericBoxPbA0);
+            resources.ApplyResources(this.groupBoxPb, "groupBoxPb");
+            this.groupBoxPb.Name = "groupBoxPb";
+            this.groupBoxPb.TabStop = false;
+            // 
+            // numericBoxPbStrassle
+            // 
+            resources.ApplyResources(this.numericBoxPbStrassle, "numericBoxPbStrassle");
+            this.numericBoxPbStrassle.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbStrassle.DecimalPlaces = 3;
+            this.numericBoxPbStrassle.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbStrassle.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbStrassle.Name = "numericBoxPbStrassle";
+            this.numericBoxPbStrassle.RoundErrorAccuracy = -1;
+            this.numericBoxPbStrassle.SkipEventDuringInput = false;
+            this.numericBoxPbStrassle.SmartIncrement = true;
+            this.numericBoxPbStrassle.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.numericBoxPbStrassle.TextBoxForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.numericBoxPbStrassle.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPbStrassle.ThonsandsSeparator = true;
+            // 
+            // numericBoxPbA
+            // 
+            resources.ApplyResources(this.numericBoxPbA, "numericBoxPbA");
+            this.numericBoxPbA.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbA.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbA.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbA.Name = "numericBoxPbA";
+            this.numericBoxPbA.RadianValue = 0.086404095416306087D;
+            this.numericBoxPbA.RoundErrorAccuracy = -1;
+            this.numericBoxPbA.SkipEventDuringInput = false;
+            this.numericBoxPbA.SmartIncrement = true;
+            this.numericBoxPbA.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPbA.ThonsandsSeparator = true;
+            this.numericBoxPbA.Value = 4.95059D;
+            this.numericBoxPbA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            // 
+            // label32
+            // 
+            resources.ApplyResources(this.label32, "label32");
+            this.label32.Name = "label32";
+            // 
+            // numericBoxPbA0
+            // 
+            resources.ApplyResources(this.numericBoxPbA0, "numericBoxPbA0");
+            this.numericBoxPbA0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbA0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbA0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPbA0.Name = "numericBoxPbA0";
+            this.numericBoxPbA0.RadianValue = 0.086404095416306087D;
+            this.numericBoxPbA0.RoundErrorAccuracy = -1;
+            this.numericBoxPbA0.SkipEventDuringInput = false;
+            this.numericBoxPbA0.SmartIncrement = true;
+            this.numericBoxPbA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPbA0.ThonsandsSeparator = true;
+            this.numericBoxPbA0.Value = 4.95059D;
+            this.numericBoxPbA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // checkBoxPlatinum
             // 
@@ -1299,6 +1421,7 @@ namespace PDIndexer
             this.flowLayoutPanel2.Controls.Add(this.checkBoxAr);
             this.flowLayoutPanel2.Controls.Add(this.checkBoxRe);
             this.flowLayoutPanel2.Controls.Add(this.checkBoxMo);
+            this.flowLayoutPanel2.Controls.Add(this.checkBoxPb);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // checkBoxAr
@@ -1328,6 +1451,15 @@ namespace PDIndexer
             this.checkBoxMo.UseVisualStyleBackColor = true;
             this.checkBoxMo.CheckedChanged += new System.EventHandler(this.checkBoxGold_CheckedChanged);
             // 
+            // checkBoxPb
+            // 
+            resources.ApplyResources(this.checkBoxPb, "checkBoxPb");
+            this.checkBoxPb.Checked = true;
+            this.checkBoxPb.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.checkBoxPb.Name = "checkBoxPb";
+            this.checkBoxPb.UseVisualStyleBackColor = true;
+            this.checkBoxPb.CheckedChanged += new System.EventHandler(this.checkBoxGold_CheckedChanged);
+            // 
             // checkBoxHBN
             // 
             resources.ApplyResources(this.checkBoxHBN, "checkBoxHBN");
@@ -1352,6 +1484,7 @@ namespace PDIndexer
             this.numericalTextBoxTemperature.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxTemperature.Name = "numericalTextBoxTemperature";
             this.numericalTextBoxTemperature.RadianValue = 5.2359877559829888D;
+            this.numericalTextBoxTemperature.RoundErrorAccuracy = -1;
             this.numericalTextBoxTemperature.SkipEventDuringInput = false;
             this.numericalTextBoxTemperature.SmartIncrement = true;
             this.numericalTextBoxTemperature.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1393,6 +1526,8 @@ namespace PDIndexer
             this.groupBoxRe.PerformLayout();
             this.groupBoxMo.ResumeLayout(false);
             this.groupBoxMo.PerformLayout();
+            this.groupBoxPb.ResumeLayout(false);
+            this.groupBoxPb.PerformLayout();
             this.flowLayoutPanel2.ResumeLayout(false);
             this.flowLayoutPanel2.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1508,6 +1643,12 @@ namespace PDIndexer
         private Label label30;
         private Crystallography.Controls.NumericBox numericBoxAuFratanduono;
         private Label label27;
+        private GroupBox groupBoxPb;
+        private Crystallography.Controls.NumericBox numericBoxPbStrassle;
+        public Crystallography.Controls.NumericBox numericBoxPbA;
+        private Label label32;
+        private Crystallography.Controls.NumericBox numericBoxPbA0;
+        public CheckBox checkBoxPb;
     }
 
 

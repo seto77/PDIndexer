@@ -2652,6 +2652,10 @@ public partial class FormMain : Form
         if (formEOS.checkBoxMo.Checked = dataSet.DataTableCrystal.GetItemChecked(9))
             formEOS.numericBoxMoV.Text = (dataSet.DataTableCrystal.Items[9].Volume * 1000).ToString("f5");
 
+        //Pb
+        if (formEOS.checkBoxPb.Checked = dataSet.DataTableCrystal.GetItemChecked(10))
+            formEOS.numericBoxPbA.Text = (dataSet.DataTableCrystal.Items[10].A * 10).ToString("f5");
+
         formEOS.skipTextChangeEvent = false;
         formEOS.numericalTextBox_ValueChanged(new object(), new EventArgs());
     }

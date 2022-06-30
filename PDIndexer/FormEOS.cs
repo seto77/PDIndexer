@@ -4,6 +4,9 @@ using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
 using Crystallography;
+using MathNet.Numerics;
+using System.Linq;
+
 namespace PDIndexer
 {
 	/// <summary>
@@ -23,7 +26,6 @@ namespace PDIndexer
         void crystalControl_CrystalChanged(object sender, EventArgs e)
         {
         }
-
 
         private void FormEOS_Load(object sender, System.EventArgs e)
         {
@@ -52,10 +54,10 @@ namespace PDIndexer
                 Ar();
             if (groupBoxRe.Visible)
                 Re();
-
             if (groupBoxMo.Visible)
                 Mo();
-
+            if (groupBoxPb.Visible)
+                Pb();
         }
 
 
@@ -210,11 +212,125 @@ namespace PDIndexer
                 IsothermalPressureApproach =  IsothermalPressure.BM4
             }.GetPressure(v);
 
-             //EOS.BirchMurnaghan3rd(266, 4.1, v0 / v) + EOS.MieGruneisen(2, 1, 470, 2.01, 0.6, 300, v0, t, v);
+            //EOS.BirchMurnaghan3rd(266, 4.1, v0 / v) + EOS.MieGruneisen(2, 1, 470, 2.01, 0.6, 300, v0, t, v);
         }
 
-        
-       
+
+        (double T, double B, double Bp)[] PbVinet = new (double T, double B, double Bprime)[] {
+            #region
+            (0,     48.3298,    5.4511),
+            (20,    48.2387,    5.4542),
+            (40,    47.9462,    5.4644),
+            (60,    47.5019,    5.4801),
+            (80,    47.0000,    5.4979),
+            (100,   46.4875 ,   5.5165),
+            (120,   45.9743 ,   5.5353),
+            (140,   45.4578 ,   5.5545),
+            (160,   44.9356 ,   5.5742),
+            (180,   44.4073 ,   5.5945),
+            (200,   43.8743 ,   5.6152),
+            (220,   43.3386 ,   5.6364),
+            (240,   42.8019 ,   5.6580),
+            (260,   42.2659 ,   5.6799),
+            (280,   41.7317 ,   5.7021),
+            (300,   41.2000 ,   5.7245),
+            #endregion
+        };
+
+        (double T, double A0)[] PbA0 = new (double T, double A0)[]
+        {
+            #region
+            (   0   ,   4.91366 ),
+(   5   ,   4.91370 ),
+(   10  ,   4.91378 ),
+(   15  ,   4.91391 ),
+(   20  ,   4.91410 ),
+(   25  ,   4.91436 ),
+(   30  ,   4.91469 ),
+(   35  ,   4.91508 ),
+(   40  ,   4.91552 ),
+(   45  ,   4.91601 ),
+(   50  ,   4.91654 ),
+(   55  ,   4.91710 ),
+(   60  ,   4.91768 ),
+(   65  ,   4.91828 ),
+(   70  ,   4.91890 ),
+(   75  ,   4.91952 ),
+(   80  ,   4.92014 ),
+(   85  ,   4.92077 ),
+(   90  ,   4.92140 ),
+(   95  ,   4.92203 ),
+(   100 ,   4.92267 ),
+(   105 ,   4.92330 ),
+(   110 ,   4.92394 ),
+(   115 ,   4.92457 ),
+(   120 ,   4.92521 ),
+(   125 ,   4.92585 ),
+(   130 ,   4.92650 ),
+(   135 ,   4.92714 ),
+(   140 ,   4.92779 ),
+(   145 ,   4.92844 ),
+(   150 ,   4.92909 ),
+(   155 ,   4.92975 ),
+(   160 ,   4.93041 ),
+(   165 ,   4.93108 ),
+(   170 ,   4.93174 ),
+(   175 ,   4.93241 ),
+(   180 ,   4.93308 ),
+(   185 ,   4.93376 ),
+(   190 ,   4.93444 ),
+(   195 ,   4.93511 ),
+(   200 ,   4.93580 ),
+(   205 ,   4.93648 ),
+(   210 ,   4.93717 ),
+(   215 ,   4.93785 ),
+(   220 ,   4.93854 ),
+(   225 ,   4.93923 ),
+(   230 ,   4.93993 ),
+(   235 ,   4.94062 ),
+(   240 ,   4.94131 ),
+(   245 ,   4.94201 ),
+(   250 ,   4.94270 ),
+(   255 ,   4.94340 ),
+(   260 ,   4.94410 ),
+(   265 ,   4.94480 ),
+(   270 ,   4.94550 ),
+(   275 ,   4.94619 ),
+(   280 ,   4.94689 ),
+(   285 ,   4.94760 ),
+(   290 ,   4.94830 ),
+(   295 ,   4.94900 ),
+(   300 ,   4.94970 ),
+(   305 ,   4.95040 ),
+(   310 ,   4.95110 ),
+            #endregion
+        };
+
+        MathNet.Numerics.Interpolation.IInterpolation PbInterA0, PbInterB, PbInterBp;
+        private void Pb()
+        {
+            if (PbInterA0 == null)
+            {
+                PbInterA0 = Interpolate.Linear(PbA0.Select(e => e.T).ToArray(), PbA0.Select(e => e.A0));
+                PbInterB = Interpolate.Linear(PbVinet.Select(e => e.T).ToArray(), PbVinet.Select(e => e.B));
+                PbInterBp = Interpolate.Linear(PbVinet.Select(e => e.T).ToArray(), PbVinet.Select(e => e.Bp));
+            }
+            var a = numericBoxPbA.Value;
+            var a0 = numericBoxPbA0.Value;
+            var t = numericalTextBoxTemperature.Value;
+            var t0 = numericalTextBoxPtT0.Value;
+
+            var scale = a0 / PbInterA0.Interpolate(t0);
+            var a0atT = scale * PbInterA0.Interpolate(t);
+
+            var x = a / a0atT;
+
+            var B = PbInterB.Interpolate(t);
+            var Bp = PbInterBp.Interpolate(t);
+
+            numericBoxPbStrassle.Value = 3 * B * (1 - x) / x / x * Math.Exp(1.5 * (Bp - 1) * (1 - x)); ;
+        }
+
 
         private void FormEOS_Closed(object sender, System.EventArgs e) {
 			formMain.toolStripButtonEquationOfState.Checked=false;
@@ -243,6 +359,7 @@ namespace PDIndexer
             groupBoxAr.Visible = checkBoxAr.Checked;
             groupBoxRe.Visible = checkBoxRe.Checked;
             groupBoxMo.Visible = checkBoxMo.Checked;
+            groupBoxPb.Visible = checkBoxPb.Checked;
 
         }
 
