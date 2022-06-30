@@ -20,7 +20,6 @@ namespace PDIndexer
 		public FormEOS()
 		{
 			InitializeComponent();
-           
 		}
 
         void crystalControl_CrystalChanged(object sender, EventArgs e)
@@ -37,7 +36,7 @@ namespace PDIndexer
         public void numericalTextBox_ValueChanged(object sender, EventArgs e)
         {
             if (skipTextChangeEvent) return;
-            temperature = numericalTextBoxTemperature.Value;
+            temperature = numericBoxTemperature.Value;
             if (groupBoxGold.Visible)
                 Gold();
             if (groupBoxPlatinum.Visible)
@@ -65,8 +64,8 @@ namespace PDIndexer
         private void Gold()
         {
             double a = numericalTextBoxGoldA.Value, v = a * a * a;
-            double a0 = numericalTextBoxGoldA0.Value, v0 = a0 * a0 * a0;
-            double t = numericalTextBoxTemperature.Value;
+            double a0 = numericBoxGoldA0.Value, v0 = a0 * a0 * a0;
+            double t = numericBoxTemperature.Value;
             //Jamieson
             numericalTextBoxGoldJamieson.Value = EOS.Au_Jamieson(a / 10, a0 / 10, t);
             //Sim
@@ -84,8 +83,8 @@ namespace PDIndexer
         private void Ar()
         {
             double a = numericalTextBoxArA.Value, v = a * a * a;
-            double a0 = numericalTextBoxArA0.Value, v0 = a0 * a0 * a0;
-            double t = numericalTextBoxTemperature.Value;
+            double a0 = numericBoxArA0.Value, v0 = a0 * a0 * a0;
+            double t = numericBoxTemperature.Value;
             //Jephcoat
             numericalTextBoxArJephcoat.Value = EOS.Ar_Jephcoat(a / 10, t);
             //Ross
@@ -96,8 +95,8 @@ namespace PDIndexer
         private void MgO()
         {
             double a = numericalTextBoxMgOA.Value, v = a * a * a;
-            double a0 = numericalTextBoxMgOA0.Value, v0 = a0 * a0 * a0;
-            double t = numericalTextBoxTemperature.Value;
+            double a0 = numericBoxMgOA0.Value, v0 = a0 * a0 * a0;
+            double t = numericBoxTemperature.Value;
             //Aizawa
             numericalTextBoxMgOAizawa.Value = EOS.BirchMurnaghan3rd(160, 4.15, v0, v) + EOS.MieGruneisen(4, 2, 773, 1.41, 0.7, 300, v0, t, v);
             //Dewaele
@@ -113,7 +112,7 @@ namespace PDIndexer
         {
             double a = numericalTextBoxNaClB2A.Value, v = a * a * a;
             double a0 = numericalTextBoxNaClB2A0.Value, v0 = a0 * a0 * a0;
-            double t = numericalTextBoxTemperature.Value;
+            double t = numericBoxTemperature.Value;
             //Sata Pt
             numericalTextBoxNaClB2SataPt.Value = EOS.NaClB2_Sata(a, 31.14, 143.5);
             //Sata MgO
@@ -131,8 +130,8 @@ namespace PDIndexer
         {
 
             double a = numericalTextBoxNaClB1A.Value;
-            double a0 = numericalTextBoxNaClB1A0.Value;
-            double t = numericalTextBoxTemperature.Value;
+            double a0 = numericBoxNaClB1A0.Value;
+            double t = numericBoxTemperature.Value;
             //Brown
             numericalTextBoxNaClB1Brown.Value = EOS.NaCl_Brown(a / 10, a0 / 10, t);
             //Matsui
@@ -143,10 +142,10 @@ namespace PDIndexer
         {
             double a = numericalTextBoxPtA.Value;
             var v = a * a * a;
-            double a0 = numericalTextBoxPtA0.Value;
+            double a0 = numericBoxPtA0.Value;
             var v0 = a0 * a0 * a0;
-            double t0 = numericalTextBoxPtT0.Value;
-            double t = numericalTextBoxTemperature.Value;
+            double t0 = numericBoxTemperature0.Value;
+            double t = numericBoxTemperature.Value;
 
             //Holmes
             numericalTextBoxPtHolmes.Value = EOS.Pt_Holmez(t, a / 10, a0 / 10);
@@ -165,8 +164,8 @@ namespace PDIndexer
         private void Corundum()
         {
             double v = numericalTextBoxColundumV.Value;
-            double v0 = numericalTextBoxColundumV0.Value;
-            double t = numericalTextBoxTemperature.Value;
+            double v0 = numericBoxColundumV0.Value;
+            double t = numericBoxTemperature.Value;
 
             //Dubrovinsky
             numericalTextBoxCorundumDubrovinsky.Value = EOS.Corundum_Dubrovinsky(v0,v,t);
@@ -176,7 +175,7 @@ namespace PDIndexer
         {
             double v = numericBoxReV.Value;
             double v0 = numerictBoxReV0.Value;
-            double t = numericalTextBoxTemperature.Value;
+            double t = numericBoxTemperature.Value;
             //Zha
             numericalTextBoxReZha.Value = EOS.Re_Zha(v0, v, t);
 
@@ -189,7 +188,7 @@ namespace PDIndexer
         {
             double v = numericBoxMoV.Value;
             double v0 = numericBoxMoV0.Value;
-            double t = numericalTextBoxTemperature.Value;
+            double t = numericBoxTemperature.Value;
 
             //Huang+16
             numericBoxMoHuang.Value = EOS.BirchMurnaghan3rd(255, 4.25, v0 / v) + EOS.MieGruneisen(2, 1, 470, 2.01, 0.6, 300, v0, t, v);
@@ -317,8 +316,8 @@ namespace PDIndexer
             }
             var a = numericBoxPbA.Value;
             var a0 = numericBoxPbA0.Value;
-            var t = numericalTextBoxTemperature.Value;
-            var t0 = numericalTextBoxPtT0.Value;
+            var t = numericBoxTemperature.Value;
+            var t0 = numericBoxTemperature0.Value;
 
             var scale = a0 / PbInterA0.Interpolate(t0);
             var a0atT = scale * PbInterA0.Interpolate(t);

@@ -977,6 +977,20 @@ public partial class FormMain : Form
             };
             #endregion
 
+            #region EOS関連の読み込み
+            formEOS.numericBoxArA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxArA0.Value", formEOS.numericBoxArA0.Value));
+            formEOS.numericBoxColundumV0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxColundumV0.Value", formEOS.numericBoxColundumV0.Value));
+            formEOS.numericBoxGoldA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxGoldA0.Value", formEOS.numericBoxGoldA0.Value));
+            formEOS.numericBoxMgOA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxMgOA0.Value", formEOS.numericBoxMgOA0.Value));
+            formEOS.numericBoxNaClB1A0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxNaClB1A0.Value", formEOS.numericBoxNaClB1A0.Value));
+            formEOS.numericBoxPtA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxPtA0.Value", formEOS.numericBoxPtA0.Value));
+            formEOS.numericBoxMoV0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxMoV0.Value", formEOS.numericBoxMoV0.Value));
+            formEOS.numerictBoxReV0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numerictBoxReV0.Value", formEOS.numerictBoxReV0.Value));
+            formEOS.numericBoxPbA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxPbA0.Value", formEOS.numericBoxPbA0.Value));
+            formEOS.numericBoxTemperature0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxTemperature0.Value", formEOS.numericBoxTemperature0.Value));
+            formEOS.numericBoxTemperature.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxTemperature.Value", formEOS.numericBoxTemperature.Value));
+            #endregion
+
             regKey.Close();
         }
         catch { }
@@ -1072,6 +1086,20 @@ public partial class FormMain : Form
                 regKey.SetValue($"FileProperty.EGC{i}", sb.ToString().TrimEnd(new[] { ',' }));
             }
         }
+
+        #region EOS関連の書き込み
+        regKey.SetValue("formEOS.numericBoxArA0.Value", formEOS.numericBoxArA0.Value);
+        regKey.SetValue("formEOS.numericBoxColundumV0.Value", formEOS.numericBoxColundumV0.Value);
+        regKey.SetValue("formEOS.numericBoxGoldA0.Value", formEOS.numericBoxGoldA0.Value);
+        regKey.SetValue("formEOS.numericBoxMgOA0.Value", formEOS.numericBoxMgOA0.Value);
+        regKey.SetValue("formEOS.numericBoxNaClB1A0.Value", formEOS.numericBoxNaClB1A0.Value);
+        regKey.SetValue("formEOS.numericBoxPtA0.Value", formEOS.numericBoxPtA0.Value);
+        regKey.SetValue("formEOS.numericBoxMoV0.Value", formEOS.numericBoxMoV0.Value);
+        regKey.SetValue("formEOS.numerictBoxReV0.Value", formEOS.numerictBoxReV0.Value);
+        regKey.SetValue("formEOS.numericBoxPbA0.Value", formEOS.numericBoxPbA0.Value);
+        regKey.SetValue("formEOS.numericBoxTemperature0.Value", formEOS.numericBoxTemperature0.Value);
+        regKey.SetValue("formEOS.numericBoxTemperature.Value", formEOS.numericBoxTemperature.Value);
+        #endregion
 
         regKey.Close();
     }

@@ -79,7 +79,8 @@ public partial class FormCrystal : Form
 
     public void buttonChangeCrystal_Click(object sender, System.EventArgs e)
     {
-        if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved) return;
+        if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved && (ModifierKeys & Keys.Control) != Keys.Control)
+            return;
         crystalControl.GenerateFromInterface();
         formMain.InitializeCrystalPlane();
         if (crystalControl.Crystal != null)
@@ -151,7 +152,8 @@ public partial class FormCrystal : Form
     //çÌèú
     private void buttonDeleteCrystal_Click(object sender, System.EventArgs e)
     {
-        if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved) return;
+        if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved && (ModifierKeys & Keys.Control) != Keys.Control) 
+            return;
         dataSet.DataTableCrystal.RemoveItem(bindingSource.Position);
         formMain.InitializeCrystalPlane();
         formMain.Draw();

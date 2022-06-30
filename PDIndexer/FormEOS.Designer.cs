@@ -50,16 +50,16 @@ namespace PDIndexer
             this.label8 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.numericalTextBoxPtA = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxPtA0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxPtA0 = new Crystallography.Controls.NumericBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.numericalTextBoxPtT0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxTemperature0 = new Crystallography.Controls.NumericBox();
             this.groupBoxNaClB1 = new System.Windows.Forms.GroupBox();
             this.numericalTextBoxNaClB1Matsui = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxNaClB1Brown = new Crystallography.Controls.NumericBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.numericalTextBoxNaClB1A = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxNaClB1A0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxNaClB1A0 = new Crystallography.Controls.NumericBox();
             this.groupBoxGold = new System.Windows.Forms.GroupBox();
             this.numericBoxAuFratanduono = new Crystallography.Controls.NumericBox();
             this.numericBoxAuYokoo = new Crystallography.Controls.NumericBox();
@@ -70,7 +70,7 @@ namespace PDIndexer
             this.numericalTextBoxGoldAnderson = new Crystallography.Controls.NumericBox();
             this.label49 = new System.Windows.Forms.Label();
             this.numericalTextBoxGoldA = new Crystallography.Controls.NumericBox();
-            this.numericalTextBoxGoldA0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxGoldA0 = new Crystallography.Controls.NumericBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label69 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -87,7 +87,7 @@ namespace PDIndexer
             this.label21 = new System.Windows.Forms.Label();
             this.numericalTextBoxMgOA = new Crystallography.Controls.NumericBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.numericalTextBoxMgOA0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxMgOA0 = new Crystallography.Controls.NumericBox();
             this.groupBoxNaClB2 = new System.Windows.Forms.GroupBox();
             this.numericalTextBoxNaClB2SakaiVinet = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxNaClB2SakaiBM = new Crystallography.Controls.NumericBox();
@@ -105,7 +105,7 @@ namespace PDIndexer
             this.numericalTextBoxCorundumDubrovinsky = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxColundumV = new Crystallography.Controls.NumericBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericalTextBoxColundumV0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxColundumV0 = new Crystallography.Controls.NumericBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.groupBoxAr = new System.Windows.Forms.GroupBox();
             this.numericalTextBoxArRoss = new Crystallography.Controls.NumericBox();
@@ -113,7 +113,7 @@ namespace PDIndexer
             this.numericalTextBoxArA = new Crystallography.Controls.NumericBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.numericalTextBoxArA0 = new Crystallography.Controls.NumericBox();
+            this.numericBoxArA0 = new Crystallography.Controls.NumericBox();
             this.groupBoxRe = new System.Windows.Forms.GroupBox();
             this.numericBoxReDub = new Crystallography.Controls.NumericBox();
             this.numericBoxReSakai = new Crystallography.Controls.NumericBox();
@@ -150,7 +150,7 @@ namespace PDIndexer
             this.checkBoxPb = new System.Windows.Forms.CheckBox();
             this.checkBoxHBN = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.numericalTextBoxTemperature = new Crystallography.Controls.NumericBox();
+            this.numericBoxTemperature = new Crystallography.Controls.NumericBox();
             this.groupBoxPlatinum.SuspendLayout();
             this.groupBoxNaClB1.SuspendLayout();
             this.groupBoxGold.SuspendLayout();
@@ -178,7 +178,7 @@ namespace PDIndexer
             this.groupBoxPlatinum.Controls.Add(this.label8);
             this.groupBoxPlatinum.Controls.Add(this.label1);
             this.groupBoxPlatinum.Controls.Add(this.numericalTextBoxPtA);
-            this.groupBoxPlatinum.Controls.Add(this.numericalTextBoxPtA0);
+            this.groupBoxPlatinum.Controls.Add(this.numericBoxPtA0);
             this.groupBoxPlatinum.Controls.Add(this.label30);
             resources.ApplyResources(this.groupBoxPlatinum, "groupBoxPlatinum");
             this.groupBoxPlatinum.Name = "groupBoxPlatinum";
@@ -300,42 +300,42 @@ namespace PDIndexer
             this.numericalTextBoxPtA.Value = 3.9231D;
             this.numericalTextBoxPtA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
-            // numericalTextBoxPtA0
+            // numericBoxPtA0
             // 
-            resources.ApplyResources(this.numericalTextBoxPtA0, "numericalTextBoxPtA0");
-            this.numericalTextBoxPtA0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtA0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtA0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtA0.Name = "numericalTextBoxPtA0";
-            this.numericalTextBoxPtA0.RadianValue = 0.068471011884989538D;
-            this.numericalTextBoxPtA0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxPtA0.SkipEventDuringInput = false;
-            this.numericalTextBoxPtA0.SmartIncrement = true;
-            this.numericalTextBoxPtA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxPtA0.ThonsandsSeparator = true;
-            this.numericalTextBoxPtA0.Value = 3.9231D;
-            this.numericalTextBoxPtA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxPtA0, "numericBoxPtA0");
+            this.numericBoxPtA0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPtA0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPtA0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxPtA0.Name = "numericBoxPtA0";
+            this.numericBoxPtA0.RadianValue = 0.068471011884989538D;
+            this.numericBoxPtA0.RoundErrorAccuracy = -1;
+            this.numericBoxPtA0.SkipEventDuringInput = false;
+            this.numericBoxPtA0.SmartIncrement = true;
+            this.numericBoxPtA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxPtA0.ThonsandsSeparator = true;
+            this.numericBoxPtA0.Value = 3.9231D;
+            this.numericBoxPtA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // label30
             // 
             resources.ApplyResources(this.label30, "label30");
             this.label30.Name = "label30";
             // 
-            // numericalTextBoxPtT0
+            // numericBoxTemperature0
             // 
-            resources.ApplyResources(this.numericalTextBoxPtT0, "numericalTextBoxPtT0");
-            this.numericalTextBoxPtT0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtT0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtT0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPtT0.Name = "numericalTextBoxPtT0";
-            this.numericalTextBoxPtT0.RadianValue = 5.2359877559829888D;
-            this.numericalTextBoxPtT0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxPtT0.SkipEventDuringInput = false;
-            this.numericalTextBoxPtT0.SmartIncrement = true;
-            this.numericalTextBoxPtT0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxPtT0.ThonsandsSeparator = true;
-            this.numericalTextBoxPtT0.Value = 300D;
-            this.numericalTextBoxPtT0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxTemperature0, "numericBoxTemperature0");
+            this.numericBoxTemperature0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTemperature0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTemperature0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTemperature0.Name = "numericBoxTemperature0";
+            this.numericBoxTemperature0.RadianValue = 5.2359877559829888D;
+            this.numericBoxTemperature0.RoundErrorAccuracy = -1;
+            this.numericBoxTemperature0.SkipEventDuringInput = false;
+            this.numericBoxTemperature0.SmartIncrement = true;
+            this.numericBoxTemperature0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxTemperature0.ThonsandsSeparator = true;
+            this.numericBoxTemperature0.Value = 300D;
+            this.numericBoxTemperature0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // groupBoxNaClB1
             // 
@@ -344,7 +344,7 @@ namespace PDIndexer
             this.groupBoxNaClB1.Controls.Add(this.label4);
             this.groupBoxNaClB1.Controls.Add(this.label3);
             this.groupBoxNaClB1.Controls.Add(this.numericalTextBoxNaClB1A);
-            this.groupBoxNaClB1.Controls.Add(this.numericalTextBoxNaClB1A0);
+            this.groupBoxNaClB1.Controls.Add(this.numericBoxNaClB1A0);
             resources.ApplyResources(this.groupBoxNaClB1, "groupBoxNaClB1");
             this.groupBoxNaClB1.Name = "groupBoxNaClB1";
             this.groupBoxNaClB1.TabStop = false;
@@ -407,21 +407,21 @@ namespace PDIndexer
             this.numericalTextBoxNaClB1A.Value = 5.639D;
             this.numericalTextBoxNaClB1A.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
-            // numericalTextBoxNaClB1A0
+            // numericBoxNaClB1A0
             // 
-            resources.ApplyResources(this.numericalTextBoxNaClB1A0, "numericalTextBoxNaClB1A0");
-            this.numericalTextBoxNaClB1A0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxNaClB1A0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxNaClB1A0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxNaClB1A0.Name = "numericalTextBoxNaClB1A0";
-            this.numericalTextBoxNaClB1A0.RadianValue = 0.098419116519960256D;
-            this.numericalTextBoxNaClB1A0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxNaClB1A0.SkipEventDuringInput = false;
-            this.numericalTextBoxNaClB1A0.SmartIncrement = true;
-            this.numericalTextBoxNaClB1A0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxNaClB1A0.ThonsandsSeparator = true;
-            this.numericalTextBoxNaClB1A0.Value = 5.639D;
-            this.numericalTextBoxNaClB1A0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxNaClB1A0, "numericBoxNaClB1A0");
+            this.numericBoxNaClB1A0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNaClB1A0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNaClB1A0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxNaClB1A0.Name = "numericBoxNaClB1A0";
+            this.numericBoxNaClB1A0.RadianValue = 0.098419116519960256D;
+            this.numericBoxNaClB1A0.RoundErrorAccuracy = -1;
+            this.numericBoxNaClB1A0.SkipEventDuringInput = false;
+            this.numericBoxNaClB1A0.SmartIncrement = true;
+            this.numericBoxNaClB1A0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxNaClB1A0.ThonsandsSeparator = true;
+            this.numericBoxNaClB1A0.Value = 5.639D;
+            this.numericBoxNaClB1A0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // groupBoxGold
             // 
@@ -434,7 +434,7 @@ namespace PDIndexer
             this.groupBoxGold.Controls.Add(this.numericalTextBoxGoldAnderson);
             this.groupBoxGold.Controls.Add(this.label49);
             this.groupBoxGold.Controls.Add(this.numericalTextBoxGoldA);
-            this.groupBoxGold.Controls.Add(this.numericalTextBoxGoldA0);
+            this.groupBoxGold.Controls.Add(this.numericBoxGoldA0);
             this.groupBoxGold.Controls.Add(this.label22);
             this.groupBoxGold.Controls.Add(this.label69);
             this.groupBoxGold.Controls.Add(this.label15);
@@ -565,22 +565,22 @@ namespace PDIndexer
             this.numericalTextBoxGoldA.Value = 4.07825D;
             this.numericalTextBoxGoldA.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
-            // numericalTextBoxGoldA0
+            // numericBoxGoldA0
             // 
-            resources.ApplyResources(this.numericalTextBoxGoldA0, "numericalTextBoxGoldA0");
-            this.numericalTextBoxGoldA0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxGoldA0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxGoldA0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxGoldA0.Name = "numericalTextBoxGoldA0";
-            this.numericalTextBoxGoldA0.RadianValue = 0.071178890219458738D;
-            this.numericalTextBoxGoldA0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxGoldA0.SkipEventDuringInput = false;
-            this.numericalTextBoxGoldA0.SmartIncrement = true;
-            this.numericalTextBoxGoldA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxGoldA0.ThonsandsSeparator = true;
-            this.numericalTextBoxGoldA0.Value = 4.07825D;
-            this.numericalTextBoxGoldA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
-            this.numericalTextBoxGoldA0.Load += new System.EventHandler(this.numericalTextBoxGoldA0_Load);
+            resources.ApplyResources(this.numericBoxGoldA0, "numericBoxGoldA0");
+            this.numericBoxGoldA0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGoldA0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGoldA0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxGoldA0.Name = "numericBoxGoldA0";
+            this.numericBoxGoldA0.RadianValue = 0.071178890219458738D;
+            this.numericBoxGoldA0.RoundErrorAccuracy = -1;
+            this.numericBoxGoldA0.SkipEventDuringInput = false;
+            this.numericBoxGoldA0.SmartIncrement = true;
+            this.numericBoxGoldA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxGoldA0.ThonsandsSeparator = true;
+            this.numericBoxGoldA0.Value = 4.07825D;
+            this.numericBoxGoldA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            this.numericBoxGoldA0.Load += new System.EventHandler(this.numericalTextBoxGoldA0_Load);
             // 
             // label22
             // 
@@ -615,7 +615,7 @@ namespace PDIndexer
             this.groupBoxPericlase.Controls.Add(this.label21);
             this.groupBoxPericlase.Controls.Add(this.numericalTextBoxMgOA);
             this.groupBoxPericlase.Controls.Add(this.label2);
-            this.groupBoxPericlase.Controls.Add(this.numericalTextBoxMgOA0);
+            this.groupBoxPericlase.Controls.Add(this.numericBoxMgOA0);
             resources.ApplyResources(this.groupBoxPericlase, "groupBoxPericlase");
             this.groupBoxPericlase.Name = "groupBoxPericlase";
             this.groupBoxPericlase.TabStop = false;
@@ -741,21 +741,21 @@ namespace PDIndexer
             resources.ApplyResources(this.label2, "label2");
             this.label2.Name = "label2";
             // 
-            // numericalTextBoxMgOA0
+            // numericBoxMgOA0
             // 
-            resources.ApplyResources(this.numericalTextBoxMgOA0, "numericalTextBoxMgOA0");
-            this.numericalTextBoxMgOA0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxMgOA0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxMgOA0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxMgOA0.Name = "numericalTextBoxMgOA0";
-            this.numericalTextBoxMgOA0.RadianValue = 0.0734993054599852D;
-            this.numericalTextBoxMgOA0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxMgOA0.SkipEventDuringInput = false;
-            this.numericalTextBoxMgOA0.SmartIncrement = true;
-            this.numericalTextBoxMgOA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxMgOA0.ThonsandsSeparator = true;
-            this.numericalTextBoxMgOA0.Value = 4.2112D;
-            this.numericalTextBoxMgOA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxMgOA0, "numericBoxMgOA0");
+            this.numericBoxMgOA0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMgOA0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMgOA0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxMgOA0.Name = "numericBoxMgOA0";
+            this.numericBoxMgOA0.RadianValue = 0.0734993054599852D;
+            this.numericBoxMgOA0.RoundErrorAccuracy = -1;
+            this.numericBoxMgOA0.SkipEventDuringInput = false;
+            this.numericBoxMgOA0.SmartIncrement = true;
+            this.numericBoxMgOA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxMgOA0.ThonsandsSeparator = true;
+            this.numericBoxMgOA0.Value = 4.2112D;
+            this.numericBoxMgOA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // groupBoxNaClB2
             // 
@@ -917,7 +917,7 @@ namespace PDIndexer
             this.groupBoxCorundum.Controls.Add(this.numericalTextBoxCorundumDubrovinsky);
             this.groupBoxCorundum.Controls.Add(this.numericalTextBoxColundumV);
             this.groupBoxCorundum.Controls.Add(this.label5);
-            this.groupBoxCorundum.Controls.Add(this.numericalTextBoxColundumV0);
+            this.groupBoxCorundum.Controls.Add(this.numericBoxColundumV0);
             resources.ApplyResources(this.groupBoxCorundum, "groupBoxCorundum");
             this.groupBoxCorundum.Name = "groupBoxCorundum";
             this.groupBoxCorundum.TabStop = false;
@@ -959,21 +959,21 @@ namespace PDIndexer
             resources.ApplyResources(this.label5, "label5");
             this.label5.Name = "label5";
             // 
-            // numericalTextBoxColundumV0
+            // numericBoxColundumV0
             // 
-            resources.ApplyResources(this.numericalTextBoxColundumV0, "numericalTextBoxColundumV0");
-            this.numericalTextBoxColundumV0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxColundumV0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxColundumV0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxColundumV0.Name = "numericalTextBoxColundumV0";
-            this.numericalTextBoxColundumV0.RadianValue = 4.4662054024689839D;
-            this.numericalTextBoxColundumV0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxColundumV0.SkipEventDuringInput = false;
-            this.numericalTextBoxColundumV0.SmartIncrement = true;
-            this.numericalTextBoxColundumV0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxColundumV0.ThonsandsSeparator = true;
-            this.numericalTextBoxColundumV0.Value = 255.89472D;
-            this.numericalTextBoxColundumV0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxColundumV0, "numericBoxColundumV0");
+            this.numericBoxColundumV0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxColundumV0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxColundumV0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxColundumV0.Name = "numericBoxColundumV0";
+            this.numericBoxColundumV0.RadianValue = 4.4662054024689839D;
+            this.numericBoxColundumV0.RoundErrorAccuracy = -1;
+            this.numericBoxColundumV0.SkipEventDuringInput = false;
+            this.numericBoxColundumV0.SmartIncrement = true;
+            this.numericBoxColundumV0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxColundumV0.ThonsandsSeparator = true;
+            this.numericBoxColundumV0.Value = 255.89472D;
+            this.numericBoxColundumV0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // flowLayoutPanel1
             // 
@@ -997,7 +997,7 @@ namespace PDIndexer
             this.groupBoxAr.Controls.Add(this.numericalTextBoxArA);
             this.groupBoxAr.Controls.Add(this.label17);
             this.groupBoxAr.Controls.Add(this.label14);
-            this.groupBoxAr.Controls.Add(this.numericalTextBoxArA0);
+            this.groupBoxAr.Controls.Add(this.numericBoxArA0);
             resources.ApplyResources(this.groupBoxAr, "groupBoxAr");
             this.groupBoxAr.Name = "groupBoxAr";
             this.groupBoxAr.TabStop = false;
@@ -1060,19 +1060,19 @@ namespace PDIndexer
             resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
             // 
-            // numericalTextBoxArA0
+            // numericBoxArA0
             // 
-            resources.ApplyResources(this.numericalTextBoxArA0, "numericalTextBoxArA0");
-            this.numericalTextBoxArA0.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxArA0.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxArA0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxArA0.Name = "numericalTextBoxArA0";
-            this.numericalTextBoxArA0.RoundErrorAccuracy = -1;
-            this.numericalTextBoxArA0.SkipEventDuringInput = false;
-            this.numericalTextBoxArA0.SmartIncrement = true;
-            this.numericalTextBoxArA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxArA0.ThonsandsSeparator = true;
-            this.numericalTextBoxArA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxArA0, "numericBoxArA0");
+            this.numericBoxArA0.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxArA0.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxArA0.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxArA0.Name = "numericBoxArA0";
+            this.numericBoxArA0.RoundErrorAccuracy = -1;
+            this.numericBoxArA0.SkipEventDuringInput = false;
+            this.numericBoxArA0.SmartIncrement = true;
+            this.numericBoxArA0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxArA0.ThonsandsSeparator = true;
+            this.numericBoxArA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // groupBoxRe
             // 
@@ -1478,27 +1478,27 @@ namespace PDIndexer
             // 
             // numericalTextBoxTemperature
             // 
-            resources.ApplyResources(this.numericalTextBoxTemperature, "numericalTextBoxTemperature");
-            this.numericalTextBoxTemperature.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTemperature.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTemperature.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxTemperature.Name = "numericalTextBoxTemperature";
-            this.numericalTextBoxTemperature.RadianValue = 5.2359877559829888D;
-            this.numericalTextBoxTemperature.RoundErrorAccuracy = -1;
-            this.numericalTextBoxTemperature.SkipEventDuringInput = false;
-            this.numericalTextBoxTemperature.SmartIncrement = true;
-            this.numericalTextBoxTemperature.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxTemperature.ThonsandsSeparator = true;
-            this.numericalTextBoxTemperature.Value = 300D;
-            this.numericalTextBoxTemperature.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
+            resources.ApplyResources(this.numericBoxTemperature, "numericalTextBoxTemperature");
+            this.numericBoxTemperature.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTemperature.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTemperature.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxTemperature.Name = "numericalTextBoxTemperature";
+            this.numericBoxTemperature.RadianValue = 5.2359877559829888D;
+            this.numericBoxTemperature.RoundErrorAccuracy = -1;
+            this.numericBoxTemperature.SkipEventDuringInput = false;
+            this.numericBoxTemperature.SmartIncrement = true;
+            this.numericBoxTemperature.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxTemperature.ThonsandsSeparator = true;
+            this.numericBoxTemperature.Value = 300D;
+            this.numericBoxTemperature.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
             // 
             // FormEOS
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.Controls.Add(this.numericalTextBoxTemperature);
+            this.Controls.Add(this.numericBoxTemperature);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.numericalTextBoxPtT0);
+            this.Controls.Add(this.numericBoxTemperature0);
             this.KeyPreview = true;
             this.MaximizeBox = false;
             this.Name = "FormEOS";
@@ -1560,7 +1560,6 @@ namespace PDIndexer
         public CheckBox checkBoxCorundum;
         public CheckBox checkBoxAr;
         public CheckBox checkBoxRe;
-        private Crystallography.Controls.NumericBox numericalTextBoxGoldA0;
         public Crystallography.Controls.NumericBox numericalTextBoxGoldA;
         private Crystallography.Controls.NumericBox numericalTextBoxGoldJamieson;
         private Crystallography.Controls.NumericBox numericalTextBoxGoldAnderson;
@@ -1572,16 +1571,12 @@ namespace PDIndexer
         private Label label9;
         private Label label8;
         private Label label1;
-        private Crystallography.Controls.NumericBox numericalTextBoxPtT0;
         public Crystallography.Controls.NumericBox numericalTextBoxPtA;
-        private Crystallography.Controls.NumericBox numericalTextBoxPtA0;
-        private Crystallography.Controls.NumericBox numericalTextBoxTemperature;
         private Crystallography.Controls.NumericBox numericalTextBoxNaClB1Matsui;
         private Crystallography.Controls.NumericBox numericalTextBoxNaClB1Brown;
         private Label label4;
         private Label label3;
         public Crystallography.Controls.NumericBox numericalTextBoxNaClB1A;
-        private Crystallography.Controls.NumericBox numericalTextBoxNaClB1A0;
         private Crystallography.Controls.NumericBox numericalTextBoxNaClB2SakaiVinet;
         private Crystallography.Controls.NumericBox numericalTextBoxNaClB2SakaiBM;
         private Crystallography.Controls.NumericBox numericalTextBoxNaClB2Ueda;
@@ -1601,21 +1596,17 @@ namespace PDIndexer
         private Label label21;
         public Crystallography.Controls.NumericBox numericalTextBoxMgOA;
         private Label label2;
-        private Crystallography.Controls.NumericBox numericalTextBoxMgOA0;
         private Crystallography.Controls.NumericBox numericalTextBoxCorundumDubrovinsky;
         public Crystallography.Controls.NumericBox numericalTextBoxColundumV;
         private Label label5;
-        private Crystallography.Controls.NumericBox numericalTextBoxColundumV0;
         private Crystallography.Controls.NumericBox numericalTextBoxArRoss;
         private Crystallography.Controls.NumericBox numericalTextBoxArJephcoat;
         public Crystallography.Controls.NumericBox numericalTextBoxArA;
         private Label label17;
         private Label label14;
-        private Crystallography.Controls.NumericBox numericalTextBoxArA0;
         private Crystallography.Controls.NumericBox numericalTextBoxReZha;
         public Crystallography.Controls.NumericBox numericBoxReV;
         private Label label18;
-        private Crystallography.Controls.NumericBox numerictBoxReV0;
         private Crystallography.Controls.NumericBox numericBoxMgOTangeVinet;
         private Label label13;
         private Crystallography.Controls.NumericBox numericBoxMgOTangeBM;
@@ -1634,7 +1625,6 @@ namespace PDIndexer
         private Crystallography.Controls.NumericBox numericBoxMoHuang;
         public Crystallography.Controls.NumericBox numericBoxMoV;
         private Label label28;
-        private Crystallography.Controls.NumericBox numericBoxMoV0;
         public CheckBox checkBoxMo;
         public CheckBox checkBoxHBN;
         private Crystallography.Controls.NumericBox numericBoxMoZhao;
@@ -1647,8 +1637,18 @@ namespace PDIndexer
         private Crystallography.Controls.NumericBox numericBoxPbStrassle;
         public Crystallography.Controls.NumericBox numericBoxPbA;
         private Label label32;
-        private Crystallography.Controls.NumericBox numericBoxPbA0;
         public CheckBox checkBoxPb;
+        public Crystallography.Controls.NumericBox numericBoxGoldA0;
+        public Crystallography.Controls.NumericBox numericBoxTemperature0;
+        public Crystallography.Controls.NumericBox numericBoxPtA0;
+        public Crystallography.Controls.NumericBox numericBoxNaClB1A0;
+        public Crystallography.Controls.NumericBox numericBoxMgOA0;
+        public Crystallography.Controls.NumericBox numericBoxColundumV0;
+        public Crystallography.Controls.NumericBox numericBoxArA0;
+        public Crystallography.Controls.NumericBox numerictBoxReV0;
+        public Crystallography.Controls.NumericBox numericBoxMoV0;
+        public Crystallography.Controls.NumericBox numericBoxPbA0;
+        public Crystallography.Controls.NumericBox numericBoxTemperature;
     }
 
 
