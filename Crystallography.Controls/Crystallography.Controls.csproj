@@ -2,10 +2,13 @@
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.06.30.1847</AssemblyVersion>
-    <FileVersion>2022.06.30.1847</FileVersion>
+    <AssemblyVersion>2022.11.16.0343</AssemblyVersion>
+    <FileVersion>2022.11.16.0343</FileVersion>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
+    <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
+    <ApplicationVisualStyles>true</ApplicationVisualStyles>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -33,9 +36,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Crystallography\Crystallography.csproj" />
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="AssemblyVersionUpdate" />
-  </Target>
 
 </Project>

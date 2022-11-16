@@ -34,6 +34,7 @@ public partial class FormCrystal : Form
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
 
+
     }
 
     private void CrystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
@@ -152,7 +153,7 @@ public partial class FormCrystal : Form
     //íœ
     private void buttonDeleteCrystal_Click(object sender, System.EventArgs e)
     {
-        if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved && (ModifierKeys & Keys.Control) != Keys.Control) 
+        if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved && (ModifierKeys & Keys.Control) != Keys.Control)
             return;
         dataSet.DataTableCrystal.RemoveItem(bindingSource.Position);
         formMain.InitializeCrystalPlane();
@@ -269,10 +270,5 @@ public partial class FormCrystal : Form
 
         formMain.dataGridViewCrystals_CellMouseClick(sender, e);
     }
-
-    private void buttonSearch_Click(object sender, EventArgs e)
-        => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
-
-    private void searchCrystalControl_FilterChanged(object sender, EventArgs e)
-        => crystalDatabaseControl.Filter = searchCrystalControl.Filter;
 }
+

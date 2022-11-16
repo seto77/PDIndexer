@@ -11,6 +11,7 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Reflection;
+using System.Xml.Serialization;
 
 namespace PDIndexer
 {
@@ -800,65 +801,64 @@ namespace PDIndexer
 
         private void toolStripMenuItemSaveMaskingRange_Click(object sender, EventArgs e)
         {
-            if(bindingSourceProfile.Position<0)return;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            if(dp.maskingRanges.Count<1)return;
+            //if(bindingSourceProfile.Position<0)return;
+            //DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            //if(dp.maskingRanges.Count<1)return;
 
-            var dlg = new SaveFileDialog();
-            dlg.Filter = "*.mas|*.mas";
-            if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
+            //var dlg = new SaveFileDialog();
+            //dlg.Filter = "*.mas|*.mas";
+            //if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
 
-                try
-                {
-                    using (Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, dp.InterpolationOrder);
-                        formatter.Serialize(stream, dp.InterpolationPoints);
-                        formatter.Serialize(stream, dp.maskingRanges.Count);
-                        for (int i = 0; i < dp.maskingRanges.Count; i++)
-                            formatter.Serialize(stream, dp.maskingRanges[i]);
-                    }
+            //    try
+            //    {
+            //        using (Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
+            //        {
+            //            var serializer = new XmlSerializer(typeof());
+            //            serializer.Serialize(stream, dp.InterpolationOrder);
+            //            serializer.Serialize(stream, dp.InterpolationPoints);
+            //            serializer.Serialize(stream, dp.maskingRanges.Count);
+            //            for (int i = 0; i < dp.maskingRanges.Count; i++)
+            //                serializer.Serialize(stream, dp.maskingRanges[i]);
+            //        }
                   
-                }
-                catch {  }
-            }
+            //    }
+            //    catch {  }
+            //}
         }
 
         private void toolStripMenuItemReadMaskingRange_Click(object sender, EventArgs e)
         {
-            var dlg = new OpenFileDialog();
-            dlg.Filter = "*.mas|*.mas";
+            var dlg = new OpenFileDialog { Filter = "*.mas|*.mas" };
             if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 readMaskingRanges(dlg.FileName);
         }
         private void readMaskingRanges(string filename)
         {
-            if (bindingSourceProfile.Position < 0) return;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            try
-            {
-                buttonDeleteAllMask_Click(new object(), new EventArgs());
-                using (Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
-                {
-                    IFormatter formatter = new BinaryFormatter();
-                    {
-                        numericUpDownInterpolationOrder.Value = (int)formatter.Deserialize(stream);
-                        numericUpDownInterpolationPoints.Value = (int)formatter.Deserialize(stream);
-                        int count = (int)formatter.Deserialize(stream);
+            //if (bindingSourceProfile.Position < 0) return;
+            //DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            //try
+            //{
+            //    buttonDeleteAllMask_Click(new object(), new EventArgs());
+            //    using (Stream stream = new FileStream(filename, FileMode.Open, FileAccess.Read))
+            //    {
+            //        var serializer = new XmlSerializer();
+            //        {
+            //            numericUpDownInterpolationOrder.Value = (int)serializer.Deserialize(stream);
+            //            numericUpDownInterpolationPoints.Value = (int)serializer.Deserialize(stream);
+            //            int count = (int)serializer.Deserialize(stream);
 
-                        for (int i = 0; i < count; i++)
-                        {
-                            var range = (DiffractionProfile.MaskingRange)formatter.Deserialize(stream);
-                            AddMaskRange(range);
-                        }
-                    }
+            //            for (int i = 0; i < count; i++)
+            //            {
+            //                var range = (DiffractionProfile.MaskingRange)serializer.Deserialize(stream);
+            //                AddMaskRange(range);
+            //            }
+            //        }
 
-                }
-                formMain.Draw();
-            }
-            catch { }
+            //    }
+            //    formMain.Draw();
+            //}
+            //catch { }
         }
 
         private void listBoxMaskRanges_DragDrop(object sender, DragEventArgs e)

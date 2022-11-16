@@ -237,13 +237,16 @@ place
   <data name="dataGridViewCrystal.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>46</value>
   </data>
-  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+  <metadata name="checkDataGridViewCheckBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="checkDataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
     <value>Check</value>
   </data>
-  <data name="checkDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+  <data name="checkDataGridViewCheckBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="checkDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+  <data name="checkDataGridViewCheckBoxColumn1.Width" type="System.Int32, mscorlib">
     <value>20</value>
   </data>
   <metadata name="PeakColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
@@ -255,17 +258,17 @@ place
   <data name="PeakColor.Width" type="System.Int32, mscorlib">
     <value>30</value>
   </data>
-  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Crystal</value>
+  <metadata name="Crystal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Crystal.HeaderText" xml:space="preserve">
+    <value>Crysal</value>
   </data>
-  <data name="crystalDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+  <data name="Crystal.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
   <metadata name="bindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>105, 15</value>
-  </metadata>
-  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>246, 15</value>
+    <value>133, 12</value>
   </metadata>
   <data name="dataGridViewCrystal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1304,13 +1307,13 @@ of  diffraction peaks based on crystal structures</value>
     <value>Fill</value>
   </data>
   <data name="searchCrystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 30</value>
+    <value>0, 0</value>
   </data>
   <data name="searchCrystalControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
   </data>
   <data name="searchCrystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 236</value>
+    <value>194, 266</value>
   </data>
   <data name="searchCrystalControl.TabIndex" type="System.Int32, mscorlib">
     <value>81</value>
@@ -1326,42 +1329,6 @@ of  diffraction peaks based on crystal structures</value>
   </data>
   <data name="&gt;&gt;searchCrystalControl.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="buttonSearch.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonSearch.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="buttonSearch.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="buttonSearch.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonSearch.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonSearch.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 30</value>
-  </data>
-  <data name="buttonSearch.TabIndex" type="System.Int32, mscorlib">
-    <value>82</value>
-  </data>
-  <data name="buttonSearch.Text" xml:space="preserve">
-    <value>Search</value>
-  </data>
-  <data name="&gt;&gt;buttonSearch.Name" xml:space="preserve">
-    <value>buttonSearch</value>
-  </data>
-  <data name="&gt;&gt;buttonSearch.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonSearch.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;buttonSearch.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
@@ -1452,6 +1419,21 @@ of  diffraction peaks based on crystal structures</value>
   </data>
   <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
   </data>
   <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
     <value>PeakColor</value>
@@ -1587,41 +1569,29 @@ of  diffraction peaks based on crystal structures</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Crystal Parameter</value>
   </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>crystalDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;bindingSource.Name" xml:space="preserve">
     <value>bindingSource</value>
   </data>
   <data name="&gt;&gt;bindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;dataSet.Name" xml:space="preserve">
-    <value>dataSet</value>
-  </data>
-  <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
-    <value>PDIndexer.DataSet, PDIndexer, Culture=neutral, PublicKeyToken=null</value>
-  </data>
   <data name="&gt;&gt;incrementToolStripMenuItem.Name" xml:space="preserve">
     <value>incrementToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;incrementToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>crystalDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
@@ -1669,6 +1639,24 @@ of  diffraction peaks based on crystal structures</value>
     <value>dataGridViewTextBoxColumn4</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

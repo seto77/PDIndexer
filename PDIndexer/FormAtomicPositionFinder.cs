@@ -1095,7 +1095,7 @@ namespace PDIndexer
             }
             
             for (int i = 0; i < c.Atoms.Length; i++)
-                for (int j = 0; j < c.Atoms[i].Atom.Count; j++)
+                for (int j = 0; j < c.Atoms[i].Atom.Length; j++)
                      for (int xx = c.Atoms[i].Atom[0].X > 0.5 ? -1 : 0; xx <= (c.Atoms[i].Atom[0].X > 0.5 ? 0 : 1); xx++)
                              for (int yy = c.Atoms[i].Atom[0].Y > 0.5 ? -1 : 0; yy <= (c.Atoms[i].Atom[0].Y > 0.5 ? 0 : 1); yy++)
                                  for (int zz = c.Atoms[i].Atom[0].Z > 0.5 ? -1 : 0; zz <= (c.Atoms[i].Atom[0].Z > 0.5 ? 0 : 1); zz++)

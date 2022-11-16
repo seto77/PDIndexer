@@ -173,8 +173,6 @@ public static class MathnetEx
         }*/
         #endregion
 
-
-
         if (m.RowCount != m.ColumnCount)
             throw new ArgumentException("Matrix should be square");
 
@@ -197,8 +195,6 @@ public static class MathnetEx
 
         Matrix<Complex> N = DMat.CreateIdentity(m.RowCount), D = N;
         Matrix<Complex> m_pow_j = m;
-
-        
 
         for (int j = 1; j <= p; j++)
         {
@@ -245,6 +241,14 @@ public static class MathnetEx
 //    /// <returns></returns>
 //    public static Complex Conjugate(ref this Complex c) => Complex.Conjugate(c);
 //}
+#endregion
+
+#region (int h, int k, int l)の拡張
+public static class HKL
+{
+    public static (int H, int K, int L) Plus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H + y.H, x.K + y.K, x.L + y.L);
+    public static (int H, int K, int L) Minus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H - y.H, x.K - y.K, x.L - y.L);
+}
 #endregion
 
 #region Stringの拡張

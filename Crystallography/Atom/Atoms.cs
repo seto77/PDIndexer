@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Numerics;
 using System.Xml.Serialization;
@@ -13,7 +12,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public object Clone()
     {
         Atoms atoms = (Atoms)this.MemberwiseClone();
-        for (int i = 0; i < Atom.Count; i++)
+        for (int i = 0; i < Atom.Length; i++)
             atoms.Atom[i] = (Vector3D)Atom[i].Clone();
         return atoms;
     }
@@ -26,10 +25,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public bool Equals(Atoms obj)
     {
         Atoms atoms = obj;
-        if (atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ)
-            return true;
-        else
-            return false;
+        return atoms.Label == Label && atoms.X == X && atoms.Y == Y && atoms.Z == Z && atoms.Occ == Occ;
     }
     #endregion
 
@@ -38,10 +34,12 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     public int ID;
 
     [XmlIgnore]
-    public List<Vector3D> Atom = new();
+    public Vector3D[] Atom = Array.Empty<Vector3D>();
 
     public double X, Y, Z;
     public double X_err, Y_err, Z_err;
+   
+
     public double Occ, Occ_err;
     public int AtomicNumber;
 
@@ -72,17 +70,20 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
 
     public int Argb;
 
-
     public float Radius = 0.6f;
-
 
     public float Ambient = Material.DefaultTexture.Ambient;//ä¬ã´åı
     public float Diffusion = Material.DefaultTexture.Diffuse;//ägéUåı
     public float Emission = Material.DefaultTexture.Emission;//é©å»èÿñæ
     public float Shininess = Material.DefaultTexture.SpecularPow;//îΩéÀåıÇÃã≠ìx
     public float Specular = Material.DefaultTexture.Specular;//îΩéÀåı
+    
+    [XmlIgnore]
+    public Vector3DBase PositionError => new(X_err, Y_err, Z_err);
+    [XmlIgnore] 
+    public Vector3DBase Position => new(X, Y, Z);
 
-
+    
 
 
     [XmlIgnore]
@@ -98,6 +99,8 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
             Emission = value.Emission;
         }
     }
+
+    public Material Material => new(Argb,(Ambient,Diffusion,Specular,Shininess,Emission));
 
     /// <summary>
     /// OpenGLï`âÊéûÇ…ÅAÉâÉxÉãÇï\é¶Ç∑ÇÈÇ©
@@ -136,9 +139,9 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Multiplicity = wyk.Multiplicity;
         WyckoffNumber = wyk.WyckoffNumber;
 
-        Atom = new List<Vector3D>();
+        Atom = new Vector3D[Multiplicity];
         for (int i = 0; i < Multiplicity; i++)
-            Atom.Add(new Vector3D(0, 0, 0));
+            Atom[i] = new Vector3D(0, 0, 0);
 
         Dsf = dsf;
 
@@ -166,7 +169,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// <param name="occ"></param>
     /// <param name="dsf"></param>
     public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-        Vector3D pos, double occ, DiffuseScatteringFactor dsf)
+        Vector3DBase pos, double occ, DiffuseScatteringFactor dsf)
     {
         SymmetrySeriesNumber = symmetrySeriesNumber;
 
@@ -177,7 +180,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
         Y = pos.Y;
         Z = pos.Z;
 
-        var temp = WyckoffPosition.GetEquivalentAtomsPosition(pos, symmetrySeriesNumber);
+        var temp = WyckoffPosition.GetEquivalentAtomsPosition((X,Y,Z), symmetrySeriesNumber);
         WyckoffLeter = temp.WyckoffLeter;
         SiteSymmetry = temp.SiteSymmetry;
         Multiplicity = temp.Multiplicity;
@@ -208,7 +211,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// <param name="occ_err"></param>
     /// <param name="dsf"></param>
     public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-       Vector3D pos, Vector3D pos_err, double occ, double occ_err, DiffuseScatteringFactor dsf)
+       Vector3DBase pos, Vector3DBase pos_err, double occ, double occ_err, DiffuseScatteringFactor dsf)
         : this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos, occ, dsf)
     {
 
@@ -235,7 +238,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     /// <param name="mat"></param>
     /// <param name="radius"></param>
     public Atoms(string label, int atomicNumber, int subXray, int subElectron, double[] isotope, int symmetrySeriesNumber,
-       Vector3D pos, Vector3D pos_err, double occ, double occ_err,
+       Vector3DBase pos, Vector3DBase pos_err, double occ, double occ_err,
         DiffuseScatteringFactor dsf, Material mat, float radius, bool glEnabled = true, bool showLabel = false)
         : this(label, atomicNumber, subXray, subElectron, isotope, symmetrySeriesNumber, pos, pos_err, occ, occ_err, dsf)
     {
@@ -260,7 +263,7 @@ public class Atoms : System.IEquatable<Atoms>, ICloneable
     {
         SymmetrySeriesNumber = symmetrySeriesNumber;
 
-        var temp = WyckoffPosition.GetEquivalentAtomsPosition(new Vector3D(X, Y, Z), symmetrySeriesNumber);
+        var temp = WyckoffPosition.GetEquivalentAtomsPosition((X, Y, Z), symmetrySeriesNumber);
         WyckoffLeter = temp.WyckoffLeter;
         SiteSymmetry = temp.SiteSymmetry;
         Multiplicity = temp.Multiplicity;

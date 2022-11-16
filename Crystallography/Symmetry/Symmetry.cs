@@ -48,7 +48,7 @@ public readonly struct Symmetry
     #endregion
 
     #region コンストラクタ
-    public Symmetry(int seriesNumber)
+    public Symmetry(in int seriesNumber)
     {
         if (seriesNumber >= 0 && seriesNumber < SymmetryStatic.TotalSpaceGroupNumber)
         {
@@ -124,18 +124,21 @@ public readonly struct Symmetry
         #region
         var func = new List<Func<int, int, int, string>>();
 
-        if (sym.LatticeTypeStr == "A")
-            func.Add((h, k, l) => (k + l) % 2 != 0 ? "A" : null);
-        else if (sym.LatticeTypeStr == "B")
-            func.Add((h, k, l) => (l + h) % 2 != 0 ? "B" : null);
-        else if (sym.LatticeTypeStr == "C")
-            func.Add((h, k, l) => (h + k) % 2 != 0 ? "C" : null);
-        else if (sym.LatticeTypeStr == "I")
-            func.Add((h, k, l) => (h + k + l) % 2 != 0 ? "I" : null);
-        else if (sym.LatticeTypeStr == "F")
-            func.Add((h, k, l) => ((h + k) % 2 != 0 || (k + l) % 2 != 0 || (l + h) % 2 != 0) ? "F" : null);
-        else if (sym.LatticeTypeStr == "R" && sym.SpaceGroupHMStr.Contains("Hex"))
-            func.Add((h, k, l) => (-h + k + l) % 3 != 0 ? "R" : null);
+        switch (sym.LatticeTypeStr)
+        {
+            case "A":
+                func.Add((h, k, l) => (k + l) % 2 != 0 ? "A" : null); break;
+            case "B":
+                func.Add((h, k, l) => (l + h) % 2 != 0 ? "B" : null); break;
+            case "C":
+                func.Add((h, k, l) => (h + k) % 2 != 0 ? "C" : null); break;
+            case "I":
+                func.Add((h, k, l) => (h + k + l) % 2 != 0 ? "I" : null); break;
+            case "F":
+                func.Add((h, k, l) => (h + k) % 2 != 0 || (k + l) % 2 != 0 || (l + h) % 2 != 0 ? "F" : null); break;
+            case "R" when sym.SpaceGroupHMStr.Contains("Hex"):
+                func.Add((h, k, l) => (-h + k + l) % 3 != 0 ? "R" : null); break;
+        }
 
         switch (sym.CrystalSystemNumber)
         {
@@ -180,86 +183,50 @@ public readonly struct Symmetry
 
             case 3://	orthorhombic
                 if (sym.StrSE1p == "2s1")
-                {
                     func.Add((h, k, l) => h % 2 != 0 && k == 0 && l == 0 ? "2sub1//[100]" : null);
-                }
 
                 if (sym.StrSE2p == "2s1")
-                {
                     func.Add((h, k, l) => k % 2 != 0 && l == 0 && h == 0 ? "2sub1//[010]" : null);
-                }
 
                 if (sym.StrSE3p == "2s1")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && h == 0 && k == 0 ? "2sub1//[001]" : null);
-                }
 
                 if (sym.StrSE1v == "b")
-                {
                     func.Add((h, k, l) => k % 2 != 0 && h == 0 ? "b⊥[100]" : null);
-                }
                 else if (sym.StrSE1v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
-                }
                 else if (sym.StrSE1v == "n")
-                {
                     func.Add((h, k, l) => (k + l) % 2 != 0 && h == 0 ? "n⊥[100]" : null);
-                }
                 else if (sym.StrSE1v == "d")
-                {
                     func.Add((h, k, l) => (k + l) % 4 != 0 && h == 0 ? "d⊥[100]" : null);
-                }
 
                 if (sym.StrSE2v == "a")
-                {
                     func.Add((h, k, l) => h % 2 != 0 && k == 0 ? "a⊥[010]" : null);
-                }
                 else if (sym.StrSE2v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
-                }
                 else if (sym.StrSE2v == "n")
-                {
                     func.Add((h, k, l) => (h + l) % 2 != 0 && k == 0 ? "n⊥[010]" : null);
-                }
                 else if (sym.StrSE2v == "d")
-                {
                     func.Add((h, k, l) => (h + l) % 4 != 0 && k == 0 ? "d⊥[010]" : null);
-                }
 
                 if (sym.StrSE3v == "a")
-                {
                     func.Add((h, k, l) => h % 2 != 0 && l == 0 ? "a⊥[001]" : null);
-                }
                 else if (sym.StrSE3v == "b")
-                {
                     func.Add((h, k, l) => k % 2 != 0 && l == 0 ? "b⊥[001]" : null);
-                }
                 else if (sym.StrSE3v == "n")
-                {
                     func.Add((h, k, l) => (h + k) % 2 != 0 && l == 0 ? "n⊥[001]" : null);
-                }
                 else if (sym.StrSE3v == "d")
-                {
                     func.Add((h, k, l) => (h + k) % 4 != 0 && l == 0 ? "d⊥[001]" : null);
-                }
 
                 break;
 
             case 4://	tetragonal
                 if (sym.StrSE1p == "4s1")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 4 != 0 ? "4sub1//[001]" : null);
-                }
                 else if (sym.StrSE1p == "4s2")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 2 != 0 ? "4sub2//[001]" : null);
-                }
                 else if (sym.StrSE1p == "4s3")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 4 != 0 ? "4sub3//[001]" : null);
-                }
 
                 if (sym.StrSE2p == "2s1")
                 {
@@ -310,13 +277,9 @@ public readonly struct Symmetry
 
             case 5://	trigonal
                 if (sym.StrSE1p == "3s1")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub1//[001]" : null);
-                }
                 else if (sym.StrSE1p == "3s2")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "3sub2//[001]" : null);
-                }
 
                 if (sym.SpaceGroupHMsubStr != "R")//Hexセルの場合
                 {
@@ -346,51 +309,29 @@ public readonly struct Symmetry
 
             case 6://	hexagonal
                 if (sym.StrSE1p == "6s1")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub1//[001]" : null);
-                }
                 else if (sym.StrSE1p == "6s2")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "6sub2//[001]" : null);
-                }
                 else if (sym.StrSE1p == "6s3")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 2 != 0 ? "6sub3//[001]" : null);
-                }
                 else if (sym.StrSE1p == "6s4")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 3 != 0 ? "6sub4//[001]" : null);
-                }
                 else if (sym.StrSE1p == "6s5")
-                {
                     func.Add((h, k, l) => h == 0 && k == 0 && l % 6 != 0 ? "6sub5//[001]" : null);
-                }
 
                 if (sym.StrSE2v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && h == -k ? "c⊥[-1-10]" : null);
-                }
                 else if (sym.StrSE2v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && h == 0 ? "c⊥[100]" : null);
-                }
                 else if (sym.StrSE2v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && k == 0 ? "c⊥[010]" : null);
-                }
 
                 if (sym.StrSE3v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && h == k ? "c⊥[1-10]" : null);
-                }
                 else if (sym.StrSE3v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && h == -2 * k ? "c⊥[120]" : null);
-                }
                 else if (sym.StrSE3v == "c")
-                {
                     func.Add((h, k, l) => l % 2 != 0 && -2 * h == k ? "c⊥[-2-10]" : null);
-                }
 
                 break;
 

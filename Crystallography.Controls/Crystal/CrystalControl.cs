@@ -1,6 +1,8 @@
 ﻿#region Using
+using Crystallography.Controls;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.IO;
@@ -283,17 +285,8 @@ namespace Crystallography.Controls
 
         public void ReadCrystal(string filename)
         {
-
-            try
-            {
-                Crystal = ConvertCrystalData.ConvertToCrystal(filename);
-            }
-            catch (Exception ex)
-            {
-                if (Crystallography.AssemblyState.IsDebug)
-                    MessageBox.Show(ex.ToString());
-                return;
-            }
+            try { Crystal = ConvertCrystalData.ConvertToCrystal(filename); }
+            catch (Exception ex) { if (AssemblyState.IsDebug) MessageBox.Show(ex.ToString()); return; }
         }
 
         #region ドラッグドロップイベント
@@ -369,6 +362,69 @@ namespace Crystallography.Controls
             formStrain.Visible = !formStrain.Visible;
         }
 
+        /// <summary>
+        /// 空間群P1に変換
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void convertToP1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            toSuperStructure(1, 1, 1);
+        }
+
+        //超構造に変換
+        private void convertToSuperstructureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var dlg = new FormSuperStructure();
+            if(dlg.ShowDialog()== DialogResult.OK)
+                toSuperStructure(dlg.A, dlg.B, dlg.C);
+        }
+
+        private void toSuperStructure(int _u, int _v, int _w)
+        {
+            GenerateFromInterface();
+            crystal.SymmetrySeriesNumber = 1;
+
+            var temp_atoms = new List<Atoms>();
+            foreach (var atoms in Crystal.Atoms)
+            {
+                int n = 0;
+                foreach (var atom in atoms.Atom)
+                {
+                    for (double u = 0; u < _u; u++)
+                        for (double v = 0; v < _v; v++)
+                            for (double w = 0; w < _w; w++)
+                            {
+                                var x = (atom.X + u) / _u;
+                                var y = (atom.Y + v) / _v;
+                                var z = (atom.Z + w) / _w;
+
+                                var x_err = atoms.X_err / _u;
+                                var y_err = atoms.Y_err / _v;
+                                var z_err = atoms.Z_err / _w;
+
+                                temp_atoms.Add(new Atoms(
+                                    atoms.Label.TrimEnd() + "_" + n.ToString(),
+                                    atoms.AtomicNumber, atoms.SubNumberXray, atoms.SubNumberElectron, atoms.Isotope,
+                                    1,
+                                    new Vector3DBase(x, y, z), new Vector3DBase(x_err, y_err, z_err),
+                                    atoms.Occ, atoms.Occ_err,
+                                    atoms.Dsf,
+                                    atoms.Material,
+                                    atoms.Radius, atoms.GLEnabled, atoms.ShowLabel));
+                                n++;
+                            }
+                }
+            }
+            crystal.A *= _u;
+            crystal.B *= _v;
+            crystal.C *= _w;
+            crystal.Atoms = temp_atoms.ToArray();
+
+            SetToInterface(true);
+            GenerateFromInterface();
+        }
+
         #endregion 右クリックメニュー
 
         #region キーボードイベント
@@ -430,30 +486,32 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void readToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new OpenFileDialog { Filter = "Database File[*.cpo]|*.cpo" };
-            try
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                    using (Stream stream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        double version = (double)formatter.Deserialize(stream);
-                        if (version == 1.0)
-                        {
-                            numericUpDownAngleResolution.Value = (decimal)((double)formatter.Deserialize(stream));
-                            numericUpDownAngleSubDivision.Value = (decimal)((int)formatter.Deserialize(stream));
-                            numericUpDownCrystallineSize.Value = (decimal)((double)formatter.Deserialize(stream));
-                            double[] density = (double[])formatter.Deserialize(stream);
-                            crystal.Crystallites = new Crystallite(Crystal, density);
+            //2022/11/10 BinaryFormatterが使えなくなったので、取りあえずコメントアウト
 
-                            poleFigureControl.Crystal = Crystal;
-                        }
-                    }
-            }
-            catch
-            {
-                MessageBox.Show("ファイルが読み込めません");
-            }
+            //var dlg = new OpenFileDialog { Filter = "Database File[*.cpo]|*.cpo" };
+            //try
+            //{
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //        using (Stream stream = new FileStream(dlg.FileName, FileMode.Open, FileAccess.Read))
+            //        {
+            //            IFormatter formatter = new BinaryFormatter();
+            //            double version = (double)formatter.Deserialize(stream);
+            //            if (version == 1.0)
+            //            {
+            //                numericUpDownAngleResolution.Value = (decimal)((double)formatter.Deserialize(stream));
+            //                numericUpDownAngleSubDivision.Value = (decimal)((int)formatter.Deserialize(stream));
+            //                numericUpDownCrystallineSize.Value = (decimal)((double)formatter.Deserialize(stream));
+            //                double[] density = (double[])formatter.Deserialize(stream);
+            //                crystal.Crystallites = new Crystallite(Crystal, density);
+
+            //                poleFigureControl.Crystal = Crystal;
+            //            }
+            //        }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("ファイルが読み込めません");
+            //}
         }
 
         /// <summary>
@@ -463,25 +521,29 @@ namespace Crystallography.Controls
         /// <param name="e"></param>
         private void saveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var dlg = new SaveFileDialog            {                Filter = "Database File[*.cpo]|*.cpo"            };
-            try
-            {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                    using (Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
-                    {
-                        IFormatter formatter = new BinaryFormatter();
-                        formatter.Serialize(stream, 1.0);
 
-                        formatter.Serialize(stream, crystal.AngleResolution);
-                        formatter.Serialize(stream, crystal.SubDivision);
-                        formatter.Serialize(stream, crystal.GrainSize);
-                        formatter.Serialize(stream, crystal.Crystallites.Density);
-                    }
-            }
-            catch
-            {
-                MessageBox.Show("ファイルが書き込みません");
-            }
+            //2022/11/10 BinaryFormatterが使えなくなったので、取りあえずコメントアウト
+
+
+            //var dlg = new SaveFileDialog            {                Filter = "Database File[*.cpo]|*.cpo"            };
+            //try
+            //{
+            //    if (dlg.ShowDialog() == DialogResult.OK)
+            //        using (Stream stream = new FileStream(dlg.FileName, FileMode.Create, FileAccess.Write))
+            //        {
+            //            IFormatter formatter = new BinaryFormatter();
+            //            formatter.Serialize(stream, 1.0);
+
+            //            formatter.Serialize(stream, crystal.AngleResolution);
+            //            formatter.Serialize(stream, crystal.SubDivision);
+            //            formatter.Serialize(stream, crystal.GrainSize);
+            //            formatter.Serialize(stream, crystal.Crystallites.Density);
+            //        }
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("ファイルが書き込みません");
+            //}
         }
 
         /// <summary>
@@ -663,6 +725,11 @@ namespace Crystallography.Controls
         private void button1_Click(object sender, EventArgs e)
         {
             GenerateFromInterface();
+        }
+
+        private void clearAllDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
