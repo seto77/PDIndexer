@@ -493,7 +493,6 @@ public class Matrix3D : ICloneable
     /// </summary>
     public static readonly Matrix3D IdentityMatrix = new(1, 0, 0, 0, 1, 0, 0, 0, 1);
 
-
     public bool Equals(Matrix3D m)
     {
         return
@@ -501,7 +500,6 @@ public class Matrix3D : ICloneable
             m.E21 == E21 && m.E22 == E22 && m.E23 == E23 &&
             m.E31 == E31 && m.E32 == E32 && m.E33 == E33;
     }
-
 }
 
 /// <summary>
@@ -859,7 +857,7 @@ public class Vector3D : Vector3DBase, System.IComparable<Vector3D>, ICloneable
 
     public static Vector3D operator /(Vector3D v1, int d) => new(v1.X / d, v1.Y / d, v1.Z / d);
 
-    public void NormarizeThis()
+    public new void NormarizeThis()
     {
         Vector3D v = Vector3D.Normarize(this);
         X = v.X;
