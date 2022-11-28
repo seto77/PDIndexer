@@ -4,8 +4,8 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2022.11.28.0802</AssemblyVersion>
-    <FileVersion>2022.11.28.0802</FileVersion>
+    <AssemblyVersion>2022.11.28.0808</AssemblyVersion>
+    <FileVersion>2022.11.28.0808</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

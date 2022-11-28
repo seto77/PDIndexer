@@ -25,7 +25,7 @@ static class Version
     /// </summary>
     static public string History = 
         "History" +
-        "\r\n ver4.414(2022/11/28) Fixed a minor bug." +
+        "\r\n ver4.414(2022/11/28) Fixed a minor bug. " +
         "\r\n ver4.413(2022/11/16) Target framework has been changed to .Net Desktop Runtime 7.0." +
         "\r\n ver4.412(2022/06/30) Added a new EOS for Pb (Strässle et al., 2014)." +
         "\r\n ver4.411(2022/06/22) Fixed a bug related to multiplicity calculations for point group -3 (hexagonal setting)." +
