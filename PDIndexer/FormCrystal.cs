@@ -33,8 +33,9 @@ public partial class FormCrystal : Form
         crystalDatabaseControl.ProgressChanged += CrystalDatabaseControl_ProgressChanged;
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
-
-
+        
+        searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
+        this.AcceptButton = searchCrystalControl.buttonSearch;
     }
 
     private void CrystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
