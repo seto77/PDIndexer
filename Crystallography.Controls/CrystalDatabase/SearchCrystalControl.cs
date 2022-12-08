@@ -91,7 +91,7 @@ namespace Crystallography.Controls
             sw.Restart();
             this.Enabled = false;
             flags = new bool[CrystalDatabaseControl.Table.Count];
-            CrystalDatabaseControl.Supend();//バインディングを切る
+            CrystalDatabaseControl.Suspend();//バインディングを切る
             backgroundWorkerSearch.RunWorkerAsync();
         }
 
