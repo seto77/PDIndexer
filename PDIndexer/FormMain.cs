@@ -4473,6 +4473,7 @@ public partial class FormMain : Form
     }
     #endregion
 
+    #region マクロ機能
     /// <summary>
     /// PDIのマクロ操作を提供する
     /// </summary>
@@ -4510,9 +4511,8 @@ public partial class FormMain : Form
 
         public class FileClass : MacroSub
         {
-            private Macro p;
-            public FileClass(Macro _p)
-                : base(_p.main)
+            private readonly Macro p;
+            public FileClass(Macro _p) : base(_p.main)
             {
                 this.p = _p;
                 p.help.Add("PDI.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
@@ -4656,6 +4656,7 @@ public partial class FormMain : Form
                 StartX = xStart; EndX = xEnd; StartY = yStart; EndY = yEnd;
             }
         }
+        
         public class CrystalClass : MacroSub
         {
             private readonly Macro p;
@@ -4984,4 +4985,5 @@ public partial class FormMain : Form
 
 
     }
+    #endregion
 }
