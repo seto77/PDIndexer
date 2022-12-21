@@ -1024,7 +1024,6 @@ public class ConvertCrystalData
 
         //"_atom_site_label"というラベルを含むCIF番号をリストする。 (最初の連続した番号のみを使う)
         //さらに、格子定数Listの中で、どれが正しい値なのかを判別する
-
         string a = "", b = "", c = "", alpha = "", beta = "", gamma = "";
         var atomCIF = new List<List<(string Label, string Data)>>();
         bool flag = false;
@@ -1047,6 +1046,12 @@ public class ConvertCrystalData
                     gamma = gammaList.Count == 1 ? gammaList[0].value : gammaList.Last(e => e.index < i).value;
                 }
             }
+        if (a == "") a = aList[0].value;
+        if (b == "") b = bList[0].value;
+        if (c == "") c = cList[0].value;
+        if (alpha == "") alpha = alphaList[0].value;
+        if (beta == "") beta = betaList[0].value;
+        if (gamma == "") gamma = gammaList[0].value;
 
         #region 空間群を調べる部分
         //空間群を検索

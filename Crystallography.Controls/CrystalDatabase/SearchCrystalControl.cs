@@ -293,7 +293,9 @@ namespace Crystallography.Controls
                 CrystalDatabaseControl.Filter = "Flag = true";
             }
 
-            if (flagCount > 0)
+            //if (flagCount == 0)
+            //    CrystalDatabaseControl.Suspend();
+            //else
                 CrystalDatabaseControl.Resume();//バインディングを繋げる
 
 
