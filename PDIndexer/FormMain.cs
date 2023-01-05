@@ -79,7 +79,7 @@ public partial class FormMain : Form
     public FormLPO formLPO;
     public FormCellFinder formCellFinder;
     public FormAtomicPositionFinder formAtomicPositionFinder;
-    public FormStressAnalysis formStressAnalysis;
+    public FormSequentialAnalysis formSequentialAnalysis;
     public FormMacro FormMacro;
     public FormTwoThetaCalibration formTwoThetaCalibration;
 
@@ -578,9 +578,9 @@ public partial class FormMain : Form
         initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.75);
         formAtomicPositionFinder = new FormAtomicPositionFinder { formMain = this, Visible = false, Owner = this };
 
-        initialDialog.Text = "Now Loading... Initializing 'Stress Analysis' form.";
+        initialDialog.Text = "Now Loading... Initializing 'Sequential Analysis' form.";
         initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.85);
-        formStressAnalysis = new FormStressAnalysis { formMain = this, Visible = false, Owner = this };
+        formSequentialAnalysis = new FormSequentialAnalysis { formMain = this, Visible = false, Owner = this };
 
         initialDialog.Text = "Now Loading... Initializing '2θ calibration' form.";
         initialDialog.progressBar.Value = (int)(initialDialog.progressBar.Maximum * 0.87);
@@ -2616,15 +2616,15 @@ public partial class FormMain : Form
 
     private void toolStripButtonStressAnalysis_CheckedChanged(object sender, EventArgs e)
     {
-        if (toolStripButtonStressAnalysis.Checked == false && formStressAnalysis.WindowState == FormWindowState.Minimized)
+        if (toolStripButtonStressAnalysis.Checked == false && formSequentialAnalysis.WindowState == FormWindowState.Minimized)
             toolStripButtonStressAnalysis.Checked = true;
         else
         {
-            formStressAnalysis.Visible = toolStripButtonStressAnalysis.Checked;
-            if (formStressAnalysis.Visible)
+            formSequentialAnalysis.Visible = toolStripButtonStressAnalysis.Checked;
+            if (formSequentialAnalysis.Visible)
             {
-                formStressAnalysis.BringToFront();
-                formStressAnalysis.WindowState = FormWindowState.Normal;
+                formSequentialAnalysis.BringToFront();
+                formSequentialAnalysis.WindowState = FormWindowState.Normal;
             }
         }
     }
@@ -4444,7 +4444,7 @@ public partial class FormMain : Form
                 formCrystal.checkBoxShowPeakOverProfiles.Checked = false;
         }
         else if (e.Control && e.Shift && e.KeyCode == Keys.S)
-            formStressAnalysis.Visible = !formStressAnalysis.Visible;
+            formSequentialAnalysis.Visible = !formSequentialAnalysis.Visible;
         else if (e.Control && e.Shift && e.KeyCode == Keys.Space)
         {
             if (bindingSourceCrystal.Current != null && bindingSourceCrystal.Position >= 0)
@@ -4488,6 +4488,7 @@ public partial class FormMain : Form
         public CrystalListClass CrystalList;
         public CrystalClass Crystal;
         public FittingClass Fitting;
+        public SequentialClass Sequential;
 
         public Macro(FormMain _main) : base(_main, "PDI")
         {
@@ -4501,6 +4502,8 @@ public partial class FormMain : Form
             Crystal = new CrystalClass(this);
             Fitting = new FittingClass(this);
 
+            Sequential = new SequentialClass(this);
+
             help.Add("PDI.Obj[] # Get object sent from other program.");
             help.Add("PDI.Sleep(int millisec) # Sleep.");
         }
@@ -4508,6 +4511,9 @@ public partial class FormMain : Form
         public static void Sleep(int millisec) => Thread.Sleep(millisec);
         public object[] Obj { get; set; }
 
+        /// <summary>
+        /// ファイル入出力関係
+        /// </summary>
         public class FileClass : MacroSub
         {
             private readonly Macro p;
@@ -4516,7 +4522,7 @@ public partial class FormMain : Form
                 this.p = _p;
                 p.help.Add("PDI.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
                 p.help.Add("PDI.File.GetFileNames() # Get file names.  \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.");
-                p.help.Add("IPA.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
+                p.help.Add("PDI.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
 
                 p.help.Add("PDI.File.ReadProfiles(string filename) # Read profile data. \r\n If filename is omitted, selection dialog will open.");
                 p.help.Add("PDI.File.SaveProfiles(string filename) # Save profile data. \r\n If filename is omitted, selection dialog will open.");
@@ -4564,7 +4570,6 @@ public partial class FormMain : Form
                 else
                     p.main.readProfile(fileName);
             }
-
 
             public void SaveProfiles(string filename = "") => Execute(new Action(() => saveProfiles(filename)));
             private void saveProfiles(string filename = "")
@@ -4633,10 +4638,10 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Drawing.StartY # Set/get starting (top) value of Y in drawing bounds.");
                 p.help.Add("PDI.Drawing.EndY # Set/get ending (bottom) value of Y in drawing bounds.");
 
-                p.help.Add("PDI.Drawing.MaximumX #Set/get maximum value of X,  \r\n which is settable limit (not drawing bounds");
-                p.help.Add("PDI.Drawing.MaximumY #Set/get maximum value of Y,  \r\n which is settable limit (not drawing bounds");
-                p.help.Add("PDI.Drawing.MinimumX #Set/get minimum value of X,  \r\n which is settable limit (not drawing bounds");
-                p.help.Add("PDI.Drawing.MinimumY #Set/get minimum value of Y,  \r\n which is settable limit (not drawing bounds");
+                p.help.Add("PDI.Drawing.MaximumX #Set/get maximum value of X,  \r\n which is settable limit (not drawing bounds)");
+                p.help.Add("PDI.Drawing.MaximumY #Set/get maximum value of Y,  \r\n which is settable limit (not drawing bounds)");
+                p.help.Add("PDI.Drawing.MinimumX #Set/get minimum value of X,  \r\n which is settable limit (not drawing bounds)");
+                p.help.Add("PDI.Drawing.MinimumY #Set/get minimum value of Y,  \r\n which is settable limit (not drawing bounds)");
 
             }
 
@@ -4672,7 +4677,6 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Crystal.CellBeta # Get/Set the cell constant beta (deg) of the selected crystal.");
                 p.help.Add("PDI.Crystal.CellGamma # Get/Set the cell constant gamma (deg) of the selected crystal.");
             }
-
             private Crystal SelectedCrystal => (Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1];
             public double CellVolume => Execute(() => SelectedCrystal.Volume * 1000);
             public double Pressure(double volume = 0) => Execute<double>(new Func<double>(()
@@ -4798,6 +4802,7 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Profile.Comment #  Set/get the comment of the selected profile.");
                 p.help.Add("PDI.Profile.Name #  Set/get the comment of the selected profile.");
             }
+
             public string Comment
             {
                 get => Execute(() => p.main.formProfile.textBoxComment.Text);
@@ -4959,9 +4964,8 @@ public partial class FormMain : Form
             {
                 p = _p;
                 p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
-                p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
-                p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
-
+                p.help.Add("PDI.Fitting.Check(int index) # Check the lattice plane assigned by index.");
+                p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck the lattice plane assigned by index.");
             }
 
             public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
@@ -4980,31 +4984,15 @@ public partial class FormMain : Form
             }
         }
 
-        public class SeriesAnalysisClass : MacroSub
+        public class SequentialClass : MacroSub
         {
             private readonly Macro p;
-            public SeriesAnalysisClass(Macro _p) : base(_p.main)
+            public SequentialClass(Macro _p) : base(_p.main)
             {
                 p = _p;
-                p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
-                p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
-                p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
-
-            }
-
-            public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
-
-            public void Check(int n) => Check(n, true);
-            public void Uncheck(int n) => Check(n, false);
-
-            public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
-            private void check(int n, bool checkState)
-            {
-                if (n >= 0 && n < p.main.formFitting.bindingSourcePlanes.Count)
-                {
-                    ((DataRowView)p.main.formFitting.bindingSourcePlanes[n]).Row[0] = checkState;
-                    p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
-                }
+                //p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
+                //p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
+                //p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
             }
         }
 
