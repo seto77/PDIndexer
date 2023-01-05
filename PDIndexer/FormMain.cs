@@ -1323,7 +1323,7 @@ public partial class FormMain : Form
                 DiffractionProfile dif = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
                 if (dif.ImageArray != null)
                 {
-                    Bitmap bmp = new Bitmap(pictureBoxMain.Width - OriginPos.X, pictureBoxMain.Height - OriginPos.Y, PixelFormat.Format24bppRgb);
+                    var bmp = new Bitmap(pictureBoxMain.Width - OriginPos.X, pictureBoxMain.Height - OriginPos.Y, PixelFormat.Format24bppRgb);
 
                     //bmpをロック
                     BitmapData bmpData;
@@ -1772,7 +1772,7 @@ public partial class FormMain : Form
         for (int i = 0; i < decimalPlaces; i++) format += "0";
 
 
-        Pen pen = new Pen(colorControlScaleLine.Color, 1);
+        var pen = new Pen(colorControlScaleLine.Color, 1);
 
         gMain.DrawLine(pen, OriginPos.X, pictureBoxMain.Height - OriginPos.Y, pictureBoxMain.Width, pictureBoxMain.Height - OriginPos.Y);
         Font strFont = new Font(new FontFamily("tahoma"), 8);
@@ -2028,8 +2028,8 @@ public partial class FormMain : Form
             }
             if (e.Button == MouseButtons.Left && e.Clicks == 2)//何もないところでダブルクリックした場合
             {
-                PointD tempPt = ConvToDspacing(pt);
-                Plane p = new Plane
+                var tempPt = ConvToDspacing(pt);
+                var p = new Plane
                 {
                     d = tempPt.X,
                     Intensity = 1,
@@ -2093,7 +2093,7 @@ public partial class FormMain : Form
 
     //マウスの右クリックを連打して描画範囲を広げる時のカウンター
     int rightClickCounter = 0;
-    Stopwatch rightClickStopWatch = new Stopwatch();
+    readonly Stopwatch rightClickStopWatch = new();
 
     /// <summary>
     /// マウスボタンがあがったとき
@@ -2193,7 +2193,7 @@ public partial class FormMain : Form
 
     }
 
-    PointD justBeforePt = new PointD(0, 0);
+    PointD justBeforePt = new(0, 0);
     private void pictureBoxMain_MouseMove(object sender, MouseEventArgs e)
     {
         //タブコントロールの表示/非表示設定
@@ -2419,7 +2419,7 @@ public partial class FormMain : Form
     /// <param name="cry"></param>
     /// <param name="dev"></param>
     /// <returns></returns>
-    public int SearchPlaneNo(double x, Crystal cry, double dev)
+    public static int SearchPlaneNo(double x, Crystal cry, double dev)
     {
         if (cry == null || cry.Plane == null) return -1;
         double temp = double.PositiveInfinity;
@@ -2468,7 +2468,7 @@ public partial class FormMain : Form
         else return -1;
     }
 
-    public int[] SearchMaskBoundary(double x, DiffractionProfile.MaskingRange[] ranges, double dev)
+    public static int[] SearchMaskBoundary(double x, DiffractionProfile.MaskingRange[] ranges, double dev)
     {
         if (ranges == null) return new int[] { -1, -1 };
         int index1 = 0;
@@ -3137,7 +3137,7 @@ public partial class FormMain : Form
                     {
                         if (strList[i].StartsWith("\"\"\""))
                         {
-                            StringBuilder sb = new StringBuilder();
+                            var sb = new StringBuilder();
                             for (int j = i + 1; j < strList.Count; j++)
                             {
                                 if (!strList[j].StartsWith("\"\"\""))
@@ -4052,8 +4052,7 @@ public partial class FormMain : Form
                 Ring.Intensity.AddRange(dif.ImageArray);
                 Ring.CalcFreq();
 
-                var frequencyProfile = new Profile();
-                frequencyProfile.Pt = new List<PointD>();
+                var frequencyProfile = new Profile { Pt = new List<PointD>() };
 
                 for (int i = 0; i < Ring.Frequency.Count; i++)
                     frequencyProfile.Pt.Add(new PointD(Ring.Frequency.Keys[i], Ring.Frequency[Ring.Frequency.Keys[i]]));
@@ -4061,7 +4060,7 @@ public partial class FormMain : Form
                 graphControlFrequency.LineList = new PointD[2] { new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN) };
                 graphControlFrequency.Draw();
                 uint max = uint.MinValue;
-                foreach (uint u in dif.ImageArray)
+                foreach (uint u in dif.ImageArray.Select(v => (uint)v))
                     max = Math.Max(u, max);
                 numericUpDownMaxInt.Maximum = (decimal)max;
                 numericUpDownMinInt.Maximum = (decimal)max - 1;
@@ -4479,7 +4478,7 @@ public partial class FormMain : Form
     /// </summary>
     public class Macro : MacroBase
     {
-        private FormMain main;
+        private readonly FormMain main;
 
         public DrawingClass Drawing;
         public ProfileListClass ProfileList;
@@ -4544,7 +4543,7 @@ public partial class FormMain : Form
 
 
             public string GetFileName() => Execute(() => getFileName());
-            private string getFileName()
+            private static string getFileName()
             {
                 var dlg = new OpenFileDialog();
                 return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : "";
@@ -4623,7 +4622,7 @@ public partial class FormMain : Form
 
         public class DrawingClass : MacroSub
         {
-            private Macro p;
+            private readonly Macro p;
             public DrawingClass(Macro _p) : base(_p.main)
             {
                 this.p = _p;
@@ -4979,8 +4978,34 @@ public partial class FormMain : Form
                     p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
                 }
             }
+        }
 
+        public class SeriesAnalysisClass : MacroSub
+        {
+            private readonly Macro p;
+            public SeriesAnalysisClass(Macro _p) : base(_p.main)
+            {
+                p = _p;
+                p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
+                p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
+                p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
 
+            }
+
+            public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
+
+            public void Check(int n) => Check(n, true);
+            public void Uncheck(int n) => Check(n, false);
+
+            public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
+            private void check(int n, bool checkState)
+            {
+                if (n >= 0 && n < p.main.formFitting.bindingSourcePlanes.Count)
+                {
+                    ((DataRowView)p.main.formFitting.bindingSourcePlanes[n]).Row[0] = checkState;
+                    p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
+                }
+            }
         }
 
 
