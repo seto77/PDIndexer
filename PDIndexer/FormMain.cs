@@ -4405,6 +4405,8 @@ public partial class FormMain : Form
             else
                 readProfile(fileName);
         }
+        else
+            readProfile(fileName);
     }
 
     /// <summary>

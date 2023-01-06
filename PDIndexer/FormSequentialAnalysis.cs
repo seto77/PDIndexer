@@ -1,13 +1,15 @@
-﻿using System;
+﻿#region Using
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Crystallography;
-using IronPython.Runtime.Operations;
 using MathNet.Numerics.LinearAlgebra.Double;
+#endregion
 
 namespace PDIndexer;
 
@@ -32,6 +34,7 @@ public partial class FormSequentialAnalysis : Form
     }
     #endregion
 
+    #region 解析
     private void buttonExecute_Click(object sender, EventArgs e)
     {
         sw.Restart();
@@ -43,6 +46,9 @@ public partial class FormSequentialAnalysis : Form
         }
         if (formMain.dataSet.DataTableProfile.Items.Count < 4)
             return;
+
+        var crystal = formMain.formFitting.TargetCrystal;
+        double initA = crystal.A, initB = crystal.B, initC = crystal.C;
 
         //ストレス解析モードかどうか。
         var stressMode = formMain.dataSet.DataTableProfile.Rows[0][1].ToString().EndsWith("whole");
@@ -74,15 +80,40 @@ public partial class FormSequentialAnalysis : Form
         textBoxFWHM.Text = $"{text}\r\n";
         textBoxIntensity.Text = $"{text}\r\n";
         textBoxCellConstants.Text = (stressMode ? "Degree" : "Profile Name") + "\tVolume\tA\tB\tC\tAlpha\tBeta\tGamma\r\n";
-        textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name") + "\tPressure (GPa)\r\n";
+
+        Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
+        {
+            1 => () => formMain.formEOS.Gold(),
+            2 => () => formMain.formEOS.Pt(),
+            3 => () => formMain.formEOS.NaClB1(),
+            4 => () => formMain.formEOS.NaClB2(),
+            5 => () => formMain.formEOS.MgO(),
+            6 => () => formMain.formEOS.Corundum(),
+            7 => () => formMain.formEOS.Ar(),
+            8 => () => formMain.formEOS.Re(),
+            9 => () => formMain.formEOS.Mo(),
+            10 => () => formMain.formEOS.Pb(),
+            _ => null
+        };
+
+        if (eos == null)
+            textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name") + "\tPressure (GPa)\r\n";
+        else
+        {
+            textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name");
+            foreach (var researcher in eos().Select(e => e.Researcher))
+                textBoxPressure.AppendText("\t"+researcher);
+            textBoxPressure.AppendText("\r\n");
+
+            formMain.toolStripButtonEquationOfState.Checked = true;
+        }
 
         int initialPosition = formMain.bindingSourceProfile.Position;
 
         if (stressMode && initialPosition == 0)
             initialPosition = 1;
 
-        var crystal = formMain.formFitting.TargetCrystal;
-        double initA = crystal.A, initB = crystal.B, initC = crystal.C;
+       
 
         var total = formMain.dataSet.DataTableProfile.Items.Count;
 
@@ -168,7 +199,14 @@ public partial class FormSequentialAnalysis : Form
                 $"\t{crystal.A * 10:f10}\t{crystal.B * 10:f10}\t{crystal.C * 10:f10}" +
                 $"\t{crystal.Alpha / Math.PI * 180:g10}\t{crystal.Beta / Math.PI * 180:g10}\t{crystal.Gamma / Math.PI * 180:g10}\r\n");
 
-            textBoxPressure.AppendText($"\t{crystal.EOSCondition.GetPressure(crystal.Volume * 1000):f8}\r\n");
+            if (eos != null)
+            {
+                foreach (var pressure in eos().Select(e => e.Pressure))
+                    textBoxPressure.AppendText($"\t{pressure:f8}");
+                textBoxPressure.AppendText("\r\n");
+            }
+            else
+                textBoxPressure.AppendText($"\t{crystal.EOSCondition.GetPressure(crystal.Volume * 1000):f8}\r\n");
 
             formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, checkState);//チェック状態を元に戻す
 
@@ -199,6 +237,7 @@ public partial class FormSequentialAnalysis : Form
 
         toolStripStatusLabel1.Text = $"100 % Completed!  Ellappsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
     }
+    #endregion
 
     #region Singhの式の最適化
     private void RefineSinghEquation(List<string> indexStr, List<List<PointD>> results)
@@ -370,9 +409,55 @@ public partial class FormSequentialAnalysis : Form
         graphControl1.AddProfile(p2);
     }
 
+
     #endregion
 
+    #region Copy, Save
 
+    private void buttonCopy_Click(object sender, EventArgs e)
+    {
+        Clipboard.SetDataObject(GetText(false));
+    }
+
+    private void buttonSave_Click(object sender, EventArgs e)
+    {
+        var dlg = new SaveFileDialog() { Filter="*.csv|*.csv"};
+        if(dlg.ShowDialog() == DialogResult.OK) 
+        {
+            var sw = new StreamWriter(dlg.FileName);
+            sw.Write(GetText());
+            sw.Close();
+        }
+    }
+
+    /// <summary>
+    /// 計算結果をタブ区切りあるいはカンマ区切りテキストとして得る。
+    /// index = -1:アクティブなタブ, 0: 2θ, 1: d, 2: 半値幅, 3: 強度, 4: 格子定数, 5: 圧力, 6: Singh
+    /// </summary>
+    /// <param name="CSV"></param>
+    /// <param name="index"></param>
+    /// <returns></returns>
+    public string GetText( bool CSV = true, int index = -1)
+    {
+        if (index == -1)
+            index = tabControl.SelectedIndex;
+
+        var txt = index switch
+        {
+            0 => textBox2theta.Text,
+            1 => textBoxDspacing.Text,
+            2 => textBoxFWHM.Text,
+            3 => textBoxIntensity.Text,
+            4 => textBoxCellConstants.Text,
+            5 => textBoxPressure.Text,
+            6 => textBoxResults.Text,
+            _ => ""
+        };
+
+        return CSV ? txt.Replace('\t', ',') : txt;
+    }
+
+    #endregion
 
 
 }

@@ -102,7 +102,7 @@ namespace PDIndexer
             this.label6 = new System.Windows.Forms.Label();
             this.numericalTextBoxNaClB2A0 = new Crystallography.Controls.NumericBox();
             this.groupBoxCorundum = new System.Windows.Forms.GroupBox();
-            this.numericalTextBoxCorundumDubrovinsky = new Crystallography.Controls.NumericBox();
+            this.numericBoxCorundumDubrovinsky = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxColundumV = new Crystallography.Controls.NumericBox();
             this.label5 = new System.Windows.Forms.Label();
             this.numericBoxColundumV0 = new Crystallography.Controls.NumericBox();
@@ -580,7 +580,6 @@ namespace PDIndexer
             this.numericBoxGoldA0.ThonsandsSeparator = true;
             this.numericBoxGoldA0.Value = 4.07825D;
             this.numericBoxGoldA0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericalTextBox_ValueChanged);
-            this.numericBoxGoldA0.Load += new System.EventHandler(this.numericalTextBoxGoldA0_Load);
             // 
             // label22
             // 
@@ -914,7 +913,7 @@ namespace PDIndexer
             // 
             // groupBoxCorundum
             // 
-            this.groupBoxCorundum.Controls.Add(this.numericalTextBoxCorundumDubrovinsky);
+            this.groupBoxCorundum.Controls.Add(this.numericBoxCorundumDubrovinsky);
             this.groupBoxCorundum.Controls.Add(this.numericalTextBoxColundumV);
             this.groupBoxCorundum.Controls.Add(this.label5);
             this.groupBoxCorundum.Controls.Add(this.numericBoxColundumV0);
@@ -924,19 +923,19 @@ namespace PDIndexer
             // 
             // numericalTextBoxCorundumDubrovinsky
             // 
-            resources.ApplyResources(this.numericalTextBoxCorundumDubrovinsky, "numericalTextBoxCorundumDubrovinsky");
-            this.numericalTextBoxCorundumDubrovinsky.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxCorundumDubrovinsky.DecimalPlaces = 3;
-            this.numericalTextBoxCorundumDubrovinsky.FooterBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxCorundumDubrovinsky.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxCorundumDubrovinsky.Name = "numericalTextBoxCorundumDubrovinsky";
-            this.numericalTextBoxCorundumDubrovinsky.RoundErrorAccuracy = -1;
-            this.numericalTextBoxCorundumDubrovinsky.SkipEventDuringInput = false;
-            this.numericalTextBoxCorundumDubrovinsky.SmartIncrement = true;
-            this.numericalTextBoxCorundumDubrovinsky.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.numericalTextBoxCorundumDubrovinsky.TextBoxForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.numericalTextBoxCorundumDubrovinsky.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.numericalTextBoxCorundumDubrovinsky.ThonsandsSeparator = true;
+            resources.ApplyResources(this.numericBoxCorundumDubrovinsky, "numericalTextBoxCorundumDubrovinsky");
+            this.numericBoxCorundumDubrovinsky.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCorundumDubrovinsky.DecimalPlaces = 3;
+            this.numericBoxCorundumDubrovinsky.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCorundumDubrovinsky.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxCorundumDubrovinsky.Name = "numericalTextBoxCorundumDubrovinsky";
+            this.numericBoxCorundumDubrovinsky.RoundErrorAccuracy = -1;
+            this.numericBoxCorundumDubrovinsky.SkipEventDuringInput = false;
+            this.numericBoxCorundumDubrovinsky.SmartIncrement = true;
+            this.numericBoxCorundumDubrovinsky.TextBoxBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.numericBoxCorundumDubrovinsky.TextBoxForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.numericBoxCorundumDubrovinsky.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxCorundumDubrovinsky.ThonsandsSeparator = true;
             // 
             // numericalTextBoxColundumV
             // 
@@ -1596,7 +1595,7 @@ namespace PDIndexer
         private Label label21;
         public Crystallography.Controls.NumericBox numericalTextBoxMgOA;
         private Label label2;
-        private Crystallography.Controls.NumericBox numericalTextBoxCorundumDubrovinsky;
+        private Crystallography.Controls.NumericBox numericBoxCorundumDubrovinsky;
         public Crystallography.Controls.NumericBox numericalTextBoxColundumV;
         private Label label5;
         private Crystallography.Controls.NumericBox numericalTextBoxArRoss;

@@ -34,6 +34,10 @@
             this.tabPage2theta = new System.Windows.Forms.TabPage();
             this.tabPageDspacing = new System.Windows.Forms.TabPage();
             this.textBoxDspacing = new System.Windows.Forms.TextBox();
+            this.tabPageCellConstants = new System.Windows.Forms.TabPage();
+            this.textBoxCellConstants = new System.Windows.Forms.TextBox();
+            this.tabPagePressure = new System.Windows.Forms.TabPage();
+            this.textBoxPressure = new System.Windows.Forms.TextBox();
             this.tabPageFWHM = new System.Windows.Forms.TabPage();
             this.textBoxFWHM = new System.Windows.Forms.TextBox();
             this.tabPageIntensity = new System.Windows.Forms.TabPage();
@@ -47,20 +51,18 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.tabPageCellConstants = new System.Windows.Forms.TabPage();
-            this.tabPagePressure = new System.Windows.Forms.TabPage();
-            this.textBoxCellConstants = new System.Windows.Forms.TextBox();
-            this.textBoxPressure = new System.Windows.Forms.TextBox();
+            this.buttonCopy = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabPage2theta.SuspendLayout();
             this.tabPageDspacing.SuspendLayout();
+            this.tabPageCellConstants.SuspendLayout();
+            this.tabPagePressure.SuspendLayout();
             this.tabPageFWHM.SuspendLayout();
             this.tabPageIntensity.SuspendLayout();
             this.tabPageSingh.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
-            this.tabPageCellConstants.SuspendLayout();
-            this.tabPagePressure.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -83,7 +85,7 @@
             this.textBox2theta.Multiline = true;
             this.textBox2theta.Name = "textBox2theta";
             this.textBox2theta.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2theta.Size = new System.Drawing.Size(975, 302);
+            this.textBox2theta.Size = new System.Drawing.Size(975, 303);
             this.textBox2theta.TabIndex = 1;
             this.textBox2theta.WordWrap = false;
             // 
@@ -91,27 +93,27 @@
             // 
             this.tabControl.Controls.Add(this.tabPage2theta);
             this.tabControl.Controls.Add(this.tabPageDspacing);
-            this.tabControl.Controls.Add(this.tabPageCellConstants);
-            this.tabControl.Controls.Add(this.tabPagePressure);
             this.tabControl.Controls.Add(this.tabPageFWHM);
             this.tabControl.Controls.Add(this.tabPageIntensity);
+            this.tabControl.Controls.Add(this.tabPageCellConstants);
+            this.tabControl.Controls.Add(this.tabPagePressure);
             this.tabControl.Controls.Add(this.tabPageSingh);
             this.tabControl.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl.Location = new System.Drawing.Point(0, 34);
+            this.tabControl.Location = new System.Drawing.Point(0, 36);
             this.tabControl.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
-            this.tabControl.Size = new System.Drawing.Size(991, 345);
+            this.tabControl.Size = new System.Drawing.Size(991, 343);
             this.tabControl.TabIndex = 2;
             // 
             // tabPage2theta
             // 
             this.tabPage2theta.Controls.Add(this.textBox2theta);
-            this.tabPage2theta.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2theta.Location = new System.Drawing.Point(4, 26);
             this.tabPage2theta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPage2theta.Name = "tabPage2theta";
             this.tabPage2theta.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPage2theta.Size = new System.Drawing.Size(983, 312);
+            this.tabPage2theta.Size = new System.Drawing.Size(983, 313);
             this.tabPage2theta.TabIndex = 0;
             this.tabPage2theta.Text = "2theta (deree)";
             this.tabPage2theta.UseVisualStyleBackColor = true;
@@ -119,11 +121,11 @@
             // tabPageDspacing
             // 
             this.tabPageDspacing.Controls.Add(this.textBoxDspacing);
-            this.tabPageDspacing.Location = new System.Drawing.Point(4, 29);
+            this.tabPageDspacing.Location = new System.Drawing.Point(4, 26);
             this.tabPageDspacing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPageDspacing.Name = "tabPageDspacing";
             this.tabPageDspacing.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.tabPageDspacing.Size = new System.Drawing.Size(983, 312);
+            this.tabPageDspacing.Size = new System.Drawing.Size(983, 313);
             this.tabPageDspacing.TabIndex = 1;
             this.tabPageDspacing.Text = "d-spacing (Å)";
             this.tabPageDspacing.UseVisualStyleBackColor = true;
@@ -136,16 +138,60 @@
             this.textBoxDspacing.Multiline = true;
             this.textBoxDspacing.Name = "textBoxDspacing";
             this.textBoxDspacing.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDspacing.Size = new System.Drawing.Size(975, 302);
+            this.textBoxDspacing.Size = new System.Drawing.Size(975, 303);
             this.textBoxDspacing.TabIndex = 2;
             this.textBoxDspacing.WordWrap = false;
+            // 
+            // tabPageCellConstants
+            // 
+            this.tabPageCellConstants.Controls.Add(this.textBoxCellConstants);
+            this.tabPageCellConstants.Location = new System.Drawing.Point(4, 26);
+            this.tabPageCellConstants.Name = "tabPageCellConstants";
+            this.tabPageCellConstants.Size = new System.Drawing.Size(983, 313);
+            this.tabPageCellConstants.TabIndex = 5;
+            this.tabPageCellConstants.Text = "Cell constants";
+            this.tabPageCellConstants.UseVisualStyleBackColor = true;
+            // 
+            // textBoxCellConstants
+            // 
+            this.textBoxCellConstants.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxCellConstants.Location = new System.Drawing.Point(0, 0);
+            this.textBoxCellConstants.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxCellConstants.Multiline = true;
+            this.textBoxCellConstants.Name = "textBoxCellConstants";
+            this.textBoxCellConstants.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxCellConstants.Size = new System.Drawing.Size(983, 313);
+            this.textBoxCellConstants.TabIndex = 3;
+            this.textBoxCellConstants.WordWrap = false;
+            // 
+            // tabPagePressure
+            // 
+            this.tabPagePressure.Controls.Add(this.textBoxPressure);
+            this.tabPagePressure.Location = new System.Drawing.Point(4, 26);
+            this.tabPagePressure.Name = "tabPagePressure";
+            this.tabPagePressure.Size = new System.Drawing.Size(983, 313);
+            this.tabPagePressure.TabIndex = 6;
+            this.tabPagePressure.Text = "Pressure";
+            this.tabPagePressure.UseVisualStyleBackColor = true;
+            // 
+            // textBoxPressure
+            // 
+            this.textBoxPressure.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxPressure.Location = new System.Drawing.Point(0, 0);
+            this.textBoxPressure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxPressure.Multiline = true;
+            this.textBoxPressure.Name = "textBoxPressure";
+            this.textBoxPressure.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxPressure.Size = new System.Drawing.Size(983, 313);
+            this.textBoxPressure.TabIndex = 3;
+            this.textBoxPressure.WordWrap = false;
             // 
             // tabPageFWHM
             // 
             this.tabPageFWHM.Controls.Add(this.textBoxFWHM);
-            this.tabPageFWHM.Location = new System.Drawing.Point(4, 29);
+            this.tabPageFWHM.Location = new System.Drawing.Point(4, 26);
             this.tabPageFWHM.Name = "tabPageFWHM";
-            this.tabPageFWHM.Size = new System.Drawing.Size(983, 312);
+            this.tabPageFWHM.Size = new System.Drawing.Size(983, 313);
             this.tabPageFWHM.TabIndex = 2;
             this.tabPageFWHM.Text = "FWHM (degree)";
             this.tabPageFWHM.UseVisualStyleBackColor = true;
@@ -158,16 +204,16 @@
             this.textBoxFWHM.Multiline = true;
             this.textBoxFWHM.Name = "textBoxFWHM";
             this.textBoxFWHM.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxFWHM.Size = new System.Drawing.Size(983, 312);
+            this.textBoxFWHM.Size = new System.Drawing.Size(983, 313);
             this.textBoxFWHM.TabIndex = 2;
             this.textBoxFWHM.WordWrap = false;
             // 
             // tabPageIntensity
             // 
             this.tabPageIntensity.Controls.Add(this.textBoxIntensity);
-            this.tabPageIntensity.Location = new System.Drawing.Point(4, 29);
+            this.tabPageIntensity.Location = new System.Drawing.Point(4, 26);
             this.tabPageIntensity.Name = "tabPageIntensity";
-            this.tabPageIntensity.Size = new System.Drawing.Size(983, 312);
+            this.tabPageIntensity.Size = new System.Drawing.Size(983, 313);
             this.tabPageIntensity.TabIndex = 3;
             this.tabPageIntensity.Text = "Intensity";
             this.tabPageIntensity.UseVisualStyleBackColor = true;
@@ -180,7 +226,7 @@
             this.textBoxIntensity.Multiline = true;
             this.textBoxIntensity.Name = "textBoxIntensity";
             this.textBoxIntensity.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxIntensity.Size = new System.Drawing.Size(983, 312);
+            this.textBoxIntensity.Size = new System.Drawing.Size(983, 313);
             this.textBoxIntensity.TabIndex = 2;
             this.textBoxIntensity.WordWrap = false;
             // 
@@ -191,9 +237,9 @@
             this.tabPageSingh.Controls.Add(this.numericalTextBoxD0);
             this.tabPageSingh.Controls.Add(this.graphControl1);
             this.tabPageSingh.Controls.Add(this.textBoxResults);
-            this.tabPageSingh.Location = new System.Drawing.Point(4, 29);
+            this.tabPageSingh.Location = new System.Drawing.Point(4, 26);
             this.tabPageSingh.Name = "tabPageSingh";
-            this.tabPageSingh.Size = new System.Drawing.Size(983, 312);
+            this.tabPageSingh.Size = new System.Drawing.Size(983, 313);
             this.tabPageSingh.TabIndex = 4;
             this.tabPageSingh.Text = "Analyze Singh equation";
             this.tabPageSingh.UseVisualStyleBackColor = true;
@@ -206,7 +252,7 @@
             this.numericalTextBoxAlpha.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxAlpha.Location = new System.Drawing.Point(937, 295);
+            this.numericalTextBoxAlpha.Location = new System.Drawing.Point(937, 286);
             this.numericalTextBoxAlpha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericalTextBoxAlpha.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxAlpha.MinimumSize = new System.Drawing.Size(1, 22);
@@ -229,7 +275,7 @@
             this.numericalTextBoxPsimax.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxPsimax.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPsimax.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPsimax.Location = new System.Drawing.Point(891, 295);
+            this.numericalTextBoxPsimax.Location = new System.Drawing.Point(891, 286);
             this.numericalTextBoxPsimax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericalTextBoxPsimax.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxPsimax.MinimumSize = new System.Drawing.Size(1, 22);
@@ -252,7 +298,7 @@
             this.numericalTextBoxD0.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxD0.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxD0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxD0.Location = new System.Drawing.Point(818, 295);
+            this.numericalTextBoxD0.Location = new System.Drawing.Point(818, 286);
             this.numericalTextBoxD0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericalTextBoxD0.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxD0.MinimumSize = new System.Drawing.Size(1, 22);
@@ -300,7 +346,7 @@
             this.graphControl1.MousePositionVisible = true;
             this.graphControl1.Name = "graphControl1";
             this.graphControl1.OriginPosition = new System.Drawing.Point(40, 20);
-            this.graphControl1.Size = new System.Drawing.Size(349, 273);
+            this.graphControl1.Size = new System.Drawing.Size(349, 264);
             this.graphControl1.Smoothing = false;
             this.graphControl1.TabIndex = 4;
             this.graphControl1.TextFont = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -326,7 +372,7 @@
             this.textBoxResults.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBoxResults.Multiline = true;
             this.textBoxResults.Name = "textBoxResults";
-            this.textBoxResults.Size = new System.Drawing.Size(611, 309);
+            this.textBoxResults.Size = new System.Drawing.Size(611, 300);
             this.textBoxResults.TabIndex = 3;
             // 
             // statusStrip1
@@ -350,57 +396,37 @@
             this.flowLayoutPanel1.AutoSize = true;
             this.flowLayoutPanel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Controls.Add(this.buttonCopy);
+            this.flowLayoutPanel1.Controls.Add(this.buttonSave);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(991, 34);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(991, 36);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
-            // tabPageCellConstants
+            // buttonCopy
             // 
-            this.tabPageCellConstants.Controls.Add(this.textBoxCellConstants);
-            this.tabPageCellConstants.Location = new System.Drawing.Point(4, 29);
-            this.tabPageCellConstants.Name = "tabPageCellConstants";
-            this.tabPageCellConstants.Size = new System.Drawing.Size(983, 312);
-            this.tabPageCellConstants.TabIndex = 5;
-            this.tabPageCellConstants.Text = "Cell constants";
-            this.tabPageCellConstants.UseVisualStyleBackColor = true;
+            this.buttonCopy.AutoSize = true;
+            this.buttonCopy.Location = new System.Drawing.Point(107, 3);
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.Size = new System.Drawing.Size(75, 30);
+            this.buttonCopy.TabIndex = 1;
+            this.buttonCopy.Text = "Copy";
+            this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
-            // tabPagePressure
+            // buttonSave
             // 
-            this.tabPagePressure.Controls.Add(this.textBoxPressure);
-            this.tabPagePressure.Location = new System.Drawing.Point(4, 29);
-            this.tabPagePressure.Name = "tabPagePressure";
-            this.tabPagePressure.Size = new System.Drawing.Size(983, 312);
-            this.tabPagePressure.TabIndex = 6;
-            this.tabPagePressure.Text = "Pressure";
-            this.tabPagePressure.UseVisualStyleBackColor = true;
+            this.buttonSave.AutoSize = true;
+            this.buttonSave.Location = new System.Drawing.Point(188, 3);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 30);
+            this.buttonSave.TabIndex = 1;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // textBoxCellConstants
-            // 
-            this.textBoxCellConstants.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxCellConstants.Location = new System.Drawing.Point(0, 0);
-            this.textBoxCellConstants.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxCellConstants.Multiline = true;
-            this.textBoxCellConstants.Name = "textBoxCellConstants";
-            this.textBoxCellConstants.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCellConstants.Size = new System.Drawing.Size(983, 312);
-            this.textBoxCellConstants.TabIndex = 3;
-            this.textBoxCellConstants.WordWrap = false;
-            // 
-            // textBoxPressure
-            // 
-            this.textBoxPressure.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPressure.Location = new System.Drawing.Point(0, 0);
-            this.textBoxPressure.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxPressure.Multiline = true;
-            this.textBoxPressure.Name = "textBoxPressure";
-            this.textBoxPressure.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxPressure.Size = new System.Drawing.Size(983, 312);
-            this.textBoxPressure.TabIndex = 3;
-            this.textBoxPressure.WordWrap = false;
-            // 
-            // FormStressAnalysis
+            // FormSequentialAnalysis
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
@@ -408,9 +434,9 @@
             this.Controls.Add(this.tabControl);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
-            this.Font = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "FormStressAnalysis";
+            this.Name = "FormSequentialAnalysis";
             this.Text = "Sequential Analysis";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStressAnalysis_FormClosing);
             this.tabControl.ResumeLayout(false);
@@ -418,6 +444,10 @@
             this.tabPage2theta.PerformLayout();
             this.tabPageDspacing.ResumeLayout(false);
             this.tabPageDspacing.PerformLayout();
+            this.tabPageCellConstants.ResumeLayout(false);
+            this.tabPageCellConstants.PerformLayout();
+            this.tabPagePressure.ResumeLayout(false);
+            this.tabPagePressure.PerformLayout();
             this.tabPageFWHM.ResumeLayout(false);
             this.tabPageFWHM.PerformLayout();
             this.tabPageIntensity.ResumeLayout(false);
@@ -428,10 +458,6 @@
             this.statusStrip1.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
-            this.tabPageCellConstants.ResumeLayout(false);
-            this.tabPageCellConstants.PerformLayout();
-            this.tabPagePressure.ResumeLayout(false);
-            this.tabPagePressure.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -462,5 +488,7 @@
         private System.Windows.Forms.TabPage tabPagePressure;
         private System.Windows.Forms.TextBox textBoxCellConstants;
         private System.Windows.Forms.TextBox textBoxPressure;
+        private System.Windows.Forms.Button buttonCopy;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
