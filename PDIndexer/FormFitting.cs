@@ -33,6 +33,8 @@ public partial class FormFitting : System.Windows.Forms.Form
     public bool IsCheckedListBoxSelectIndexChangeEventSkip;
     public FormMain formMain;
 
+    public bool SkipFitting { get; set; } = false;
+
     private int selectedPlaneIndex=-1;
     public int SelectedPlaneIndex
     {
@@ -260,7 +262,8 @@ public partial class FormFitting : System.Windows.Forms.Form
 
     public void Fitting()
     {
-        if (TargetCrystal == null || TargetCrystal.Plane == null || formMain == null) return;
+        if (TargetCrystal == null || TargetCrystal.Plane == null || formMain == null || SkipFitting) return;
+     
         DiffractionProfile dp;
         if (!(formMain.bindingSourceProfile.Position >= 0 && (dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]) != null)) return;
 
@@ -274,6 +277,7 @@ public partial class FormFitting : System.Windows.Forms.Form
 
         //初期化
         for (int h = 0; h < listCrystal.Count; h++)
+        {
             for (int i = 0; i < listCrystal[h].Plane.Count; i++)
             {
                 if (formMain.AxisMode == HorizontalAxis.Angle)
@@ -310,8 +314,7 @@ public partial class FormFitting : System.Windows.Forms.Form
                         listCrystal[h].Plane[i].peakFunction.GroupIndex = groupIndex++;
                 }
             }
-
-
+        }
 
         if (!checkBoxPatternDecomposition.Checked)
         {
@@ -551,7 +554,6 @@ public partial class FormFitting : System.Windows.Forms.Form
         refleshTable();
 
         formMain.Draw();
-
     }
 
     #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
@@ -1260,11 +1262,19 @@ public partial class FormFitting : System.Windows.Forms.Form
         TargetCrystal.A = temp_crystal.A;
         TargetCrystal.B = temp_crystal.B;
         TargetCrystal.C = temp_crystal.C;
+        TargetCrystal.A_err=temp_crystal.A_err;
+        TargetCrystal.B_err=temp_crystal.B_err;
+        TargetCrystal.C_err=temp_crystal.C_err;
+
         TargetCrystal.Alpha = temp_crystal.Alpha;
         TargetCrystal.Beta = temp_crystal.Beta;
         TargetCrystal.Gamma = temp_crystal.Gamma;
+        TargetCrystal.Alpha_err = temp_crystal.Alpha_err;
+        TargetCrystal.Beta_err = temp_crystal.Beta_err;
+        TargetCrystal.Gamma_err = temp_crystal.Gamma_err;
 
         TargetCrystal.SetAxis();
+        TargetCrystal.Volume_err = temp_crystal.Volume_err;
         formMain.ChangeCrystalFromFitting();
         if(copy)
             CopyClipboard();

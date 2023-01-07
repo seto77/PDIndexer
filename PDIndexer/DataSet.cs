@@ -205,7 +205,7 @@ public partial class DataSet
         }
 
         /// <summary>
-        /// index行のデータのチェック状態を設置する
+        /// index行のデータのチェック状態を設定する
         /// </summary>
         /// <param name="index"></param>
         /// <param name="check"></param>

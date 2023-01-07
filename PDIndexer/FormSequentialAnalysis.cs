@@ -79,7 +79,7 @@ public partial class FormSequentialAnalysis : Form
         textBoxDspacing.Text = $"{text}\r\n";
         textBoxFWHM.Text = $"{text}\r\n";
         textBoxIntensity.Text = $"{text}\r\n";
-        textBoxCellConstants.Text = (stressMode ? "Degree" : "Profile Name") + "\tVolume\tA\tB\tC\tAlpha\tBeta\tGamma\r\n";
+        textBoxCellConstants.Text = (stressMode ? "Degree" : "Profile Name") + "\tV\tV_err\tA\tA_err\tB\tB_err\tC\tC_err\tAlpha\tAlpha_err\tBeta\tBeta_err\tGamma\tGamma_err\r\n";
 
         Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
         {
@@ -108,30 +108,32 @@ public partial class FormSequentialAnalysis : Form
             formMain.toolStripButtonEquationOfState.Checked = true;
         }
 
-        int initialPosition = formMain.bindingSourceProfile.Position;
-
-        if (stressMode && initialPosition == 0)
-            initialPosition = 1;
-
-       
+        int initialPosition = stressMode ? 1 : formMain.bindingSourceProfile.Position;
 
         var total = formMain.dataSet.DataTableProfile.Items.Count;
 
+        //現在のプロファイルチェック状況を保存後、全てチェック外す
+        var checkStates= new List<bool>();
+        for (int i = 0; i < total; i++)
+            checkStates.Add(formMain.dataSet.DataTableProfile.GetItemChecked(i));
+        formMain.dataSet.DataTableProfile.AllUnchecked = true;
+
+        formMain.Enabled = false;
+
         //ここから、メインのループ
-        for (int i = 0; i < formMain.dataSet.DataTableProfile.Items.Count - 1; i++)
+        for (int i = initialPosition; i < total; i++)
         {
-            formMain.SkipDrawing = true;//メイン画面の描画
-            formMain.Enabled = false;
+            formMain.SkipDrawing = true;//メイン画面の描画をキャンセル
+            formMain.bindingSourceProfile.Position = i;
 
-            formMain.bindingSourceProfile.Position = i + initialPosition < total ? i + initialPosition : i + initialPosition - total + 1;
-
-            var checkState = formMain.dataSet.DataTableProfile.GetItemChecked(formMain.bindingSourceProfile.Position);
             formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, true);
 
             //最小二乗法フィッティングを二回実行
             for (int n = 0; n < 2; n++)
             {
+                formMain.formFitting.SkipFitting = false;
                 formMain.formFitting.Fitting();
+                formMain.formFitting.SkipFitting = true;
                 if (formMain.formFitting.textBoxA.Text != "0.000000")//最小2乗法がうまくいった場合は
                     formMain.formFitting.Confirm(false);
                 else//もし最小2乗法がうまくいかない場合は
@@ -157,6 +159,7 @@ public partial class FormSequentialAnalysis : Form
                         }
                     }
                 }
+                
             }
 
             formMain.SkipDrawing = false;
@@ -181,10 +184,10 @@ public partial class FormSequentialAnalysis : Form
 
             m = 0;
             StringBuilder sb2theta = new(), sbDspacing = new(), sbIntensity = new(), sbFWHM = new();
-            foreach (var p in formMain.formFitting.TargetCrystal.Plane.Where(e => e.IsFittingChecked))
+            foreach (var p in crystal.Plane.Where(e => e.IsFittingChecked))
             {
-                sb2theta.Append($"\t{p.XObs:f10}");
-                sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.XObs / 180 * Math.PI / 2)):f10}");
+                sb2theta.Append($"\t{p.peakFunction.X:f10}");
+                sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
                 sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
                 sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
                 if (stressMode)
@@ -195,9 +198,14 @@ public partial class FormSequentialAnalysis : Form
             textBoxIntensity.AppendText($"{sbIntensity}\r\n");
             textBoxFWHM.AppendText($"{sbFWHM}\r\n");
 
-            textBoxCellConstants.AppendText($"\t{crystal.Volume * 1000:f8}" +
-                $"\t{crystal.A * 10:f10}\t{crystal.B * 10:f10}\t{crystal.C * 10:f10}" +
-                $"\t{crystal.Alpha / Math.PI * 180:g10}\t{crystal.Beta / Math.PI * 180:g10}\t{crystal.Gamma / Math.PI * 180:g10}\r\n");
+            textBoxCellConstants.AppendText($"\t{crystal.Volume * 1000:f8}\t{crystal.Volume_err * 1000:f8}" +
+                $"\t{crystal.A * 10:f10}\t{crystal.A_err * 10:f10}" +
+                $"\t{crystal.B * 10:f10}\t{crystal.B_err * 10:f10}" +
+                $"\t{crystal.C * 10:f10}\t{crystal.C_err * 10:f10}" +
+                $"\t{crystal.Alpha / Math.PI * 180:g10}\t{crystal.Alpha_err / Math.PI * 180:g10}" +
+                $"\t{crystal.Beta / Math.PI * 180:g10}\t{crystal.Beta_err / Math.PI * 180:g10}" +
+                $"\t{crystal.Gamma / Math.PI * 180:g10}\t{crystal.Gamma_err / Math.PI * 180:g10}" +
+                $"\r\n");
 
             if (eos != null)
             {
@@ -208,14 +216,18 @@ public partial class FormSequentialAnalysis : Form
             else
                 textBoxPressure.AppendText($"\t{crystal.EOSCondition.GetPressure(crystal.Volume * 1000):f8}\r\n");
 
-            formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, checkState);//チェック状態を元に戻す
+            formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, false);//チェック状態を解除
 
             toolStripStatusLabel1.Text = $"{100.0 * i / total:f1} % completed.  Ellappsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
             Application.DoEvents();
-
         }
+
+        for (int i = 0; i < total; i++)
+            formMain.dataSet.DataTableProfile.SetItemChecked(i, checkStates[i]);
+
         Application.DoEvents();
         formMain.Enabled = true;
+        formMain.formFitting.SkipFitting = false;
 
         Clipboard.SetDataObject(
             $"2theta\r\n{textBox2theta.Text}\r\n\r\n" +
@@ -428,6 +440,11 @@ public partial class FormSequentialAnalysis : Form
             sw.Write(GetText());
             sw.Close();
         }
+    }
+
+    public void Save(string filename, bool CSV=true, int index=-1)
+    {
+
     }
 
     /// <summary>

@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.01.06.1337</AssemblyVersion>
-    <FileVersion>2023.01.06.1337</FileVersion>
+    <AssemblyVersion>2023.1.7.0625</AssemblyVersion>
+    <FileVersion>2023.1.7.0625</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -68,9 +68,5 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="AssemblyVersionUpdate" />
-  </Target>
 
 </Project>

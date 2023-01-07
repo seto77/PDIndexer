@@ -2738,28 +2738,46 @@ public partial class FormMain : Form
         }
     }
 
-
     private void readProfile(string[] fileNames)
     {
+        stopwatch.Restart();
         var showFormDataConverter = true;
-        for (int i = 0; i < fileNames.Length; i++)
-        {
-            readProfile(fileNames[i], showFormDataConverter);
+        Array.Sort(fileNames, StringComparer.OrdinalIgnoreCase);
 
-            if (i == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
+        for (int i = 0; i < fileNames.Length - 1; i++)
+        {
+            readProfile(fileNames[i], true, true, true, true);
+
+            if (i % 10 == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
             {
-                if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following pfofiles?",
-                    "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following pfofiles?", "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    stopwatch.Restart();
                     showFormDataConverter = false;
+                    SkipDrawing = skipAxisPropertyChangedEvent = true;
+                    for (i = i + 1; i < fileNames.Length - 1; i++)
+                    {
+                        readProfile(fileNames[i], showFormDataConverter, true, false, false);
+                        Application.DoEvents();
+                    }
+                }
             }
         }
+        SkipDrawing = skipAxisPropertyChangedEvent = false;
+
+        readProfile(fileNames[^1], showFormDataConverter);
+
+        if (fileNames.Length > 1)
+            bindingSourceProfile.Position -= fileNames.Length-1;
+
+        toolStripStatusLabel1.Text= $"Time taken to read profiles: {stopwatch.ElapsedMilliseconds/1000.0:f1} sec.";
     }
 
-    private void readProfile(string fileName, bool showFormDataConverter = true)
+    private void readProfile(string fileName, bool showFormDataConverter = true, bool isChecked=true, bool isDrawn=true, bool changePos=true)
     {
         if (InvokeRequired)//別スレッド(ファイル更新監視スレッド)から呼び出されたとき Invokeして呼びなおす
         {
-            Invoke(new Action(() => readProfile(fileName, showFormDataConverter)));
+            Invoke(new Action(() => readProfile(fileName, showFormDataConverter, isChecked, isDrawn)));
             return;
         }
 
@@ -2886,14 +2904,12 @@ public partial class FormMain : Form
 
             if (dp.Count > 0)
             {
-                //radioButtonMultiProfileMode.Checked = dp.Count > 1;
-
                 //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
                 skipAxisPropertyChangedEvent = true;
                 for (int i = 0; i < dp.Count - 1; i++)
-                    AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false);
+                    AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false,false);
                 skipAxisPropertyChangedEvent = false;
-                AddProfileToCheckedListBox(dp[^1], checkBoxAll.Checked, true);
+                AddProfileToCheckedListBox(dp[^1], checkBoxAll.Checked, true, false);
 
                 Text = $"PDIndexer   {Version.VersionAndDate}   {dp[^1].Name}";
 
@@ -3238,7 +3254,7 @@ public partial class FormMain : Form
                         for (int i = 0; i < diffProf.OriginalProfile.Pt.Count; i++)
                             diffProf.OriginalProfile.Pt[i] = new PointD(diffProf.OriginalProfile.Pt[i].X / 1000, diffProf.OriginalProfile.Pt[i].Y);
 
-                AddProfileToCheckedListBox(diffProf, true, true);
+                AddProfileToCheckedListBox(diffProf, isChecked, isDrawn, changePos);
             }
 
             Text = $"PDIndexer   {Version.VersionAndDate}   {Path.GetFileName(fileName)}";
@@ -3253,17 +3269,17 @@ public partial class FormMain : Form
     /// 新しいDiffractionProfileをチェックリストボックスに加える
     /// </summary>
     /// <param name="dp">加えるDiffractionProfile</param>
-    /// <param name="isChecked">チェックした状態にするか</param>
-    /// <param name="isDraw">描画範囲をリセットし、</param>
+    /// <param name="isCheked">チェックした状態にするか</param>
+    /// <param name="isDrawn">描画範囲をリセットし描画するか</param>
+    /// <param name="changePos">チェックリストボックスの選択を変更するか</param>
     /// <param name="isRenewOtherProfiles"></param>
-    public void AddProfileToCheckedListBox(DiffractionProfile dp, bool isChecked, bool isDraw)
+    public void AddProfileToCheckedListBox(DiffractionProfile dp, bool isCheked, bool isDrawn, bool changePos = true)
     {
         if (dp.Mode == DiffractionProfileMode.Concentric)
         {//ConcentricModeのとき
          //dp.CopyParameter(defaultDP);
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
-
                 if (WaveColor != dp.WaveColor) WaveColor = dp.WaveColor;
                 if (WaveSource != dp.WaveSource) WaveSource = dp.WaveSource;
                 if (AxisMode != dp.SrcAxisMode) AxisMode = dp.SrcAxisMode;
@@ -3297,10 +3313,11 @@ public partial class FormMain : Form
             if (radioButtonSingleProfileMode.Checked)//シングルパターンモードのとき
                 dataSet.DataTableProfile.Rows.Clear();
 
-            dataSet.DataTableProfile.Rows.Add(new object[] { isChecked, dp, bmp });
-            bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
+            dataSet.DataTableProfile.Rows.Add(new object[] { isCheked, dp, bmp });
+            if(changePos)
+                bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
 
-            if (isDraw)
+            if (isDrawn)
             {
                 SetDrawRangeLimit();//描画範囲の上限、下限を設定
                 ResetDrawRange(); //描画範囲をリセット
@@ -3338,10 +3355,11 @@ public partial class FormMain : Form
             if (radioButtonSingleProfileMode.Checked)//シングルパターンモードのとき
                 dataSet.DataTableProfile.Rows.Clear();//消去
 
-            dataSet.DataTableProfile.Rows.Add(new object[] { isChecked, dp, bmp });//新しいプロファイルを追加
-            bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
+            dataSet.DataTableProfile.Rows.Add(new object[] { isCheked, dp, bmp });//新しいプロファイルを追加
+            if(changePos)
+                bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
 
-            if (isDraw)
+            if (isDrawn)
             {
                 SetDrawRangeLimit();//描画範囲の上限、下限を設定
                 ResetDrawRange(); //描画範囲をリセット
