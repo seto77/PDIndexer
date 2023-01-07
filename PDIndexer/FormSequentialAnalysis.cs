@@ -191,7 +191,7 @@ public partial class FormSequentialAnalysis : Form
                 sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
                 sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
                 if (stressMode)
-                    results[m++].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.XObs / 180 * Math.PI / 2)));
+                    results[m++].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
             }
             textBox2theta.AppendText($"{sb2theta}\r\n");
             textBoxDspacing.AppendText($"{sbDspacing}\r\n");
