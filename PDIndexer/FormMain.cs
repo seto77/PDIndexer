@@ -1821,8 +1821,6 @@ public partial class FormMain : Form
             pen = new Pen(colorControlScaleLine.Color, 1);
             if (checkBoxShowScaleLine.Checked)
                 gMain.DrawLine(pen, OriginPos.X - 8, y, pictureBoxMain.Width, y);
-
-
         }
     }
     #endregion
@@ -2616,11 +2614,11 @@ public partial class FormMain : Form
 
     private void toolStripButtonStressAnalysis_CheckedChanged(object sender, EventArgs e)
     {
-        if (toolStripButtonStressAnalysis.Checked == false && formSequentialAnalysis.WindowState == FormWindowState.Minimized)
-            toolStripButtonStressAnalysis.Checked = true;
+        if (toolStripButtonSequentialAnalysis.Checked == false && formSequentialAnalysis.WindowState == FormWindowState.Minimized)
+            toolStripButtonSequentialAnalysis.Checked = true;
         else
         {
-            formSequentialAnalysis.Visible = toolStripButtonStressAnalysis.Checked;
+            formSequentialAnalysis.Visible = toolStripButtonSequentialAnalysis.Checked;
             if (formSequentialAnalysis.Visible)
             {
                 formSequentialAnalysis.BringToFront();
@@ -4773,8 +4771,13 @@ public partial class FormMain : Form
                 p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'.");
                 p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
                 p.help.Add("PDI.CrystalList.Add() # Add the crystal to 'index'.");
-
+                p.help.Add("PDI.CrystalList.Open() # Open 'Crystal List' window'.");
+                p.help.Add("PDI.CrystalList.Close() # Close 'Crystal List' window'.");
             }
+
+            public void Open() => p.main.checkBoxCrystalParameter.Checked = true;
+            public void Close() => p.main.checkBoxCrystalParameter.Checked = false;
+
             public int Count => Execute(() => p.main.bindingSourceCrystal.Count);
             public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Name : "");
             public int SelectedIndex
@@ -4921,8 +4924,11 @@ public partial class FormMain : Form
                 p.help.Add("PDI.ProfileList.UncheckAll() # Uncheck all profiles.");
                 p.help.Add("PDI.ProfileList.DeleteAll() # Delete all profiles.");
                 p.help.Add("PDI.ProfileList.Delete(int index) # Delete a profile assigned by index.");
+                p.help.Add("PDI.ProfileList.Open() # Open 'Profile List' window'.");
+                p.help.Add("PDI.ProfileList.Close() # Close 'Profile List' window'.");
             }
-
+            public void Open() => p.main.checkBoxProfileParameter.Checked = true;
+            public void Close() => p.main.checkBoxProfileParameter.Checked = false;
             public void DeleteAll() => Execute(() => p.main.formProfile.DeleteAllProfiles(false));
             public void Delete(int n)
                 => Execute(new Action(() =>
@@ -4986,7 +4992,12 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
                 p.help.Add("PDI.Fitting.Check(int index) # Check the lattice plane assigned by index.");
                 p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck the lattice plane assigned by index.");
+                p.help.Add("PDI.Fitting.Open() # Open 'Fitting peaks' window.");
+                p.help.Add("PDI.Fitting.Close) # Close 'Fitting peaks' window.");
             }
+            
+            public void Open() => p.main.toolStripButtonFittingParameter.Checked = true;
+            public void Close() => p.main.toolStripButtonFittingParameter.Checked = false;
 
             public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
 
@@ -5010,10 +5021,32 @@ public partial class FormMain : Form
             public SequentialClass(Macro _p) : base(_p.main)
             {
                 p = _p;
-                //p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
-                //p.help.Add("PDI.Fitting.Check(int index) # Check a crystal plane assigned by index.");
-                //p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck a crystal plane assigned by index.");
+                p.help.Add("PDI.Sequential.Open() # Open 'Sequential Analysis' window.");
+                p.help.Add("PDI.Sequential.Close) # Close 'Sequential Analysis' window.");
+
+                p.help.Add("PDI.Sequential.Execute() # Execute the sequential analysis.");
+                
+                p.help.Add("PDI.Sequential.GetCSV_2theta() # Get results of 2 theta in CSV format.");
+                p.help.Add("PDI.Sequential.GetCSV_D() # Get results of d-spacing in CSV format.");
+                p.help.Add("PDI.Sequential.GetCSV_FWHM() # Get results of FWHM in CSV format.");
+                p.help.Add("PDI.Sequential.GetCSV_Intensity() # Get results of peak intensity in CSV format.");
+                p.help.Add("PDI.Sequential.GetCSV_CellConstants() # Get results of cell constants in CSV format.");
+                p.help.Add("PDI.Sequential.GetCSV_Pressure() # Get results of pressure in CSV format.");
+                p.help.Add("PDI.Sequential.GetCSV_Singh() # Get results of Singh equation in CSV format.");
+
             }
+
+            public void Open() => p.main.toolStripButtonSequentialAnalysis.Checked = true;
+            public void Close() => p.main.toolStripButtonSequentialAnalysis.Checked = false;
+            public void Execute() => Execute(() => p.main.formSequentialAnalysis.buttonExecute.PerformClick());
+
+            public string GetCSV_2theta() => Execute(() => p.main.formSequentialAnalysis.GetText(true,0));
+            public string GetCSV_D() => Execute(() => p.main.formSequentialAnalysis.GetText(true,1));
+            public string GetCSV_FWHM() => Execute(() => p.main.formSequentialAnalysis.GetText(true,2));
+            public string GetCSV_Intensity() => Execute(() => p.main.formSequentialAnalysis.GetText(true,3));
+            public string GetCSV_CellConstants() => Execute(() => p.main.formSequentialAnalysis.GetText(true,4));
+            public string GetCSV_Pressure() => Execute(() => p.main.formSequentialAnalysis.GetText(true,5));
+            public string GetCSV_Singh() => Execute(() => p.main.formSequentialAnalysis.GetText(true,6));
         }
 
 

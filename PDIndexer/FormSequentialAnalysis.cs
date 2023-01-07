@@ -30,15 +30,13 @@ public partial class FormSequentialAnalysis : Form
     private void FormStressAnalysis_FormClosing(object sender, FormClosingEventArgs e)
     {
         e.Cancel = true;
-        formMain.toolStripButtonStressAnalysis.Checked = false;
+        formMain.toolStripButtonSequentialAnalysis.Checked = false;
     }
     #endregion
 
     #region 解析
     private void buttonExecute_Click(object sender, EventArgs e)
     {
-        sw.Restart();
-
         if (formMain == null || formMain.formFitting == null || formMain.formFitting.Visible == false)
         {
             MessageBox.Show("Fitting Difraction Peak フォームを立ち上げ、解析したいピークをチェックした状態で実行してください.");
@@ -47,6 +45,7 @@ public partial class FormSequentialAnalysis : Form
         if (formMain.dataSet.DataTableProfile.Items.Count < 4)
             return;
 
+        sw.Restart();
         var crystal = formMain.formFitting.TargetCrystal;
         double initA = crystal.A, initB = crystal.B, initC = crystal.C;
 
@@ -83,24 +82,24 @@ public partial class FormSequentialAnalysis : Form
 
         Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
         {
-            1 => () => formMain.formEOS.Gold(),
-            2 => () => formMain.formEOS.Pt(),
-            3 => () => formMain.formEOS.NaClB1(),
-            4 => () => formMain.formEOS.NaClB2(),
-            5 => () => formMain.formEOS.MgO(),
-            6 => () => formMain.formEOS.Corundum(),
-            7 => () => formMain.formEOS.Ar(),
-            8 => () => formMain.formEOS.Re(),
-            9 => () => formMain.formEOS.Mo(),
-            10 => () => formMain.formEOS.Pb(),
+            1 => formMain.formEOS.Gold,
+            2 => formMain.formEOS.Pt,
+            3 => formMain.formEOS.NaClB1,
+            4 => formMain.formEOS.NaClB2,
+            5 => formMain.formEOS.MgO,
+            6 => formMain.formEOS.Corundum,
+            7 => formMain.formEOS.Ar,
+            8 => formMain.formEOS.Re,
+            9 => formMain.formEOS.Mo,
+            10 => formMain.formEOS.Pb,
             _ => null
         };
 
         if (eos == null)
-            textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name") + "\tPressure (GPa)\r\n";
+            textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name") + "\tPressure\r\n";
         else
         {
-            textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name");
+            textBoxPressure.Text = stressMode ? "Degree" : "Profile Name";
             foreach (var researcher in eos().Select(e => e.Researcher))
                 textBoxPressure.AppendText("\t"+researcher);
             textBoxPressure.AppendText("\r\n");
@@ -159,7 +158,6 @@ public partial class FormSequentialAnalysis : Form
                         }
                     }
                 }
-                
             }
 
             formMain.SkipDrawing = false;

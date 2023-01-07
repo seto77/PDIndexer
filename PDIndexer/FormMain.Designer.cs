@@ -217,7 +217,7 @@ namespace PDIndexer
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonCellFinder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator11 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButtonStressAnalysis = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonSequentialAnalysis = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButtonAtomicPositonFinder = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator12 = new System.Windows.Forms.ToolStripSeparator();
@@ -1538,7 +1538,7 @@ namespace PDIndexer
             this.toolStripSeparator5,
             this.toolStripButtonCellFinder,
             this.toolStripSeparator11,
-            this.toolStripButtonStressAnalysis,
+            this.toolStripButtonSequentialAnalysis,
             this.toolStripSeparator10,
             this.toolStripButtonAtomicPositonFinder,
             this.toolStripSeparator12,
@@ -1607,11 +1607,11 @@ namespace PDIndexer
             // 
             // toolStripButtonStressAnalysis
             // 
-            resources.ApplyResources(this.toolStripButtonStressAnalysis, "toolStripButtonStressAnalysis");
-            this.toolStripButtonStressAnalysis.CheckOnClick = true;
-            this.toolStripButtonStressAnalysis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButtonStressAnalysis.Name = "toolStripButtonStressAnalysis";
-            this.toolStripButtonStressAnalysis.CheckedChanged += new System.EventHandler(this.toolStripButtonStressAnalysis_CheckedChanged);
+            resources.ApplyResources(this.toolStripButtonSequentialAnalysis, "toolStripButtonStressAnalysis");
+            this.toolStripButtonSequentialAnalysis.CheckOnClick = true;
+            this.toolStripButtonSequentialAnalysis.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButtonSequentialAnalysis.Name = "toolStripButtonStressAnalysis";
+            this.toolStripButtonSequentialAnalysis.CheckedChanged += new System.EventHandler(this.toolStripButtonStressAnalysis_CheckedChanged);
             // 
             // toolStripSeparator10
             // 
@@ -4008,7 +4008,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private ToolStripMenuItem clearRegistryToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator12;
-        public ToolStripButton toolStripButtonStressAnalysis;
+        public ToolStripButton toolStripButtonSequentialAnalysis;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;

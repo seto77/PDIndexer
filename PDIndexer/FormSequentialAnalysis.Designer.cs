@@ -43,11 +43,11 @@
             this.tabPagePressure = new System.Windows.Forms.TabPage();
             this.textBoxPressure = new System.Windows.Forms.TextBox();
             this.tabPageSingh = new System.Windows.Forms.TabPage();
+            this.textBoxResults = new System.Windows.Forms.TextBox();
             this.numericalTextBoxAlpha = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxPsimax = new Crystallography.Controls.NumericBox();
             this.numericalTextBoxD0 = new Crystallography.Controls.NumericBox();
             this.graphControl1 = new Crystallography.Controls.GraphControl();
-            this.textBoxResults = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -121,10 +121,10 @@
             // tabPageDspacing
             // 
             this.tabPageDspacing.Controls.Add(this.textBoxDspacing);
-            this.tabPageDspacing.Location = new System.Drawing.Point(4, 26);
+            this.tabPageDspacing.Location = new System.Drawing.Point(4, 24);
             this.tabPageDspacing.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tabPageDspacing.Name = "tabPageDspacing";
-            this.tabPageDspacing.Size = new System.Drawing.Size(720, 270);
+            this.tabPageDspacing.Size = new System.Drawing.Size(734, 275);
             this.tabPageDspacing.TabIndex = 1;
             this.tabPageDspacing.Text = "d-spacing (Å)";
             this.tabPageDspacing.UseVisualStyleBackColor = true;
@@ -137,16 +137,16 @@
             this.textBoxDspacing.Multiline = true;
             this.textBoxDspacing.Name = "textBoxDspacing";
             this.textBoxDspacing.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxDspacing.Size = new System.Drawing.Size(720, 270);
+            this.textBoxDspacing.Size = new System.Drawing.Size(734, 275);
             this.textBoxDspacing.TabIndex = 2;
             this.textBoxDspacing.WordWrap = false;
             // 
             // tabPageFWHM
             // 
             this.tabPageFWHM.Controls.Add(this.textBoxFWHM);
-            this.tabPageFWHM.Location = new System.Drawing.Point(4, 26);
+            this.tabPageFWHM.Location = new System.Drawing.Point(4, 24);
             this.tabPageFWHM.Name = "tabPageFWHM";
-            this.tabPageFWHM.Size = new System.Drawing.Size(720, 270);
+            this.tabPageFWHM.Size = new System.Drawing.Size(734, 275);
             this.tabPageFWHM.TabIndex = 2;
             this.tabPageFWHM.Text = "FWHM (deg.)";
             this.tabPageFWHM.UseVisualStyleBackColor = true;
@@ -159,16 +159,16 @@
             this.textBoxFWHM.Multiline = true;
             this.textBoxFWHM.Name = "textBoxFWHM";
             this.textBoxFWHM.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxFWHM.Size = new System.Drawing.Size(720, 270);
+            this.textBoxFWHM.Size = new System.Drawing.Size(734, 275);
             this.textBoxFWHM.TabIndex = 2;
             this.textBoxFWHM.WordWrap = false;
             // 
             // tabPageIntensity
             // 
             this.tabPageIntensity.Controls.Add(this.textBoxIntensity);
-            this.tabPageIntensity.Location = new System.Drawing.Point(4, 26);
+            this.tabPageIntensity.Location = new System.Drawing.Point(4, 24);
             this.tabPageIntensity.Name = "tabPageIntensity";
-            this.tabPageIntensity.Size = new System.Drawing.Size(720, 270);
+            this.tabPageIntensity.Size = new System.Drawing.Size(734, 275);
             this.tabPageIntensity.TabIndex = 3;
             this.tabPageIntensity.Text = "Intensity";
             this.tabPageIntensity.UseVisualStyleBackColor = true;
@@ -181,16 +181,16 @@
             this.textBoxIntensity.Multiline = true;
             this.textBoxIntensity.Name = "textBoxIntensity";
             this.textBoxIntensity.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxIntensity.Size = new System.Drawing.Size(720, 270);
+            this.textBoxIntensity.Size = new System.Drawing.Size(734, 275);
             this.textBoxIntensity.TabIndex = 2;
             this.textBoxIntensity.WordWrap = false;
             // 
             // tabPageCellConstants
             // 
             this.tabPageCellConstants.Controls.Add(this.textBoxCellConstants);
-            this.tabPageCellConstants.Location = new System.Drawing.Point(4, 26);
+            this.tabPageCellConstants.Location = new System.Drawing.Point(4, 24);
             this.tabPageCellConstants.Name = "tabPageCellConstants";
-            this.tabPageCellConstants.Size = new System.Drawing.Size(720, 270);
+            this.tabPageCellConstants.Size = new System.Drawing.Size(734, 275);
             this.tabPageCellConstants.TabIndex = 5;
             this.tabPageCellConstants.Text = "Cell constants (Å, deg))";
             this.tabPageCellConstants.UseVisualStyleBackColor = true;
@@ -203,16 +203,16 @@
             this.textBoxCellConstants.Multiline = true;
             this.textBoxCellConstants.Name = "textBoxCellConstants";
             this.textBoxCellConstants.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxCellConstants.Size = new System.Drawing.Size(720, 270);
+            this.textBoxCellConstants.Size = new System.Drawing.Size(734, 275);
             this.textBoxCellConstants.TabIndex = 3;
             this.textBoxCellConstants.WordWrap = false;
             // 
             // tabPagePressure
             // 
             this.tabPagePressure.Controls.Add(this.textBoxPressure);
-            this.tabPagePressure.Location = new System.Drawing.Point(4, 26);
+            this.tabPagePressure.Location = new System.Drawing.Point(4, 24);
             this.tabPagePressure.Name = "tabPagePressure";
-            this.tabPagePressure.Size = new System.Drawing.Size(720, 270);
+            this.tabPagePressure.Size = new System.Drawing.Size(734, 275);
             this.tabPagePressure.TabIndex = 6;
             this.tabPagePressure.Text = "Pressure (GPa)";
             this.tabPagePressure.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@
             this.textBoxPressure.Multiline = true;
             this.textBoxPressure.Name = "textBoxPressure";
             this.textBoxPressure.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBoxPressure.Size = new System.Drawing.Size(720, 270);
+            this.textBoxPressure.Size = new System.Drawing.Size(734, 275);
             this.textBoxPressure.TabIndex = 3;
             this.textBoxPressure.WordWrap = false;
             // 
@@ -243,6 +243,16 @@
             this.tabPageSingh.Text = "Analyze Singh equation";
             this.tabPageSingh.UseVisualStyleBackColor = true;
             // 
+            // textBoxResults
+            // 
+            this.textBoxResults.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxResults.Location = new System.Drawing.Point(0, 0);
+            this.textBoxResults.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBoxResults.Multiline = true;
+            this.textBoxResults.Name = "textBoxResults";
+            this.textBoxResults.Size = new System.Drawing.Size(481, 273);
+            this.textBoxResults.TabIndex = 3;
+            // 
             // numericalTextBoxAlpha
             // 
             this.numericalTextBoxAlpha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -251,7 +261,7 @@
             this.numericalTextBoxAlpha.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxAlpha.Location = new System.Drawing.Point(688, 242);
+            this.numericalTextBoxAlpha.Location = new System.Drawing.Point(688, 240);
             this.numericalTextBoxAlpha.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericalTextBoxAlpha.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxAlpha.MinimumSize = new System.Drawing.Size(1, 22);
@@ -275,7 +285,7 @@
             this.numericalTextBoxPsimax.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxPsimax.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxPsimax.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxPsimax.Location = new System.Drawing.Point(642, 242);
+            this.numericalTextBoxPsimax.Location = new System.Drawing.Point(642, 240);
             this.numericalTextBoxPsimax.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericalTextBoxPsimax.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxPsimax.MinimumSize = new System.Drawing.Size(1, 22);
@@ -299,7 +309,7 @@
             this.numericalTextBoxD0.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxD0.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxD0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBoxD0.Location = new System.Drawing.Point(569, 242);
+            this.numericalTextBoxD0.Location = new System.Drawing.Point(569, 240);
             this.numericalTextBoxD0.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.numericalTextBoxD0.MaximumSize = new System.Drawing.Size(1000, 24);
             this.numericalTextBoxD0.MinimumSize = new System.Drawing.Size(1, 22);
@@ -336,7 +346,7 @@
             this.graphControl1.LeftMargin = 0F;
             this.graphControl1.LineColor = System.Drawing.Color.Red;
             this.graphControl1.LineWidth = 1F;
-            this.graphControl1.Location = new System.Drawing.Point(385, 0);
+            this.graphControl1.Location = new System.Drawing.Point(481, 0);
             this.graphControl1.LowerX = 0D;
             this.graphControl1.LowerY = 0D;
             this.graphControl1.MaximalX = 1D;
@@ -347,7 +357,7 @@
             this.graphControl1.MousePositionVisible = true;
             this.graphControl1.Name = "graphControl1";
             this.graphControl1.OriginPosition = new System.Drawing.Point(40, 20);
-            this.graphControl1.Size = new System.Drawing.Size(349, 273);
+            this.graphControl1.Size = new System.Drawing.Size(253, 273);
             this.graphControl1.Smoothing = false;
             this.graphControl1.TabIndex = 4;
             this.graphControl1.TextFont = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -363,16 +373,6 @@
             this.graphControl1.XScaleLineVisible = true;
             this.graphControl1.YLog = false;
             this.graphControl1.YScaleLineVisible = true;
-            // 
-            // textBoxResults
-            // 
-            this.textBoxResults.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxResults.Location = new System.Drawing.Point(0, 0);
-            this.textBoxResults.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBoxResults.Multiline = true;
-            this.textBoxResults.Name = "textBoxResults";
-            this.textBoxResults.Size = new System.Drawing.Size(385, 273);
-            this.textBoxResults.TabIndex = 3;
             // 
             // statusStrip1
             // 

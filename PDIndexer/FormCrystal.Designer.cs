@@ -52,6 +52,9 @@ namespace PDIndexer
             this.buttonChange = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewCrystal = new System.Windows.Forms.DataGridView();
+            this.checkDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Crystal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonUpper = new System.Windows.Forms.Button();
@@ -96,9 +99,6 @@ namespace PDIndexer
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.checkDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Crystal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -257,6 +257,32 @@ namespace PDIndexer
             this.dataGridViewCrystal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCrystal.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystal_CellMouseClick);
             this.dataGridViewCrystal.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystal_CellMouseClick);
+            // 
+            // checkDataGridViewCheckBoxColumn1
+            // 
+            this.checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
+            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
+            this.checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
+            this.checkDataGridViewCheckBoxColumn1.ReadOnly = true;
+            this.checkDataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // PeakColor
+            // 
+            this.PeakColor.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.PeakColor, "PeakColor");
+            this.PeakColor.Name = "PeakColor";
+            this.PeakColor.ReadOnly = true;
+            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Crystal
+            // 
+            this.Crystal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Crystal.DataPropertyName = "Crystal";
+            resources.ApplyResources(this.Crystal, "Crystal");
+            this.Crystal.Name = "Crystal";
+            this.Crystal.ReadOnly = true;
+            this.Crystal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // bindingSource
             // 
@@ -422,8 +448,6 @@ namespace PDIndexer
             // checkBoxCombineSameDspacingPeaks
             // 
             resources.ApplyResources(this.checkBoxCombineSameDspacingPeaks, "checkBoxCombineSameDspacingPeaks");
-            this.checkBoxCombineSameDspacingPeaks.Checked = true;
-            this.checkBoxCombineSameDspacingPeaks.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkBoxCombineSameDspacingPeaks.Name = "checkBoxCombineSameDspacingPeaks";
             this.checkBoxCombineSameDspacingPeaks.UseVisualStyleBackColor = true;
             this.checkBoxCombineSameDspacingPeaks.CheckedChanged += new System.EventHandler(this.checkBoxCombineSameDspacingPeaks_CheckedChanged);
@@ -631,32 +655,6 @@ namespace PDIndexer
             resources.ApplyResources(this.dataGridViewTextBoxColumn4, "dataGridViewTextBoxColumn4");
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // checkDataGridViewCheckBoxColumn1
-            // 
-            this.checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
-            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
-            this.checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
-            this.checkDataGridViewCheckBoxColumn1.ReadOnly = true;
-            this.checkDataGridViewCheckBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // PeakColor
-            // 
-            this.PeakColor.DataPropertyName = "PeakColor";
-            resources.ApplyResources(this.PeakColor, "PeakColor");
-            this.PeakColor.Name = "PeakColor";
-            this.PeakColor.ReadOnly = true;
-            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Crystal
-            // 
-            this.Crystal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Crystal.DataPropertyName = "Crystal";
-            resources.ApplyResources(this.Crystal, "Crystal");
-            this.Crystal.Name = "Crystal";
-            this.Crystal.ReadOnly = true;
-            this.Crystal.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // FormCrystal
             // 
