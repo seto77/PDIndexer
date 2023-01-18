@@ -47,7 +47,7 @@ public partial class FormSequentialAnalysis : Form
 
         sw.Restart();
         var crystal = formMain.formFitting.TargetCrystal;
-        double initA = crystal.A, initB = crystal.B, initC = crystal.C;
+        double initA = crystal.A, initB = crystal.B, initC = crystal.C, initAlpha = crystal.Alpha, initBeta = crystal.Beta, initGamma = crystal.Gamma;
 
         //ストレス解析モードかどうか。
         var stressMode = formMain.dataSet.DataTableProfile.Rows[0][1].ToString().EndsWith("whole");

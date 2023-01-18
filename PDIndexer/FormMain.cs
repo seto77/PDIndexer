@@ -4962,8 +4962,7 @@ public partial class FormMain : Form
                             p.main.bindingSourceProfile.Position = n;
                     }));
             }
-
-
+            
             public void Check(int n) => Execute(new Action(() => Check(n, true)));
             public void Uncheck(int n) => Execute(new Action(() => Check(n, false)));
 
@@ -5048,7 +5047,6 @@ public partial class FormMain : Form
             public string GetCSV_Pressure() => Execute(() => p.main.formSequentialAnalysis.GetText(true,5));
             public string GetCSV_Singh() => Execute(() => p.main.formSequentialAnalysis.GetText(true,6));
         }
-
 
     }
     #endregion

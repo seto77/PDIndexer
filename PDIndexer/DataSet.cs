@@ -11,6 +11,19 @@ public partial class DataSet
 {
     partial class DataTablePeakFittingDataTable
     {
+        /// <summary>
+        /// i番目のアイテムをDataTablePeakFittingRow形式で返す
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public DataTablePeakFittingRow GetRow(int i) => i < Rows.Count ? Rows[i] as DataTablePeakFittingRow : null;
+
+        public void SetCheckState(int i, bool state) 
+        {
+            if (i < Rows.Count)
+                (Rows[i] as DataTablePeakFittingRow).Check = state;
+        }
+
         internal void Add(Plane p)
         {
             var dr = NewDataTablePeakFittingRow();
