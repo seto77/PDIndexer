@@ -4768,8 +4768,8 @@ public partial class FormMain : Form
                 p.help.Add("PDI.CrystalList.SelectedName # Get name of the selected crystal.");
                 p.help.Add("PDI.CrystalList.SelectedIndex # Set/get index of the selected crystal.");
                 p.help.Add("PDI.CrystalList.Select(int index) # Set index of a selected crystal.");
-                p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'.");
-                p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'.");
+                p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'. If index is omitted, the selected crystal will be checked.");
+                p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'. If index is omitted, the selected crystal will be unchecked.");
                 p.help.Add("PDI.CrystalList.Add() # Add the crystal to 'index'.");
                 p.help.Add("PDI.CrystalList.Open() # Open 'Crystal List' window'.");
                 p.help.Add("PDI.CrystalList.Close() # Close 'Crystal List' window'.");
@@ -4800,7 +4800,9 @@ public partial class FormMain : Form
                     p.main.bindingSourceCrystal.Position = n;
             }
 
+            public void Check() => Check(SelectedIndex, true);
             public void Check(int n) => Check(n, true);
+            public void Uncheck() => Check(SelectedIndex, false);
             public void Uncheck(int n) => Check(n, false);
 
             public void Check(int n, bool checkState) => Execute(() => check(n, checkState));
@@ -4918,8 +4920,8 @@ public partial class FormMain : Form
                 p.help.Add("PDI.ProfileList.SelectedName # Get name of a selected profile.");
                 p.help.Add("PDI.ProfileList.SelectedIndex # Set/get index of a selected profile.");
                 p.help.Add("PDI.ProfileList.Select(int index) # Set index of a selected profile.");
-                p.help.Add("PDI.ProfileList.Check(int index) # Check a profile assigned by index.");
-                p.help.Add("PDI.ProfileList.Uncheck(int index) # Uncheck a profile assigned by index.");
+                p.help.Add("PDI.ProfileList.Check(int index) # Check a profile assigned by index. If index is omitted, the selected profile will be checked.");
+                p.help.Add("PDI.ProfileList.Uncheck(int index) # Uncheck a profile assigned by index. If index is omitted, the selected profile will be unchecked.");
                 p.help.Add("PDI.ProfileList.CheckAll() # Check all profiles.");
                 p.help.Add("PDI.ProfileList.UncheckAll() # Uncheck all profiles.");
                 p.help.Add("PDI.ProfileList.DeleteAll() # Delete all profiles.");
@@ -4962,8 +4964,10 @@ public partial class FormMain : Form
                             p.main.bindingSourceProfile.Position = n;
                     }));
             }
-            
+
+            public void Check() => Execute(new Action(() => Check(SelectedIndex, true)));
             public void Check(int n) => Execute(new Action(() => Check(n, true)));
+            public void Uncheck() => Execute(new Action(() => Check(SelectedIndex, false)));
             public void Uncheck(int n) => Execute(new Action(() => Check(n, false)));
 
             public void Check(int n, bool checkState) => Execute(() => check(n, checkState));
@@ -4988,30 +4992,53 @@ public partial class FormMain : Form
             public FittingClass(Macro _p) : base(_p.main)
             {
                 p = _p;
-                p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
+                p.help.Add("PDI.Fitting.Open() # Open 'Fitting peaks' window.");
+                p.help.Add("PDI.Fitting.Close() # Close 'Fitting peaks' window.");
+               
                 p.help.Add("PDI.Fitting.Check(int index) # Check the lattice plane assigned by index.");
                 p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck the lattice plane assigned by index.");
-                p.help.Add("PDI.Fitting.Open() # Open 'Fitting peaks' window.");
-                p.help.Add("PDI.Fitting.Close) # Close 'Fitting peaks' window.");
+                p.help.Add("PDI.Fitting.Select(int index) # Select the lattice plane assigned by index.");
+                p.help.Add("PDI.Fitting.SelectedIndex # # Set/get the index of a lattice plane.");
+
+                p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
+
+                p.help.Add("PDI.Fitting.Range(double value) # Set fitting range of the selected lattice plane.");
+
             }
             
             public void Open() => p.main.toolStripButtonFittingParameter.Checked = true;
             public void Close() => p.main.toolStripButtonFittingParameter.Checked = false;
-
             public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
-
+            public void Check() => Check(SelectedIndex, true);
             public void Check(int n) => Check(n, true);
             public void Uncheck(int n) => Check(n, false);
-
-            public void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
+            public void Uncheck() => Check(SelectedIndex, false);
+            private void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
             private void check(int n, bool checkState)
             {
                 if (n >= 0 && n < p.main.formFitting.bindingSourcePlanes.Count)
                 {
+                    p.main.formFitting.TargetCrystal.Plane[n].IsFittingChecked = checkState;
                     ((DataRowView)p.main.formFitting.bindingSourcePlanes[n]).Row[0] = checkState;
                     p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
                 }
             }
+            public void Select(int n) => SelectedIndex = n;
+
+            public int SelectedIndex
+            {
+                set
+                {
+                    Execute(new Action(() =>
+                    {
+                        if (value >= 0 && value < p.main.bindingSourceProfile.Count)
+                            p.main.formFitting.bindingSourcePlanes.Position = value;
+                    }));
+                }
+                get => Execute(() => p.main.formFitting.bindingSourcePlanes.Position);
+            }
+
+            public void Range(double r) => p.main.formFitting.numericUpDownSearchRange.Value = (decimal)r;
         }
 
         public class SequentialClass : MacroSub
@@ -5021,7 +5048,7 @@ public partial class FormMain : Form
             {
                 p = _p;
                 p.help.Add("PDI.Sequential.Open() # Open 'Sequential Analysis' window.");
-                p.help.Add("PDI.Sequential.Close) # Close 'Sequential Analysis' window.");
+                p.help.Add("PDI.Sequential.Close() # Close 'Sequential Analysis' window.");
 
                 p.help.Add("PDI.Sequential.Execute() # Execute the sequential analysis.");
                 

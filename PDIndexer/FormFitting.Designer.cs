@@ -120,6 +120,16 @@ namespace PDIndexer
             this.bindingSourceCrystals = new System.Windows.Forms.BindingSource(this.components);
             this.dataSet = new PDIndexer.DataSet();
             this.dataGridViewPlaneList = new System.Windows.Forms.DataGridView();
+            this.checkDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hKLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calcXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.functionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xErrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fWHMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intensityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.copyToClipboradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bindingSourcePlanes = new System.Windows.Forms.BindingSource(this.components);
@@ -133,16 +143,6 @@ namespace PDIndexer
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.buttonSaveTableAsCSV = new System.Windows.Forms.Button();
             this.numericBoxEffectiveDigit = new Crystallography.Controls.NumericBox();
-            this.checkDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.hKLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.calcXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.functionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xErrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fWHMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.intensityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.flowLayoutPanelPatternDecomposition.SuspendLayout();
@@ -797,6 +797,89 @@ namespace PDIndexer
             this.dataGridViewPlaneList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanes_CellContentClick);
             this.dataGridViewPlaneList.SelectionChanged += new System.EventHandler(this.dataGridViewPlaneList_SelectionChanged);
             // 
+            // checkDataGridViewCheckBoxColumn
+            // 
+            this.checkDataGridViewCheckBoxColumn.DataPropertyName = "Check";
+            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn, "checkDataGridViewCheckBoxColumn");
+            this.checkDataGridViewCheckBoxColumn.Name = "checkDataGridViewCheckBoxColumn";
+            // 
+            // hKLDataGridViewTextBoxColumn
+            // 
+            this.hKLDataGridViewTextBoxColumn.DataPropertyName = "HKL";
+            resources.ApplyResources(this.hKLDataGridViewTextBoxColumn, "hKLDataGridViewTextBoxColumn");
+            this.hKLDataGridViewTextBoxColumn.Name = "hKLDataGridViewTextBoxColumn";
+            this.hKLDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // calcXDataGridViewTextBoxColumn
+            // 
+            this.calcXDataGridViewTextBoxColumn.DataPropertyName = "CalcX";
+            dataGridViewCellStyle2.NullValue = null;
+            this.calcXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.calcXDataGridViewTextBoxColumn, "calcXDataGridViewTextBoxColumn");
+            this.calcXDataGridViewTextBoxColumn.Name = "calcXDataGridViewTextBoxColumn";
+            this.calcXDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // functionDataGridViewTextBoxColumn
+            // 
+            this.functionDataGridViewTextBoxColumn.DataPropertyName = "Function";
+            resources.ApplyResources(this.functionDataGridViewTextBoxColumn, "functionDataGridViewTextBoxColumn");
+            this.functionDataGridViewTextBoxColumn.Name = "functionDataGridViewTextBoxColumn";
+            this.functionDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xDataGridViewTextBoxColumn
+            // 
+            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
+            dataGridViewCellStyle3.NullValue = null;
+            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
+            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
+            this.xDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // xErrDataGridViewTextBoxColumn
+            // 
+            this.xErrDataGridViewTextBoxColumn.DataPropertyName = "XErr";
+            dataGridViewCellStyle4.NullValue = null;
+            this.xErrDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.xErrDataGridViewTextBoxColumn, "xErrDataGridViewTextBoxColumn");
+            this.xErrDataGridViewTextBoxColumn.Name = "xErrDataGridViewTextBoxColumn";
+            this.xErrDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // fWHMDataGridViewTextBoxColumn
+            // 
+            this.fWHMDataGridViewTextBoxColumn.DataPropertyName = "FWHM";
+            dataGridViewCellStyle5.NullValue = null;
+            this.fWHMDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.fWHMDataGridViewTextBoxColumn, "fWHMDataGridViewTextBoxColumn");
+            this.fWHMDataGridViewTextBoxColumn.Name = "fWHMDataGridViewTextBoxColumn";
+            this.fWHMDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // intensityDataGridViewTextBoxColumn
+            // 
+            this.intensityDataGridViewTextBoxColumn.DataPropertyName = "Intensity";
+            dataGridViewCellStyle6.NullValue = null;
+            this.intensityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.intensityDataGridViewTextBoxColumn, "intensityDataGridViewTextBoxColumn");
+            this.intensityDataGridViewTextBoxColumn.Name = "intensityDataGridViewTextBoxColumn";
+            this.intensityDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // weightDataGridViewTextBoxColumn
+            // 
+            this.weightDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
+            dataGridViewCellStyle7.NullValue = null;
+            this.weightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.weightDataGridViewTextBoxColumn, "weightDataGridViewTextBoxColumn");
+            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
+            this.weightDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // R
+            // 
+            this.R.DataPropertyName = "R";
+            dataGridViewCellStyle8.NullValue = null;
+            this.R.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.R, "R");
+            this.R.Name = "R";
+            // 
             // contextMenuStrip1
             // 
             resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
@@ -895,89 +978,6 @@ namespace PDIndexer
             this.numericBoxEffectiveDigit.Value = 5D;
             this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxEffectiveDigit_ValueChanged);
             // 
-            // checkDataGridViewCheckBoxColumn
-            // 
-            this.checkDataGridViewCheckBoxColumn.DataPropertyName = "Check";
-            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn, "checkDataGridViewCheckBoxColumn");
-            this.checkDataGridViewCheckBoxColumn.Name = "checkDataGridViewCheckBoxColumn";
-            // 
-            // hKLDataGridViewTextBoxColumn
-            // 
-            this.hKLDataGridViewTextBoxColumn.DataPropertyName = "HKL";
-            resources.ApplyResources(this.hKLDataGridViewTextBoxColumn, "hKLDataGridViewTextBoxColumn");
-            this.hKLDataGridViewTextBoxColumn.Name = "hKLDataGridViewTextBoxColumn";
-            this.hKLDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // calcXDataGridViewTextBoxColumn
-            // 
-            this.calcXDataGridViewTextBoxColumn.DataPropertyName = "CalcX";
-            dataGridViewCellStyle2.NullValue = null;
-            this.calcXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(this.calcXDataGridViewTextBoxColumn, "calcXDataGridViewTextBoxColumn");
-            this.calcXDataGridViewTextBoxColumn.Name = "calcXDataGridViewTextBoxColumn";
-            this.calcXDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // functionDataGridViewTextBoxColumn
-            // 
-            this.functionDataGridViewTextBoxColumn.DataPropertyName = "Function";
-            resources.ApplyResources(this.functionDataGridViewTextBoxColumn, "functionDataGridViewTextBoxColumn");
-            this.functionDataGridViewTextBoxColumn.Name = "functionDataGridViewTextBoxColumn";
-            this.functionDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // xDataGridViewTextBoxColumn
-            // 
-            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
-            dataGridViewCellStyle3.NullValue = null;
-            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
-            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
-            this.xDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // xErrDataGridViewTextBoxColumn
-            // 
-            this.xErrDataGridViewTextBoxColumn.DataPropertyName = "XErr";
-            dataGridViewCellStyle4.NullValue = null;
-            this.xErrDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(this.xErrDataGridViewTextBoxColumn, "xErrDataGridViewTextBoxColumn");
-            this.xErrDataGridViewTextBoxColumn.Name = "xErrDataGridViewTextBoxColumn";
-            this.xErrDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // fWHMDataGridViewTextBoxColumn
-            // 
-            this.fWHMDataGridViewTextBoxColumn.DataPropertyName = "FWHM";
-            dataGridViewCellStyle5.NullValue = null;
-            this.fWHMDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(this.fWHMDataGridViewTextBoxColumn, "fWHMDataGridViewTextBoxColumn");
-            this.fWHMDataGridViewTextBoxColumn.Name = "fWHMDataGridViewTextBoxColumn";
-            this.fWHMDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // intensityDataGridViewTextBoxColumn
-            // 
-            this.intensityDataGridViewTextBoxColumn.DataPropertyName = "Intensity";
-            dataGridViewCellStyle6.NullValue = null;
-            this.intensityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(this.intensityDataGridViewTextBoxColumn, "intensityDataGridViewTextBoxColumn");
-            this.intensityDataGridViewTextBoxColumn.Name = "intensityDataGridViewTextBoxColumn";
-            this.intensityDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // weightDataGridViewTextBoxColumn
-            // 
-            this.weightDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
-            dataGridViewCellStyle7.NullValue = null;
-            this.weightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(this.weightDataGridViewTextBoxColumn, "weightDataGridViewTextBoxColumn");
-            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
-            this.weightDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // R
-            // 
-            this.R.DataPropertyName = "R";
-            dataGridViewCellStyle8.NullValue = null;
-            this.R.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(this.R, "R");
-            this.R.Name = "R";
-            // 
             // FormFitting
             // 
             resources.ApplyResources(this, "$this");
@@ -1049,7 +1049,6 @@ namespace PDIndexer
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label18;
         private Label label2;
-        private NumericUpDown numericUpDownSearchRange;
         private CheckBox checkBoxPatternDecomposition;
         public TextBox textBoxC_err;
         public TextBox textBoxGamma_err;
@@ -1124,6 +1123,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn intensityDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn weightDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn R;
+        public NumericUpDown numericUpDownSearchRange;
     }
 
 
