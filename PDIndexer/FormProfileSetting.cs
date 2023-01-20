@@ -887,9 +887,7 @@ namespace PDIndexer
         private void buttonTwoThetaOffsetReset_Click(object sender, EventArgs e)
             => TwoThetaOffsetCoeff0 = TwoThetaOffsetCoeff1 = TwoThetaOffsetCoeff2 = 0;
 
-        private void panelNormarizeIntensity_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
+        private void dataGridViewProfile_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewProfiles_KeyDown(sender, e);
     }
 }

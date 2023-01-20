@@ -719,6 +719,7 @@ namespace PDIndexer
             this.toolTip.SetToolTip(this.dataGridViewCrystals, resources.GetString("dataGridViewCrystals.ToolTip"));
             this.dataGridViewCrystals.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
             this.dataGridViewCrystals.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
+            this.dataGridViewCrystals.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyDown);
             // 
             // Check
             // 

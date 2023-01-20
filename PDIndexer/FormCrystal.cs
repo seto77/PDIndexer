@@ -33,7 +33,7 @@ public partial class FormCrystal : Form
         crystalDatabaseControl.ProgressChanged += CrystalDatabaseControl_ProgressChanged;
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
-        
+
         searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
         this.AcceptButton = searchCrystalControl.buttonSearch;
     }
@@ -266,10 +266,9 @@ public partial class FormCrystal : Form
         }
     }
 
-    private void dataGridViewCrystal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-    {
+    private void dataGridViewCrystal_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) => formMain.dataGridViewCrystals_CellMouseClick(sender, e);
 
-        formMain.dataGridViewCrystals_CellMouseClick(sender, e);
-    }
+    private void dataGridViewCrystal_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
+
 }
 

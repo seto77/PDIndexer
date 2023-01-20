@@ -222,7 +222,7 @@ namespace PDIndexer
             this.dataGridViewProfile.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -237,7 +237,7 @@ namespace PDIndexer
             this.dataGridViewProfile.DataSource = this.bindingSourceProfile;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -254,6 +254,7 @@ namespace PDIndexer
             this.dataGridViewProfile.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewProfile.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProfile_CellClick);
             this.dataGridViewProfile.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProfile_CellClick);
+            this.dataGridViewProfile.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProfile_KeyDown);
             // 
             // checkDataGridViewCheckBoxColumn
             // 
@@ -289,6 +290,7 @@ namespace PDIndexer
             // dataSetProfile
             // 
             this.dataSetProfile.DataSetName = "DataSet";
+            this.dataSetProfile.Namespace = "http://tempuri.org/DataSet1.xsd";
             this.dataSetProfile.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // groupBox3
@@ -606,8 +608,8 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.xAxisUserControl, "xAxisUserControl");
             this.xAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
-            this.xAxisUserControl.ElectronAccVoltage = 8.0415178561814322D;
-            this.xAxisUserControl.ElectronAccVoltageText = "8.04151785618143";
+            this.xAxisUserControl.ElectronAccVoltage = 8.04151786D;
+            this.xAxisUserControl.ElectronAccVoltageText = "8.04151786";
             this.xAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
             this.xAxisUserControl.Name = "xAxisUserControl";
             this.xAxisUserControl.TakeoffAngle = 5.9872200000000051D;
@@ -683,9 +685,10 @@ namespace PDIndexer
             this.numericalTextBoxExposureTime.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxExposureTime.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxExposureTime.Name = "numericalTextBoxExposureTime";
+            this.numericalTextBoxExposureTime.RoundErrorAccuracy = -1;
             this.numericalTextBoxExposureTime.SkipEventDuringInput = false;
             this.numericalTextBoxExposureTime.SmartIncrement = true;
-            this.numericalTextBoxExposureTime.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxExposureTime.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxExposureTime.ThonsandsSeparator = true;
             // 
             // label24
@@ -830,8 +833,10 @@ namespace PDIndexer
             this.numericBoxTwhoThetaOffsetCoeff2.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff2.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff2.Name = "numericBoxTwhoThetaOffsetCoeff2";
+            this.numericBoxTwhoThetaOffsetCoeff2.RoundErrorAccuracy = -1;
             this.numericBoxTwhoThetaOffsetCoeff2.SkipEventDuringInput = false;
             this.numericBoxTwhoThetaOffsetCoeff2.SmartIncrement = true;
+            this.numericBoxTwhoThetaOffsetCoeff2.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTwhoThetaOffsetCoeff2.ThonsandsSeparator = true;
             this.numericBoxTwhoThetaOffsetCoeff2.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxTwoThetaOffset_CheckedChanged);
             // 
@@ -843,8 +848,10 @@ namespace PDIndexer
             this.numericBoxTwhoThetaOffsetCoeff0.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff0.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff0.Name = "numericBoxTwhoThetaOffsetCoeff0";
+            this.numericBoxTwhoThetaOffsetCoeff0.RoundErrorAccuracy = -1;
             this.numericBoxTwhoThetaOffsetCoeff0.SkipEventDuringInput = false;
             this.numericBoxTwhoThetaOffsetCoeff0.SmartIncrement = true;
+            this.numericBoxTwhoThetaOffsetCoeff0.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTwhoThetaOffsetCoeff0.ThonsandsSeparator = true;
             this.numericBoxTwhoThetaOffsetCoeff0.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxTwoThetaOffset_CheckedChanged);
             // 
@@ -870,8 +877,10 @@ namespace PDIndexer
             this.numericBoxTwhoThetaOffsetCoeff1.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff1.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTwhoThetaOffsetCoeff1.Name = "numericBoxTwhoThetaOffsetCoeff1";
+            this.numericBoxTwhoThetaOffsetCoeff1.RoundErrorAccuracy = -1;
             this.numericBoxTwhoThetaOffsetCoeff1.SkipEventDuringInput = false;
             this.numericBoxTwhoThetaOffsetCoeff1.SmartIncrement = true;
+            this.numericBoxTwhoThetaOffsetCoeff1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTwhoThetaOffsetCoeff1.ThonsandsSeparator = true;
             this.numericBoxTwhoThetaOffsetCoeff1.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.checkBoxTwoThetaOffset_CheckedChanged);
             // 
@@ -1138,7 +1147,6 @@ namespace PDIndexer
             this.panelNormarizeIntensity.Controls.Add(this.label23);
             resources.ApplyResources(this.panelNormarizeIntensity, "panelNormarizeIntensity");
             this.panelNormarizeIntensity.Name = "panelNormarizeIntensity";
-            this.panelNormarizeIntensity.Paint += new System.Windows.Forms.PaintEventHandler(this.panelNormarizeIntensity_Paint);
             // 
             // label14
             // 
@@ -1237,9 +1245,10 @@ namespace PDIndexer
             this.numericalTextBoxTargetValue.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxTargetValue.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericalTextBoxTargetValue.Name = "numericalTextBoxTargetValue";
+            this.numericalTextBoxTargetValue.RoundErrorAccuracy = -1;
             this.numericalTextBoxTargetValue.SkipEventDuringInput = false;
             this.numericalTextBoxTargetValue.SmartIncrement = true;
-            this.numericalTextBoxTargetValue.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericalTextBoxTargetValue.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericalTextBoxTargetValue.ThonsandsSeparator = true;
             // 
             // listBoxTwoProfiles2

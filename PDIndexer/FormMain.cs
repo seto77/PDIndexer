@@ -4158,7 +4158,7 @@ public partial class FormMain : Form
 
     #region DataGridViewCrystal関係のイベント
 
-    private void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e)
+    public void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e)
     {
         e.SuppressKeyPress = true;
         if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
@@ -4252,7 +4252,7 @@ public partial class FormMain : Form
 
     #region dataGridViewProfiles関連のイベント
 
-    private void dataGridViewProfiles_KeyDown(object sender, KeyEventArgs e)
+    public void dataGridViewProfiles_KeyDown(object sender, KeyEventArgs e)
     {
         e.SuppressKeyPress = true;
         if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)

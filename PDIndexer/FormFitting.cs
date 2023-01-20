@@ -1545,4 +1545,7 @@ public partial class FormFitting : System.Windows.Forms.Form
             formMain.horizontalAxisUserControl_AxisPropertyChanged();
         }
     }
+
+    private void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
+
 }

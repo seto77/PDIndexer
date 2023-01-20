@@ -257,6 +257,7 @@ namespace PDIndexer
             this.dataGridViewCrystal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCrystal.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystal_CellMouseClick);
             this.dataGridViewCrystal.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystal_CellMouseClick);
+            this.dataGridViewCrystal.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystal_KeyDown);
             // 
             // checkDataGridViewCheckBoxColumn1
             // 
