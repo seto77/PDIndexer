@@ -1,11 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
 using Crystallography;
 using System.Collections.Generic;
-using System.Threading;
 using System.Diagnostics;
 using System.Data;
 using System.Threading.Tasks;
@@ -13,7 +10,7 @@ using System.Linq;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System.IO;
-using Crystallography.Controls;
+using System.Text;
 
 namespace PDIndexer;
 
@@ -123,11 +120,11 @@ public partial class FormFitting : System.Windows.Forms.Form
         else
         {
             //まず、チェックされている面指数をリストアップする
-            var checkedItems= new List<string>();
-            for(int i= 0; i< dataSet.DataTablePeakFitting.Rows.Count;i++)
+            var checkedItems = new List<string>();
+            for (int i = 0; i < dataSet.DataTablePeakFitting.Rows.Count; i++)
             {
                 var r = dataSet.DataTablePeakFitting.GetRow(i);
-                if(r.Check)
+                if (r.Check)
                     checkedItems.Add(r.HKL);
             }
 
@@ -136,7 +133,7 @@ public partial class FormFitting : System.Windows.Forms.Form
                 if (dataSet.DataTablePeakFitting.Rows.Count >= i + 1)
                 {
                     //チェックされている面指数かどうかを判定して、IsFittingCheckedに反映させる
-                    TargetCrystal.Plane[i].IsFittingChecked= checkedItems.Any(e => e == TargetCrystal.Plane[i].strHKL);
+                    TargetCrystal.Plane[i].IsFittingChecked = checkedItems.Any(e => e == TargetCrystal.Plane[i].strHKL);
                     dataSet.DataTablePeakFitting.Replace(i, TargetCrystal.Plane[i]);
                 }
                 else
@@ -463,7 +460,7 @@ public partial class FormFitting : System.Windows.Forms.Form
                   }*/
 
                 //全てのフィッティング対象ピークをいったん格納
-                List<PeakFunction> pvpTemp2 = new List<PeakFunction>();
+                var pvpTemp2 = new List<PeakFunction>();
                 for (int h = 0; h < listCrystal.Count; h++)
                     for (int i = 0; i < listCrystal[h].Plane.Count; i++)
                         if (listCrystal[h].Plane[i].IsFittingChecked && listCrystal[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
@@ -597,12 +594,8 @@ public partial class FormFitting : System.Windows.Forms.Form
                     break;
                 C = inv * Q.Transpose() * W * A;
 
-                a = Math.Sqrt(1 / C[0, 0]);
-                b = a;
-                c = a;
-                alfa = Math.PI / 2;
-                beta = Math.PI / 2;
-                gamma = Math.PI / 2;
+                a = b = c = Math.Sqrt(1 / C[0, 0]);
+                alfa = beta = gamma = Math.PI / 2;
                 V = a * a * a;
                 if (p.Count - 1 > 0)//以下は誤差を計算する部分
                 {
@@ -1246,10 +1239,7 @@ public partial class FormFitting : System.Windows.Forms.Form
     #endregion
 
     //Confirmを押したときの動作
-    private void buttonConfirm_Click(object sender, System.EventArgs e)
-    {
-        Confirm(true);
-    }
+    private void buttonConfirm_Click(object sender, EventArgs e) => Confirm(true);
 
     public void Confirm(bool copy = true)
     {
@@ -1279,20 +1269,17 @@ public partial class FormFitting : System.Windows.Forms.Form
     public void CopyClipboard()
     {
         //クリップボードに転送
-        string str = "";
+        var sb = new StringBuilder();
         if (textBoxA.Text != "0.000000")
         {
-            str += textBoxA.Text + "\t" + textBoxA_err.Text + "\t";
-            str += textBoxB.Text + "\t" + textBoxB_err.Text + "\t";
-            str += textBoxC.Text + "\t" + textBoxC_err.Text + "\t";
-            str += textBoxAlpha.Text + "\t" + textBoxAlpha_err.Text + "\t";
-            str += textBoxBeta.Text + "\t" + textBoxBeta_err.Text + "\t";
-            str += textBoxGamma.Text + "\t" + textBoxGamma_err.Text + "\t";
-            str += textBoxV.Text + "\t" + textBoxV_err.Text + "\t";
-            try
-            {
-                Clipboard.SetDataObject(str, true);
-            }
+            sb.Append(textBoxA.Text + "\t" + textBoxA_err.Text + "\t");
+            sb.Append(textBoxB.Text + "\t" + textBoxB_err.Text + "\t");
+            sb.Append(textBoxC.Text + "\t" + textBoxC_err.Text + "\t");
+            sb.Append(textBoxAlpha.Text + "\t" + textBoxAlpha_err.Text + "\t");
+            sb.Append(textBoxBeta.Text + "\t" + textBoxBeta_err.Text + "\t");
+            sb.Append(textBoxGamma.Text + "\t" + textBoxGamma_err.Text + "\t");
+            sb.Append(textBoxV.Text + "\t" + textBoxV_err.Text + "\t");
+            try { Clipboard.SetDataObject(sb.ToString(), true); }
             catch { }
         }
     }
@@ -1313,8 +1300,7 @@ public partial class FormFitting : System.Windows.Forms.Form
         if (IsCheckedListBoxSelectIndexChangeEventSkip || TargetCrystal == null) return;
         if (bindingSourcePlanes.Position >= 0)
         {
-            ;
-            int n = bindingSourcePlanes.Position;
+            var n = bindingSourcePlanes.Position;
             formMain.SelectedPlaneIndex = n;
             if (TargetCrystal.Plane.Count <= n)
                 return;
@@ -1445,16 +1431,9 @@ public partial class FormFitting : System.Windows.Forms.Form
         Fitting();
     }
 
-    private void radioButtonEachCrystal_CheckedChanged(object sender, EventArgs e)
-    {
-        Fitting();
-    }
+    private void radioButtonEachCrystal_CheckedChanged(object sender, EventArgs e) => Fitting();
 
-
-    private void FormFitting_KeyDown(object sender, KeyEventArgs e)
-    {
-        formMain.FormMain_KeyDown(sender, e);
-    }
+    private void FormFitting_KeyDown(object sender, KeyEventArgs e) => formMain.FormMain_KeyDown(sender, e);
 
     internal void ChangeHorizontalAxis()
     {
@@ -1470,7 +1449,6 @@ public partial class FormFitting : System.Windows.Forms.Form
             SerchRangeFactor = 0.2;
 
         numericUpDownInitialFWHM.Increment = (decimal)(SerchRangeFactor * 0.02);
-
 
         SetPlanes(false);
     }
@@ -1551,10 +1529,7 @@ public partial class FormFitting : System.Windows.Forms.Form
         formMain.AddProfileToCheckedListBox(output, true, true);
     }
 
-    private void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
-    {
-        formMain.dataGridViewCrystals_CellMouseClick(sender, e);
-    }
+    private void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) => formMain.dataGridViewCrystals_CellMouseClick(sender, e);
 
     private void NumericBoxEffectiveDigit_ValueChanged(object sender, EventArgs e)
     {
@@ -1565,7 +1540,7 @@ public partial class FormFitting : System.Windows.Forms.Form
     {
         if (formMain.AxisMode == HorizontalAxis.EnergyXray)
         {
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
+            var dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
             //dp.SrcTakeoffAngle = xAxisUserControl.TakeoffAngle;
             formMain.horizontalAxisUserControl_AxisPropertyChanged();
         }
