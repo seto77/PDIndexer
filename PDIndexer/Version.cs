@@ -25,7 +25,7 @@ static class Version
     /// </summary>
     static public string History = 
         "History" +
-        "\r\n ver4.422(2023/01/19) Improved macro functions. " +
+        "\r\n ver4.423(2023/01/19) Improved macro functions. Improved 'Sequential Analysis'" +
         "\r\n ver4.421(2023/01/18) Fixed a minor bug on 'Fitting Diffraction Peaks'. " +
         "\r\n ver4.420(2023/01/07) Improved 'Sequential Analysis'. " +
         "\r\n ver4.418(2023/01/06) Improved 'Sequential Analysis' (former 'Stress Analysis')." +

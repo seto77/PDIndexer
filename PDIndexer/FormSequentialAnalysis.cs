@@ -135,29 +135,31 @@ public partial class FormSequentialAnalysis : Form
                 formMain.formFitting.SkipFitting = true;
                 if (formMain.formFitting.textBoxA.Text != "0.000000")//最小2乗法がうまくいった場合は
                     formMain.formFitting.Confirm(false);
-                else//もし最小2乗法がうまくいかない場合は
-                {
-                    if (formMain.SelectedCrysatlIndex == 0)//flexible crystalの場合
-                    {
-                        foreach (var p in plane.Where(e => e.IsFittingChecked && !double.IsNaN(e.XObs)))
-                            p.d = formMain.WaveLength / 2 / Math.Sin(p.XObs / 180.0 * Math.PI / 2);
-                    }
-                    else//普通crystalの場合
-                    {
-                        var tempRatio = new List<double>();
-                        foreach (var p in plane.Where(e => e.IsFittingChecked && !double.IsNaN(e.XObs)))
-                            tempRatio.Add(Math.Sin(p.XCalc / 180.0 * Math.PI / 2) / Math.Sin(p.XObs / 180.0 * Math.PI / 2));
-                        if (tempRatio.Count > 0)
-                        {
-                            var ratio = tempRatio.Average();
-                            formMain.formFitting.TargetCrystal.A *= ratio;
-                            formMain.formFitting.TargetCrystal.B *= ratio;
-                            formMain.formFitting.TargetCrystal.C *= ratio;
-                            formMain.formFitting.TargetCrystal.SetAxis();
-                            formMain.ChangeCrystalFromFitting();
-                        }
-                    }
-                }
+                #region お蔵入り
+                //else//もし最小2乗法がうまくいかない場合は
+                //{
+                //    if (formMain.SelectedCrysatlIndex == 0)//flexible crystalの場合
+                //    {
+                //        foreach (var p in plane.Where(e => e.IsFittingChecked && !double.IsNaN(e.peakFunction.X)))
+                //            p.d = formMain.WaveLength / 2 / Math.Sin(p.XObs / 180.0 * Math.PI / 2);
+                //    }
+                //    else//普通crystalの場合
+                //    {
+                //        var tempRatio = new List<double>();
+                //        foreach (var p in plane.Where(e => e.IsFittingChecked && !double.IsNaN(e.peakFunction.X) && e.peakFunction.Int!=0))
+                //            tempRatio.Add(Math.Sin(p.XCalc / 180.0 * Math.PI / 2) / Math.Sin(p.peakFunction.X / 180.0 * Math.PI / 2));
+                //        if (tempRatio.Count > 0)
+                //        {
+                //            var ratio = tempRatio.Average();
+                //            formMain.formFitting.TargetCrystal.A *= ratio;
+                //            formMain.formFitting.TargetCrystal.B *= ratio;
+                //            formMain.formFitting.TargetCrystal.C *= ratio;
+                //            formMain.formFitting.TargetCrystal.SetAxis();
+                //            formMain.ChangeCrystalFromFitting();
+                //        }
+                //    }
+                //}
+                #endregion
             }
 
             formMain.SkipDrawing = false;

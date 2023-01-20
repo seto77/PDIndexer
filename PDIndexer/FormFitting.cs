@@ -344,7 +344,7 @@ public partial class FormFitting : System.Windows.Forms.Form
                if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
                {
 
-                   FittingPeak.FitPeakThread(TargetProfile.Pt.ToArray(), true, 0, ref TargetCrystal.Plane[i].peakFunction);
+                   FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref TargetCrystal.Plane[i].peakFunction);
                    //d.Add(new FittingPeak.FitPeakDelegate(FittingPeak.FitPeakThread));
                    //ar.Add(d[d.Count - 1].BeginInvoke(TargetProfile.Pt.ToArray(), true, 0, ref TargetCrystal.Plane[i].peakFunction, null, null));
                }
@@ -510,7 +510,7 @@ public partial class FormFitting : System.Windows.Forms.Form
 
                 Parallel.For(0, pvpTemp.Length, i =>
                 {
-                    FittingPeak.FitMultiPeaksThread(TargetProfile.Pt.ToArray(), true, 0, ref pvpTemp[i]);
+                    FittingPeak.FitMultiPeaksThread(TargetProfile.Pt, true, 0, ref pvpTemp[i]);
                 });
 
                 #endregion
