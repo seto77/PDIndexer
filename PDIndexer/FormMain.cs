@@ -1253,7 +1253,7 @@ public partial class FormMain : Form
                         maxSizeF.Width = Math.Max(maxSizeF.Width, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Width);
                         maxSizeF.Height = Math.Max(maxSizeF.Height, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Height);
                     }
-                    PointF startPosition = new Point(0, 0);
+                    var startPosition = new PointF(0, 0);
                     if (formPrintOption.radioButtonLowerLeft.Checked)
                         startPosition = new PointF(5 + OriginPos.X, BmpMain.Height - OriginPos.Y - maxSizeF.Height * dataSet.DataTableProfile.CheckedItems.Count);
                     else if (formPrintOption.radioButtonLowerRight.Checked)
@@ -1437,7 +1437,7 @@ public partial class FormMain : Form
         var profiles = new List<(Pen pen, PointF[] points)>();
 
         Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
-         {
+        {
              var dp = dataSet.DataTableProfile.CheckedItems[j];
              var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
              if (srcPts.Length > 2)
@@ -1447,13 +1447,12 @@ public partial class FormMain : Form
                  foreach (var trimmedPts in Geometriy.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
                  {
                      var finalPts = ConvToPicBoxCoord(trimmedPts);
-                         //var finalPts = trimmedPts.Select(p => ConvToPicBoxCoord(p)).ToArray();
-                         lock (lockObj)
+                     lock (lockObj)
                          profiles.Add((pen, finalPts));
                  }
 
-                     //エラーバー描画
-                     if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
+                 //エラーバー描画
+                 if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
                  {
                      var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
                      var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
@@ -1471,10 +1470,9 @@ public partial class FormMain : Form
                          }
                  }
              }
-         });
+        });
 
-        for (int j = 0; j < profiles.Count; j++)
-            gMain.DrawLines(profiles[j].pen, profiles[j].points);
+        profiles.ForEach(p => gMain.DrawLines(p.pen, p.points));
     }
 
 
@@ -1547,28 +1545,24 @@ public partial class FormMain : Form
                     int shiftY = 40;
                     for (int j = 0; j < cry.Plane.Count; j++)
                     {
-                        if (AxisMode == HorizontalAxis.Angle)
-                            cry.Plane[j].XCalc = (2 * Math.Asin(WaveLength / 2 / cry.Plane[j].d) / Math.PI * 180);
-                        else if (AxisMode == HorizontalAxis.d)
-                            cry.Plane[j].XCalc = cry.Plane[j].d * 10;
-                        else if (AxisMode == HorizontalAxis.EnergyXray)
-                            cry.Plane[j].XCalc = HorizontalAxisConverter.DToXrayEnergy(cry.Plane[j].d, TakeoffAngle);
-                        else if (AxisMode == HorizontalAxis.EnergyElectron)
-                            cry.Plane[j].XCalc = HorizontalAxisConverter.DToElectronEnergy(cry.Plane[j].d, TakeoffAngle);
-                        else if (AxisMode == HorizontalAxis.EnergyNeutron)
-                            cry.Plane[j].XCalc = HorizontalAxisConverter.DToNeutronEnergy(cry.Plane[j].d, TakeoffAngle);
-                        else if (AxisMode == HorizontalAxis.NeutronTOF)
-                            cry.Plane[j].XCalc = HorizontalAxisConverter.DToTOF(cry.Plane[j].d, TofAngle, TofLength);
-                        else if (AxisMode == HorizontalAxis.WaveNumber)
-                            cry.Plane[j].XCalc = HorizontalAxisConverter.DToWaveNumber(cry.Plane[j].d) / 10.0;
+                        cry.Plane[j].XCalc = AxisMode switch
+                        {
+                            HorizontalAxis.Angle => (2 * Math.Asin(WaveLength / 2 / cry.Plane[j].d) / Math.PI * 180),
+                            HorizontalAxis.d => cry.Plane[j].d * 10,
+                            HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(cry.Plane[j].d, TakeoffAngle),
+                            HorizontalAxis.EnergyElectron => HorizontalAxisConverter.DToElectronEnergy(cry.Plane[j].d, TakeoffAngle),
+                            HorizontalAxis.EnergyNeutron => HorizontalAxisConverter.DToNeutronEnergy(cry.Plane[j].d, TakeoffAngle),
+                            HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(cry.Plane[j].d, TofAngle, TofLength),
+                            HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(cry.Plane[j].d) / 10.0,
+                            _ => cry.Plane[j].XCalc
+                        };
 
                         if (cry.Plane[j].XCalc > LowerX && cry.Plane[j].XCalc < UpperX)
                         {
                             //ここから線の部分
-                            if (i == bindingSourceCrystal.Position)
-                                pen = new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f);
-                            else
-                                pen = new Pen(Color.FromArgb(cry.Argb), 1f);
+                            pen = i == bindingSourceCrystal.Position?
+                                 new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f):
+                                 new Pen(Color.FromArgb(cry.Argb), 1f);
 
                             if (!double.IsNaN(cry.Plane[j].XCalc))
                             {
@@ -1576,11 +1570,9 @@ public partial class FormMain : Form
                                 {
                                     if (formCrystal.checkBoxShowPeakOverProfiles.Checked)
                                     {
-                                        float zero;//描画範囲の最低強度位置のピクセル
-                                        if (formCrystal.checkBoxShowPeakUnderProfile.Checked)
-                                            zero = pictureBoxMain.Height - OriginPos.Y - dataSet.DataTableCrystal.CheckedItems.Count * (HeightOfBottomPeaks + 4);
-                                        else
-                                            zero = pictureBoxMain.Height - OriginPos.Y;
+                                        float zero= formCrystal.checkBoxShowPeakUnderProfile.Checked?//描画範囲の最低強度位置のピクセル
+                                            pictureBoxMain.Height - OriginPos.Y - dataSet.DataTableCrystal.CheckedItems.Count * (HeightOfBottomPeaks + 4):
+                                            pictureBoxMain.Height - OriginPos.Y;
 
                                         float top = 0;
                                         float xPos = ConvToPicBoxCoord(cry.Plane[j].XCalc, 0).X;
@@ -1679,12 +1671,14 @@ public partial class FormMain : Form
 
         //シンプルモードじゃないやつを抜き出す
         Plane[] planeList2 = planeList.Where(p => p.SerchOption != PeakFunctionForm.Simple).ToArray();
+        if (planeList2.Length == 0)
+            return;
 
-        if (planeList2.Length != 0)
+        for (int i = 0; i < planeList2.Length; i++)
+            planeList2[i].peakFunction.RenewParameter();
+
+        try
         {
-            for (int i = 0; i < planeList2.Length; i++)
-                planeList2[i].peakFunction.RenewParameter();
-
             //グループごとに描画
             for (int i = planeList2.Min(p => p.peakFunction.GroupIndex); i < planeList2.Max(p => p.peakFunction.GroupIndex) + 1; i++)
             {
@@ -1711,22 +1705,16 @@ public partial class FormMain : Form
                             if (!double.IsNaN(y))
                                 subtraction.Add(ConvToPicBoxCoord(dp.Profile.Pt[k].X, dp.Profile.Pt[k].Y - y + basePosition));
                         }
+
                     if (subtraction.Count > 1)
-                    {
-                        try
-                        {
-                            gMain.DrawLines(penSubtraction, subtraction.ToArray());
-                        }
-                        catch { }
-                    }
+                        gMain.DrawLines(penSubtraction, subtraction.ToArray());
+
                     if (background.Count > 1)
                         gMain.DrawLines(penSubtraction, background.ToArray());
 
                     //個々のフィッティングカーブを描く
                     foreach (Plane p in planeList3)
                     {
-                        try
-                        {
                             var penPeak = new Pen(p.peakFunction.Color, 2f);
                             var peaks = new List<PointF>();
                             var startTheta = Math.Max(p.XCalc - p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(OriginPos.X, 0).X);
@@ -1741,14 +1729,11 @@ public partial class FormMain : Form
                                         gMain.DrawLines(penPeak, peaks.ToArray());
                                 }
                             }
-                        }
-                        catch { }
-
                     }
                 }
             }
-
         }
+        catch { }
     }
 
     //目盛りを描画する部分
@@ -1910,18 +1895,12 @@ public partial class FormMain : Form
     }
     private PointF[] ConvToPicBoxCoord(PointD[] p)
     {//プロファイル座標をピクチャーボックスの座標系に変換 (配列から配列へ)
-
-        var result = new PointF[p.Length];
         var coeffX1 = (pictureBoxMain.Width - OriginPos.X) / (UpperX - LowerX);
         var coeffX2 = -coeffX1 * LowerX + OriginPos.X;
         var coeffY1 = pictureBoxMain.Height - OriginPos.Y - BottomMargin;
         var coeffY2 = -coeffY1 / (UpperY - LowerY);
         var coeffY3 = coeffY1 - coeffY2 * LowerY;
-        for (int i = 0; i < result.Length; i++)
-            result[i] = new PointF((float)(coeffX1 * p[i].X + coeffX2),
-                (float)(coeffY3 + coeffY2 * p[i].Y));
-
-        return result;
+        return p.Select(e => new PointF((float)(coeffX1 * e.X + coeffX2), (float)(coeffY3 + coeffY2 * e.Y))).ToArray();
     }
 
 

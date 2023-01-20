@@ -530,17 +530,12 @@ namespace Crystallography
             try
             {
 
-                double ResidualSquareCurrent;
-                double ResidualSquareNew = 0;
-                double residual;
+                double ResidualSquareCurrent, ResidualSquareNew = 0, residual;
                 double centerX = (pt[0].X + pt[^1].X) / 2;
-                double B1, B2, B1_New, B2_New;
-                B1 = B2 = 0;
+                double B1=0, B2=0, B1_New, B2_New;
 
                 double bestResidual = double.PositiveInfinity;
-                int bestInitial = 0;
-                int startInitial = 0;
-                int endInitial = 1;// 2;
+                int bestInitial = 0, startInitial = 0, endInitial = 1;// 2;
                 int counter = 0;
 
                 for (int Initial = startInitial; Initial < endInitial; Initial++)
@@ -566,12 +561,7 @@ namespace Crystallography
                     for (int i = 0; i < prms.Length; i++)
                     {
                         pCurrent[i].X = prms[i].X;
-
-                        if (prms[i].Hk > 0)
-                            pCurrent[i].Hk = prms[i].Hk * c[0];
-                        else
-                            pCurrent[i].Hk = prms[i].range * 0.5 * c[0];
-
+                        pCurrent[i].Hk = prms[i].Hk > 0 ? prms[i].Hk * c[0] : prms[i].range * 0.5 * c[0];
                         pCurrent[i].eta = 0.5 * c[1];
                         pCurrent[i].etaH = 0.5 * c[1];
                         pCurrent[i].etaL = 0.5 * c[1];
@@ -726,13 +716,10 @@ namespace Crystallography
                             //2本以上のフィッティングの場合、XがRangeの1/8以上動いたらもどす
                             if (prms.Length > 1)
                                 if (pNew[j].X - prms[j].X > prms[j].range / 8 || pNew[j].X - prms[j].X < -prms[j].range / 8)
-                                { pNew[j].X = pCurrent[j].X; }
-                            //    flag = false; //pNew[j].X = p[j].X + p[j].range / 4;
+                                    pNew[j].X = pCurrent[j].X;
                         }
                         B1_New = B1 + delta[ParamNum, 0];
                         B2_New = B2 + delta[ParamNum + 1, 0];
-                        //if (B1_New + B2_New * (x[0] - centerX) < 0 || B1_New + B2_New * (x[x.Length - 1] - centerX) < 0)
-                        //    flag = false; //B1_New = B1;//B2_New = B2;
 
                         //あたらしいパラメータでの残差を計算
                         if (flag)

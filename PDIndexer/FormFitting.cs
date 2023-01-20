@@ -297,16 +297,15 @@ public partial class FormFitting : System.Windows.Forms.Form
         {
             for (int i = 0; i < listCrystal[h].Plane.Count; i++)
             {
-                if (formMain.AxisMode == HorizontalAxis.Angle)
-                    listCrystal[h].Plane[i].XCalc = Math.Asin(formMain.WaveLength / listCrystal[h].Plane[i].d / 2) / Math.PI * 360;
-                else if (formMain.AxisMode == HorizontalAxis.EnergyXray)
-                    listCrystal[h].Plane[i].XCalc = HorizontalAxisConverter.DToXrayEnergy(listCrystal[h].Plane[i].d, formMain.TakeoffAngle);
-                else if (formMain.AxisMode == HorizontalAxis.d)
-                    listCrystal[h].Plane[i].XCalc = listCrystal[h].Plane[i].d * 10;
-                else if (formMain.AxisMode == HorizontalAxis.NeutronTOF)
-                    listCrystal[h].Plane[i].XCalc = HorizontalAxisConverter.DToTOF(listCrystal[h].Plane[i].d, formMain.TofAngle, formMain.TofLength);
-                else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
-                    listCrystal[h].Plane[i].XCalc = HorizontalAxisConverter.DToWaveNumber(listCrystal[h].Plane[i].d * 10);
+                listCrystal[h].Plane[i].XCalc = formMain.AxisMode switch
+                {
+                    HorizontalAxis.Angle=> Math.Asin(formMain.WaveLength / listCrystal[h].Plane[i].d / 2) / Math.PI * 360,
+                    HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(listCrystal[h].Plane[i].d, formMain.TakeoffAngle),
+                    HorizontalAxis.d=> listCrystal[h].Plane[i].d * 10,
+                    HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(listCrystal[h].Plane[i].d, formMain.TofAngle, formMain.TofLength),
+                    HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(listCrystal[h].Plane[i].d * 10),
+                    _ => listCrystal[h].Plane[i].XCalc
+                };
 
                 listCrystal[h].Plane[i].XObs = 0;
                 listCrystal[h].Plane[i].observedIntensity = 0;
@@ -318,10 +317,9 @@ public partial class FormFitting : System.Windows.Forms.Form
                 listCrystal[h].Plane[i].peakFunction.Option = listCrystal[h].Plane[i].SerchOption;
                 listCrystal[h].Plane[i].peakFunction.Color = Color.FromArgb(listCrystal[h].Argb);
 
-                //Simpleもーどのときはここで処理
                 if (listCrystal[h].Plane[i].IsFittingChecked)
                 {
-                    if (listCrystal[h].Plane[i].SerchOption == PeakFunctionForm.Simple)
+                    if (listCrystal[h].Plane[i].SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
                     {
                         listCrystal[h].Plane[i].simpleParameter = FittingPeak.FitPeakAsSimple(listCrystal[h].Plane[i].XCalc, TargetCrystal.Plane[i].SerchRange, TargetProfile.Pt.ToArray());
                         listCrystal[h].Plane[i].XObs = listCrystal[h].Plane[i].simpleParameter.X;
@@ -336,30 +334,9 @@ public partial class FormFitting : System.Windows.Forms.Form
         if (!checkBoxPatternDecomposition.Checked)
         {
             #region ピーク分離モードではないとき
-            //List<FittingPeak.FitPeakDelegate> d = new List<FittingPeak.FitPeakDelegate>();
-            //List<IAsyncResult> ar = new List<IAsyncResult>();
-
-            Parallel.For(0, TargetCrystal.Plane.Count, i =>
-           {
-               if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
-               {
-
-                   FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref TargetCrystal.Plane[i].peakFunction);
-                   //d.Add(new FittingPeak.FitPeakDelegate(FittingPeak.FitPeakThread));
-                   //ar.Add(d[d.Count - 1].BeginInvoke(TargetProfile.Pt.ToArray(), true, 0, ref TargetCrystal.Plane[i].peakFunction, null, null));
-               }
-           });
-            //int n = 0;
-            //for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-            //{
-            //    if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption != PeakFunctionForm.Simple)
-            //    {
-            //        d[n].EndInvoke(ref TargetCrystal.Plane[i].peakFunction, ar[n]);
-            //        TargetCrystal.Plane[i].XObs = TargetCrystal.Plane[i].peakFunction.X;
-            //        TargetCrystal.Plane[i].observedIntensity = TargetCrystal.Plane[i].peakFunction.GetIntegral() / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
-            //        n++;
-            //    }
-            //}
+            Parallel.ForEach(TargetCrystal.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
+                   FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
+            );
             #endregion
         }
         //ピーク分離フィッティングモードのとき
