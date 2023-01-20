@@ -1369,7 +1369,7 @@ namespace PDIndexer
             this.dataGridViewProfiles.VirtualMode = true;
             this.dataGridViewProfiles.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProfiles_CellClick);
             this.dataGridViewProfiles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewProfiles_CellClick);
-            this.dataGridViewProfiles.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyUp);
+            this.dataGridViewProfiles.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewProfiles_KeyDown);
             // 
             // checkDataGridViewCheckBoxColumn2
             // 
@@ -1481,7 +1481,7 @@ namespace PDIndexer
             this.dataGridViewCrystals.VirtualMode = true;
             this.dataGridViewCrystals.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
             this.dataGridViewCrystals.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
-            this.dataGridViewCrystals.KeyUp += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyUp);
+            this.dataGridViewCrystals.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyDown);
             // 
             // checkDataGridViewCheckBoxColumn1
             // 

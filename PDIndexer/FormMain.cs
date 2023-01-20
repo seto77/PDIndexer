@@ -4158,7 +4158,28 @@ public partial class FormMain : Form
 
     #region DataGridViewCrystal関係のイベント
 
-    List<int> blinkingCrystals = new();
+    private void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e)
+    {
+        e.SuppressKeyPress = true;
+        if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+        {
+            int index = SelectedCrysatlIndex;
+            if (e.KeyCode == Keys.Down && bindingSourceCrystal.Position < bindingSourceCrystal.Count)
+                index = bindingSourceCrystal.Position = SelectedCrysatlIndex + 1;
+            else if (e.KeyCode == Keys.Up && bindingSourceCrystal.Position > 0)
+                index = bindingSourceCrystal.Position = SelectedCrysatlIndex - 1;
+            if (index != SelectedCrysatlIndex)
+                dataGridViewCrystals_CellMouseClick(new object(), 
+                    new DataGridViewCellMouseEventArgs(1, SelectedCrysatlIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
+        }
+        else if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
+        {
+            dataGridViewCrystals_CellMouseClick(new object(),
+                    new DataGridViewCellMouseEventArgs(0, SelectedCrysatlIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
+        }
+    }
+
+    readonly List<int> blinkingCrystals = new();
     bool blinkFlag = false;
     public void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
     {
@@ -4225,22 +4246,30 @@ public partial class FormMain : Form
 
     public bool StopCycling { get; set; } = false;
 
-    private void dataGridViewCrystals_KeyUp(object sender, KeyEventArgs e)
-    {
-
-        if (SelectedCrysatlIndex != bindingSourceCrystal.Position)
-        {
-            SelectedCrysatlIndex = bindingSourceCrystal.Position;
-            SetFormCrystal();
-            SelectedPlaneIndex = -1;
-        }
-        Draw();
-    }
-
+ 
 
     #endregion
 
     #region dataGridViewProfiles関連のイベント
+
+    private void dataGridViewProfiles_KeyDown(object sender, KeyEventArgs e)
+    {
+        e.SuppressKeyPress = true;
+        if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
+        {
+            int index = SelectedProfileIndex;
+            if (e.KeyCode == Keys.Down && bindingSourceProfile.Position < bindingSourceProfile.Count)
+                index = bindingSourceProfile.Position = SelectedProfileIndex + 1;
+            else if (e.KeyCode == Keys.Up && bindingSourceProfile.Position > 0)
+                index = bindingSourceProfile.Position = SelectedProfileIndex - 1;
+            if (index != SelectedProfileIndex)
+                dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(1,index));
+        }
+        else if(e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
+        {
+            dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(0, SelectedProfileIndex));
+        }
+    }
 
     public void dataGridViewProfiles_CellClick(object sender, DataGridViewCellEventArgs e)
     {
@@ -4367,6 +4396,10 @@ public partial class FormMain : Form
 
     private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
          => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
+
+  
+
+
 
     #endregion プログラムアップデート
 
