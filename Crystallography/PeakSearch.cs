@@ -542,8 +542,8 @@ namespace Crystallography
                 {
                     double[] c = Initial switch
                     {
-                        00 => new double[] { 1, 1, 1 },
-                        01 => new double[] { 1, 1, 2 },
+                        00 => new double[] { 1, 1, 0.8 },
+                        01 => new double[] { 1, 1, 1.6 },
                         02 => new double[] { 1, 1, 0.5 },
                         03 => new double[] { 0.5, 1, 1 },
                         04 => new double[] { 0.5, 1, 2 },
@@ -589,10 +589,12 @@ namespace Crystallography
                         for (int i = 0; i < length; i++)
                             IntCurrent[i] += pCurrent[j].GetValue(pt[i].X, false);
                     }
+                    ResidualSquareCurrent = 0;
                     for (int i = 0; i < length; i++)
+                    {
                         ResidualCurrent[i] = pt[i].Y - IntCurrent[i];
-                    ResidualSquareCurrent = ResidualCurrent.Sum(e => e * e);
-
+                        ResidualSquareCurrent += ResidualCurrent[i] * ResidualCurrent[i];
+                    }
                     double ramda = 100;
                     counter = 0;
                     do
@@ -648,7 +650,7 @@ namespace Crystallography
                                 prms[i].X = prms[i].Int = double.NaN;
                             return double.PositiveInfinity;
                         }
-
+                        
                         var delta = alphaInv.Multiply(Beta);
 
                         //新しいパラメータをセットして適宜修正
@@ -732,9 +734,13 @@ namespace Crystallography
                                 for (int i = 0; i < length; i++)
                                     IntNew[i] += pNew[j].GetValue(pt[i].X, false);
                             }
+                            ResidualSquareNew = 0;
                             for (int i = 0; i < length; i++)
+                            {
                                 ResidualNew[i] = pt[i].Y - IntNew[i];
-                            ResidualSquareNew = ResidualNew.Sum(e => e * e);
+                                ResidualSquareNew += ResidualNew[i]* ResidualNew[i];
+
+                            }
                         }
                         //残差計算ここまで
 

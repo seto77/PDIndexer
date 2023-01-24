@@ -4243,10 +4243,7 @@ public partial class FormMain : Form
             timerBlinkDiffraction.Stop();
     }
 
-
     public bool StopCycling { get; set; } = false;
-
- 
 
     #endregion
 
@@ -4699,7 +4696,7 @@ public partial class FormMain : Form
                 p = _p;
                 p.help.Add("PDI.Crystal.Name # Get/Set the name of the selected crystal.");
                 p.help.Add("PDI.Crystal.CellVolume # Get the cell volume (Å^3) of the selected crystal.");
-                p.help.Add("PDI.Crystal.Pressure(float CellVolume) # Get the pressure (GPa) of the selected crystal by EOS.");
+                p.help.Add("PDI.Crystal.Pressure(float volume) # Get the pressure (GPa) of the selected crystal by EOS.");
                 p.help.Add("PDI.Crystal.CellA # Get/Set the cell constant a (Å) of the selected crystal.");
                 p.help.Add("PDI.Crystal.CellB # Get/Set the cell constant b (Å) of the selected crystal.");
                 p.help.Add("PDI.Crystal.CellC # Get/Set the cell constant c (Å) of the selected crystal.");
@@ -4776,15 +4773,15 @@ public partial class FormMain : Form
             public CrystalListClass(Macro _p) : base(_p.main)
             {
                 p = _p;
+                p.help.Add("PDI.CrystalList.Open() # Open 'Crystal List' window'.");
+                p.help.Add("PDI.CrystalList.Close() # Close 'Crystal List' window'.");
                 p.help.Add("PDI.CrystalList.Count # Get total count of crystals.");
                 p.help.Add("PDI.CrystalList.SelectedName # Get name of the selected crystal.");
                 p.help.Add("PDI.CrystalList.SelectedIndex # Set/get index of the selected crystal.");
                 p.help.Add("PDI.CrystalList.Select(int index) # Set index of a selected crystal.");
                 p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'. If index is omitted, the selected crystal will be checked.");
                 p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'. If index is omitted, the selected crystal will be unchecked.");
-                p.help.Add("PDI.CrystalList.Add() # Add the crystal to 'index'.");
-                p.help.Add("PDI.CrystalList.Open() # Open 'Crystal List' window'.");
-                p.help.Add("PDI.CrystalList.Close() # Close 'Crystal List' window'.");
+           
             }
 
             public void Open() => p.main.checkBoxCrystalParameter.Checked = true;
@@ -4864,8 +4861,8 @@ public partial class FormMain : Form
                 p.help.Add("PDI.ProfileOperator.SubtractTwoProfiles(int index1, int index2, string output) # Calculate profile1 - profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
                 p.help.Add("PDI.ProfileOperator.MultiplyTwoProfiles(int index1, int index2, string output) # Calculate profile1 * profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
                 p.help.Add("PDI.ProfileOperator.DivideTwoProfiles(int index1, int index2, string output)   # Calculate profile1 / profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
-                p.help.Add("PDI.ProfileOperator.AddValueToProfile(int index1, double value, string output)   # Calculate profile + value. \r\n  Profile is assingned by index.  \r\n 'output' is the profile name of result");
-                p.help.Add("PDI.ProfileOperator.MultiplyValueToProfile(int index1, double value, string output)   # Calculate profile * value. \r\n  Profile is assingned by index (integer), and .  \r\n 'out' is the profile name of result");
+                p.help.Add("PDI.ProfileOperator.AddValueToProfile(int index, double value, string output)   # Calculate profile + value. \r\n  Profile is assingned by index.  \r\n 'output' is the profile name of result");
+                p.help.Add("PDI.ProfileOperator.MultiplyValueToProfile(int index, double value, string output)   # Calculate profile * value. \r\n  Profile is assingned by index (integer), and .  \r\n 'out' is the profile name of result");
             }
 
             public void Average(int[] intArray, string outputName = "") { Execute(() => average(intArray, outputName)); }
@@ -4928,6 +4925,8 @@ public partial class FormMain : Form
             public ProfileListClass(Macro _p) : base(_p.main)
             {
                 p = _p;
+                p.help.Add("PDI.ProfileList.Open() # Open 'Profile List' window'.");
+                p.help.Add("PDI.ProfileList.Close() # Close 'Profile List' window'.");
                 p.help.Add("PDI.ProfileList.Count # Get total count of profiles.");
                 p.help.Add("PDI.ProfileList.SelectedName # Get name of a selected profile.");
                 p.help.Add("PDI.ProfileList.SelectedIndex # Set/get index of a selected profile.");
@@ -4938,8 +4937,6 @@ public partial class FormMain : Form
                 p.help.Add("PDI.ProfileList.UncheckAll() # Uncheck all profiles.");
                 p.help.Add("PDI.ProfileList.DeleteAll() # Delete all profiles.");
                 p.help.Add("PDI.ProfileList.Delete(int index) # Delete a profile assigned by index.");
-                p.help.Add("PDI.ProfileList.Open() # Open 'Profile List' window'.");
-                p.help.Add("PDI.ProfileList.Close() # Close 'Profile List' window'.");
             }
             public void Open() => p.main.checkBoxProfileParameter.Checked = true;
             public void Close() => p.main.checkBoxProfileParameter.Checked = false;
@@ -5010,7 +5007,7 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Fitting.Check(int index) # Check the lattice plane assigned by index.");
                 p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck the lattice plane assigned by index.");
                 p.help.Add("PDI.Fitting.Select(int index) # Select the lattice plane assigned by index.");
-                p.help.Add("PDI.Fitting.SelectedIndex # # Set/get the index of a lattice plane.");
+                p.help.Add("PDI.Fitting.SelectedIndex #Set/get the index of a lattice plane.");
 
                 p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
 

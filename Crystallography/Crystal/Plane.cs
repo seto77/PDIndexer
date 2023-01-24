@@ -1,7 +1,7 @@
 using System;
 using System.Numerics;
 
-namespace Crystallography.Crystal;
+namespace Crystallography;
 
 /// <summary>
 /// Plane ‚ÌŠT—v‚Ìà–¾‚Å‚·B

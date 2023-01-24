@@ -1243,6 +1243,9 @@ public partial class FormFitting : System.Windows.Forms.Form
 
     public void Confirm(bool copy = true)
     {
+        if (double.IsNaN(temp_crystal.Volume) || double.IsInfinity(temp_crystal.Volume))
+            return;
+
         TargetCrystal.A = temp_crystal.A;
         TargetCrystal.B = temp_crystal.B;
         TargetCrystal.C = temp_crystal.C;
