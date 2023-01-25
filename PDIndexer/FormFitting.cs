@@ -332,8 +332,10 @@ public partial class FormFitting : System.Windows.Forms.Form
         {
             #region ピーク分離モードではないとき
             Parallel.ForEach(TargetCrystal.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
-                   FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
+            //foreach(var p in TargetCrystal.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple))
+            FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
             );
+            //;
             #endregion
         }
         //ピーク分離フィッティングモードのとき
