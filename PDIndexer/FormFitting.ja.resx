@@ -275,6 +275,12 @@
   <data name="intensityDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
+  <data name="copyToClipboradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>181, 48</value>
+  </data>
   <data name="dataGridViewPlaneList.Size" type="System.Drawing.Size, System.Drawing">
     <value>594, 295</value>
   </data>

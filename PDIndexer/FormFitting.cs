@@ -147,44 +147,41 @@ public partial class FormFitting : System.Windows.Forms.Form
     }
 
     #region 結晶面リストの保存、コピー
-    private string generateTableText()
+    private string generateTableText(int index = -1)
     {
         if (TargetCrystal == null)
             return "";
-        string text =
-            "Checked" + "\t" +
-            "hkl" + "\t" +
-            "Calculated X" + "\t" +
-            "Function" + "\t" +
-            "Observed X" + "\t" +
-            "Observed X err (1sigma)" + "\t" +
-            "Observed FWHM" + "\t" +
-            "Observed Intensity" + "\t" +
-            "Rwp (%)\r\n";
-        foreach (Plane p in TargetCrystal.Plane)
+
+        var sb = new StringBuilder();
+        sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tRwp (%)\r\n");
+
+        for (int i = 0; i < TargetCrystal.Plane.Count; i++)
         {
-            text +=
-                p.IsFittingChecked.ToString() + "\t" +
-                p.strHKL + "\t" +
-                p.XCalc.ToString() + "\t";
-            if (!double.IsNaN(p.XObs))
-                text +=
-                    p.peakFunction.Option switch
-                    {
-                        PeakFunctionForm.Simple => "Simple",
-                        PeakFunctionForm.PseudoVoigt => "Sym PV",
-                        PeakFunctionForm.Peason => "Sym Pea",
-                        PeakFunctionForm.SplitPseudoVoigt => "Spl PV",
-                        _ => "Spl Pea",
-                    } + "\t" +
-                    p.XObs.ToString() + "\t" +
-                    p.peakFunction.Xerr.ToString() + "\t" +
-                    p.peakFunction.Hk.ToString() + "\t" +
-                    p.observedIntensity.ToString() + "\t" +
-                    (p.peakFunction.Residual * 100).ToString();
-            text += "\r\n";
+            if (index == -1 || index == i)
+            {
+                var p = TargetCrystal.Plane[i];
+                var func = p.peakFunction.Option switch
+                {
+                    PeakFunctionForm.Simple => "Simple",
+                    PeakFunctionForm.PseudoVoigt => "Sym PV",
+                    PeakFunctionForm.Peason => "Sym Pea",
+                    PeakFunctionForm.SplitPseudoVoigt => "Spl PV",
+                    _ => "Spl Pea",
+                };
+
+                sb.Append($"{p.IsFittingChecked.ToString()}\t{p.strHKL}\t{p.XCalc}\t");
+                if (!double.IsNaN(p.XObs))
+                    sb.Append($"{func}\t{p.XObs}\t{p.peakFunction.Xerr}\t{p.peakFunction.Hk}\t{p.observedIntensity}\t{p.peakFunction.Residual * 100}\r\n");
+            }
         }
-        return text;
+        return sb.ToString();
+    }
+
+    private void copyToClipboradToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        var text = generateTableText(bindingSourcePlanes.Position);
+        if (text != "")
+            Clipboard.SetDataObject(text);
     }
 
     /// <summary>
@@ -296,9 +293,9 @@ public partial class FormFitting : System.Windows.Forms.Form
             {
                 listCrystal[h].Plane[i].XCalc = formMain.AxisMode switch
                 {
-                    HorizontalAxis.Angle=> Math.Asin(formMain.WaveLength / listCrystal[h].Plane[i].d / 2) / Math.PI * 360,
+                    HorizontalAxis.Angle => Math.Asin(formMain.WaveLength / listCrystal[h].Plane[i].d / 2) / Math.PI * 360,
                     HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(listCrystal[h].Plane[i].d, formMain.TakeoffAngle),
-                    HorizontalAxis.d=> listCrystal[h].Plane[i].d * 10,
+                    HorizontalAxis.d => listCrystal[h].Plane[i].d * 10,
                     HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(listCrystal[h].Plane[i].d, formMain.TofAngle, formMain.TofLength),
                     HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(listCrystal[h].Plane[i].d * 10),
                     _ => listCrystal[h].Plane[i].XCalc
@@ -332,10 +329,8 @@ public partial class FormFitting : System.Windows.Forms.Form
         {
             #region ピーク分離モードではないとき
             Parallel.ForEach(TargetCrystal.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
-            //foreach(var p in TargetCrystal.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple))
-            FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
+                FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
             );
-            //;
             #endregion
         }
         //ピーク分離フィッティングモードのとき
@@ -1553,4 +1548,5 @@ public partial class FormFitting : System.Windows.Forms.Form
 
     private void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
 
+ 
 }

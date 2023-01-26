@@ -199,7 +199,7 @@ namespace Crystallography
             return new double[] {
                 tmp6 * (eta * tmp4 + _eta * tmp5),
                 Int * tmp6 * (tmp4 - tmp5),
-                Int * (-2 * eta * (tmp2 - tmp3) / PI / (tmp2 + tmp3) / (tmp2 + tmp3) - 2 * _eta * (tmp2 - 2 * tmp3 * Ln2) / (tmp2 * tmp2) * tmp5),
+                -2 *Int * ( eta * (tmp2 - tmp3) / PI / (tmp2 + tmp3) / (tmp2 + tmp3) + _eta * (tmp2 - 2 * tmp3 * Ln2) / (tmp2 * tmp2) * tmp5),
                 Int * 8 * tmp6 * (X - x) / tmp2 * (-eta * tmp4 * tmp4 - _eta * Ln2 * tmp5)
             };
         }
@@ -549,9 +549,9 @@ namespace Crystallography
                     06 => new double[] { 2, 1, 1 },
                     07 => new double[] { 2, 1, 0.5 },
                     08 => new double[] { 2, 1, 2 },
-                    09 => new double[] { 1, 2, 1 },
+                    09 => new double[] { 1, 1.5, 1 },
                     10 => new double[] { 1, 0.5, 1 },
-                    _ => new double[] { 0.5, 2, 2 }
+                    _ => new double[] { 0.5, 1.5, 2 }
                 };
                 //‚±‚±‚©‚ç‰Šú’l‚ð‚«‚ß‚é
                 //X‚Í‚·‚Å‚É‘ã“üÏ‚Ý
@@ -742,11 +742,8 @@ namespace Crystallography
                     //V‹Œ‚Ì’l‚ð”äŠr
                     if (flag && ResidualSquareCurrent >= ResidualSquareNew)
                     {
-                        ramda *= 0.8;
+                        ramda *= 0.5;
                         Array.Copy(ResidualNew, ResidualCurrent, length);
-                        //for (int i = 0; i < length; i++)
-                        //    ResidualCurrent[i] = ResidualNew[i];
-
                         for (int j = 0; j < prms.Length; j++)
                             pCurrent[j] = pNew[j].Copy();
                         B1 = B1_New;
@@ -756,8 +753,8 @@ namespace Crystallography
                         ResidualSquareCurrent = ResidualSquareNew;
                     }
                     else
-                        ramda *= 2;
-                } while (ramda < 100000000000 && counter < 1000);
+                        ramda *= 4;
+                } while (ramda < 1000000000 && counter < 500);
 
                 for (int i = 0; i < length; i++)
                     IntNew[i] = B1_New + B2_New * (pt[i].X - centerX);

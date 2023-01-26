@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crystallography;
 using MathNet.Numerics.LinearAlgebra.Double;
@@ -74,10 +75,7 @@ public partial class FormSequentialAnalysis : Form
             results.Add(new List<PointD>());
         }
 
-        textBox2theta.Text = $"{text}\r\n";
-        textBoxDspacing.Text = $"{text}\r\n";
-        textBoxFWHM.Text = $"{text}\r\n";
-        textBoxIntensity.Text = $"{text}\r\n";
+        textBox2theta.Text = textBoxDspacing.Text = textBoxFWHM.Text = textBoxIntensity.Text = $"{text}\r\n";
         textBoxCellConstants.Text = (stressMode ? "Degree" : "Profile Name") + "\tV\tV_err\tA\tA_err\tB\tB_err\tC\tC_err\tAlpha\tAlpha_err\tBeta\tBeta_err\tGamma\tGamma_err\r\n";
 
         Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
@@ -190,7 +188,7 @@ public partial class FormSequentialAnalysis : Form
                 sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
                 sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
                 sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
-                if (stressMode)
+                if (stressMode && !double.IsNaN( p.peakFunction.X))
                     results[m++].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
             }
             textBox2theta.AppendText($"{sb2theta}\r\n");
@@ -254,9 +252,11 @@ public partial class FormSequentialAnalysis : Form
     #region Singhの式の最適化
     private void RefineSinghEquation(List<string> indexStr, List<List<PointD>> results)
     {
-        textBoxResults.Text = "";
+        var profiles = new Profile[results.Count];
+        var text = new string[results.Count];
 
-        for (int i = 0; i < results.Count; i++)                //マルカールの方法でPseudoVoigtをとく。高速になるはず
+        Parallel.For(0, results.Count, i =>
+        //for (int i = 0; i < results.Count; i++)                //マルカールの方法でPseudoVoigtをとく。高速になるはず
         {
             List<PointD> d = results[i];
             double alpha = -0.5, d0 = 0, psiMax = 0;
@@ -264,7 +264,7 @@ public partial class FormSequentialAnalysis : Form
             //範囲内で一番d値が小さい点を見つける
             double minD = double.PositiveInfinity;
             double maxD = double.NegativeInfinity;
-            for (int j = 0; j < d.Count/2; j++)
+            for (int j = 0; j < d.Count / 2; j++)
             {
                 if (minD > d[j].Y)
                 {
@@ -277,13 +277,12 @@ public partial class FormSequentialAnalysis : Form
 
             double[,] diff = new double[3, d.Count];
             var Alpha = new DenseMatrix(3, 3);
-           var Beta = new DenseMatrix(3, 1);
-            double[] ResidualCurrent = new double[d.Count],ResidualNew = new double[d.Count];
-            double ResidualSquareCurrent = 0, ResidualSquareNew = 0;
+            var Beta = new DenseMatrix(3, 1);
+            double[] ResidualCurrent = new double[d.Count], ResidualNew = new double[d.Count];
             int count = 0;
 
             //現在の残差を計算
-            ResidualSquareCurrent = 0;
+            double ResidualSquareCurrent = 0;
             for (int j = 0; j < d.Count; j++)
             {
                 ResidualCurrent[j] = dValue(d0, alpha, d[j].X, psiMax, d0) - d[j].Y;
@@ -330,7 +329,7 @@ public partial class FormSequentialAnalysis : Form
                 psiMax_New = psiMax - delta[2, 0];
 
                 //あたらしいパラメータでの残差を計算
-                ResidualSquareNew = 0;
+                var ResidualSquareNew = 0.0;
                 for (int j = 0; j < d.Count; j++)
                 {
                     ResidualNew[j] = dValue(d0_New, alpha_New, d[j].X, psiMax_New, d0_New) - d[j].Y; ;
@@ -350,24 +349,20 @@ public partial class FormSequentialAnalysis : Form
                 else
                     ramda *= 5;
             }
-            textBoxResults.Text += indexStr[i] + "\td0:\t" + (d0 * 10).ToString("g6") + "\tΨmax:\t" + (psiMax / Math.PI * 180).ToString("g6") + "\t t/6Ghkl:\t" + alpha.ToString("g6") + "\r\n";
+            text[i] = $"{indexStr[i]}\td0:\t{d0 * 10:g6}\tΨmax:\t{psiMax / Math.PI * 180:g6}\t t/6Ghkl:\t{alpha:g6}\r\n";
 
-           Profile  p2 = new Profile();
-           // for (int j = 0; j < d.Count; j++)
-           //     p1.Pt.Add(new PointD(d[j].X / Math.PI * 180, d[j].Y * 10));
+            profiles[i] = new Profile();
             for (int j = 0; j < 360; j++)
-                p2.Pt.Add(new PointD(j, 10*dValue(d0, alpha, j / 180.0 * Math.PI, psiMax, d0)));
-          //  graphControl1.ClearProfile();
-            
-           // graphControl1.AddProfile(p1);
-           // p2.Color = Color.Red;
-            graphControl1.AddProfile(p2);
+                profiles[i].Pt.Add(new PointD(j, 10 * dValue(d0, alpha, j / 180.0 * Math.PI, psiMax, d0)));
 
-            
-
+        });
+        graphControl1.ClearProfile();
+        textBoxResults.Text = "";
+        for(int i= 0; i< results.Count; i++)
+        {
+            graphControl1.AddProfile(profiles[i]);
+            textBoxResults.AppendText(text[i]);
         }
-
-
     }
 
     /// <summary>
