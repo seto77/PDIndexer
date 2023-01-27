@@ -11,8 +11,7 @@ using System.Windows.Forms;
 using Crystallography;
 using IronPython.Runtime.Operations;
 using MathNet.Numerics.LinearAlgebra.Double;
-using static Community.CsharpSqlite.Sqlite3;
-using static System.Net.Mime.MediaTypeNames;
+//using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace PDIndexer;

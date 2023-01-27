@@ -231,8 +231,18 @@
   <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
     <value>734, 278</value>
   </data>
-  <data name="textBoxResults.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 257</value>
+  <data name="textBoxSingh.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="textBoxSingh.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="textBoxSingh.Multiline" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="textBoxSingh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 257</value>
   </data>
   <data name="checkBoxAutoSaveSingh.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -244,13 +254,10 @@
     <value>0, 257</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 21</value>
+    <value>734, 21</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
     <value>Auto save</value>
-  </data>
-  <data name="graphControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 278</value>
   </data>
   <data name="tabPageSingh.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
@@ -288,10 +295,10 @@
   <data name="buttonSave.Text" xml:space="preserve">
     <value>保存</value>
   </data>
-  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+  <data name="textBoxDirectory.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="textBoxDirectory.Size" type="System.Drawing.Size, System.Drawing">
     <value>214, 25</value>
   </data>
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
@@ -300,7 +307,6 @@
   <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Right</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>

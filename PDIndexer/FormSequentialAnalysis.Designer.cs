@@ -52,10 +52,6 @@
             tabPageSingh = new System.Windows.Forms.TabPage();
             textBoxSingh = new System.Windows.Forms.TextBox();
             checkBoxAutoSaveSingh = new System.Windows.Forms.CheckBox();
-            numericalTextBoxAlpha = new Crystallography.Controls.NumericBox();
-            numericalTextBoxPsimax = new Crystallography.Controls.NumericBox();
-            numericalTextBoxD0 = new Crystallography.Controls.NumericBox();
-            graphControl1 = new Crystallography.Controls.GraphControl();
             statusStrip1 = new System.Windows.Forms.StatusStrip();
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             buttonCopy = new System.Windows.Forms.Button();
@@ -215,110 +211,19 @@
             resources.ApplyResources(tabPageSingh, "tabPageSingh");
             tabPageSingh.Controls.Add(textBoxSingh);
             tabPageSingh.Controls.Add(checkBoxAutoSaveSingh);
-            tabPageSingh.Controls.Add(numericalTextBoxAlpha);
-            tabPageSingh.Controls.Add(numericalTextBoxPsimax);
-            tabPageSingh.Controls.Add(numericalTextBoxD0);
-            tabPageSingh.Controls.Add(graphControl1);
             tabPageSingh.Name = "tabPageSingh";
             tabPageSingh.UseVisualStyleBackColor = true;
             // 
-            // textBoxResults
+            // textBoxSingh
             // 
-            resources.ApplyResources(textBoxSingh, "textBoxResults");
-            textBoxSingh.Name = "textBoxResults";
+            resources.ApplyResources(textBoxSingh, "textBoxSingh");
+            textBoxSingh.Name = "textBoxSingh";
             // 
             // checkBoxAutoSaveSingh
             // 
             resources.ApplyResources(checkBoxAutoSaveSingh, "checkBoxAutoSaveSingh");
             checkBoxAutoSaveSingh.Name = "checkBoxAutoSaveSingh";
             checkBoxAutoSaveSingh.UseVisualStyleBackColor = true;
-            // 
-            // numericalTextBoxAlpha
-            // 
-            resources.ApplyResources(numericalTextBoxAlpha, "numericalTextBoxAlpha");
-            numericalTextBoxAlpha.BackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxAlpha.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxAlpha.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxAlpha.Name = "numericalTextBoxAlpha";
-            numericalTextBoxAlpha.RoundErrorAccuracy = -1;
-            numericalTextBoxAlpha.SkipEventDuringInput = false;
-            numericalTextBoxAlpha.SmartIncrement = true;
-            numericalTextBoxAlpha.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            numericalTextBoxAlpha.ThonsandsSeparator = true;
-            numericalTextBoxAlpha.ValueChanged += numericalTextBoxD0_ValueChanged;
-            // 
-            // numericalTextBoxPsimax
-            // 
-            resources.ApplyResources(numericalTextBoxPsimax, "numericalTextBoxPsimax");
-            numericalTextBoxPsimax.BackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxPsimax.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxPsimax.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxPsimax.Name = "numericalTextBoxPsimax";
-            numericalTextBoxPsimax.RoundErrorAccuracy = -1;
-            numericalTextBoxPsimax.SkipEventDuringInput = false;
-            numericalTextBoxPsimax.SmartIncrement = true;
-            numericalTextBoxPsimax.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            numericalTextBoxPsimax.ThonsandsSeparator = true;
-            numericalTextBoxPsimax.ValueChanged += numericalTextBoxD0_ValueChanged;
-            // 
-            // numericalTextBoxD0
-            // 
-            resources.ApplyResources(numericalTextBoxD0, "numericalTextBoxD0");
-            numericalTextBoxD0.BackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxD0.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxD0.HeaderBackColor = System.Drawing.SystemColors.Control;
-            numericalTextBoxD0.Name = "numericalTextBoxD0";
-            numericalTextBoxD0.RoundErrorAccuracy = -1;
-            numericalTextBoxD0.SkipEventDuringInput = false;
-            numericalTextBoxD0.SmartIncrement = true;
-            numericalTextBoxD0.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            numericalTextBoxD0.ThonsandsSeparator = true;
-            numericalTextBoxD0.ValueChanged += numericalTextBoxD0_ValueChanged;
-            // 
-            // graphControl1
-            // 
-            resources.ApplyResources(graphControl1, "graphControl1");
-            graphControl1.AllowMouseOperation = true;
-            graphControl1.BackgroundColor = System.Drawing.Color.White;
-            graphControl1.BottomMargin = 0D;
-            graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
-            graphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            graphControl1.FixRangeHorizontal = false;
-            graphControl1.FixRangeVertical = false;
-            graphControl1.GraphName = "";
-            graphControl1.HorizontalGradiationTextVisivle = true;
-            graphControl1.Interpolation = false;
-            graphControl1.IsIntegerX = false;
-            graphControl1.IsIntegerY = false;
-            graphControl1.LabelX = "X:";
-            graphControl1.LabelY = "Y:";
-            graphControl1.LeftMargin = 0F;
-            graphControl1.LineColor = System.Drawing.Color.Red;
-            graphControl1.LineWidth = 1F;
-            graphControl1.LowerX = 0D;
-            graphControl1.LowerY = 0D;
-            graphControl1.MaximalX = 1D;
-            graphControl1.MaximalY = 1D;
-            graphControl1.MinimalX = 0D;
-            graphControl1.MinimalY = 0D;
-            graphControl1.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            graphControl1.MousePositionVisible = true;
-            graphControl1.Name = "graphControl1";
-            graphControl1.OriginPosition = new System.Drawing.Point(40, 20);
-            graphControl1.Smoothing = false;
-            graphControl1.TextFont = new System.Drawing.Font("メイリオ", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            graphControl1.UnitX = "";
-            graphControl1.UnitY = "";
-            graphControl1.UpperText = "";
-            graphControl1.UpperTextVisible = true;
-            graphControl1.UpperX = 1D;
-            graphControl1.UpperY = 1D;
-            graphControl1.UseLineWidth = true;
-            graphControl1.VerticalGradiationTextVisivle = true;
-            graphControl1.XLog = false;
-            graphControl1.XScaleLineVisible = true;
-            graphControl1.YLog = false;
-            graphControl1.YScaleLineVisible = true;
             // 
             // statusStrip1
             // 
@@ -345,10 +250,10 @@
             buttonSave.UseVisualStyleBackColor = true;
             buttonSave.Click += buttonSave_Click;
             // 
-            // textBox1
+            // textBoxDirectory
             // 
-            resources.ApplyResources(textBoxDirectory, "textBox1");
-            textBoxDirectory.Name = "textBox1";
+            resources.ApplyResources(textBoxDirectory, "textBoxDirectory");
+            textBoxDirectory.Name = "textBoxDirectory";
             textBoxDirectory.ReadOnly = true;
             // 
             // panel1
