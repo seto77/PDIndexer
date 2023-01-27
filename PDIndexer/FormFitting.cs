@@ -481,7 +481,7 @@ public partial class FormFitting : System.Windows.Forms.Form
 
                 Parallel.For(0, pvpTemp.Length, i =>
                 {
-                    FittingPeak.FitMultiPeaksThread(TargetProfile.Pt, true, 0, ref pvpTemp[i]);
+                   FittingPeak.FitMultiPeaksThread(TargetProfile.Pt, true, 0, ref pvpTemp[i]);
                 });
 
                 #endregion
@@ -494,37 +494,45 @@ public partial class FormFitting : System.Windows.Forms.Form
             {
                 if (listCrystal[h].Plane[i].IsFittingChecked)
                 {
-                    if (listCrystal[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
+                    if (listCrystal[h].Plane[i].peakFunction.Success)
                     {
-                        listCrystal[h].Plane[i].XObs = listCrystal[h].Plane[i].peakFunction.X;
-                        listCrystal[h].Plane[i].observedIntensity
-                            = listCrystal[h].Plane[i].peakFunction.GetIntegral() / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
-                    }
+                        if (listCrystal[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
+                        {
+                            listCrystal[h].Plane[i].XObs = listCrystal[h].Plane[i].peakFunction.X;
+                            listCrystal[h].Plane[i].observedIntensity
+                                = listCrystal[h].Plane[i].peakFunction.GetIntegral() / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
+                        }
 
-                    if (formMain.AxisMode == HorizontalAxis.Angle)
-                    {
-                        listCrystal[h].Plane[i].dObs = formMain.WaveLength / 2 / Math.Sin(listCrystal[h].Plane[i].XObs / 360 * Math.PI);
-                        listCrystal[h].Plane[i].Weight = 1 / Math.Sin(listCrystal[h].Plane[i].XObs / 360 * Math.PI) / Math.Sin(listCrystal[h].Plane[i].XObs / 360 * Math.PI);
+                        if (formMain.AxisMode == HorizontalAxis.Angle)
+                        {
+                            listCrystal[h].Plane[i].dObs = formMain.WaveLength / 2 / Math.Sin(listCrystal[h].Plane[i].XObs / 360 * Math.PI);
+                            listCrystal[h].Plane[i].Weight = 1 / Math.Sin(listCrystal[h].Plane[i].XObs / 360 * Math.PI) / Math.Sin(listCrystal[h].Plane[i].XObs / 360 * Math.PI);
+                        }
+                        else if (formMain.AxisMode == HorizontalAxis.EnergyXray)
+                        {
+                            listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.XrayEnergyToD(listCrystal[h].Plane[i].XObs, formMain.TakeoffAngle);
+                            listCrystal[h].Plane[i].Weight = 1;
+                        }
+                        else if (formMain.AxisMode == HorizontalAxis.d)
+                        {
+                            listCrystal[h].Plane[i].dObs = listCrystal[h].Plane[i].XObs / 10;
+                            listCrystal[h].Plane[i].Weight = 1;
+                        }
+                        else if (formMain.AxisMode == HorizontalAxis.NeutronTOF)
+                        {
+                            listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.NeutronTofToD(listCrystal[h].Plane[i].XObs, formMain.TofAngle, formMain.TofLength);
+                            listCrystal[h].Plane[i].Weight = 1;
+                        }
+                        else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
+                        {
+                            listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.WaveNumberToD(listCrystal[h].Plane[i].XObs * 10);
+                            listCrystal[h].Plane[i].Weight = 1;
+                        }
                     }
-                    else if (formMain.AxisMode == HorizontalAxis.EnergyXray)
+                    else
                     {
-                        listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.XrayEnergyToD(listCrystal[h].Plane[i].XObs, formMain.TakeoffAngle);
-                        listCrystal[h].Plane[i].Weight = 1;
-                    }
-                    else if (formMain.AxisMode == HorizontalAxis.d)
-                    {
-                        listCrystal[h].Plane[i].dObs = listCrystal[h].Plane[i].XObs / 10;
-                        listCrystal[h].Plane[i].Weight = 1;
-                    }
-                    else if (formMain.AxisMode == HorizontalAxis.NeutronTOF)
-                    {
-                        listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.NeutronTofToD(listCrystal[h].Plane[i].XObs, formMain.TofAngle, formMain.TofLength);
-                        listCrystal[h].Plane[i].Weight = 1;
-                    }
-                    else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
-                    {
-                        listCrystal[h].Plane[i].dObs = HorizontalAxisConverter.WaveNumberToD(listCrystal[h].Plane[i].XObs * 10);
-                        listCrystal[h].Plane[i].Weight = 1;
+                        listCrystal[h].Plane[i].observedIntensity = double.NaN;
+                        listCrystal[h].Plane[i].dObs = double.NaN;
                     }
                 }
                 else

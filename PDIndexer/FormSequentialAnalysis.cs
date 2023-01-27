@@ -9,7 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crystallography;
+using IronPython.Runtime.Operations;
 using MathNet.Numerics.LinearAlgebra.Double;
+using static Community.CsharpSqlite.Sqlite3;
+using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace PDIndexer;
@@ -99,7 +102,7 @@ public partial class FormSequentialAnalysis : Form
         {
             textBoxPressure.Text = stressMode ? "Degree" : "Profile Name";
             foreach (var researcher in eos().Select(e => e.Researcher))
-                textBoxPressure.AppendText("\t"+researcher);
+                textBoxPressure.AppendText("\t" + researcher);
             textBoxPressure.AppendText("\r\n");
 
             formMain.toolStripButtonEquationOfState.Checked = true;
@@ -110,7 +113,7 @@ public partial class FormSequentialAnalysis : Form
         var total = formMain.dataSet.DataTableProfile.Items.Count;
 
         //現在のプロファイルチェック状況を保存後、全てチェック外す
-        var checkStates= new List<bool>();
+        var checkStates = new List<bool>();
         for (int i = 0; i < total; i++)
             checkStates.Add(formMain.dataSet.DataTableProfile.GetItemChecked(i));
         formMain.dataSet.DataTableProfile.AllUnchecked = true;
@@ -188,7 +191,7 @@ public partial class FormSequentialAnalysis : Form
                 sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
                 sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
                 sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
-                if (stressMode && !double.IsNaN( p.peakFunction.X))
+                if (stressMode && !double.IsNaN(p.peakFunction.X))
                     results[m++].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
             }
             textBox2theta.AppendText($"{sb2theta}\r\n");
@@ -216,7 +219,7 @@ public partial class FormSequentialAnalysis : Form
 
             formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, false);//チェック状態を解除
 
-            toolStripStatusLabel1.Text = $"{100.0 * i / total:f1} % completed.  Ellappsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
+            toolStripStatusLabel1.Text = $"{100.0 * i / total:f1} % completed.  Elapsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
             Application.DoEvents();
         }
 
@@ -245,7 +248,65 @@ public partial class FormSequentialAnalysis : Form
 
         formMain.ChangeCrystalFromFitting();
 
-        toolStripStatusLabel1.Text = $"100 % Completed!  Ellappsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
+        AutoSave();
+
+        toolStripStatusLabel1.Text = $"100 % Completed!  Elapsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
+    }
+    #endregion
+
+    #region AutoSave
+    public void AutoSave()
+    {
+        if (!Path.Exists(textBoxDirectory.Text))
+        {
+            buttonSetDirectory_Click(new object(), new EventArgs());
+            if (!Path.Exists(textBoxDirectory.Text))
+                return;
+        }
+        var path = textBoxDirectory.Text + "\\";
+
+        var names = new string[formMain.dataSet.DataTableProfile.Rows.Count];
+        for (int i = 0; i < names.Length; i++)
+            names[i] = formMain.dataSet.DataTableProfile.Rows[i][1].ToString().Replace(" ", "");
+        var name = "";
+        for (int i = 0; i < names.Min(n => n.Length); i++)
+        {
+            name += names[0][i];
+            if (names.Any(n => !n.startswith(name)))
+                break;
+        }
+        name = name[..^1];
+        if (name.endswith("-") || name.endswith("#"))
+            name = name[..^1];
+
+        static void save(string filename, string contents)
+        {
+            var sw = new StreamWriter(filename);
+            sw.Write(contents);
+            sw.Flush();
+            sw.Close();
+        }
+
+        if (checkBoxAutoSaveCell.Checked)
+            save(path + name + "_cell.csv", textBoxCellConstants.Text.Replace("\t", ","));
+        if (checkBoxAutoSaveD.Checked)
+            save(path + name + "_d.csv", textBoxDspacing.Text.Replace("\t", ","));
+        if (checkBoxAutoSaveFWHM.Checked)
+            save(path + name + "_fwhm.csv", textBoxFWHM.Text.Replace("\t", ","));
+        if (checkBoxAutoSaveInt.Checked)
+            save(path + name + "_intensity.csv", textBoxIntensity.Text.Replace("\t", ","));
+        if (checkBoxAutoSavePressure.Checked)
+            save(path + name + "_pressure.csv", textBoxPressure.Text.Replace("\t", ","));
+        if (checkBoxAutoSaveSingh.Checked)
+            save(path + name + "_Singh.csv", textBoxSingh.Text.Replace("\t", ","));
+        if (checkBoxAutoSaveTwoTheta.Checked)
+            save(path + name + "_2theta.csv", textBox2theta.Text.Replace("\t", ","));
+    }
+
+    private void buttonSetDirectory_Click(object sender, EventArgs e)
+    {
+        var dlg = new FolderBrowserDialog();
+        textBoxDirectory.Text = dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : "";
     }
     #endregion
 
@@ -357,11 +418,11 @@ public partial class FormSequentialAnalysis : Form
 
         });
         graphControl1.ClearProfile();
-        textBoxResults.Text = "";
-        for(int i= 0; i< results.Count; i++)
+        textBoxSingh.Text = "";
+        for (int i = 0; i < results.Count; i++)
         {
             graphControl1.AddProfile(profiles[i]);
-            textBoxResults.AppendText(text[i]);
+            textBoxSingh.AppendText(text[i]);
         }
     }
 
@@ -379,7 +440,7 @@ public partial class FormSequentialAnalysis : Form
         double step = 0.1;
         double range = 1;
 
-        double ramda2 = formMain.WaveLength*formMain.WaveLength;
+        double ramda2 = formMain.WaveLength * formMain.WaveLength;
         double cos = Math.Cos(psi - psiMax);
 
         double minDiv = double.PositiveInfinity;
@@ -387,12 +448,12 @@ public partial class FormSequentialAnalysis : Form
 
         for (int n = 0; n < 30; n++)
         {
-            for (double d = initD - range; d <= initD + range && d+step !=d; d += step)
+            for (double d = initD - range; d <= initD + range && d + step != d; d += step)
             {
                 double f = Math.Abs(d0 * (1 + alpha - 3 * alpha * (1 - ramda2 / 4 / d / d) * cos * cos) - d);
                 if (f < minDiv)
                 {
-                   minDiv = f;
+                    minDiv = f;
                     bestD = d;
                 }
             }
@@ -428,8 +489,8 @@ public partial class FormSequentialAnalysis : Form
 
     private void buttonSave_Click(object sender, EventArgs e)
     {
-        var dlg = new SaveFileDialog() { Filter="*.csv|*.csv"};
-        if(dlg.ShowDialog() == DialogResult.OK) 
+        var dlg = new SaveFileDialog() { Filter = "*.csv|*.csv" };
+        if (dlg.ShowDialog() == DialogResult.OK)
         {
             var sw = new StreamWriter(dlg.FileName);
             sw.Write(GetText());
@@ -437,7 +498,7 @@ public partial class FormSequentialAnalysis : Form
         }
     }
 
-    public void Save(string filename, bool CSV=true, int index=-1)
+    public void Save(string filename, bool CSV = true, int index = -1)
     {
 
     }
@@ -449,7 +510,7 @@ public partial class FormSequentialAnalysis : Form
     /// <param name="CSV"></param>
     /// <param name="index"></param>
     /// <returns></returns>
-    public string GetText( bool CSV = true, int index = -1)
+    public string GetText(bool CSV = true, int index = -1)
     {
         if (index == -1)
             index = tabControl.SelectedIndex;
@@ -462,7 +523,7 @@ public partial class FormSequentialAnalysis : Form
             3 => textBoxIntensity.Text,
             4 => textBoxCellConstants.Text,
             5 => textBoxPressure.Text,
-            6 => textBoxResults.Text,
+            6 => textBoxSingh.Text,
             _ => ""
         };
 
@@ -470,6 +531,7 @@ public partial class FormSequentialAnalysis : Form
     }
 
     #endregion
+
 
 
 }

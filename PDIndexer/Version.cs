@@ -25,6 +25,7 @@ static class Version
     /// </summary>
     static public string History = 
         "History" +
+        "\r\n ver4.427(2023/01/27) Fixed minor bugs on 'Sequential Analysis'." +
         "\r\n ver4.427(2023/01/26) Fixed minor bugs on 'Sequential Analysis'." +
         "\r\n ver4.426(2023/01/25) Improved peak fitting accuracy." +
         "\r\n ver4.425(2023/01/24) Fixed bugs on 'Fitting peaks'." +
@@ -54,7 +55,7 @@ static class Version
         "\r\n ver4.398(2021/05/13) Fixed a bug on loading 'NPD' format files." +
         "\r\n ver4.397(2021/05/01) Fixed minor bugs and improved computation speed on 'Stress Analysis'." +
         "\r\n ver4.396(2021/04/04) Fixed a minor bug on the recent update." +
-        "\r\n ver4.395(2021/04/04) Improved loading of mutiple-EDX.  Added EOSs of molybdenum." +
+        "\r\n ver4.395(2021/04/04) Improved loading of multiple-EDX.  Added EOSs of molybdenum." +
         "\r\n ver4.394(2020/12/02) Fixed a GUI bug. Added the option: 'Save the crystal list when closing'" +
         "\r\n ver4.393(2020/12/01) Fixed a minor bug when loading crystal list." +
         "\r\n ver4.392(2020/10/22) Added: 3rd order Vinet equation to the EOS function." +
@@ -83,7 +84,7 @@ static class Version
         "\r\n ver4.349(2019/03/18) Added an option when exporting profiles." +
         "\r\n ver4.348(2019/02/20) Changed .Net framework version to 4.7.2." +
         "\r\n ver4.347(2018/12/20) Fixed minor bugs." +
-        "\r\n ver4.346(2018/11/20) Modified some incosistensies." +
+        "\r\n ver4.346(2018/11/20) Modified some inconsistencies." +
         "\r\n ver4.345(2018/10/29) Fixed a minor bug." +
         "\r\n ver4.344(2018/10/21) Renewed libraries." +
         "\r\n ver4.343(2018/02/21) Fixed a minor bug." +

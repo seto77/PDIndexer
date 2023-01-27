@@ -57,86 +57,281 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="buttonExecute.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonExecute.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 1</value>
+  </data>
   <data name="buttonExecute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 27</value>
+    <value>50, 26</value>
   </data>
   <data name="buttonExecute.Text" xml:space="preserve">
     <value>実行</value>
   </data>
+  <data name="textBox2theta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 257</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="checkBoxAutoSaveTwoTheta.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 21</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
+    <value>Auto save</value>
+  </data>
+  <data name="tabPage2theta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 278</value>
+  </data>
   <data name="textBoxDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveD.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 21</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="tabPageDspacing.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="tabPageDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 278</value>
   </data>
   <data name="textBoxFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 21</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="tabPageFWHM.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="tabPageFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 278</value>
   </data>
   <data name="textBoxIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 21</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="tabPageIntensity.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="tabPageIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 278</value>
   </data>
   <data name="textBoxCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 21</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="tabPageCellConstants.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="tabPageCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 278</value>
   </data>
   <data name="textBoxPressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 257</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>734, 21</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="tabPagePressure.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 278</value>
   </data>
   <data name="textBoxResults.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 273</value>
+    <value>481, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 257</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>481, 21</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="graphControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>253, 273</value>
+    <value>253, 278</value>
   </data>
   <data name="tabPageSingh.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 26</value>
   </data>
   <data name="tabPageSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 273</value>
+    <value>734, 278</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 28</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>742, 308</value>
+  </data>
+  <data name="buttonCopy.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
   </data>
   <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>57, 3</value>
+    <value>50, 1</value>
   </data>
   <data name="buttonCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 27</value>
+    <value>54, 26</value>
   </data>
   <data name="buttonCopy.Text" xml:space="preserve">
     <value>コピー</value>
   </data>
+  <data name="buttonSave.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
   <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>117, 3</value>
+    <value>104, 1</value>
   </data>
   <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 27</value>
+    <value>50, 26</value>
   </data>
   <data name="buttonSave.Text" xml:space="preserve">
     <value>保存</value>
+  </data>
+  <data name="textBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="textBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>214, 25</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 3, 0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 20</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Directory to be saved</value>
+  </data>
+  <data name="buttonSetDirectory.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonSetDirectory.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonSetDirectory.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="buttonSetDirectory.Size" type="System.Drawing.Size, System.Drawing">
+    <value>36, 26</value>
+  </data>
+  <data name="buttonSetDirectory.Text" xml:space="preserve">
+    <value>Set</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>742, 28</value>
   </data>
 </root>

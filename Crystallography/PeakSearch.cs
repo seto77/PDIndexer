@@ -1,11 +1,9 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
-using System.Buffers;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Numerics;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Crystallography
 {
@@ -37,14 +35,14 @@ namespace Crystallography
         public double m;
         public double range;
         public double Residual;
-
+        public bool Success = true;
         public int GroupIndex;
         public Color Color;
 
         /// <summary>
         /// Fitting時に、PeakTop(X値)を探すか。falseの場合は、初期X値をそのまま使う
         /// </summary>
-        public bool SerchPeakTop = false;
+        public bool SearchPeakTop { get; set; } = false;
 
         public int CompareTo(object o)
         {
@@ -88,16 +86,12 @@ namespace Crystallography
 
         public int GetParamNumber()
         {
-            if (Option == PeakFunctionForm.PseudoVoigt)
-                return 4;
-            else if (Option == PeakFunctionForm.Peason)
-                return 4;
-            else if (Option == PeakFunctionForm.SplitPseudoVoigt)
-                return 6;
-            else if (Option == PeakFunctionForm.SplitPearson)
-                return 6;
-            else
-                return int.MinValue;
+            return Option switch
+            {
+                PeakFunctionForm.PseudoVoigt or PeakFunctionForm.Peason => 4,
+                PeakFunctionForm.SplitPseudoVoigt or PeakFunctionForm.SplitPearson => 6,
+                _ => int.MinValue
+            };
         }
 
         public void RenewParameter()
@@ -114,18 +108,14 @@ namespace Crystallography
         {
             if (IsNewParamNeeded)
                 RenewParameter();
-            double y = 0;
-
-            if (Option == PeakFunctionForm.PseudoVoigt)
-                y = PseudoVoigt(x);
-            else if (Option == PeakFunctionForm.Peason)
-                y = PeasonIV(x);
-            else if (Option == PeakFunctionForm.SplitPseudoVoigt)
-                y = SplitPseudoVoigt(x);
-            else if (Option == PeakFunctionForm.SplitPearson)
-                y = SplitPearsonIV(x);
-            else
-                y = 0;
+            var y = Option switch
+            {
+                PeakFunctionForm.PseudoVoigt => PseudoVoigt(x),
+                PeakFunctionForm.Peason => PeasonIV(x),
+                PeakFunctionForm.SplitPseudoVoigt => SplitPseudoVoigt(x),
+                PeakFunctionForm.SplitPearson => SplitPearsonIV(x),
+                _ => 0
+            };
 
             if (withBackground)
                 y += B1 + B2 * (x - X);
@@ -137,16 +127,14 @@ namespace Crystallography
             if (IsNewParamNeeded)
                 RenewParameter();
 
-            if (Option == PeakFunctionForm.PseudoVoigt)
-                return differentialPseudoVoigt(x);
-            else if (Option == PeakFunctionForm.Peason)
-                return differectialPeasonIV(x);
-            else if (Option == PeakFunctionForm.SplitPseudoVoigt)
-                return differentialSplitPseudoVoigt(x);
-            else if (Option == PeakFunctionForm.SplitPearson)
-                return differectialSplitPeasonIV(x);
-            else
-                return null;
+            return Option switch
+            {
+                PeakFunctionForm.PseudoVoigt => differentialPseudoVoigt(x),
+                PeakFunctionForm.Peason => differectialPeasonIV(x),
+                PeakFunctionForm.SplitPseudoVoigt => differentialSplitPseudoVoigt(x),
+                PeakFunctionForm.SplitPearson => differentialSplitPearsonIV(x),
+                _ => null
+            };
         }
 
         public double GetIntegral()
@@ -183,8 +171,8 @@ namespace Crystallography
         //Pseudo Voigt ここから
         private double PseudoVoigt(double x)
         {
-            var Fourx2PerHk2 = 4 * (x - X) * (x - X) / Hk / Hk;
-            return Int * ((eta / Math.PI / (1 + Fourx2PerHk2) + (1 - eta) * SqrtLn2PerPI * Math.Exp(-Ln2 * Fourx2PerHk2)) * 2 / Hk);
+            var fourx2PerHk2 = 4 * (x - X) * (x - X) / Hk / Hk;
+            return Int * ((eta / Math.PI / (1 + fourx2PerHk2) + (1 - eta) * SqrtLn2PerPI * Math.Exp(-Ln2 * fourx2PerHk2)) * 2 / Hk);
         }
 
         private double[] differentialPseudoVoigt(double x)
@@ -208,8 +196,9 @@ namespace Crystallography
         //Split Pseudo Voigt ここから
         private void RenewParamSplitPseudoVoigt()
         {
-            Z1 = 1 / Math.Exp(A) + 1;
-            Z2 = Math.Exp(A) + 1;
+            var exp = Math.Exp(A);
+            Z1 = 1 / exp + 1;
+            Z2 = exp + 1;
             a1 = etaL - 1;
             a2 = etaH - 1;
             a3 = a1 * SqrtLn2PI;
@@ -312,8 +301,9 @@ namespace Crystallography
         //Split Pearson VII ここから
         private void RenewParamSplitPearsonIV()
         {
-            Z1 = 1 / Math.Exp(A) + 1;
-            Z2 = Math.Exp(A) + 1;
+            var exp = Math.Exp(A);
+            Z1 = 1 / exp + 1;
+            Z2 = exp + 1;
             a1 = Math.Pow(2, 1 / Rl);
             a2 = Math.Pow(2, 1 / Rh);
             a3 = a1 - 1;
@@ -334,7 +324,7 @@ namespace Crystallography
                 return Int * Math.Pow(1 + a7 * b1 * b1 * Z2 * Z2, -Rh);
         }
 
-        private double[] differectialSplitPeasonIV(double x)
+        private double[] differentialSplitPearsonIV(double x)
         {
             b1 = x - X;
             double[] d = new double[6];
@@ -425,10 +415,25 @@ namespace Crystallography
 
             MathNet.Numerics.Control.TryUseNativeMKL();
 
+            var _prms = prms;
+            double Failed()//失敗した時に呼び出すローカル関数. パラメータにNaNを代入してから無限大を返す。　
+            {
+                foreach(var p in _prms)
+                {
+                    p.X = double.NaN;
+                    p.intensity = double.NaN;
+                    p.Hk = double.NaN;
+                }
+                return double.PositiveInfinity;
+            }
+
+            foreach (var p in prms)//一旦、全てSuccessをfalseにする。最後まで行ったらTrueにする。
+                p.Success = false;
+
             if (prms.Length == 0)
-                return double.PositiveInfinity;
+                return Failed();
             if (_pt == null || _pt.Count < 3)
-                return double.PositiveInfinity;
+                return Failed();
 
             //まずここからプロファイルをとる領域や強度ななどの情報を集める
             var pt = new List<(double X, double Y)>();
@@ -450,7 +455,7 @@ namespace Crystallography
 
             //p[i].SerchPeakTop
             for (int i = 0; i < prms.Length; i++)
-                if (prms[i].SerchPeakTop)
+                if (prms[i].SearchPeakTop)
                 {
                     var max = double.NegativeInfinity;
                     double tempX = 0;
@@ -476,7 +481,7 @@ namespace Crystallography
             {
                 for (int i = 0; i < prms.Length; i++)
                     prms[i].X = prms[i].Int = double.NaN;
-                return double.PositiveInfinity;
+                return Failed();
             }
             int length = pt.Count;
 
@@ -491,12 +496,12 @@ namespace Crystallography
                     prms[i].X = double.NaN;
                     prms[i].Int = double.NaN;
                 }
-                return double.PositiveInfinity;
+                return Failed();
             }
 
             var diff = new double[ParamNum + 2, length];
             var Alpha = new DenseMatrix(ParamNum + 2, ParamNum + 2);
-            var Beta = new DenseMatrix(ParamNum + 2, 1);
+            var Beta = new DenseVector(ParamNum + 2);
 
             var pCurrent = new PeakFunction[prms.Length];
             var pNew = new PeakFunction[prms.Length];
@@ -631,9 +636,9 @@ namespace Crystallography
                             if (i == j)
                                 Alpha[i, j] *= (1 + ramda);
                         }
-                        Beta[i, 0] = 0;
+                        Beta[i] = 0;
                         for (int k = 0; k < length; k++)
-                            Beta[i, 0] += ResidualCurrent[k] * diff[i, k];
+                            Beta[i] += ResidualCurrent[k] * diff[i, k];
                     }
                     //行列Alpha、Beta、ここまで
 
@@ -643,7 +648,7 @@ namespace Crystallography
                     {
                         for (int i = 0; i < prms.Length; i++)
                             prms[i].X = prms[i].Int = double.NaN;
-                        return double.PositiveInfinity;
+                        return Failed();
                     }
 
                     var delta = alphaInv.Multiply(Beta);
@@ -656,10 +661,10 @@ namespace Crystallography
                         pNew[j] = pCurrent[j].Copy();
                         if (prms[j].Option == PeakFunctionForm.PseudoVoigt)//PseudoVoigt:      Int, Eta, Hk, X ;
                         {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].eta = pCurrent[j].eta + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
+                            pNew[j].Int = pCurrent[j].Int + delta[n++];
+                            pNew[j].eta = pCurrent[j].eta + delta[n++];
+                            pNew[j].Hk = pCurrent[j].Hk + delta[n++];
+                            pNew[j].X = pCurrent[j].X + delta[n++];
 
                             if (pNew[j].eta < 0)
                                 pNew[j].eta = 0;
@@ -668,22 +673,22 @@ namespace Crystallography
                         }
                         else if (prms[j].Option == PeakFunctionForm.Peason)//PearsonVII:       Int, Hk,  m,  X
                         {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].m = pCurrent[j].m + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
+                            pNew[j].Int = pCurrent[j].Int + delta[n++];
+                            pNew[j].Hk = pCurrent[j].Hk + delta[n++];
+                            pNew[j].m = pCurrent[j].m + delta[n++];
+                            pNew[j].X = pCurrent[j].X + delta[n++];
 
                             if (pNew[j].m <= 0.5 || pNew[j].m >= 10)
                                 flag = false;
                         }
                         else if (prms[j].Option == PeakFunctionForm.SplitPseudoVoigt)//SplitPseudoVoigt:  Int, Hk,  A,  etaL , etaH, X
                         {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].A = pCurrent[j].A + delta[n++, 0];
-                            pNew[j].etaL = pCurrent[j].etaL + delta[n++, 0];
-                            pNew[j].etaH = pCurrent[j].etaH + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
+                            pNew[j].Int = pCurrent[j].Int + delta[n++];
+                            pNew[j].Hk = pCurrent[j].Hk + delta[n++];
+                            pNew[j].A = pCurrent[j].A + delta[n++];
+                            pNew[j].etaL = pCurrent[j].etaL + delta[n++];
+                            pNew[j].etaH = pCurrent[j].etaH + delta[n++];
+                            pNew[j].X = pCurrent[j].X + delta[n++];
                             if (pNew[j].etaL < 0 || pNew[j].etaL > 1)
                                 flag = false;
                             if (pNew[j].etaH < 0 || pNew[j].etaH > 1)
@@ -693,12 +698,12 @@ namespace Crystallography
                         }
                         else if (prms[j].Option == PeakFunctionForm.SplitPearson)//SplitPearsonVII:  Int, Hk,  A,  Rl , Rh, X
                         {
-                            pNew[j].Int = pCurrent[j].Int + delta[n++, 0];
-                            pNew[j].Hk = pCurrent[j].Hk + delta[n++, 0];
-                            pNew[j].A = pCurrent[j].A + delta[n++, 0];
-                            pNew[j].Rl = pCurrent[j].Rl + delta[n++, 0];
-                            pNew[j].Rh = pCurrent[j].Rh + delta[n++, 0];
-                            pNew[j].X = pCurrent[j].X + delta[n++, 0];
+                            pNew[j].Int = pCurrent[j].Int + delta[n++];
+                            pNew[j].Hk = pCurrent[j].Hk + delta[n++];
+                            pNew[j].A = pCurrent[j].A + delta[n++];
+                            pNew[j].Rl = pCurrent[j].Rl + delta[n++];
+                            pNew[j].Rh = pCurrent[j].Rh + delta[n++];
+                            pNew[j].X = pCurrent[j].X + delta[n++];
                             if (pNew[j].Rl <= 0.5 || pNew[j].Rl >= 10)
                                 flag = false;
                             if (pNew[j].Rh <= 0.5 || pNew[j].Rh >= 10)
@@ -715,8 +720,8 @@ namespace Crystallography
                             if (pNew[j].X - prms[j].X > prms[j].range / 8 || pNew[j].X - prms[j].X < -prms[j].range / 8)
                                 pNew[j].X = pCurrent[j].X;
                     }
-                    B1_New = B1 + delta[ParamNum, 0];
-                    B2_New = B2 + delta[ParamNum + 1, 0];
+                    B1_New = B1 + delta[ParamNum];
+                    B2_New = B2 + delta[ParamNum + 1];
 
                     //あたらしいパラメータでの残差を計算
                     if (flag)
@@ -782,7 +787,7 @@ namespace Crystallography
                     {
                         for (int i = 0; i < prms.Length; i++)
                             prms[i].X = prms[i].Int = double.NaN;
-                        return double.PositiveInfinity;
+                        return Failed();
                     }
                     //一番ましな初期値でやり直す
                     startInitial = bestInitial - 1;
@@ -855,6 +860,9 @@ namespace Crystallography
                 return true;
             else
                 return false;*/
+            foreach (var p in prms)//ここまで来れたら、全てSuccessをtrueにする。
+                p.Success = true;
+
             return bestResidual;
         }
 
