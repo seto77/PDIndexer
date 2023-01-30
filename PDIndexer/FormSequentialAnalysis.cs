@@ -108,11 +108,17 @@ public partial class FormSequentialAnalysis : Form
             formMain.toolStripButtonEquationOfState.Checked = true;
         }
 
-        int initialPosition = stressMode ? 1 : formMain.bindingSourceProfile.Position;
-        if (checkBoxStartNumber.Checked && !(stressMode && numericBoxStartNumber.ValueInteger == 0))
-            initialPosition = numericBoxStartNumber.ValueInteger;
-
         var total = formMain.dataSet.DataTableProfile.Items.Count;
+
+        var targetList=new List<int>();
+        for (int i = checkBoxStartNumber.Checked ? numericBoxStartNumber.ValueInteger : 0; i < total; i++)
+            targetList.Add(i);
+        if (checkBoxStartNumber.Checked && checkBoxLoop.Checked)
+            targetList.AddRange(Enumerable.Range(0, numericBoxStartNumber.ValueInteger));
+        if (stressMode)
+            targetList.Remove(0);
+
+        var initialPosition = formMain.bindingSourceProfile.Position;
 
         //現在のプロファイルチェック状況を保存後、全てチェック外す
         var checkStates = new List<bool>();
@@ -123,7 +129,7 @@ public partial class FormSequentialAnalysis : Form
         formMain.Enabled = false;
 
         //ここから、メインのループ
-        for (int i = initialPosition; i < total; i++)
+        foreach (var i in targetList)
         {
             formMain.SkipDrawing = true;//メイン画面の描画をキャンセル
             formMain.bindingSourceProfile.Position = i;
@@ -267,8 +273,7 @@ public partial class FormSequentialAnalysis : Form
             !checkBoxAutoSavePressure.Checked &&
             !checkBoxAutoSaveSingh.Checked &&
             !checkBoxAutoSaveTwoTheta.Checked)
-            return;
-
+            return;//何もチェックされていなかったら終了
 
         if (!Path.Exists(textBoxDirectory.Text))
         {
@@ -551,6 +556,7 @@ public partial class FormSequentialAnalysis : Form
     private void checkBoxStartNumber_CheckedChanged(object sender, EventArgs e)
     {
         numericBoxStartNumber.ReadOnly = !checkBoxStartNumber.Checked;
+        checkBoxLoop.Enabled = checkBoxStartNumber.Checked;
     }
     #endregion
 }

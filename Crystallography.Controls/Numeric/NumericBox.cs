@@ -572,7 +572,7 @@ public partial class NumericBox : UserControl
 
     private static string separateThousands(string valueString)
     {
-        char decimalPoint = '.';
+        var decimalPoint = '.';
         if (valueString.Contains(','))
             decimalPoint = ',';
 
@@ -686,8 +686,5 @@ public partial class NumericBox : UserControl
         }
     }
 
-    private void textBox_Enter(object sender, EventArgs e)
-    {
-        textBox.SelectAll();
-    }
+    private void textBox_Enter(object sender, EventArgs e) => textBox.SelectAll();
 }
