@@ -29,286 +29,357 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSequentialAnalysis));
-            buttonExecute = new System.Windows.Forms.Button();
-            textBox2theta = new System.Windows.Forms.TextBox();
-            tabControl = new System.Windows.Forms.TabControl();
-            tabPage2theta = new System.Windows.Forms.TabPage();
-            checkBoxAutoSaveTwoTheta = new System.Windows.Forms.CheckBox();
-            tabPageDspacing = new System.Windows.Forms.TabPage();
-            textBoxDspacing = new System.Windows.Forms.TextBox();
-            checkBoxAutoSaveD = new System.Windows.Forms.CheckBox();
-            tabPageFWHM = new System.Windows.Forms.TabPage();
-            textBoxFWHM = new System.Windows.Forms.TextBox();
-            checkBoxAutoSaveFWHM = new System.Windows.Forms.CheckBox();
-            tabPageIntensity = new System.Windows.Forms.TabPage();
-            textBoxIntensity = new System.Windows.Forms.TextBox();
-            checkBoxAutoSaveInt = new System.Windows.Forms.CheckBox();
-            tabPageCellConstants = new System.Windows.Forms.TabPage();
-            textBoxCellConstants = new System.Windows.Forms.TextBox();
-            checkBoxAutoSaveCell = new System.Windows.Forms.CheckBox();
-            tabPagePressure = new System.Windows.Forms.TabPage();
-            textBoxPressure = new System.Windows.Forms.TextBox();
-            checkBoxAutoSavePressure = new System.Windows.Forms.CheckBox();
-            tabPageSingh = new System.Windows.Forms.TabPage();
-            textBoxSingh = new System.Windows.Forms.TextBox();
-            checkBoxAutoSaveSingh = new System.Windows.Forms.CheckBox();
-            statusStrip1 = new System.Windows.Forms.StatusStrip();
-            toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            buttonCopy = new System.Windows.Forms.Button();
-            buttonSave = new System.Windows.Forms.Button();
-            textBoxDirectory = new System.Windows.Forms.TextBox();
-            panel1 = new System.Windows.Forms.Panel();
-            label1 = new System.Windows.Forms.Label();
-            buttonSetDirectory = new System.Windows.Forms.Button();
-            tabControl.SuspendLayout();
-            tabPage2theta.SuspendLayout();
-            tabPageDspacing.SuspendLayout();
-            tabPageFWHM.SuspendLayout();
-            tabPageIntensity.SuspendLayout();
-            tabPageCellConstants.SuspendLayout();
-            tabPagePressure.SuspendLayout();
-            tabPageSingh.SuspendLayout();
-            statusStrip1.SuspendLayout();
-            panel1.SuspendLayout();
-            SuspendLayout();
+            this.buttonExecute = new System.Windows.Forms.Button();
+            this.textBox2theta = new System.Windows.Forms.TextBox();
+            this.tabControl = new System.Windows.Forms.TabControl();
+            this.tabPage2theta = new System.Windows.Forms.TabPage();
+            this.checkBoxAutoSaveTwoTheta = new System.Windows.Forms.CheckBox();
+            this.tabPageDspacing = new System.Windows.Forms.TabPage();
+            this.textBoxDspacing = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoSaveD = new System.Windows.Forms.CheckBox();
+            this.tabPageFWHM = new System.Windows.Forms.TabPage();
+            this.textBoxFWHM = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoSaveFWHM = new System.Windows.Forms.CheckBox();
+            this.tabPageIntensity = new System.Windows.Forms.TabPage();
+            this.textBoxIntensity = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoSaveInt = new System.Windows.Forms.CheckBox();
+            this.tabPageCellConstants = new System.Windows.Forms.TabPage();
+            this.textBoxCellConstants = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoSaveCell = new System.Windows.Forms.CheckBox();
+            this.tabPagePressure = new System.Windows.Forms.TabPage();
+            this.textBoxPressure = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoSavePressure = new System.Windows.Forms.CheckBox();
+            this.tabPageSingh = new System.Windows.Forms.TabPage();
+            this.textBoxSingh = new System.Windows.Forms.TextBox();
+            this.checkBoxAutoSaveSingh = new System.Windows.Forms.CheckBox();
+            this.graphControl1 = new Crystallography.Controls.GraphControl();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonCopy = new System.Windows.Forms.Button();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.textBoxDirectory = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.numericBoxStartNumber = new Crystallography.Controls.NumericBox();
+            this.checkBoxStartNumber = new System.Windows.Forms.CheckBox();
+            this.buttonSetDirectory = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabControl.SuspendLayout();
+            this.tabPage2theta.SuspendLayout();
+            this.tabPageDspacing.SuspendLayout();
+            this.tabPageFWHM.SuspendLayout();
+            this.tabPageIntensity.SuspendLayout();
+            this.tabPageCellConstants.SuspendLayout();
+            this.tabPagePressure.SuspendLayout();
+            this.tabPageSingh.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.SuspendLayout();
             // 
             // buttonExecute
             // 
-            resources.ApplyResources(buttonExecute, "buttonExecute");
-            buttonExecute.Name = "buttonExecute";
-            buttonExecute.UseVisualStyleBackColor = true;
-            buttonExecute.Click += buttonExecute_Click;
+            resources.ApplyResources(this.buttonExecute, "buttonExecute");
+            this.buttonExecute.Name = "buttonExecute";
+            this.buttonExecute.UseVisualStyleBackColor = true;
+            this.buttonExecute.Click += new System.EventHandler(this.buttonExecute_Click);
             // 
             // textBox2theta
             // 
-            resources.ApplyResources(textBox2theta, "textBox2theta");
-            textBox2theta.Name = "textBox2theta";
+            resources.ApplyResources(this.textBox2theta, "textBox2theta");
+            this.textBox2theta.Name = "textBox2theta";
             // 
             // tabControl
             // 
-            resources.ApplyResources(tabControl, "tabControl");
-            tabControl.Controls.Add(tabPage2theta);
-            tabControl.Controls.Add(tabPageDspacing);
-            tabControl.Controls.Add(tabPageFWHM);
-            tabControl.Controls.Add(tabPageIntensity);
-            tabControl.Controls.Add(tabPageCellConstants);
-            tabControl.Controls.Add(tabPagePressure);
-            tabControl.Controls.Add(tabPageSingh);
-            tabControl.Name = "tabControl";
-            tabControl.SelectedIndex = 0;
+            this.tabControl.Controls.Add(this.tabPage2theta);
+            this.tabControl.Controls.Add(this.tabPageDspacing);
+            this.tabControl.Controls.Add(this.tabPageFWHM);
+            this.tabControl.Controls.Add(this.tabPageIntensity);
+            this.tabControl.Controls.Add(this.tabPageCellConstants);
+            this.tabControl.Controls.Add(this.tabPagePressure);
+            this.tabControl.Controls.Add(this.tabPageSingh);
+            resources.ApplyResources(this.tabControl, "tabControl");
+            this.tabControl.Name = "tabControl";
+            this.tabControl.SelectedIndex = 0;
             // 
             // tabPage2theta
             // 
-            resources.ApplyResources(tabPage2theta, "tabPage2theta");
-            tabPage2theta.Controls.Add(textBox2theta);
-            tabPage2theta.Controls.Add(checkBoxAutoSaveTwoTheta);
-            tabPage2theta.Name = "tabPage2theta";
-            tabPage2theta.UseVisualStyleBackColor = true;
+            this.tabPage2theta.Controls.Add(this.textBox2theta);
+            this.tabPage2theta.Controls.Add(this.checkBoxAutoSaveTwoTheta);
+            resources.ApplyResources(this.tabPage2theta, "tabPage2theta");
+            this.tabPage2theta.Name = "tabPage2theta";
+            this.tabPage2theta.UseVisualStyleBackColor = true;
             // 
             // checkBoxAutoSaveTwoTheta
             // 
-            resources.ApplyResources(checkBoxAutoSaveTwoTheta, "checkBoxAutoSaveTwoTheta");
-            checkBoxAutoSaveTwoTheta.Name = "checkBoxAutoSaveTwoTheta";
-            checkBoxAutoSaveTwoTheta.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSaveTwoTheta, "checkBoxAutoSaveTwoTheta");
+            this.checkBoxAutoSaveTwoTheta.Name = "checkBoxAutoSaveTwoTheta";
+            this.checkBoxAutoSaveTwoTheta.UseVisualStyleBackColor = true;
             // 
             // tabPageDspacing
             // 
-            resources.ApplyResources(tabPageDspacing, "tabPageDspacing");
-            tabPageDspacing.Controls.Add(textBoxDspacing);
-            tabPageDspacing.Controls.Add(checkBoxAutoSaveD);
-            tabPageDspacing.Name = "tabPageDspacing";
-            tabPageDspacing.UseVisualStyleBackColor = true;
+            this.tabPageDspacing.Controls.Add(this.textBoxDspacing);
+            this.tabPageDspacing.Controls.Add(this.checkBoxAutoSaveD);
+            resources.ApplyResources(this.tabPageDspacing, "tabPageDspacing");
+            this.tabPageDspacing.Name = "tabPageDspacing";
+            this.tabPageDspacing.UseVisualStyleBackColor = true;
             // 
             // textBoxDspacing
             // 
-            resources.ApplyResources(textBoxDspacing, "textBoxDspacing");
-            textBoxDspacing.Name = "textBoxDspacing";
+            resources.ApplyResources(this.textBoxDspacing, "textBoxDspacing");
+            this.textBoxDspacing.Name = "textBoxDspacing";
             // 
             // checkBoxAutoSaveD
             // 
-            resources.ApplyResources(checkBoxAutoSaveD, "checkBoxAutoSaveD");
-            checkBoxAutoSaveD.Name = "checkBoxAutoSaveD";
-            checkBoxAutoSaveD.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSaveD, "checkBoxAutoSaveD");
+            this.checkBoxAutoSaveD.Name = "checkBoxAutoSaveD";
+            this.checkBoxAutoSaveD.UseVisualStyleBackColor = true;
             // 
             // tabPageFWHM
             // 
-            resources.ApplyResources(tabPageFWHM, "tabPageFWHM");
-            tabPageFWHM.Controls.Add(textBoxFWHM);
-            tabPageFWHM.Controls.Add(checkBoxAutoSaveFWHM);
-            tabPageFWHM.Name = "tabPageFWHM";
-            tabPageFWHM.UseVisualStyleBackColor = true;
+            this.tabPageFWHM.Controls.Add(this.textBoxFWHM);
+            this.tabPageFWHM.Controls.Add(this.checkBoxAutoSaveFWHM);
+            resources.ApplyResources(this.tabPageFWHM, "tabPageFWHM");
+            this.tabPageFWHM.Name = "tabPageFWHM";
+            this.tabPageFWHM.UseVisualStyleBackColor = true;
             // 
             // textBoxFWHM
             // 
-            resources.ApplyResources(textBoxFWHM, "textBoxFWHM");
-            textBoxFWHM.Name = "textBoxFWHM";
+            resources.ApplyResources(this.textBoxFWHM, "textBoxFWHM");
+            this.textBoxFWHM.Name = "textBoxFWHM";
             // 
             // checkBoxAutoSaveFWHM
             // 
-            resources.ApplyResources(checkBoxAutoSaveFWHM, "checkBoxAutoSaveFWHM");
-            checkBoxAutoSaveFWHM.Name = "checkBoxAutoSaveFWHM";
-            checkBoxAutoSaveFWHM.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSaveFWHM, "checkBoxAutoSaveFWHM");
+            this.checkBoxAutoSaveFWHM.Name = "checkBoxAutoSaveFWHM";
+            this.checkBoxAutoSaveFWHM.UseVisualStyleBackColor = true;
             // 
             // tabPageIntensity
             // 
-            resources.ApplyResources(tabPageIntensity, "tabPageIntensity");
-            tabPageIntensity.Controls.Add(textBoxIntensity);
-            tabPageIntensity.Controls.Add(checkBoxAutoSaveInt);
-            tabPageIntensity.Name = "tabPageIntensity";
-            tabPageIntensity.UseVisualStyleBackColor = true;
+            this.tabPageIntensity.Controls.Add(this.textBoxIntensity);
+            this.tabPageIntensity.Controls.Add(this.checkBoxAutoSaveInt);
+            resources.ApplyResources(this.tabPageIntensity, "tabPageIntensity");
+            this.tabPageIntensity.Name = "tabPageIntensity";
+            this.tabPageIntensity.UseVisualStyleBackColor = true;
             // 
             // textBoxIntensity
             // 
-            resources.ApplyResources(textBoxIntensity, "textBoxIntensity");
-            textBoxIntensity.Name = "textBoxIntensity";
+            resources.ApplyResources(this.textBoxIntensity, "textBoxIntensity");
+            this.textBoxIntensity.Name = "textBoxIntensity";
             // 
             // checkBoxAutoSaveInt
             // 
-            resources.ApplyResources(checkBoxAutoSaveInt, "checkBoxAutoSaveInt");
-            checkBoxAutoSaveInt.Name = "checkBoxAutoSaveInt";
-            checkBoxAutoSaveInt.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSaveInt, "checkBoxAutoSaveInt");
+            this.checkBoxAutoSaveInt.Name = "checkBoxAutoSaveInt";
+            this.checkBoxAutoSaveInt.UseVisualStyleBackColor = true;
             // 
             // tabPageCellConstants
             // 
-            resources.ApplyResources(tabPageCellConstants, "tabPageCellConstants");
-            tabPageCellConstants.Controls.Add(textBoxCellConstants);
-            tabPageCellConstants.Controls.Add(checkBoxAutoSaveCell);
-            tabPageCellConstants.Name = "tabPageCellConstants";
-            tabPageCellConstants.UseVisualStyleBackColor = true;
+            this.tabPageCellConstants.Controls.Add(this.textBoxCellConstants);
+            this.tabPageCellConstants.Controls.Add(this.checkBoxAutoSaveCell);
+            resources.ApplyResources(this.tabPageCellConstants, "tabPageCellConstants");
+            this.tabPageCellConstants.Name = "tabPageCellConstants";
+            this.tabPageCellConstants.UseVisualStyleBackColor = true;
             // 
             // textBoxCellConstants
             // 
-            resources.ApplyResources(textBoxCellConstants, "textBoxCellConstants");
-            textBoxCellConstants.Name = "textBoxCellConstants";
+            resources.ApplyResources(this.textBoxCellConstants, "textBoxCellConstants");
+            this.textBoxCellConstants.Name = "textBoxCellConstants";
             // 
             // checkBoxAutoSaveCell
             // 
-            resources.ApplyResources(checkBoxAutoSaveCell, "checkBoxAutoSaveCell");
-            checkBoxAutoSaveCell.Name = "checkBoxAutoSaveCell";
-            checkBoxAutoSaveCell.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSaveCell, "checkBoxAutoSaveCell");
+            this.checkBoxAutoSaveCell.Name = "checkBoxAutoSaveCell";
+            this.checkBoxAutoSaveCell.UseVisualStyleBackColor = true;
             // 
             // tabPagePressure
             // 
-            resources.ApplyResources(tabPagePressure, "tabPagePressure");
-            tabPagePressure.Controls.Add(textBoxPressure);
-            tabPagePressure.Controls.Add(checkBoxAutoSavePressure);
-            tabPagePressure.Name = "tabPagePressure";
-            tabPagePressure.UseVisualStyleBackColor = true;
+            this.tabPagePressure.Controls.Add(this.textBoxPressure);
+            this.tabPagePressure.Controls.Add(this.checkBoxAutoSavePressure);
+            resources.ApplyResources(this.tabPagePressure, "tabPagePressure");
+            this.tabPagePressure.Name = "tabPagePressure";
+            this.tabPagePressure.UseVisualStyleBackColor = true;
             // 
             // textBoxPressure
             // 
-            resources.ApplyResources(textBoxPressure, "textBoxPressure");
-            textBoxPressure.Name = "textBoxPressure";
+            resources.ApplyResources(this.textBoxPressure, "textBoxPressure");
+            this.textBoxPressure.Name = "textBoxPressure";
             // 
             // checkBoxAutoSavePressure
             // 
-            resources.ApplyResources(checkBoxAutoSavePressure, "checkBoxAutoSavePressure");
-            checkBoxAutoSavePressure.Name = "checkBoxAutoSavePressure";
-            checkBoxAutoSavePressure.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSavePressure, "checkBoxAutoSavePressure");
+            this.checkBoxAutoSavePressure.Name = "checkBoxAutoSavePressure";
+            this.checkBoxAutoSavePressure.UseVisualStyleBackColor = true;
             // 
             // tabPageSingh
             // 
-            resources.ApplyResources(tabPageSingh, "tabPageSingh");
-            tabPageSingh.Controls.Add(textBoxSingh);
-            tabPageSingh.Controls.Add(checkBoxAutoSaveSingh);
-            tabPageSingh.Name = "tabPageSingh";
-            tabPageSingh.UseVisualStyleBackColor = true;
+            this.tabPageSingh.Controls.Add(this.textBoxSingh);
+            this.tabPageSingh.Controls.Add(this.checkBoxAutoSaveSingh);
+            this.tabPageSingh.Controls.Add(this.graphControl1);
+            resources.ApplyResources(this.tabPageSingh, "tabPageSingh");
+            this.tabPageSingh.Name = "tabPageSingh";
+            this.tabPageSingh.UseVisualStyleBackColor = true;
             // 
             // textBoxSingh
             // 
-            resources.ApplyResources(textBoxSingh, "textBoxSingh");
-            textBoxSingh.Name = "textBoxSingh";
+            resources.ApplyResources(this.textBoxSingh, "textBoxSingh");
+            this.textBoxSingh.Name = "textBoxSingh";
             // 
             // checkBoxAutoSaveSingh
             // 
-            resources.ApplyResources(checkBoxAutoSaveSingh, "checkBoxAutoSaveSingh");
-            checkBoxAutoSaveSingh.Name = "checkBoxAutoSaveSingh";
-            checkBoxAutoSaveSingh.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.checkBoxAutoSaveSingh, "checkBoxAutoSaveSingh");
+            this.checkBoxAutoSaveSingh.Name = "checkBoxAutoSaveSingh";
+            this.checkBoxAutoSaveSingh.UseVisualStyleBackColor = true;
+            // 
+            // graphControl1
+            // 
+            this.graphControl1.AllowMouseOperation = true;
+            this.graphControl1.BackgroundColor = System.Drawing.Color.White;
+            this.graphControl1.BottomMargin = 0D;
+            this.graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
+            this.graphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.graphControl1, "graphControl1");
+            this.graphControl1.FixRangeHorizontal = false;
+            this.graphControl1.FixRangeVertical = false;
+            this.graphControl1.GraphName = "";
+            this.graphControl1.HorizontalGradiationTextVisivle = true;
+            this.graphControl1.Interpolation = false;
+            this.graphControl1.IsIntegerX = false;
+            this.graphControl1.IsIntegerY = false;
+            this.graphControl1.LabelX = "X:";
+            this.graphControl1.LabelY = "Y:";
+            this.graphControl1.LeftMargin = 0F;
+            this.graphControl1.LineColor = System.Drawing.Color.Red;
+            this.graphControl1.LineWidth = 1F;
+            this.graphControl1.LowerX = 0D;
+            this.graphControl1.LowerY = 0D;
+            this.graphControl1.MaximalX = 1D;
+            this.graphControl1.MaximalY = 1D;
+            this.graphControl1.MinimalX = 0D;
+            this.graphControl1.MinimalY = 0D;
+            this.graphControl1.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
+            this.graphControl1.MousePositionVisible = true;
+            this.graphControl1.Name = "graphControl1";
+            this.graphControl1.OriginPosition = new System.Drawing.Point(40, 20);
+            this.graphControl1.Smoothing = false;
+            this.graphControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.graphControl1.UnitX = "";
+            this.graphControl1.UnitY = "";
+            this.graphControl1.UpperText = "";
+            this.graphControl1.UpperTextVisible = true;
+            this.graphControl1.UpperX = 1D;
+            this.graphControl1.UpperY = 1D;
+            this.graphControl1.UseLineWidth = true;
+            this.graphControl1.VerticalGradiationTextVisivle = true;
+            this.graphControl1.XLog = false;
+            this.graphControl1.XScaleLineVisible = true;
+            this.graphControl1.YLog = false;
+            this.graphControl1.YScaleLineVisible = true;
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(statusStrip1, "statusStrip1");
-            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
+            this.statusStrip1.Name = "statusStrip1";
             // 
             // toolStripStatusLabel1
             // 
-            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
-            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(this.toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
             // buttonCopy
             // 
-            resources.ApplyResources(buttonCopy, "buttonCopy");
-            buttonCopy.Name = "buttonCopy";
-            buttonCopy.UseVisualStyleBackColor = true;
-            buttonCopy.Click += buttonCopy_Click;
+            resources.ApplyResources(this.buttonCopy, "buttonCopy");
+            this.buttonCopy.Name = "buttonCopy";
+            this.buttonCopy.UseVisualStyleBackColor = true;
+            this.buttonCopy.Click += new System.EventHandler(this.buttonCopy_Click);
             // 
             // buttonSave
             // 
-            resources.ApplyResources(buttonSave, "buttonSave");
-            buttonSave.Name = "buttonSave";
-            buttonSave.UseVisualStyleBackColor = true;
-            buttonSave.Click += buttonSave_Click;
+            resources.ApplyResources(this.buttonSave, "buttonSave");
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // textBoxDirectory
             // 
-            resources.ApplyResources(textBoxDirectory, "textBoxDirectory");
-            textBoxDirectory.Name = "textBoxDirectory";
-            textBoxDirectory.ReadOnly = true;
+            resources.ApplyResources(this.textBoxDirectory, "textBoxDirectory");
+            this.textBoxDirectory.Name = "textBoxDirectory";
+            this.textBoxDirectory.ReadOnly = true;
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBoxDirectory);
-            panel1.Controls.Add(buttonSetDirectory);
-            panel1.Controls.Add(buttonSave);
-            panel1.Controls.Add(buttonCopy);
-            panel1.Controls.Add(buttonExecute);
-            panel1.Name = "panel1";
+            this.panel1.Controls.Add(this.numericBoxStartNumber);
+            this.panel1.Controls.Add(this.checkBoxStartNumber);
+            this.panel1.Controls.Add(this.textBoxDirectory);
+            this.panel1.Controls.Add(this.buttonSetDirectory);
+            this.panel1.Controls.Add(this.buttonSave);
+            this.panel1.Controls.Add(this.buttonCopy);
+            this.panel1.Controls.Add(this.buttonExecute);
+            this.panel1.Controls.Add(this.label1);
+            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Name = "panel1";
             // 
-            // label1
+            // numericBoxStartNumber
             // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
+            this.numericBoxStartNumber.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.numericBoxStartNumber, "numericBoxStartNumber");
+            this.numericBoxStartNumber.Minimum = 1D;
+            this.numericBoxStartNumber.Name = "numericBoxStartNumber";
+            this.numericBoxStartNumber.RadianValue = 0.017453292519943295D;
+            this.numericBoxStartNumber.RoundErrorAccuracy = -1;
+            this.numericBoxStartNumber.ShowUpDown = true;
+            this.numericBoxStartNumber.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxStartNumber.Value = 1D;
+            // 
+            // checkBoxStartNumber
+            // 
+            resources.ApplyResources(this.checkBoxStartNumber, "checkBoxStartNumber");
+            this.checkBoxStartNumber.Name = "checkBoxStartNumber";
+            this.checkBoxStartNumber.UseVisualStyleBackColor = true;
+            this.checkBoxStartNumber.CheckedChanged += new System.EventHandler(this.checkBoxStartNumber_CheckedChanged);
             // 
             // buttonSetDirectory
             // 
-            resources.ApplyResources(buttonSetDirectory, "buttonSetDirectory");
-            buttonSetDirectory.Name = "buttonSetDirectory";
-            buttonSetDirectory.UseVisualStyleBackColor = true;
-            buttonSetDirectory.Click += buttonSetDirectory_Click;
+            resources.ApplyResources(this.buttonSetDirectory, "buttonSetDirectory");
+            this.buttonSetDirectory.Name = "buttonSetDirectory";
+            this.buttonSetDirectory.UseVisualStyleBackColor = true;
+            this.buttonSetDirectory.Click += new System.EventHandler(this.buttonSetDirectory_Click);
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // FormSequentialAnalysis
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            Controls.Add(tabControl);
-            Controls.Add(panel1);
-            Controls.Add(statusStrip1);
-            Name = "FormSequentialAnalysis";
-            FormClosing += FormStressAnalysis_FormClosing;
-            tabControl.ResumeLayout(false);
-            tabPage2theta.ResumeLayout(false);
-            tabPage2theta.PerformLayout();
-            tabPageDspacing.ResumeLayout(false);
-            tabPageDspacing.PerformLayout();
-            tabPageFWHM.ResumeLayout(false);
-            tabPageFWHM.PerformLayout();
-            tabPageIntensity.ResumeLayout(false);
-            tabPageIntensity.PerformLayout();
-            tabPageCellConstants.ResumeLayout(false);
-            tabPageCellConstants.PerformLayout();
-            tabPagePressure.ResumeLayout(false);
-            tabPagePressure.PerformLayout();
-            tabPageSingh.ResumeLayout(false);
-            tabPageSingh.PerformLayout();
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.tabControl);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.statusStrip1);
+            this.Name = "FormSequentialAnalysis";
+            this.tabControl.ResumeLayout(false);
+            this.tabPage2theta.ResumeLayout(false);
+            this.tabPage2theta.PerformLayout();
+            this.tabPageDspacing.ResumeLayout(false);
+            this.tabPageDspacing.PerformLayout();
+            this.tabPageFWHM.ResumeLayout(false);
+            this.tabPageFWHM.PerformLayout();
+            this.tabPageIntensity.ResumeLayout(false);
+            this.tabPageIntensity.PerformLayout();
+            this.tabPageCellConstants.ResumeLayout(false);
+            this.tabPageCellConstants.PerformLayout();
+            this.tabPagePressure.ResumeLayout(false);
+            this.tabPagePressure.PerformLayout();
+            this.tabPageSingh.ResumeLayout(false);
+            this.tabPageSingh.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
 
         #endregion
@@ -347,5 +418,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSetDirectory;
+        private System.Windows.Forms.CheckBox checkBoxStartNumber;
+        private Crystallography.Controls.NumericBox numericBoxStartNumber;
     }
 }

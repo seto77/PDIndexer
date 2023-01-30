@@ -28,6 +28,7 @@ public partial class FormSequentialAnalysis : Form
     public FormSequentialAnalysis()
     {
         InitializeComponent();
+        numericBoxStartNumber.ReadOnly= true;
     }
 
     private void FormStressAnalysis_FormClosing(object sender, FormClosingEventArgs e)
@@ -108,6 +109,8 @@ public partial class FormSequentialAnalysis : Form
         }
 
         int initialPosition = stressMode ? 1 : formMain.bindingSourceProfile.Position;
+        if (checkBoxStartNumber.Checked && !(stressMode && numericBoxStartNumber.ValueInteger == 0))
+            initialPosition = numericBoxStartNumber.ValueInteger;
 
         var total = formMain.dataSet.DataTableProfile.Items.Count;
 
@@ -247,6 +250,7 @@ public partial class FormSequentialAnalysis : Form
 
         formMain.ChangeCrystalFromFitting();
 
+       
         AutoSave();
 
         toolStripStatusLabel1.Text = $"100 % Completed!  Elapsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
@@ -256,6 +260,16 @@ public partial class FormSequentialAnalysis : Form
     #region AutoSave
     public void AutoSave()
     {
+        if (!checkBoxAutoSaveCell.Checked &&
+            !checkBoxAutoSaveD.Checked &&
+            !checkBoxAutoSaveFWHM.Checked &&
+            !checkBoxAutoSaveInt.Checked &&
+            !checkBoxAutoSavePressure.Checked &&
+            !checkBoxAutoSaveSingh.Checked &&
+            !checkBoxAutoSaveTwoTheta.Checked)
+            return;
+
+
         if (!Path.Exists(textBoxDirectory.Text))
         {
             buttonSetDirectory_Click(new object(), new EventArgs());
@@ -529,8 +543,14 @@ public partial class FormSequentialAnalysis : Form
         return CSV ? txt.Replace('\t', ',') : txt;
     }
 
+
+
     #endregion
 
-
-
+    #region その他イベント
+    private void checkBoxStartNumber_CheckedChanged(object sender, EventArgs e)
+    {
+        numericBoxStartNumber.ReadOnly = !checkBoxStartNumber.Checked;
+    }
+    #endregion
 }

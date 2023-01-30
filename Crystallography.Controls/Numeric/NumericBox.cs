@@ -342,7 +342,7 @@ public partial class NumericBox : UserControl
     /// </summary>
     [DefaultValue(false)]
     [Category("Appearance properties")]
-    public bool ReadOnly { set { textBox.ReadOnly = value; } get => textBox.ReadOnly; }
+    public bool ReadOnly { set { textBox.ReadOnly = value; numericUpDown.Enabled = !value; } get => textBox.ReadOnly; }
 
     /// <summary>
     /// •¡”s•\¦‚ğ‚·‚é‚©‚Ç‚¤‚©
