@@ -35,18 +35,14 @@ public static class Geometriy
             Q[i, 3] = pt[i].X;
             Q[i, 4] = pt[i].Y;
         }
-        var A = new DenseMatrix(pt.Length, 1);
+        var A = new DenseVector(pt.Length);
         for (int i = 0; i < pt.Length; i++)
-            A[i, 0] = 1000000;
+            A[i] = 1000000;
         if (!(Q.Transpose() * Q).TryInverse(out Matrix<double> inv))
             return new PointD(double.NaN, double.NaN);
         var C = inv * Q.Transpose() * A;
 
-        double a = C[0, 0];
-        double b = C[1, 0];
-        double c = C[2, 0];
-        double d = C[3, 0];
-        double e = C[4, 0];
+        double a = C[0], b = C[1], c = C[2], d = C[3], e = C[4];
         //このときの平行移動量(つまり中心位置)は
         //return new PointD(-d / 2 / a, -e / 2 / c);
         return new PointD(-(b * e - 2 * c * d) / (b * b - 4 * a * c), -(b * d - 2 * a * e) / (b * b - 4 * a * c));
@@ -111,10 +107,8 @@ public static class Geometriy
         double Width, Height, Cos, Sin;
         //座標系は実空間(mm)で考える
         //a*x^2 + b*x*y + c*y^2 + d*x + e*y = 10000
-        double CosPhi = Math.Cos(phi);
-        double SinPhi = Math.Sin(phi);
-        double CosTau = Math.Cos(tau);
-        double SinTau = Math.Sin(tau);
+        double CosPhi = Math.Cos(phi), SinPhi = Math.Sin(phi);
+        double CosTau = Math.Cos(tau), SinTau = Math.Sin(tau);
         double a = 10000 * ((CosPhi * CosPhi + CosTau * CosTau * SinPhi * SinPhi) / R / R - SinPhi * SinPhi * SinTau * SinTau / FD / FD);
         double b = 10000 * 2 * (FD * FD + R * R) * SinPhi * CosPhi * SinTau * SinTau / R / R / FD / FD;
         double c = 10000 * ((CosPhi * CosPhi * CosTau * CosTau + SinPhi * SinPhi) / R / R - CosPhi * CosPhi * SinTau * SinTau / FD / FD);
@@ -225,15 +219,14 @@ public static class Geometriy
         double phi1, A;
         phi1 = A = 0;
         Statistics.LineFitting(EllipseCenter, ref phi1, ref A);
-        double CosPhi1 = Math.Cos(phi1);
-        double SinPhi1 = Math.Sin(phi1);
+        double CosPhi1 = Math.Cos(phi1), SinPhi1 = Math.Sin(phi1);
         bool xMode = Math.Abs(CosPhi1) > 1 / Math.Sqrt(2);
 
         //この直線上の点B(x,y)と、各CenterPtの距離Riとしたとき
         //δ^2= ( Ri - Cameralength * Tan(2θ)^2 *Sin(ψ) / pixelSize )^2　
         //が最小になるような点Bとψをさがす
 
-        double[] TheoriticalRperSinPsi = new double[EllipseCenter.Length];
+        //double[] TheoriticalRperSinPsi = new double[EllipseCenter.Length];
         double startTau1 = -Math.PI / 180;
         double stepTau1 = Math.PI / 9000;
         double endTau1 = Math.PI / 180;
@@ -366,14 +359,9 @@ public static class Geometriy
             phi = Math.Atan2(-Q.E31, Q.E32);
 
         bestResidual = double.PositiveInfinity;
-        double startPhi = phi - 0.1;
-        double endPhi = phi + 0.1;
-        double stepPhi = 0.01;
-        double startTau = tau - 0.01;
-        double endTau = tau + 0.01;
-        double stepTau = 0.001;
-        double bestPhi = phi;
-        double bestTau = tau;
+        double startPhi = phi - 0.1, endPhi = phi + 0.1, stepPhi = 0.01;
+        double startTau = tau - 0.01, endTau = tau + 0.01, stepTau = 0.001;
+        double bestPhi = phi, bestTau = tau;
         double temp;
         for (int n = 0; n < 30; n++)
         {
@@ -453,9 +441,9 @@ public static class Geometriy
         //B = - b /√(a) /√(4ac-b^2)
         //C = 2√(a) /√(4ac-b^2)
 
-        var tempPixX = new List<double>();
-        var tempPixY = new List<double>();
-        var tempKsi = new List<double>();
+        var tempPixX = new List<double>(ellipse.Length);
+        var tempPixY = new List<double>(ellipse.Length);
+        var tempKsi = new List<double>(ellipse.Length);
         double A, B, C;
         for (int i = 0; i < ellipse.Length; i++)
         {
@@ -664,10 +652,8 @@ public static class Geometriy
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3D GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2)
-    {
-        return GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));
-    }
+    public static Vector3D GetCrossPoint(in double a, in double b, in double c, in double d, Vector3D p1, Vector3D p2) 
+        => GetCrossPoint(a, b, c, d, new Vector3D(p1.X, p1.Y, p1.Z), new Vector3DBase(p2.X, p2.Y, p2.Z));
 
     /// <summary>
     /// 3次元において、平面 a x + b y + c z = d (法線ベクトル(a,b,c))と、点pt1とpt2を結ぶ直線と交わる交点を返す
@@ -795,8 +781,8 @@ public static class Geometriy
     private static PointD[] getCrossPoint(PointD p1, PointD p2, RectangleD rect)
     {
         //方程式は y= a x + b
-        double a = (p2.Y - p1.Y) / (p2.X - p1.X);
-        double b = p2.Y - a * p2.X;
+        var a = (p2.Y - p1.Y) / (p2.X - p1.X);
+        var b = p2.Y - a * p2.X;
 
         if (rect.IsInsde(p1))//p1が範囲内にあるとき
         {

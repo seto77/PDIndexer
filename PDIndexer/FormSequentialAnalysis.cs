@@ -79,7 +79,7 @@ public partial class FormSequentialAnalysis : Form
         }
 
         textBox2theta.Text = textBoxDspacing.Text = textBoxFWHM.Text = textBoxIntensity.Text = $"{text}\r\n";
-        textBoxCellConstants.Text = (stressMode ? "Degree" : "Profile Name") + "\tV\tV_err\tA\tA_err\tB\tB_err\tC\tC_err\tAlpha\tAlpha_err\tBeta\tBeta_err\tGamma\tGamma_err\r\n";
+        textBoxCellConstants.Text = $"{(stressMode ? "Degree" : "Profile Name")}\tV\tV_err\tA\tA_err\tB\tB_err\tC\tC_err\tAlpha\tAlpha_err\tBeta\tBeta_err\tGamma\tGamma_err\r\n";
 
         Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
         {
@@ -97,7 +97,7 @@ public partial class FormSequentialAnalysis : Form
         };
 
         if (eos == null)
-            textBoxPressure.Text = (stressMode ? "Degree" : "Profile Name") + "\tPressure\r\n";
+            textBoxPressure.Text = $"{(stressMode ? "Degree" : "Profile Name")}\tPressure\r\n";
         else
         {
             textBoxPressure.Text = stressMode ? "Degree" : "Profile Name";
