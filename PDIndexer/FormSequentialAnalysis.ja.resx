@@ -97,7 +97,7 @@
     <value>744, 264</value>
   </data>
   <data name="textBoxDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 242</value>
+    <value>744, 242</value>
   </data>
   <data name="checkBoxAutoSaveD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -112,19 +112,19 @@
     <value>0, 242</value>
   </data>
   <data name="checkBoxAutoSaveD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 22</value>
+    <value>744, 22</value>
   </data>
   <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
   <data name="tabPageDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 264</value>
+    <value>744, 264</value>
   </data>
   <data name="tabPageDspacing.Text" xml:space="preserve">
     <value>d値 (Å)</value>
   </data>
   <data name="textBoxFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 242</value>
+    <value>744, 242</value>
   </data>
   <data name="checkBoxAutoSaveFWHM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -139,13 +139,13 @@
     <value>0, 242</value>
   </data>
   <data name="checkBoxAutoSaveFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 22</value>
+    <value>744, 22</value>
   </data>
   <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
   <data name="tabPageFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 264</value>
+    <value>744, 264</value>
   </data>
   <data name="tabPageFWHM.Text" xml:space="preserve">
     <value>半値全幅 (°)</value>
@@ -154,7 +154,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 245</value>
+    <value>744, 245</value>
   </data>
   <data name="checkBoxAutoSaveInt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -166,13 +166,13 @@
     <value>0, 245</value>
   </data>
   <data name="checkBoxAutoSaveInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 19</value>
+    <value>744, 19</value>
   </data>
   <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
   <data name="tabPageIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 264</value>
+    <value>744, 264</value>
   </data>
   <data name="tabPageIntensity.Text" xml:space="preserve">
     <value>積分強度</value>
@@ -181,7 +181,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 245</value>
+    <value>744, 245</value>
   </data>
   <data name="checkBoxAutoSaveCell.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -193,13 +193,13 @@
     <value>0, 245</value>
   </data>
   <data name="checkBoxAutoSaveCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 19</value>
+    <value>744, 19</value>
   </data>
   <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
   <data name="tabPageCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 264</value>
+    <value>744, 264</value>
   </data>
   <data name="tabPageCellConstants.Text" xml:space="preserve">
     <value>格子定数 (Å, °)</value>
@@ -208,7 +208,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxPressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 245</value>
+    <value>744, 245</value>
   </data>
   <data name="checkBoxAutoSavePressure.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -220,13 +220,13 @@
     <value>0, 245</value>
   </data>
   <data name="checkBoxAutoSavePressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 19</value>
+    <value>744, 19</value>
   </data>
   <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
   <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 264</value>
+    <value>744, 264</value>
   </data>
   <data name="tabPagePressure.Text" xml:space="preserve">
     <value>圧力 (GPa)</value>
@@ -239,7 +239,7 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="textBoxSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 245</value>
+    <value>481, 245</value>
   </data>
   <data name="checkBoxAutoSaveSingh.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -248,19 +248,16 @@
     <value>0, 245</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>471, 19</value>
+    <value>481, 19</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
     <value>自動保存</value>
-  </data>
-  <data name="graphControl1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>471, 0</value>
   </data>
   <data name="graphControl1.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 264</value>
   </data>
   <data name="tabPageSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>734, 264</value>
+    <value>744, 264</value>
   </data>
   <data name="tabPageSingh.Text" xml:space="preserve">
     <value>Singhの式</value>

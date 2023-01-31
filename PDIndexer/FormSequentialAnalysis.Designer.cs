@@ -369,6 +369,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.statusStrip1);
             this.Name = "FormSequentialAnalysis";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormStressAnalysis_FormClosing);
             this.tabControl.ResumeLayout(false);
             this.tabPage2theta.ResumeLayout(false);
             this.tabPage2theta.PerformLayout();

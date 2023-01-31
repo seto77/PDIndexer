@@ -21,7 +21,7 @@ public partial class FormSequentialAnalysis : Form
     #region プロパティ、フィールド、イベント
     public FormMain formMain;
 
-    private readonly Stopwatch sw = new Stopwatch();
+    private readonly Stopwatch sw = new();
     #endregion
 
     #region コンストラクタ、オープン、クローズ
@@ -516,11 +516,6 @@ public partial class FormSequentialAnalysis : Form
         }
     }
 
-    public void Save(string filename, bool CSV = true, int index = -1)
-    {
-
-    }
-
     /// <summary>
     /// 計算結果をタブ区切りあるいはカンマ区切りテキストとして得る。
     /// index = -1:アクティブなタブ, 0: 2θ, 1: d, 2: 半値幅, 3: 強度, 4: 格子定数, 5: 圧力, 6: Singh
@@ -544,12 +539,8 @@ public partial class FormSequentialAnalysis : Form
             6 => textBoxSingh.Text,
             _ => ""
         };
-
         return CSV ? txt.Replace('\t', ',') : txt;
     }
-
-
-
     #endregion
 
     #region その他イベント

@@ -64,11 +64,6 @@ public partial class FormCrystal : Form
         formMain.SetFormEOS();
     }
 
-    private void textBoxNumOnly_KeyPress(object sender, System.Windows.Forms.KeyPressEventArgs e)
-    {
-        if ((e.KeyChar < '.' || e.KeyChar > '9') && e.KeyChar != '\b' && e.KeyChar != 3 && e.KeyChar != 22)
-            e.Handled = true;
-    }
     private void buttonAddCrystal_Click(object sender, System.EventArgs e)
     {
         crystalControl.GenerateFromInterface();
@@ -115,8 +110,8 @@ public partial class FormCrystal : Form
         if (cry != null)
         {
 
-            Bitmap bmp = new Bitmap(18, 18);
-            Graphics g = Graphics.FromImage(bmp);
+            var bmp = new Bitmap(18, 18);
+            var g = Graphics.FromImage(bmp);
             g.Clear(Color.FromArgb(cry.Argb));
             formMain.dataSet.DataTableCrystal.Rows.Add(new object[] { false, cry, bmp });
             formMain.bindingSourceCrystal.Position = formMain.bindingSourceCrystal.List.Count - 1;
