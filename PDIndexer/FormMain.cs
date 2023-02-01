@@ -2605,9 +2605,6 @@ public partial class FormMain : Form
             }
         }
     }
-
-
-
     #endregion
 
     #region 子フォームのセット

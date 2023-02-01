@@ -1,13 +1,8 @@
 using System;
 using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
 using System.Windows.Forms;
-using System.Data;
-using System.Data.OleDb;
 using Crystallography;
 using Crystallography.Controls;
-using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 
@@ -18,13 +13,15 @@ namespace PDIndexer;
 /// </summary>
 public partial class FormCrystal : Form
 {
+    #region プロパティ―、フィールド
     public FormMain formMain;
     public int atomSeriesNum;
     public int SymmetrySeriesNumber;
     public bool[] IsHitCrystal;
     public bool SkipEvent = false;
+    #endregion
 
-
+#region オープン、クローズ、コンストラクタ
     public FormCrystal()
     {
         InitializeComponent();
@@ -37,25 +34,36 @@ public partial class FormCrystal : Form
         searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
         this.AcceptButton = searchCrystalControl.buttonSearch;
     }
+    private void FormCrystal_Load(object sender, EventArgs e)
+    {
+        if (File.Exists(formMain.UserAppDataPath + "StdDB.cdb3"))
+            crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "StdDB.cdb3");
+    }
+    private void FormCrystal_Closed(object sender, System.EventArgs e)
+    {
+        if (formMain != null)
+            formMain.checkBoxCrystalParameter.Checked = false;
+    }
+
+    private void FormCrystal_FormClosing(object sender, FormClosingEventArgs e)
+    {
+        e.Cancel = true;
+        formMain.checkBoxCrystalParameter.Checked = false;
+    }
+    #endregion
 
     private void CrystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
     {
         if (message.Contains("Total"))
             crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;
     }
-
-    private void FormCrystal_Load(object sender, EventArgs e)
-    {
-        if (File.Exists(formMain.UserAppDataPath + "StdDB.cdb3"))
-            crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "StdDB.cdb3");
-    }
-
     private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
     {
         if (SkipEvent) return;
         crystalControl.Crystal = crystalDatabaseControl.Crystal;
     }
 
+    #region 結晶の追加、削除、変更
     void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
         formMain.InitializeCrystalPlane();
@@ -83,27 +91,6 @@ public partial class FormCrystal : Form
         if (crystalControl.Crystal != null)
             ChangeCrystal(crystalControl.Crystal);
     }
-
-    private void FormCrystal_Closed(object sender, System.EventArgs e)
-    {
-        if (formMain != null)
-            formMain.checkBoxCrystalParameter.Checked = false;
-    }
-
-    private void FormCrystal_FormClosing(object sender, FormClosingEventArgs e)
-    {
-        e.Cancel = true;
-        formMain.checkBoxCrystalParameter.Checked = false;
-    }
-
-    //場所が変更されたとき
-    private void bindingSource_PositionChanged(object sender, EventArgs e)
-    {
-        formMain.SelectedCrysatlIndex = bindingSource.Position;
-        formMain.Draw();
-    }
-
-
     //新規追加が呼び出されたとき
     public void AddCrystal(Crystal cry)
     {
@@ -167,6 +154,16 @@ public partial class FormCrystal : Form
                     dataSet.DataTableCrystal.RemoveItem(i--);
     }
 
+    #endregion
+
+
+    //場所が変更されたとき
+    private void bindingSource_PositionChanged(object sender, EventArgs e)
+    {
+        formMain.SelectedCrysatlIndex = bindingSource.Position;
+        formMain.Draw();
+    }
+
     private void checkBoxShowPeakOverProfiles_CheckedChanged(object sender, EventArgs e)
     {
         checkBoxCalculateIntensity.Enabled = checkBoxShowPeakOverProfiles.Checked;
@@ -220,6 +217,7 @@ public partial class FormCrystal : Form
         formMain.Draw();
     }
 
+    #region 結晶の順番変更
     private void buttonUpper_Click(object sender, EventArgs e)
     {
         int n = bindingSource.Position;
@@ -236,6 +234,7 @@ public partial class FormCrystal : Form
         bindingSource.Position = n + 1;
 
     }
+    #endregion
 
     private void FormCrystal_VisibleChanged(object sender, EventArgs e)
     {
@@ -244,12 +243,7 @@ public partial class FormCrystal : Form
             dataGridViewCrystal.Rows[i].DefaultCellStyle = formMain.dataGridViewCrystals.Rows[i].DefaultCellStyle;
     }
 
-    private void FormCrystal_KeyDown(object sender, KeyEventArgs e)
-    {
-        formMain.FormMain_KeyDown(sender, e);
-    }
-
-
+    private void FormCrystal_KeyDown(object sender, KeyEventArgs e) => formMain.FormMain_KeyDown(sender, e);
 
 
     private void numericUpDownThreshold_MouseDown(object sender, MouseEventArgs e)
