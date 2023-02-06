@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Library</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.1.31.0546</AssemblyVersion>
-    <FileVersion>2023.1.31.0546</FileVersion>
+    <AssemblyVersion>2023.2.6.0917</AssemblyVersion>
+    <FileVersion>2023.2.6.0917</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -31,6 +31,7 @@
 
   <ItemGroup>
     <PackageReference Include="IronPython" Version="3.4.0" />
+    <PackageReference Include="SimdLinq" Version="1.3.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.5" />
   </ItemGroup>
 
@@ -38,4 +39,10 @@
     <ProjectReference Include="..\Crystallography\Crystallography.csproj" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Using Include="SimdLinq" />
+  </ItemGroup>
+  
+  
 </Project>

@@ -90,7 +90,7 @@ public partial class FormProfileSetting : Form
         panelBandPassFilter.Visible = checkBoxBandPassFilter.Checked;
         if (bindingSourceProfile.Position >= 0)
         {
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
             string unit = "";
             switch (dp.DestAxisMode)
             {

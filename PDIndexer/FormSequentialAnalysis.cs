@@ -199,8 +199,10 @@ public partial class FormSequentialAnalysis : Form
                 sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
                 sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
                 sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
+               
                 if (stressMode && !double.IsNaN(p.peakFunction.X))
-                    results[m++].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
+                    results[m].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
+                m++;
             }
             textBox2theta.AppendText($"{sb2theta}\r\n");
             textBoxDspacing.AppendText($"{sbDspacing}\r\n");
@@ -335,7 +337,7 @@ public partial class FormSequentialAnalysis : Form
         var text = new string[results.Count];
 
         Parallel.For(0, results.Count, i =>
-        //for (int i = 0; i < results.Count; i++)                //マルカールの方法でPseudoVoigtをとく。高速になるはず
+        //for (int i = 0; i < results.Count; i++)//マルカールの方法でPseudoVoigtをとく。高速になるはず
         {
             List<PointD> d = results[i];
             double alpha = -0.5, d0 = 0, psiMax = 0;
@@ -434,12 +436,15 @@ public partial class FormSequentialAnalysis : Form
             for (int j = 0; j < 360; j++)
                 profiles[i].Pt.Add(new PointD(j, 10 * dValue(d0, alpha, j / 180.0 * Math.PI, psiMax, d0)));
 
-        });
+        }
+        );
         graphControl1.ClearProfile();
         textBoxSingh.Text = "";
         for (int i = 0; i < results.Count; i++)
         {
             graphControl1.AddProfile(profiles[i]);
+     
+
             textBoxSingh.AppendText(text[i]);
         }
     }
