@@ -85,8 +85,6 @@ public partial class FormMain : Form
 
     public Mutex mutex;
 
-    bool clearRegistryFlag = false;
-
     Crystallography.Controls.CommonDialog initialDialog;
 
 
@@ -753,25 +751,23 @@ public partial class FormMain : Form
     {
         //クリップボードを切る
         ChangeClipboardChain(this.Handle, NextHandle);
-        if (!clearRegistryFlag)//Flagが立っていなければレジストリに書き込み
+        if (!clearRegistryToolStripMenuItem.Checked)//Flagが立っていなければレジストリに書き込み
             SaveInitialRegistry();
+        else
+            ClearRegistry();
     }
 
 
     #endregion
 
     #region レジストリ操作
-    private void clearRegistryToolStripMenuItem_Click_1(object sender, EventArgs e)
+
+    private void ClearRegistry()
     {
-        try
-        {
-            Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\PDIndexer");
-            clearRegistryFlag = true;
-        }
-        catch { MessageBox.Show("PDIndexerに関するRegistryは存在しません"); }
+        try { Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\PDIndexer"); }
+        catch { }
+
     }
-
-
     //レジストリの読み込み
     private void ReadInitialRegistry()
     {
