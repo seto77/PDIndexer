@@ -4200,7 +4200,8 @@ public partial class FormMain : Form
             timerBlinkDiffraction.Start();
 
         //クリックによってセレクションが変更された場合
-        if (SelectedCrysatlIndex != bindingSourceCrystal.Position)
+        bool crystalChanged = SelectedCrysatlIndex != bindingSourceCrystal.Position;
+        if (crystalChanged)
         {
             SelectedCrysatlIndex = bindingSourceCrystal.Position;
             SelectedPlaneIndex = -1;
@@ -4214,7 +4215,7 @@ public partial class FormMain : Form
 
         SetFormCrystal();
         SetFormEOS();
-        formFitting.ChangeCrystalFromMainForm();
+        formFitting.ChangeCrystalFromMainForm(crystalChanged);
         Draw();
 
         formFitting.SetPlanes(true);
