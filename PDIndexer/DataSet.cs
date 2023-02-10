@@ -33,8 +33,8 @@ public partial class DataSet
 
         private static void SetDataTablePeakFittingRow(DataTablePeakFittingRow r, Plane p = null)
         {
-            if (p == null && r.PlaneObject is Plane)
-                p = (Plane)r.PlaneObject;
+            if (p == null && r.PlaneObject is Plane plane)
+                p = plane;
 
             r.PlaneObject = p;
             r.HKL = p.strHKL;

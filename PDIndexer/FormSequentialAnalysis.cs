@@ -29,6 +29,7 @@ public partial class FormSequentialAnalysis : Form
     {
         InitializeComponent();
         numericBoxStartNumber.ReadOnly= true;
+        numericBoxToleranceFactor.ReadOnly= true;
     }
 
     private void FormStressAnalysis_FormClosing(object sender, FormClosingEventArgs e)
@@ -51,7 +52,7 @@ public partial class FormSequentialAnalysis : Form
 
         sw.Restart();
         var crystal = formMain.formFitting.TargetCrystal;
-        double initA = crystal.A, initB = crystal.B, initC = crystal.C, initAlpha = crystal.Alpha, initBeta = crystal.Beta, initGamma = crystal.Gamma;
+        double initA = crystal.A, initB = crystal.B, initC = crystal.C, initAlpha = crystal.Alpha, initBeta = crystal.Beta, initGamma = crystal.Gamma, initV = crystal.Volume;
 
         //ストレス解析モードかどうか。
         var stressMode = formMain.dataSet.DataTableProfile.Rows[0][1].ToString().EndsWith("whole");
@@ -136,6 +137,7 @@ public partial class FormSequentialAnalysis : Form
 
             formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, true);
 
+            var tolerance = true;
             //最小二乗法フィッティングを二回実行
             for (int n = 0; n < 2; n++)
             {
@@ -143,7 +145,18 @@ public partial class FormSequentialAnalysis : Form
                 formMain.formFitting.Fitting();
                 formMain.formFitting.SkipFitting = true;
                 if (formMain.formFitting.textBoxA.Text != "0.000000")//最小2乗法がうまくいった場合は
+                {
+                    if (checkBoxToleranceFactor.Checked)//許容係数が有効な場合
+                    {
+                        var r = formMain.formFitting.OptimizedCellConstants.volume / initV;
+                        if (r > 1 + 0.01 * numericBoxToleranceFactor.Value || r < 1 - 0.01 * numericBoxToleranceFactor.Value)
+                        {
+                            tolerance = false;
+                            break;
+                        }
+                    }
                     formMain.formFitting.Confirm(false);
+                }
                 #region お蔵入り
                 //else//もし最小2乗法がうまくいかない場合は
                 //{
@@ -192,40 +205,57 @@ public partial class FormSequentialAnalysis : Form
             textBoxCellConstants.AppendText(profileName);
 
             m = 0;
-            StringBuilder sb2theta = new(), sbDspacing = new(), sbIntensity = new(), sbFWHM = new();
-            foreach (var p in crystal.Plane.Where(e => e.IsFittingChecked))
-            {
-                sb2theta.Append($"\t{p.peakFunction.X:f10}");
-                sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
-                sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
-                sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
-               
-                if (stressMode && !double.IsNaN(p.peakFunction.X))
-                    results[m].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
-                m++;
-            }
-            textBox2theta.AppendText($"{sb2theta}\r\n");
-            textBoxDspacing.AppendText($"{sbDspacing}\r\n");
-            textBoxIntensity.AppendText($"{sbIntensity}\r\n");
-            textBoxFWHM.AppendText($"{sbFWHM}\r\n");
 
-            textBoxCellConstants.AppendText($"\t{crystal.Volume * 1000:f8}\t{crystal.Volume_err * 1000:f8}" +
-                $"\t{crystal.A * 10:f10}\t{crystal.A_err * 10:f10}" +
-                $"\t{crystal.B * 10:f10}\t{crystal.B_err * 10:f10}" +
-                $"\t{crystal.C * 10:f10}\t{crystal.C_err * 10:f10}" +
-                $"\t{crystal.Alpha / Math.PI * 180:g10}\t{crystal.Alpha_err / Math.PI * 180:g10}" +
-                $"\t{crystal.Beta / Math.PI * 180:g10}\t{crystal.Beta_err / Math.PI * 180:g10}" +
-                $"\t{crystal.Gamma / Math.PI * 180:g10}\t{crystal.Gamma_err / Math.PI * 180:g10}" +
-                $"\r\n");
-
-            if (eos != null)
+            if (tolerance)//toleranceがtrueの場合
             {
-                foreach (var pressure in eos().Select(e => e.Pressure))
-                    textBoxPressure.AppendText($"\t{pressure:f8}");
-                textBoxPressure.AppendText("\r\n");
+                StringBuilder sb2theta = new(), sbDspacing = new(), sbIntensity = new(), sbFWHM = new();
+                foreach (var p in crystal.Plane.Where(e => e.IsFittingChecked))
+                {
+                    sb2theta.Append($"\t{p.peakFunction.X:f10}");
+                    sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
+                    sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
+                    sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
+
+                    if (stressMode && !double.IsNaN(p.peakFunction.X))
+                        results[m].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
+                    m++;
+                }
+                textBox2theta.AppendText($"{sb2theta}\r\n");
+                textBoxDspacing.AppendText($"{sbDspacing}\r\n");
+                textBoxIntensity.AppendText($"{sbIntensity}\r\n");
+                textBoxFWHM.AppendText($"{sbFWHM}\r\n");
+
+                textBoxCellConstants.AppendText($"\t{crystal.Volume * 1000:f8}\t{crystal.Volume_err * 1000:f8}" +
+                    $"\t{crystal.A * 10:f10}\t{crystal.A_err * 10:f10}" +
+                    $"\t{crystal.B * 10:f10}\t{crystal.B_err * 10:f10}" +
+                    $"\t{crystal.C * 10:f10}\t{crystal.C_err * 10:f10}" +
+                    $"\t{crystal.Alpha / Math.PI * 180:g10}\t{crystal.Alpha_err / Math.PI * 180:g10}" +
+                    $"\t{crystal.Beta / Math.PI * 180:g10}\t{crystal.Beta_err / Math.PI * 180:g10}" +
+                    $"\t{crystal.Gamma / Math.PI * 180:g10}\t{crystal.Gamma_err / Math.PI * 180:g10}" +
+                    $"\r\n");
+
+                if (eos != null)
+                {
+                    foreach (var pressure in eos().Select(e => e.Pressure))
+                        textBoxPressure.AppendText($"\t{pressure:f8}");
+                    textBoxPressure.AppendText("\r\n");
+                }
+                else
+                    textBoxPressure.AppendText($"\t{crystal.EOSCondition.GetPressure(crystal.Volume * 1000):f8}\r\n");
             }
-            else
-                textBoxPressure.AppendText($"\t{crystal.EOSCondition.GetPressure(crystal.Volume * 1000):f8}\r\n");
+            else//toleranceがfalseの場合
+            {
+                StringBuilder sb = new();
+                var nan = double.NaN.ToString();
+                foreach (var p in crystal.Plane.Where(e => e.IsFittingChecked))
+                    sb.Append($"\t{nan}");
+                textBox2theta.AppendText($"{sb}\r\n");
+                textBoxDspacing.AppendText($"{sb}\r\n");
+                textBoxIntensity.AppendText($"{sb}\r\n");
+                textBoxFWHM.AppendText($"{sb}\r\n");
+                textBoxCellConstants.AppendText($"\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\r\n");
+                textBoxPressure.AppendText($"\t{nan}\r\n");
+            }
 
             formMain.dataSet.DataTableProfile.SetItemChecked(formMain.bindingSourceProfile.Position, false);//チェック状態を解除
 
@@ -553,6 +583,12 @@ public partial class FormSequentialAnalysis : Form
     {
         numericBoxStartNumber.ReadOnly = !checkBoxStartNumber.Checked;
         checkBoxLoop.Enabled = checkBoxStartNumber.Checked;
+        numericBoxToleranceFactor.ReadOnly= !checkBoxToleranceFactor.Checked;
     }
     #endregion
+
+    private void panel1_Paint(object sender, PaintEventArgs e)
+    {
+
+    }
 }

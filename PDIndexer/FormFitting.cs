@@ -1,3 +1,4 @@
+#region using
 using System;
 using System.Drawing;
 using System.Windows.Forms;
@@ -11,13 +12,14 @@ using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System.IO;
 using System.Text;
+#endregion
 
 namespace PDIndexer;
 
 /// <summary>
 /// FormFitting の概要の説明です。
 /// </summary>
-public partial class FormFitting : System.Windows.Forms.Form
+public partial class FormFitting : Form
 {
     #region フィールド、プロパティ
     public Crystal TargetCrystal
@@ -60,6 +62,9 @@ public partial class FormFitting : System.Windows.Forms.Form
     /// Angleモード、Energyモード、d値モードのときにそれぞれSearchRangeにかける係数 (Angle:1, Energy:500, d:0.2)
     /// </summary>
     public double SerchRangeFactor = 1;
+
+    public (double a, double b, double c, double alpha, double beta, double gamma, double volume) OptimizedCellConstants { get; set; }
+    public (double a, double b, double c, double alpha, double beta, double gamma, double volume) OptimizedCellConstants_Err { get; set; }
 
     #endregion
 
@@ -237,47 +242,44 @@ public partial class FormFitting : System.Windows.Forms.Form
 
         //初期化
         foreach (var c in checkedCrystals)
-        {
-            foreach (var p in c.Plane)
+            foreach (var p in c.Plane.Where(e => e.IsFittingChecked))
             {
-                if (p.IsFittingChecked)
+                p.XCalc = formMain.AxisMode switch
                 {
-                    p.XCalc = formMain.AxisMode switch
-                    {
-                        HorizontalAxis.Angle => Math.Asin(formMain.WaveLength / p.d / 2) / Math.PI * 360,
-                        HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(p.d, formMain.TakeoffAngle),
-                        HorizontalAxis.d => p.d * 10,
-                        HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(p.d, formMain.TofAngle, formMain.TofLength),
-                        HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(p.d * 10),
-                        _ => p.XCalc
-                    };
+                    HorizontalAxis.Angle => Math.Asin(formMain.WaveLength / p.d / 2) / Math.PI * 360,
+                    HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(p.d, formMain.TakeoffAngle),
+                    HorizontalAxis.d => p.d * 10,
+                    HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(p.d, formMain.TofAngle, formMain.TofLength),
+                    HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(p.d * 10),
+                    _ => p.XCalc
+                };
 
-                    p.XObs = 0;
-                    p.observedIntensity = 0;
-                    p.DecompositionGroup = -1;
-                    p.peakFunction = new PeakFunction();
-                    p.peakFunction.X = p.XCalc;
-                    p.peakFunction.range = p.SerchRange * SerchRangeFactor; ;
-                    p.peakFunction.Hk = p.FWHM * SerchRangeFactor;
-                    p.peakFunction.Option = p.SerchOption;
-                    p.peakFunction.Color = Color.FromArgb(c.Argb);
+                p.XObs = 0;
+                p.observedIntensity = 0;
+                p.DecompositionGroup = -1;
+                p.peakFunction = new PeakFunction();
+                p.peakFunction.X = p.XCalc;
+                p.peakFunction.range = p.SerchRange * SerchRangeFactor; ;
+                p.peakFunction.Hk = p.FWHM * SerchRangeFactor;
+                p.peakFunction.Option = p.SerchOption;
+                p.peakFunction.Color = Color.FromArgb(c.Argb);
 
-                    if (p.SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
-                    {
-                        p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, TargetProfile.Pt.ToArray());
-                        p.XObs = p.simpleParameter.X;
-                        p.peakFunction.Xerr = TargetProfile.Pt[1].X - TargetProfile.Pt[0].X;
-                    }
-                    else
-                        p.peakFunction.GroupIndex = groupIndex++;
+                if (p.SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
+                {
+                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, TargetProfile.Pt.ToArray());
+                    p.XObs = p.simpleParameter.X;
+                    p.peakFunction.Xerr = TargetProfile.Pt[1].X - TargetProfile.Pt[0].X;
                 }
+                else
+                    p.peakFunction.GroupIndex = groupIndex++;
             }
-        }
 
         if (!checkBoxPatternDecomposition.Checked)
         {
             #region ピーク分離モードではないとき
-            Parallel.ForEach(TargetCrystal.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
+
+            foreach (var c in checkedCrystals)
+                Parallel.ForEach(c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
                 FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
             );
             #endregion
@@ -386,10 +388,7 @@ public partial class FormFitting : System.Windows.Forms.Form
     #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
     public void FittingDiffraction()
     {
-        var p = new List<Plane>();
-        for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-            if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption == PeakFunctionForm.Simple || TargetCrystal.Plane[i].observedIntensity > 0)
-                p.Add(TargetCrystal.Plane[i]);
+        var p = TargetCrystal.Plane.Where(e => e.IsFittingChecked).Where(e=>e.SerchOption== PeakFunctionForm.Simple || e.observedIntensity>0).ToList();
 
         Matrix<double> Q, A, W, C;
         double a, b, c, alfa, beta, gamma, V;
@@ -1056,7 +1055,6 @@ public partial class FormFitting : System.Windows.Forms.Form
         //解けなかった場合は、格子定数を定数倍したものを求める 2020/10/16
         if (a == 0 && p.Count > 0)
         {
-
             double coeff = p.Sum(e => e.Weight * e.d * e.dObs) / p.Sum(e => e.Weight * e.d * e.d);
             a = coeff * TargetCrystal.A;
             b = coeff * TargetCrystal.B;
@@ -1064,11 +1062,9 @@ public partial class FormFitting : System.Windows.Forms.Form
             alfa = TargetCrystal.Alpha;
             beta = TargetCrystal.Beta;
             gamma = TargetCrystal.Gamma;
-
         }
 
         temp_crystal = new Crystal((a, b, c, alfa, beta, gamma), (a_err, b_err, c_err, alpha_err, beta_err, gamma_err), 0, "", Color.Black);
-        //temp_crystal.Volume = V;
         temp_crystal.Volume_err = V_err;
         SetTextBox(temp_crystal);
     }
@@ -1146,8 +1142,8 @@ public partial class FormFitting : System.Windows.Forms.Form
         if (IsTargetCrystalChanged)
         {
             dataSet.DataTablePeakFitting.Clear();
-            for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-                dataSet.DataTablePeakFitting.Add(TargetCrystal.Plane[i]);
+            foreach (var p in TargetCrystal.Plane)
+                dataSet.DataTablePeakFitting.Add(p);
         }
         else
         {
@@ -1229,9 +1225,12 @@ public partial class FormFitting : System.Windows.Forms.Form
     private void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
     #endregion 
 
-    #region 最適格子定数のテキスト設定
+    #region 最適格子定数の設定
     private void SetTextBox(Crystal c)
     {
+        OptimizedCellConstants = (c.A, c.B, c.C, c.Alpha, c.Beta, c.Gamma, c.Volume);
+        OptimizedCellConstants_Err = (c.A_err, c.B_err, c.C_err, c.Alpha_err, c.Beta_err, c.Gamma_err, c.Volume_err);
+
         textBoxA.Text = (c.A * 10).ToString("f6");
         textBoxB.Text = (c.B * 10).ToString("f6");
         textBoxC.Text = (c.C * 10).ToString("f6");

@@ -62,16 +62,25 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonExecute.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 7</value>
+    <value>5, 3</value>
   </data>
   <data name="buttonExecute.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 28</value>
+    <value>96, 28</value>
   </data>
   <data name="buttonExecute.Text" xml:space="preserve">
     <value>実行</value>
   </data>
   <data name="textBox2theta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 242</value>
+    <value>743, 224</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 62</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>751, 274</value>
+  </data>
+  <data name="tabPage2theta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>743, 246</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxAutoSaveTwoTheta.AutoSize" type="System.Boolean, mscorlib">
@@ -84,20 +93,20 @@
   <data name="checkBoxAutoSaveTwoTheta.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxAutoSaveTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 242</value>
-  </data>
   <data name="checkBoxAutoSaveTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 22</value>
+    <value>743, 22</value>
   </data>
   <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
-  <data name="tabPage2theta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
+  <data name="tabPageDspacing.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 246</value>
+  </data>
+  <data name="tabPageDspacing.Text" xml:space="preserve">
+    <value>d値 (Å)</value>
   </data>
   <data name="textBoxDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 242</value>
+    <value>815, 224</value>
   </data>
   <data name="checkBoxAutoSaveD.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -108,23 +117,20 @@
   <data name="checkBoxAutoSaveD.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxAutoSaveD.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 242</value>
-  </data>
   <data name="checkBoxAutoSaveD.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 22</value>
+    <value>815, 22</value>
   </data>
   <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
-  <data name="tabPageDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
+  <data name="tabPageFWHM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 246</value>
   </data>
-  <data name="tabPageDspacing.Text" xml:space="preserve">
-    <value>d値 (Å)</value>
+  <data name="tabPageFWHM.Text" xml:space="preserve">
+    <value>半値全幅 (°)</value>
   </data>
   <data name="textBoxFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 242</value>
+    <value>815, 224</value>
   </data>
   <data name="checkBoxAutoSaveFWHM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -135,26 +141,23 @@
   <data name="checkBoxAutoSaveFWHM.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="checkBoxAutoSaveFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 242</value>
-  </data>
   <data name="checkBoxAutoSaveFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 22</value>
+    <value>815, 22</value>
   </data>
   <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
-  <data name="tabPageFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
+  <data name="tabPageIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 246</value>
   </data>
-  <data name="tabPageFWHM.Text" xml:space="preserve">
-    <value>半値全幅 (°)</value>
+  <data name="tabPageIntensity.Text" xml:space="preserve">
+    <value>積分強度</value>
   </data>
   <data name="textBoxIntensity.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 245</value>
+    <value>815, 227</value>
   </data>
   <data name="checkBoxAutoSaveInt.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -163,25 +166,25 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAutoSaveInt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 245</value>
+    <value>0, 227</value>
   </data>
   <data name="checkBoxAutoSaveInt.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 19</value>
+    <value>815, 19</value>
   </data>
   <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
-  <data name="tabPageIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
+  <data name="tabPageCellConstants.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 246</value>
   </data>
-  <data name="tabPageIntensity.Text" xml:space="preserve">
-    <value>積分強度</value>
+  <data name="tabPageCellConstants.Text" xml:space="preserve">
+    <value>格子定数 (Å, °)</value>
   </data>
   <data name="textBoxCellConstants.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 245</value>
+    <value>815, 227</value>
   </data>
   <data name="checkBoxAutoSaveCell.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -190,25 +193,25 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAutoSaveCell.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 245</value>
+    <value>0, 227</value>
   </data>
   <data name="checkBoxAutoSaveCell.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 19</value>
+    <value>815, 19</value>
   </data>
   <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
-  <data name="tabPageCellConstants.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
+  <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 246</value>
   </data>
-  <data name="tabPageCellConstants.Text" xml:space="preserve">
-    <value>格子定数 (Å, °)</value>
+  <data name="tabPagePressure.Text" xml:space="preserve">
+    <value>圧力 (GPa)</value>
   </data>
   <data name="textBoxPressure.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxPressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 245</value>
+    <value>815, 227</value>
   </data>
   <data name="checkBoxAutoSavePressure.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -217,19 +220,19 @@
     <value>NoControl</value>
   </data>
   <data name="checkBoxAutoSavePressure.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 245</value>
+    <value>0, 227</value>
   </data>
   <data name="checkBoxAutoSavePressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 19</value>
+    <value>815, 19</value>
   </data>
   <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
-  <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
+  <data name="tabPageSingh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>815, 246</value>
   </data>
-  <data name="tabPagePressure.Text" xml:space="preserve">
-    <value>圧力 (GPa)</value>
+  <data name="tabPageSingh.Text" xml:space="preserve">
+    <value>Singhの式</value>
   </data>
   <data name="textBoxSingh.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -239,40 +242,34 @@
     <value>4, 5, 4, 5</value>
   </data>
   <data name="textBoxSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 245</value>
+    <value>552, 227</value>
   </data>
   <data name="checkBoxAutoSaveSingh.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 245</value>
+    <value>0, 227</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>481, 19</value>
+    <value>552, 19</value>
   </data>
   <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
     <value>自動保存</value>
   </data>
+  <data name="graphControl1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>552, 0</value>
+  </data>
   <data name="graphControl1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>263, 264</value>
+    <value>263, 246</value>
   </data>
-  <data name="tabPageSingh.Size" type="System.Drawing.Size, System.Drawing">
-    <value>744, 264</value>
-  </data>
-  <data name="tabPageSingh.Text" xml:space="preserve">
-    <value>Singhの式</value>
-  </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 44</value>
-  </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 292</value>
+  <data name="statusStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>751, 22</value>
   </data>
   <data name="buttonCopy.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>48, 7</value>
+    <value>5, 31</value>
   </data>
   <data name="buttonCopy.Size" type="System.Drawing.Size, System.Drawing">
     <value>54, 28</value>
@@ -284,7 +281,7 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>103, 7</value>
+    <value>59, 31</value>
   </data>
   <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -296,19 +293,28 @@
     <value>メイリオ, 9pt</value>
   </data>
   <data name="textBoxDirectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>565, 10</value>
+    <value>569, 29</value>
   </data>
   <data name="textBoxDirectory.Size" type="System.Drawing.Size, System.Drawing">
     <value>137, 25</value>
   </data>
+  <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 1</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>751, 62</value>
+  </data>
+  <data name="numericBoxToleranceFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>486, 19</value>
+  </data>
   <data name="numericBoxStartNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>336, 12</value>
+    <value>246, 5</value>
   </data>
   <data name="checkBoxLoop.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="checkBoxLoop.Location" type="System.Drawing.Point, System.Drawing">
-    <value>382, 14</value>
+    <value>249, 35</value>
   </data>
   <data name="checkBoxLoop.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 21</value>
@@ -316,24 +322,39 @@
   <data name="checkBoxLoop.Text" xml:space="preserve">
     <value>ループ</value>
   </data>
+  <data name="checkBoxToleranceFactor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 8pt</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>324, 4</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>159, 55</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Text" xml:space="preserve">
+    <value>許容係数 (連続解析時に
+体積変化がこの値を超えた
+場合はNaNを出力)</value>
+  </data>
   <data name="checkBoxStartNumber.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 8pt</value>
   </data>
   <data name="checkBoxStartNumber.Location" type="System.Drawing.Point, System.Drawing">
-    <value>163, 4</value>
+    <value>117, 3</value>
   </data>
   <data name="checkBoxStartNumber.Size" type="System.Drawing.Size, System.Drawing">
-    <value>170, 38</value>
+    <value>126, 55</value>
   </data>
   <data name="checkBoxStartNumber.Text" xml:space="preserve">
-    <value>指定番号のプロファイルから
-解析を実行 (最初はゼロ)</value>
+    <value>指定した番号のプロ
+ファイルから解析を
+実行 (最初はゼロ)</value>
   </data>
   <data name="buttonSetDirectory.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonSetDirectory.Location" type="System.Drawing.Point, System.Drawing">
-    <value>702, 9</value>
+    <value>707, 29</value>
   </data>
   <data name="buttonSetDirectory.Size" type="System.Drawing.Size, System.Drawing">
     <value>42, 28</value>
@@ -345,23 +366,19 @@
     <value>メイリオ, 8pt</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>485, 3</value>
+    <value>569, 6</value>
   </data>
   <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 3, 0, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 37</value>
+    <value>140, 20</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>自動保存時の
-ディレクトリ</value>
+    <value>自動保存時のディレクトリ</value>
   </data>
-  <data name="panel1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 1</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>752, 44</value>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>751, 358</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt</value>

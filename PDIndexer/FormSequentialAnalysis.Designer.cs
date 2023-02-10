@@ -59,8 +59,10 @@
             this.buttonSave = new System.Windows.Forms.Button();
             this.textBoxDirectory = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.numericBoxToleranceFactor = new Crystallography.Controls.NumericBox();
             this.numericBoxStartNumber = new Crystallography.Controls.NumericBox();
             this.checkBoxLoop = new System.Windows.Forms.CheckBox();
+            this.checkBoxToleranceFactor = new System.Windows.Forms.CheckBox();
             this.checkBoxStartNumber = new System.Windows.Forms.CheckBox();
             this.buttonSetDirectory = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -90,7 +92,6 @@
             // 
             // tabControl
             // 
-            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Controls.Add(this.tabPage2theta);
             this.tabControl.Controls.Add(this.tabPageDspacing);
             this.tabControl.Controls.Add(this.tabPageFWHM);
@@ -98,14 +99,15 @@
             this.tabControl.Controls.Add(this.tabPageCellConstants);
             this.tabControl.Controls.Add(this.tabPagePressure);
             this.tabControl.Controls.Add(this.tabPageSingh);
+            resources.ApplyResources(this.tabControl, "tabControl");
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             // 
             // tabPage2theta
             // 
-            resources.ApplyResources(this.tabPage2theta, "tabPage2theta");
             this.tabPage2theta.Controls.Add(this.textBox2theta);
             this.tabPage2theta.Controls.Add(this.checkBoxAutoSaveTwoTheta);
+            resources.ApplyResources(this.tabPage2theta, "tabPage2theta");
             this.tabPage2theta.Name = "tabPage2theta";
             this.tabPage2theta.UseVisualStyleBackColor = true;
             // 
@@ -117,9 +119,9 @@
             // 
             // tabPageDspacing
             // 
-            resources.ApplyResources(this.tabPageDspacing, "tabPageDspacing");
             this.tabPageDspacing.Controls.Add(this.textBoxDspacing);
             this.tabPageDspacing.Controls.Add(this.checkBoxAutoSaveD);
+            resources.ApplyResources(this.tabPageDspacing, "tabPageDspacing");
             this.tabPageDspacing.Name = "tabPageDspacing";
             this.tabPageDspacing.UseVisualStyleBackColor = true;
             // 
@@ -136,9 +138,9 @@
             // 
             // tabPageFWHM
             // 
-            resources.ApplyResources(this.tabPageFWHM, "tabPageFWHM");
             this.tabPageFWHM.Controls.Add(this.textBoxFWHM);
             this.tabPageFWHM.Controls.Add(this.checkBoxAutoSaveFWHM);
+            resources.ApplyResources(this.tabPageFWHM, "tabPageFWHM");
             this.tabPageFWHM.Name = "tabPageFWHM";
             this.tabPageFWHM.UseVisualStyleBackColor = true;
             // 
@@ -155,9 +157,9 @@
             // 
             // tabPageIntensity
             // 
-            resources.ApplyResources(this.tabPageIntensity, "tabPageIntensity");
             this.tabPageIntensity.Controls.Add(this.textBoxIntensity);
             this.tabPageIntensity.Controls.Add(this.checkBoxAutoSaveInt);
+            resources.ApplyResources(this.tabPageIntensity, "tabPageIntensity");
             this.tabPageIntensity.Name = "tabPageIntensity";
             this.tabPageIntensity.UseVisualStyleBackColor = true;
             // 
@@ -174,9 +176,9 @@
             // 
             // tabPageCellConstants
             // 
-            resources.ApplyResources(this.tabPageCellConstants, "tabPageCellConstants");
             this.tabPageCellConstants.Controls.Add(this.textBoxCellConstants);
             this.tabPageCellConstants.Controls.Add(this.checkBoxAutoSaveCell);
+            resources.ApplyResources(this.tabPageCellConstants, "tabPageCellConstants");
             this.tabPageCellConstants.Name = "tabPageCellConstants";
             this.tabPageCellConstants.UseVisualStyleBackColor = true;
             // 
@@ -193,9 +195,9 @@
             // 
             // tabPagePressure
             // 
-            resources.ApplyResources(this.tabPagePressure, "tabPagePressure");
             this.tabPagePressure.Controls.Add(this.textBoxPressure);
             this.tabPagePressure.Controls.Add(this.checkBoxAutoSavePressure);
+            resources.ApplyResources(this.tabPagePressure, "tabPagePressure");
             this.tabPagePressure.Name = "tabPagePressure";
             this.tabPagePressure.UseVisualStyleBackColor = true;
             // 
@@ -212,10 +214,10 @@
             // 
             // tabPageSingh
             // 
-            resources.ApplyResources(this.tabPageSingh, "tabPageSingh");
             this.tabPageSingh.Controls.Add(this.textBoxSingh);
             this.tabPageSingh.Controls.Add(this.checkBoxAutoSaveSingh);
             this.tabPageSingh.Controls.Add(this.graphControl1);
+            resources.ApplyResources(this.tabPageSingh, "tabPageSingh");
             this.tabPageSingh.Name = "tabPageSingh";
             this.tabPageSingh.UseVisualStyleBackColor = true;
             // 
@@ -232,12 +234,12 @@
             // 
             // graphControl1
             // 
-            resources.ApplyResources(this.graphControl1, "graphControl1");
             this.graphControl1.AllowMouseOperation = true;
             this.graphControl1.BackgroundColor = System.Drawing.Color.White;
             this.graphControl1.BottomMargin = 0D;
             this.graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
             this.graphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            resources.ApplyResources(this.graphControl1, "graphControl1");
             this.graphControl1.FixRangeHorizontal = false;
             this.graphControl1.FixRangeVertical = false;
             this.graphControl1.GraphName = "";
@@ -277,9 +279,9 @@
             // 
             // statusStrip1
             // 
-            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Name = "statusStrip1";
             // 
             // toolStripStatusLabel1
@@ -309,9 +311,10 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
+            this.panel1.Controls.Add(this.numericBoxToleranceFactor);
             this.panel1.Controls.Add(this.numericBoxStartNumber);
             this.panel1.Controls.Add(this.checkBoxLoop);
+            this.panel1.Controls.Add(this.checkBoxToleranceFactor);
             this.panel1.Controls.Add(this.checkBoxStartNumber);
             this.panel1.Controls.Add(this.textBoxDirectory);
             this.panel1.Controls.Add(this.buttonSetDirectory);
@@ -319,12 +322,27 @@
             this.panel1.Controls.Add(this.buttonCopy);
             this.panel1.Controls.Add(this.buttonExecute);
             this.panel1.Controls.Add(this.label1);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // numericBoxToleranceFactor
+            // 
+            this.numericBoxToleranceFactor.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.numericBoxToleranceFactor, "numericBoxToleranceFactor");
+            this.numericBoxToleranceFactor.Maximum = 100D;
+            this.numericBoxToleranceFactor.Minimum = 0D;
+            this.numericBoxToleranceFactor.Name = "numericBoxToleranceFactor";
+            this.numericBoxToleranceFactor.RadianValue = 0.17453292519943295D;
+            this.numericBoxToleranceFactor.RoundErrorAccuracy = -1;
+            this.numericBoxToleranceFactor.ShowUpDown = true;
+            this.numericBoxToleranceFactor.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxToleranceFactor.Value = 10D;
             // 
             // numericBoxStartNumber
             // 
-            resources.ApplyResources(this.numericBoxStartNumber, "numericBoxStartNumber");
             this.numericBoxStartNumber.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(this.numericBoxStartNumber, "numericBoxStartNumber");
             this.numericBoxStartNumber.Minimum = 1D;
             this.numericBoxStartNumber.Name = "numericBoxStartNumber";
             this.numericBoxStartNumber.RadianValue = 0.017453292519943295D;
@@ -341,6 +359,13 @@
             this.checkBoxLoop.Name = "checkBoxLoop";
             this.checkBoxLoop.UseVisualStyleBackColor = true;
             this.checkBoxLoop.CheckedChanged += new System.EventHandler(this.checkBoxStartNumber_CheckedChanged);
+            // 
+            // checkBoxToleranceFactor
+            // 
+            resources.ApplyResources(this.checkBoxToleranceFactor, "checkBoxToleranceFactor");
+            this.checkBoxToleranceFactor.Name = "checkBoxToleranceFactor";
+            this.checkBoxToleranceFactor.UseVisualStyleBackColor = true;
+            this.checkBoxToleranceFactor.CheckedChanged += new System.EventHandler(this.checkBoxStartNumber_CheckedChanged);
             // 
             // checkBoxStartNumber
             // 
@@ -433,5 +458,7 @@
         private System.Windows.Forms.CheckBox checkBoxStartNumber;
         private Crystallography.Controls.NumericBox numericBoxStartNumber;
         private System.Windows.Forms.CheckBox checkBoxLoop;
+        private Crystallography.Controls.NumericBox numericBoxToleranceFactor;
+        private System.Windows.Forms.CheckBox checkBoxToleranceFactor;
     }
 }
