@@ -1100,7 +1100,7 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region 最適向上数をクリップボードコピー
+    #region 最適格子定数をクリップボードコピー
     private void buttonCopyClipboard_Click(object sender, EventArgs e) => CopyClipboard();
 
     public void CopyClipboard()

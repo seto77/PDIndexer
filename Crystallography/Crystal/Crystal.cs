@@ -1,3 +1,4 @@
+#region using
 using MathNet.Numerics;
 using System;
 using System.Collections.Generic;
@@ -7,15 +8,14 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+#endregion
 
 namespace Crystallography;
 
-/// <summary>
-/// Crystal の概要の説明です。
-/// </summary>
 [Serializable()]
 public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 {
+    #region オーバーライド
     public object Clone()
     {
         Crystal crystal = (Crystal)this.MemberwiseClone();
@@ -44,6 +44,65 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         return true;
         return false;
     }
+
+    #region Equalsオーバーライド
+    public override bool Equals(object obj)
+    {
+        if (ReferenceEquals(this, obj))
+        {
+            return true;
+        }
+
+        if (ReferenceEquals(obj, null))
+        {
+            return false;
+        }
+
+        throw new NotImplementedException();
+    }
+
+    public override int GetHashCode()
+    {
+        throw new NotImplementedException();
+    }
+
+    public static bool operator ==(Crystal left, Crystal right)
+    {
+        if (ReferenceEquals(left, null))
+            return ReferenceEquals(right, null);
+
+        return left.Equals(right);
+    }
+
+    public static bool operator !=(Crystal left, Crystal right)
+    {
+        return !(left == right);
+    }
+
+    public static bool operator <(Crystal left, Crystal right)
+    {
+        return ReferenceEquals(left, null) ? !ReferenceEquals(right, null) : left.CompareTo(right) < 0;
+    }
+
+    public static bool operator <=(Crystal left, Crystal right)
+    {
+        return ReferenceEquals(left, null) || left.CompareTo(right) <= 0;
+    }
+
+    public static bool operator >(Crystal left, Crystal right)
+    {
+        return !ReferenceEquals(left, null) && left.CompareTo(right) > 0;
+    }
+
+    public static bool operator >=(Crystal left, Crystal right)
+    {
+        return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
+    }
+    #endregion
+
+    public override string ToString() => Name.ToString();
+
+    #endregion
 
     #region プロパティ、フィールド
 
@@ -110,7 +169,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     public double A, B, C, Alpha, Beta, Gamma;  //格子定数
     public double A_err, B_err, C_err, Alpha_err, Beta_err, Gamma_err;  //格子定数の誤差
-    public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue => (A, B, C, Alpha, Beta, Gamma);
+    public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue
+    {
+        get => (A, B, C, Alpha, Beta, Gamma);
+        set { A = value.A; B = value.B; C = value.C; Alpha = value.Alpha; Beta = value.Beta; Gamma = value.Gamma; }
+    }
+
 
     [NonSerialized]
     [XmlIgnore]
@@ -369,8 +433,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     public int id = 0;
 
-
-
     #endregion プロパティ、フィールド
 
     #region コンストラクタ
@@ -415,7 +477,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             A_err = err.Value.A; B_err = err.Value.B; C_err = err.Value.C; Alpha_err = err.Value.Alpha; Beta_err = err.Value.Beta; Gamma_err = err.Value.Gamma;
         }
     }
-
 
     public Crystal(
       (double A, double B, double C, double Alpha, double Beta, double Gamma) cell,
@@ -498,12 +559,14 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #endregion コンストラクタ
 
-
+    #region Crystal2クラスに変換
     /// <summary>
     /// Crystal2クラスに変換します。
     /// </summary>
     public Crystal2 ToCrystal2() => Crystal2.FromCrystal(this);
+    #endregion
 
+    #region 各軸のベクトルや補助定数(sigmaなど)を設定
     /// <summary>
     /// 格子定数から、各軸のベクトルや補助定数(sigmaなど)を設定する
     /// </summary>
@@ -611,8 +674,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         CellVolumeSqure = a2 * b2 * c2 * (1 - CosAlfa * CosAlfa - CosBeta * CosBeta - CosGamma * CosGamma + 2 * CosAlfa * CosBeta * CosGamma);
         Volume = Math.Sqrt(CellVolumeSqure);
     }
-
-    public override string ToString() => Name.ToString();
+    #endregion
 
     #region 結晶幾何学関連
 
@@ -1373,119 +1435,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
     }
 
-    /// <summary>
-    /// 現在の原子種と格子定数から、組成と密度を計算します。
-    /// </summary>
-    public void GetFormulaAndDensity()
-    {
-        #region
-        if (Atoms == null || Atoms.Length == 0) return;
-
-        var dic = new Dictionary<string, double>();
-
-        for (int i = 0; i < Atoms.Length; i++)
-        {
-            var key = Atoms[i].ElementName.Split(' ', true)[1];
-            var num = Atoms[i].Multiplicity * Atoms[i].Occ;
-            if (dic.ContainsKey(key))
-                dic[key] += num;
-            else
-                dic.Add(key, num);
-        }
-
-        ElementName = dic.Keys.ToArray();
-        ElementNum = dic.Values.ToArray();
-
-        if (ElementNum.Sum() == 0)
-            return;
-
-
-        //整数で割れるところまでわる
-        if (ElementName != null)
-        {
-            var Num = ElementNum.ToArray();
-
-            //まずNumの最小値をさがす
-            int n = int.MaxValue;
-            foreach (double var in Num)
-                if (n > var)
-                    n = (int)var;
-
-            //次に2から順番にわっていく
-            for (int i = 2; i <= n; i++)
-            {
-                bool IsDivisor = true;
-                foreach (double var in Num)
-                    if (var % i != 0) IsDivisor = false;
-                if (IsDivisor)
-                {
-                    for (int j = 0; j < Num.Length; j++) Num[j] = Num[j] / i;
-                    i--;
-                }
-            }
-
-            //単位格子あたりの組成式の数Zは
-            ChemicalFormulaZ = (int)(ElementNum[0] / Num[0]);
-
-            //組成式 Fe21.333333333 O32  Fe2O3   *32/3 のように表示させる
-            bool is3times = true;
-            int denom = 0;
-            for (int i = 0; i < Num.Length; i++)
-                if (Math.Abs((Num[i] / 3.0)) % 1.0 > 0.000000001)
-                    is3times = false;
-
-            if (is3times == true)
-            {
-                denom = (int)(Num[0] * 3 + 0.1);
-                for (int i = 0; i < Num.Length; i++)
-                    Num[i] = (int)(Num[i] * 3 + 0.1);
-                //まずNumの最小値をさがす
-                int m = int.MaxValue;
-                foreach (double var in Num)
-                    if (m > var)
-                        m = (int)var;
-
-                //次に2から順番にわっていく
-                for (int i = 2; i <= m; i++)
-                {
-                    bool IsDivisor = true;
-                    foreach (double var in Num)
-                        if (var % i != 0)
-                            IsDivisor = false;
-                    if (IsDivisor)
-                    {
-                        for (int j = 0; j < Num.Length; j++)
-                            Num[j] = Num[j] / i;
-                        i--;
-                    }
-                }
-                denom /= (int)Num[0];
-            }
-
-            ChemicalFormulaSum = "";
-            for (int i = 0; i < Num.Length; i++)
-            {
-                if (Num[i] == 1)
-                    ChemicalFormulaSum += ElementName[i] + " ";
-                else
-                    ChemicalFormulaSum += $"{ElementName[i]}{Num[i].Round(12)} ";
-            }
-            ChemicalFormulaSum = ChemicalFormulaSum[0..^1];
-
-            if (is3times && denom != 3)
-                ChemicalFormulaSum += $"  *{denom}/3";
-
-            double TotalWeightPerUnitCell = 0;
-            for (int i = 0; i < ElementName.Length; i++)
-            {
-                TotalWeightPerUnitCell += AtomStatic.AtomicWeight(ElementName[i]) * ElementNum[i];
-            }
-            Density = TotalWeightPerUnitCell / Math.Sqrt(CellVolumeSqure) / 6.0221367 / 100;
-            WeightPerFormula = TotalWeightPerUnitCell / ChemicalFormulaZ;
-        }
-        return;
-        #endregion
-    }
 
     #endregion
 
@@ -1638,6 +1587,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #endregion
 
+    #region 対称性・原子位置・塑性などの再計算
     /// <summary>
     /// 対称性、原子の位置、組成などを再計算する
     /// </summary>
@@ -1672,10 +1622,131 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         GetFormulaAndDensity();
     }
 
+
+    /// <summary>
+    /// 現在の原子種と格子定数から、組成と密度を計算します。
+    /// </summary>
+    public void GetFormulaAndDensity()
+    {
+        #region
+        if (Atoms == null || Atoms.Length == 0) return;
+
+        var dic = new Dictionary<string, double>();
+
+        for (int i = 0; i < Atoms.Length; i++)
+        {
+            var key = Atoms[i].ElementName.Split(' ', true)[1];
+            var num = Atoms[i].Multiplicity * Atoms[i].Occ;
+            if (dic.ContainsKey(key))
+                dic[key] += num;
+            else
+                dic.Add(key, num);
+        }
+
+        ElementName = dic.Keys.ToArray();
+        ElementNum = dic.Values.ToArray();
+
+        if (ElementNum.Sum() == 0)
+            return;
+
+
+        //整数で割れるところまでわる
+        if (ElementName != null)
+        {
+            var Num = ElementNum.ToArray();
+
+            //まずNumの最小値をさがす
+            int n = int.MaxValue;
+            foreach (double var in Num)
+                if (n > var)
+                    n = (int)var;
+
+            //次に2から順番にわっていく
+            for (int i = 2; i <= n; i++)
+            {
+                bool IsDivisor = true;
+                foreach (double var in Num)
+                    if (var % i != 0) IsDivisor = false;
+                if (IsDivisor)
+                {
+                    for (int j = 0; j < Num.Length; j++) Num[j] = Num[j] / i;
+                    i--;
+                }
+            }
+
+            //単位格子あたりの組成式の数Zは
+            ChemicalFormulaZ = (int)(ElementNum[0] / Num[0]);
+
+            //組成式 Fe21.333333333 O32  Fe2O3   *32/3 のように表示させる
+            bool is3times = true;
+            int denom = 0;
+            for (int i = 0; i < Num.Length; i++)
+                if (Math.Abs((Num[i] / 3.0)) % 1.0 > 0.000000001)
+                    is3times = false;
+
+            if (is3times == true)
+            {
+                denom = (int)(Num[0] * 3 + 0.1);
+                for (int i = 0; i < Num.Length; i++)
+                    Num[i] = (int)(Num[i] * 3 + 0.1);
+                //まずNumの最小値をさがす
+                int m = int.MaxValue;
+                foreach (double var in Num)
+                    if (m > var)
+                        m = (int)var;
+
+                //次に2から順番にわっていく
+                for (int i = 2; i <= m; i++)
+                {
+                    bool IsDivisor = true;
+                    foreach (double var in Num)
+                        if (var % i != 0)
+                            IsDivisor = false;
+                    if (IsDivisor)
+                    {
+                        for (int j = 0; j < Num.Length; j++)
+                            Num[j] = Num[j] / i;
+                        i--;
+                    }
+                }
+                denom /= (int)Num[0];
+            }
+
+            ChemicalFormulaSum = "";
+            for (int i = 0; i < Num.Length; i++)
+            {
+                if (Num[i] == 1)
+                    ChemicalFormulaSum += ElementName[i] + " ";
+                else
+                    ChemicalFormulaSum += $"{ElementName[i]}{Num[i].Round(12)} ";
+            }
+            ChemicalFormulaSum = ChemicalFormulaSum[0..^1];
+
+            if (is3times && denom != 3)
+                ChemicalFormulaSum += $"  *{denom}/3";
+
+            double TotalWeightPerUnitCell = 0;
+            for (int i = 0; i < ElementName.Length; i++)
+            {
+                TotalWeightPerUnitCell += AtomStatic.AtomicWeight(ElementName[i]) * ElementNum[i];
+            }
+            Density = TotalWeightPerUnitCell / Math.Sqrt(CellVolumeSqure) / 6.0221367 / 100;
+            WeightPerFormula = TotalWeightPerUnitCell / ChemicalFormulaZ;
+        }
+        return;
+        #endregion
+    }
+
+    #endregion
+
+    #region 多結晶体の関係
     public void SetCrystallites() => Crystallites = new Crystallite(this);
 
     public void SetCrystallites(double[] density) => Crystallites = new Crystallite(this, density);
 
+    #endregion
+
+    #region 初期格子定数の保存、読み込み
     public void SaveInitialCellConstants()
     {
         InitialA = A;
@@ -1710,4 +1781,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             Gamma_err = InitialGamma_err;
         }
     }
+    #endregion
+
+
 }

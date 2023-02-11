@@ -11,7 +11,6 @@ using System.Windows.Forms;
 using Crystallography;
 using IronPython.Runtime.Operations;
 using MathNet.Numerics.LinearAlgebra.Double;
-//using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace PDIndexer;
@@ -52,7 +51,8 @@ public partial class FormSequentialAnalysis : Form
 
         sw.Restart();
         var crystal = formMain.formFitting.TargetCrystal;
-        double initA = crystal.A, initB = crystal.B, initC = crystal.C, initAlpha = crystal.Alpha, initBeta = crystal.Beta, initGamma = crystal.Gamma, initV = crystal.Volume;
+        double initV = crystal.Volume;
+        var initCellValue = crystal.CellValue;
 
         //ストレス解析モードかどうか。
         var stressMode = formMain.dataSet.DataTableProfile.Rows[0][1].ToString().EndsWith("whole");
@@ -205,7 +205,6 @@ public partial class FormSequentialAnalysis : Form
             textBoxCellConstants.AppendText(profileName);
 
             m = 0;
-
             if (tolerance)//toleranceがtrueの場合
             {
                 StringBuilder sb2theta = new(), sbDspacing = new(), sbIntensity = new(), sbFWHM = new();
@@ -280,14 +279,11 @@ public partial class FormSequentialAnalysis : Form
         if (stressMode)
             RefineSinghEquation(indexStr, results);
 
-        formMain.formFitting.TargetCrystal.A = initA;
-        formMain.formFitting.TargetCrystal.B = initB;
-        formMain.formFitting.TargetCrystal.C = initC;
+        formMain.formFitting.TargetCrystal.CellValue = initCellValue;
         formMain.formFitting.TargetCrystal.SetAxis();
         formMain.bindingSourceProfile.Position = initialPosition;
 
         formMain.ChangeCrystalFromFitting();
-
        
         AutoSave();
 
@@ -587,8 +583,4 @@ public partial class FormSequentialAnalysis : Form
     }
     #endregion
 
-    private void panel1_Paint(object sender, PaintEventArgs e)
-    {
-
-    }
 }

@@ -27,10 +27,6 @@ using System.Threading.Tasks;
 
 namespace PDIndexer;
 
-/// <summary>
-/// PDIndexer の概要の説明です。
-/// </summary>
-/// 
 public partial class FormMain : Form
 {
     #region enum

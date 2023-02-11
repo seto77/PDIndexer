@@ -1,9 +1,7 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Crystallography;
 using System.Data;
 using System.Drawing;
-using System;
 
 namespace PDIndexer;
 
