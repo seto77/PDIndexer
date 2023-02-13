@@ -1491,6 +1491,7 @@ public partial class FormFitting : Form
         {
             TargetCrystal.Plane.Clear();
             SetPlanes(false);
+            formMain.Draw();
         }
     }
 
