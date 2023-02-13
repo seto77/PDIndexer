@@ -1927,6 +1927,8 @@ public partial class FormMain : Form
     {
         pictureBoxMain.Focus();
         var pt = ConvToRealCoord(e.X, e.Y);
+
+        #region Bg点モード
         if (ShowBackgroundProfile && BackGroundPointSelectMode && formProfile.Visible)//Bg点モードのとき
         {
             if (e.Button == MouseButtons.Left && e.Clicks == 2 && bindingSourceProfile.Position >= 0)
@@ -1961,11 +1963,12 @@ public partial class FormMain : Form
                 }
             }
         }//Bg点モード終了
+        #endregion
 
         //Diffractionモード
         else if (e.Button == MouseButtons.Left && e.Clicks == 1 && SelectedCrysatlIndex > 0)
         {
-            Crystal cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
+            var cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
             int i;
             double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
             if (formCrystal.checkBoxCalculateIntensity.Checked && cry.Plane != null && cry.Plane.Count > 0 && cry.Plane[0].Intensity > 0)
@@ -1984,8 +1987,8 @@ public partial class FormMain : Form
         }
         else if (SelectedCrysatlIndex == 0 && dataSet.DataTableCrystal.GetItemChecked(0))//flexibleCrystalを選択時
         {
-            Crystal cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
-            if (e.Button == MouseButtons.Left && e.Clicks == 1)
+            var cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
+            if (e.Button == MouseButtons.Left && e.Clicks == 1)//選択
             {
                 double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
                 var i = SearchPlaneNo(pt.X, cry, dev);//強度計算していない場合
@@ -1999,16 +2002,17 @@ public partial class FormMain : Form
                     return;
                 }
             }
+            //追加.
             if (e.Button == MouseButtons.Left && e.Clicks == 2)//何もないところでダブルクリックした場合
             {
-                var tempPt = ConvToDspacing(pt);
-                var p = new Plane
+                cry.Plane.Add(new Plane
                 {
-                    d = tempPt.X,
+                    XCalc= pt.X,
+                    d = ConvToDspacing(pt).X,
                     Intensity = 1,
                     SerchOption = PeakFunctionForm.PseudoVoigt
-                };
-                cry.Plane.Add(p);
+                });
+                cry.Plane.Sort();
 
                 formFitting.ChangeCrystalFromMainForm();
                 
@@ -2024,6 +2028,7 @@ public partial class FormMain : Form
                 Draw();
                 return;
             }
+            //削除
             if (e.Button == MouseButtons.Right & e.Clicks == 1)
             {
                 double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
@@ -2037,9 +2042,7 @@ public partial class FormMain : Form
                     return;
                 }
             }
-            //formFitting.SetCheckedListBoxPlanes(false);
             Draw();
-            //formFitting.ChangeCrystalFromMainForm();
         }
 
         if (e.Button == MouseButtons.Middle)
@@ -2201,32 +2204,29 @@ public partial class FormMain : Form
 
         //マウス位置情報の更新
         PointD pt = ConvToRealCoord(e.X, e.Y);
-        if (AxisMode == HorizontalAxis.Angle)
-            labelTwoTheta.Text = "2θ: ";
-        else if (AxisMode == HorizontalAxis.d)
-            labelTwoTheta.Text = "d: ";
-        else if (AxisMode == HorizontalAxis.EnergyXray)
-            labelTwoTheta.Text = "Energy: ";
-        else if (AxisMode == HorizontalAxis.NeutronTOF)
-            labelTwoTheta.Text = "TOF: ";
-        else if (AxisMode == HorizontalAxis.WaveNumber)
-            labelTwoTheta.Text = "q: ";
-        if (pt.X < 10000)
-            labelTwoTheta.Text += pt.X.ToString("g6");
-        else
-            labelTwoTheta.Text += pt.X.ToString("#,0");
 
+        #region 横軸と縦軸の単位の設定
+        labelTwoTheta.Text = AxisMode switch
+        {
+            HorizontalAxis.Angle=> "2θ: ",
+            HorizontalAxis.d => "d: ",
+            HorizontalAxis.EnergyXray => "Energy: ",
+            HorizontalAxis.NeutronTOF => "TOF: ",
+            HorizontalAxis.WaveNumber => "q: ",
+            _=>""
+        };
+        labelTwoTheta.Text += pt.X < 10000 ? pt.X.ToString("g6") : pt.X.ToString("#,0");
 
-        if (AxisMode == HorizontalAxis.Angle)
-            labelTwoTheta.Text += " °";
-        else if (AxisMode == HorizontalAxis.d)
-            labelTwoTheta.Text += " Å";
-        else if (AxisMode == HorizontalAxis.EnergyXray)
-            labelTwoTheta.Text += " eV";
-        else if (AxisMode == HorizontalAxis.NeutronTOF)
-            labelTwoTheta.Text += " μs";
-        else if (AxisMode == HorizontalAxis.WaveNumber)
-            labelTwoTheta.Text += " Å⁻¹";
+        labelTwoTheta.Text += AxisMode switch
+        {
+            HorizontalAxis.Angle => " °",
+            HorizontalAxis.d => " Å",
+            HorizontalAxis.EnergyXray => " eV",
+            HorizontalAxis.NeutronTOF => " μs",
+            HorizontalAxis.WaveNumber => " Å⁻¹",
+            _ => ""
+        };
+         #endregion
 
         var d = AxisMode switch
         {

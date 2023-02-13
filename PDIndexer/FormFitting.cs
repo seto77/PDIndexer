@@ -92,6 +92,9 @@ public partial class FormFitting : Form
     //メインフォームやFormCrystalで結晶の格子定数などが変更されたとき呼ばれる。選択列やチェック状態が変更されただけではよばれない
     public void ChangeCrystalFromMainForm(bool IsTargetCrystalChanged = false)
     {
+        if (TargetCrystal != null)
+            buttonClearPeaks.Visible = TargetCrystal.FlexibleMode;
+
         if (Visible)
         {
             SetPlanes(IsTargetCrystalChanged); //現在選択されている結晶の面をチェックリストボックスに加える
@@ -1368,6 +1371,9 @@ public partial class FormFitting : Form
     private void FormFitting_KeyDown(object sender, KeyEventArgs e) => formMain.FormMain_KeyDown(sender, e);
     private void FormFitting_VisibleChanged(object sender, EventArgs e)
     {
+        if (TargetCrystal != null)
+            buttonClearPeaks.Visible = TargetCrystal.FlexibleMode;
+
         if (Visible)
         {
             //dataGridViewの色の設定
@@ -1471,5 +1477,22 @@ public partial class FormFitting : Form
 
         formMain.AddProfileToCheckedListBox(output, true, true);
     }
+    #endregion
+
+    #region Flexibleモードの時に、全ピークを削除する
+    /// <summary>
+    /// Flexibleモードの時に、全ピークを削除する
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void buttonClearPeaks_Click(object sender, EventArgs e)
+    {
+        if (TargetCrystal != null && TargetCrystal.FlexibleMode)
+        {
+            TargetCrystal.Plane.Clear();
+            SetPlanes(false);
+        }
+    }
+
     #endregion
 }

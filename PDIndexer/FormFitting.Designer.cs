@@ -1,12 +1,5 @@
-using System;
-using System.Drawing;
-using System.Collections;
 using System.ComponentModel;
 using System.Windows.Forms;
-using Crystallography;
-using System.Collections.Generic;
-using System.Threading;
-using System.Diagnostics;
 namespace PDIndexer
 {
     /// <summary>
@@ -39,948 +32,1005 @@ namespace PDIndexer
         /// </summary>
         private void InitializeComponent()
         {
-            components = new Container();
-            ComponentResourceManager resources = new ComponentResourceManager(typeof(FormFitting));
-            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            groupBox1 = new GroupBox();
-            textBoxGamma_err = new TextBox();
-            textBoxAlpha_err = new TextBox();
-            textBoxBeta_err = new TextBox();
-            textBoxC_err = new TextBox();
-            textBoxB_err = new TextBox();
-            textBoxV = new TextBox();
-            textBoxV_err = new TextBox();
-            textBoxC = new TextBox();
-            textBoxGamma = new TextBox();
-            textBoxA_err = new TextBox();
-            textBoxA = new TextBox();
-            label26 = new Label();
-            label25 = new Label();
-            label24 = new Label();
-            label3 = new Label();
-            label29 = new Label();
-            label23 = new Label();
-            label22 = new Label();
-            label21 = new Label();
-            label10 = new Label();
-            label20 = new Label();
-            label19 = new Label();
-            label17 = new Label();
-            label27 = new Label();
-            label11 = new Label();
-            label9 = new Label();
-            textBoxB = new TextBox();
-            textBoxAlpha = new TextBox();
-            textBoxBeta = new TextBox();
-            buttonResetTakeoffAngle = new Button();
-            buttonCopyCellConstantsToClipboard = new Button();
-            buttonConfirm = new Button();
-            label8 = new Label();
-            label12 = new Label();
-            label28 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
-            label16 = new Label();
-            buttonCopyTableToClipboard = new Button();
-            groupBox3 = new GroupBox();
-            flowLayoutPanelPatternDecomposition = new FlowLayoutPanel();
-            radioButtonEachCrystal = new RadioButton();
-            radioButtonBetweenCrystals = new RadioButton();
-            groupBox2 = new GroupBox();
-            radioButtonSymmetricPearson = new RadioButton();
-            radioButtonPseudoVoigt = new RadioButton();
-            radioButtonSplitPseudoVoigt = new RadioButton();
-            radioButtonSimple = new RadioButton();
-            radioButtonSplitPearson = new RadioButton();
-            buttonApplyFunctionToAll = new Button();
-            panelFWHM = new Panel();
-            numericUpDownInitialFWHM = new NumericUpDown();
-            buttonApplyFWHMToAll = new Button();
-            label1 = new Label();
-            checkBoxUseInitialFWHM = new CheckBox();
-            checkBoxPatternDecomposition = new CheckBox();
-            numericUpDownSearchRange = new NumericUpDown();
-            label7 = new Label();
-            label2 = new Label();
-            label18 = new Label();
-            buttonApplyRangeToAll = new Button();
-            dataGridViewCrystals = new DataGridView();
-            Check = new DataGridViewCheckBoxColumn();
-            PeakColor = new DataGridViewImageColumn();
-            crystalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            bindingSourceCrystals = new BindingSource(components);
-            dataSet = new DataSet();
-            dataGridViewPlaneList = new DataGridView();
-            checkDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            hKLDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            calcXDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            functionDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            xDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            xErrDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fWHMDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            intensityDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            weightDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            R = new DataGridViewTextBoxColumn();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            copyToClipboradToolStripMenuItem = new ToolStripMenuItem();
-            bindingSourcePlanes = new BindingSource(components);
-            buttonSendToCellFinder = new Button();
-            useForCalcDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
-            buttonRemovePeaks = new Button();
-            groupBox4 = new GroupBox();
-            textBoxRemovedProfileName = new TextBox();
-            label4 = new Label();
-            groupBox5 = new GroupBox();
-            toolTip = new ToolTip(components);
-            buttonSaveTableAsCSV = new Button();
-            numericBoxEffectiveDigit = new Crystallography.Controls.NumericBox();
-            groupBox1.SuspendLayout();
-            groupBox3.SuspendLayout();
-            flowLayoutPanelPatternDecomposition.SuspendLayout();
-            groupBox2.SuspendLayout();
-            panelFWHM.SuspendLayout();
-            ((ISupportInitialize)numericUpDownInitialFWHM).BeginInit();
-            ((ISupportInitialize)numericUpDownSearchRange).BeginInit();
-            ((ISupportInitialize)dataGridViewCrystals).BeginInit();
-            ((ISupportInitialize)bindingSourceCrystals).BeginInit();
-            ((ISupportInitialize)dataSet).BeginInit();
-            ((ISupportInitialize)dataGridViewPlaneList).BeginInit();
-            contextMenuStrip1.SuspendLayout();
-            ((ISupportInitialize)bindingSourcePlanes).BeginInit();
-            groupBox4.SuspendLayout();
-            groupBox5.SuspendLayout();
-            SuspendLayout();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFitting));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxGamma_err = new System.Windows.Forms.TextBox();
+            this.textBoxAlpha_err = new System.Windows.Forms.TextBox();
+            this.textBoxBeta_err = new System.Windows.Forms.TextBox();
+            this.textBoxC_err = new System.Windows.Forms.TextBox();
+            this.textBoxB_err = new System.Windows.Forms.TextBox();
+            this.textBoxV = new System.Windows.Forms.TextBox();
+            this.textBoxV_err = new System.Windows.Forms.TextBox();
+            this.textBoxC = new System.Windows.Forms.TextBox();
+            this.textBoxGamma = new System.Windows.Forms.TextBox();
+            this.textBoxA_err = new System.Windows.Forms.TextBox();
+            this.textBoxA = new System.Windows.Forms.TextBox();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.textBoxB = new System.Windows.Forms.TextBox();
+            this.textBoxAlpha = new System.Windows.Forms.TextBox();
+            this.textBoxBeta = new System.Windows.Forms.TextBox();
+            this.buttonResetTakeoffAngle = new System.Windows.Forms.Button();
+            this.buttonCopyCellConstantsToClipboard = new System.Windows.Forms.Button();
+            this.buttonConfirm = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.buttonCopyTableToClipboard = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanelPatternDecomposition = new System.Windows.Forms.FlowLayoutPanel();
+            this.radioButtonEachCrystal = new System.Windows.Forms.RadioButton();
+            this.radioButtonBetweenCrystals = new System.Windows.Forms.RadioButton();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.radioButtonSymmetricPearson = new System.Windows.Forms.RadioButton();
+            this.radioButtonPseudoVoigt = new System.Windows.Forms.RadioButton();
+            this.radioButtonSplitPseudoVoigt = new System.Windows.Forms.RadioButton();
+            this.radioButtonSimple = new System.Windows.Forms.RadioButton();
+            this.radioButtonSplitPearson = new System.Windows.Forms.RadioButton();
+            this.buttonApplyFunctionToAll = new System.Windows.Forms.Button();
+            this.panelFWHM = new System.Windows.Forms.Panel();
+            this.numericUpDownInitialFWHM = new System.Windows.Forms.NumericUpDown();
+            this.buttonApplyFWHMToAll = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxUseInitialFWHM = new System.Windows.Forms.CheckBox();
+            this.checkBoxPatternDecomposition = new System.Windows.Forms.CheckBox();
+            this.numericUpDownSearchRange = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.buttonApplyRangeToAll = new System.Windows.Forms.Button();
+            this.dataGridViewCrystals = new System.Windows.Forms.DataGridView();
+            this.Check = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.PeakColor = new System.Windows.Forms.DataGridViewImageColumn();
+            this.crystalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSourceCrystals = new System.Windows.Forms.BindingSource(this.components);
+            this.dataSet = new PDIndexer.DataSet();
+            this.dataGridViewPlaneList = new System.Windows.Forms.DataGridView();
+            this.checkDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.hKLDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.calcXDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.functionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.xErrDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fWHMDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.intensityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weightDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.R = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.copyToClipboradToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bindingSourcePlanes = new System.Windows.Forms.BindingSource(this.components);
+            this.buttonSendToCellFinder = new System.Windows.Forms.Button();
+            this.useForCalcDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.buttonRemovePeaks = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.textBoxRemovedProfileName = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.buttonSaveTableAsCSV = new System.Windows.Forms.Button();
+            this.numericBoxEffectiveDigit = new Crystallography.Controls.NumericBox();
+            this.buttonClearPeaks = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.flowLayoutPanelPatternDecomposition.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panelFWHM.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInitialFWHM)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSearchRange)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrystals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystals)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaneList)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePlanes)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.SuspendLayout();
             // 
             // groupBox1
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Controls.Add(textBoxGamma_err);
-            groupBox1.Controls.Add(textBoxAlpha_err);
-            groupBox1.Controls.Add(textBoxBeta_err);
-            groupBox1.Controls.Add(textBoxC_err);
-            groupBox1.Controls.Add(textBoxB_err);
-            groupBox1.Controls.Add(textBoxV);
-            groupBox1.Controls.Add(textBoxV_err);
-            groupBox1.Controls.Add(textBoxC);
-            groupBox1.Controls.Add(textBoxGamma);
-            groupBox1.Controls.Add(textBoxA_err);
-            groupBox1.Controls.Add(textBoxA);
-            groupBox1.Controls.Add(label26);
-            groupBox1.Controls.Add(label25);
-            groupBox1.Controls.Add(label24);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label29);
-            groupBox1.Controls.Add(label23);
-            groupBox1.Controls.Add(label22);
-            groupBox1.Controls.Add(label21);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(label20);
-            groupBox1.Controls.Add(label19);
-            groupBox1.Controls.Add(label17);
-            groupBox1.Controls.Add(label27);
-            groupBox1.Controls.Add(label11);
-            groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(textBoxB);
-            groupBox1.Controls.Add(textBoxAlpha);
-            groupBox1.Controls.Add(textBoxBeta);
-            groupBox1.Controls.Add(buttonResetTakeoffAngle);
-            groupBox1.Controls.Add(buttonCopyCellConstantsToClipboard);
-            groupBox1.Controls.Add(buttonConfirm);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label12);
-            groupBox1.Controls.Add(label28);
-            groupBox1.Controls.Add(label13);
-            groupBox1.Controls.Add(label14);
-            groupBox1.Controls.Add(label15);
-            groupBox1.Controls.Add(label16);
-            groupBox1.Name = "groupBox1";
-            groupBox1.TabStop = false;
-            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Controls.Add(this.textBoxGamma_err);
+            this.groupBox1.Controls.Add(this.textBoxAlpha_err);
+            this.groupBox1.Controls.Add(this.textBoxBeta_err);
+            this.groupBox1.Controls.Add(this.textBoxC_err);
+            this.groupBox1.Controls.Add(this.textBoxB_err);
+            this.groupBox1.Controls.Add(this.textBoxV);
+            this.groupBox1.Controls.Add(this.textBoxV_err);
+            this.groupBox1.Controls.Add(this.textBoxC);
+            this.groupBox1.Controls.Add(this.textBoxGamma);
+            this.groupBox1.Controls.Add(this.textBoxA_err);
+            this.groupBox1.Controls.Add(this.textBoxA);
+            this.groupBox1.Controls.Add(this.label26);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label29);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.label20);
+            this.groupBox1.Controls.Add(this.label19);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.label27);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.textBoxB);
+            this.groupBox1.Controls.Add(this.textBoxAlpha);
+            this.groupBox1.Controls.Add(this.textBoxBeta);
+            this.groupBox1.Controls.Add(this.buttonResetTakeoffAngle);
+            this.groupBox1.Controls.Add(this.buttonCopyCellConstantsToClipboard);
+            this.groupBox1.Controls.Add(this.buttonConfirm);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label28);
+            this.groupBox1.Controls.Add(this.label13);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label16);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // textBoxGamma_err
             // 
-            resources.ApplyResources(textBoxGamma_err, "textBoxGamma_err");
-            textBoxGamma_err.Name = "textBoxGamma_err";
-            textBoxGamma_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxGamma_err, resources.GetString("textBoxGamma_err.ToolTip"));
+            resources.ApplyResources(this.textBoxGamma_err, "textBoxGamma_err");
+            this.textBoxGamma_err.Name = "textBoxGamma_err";
+            this.textBoxGamma_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxGamma_err, resources.GetString("textBoxGamma_err.ToolTip"));
             // 
             // textBoxAlpha_err
             // 
-            resources.ApplyResources(textBoxAlpha_err, "textBoxAlpha_err");
-            textBoxAlpha_err.ForeColor = SystemColors.WindowText;
-            textBoxAlpha_err.Name = "textBoxAlpha_err";
-            textBoxAlpha_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxAlpha_err, resources.GetString("textBoxAlpha_err.ToolTip"));
+            resources.ApplyResources(this.textBoxAlpha_err, "textBoxAlpha_err");
+            this.textBoxAlpha_err.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxAlpha_err.Name = "textBoxAlpha_err";
+            this.textBoxAlpha_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxAlpha_err, resources.GetString("textBoxAlpha_err.ToolTip"));
             // 
             // textBoxBeta_err
             // 
-            resources.ApplyResources(textBoxBeta_err, "textBoxBeta_err");
-            textBoxBeta_err.Name = "textBoxBeta_err";
-            textBoxBeta_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxBeta_err, resources.GetString("textBoxBeta_err.ToolTip"));
+            resources.ApplyResources(this.textBoxBeta_err, "textBoxBeta_err");
+            this.textBoxBeta_err.Name = "textBoxBeta_err";
+            this.textBoxBeta_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxBeta_err, resources.GetString("textBoxBeta_err.ToolTip"));
             // 
             // textBoxC_err
             // 
-            resources.ApplyResources(textBoxC_err, "textBoxC_err");
-            textBoxC_err.Name = "textBoxC_err";
-            textBoxC_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxC_err, resources.GetString("textBoxC_err.ToolTip"));
+            resources.ApplyResources(this.textBoxC_err, "textBoxC_err");
+            this.textBoxC_err.Name = "textBoxC_err";
+            this.textBoxC_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxC_err, resources.GetString("textBoxC_err.ToolTip"));
             // 
             // textBoxB_err
             // 
-            resources.ApplyResources(textBoxB_err, "textBoxB_err");
-            textBoxB_err.Name = "textBoxB_err";
-            textBoxB_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxB_err, resources.GetString("textBoxB_err.ToolTip"));
+            resources.ApplyResources(this.textBoxB_err, "textBoxB_err");
+            this.textBoxB_err.Name = "textBoxB_err";
+            this.textBoxB_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxB_err, resources.GetString("textBoxB_err.ToolTip"));
             // 
             // textBoxV
             // 
-            resources.ApplyResources(textBoxV, "textBoxV");
-            textBoxV.Name = "textBoxV";
-            textBoxV.ReadOnly = true;
-            toolTip.SetToolTip(textBoxV, resources.GetString("textBoxV.ToolTip"));
+            resources.ApplyResources(this.textBoxV, "textBoxV");
+            this.textBoxV.Name = "textBoxV";
+            this.textBoxV.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxV, resources.GetString("textBoxV.ToolTip"));
             // 
             // textBoxV_err
             // 
-            resources.ApplyResources(textBoxV_err, "textBoxV_err");
-            textBoxV_err.Name = "textBoxV_err";
-            textBoxV_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxV_err, resources.GetString("textBoxV_err.ToolTip"));
+            resources.ApplyResources(this.textBoxV_err, "textBoxV_err");
+            this.textBoxV_err.Name = "textBoxV_err";
+            this.textBoxV_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxV_err, resources.GetString("textBoxV_err.ToolTip"));
             // 
             // textBoxC
             // 
-            resources.ApplyResources(textBoxC, "textBoxC");
-            textBoxC.Name = "textBoxC";
-            textBoxC.ReadOnly = true;
-            toolTip.SetToolTip(textBoxC, resources.GetString("textBoxC.ToolTip"));
+            resources.ApplyResources(this.textBoxC, "textBoxC");
+            this.textBoxC.Name = "textBoxC";
+            this.textBoxC.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxC, resources.GetString("textBoxC.ToolTip"));
             // 
             // textBoxGamma
             // 
-            resources.ApplyResources(textBoxGamma, "textBoxGamma");
-            textBoxGamma.Name = "textBoxGamma";
-            textBoxGamma.ReadOnly = true;
-            toolTip.SetToolTip(textBoxGamma, resources.GetString("textBoxGamma.ToolTip"));
+            resources.ApplyResources(this.textBoxGamma, "textBoxGamma");
+            this.textBoxGamma.Name = "textBoxGamma";
+            this.textBoxGamma.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxGamma, resources.GetString("textBoxGamma.ToolTip"));
             // 
             // textBoxA_err
             // 
-            resources.ApplyResources(textBoxA_err, "textBoxA_err");
-            textBoxA_err.Name = "textBoxA_err";
-            textBoxA_err.ReadOnly = true;
-            toolTip.SetToolTip(textBoxA_err, resources.GetString("textBoxA_err.ToolTip"));
-            textBoxA_err.TextChanged +=new EventHandler( textBoxA_TextChanged);
+            resources.ApplyResources(this.textBoxA_err, "textBoxA_err");
+            this.textBoxA_err.Name = "textBoxA_err";
+            this.textBoxA_err.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxA_err, resources.GetString("textBoxA_err.ToolTip"));
+            this.textBoxA_err.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // textBoxA
             // 
-            resources.ApplyResources(textBoxA, "textBoxA");
-            textBoxA.Name = "textBoxA";
-            textBoxA.ReadOnly = true;
-            toolTip.SetToolTip(textBoxA, resources.GetString("textBoxA.ToolTip"));
-            textBoxA.TextChanged += new EventHandler( textBoxA_TextChanged);
+            resources.ApplyResources(this.textBoxA, "textBoxA");
+            this.textBoxA.Name = "textBoxA";
+            this.textBoxA.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxA, resources.GetString("textBoxA.ToolTip"));
+            this.textBoxA.TextChanged += new System.EventHandler(this.textBoxA_TextChanged);
             // 
             // label26
             // 
-            resources.ApplyResources(label26, "label26");
-            label26.Name = "label26";
-            toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip"));
+            resources.ApplyResources(this.label26, "label26");
+            this.label26.Name = "label26";
+            this.toolTip.SetToolTip(this.label26, resources.GetString("label26.ToolTip"));
             // 
             // label25
             // 
-            resources.ApplyResources(label25, "label25");
-            label25.Name = "label25";
-            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip"));
+            resources.ApplyResources(this.label25, "label25");
+            this.label25.Name = "label25";
+            this.toolTip.SetToolTip(this.label25, resources.GetString("label25.ToolTip"));
             // 
             // label24
             // 
-            resources.ApplyResources(label24, "label24");
-            label24.Name = "label24";
-            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip"));
+            resources.ApplyResources(this.label24, "label24");
+            this.label24.Name = "label24";
+            this.toolTip.SetToolTip(this.label24, resources.GetString("label24.ToolTip"));
             // 
             // label3
             // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip"));
             // 
             // label29
             // 
-            resources.ApplyResources(label29, "label29");
-            label29.Name = "label29";
-            toolTip.SetToolTip(label29, resources.GetString("label29.ToolTip"));
+            resources.ApplyResources(this.label29, "label29");
+            this.label29.Name = "label29";
+            this.toolTip.SetToolTip(this.label29, resources.GetString("label29.ToolTip"));
             // 
             // label23
             // 
-            resources.ApplyResources(label23, "label23");
-            label23.Name = "label23";
-            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
+            resources.ApplyResources(this.label23, "label23");
+            this.label23.Name = "label23";
+            this.toolTip.SetToolTip(this.label23, resources.GetString("label23.ToolTip"));
             // 
             // label22
             // 
-            resources.ApplyResources(label22, "label22");
-            label22.Name = "label22";
-            toolTip.SetToolTip(label22, resources.GetString("label22.ToolTip"));
+            resources.ApplyResources(this.label22, "label22");
+            this.label22.Name = "label22";
+            this.toolTip.SetToolTip(this.label22, resources.GetString("label22.ToolTip"));
             // 
             // label21
             // 
-            resources.ApplyResources(label21, "label21");
-            label21.Name = "label21";
-            toolTip.SetToolTip(label21, resources.GetString("label21.ToolTip"));
+            resources.ApplyResources(this.label21, "label21");
+            this.label21.Name = "label21";
+            this.toolTip.SetToolTip(this.label21, resources.GetString("label21.ToolTip"));
             // 
             // label10
             // 
-            resources.ApplyResources(label10, "label10");
-            label10.Name = "label10";
-            toolTip.SetToolTip(label10, resources.GetString("label10.ToolTip"));
+            resources.ApplyResources(this.label10, "label10");
+            this.label10.Name = "label10";
+            this.toolTip.SetToolTip(this.label10, resources.GetString("label10.ToolTip"));
             // 
             // label20
             // 
-            resources.ApplyResources(label20, "label20");
-            label20.Name = "label20";
-            toolTip.SetToolTip(label20, resources.GetString("label20.ToolTip"));
+            resources.ApplyResources(this.label20, "label20");
+            this.label20.Name = "label20";
+            this.toolTip.SetToolTip(this.label20, resources.GetString("label20.ToolTip"));
             // 
             // label19
             // 
-            resources.ApplyResources(label19, "label19");
-            label19.Name = "label19";
-            toolTip.SetToolTip(label19, resources.GetString("label19.ToolTip"));
+            resources.ApplyResources(this.label19, "label19");
+            this.label19.Name = "label19";
+            this.toolTip.SetToolTip(this.label19, resources.GetString("label19.ToolTip"));
             // 
             // label17
             // 
-            resources.ApplyResources(label17, "label17");
-            label17.Name = "label17";
-            toolTip.SetToolTip(label17, resources.GetString("label17.ToolTip"));
+            resources.ApplyResources(this.label17, "label17");
+            this.label17.Name = "label17";
+            this.toolTip.SetToolTip(this.label17, resources.GetString("label17.ToolTip"));
             // 
             // label27
             // 
-            resources.ApplyResources(label27, "label27");
-            label27.Name = "label27";
-            toolTip.SetToolTip(label27, resources.GetString("label27.ToolTip"));
+            resources.ApplyResources(this.label27, "label27");
+            this.label27.Name = "label27";
+            this.toolTip.SetToolTip(this.label27, resources.GetString("label27.ToolTip"));
             // 
             // label11
             // 
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
-            toolTip.SetToolTip(label11, resources.GetString("label11.ToolTip"));
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
+            this.toolTip.SetToolTip(this.label11, resources.GetString("label11.ToolTip"));
             // 
             // label9
             // 
-            resources.ApplyResources(label9, "label9");
-            label9.Name = "label9";
-            toolTip.SetToolTip(label9, resources.GetString("label9.ToolTip"));
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.Name = "label9";
+            this.toolTip.SetToolTip(this.label9, resources.GetString("label9.ToolTip"));
             // 
             // textBoxB
             // 
-            resources.ApplyResources(textBoxB, "textBoxB");
-            textBoxB.Name = "textBoxB";
-            textBoxB.ReadOnly = true;
-            toolTip.SetToolTip(textBoxB, resources.GetString("textBoxB.ToolTip"));
+            resources.ApplyResources(this.textBoxB, "textBoxB");
+            this.textBoxB.Name = "textBoxB";
+            this.textBoxB.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxB, resources.GetString("textBoxB.ToolTip"));
             // 
             // textBoxAlpha
             // 
-            resources.ApplyResources(textBoxAlpha, "textBoxAlpha");
-            textBoxAlpha.ForeColor = SystemColors.WindowText;
-            textBoxAlpha.Name = "textBoxAlpha";
-            textBoxAlpha.ReadOnly = true;
-            toolTip.SetToolTip(textBoxAlpha, resources.GetString("textBoxAlpha.ToolTip"));
+            resources.ApplyResources(this.textBoxAlpha, "textBoxAlpha");
+            this.textBoxAlpha.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxAlpha.Name = "textBoxAlpha";
+            this.textBoxAlpha.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxAlpha, resources.GetString("textBoxAlpha.ToolTip"));
             // 
             // textBoxBeta
             // 
-            resources.ApplyResources(textBoxBeta, "textBoxBeta");
-            textBoxBeta.Name = "textBoxBeta";
-            textBoxBeta.ReadOnly = true;
-            toolTip.SetToolTip(textBoxBeta, resources.GetString("textBoxBeta.ToolTip"));
+            resources.ApplyResources(this.textBoxBeta, "textBoxBeta");
+            this.textBoxBeta.Name = "textBoxBeta";
+            this.textBoxBeta.ReadOnly = true;
+            this.toolTip.SetToolTip(this.textBoxBeta, resources.GetString("textBoxBeta.ToolTip"));
             // 
             // buttonResetTakeoffAngle
             // 
-            resources.ApplyResources(buttonResetTakeoffAngle, "buttonResetTakeoffAngle");
-            buttonResetTakeoffAngle.Name = "buttonResetTakeoffAngle";
-            toolTip.SetToolTip(buttonResetTakeoffAngle, resources.GetString("buttonResetTakeoffAngle.ToolTip"));
-            buttonResetTakeoffAngle.Click += new EventHandler( buttonResetTakeoffAngle_Click);
+            resources.ApplyResources(this.buttonResetTakeoffAngle, "buttonResetTakeoffAngle");
+            this.buttonResetTakeoffAngle.Name = "buttonResetTakeoffAngle";
+            this.toolTip.SetToolTip(this.buttonResetTakeoffAngle, resources.GetString("buttonResetTakeoffAngle.ToolTip"));
+            this.buttonResetTakeoffAngle.Click += new System.EventHandler(this.buttonResetTakeoffAngle_Click);
             // 
             // buttonCopyCellConstantsToClipboard
             // 
-            resources.ApplyResources(buttonCopyCellConstantsToClipboard, "buttonCopyCellConstantsToClipboard");
-            buttonCopyCellConstantsToClipboard.Name = "buttonCopyCellConstantsToClipboard";
-            toolTip.SetToolTip(buttonCopyCellConstantsToClipboard, resources.GetString("buttonCopyCellConstantsToClipboard.ToolTip"));
-            buttonCopyCellConstantsToClipboard.Click += new EventHandler(buttonCopyClipboard_Click);
+            resources.ApplyResources(this.buttonCopyCellConstantsToClipboard, "buttonCopyCellConstantsToClipboard");
+            this.buttonCopyCellConstantsToClipboard.Name = "buttonCopyCellConstantsToClipboard";
+            this.toolTip.SetToolTip(this.buttonCopyCellConstantsToClipboard, resources.GetString("buttonCopyCellConstantsToClipboard.ToolTip"));
+            this.buttonCopyCellConstantsToClipboard.Click += new System.EventHandler(this.buttonCopyClipboard_Click);
             // 
             // buttonConfirm
             // 
-            resources.ApplyResources(buttonConfirm, "buttonConfirm");
-            buttonConfirm.Name = "buttonConfirm";
-            toolTip.SetToolTip(buttonConfirm, resources.GetString("buttonConfirm.ToolTip"));
-            buttonConfirm.Click += new EventHandler(buttonConfirm_Click);
+            resources.ApplyResources(this.buttonConfirm, "buttonConfirm");
+            this.buttonConfirm.Name = "buttonConfirm";
+            this.toolTip.SetToolTip(this.buttonConfirm, resources.GetString("buttonConfirm.ToolTip"));
+            this.buttonConfirm.Click += new System.EventHandler(this.buttonConfirm_Click);
             // 
             // label8
             // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.Name = "label8";
+            this.toolTip.SetToolTip(this.label8, resources.GetString("label8.ToolTip"));
             // 
             // label12
             // 
-            resources.ApplyResources(label12, "label12");
-            label12.Name = "label12";
-            toolTip.SetToolTip(label12, resources.GetString("label12.ToolTip"));
+            resources.ApplyResources(this.label12, "label12");
+            this.label12.Name = "label12";
+            this.toolTip.SetToolTip(this.label12, resources.GetString("label12.ToolTip"));
             // 
             // label28
             // 
-            resources.ApplyResources(label28, "label28");
-            label28.Name = "label28";
-            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip"));
+            resources.ApplyResources(this.label28, "label28");
+            this.label28.Name = "label28";
+            this.toolTip.SetToolTip(this.label28, resources.GetString("label28.ToolTip"));
             // 
             // label13
             // 
-            resources.ApplyResources(label13, "label13");
-            label13.Name = "label13";
-            toolTip.SetToolTip(label13, resources.GetString("label13.ToolTip"));
+            resources.ApplyResources(this.label13, "label13");
+            this.label13.Name = "label13";
+            this.toolTip.SetToolTip(this.label13, resources.GetString("label13.ToolTip"));
             // 
             // label14
             // 
-            resources.ApplyResources(label14, "label14");
-            label14.Name = "label14";
-            toolTip.SetToolTip(label14, resources.GetString("label14.ToolTip"));
+            resources.ApplyResources(this.label14, "label14");
+            this.label14.Name = "label14";
+            this.toolTip.SetToolTip(this.label14, resources.GetString("label14.ToolTip"));
             // 
             // label15
             // 
-            resources.ApplyResources(label15, "label15");
-            label15.Name = "label15";
-            toolTip.SetToolTip(label15, resources.GetString("label15.ToolTip"));
+            resources.ApplyResources(this.label15, "label15");
+            this.label15.Name = "label15";
+            this.toolTip.SetToolTip(this.label15, resources.GetString("label15.ToolTip"));
             // 
             // label16
             // 
-            resources.ApplyResources(label16, "label16");
-            label16.Name = "label16";
-            toolTip.SetToolTip(label16, resources.GetString("label16.ToolTip"));
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            this.toolTip.SetToolTip(this.label16, resources.GetString("label16.ToolTip"));
             // 
             // buttonCopyTableToClipboard
             // 
-            resources.ApplyResources(buttonCopyTableToClipboard, "buttonCopyTableToClipboard");
-            buttonCopyTableToClipboard.Name = "buttonCopyTableToClipboard";
-            toolTip.SetToolTip(buttonCopyTableToClipboard, resources.GetString("buttonCopyTableToClipboard.ToolTip"));
-            buttonCopyTableToClipboard.UseVisualStyleBackColor = true;
-            buttonCopyTableToClipboard.Click += new EventHandler(buttonCopyToClipboard_Click);
+            resources.ApplyResources(this.buttonCopyTableToClipboard, "buttonCopyTableToClipboard");
+            this.buttonCopyTableToClipboard.Name = "buttonCopyTableToClipboard";
+            this.toolTip.SetToolTip(this.buttonCopyTableToClipboard, resources.GetString("buttonCopyTableToClipboard.ToolTip"));
+            this.buttonCopyTableToClipboard.UseVisualStyleBackColor = true;
+            this.buttonCopyTableToClipboard.Click += new System.EventHandler(this.buttonCopyToClipboard_Click);
             // 
             // groupBox3
             // 
-            resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Controls.Add(flowLayoutPanelPatternDecomposition);
-            groupBox3.Controls.Add(groupBox2);
-            groupBox3.Controls.Add(panelFWHM);
-            groupBox3.Controls.Add(checkBoxUseInitialFWHM);
-            groupBox3.Controls.Add(checkBoxPatternDecomposition);
-            groupBox3.Controls.Add(numericUpDownSearchRange);
-            groupBox3.Controls.Add(label7);
-            groupBox3.Controls.Add(label2);
-            groupBox3.Controls.Add(label18);
-            groupBox3.Controls.Add(buttonApplyRangeToAll);
-            groupBox3.Name = "groupBox3";
-            groupBox3.TabStop = false;
-            toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
+            resources.ApplyResources(this.groupBox3, "groupBox3");
+            this.groupBox3.Controls.Add(this.flowLayoutPanelPatternDecomposition);
+            this.groupBox3.Controls.Add(this.groupBox2);
+            this.groupBox3.Controls.Add(this.panelFWHM);
+            this.groupBox3.Controls.Add(this.checkBoxUseInitialFWHM);
+            this.groupBox3.Controls.Add(this.checkBoxPatternDecomposition);
+            this.groupBox3.Controls.Add(this.numericUpDownSearchRange);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.label2);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Controls.Add(this.buttonApplyRangeToAll);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // flowLayoutPanelPatternDecomposition
             // 
-            resources.ApplyResources(flowLayoutPanelPatternDecomposition, "flowLayoutPanelPatternDecomposition");
-            flowLayoutPanelPatternDecomposition.Controls.Add(radioButtonEachCrystal);
-            flowLayoutPanelPatternDecomposition.Controls.Add(radioButtonBetweenCrystals);
-            flowLayoutPanelPatternDecomposition.Name = "flowLayoutPanelPatternDecomposition";
-            toolTip.SetToolTip(flowLayoutPanelPatternDecomposition, resources.GetString("flowLayoutPanelPatternDecomposition.ToolTip"));
+            resources.ApplyResources(this.flowLayoutPanelPatternDecomposition, "flowLayoutPanelPatternDecomposition");
+            this.flowLayoutPanelPatternDecomposition.Controls.Add(this.radioButtonEachCrystal);
+            this.flowLayoutPanelPatternDecomposition.Controls.Add(this.radioButtonBetweenCrystals);
+            this.flowLayoutPanelPatternDecomposition.Name = "flowLayoutPanelPatternDecomposition";
+            this.toolTip.SetToolTip(this.flowLayoutPanelPatternDecomposition, resources.GetString("flowLayoutPanelPatternDecomposition.ToolTip"));
             // 
             // radioButtonEachCrystal
             // 
-            resources.ApplyResources(radioButtonEachCrystal, "radioButtonEachCrystal");
-            radioButtonEachCrystal.Checked = true;
-            radioButtonEachCrystal.Name = "radioButtonEachCrystal";
-            radioButtonEachCrystal.TabStop = true;
-            toolTip.SetToolTip(radioButtonEachCrystal, resources.GetString("radioButtonEachCrystal.ToolTip"));
-            radioButtonEachCrystal.UseVisualStyleBackColor = true;
-            radioButtonEachCrystal.CheckedChanged += new EventHandler(radioButtonEachCrystal_CheckedChanged);
+            resources.ApplyResources(this.radioButtonEachCrystal, "radioButtonEachCrystal");
+            this.radioButtonEachCrystal.Checked = true;
+            this.radioButtonEachCrystal.Name = "radioButtonEachCrystal";
+            this.radioButtonEachCrystal.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonEachCrystal, resources.GetString("radioButtonEachCrystal.ToolTip"));
+            this.radioButtonEachCrystal.UseVisualStyleBackColor = true;
+            this.radioButtonEachCrystal.CheckedChanged += new System.EventHandler(this.radioButtonEachCrystal_CheckedChanged);
             // 
             // radioButtonBetweenCrystals
             // 
-            resources.ApplyResources(radioButtonBetweenCrystals, "radioButtonBetweenCrystals");
-            radioButtonBetweenCrystals.Name = "radioButtonBetweenCrystals";
-            toolTip.SetToolTip(radioButtonBetweenCrystals, resources.GetString("radioButtonBetweenCrystals.ToolTip"));
-            radioButtonBetweenCrystals.UseVisualStyleBackColor = true;
+            resources.ApplyResources(this.radioButtonBetweenCrystals, "radioButtonBetweenCrystals");
+            this.radioButtonBetweenCrystals.Name = "radioButtonBetweenCrystals";
+            this.toolTip.SetToolTip(this.radioButtonBetweenCrystals, resources.GetString("radioButtonBetweenCrystals.ToolTip"));
+            this.radioButtonBetweenCrystals.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
-            groupBox2.Controls.Add(radioButtonSymmetricPearson);
-            groupBox2.Controls.Add(radioButtonPseudoVoigt);
-            groupBox2.Controls.Add(radioButtonSplitPseudoVoigt);
-            groupBox2.Controls.Add(radioButtonSimple);
-            groupBox2.Controls.Add(radioButtonSplitPearson);
-            groupBox2.Controls.Add(buttonApplyFunctionToAll);
-            groupBox2.Name = "groupBox2";
-            groupBox2.TabStop = false;
-            toolTip.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.radioButtonSymmetricPearson);
+            this.groupBox2.Controls.Add(this.radioButtonPseudoVoigt);
+            this.groupBox2.Controls.Add(this.radioButtonSplitPseudoVoigt);
+            this.groupBox2.Controls.Add(this.radioButtonSimple);
+            this.groupBox2.Controls.Add(this.radioButtonSplitPearson);
+            this.groupBox2.Controls.Add(this.buttonApplyFunctionToAll);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // radioButtonSymmetricPearson
             // 
-            resources.ApplyResources(radioButtonSymmetricPearson, "radioButtonSymmetricPearson");
-            radioButtonSymmetricPearson.Name = "radioButtonSymmetricPearson";
-            toolTip.SetToolTip(radioButtonSymmetricPearson, resources.GetString("radioButtonSymmetricPearson.ToolTip"));
-            radioButtonSymmetricPearson.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
+            resources.ApplyResources(this.radioButtonSymmetricPearson, "radioButtonSymmetricPearson");
+            this.radioButtonSymmetricPearson.Name = "radioButtonSymmetricPearson";
+            this.toolTip.SetToolTip(this.radioButtonSymmetricPearson, resources.GetString("radioButtonSymmetricPearson.ToolTip"));
+            this.radioButtonSymmetricPearson.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButtonPseudoVoigt
             // 
-            resources.ApplyResources(radioButtonPseudoVoigt, "radioButtonPseudoVoigt");
-            radioButtonPseudoVoigt.Checked = true;
-            radioButtonPseudoVoigt.Name = "radioButtonPseudoVoigt";
-            radioButtonPseudoVoigt.TabStop = true;
-            toolTip.SetToolTip(radioButtonPseudoVoigt, resources.GetString("radioButtonPseudoVoigt.ToolTip"));
-            radioButtonPseudoVoigt.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
+            resources.ApplyResources(this.radioButtonPseudoVoigt, "radioButtonPseudoVoigt");
+            this.radioButtonPseudoVoigt.Checked = true;
+            this.radioButtonPseudoVoigt.Name = "radioButtonPseudoVoigt";
+            this.radioButtonPseudoVoigt.TabStop = true;
+            this.toolTip.SetToolTip(this.radioButtonPseudoVoigt, resources.GetString("radioButtonPseudoVoigt.ToolTip"));
+            this.radioButtonPseudoVoigt.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButtonSplitPseudoVoigt
             // 
-            resources.ApplyResources(radioButtonSplitPseudoVoigt, "radioButtonSplitPseudoVoigt");
-            radioButtonSplitPseudoVoigt.Name = "radioButtonSplitPseudoVoigt";
-            toolTip.SetToolTip(radioButtonSplitPseudoVoigt, resources.GetString("radioButtonSplitPseudoVoigt.ToolTip"));
-            radioButtonSplitPseudoVoigt.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
+            resources.ApplyResources(this.radioButtonSplitPseudoVoigt, "radioButtonSplitPseudoVoigt");
+            this.radioButtonSplitPseudoVoigt.Name = "radioButtonSplitPseudoVoigt";
+            this.toolTip.SetToolTip(this.radioButtonSplitPseudoVoigt, resources.GetString("radioButtonSplitPseudoVoigt.ToolTip"));
+            this.radioButtonSplitPseudoVoigt.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButtonSimple
             // 
-            resources.ApplyResources(radioButtonSimple, "radioButtonSimple");
-            radioButtonSimple.Name = "radioButtonSimple";
-            toolTip.SetToolTip(radioButtonSimple, resources.GetString("radioButtonSimple.ToolTip"));
-            radioButtonSimple.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
+            resources.ApplyResources(this.radioButtonSimple, "radioButtonSimple");
+            this.radioButtonSimple.Name = "radioButtonSimple";
+            this.toolTip.SetToolTip(this.radioButtonSimple, resources.GetString("radioButtonSimple.ToolTip"));
+            this.radioButtonSimple.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // radioButtonSplitPearson
             // 
-            resources.ApplyResources(radioButtonSplitPearson, "radioButtonSplitPearson");
-            radioButtonSplitPearson.Name = "radioButtonSplitPearson";
-            toolTip.SetToolTip(radioButtonSplitPearson, resources.GetString("radioButtonSplitPearson.ToolTip"));
-            radioButtonSplitPearson.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
+            resources.ApplyResources(this.radioButtonSplitPearson, "radioButtonSplitPearson");
+            this.radioButtonSplitPearson.Name = "radioButtonSplitPearson";
+            this.toolTip.SetToolTip(this.radioButtonSplitPearson, resources.GetString("radioButtonSplitPearson.ToolTip"));
+            this.radioButtonSplitPearson.CheckedChanged += new System.EventHandler(this.radioButton_CheckedChanged);
             // 
             // buttonApplyFunctionToAll
             // 
-            resources.ApplyResources(buttonApplyFunctionToAll, "buttonApplyFunctionToAll");
-            buttonApplyFunctionToAll.Name = "buttonApplyFunctionToAll";
-            toolTip.SetToolTip(buttonApplyFunctionToAll, resources.GetString("buttonApplyFunctionToAll.ToolTip"));
-            buttonApplyFunctionToAll.Click += new EventHandler(buttonApplyFunctionToAll_Click);
+            resources.ApplyResources(this.buttonApplyFunctionToAll, "buttonApplyFunctionToAll");
+            this.buttonApplyFunctionToAll.Name = "buttonApplyFunctionToAll";
+            this.toolTip.SetToolTip(this.buttonApplyFunctionToAll, resources.GetString("buttonApplyFunctionToAll.ToolTip"));
+            this.buttonApplyFunctionToAll.Click += new System.EventHandler(this.buttonApplyFunctionToAll_Click);
             // 
             // panelFWHM
             // 
-            resources.ApplyResources(panelFWHM, "panelFWHM");
-            panelFWHM.Controls.Add(numericUpDownInitialFWHM);
-            panelFWHM.Controls.Add(buttonApplyFWHMToAll);
-            panelFWHM.Controls.Add(label1);
-            panelFWHM.Name = "panelFWHM";
-            toolTip.SetToolTip(panelFWHM, resources.GetString("panelFWHM.ToolTip"));
+            resources.ApplyResources(this.panelFWHM, "panelFWHM");
+            this.panelFWHM.Controls.Add(this.numericUpDownInitialFWHM);
+            this.panelFWHM.Controls.Add(this.buttonApplyFWHMToAll);
+            this.panelFWHM.Controls.Add(this.label1);
+            this.panelFWHM.Name = "panelFWHM";
+            this.toolTip.SetToolTip(this.panelFWHM, resources.GetString("panelFWHM.ToolTip"));
             // 
             // numericUpDownInitialFWHM
             // 
-            resources.ApplyResources(numericUpDownInitialFWHM, "numericUpDownInitialFWHM");
-            numericUpDownInitialFWHM.DecimalPlaces = 3;
-            numericUpDownInitialFWHM.Increment = new decimal(new int[] { 2, 0, 0, 131072 });
-            numericUpDownInitialFWHM.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDownInitialFWHM.Minimum = new decimal(new int[] { 1, 0, 0, 196608 });
-            numericUpDownInitialFWHM.Name = "numericUpDownInitialFWHM";
-            toolTip.SetToolTip(numericUpDownInitialFWHM, resources.GetString("numericUpDownInitialFWHM.ToolTip"));
-            numericUpDownInitialFWHM.Value = new decimal(new int[] { 6, 0, 0, 131072 });
-            numericUpDownInitialFWHM.ValueChanged += new EventHandler(numericUpDownSearchRange_ValueChanged);
+            resources.ApplyResources(this.numericUpDownInitialFWHM, "numericUpDownInitialFWHM");
+            this.numericUpDownInitialFWHM.DecimalPlaces = 3;
+            this.numericUpDownInitialFWHM.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            131072});
+            this.numericUpDownInitialFWHM.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownInitialFWHM.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numericUpDownInitialFWHM.Name = "numericUpDownInitialFWHM";
+            this.toolTip.SetToolTip(this.numericUpDownInitialFWHM, resources.GetString("numericUpDownInitialFWHM.ToolTip"));
+            this.numericUpDownInitialFWHM.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            131072});
+            this.numericUpDownInitialFWHM.ValueChanged += new System.EventHandler(this.numericUpDownSearchRange_ValueChanged);
             // 
             // buttonApplyFWHMToAll
             // 
-            resources.ApplyResources(buttonApplyFWHMToAll, "buttonApplyFWHMToAll");
-            buttonApplyFWHMToAll.Name = "buttonApplyFWHMToAll";
-            toolTip.SetToolTip(buttonApplyFWHMToAll, resources.GetString("buttonApplyFWHMToAll.ToolTip"));
-            buttonApplyFWHMToAll.Click += new EventHandler(buttonApplyFWHMToAll_Click);
+            resources.ApplyResources(this.buttonApplyFWHMToAll, "buttonApplyFWHMToAll");
+            this.buttonApplyFWHMToAll.Name = "buttonApplyFWHMToAll";
+            this.toolTip.SetToolTip(this.buttonApplyFWHMToAll, resources.GetString("buttonApplyFWHMToAll.ToolTip"));
+            this.buttonApplyFWHMToAll.Click += new System.EventHandler(this.buttonApplyFWHMToAll_Click);
             // 
             // label1
             // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            this.toolTip.SetToolTip(this.label1, resources.GetString("label1.ToolTip"));
             // 
             // checkBoxUseInitialFWHM
             // 
-            resources.ApplyResources(checkBoxUseInitialFWHM, "checkBoxUseInitialFWHM");
-            checkBoxUseInitialFWHM.Name = "checkBoxUseInitialFWHM";
-            toolTip.SetToolTip(checkBoxUseInitialFWHM, resources.GetString("checkBoxUseInitialFWHM.ToolTip"));
-            checkBoxUseInitialFWHM.UseVisualStyleBackColor = true;
-            checkBoxUseInitialFWHM.CheckedChanged += new EventHandler(checkBoxUseInitialFWHM_CheckedChanged);
+            resources.ApplyResources(this.checkBoxUseInitialFWHM, "checkBoxUseInitialFWHM");
+            this.checkBoxUseInitialFWHM.Name = "checkBoxUseInitialFWHM";
+            this.toolTip.SetToolTip(this.checkBoxUseInitialFWHM, resources.GetString("checkBoxUseInitialFWHM.ToolTip"));
+            this.checkBoxUseInitialFWHM.UseVisualStyleBackColor = true;
+            this.checkBoxUseInitialFWHM.CheckedChanged += new System.EventHandler(this.checkBoxUseInitialFWHM_CheckedChanged);
             // 
             // checkBoxPatternDecomposition
             // 
-            resources.ApplyResources(checkBoxPatternDecomposition, "checkBoxPatternDecomposition");
-            checkBoxPatternDecomposition.Name = "checkBoxPatternDecomposition";
-            toolTip.SetToolTip(checkBoxPatternDecomposition, resources.GetString("checkBoxPatternDecomposition.ToolTip"));
-            checkBoxPatternDecomposition.UseVisualStyleBackColor = true;
-            checkBoxPatternDecomposition.CheckedChanged += new EventHandler(checkBoxPatternDecomposition_CheckedChanged);
+            resources.ApplyResources(this.checkBoxPatternDecomposition, "checkBoxPatternDecomposition");
+            this.checkBoxPatternDecomposition.Name = "checkBoxPatternDecomposition";
+            this.toolTip.SetToolTip(this.checkBoxPatternDecomposition, resources.GetString("checkBoxPatternDecomposition.ToolTip"));
+            this.checkBoxPatternDecomposition.UseVisualStyleBackColor = true;
+            this.checkBoxPatternDecomposition.CheckedChanged += new System.EventHandler(this.checkBoxPatternDecomposition_CheckedChanged);
             // 
             // numericUpDownSearchRange
             // 
-            resources.ApplyResources(numericUpDownSearchRange, "numericUpDownSearchRange");
-            numericUpDownSearchRange.DecimalPlaces = 3;
-            numericUpDownSearchRange.Increment = new decimal(new int[] { 2, 0, 0, 131072 });
-            numericUpDownSearchRange.Maximum = new decimal(new int[] { 100000, 0, 0, 0 });
-            numericUpDownSearchRange.Minimum = new decimal(new int[] { 1, 0, 0, 196608 });
-            numericUpDownSearchRange.Name = "numericUpDownSearchRange";
-            toolTip.SetToolTip(numericUpDownSearchRange, resources.GetString("numericUpDownSearchRange.ToolTip"));
-            numericUpDownSearchRange.Value = new decimal(new int[] { 6, 0, 0, 131072 });
-            numericUpDownSearchRange.ValueChanged += new EventHandler(numericUpDownSearchRange_ValueChanged);
+            resources.ApplyResources(this.numericUpDownSearchRange, "numericUpDownSearchRange");
+            this.numericUpDownSearchRange.DecimalPlaces = 3;
+            this.numericUpDownSearchRange.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            131072});
+            this.numericUpDownSearchRange.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.numericUpDownSearchRange.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            196608});
+            this.numericUpDownSearchRange.Name = "numericUpDownSearchRange";
+            this.toolTip.SetToolTip(this.numericUpDownSearchRange, resources.GetString("numericUpDownSearchRange.ToolTip"));
+            this.numericUpDownSearchRange.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            131072});
+            this.numericUpDownSearchRange.ValueChanged += new System.EventHandler(this.numericUpDownSearchRange_ValueChanged);
             // 
             // label7
             // 
-            resources.ApplyResources(label7, "label7");
-            label7.Name = "label7";
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
+            resources.ApplyResources(this.label7, "label7");
+            this.label7.Name = "label7";
+            this.toolTip.SetToolTip(this.label7, resources.GetString("label7.ToolTip"));
             // 
             // label2
             // 
-            resources.ApplyResources(label2, "label2");
-            label2.Name = "label2";
-            toolTip.SetToolTip(label2, resources.GetString("label2.ToolTip"));
+            resources.ApplyResources(this.label2, "label2");
+            this.label2.Name = "label2";
+            this.toolTip.SetToolTip(this.label2, resources.GetString("label2.ToolTip"));
             // 
             // label18
             // 
-            resources.ApplyResources(label18, "label18");
-            label18.Name = "label18";
-            toolTip.SetToolTip(label18, resources.GetString("label18.ToolTip"));
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            this.toolTip.SetToolTip(this.label18, resources.GetString("label18.ToolTip"));
             // 
             // buttonApplyRangeToAll
             // 
-            resources.ApplyResources(buttonApplyRangeToAll, "buttonApplyRangeToAll");
-            buttonApplyRangeToAll.Name = "buttonApplyRangeToAll";
-            toolTip.SetToolTip(buttonApplyRangeToAll, resources.GetString("buttonApplyRangeToAll.ToolTip"));
-            buttonApplyRangeToAll.Click += new EventHandler(buttonApplyRangeToAll_Click);
+            resources.ApplyResources(this.buttonApplyRangeToAll, "buttonApplyRangeToAll");
+            this.buttonApplyRangeToAll.Name = "buttonApplyRangeToAll";
+            this.toolTip.SetToolTip(this.buttonApplyRangeToAll, resources.GetString("buttonApplyRangeToAll.ToolTip"));
+            this.buttonApplyRangeToAll.Click += new System.EventHandler(this.buttonApplyRangeToAll_Click);
             // 
             // dataGridViewCrystals
             // 
-            resources.ApplyResources(dataGridViewCrystals, "dataGridViewCrystals");
-            dataGridViewCrystals.AllowUserToAddRows = false;
-            dataGridViewCrystals.AllowUserToDeleteRows = false;
-            dataGridViewCrystals.AllowUserToResizeColumns = false;
-            dataGridViewCrystals.AllowUserToResizeRows = false;
-            dataGridViewCrystals.AutoGenerateColumns = false;
-            dataGridViewCrystals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCrystals.ColumnHeadersVisible = false;
-            dataGridViewCrystals.Columns.AddRange(new DataGridViewColumn[] { Check, PeakColor, crystalDataGridViewTextBoxColumn });
-            dataGridViewCrystals.DataSource = bindingSourceCrystals;
-            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle1.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle1.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.False;
-            dataGridViewCrystals.DefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCrystals.MultiSelect = false;
-            dataGridViewCrystals.Name = "dataGridViewCrystals";
-            dataGridViewCrystals.ReadOnly = true;
-            dataGridViewCrystals.RowHeadersVisible = false;
-            dataGridViewCrystals.RowTemplate.Height = 21;
-            dataGridViewCrystals.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            toolTip.SetToolTip(dataGridViewCrystals, resources.GetString("dataGridViewCrystals.ToolTip"));
-            dataGridViewCrystals.CellMouseClick +=new DataGridViewCellMouseEventHandler( dataGridViewCrystals_CellMouseClick);
-            dataGridViewCrystals.CellMouseDoubleClick +=new DataGridViewCellMouseEventHandler( dataGridViewCrystals_CellMouseClick);
-            dataGridViewCrystals.KeyDown += new KeyEventHandler( dataGridViewCrystals_KeyDown);
+            resources.ApplyResources(this.dataGridViewCrystals, "dataGridViewCrystals");
+            this.dataGridViewCrystals.AllowUserToAddRows = false;
+            this.dataGridViewCrystals.AllowUserToDeleteRows = false;
+            this.dataGridViewCrystals.AllowUserToResizeColumns = false;
+            this.dataGridViewCrystals.AllowUserToResizeRows = false;
+            this.dataGridViewCrystals.AutoGenerateColumns = false;
+            this.dataGridViewCrystals.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCrystals.ColumnHeadersVisible = false;
+            this.dataGridViewCrystals.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Check,
+            this.PeakColor,
+            this.crystalDataGridViewTextBoxColumn});
+            this.dataGridViewCrystals.DataSource = this.bindingSourceCrystals;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewCrystals.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewCrystals.MultiSelect = false;
+            this.dataGridViewCrystals.Name = "dataGridViewCrystals";
+            this.dataGridViewCrystals.ReadOnly = true;
+            this.dataGridViewCrystals.RowHeadersVisible = false;
+            this.dataGridViewCrystals.RowTemplate.Height = 21;
+            this.dataGridViewCrystals.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridViewCrystals, resources.GetString("dataGridViewCrystals.ToolTip"));
+            this.dataGridViewCrystals.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
+            this.dataGridViewCrystals.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewCrystals_CellMouseClick);
+            this.dataGridViewCrystals.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewCrystals_KeyDown);
             // 
             // Check
             // 
-            Check.DataPropertyName = "Check";
-            resources.ApplyResources(Check, "Check");
-            Check.Name = "Check";
-            Check.ReadOnly = true;
+            this.Check.DataPropertyName = "Check";
+            resources.ApplyResources(this.Check, "Check");
+            this.Check.Name = "Check";
+            this.Check.ReadOnly = true;
             // 
             // PeakColor
             // 
-            PeakColor.DataPropertyName = "PeakColor";
-            resources.ApplyResources(PeakColor, "PeakColor");
-            PeakColor.Name = "PeakColor";
-            PeakColor.ReadOnly = true;
-            PeakColor.Resizable = DataGridViewTriState.True;
-            PeakColor.SortMode = DataGridViewColumnSortMode.Automatic;
+            this.PeakColor.DataPropertyName = "PeakColor";
+            resources.ApplyResources(this.PeakColor, "PeakColor");
+            this.PeakColor.Name = "PeakColor";
+            this.PeakColor.ReadOnly = true;
+            this.PeakColor.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.PeakColor.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // crystalDataGridViewTextBoxColumn
             // 
-            crystalDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            crystalDataGridViewTextBoxColumn.DataPropertyName = "Crystal";
-            resources.ApplyResources(crystalDataGridViewTextBoxColumn, "crystalDataGridViewTextBoxColumn");
-            crystalDataGridViewTextBoxColumn.Name = "crystalDataGridViewTextBoxColumn";
-            crystalDataGridViewTextBoxColumn.ReadOnly = true;
+            this.crystalDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.crystalDataGridViewTextBoxColumn.DataPropertyName = "Crystal";
+            resources.ApplyResources(this.crystalDataGridViewTextBoxColumn, "crystalDataGridViewTextBoxColumn");
+            this.crystalDataGridViewTextBoxColumn.Name = "crystalDataGridViewTextBoxColumn";
+            this.crystalDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // bindingSourceCrystals
             // 
-            bindingSourceCrystals.DataMember = "DataTableCrystal";
-            bindingSourceCrystals.DataSource = dataSet;
+            this.bindingSourceCrystals.DataMember = "DataTableCrystal";
+            this.bindingSourceCrystals.DataSource = this.dataSet;
             // 
             // dataSet
             // 
-            dataSet.DataSetName = "DataSet";
-            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
-            dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dataSet.DataSetName = "DataSet";
+            this.dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
+            this.dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // dataGridViewPlaneList
             // 
-            resources.ApplyResources(dataGridViewPlaneList, "dataGridViewPlaneList");
-            dataGridViewPlaneList.AllowUserToAddRows = false;
-            dataGridViewPlaneList.AllowUserToDeleteRows = false;
-            dataGridViewPlaneList.AllowUserToResizeColumns = false;
-            dataGridViewPlaneList.AllowUserToResizeRows = false;
-            dataGridViewPlaneList.AutoGenerateColumns = false;
-            dataGridViewPlaneList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dataGridViewPlaneList.Columns.AddRange(new DataGridViewColumn[] { checkDataGridViewCheckBoxColumn, hKLDataGridViewTextBoxColumn, calcXDataGridViewTextBoxColumn, functionDataGridViewTextBoxColumn, xDataGridViewTextBoxColumn, xErrDataGridViewTextBoxColumn, fWHMDataGridViewTextBoxColumn, intensityDataGridViewTextBoxColumn, weightDataGridViewTextBoxColumn, R });
-            dataGridViewPlaneList.ContextMenuStrip = contextMenuStrip1;
-            dataGridViewPlaneList.DataSource = bindingSourcePlanes;
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = SystemColors.Window;
-            dataGridViewCellStyle9.Font = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle9.ForeColor = SystemColors.ControlText;
+            resources.ApplyResources(this.dataGridViewPlaneList, "dataGridViewPlaneList");
+            this.dataGridViewPlaneList.AllowUserToAddRows = false;
+            this.dataGridViewPlaneList.AllowUserToDeleteRows = false;
+            this.dataGridViewPlaneList.AllowUserToResizeColumns = false;
+            this.dataGridViewPlaneList.AllowUserToResizeRows = false;
+            this.dataGridViewPlaneList.AutoGenerateColumns = false;
+            this.dataGridViewPlaneList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridViewPlaneList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.checkDataGridViewCheckBoxColumn,
+            this.hKLDataGridViewTextBoxColumn,
+            this.calcXDataGridViewTextBoxColumn,
+            this.functionDataGridViewTextBoxColumn,
+            this.xDataGridViewTextBoxColumn,
+            this.xErrDataGridViewTextBoxColumn,
+            this.fWHMDataGridViewTextBoxColumn,
+            this.intensityDataGridViewTextBoxColumn,
+            this.weightDataGridViewTextBoxColumn,
+            this.R});
+            this.dataGridViewPlaneList.ContextMenuStrip = this.contextMenuStrip1;
+            this.dataGridViewPlaneList.DataSource = this.bindingSourcePlanes;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle9.Format = "G5";
             dataGridViewCellStyle9.NullValue = null;
-            dataGridViewCellStyle9.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = DataGridViewTriState.False;
-            dataGridViewPlaneList.DefaultCellStyle = dataGridViewCellStyle9;
-            dataGridViewPlaneList.MultiSelect = false;
-            dataGridViewPlaneList.Name = "dataGridViewPlaneList";
-            dataGridViewPlaneList.RowHeadersVisible = false;
-            dataGridViewPlaneList.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            dataGridViewPlaneList.RowTemplate.Height = 21;
-            dataGridViewPlaneList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            toolTip.SetToolTip(dataGridViewPlaneList, resources.GetString("dataGridViewPlaneList.ToolTip"));
-            dataGridViewPlaneList.CellContentClick +=new DataGridViewCellEventHandler( dataGridViewPlanes_CellContentClick);
-            dataGridViewPlaneList.SelectionChanged += new EventHandler( dataGridViewPlaneList_SelectionChanged);
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPlaneList.DefaultCellStyle = dataGridViewCellStyle9;
+            this.dataGridViewPlaneList.MultiSelect = false;
+            this.dataGridViewPlaneList.Name = "dataGridViewPlaneList";
+            this.dataGridViewPlaneList.RowHeadersVisible = false;
+            this.dataGridViewPlaneList.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridViewPlaneList.RowTemplate.Height = 21;
+            this.dataGridViewPlaneList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.toolTip.SetToolTip(this.dataGridViewPlaneList, resources.GetString("dataGridViewPlaneList.ToolTip"));
+            this.dataGridViewPlaneList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPlanes_CellContentClick);
+            this.dataGridViewPlaneList.SelectionChanged += new System.EventHandler(this.dataGridViewPlaneList_SelectionChanged);
             // 
             // checkDataGridViewCheckBoxColumn
             // 
-            checkDataGridViewCheckBoxColumn.DataPropertyName = "Check";
-            resources.ApplyResources(checkDataGridViewCheckBoxColumn, "checkDataGridViewCheckBoxColumn");
-            checkDataGridViewCheckBoxColumn.Name = "checkDataGridViewCheckBoxColumn";
+            this.checkDataGridViewCheckBoxColumn.DataPropertyName = "Check";
+            resources.ApplyResources(this.checkDataGridViewCheckBoxColumn, "checkDataGridViewCheckBoxColumn");
+            this.checkDataGridViewCheckBoxColumn.Name = "checkDataGridViewCheckBoxColumn";
             // 
             // hKLDataGridViewTextBoxColumn
             // 
-            hKLDataGridViewTextBoxColumn.DataPropertyName = "HKL";
-            resources.ApplyResources(hKLDataGridViewTextBoxColumn, "hKLDataGridViewTextBoxColumn");
-            hKLDataGridViewTextBoxColumn.Name = "hKLDataGridViewTextBoxColumn";
-            hKLDataGridViewTextBoxColumn.ReadOnly = true;
+            this.hKLDataGridViewTextBoxColumn.DataPropertyName = "HKL";
+            resources.ApplyResources(this.hKLDataGridViewTextBoxColumn, "hKLDataGridViewTextBoxColumn");
+            this.hKLDataGridViewTextBoxColumn.Name = "hKLDataGridViewTextBoxColumn";
+            this.hKLDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // calcXDataGridViewTextBoxColumn
             // 
-            calcXDataGridViewTextBoxColumn.DataPropertyName = "CalcX";
+            this.calcXDataGridViewTextBoxColumn.DataPropertyName = "CalcX";
             dataGridViewCellStyle2.NullValue = null;
-            calcXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            resources.ApplyResources(calcXDataGridViewTextBoxColumn, "calcXDataGridViewTextBoxColumn");
-            calcXDataGridViewTextBoxColumn.Name = "calcXDataGridViewTextBoxColumn";
-            calcXDataGridViewTextBoxColumn.ReadOnly = true;
+            this.calcXDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            resources.ApplyResources(this.calcXDataGridViewTextBoxColumn, "calcXDataGridViewTextBoxColumn");
+            this.calcXDataGridViewTextBoxColumn.Name = "calcXDataGridViewTextBoxColumn";
+            this.calcXDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // functionDataGridViewTextBoxColumn
             // 
-            functionDataGridViewTextBoxColumn.DataPropertyName = "Function";
-            resources.ApplyResources(functionDataGridViewTextBoxColumn, "functionDataGridViewTextBoxColumn");
-            functionDataGridViewTextBoxColumn.Name = "functionDataGridViewTextBoxColumn";
-            functionDataGridViewTextBoxColumn.ReadOnly = true;
+            this.functionDataGridViewTextBoxColumn.DataPropertyName = "Function";
+            resources.ApplyResources(this.functionDataGridViewTextBoxColumn, "functionDataGridViewTextBoxColumn");
+            this.functionDataGridViewTextBoxColumn.Name = "functionDataGridViewTextBoxColumn";
+            this.functionDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // xDataGridViewTextBoxColumn
             // 
-            xDataGridViewTextBoxColumn.DataPropertyName = "X";
+            this.xDataGridViewTextBoxColumn.DataPropertyName = "X";
             dataGridViewCellStyle3.NullValue = null;
-            xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
-            resources.ApplyResources(xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
-            xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
-            xDataGridViewTextBoxColumn.ReadOnly = true;
+            this.xDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            resources.ApplyResources(this.xDataGridViewTextBoxColumn, "xDataGridViewTextBoxColumn");
+            this.xDataGridViewTextBoxColumn.Name = "xDataGridViewTextBoxColumn";
+            this.xDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // xErrDataGridViewTextBoxColumn
             // 
-            xErrDataGridViewTextBoxColumn.DataPropertyName = "XErr";
+            this.xErrDataGridViewTextBoxColumn.DataPropertyName = "XErr";
             dataGridViewCellStyle4.NullValue = null;
-            xErrDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
-            resources.ApplyResources(xErrDataGridViewTextBoxColumn, "xErrDataGridViewTextBoxColumn");
-            xErrDataGridViewTextBoxColumn.Name = "xErrDataGridViewTextBoxColumn";
-            xErrDataGridViewTextBoxColumn.ReadOnly = true;
+            this.xErrDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            resources.ApplyResources(this.xErrDataGridViewTextBoxColumn, "xErrDataGridViewTextBoxColumn");
+            this.xErrDataGridViewTextBoxColumn.Name = "xErrDataGridViewTextBoxColumn";
+            this.xErrDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // fWHMDataGridViewTextBoxColumn
             // 
-            fWHMDataGridViewTextBoxColumn.DataPropertyName = "FWHM";
+            this.fWHMDataGridViewTextBoxColumn.DataPropertyName = "FWHM";
             dataGridViewCellStyle5.NullValue = null;
-            fWHMDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            resources.ApplyResources(fWHMDataGridViewTextBoxColumn, "fWHMDataGridViewTextBoxColumn");
-            fWHMDataGridViewTextBoxColumn.Name = "fWHMDataGridViewTextBoxColumn";
-            fWHMDataGridViewTextBoxColumn.ReadOnly = true;
+            this.fWHMDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            resources.ApplyResources(this.fWHMDataGridViewTextBoxColumn, "fWHMDataGridViewTextBoxColumn");
+            this.fWHMDataGridViewTextBoxColumn.Name = "fWHMDataGridViewTextBoxColumn";
+            this.fWHMDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // intensityDataGridViewTextBoxColumn
             // 
-            intensityDataGridViewTextBoxColumn.DataPropertyName = "Intensity";
+            this.intensityDataGridViewTextBoxColumn.DataPropertyName = "Intensity";
             dataGridViewCellStyle6.NullValue = null;
-            intensityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(intensityDataGridViewTextBoxColumn, "intensityDataGridViewTextBoxColumn");
-            intensityDataGridViewTextBoxColumn.Name = "intensityDataGridViewTextBoxColumn";
-            intensityDataGridViewTextBoxColumn.ReadOnly = true;
+            this.intensityDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(this.intensityDataGridViewTextBoxColumn, "intensityDataGridViewTextBoxColumn");
+            this.intensityDataGridViewTextBoxColumn.Name = "intensityDataGridViewTextBoxColumn";
+            this.intensityDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // weightDataGridViewTextBoxColumn
             // 
-            weightDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
+            this.weightDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.weightDataGridViewTextBoxColumn.DataPropertyName = "Weight";
             dataGridViewCellStyle7.NullValue = null;
-            weightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            resources.ApplyResources(weightDataGridViewTextBoxColumn, "weightDataGridViewTextBoxColumn");
-            weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
-            weightDataGridViewTextBoxColumn.ReadOnly = true;
+            this.weightDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            resources.ApplyResources(this.weightDataGridViewTextBoxColumn, "weightDataGridViewTextBoxColumn");
+            this.weightDataGridViewTextBoxColumn.Name = "weightDataGridViewTextBoxColumn";
+            this.weightDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // R
             // 
-            R.DataPropertyName = "R";
+            this.R.DataPropertyName = "R";
             dataGridViewCellStyle8.NullValue = null;
-            R.DefaultCellStyle = dataGridViewCellStyle8;
-            resources.ApplyResources(R, "R");
-            R.Name = "R";
+            this.R.DefaultCellStyle = dataGridViewCellStyle8;
+            resources.ApplyResources(this.R, "R");
+            this.R.Name = "R";
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(contextMenuStrip1, "contextMenuStrip1");
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { copyToClipboradToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            toolTip.SetToolTip(contextMenuStrip1, resources.GetString("contextMenuStrip1.ToolTip"));
+            resources.ApplyResources(this.contextMenuStrip1, "contextMenuStrip1");
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.copyToClipboradToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.toolTip.SetToolTip(this.contextMenuStrip1, resources.GetString("contextMenuStrip1.ToolTip"));
             // 
             // copyToClipboradToolStripMenuItem
             // 
-            resources.ApplyResources(copyToClipboradToolStripMenuItem, "copyToClipboradToolStripMenuItem");
-            copyToClipboradToolStripMenuItem.Name = "copyToClipboradToolStripMenuItem";
-            copyToClipboradToolStripMenuItem.Click += new EventHandler(copyToClipboradToolStripMenuItem_Click);
+            resources.ApplyResources(this.copyToClipboradToolStripMenuItem, "copyToClipboradToolStripMenuItem");
+            this.copyToClipboradToolStripMenuItem.Name = "copyToClipboradToolStripMenuItem";
+            this.copyToClipboradToolStripMenuItem.Click += new System.EventHandler(this.copyToClipboradToolStripMenuItem_Click);
             // 
             // bindingSourcePlanes
             // 
-            bindingSourcePlanes.AllowNew = false;
-            bindingSourcePlanes.DataMember = "DataTablePeakFitting";
-            bindingSourcePlanes.DataSource = dataSet;
+            this.bindingSourcePlanes.AllowNew = false;
+            this.bindingSourcePlanes.DataMember = "DataTablePeakFitting";
+            this.bindingSourcePlanes.DataSource = this.dataSet;
             // 
             // buttonSendToCellFinder
             // 
-            resources.ApplyResources(buttonSendToCellFinder, "buttonSendToCellFinder");
-            buttonSendToCellFinder.Name = "buttonSendToCellFinder";
-            toolTip.SetToolTip(buttonSendToCellFinder, resources.GetString("buttonSendToCellFinder.ToolTip"));
-            buttonSendToCellFinder.UseVisualStyleBackColor = true;
-            buttonSendToCellFinder.Click += new EventHandler(buttonSendToCellFinder_Click);
+            resources.ApplyResources(this.buttonSendToCellFinder, "buttonSendToCellFinder");
+            this.buttonSendToCellFinder.Name = "buttonSendToCellFinder";
+            this.toolTip.SetToolTip(this.buttonSendToCellFinder, resources.GetString("buttonSendToCellFinder.ToolTip"));
+            this.buttonSendToCellFinder.UseVisualStyleBackColor = true;
+            this.buttonSendToCellFinder.Click += new System.EventHandler(this.buttonSendToCellFinder_Click);
             // 
             // useForCalcDataGridViewCheckBoxColumn
             // 
-            useForCalcDataGridViewCheckBoxColumn.DataPropertyName = "Use for Calc.";
-            resources.ApplyResources(useForCalcDataGridViewCheckBoxColumn, "useForCalcDataGridViewCheckBoxColumn");
-            useForCalcDataGridViewCheckBoxColumn.Name = "useForCalcDataGridViewCheckBoxColumn";
+            this.useForCalcDataGridViewCheckBoxColumn.DataPropertyName = "Use for Calc.";
+            resources.ApplyResources(this.useForCalcDataGridViewCheckBoxColumn, "useForCalcDataGridViewCheckBoxColumn");
+            this.useForCalcDataGridViewCheckBoxColumn.Name = "useForCalcDataGridViewCheckBoxColumn";
             // 
             // buttonRemovePeaks
             // 
-            resources.ApplyResources(buttonRemovePeaks, "buttonRemovePeaks");
-            buttonRemovePeaks.Name = "buttonRemovePeaks";
-            toolTip.SetToolTip(buttonRemovePeaks, resources.GetString("buttonRemovePeaks.ToolTip"));
-            buttonRemovePeaks.UseVisualStyleBackColor = true;
-            buttonRemovePeaks.Click += new EventHandler(buttonRemovePeaks_Click);
+            resources.ApplyResources(this.buttonRemovePeaks, "buttonRemovePeaks");
+            this.buttonRemovePeaks.Name = "buttonRemovePeaks";
+            this.toolTip.SetToolTip(this.buttonRemovePeaks, resources.GetString("buttonRemovePeaks.ToolTip"));
+            this.buttonRemovePeaks.UseVisualStyleBackColor = true;
+            this.buttonRemovePeaks.Click += new System.EventHandler(this.buttonRemovePeaks_Click);
             // 
             // groupBox4
             // 
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Controls.Add(textBoxRemovedProfileName);
-            groupBox4.Controls.Add(buttonRemovePeaks);
-            groupBox4.Controls.Add(label4);
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
-            toolTip.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
+            resources.ApplyResources(this.groupBox4, "groupBox4");
+            this.groupBox4.Controls.Add(this.textBoxRemovedProfileName);
+            this.groupBox4.Controls.Add(this.buttonRemovePeaks);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // textBoxRemovedProfileName
             // 
-            resources.ApplyResources(textBoxRemovedProfileName, "textBoxRemovedProfileName");
-            textBoxRemovedProfileName.Name = "textBoxRemovedProfileName";
-            toolTip.SetToolTip(textBoxRemovedProfileName, resources.GetString("textBoxRemovedProfileName.ToolTip"));
+            resources.ApplyResources(this.textBoxRemovedProfileName, "textBoxRemovedProfileName");
+            this.textBoxRemovedProfileName.Name = "textBoxRemovedProfileName";
+            this.toolTip.SetToolTip(this.textBoxRemovedProfileName, resources.GetString("textBoxRemovedProfileName.ToolTip"));
             // 
             // label4
             // 
-            resources.ApplyResources(label4, "label4");
-            label4.Name = "label4";
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
+            resources.ApplyResources(this.label4, "label4");
+            this.label4.Name = "label4";
+            this.toolTip.SetToolTip(this.label4, resources.GetString("label4.ToolTip"));
             // 
             // groupBox5
             // 
-            resources.ApplyResources(groupBox5, "groupBox5");
-            groupBox5.Controls.Add(buttonSendToCellFinder);
-            groupBox5.Name = "groupBox5";
-            groupBox5.TabStop = false;
-            toolTip.SetToolTip(groupBox5, resources.GetString("groupBox5.ToolTip"));
+            resources.ApplyResources(this.groupBox5, "groupBox5");
+            this.groupBox5.Controls.Add(this.buttonSendToCellFinder);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.TabStop = false;
+            this.toolTip.SetToolTip(this.groupBox5, resources.GetString("groupBox5.ToolTip"));
             // 
             // buttonSaveTableAsCSV
             // 
-            resources.ApplyResources(buttonSaveTableAsCSV, "buttonSaveTableAsCSV");
-            buttonSaveTableAsCSV.Name = "buttonSaveTableAsCSV";
-            toolTip.SetToolTip(buttonSaveTableAsCSV, resources.GetString("buttonSaveTableAsCSV.ToolTip"));
-            buttonSaveTableAsCSV.UseVisualStyleBackColor = true;
-            buttonSaveTableAsCSV.Click += new EventHandler(ButtonSaveTableAsCSV_Click);
+            resources.ApplyResources(this.buttonSaveTableAsCSV, "buttonSaveTableAsCSV");
+            this.buttonSaveTableAsCSV.Name = "buttonSaveTableAsCSV";
+            this.toolTip.SetToolTip(this.buttonSaveTableAsCSV, resources.GetString("buttonSaveTableAsCSV.ToolTip"));
+            this.buttonSaveTableAsCSV.UseVisualStyleBackColor = true;
+            this.buttonSaveTableAsCSV.Click += new System.EventHandler(this.ButtonSaveTableAsCSV_Click);
             // 
             // numericBoxEffectiveDigit
             // 
-            resources.ApplyResources(numericBoxEffectiveDigit, "numericBoxEffectiveDigit");
-            numericBoxEffectiveDigit.BackColor = SystemColors.Control;
-            numericBoxEffectiveDigit.FooterBackColor = SystemColors.Control;
-            numericBoxEffectiveDigit.HeaderBackColor = SystemColors.Control;
-            numericBoxEffectiveDigit.Maximum = 16D;
-            numericBoxEffectiveDigit.Minimum = 1D;
-            numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
-            numericBoxEffectiveDigit.RadianValue = 0.087266462599716474D;
-            numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
-            numericBoxEffectiveDigit.ShowUpDown = true;
-            numericBoxEffectiveDigit.SkipEventDuringInput = false;
-            numericBoxEffectiveDigit.TextFont = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            numericBoxEffectiveDigit.ThonsandsSeparator = true;
-            toolTip.SetToolTip(numericBoxEffectiveDigit, resources.GetString("numericBoxEffectiveDigit.ToolTip"));
-            numericBoxEffectiveDigit.Value = 5D;
-            numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler( NumericBoxEffectiveDigit_ValueChanged);
+            resources.ApplyResources(this.numericBoxEffectiveDigit, "numericBoxEffectiveDigit");
+            this.numericBoxEffectiveDigit.BackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEffectiveDigit.FooterBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEffectiveDigit.HeaderBackColor = System.Drawing.SystemColors.Control;
+            this.numericBoxEffectiveDigit.Maximum = 16D;
+            this.numericBoxEffectiveDigit.Minimum = 1D;
+            this.numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
+            this.numericBoxEffectiveDigit.RadianValue = 0.087266462599716474D;
+            this.numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
+            this.numericBoxEffectiveDigit.ShowUpDown = true;
+            this.numericBoxEffectiveDigit.SkipEventDuringInput = false;
+            this.numericBoxEffectiveDigit.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericBoxEffectiveDigit.ThonsandsSeparator = true;
+            this.toolTip.SetToolTip(this.numericBoxEffectiveDigit, resources.GetString("numericBoxEffectiveDigit.ToolTip"));
+            this.numericBoxEffectiveDigit.Value = 5D;
+            this.numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.NumericBoxEffectiveDigit_ValueChanged);
+            // 
+            // buttonClearPeaks
+            // 
+            resources.ApplyResources(this.buttonClearPeaks, "buttonClearPeaks");
+            this.buttonClearPeaks.Name = "buttonClearPeaks";
+            this.toolTip.SetToolTip(this.buttonClearPeaks, resources.GetString("buttonClearPeaks.ToolTip"));
+            this.buttonClearPeaks.UseVisualStyleBackColor = true;
+            this.buttonClearPeaks.Click += new System.EventHandler(this.buttonClearPeaks_Click);
             // 
             // FormFitting
             // 
             resources.ApplyResources(this, "$this");
-            AllowDrop = true;
-            AutoScaleMode = AutoScaleMode.Dpi;
-            Controls.Add(numericBoxEffectiveDigit);
-            Controls.Add(groupBox5);
-            Controls.Add(groupBox4);
-            Controls.Add(buttonSaveTableAsCSV);
-            Controls.Add(buttonCopyTableToClipboard);
-            Controls.Add(groupBox3);
-            Controls.Add(dataGridViewPlaneList);
-            Controls.Add(groupBox1);
-            Controls.Add(dataGridViewCrystals);
-            KeyPreview = true;
-            MaximizeBox = false;
-            Name = "FormFitting";
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
-            Closed += new EventHandler(FormFitting_Closed);
-            FormClosing +=new FormClosingEventHandler( FormFitting_FormClosing);
-            VisibleChanged +=new EventHandler( FormFitting_VisibleChanged);
-            DragDrop +=new DragEventHandler( FormFitting_DragDrop);
-            DragEnter += new DragEventHandler( FormFitting_DragEnter);
-            KeyDown += new KeyEventHandler( FormFitting_KeyDown);
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
-            groupBox3.ResumeLayout(false);
-            groupBox3.PerformLayout();
-            flowLayoutPanelPatternDecomposition.ResumeLayout(false);
-            flowLayoutPanelPatternDecomposition.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
-            panelFWHM.ResumeLayout(false);
-            panelFWHM.PerformLayout();
-            ((ISupportInitialize)numericUpDownInitialFWHM).EndInit();
-            ((ISupportInitialize)numericUpDownSearchRange).EndInit();
-            ((ISupportInitialize)dataGridViewCrystals).EndInit();
-            ((ISupportInitialize)bindingSourceCrystals).EndInit();
-            ((ISupportInitialize)dataSet).EndInit();
-            ((ISupportInitialize)dataGridViewPlaneList).EndInit();
-            contextMenuStrip1.ResumeLayout(false);
-            ((ISupportInitialize)bindingSourcePlanes).EndInit();
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
-            groupBox5.ResumeLayout(false);
-            ResumeLayout(false);
-            PerformLayout();
+            this.AllowDrop = true;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.Controls.Add(this.numericBoxEffectiveDigit);
+            this.Controls.Add(this.groupBox5);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.buttonClearPeaks);
+            this.Controls.Add(this.buttonSaveTableAsCSV);
+            this.Controls.Add(this.buttonCopyTableToClipboard);
+            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.dataGridViewPlaneList);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.dataGridViewCrystals);
+            this.KeyPreview = true;
+            this.MaximizeBox = false;
+            this.Name = "FormFitting";
+            this.toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            this.Closed += new System.EventHandler(this.FormFitting_Closed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormFitting_FormClosing);
+            this.VisibleChanged += new System.EventHandler(this.FormFitting_VisibleChanged);
+            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.FormFitting_DragDrop);
+            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.FormFitting_DragEnter);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormFitting_KeyDown);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.flowLayoutPanelPatternDecomposition.ResumeLayout(false);
+            this.flowLayoutPanelPatternDecomposition.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            this.panelFWHM.ResumeLayout(false);
+            this.panelFWHM.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownInitialFWHM)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSearchRange)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCrystals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourceCrystals)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewPlaneList)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSourcePlanes)).EndInit();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
         }
         #endregion
 
@@ -1079,6 +1129,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn weightDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn R;
         public NumericUpDown numericUpDownSearchRange;
+        private Button buttonClearPeaks;
     }
 
 
