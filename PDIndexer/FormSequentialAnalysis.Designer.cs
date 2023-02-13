@@ -1,4 +1,6 @@
-﻿namespace PDIndexer
+﻿using System.Windows.Forms;
+
+namespace PDIndexer
 {
     partial class FormSequentialAnalysis
     {
@@ -28,44 +30,46 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSequentialAnalysis));
-            this.buttonExecute = new System.Windows.Forms.Button();
-            this.textBox2theta = new System.Windows.Forms.TextBox();
-            this.tabControl = new System.Windows.Forms.TabControl();
-            this.tabPage2theta = new System.Windows.Forms.TabPage();
-            this.checkBoxAutoSaveTwoTheta = new System.Windows.Forms.CheckBox();
-            this.tabPageDspacing = new System.Windows.Forms.TabPage();
-            this.textBoxDspacing = new System.Windows.Forms.TextBox();
-            this.checkBoxAutoSaveD = new System.Windows.Forms.CheckBox();
-            this.tabPageFWHM = new System.Windows.Forms.TabPage();
-            this.textBoxFWHM = new System.Windows.Forms.TextBox();
-            this.checkBoxAutoSaveFWHM = new System.Windows.Forms.CheckBox();
-            this.tabPageIntensity = new System.Windows.Forms.TabPage();
-            this.textBoxIntensity = new System.Windows.Forms.TextBox();
-            this.checkBoxAutoSaveInt = new System.Windows.Forms.CheckBox();
-            this.tabPageCellConstants = new System.Windows.Forms.TabPage();
-            this.textBoxCellConstants = new System.Windows.Forms.TextBox();
-            this.checkBoxAutoSaveCell = new System.Windows.Forms.CheckBox();
-            this.tabPagePressure = new System.Windows.Forms.TabPage();
-            this.textBoxPressure = new System.Windows.Forms.TextBox();
-            this.checkBoxAutoSavePressure = new System.Windows.Forms.CheckBox();
-            this.tabPageSingh = new System.Windows.Forms.TabPage();
-            this.textBoxSingh = new System.Windows.Forms.TextBox();
-            this.checkBoxAutoSaveSingh = new System.Windows.Forms.CheckBox();
+            this.buttonExecute = new Button();
+            this.textBox2theta = new TextBox();
+            this.tabControl = new TabControl();
+            this.tabPage2theta = new TabPage();
+            this.checkBoxAutoSaveTwoTheta = new CheckBox();
+            this.tabPageDspacing = new TabPage();
+            this.textBoxDspacing = new TextBox();
+            this.checkBoxAutoSaveD = new CheckBox();
+            this.tabPageFWHM = new TabPage();
+            this.textBoxFWHM = new TextBox();
+            this.checkBoxAutoSaveFWHM = new CheckBox();
+            this.tabPageIntensity = new TabPage();
+            this.textBoxIntensity = new TextBox();
+            this.checkBoxAutoSaveInt = new CheckBox();
+            this.tabPageCellConstants = new TabPage();
+            this.textBoxCellConstants = new TextBox();
+            this.checkBoxAutoSaveCell = new CheckBox();
+            this.tabPagePressure = new TabPage();
+            this.textBoxPressure = new TextBox();
+            this.checkBoxAutoSavePressure = new CheckBox();
+            this.tabPageSingh = new TabPage();
+            this.textBoxSingh = new TextBox();
+            this.checkBoxAutoSaveSingh = new CheckBox();
             this.graphControl1 = new Crystallography.Controls.GraphControl();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.buttonCopy = new System.Windows.Forms.Button();
-            this.buttonSave = new System.Windows.Forms.Button();
-            this.textBoxDirectory = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.statusStrip1 = new StatusStrip();
+            this.toolStripStatusLabel1 = new ToolStripStatusLabel();
+            this.buttonCopy = new Button();
+            this.buttonSave = new Button();
+            this.textBoxDirectory = new TextBox();
+            this.panel1 = new Panel();
             this.numericBoxToleranceFactor = new Crystallography.Controls.NumericBox();
             this.numericBoxStartNumber = new Crystallography.Controls.NumericBox();
-            this.checkBoxLoop = new System.Windows.Forms.CheckBox();
-            this.checkBoxToleranceFactor = new System.Windows.Forms.CheckBox();
-            this.checkBoxStartNumber = new System.Windows.Forms.CheckBox();
-            this.buttonSetDirectory = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.checkBoxLoop = new CheckBox();
+            this.checkBoxToleranceFactor = new CheckBox();
+            this.checkBoxStartNumber = new CheckBox();
+            this.buttonSetDirectory = new Button();
+            this.label1 = new Label();
+            this.bindingSource1 = new BindingSource(this.components);
             this.tabControl.SuspendLayout();
             this.tabPage2theta.SuspendLayout();
             this.tabPageDspacing.SuspendLayout();
@@ -76,6 +80,7 @@
             this.tabPageSingh.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonExecute
@@ -413,6 +418,7 @@
             this.statusStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -459,5 +465,6 @@
         private System.Windows.Forms.CheckBox checkBoxLoop;
         private Crystallography.Controls.NumericBox numericBoxToleranceFactor;
         private System.Windows.Forms.CheckBox checkBoxToleranceFactor;
+        private System.Windows.Forms.BindingSource bindingSource1;
     }
 }

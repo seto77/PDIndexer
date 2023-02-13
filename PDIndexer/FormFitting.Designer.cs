@@ -276,7 +276,7 @@ namespace PDIndexer
             textBoxA_err.Name = "textBoxA_err";
             textBoxA_err.ReadOnly = true;
             toolTip.SetToolTip(textBoxA_err, resources.GetString("textBoxA_err.ToolTip"));
-            textBoxA_err.TextChanged += textBoxA_TextChanged;
+            textBoxA_err.TextChanged +=new EventHandler( textBoxA_TextChanged);
             // 
             // textBoxA
             // 
@@ -284,7 +284,7 @@ namespace PDIndexer
             textBoxA.Name = "textBoxA";
             textBoxA.ReadOnly = true;
             toolTip.SetToolTip(textBoxA, resources.GetString("textBoxA.ToolTip"));
-            textBoxA.TextChanged += textBoxA_TextChanged;
+            textBoxA.TextChanged += new EventHandler( textBoxA_TextChanged);
             // 
             // label26
             // 
@@ -403,21 +403,21 @@ namespace PDIndexer
             resources.ApplyResources(buttonResetTakeoffAngle, "buttonResetTakeoffAngle");
             buttonResetTakeoffAngle.Name = "buttonResetTakeoffAngle";
             toolTip.SetToolTip(buttonResetTakeoffAngle, resources.GetString("buttonResetTakeoffAngle.ToolTip"));
-            buttonResetTakeoffAngle.Click += buttonResetTakeoffAngle_Click;
+            buttonResetTakeoffAngle.Click += new EventHandler( buttonResetTakeoffAngle_Click);
             // 
             // buttonCopyCellConstantsToClipboard
             // 
             resources.ApplyResources(buttonCopyCellConstantsToClipboard, "buttonCopyCellConstantsToClipboard");
             buttonCopyCellConstantsToClipboard.Name = "buttonCopyCellConstantsToClipboard";
             toolTip.SetToolTip(buttonCopyCellConstantsToClipboard, resources.GetString("buttonCopyCellConstantsToClipboard.ToolTip"));
-            buttonCopyCellConstantsToClipboard.Click += buttonCopyClipboard_Click;
+            buttonCopyCellConstantsToClipboard.Click += new EventHandler(buttonCopyClipboard_Click);
             // 
             // buttonConfirm
             // 
             resources.ApplyResources(buttonConfirm, "buttonConfirm");
             buttonConfirm.Name = "buttonConfirm";
             toolTip.SetToolTip(buttonConfirm, resources.GetString("buttonConfirm.ToolTip"));
-            buttonConfirm.Click += buttonConfirm_Click;
+            buttonConfirm.Click += new EventHandler(buttonConfirm_Click);
             // 
             // label8
             // 
@@ -467,7 +467,7 @@ namespace PDIndexer
             buttonCopyTableToClipboard.Name = "buttonCopyTableToClipboard";
             toolTip.SetToolTip(buttonCopyTableToClipboard, resources.GetString("buttonCopyTableToClipboard.ToolTip"));
             buttonCopyTableToClipboard.UseVisualStyleBackColor = true;
-            buttonCopyTableToClipboard.Click += buttonCopyToClipboard_Click;
+            buttonCopyTableToClipboard.Click += new EventHandler(buttonCopyToClipboard_Click);
             // 
             // groupBox3
             // 
@@ -502,7 +502,7 @@ namespace PDIndexer
             radioButtonEachCrystal.TabStop = true;
             toolTip.SetToolTip(radioButtonEachCrystal, resources.GetString("radioButtonEachCrystal.ToolTip"));
             radioButtonEachCrystal.UseVisualStyleBackColor = true;
-            radioButtonEachCrystal.CheckedChanged += radioButtonEachCrystal_CheckedChanged;
+            radioButtonEachCrystal.CheckedChanged += new EventHandler(radioButtonEachCrystal_CheckedChanged);
             // 
             // radioButtonBetweenCrystals
             // 
@@ -529,7 +529,7 @@ namespace PDIndexer
             resources.ApplyResources(radioButtonSymmetricPearson, "radioButtonSymmetricPearson");
             radioButtonSymmetricPearson.Name = "radioButtonSymmetricPearson";
             toolTip.SetToolTip(radioButtonSymmetricPearson, resources.GetString("radioButtonSymmetricPearson.ToolTip"));
-            radioButtonSymmetricPearson.CheckedChanged += radioButton_CheckedChanged;
+            radioButtonSymmetricPearson.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             // 
             // radioButtonPseudoVoigt
             // 
@@ -538,35 +538,35 @@ namespace PDIndexer
             radioButtonPseudoVoigt.Name = "radioButtonPseudoVoigt";
             radioButtonPseudoVoigt.TabStop = true;
             toolTip.SetToolTip(radioButtonPseudoVoigt, resources.GetString("radioButtonPseudoVoigt.ToolTip"));
-            radioButtonPseudoVoigt.CheckedChanged += radioButton_CheckedChanged;
+            radioButtonPseudoVoigt.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             // 
             // radioButtonSplitPseudoVoigt
             // 
             resources.ApplyResources(radioButtonSplitPseudoVoigt, "radioButtonSplitPseudoVoigt");
             radioButtonSplitPseudoVoigt.Name = "radioButtonSplitPseudoVoigt";
             toolTip.SetToolTip(radioButtonSplitPseudoVoigt, resources.GetString("radioButtonSplitPseudoVoigt.ToolTip"));
-            radioButtonSplitPseudoVoigt.CheckedChanged += radioButton_CheckedChanged;
+            radioButtonSplitPseudoVoigt.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             // 
             // radioButtonSimple
             // 
             resources.ApplyResources(radioButtonSimple, "radioButtonSimple");
             radioButtonSimple.Name = "radioButtonSimple";
             toolTip.SetToolTip(radioButtonSimple, resources.GetString("radioButtonSimple.ToolTip"));
-            radioButtonSimple.CheckedChanged += radioButton_CheckedChanged;
+            radioButtonSimple.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             // 
             // radioButtonSplitPearson
             // 
             resources.ApplyResources(radioButtonSplitPearson, "radioButtonSplitPearson");
             radioButtonSplitPearson.Name = "radioButtonSplitPearson";
             toolTip.SetToolTip(radioButtonSplitPearson, resources.GetString("radioButtonSplitPearson.ToolTip"));
-            radioButtonSplitPearson.CheckedChanged += radioButton_CheckedChanged;
+            radioButtonSplitPearson.CheckedChanged += new EventHandler(radioButton_CheckedChanged);
             // 
             // buttonApplyFunctionToAll
             // 
             resources.ApplyResources(buttonApplyFunctionToAll, "buttonApplyFunctionToAll");
             buttonApplyFunctionToAll.Name = "buttonApplyFunctionToAll";
             toolTip.SetToolTip(buttonApplyFunctionToAll, resources.GetString("buttonApplyFunctionToAll.ToolTip"));
-            buttonApplyFunctionToAll.Click += buttonApplyFunctionToAll_Click;
+            buttonApplyFunctionToAll.Click += new EventHandler(buttonApplyFunctionToAll_Click);
             // 
             // panelFWHM
             // 
@@ -587,14 +587,14 @@ namespace PDIndexer
             numericUpDownInitialFWHM.Name = "numericUpDownInitialFWHM";
             toolTip.SetToolTip(numericUpDownInitialFWHM, resources.GetString("numericUpDownInitialFWHM.ToolTip"));
             numericUpDownInitialFWHM.Value = new decimal(new int[] { 6, 0, 0, 131072 });
-            numericUpDownInitialFWHM.ValueChanged += numericUpDownSearchRange_ValueChanged;
+            numericUpDownInitialFWHM.ValueChanged += new EventHandler(numericUpDownSearchRange_ValueChanged);
             // 
             // buttonApplyFWHMToAll
             // 
             resources.ApplyResources(buttonApplyFWHMToAll, "buttonApplyFWHMToAll");
             buttonApplyFWHMToAll.Name = "buttonApplyFWHMToAll";
             toolTip.SetToolTip(buttonApplyFWHMToAll, resources.GetString("buttonApplyFWHMToAll.ToolTip"));
-            buttonApplyFWHMToAll.Click += buttonApplyFWHMToAll_Click;
+            buttonApplyFWHMToAll.Click += new EventHandler(buttonApplyFWHMToAll_Click);
             // 
             // label1
             // 
@@ -608,7 +608,7 @@ namespace PDIndexer
             checkBoxUseInitialFWHM.Name = "checkBoxUseInitialFWHM";
             toolTip.SetToolTip(checkBoxUseInitialFWHM, resources.GetString("checkBoxUseInitialFWHM.ToolTip"));
             checkBoxUseInitialFWHM.UseVisualStyleBackColor = true;
-            checkBoxUseInitialFWHM.CheckedChanged += checkBoxUseInitialFWHM_CheckedChanged;
+            checkBoxUseInitialFWHM.CheckedChanged += new EventHandler(checkBoxUseInitialFWHM_CheckedChanged);
             // 
             // checkBoxPatternDecomposition
             // 
@@ -616,7 +616,7 @@ namespace PDIndexer
             checkBoxPatternDecomposition.Name = "checkBoxPatternDecomposition";
             toolTip.SetToolTip(checkBoxPatternDecomposition, resources.GetString("checkBoxPatternDecomposition.ToolTip"));
             checkBoxPatternDecomposition.UseVisualStyleBackColor = true;
-            checkBoxPatternDecomposition.CheckedChanged += checkBoxPatternDecomposition_CheckedChanged;
+            checkBoxPatternDecomposition.CheckedChanged += new EventHandler(checkBoxPatternDecomposition_CheckedChanged);
             // 
             // numericUpDownSearchRange
             // 
@@ -628,7 +628,7 @@ namespace PDIndexer
             numericUpDownSearchRange.Name = "numericUpDownSearchRange";
             toolTip.SetToolTip(numericUpDownSearchRange, resources.GetString("numericUpDownSearchRange.ToolTip"));
             numericUpDownSearchRange.Value = new decimal(new int[] { 6, 0, 0, 131072 });
-            numericUpDownSearchRange.ValueChanged += numericUpDownSearchRange_ValueChanged;
+            numericUpDownSearchRange.ValueChanged += new EventHandler(numericUpDownSearchRange_ValueChanged);
             // 
             // label7
             // 
@@ -653,7 +653,7 @@ namespace PDIndexer
             resources.ApplyResources(buttonApplyRangeToAll, "buttonApplyRangeToAll");
             buttonApplyRangeToAll.Name = "buttonApplyRangeToAll";
             toolTip.SetToolTip(buttonApplyRangeToAll, resources.GetString("buttonApplyRangeToAll.ToolTip"));
-            buttonApplyRangeToAll.Click += buttonApplyRangeToAll_Click;
+            buttonApplyRangeToAll.Click += new EventHandler(buttonApplyRangeToAll_Click);
             // 
             // dataGridViewCrystals
             // 
@@ -682,9 +682,9 @@ namespace PDIndexer
             dataGridViewCrystals.RowTemplate.Height = 21;
             dataGridViewCrystals.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             toolTip.SetToolTip(dataGridViewCrystals, resources.GetString("dataGridViewCrystals.ToolTip"));
-            dataGridViewCrystals.CellMouseClick += dataGridViewCrystals_CellMouseClick;
-            dataGridViewCrystals.CellMouseDoubleClick += dataGridViewCrystals_CellMouseClick;
-            dataGridViewCrystals.KeyDown += dataGridViewCrystals_KeyDown;
+            dataGridViewCrystals.CellMouseClick +=new DataGridViewCellMouseEventHandler( dataGridViewCrystals_CellMouseClick);
+            dataGridViewCrystals.CellMouseDoubleClick +=new DataGridViewCellMouseEventHandler( dataGridViewCrystals_CellMouseClick);
+            dataGridViewCrystals.KeyDown += new KeyEventHandler( dataGridViewCrystals_KeyDown);
             // 
             // Check
             // 
@@ -750,8 +750,8 @@ namespace PDIndexer
             dataGridViewPlaneList.RowTemplate.Height = 21;
             dataGridViewPlaneList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             toolTip.SetToolTip(dataGridViewPlaneList, resources.GetString("dataGridViewPlaneList.ToolTip"));
-            dataGridViewPlaneList.CellContentClick += dataGridViewPlanes_CellContentClick;
-            dataGridViewPlaneList.SelectionChanged += dataGridViewPlaneList_SelectionChanged;
+            dataGridViewPlaneList.CellContentClick +=new DataGridViewCellEventHandler( dataGridViewPlanes_CellContentClick);
+            dataGridViewPlaneList.SelectionChanged += new EventHandler( dataGridViewPlaneList_SelectionChanged);
             // 
             // checkDataGridViewCheckBoxColumn
             // 
@@ -847,7 +847,7 @@ namespace PDIndexer
             // 
             resources.ApplyResources(copyToClipboradToolStripMenuItem, "copyToClipboradToolStripMenuItem");
             copyToClipboradToolStripMenuItem.Name = "copyToClipboradToolStripMenuItem";
-            copyToClipboradToolStripMenuItem.Click += copyToClipboradToolStripMenuItem_Click;
+            copyToClipboradToolStripMenuItem.Click += new EventHandler(copyToClipboradToolStripMenuItem_Click);
             // 
             // bindingSourcePlanes
             // 
@@ -861,7 +861,7 @@ namespace PDIndexer
             buttonSendToCellFinder.Name = "buttonSendToCellFinder";
             toolTip.SetToolTip(buttonSendToCellFinder, resources.GetString("buttonSendToCellFinder.ToolTip"));
             buttonSendToCellFinder.UseVisualStyleBackColor = true;
-            buttonSendToCellFinder.Click += buttonSendToCellFinder_Click;
+            buttonSendToCellFinder.Click += new EventHandler(buttonSendToCellFinder_Click);
             // 
             // useForCalcDataGridViewCheckBoxColumn
             // 
@@ -875,7 +875,7 @@ namespace PDIndexer
             buttonRemovePeaks.Name = "buttonRemovePeaks";
             toolTip.SetToolTip(buttonRemovePeaks, resources.GetString("buttonRemovePeaks.ToolTip"));
             buttonRemovePeaks.UseVisualStyleBackColor = true;
-            buttonRemovePeaks.Click += buttonRemovePeaks_Click;
+            buttonRemovePeaks.Click += new EventHandler(buttonRemovePeaks_Click);
             // 
             // groupBox4
             // 
@@ -913,7 +913,7 @@ namespace PDIndexer
             buttonSaveTableAsCSV.Name = "buttonSaveTableAsCSV";
             toolTip.SetToolTip(buttonSaveTableAsCSV, resources.GetString("buttonSaveTableAsCSV.ToolTip"));
             buttonSaveTableAsCSV.UseVisualStyleBackColor = true;
-            buttonSaveTableAsCSV.Click += ButtonSaveTableAsCSV_Click;
+            buttonSaveTableAsCSV.Click += new EventHandler(ButtonSaveTableAsCSV_Click);
             // 
             // numericBoxEffectiveDigit
             // 
@@ -932,7 +932,7 @@ namespace PDIndexer
             numericBoxEffectiveDigit.ThonsandsSeparator = true;
             toolTip.SetToolTip(numericBoxEffectiveDigit, resources.GetString("numericBoxEffectiveDigit.ToolTip"));
             numericBoxEffectiveDigit.Value = 5D;
-            numericBoxEffectiveDigit.ValueChanged += NumericBoxEffectiveDigit_ValueChanged;
+            numericBoxEffectiveDigit.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler( NumericBoxEffectiveDigit_ValueChanged);
             // 
             // FormFitting
             // 
@@ -952,12 +952,12 @@ namespace PDIndexer
             MaximizeBox = false;
             Name = "FormFitting";
             toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
-            Closed += FormFitting_Closed;
-            FormClosing += FormFitting_FormClosing;
-            VisibleChanged += FormFitting_VisibleChanged;
-            DragDrop += FormFitting_DragDrop;
-            DragEnter += FormFitting_DragEnter;
-            KeyDown += FormFitting_KeyDown;
+            Closed += new EventHandler(FormFitting_Closed);
+            FormClosing +=new FormClosingEventHandler( FormFitting_FormClosing);
+            VisibleChanged +=new EventHandler( FormFitting_VisibleChanged);
+            DragDrop +=new DragEventHandler( FormFitting_DragDrop);
+            DragEnter += new DragEventHandler( FormFitting_DragEnter);
+            KeyDown += new KeyEventHandler( FormFitting_KeyDown);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox3.ResumeLayout(false);
