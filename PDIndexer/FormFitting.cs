@@ -287,7 +287,6 @@ public partial class FormFitting : Form
         //ピーク分離フィッティングモードのとき
         else
         {
-           
                 #region すべてをまとめてフィッティング
                 
                 //全てのフィッティング対象ピークをいったん格納
@@ -1147,29 +1146,46 @@ public partial class FormFitting : Form
         }
         else
         {
-            //まず、チェックされている面指数をリストアップする
-            var checkedItems = new List<string>();
-            for (int i = 0; i < dataSet.DataTablePeakFitting.Rows.Count; i++)
+            if (TargetCrystal.FlexibleMode) //flexモードの時
             {
-                var r = dataSet.DataTablePeakFitting.GetRow(i);
-                if (r.Check)
-                    checkedItems.Add(r.HKL);
-            }
-
-            for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-            {
-                if (dataSet.DataTablePeakFitting.Rows.Count >= i + 1)
+                for (int i = 0; i < TargetCrystal.Plane.Count; i++)
                 {
-                    //チェックされている面指数かどうかを判定して、IsFittingCheckedに反映させる
-                    TargetCrystal.Plane[i].IsFittingChecked = checkedItems.Any(e => e == TargetCrystal.Plane[i].strHKL);
-                    dataSet.DataTablePeakFitting.Replace(i, TargetCrystal.Plane[i]);
+                    if (dataSet.DataTablePeakFitting.Rows.Count >= i + 1)
+                        dataSet.DataTablePeakFitting.Replace(i, TargetCrystal.Plane[i]);
+                    else
+                        dataSet.DataTablePeakFitting.Add(TargetCrystal.Plane[i]);
                 }
-                else
-                    dataSet.DataTablePeakFitting.Add(TargetCrystal.Plane[i]);
+                while (dataSet.DataTablePeakFitting.Rows.Count > TargetCrystal.Plane.Count)
+                    dataSet.DataTablePeakFitting.RemoveAt(dataSet.DataTablePeakFitting.Rows.Count - 1);
+
             }
-            while (dataSet.DataTablePeakFitting.Rows.Count > TargetCrystal.Plane.Count)
-                dataSet.DataTablePeakFitting.RemoveAt(dataSet.DataTablePeakFitting.Rows.Count - 1);
-            Application.DoEvents();
+            else//通常結晶モードの時
+            {
+                //まず、チェックされている面指数をリストアップする
+                var checkedItems = new List<string>();
+                for (int i = 0; i < dataSet.DataTablePeakFitting.Rows.Count; i++)
+                {
+                    var r = dataSet.DataTablePeakFitting.GetRow(i);
+                    if (r.Check)
+                        checkedItems.Add(r.HKL);
+                }
+
+                for (int i = 0; i < TargetCrystal.Plane.Count; i++)
+                {
+                    if (dataSet.DataTablePeakFitting.Rows.Count >= i + 1)
+                    {
+                        //チェックされている面指数かどうかを判定して、IsFittingCheckedに反映させる
+                        TargetCrystal.Plane[i].IsFittingChecked = checkedItems.Any(e => e == TargetCrystal.Plane[i].strHKL);
+                        dataSet.DataTablePeakFitting.Replace(i, TargetCrystal.Plane[i]);
+                    }
+                    else
+                        dataSet.DataTablePeakFitting.Add(TargetCrystal.Plane[i]);
+                }
+                while (dataSet.DataTablePeakFitting.Rows.Count > TargetCrystal.Plane.Count)
+                    dataSet.DataTablePeakFitting.RemoveAt(dataSet.DataTablePeakFitting.Rows.Count - 1);
+                Application.DoEvents();
+
+            }
         }
         IsCheckedListBoxSelectIndexChangeEventSkip = false;
     }

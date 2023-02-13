@@ -631,6 +631,9 @@ public partial class FormMain : Form
             readCrystal(UserAppDataPath + "initial.Xml", false, true);
         }
 
+      
+
+
 
         initialDialog.Text = "Now Loading... Binding dataset between forms.";
         //formCrystalとの連携
@@ -733,13 +736,14 @@ public partial class FormMain : Form
         dataSet.DataTableProfile.Clear();
 
         e.Cancel = false;
+
         if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
         {
             var cry = new List<Crystal>();
             for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
+
                 cry.Add(dataSet.DataTableCrystal.Items[i]);
             ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
-
         }
     }
     //フォームクローズ時
@@ -1902,7 +1906,7 @@ public partial class FormMain : Form
             (double)(x - OriginPos.X) / (pictureBoxMain.Width - OriginPos.X) * (UpperX - LowerX) + LowerX,
             (double)(pictureBoxMain.Height - y - OriginPos.Y - BottomMargin) / (pictureBoxMain.Height - OriginPos.Y - BottomMargin) * (UpperY - LowerY) + LowerY);
     }
-    private PointD ConvToDspacing(PointD pt)
+    public PointD ConvToDspacing(PointD pt)
     {//プロファイル座標の横軸をd値に変換( 縦軸はそのまま)
         if (AxisMode == HorizontalAxis.Angle)
             pt.X = WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI);
@@ -2005,7 +2009,18 @@ public partial class FormMain : Form
                     SerchOption = PeakFunctionForm.PseudoVoigt
                 };
                 cry.Plane.Add(p);
-                cry.Plane.Sort();
+
+                formFitting.ChangeCrystalFromMainForm();
+                
+                var i = SearchPlaneNo(pt.X, cry, 0.0001);//強度計算していない場合
+                if (i >= 0)
+                {
+                    SelectedPlaneIndex = i;
+                    IsPlaneSelected = true;
+                    if (formFitting.Visible)
+                        formFitting.SelectedPlaneIndex = i;
+                }
+
                 Draw();
                 return;
             }
@@ -2017,13 +2032,14 @@ public partial class FormMain : Form
                 {
                     cry.Plane.RemoveAt(i);
                     cry.Plane.Sort();
+                    formFitting.ChangeCrystalFromMainForm();
                     Draw();
                     return;
                 }
             }
             //formFitting.SetCheckedListBoxPlanes(false);
             Draw();
-            formFitting.ChangeCrystalFromMainForm();
+            //formFitting.ChangeCrystalFromMainForm();
         }
 
         if (e.Button == MouseButtons.Middle)
@@ -2229,8 +2245,7 @@ public partial class FormMain : Form
 
         //Application.DoEvents();
 
-
-        //マウスカーソルの設定
+        #region マウスカーソルの設定
         double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
         if (ShowBackgroundProfile && BackGroundPointSelectMode)//bg点選択モードのときは
             pictureBoxMain.Cursor = Cursors.Default;
@@ -2262,6 +2277,7 @@ public partial class FormMain : Form
             else//範囲選択モードのときは
                 pictureBoxMain.Cursor = Cursors.Arrow;
         }
+        #endregion 
 
         if (ShowBackgroundProfile && BackGroundPointSelectMode && IsBgPtSelected == true && e.Button == MouseButtons.Left)
         {//Bgモードで、Bg点を選択していて、左ドラッグのとき
@@ -3513,7 +3529,6 @@ public partial class FormMain : Form
         for (int i = 1; i < dataGridViewCrystals.Rows.Count; i++)
             if (((Crystal)dataSet.DataTableCrystal.Rows[i][1]).Reserved)
                 dataGridViewCrystals.Rows[i].DefaultCellStyle = cellStyle2;
-
 
         if (bindingSourceCrystal.List.Count > 0)
             bindingSourceCrystal.Position = 0;

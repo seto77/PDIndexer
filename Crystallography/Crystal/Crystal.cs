@@ -8,6 +8,7 @@ using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
+using static System.Net.Mime.MediaTypeNames;
 #endregion
 
 namespace Crystallography;
@@ -28,76 +29,54 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return crystal;
     }
 
-    public double Residual = 0;
-
     public int CompareTo(Crystal o) => Residual.CompareTo(o.Residual);
 
+    #region Equalsオーバーライド
     public bool Equals(Crystal o)
     {
+        if (o == null)
+            return false;
         if (A == o.A && B == o.B && C == o.C && Alpha == o.Alpha && Beta == o.Beta && Gamma == o.Gamma &&
-               SymmetrySeriesNumber == o.SymmetrySeriesNumber && Name == o.Name && JournalName == o.JournalName && PublSectionTitle == o.PublSectionTitle && JournalName == o.JournalName && ChemicalFormulaSum == o.ChemicalFormulaSum
-               && Density == o.Density)
+                   SymmetrySeriesNumber == o.SymmetrySeriesNumber && Name == o.Name && JournalName == o.JournalName && PublSectionTitle == o.PublSectionTitle && JournalName == o.JournalName && ChemicalFormulaSum == o.ChemicalFormulaSum
+                   && Density == o.Density)
             if (Atoms.Length == o.Atoms.Length)
                 for (int l = 0; l < Atoms.Length; l++)
                     if (Atoms[l].X == o.Atoms[l].X && Atoms[l].Y == o.Atoms[l].Y && Atoms[l].Z == o.Atoms[l].Z &&
                         Atoms[l].Occ == o.Atoms[l].Occ && Atoms[l].Label == o.Atoms[l].Label && Atoms[l].SubNumberElectron == o.Atoms[l].SubNumberElectron)
                         return true;
         return false;
-    }
 
-    #region Equalsオーバーライド
+    }
     public override bool Equals(object obj)
     {
-        if (ReferenceEquals(this, obj))
-        {
-            return true;
-        }
-
-        if (ReferenceEquals(obj, null))
-        {
+        if (obj is Crystal o)
+            return Equals(o);
+        else
             return false;
-        }
-
-        throw new NotImplementedException();
     }
 
     public override int GetHashCode()
     {
-        throw new NotImplementedException();
+        return new { CellValue, Atoms, JournalInformation }.GetHashCode();
     }
 
     public static bool operator ==(Crystal left, Crystal right)
     {
-        if (ReferenceEquals(left, null))
-            return ReferenceEquals(right, null);
+        if (left is null)
+            return right is null;
 
         return left.Equals(right);
     }
 
-    public static bool operator !=(Crystal left, Crystal right)
-    {
-        return !(left == right);
-    }
+    public static bool operator !=(Crystal left, Crystal right) => !(left == right);
 
-    public static bool operator <(Crystal left, Crystal right)
-    {
-        return ReferenceEquals(left, null) ? !ReferenceEquals(right, null) : left.CompareTo(right) < 0;
-    }
+    public static bool operator <(Crystal left, Crystal right) => ReferenceEquals(left, null) ? right is not null : left.CompareTo(right) < 0;
 
-    public static bool operator <=(Crystal left, Crystal right)
-    {
-        return ReferenceEquals(left, null) || left.CompareTo(right) <= 0;
-    }
+    public static bool operator <=(Crystal left, Crystal right) => left is null || left.CompareTo(right) <= 0;
 
-    public static bool operator >(Crystal left, Crystal right)
-    {
-        return !ReferenceEquals(left, null) && left.CompareTo(right) > 0;
-    }
+    public static bool operator >(Crystal left, Crystal right) => left is not null && left.CompareTo(right) > 0;
 
-    public static bool operator >=(Crystal left, Crystal right)
-    {
-        return ReferenceEquals(left, null) ? ReferenceEquals(right, null) : left.CompareTo(right) >= 0;
-    }
+    public static bool operator >=(Crystal left, Crystal right) => left is null ? right is null : left.CompareTo(right) >= 0;
     #endregion
 
     public override string ToString() => Name.ToString();
@@ -106,20 +85,48 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #region プロパティ、フィールド
 
-    public Bound[] Bounds;
-
-    public LatticePlane[] LatticePlanes;
-
+    #region PDIndexer関連
+    
+    /// <summary>
+    /// フレキシブルモード. PDIndexerで利用
+    /// </summary>
     [NonSerialized]
     [XmlIgnore]
     public bool FlexibleMode = false;
 
     /// <summary>
+    /// 保護される結晶であるかどうか. PDIndexerで利用
+    /// </summary>
+    public bool Reserved = false;
+
+    /// <summary>
+    /// 残差. AtomicPositionFinderから呼ばれる。
+    /// </summary>
+    public double Residual = 0;
+
+    /// <summary>
+    /// 全体的な回折強度.  PDIndexerから呼ばれる.
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public double DiffractionPeakIntensity = -1;
+
+
+    [NonSerialized]
+    [XmlIgnore]
+    public double Consistency, VolumeRatio, WeightRatio, MolRatio;//fittingFormのところで使用
+
+    #endregion
+
+    #region 結晶面、晶帯軸、逆格子点ベクトル、菊池線ベクトルなど
+    /// <summary>
     ///
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Plane> Plane = new List<Plane>();
+    public List<Plane> Plane = new();
+
+    public List<Plane> FlexiblePlane = new();
 
     /// <summary>
     /// 軸ベクトル配列
@@ -155,26 +162,32 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [NonSerialized]
     [XmlIgnore]
     public List<Vector3D> VectorOfPole = new();
+    #endregion
 
+    #region ベーテ法
     /// <summary>
     /// ベーテ法による動力学回折を提供するフィールド
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
     public BetheMethod Bethe;
+    #endregion
 
-    [NonSerialized]
-    [XmlIgnore]
-    public double DiffractionPeakIntensity = -1;
+    #region 格子定数関係
+    /// <summary>
+    /// 格子定数
+    /// </summary>
+    public double A, B, C, Alpha, Beta, Gamma;
 
-    public double A, B, C, Alpha, Beta, Gamma;  //格子定数
+    /// <summary>
+    /// 格子定数の誤差
+    /// </summary>
     public double A_err, B_err, C_err, Alpha_err, Beta_err, Gamma_err;  //格子定数の誤差
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellValue
     {
         get => (A, B, C, Alpha, Beta, Gamma);
         set { A = value.A; B = value.B; C = value.C; Alpha = value.Alpha; Beta = value.Beta; Gamma = value.Gamma; }
     }
-
 
     [NonSerialized]
     [XmlIgnore]
@@ -241,33 +254,54 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [XmlIgnore]
     public Vector3D C_Star;
 
-    public Matrix3D RotationMatrix = new();
+    /// <summary>
+    /// 逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public Matrix3D MatrixInverse = new();
 
-    //public Color color;
+    /// <summary>
+    /// 実格子行列 (1列目にa, 2列目にb, 3列目にｃ)
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public Matrix3D MatrixReal = new();
+    #endregion
+
+    #region 対称性関係
+    /// <summary>
+    /// 空間群の通し番号
+    /// </summary>
+    public int SymmetrySeriesNumber = 0;
+
+    /// <summary>
+    /// 対称性
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public Symmetry Symmetry;
+    #endregion
+
+    #region 回転状態
+    public Matrix3D RotationMatrix = new();
+    #endregion
+
+    #region 結晶の名称、色、文献情報
+    /// <summary>
+    /// 結晶の名称
+    /// </summary>
+    public string Name = "";
+    /// <summary>
+    /// 結晶の色
+    /// </summary>
     public int Argb;
 
-    public bool Reserved = false;//保護される結晶であるかどうか
-
-    [NonSerialized]
-    [XmlIgnore]
-    public double Consistency, VolumeRatio, WeightRatio, MolRatio;//fittingFormのところで使用
-
-    [NonSerialized]
-    [XmlIgnore]
-    public double WeightPerFormula;
-
-    [NonSerialized]
-    [XmlIgnore]
-    public double Density, Density_err;//密度
-
-    public string Name = "";
     public string Note = "";
 
     public string PublAuthorName = "";
 
     public string PublSectionTitle = "";
-
-    public int SymmetrySeriesNumber = 0;
 
     public string Journal;//細かく分けられない場合これをつかう。分けられるときは以下を使う。
     public string JournalName = "";
@@ -276,6 +310,22 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public string JournalYear = "";
     public string JournalPageFirst = "";
     public string JournalPageLast = "";
+
+    public (string Summary, string Name, string Volume, string JIssue, string Year, string PageFirst, string PageLast)
+        JournalInformation => (Journal, JournalName, JournalVolume, JournalIssue, JournalYear, JournalPageFirst, JournalPageLast);
+    #endregion
+
+    #region 密度、化学組成関連
+    /// <summary>
+    /// 密度 (g/cc)
+    /// </summary>
+    [NonSerialized]
+    [XmlIgnore]
+    public double Density, Density_err;//密度
+
+    [NonSerialized]
+    [XmlIgnore]
+    public double WeightPerFormula;
 
     [NonSerialized]
     [XmlIgnore]
@@ -302,28 +352,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [NonSerialized]
     [XmlIgnore]
     public double[] ElementNum;
+    #endregion
 
-    /// <summary>
-    /// 対称性
-    /// </summary>
-    [NonSerialized]
-    [XmlIgnore]
-    public Symmetry Symmetry;
-
-    /// <summary>
-    /// 逆格子行列 (1行目にa*, 2行目にb*, 3行目にｃ*)
-    /// </summary>
-    [NonSerialized]
-    [XmlIgnore]
-    public Matrix3D MatrixInverse = new();
-
-    /// <summary>
-    /// 実格子行列 (1列目にa, 2列目にb, 3列目にｃ)
-    /// </summary>
-    [NonSerialized]
-    [XmlIgnore]
-    public Matrix3D MatrixReal = new();
-
+    #region 原子情報
     /// <summary>
     /// 原子の情報を取り扱うAtomsクラスの配列
     /// </summary>
@@ -335,11 +366,20 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [NonSerialized]
     [XmlIgnore]
     public ParallelQuery<Atoms> AtomsP;
+    #endregion
 
+    #region 結合情報、格子面、描画境界の情報　StructureViewerで使用
     /// <summary>
     /// 結合の情報を取り扱うBondクラスの配列
     /// </summary>
     public Bonds[] Bonds = Array.Empty<Bonds>();
+
+    public Bound[] Bounds;
+
+    public LatticePlane[] LatticePlanes;
+    #endregion
+
+    #region 歪みテンソル、応力テンソル、弾性定数
 
     /// <summary>
     /// 格子歪みテンソル
@@ -405,7 +445,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             return mtx;
         }
     }
+    #endregion
 
+    #region EOS関連
     /// <summary>
     /// EOSのパラメータ
     /// </summary>
@@ -415,7 +457,9 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// EOSを利用するかどうか
     /// </summary>
     public bool DoesUseEOS = false;
+    #endregion
 
+    #region 多結晶体に関する情報 
     /// <summary>
     /// 方位とサイズを保持したCrystalliteクラス配列 (多結晶体計算時に用いる)
     /// </summary>
@@ -432,6 +476,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public double GrainSize = 100;
 
     public int id = 0;
+    #endregion
 
     #endregion プロパティ、フィールド
 
@@ -500,7 +545,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         RotationMatrix = new Matrix3D(rot);
         GetFormulaAndDensity();
         Bonds = bonds;
-
     }
 
 
@@ -529,8 +573,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         EOSCondition = eos;
     }
-
-
     public Crystal(Crystal cry)
     {
         A = cry.A; B = cry.B; C = cry.C; Alpha = cry.Alpha; Beta = cry.Beta; Gamma = cry.Gamma;
@@ -646,17 +688,16 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
         #endregion
 
-        double SinAlfa = Math.Sin(Alpha); double SinBeta = Math.Sin(Beta); double SinGamma = Math.Sin(Gamma);
-        double CosAlfa = Math.Cos(Alpha); double CosBeta = Math.Cos(Beta); double CosGamma = Math.Cos(Gamma);
+        double SinAlpha = Math.Sin(Alpha), SinBeta = Math.Sin(Beta), SinGamma = Math.Sin(Gamma);
+        double CosAlpha = Math.Cos(Alpha), CosBeta = Math.Cos(Beta), CosGamma = Math.Cos(Gamma);
         double a2 = A * A; double b2 = B * B; var c2 = C * C;
 
         C_Axis = new Vector3D(0, 0, C);
-        B_Axis = new Vector3D(0, B * SinAlfa, B * CosAlfa);
+        B_Axis = new Vector3D(0, B * SinAlpha, B * CosAlpha);
         A_Axis = new Vector3D(
-        A * Math.Sqrt(1 - CosBeta * CosBeta - (CosGamma - CosAlfa * CosBeta) * (CosGamma - CosAlfa * CosBeta) / SinAlfa / SinAlfa),
-        A * (CosGamma - CosAlfa * CosBeta) / SinAlfa,
+        A * Math.Sqrt(1 - CosBeta * CosBeta - (CosGamma - CosAlpha * CosBeta) * (CosGamma - CosAlpha * CosBeta) / SinAlpha / SinAlpha),
+        A * (CosGamma - CosAlpha * CosBeta) / SinAlpha,
         A * CosBeta);
-
 
         MatrixReal = new Matrix3D(A_Axis, B_Axis, C_Axis);
         MatrixInverse = Matrix3D.Inverse(MatrixReal);
@@ -665,13 +706,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         B_Star = new Vector3D(MatrixInverse.E21, MatrixInverse.E22, MatrixInverse.E23);
         C_Star = new Vector3D(MatrixInverse.E31, MatrixInverse.E32, MatrixInverse.E33);
 
-        sigma11 = b2 * c2 * SinAlfa * SinAlfa;
+        sigma11 = b2 * c2 * SinAlpha * SinAlpha;
         sigma22 = c2 * a2 * SinBeta * SinBeta;
         sigma33 = a2 * b2 * SinGamma * SinGamma;
-        sigma23 = a2 * B * C * (CosBeta * CosGamma - CosAlfa);
-        sigma31 = A * b2 * C * (CosGamma * CosAlfa - CosBeta);
-        sigma12 = A * B * c2 * (CosAlfa * CosBeta - CosGamma);
-        CellVolumeSqure = a2 * b2 * c2 * (1 - CosAlfa * CosAlfa - CosBeta * CosBeta - CosGamma * CosGamma + 2 * CosAlfa * CosBeta * CosGamma);
+        sigma23 = a2 * B * C * (CosBeta * CosGamma - CosAlpha);
+        sigma31 = A * b2 * C * (CosGamma * CosAlpha - CosBeta);
+        sigma12 = A * B * c2 * (CosAlpha * CosBeta - CosGamma);
+        CellVolumeSqure = a2 * b2 * c2 * (1 - CosAlpha * CosAlpha - CosBeta * CosBeta - CosGamma * CosGamma + 2 * CosAlpha * CosBeta * CosGamma);
         Volume = Math.Sqrt(CellVolumeSqure);
     }
     #endregion
@@ -944,7 +985,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         if (A_Star == null) SetAxis();
         if (double.IsNaN(MatrixInverse.Column1.X)) return;
 
-            double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
+        double aX = A_Star.X, aY = A_Star.Y, aZ = A_Star.Z;
         double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
@@ -952,7 +993,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         (int h, int k, int l)[] directions = new[] { (1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1) };
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
-    
+
 
         var maxNum = _maxNum;
         var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
@@ -1148,8 +1189,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             }
         Plane.Clear();
         Plane.AddRange(listPlane);
-
-
     }
     #endregion 面ベクトルの計算
 
@@ -1587,7 +1626,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
     #endregion
 
-    #region 対称性・原子位置・塑性などの再計算
+    #region 対称性・原子位置・組成などの再計算
     /// <summary>
     /// 対称性、原子の位置、組成などを再計算する
     /// </summary>
@@ -1782,6 +1821,5 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
     }
     #endregion
-
 
 }

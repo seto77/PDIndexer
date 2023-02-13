@@ -109,6 +109,21 @@
   <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
     <value>クリップボードにコピー</value>
   </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 326</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>361, 218</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>フィッティング条件</value>
+  </data>
+  <data name="flowLayoutPanelPatternDecomposition.Size" type="System.Drawing.Size, System.Drawing">
+    <value>280, 28</value>
+  </data>
   <data name="radioButtonEachCrystal.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -130,8 +145,14 @@
   <data name="radioButtonBetweenCrystals.Text" xml:space="preserve">
     <value>全ての結晶に対して</value>
   </data>
-  <data name="flowLayoutPanelPatternDecomposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>280, 28</value>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>351, 86</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>ピーク関数</value>
   </data>
   <data name="radioButtonSymmetricPearson.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 22</value>
@@ -160,18 +181,15 @@
   <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
     <value>全てのピークに適用</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>351, 86</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>ピーク関数</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="panelFWHM.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
+  </data>
+  <data name="panelFWHM.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
+  </data>
+  <data name="panelFWHM.Size" type="System.Drawing.Size, System.Drawing">
+    <value>235, 31</value>
   </data>
   <data name="numericUpDownInitialFWHM.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 25</value>
@@ -184,12 +202,6 @@
   </data>
   <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
     <value>全てのピークに適用</value>
-  </data>
-  <data name="panelFWHM.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="panelFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 31</value>
   </data>
   <data name="checkBoxUseInitialFWHM.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
@@ -248,18 +260,6 @@
   <data name="buttonApplyRangeToAll.Text" xml:space="preserve">
     <value>全てのピークに適用</value>
   </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 326</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>361, 218</value>
-  </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>フィッティング条件</value>
-  </data>
   <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
     <value>196, 322</value>
   </data>
@@ -275,26 +275,20 @@
   <data name="intensityDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
     <value>75</value>
   </data>
-  <data name="copyToClipboradToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>181, 48</value>
-  </data>
   <data name="dataGridViewPlaneList.Size" type="System.Drawing.Size, System.Drawing">
     <value>594, 295</value>
-  </data>
-  <data name="textBoxRemovedProfileName.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 25</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 18</value>
   </data>
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
     <value>367, 326</value>
+  </data>
+  <data name="textBoxRemovedProfileName.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 25</value>
+  </data>
+  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>111, 18</value>
   </data>
   <data name="groupBox5.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>

@@ -35,7 +35,8 @@ public partial class DataSet
                 p = plane;
 
             r.PlaneObject = p;
-            r.HKL = p.strHKL;
+
+            r.HKL = p.strHKL == null ? "" : p.strHKL;
             r.Check = p.IsFittingChecked;
             r.CalcX = p.XCalc;
             r.X = p.peakFunction.X;

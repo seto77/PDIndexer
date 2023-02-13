@@ -6,11 +6,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Crystallography;
 using IronPython.Runtime.Operations;
 using MathNet.Numerics.LinearAlgebra.Double;
+using static IronPython.Modules._ast;
 #endregion
 
 namespace PDIndexer;
@@ -51,11 +53,17 @@ public partial class FormSequentialAnalysis : Form
 
         sw.Restart();
         var crystal = formMain.formFitting.TargetCrystal;
-        double initV = crystal.Volume;
-        var initCellValue = crystal.CellValue;
-
         //ストレス解析モードかどうか。
         var stressMode = formMain.dataSet.DataTableProfile.Rows[0][1].ToString().EndsWith("whole");
+        //Flexibleモードかどうか
+        var flex = crystal.FlexibleMode;
+
+       
+        double initV = crystal.Volume;//初期ボリューム
+        var initCellValue = crystal.CellValue;//初期格子定数
+        var initXCalc = crystal.Plane.Select(p => p.XCalc).ToArray();
+
+        
 
         var indexStr = new List<string>();
         var results = new List<List<PointD>>();
@@ -66,7 +74,7 @@ public partial class FormSequentialAnalysis : Form
         int m = 0;
         foreach (var p in plane.Where(e => e.IsFittingChecked))
         {
-            if (formMain.SelectedCrysatlIndex == 0)//flexible crystalを選択している場合
+            if (flex)//flexible crystalを選択している場合
             {
                 text += $"\tPeak No.{m}";
                 indexStr.Add($"\tPeak No.{m++}");
@@ -111,7 +119,7 @@ public partial class FormSequentialAnalysis : Form
 
         var total = formMain.dataSet.DataTableProfile.Items.Count;
 
-        var targetList=new List<int>();
+        var targetList = new List<int>();
         for (int i = checkBoxStartNumber.Checked ? numericBoxStartNumber.ValueInteger : 0; i < total; i++)
             targetList.Add(i);
         if (checkBoxStartNumber.Checked && checkBoxLoop.Checked)
@@ -144,7 +152,16 @@ public partial class FormSequentialAnalysis : Form
                 formMain.formFitting.SkipFitting = false;
                 formMain.formFitting.Fitting();
                 formMain.formFitting.SkipFitting = true;
-                if (formMain.formFitting.textBoxA.Text != "0.000000")//最小2乗法がうまくいった場合は
+
+                if (flex)
+                {
+                    foreach (var p in crystal.Plane.Where(p => p.IsFittingChecked && p.XObs != 0))
+                    {
+                        p.XCalc = p.XObs;
+                        p.d = formMain.ConvToDspacing(new PointD(p.XObs, 0)).X;
+                    }
+                }
+                else if (formMain.formFitting.textBoxA.Text != "0.000000")//最小2乗法がうまくいった場合は
                 {
                     if (checkBoxToleranceFactor.Checked)//許容係数が有効な場合
                     {
@@ -157,31 +174,7 @@ public partial class FormSequentialAnalysis : Form
                     }
                     formMain.formFitting.Confirm(false);
                 }
-                #region お蔵入り
-                //else//もし最小2乗法がうまくいかない場合は
-                //{
-                //    if (formMain.SelectedCrysatlIndex == 0)//flexible crystalの場合
-                //    {
-                //        foreach (var p in plane.Where(e => e.IsFittingChecked && !double.IsNaN(e.peakFunction.X)))
-                //            p.d = formMain.WaveLength / 2 / Math.Sin(p.XObs / 180.0 * Math.PI / 2);
-                //    }
-                //    else//普通crystalの場合
-                //    {
-                //        var tempRatio = new List<double>();
-                //        foreach (var p in plane.Where(e => e.IsFittingChecked && !double.IsNaN(e.peakFunction.X) && e.peakFunction.Int!=0))
-                //            tempRatio.Add(Math.Sin(p.XCalc / 180.0 * Math.PI / 2) / Math.Sin(p.peakFunction.X / 180.0 * Math.PI / 2));
-                //        if (tempRatio.Count > 0)
-                //        {
-                //            var ratio = tempRatio.Average();
-                //            formMain.formFitting.TargetCrystal.A *= ratio;
-                //            formMain.formFitting.TargetCrystal.B *= ratio;
-                //            formMain.formFitting.TargetCrystal.C *= ratio;
-                //            formMain.formFitting.TargetCrystal.SetAxis();
-                //            formMain.ChangeCrystalFromFitting();
-                //        }
-                //    }
-                //}
-                #endregion
+                Thread.Sleep(200);
             }
 
             formMain.SkipDrawing = false;
@@ -279,12 +272,22 @@ public partial class FormSequentialAnalysis : Form
         if (stressMode)
             RefineSinghEquation(indexStr, results);
 
+        if(flex)
+        {
+            for (int i=0; i< crystal.Plane.Count;i++)
+            {
+                crystal.Plane[i].XCalc = initXCalc[i];
+                crystal.Plane[i].d = formMain.ConvToDspacing(new PointD(initXCalc[i], 0)).X;
+            }
+        }
+
         formMain.formFitting.TargetCrystal.CellValue = initCellValue;
         formMain.formFitting.TargetCrystal.SetAxis();
         formMain.bindingSourceProfile.Position = initialPosition;
 
-        formMain.ChangeCrystalFromFitting();
-       
+        if (!flex)
+            formMain.ChangeCrystalFromFitting();
+
         AutoSave();
 
         toolStripStatusLabel1.Text = $"100 % Completed!  Elapsed time: {sw.ElapsedMilliseconds / 1000.0:f1} sec";
