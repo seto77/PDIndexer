@@ -174,7 +174,7 @@ public partial class FormSequentialAnalysis : Form
                     }
                     formMain.formFitting.Confirm(false);
                 }
-                Thread.Sleep(200);
+                //Thread.Sleep(100);
             }
 
             formMain.SkipDrawing = false;

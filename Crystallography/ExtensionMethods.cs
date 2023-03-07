@@ -248,6 +248,7 @@ public static class HKL
 {
     public static (int H, int K, int L) Plus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H + y.H, x.K + y.K, x.L + y.L);
     public static (int H, int K, int L) Minus(ref this (int H, int K, int L) x, (int H, int K, int L) y) => (x.H - y.H, x.K - y.K, x.L - y.L);
+    public static int Multiply(ref this (int H, int K, int L) x, (int H, int K, int L) y) => x.H * y.H + x.K * y.K + x.L * y.L;
 }
 #endregion
 
@@ -336,6 +337,15 @@ public static class GraphicsAlpha
     public static void DrawLine(this Graphics g, Pen pen, double x1, double y1, double x2, double y2)
         => g.DrawLine(pen, (float)x1, (float)y1, (float)x2, (float)y2);
 
+    #region ペケ (×) 印を描画
+    public static void DrawCross(this Graphics g, Pen pen, double x, double y, double size)
+    {
+        g.DrawLine(pen, x - size / 2, y - size / 2, x + size / 2, y + size / 2);
+        g.DrawLine(pen, x + size / 2, y - size / 2, x - size / 2, y + size / 2);
+    }
+    public static void DrawCross(this Graphics g, Pen pen, PointD p, double size) => g.DrawCross(pen, p.X, p.Y, size);
+    #endregion
+
     public static void FillPolygon(this Graphics g, Brush brush, PointD[] points, System.Drawing.Drawing2D.FillMode fillMode)
         => g.FillPolygon(brush, points.Select(p => p.ToPointF()).ToArray(), fillMode);
 
@@ -344,6 +354,28 @@ public static class GraphicsAlpha
 
     public static void FillPie(this Graphics g, Brush brush, double x, double y, double width, double height, double startAngle, double sweepAngle)
         => g.FillPie(brush, (float)x, (float)y, (float)width, (float)height, (float)startAngle, (float)sweepAngle);
+
+
+    static Dictionary<(int Alpha, Color Color), SolidBrush> solidBrushDic = new();
+
+    #region 円の輪郭、あるいは円の塗りつぶし
+    public static void FillCircle(this Graphics graphics, in Color c, in PointD pt, in double radius, in int alpha)
+    {
+        if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
+        {
+            if (!solidBrushDic.TryGetValue((alpha, c), out var brush))
+                solidBrushDic.Add((alpha, c), brush = new SolidBrush(Color.FromArgb(alpha, c)));
+            graphics.FillEllipse(brush, (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+        }
+    }
+    public static void DrawCircle(this Graphics graphics, in Color c, in PointD pt, in double radius)
+    {
+        if (Math.Abs(pt.X) < 1E6 && Math.Abs(pt.Y) < 1E6)
+            graphics.DrawEllipse(new Pen(c, 0.0001f), (float)(pt.X - radius), (float)(pt.Y - radius), (float)(2 * radius), (float)(2 * radius));
+    }
+    #endregion
+
+
 }
 #endregion
 
