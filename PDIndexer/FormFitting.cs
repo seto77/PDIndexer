@@ -1077,7 +1077,7 @@ public partial class FormFitting : Form
 
     public void Confirm(bool copy = true)
     {
-        if (double.IsNaN(temp_crystal.Volume) || double.IsInfinity(temp_crystal.Volume))
+        if (double.IsNaN(temp_crystal.Volume) || double.IsInfinity(temp_crystal.Volume) || temp_crystal.Volume == 0)
             return;
 
         TargetCrystal.A = temp_crystal.A;

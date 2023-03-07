@@ -127,119 +127,26 @@
   <data name="&gt;&gt;textBox2theta.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;tabPage2theta.Name" xml:space="preserve">
-    <value>tabPage2theta</value>
+  <data name="checkBoxAutoSaveTwoTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Bottom</value>
   </data>
-  <data name="&gt;&gt;tabPage2theta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPage2theta.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPage2theta.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.Name" xml:space="preserve">
-    <value>tabPageDspacing</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;tabPageFWHM.Name" xml:space="preserve">
-    <value>tabPageFWHM</value>
-  </data>
-  <data name="&gt;&gt;tabPageFWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageFWHM.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageFWHM.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;tabPageIntensity.Name" xml:space="preserve">
-    <value>tabPageIntensity</value>
-  </data>
-  <data name="&gt;&gt;tabPageIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageIntensity.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageIntensity.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;tabPageCellConstants.Name" xml:space="preserve">
-    <value>tabPageCellConstants</value>
-  </data>
-  <data name="&gt;&gt;tabPageCellConstants.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageCellConstants.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageCellConstants.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;tabPagePressure.Name" xml:space="preserve">
-    <value>tabPagePressure</value>
-  </data>
-  <data name="&gt;&gt;tabPagePressure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPagePressure.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPagePressure.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;tabPageSingh.Name" xml:space="preserve">
-    <value>tabPageSingh</value>
-  </data>
-  <data name="&gt;&gt;tabPageSingh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageSingh.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageSingh.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="checkBoxAutoSaveTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI, 9pt</value>
   </data>
-  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 60</value>
+  <data name="checkBoxAutoSaveTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 224</value>
   </data>
-  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 5, 4, 5</value>
+  <data name="checkBoxAutoSaveTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>763, 276</value>
+  <data name="checkBoxAutoSaveTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 24</value>
   </data>
-  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="checkBoxAutoSaveTwoTheta.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
   </data>
-  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
+    <value>Auto save</value>
   </data>
   <data name="&gt;&gt;checkBoxAutoSaveTwoTheta.Name" xml:space="preserve">
     <value>checkBoxAutoSaveTwoTheta</value>
@@ -279,90 +186,6 @@
   </data>
   <data name="&gt;&gt;tabPage2theta.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Bottom</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 224</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 24</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
-    <value>Auto save</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveTwoTheta.Name" xml:space="preserve">
-    <value>checkBoxAutoSaveTwoTheta</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveTwoTheta.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveTwoTheta.Parent" xml:space="preserve">
-    <value>tabPage2theta</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveTwoTheta.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;textBoxDspacing.Name" xml:space="preserve">
-    <value>textBoxDspacing</value>
-  </data>
-  <data name="&gt;&gt;textBoxDspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxDspacing.Parent" xml:space="preserve">
-    <value>tabPageDspacing</value>
-  </data>
-  <data name="&gt;&gt;textBoxDspacing.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveD.Name" xml:space="preserve">
-    <value>checkBoxAutoSaveD</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveD.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveD.Parent" xml:space="preserve">
-    <value>tabPageDspacing</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveD.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageDspacing.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 24</value>
-  </data>
-  <data name="tabPageDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="tabPageDspacing.Size" type="System.Drawing.Size, System.Drawing">
-    <value>755, 248</value>
-  </data>
-  <data name="tabPageDspacing.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="tabPageDspacing.Text" xml:space="preserve">
-    <value>d-spacing (Å)</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.Name" xml:space="preserve">
-    <value>tabPageDspacing</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.Parent" xml:space="preserve">
-    <value>tabControl</value>
-  </data>
-  <data name="&gt;&gt;tabPageDspacing.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="textBoxDspacing.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -430,53 +253,32 @@
   <data name="&gt;&gt;checkBoxAutoSaveD.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxFWHM.Name" xml:space="preserve">
-    <value>textBoxFWHM</value>
-  </data>
-  <data name="&gt;&gt;textBoxFWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxFWHM.Parent" xml:space="preserve">
-    <value>tabPageFWHM</value>
-  </data>
-  <data name="&gt;&gt;textBoxFWHM.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveFWHM.Name" xml:space="preserve">
-    <value>checkBoxAutoSaveFWHM</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveFWHM.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveFWHM.Parent" xml:space="preserve">
-    <value>tabPageFWHM</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveFWHM.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageFWHM.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageDspacing.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPageFWHM.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="tabPageDspacing.Size" type="System.Drawing.Size, System.Drawing">
     <value>755, 248</value>
   </data>
-  <data name="tabPageFWHM.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="tabPageDspacing.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
   </data>
-  <data name="tabPageFWHM.Text" xml:space="preserve">
-    <value>FWHM (deg.)</value>
+  <data name="tabPageDspacing.Text" xml:space="preserve">
+    <value>d-spacing (Å)</value>
   </data>
-  <data name="&gt;&gt;tabPageFWHM.Name" xml:space="preserve">
-    <value>tabPageFWHM</value>
+  <data name="&gt;&gt;tabPageDspacing.Name" xml:space="preserve">
+    <value>tabPageDspacing</value>
   </data>
-  <data name="&gt;&gt;tabPageFWHM.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageDspacing.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageFWHM.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageDspacing.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageFWHM.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="&gt;&gt;tabPageDspacing.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="textBoxFWHM.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -544,53 +346,29 @@
   <data name="&gt;&gt;checkBoxAutoSaveFWHM.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxIntensity.Name" xml:space="preserve">
-    <value>textBoxIntensity</value>
-  </data>
-  <data name="&gt;&gt;textBoxIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxIntensity.Parent" xml:space="preserve">
-    <value>tabPageIntensity</value>
-  </data>
-  <data name="&gt;&gt;textBoxIntensity.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveInt.Name" xml:space="preserve">
-    <value>checkBoxAutoSaveInt</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveInt.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveInt.Parent" xml:space="preserve">
-    <value>tabPageIntensity</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveInt.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageIntensity.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageFWHM.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPageIntensity.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageFWHM.Size" type="System.Drawing.Size, System.Drawing">
     <value>755, 248</value>
   </data>
-  <data name="tabPageIntensity.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="tabPageFWHM.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="tabPageIntensity.Text" xml:space="preserve">
-    <value>Intensity</value>
+  <data name="tabPageFWHM.Text" xml:space="preserve">
+    <value>FWHM (deg.)</value>
   </data>
-  <data name="&gt;&gt;tabPageIntensity.Name" xml:space="preserve">
-    <value>tabPageIntensity</value>
+  <data name="&gt;&gt;tabPageFWHM.Name" xml:space="preserve">
+    <value>tabPageFWHM</value>
   </data>
-  <data name="&gt;&gt;tabPageIntensity.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageFWHM.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageIntensity.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageFWHM.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageIntensity.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;tabPageFWHM.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="textBoxIntensity.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -658,53 +436,29 @@
   <data name="&gt;&gt;checkBoxAutoSaveInt.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxCellConstants.Name" xml:space="preserve">
-    <value>textBoxCellConstants</value>
-  </data>
-  <data name="&gt;&gt;textBoxCellConstants.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxCellConstants.Parent" xml:space="preserve">
-    <value>tabPageCellConstants</value>
-  </data>
-  <data name="&gt;&gt;textBoxCellConstants.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveCell.Name" xml:space="preserve">
-    <value>checkBoxAutoSaveCell</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveCell.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveCell.Parent" xml:space="preserve">
-    <value>tabPageCellConstants</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveCell.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPageCellConstants.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageIntensity.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPageCellConstants.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageIntensity.Size" type="System.Drawing.Size, System.Drawing">
     <value>755, 248</value>
   </data>
-  <data name="tabPageCellConstants.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
+  <data name="tabPageIntensity.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
   </data>
-  <data name="tabPageCellConstants.Text" xml:space="preserve">
-    <value>Cell constants (Å, °)</value>
+  <data name="tabPageIntensity.Text" xml:space="preserve">
+    <value>Intensity</value>
   </data>
-  <data name="&gt;&gt;tabPageCellConstants.Name" xml:space="preserve">
-    <value>tabPageCellConstants</value>
+  <data name="&gt;&gt;tabPageIntensity.Name" xml:space="preserve">
+    <value>tabPageIntensity</value>
   </data>
-  <data name="&gt;&gt;tabPageCellConstants.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageIntensity.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageCellConstants.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageIntensity.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageCellConstants.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;tabPageIntensity.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <data name="textBoxCellConstants.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -769,53 +523,29 @@
   <data name="&gt;&gt;checkBoxAutoSaveCell.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxPressure.Name" xml:space="preserve">
-    <value>textBoxPressure</value>
-  </data>
-  <data name="&gt;&gt;textBoxPressure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxPressure.Parent" xml:space="preserve">
-    <value>tabPagePressure</value>
-  </data>
-  <data name="&gt;&gt;textBoxPressure.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSavePressure.Name" xml:space="preserve">
-    <value>checkBoxAutoSavePressure</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSavePressure.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSavePressure.Parent" xml:space="preserve">
-    <value>tabPagePressure</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSavePressure.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="tabPagePressure.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPageCellConstants.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPageCellConstants.Size" type="System.Drawing.Size, System.Drawing">
     <value>755, 248</value>
   </data>
-  <data name="tabPagePressure.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+  <data name="tabPageCellConstants.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
   </data>
-  <data name="tabPagePressure.Text" xml:space="preserve">
-    <value>Pressure (GPa)</value>
+  <data name="tabPageCellConstants.Text" xml:space="preserve">
+    <value>Cell constants (Å, °)</value>
   </data>
-  <data name="&gt;&gt;tabPagePressure.Name" xml:space="preserve">
-    <value>tabPagePressure</value>
+  <data name="&gt;&gt;tabPageCellConstants.Name" xml:space="preserve">
+    <value>tabPageCellConstants</value>
   </data>
-  <data name="&gt;&gt;tabPagePressure.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCellConstants.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPagePressure.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPageCellConstants.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPagePressure.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="&gt;&gt;tabPageCellConstants.ZOrder" xml:space="preserve">
+    <value>4</value>
   </data>
   <data name="textBoxPressure.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -880,65 +610,29 @@
   <data name="&gt;&gt;checkBoxAutoSavePressure.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;textBoxSingh.Name" xml:space="preserve">
-    <value>textBoxSingh</value>
-  </data>
-  <data name="&gt;&gt;textBoxSingh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;textBoxSingh.Parent" xml:space="preserve">
-    <value>tabPageSingh</value>
-  </data>
-  <data name="&gt;&gt;textBoxSingh.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveSingh.Name" xml:space="preserve">
-    <value>checkBoxAutoSaveSingh</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveSingh.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveSingh.Parent" xml:space="preserve">
-    <value>tabPageSingh</value>
-  </data>
-  <data name="&gt;&gt;checkBoxAutoSaveSingh.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;graphControl1.Name" xml:space="preserve">
-    <value>graphControl1</value>
-  </data>
-  <data name="&gt;&gt;graphControl1.Type" xml:space="preserve">
-    <value>Crystallography.Controls.GraphControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;graphControl1.Parent" xml:space="preserve">
-    <value>tabPageSingh</value>
-  </data>
-  <data name="&gt;&gt;graphControl1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="tabPageSingh.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="tabPagePressure.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 24</value>
   </data>
-  <data name="tabPageSingh.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="tabPagePressure.Size" type="System.Drawing.Size, System.Drawing">
     <value>755, 248</value>
   </data>
-  <data name="tabPageSingh.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
+  <data name="tabPagePressure.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="tabPageSingh.Text" xml:space="preserve">
-    <value>Singh's equation</value>
+  <data name="tabPagePressure.Text" xml:space="preserve">
+    <value>Pressure (GPa)</value>
   </data>
-  <data name="&gt;&gt;tabPageSingh.Name" xml:space="preserve">
-    <value>tabPageSingh</value>
+  <data name="&gt;&gt;tabPagePressure.Name" xml:space="preserve">
+    <value>tabPagePressure</value>
   </data>
-  <data name="&gt;&gt;tabPageSingh.Type" xml:space="preserve">
+  <data name="&gt;&gt;tabPagePressure.Type" xml:space="preserve">
     <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;tabPageSingh.Parent" xml:space="preserve">
+  <data name="&gt;&gt;tabPagePressure.Parent" xml:space="preserve">
     <value>tabControl</value>
   </data>
-  <data name="&gt;&gt;tabPageSingh.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="&gt;&gt;tabPagePressure.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="textBoxSingh.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -1027,8 +721,62 @@
   <data name="&gt;&gt;graphControl1.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
+  <data name="tabPageSingh.Location" type="System.Drawing.Point, System.Drawing">
+    <value>4, 24</value>
+  </data>
+  <data name="tabPageSingh.Size" type="System.Drawing.Size, System.Drawing">
+    <value>755, 248</value>
+  </data>
+  <data name="tabPageSingh.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="tabPageSingh.Text" xml:space="preserve">
+    <value>Singh's equation</value>
+  </data>
+  <data name="&gt;&gt;tabPageSingh.Name" xml:space="preserve">
+    <value>tabPageSingh</value>
+  </data>
+  <data name="&gt;&gt;tabPageSingh.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabPage, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabPageSingh.Parent" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabPageSingh.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="tabControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
+  </data>
+  <data name="tabControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 60</value>
+  </data>
+  <data name="tabControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 5, 4, 5</value>
+  </data>
+  <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>763, 276</value>
+  </data>
+  <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Name" xml:space="preserve">
+    <value>tabControl</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TabControl, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;tabControl.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;tabControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>154, 17</value>
   </metadata>
   <data name="toolStripStatusLabel1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
@@ -1163,13 +911,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxToleranceFactor.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 25</value>
+    <value>1000, 27</value>
   </data>
   <data name="numericBoxToleranceFactor.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>1, 25</value>
   </data>
   <data name="numericBoxToleranceFactor.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 25</value>
+    <value>60, 27</value>
   </data>
   <data name="numericBoxToleranceFactor.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -1415,6 +1163,9 @@ the specified number
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="bindingSource1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1438,6 +1189,12 @@ the specified number
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bindingSource1.Name" xml:space="preserve">
+    <value>bindingSource1</value>
+  </data>
+  <data name="&gt;&gt;bindingSource1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormSequentialAnalysis</value>

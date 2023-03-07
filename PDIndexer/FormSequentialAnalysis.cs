@@ -29,8 +29,8 @@ public partial class FormSequentialAnalysis : Form
     public FormSequentialAnalysis()
     {
         InitializeComponent();
-        numericBoxStartNumber.ReadOnly= true;
-        numericBoxToleranceFactor.ReadOnly= true;
+        numericBoxStartNumber.ReadOnly = true;
+        numericBoxToleranceFactor.ReadOnly = true;
     }
 
     private void FormStressAnalysis_FormClosing(object sender, FormClosingEventArgs e)
@@ -58,12 +58,12 @@ public partial class FormSequentialAnalysis : Form
         //Flexibleモードかどうか
         var flex = crystal.FlexibleMode;
 
-       
+
         double initV = crystal.Volume;//初期ボリューム
         var initCellValue = crystal.CellValue;//初期格子定数
         var initXCalc = crystal.Plane.Select(p => p.XCalc).ToArray();
 
-        
+
 
         var indexStr = new List<string>();
         var results = new List<List<PointD>>();
@@ -272,9 +272,9 @@ public partial class FormSequentialAnalysis : Form
         if (stressMode)
             RefineSinghEquation(indexStr, results);
 
-        if(flex)
+        if (flex)
         {
-            for (int i=0; i< crystal.Plane.Count;i++)
+            for (int i = 0; i < crystal.Plane.Count; i++)
             {
                 crystal.Plane[i].XCalc = initXCalc[i];
                 crystal.Plane[i].d = formMain.ConvToDspacing(new PointD(initXCalc[i], 0)).X;
@@ -355,6 +355,8 @@ public partial class FormSequentialAnalysis : Form
     private void buttonSetDirectory_Click(object sender, EventArgs e)
     {
         var dlg = new FolderBrowserDialog();
+        if(Path.Exists(textBoxDirectory.Text)) 
+            dlg.SelectedPath = textBoxDirectory.Text;
         textBoxDirectory.Text = dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : "";
     }
     #endregion
@@ -472,7 +474,7 @@ public partial class FormSequentialAnalysis : Form
         for (int i = 0; i < results.Count; i++)
         {
             graphControl1.AddProfile(profiles[i]);
-     
+
 
             textBoxSingh.AppendText(text[i]);
         }
@@ -582,7 +584,7 @@ public partial class FormSequentialAnalysis : Form
     {
         numericBoxStartNumber.ReadOnly = !checkBoxStartNumber.Checked;
         checkBoxLoop.Enabled = checkBoxStartNumber.Checked;
-        numericBoxToleranceFactor.ReadOnly= !checkBoxToleranceFactor.Checked;
+        numericBoxToleranceFactor.ReadOnly = !checkBoxToleranceFactor.Checked;
     }
     #endregion
 

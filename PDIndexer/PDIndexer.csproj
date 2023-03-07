@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2023.2.13.0805</AssemblyVersion>
-    <FileVersion>2023.2.13.0805</FileVersion>
+    <AssemblyVersion>2023.3.7.0948</AssemblyVersion>
+    <FileVersion>2023.3.7.0948</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
   </PropertyGroup>
 
@@ -32,7 +32,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimdLinq" Version="1.3.0" />
+    <PackageReference Include="SimdLinq" Version="1.3.2" />
   </ItemGroup>
 
   <ItemGroup>

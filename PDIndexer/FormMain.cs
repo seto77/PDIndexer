@@ -79,8 +79,6 @@ public partial class FormMain : Form
     public FormMacro FormMacro;
     public FormTwoThetaCalibration formTwoThetaCalibration;
 
-    public Mutex mutex;
-
     Crystallography.Controls.CommonDialog initialDialog;
 
 
@@ -330,9 +328,9 @@ public partial class FormMain : Form
         {
             case WM_DRAWCLIPBOARD:
 
-                using (var clipboard = new Mutex(false, "ClipboardOperation"))
+                using (var mutex = new Mutex(false, "PDIndexer"))
                 {
-                    if (clipboard.WaitOne(500, false))
+                    if (mutex.WaitOne(5000, false))
                     {
                         try
                         {
@@ -340,7 +338,7 @@ public partial class FormMain : Form
                             {
                                 var data = Clipboard.GetDataObject();
                                 var dp = (DiffractionProfile)data.GetData(typeof(DiffractionProfile));
-                                clipboard.ReleaseMutex();
+
                                 if (dp != null)
                                     AddProfileToCheckedListBox(dp, true, true);
                             }
@@ -349,7 +347,7 @@ public partial class FormMain : Form
                                 var dataObject = Clipboard.GetDataObject();
                                 var data = dataObject;
                                 var dp = (DiffractionProfile[])data.GetData(typeof(DiffractionProfile[]));
-                                clipboard.ReleaseMutex();
+
                                 if (dp != null && dp.Length >= 1)
                                 {
                                     if (dp[0].Name.EndsWith("whole"))
@@ -385,12 +383,11 @@ public partial class FormMain : Form
                                 IDataObject data = Clipboard.GetDataObject();
                                 var c2 = (Crystal2)data.GetData(typeof(Crystal2));
                                 formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
-                                clipboard.ReleaseMutex();
                             }
                             else if ((Clipboard.GetDataObject()).GetDataPresent(typeof(MacroTriger)))
                             {
                                 MacroTriger trigger = (MacroTriger)Clipboard.GetDataObject().GetData(typeof(MacroTriger));
-                                clipboard.ReleaseMutex();
+
                                 if (trigger.Target == "PDI")
                                 {
                                     macro.Obj = trigger.Obj;
@@ -405,13 +402,10 @@ public partial class FormMain : Form
                             {
                                 if ((string)Clipboard.GetDataObject().GetData(typeof(string)) == "IPAnalyzer")
                                     resetClipboardViewer();
-                                clipboard.ReleaseMutex();
                             }
-                            else
-                                clipboard.ReleaseMutex();
-
                         }
                         catch { MessageBox.Show("Failed to read clipboard information. Sorry."); }
+                        finally { mutex.ReleaseMutex(); }
 
                         if ((int)NextHandle != 0)
                             SendMessage(NextHandle, msg.Msg, msg.WParam, msg.LParam);
@@ -420,7 +414,7 @@ public partial class FormMain : Form
                     {
                         resetClipboardViewer();
                     }
-                    clipboard.Close();
+                    mutex.Close();
                 }
                 break;
 
@@ -435,7 +429,7 @@ public partial class FormMain : Form
     }
 
     //ファイル更新監視ウォッチャー
-    System.IO.FileSystemWatcher watcher;
+    FileSystemWatcher watcher;
     void watcher_Created(object sender, System.IO.FileSystemEventArgs e)
     {
         if (e.FullPath.EndsWith("pdi"))
@@ -482,8 +476,6 @@ public partial class FormMain : Form
 
         if (!this.DesignMode)
             setScale();
-
-        mutex = new Mutex(true, "PDIndexer");
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystals, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewProfiles, true, null);
@@ -5045,7 +5037,7 @@ public partial class FormMain : Form
                 {
                     Execute(new Action(() =>
                     {
-                        if (value >= 0 && value < p.main.bindingSourceProfile.Count)
+                        if (value >= 0 && value < p.main.formFitting.bindingSourcePlanes.Count)
                             p.main.formFitting.bindingSourcePlanes.Position = value;
                     }));
                 }
@@ -5074,10 +5066,25 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Sequential.GetCSV_Pressure() # Get results of pressure in CSV format.");
                 p.help.Add("PDI.Sequential.GetCSV_Singh() # Get results of Singh equation in CSV format.");
 
+                p.help.Add("PDI.Sequential.Directory # Get/set the full directory path to be saved.");
+
+                p.help.Add("PDI.Sequential.AutoSave2theta # Get/set True or False.");
+                p.help.Add("PDI.Sequential.AutoSaveDspacing # Get/set True or False.");
+                p.help.Add("PDI.Sequential.AutoSaveFWHM # Get/set True or False.");
+                p.help.Add("PDI.Sequential.AutoSaveIntensity # Get/set True or False.");
+                p.help.Add("PDI.Sequential.AutoSaveCellConstants # Get/set True or False.");
+                p.help.Add("PDI.Sequential.AutoSavePressure # Get/set True or False.");
+                p.help.Add("PDI.Sequential.AutoSaveSingh # Get/set True or False.");
+
+            }
+            public string Directory
+            {
+                get => p.main.formSequentialAnalysis.textBoxDirectory.Text;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.textBoxDirectory.Text = value));
             }
 
-            public void Open() => p.main.toolStripButtonSequentialAnalysis.Checked = true;
-            public void Close() => p.main.toolStripButtonSequentialAnalysis.Checked = false;
+            public void Open() => Execute(new Action(() => p.main.toolStripButtonSequentialAnalysis.Checked = true));
+            public void Close() => Execute(new Action(() => p.main.toolStripButtonSequentialAnalysis.Checked = false));
             public void Execute() => Execute(() => p.main.formSequentialAnalysis.buttonExecute.PerformClick());
 
             public string GetCSV_2theta() => Execute(() => p.main.formSequentialAnalysis.GetText(true,0));
@@ -5087,6 +5094,48 @@ public partial class FormMain : Form
             public string GetCSV_CellConstants() => Execute(() => p.main.formSequentialAnalysis.GetText(true,4));
             public string GetCSV_Pressure() => Execute(() => p.main.formSequentialAnalysis.GetText(true,5));
             public string GetCSV_Singh() => Execute(() => p.main.formSequentialAnalysis.GetText(true,6));
+
+            public bool AutoSave2theta
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked = value));
+            }
+
+            public bool AutoSaveDspacing
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSaveD.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveD.Checked = value));
+            }
+
+            public bool AutoSaveFWHM
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked = value));
+            }
+
+            public bool AutoSaveIntensity
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSaveInt.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveInt.Checked = value));
+            }
+
+            public bool AutoSaveCellConstants
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSaveCell.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveCell.Checked = value));
+            }
+
+            public bool AutoSavePressure
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSavePressure.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSavePressure.Checked = value));
+            }
+            public bool AutoSaveSingh
+            {
+                get => p.main.formSequentialAnalysis.checkBoxAutoSaveSingh.Checked;
+                set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveSingh.Checked = value));
+            }
+
         }
 
     }
