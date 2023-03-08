@@ -4,9 +4,7 @@ namespace PDIndexer;
 
 static class Version
 {
-    static public string Software =
-        "PDIndexer"
-        ;
+    public const string Software = "PDIndexer";
     static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
     static public string RecentHistory
     {
