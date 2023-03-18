@@ -350,7 +350,7 @@ public partial class FormMain : Form
 
                                 if (dp != null && dp.Length >= 1)
                                 {
-                                    if (dp[0].Name.EndsWith("whole"))
+                                    if (dp[0].Name != null && dp[0].Name.EndsWith("whole"))
                                     {
                                         radioButtonMultiProfileMode.Checked = false;
                                         radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
@@ -582,7 +582,7 @@ public partial class FormMain : Form
 
         this.Text = "PDIndexer   " + Version.VersionAndDate;
 #if DEBUG
-            this.Text += "(debug)";
+        this.Text += "(debug)";
 #endif
 
         initialDialog.Text = "Now Loading... Reading default crystal lists.";
@@ -623,7 +623,7 @@ public partial class FormMain : Form
             readCrystal(UserAppDataPath + "initial.Xml", false, true);
         }
 
-      
+
 
 
 
@@ -1426,38 +1426,38 @@ public partial class FormMain : Form
 
         Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
         {
-             var dp = dataSet.DataTableProfile.CheckedItems[j];
-             var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
-             if (srcPts.Length > 2)
-             {
-                 var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
+            var dp = dataSet.DataTableProfile.CheckedItems[j];
+            var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
+            if (srcPts.Length > 2)
+            {
+                var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
 
-                 foreach (var trimmedPts in Geometriy.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
-                 {
-                     var finalPts = ConvToPicBoxCoord(trimmedPts);
-                     lock (lockObj)
-                         profiles.Add((pen, finalPts));
-                 }
+                foreach (var trimmedPts in Geometriy.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
+                {
+                    var finalPts = ConvToPicBoxCoord(trimmedPts);
+                    lock (lockObj)
+                        profiles.Add((pen, finalPts));
+                }
 
-                 //エラーバー描画
-                 if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
-                 {
-                     var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
-                     var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
-                     for (int i = 0; i < srcPts.Length; i++)
-                         if (!double.IsNaN(dp.OriginalProfile.Err[i].Y) && rect.IsInsde(srcPts[i]))
-                         {
-                             var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.OriginalProfile.Err[i].Y);
-                             var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.OriginalProfile.Err[i].Y);
-                             lock (lockObj)
-                             {
-                                 profiles.Add((penErr, new[] { maxErr, minErr }));
-                                 profiles.Add((penErr, new[] { new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y) }));
-                                 profiles.Add((penErr, new[] { new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y) }));
-                             }
-                         }
-                 }
-             }
+                //エラーバー描画
+                if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
+                {
+                    var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
+                    var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
+                    for (int i = 0; i < srcPts.Length; i++)
+                        if (!double.IsNaN(dp.OriginalProfile.Err[i].Y) && rect.IsInsde(srcPts[i]))
+                        {
+                            var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.OriginalProfile.Err[i].Y);
+                            var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.OriginalProfile.Err[i].Y);
+                            lock (lockObj)
+                            {
+                                profiles.Add((penErr, new[] { maxErr, minErr }));
+                                profiles.Add((penErr, new[] { new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y) }));
+                                profiles.Add((penErr, new[] { new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y) }));
+                            }
+                        }
+                }
+            }
         });
 
         profiles.ForEach(p => gMain.DrawLines(p.pen, p.points));
@@ -1548,8 +1548,8 @@ public partial class FormMain : Form
                         if (cry.Plane[j].XCalc > LowerX && cry.Plane[j].XCalc < UpperX)
                         {
                             //ここから線の部分
-                            pen = i == bindingSourceCrystal.Position?
-                                 new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f):
+                            pen = i == bindingSourceCrystal.Position ?
+                                 new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f) :
                                  new Pen(Color.FromArgb(cry.Argb), 1f);
 
                             if (!double.IsNaN(cry.Plane[j].XCalc))
@@ -1558,8 +1558,8 @@ public partial class FormMain : Form
                                 {
                                     if (formCrystal.checkBoxShowPeakOverProfiles.Checked)
                                     {
-                                        float zero= formCrystal.checkBoxShowPeakUnderProfile.Checked?//描画範囲の最低強度位置のピクセル
-                                            pictureBoxMain.Height - OriginPos.Y - dataSet.DataTableCrystal.CheckedItems.Count * (HeightOfBottomPeaks + 4):
+                                        float zero = formCrystal.checkBoxShowPeakUnderProfile.Checked ?//描画範囲の最低強度位置のピクセル
+                                            pictureBoxMain.Height - OriginPos.Y - dataSet.DataTableCrystal.CheckedItems.Count * (HeightOfBottomPeaks + 4) :
                                             pictureBoxMain.Height - OriginPos.Y;
 
                                         float top = 0;
@@ -1703,20 +1703,20 @@ public partial class FormMain : Form
                     //個々のフィッティングカーブを描く
                     foreach (Plane p in planeList3)
                     {
-                            var penPeak = new Pen(p.peakFunction.Color, 2f);
-                            var peaks = new List<PointF>();
-                            var startTheta = Math.Max(p.XCalc - p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(OriginPos.X, 0).X);
-                            var endTheta = Math.Min(p.XCalc + p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(pictureBoxMain.Width, 0).X);
-                            if (ConvToPicBoxCoord(startTheta, 0).X < pictureBoxMain.Width || ConvToPicBoxCoord(endTheta, 0).X > 0)
+                        var penPeak = new Pen(p.peakFunction.Color, 2f);
+                        var peaks = new List<PointF>();
+                        var startTheta = Math.Max(p.XCalc - p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(OriginPos.X, 0).X);
+                        var endTheta = Math.Min(p.XCalc + p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(pictureBoxMain.Width, 0).X);
+                        if (ConvToPicBoxCoord(startTheta, 0).X < pictureBoxMain.Width || ConvToPicBoxCoord(endTheta, 0).X > 0)
+                        {
+                            if (p.peakFunction.Hk != 0 && !double.IsNaN(p.peakFunction.X))
                             {
-                                if (p.peakFunction.Hk != 0 && !double.IsNaN(p.peakFunction.X))
-                                {
-                                    for (double k = startTheta; k < endTheta; k += step)
-                                        peaks.Add(ConvToPicBoxCoord(k, p.peakFunction.GetValue(k, false) + p.peakFunction.B1 + p.peakFunction.B2 * (k - p.peakFunction.X) + basePosition));
-                                    if (peaks.Count > 1)
-                                        gMain.DrawLines(penPeak, peaks.ToArray());
-                                }
+                                for (double k = startTheta; k < endTheta; k += step)
+                                    peaks.Add(ConvToPicBoxCoord(k, p.peakFunction.GetValue(k, false) + p.peakFunction.B1 + p.peakFunction.B2 * (k - p.peakFunction.X) + basePosition));
+                                if (peaks.Count > 1)
+                                    gMain.DrawLines(penPeak, peaks.ToArray());
                             }
+                        }
                     }
                 }
             }
@@ -1999,7 +1999,7 @@ public partial class FormMain : Form
             {
                 cry.Plane.Add(new Plane
                 {
-                    XCalc= pt.X,
+                    XCalc = pt.X,
                     d = ConvToDspacing(pt).X,
                     Intensity = 1,
                     SerchOption = PeakFunctionForm.PseudoVoigt
@@ -2007,7 +2007,7 @@ public partial class FormMain : Form
                 cry.Plane.Sort();
 
                 formFitting.ChangeCrystalFromMainForm();
-                
+
                 var i = SearchPlaneNo(pt.X, cry, 0.0001);//強度計算していない場合
                 if (i >= 0)
                 {
@@ -2200,12 +2200,12 @@ public partial class FormMain : Form
         #region 横軸と縦軸の単位の設定
         labelTwoTheta.Text = AxisMode switch
         {
-            HorizontalAxis.Angle=> "2θ: ",
+            HorizontalAxis.Angle => "2θ: ",
             HorizontalAxis.d => "d: ",
             HorizontalAxis.EnergyXray => "Energy: ",
             HorizontalAxis.NeutronTOF => "TOF: ",
             HorizontalAxis.WaveNumber => "q: ",
-            _=>""
+            _ => ""
         };
         labelTwoTheta.Text += pt.X < 10000 ? pt.X.ToString("g6") : pt.X.ToString("#,0");
 
@@ -2218,7 +2218,7 @@ public partial class FormMain : Form
             HorizontalAxis.WaveNumber => " Å⁻¹",
             _ => ""
         };
-         #endregion
+        #endregion
 
         var d = AxisMode switch
         {
@@ -2230,8 +2230,8 @@ public partial class FormMain : Form
             _ => pt.X
         };
 
-        labelD.Text = $"d: { d:g5} Å";
-        labelQ.Text = $"q: { 2 * Math.PI / d:g5} Å⁻¹";
+        labelD.Text = $"d: {d:g5} Å";
+        labelQ.Text = $"q: {2 * Math.PI / d:g5} Å⁻¹";
 
         labelIntensity.Text = $"Int: {pt.Y:g6}";
 
@@ -2496,6 +2496,7 @@ public partial class FormMain : Form
         {
             formProfile.BringToFront();
             formProfile.WindowState = FormWindowState.Normal;
+            CheckLocation.Adjust(formProfile);
         }
         Draw();
     }
@@ -2509,6 +2510,8 @@ public partial class FormMain : Form
         {
             formCrystal.BringToFront();
             formCrystal.WindowState = FormWindowState.Normal;
+            CheckLocation.Adjust(formCrystal);
+
         }
     }
 
@@ -2524,6 +2527,8 @@ public partial class FormMain : Form
             {
                 formEOS.BringToFront();
                 formEOS.WindowState = FormWindowState.Normal;
+                CheckLocation.Adjust(formEOS);
+
             }
         }
     }
@@ -2540,6 +2545,7 @@ public partial class FormMain : Form
             {
                 formFitting.BringToFront();
                 formFitting.WindowState = FormWindowState.Normal;
+                CheckLocation.Adjust(formFitting);
             }
         }
     }
@@ -2555,6 +2561,7 @@ public partial class FormMain : Form
             {
                 formLPO.BringToFront();
                 formLPO.WindowState = FormWindowState.Normal;
+                CheckLocation.Adjust(formLPO);
             }
         }
     }
@@ -2570,6 +2577,7 @@ public partial class FormMain : Form
             {
                 formCellFinder.BringToFront();
                 formCellFinder.WindowState = FormWindowState.Normal;
+                CheckLocation.Adjust(formCellFinder);
             }
         }
     }
@@ -2586,6 +2594,7 @@ public partial class FormMain : Form
             {
                 formAtomicPositionFinder.BringToFront();
                 formAtomicPositionFinder.WindowState = FormWindowState.Normal;
+                CheckLocation.Adjust(formAtomicPositionFinder);
             }
         }
     }
@@ -2602,6 +2611,8 @@ public partial class FormMain : Form
             {
                 formSequentialAnalysis.BringToFront();
                 formSequentialAnalysis.WindowState = FormWindowState.Normal;
+                CheckLocation.Adjust(formSequentialAnalysis);
+
             }
         }
     }
@@ -2742,12 +2753,12 @@ public partial class FormMain : Form
         readProfile(fileNames[^1], showFormDataConverter);
 
         if (fileNames.Length > 1)
-            bindingSourceProfile.Position -= fileNames.Length-1;
+            bindingSourceProfile.Position -= fileNames.Length - 1;
 
-        toolStripStatusLabel1.Text= $"Time taken to read profiles: {stopwatch.ElapsedMilliseconds/1000.0:f1} sec.";
+        toolStripStatusLabel1.Text = $"Time taken to read profiles: {stopwatch.ElapsedMilliseconds / 1000.0:f1} sec.";
     }
 
-    private void readProfile(string fileName, bool showFormDataConverter = true, bool isChecked=true, bool isDrawn=true, bool changePos=true)
+    private void readProfile(string fileName, bool showFormDataConverter = true, bool isChecked = true, bool isDrawn = true, bool changePos = true)
     {
         if (InvokeRequired)//別スレッド(ファイル更新監視スレッド)から呼び出されたとき Invokeして呼びなおす
         {
@@ -2881,7 +2892,7 @@ public partial class FormMain : Form
                 //処理時間短縮のために、最後から一つ手前のDiffractionProfileまでを一気に入力
                 skipAxisPropertyChangedEvent = true;
                 for (int i = 0; i < dp.Count - 1; i++)
-                    AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false,false);
+                    AddProfileToCheckedListBox(dp[i], checkBoxAll.Checked, false, false);
                 skipAxisPropertyChangedEvent = false;
                 AddProfileToCheckedListBox(dp[^1], checkBoxAll.Checked, true, false);
 
@@ -3161,7 +3172,7 @@ public partial class FormMain : Form
 
                         for (int i = 23; i < strList.Count; i++)
                         {
-                            var str = strList[i].Split(' ',true);
+                            var str = strList[i].Split(' ', true);
                             if (str.Length == 2)
                             {
                                 if (Miscellaneous.IsDecimalPointComma)
@@ -3288,7 +3299,7 @@ public partial class FormMain : Form
                 dataSet.DataTableProfile.Rows.Clear();
 
             dataSet.DataTableProfile.Rows.Add(new object[] { isCheked, dp, bmp });
-            if(changePos)
+            if (changePos)
                 bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
 
             if (isDrawn)
@@ -3330,7 +3341,7 @@ public partial class FormMain : Form
                 dataSet.DataTableProfile.Rows.Clear();//消去
 
             dataSet.DataTableProfile.Rows.Add(new object[] { isCheked, dp, bmp });//新しいプロファイルを追加
-            if(changePos)
+            if (changePos)
                 bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
 
             if (isDrawn)
@@ -3863,7 +3874,7 @@ public partial class FormMain : Form
                     var filename = $"{dlg.FileName[0..^4]} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
                     using var writer = new StreamWriter(filename);
                     writer.WriteLine($"X{s}Y");//一行目
-                        for (int i = 0; i < d.Profile.Pt.Count; i++)
+                    for (int i = 0; i < d.Profile.Pt.Count; i++)
                         writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}");
                 });
         }
@@ -4165,7 +4176,7 @@ public partial class FormMain : Form
             else if (e.KeyCode == Keys.Up && bindingSourceCrystal.Position > 0)
                 index = bindingSourceCrystal.Position = SelectedCrysatlIndex - 1;
             if (index != SelectedCrysatlIndex)
-                dataGridViewCrystals_CellMouseClick(new object(), 
+                dataGridViewCrystals_CellMouseClick(new object(),
                     new DataGridViewCellMouseEventArgs(1, SelectedCrysatlIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
         }
         else if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
@@ -4257,9 +4268,9 @@ public partial class FormMain : Form
             else if (e.KeyCode == Keys.Up && bindingSourceProfile.Position > 0)
                 index = bindingSourceProfile.Position = SelectedProfileIndex - 1;
             if (index != SelectedProfileIndex)
-                dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(1,index));
+                dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(1, index));
         }
-        else if(e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
+        else if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
         {
             dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(0, SelectedProfileIndex));
         }
@@ -4391,7 +4402,7 @@ public partial class FormMain : Form
     private void reportProgress((long current, long total, long elapsedMilliseconds, string message) o)
          => reportProgress(o.current, o.total, o.elapsedMilliseconds, o.message);
 
-  
+
 
 
 
@@ -4684,7 +4695,7 @@ public partial class FormMain : Form
                 StartX = xStart; EndX = xEnd; StartY = yStart; EndY = yEnd;
             }
         }
-        
+
         public class CrystalClass : MacroSub
         {
             private readonly Macro p;
@@ -4778,7 +4789,7 @@ public partial class FormMain : Form
                 p.help.Add("PDI.CrystalList.Select(int index) # Set index of a selected crystal.");
                 p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'. If index is omitted, the selected crystal will be checked.");
                 p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'. If index is omitted, the selected crystal will be unchecked.");
-           
+
             }
 
             public void Open() => p.main.checkBoxCrystalParameter.Checked = true;
@@ -5000,7 +5011,7 @@ public partial class FormMain : Form
                 p = _p;
                 p.help.Add("PDI.Fitting.Open() # Open 'Fitting peaks' window.");
                 p.help.Add("PDI.Fitting.Close() # Close 'Fitting peaks' window.");
-               
+
                 p.help.Add("PDI.Fitting.Check(int index) # Check the lattice plane assigned by index.");
                 p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck the lattice plane assigned by index.");
                 p.help.Add("PDI.Fitting.Select(int index) # Select the lattice plane assigned by index.");
@@ -5011,7 +5022,7 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Fitting.Range(double value) # Set fitting range of the selected lattice plane.");
 
             }
-            
+
             public void Open() => p.main.toolStripButtonFittingParameter.Checked = true;
             public void Close() => p.main.toolStripButtonFittingParameter.Checked = false;
             public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
@@ -5057,7 +5068,7 @@ public partial class FormMain : Form
                 p.help.Add("PDI.Sequential.Close() # Close 'Sequential Analysis' window.");
 
                 p.help.Add("PDI.Sequential.Execute() # Execute the sequential analysis.");
-                
+
                 p.help.Add("PDI.Sequential.GetCSV_2theta() # Get results of 2 theta in CSV format.");
                 p.help.Add("PDI.Sequential.GetCSV_D() # Get results of d-spacing in CSV format.");
                 p.help.Add("PDI.Sequential.GetCSV_FWHM() # Get results of FWHM in CSV format.");
@@ -5087,13 +5098,13 @@ public partial class FormMain : Form
             public void Close() => Execute(new Action(() => p.main.toolStripButtonSequentialAnalysis.Checked = false));
             public void Execute() => Execute(() => p.main.formSequentialAnalysis.buttonExecute.PerformClick());
 
-            public string GetCSV_2theta() => Execute(() => p.main.formSequentialAnalysis.GetText(true,0));
-            public string GetCSV_D() => Execute(() => p.main.formSequentialAnalysis.GetText(true,1));
-            public string GetCSV_FWHM() => Execute(() => p.main.formSequentialAnalysis.GetText(true,2));
-            public string GetCSV_Intensity() => Execute(() => p.main.formSequentialAnalysis.GetText(true,3));
-            public string GetCSV_CellConstants() => Execute(() => p.main.formSequentialAnalysis.GetText(true,4));
-            public string GetCSV_Pressure() => Execute(() => p.main.formSequentialAnalysis.GetText(true,5));
-            public string GetCSV_Singh() => Execute(() => p.main.formSequentialAnalysis.GetText(true,6));
+            public string GetCSV_2theta() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 0));
+            public string GetCSV_D() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 1));
+            public string GetCSV_FWHM() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 2));
+            public string GetCSV_Intensity() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 3));
+            public string GetCSV_CellConstants() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 4));
+            public string GetCSV_Pressure() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 5));
+            public string GetCSV_Singh() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 6));
 
             public bool AutoSave2theta
             {

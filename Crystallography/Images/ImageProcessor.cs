@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace Crystallography;
 public static class ImageProcess
 {
+    #region Gaussian Blur
     /// <summary>
     /// GaussianBlurを施す。
     /// </summary>
@@ -77,23 +78,49 @@ public static class ImageProcess
     /// </summary>
     /// <param name="pixels">画像データの一次元配列</param>
     /// <param name="width">画像の幅</param>
+    /// <param name="hwhm">ピクセル単位でのフィルムにじみ半値半幅</param>
+    /// <returns></returns>
+    static public double[] GaussianBlurFast(double[] pixels, int width, double hwhm)
+    {
+        var results = GC.AllocateUninitializedArray<double>(pixels.Length);
+        GaussianBlurFast(pixels, width, hwhm, results);
+        return results;
+    }
+
+    /// <summary>
+    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。pixelsが直接書き換えられる。
+    /// </summary>
+    /// <param name="pixels">画像データの一次元配列</param>
+    /// <param name="width">画像の幅</param>
+    /// <param name="hwhm">ピクセル単位でのフィルムにじみ半値半幅</param>
+    static public void GaussianBlurFast(ref double[] pixels, int width, double hwhm)
+    {
+        GaussianBlurFast(pixels, width, hwhm, pixels);
+    }
+
+    /// <summary>
+    /// GaussianBlurを施す。横方向と縦方向を分離するため、高速。
+    /// </summary>
+    /// <param name="pixels">画像データの一次元配列</param>
+    /// <param name="width">画像の幅</param>
     /// <param name="radius">ピクセル単位でのフィルムにじみ半値半幅　</param>
     /// <returns></returns>
-    unsafe static public double[] GaussianBlurFast(double[] pixels, int width, double hwhm)
+    static private void GaussianBlurFast(double[] pixels, int width, double hwhm, double[] results)
     {
+        int height = pixels.Length / width;
 
         int limit = (int)(hwhm * 3) * 2 + 1;
-        int height = pixels.Length / width;
         int center = limit / 2;
-        
-        var results = new double[width * height];
+
         if (limit == 1)
         {
-            Array.Copy(pixels, results, pixels.Length);
-            return results;
+            if (pixels != results)
+                Array.Copy(pixels, results, pixels.Length);
+            return;
         }
 
-        var tmpPixels = ArrayPool<double>.Shared.Rent(width * height);
+        double[] tmpPixels = ArrayPool<double>.Shared.Rent(width * height);
+        double[] blurSumH = GC.AllocateUninitializedArray<double>(height), blurSumW = GC.AllocateUninitializedArray<double>(width);
         try
         {
             var blur = new double[limit];
@@ -101,27 +128,48 @@ public static class ImageProcess
                 blur[h] = Math.Exp(-(h - center) * (h - center) / hwhm / hwhm * Math.Log(2));
             blur = Statistics.Normarize(blur);
 
+            Parallel.For(0, height, h =>
+            {
+                if (h < center)
+                    blurSumH[h] = blur[(center - h)..].Sum();
+                else if (h >= height - center)
+                    blurSumH[h] = blur[..(height - h + center)].Sum();
+                else
+                    blurSumH[h] = 1;
+            });
             Parallel.For(0, width, w =>
             {
                 for (int h = 0; h < height; h++)
                 {
                     tmpPixels[h * width + w] = 0;
                     for (int n = Math.Max(0, center - h); n < Math.Min(blur.Length, height - h + center); n++)
-                        tmpPixels[h * width + w] += blur[n] * pixels[(h - center + n) * width + w];
+                        tmpPixels[h * width + w] += blur[n] / blurSumH[h] * pixels[(h - center + n) * width + w];
                 }
             });
 
+            Parallel.For(0, width, w =>
+            {
+                if (w < center)
+                    blurSumW[w] = blur[(center - w)..].Sum();
+                else if (w >= width - center)
+                    blurSumW[w] = blur[..(width - w + center)].Sum();
+                else
+                    blurSumW[w] = 1;
+            });
             Parallel.For(0, height, h =>
             {
                 for (int w = 0; w < width; w++)
+                {
+                    results[h * width + w] = 0;
                     for (int n = Math.Max(0, center - w); n < Math.Min(blur.Length, width - w + center); n++)
-                        results[h * width + w] += blur[n] * tmpPixels[h * width + w - center + n];
+                        results[h * width + w] += blur[n] / blurSumW[w] * tmpPixels[h * width + w - center + n];
+                }
             });
         }
         finally { ArrayPool<double>.Shared.Return(tmpPixels); }
-
-        return results;
     }
+
+    #endregion
 
     /// <summary>
     /// 周囲のピクセルと比べて、標準偏差 × threshold以上外れたピクセルは、周囲のピクセルの平均強度にする。

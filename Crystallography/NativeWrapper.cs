@@ -1,12 +1,13 @@
-﻿using MathNet.Numerics.LinearAlgebra.Complex;
+﻿#region using, namespace
+using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Buffers;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
-
 namespace Crystallography;
+#endregion
 
 public static partial class NativeWrapper
 {
@@ -145,10 +146,15 @@ public static partial class NativeWrapper
     );
 
     [LibraryImport("Crystallography.Native.dll")]
-    private static unsafe partial void _GenerateTC(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _result);
+    private static unsafe partial void _GenerateTC1(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k);
+
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _GenerateTC2(int dim, double thickness, double* _kg_z, double* _val, double* _vec, double* _tc_k, double* _tc_kq);
 
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _RowVec_SqMat_ColVec(int dim, double* _rowVec, double* _sqMat, double* _colVec, double* _result);
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _STEM_INEL1(int dim, double* rowVec, int* n, double* r, double* sqMat, double* colVec, double* _result);
 
     #endregion
 
@@ -383,31 +389,31 @@ public static partial class NativeWrapper
     #region Blend関数
     unsafe static public void Blend(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0)
-        fixed (Complex* p1 = c1)
-        fixed (Complex* p2 = c2)
-        fixed (Complex* p3 = c3)
-        fixed (Complex* res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _Blend(dim * 2, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
     }
+
+    unsafe static public void Blend(in int dim, Complex* c0, Complex* c1, Complex* c2, Complex* c3, in double r0, in double r1, in double r2, in double r3, Complex* res)
+    {
+        //fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
+        _Blend(dim * 2, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
+    }
+
     unsafe static public void Blend(in int dim, in double[] c0, in double[] c1, in double[] c2, in double[] c3, in double r0, in double r1, in double r2, in double r3, ref double[] result)
     {
-        fixed (double* p0 = c0)
-        fixed (double* p1 = c1)
-        fixed (double* p2 = c2)
-        fixed (double* p3 = c3)
-        fixed (double* res = result)
+        fixed (double* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _Blend(dim, p0, p1, p2, p3, r0, r1, r2, r3, res);
     }
 
     unsafe static public void BlendAndConjugate(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, in double r0, in double r1, in double r2, in double r3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0)
-        fixed (Complex* p1 = c1)
-        fixed (Complex* p2 = c2)
-        fixed (Complex* p3 = c3)
-        fixed (Complex* res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, res = result)
             _BlendAndConjugate(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)res);
+    }
+
+    unsafe static public void BlendAndConjugate(in int dim, Complex* c0, in Complex* c1, in Complex* c2, in Complex* c3, in double r0, in double r1, in double r2, in double r3, Complex* res)
+    {
+        _BlendAndConjugate(dim, (double*)c0, (double*)c1, (double*)c2, (double*)c3, r0, r1, r2, r3, (double*)res);
     }
     #endregion 
 
@@ -468,14 +474,6 @@ public static partial class NativeWrapper
     #endregion
 
     #region 複素共役、転置
-
-    unsafe static public void Conjugate(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
-    {
-        fixed (Complex* mtx1 = matrix1)
-        fixed (Complex* mtx2 = matrix2)
-        fixed (Complex* res = result)
-            _AdjointAndMultiply(dim, (double*)mtx1, (double*)mtx2, (double*)res);
-    }
 
     unsafe static public void Adjoint(int dim, Complex[] matrix1, Complex[] matrix2, ref Complex[] result)
     {
@@ -578,32 +576,20 @@ public static partial class NativeWrapper
     #region STEMの非弾性散乱電子強度の計算用の特殊関数
     unsafe static public void AdjointMul_Mul_Mul(in int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* _mat1 = mat1)
-        fixed (Complex* _mat2 = mat2)
-        fixed (Complex* _mat3 = mat3)
-        fixed (Complex* res = result)
+        fixed (Complex* _mat1 = mat1, _mat2 = mat2, _mat3 = mat3, res = result)
             _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
     unsafe static public void BlendAdjointMul_Mul_Mul(in int dim, in Complex[] c0, in Complex[] c1, in Complex[] c2, in Complex[] c3, double r0, double r1, double r2, double r3,
         in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* p0 = c0)
-        fixed (Complex* p1 = c1)
-        fixed (Complex* p2 = c2)
-        fixed (Complex* p3 = c3)
-        fixed (Complex* _mat2 = mat2)
-        fixed (Complex* _mat3 = mat3)
-        fixed (Complex* res = result)
+        fixed (Complex* p0 = c0, p1 = c1, p2 = c2, p3 = c3, _mat2 = mat2,_mat3 = mat3, res = result)
             _BlendAdJointMul_Mul_Mul(dim, (double*)p0, (double*)p1, (double*)p2, (double*)p3, r0, r1, r2, r3, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
     unsafe static public void TDS(in int dim, in Complex[] mat1, in Complex[] mat2, in Complex[] mat3, ref Complex[] result)
     {
-        fixed (Complex* _mat1 = mat1)
-        fixed (Complex* _mat2 = mat2)
-        fixed (Complex* _mat3 = mat3)
-        fixed (Complex* res = result)
+        fixed (Complex* _mat1 = mat1, _mat2 = mat2, _mat3 = mat3, res = result)
             _AdJointMul_Mul_Mul(dim, (double*)_mat1, (double*)_mat2, (double*)_mat3, (double*)res);
     }
 
@@ -616,11 +602,21 @@ public static partial class NativeWrapper
     /// <param name="val"></param>
     /// <param name="vec"></param>
     /// <param name="result"></param>
-    unsafe static public void GenerateTC(in int dim,in double thickness, in double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
+    //unsafe static public void GenerateTC(in int dim,in double thickness, in double[] kg_z, in Complex[] val, in Complex[] vec, ref Complex[] result)
+    //{
+    //    fixed (double* _kg_z = kg_z)
+    //    fixed (Complex* _val = val, _vec = vec, _result = result)
+    //        _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
+    //}
+
+    unsafe static public void GenerateTC1(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k)
     {
-        fixed (double* _kg_z = kg_z)
-        fixed (Complex* _val = val, _vec = vec, _result = result)
-            _GenerateTC(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_result);
+        _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
+    }
+
+    unsafe static public void GenerateTC2(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k, Complex* _tc_kq)
+    {
+        _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
     }
 
     /// <summary>
@@ -633,16 +629,31 @@ public static partial class NativeWrapper
     /// <returns></returns>
     unsafe static public Complex RowVec_SqMat_ColVec(in int dim, Complex[] rowVec, Complex[] sqMtx, Complex[] colVec)
     {
-        var result = new double[2];
+        var result = new Complex();
         fixed (Complex* _rowVec = rowVec, _sqMtx = sqMtx, _colVec = colVec)
-        fixed (double* _res = result)
-            _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, _res);
+            _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, (double*)&result);
 
-        return new Complex(result[0], result[1]);
+        return result;
+    }
+
+    unsafe static public Complex RowVec_SqMat_ColVec(in int dim, Complex* _rowVec, Complex* _sqMtx, Complex* _colVec)
+    {
+        var result = new Complex();
+        _RowVec_SqMat_ColVec(dim, (double*)_rowVec, (double*)_sqMtx, (double*)_colVec, (double*)&result);
+        return result;
+    }
+
+    unsafe static public Complex STEM_INEL1(in int dim, Complex* _rowVec, int[] n, double[] r, Complex* _sqMtx, Complex* _colVec)
+    {
+        var result = new Complex();
+        fixed (int* _n = n)
+        fixed (double* _r = r)
+            _STEM_INEL1(dim, (double*)_rowVec, _n, _r, (double*)_sqMtx, (double*)_colVec, (double*)&result);
+        return result;
     }
 
     #endregion
-    
+
     #region CBED
     /// <summary>
     /// Eigenライブラリーを利用して固有値解を求めて、CBEDの解を求める

@@ -21,7 +21,7 @@ static class Version
     /// <summary>
     /// 更新履歴
     /// </summary>
-    static public string History = 
+    public const string History = 
         "History" +
         "\r\n ver4.435(2023/03/07) Fixed bugs on the 'Macro function'." +
         "\r\n ver4.434(2023/02/13) Improved 'Sequential Analysis'." +
@@ -301,7 +301,7 @@ static class Version
     /// <summary>
     /// はじめに
     /// </summary>
-    static public string Introduction = 
+    public const string Introduction = 
         "はじめに:\r\n"
         + "　このソフトはX線粉末回折実験における角度-強度プロファイルを解析するためのプラグラムです。主な特徴は"
         + "\r\n ・テキスト形式の角度－強度データ(タブ･カンマ･スペース)区切りのデータを読み込み、表示"
@@ -316,7 +316,7 @@ static class Version
     /// <summary>
     /// 謝辞
     /// </summary>
-    static public string Acknowledge = 
+    public const string Acknowledge = 
         "謝辞:\r\n"
         + "　本ソフトのエラーの報告、改良の助言にあたっては東京大学の浜根様、北海道大学の永井様、IFREEの佐多様を中心に"
         + "多くの方の協力を頂いております。この場を借りて御礼申し上げます。"
@@ -325,7 +325,7 @@ static class Version
     /// <summary>
     /// 使い方
     /// </summary>
-    static public string Manual =
+    public const string Manual =
         "使い方:\r\n"
         + "　このソフトは「PDIndexer.exe」を実行することで起動します。プロファイルデータはファイルメニューから読み込むことができます。"
         + "結晶リストから結晶を選択すると回折線が表示されます。回折線はマウスドラッグで移動することができます。"
@@ -335,7 +335,7 @@ static class Version
     /// <summary>
     /// 著作権
     /// </summary>
-    static public string CopyRight = 
+    public const string CopyRight = 
         "著作権:\r\n "
         + "　本プログラムの著作権は、作者である瀬戸雄介、"
         + "およびその所属機関である神戸大学大学院理学研究科地球惑星科学専攻が保有しています。"
@@ -344,7 +344,7 @@ static class Version
     /// <summary>
     /// 使用条件
     /// </summary>
-    static public string Condition =
+    public const string Condition =
         "使用条件:\r\n " +
         "本プログラムは学術目的で作成されたフリーソフトウェアです。" +
         "\r\n  ・商用/非商用を問わず、誰でもご自由にお使いいただけます。" +
@@ -355,7 +355,7 @@ static class Version
     /// <summary>
     /// 免責事項
     /// </summary>
-    static public string Exemption =
+    public const string Exemption =
         "免責:"
         + "\r\n　作者は本プログラムの"
         + "\r\n　 ・動作保証を致しません。"
@@ -366,7 +366,7 @@ static class Version
     /// <summary>
     /// 連絡先
     /// </summary>
-    static public string Adress =
+    public const string Adress =
         "連絡先:\r\n"
         +"　プログラムの不具合、改善要望などがありましたらメールにてご連絡ください。"
         +"また詳しい使い方についてはホームページでも解説しています。"
