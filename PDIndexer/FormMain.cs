@@ -2496,7 +2496,7 @@ public partial class FormMain : Form
         {
             formProfile.BringToFront();
             formProfile.WindowState = FormWindowState.Normal;
-            CheckLocation.Adjust(formProfile);
+            WindowLocation.Adjust(formProfile);
         }
         Draw();
     }
@@ -2510,7 +2510,7 @@ public partial class FormMain : Form
         {
             formCrystal.BringToFront();
             formCrystal.WindowState = FormWindowState.Normal;
-            CheckLocation.Adjust(formCrystal);
+            WindowLocation.Adjust(formCrystal);
 
         }
     }
@@ -2527,7 +2527,7 @@ public partial class FormMain : Form
             {
                 formEOS.BringToFront();
                 formEOS.WindowState = FormWindowState.Normal;
-                CheckLocation.Adjust(formEOS);
+                WindowLocation.Adjust(formEOS);
 
             }
         }
@@ -2545,7 +2545,7 @@ public partial class FormMain : Form
             {
                 formFitting.BringToFront();
                 formFitting.WindowState = FormWindowState.Normal;
-                CheckLocation.Adjust(formFitting);
+                WindowLocation.Adjust(formFitting);
             }
         }
     }
@@ -2561,7 +2561,7 @@ public partial class FormMain : Form
             {
                 formLPO.BringToFront();
                 formLPO.WindowState = FormWindowState.Normal;
-                CheckLocation.Adjust(formLPO);
+                WindowLocation.Adjust(formLPO);
             }
         }
     }
@@ -2577,7 +2577,7 @@ public partial class FormMain : Form
             {
                 formCellFinder.BringToFront();
                 formCellFinder.WindowState = FormWindowState.Normal;
-                CheckLocation.Adjust(formCellFinder);
+                WindowLocation.Adjust(formCellFinder);
             }
         }
     }
@@ -2594,7 +2594,7 @@ public partial class FormMain : Form
             {
                 formAtomicPositionFinder.BringToFront();
                 formAtomicPositionFinder.WindowState = FormWindowState.Normal;
-                CheckLocation.Adjust(formAtomicPositionFinder);
+                WindowLocation.Adjust(formAtomicPositionFinder);
             }
         }
     }
@@ -2611,7 +2611,7 @@ public partial class FormMain : Form
             {
                 formSequentialAnalysis.BringToFront();
                 formSequentialAnalysis.WindowState = FormWindowState.Normal;
-                CheckLocation.Adjust(formSequentialAnalysis);
+                WindowLocation.Adjust(formSequentialAnalysis);
 
             }
         }
@@ -4059,7 +4059,7 @@ public partial class FormMain : Form
                 for (int i = 0; i < Ring.Frequency.Count; i++)
                     frequencyProfile.Pt.Add(new PointD(Ring.Frequency.Keys[i], Ring.Frequency[Ring.Frequency.Keys[i]]));
                 graphControlFrequency.Profile = frequencyProfile;
-                graphControlFrequency.LineList = new PointD[2] { new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN) };
+                graphControlFrequency.VerticalLines = new PointD[2] { new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN) };
                 graphControlFrequency.Draw();
                 uint max = uint.MinValue;
                 foreach (uint u in dif.ImageArray.Select(v => (uint)v))
@@ -4087,9 +4087,9 @@ public partial class FormMain : Form
             numericUpDownMaxInt.Value = numericUpDownMinInt.Value + 1;
             return;
         }
-        if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
+        if (graphControlFrequency.VerticalLines != null && graphControlFrequency.VerticalLines.Length == 2)
         {
-            graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
+            graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 0 : 1].X = (double)numericUpDownMinInt.Value;
             graphControlFrequency.Draw();
         }
         Draw();
@@ -4102,9 +4102,9 @@ public partial class FormMain : Form
             numericUpDownMinInt.Value = numericUpDownMaxInt.Value - 1;
             return;
         }
-        if (graphControlFrequency.LineList != null && graphControlFrequency.LineList.Length == 2)
+        if (graphControlFrequency.VerticalLines != null && graphControlFrequency.VerticalLines.Length == 2)
         {
-            graphControlFrequency.LineList[graphControlFrequency.LineList[0].X < graphControlFrequency.LineList[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
+            graphControlFrequency.VerticalLines[graphControlFrequency.VerticalLines[0].X < graphControlFrequency.VerticalLines[1].X ? 1 : 0].X = (double)numericUpDownMaxInt.Value;
             graphControlFrequency.Draw();
         }
         Draw();
@@ -4141,9 +4141,9 @@ public partial class FormMain : Form
 
     private void graphControlFrequency_LinePositionChanged()
     {
-        if (graphControlFrequency.LineList.Length == 2)
+        if (graphControlFrequency.VerticalLines.Length == 2)
         {
-            decimal max = (decimal)((int)Math.Max(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
+            decimal max = (decimal)((int)Math.Max(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X));
             if (numericUpDownMaxInt.Maximum <= max)
                 numericUpDownMaxInt.Value = numericUpDownMaxInt.Maximum;
             else if (numericUpDownMaxInt.Minimum >= max)
@@ -4151,7 +4151,7 @@ public partial class FormMain : Form
             else
                 numericUpDownMaxInt.Value = max;
 
-            decimal min = (decimal)((int)Math.Min(graphControlFrequency.LineList[0].X, graphControlFrequency.LineList[1].X));
+            decimal min = (decimal)((int)Math.Min(graphControlFrequency.VerticalLines[0].X, graphControlFrequency.VerticalLines[1].X));
             if (numericUpDownMinInt.Maximum <= min)
                 numericUpDownMinInt.Value = numericUpDownMinInt.Maximum;
             else if (numericUpDownMinInt.Minimum >= min)

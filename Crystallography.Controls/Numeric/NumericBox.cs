@@ -163,9 +163,8 @@ public partial class NumericBox : UserControl
 
     [Category("Font && Color")]
     [Localizable(true)]
-    [DefaultValue(typeof(Padding), "0,0,0,0")]
-    public Padding HeaderMargin { set => labelHeader.Margin = value; get => labelHeader.Margin; }
-
+    [DefaultValue(typeof(Padding), "0,2,0,0")]
+    public Padding HeaderPadding { set => labelHeader.Padding = value; get => labelHeader.Padding; }
 
     [Localizable(true)]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
@@ -189,9 +188,9 @@ public partial class NumericBox : UserControl
     public string FooterText { set => labelFooter.Text = value; get => labelFooter.Text; }
 
     [Category("Font && Color")]
-    [DefaultValue(typeof(Padding), "0,0,0,0")]
+    [DefaultValue(typeof(Padding), "0,2,0,0")]
     [Localizable(true)]
-    public Padding FooterMargin { set => labelFooter.Margin = value; get => labelFooter.Margin; }
+    public Padding FooterPadding { set => labelFooter.Padding = value; get => labelFooter.Padding; }
 
     [Category("Font && Color")]
     [DefaultValue(typeof(Font), "Segoe UI Symbol, 9.75pt")]
@@ -235,9 +234,9 @@ public partial class NumericBox : UserControl
             }
             else
             {
-                this.Height = textBox.Height;
-                MinimumSize = new Size(1, textBox.Height + 2);
-                MaximumSize = new Size(1000, textBox.Height + 2);
+                //this.Height = textBox.Height + 2;
+                MinimumSize = new Size(1, textBox.Height - 5);
+                MaximumSize = new Size(1000, textBox.Height + 5);
             }
         }
         get { return textBox.Font; }
@@ -363,9 +362,9 @@ public partial class NumericBox : UserControl
             else
             {
                 //textBox.Dock = DockStyle.None;
-                this.Height = textBox.Height;
-                MinimumSize = new Size(1, textBox.Height);
-                MaximumSize = new Size(1000, textBox.Height);
+                //this.Height = textBox.Height;
+                MinimumSize = new Size(1, textBox.Height - 5);
+                MaximumSize = new Size(1000, textBox.Height + 5);
             }
         }
         get => textBox.Multiline;
@@ -600,12 +599,12 @@ public partial class NumericBox : UserControl
 
     private void numericBox_SizeChanged(object sender, EventArgs e)
     {
-        if (Multiline == false)
-        {
-            this.Height = textBox.Height;
-            MinimumSize = new Size(1, textBox.Height);
-            MaximumSize = new Size(1000, textBox.Height);
-        }
+        //if (Multiline == false)
+        //{
+        //    this.Height = textBox.Height;
+        //    MinimumSize = new Size(1, textBox.Height - 2);
+        //    MaximumSize = new Size(1000, textBox.Height + 2);
+        //}
     }
 
     private void numericUpDown_ValueChanged(object sender, EventArgs e)

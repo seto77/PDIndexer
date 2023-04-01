@@ -986,18 +986,14 @@ namespace PDIndexer
             graphControlFrequency.BackgroundColor = Color.White;
             graphControlFrequency.BottomMargin = 0D;
             graphControlFrequency.DivisionLineColor = Color.Gray;
-            graphControlFrequency.DivisionSubLineColor = Color.LightGray;
             graphControlFrequency.FixRangeHorizontal = false;
             graphControlFrequency.FixRangeVertical = false;
-            graphControlFrequency.GraphName = "";
-            graphControlFrequency.HorizontalGradiationTextVisivle = true;
             graphControlFrequency.Interpolation = false;
             graphControlFrequency.IsIntegerX = true;
             graphControlFrequency.IsIntegerY = true;
             graphControlFrequency.LabelX = "X:";
             graphControlFrequency.LabelY = "Y:";
             graphControlFrequency.LeftMargin = 0F;
-            graphControlFrequency.LineColor = Color.Red;
             graphControlFrequency.LineWidth = 1F;
             graphControlFrequency.LowerX = 0D;
             graphControlFrequency.LowerY = 0D;
@@ -1010,19 +1006,13 @@ namespace PDIndexer
             graphControlFrequency.Name = "graphControlFrequency";
             graphControlFrequency.OriginPosition = new Point(40, 20);
             graphControlFrequency.Smoothing = false;
-            graphControlFrequency.TextFont = new Font("Arial", 9F, FontStyle.Regular, GraphicsUnit.Point);
             graphControlFrequency.UnitX = "";
             graphControlFrequency.UnitY = "";
-            graphControlFrequency.UpperText = "";
-            graphControlFrequency.UpperTextVisible = true;
             graphControlFrequency.UpperX = 1D;
             graphControlFrequency.UpperY = 1D;
             graphControlFrequency.UseLineWidth = true;
-            graphControlFrequency.VerticalGradiationTextVisivle = true;
             graphControlFrequency.XLog = true;
-            graphControlFrequency.XScaleLineVisible = true;
             graphControlFrequency.YLog = true;
-            graphControlFrequency.YScaleLineVisible = true;
             graphControlFrequency.LinePositionChanged += graphControlFrequency_LinePositionChanged;
             // 
             // pictureBoxMain

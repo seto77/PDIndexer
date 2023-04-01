@@ -1250,18 +1250,13 @@
             this.graphControl1.BackgroundColor = System.Drawing.Color.White;
             this.graphControl1.BottomMargin = 0F;
             this.graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
-            this.graphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
             this.graphControl1.FixRangeHorizontal = false;
             this.graphControl1.FixRangeVertical = false;
-            this.graphControl1.GraphName = "";
-            this.graphControl1.HorizontalGradiationTextVisivle = true;
             this.graphControl1.IsIntegerX = false;
             this.graphControl1.IsIntegerY = false;
             this.graphControl1.LabelX = "step :";
             this.graphControl1.LabelY = "R:";
             this.graphControl1.LeftMargin = 0F;
-            this.graphControl1.LineColor = System.Drawing.Color.Red;
-            this.graphControl1.LineList = new Crystallography.PointD[0];
             this.graphControl1.LineWidth = 1F;
             this.graphControl1.Location = new System.Drawing.Point(384, 271);
             this.graphControl1.Margin = new System.Windows.Forms.Padding(3, 15, 3, 15);
@@ -1274,10 +1269,7 @@
             this.graphControl1.Size = new System.Drawing.Size(522, 195);
             this.graphControl1.Smoothing = false;
             this.graphControl1.TabIndex = 133;
-            this.graphControl1.TextFont = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.graphControl1.UpperTextVisible = true;
             this.graphControl1.UseLineWidth = true;
-            this.graphControl1.VerticalGradiationTextVisivle = true;
             this.graphControl1.XLog = true;
             this.graphControl1.YLog = true;
             // 

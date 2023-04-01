@@ -243,19 +243,15 @@ namespace PDIndexer
             graphControl1.BackgroundColor = System.Drawing.Color.White;
             graphControl1.BottomMargin = 0D;
             graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
-            graphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
             resources.ApplyResources(graphControl1, "graphControl1");
             graphControl1.FixRangeHorizontal = false;
             graphControl1.FixRangeVertical = false;
-            graphControl1.GraphName = "";
-            graphControl1.HorizontalGradiationTextVisivle = true;
             graphControl1.Interpolation = false;
             graphControl1.IsIntegerX = false;
             graphControl1.IsIntegerY = false;
             graphControl1.LabelX = "X:";
             graphControl1.LabelY = "Y:";
             graphControl1.LeftMargin = 0F;
-            graphControl1.LineColor = System.Drawing.Color.Red;
             graphControl1.LineWidth = 1F;
             graphControl1.LowerX = 0D;
             graphControl1.LowerY = 0D;
@@ -268,19 +264,13 @@ namespace PDIndexer
             graphControl1.Name = "graphControl1";
             graphControl1.OriginPosition = new System.Drawing.Point(40, 20);
             graphControl1.Smoothing = false;
-            graphControl1.TextFont = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             graphControl1.UnitX = "";
             graphControl1.UnitY = "";
-            graphControl1.UpperText = "";
-            graphControl1.UpperTextVisible = true;
             graphControl1.UpperX = 1D;
             graphControl1.UpperY = 1D;
             graphControl1.UseLineWidth = true;
-            graphControl1.VerticalGradiationTextVisivle = true;
             graphControl1.XLog = false;
-            graphControl1.XScaleLineVisible = true;
             graphControl1.YLog = false;
-            graphControl1.YScaleLineVisible = true;
             // 
             // statusStrip1
             // 
