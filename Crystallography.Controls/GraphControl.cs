@@ -990,7 +990,7 @@ public partial class GraphControl : UserControl
         if (double.IsInfinity(min) || double.IsInfinity(max)) return new SortedList<double, string>();
         var results = new SortedList<double, string>();
         double d = max - min;
-        string str = "";
+        string str;
 
         if (!log)
         {
@@ -1001,13 +1001,13 @@ public partial class GraphControl : UserControl
             else if (d / unit / 5 < maxDiv) step = unit * 5;
             else if (d / unit / 10 < maxDiv) step = unit * 10;
 
-            for (int i = (int)(min / step) + 1; i < max / step; i++)
+            var startI = min > 0 ? (int)(min / step) + 1 : (int)(min / step);
+            for (int i = startI; i < max / step; i++)
             {
-                if (max > 1000 || max < 0.001)
-                    //  str = ((i * step) / Math.Pow(10, (int)Math.Log10(max) - 1)).ToString("#,#.###############") + "E" + ((int)Math.Log10(max) - 1).ToString();
+                if (min >= 0 && (max > 1000 || max < 0.001))//対数表示する場合
                     str = ((i * step) / Math.Pow(10, (int)Math.Log10(i * step))).ToString("#,#.###############") + "E" + ((int)Math.Log10(i * step)).ToString();
-                else
-                    str = Math.Round(i * step, 5).ToString("#,#.###############");
+                else//実数表示する場合
+                    str = i * step == 0 ? "0" : Math.Round(i * step, 5).ToString("#,#.###############");
                 results.Add(i * step, str);
             }
         }
@@ -1031,8 +1031,7 @@ public partial class GraphControl : UserControl
 
             if (d < 0.5)
             {
-                double max2 = Math.Pow(10, max);
-                double min2 = Math.Pow(10, min);
+                double max2 = Math.Pow(10, max), min2 = Math.Pow(10, min);
                 double step = 1;
                 double unit = Math.Pow(10, Math.Floor(Math.Log10((max2 - min2) / maxDiv)));
                 if ((max2 - min2) / unit < maxDiv) step = unit;
@@ -1216,16 +1215,20 @@ public partial class GraphControl : UserControl
 
         //マウスが動いたとき
         PointD pt = ConvToRealCoord(e.X, e.Y);
-        double x = pt.X;
-        x = XLog ? Math.Pow(10, x) : x;
-        x = IsIntegerX ? (int)(Math.Round(x)) : x;
 
-        double y = pt.Y;
-        y = XLog ? Math.Pow(10, y) : y;
-        y = IsIntegerY ? (int)(Math.Round(y)) : y;
+        if (UpperPanelVisible)
+        {
+            double x = pt.X;
+            x = XLog ? Math.Pow(10, x) : x;
+            x = IsIntegerX ? (int)(Math.Round(x)) : x;
 
-        labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
-        labelYValue.Text = x.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            double y = pt.Y;
+            y = XLog ? Math.Pow(10, y) : y;
+            y = IsIntegerY ? (int)(Math.Round(y)) : y;
+
+            labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
+        }
 
         if (MouseMovingMode)
         {
@@ -1266,7 +1269,7 @@ public partial class GraphControl : UserControl
                 if (verticalLineList.Count > selectedVerticalLineIndex && selectedVerticalLineIndex >= 0)
                 {
                     //lineList[selectedLineIndex].X = x;
-                    verticalLineList[selectedVerticalLineIndex] = new PointD(x, verticalLineList[selectedVerticalLineIndex].Y);
+                    verticalLineList[selectedVerticalLineIndex] = new PointD(pt.X, verticalLineList[selectedVerticalLineIndex].Y);
 
                     Draw();
                     LinePositionChanged?.Invoke();

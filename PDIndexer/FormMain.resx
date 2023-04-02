@@ -513,10 +513,10 @@
     <value>3, 4, 3, 4</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxIncreasingPixels.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>1, 1, 1, 1</value>
@@ -1490,6 +1490,10 @@
   <data name="graphControlFrequency.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
+  <assembly alias="Crystallography" name="Crystallography, Culture=neutral, PublicKeyToken=null" />
+  <data name="graphControlFrequency.DrawingRange" type="Crystallography.RectangleD, Crystallography">
+    <value>0, 0, 1, 1</value>
+  </data>
   <data name="graphControlFrequency.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
@@ -1624,13 +1628,13 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxUpperX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxUpperX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxUpperX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
+    <value>73, 28</value>
   </data>
   <data name="numericBoxUpperX.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -1674,16 +1678,16 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxUpperY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxUpperY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxUpperY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxUpperY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
+    <value>73, 28</value>
   </data>
   <data name="numericBoxUpperY.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -1724,13 +1728,13 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLowerX.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxLowerX.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxLowerX.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
+    <value>73, 28</value>
   </data>
   <data name="numericBoxLowerX.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
@@ -1774,16 +1778,16 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxLowerY.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxLowerY.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxLowerY.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
   <data name="numericBoxLowerY.Size" type="System.Drawing.Size, System.Drawing">
-    <value>73, 27</value>
+    <value>73, 28</value>
   </data>
   <data name="numericBoxLowerY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
