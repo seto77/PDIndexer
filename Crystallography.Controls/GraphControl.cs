@@ -12,18 +12,13 @@ namespace Crystallography.Controls;
 
 public partial class GraphControl : UserControl
 {
+
+    #region コンストラクタ、ロード
     public GraphControl()
     {
         InitializeComponent();
     }
-
-    private Bitmap Bmp;
-    private Graphics G;
-
-    /// <summary>
-    /// グラフの描き方の列挙体
-    /// </summary>
-    public enum DrawingMode { Line, Histogram, Point }
+    #endregion
 
     #region イベント
 
@@ -44,7 +39,15 @@ public partial class GraphControl : UserControl
 
     #endregion イベント
 
-    #region プロパティ
+    #region プロパティ、フィールド
+    
+    /// <summary>
+    /// グラフの描き方の列挙体
+    /// </summary>
+    public enum DrawingMode { Line, Histogram, Point }
+    
+    private Bitmap Bmp;
+    private Graphics G;
 
     #region 描画囲プロパティ
     [Category(" 描画範囲")]
@@ -259,8 +262,7 @@ public partial class GraphControl : UserControl
     {
         set
         {
-            srcProfileList = new List<Profile>();
-            srcProfileList.Add(value);
+            srcProfileList = new List<Profile> { value };
             InitializeAxis();
             resetDrawRange();
             Draw();
@@ -451,7 +453,7 @@ public partial class GraphControl : UserControl
     [Category(" グラフ位置")]
     [Description("原点の位置(左下からのピクセル単位)")]
     public Point OriginPosition { set { originPosition = value; Draw(); } get => originPosition; }
-    private Point originPosition = new Point(40, 20);
+    private Point originPosition = new(40, 20);
 
     /// <summary>
     /// 下側の余白(ピクセル単位)
