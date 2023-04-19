@@ -1,21 +1,21 @@
-﻿using Crystallography.Controls;
+﻿#region using, namespace
+using Crystallography.Controls;
 using Crystallography;
 using System;
 using System.Data;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
-
 namespace PDIndexer;
+#endregion
 
-#region マクロ機能
 /// <summary>
 /// PDIのマクロ操作を提供する
 /// </summary>
 public class Macro : MacroBase
 {
+    #region 基底クラス
     private readonly FormMain main;
-
     public DrawingClass Drawing;
     public ProfileListClass ProfileList;
     public ProfileClass Profile;
@@ -46,6 +46,10 @@ public class Macro : MacroBase
 
     public static void Sleep(int millisec) => Thread.Sleep(millisec);
     public object[] Obj { get; set; }
+
+    #endregion
+
+    #region Fileクラス ファイル入出力関係
 
     /// <summary>
     /// ファイル入出力関係
@@ -161,6 +165,9 @@ public class Macro : MacroBase
 
     }
 
+    #endregion
+
+    #region Drawingクラス 描画関係
     public class DrawingClass : MacroSub
     {
         private readonly Macro p;
@@ -196,7 +203,9 @@ public class Macro : MacroBase
             StartX = xStart; EndX = xEnd; StartY = yStart; EndY = yEnd;
         }
     }
+    #endregion
 
+    #region Crystalクラス
     public class CrystalClass : MacroSub
     {
         private readonly Macro p;
@@ -275,7 +284,9 @@ public class Macro : MacroBase
         #endregion
 
     }
+    #endregion
 
+    #region CrystalListクラス
     public class CrystalListClass : MacroSub
     {
         private readonly Macro p;
@@ -335,7 +346,9 @@ public class Macro : MacroBase
 
         public double GetCellVolume => Execute(() => p.main.bindingSourceCrystal.Count);
     }
+    #endregion
 
+    #region Profileクラス
     public class ProfileClass : MacroSub
     {
         private readonly Macro p;
@@ -358,7 +371,9 @@ public class Macro : MacroBase
             set => Execute(new Action(() => p.main.formProfile.textBoxProfileName.Text = value));
         }
     }
+    #endregion
 
+    #region ProfileOperatorクラス
     public class ProfileOperatorClass : MacroSub
     {
         private readonly Macro p;
@@ -427,7 +442,9 @@ public class Macro : MacroBase
             }
         }
     }
+    #endregion
 
+    #region ProfileListクラス
     public class ProfileListClass : MacroSub
     {
         private readonly Macro p;
@@ -503,7 +520,9 @@ public class Macro : MacroBase
         public void UncheckAll() => Execute(new Action(() => p.main.checkBoxAll.Checked = false));
 
     }
+    #endregion
 
+    #region Fittingクラス
     public class FittingClass : MacroSub
     {
         private readonly Macro p;
@@ -558,7 +577,9 @@ public class Macro : MacroBase
 
         public void Range(double r) => p.main.formFitting.numericUpDownSearchRange.Value = (decimal)r;
     }
+    #endregion
 
+    #region Sequentialクラス
     public class SequentialClass : MacroSub
     {
         private readonly Macro p;
@@ -649,6 +670,5 @@ public class Macro : MacroBase
         }
 
     }
-
+    #endregion
 }
-#endregion
