@@ -875,9 +875,6 @@ public class DiffractionProfile : ICloneable
     }
     #endregion
 
-
- 
-
     /// <summary>
     /// 横軸条件はそのままで、縦軸ノーマライズを施しOriginalProfileからConvertedProfileを生成する。
     /// </summary>
@@ -1384,7 +1381,6 @@ public class DiffractionProfile : ICloneable
 
     public double[] Convert(double[] x, bool SrcToDst)
     {
-
         var (srcAxisMode, dstAxisMode) = SrcToDst ? (SrcAxisMode, DstAxisMode) : (DstAxisMode, SrcAxisMode);
         var (srcWaveLength, dstWaveLength) = SrcToDst ? (SrcWaveLength, DstWaveLength) : (DstWaveLength, SrcWaveLength);
         var (srcDspacingUnit, dstDspacingUnit) = SrcToDst ? (SrcDspacingUnit, DstDspacingUnit) : (DstDspacingUnit, SrcDspacingUnit);
@@ -1396,9 +1392,8 @@ public class DiffractionProfile : ICloneable
         var (srcWaveNumberUnit, dstWaveNumberUnit) = SrcToDst ? (SrcWaveNumberUnit, DstWaveNumberUnit) : (DstWaveNumberUnit, SrcWaveNumberUnit);
         var (srcTwoThetaUnit, dstTwoThetaUnit) = SrcToDst ? (SrcTwoThetaUnit, DstTwoThetaUnit) : (DstTwoThetaUnit, SrcTwoThetaUnit);
 
-        #region 
+        #region はじめにSrcとDstのAxisモードが等しいときをチェック
 
-        //SrcとDstのAxisモードが等しいとき
         if (srcAxisMode == dstAxisMode)
         {
             //横軸が散乱角で入射X線の波長が等しいとき
@@ -1458,8 +1453,9 @@ public class DiffractionProfile : ICloneable
                     return x.Select(x => x * 0.1).ToArray();
             }
         }
+        #endregion
 
-        //まず一旦すべてをd値(nm単位)に変換
+        # region まず一旦すべてをd値(nm単位)に変換
         var d = Array.Empty<double>();
         if (srcAxisMode == HorizontalAxis.d)
         {
@@ -1511,9 +1507,9 @@ public class DiffractionProfile : ICloneable
             else if (srcWaveNumberUnit == LengthUnitEnum.AngstromInverse)
                 d = HorizontalAxisConverter.WaveNumberToD(x.Select(x => x * 10));
         }
+        #endregion
 
-
-        //最後にd値(nm単位)を目的の軸に変換
+        #region 最後にd値(nm単位)を目的の軸に変換
         if (dstAxisMode == HorizontalAxis.Angle)
             return HorizontalAxisConverter.DToTwoThetaInDegree(d, dstWaveLength);
         else if (dstAxisMode == HorizontalAxis.d)
@@ -1551,74 +1547,23 @@ public class DiffractionProfile : ICloneable
             else if (dstWaveNumberUnit == LengthUnitEnum.AngstromInverse)
                 return d.Select(d => d / 10).ToArray();
         }
+        #endregion
 
         return null;
     }
 
-
+   
 
     #endregion
 
 }
 
+/// <summary>
+/// 横軸を変換するクラス
+/// </summary>
 public static class HorizontalAxisConverter
 {
     #region 横軸を変換するメソッド群
-
-    //public static double Convert(double x, 
-    //    HorizontalAxis srcAxisMode, double srcWavelength, double srcTakeoffAngle, double srcTofAngle, double srcTofLength,
-    //    LengthUnitEnum srcDspacingUnit, EnergyUnitEnum srcEnergyUnit, TimeUnitEnum srcTofTimeUnit,
-    //    HorizontalAxis dstAxisMode, double dstWavelength, double dstTakeoffAngle, double dstTofAngle, double dstTofLength, 
-    //    LengthUnitEnum dstDspacingUnit, EnergyUnitEnum dstEnergyUnit, TimeUnitEnum dstTofTimeUnit)
-    //{
-    //    //入出力が同じだったらそのまま
-
-    //    if (srcAxisMode == HorizontalAxis.Angle && dstAxisMode == HorizontalAxis.Angle && srcWavelength == dstWavelength)
-    //        return x;
-
-    //    if (srcAxisMode == HorizontalAxis.d && dstAxisMode == HorizontalAxis.d)
-    //    {
-    //        if (srcDspacingUnit == dstDspacingUnit)
-    //            return x;
-    //    }   
-    //    if(srcAxisMode == HorizontalAxis.EnergyXray && dstAxisMode == HorizontalAxis.EnergyXray && dstTakeoffAngle == srcTakeoffAngle)
-    //    {
-    //        if(srcEnergyUnit == dstEnergyUnit)
-    //            return x;
-    //    }
-         
-    //    if (srcAxisMode == HorizontalAxis.NeutronTOF && dstAxisMode == HorizontalAxis.NeutronTOF && srcTofAngle == dstTofAngle && srcTofLength == dstTofLength)
-    //    {
-    //        if (srcTofTimeUnit == dstTofTimeUnit)
-    //            return x;
-    //    }
-         
-    //    if(srcAxisMode == HorizontalAxis.WaveNumber && dstAxisMode == HorizontalAxis.WaveNumber)
-    //        return x;
-
-
-    //    //それ以外の場合は一旦すべてをd値に変換
-    //    double d = x;
-    //    if (srcAxisMode == HorizontalAxis.Angle) d = TwoThetaToD(x / 180 * Math.PI, srcWavelength);
-    //    else if (srcAxisMode == HorizontalAxis.EnergyXray) d = XrayEnergyToD(x, srcTakeoffAngle);
-    //    else if (srcAxisMode == HorizontalAxis.NeutronTOF) d = NeutronTofToD(x, srcTofAngle, srcTofLength);
-    //    else if (srcAxisMode == HorizontalAxis.WaveNumber) d = WaveNumberToD(x);
-
-    //    if (dstAxisMode == HorizontalAxis.Angle)
-    //        return DToTwoTheta(d, dstWavelength) / Math.PI * 180.0;
-    //    else if (dstAxisMode == HorizontalAxis.d)
-    //        return d * 10;
-    //    else if (dstAxisMode == HorizontalAxis.EnergyXray)
-    //        return DToXrayEnergy(d, dstTakeoffAngle);
-    //    else if (dstAxisMode == HorizontalAxis.EnergyElectron)
-    //        return DToElectronEnergy(d, dstTakeoffAngle);
-    //    else if (dstAxisMode == HorizontalAxis.NeutronTOF)
-    //        return DToTOF(d, dstTofAngle, dstTofLength);
-    //    else if (dstAxisMode == HorizontalAxis.WaveNumber)
-    //        return DToWaveNumber(d) / 10.0;
-    //    else
-    //        return double.NaN;
-    //}
 
     /// <summary>
     /// d -> Wavenumber  d値(nm)を与えると、波数(2π/nm)を返す
