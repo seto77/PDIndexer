@@ -35,6 +35,7 @@ namespace PDIndexer
         public int XraySourceElementNumber { set => horizontalAxisUserControl.XrayWaveSourceElementNumber = value; get => horizontalAxisUserControl.XrayWaveSourceElementNumber; }
 
         public XrayLine XrayLine { set => horizontalAxisUserControl.XrayWaveSourceLine = value; get => horizontalAxisUserControl.XrayWaveSourceLine; }
+        
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
@@ -73,6 +74,8 @@ namespace PDIndexer
         public bool TofUnitMicroSec { set => horizontalAxisUserControl.radioButtonTofUnitMicroSec.Checked = value; get => horizontalAxisUserControl.radioButtonTofUnitMicroSec.Checked; }
 
         public bool TofUnitNanoSec { set => horizontalAxisUserControl.radioButtonTofUnitNanoSec.Checked = value; get => horizontalAxisUserControl.radioButtonTofUnitNanoSec.Checked; }
+
+        public EnergyUnitEnum EnergyUnitEV { set => horizontalAxisUserControl.EnergyUnit = value; get => horizontalAxisUserControl.EnergyUnit; }
 
         public double[][] EGC
         {

@@ -142,7 +142,7 @@ namespace Crystallography
                         for (int i = 5; i < strList.Count; i++)
                         {
                             string[] str = strList[i].Split(',', true);
-                            diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                            diffProf.SourcelProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
                         }
                         diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
                         return new DiffractionProfile[] { diffProf };
@@ -178,7 +178,7 @@ namespace Crystallography
                             string[] tempStr = strArray[i].Split(new[] { ' ' });
                             double x = Convert.ToDouble(tempStr[0]);
                             double y = Convert.ToDouble(tempStr[1]);
-                            dp[^1].OriginalProfile.Pt.Add(new PointD(x, y));
+                            dp[^1].SourcelProfile.Pt.Add(new PointD(x, y));
                         }
                         else
                             break;
@@ -236,7 +236,7 @@ namespace Crystallography
                     {
                         double x = Convert.ToDouble(value[j * 2]);
                         double y = Convert.ToDouble(value[j * 2 + 1]);
-                        dp[j].OriginalProfile.Pt.Add(new PointD(x, y));
+                        dp[j].SourcelProfile.Pt.Add(new PointD(x, y));
                     }
                 }
 
@@ -385,7 +385,7 @@ namespace Crystallography
             //最後に値を代入
             DiffractionProfile dif = new DiffractionProfile();
             for (int i = 0; i < doubleList.Count; i++)
-                dif.OriginalProfile.Pt.Add(new PointD(doubleList[i][xRow], doubleList[i][yRow]));
+                dif.SourcelProfile.Pt.Add(new PointD(doubleList[i][xRow], doubleList[i][yRow]));
 
             return dif;
         }

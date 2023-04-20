@@ -1461,14 +1461,14 @@ public partial class FormFitting : Form
 
         var output = new DiffractionProfile
         {
-            OriginalProfile = p,
+            SourcelProfile = p,
             Name = RemovedProfileName,
             ColorARGB = formMain.generateRandomColor().ToArgb(),
-            WaveSource = formMain.WaveSource,
-            WaveColor = formMain.WaveColor,
+            SrcWaveSource = formMain.WaveSource,
+            SrcWaveColor = formMain.WaveColor,
             SrcAxisMode = formMain.AxisMode,
-            XrayElementNumber = formMain.XraySourceElementNumber,
-            XrayLine = formMain.XraySourceLine,
+            SrcXrayElementNumber = formMain.XraySourceElementNumber,
+            SrcXrayLine = formMain.XraySourceLine,
             SrcWaveLength = formMain.WaveLength,
             SrcTakeoffAngle = formMain.TakeoffAngle,
             SrcTofAngle = formMain.TakeoffAngle,

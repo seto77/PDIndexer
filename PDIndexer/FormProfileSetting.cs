@@ -92,7 +92,7 @@ public partial class FormProfileSetting : Form
         {
             var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
             string unit = "";
-            switch (dp.DestAxisMode)
+            switch (dp.AxisMode)
             {
                 case HorizontalAxis.Angle: unit = "Åã"; break;
                 case HorizontalAxis.d: unit = "Å"; break;
@@ -423,11 +423,11 @@ public partial class FormProfileSetting : Form
 
             //â°é≤ä÷òA
             xAxisUserControl.AxisMode = dp.SrcAxisMode;
-            xAxisUserControl.WaveSource = dp.WaveSource;
-            xAxisUserControl.WaveColor = dp.WaveColor;
-            xAxisUserControl.XrayWaveSourceElementNumber = dp.XrayElementNumber;
-            xAxisUserControl.XrayWaveSourceLine = dp.XrayLine;
-            if (dp.XrayElementNumber==0)
+            xAxisUserControl.WaveSource = dp.SrcWaveSource;
+            xAxisUserControl.WaveColor = dp.SrcWaveColor;
+            xAxisUserControl.XrayWaveSourceElementNumber = dp.SrcXrayElementNumber;
+            xAxisUserControl.XrayWaveSourceLine = dp.SrcXrayLine;
+            if (dp.SrcXrayElementNumber==0)
                 xAxisUserControl.WaveLength = dp.SrcWaveLength;
             xAxisUserControl.TakeoffAngle = dp.SrcTakeoffAngle;
 
@@ -679,14 +679,14 @@ public partial class FormProfileSetting : Form
 
         var output = new DiffractionProfile
         {
-            OriginalProfile = p,
+            SourcelProfile = p,
             Name = textBoxOutputFilename.Text,
             ColorARGB = c.ToArgb(),
-            WaveSource = formMain.WaveSource,
-            WaveColor = formMain.WaveColor,
+            SrcWaveSource = formMain.WaveSource,
+            SrcWaveColor = formMain.WaveColor,
             SrcAxisMode = formMain.AxisMode,
-            XrayElementNumber = formMain.XraySourceElementNumber,
-            XrayLine = formMain.XraySourceLine,
+            SrcXrayElementNumber = formMain.XraySourceElementNumber,
+            SrcXrayLine = formMain.XraySourceLine,
             SrcWaveLength = formMain.WaveLength,
             SrcTakeoffAngle = formMain.TakeoffAngle,
             SrcTofAngle = formMain.TakeoffAngle,

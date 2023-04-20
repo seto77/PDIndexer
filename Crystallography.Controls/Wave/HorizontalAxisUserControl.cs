@@ -58,7 +58,7 @@ namespace Crystallography.Controls
                 else if (radioButtonWavenumber.Checked)
                     return HorizontalAxis.WaveNumber;
                 else
-                    return HorizontalAxis.none;
+                    return HorizontalAxis.None;
             }
         }
 
@@ -108,14 +108,43 @@ namespace Crystallography.Controls
             get => numericBoxTwoTheta.Value / 180.0 * Math.PI;
         }
 
+        /// <summary>
+        /// エネルギーの単位
+        /// </summary>
         public EnergyUnitEnum EnergyUnit
         {
             set
             {
                 radioButtonEnergyUnitEv.Checked = (value == EnergyUnitEnum.eV);
-                radioButtonEnergyUnitKev.Checked = !(value == EnergyUnitEnum.eV);
+                radioButtonEnergyUnitKev.Checked = (value == EnergyUnitEnum.KeV);
+                radioButtonEnergyUnitMev.Checked = (value == EnergyUnitEnum.MeV);
+                AxisPropertyChanged?.Invoke();
             }
-            get => radioButtonEnergyUnitEv.Checked ? EnergyUnitEnum.eV : EnergyUnitEnum.KeV;
+            get
+            {
+                if (radioButtonEnergyUnitEv.Checked)
+                    return EnergyUnitEnum.eV;
+                else if (radioButtonEnergyUnitKev.Checked)
+                    return EnergyUnitEnum.KeV;
+                else
+                    return EnergyUnitEnum.MeV;
+            }
+        }
+
+
+        public TimeUnitEnum TimeUnit
+        {
+            set
+            {
+                radioButtonTofUnitNanoSec.Checked = value == TimeUnitEnum.NanoSecond;
+                radioButtonTofUnitMicroSec.Checked = value==    TimeUnitEnum.MicroSecond;
+                AxisPropertyChanged();
+            }
+            get
+            {
+                if (radioButtonTofUnitNanoSec.Checked) return TimeUnitEnum.NanoSecond;
+                else return TimeUnitEnum.MicroSecond;
+            }
         }
 
         /// <summary>
@@ -264,35 +293,17 @@ namespace Crystallography.Controls
             }
         }
 
-        private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e)
-        {
-            AxisPropertyChanged?.Invoke();
-        }
+        private void numericBoxWaveLength_ValueChanged(object sender, EventArgs e) => AxisPropertyChanged?.Invoke();
 
-        private void numericBoxTwoTheta_ValueChanged(object sender, EventArgs e)
-        {
-            AxisPropertyChanged?.Invoke();
-        }
+        private void numericBoxTwoTheta_ValueChanged(object sender, EventArgs e) => AxisPropertyChanged?.Invoke();
 
-        private void radioButtonDegree_CheckedChanged(object sender, EventArgs e)
-        {
-            AxisPropertyChanged?.Invoke();
-        }
+        private void radioButtonDegree_CheckedChanged(object sender, EventArgs e) => AxisPropertyChanged?.Invoke();
 
-        private void radioButtonEv_CheckedChanged(object sender, EventArgs e)
-        {
-            AxisPropertyChanged?.Invoke();
-        }
+        private void radioButtonEv_CheckedChanged(object sender, EventArgs e) => AxisPropertyChanged?.Invoke();
 
-        private void radioButtonAngstrom_CheckedChanged(object sender, EventArgs e)
-        {
-            AxisPropertyChanged?.Invoke();
-        }
+        private void radioButtonAngstrom_CheckedChanged(object sender, EventArgs e) => AxisPropertyChanged?.Invoke();
 
-        private void waveLengthControl_WavelengthChanged(object sender, EventArgs e)
-        {
-            AxisPropertyChanged?.Invoke();
-        }
+        private void waveLengthControl_WavelengthChanged(object sender, EventArgs e) => AxisPropertyChanged?.Invoke();
 
         private void radioButtonWaveSource_CheckedChanged(object sender, EventArgs e)
         {

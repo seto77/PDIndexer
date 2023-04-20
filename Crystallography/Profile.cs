@@ -11,25 +11,25 @@ namespace Crystallography;
 [Serializable]
 public class Profile : ICloneable
 {
-    public object Clone()
-    {
-        Profile p = (Profile)this.MemberwiseClone();
-        p.Pt = new List<PointD>(Pt.ToArray());
-        return p;
-    }
-
+    #region プロパティ、フィールド
     public string text;
 
     public List<PointD> Pt;
     public List<PointD> Err;
 
-    public System.Drawing.Color Color = System.Drawing.Color.Blue;
+    public Color Color = Color.Blue;
 
     public float LineWidth = 1f;
 
-    public RectangleD Range
-    { get { return new RectangleD(new PointD(Pt.Min(p => p.X), Pt.Min(p => p.Y)), new PointD(Pt.Max(p => p.X), Pt.Max(p => p.Y))); } }
+    public RectangleD Range => new RectangleD(new PointD(Pt.Min(p => p.X), Pt.Min(p => p.Y)), new PointD(Pt.Max(p => p.X), Pt.Max(p => p.Y)));
+    public double MaxX => Pt.Max(p => p.X);
+    public double MinX => Pt.Min(p => p.X);
+    public double MaxY => Pt.Max(p => p.Y);
+    public double MinY => Pt.Min(p => p.Y);
 
+    #endregion
+
+    #region コンストラクタ
     public Profile()
     {
         Pt = new List<PointD>();
@@ -51,12 +51,26 @@ public class Profile : ICloneable
         Pt.AddRange(pt);
         Color = color;
     }
+    #endregion
 
-    public double MaxX => Pt.Max(p => p.X);
-    public double MinX => Pt.Min(p => p.X);
-    public double MaxY => Pt.Max(p => p.Y);
-    public double MinY => Pt.Min(p => p.Y);
+    #region クリア、ソート、コピー
+    public void Clear()
+    {
+        Pt = new List<PointD>();
+        Err = new List<PointD>();
+    }
 
+    public void Sort()
+    {
+        Pt.Sort();
+        Err.Sort();
+    }
+    public object Clone()
+    {
+        Profile p = (Profile)this.MemberwiseClone();
+        p.Pt = new List<PointD>(Pt.ToArray());
+        return p;
+    }
     public Profile CopyTo()
     {
         Profile p = new Profile();
@@ -72,7 +86,13 @@ public class Profile : ICloneable
         p.text = text;
         return p;
     }
+    #endregion
 
+    #region 各種メソッド
+
+    public override string ToString() => text == null ? "" : text.ToString();
+
+    #region GetErr 指定されたxの値に対するerrを返す
     /// <summary>
     /// 指定されたxの値に対するerrを返す
     /// </summary>
@@ -100,7 +120,9 @@ public class Profile : ICloneable
         }
         return 0;
     }
+    #endregion
 
+    #region  GetValue 指定されたxの値に対してorder次関数で補間した値を返す
     /// <summary>
     /// 指定されたxの値に対してorder次関数で補間した値を返す
     /// </summary>
@@ -137,7 +159,9 @@ public class Profile : ICloneable
 
         return GetValues(new double[] { x }, pointNum, order, eachside, false)[0];
     }
+    #endregion
 
+    #region GetValues　指定されたxの値に対してorder次関数で補間した値を返す
     /// <summary>
     /// 指定されたxの値に対してorder次関数で補間した値を返す
     /// </summary>
@@ -252,7 +276,9 @@ public class Profile : ICloneable
         }
         return value;
     }
+    #endregion
 
+    #region SmoothingSavitzkyGolay():  Savitzky and Golay Smoothingの結果を返す
     /// <summary>
     /// Savitzky and Golay Smoothingの結果を返す
     /// </summary>
@@ -266,7 +292,9 @@ public class Profile : ICloneable
         p.text = this.text;
         return p;
     }
+    #endregion
 
+    #region Differential: n階微分の結果をかえす
     /// <summary>
     /// n階微分の結果をかえす
     /// </summary>
@@ -294,23 +322,18 @@ public class Profile : ICloneable
                 return p.Differential(n - 1);
         }
     }
-
-    public void Clear()
-    {
-        Pt = new List<PointD>();
-        Err = new List<PointD>();
-    }
-
-    public void Sort()
-    {
-        Pt.Sort();
-        Err.Sort();
-    }
-
-    public override string ToString() => text == null ? "" : text.ToString();
+    #endregion
 
     public PointD[][] GetPointsWithinRectangle(RectangleD rect) => Geometriy.GetPointsWithinRectangle(this.Pt, rect);
 
+    #region ToGSAS: GSAS形式に変換する
+    /// <summary>
+    /// GSAS形式に変換
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="profile"></param>
+    /// <param name="axis"></param>
+    /// <returns></returns>
     public static string[] ToGSAS(string name, Profile profile, HorizontalAxis axis)
     {
         var sb = new List<string>();
@@ -362,54 +385,54 @@ public class Profile : ICloneable
 
         return sb.ToArray();
     }
+    #endregion
 
+    #endregion
 }
 
+#region 各種列挙
+/// <summary>
+/// 横軸の種類 (Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, none)
+/// </summary>
 [Serializable]
-public enum HorizontalAxis
-{
-    Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, none
-}
+public enum HorizontalAxis{    Angle, d, WaveNumber, Length, EnergyXray, EnergyElectron, EnergyNeutron, NeutronTOF, None}
 
+/// <summary>
+/// 波の種類 (Xray, Electron, Neutron, None)
+/// </summary>
 [Serializable]
-public enum WaveSource
-{
-    Xray, Electron, Neutron, None
-}
+public enum WaveSource{    Xray, Electron, Neutron, None}
 
+/// <summary>
+/// 波の色 (Monochrome, FlatWhite, CustomWhite, None)
+/// </summary>
 [Serializable]
-public enum WaveColor
-{
-    Monochrome, FlatWhite, CustomWhite, None
-}
+public enum WaveColor{    Monochrome, FlatWhite, CustomWhite, None}
 
+/// <summary>
+/// プロファイルモード (Concentric, Radial)
+/// </summary>
 [Serializable]
-public enum DiffractionProfileMode
-{
-    Concentric, Radial
-}
+public enum DiffractionProfileMode{    Concentric, Radial}
 
+/// <summary>
+/// バックグランドモード (BSplineCurve, ReferrenceProfile)
+/// </summary>
 [Serializable]
-public enum BackgroundMode
-{
-    BSplineCurve, ReferrenceProfile
-}
+public enum BackgroundMode{    BSplineCurve, ReferrenceProfile}
 
-
+#endregion
 
 [Serializable]
 public class DiffractionProfile : ICloneable
 {
-    //Masking関連ここから
+    #region マスク関連ここから
     [Serializable]
     public class MaskingRange
     {
         public double[] X = new double[2];
 
-        public MaskingRange()
-        {
-            X[0] = X[1] = 0;
-        }
+        public MaskingRange() => X[0] = X[1] = 0;
 
         public MaskingRange(double x1, double x2)
         {
@@ -493,12 +516,12 @@ public class DiffractionProfile : ICloneable
     }
 
     public bool DoesMaskAndInterpolate = false;
-    //Masking関連ここまで
+    #endregion
 
     public object Clone()
     {
         DiffractionProfile dp = (DiffractionProfile)this.MemberwiseClone();
-        dp.OriginalProfile = (Profile)this.OriginalProfile.Clone();
+        dp.SourcelProfile = (Profile)this.SourcelProfile.Clone();
         dp.Profile = (Profile)this.Profile.Clone();
         dp.InterpolatedProfile = (Profile)this.InterpolatedProfile.Clone();
         dp.SmoothedProfile = (Profile)this.SmoothedProfile.Clone();
@@ -508,20 +531,27 @@ public class DiffractionProfile : ICloneable
         return dp;
     }
 
-    public Profile OriginalProfile;//ソースのプロファイル
+    #region プロパティ
+    /// <summary>
+    /// ソースプロファイル ()
+    /// </summary>
+    public Profile SourcelProfile;
 
     public PointD[] BgPoints;
 
-    [XmlIgnoreAttribute]
-    public Profile ConvertedProfile;//軸変換後のプロファイル
+    /// <summary>
+    /// 軸変換後のプロファイル. SetConvertedProfile()を呼び出すことで生成される.
+    /// </summary>
+    [XmlIgnore]
+    public Profile ConvertedProfile;
 
-    [XmlIgnoreAttribute]
+    [XmlIgnore]
     public Profile InterpolatedProfile;//
 
-    [XmlIgnoreAttribute]
+    [XmlIgnore]
     public Profile SmoothedProfile;//
 
-    [XmlIgnoreAttribute]
+    [XmlIgnore]
     public Profile Kalpha2RemovedProfile;//
 
     [XmlIgnoreAttribute]
@@ -530,23 +560,73 @@ public class DiffractionProfile : ICloneable
     [XmlIgnoreAttribute]
     public Profile Profile;
 
-    public HorizontalAxis SrcAxisMode;
-    public double SrcWaveLength;
-    public double SrcTakeoffAngle;
-
-    public double SrcTofAngle;
-    public double SrcTofLength;
-
     /// <summary>
     /// プロファイルモード
     /// </summary>
     public DiffractionProfileMode Mode = DiffractionProfileMode.Concentric;
 
-    public HorizontalAxis DestAxisMode;
-    public double DestWaveLength;
-    public double DestTakeoffAngle;
-    public double DestTofAngle;
-    public double DestTofLength;
+    #region ソースプロファイルに関するプロパティ
+    /// <summary>
+    /// ソースの横軸の種類
+    /// </summary>
+    public HorizontalAxis SrcAxisMode;
+    /// <summary>
+    /// ソースの入射波の波長
+    /// </summary>
+    public double SrcWaveLength;
+    /// <summary>
+    /// ソースの入射波の種類
+    /// </summary>
+    public WaveSource SrcWaveSource;
+    /// <summary>
+    /// ソースの入射波の色
+    /// </summary>
+    public WaveColor SrcWaveColor;
+
+    /// <summary>
+    /// ソースが特性X線の時のターゲット原子番号 (0はカスタム)
+    /// </summary>
+    public int SrcXrayElementNumber;
+    /// <summary>
+    /// ソースが特性X線の時のライン
+    /// </summary>
+    public XrayLine SrcXrayLine;
+
+    /// <summary>
+    /// ソースが電子線の場合のエネルギー
+    /// </summary>
+    public double SrcElectronAccVolatage;
+
+    /// <summary>
+    /// ソースが白色の時のエネルギーの単位
+    /// </summary>
+    public EnergyUnitEnum SrcEnergyEnum = EnergyUnitEnum.eV;
+    /// <summary>
+    /// ソースが白色の時の Takeoff angle (radian)
+    /// </summary>
+    public double SrcTakeoffAngle;
+
+    /// <summary>
+    /// ソースが白色TOF時の角度
+    /// </summary>
+    public double SrcTofAngle;
+    /// <summary>
+    /// ソースが白色TOF時の検出器距離
+    /// </summary>
+    public double SrcTofLength;
+    /// <summary>
+    /// ソースが白色TOF時の 時間単位
+    /// </summary>
+    public TimeUnitEnum SrcTimUnit = TimeUnitEnum.MicroSecond;
+
+    #endregion
+
+
+    public HorizontalAxis AxisMode;
+    public double WaveLength;
+    public double TakeoffAngle;
+    public double TofAngle;
+    public double TofLength;
 
     //ノーマライズ関連ここから
     /// <summary>
@@ -609,21 +689,14 @@ public class DiffractionProfile : ICloneable
 
     public int? ColorARGB;
 
-    //生データの波の種類、波長など
-    public WaveSource WaveSource;
-
-    public WaveColor WaveColor;
-    public int XrayElementNumber;
-    public XrayLine XrayLine;
-    public double ElectronAccVolatage;
-
-    //バックグランド設定関連
+    #region /バックグランド設定関連
     public int BgPointsNumber = 15;
 
     public bool SubtractBackground = false;
     public BackgroundMode BgMode = BackgroundMode.BSplineCurve;
     public Profile BackgroundReferrenceProfile = null;
     public double BackgroundReferrenceScale = 1;
+    #endregion
 
     public string Name;
 
@@ -639,11 +712,14 @@ public class DiffractionProfile : ICloneable
 
     public override string ToString() => Name;
 
+    #endregion
+
+    #region コンストラクタ
     public DiffractionProfile()
     {
         BgPoints = Array.Empty<PointD>();
 
-        OriginalProfile = new Profile();
+        SourcelProfile = new Profile();
         ConvertedProfile = new Profile();
         SmoothedProfile = new Profile();
         Kalpha2RemovedProfile = new Profile();
@@ -652,23 +728,22 @@ public class DiffractionProfile : ICloneable
         BackgroundProfile = new Profile();
         SrcAxisMode = HorizontalAxis.Angle;
 
-        WaveSource = WaveSource.Xray;
+        SrcWaveSource = WaveSource.Xray;
 
-        XrayElementNumber = 0;
-        XrayLine = XrayLine.Ka1;
+        SrcXrayElementNumber = 0;
+        SrcXrayLine = XrayLine.Ka1;
 
-        ElectronAccVolatage = 200;
+        SrcElectronAccVolatage = 200;
 
         ColorARGB = null;
     }
+    #endregion
 
     public void CopyParameter(DiffractionProfile defaultDP)
     {
         DoesSmoothing = defaultDP.DoesSmoothing;
-
         SazitkyGorayM = defaultDP.SazitkyGorayM;
         SazitkyGorayN = defaultDP.SazitkyGorayN;
-
         SubtractBackground = defaultDP.SubtractBackground;
     }
 
@@ -678,9 +753,7 @@ public class DiffractionProfile : ICloneable
     /// <param name="pt"></param>
     public void AddBgPoints(PointD pt)
     {
-        Profile profile = new Profile();
-        for (int i = 0; i < BgPoints.Length; i++)
-            profile.Pt.Add(BgPoints[i]);
+        var profile = new Profile(BgPoints);
 
         PointD newPt = ConvertDestToSrc(pt);
         if (!double.IsNaN(newPt.X) && !double.IsInfinity(newPt.X))
@@ -691,9 +764,7 @@ public class DiffractionProfile : ICloneable
 
     public void DeleteBgPoints(int index)
     {
-        Profile profile = new Profile();
-        for (int i = 0; i < BgPoints.Length; i++)
-            profile.Pt.Add(BgPoints[i]);
+        var profile = new Profile(BgPoints);
         profile.Pt.RemoveAt(index);
         BgPoints = profile.Pt.ToArray();
     }
@@ -701,16 +772,17 @@ public class DiffractionProfile : ICloneable
     /// <summary>
     /// Srcの横軸をDestの横軸に変換する
     /// </summary>
-    /// <param name="x"></param>
+    /// <param name="pt"></param>
     /// <returns></returns>
-
     private PointD convertSrcToDest(PointD pt)
     {
-        double x =
-            HorizontalAxisConverter.Convert(pt.X, SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength, DestAxisMode, DestWaveLength, DestTakeoffAngle, DestTofAngle, DestTofLength);
-        double y = pt.Y;
+        var x =
+            HorizontalAxisConverter.Convert
+            (pt.X, SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength,
+            AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
+        var y = pt.Y;
         if (IsCPS && ExposureTime > 0)
-            y = y / ExposureTime;
+            y /= ExposureTime;
         if (IsLogIntensity)
             y = Math.Log10(y);
 
@@ -719,15 +791,15 @@ public class DiffractionProfile : ICloneable
 
     public PointD[] ConvertSrcToDest(PointD[] pt)
     {
-        List<PointD> dest = new List<PointD>();
+        var dest = new List<PointD>();
         for (int i = 0; i < pt.Length; i++)
         {
-            PointD p = convertSrcToDest(pt[i]);
+            var p = convertSrcToDest(pt[i]);
             if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
                 dest.Add(p);
         }
+        #region お蔵?
         //強度のノーマライズ　stepが一定値でなくなった時の対応
-
         /*
         if (dest.Count> 0)
         {
@@ -740,14 +812,23 @@ public class DiffractionProfile : ICloneable
                 dest[i].Y *= average / steps[i];
         }
         */
+        #endregion
         return dest.ToArray();
     }
 
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
     public PointD ConvertDestToSrc(PointD pt)
     {
-        double x =
-            HorizontalAxisConverter.Convert(pt.X, DestAxisMode, DestWaveLength, DestTakeoffAngle, DestTofAngle, DestTofLength, SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength);
-        double y = pt.Y;
+        var x =
+            HorizontalAxisConverter.Convert(
+                pt.X, AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength, 
+                SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength);
+        var y = pt.Y;
         if (IsCPS && ExposureTime != 0)
             y *= ExposureTime;
         if (IsLogIntensity)
@@ -757,10 +838,10 @@ public class DiffractionProfile : ICloneable
 
     public PointD[] ConvertDestToSrc(PointD[] pt)
     {
-        List<PointD> dest = new List<PointD>();
+        var dest = new List<PointD>();
         for (int i = 0; i < pt.Length; i++)
         {
-            PointD p = ConvertDestToSrc(pt[i]);
+            var p = ConvertDestToSrc(pt[i]);
             if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
                 dest.Add(p);
         }
@@ -775,21 +856,23 @@ public class DiffractionProfile : ICloneable
         SetConvertedProfile(SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength);
     }
 
+    #region 一連の変換 SourceProfile => MaskingProfile => SmoothingProfile =>  Kalpha2RemovedProfile => BackgroundProfile & Profile
+
     /// <summary>
-    /// 横軸変換および縦軸ノーマライズを施しOriginalProfileからConvertedProfileを生成する。
+    /// 横軸変換および縦軸ノーマライズを施しOriginalProfileからConvertedProfileを生成する。最後にSetMaskingProfile()を実行する.
     /// </summary>
     public void SetConvertedProfile(HorizontalAxis destAxisMode, double destWavelength, double destTakeoffAngle, double destTofAngle, double destTofLength)
     {
-        DestAxisMode = destAxisMode;
-        DestWaveLength = destWavelength;
-        DestTakeoffAngle = destTakeoffAngle;
-        DestTofAngle = destTofAngle;
-        DestTofLength = destTofLength;
+        AxisMode = destAxisMode;
+        WaveLength = destWavelength;
+        TakeoffAngle = destTakeoffAngle;
+        TofAngle = destTofAngle;
+        TofLength = destTofLength;
 
         ConvertedProfile.Clear();
 
-        PointD[] pt = ConvertSrcToDest(OriginalProfile.Pt.ToArray());
-        PointD[] err = ConvertSrcToDest(OriginalProfile.Err.ToArray());
+        PointD[] pt = ConvertSrcToDest(SourcelProfile.Pt.ToArray());
+        PointD[] err = ConvertSrcToDest(SourcelProfile.Err.ToArray());
 
         //ここから、2ThetaOffset処理
         if (IsShiftX)
@@ -825,7 +908,7 @@ public class DiffractionProfile : ICloneable
     }
 
     /// <summary>
-    /// Maskされた領域を補完し、ConvertedProfileからInterpolatedProfileを作成する
+    /// Maskされた領域を補完し、ConvertedProfileからInterpolatedProfileを作成する. 最後にSetSmoothingProfile()を実行する。
     /// </summary>
     public void SetMaskingProfile()
     {
@@ -864,7 +947,7 @@ public class DiffractionProfile : ICloneable
     }
 
     /// <summary>
-    /// スムージングとFFTを施しInterpolatedProfileからSmoothedProfileを作成する。
+    /// スムージングとFFTを施しInterpolatedProfileからSmoothedProfileを作成する。最後にSetKalpha2RemovedProfile()を実行する。
     /// </summary>
     public void SetSmoothingProfile()
     {
@@ -925,7 +1008,7 @@ public class DiffractionProfile : ICloneable
     }
 
     /// <summary>
-    /// Kalpha2を除去する
+    /// Kalpha2を除去する。最後にSetBackGroundProfile()を実行する。
     /// </summary>
     public void SetKalpha2RemovedProfile()
     {
@@ -936,16 +1019,16 @@ public class DiffractionProfile : ICloneable
         for (int i = 0; i < SmoothedProfile.Err.Count; i++)
             Kalpha2RemovedProfile.Err.Add(SmoothedProfile.Err[i]);
 
-        if (DoesRemoveKalpha2 && WaveSource == WaveSource.Xray && XrayElementNumber != 0 && XrayLine == XrayLine.Ka1)
+        if (DoesRemoveKalpha2 && SrcWaveSource == WaveSource.Xray && SrcXrayElementNumber != 0 && SrcXrayLine == XrayLine.Ka1)
         {
-            double alpha1 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka1);
-            double alpha2 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka2);
+            double alpha1 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka1);
+            double alpha2 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka2);
             double startY = Kalpha2RemovedProfile.Pt[0].Y * 2 / 3;
 
-            List<double> theta = new List<double>();
+            var theta = new List<double>();
             for (int i = 0; i < Kalpha2RemovedProfile.Pt.Count; i++)
             {
-                double d = alpha2 * 0.5 / Math.Sin(Kalpha2RemovedProfile.Pt[i].X / 360 * Math.PI);
+                var d = alpha2 * 0.5 / Math.Sin(Kalpha2RemovedProfile.Pt[i].X / 360 * Math.PI);
                 theta.Add(Math.Asin(alpha1 * 0.5 / d) * 360 / Math.PI);
             }
             for (int i = 0; i < Kalpha2RemovedProfile.Pt.Count; i++)
@@ -1002,9 +1085,10 @@ public class DiffractionProfile : ICloneable
                 }
             }
         }
-
         //バックグラウンド処理ここまで
     }
+    #endregion
+
 
     private void Normarize()
     {
@@ -1146,22 +1230,23 @@ public class DiffractionProfile : ICloneable
         }
     }
 
+
     public void RemoveKalpha2()
     {
-        double alpha1 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka1);
-        double alpha2 = AtomStatic.CharacteristicXrayWavelength(XrayElementNumber, Crystallography.XrayLine.Ka2);
-        double startY = OriginalProfile.Pt[0].Y * 2 / 3;
-        for (int i = 0; i < OriginalProfile.Pt.Count; i++)
+        double alpha1 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka1);
+        double alpha2 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka2);
+        double startY = SourcelProfile.Pt[0].Y * 2 / 3;
+        for (int i = 0; i < SourcelProfile.Pt.Count; i++)
         {
-            double d = alpha2 / 2 / Math.Sin(OriginalProfile.Pt[i].X / 360 * Math.PI);
+            double d = alpha2 / 2 / Math.Sin(SourcelProfile.Pt[i].X / 360 * Math.PI);
             double theta = Math.Asin(alpha1 / 2 / d) * 360 / Math.PI;
-            if (theta < OriginalProfile.Pt[0].X)
+            if (theta < SourcelProfile.Pt[0].X)
                 //OriginalProfile.Pt[i].Y -= startY * 0.5;
-                OriginalProfile.Pt[i] -= new PointD(0, startY * 0.5);
+                SourcelProfile.Pt[i] -= new PointD(0, startY * 0.5);
 
-            if (theta > OriginalProfile.Pt[0].X)
+            if (theta > SourcelProfile.Pt[0].X)
                 //OriginalProfile.Pt[i].Y -= OriginalProfile.GetValue(theta, 2, 1) * 0.5;
-                OriginalProfile.Pt[i] -= new PointD(0, OriginalProfile.GetValue(theta, 2, 1) * 0.5);
+                SourcelProfile.Pt[i] -= new PointD(0, SourcelProfile.GetValue(theta, 2, 1) * 0.5);
         }
     }
 
@@ -1216,8 +1301,10 @@ public static class HorizontalAxisConverter
             (srcAxisMode == HorizontalAxis.WaveNumber && destAxisMode == HorizontalAxis.WaveNumber)
             )
             return x;
+        //単位のみが異なる場合は係数を掛けて返す
 
-        //一旦すべてをd値に変換
+
+        //それ以外の場合は一旦すべてをd値に変換
         double d = x;
         if (srcAxisMode == HorizontalAxis.Angle) d = TwoThetaToD(x / 180 * Math.PI, srcWavelength);
         else if (srcAxisMode == HorizontalAxis.EnergyXray) d = XrayEnergyToD(x, srcTakeoffAngle);
@@ -1246,10 +1333,7 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double DToWaveNumber(double d)
-    {
-        return Math.PI * 2 / d;
-    }
+    public static double DToWaveNumber(double d) => Math.PI * 2 / d;
 
     /// <summary>
     /// Wavenumber -> d   波数(1/nm)を与えると、仮想的なd値(nm)を返す
@@ -1257,10 +1341,7 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double WaveNumberToD(double wavenumber)
-    {
-        return Math.PI * 2 / wavenumber;
-    }
+    public static double WaveNumberToD(double wavenumber) => Math.PI * 2 / wavenumber;
 
     /// <summary>
     /// TOF -> d   TOF(μs)と取り出し角(radian)、距離(m)を与えると、ブラッグ条件を満たすd値(nm)を返す
@@ -1390,10 +1471,7 @@ public static class HorizontalAxisConverter
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
     /// <returns></returns>
-    public static double TwoThetaToD(double twoTheta, double waveLength)
-    {
-        return waveLength / Math.Sin(twoTheta / 2.0) / 2.0;
-    }
+    public static double TwoThetaToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 2.0) / 2.0;
 
     #endregion 横軸を変換するメソッド群
 }

@@ -1442,15 +1442,15 @@ public partial class FormMain : Form
                 }
 
                 //エラーバー描画
-                if (checkBoxErrorBar.Checked && dp.OriginalProfile.Err != null && dp.OriginalProfile.Err.Count == dp.Profile.Pt.Count)
+                if (checkBoxErrorBar.Checked && dp.SourcelProfile.Err != null && dp.SourcelProfile.Err.Count == dp.Profile.Pt.Count)
                 {
                     var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
                     var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
                     for (int i = 0; i < srcPts.Length; i++)
-                        if (!double.IsNaN(dp.OriginalProfile.Err[i].Y) && rect.IsInsde(srcPts[i]))
+                        if (!double.IsNaN(dp.SourcelProfile.Err[i].Y) && rect.IsInsde(srcPts[i]))
                         {
-                            var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.OriginalProfile.Err[i].Y);
-                            var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.OriginalProfile.Err[i].Y);
+                            var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourcelProfile.Err[i].Y);
+                            var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourcelProfile.Err[i].Y);
                             lock (lockObj)
                             {
                                 profiles.Add((penErr, new[] { maxErr, minErr }));
@@ -2796,17 +2796,17 @@ public partial class FormMain : Form
                     return;
                 for (int i = 0; i < dp.Count; i++)
                 {
-                    if (dp[i].WaveSource == WaveSource.Xray && dp[i].SrcWaveLength > 1)
+                    if (dp[i].SrcWaveSource == WaveSource.Xray && dp[i].SrcWaveLength > 1)
                         dp[i].SrcWaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcWaveLength * 10000);
                     dp[i].SubtractBackground = false;
-                    for (int j = 0; j < dp[i].OriginalProfile.Pt.Count; j++)
-                        if (dp[i].OriginalProfile.Pt[j].Y == 0)
-                            dp[i].OriginalProfile.Pt.RemoveAt(j--);
+                    for (int j = 0; j < dp[i].SourcelProfile.Pt.Count; j++)
+                        if (dp[i].SourcelProfile.Pt[j].Y == 0)
+                            dp[i].SourcelProfile.Pt.RemoveAt(j--);
                         else break;
 
-                    for (int j = dp[i].OriginalProfile.Pt.Count - 1; j >= 0; j--)
-                        if (dp[i].OriginalProfile.Pt[j].Y == 0)
-                            dp[i].OriginalProfile.Pt.RemoveAt(j);
+                    for (int j = dp[i].SourcelProfile.Pt.Count - 1; j >= 0; j--)
+                        if (dp[i].SourcelProfile.Pt[j].Y == 0)
+                            dp[i].SourcelProfile.Pt.RemoveAt(j);
                         else break;
                 }
             }
@@ -2862,7 +2862,7 @@ public partial class FormMain : Form
                                                 pts.RemoveAt(i--);
 
                                     pts.RemoveAt(pts.Count - 1);
-                                    diffProf.OriginalProfile.Pt = pts;
+                                    diffProf.SourcelProfile.Pt = pts;
                                     dp.Add(diffProf);
                                 }
                             }
@@ -2873,13 +2873,13 @@ public partial class FormMain : Form
                     if (dp.Count > 0)
                         for (int i = 0; i < dp.Count; i++)
                         {
-                            dp[i].WaveSource = formDataConverter.WaveSource;
-                            dp[i].WaveColor = formDataConverter.WaveColor;
+                            dp[i].SrcWaveSource = formDataConverter.WaveSource;
+                            dp[i].SrcWaveColor = formDataConverter.WaveColor;
                             dp[i].SrcWaveLength = formDataConverter.Wavelength;
                             dp[i].SrcTakeoffAngle = formDataConverter.TakeoffAngle;
                             dp[i].SrcAxisMode = formDataConverter.AxisMode;
-                            dp[i].XrayElementNumber = formDataConverter.XraySourceElementNumber;
-                            dp[i].XrayLine = formDataConverter.XrayLine;
+                            dp[i].SrcXrayElementNumber = formDataConverter.XraySourceElementNumber;
+                            dp[i].SrcXrayLine = formDataConverter.XrayLine;
                             dp[i].ExposureTime = formDataConverter.ExposureTime;
                             dp[i].SubtractBackground = false;
                         }
@@ -2937,7 +2937,7 @@ public partial class FormMain : Form
                                 str1 = str1.Replace('.', ',');
                                 str3 = str3.Replace('.', ',');
                             }
-                            diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str1), Convert.ToDouble(str3)));
+                            diffProf.SourcelProfile.Pt.Add(new PointD(Convert.ToDouble(str1), Convert.ToDouble(str3)));
                         }
                         else
                             break;
@@ -3014,7 +3014,7 @@ public partial class FormMain : Form
                         double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n + formDataConverter.EGC[0][2] * n * n) * 1000;
                         double y = br.ReadUInt32();
                         if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
-                            diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
+                            diffProf.SourcelProfile.Pt.Add(new PointD(x, y));
                     }
                 }
                 else
@@ -3049,7 +3049,7 @@ public partial class FormMain : Form
                             double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n) * 1000;
                             n++;
                             if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
-                                diffProf.OriginalProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
+                                diffProf.SourcelProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
                         }
                     }
                 }
@@ -3096,7 +3096,7 @@ public partial class FormMain : Form
                                 var x = Convert.ToDouble(strList[j].Split(',', true)[1]) * 1000;
                                 var y = Convert.ToDouble(strList[j].Split(',', true)[2]);
                                 if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
-                                    diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
+                                    diffProf.SourcelProfile.Pt.Add(new PointD(x, y));
                             }
                             break;
                         }
@@ -3129,8 +3129,8 @@ public partial class FormMain : Form
                                 var x = Convert.ToDouble(str[0]);
                                 var y = Convert.ToDouble(str[1]);
                                 var err = Convert.ToDouble(str[2]);
-                                diffProf.OriginalProfile.Pt.Add(new PointD(x, y));
-                                diffProf.OriginalProfile.Err.Add(new PointD(x, err));
+                                diffProf.SourcelProfile.Pt.Add(new PointD(x, y));
+                                diffProf.SourcelProfile.Err.Add(new PointD(x, err));
                             }
                             break;
                         }
@@ -3181,7 +3181,7 @@ public partial class FormMain : Form
                                     str[0] = str[0].Replace('.', ',');
                                     str[1] = str[1].Replace('.', ',');
                                 }
-                                diffProf.OriginalProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                                diffProf.SourcelProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
                             }
                             else
                                 break;
@@ -3209,13 +3209,13 @@ public partial class FormMain : Form
             #endregion
 
 
-            diffProf.WaveSource = formDataConverter.WaveSource;
-            diffProf.WaveColor = formDataConverter.WaveColor;
+            diffProf.SrcWaveSource = formDataConverter.WaveSource;
+            diffProf.SrcWaveColor = formDataConverter.WaveColor;
             diffProf.SrcWaveLength = formDataConverter.Wavelength;
             diffProf.SrcTakeoffAngle = formDataConverter.TakeoffAngle;
             diffProf.SrcAxisMode = formDataConverter.AxisMode;
-            diffProf.XrayElementNumber = formDataConverter.XraySourceElementNumber;
-            diffProf.XrayLine = formDataConverter.XrayLine;
+            diffProf.SrcXrayElementNumber = formDataConverter.XraySourceElementNumber;
+            diffProf.SrcXrayLine = formDataConverter.XrayLine;
             diffProf.SrcTofAngle = formDataConverter.TofAngle;
             diffProf.SrcTofLength = formDataConverter.TofLength;
 
@@ -3229,16 +3229,16 @@ public partial class FormMain : Form
                        && formDataConverter.AxisMode == HorizontalAxis.EnergyXray
                        && formDataConverter.EnergyUnit == EnergyUnitEnum.KeV)
             {
-                for (int i = 0; i < diffProf.OriginalProfile.Pt.Count; i++)
-                    diffProf.OriginalProfile.Pt[i] = new PointD(1000 * diffProf.OriginalProfile.Pt[i].X, diffProf.OriginalProfile.Pt[i].Y);
+                for (int i = 0; i < diffProf.SourcelProfile.Pt.Count; i++)
+                    diffProf.SourcelProfile.Pt[i] = new PointD(1000 * diffProf.SourcelProfile.Pt[i].X, diffProf.SourcelProfile.Pt[i].Y);
             }
 
-            if (diffProf.OriginalProfile.Pt.Count > 0)
+            if (diffProf.SourcelProfile.Pt.Count > 0)
             {
                 if (diffProf.SrcAxisMode == HorizontalAxis.NeutronTOF)
                     if (formDataConverter.TofUnitNanoSec)//単位を変換する必要がある場合は
-                        for (int i = 0; i < diffProf.OriginalProfile.Pt.Count; i++)
-                            diffProf.OriginalProfile.Pt[i] = new PointD(diffProf.OriginalProfile.Pt[i].X / 1000, diffProf.OriginalProfile.Pt[i].Y);
+                        for (int i = 0; i < diffProf.SourcelProfile.Pt.Count; i++)
+                            diffProf.SourcelProfile.Pt[i] = new PointD(diffProf.SourcelProfile.Pt[i].X / 1000, diffProf.SourcelProfile.Pt[i].Y);
 
                 AddProfileToCheckedListBox(diffProf, isChecked, isDrawn, changePos);
             }
@@ -3266,16 +3266,16 @@ public partial class FormMain : Form
          //dp.CopyParameter(defaultDP);
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
-                if (WaveColor != dp.WaveColor) WaveColor = dp.WaveColor;
-                if (WaveSource != dp.WaveSource) WaveSource = dp.WaveSource;
+                if (WaveColor != dp.SrcWaveColor) WaveColor = dp.SrcWaveColor;
+                if (WaveSource != dp.SrcWaveSource) WaveSource = dp.SrcWaveSource;
                 if (AxisMode != dp.SrcAxisMode) AxisMode = dp.SrcAxisMode;
                 if (WaveLength != dp.SrcWaveLength) WaveLength = dp.SrcWaveLength;
                 if (WaveSource == WaveSource.Xray)
                 {
                     if (WaveColor == WaveColor.Monochrome)
                     {
-                        if (XraySourceElementNumber != dp.XrayElementNumber) XraySourceElementNumber = dp.XrayElementNumber;
-                        if (XraySourceLine != dp.XrayLine) XraySourceLine = dp.XrayLine;
+                        if (XraySourceElementNumber != dp.SrcXrayElementNumber) XraySourceElementNumber = dp.SrcXrayElementNumber;
+                        if (XraySourceLine != dp.SrcXrayLine) XraySourceLine = dp.SrcXrayLine;
                     }
                 }
 
@@ -3318,9 +3318,9 @@ public partial class FormMain : Form
         {//RadialModeのとき
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
-                AxisMode = HorizontalAxis.none;
-                XraySourceElementNumber = dp.XrayElementNumber;
-                XraySourceLine = dp.XrayLine;
+                AxisMode = HorizontalAxis.None;
+                XraySourceElementNumber = dp.SrcXrayElementNumber;
+                XraySourceLine = dp.SrcXrayLine;
                 if (XraySourceElementNumber == 0)
                     WaveLength = dp.SrcWaveLength;
                 TakeoffAngle = dp.SrcTakeoffAngle;
