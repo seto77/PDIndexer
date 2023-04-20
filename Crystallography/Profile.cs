@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Crystallography;
@@ -520,8 +521,8 @@ public class DiffractionProfile : ICloneable
 
     public object Clone()
     {
-        DiffractionProfile dp = (DiffractionProfile)this.MemberwiseClone();
-        dp.SourcelProfile = (Profile)this.SourcelProfile.Clone();
+        var dp = (DiffractionProfile)this.MemberwiseClone();
+        dp.SourceProfile = (Profile)this.SourceProfile.Clone();
         dp.Profile = (Profile)this.Profile.Clone();
         dp.InterpolatedProfile = (Profile)this.InterpolatedProfile.Clone();
         dp.SmoothedProfile = (Profile)this.SmoothedProfile.Clone();
@@ -532,10 +533,12 @@ public class DiffractionProfile : ICloneable
     }
 
     #region プロパティ
+
+    #region プロファイル
     /// <summary>
     /// ソースプロファイル ()
     /// </summary>
-    public Profile SourcelProfile;
+    public Profile SourceProfile;
 
     public PointD[] BgPoints;
 
@@ -545,20 +548,36 @@ public class DiffractionProfile : ICloneable
     [XmlIgnore]
     public Profile ConvertedProfile;
 
+    /// <summary>
+    /// 補完されたプロファイル. ConvertedProfileの後に生成される。
+    /// </summary>
     [XmlIgnore]
-    public Profile InterpolatedProfile;//
+    public Profile InterpolatedProfile;
 
+    /// <summary>
+    /// スムージングされたプロファイル. InterpolatedProfileの後に生成される.
+    /// </summary>
     [XmlIgnore]
-    public Profile SmoothedProfile;//
+    public Profile SmoothedProfile;
 
+    /// <summary>
+    /// Kalpha2除去がされたプロファイル. SmoothedProfileの後に生成される.
+    /// </summary>
     [XmlIgnore]
-    public Profile Kalpha2RemovedProfile;//
+    public Profile Kalpha2RemovedProfile;
 
-    [XmlIgnoreAttribute]
+    /// <summary>
+    /// バックグランドプロファイル. Kalpha2RemovedProfileの後に生成される.
+    /// </summary>
+    [XmlIgnore]
     public Profile BackgroundProfile;
 
-    [XmlIgnoreAttribute]
+    /// <summary>
+    /// 最終プロファイル. Kalpha2RemovedProfileの後に生成される.
+    /// </summary>
+    [XmlIgnore]
     public Profile Profile;
+    #endregion
 
     /// <summary>
     /// プロファイルモード
@@ -566,69 +585,144 @@ public class DiffractionProfile : ICloneable
     public DiffractionProfileMode Mode = DiffractionProfileMode.Concentric;
 
     #region ソースプロファイルに関するプロパティ
+
     /// <summary>
-    /// ソースの横軸の種類
+    /// ソースプロファイルの横軸の種類
     /// </summary>
     public HorizontalAxis SrcAxisMode;
-    /// <summary>
-    /// ソースの入射波の波長
-    /// </summary>
-    public double SrcWaveLength;
     /// <summary>
     /// ソースの入射波の種類
     /// </summary>
     public WaveSource SrcWaveSource;
     /// <summary>
-    /// ソースの入射波の色
+    /// ソースプロファイルの入射波の色
     /// </summary>
     public WaveColor SrcWaveColor;
+    /// <summary>
+    /// ソースプロファイルがモノクロの時の入射波の波長 (nm単位)
+    /// </summary>
+    public double SrcWaveLength;
 
     /// <summary>
-    /// ソースが特性X線の時のターゲット原子番号 (0はカスタム)
+    /// ソースプロファイルが特性X線の時のターゲット原子番号 (0はカスタム)
     /// </summary>
     public int SrcXrayElementNumber;
     /// <summary>
-    /// ソースが特性X線の時のライン
+    /// ソースプロファイルが特性X線の時のライン
     /// </summary>
     public XrayLine SrcXrayLine;
 
     /// <summary>
-    /// ソースが電子線の場合のエネルギー
+    /// ソースプロファイルが2θの時の単位
+    /// </summary>
+    public AngleUnit SrcTwoThetaUnit = AngleUnit.Degree;
+    /// <summary>
+    /// ソースプロファイルがD値の時の単位
+    /// </summary>
+    public LengthUnitEnum SrcDspacingUnit = LengthUnitEnum.Angstrom;
+    /// <summary>
+    /// ソースプロファイルが波数(2π/d) の時の単位
+    /// </summary>
+    public LengthUnitEnum SrcWaveNumberUnit = LengthUnitEnum.AngstromInverse;
+
+    /// <summary>
+    /// ソースプロファイルが電子線の場合の加速電圧
     /// </summary>
     public double SrcElectronAccVolatage;
 
     /// <summary>
-    /// ソースが白色の時のエネルギーの単位
+    /// ソースプロファイルが白色の時のエネルギーの単位
     /// </summary>
-    public EnergyUnitEnum SrcEnergyEnum = EnergyUnitEnum.eV;
+    public EnergyUnitEnum SrcEnergyUnit = EnergyUnitEnum.eV;
     /// <summary>
-    /// ソースが白色の時の Takeoff angle (radian)
+    /// ソースプロファイルが白色の時の Takeoff angle (radian)
     /// </summary>
-    public double SrcTakeoffAngle;
+    public double SrcEnergyTakeoffAngle;
 
     /// <summary>
-    /// ソースが白色TOF時の角度
+    /// ソースプロファイルが白色TOF時の角度
     /// </summary>
     public double SrcTofAngle;
     /// <summary>
-    /// ソースが白色TOF時の検出器距離
+    /// ソースプロファイルが白色TOF時の検出器距離
     /// </summary>
     public double SrcTofLength;
     /// <summary>
-    /// ソースが白色TOF時の 時間単位
+    /// ソースプロファイルが白色TOF時の 時間単位
     /// </summary>
-    public TimeUnitEnum SrcTimUnit = TimeUnitEnum.MicroSecond;
+    public TimeUnitEnum SrcTofTimeUnit = TimeUnitEnum.MicroSecond;
 
     #endregion
 
+    #region 最終プロファイルのプロパティ
+    /// <summary>
+    /// 最終プロファイルの横軸の種類
+    /// </summary>
+    public HorizontalAxis DstAxisMode;
+    /// <summary>
+    /// 最終プロファイルの入射波の種類
+    /// </summary>
+    public WaveSource DstWaveSource;
+    /// <summary>
+    /// 最終プロファイルの入射波の色
+    /// </summary>
+    public WaveColor DstWaveColor;
+    /// <summary>
+    /// 最終プロファイルがモノクロの時の入射波の波長 (nm単位)
+    /// </summary>
+    public double DstWaveLength;
 
-    public HorizontalAxis AxisMode;
-    public double WaveLength;
-    public double TakeoffAngle;
-    public double TofAngle;
-    public double TofLength;
+    /// <summary>
+    /// 最終プロファイルが特性X線の時のターゲット原子番号 (0はカスタム)
+    /// </summary>
+    public int DstXrayElementNumber;
+    /// <summary>
+    /// 最終プロファイルが特性X線の時のライン
+    /// </summary>
+    public XrayLine DstXrayLine;
 
-    //ノーマライズ関連ここから
+    /// <summary>
+    /// 最終プロファイルが2θの時の単位
+    /// </summary>
+    public AngleUnit DstTwoThetaUnit = AngleUnit.Degree;
+    /// <summary>
+    /// 最終プロファイルがD値の時の単位
+    /// </summary>
+    public LengthUnitEnum DstDspacingUnit = LengthUnitEnum.Angstrom;
+    /// <summary>
+    /// 最終プロファイルが波数(2π/d) の時の単位
+    /// </summary>
+    public LengthUnitEnum DstWaveNumberUnit = LengthUnitEnum.AngstromInverse;
+
+    /// <summary>
+    /// 最終プロファイルが電子線の場合の加速電圧
+    /// </summary>
+    public double DstElectronAccVolatage;
+
+    /// <summary>
+    /// 最終プロファイルが白色の時のエネルギーの単位
+    /// </summary>
+    public EnergyUnitEnum DstEnergyUnit = EnergyUnitEnum.eV;
+    /// <summary>
+    /// 最終プロファイルが白色の時の Takeoff angle (radian)
+    /// </summary>
+    public double DstEnergyTakeoffAngle;
+    /// <summary>
+    /// 最終プロファイルが白色TOF時の角度
+    /// </summary>
+    public double DstTofAngle;
+    /// <summary>
+    /// 最終プロファイルが白色TOF時の検出器距離
+    /// </summary>
+    public double DstTofLength;
+    /// <summary>
+    /// 最終プロファイルが白色TOF時の 時間単位
+    /// </summary>
+    public TimeUnitEnum DstTofTimeUnit = TimeUnitEnum.MicroSecond;
+
+    #endregion
+
+    #region ノーマライズ関連
     /// <summary>
     /// 強度のノーマライズをするかどうか
     /// </summary>
@@ -642,32 +736,41 @@ public class DiffractionProfile : ICloneable
     public double NormarizeRangeEnd = 180;
     public bool NormarizeAsAverage = true;
     public double NormarizeIntensity = 1000;
+    #endregion
 
-    //スムージング関連ここから
+    #region スムージング関連
     public bool DoesSmoothing = false;
 
     public int SazitkyGorayM = 3, SazitkyGorayN = 3;
+    #endregion
 
-    //2θシフトここから
+    #region 2θシフト
     public bool DoesTwoThetaOffset = false;
 
     public double TwoThetaOffsetCoeff0 = 0, TwoThetaOffsetCoeff1 = 0, TwoThetaOffsetCoeff2 = 0;
+    #endregion
 
+    #region Kalpha2除去
     //Kalpha2除去ここから
     public bool DoesRemoveKalpha2 = false;
 
     public double Kalpha1 = 0, Kalpha2 = 0;
+    #endregion
 
+    #region シフト
     //shift関連
     public bool IsShiftX = false;
 
     public double ShiftX = 0;
+    #endregion
 
+    #region FFT
     //FFT関連
     public bool DoesBandpassFilter = false;
 
     public bool DoesLowPath = false, DoesHighPath = false;
     public double LowPathLimit = double.NaN, HighPathLimit = double.NaN;
+    #endregion
 
     /// <summary>
     /// count per second モードかどうか
@@ -705,10 +808,11 @@ public class DiffractionProfile : ICloneable
     public bool IsLPOmain = false;
     public bool IsLPOchild = false;
 
+    #region イメージ関連
     public double[] ImageArray = null;
     public double ImageScale = 0;
-    public int ImageWidth = 0;
-    public int ImageHeight = 0;
+    public int ImageWidth = 0, ImageHeight = 0;
+    #endregion
 
     public override string ToString() => Name;
 
@@ -719,7 +823,7 @@ public class DiffractionProfile : ICloneable
     {
         BgPoints = Array.Empty<PointD>();
 
-        SourcelProfile = new Profile();
+        SourceProfile = new Profile();
         ConvertedProfile = new Profile();
         SmoothedProfile = new Profile();
         Kalpha2RemovedProfile = new Profile();
@@ -747,6 +851,7 @@ public class DiffractionProfile : ICloneable
         SubtractBackground = defaultDP.SubtractBackground;
     }
 
+    #region バックグラウンド制御点の追加/削除
     /// <summary>
     /// クライアント座標のptを受取り、オリジナル座標に変換して追加する
     /// </summary>
@@ -768,92 +873,17 @@ public class DiffractionProfile : ICloneable
         profile.Pt.RemoveAt(index);
         BgPoints = profile.Pt.ToArray();
     }
-
-    /// <summary>
-    /// Srcの横軸をDestの横軸に変換する
-    /// </summary>
-    /// <param name="pt"></param>
-    /// <returns></returns>
-    private PointD convertSrcToDest(PointD pt)
-    {
-        var x =
-            HorizontalAxisConverter.Convert
-            (pt.X, SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength,
-            AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
-        var y = pt.Y;
-        if (IsCPS && ExposureTime > 0)
-            y /= ExposureTime;
-        if (IsLogIntensity)
-            y = Math.Log10(y);
-
-        return new PointD(x, y);
-    }
-
-    public PointD[] ConvertSrcToDest(PointD[] pt)
-    {
-        var dest = new List<PointD>();
-        for (int i = 0; i < pt.Length; i++)
-        {
-            var p = convertSrcToDest(pt[i]);
-            if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
-                dest.Add(p);
-        }
-        #region お蔵?
-        //強度のノーマライズ　stepが一定値でなくなった時の対応
-        /*
-        if (dest.Count> 0)
-        {
-            List<double> steps = new List<double>();
-            for (int i = 0; i < dest.Count - 1; i++)
-                steps.Add(Math.Abs(dest[i].X - dest[i + 1].X));
-            steps.Add(steps[steps.Count - 1]);
-            double average = steps.Average();
-            for (int i = 0; i < dest.Count; i++)
-                dest[i].Y *= average / steps[i];
-        }
-        */
-        #endregion
-        return dest.ToArray();
-    }
+    #endregion
 
 
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="pt"></param>
-    /// <returns></returns>
-    public PointD ConvertDestToSrc(PointD pt)
-    {
-        var x =
-            HorizontalAxisConverter.Convert(
-                pt.X, AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength, 
-                SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength);
-        var y = pt.Y;
-        if (IsCPS && ExposureTime != 0)
-            y *= ExposureTime;
-        if (IsLogIntensity)
-            y = Math.Pow(10, y);
-        return new PointD(x, y);
-    }
-
-    public PointD[] ConvertDestToSrc(PointD[] pt)
-    {
-        var dest = new List<PointD>();
-        for (int i = 0; i < pt.Length; i++)
-        {
-            var p = ConvertDestToSrc(pt[i]);
-            if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
-                dest.Add(p);
-        }
-        return dest.ToArray();
-    }
+ 
 
     /// <summary>
     /// 横軸条件はそのままで、縦軸ノーマライズを施しOriginalProfileからConvertedProfileを生成する。
     /// </summary>
     public void SetConvertedProfile()
     {
-        SetConvertedProfile(SrcAxisMode, SrcWaveLength, SrcTakeoffAngle, SrcTofAngle, SrcTofLength);
+        SetConvertedProfile(SrcAxisMode, SrcWaveLength, SrcEnergyTakeoffAngle, SrcTofAngle, SrcTofLength);
     }
 
     #region 一連の変換 SourceProfile => MaskingProfile => SmoothingProfile =>  Kalpha2RemovedProfile => BackgroundProfile & Profile
@@ -863,16 +893,16 @@ public class DiffractionProfile : ICloneable
     /// </summary>
     public void SetConvertedProfile(HorizontalAxis destAxisMode, double destWavelength, double destTakeoffAngle, double destTofAngle, double destTofLength)
     {
-        AxisMode = destAxisMode;
-        WaveLength = destWavelength;
-        TakeoffAngle = destTakeoffAngle;
-        TofAngle = destTofAngle;
-        TofLength = destTofLength;
+        DstAxisMode = destAxisMode;
+        DstWaveLength = destWavelength;
+        DstEnergyTakeoffAngle = destTakeoffAngle;
+        DstTofAngle = destTofAngle;
+        DstTofLength = destTofLength;
 
         ConvertedProfile.Clear();
 
-        PointD[] pt = ConvertSrcToDest(SourcelProfile.Pt.ToArray());
-        PointD[] err = ConvertSrcToDest(SourcelProfile.Err.ToArray());
+        PointD[] pt = ConvertSrcToDest(SourceProfile.Pt.ToArray());
+        PointD[] err = ConvertSrcToDest(SourceProfile.Err.ToArray());
 
         //ここから、2ThetaOffset処理
         if (IsShiftX)
@@ -1089,7 +1119,7 @@ public class DiffractionProfile : ICloneable
     }
     #endregion
 
-
+    #region ノーマライズ
     private void Normarize()
     {
         if (DoesNormarizeIntensity)
@@ -1119,7 +1149,9 @@ public class DiffractionProfile : ICloneable
                 Profile.Err[i] = new PointD(Profile.Err[i].X, Profile.Err[i].Y * factor);
         }
     }
+    #endregion
 
+    #region バックグランド制御点の検索
     /// <summary>
     /// SmoothProfileを対象にBgPointsを自動で探す
     /// </summary>
@@ -1229,27 +1261,9 @@ public class DiffractionProfile : ICloneable
             BgPoints = ConvertDestToSrc(bgPoints.ToArray());
         }
     }
+    #endregion
 
-
-    public void RemoveKalpha2()
-    {
-        double alpha1 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka1);
-        double alpha2 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka2);
-        double startY = SourcelProfile.Pt[0].Y * 2 / 3;
-        for (int i = 0; i < SourcelProfile.Pt.Count; i++)
-        {
-            double d = alpha2 / 2 / Math.Sin(SourcelProfile.Pt[i].X / 360 * Math.PI);
-            double theta = Math.Asin(alpha1 / 2 / d) * 360 / Math.PI;
-            if (theta < SourcelProfile.Pt[0].X)
-                //OriginalProfile.Pt[i].Y -= startY * 0.5;
-                SourcelProfile.Pt[i] -= new PointD(0, startY * 0.5);
-
-            if (theta > SourcelProfile.Pt[0].X)
-                //OriginalProfile.Pt[i].Y -= OriginalProfile.GetValue(theta, 2, 1) * 0.5;
-                SourcelProfile.Pt[i] -= new PointD(0, SourcelProfile.GetValue(theta, 2, 1) * 0.5);
-        }
-    }
-
+    #region Kalpha2除去
     /// <summary>
     /// Ka2を除去する静的メソッド。
     /// </summary>
@@ -1279,69 +1293,363 @@ public class DiffractionProfile : ICloneable
                 //targetProfile.Pt[i].Y -= targetProfile.GetValue(theta, 2, 1) * ratio;
                 targetProfile.Pt[i] -= new PointD(0, targetProfile.GetValue(theta, 2, 1) * ratio);
         }
-
         return targetProfile;
     }
+    #endregion
+
+
+    #region 横軸を変換するメソッド群
+
+    #region X軸の変換 Src => Dest
+    /// <summary>
+    /// Srcの横軸をDestの横軸に変換する
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
+    private PointD convertSrcToDest(PointD pt)
+    {
+        var x = Convert(new[] { pt.X }, true)[0];
+        var y = pt.Y;
+        if (IsCPS && ExposureTime > 0)
+            y /= ExposureTime;
+        if (IsLogIntensity)
+            y = Math.Log10(y);
+
+        return new PointD(x, y);
+    }
+
+    public PointD[] ConvertSrcToDest(PointD[] pt)
+    {
+        var dest = new List<PointD>();
+        for (int i = 0; i < pt.Length; i++)
+        {
+            var p = convertSrcToDest(pt[i]);
+            if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
+                dest.Add(p);
+        }
+        #region お蔵?
+        //強度のノーマライズ　stepが一定値でなくなった時の対応
+        /*
+        if (dest.Count> 0)
+        {
+            List<double> steps = new List<double>();
+            for (int i = 0; i < dest.Count - 1; i++)
+                steps.Add(Math.Abs(dest[i].X - dest[i + 1].X));
+            steps.Add(steps[steps.Count - 1]);
+            double average = steps.Average();
+            for (int i = 0; i < dest.Count; i++)
+                dest[i].Y *= average / steps[i];
+        }
+        */
+        #endregion
+        return dest.ToArray();
+    }
+    #endregion
+
+    #region X軸の変換 Dest=>Src
+    /// <summary>
+    /// Destの横軸をSrcの横軸に変換する
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
+    public PointD ConvertDestToSrc(PointD pt)
+    {
+        var x = Convert(new[] { pt.X }, false)[0];
+        var y = pt.Y;
+        if (IsCPS && ExposureTime != 0)
+            y *= ExposureTime;
+        if (IsLogIntensity)
+            y = Math.Pow(10, y);
+        return new PointD(x, y);
+    }
+
+    /// <summary>
+    /// Destの横軸をSrcの横軸に変換する
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
+    public PointD[] ConvertDestToSrc(PointD[] pt)
+    {
+        var dest = new List<PointD>();
+        for (int i = 0; i < pt.Length; i++)
+        {
+            var p = ConvertDestToSrc(pt[i]);
+            if (!double.IsNaN(p.X) && !double.IsInfinity(p.X) && !double.IsNaN(p.Y) && !double.IsInfinity(p.Y))
+                dest.Add(p);
+        }
+        return dest.ToArray();
+    }
+    #endregion
+
+
+    public double[] Convert(double[] x, bool SrcToDst)
+    {
+
+        var (srcAxisMode, dstAxisMode) = SrcToDst ? (SrcAxisMode, DstAxisMode) : (DstAxisMode, SrcAxisMode);
+        var (srcWaveLength, dstWaveLength) = SrcToDst ? (SrcWaveLength, DstWaveLength) : (DstWaveLength, SrcWaveLength);
+        var (srcDspacingUnit, dstDspacingUnit) = SrcToDst ? (SrcDspacingUnit, DstDspacingUnit) : (DstDspacingUnit, SrcDspacingUnit);
+        var (srcEnergyUnit, dstEnergyUnit) = SrcToDst ? (SrcEnergyUnit, DstEnergyUnit) : (DstEnergyUnit, SrcEnergyUnit);
+        var (srcTakeoffAngle, dstTakeoffAngle) = SrcToDst ? (SrcEnergyTakeoffAngle, DstEnergyTakeoffAngle) : (DstEnergyTakeoffAngle, SrcEnergyTakeoffAngle);
+        var (srcTofTimeUnit, dstTofTimeUnit) = SrcToDst ? (SrcTofTimeUnit, DstTofTimeUnit) : (DstTofTimeUnit, SrcTofTimeUnit);
+        var (srcTofAngle, dstTofAngle) = SrcToDst ? (SrcTofAngle, DstTofAngle) : (DstTofAngle, SrcTofAngle);
+        var (srcTofLength, dstTofLength) = SrcToDst ? (SrcTofLength, DstTofLength) : (DstTofLength, SrcTofLength);
+        var (srcWaveNumberUnit, dstWaveNumberUnit) = SrcToDst ? (SrcWaveNumberUnit, DstWaveNumberUnit) : (DstWaveNumberUnit, SrcWaveNumberUnit);
+        var (srcTwoThetaUnit, dstTwoThetaUnit) = SrcToDst ? (SrcTwoThetaUnit, DstTwoThetaUnit) : (DstTwoThetaUnit, SrcTwoThetaUnit);
+
+        #region 
+
+        //SrcとDstのAxisモードが等しいとき
+        if (srcAxisMode == dstAxisMode)
+        {
+            //横軸が散乱角で入射X線の波長が等しいとき
+            if (srcAxisMode == HorizontalAxis.Angle && srcWaveLength == dstWaveLength)
+            {
+                if (srcTwoThetaUnit == dstTwoThetaUnit)
+                    return x;
+                else if (srcTwoThetaUnit == AngleUnit.Radian)
+                    return x.Select(x => x / Math.PI * 180).ToArray();
+                else
+                    return x.Select(x => x * Math.PI / 180).ToArray();
+            }
+
+            //横軸がd値の時
+            if (srcAxisMode == HorizontalAxis.d )
+            {
+                if (srcDspacingUnit == dstDspacingUnit)
+                    return x;
+                else if (srcDspacingUnit == LengthUnitEnum.Angstrom && dstDspacingUnit == LengthUnitEnum.NanoMeter)
+                    return x.Select(x => x * 0.1).ToArray();
+                else if(srcDspacingUnit == LengthUnitEnum.NanoMeter && dstDspacingUnit == LengthUnitEnum.Angstrom)
+                    return x.Select(x => x * 10).ToArray();
+            }
+
+            //横軸がエネルギーでTakeoffAngleも等しいとき
+            if ((srcAxisMode == HorizontalAxis.EnergyXray || srcAxisMode == HorizontalAxis.EnergyElectron || srcAxisMode == HorizontalAxis.EnergyNeutron) && dstTakeoffAngle == srcTakeoffAngle)
+            {
+                if (srcEnergyUnit == dstEnergyUnit)
+                    return x;
+                else if (srcEnergyUnit == EnergyUnitEnum.eV)
+                    return dstEnergyUnit == EnergyUnitEnum.KeV ? x.Select(x => x / 1_000).ToArray() : x.Select(x => x / 1_000_000).ToArray();
+                else if (srcEnergyUnit == EnergyUnitEnum.KeV)
+                    return dstEnergyUnit == EnergyUnitEnum.eV ? x.Select(x => x * 1_000).ToArray() : x.Select(x => x / 1_000).ToArray();
+                else if (srcEnergyUnit == EnergyUnitEnum.MeV)
+                    return dstEnergyUnit == EnergyUnitEnum.eV ? x.Select(x => x * 1_000_000).ToArray() : x.Select(x => x * 1_000).ToArray();
+            }
+
+            //横軸がNeutron TOFで、TOF角度もTOF距離も等しいとき
+            if (srcAxisMode == HorizontalAxis.NeutronTOF && srcTofAngle == dstTofAngle && srcTofLength == dstTofLength)
+            {
+                if (srcTofTimeUnit == dstTofTimeUnit)
+                    return x;
+                else if (srcTofTimeUnit == TimeUnitEnum.MicroSecond && dstTofTimeUnit == TimeUnitEnum.NanoSecond)
+                    return x.Select(x => x * 1_000).ToArray();
+                else if (srcTofTimeUnit == TimeUnitEnum.NanoSecond && dstTofTimeUnit == TimeUnitEnum.MicroSecond)
+                    return x.Select(x => x / 1_000).ToArray();
+            }
+
+            //横軸が波数の時
+            if (srcAxisMode == HorizontalAxis.WaveNumber)
+            {
+                if (srcWaveNumberUnit == dstWaveNumberUnit)
+                    return x;
+                else if (srcWaveNumberUnit == LengthUnitEnum.AngstromInverse && dstWaveNumberUnit == LengthUnitEnum.NanoMeterInverse)
+                    return x.Select(x => x * 10).ToArray();
+                else if (srcWaveNumberUnit == LengthUnitEnum.NanoMeterInverse && dstWaveNumberUnit == LengthUnitEnum.AngstromInverse)
+                    return x.Select(x => x * 0.1).ToArray();
+            }
+        }
+
+        //まず一旦すべてをd値(nm単位)に変換
+        var d = Array.Empty<double>();
+        if (srcAxisMode == HorizontalAxis.d)
+        {
+            if (srcDspacingUnit == LengthUnitEnum.Angstrom)
+                d = x;
+            else if (srcDspacingUnit == LengthUnitEnum.NanoMeter)
+                d = x.Select(d => d * 0.1).ToArray();
+        }
+
+        else if (srcAxisMode == HorizontalAxis.Angle)
+        {
+            var twoTheta= Array.Empty<double>();
+            if(srcTwoThetaUnit == AngleUnit.Degree)
+                d = HorizontalAxisConverter.TwoThetaInDegreeToD(x, srcWaveLength);
+            else 
+                d = HorizontalAxisConverter.TwoThetaInRadianToD(x, srcWaveLength);
+        }
+        else if (srcAxisMode == HorizontalAxis.EnergyXray || srcAxisMode == HorizontalAxis.EnergyElectron || srcAxisMode == HorizontalAxis.EnergyNeutron)
+        {
+            var energy = Array.Empty<double>();
+            if (srcEnergyUnit == EnergyUnitEnum.eV)
+                energy = x;
+            else if (srcEnergyUnit == EnergyUnitEnum.KeV)
+                energy = x.Select(x => x * 1_000).ToArray();
+            else if (srcEnergyUnit == EnergyUnitEnum.MeV)
+                energy = x.Select(x => x * 1_000_000).ToArray();
+
+            if (srcAxisMode == HorizontalAxis.EnergyXray)
+                d = HorizontalAxisConverter.XrayEnergyToD(energy, srcTakeoffAngle);
+            else if (srcAxisMode == HorizontalAxis.EnergyElectron)
+                d = HorizontalAxisConverter.ElectronEnergyToD(energy, srcTakeoffAngle);
+            else if (srcAxisMode == HorizontalAxis.EnergyNeutron)
+                d = HorizontalAxisConverter.NeutronEnergyToD(energy, srcTakeoffAngle);
+        }
+        else if (srcAxisMode == HorizontalAxis.NeutronTOF)
+        {
+            var tof = Array.Empty<double>();
+            if (srcTofTimeUnit == TimeUnitEnum.MicroSecond)
+                tof = x;
+            else if (srcTofTimeUnit == TimeUnitEnum.NanoSecond)
+                tof = x.Select(x => x / 1000).ToArray();
+
+            d = HorizontalAxisConverter.NeutronTofToD(tof, srcTofAngle, srcTofLength);
+        }
+        else if (srcAxisMode == HorizontalAxis.WaveNumber)
+        {
+            if (srcWaveNumberUnit == LengthUnitEnum.NanoMeterInverse)
+                d = HorizontalAxisConverter.WaveNumberToD(x);
+            else if (srcWaveNumberUnit == LengthUnitEnum.AngstromInverse)
+                d = HorizontalAxisConverter.WaveNumberToD(x.Select(x => x * 10));
+        }
+
+
+        //最後にd値(nm単位)を目的の軸に変換
+        if (dstAxisMode == HorizontalAxis.Angle)
+            return HorizontalAxisConverter.DToTwoThetaInDegree(d, dstWaveLength);
+        else if (dstAxisMode == HorizontalAxis.d)
+            return dstDspacingUnit == LengthUnitEnum.NanoMeter ? d : d.Select(d => d * 10).ToArray();
+        else if (dstAxisMode == HorizontalAxis.EnergyXray || dstAxisMode == HorizontalAxis.EnergyElectron || dstAxisMode == HorizontalAxis.EnergyNeutron)
+        {
+            double[] energy = Array.Empty<double>();
+            if (dstAxisMode == HorizontalAxis.EnergyXray)
+                energy = HorizontalAxisConverter.DToXrayEnergy(d, dstTakeoffAngle);
+            else if (dstAxisMode == HorizontalAxis.EnergyElectron)
+                energy = HorizontalAxisConverter.DToElectronEnergy(d, dstTakeoffAngle);
+            else if (dstAxisMode == HorizontalAxis.EnergyNeutron)
+                energy = HorizontalAxisConverter.DToNeutronEnergy(d, dstTakeoffAngle);
+
+            if (dstEnergyUnit == EnergyUnitEnum.eV)
+                return energy;
+            else if (dstEnergyUnit == EnergyUnitEnum.KeV)
+                return energy.Select(e => e / 1_000).ToArray();
+            else if (dstEnergyUnit == EnergyUnitEnum.MeV)
+                return energy.Select(e => e / 1_000_000).ToArray();
+        }
+        else if (dstAxisMode == HorizontalAxis.NeutronTOF)
+        {
+            d = HorizontalAxisConverter.DToTOF(d, dstTofAngle, dstTofLength);
+            if (dstTofTimeUnit == TimeUnitEnum.MicroSecond)
+                return d;
+            else if (dstTofTimeUnit == TimeUnitEnum.NanoSecond)
+                return d.Select(d => d * 1_000).ToArray();
+        }
+        else if (dstAxisMode == HorizontalAxis.WaveNumber)
+        {
+            d = HorizontalAxisConverter.DToWaveNumber(d);
+            if (dstWaveNumberUnit == LengthUnitEnum.NanoMeterInverse)
+                return d;
+            else if (dstWaveNumberUnit == LengthUnitEnum.AngstromInverse)
+                return d.Select(d => d / 10).ToArray();
+        }
+
+        return null;
+    }
+
+
+
+    #endregion
+
 }
 
 public static class HorizontalAxisConverter
 {
     #region 横軸を変換するメソッド群
 
-    public static double Convert(
-        double x, HorizontalAxis srcAxisMode, double srcWavelength, double srcTakeoffAngle, double srcTofAngle, double srcTofLength,
-        HorizontalAxis destAxisMode, double destWavelength, double destTakeoffAngle, double destTofAngle, double destTofLength)
-    {
-        //入出力が同じだったらそのまま
-        if (
-            (srcAxisMode == HorizontalAxis.Angle && destAxisMode == HorizontalAxis.Angle && srcWavelength == destWavelength) ||
-            (srcAxisMode == HorizontalAxis.d && destAxisMode == HorizontalAxis.d) ||
-            (srcAxisMode == HorizontalAxis.EnergyXray && destAxisMode == HorizontalAxis.EnergyXray && destTakeoffAngle == srcTakeoffAngle) ||
-            (srcAxisMode == HorizontalAxis.NeutronTOF && destAxisMode == HorizontalAxis.NeutronTOF && srcTofAngle == destTofAngle && srcTofLength == destTofLength) ||
-            (srcAxisMode == HorizontalAxis.WaveNumber && destAxisMode == HorizontalAxis.WaveNumber)
-            )
-            return x;
-        //単位のみが異なる場合は係数を掛けて返す
+    //public static double Convert(double x, 
+    //    HorizontalAxis srcAxisMode, double srcWavelength, double srcTakeoffAngle, double srcTofAngle, double srcTofLength,
+    //    LengthUnitEnum srcDspacingUnit, EnergyUnitEnum srcEnergyUnit, TimeUnitEnum srcTofTimeUnit,
+    //    HorizontalAxis dstAxisMode, double dstWavelength, double dstTakeoffAngle, double dstTofAngle, double dstTofLength, 
+    //    LengthUnitEnum dstDspacingUnit, EnergyUnitEnum dstEnergyUnit, TimeUnitEnum dstTofTimeUnit)
+    //{
+    //    //入出力が同じだったらそのまま
+
+    //    if (srcAxisMode == HorizontalAxis.Angle && dstAxisMode == HorizontalAxis.Angle && srcWavelength == dstWavelength)
+    //        return x;
+
+    //    if (srcAxisMode == HorizontalAxis.d && dstAxisMode == HorizontalAxis.d)
+    //    {
+    //        if (srcDspacingUnit == dstDspacingUnit)
+    //            return x;
+    //    }   
+    //    if(srcAxisMode == HorizontalAxis.EnergyXray && dstAxisMode == HorizontalAxis.EnergyXray && dstTakeoffAngle == srcTakeoffAngle)
+    //    {
+    //        if(srcEnergyUnit == dstEnergyUnit)
+    //            return x;
+    //    }
+         
+    //    if (srcAxisMode == HorizontalAxis.NeutronTOF && dstAxisMode == HorizontalAxis.NeutronTOF && srcTofAngle == dstTofAngle && srcTofLength == dstTofLength)
+    //    {
+    //        if (srcTofTimeUnit == dstTofTimeUnit)
+    //            return x;
+    //    }
+         
+    //    if(srcAxisMode == HorizontalAxis.WaveNumber && dstAxisMode == HorizontalAxis.WaveNumber)
+    //        return x;
 
 
-        //それ以外の場合は一旦すべてをd値に変換
-        double d = x;
-        if (srcAxisMode == HorizontalAxis.Angle) d = TwoThetaToD(x / 180 * Math.PI, srcWavelength);
-        else if (srcAxisMode == HorizontalAxis.EnergyXray) d = XrayEnergyToD(x, srcTakeoffAngle);
-        else if (srcAxisMode == HorizontalAxis.NeutronTOF) d = NeutronTofToD(x, srcTofAngle, srcTofLength);
-        else if (srcAxisMode == HorizontalAxis.WaveNumber) d = WaveNumberToD(x);
+    //    //それ以外の場合は一旦すべてをd値に変換
+    //    double d = x;
+    //    if (srcAxisMode == HorizontalAxis.Angle) d = TwoThetaToD(x / 180 * Math.PI, srcWavelength);
+    //    else if (srcAxisMode == HorizontalAxis.EnergyXray) d = XrayEnergyToD(x, srcTakeoffAngle);
+    //    else if (srcAxisMode == HorizontalAxis.NeutronTOF) d = NeutronTofToD(x, srcTofAngle, srcTofLength);
+    //    else if (srcAxisMode == HorizontalAxis.WaveNumber) d = WaveNumberToD(x);
 
-        if (destAxisMode == HorizontalAxis.Angle)
-            return DToTwoTheta(d, destWavelength) / Math.PI * 180.0;
-        else if (destAxisMode == HorizontalAxis.d)
-            return d * 10;
-        else if (destAxisMode == HorizontalAxis.EnergyXray)
-            return DToXrayEnergy(d, destTakeoffAngle);
-        else if (destAxisMode == HorizontalAxis.EnergyElectron)
-            return DToElectronEnergy(d, destTakeoffAngle);
-        else if (destAxisMode == HorizontalAxis.NeutronTOF)
-            return DToTOF(d, destTofAngle, destTofLength);
-        else if (destAxisMode == HorizontalAxis.WaveNumber)
-            return DToWaveNumber(d) / 10.0;
-        else
-            return double.NaN;
-    }
+    //    if (dstAxisMode == HorizontalAxis.Angle)
+    //        return DToTwoTheta(d, dstWavelength) / Math.PI * 180.0;
+    //    else if (dstAxisMode == HorizontalAxis.d)
+    //        return d * 10;
+    //    else if (dstAxisMode == HorizontalAxis.EnergyXray)
+    //        return DToXrayEnergy(d, dstTakeoffAngle);
+    //    else if (dstAxisMode == HorizontalAxis.EnergyElectron)
+    //        return DToElectronEnergy(d, dstTakeoffAngle);
+    //    else if (dstAxisMode == HorizontalAxis.NeutronTOF)
+    //        return DToTOF(d, dstTofAngle, dstTofLength);
+    //    else if (dstAxisMode == HorizontalAxis.WaveNumber)
+    //        return DToWaveNumber(d) / 10.0;
+    //    else
+    //        return double.NaN;
+    //}
 
     /// <summary>
-    /// d -> Wavenumber  d値(nm)を与えると、波数(1/nm)を返す
+    /// d -> Wavenumber  d値(nm)を与えると、波数(2π/nm)を返す
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double DToWaveNumber(double d) => Math.PI * 2 / d;
+    /// <summary>
+    /// d -> Wavenumber  d値(nm)を与えると、波数(2π/nm)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <returns></returns>
+    public static double[] DToWaveNumber(IEnumerable<double> d) => d.Select(e => Math.PI * 2 / e).ToArray();
+
 
     /// <summary>
-    /// Wavenumber -> d   波数(1/nm)を与えると、仮想的なd値(nm)を返す
+    /// Wavenumber -> d   波数(2π/nm)を与えると、仮想的なd値(nm)を返す
     /// </summary>
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
     public static double WaveNumberToD(double wavenumber) => Math.PI * 2 / wavenumber;
+    /// <summary>
+    /// Wavenumber -> d   波数(2π/nm)を与えると、仮想的なd値(nm)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] WaveNumberToD(IEnumerable<double> wavenumber) =>wavenumber.Select(e=>  Math.PI * 2 / e).ToArray();
+
 
     /// <summary>
     /// TOF -> d   TOF(μs)と取り出し角(radian)、距離(m)を与えると、ブラッグ条件を満たすd値(nm)を返す
@@ -1349,10 +1657,15 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double NeutronTofToD(double TOF, double angle, double length)
-    {
-        return UniversalConstants.Convert.NeutronVelocityToWavelength(length / TOF) / Math.Sin(angle / 2) / 2.0;
-    }
+    public static double NeutronTofToD(double TOF, double angle, double length) => UniversalConstants.Convert.NeutronVelocityToWavelength(length / TOF) / Math.Sin(angle / 2) / 2.0;
+    /// <summary>
+    /// TOF -> d   TOF(μs)と取り出し角(radian)、距離(m)を与えると、ブラッグ条件を満たすd値(nm)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] NeutronTofToD(IEnumerable<double> TOF, double angle, double length) => TOF.Select(e => UniversalConstants.Convert.NeutronVelocityToWavelength(length / e) / Math.Sin(angle / 2) / 2.0).ToArray();
+
 
     /// <summary>
     /// d -> TOF   d値(nm)と仮想的な取り出し角(radian)、距離(m)を与えると、ブラッグ条件を満たす仮想的なTOF(μs)を返す
@@ -1360,10 +1673,15 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double DToTOF(double d, double angle, double length)
-    {
-        return length / UniversalConstants.Convert.WavelengthToNeutronVelocity(2.0 * d * Math.Sin(angle / 2));
-    }
+    public static double DToTOF(double d, double angle, double length) => length / UniversalConstants.Convert.WavelengthToNeutronVelocity(2.0 * d * Math.Sin(angle / 2));
+    /// <summary>
+    /// d -> TOF   d値(nm)と仮想的な取り出し角(radian)、距離(m)を与えると、ブラッグ条件を満たす仮想的なTOF(μs)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] DToTOF(IEnumerable<double> d, double angle, double length) => d.Select(e => length / UniversalConstants.Convert.WavelengthToNeutronVelocity(2.0 * e * Math.Sin(angle / 2))).ToArray();
+
 
     /// <summary>
     /// d -> E   面間隔d(nm)と仮想的な取り出し角(2Θ)を与えるとブラッグ条件を満たす仮想的な電磁波のエネルギー(eV)を返す
@@ -1371,10 +1689,15 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double DToXrayEnergy(double d, double takeoffAngle)
-    {
-        return UniversalConstants.Convert.WavelengthToXrayEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0));
-    }
+    public static double DToXrayEnergy(double d, double takeoffAngle) => UniversalConstants.Convert.WavelengthToXrayEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0));
+    /// <summary>
+    /// d -> E   面間隔d(nm)と仮想的な取り出し角(2Θ)を与えるとブラッグ条件を満たす仮想的な電磁波のエネルギー(eV)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] DToXrayEnergy(IEnumerable<double> d, double takeoffAngle) => d.Select(e => UniversalConstants.Convert.WavelengthToXrayEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0))).ToArray();
+
 
     /// <summary>
     /// d -> E   面間隔d(nm)と仮想的な取り出し角(2Θ)を与えるとブラッグ条件を満たす仮想的な電子のエネルギー(keV)を返す
@@ -1382,10 +1705,15 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double DToElectronEnergy(double d, double takeoffAngle)
-    {
-        return UniversalConstants.Convert.WaveLengthToElectronEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0)) * 1000;
-    }
+    public static double DToElectronEnergy(double d, double takeoffAngle) => UniversalConstants.Convert.WaveLengthToElectronEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0)) * 1000;
+    /// <summary>
+    /// d -> E   面間隔d(nm)と仮想的な取り出し角(2Θ)を与えるとブラッグ条件を満たす仮想的な電子のエネルギー(keV)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] DToElectronEnergy(IEnumerable<double> d, double takeoffAngle) =>d.Select(e=> UniversalConstants.Convert.WaveLengthToElectronEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0)) * 1000).ToArray();
+
 
     /// <summary>
     /// d -> E   面間隔d(nm)と仮想的な取り出し角(2Θ)を与えるとブラッグ条件を満たす仮想的な中性子のエネルギー(eV)を返す
@@ -1393,10 +1721,15 @@ public static class HorizontalAxisConverter
     /// <param name="d"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double DToNeutronEnergy(double d, double takeoffAngle)
-    {
-        return UniversalConstants.Convert.WaveLengthToNeutronEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0));
-    }
+    public static double DToNeutronEnergy(double d, double takeoffAngle) => UniversalConstants.Convert.WaveLengthToNeutronEnergy(2.0 * d * Math.Sin(takeoffAngle / 2.0));
+    /// <summary>
+    /// d -> E   面間隔d(nm)と仮想的な取り出し角(2Θ)を与えるとブラッグ条件を満たす仮想的な中性子のエネルギー(eV)を返す
+    /// </summary>
+    /// <param name="d"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] DToNeutronEnergy(IEnumerable<double> d, double takeoffAngle) =>d.Select(e=> UniversalConstants.Convert.WaveLengthToNeutronEnergy(2.0 * e * Math.Sin(takeoffAngle / 2.0))).ToArray();
+
 
     /// <summary>
     /// E -> d  電磁波のエネルギー(eV)と取り出し角を与えるとブラッグ条件を満たす面間隔d(nm)の値を返す
@@ -1404,10 +1737,15 @@ public static class HorizontalAxisConverter
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double XrayEnergyToD(double energy, double takeoffAngle)
-    {
-        return UniversalConstants.Convert.EnergyToXrayWaveLength(energy) / 2.0 / Math.Sin(takeoffAngle / 2.0);
-    }
+    public static double XrayEnergyToD(double energy, double takeoffAngle) => UniversalConstants.Convert.EnergyToXrayWaveLength(energy) / 2.0 / Math.Sin(takeoffAngle / 2.0);
+    /// <summary>
+    /// E -> d  電磁波のエネルギー(eV)と取り出し角を与えるとブラッグ条件を満たす面間隔d(nm)の値を返す
+    /// </summary>
+    /// <param name="energy"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] XrayEnergyToD(IEnumerable<double> energy, double takeoffAngle) =>energy.Select(e=> UniversalConstants.Convert.EnergyToXrayWaveLength(e) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
+
 
     /// <summary>
     /// E -> d  電子のエネルギー(eV)と取り出し角を与えるとブラッグ条件を満たす面間隔d(nm)の値を返す
@@ -1415,10 +1753,15 @@ public static class HorizontalAxisConverter
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double ElectronEnergyToD(double energy, double takeoffAngle)
-    {
-        return UniversalConstants.Convert.EnergyToElectronWaveLength(energy / 1000) / 2.0 / Math.Sin(takeoffAngle / 2.0);
-    }
+    public static double ElectronEnergyToD(double energy, double takeoffAngle) => UniversalConstants.Convert.EnergyToElectronWaveLength(energy / 1000) / 2.0 / Math.Sin(takeoffAngle / 2.0);
+    /// <summary>
+    /// E -> d  電子のエネルギー(eV)と取り出し角を与えるとブラッグ条件を満たす面間隔d(nm)の値を返す
+    /// </summary>
+    /// <param name="energy"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] ElectronEnergyToD(IEnumerable<double> energy, double takeoffAngle) =>energy.Select(e=> UniversalConstants.Convert.EnergyToElectronWaveLength(e / 1000) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
+
 
     /// <summary>
     /// E -> d  中性子のエネルギー(eV)と取り出し角を与えるとブラッグ条件を満たす面間隔d(nm)の値を返す
@@ -1426,20 +1769,18 @@ public static class HorizontalAxisConverter
     /// <param name="energy"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double NeutronEnergyToD(double energy, double takeoffAngle)
-    {
-        return UniversalConstants.Convert.EnergyToNeutronWaveLength(energy) / 2.0 / Math.Sin(takeoffAngle / 2.0);
-    }
-
+    public static double NeutronEnergyToD(double energy, double takeoffAngle) => UniversalConstants.Convert.EnergyToNeutronWaveLength(energy) / 2.0 / Math.Sin(takeoffAngle / 2.0);
     /// <summary>
-    /// d -> 2θ 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// E -> d  中性子のエネルギー(eV)と取り出し角を与えるとブラッグ条件を満たす面間隔d(nm)の値を返す
     /// </summary>
-    /// <param name="wavelength"></param>
+    /// <param name="energy"></param>
+    /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double DToTwoTheta(double d, double wavelength)
-    {
-        return 2 * Math.Asin(wavelength / 2.0 / d);
-    }
+    public static double[] NeutronEnergyToD(IEnumerable<double> energy, double takeoffAngle) => energy.Select(e => UniversalConstants.Convert.EnergyToNeutronWaveLength(e) / 2.0 / Math.Sin(takeoffAngle / 2.0)).ToArray();
+
+
+   
+
 
     /// <summary>
     /// E -> 2θ  電磁波のエネルギー(eV)、取り出し角(takeoffAngle)、仮想的な入射線の波長(nm)を与えると仮想的な回折角を返す
@@ -1448,10 +1789,16 @@ public static class HorizontalAxisConverter
     /// <param name="waveLength"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double XrayEnergyToTwoTheta(double energy, double takeoffAngle, double waveLength)
-    {
-        return 2 * Math.Asin(waveLength / 2.0 / XrayEnergyToD(energy, takeoffAngle));
-    }
+    public static double XrayEnergyToTwoTheta(double energy, double takeoffAngle, double waveLength) => 2 * Math.Asin(waveLength / 2.0 / XrayEnergyToD(energy, takeoffAngle));
+    /// <summary>
+    /// E -> 2θ  電磁波のエネルギー(eV)、取り出し角(takeoffAngle)、仮想的な入射線の波長(nm)を与えると仮想的な回折角を返す
+    /// </summary>
+    /// <param name="energy"></param>
+    /// <param name="waveLength"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] XrayEnergyToTwoTheta(IEnumerable<double> energy, double takeoffAngle, double waveLength) => energy.Select(e => 2 * Math.Asin(waveLength / 2.0 / XrayEnergyToD(e, takeoffAngle))).ToArray();
+
 
     /// <summary>
     ///  2θ -> E  ブラッグ角と、入射線波長(nm)、仮想的なEDX取り出し角(takeoffAngle)からブラッグ条件を満たす仮想的な電磁波波長(nm)をかえす
@@ -1460,18 +1807,72 @@ public static class HorizontalAxisConverter
     /// <param name="waveLength"></param>
     /// <param name="takeoffAngle"></param>
     /// <returns></returns>
-    public static double TwoThetaToXrayEnergy(double twoTheta, double waveLength, double takeoffAngle)
-    {
-        return DToXrayEnergy(waveLength / 2.0 / Math.Sin(twoTheta / 2.0), takeoffAngle);
-    }
+    public static double TwoThetaToXrayEnergy(double twoTheta, double waveLength, double takeoffAngle) => DToXrayEnergy(waveLength / 2.0 / Math.Sin(twoTheta / 2.0), takeoffAngle);
+    /// <summary>
+    ///  2θ -> E  ブラッグ角と、入射線波長(nm)、仮想的なEDX取り出し角(takeoffAngle)からブラッグ条件を満たす仮想的な電磁波波長(nm)をかえす
+    /// </summary>
+    /// <param name="twoTheta"></param>
+    /// <param name="waveLength"></param>
+    /// <param name="takeoffAngle"></param>
+    /// <returns></returns>
+    public static double[] TwoThetaToXrayEnergy(IEnumerable<double> twoTheta, double waveLength, double takeoffAngle) => twoTheta.Select(e => DToXrayEnergy(waveLength / 2.0 / Math.Sin(e / 2.0), takeoffAngle)).ToArray();
 
     /// <summary>
-    /// 2θ -> d   ブラッグ角と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
+    /// 2θ(rad) -> d(nm)   ブラッグ角(radian)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
     /// </summary>
     /// <param name="twoTheta"></param>
     /// <param name="waveLength"></param>
     /// <returns></returns>
-    public static double TwoThetaToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 2.0) / 2.0;
+    public static double TwoThetaInRadianToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 2.0) / 2.0;
+    /// <summary>
+    /// 2θ(rad) -> d(nm)   ブラッグ角(radian)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
+    /// </summary>
+    /// <param name="twoTheta"></param>
+    /// <param name="waveLength"></param>
+    /// <returns></returns>
+    public static double[] TwoThetaInRadianToD(IEnumerable<double> twoTheta, double waveLength) => twoTheta.Select(e => waveLength / Math.Sin(e / 2.0) / 2.0).ToArray();
+
+    /// <summary>
+    /// 2θ(deg) -> d(nm)   ブラッグ角(degree)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
+    /// </summary>
+    /// <param name="twoTheta"></param>
+    /// <param name="waveLength"></param>
+    /// <returns></returns>
+    public static double TwoThetaInDegreeToD(double twoTheta, double waveLength) => waveLength / Math.Sin(twoTheta / 180.0 * Math.PI / 2.0) / 2.0;
+    /// <summary>
+    /// 2θ(deg) -> d(nm)   ブラッグ角(degree)と入射線波長からブラッグ条件を満たす面間隔d(nm)を返す
+    /// </summary>
+    /// <param name="twoTheta"></param>
+    /// <param name="waveLength"></param>
+    /// <returns></returns>
+    public static double[] TwoThetaInDegreeToD(IEnumerable<double> twoTheta, double waveLength) => twoTheta.Select(e => waveLength / Math.Sin(e / 180.0 * Math.PI / 2.0) / 2.0).ToArray();
+
+
+    /// <summary>
+    /// d(nm) -> 2θ(rad) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// </summary>
+    /// <param name="wavelength"></param>
+    /// <returns></returns>
+    public static double DToTwoThetaInRadian(double d, double wavelength) => 2 * Math.Asin(wavelength / 2.0 / d);
+    /// <summary>
+    /// d(nm) -> 2θ(rad) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// </summary>
+    /// <param name="wavelength"></param>
+    /// <returns></returns>
+    public static double[] DToTwoThetaInRadian(IEnumerable<double> d, double wavelength) => d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e)).ToArray();
+    /// <summary>
+    /// d(nm) -> 2θ(deg) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// </summary>
+    /// <param name="wavelength"></param>
+    /// <returns></returns>
+    public static double DToTwoThetaInDegree(double d, double wavelength) => 2 * Math.Asin(wavelength / 2.0 / d) / Math.PI * 180;
+    /// <summary>
+    /// d(nm) -> 2θ(deg) 面間隔d(nm)と仮想的な入射線の波長(nm)を与えるとブラッグ条件を満たす仮想的な回折角(2θ)を返す
+    /// </summary>
+    /// <param name="wavelength"></param>
+    /// <returns></returns>
+    public static double[] DToTwoThetaInDegree(IEnumerable<double> d, double wavelength) => d.Select(e => 2 * Math.Asin(wavelength / 2.0 / e) / Math.PI * 180).ToArray();
+
 
     #endregion 横軸を変換するメソッド群
 }

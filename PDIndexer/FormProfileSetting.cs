@@ -92,7 +92,7 @@ public partial class FormProfileSetting : Form
         {
             var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
             string unit = "";
-            switch (dp.AxisMode)
+            switch (dp.DstAxisMode)
             {
                 case HorizontalAxis.Angle: unit = "Åã"; break;
                 case HorizontalAxis.d: unit = "Å"; break;
@@ -325,7 +325,7 @@ public partial class FormProfileSetting : Form
         {
             DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.SrcAxisMode = xAxisUserControl.AxisMode;
-            dp.SrcTakeoffAngle = xAxisUserControl.TakeoffAngle;
+            dp.SrcEnergyTakeoffAngle = xAxisUserControl.TakeoffAngle;
             dp.SrcWaveLength = xAxisUserControl.WaveLength;
             dp.ExposureTime = numericalTextBoxExposureTime.Value;
 
@@ -429,7 +429,7 @@ public partial class FormProfileSetting : Form
             xAxisUserControl.XrayWaveSourceLine = dp.SrcXrayLine;
             if (dp.SrcXrayElementNumber==0)
                 xAxisUserControl.WaveLength = dp.SrcWaveLength;
-            xAxisUserControl.TakeoffAngle = dp.SrcTakeoffAngle;
+            xAxisUserControl.TakeoffAngle = dp.SrcEnergyTakeoffAngle;
 
          //   if(xAxisUserControl.WaveSource== WaveSource.Xray && xAxisUserControl.XrayWaveSourceElementNumber!=0 && xAxisUserControl.XrayWaveSourceLine == XrayLine.Ka)
          //       numericBoxKalpha1.Value = 
@@ -679,7 +679,7 @@ public partial class FormProfileSetting : Form
 
         var output = new DiffractionProfile
         {
-            SourcelProfile = p,
+            SourceProfile = p,
             Name = textBoxOutputFilename.Text,
             ColorARGB = c.ToArgb(),
             SrcWaveSource = formMain.WaveSource,
@@ -688,7 +688,7 @@ public partial class FormProfileSetting : Form
             SrcXrayElementNumber = formMain.XraySourceElementNumber,
             SrcXrayLine = formMain.XraySourceLine,
             SrcWaveLength = formMain.WaveLength,
-            SrcTakeoffAngle = formMain.TakeoffAngle,
+            SrcEnergyTakeoffAngle = formMain.TakeoffAngle,
             SrcTofAngle = formMain.TakeoffAngle,
             SrcTofLength = formMain.TofLength
         };
