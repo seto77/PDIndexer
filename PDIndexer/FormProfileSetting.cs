@@ -424,6 +424,7 @@ public partial class FormProfileSetting : Form
             //‰¡Ž²ŠÖ˜A
             xAxisUserControl.AxisMode = dp.SrcAxisMode;
             xAxisUserControl.WaveSource = dp.WaveSource;
+            xAxisUserControl.WaveColor = dp.WaveColor;
             xAxisUserControl.XrayWaveSourceElementNumber = dp.XrayElementNumber;
             xAxisUserControl.XrayWaveSourceLine = dp.XrayLine;
             if (dp.XrayElementNumber==0)

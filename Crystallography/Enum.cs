@@ -26,8 +26,17 @@
 
     public enum EnergyUnitEnum
     {
-        eV,
-        KeV
+        eV = 1,
+        KeV = 10,
+        MeV = 100
+    }
+
+    public enum TimeUnitEnum
+    {
+        Seccond,
+        MilliSecond,
+        MicroSecond,
+        NanoSecond
     }
 
     internal class Enum

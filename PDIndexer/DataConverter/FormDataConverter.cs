@@ -100,16 +100,16 @@ namespace PDIndexer
             get => EDXControls.Count;
             set
             {
-                if (value > 0 && flowLayoutPanelEDX!=null)
+                if (value > 0 && flowLayoutPanelEDX != null)
                 {
-                    if(value < EDXControls.Count)
-                            EDXControls.RemoveRange(value, EDXControls.Count - value);
+                    if (value < EDXControls.Count)
+                        EDXControls.RemoveRange(value, EDXControls.Count - value);
                     else if (value > EDXControls.Count)
                     {
                         flowLayoutPanelEDX.SuspendLayout();
-                        while(value!=EDXControls.Count)
+                        while (value != EDXControls.Count)
                         {
-                            EDXControls.Add(new EDXControl() { DetectorName= $"#{EDXControls.Count}" });
+                            EDXControls.Add(new EDXControl() { DetectorName = $"#{EDXControls.Count}" });
                             flowLayoutPanelEDX.Controls.Add(EDXControls[^1]);
                         }
                         flowLayoutPanelEDX.ResumeLayout();
@@ -152,7 +152,7 @@ namespace PDIndexer
             TofLength = property.TofLength;
             ExposureTime = property.ExposureTime;
             EGC = property.EGC;
-            
+
         }
         public FormMain.FileProperty GetProperty()
         {

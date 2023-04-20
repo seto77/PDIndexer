@@ -842,11 +842,11 @@ public partial class FormMain : Form
 
             FormMacro.ZippedMacros = (byte[])regKey.GetValue("Macro", Array.Empty<byte>());
 
-            FileProperty f;
+
             //ここからファイルタイプごとのパラメータ読み込み
             for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
             {
-                f = FileProperties[i] = new FileProperty();
+                FileProperty f = new FileProperty();
                 f.Valid = (string)regKey.GetValue($"FileProperty.Valid{i}", "False") == "True";
 
                 if (f.Valid)
@@ -873,6 +873,8 @@ public partial class FormMain : Form
                 }
                 else
                     f = null;
+
+                FileProperties[i] = f;
             }
 
             #region  レジストリが存在しなかった場合あるいは無効な場合には、初期化
@@ -2707,9 +2709,8 @@ public partial class FormMain : Form
     {
         var dlg = new OpenFileDialog
         {
-            Filter = "Powder Pattern File(WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi])|*.csv;*.chi;*.pdi"
-            + "|EDX profile[*.rpt, *.npd, *.nxs]|*.rpt;*npd;*nxs"
-            + "|Powder Pattern File(Auto[*.*])|*.*",
+            Filter = "Powder Pattern File (WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi], EDX profile[*.rpt, *.npd, *.nxs])|*.csv;*.chi;*.pdi*.rpt;*npd;*nxs"
+            + "|Any format(Auto[*.*])|*.*",
             Multiselect = true,
             FilterIndex = filterIndex
         };
@@ -4506,5 +4507,5 @@ public partial class FormMain : Form
         }
     }
     #endregion
-    
+
 }
