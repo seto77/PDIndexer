@@ -92,7 +92,7 @@ public partial class FormProfileSetting : Form
         {
             var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
             string unit = "";
-            switch (dp.DstAxisMode)
+            switch (dp.DstProp.AxisMode)
             {
                 case HorizontalAxis.Angle: unit = "‹"; break;
                 case HorizontalAxis.d: unit = "ð"; break;
@@ -324,9 +324,9 @@ public partial class FormProfileSetting : Form
         if (bindingSourceProfile.Position >= 0)
         {
             DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
-            dp.SrcAxisMode = xAxisUserControl.AxisMode;
-            dp.SrcEnergyTakeoffAngle = xAxisUserControl.TakeoffAngle;
-            dp.SrcWaveLength = xAxisUserControl.WaveLength;
+            dp.SrcProp.AxisMode = xAxisUserControl.AxisMode;
+            dp.SrcProp.EnergyTakeoffAngle = xAxisUserControl.TakeoffAngle;
+            dp.SrcProp.WaveLength = xAxisUserControl.WaveLength;
             dp.ExposureTime = numericalTextBoxExposureTime.Value;
 
             formMain.horizontalAxisUserControl_AxisPropertyChanged();
@@ -422,14 +422,14 @@ public partial class FormProfileSetting : Form
             numericalTextBoxExposureTime.Value = dp.ExposureTime;
 
             //‰¡Ž²ŠÖ˜A
-            xAxisUserControl.AxisMode = dp.SrcAxisMode;
-            xAxisUserControl.WaveSource = dp.SrcWaveSource;
-            xAxisUserControl.WaveColor = dp.SrcWaveColor;
-            xAxisUserControl.XrayWaveSourceElementNumber = dp.SrcXrayElementNumber;
-            xAxisUserControl.XrayWaveSourceLine = dp.SrcXrayLine;
-            if (dp.SrcXrayElementNumber==0)
-                xAxisUserControl.WaveLength = dp.SrcWaveLength;
-            xAxisUserControl.TakeoffAngle = dp.SrcEnergyTakeoffAngle;
+            xAxisUserControl.AxisMode = dp.SrcProp.AxisMode;
+            xAxisUserControl.WaveSource = dp.SrcProp.WaveSource;
+            xAxisUserControl.WaveColor = dp.SrcProp.WaveColor;
+            xAxisUserControl.XrayNumber = dp.SrcProp.XrayElementNumber;
+            xAxisUserControl.XrayLine = dp.SrcProp.XrayLine;
+            if (dp.SrcProp.XrayElementNumber ==0)
+                xAxisUserControl.WaveLength = dp.SrcProp.WaveLength;
+            xAxisUserControl.TakeoffAngle = dp.SrcProp.EnergyTakeoffAngle;
 
          //   if(xAxisUserControl.WaveSource== WaveSource.Xray && xAxisUserControl.XrayWaveSourceElementNumber!=0 && xAxisUserControl.XrayWaveSourceLine == XrayLine.Ka)
          //       numericBoxKalpha1.Value = 
@@ -682,16 +682,18 @@ public partial class FormProfileSetting : Form
             SourceProfile = p,
             Name = textBoxOutputFilename.Text,
             ColorARGB = c.ToArgb(),
-            SrcWaveSource = formMain.WaveSource,
-            SrcWaveColor = formMain.WaveColor,
-            SrcAxisMode = formMain.AxisMode,
-            SrcXrayElementNumber = formMain.XraySourceElementNumber,
-            SrcXrayLine = formMain.XraySourceLine,
-            SrcWaveLength = formMain.WaveLength,
-            SrcEnergyTakeoffAngle = formMain.TakeoffAngle,
-            SrcTofAngle = formMain.TakeoffAngle,
-            SrcTofLength = formMain.TofLength
+            
         };
+
+        output.SrcProp.WaveSource = formMain.WaveSource;
+        output.SrcProp.WaveColor = formMain.WaveColor;
+        output.SrcProp.AxisMode = formMain.AxisMode;
+        output.SrcProp.XrayElementNumber = formMain.XraySourceElementNumber;
+        output.SrcProp.XrayLine = formMain.XraySourceLine;
+        output.SrcProp.WaveLength = formMain.WaveLength;
+        output.SrcProp.EnergyTakeoffAngle = formMain.TakeoffAngle;
+        output.SrcProp.TofAngle = formMain.TakeoffAngle;
+        output.SrcProp.TofLength = formMain.TofLength;
 
         formMain.AddProfileToCheckedListBox(output, true, true);
 

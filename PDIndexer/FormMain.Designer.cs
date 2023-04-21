@@ -628,7 +628,7 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.horizontalAxisUserControl, "horizontalAxisUserControl");
             this.horizontalAxisUserControl.AxisMode = (global::Crystallography.HorizontalAxis.Angle);
-            this.horizontalAxisUserControl.ElectronAccVoltage = (8.04114721D);
+            this.horizontalAxisUserControl.ElectronAccVol = (8.04114721D);
             this.horizontalAxisUserControl.ElectronAccVoltageText = ("8.04114721");
             this.horizontalAxisUserControl.EnergyUnit = (global::Crystallography.EnergyUnitEnum.eV);
             this.horizontalAxisUserControl.Name = ("horizontalAxisUserControl");
@@ -642,8 +642,8 @@ namespace PDIndexer
             this.horizontalAxisUserControl.WaveLength = (0.1541871066667D);
             this.horizontalAxisUserControl.WaveLengthText = ("1.541871066667");
             this.horizontalAxisUserControl.WaveSource = (global::Crystallography.WaveSource.Xray);
-            this.horizontalAxisUserControl.XrayWaveSourceElementNumber = (29);
-            this.horizontalAxisUserControl.XrayWaveSourceLine = (global::Crystallography.XrayLine.Ka);
+            this.horizontalAxisUserControl.XrayNumber = (29);
+            this.horizontalAxisUserControl.XrayLine = (global::Crystallography.XrayLine.Ka);
             this.horizontalAxisUserControl.AxisPropertyChanged += (this.horizontalAxisUserControl_AxisPropertyChanged);
             // 
             // flowLayoutPanel4

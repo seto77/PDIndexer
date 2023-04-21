@@ -9,7 +9,38 @@ namespace Crystallography.Controls
 
         public event MyEventHandler AxisPropertyChanged;
 
+        public bool SkipAxisPropertyChangedEvent = false;
+
+
         #region プロパティ
+
+        public HorizontalAxisProperty HorizontalAxisProperty
+        {
+            get => new(AxisMode, WaveSource, WaveColor, WaveLength, XrayNumber, XrayLine, ElectronAccVol, TakeoffAngle, TofAngle, TofLength, 
+                TwoThetaUnit, DspacingUnit, WaveNumberUnit, EnergyUnit, TofTimeUnit);
+
+            set
+            {
+                SkipAxisPropertyChangedEvent = true;
+                AxisMode = value.AxisMode;
+                WaveSource = value.WaveSource;
+                WaveLength= value.WaveLength;
+                XrayNumber = value.XrayElementNumber;
+                XrayLine = value.XrayLine;
+                ElectronAccVol = value.ElectronAccVolatage;
+                TakeoffAngle = value.EnergyTakeoffAngle;
+                TofAngle = value.TofAngle;
+                TofLength = value.TofLength;
+                TwoThetaUnit = value.TwoThetaUnit;
+                DspacingUnit = value.DspacingUnit;
+                WaveNumberUnit = value.WaveNumberUnit;
+                EnergyUnit = value.EnergyUnit;
+                TofTimeUnit = value.TofTimeUnit;
+
+            }
+        }
+
+
 
         //現在の軸の情報を返すプロパティ
         public HorizontalAxis AxisMode
@@ -39,6 +70,8 @@ namespace Crystallography.Controls
                     radioButtonTOF.Checked = true;
                 else if (value == HorizontalAxis.WaveNumber)
                     radioButtonWavenumber.Checked = true;
+
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
             get
             {
@@ -65,12 +98,28 @@ namespace Crystallography.Controls
         /// <summary>
         /// 波長をÅ単位のテキストで取得/設定
         /// </summary>
-        public string WaveLengthText { set => waveLengthControl.WaveLengthText = value; get => waveLengthControl.WaveLengthText; }
+        public string WaveLengthText
+        {
+            set
+            {
+                waveLengthControl.WaveLengthText = value; 
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get => waveLengthControl.WaveLengthText;
+        }
 
         /// <summary>
         /// nm単位の実数で取得/設定
         /// </summary>
-        public double WaveLength { set => waveLengthControl.WaveLength = value; get => waveLengthControl.WaveLength; }
+        public double WaveLength
+        {
+            set
+            {
+                waveLengthControl.WaveLength = value;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get => waveLengthControl.WaveLength;
+        }
 
         /// <summary>
         /// EDXの取り出し角 度単位で取得/設定
@@ -84,7 +133,7 @@ namespace Crystallography.Controls
                     if (numericBoxTwoTheta.Value != Convert.ToDouble(value))
                     {
                         numericBoxTwoTheta.Value = Convert.ToDouble(value);
-                        AxisPropertyChanged?.Invoke();
+                        if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
                     }
                 }
                 catch { }
@@ -115,10 +164,12 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (value != EnergyUnitEnum.eV && value != EnergyUnitEnum.KeV && value != EnergyUnitEnum.MeV)
+                    return;
                 radioButtonEnergyUnitEv.Checked = (value == EnergyUnitEnum.eV);
                 radioButtonEnergyUnitKev.Checked = (value == EnergyUnitEnum.KeV);
                 radioButtonEnergyUnitMev.Checked = (value == EnergyUnitEnum.MeV);
-                AxisPropertyChanged?.Invoke();
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
             get
             {
@@ -131,14 +182,79 @@ namespace Crystallography.Controls
             }
         }
 
+        /// <summary>
+        /// d値の単位
+        /// </summary>
+        public LengthUnitEnum DspacingUnit
+        {
+            set
+            {
+                if (value != LengthUnitEnum.Angstrom && value != LengthUnitEnum.NanoMeter)
+                    return;
+                radioButtonDspacingUnitAng.Checked = (value == LengthUnitEnum.Angstrom);
+                radioButtonDspacingUnitNm.Checked = (value == LengthUnitEnum.NanoMeter);
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get
+            {
+                if (radioButtonDspacingUnitAng.Checked)
+                    return LengthUnitEnum.Angstrom;
+                else 
+                    return LengthUnitEnum.NanoMeter;
+            }
+        }
 
-        public TimeUnitEnum TimeUnit
+        /// <summary>
+        /// 波数の単位 (1/nmか1/Aかのどちらか)
+        /// </summary>
+        public LengthUnitEnum WaveNumberUnit
+        {
+            set
+            {
+                if (value != LengthUnitEnum.NanoMeterInverse && value != LengthUnitEnum.AngstromInverse)
+                    return;
+                radioButtonWavenumberUnitNmInv.Checked = (value == LengthUnitEnum.NanoMeterInverse);
+                radioButtonWavenumberAngInv.Checked = (value == LengthUnitEnum.AngstromInverse);
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get
+            {
+                if (radioButtonWavenumberUnitNmInv.Checked)
+                    return LengthUnitEnum.NanoMeterInverse;
+                else
+                    return LengthUnitEnum.AngstromInverse;
+            }
+        }
+
+
+        public AngleUnitEnum TwoThetaUnit
+        {
+            set
+            {
+                if (value != AngleUnitEnum.Degree && value != AngleUnitEnum.Radian)
+                    return;
+                radioButtonAngleUnitRadian.Checked = (value == AngleUnitEnum.Radian);
+                radioButtonAngleUnitDegree.Checked = (value == AngleUnitEnum.Degree);
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get
+            {
+                if (radioButtonAngleUnitRadian.Checked)
+                    return AngleUnitEnum.Radian;
+                else
+                    return AngleUnitEnum.Degree;
+            }
+        }
+        /// <summary>
+        /// TOF時間の単位
+        /// </summary>
+        public TimeUnitEnum TofTimeUnit
         {
             set
             {
                 radioButtonTofUnitNanoSec.Checked = value == TimeUnitEnum.NanoSecond;
-                radioButtonTofUnitMicroSec.Checked = value==    TimeUnitEnum.MicroSecond;
-                AxisPropertyChanged();
+                radioButtonTofUnitMicroSec.Checked = value == TimeUnitEnum.MicroSecond;
+                if (!SkipAxisPropertyChangedEvent)                AxisPropertyChanged();
             }
             get
             {
@@ -255,17 +371,17 @@ namespace Crystallography.Controls
         /// <summary>
         /// X線の線源を取得/設定
         /// </summary>
-        public int XrayWaveSourceElementNumber { set => waveLengthControl.XrayWaveSourceElementNumber = value; get => waveLengthControl.XrayWaveSourceElementNumber; }
+        public int XrayNumber { set => waveLengthControl.XrayWaveSourceElementNumber = value; get => waveLengthControl.XrayWaveSourceElementNumber; }
 
         /// <summary>
         /// X線の線源を取得/設定
         /// </summary>
-        public XrayLine XrayWaveSourceLine { set => waveLengthControl.XrayWaveSourceLine = value; get => waveLengthControl.XrayWaveSourceLine; }
+        public XrayLine XrayLine { set => waveLengthControl.XrayWaveSourceLine = value; get => waveLengthControl.XrayWaveSourceLine; }
 
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
-        public double ElectronAccVoltage { set => waveLengthControl.Energy = value; get => waveLengthControl.Energy; }
+        public double ElectronAccVol { set => waveLengthControl.Energy = value; get => waveLengthControl.Energy; }
 
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定

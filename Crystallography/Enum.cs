@@ -23,7 +23,7 @@
         PicoMeterInverse
     }
 
-    public enum AngleUnit
+    public enum AngleUnitEnum
     {
         Degree,
         Radian

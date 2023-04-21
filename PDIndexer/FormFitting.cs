@@ -1464,16 +1464,18 @@ public partial class FormFitting : Form
             SourceProfile = p,
             Name = RemovedProfileName,
             ColorARGB = formMain.generateRandomColor().ToArgb(),
-            SrcWaveSource = formMain.WaveSource,
-            SrcWaveColor = formMain.WaveColor,
-            SrcAxisMode = formMain.AxisMode,
-            SrcXrayElementNumber = formMain.XraySourceElementNumber,
-            SrcXrayLine = formMain.XraySourceLine,
-            SrcWaveLength = formMain.WaveLength,
-            SrcEnergyTakeoffAngle = formMain.TakeoffAngle,
-            SrcTofAngle = formMain.TakeoffAngle,
-            SrcTofLength = formMain.TofLength
+
         };
+
+        output.SrcProp.WaveSource = formMain.WaveSource;
+        output.SrcProp.WaveColor = formMain.WaveColor;
+        output.SrcProp.AxisMode = formMain.AxisMode;
+        output.SrcProp.XrayElementNumber = formMain.XraySourceElementNumber;
+        output.SrcProp.XrayLine = formMain.XraySourceLine;
+        output.SrcProp.WaveLength = formMain.WaveLength;
+        output.SrcProp.EnergyTakeoffAngle = formMain.TakeoffAngle;
+        output.SrcProp.TofAngle = formMain.TakeoffAngle;
+        output.SrcProp.TofLength = formMain.TofLength;
 
         formMain.AddProfileToCheckedListBox(output, true, true);
     }

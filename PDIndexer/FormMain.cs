@@ -173,6 +173,13 @@ public partial class FormMain : Form
     public Bitmap BmpMain, BmpIntensity, BmpAngle;
     public Graphics gMain, gAngle, gIntensity;
 
+
+    public HorizontalAxisProperty HorizontalAxisProperty
+    {
+        set => horizontalAxisUserControl.HorizontalAxisProperty = value;
+        get => horizontalAxisUserControl.HorizontalAxisProperty;
+    }
+
     /// <summary>
     /// 入射線の種類
     /// </summary>
@@ -215,20 +222,20 @@ public partial class FormMain : Form
     {
         set
         {
-            if (horizontalAxisUserControl.XrayWaveSourceElementNumber != value)
-                horizontalAxisUserControl.XrayWaveSourceElementNumber = value;
+            if (horizontalAxisUserControl.XrayNumber != value)
+                horizontalAxisUserControl.XrayNumber = value;
         }
-        get => horizontalAxisUserControl.XrayWaveSourceElementNumber;
+        get => horizontalAxisUserControl.XrayNumber;
     }
     //X線の元素
     public XrayLine XraySourceLine
     {
         set
         {
-            if (horizontalAxisUserControl.XrayWaveSourceLine != value)
-                horizontalAxisUserControl.XrayWaveSourceLine = value;
+            if (horizontalAxisUserControl.XrayLine != value)
+                horizontalAxisUserControl.XrayLine = value;
         }
-        get => horizontalAxisUserControl.XrayWaveSourceLine;
+        get => horizontalAxisUserControl.XrayLine;
     }
 
     //EDX取り出し角
@@ -804,8 +811,8 @@ public partial class FormMain : Form
 
             this.horizontalAxisUserControl.AxisMode = (HorizontalAxis)regKey.GetValue("horizontalAxisUserControlAxisMode", (int)this.horizontalAxisUserControl.AxisMode);
             this.horizontalAxisUserControl.WaveSource = (WaveSource)regKey.GetValue("horizontalAxisUserControl.WaveSource", (int)horizontalAxisUserControl.WaveSource);
-            this.horizontalAxisUserControl.XrayWaveSourceElementNumber = (int)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayWaveSourceElementNumber);
-            this.horizontalAxisUserControl.XrayWaveSourceLine = (XrayLine)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayWaveSourceLine);
+            this.horizontalAxisUserControl.XrayNumber = (int)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayNumber);
+            this.horizontalAxisUserControl.XrayLine = (XrayLine)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayLine);
 
 
 
@@ -1023,8 +1030,8 @@ public partial class FormMain : Form
 
         regKey.SetValue("horizontalAxisUserControlAxisModeInt", (int)this.horizontalAxisUserControl.AxisMode);
         regKey.SetValue("horizontalAxisUserControl.WaveSource", (int)horizontalAxisUserControl.WaveSource);
-        regKey.SetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayWaveSourceElementNumber);
-        regKey.SetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayWaveSourceLine);
+        regKey.SetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayNumber);
+        regKey.SetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayLine);
 
         regKey.SetValue("horizontalAxisUserControlElectronAccVoltageText", this.horizontalAxisUserControl.ElectronAccVoltageText);
 
@@ -2796,8 +2803,8 @@ public partial class FormMain : Form
                     return;
                 for (int i = 0; i < dp.Count; i++)
                 {
-                    if (dp[i].SrcWaveSource == WaveSource.Xray && dp[i].SrcWaveLength > 1)
-                        dp[i].SrcWaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcWaveLength * 10000);
+                    if (dp[i].SrcProp.WaveSource == WaveSource.Xray && dp[i].SrcProp.WaveLength > 1)
+                        dp[i].SrcProp.WaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcProp.WaveLength * 10000);
                     dp[i].SubtractBackground = false;
                     for (int j = 0; j < dp[i].SourceProfile.Pt.Count; j++)
                         if (dp[i].SourceProfile.Pt[j].Y == 0)
@@ -2873,13 +2880,13 @@ public partial class FormMain : Form
                     if (dp.Count > 0)
                         for (int i = 0; i < dp.Count; i++)
                         {
-                            dp[i].SrcWaveSource = formDataConverter.WaveSource;
-                            dp[i].SrcWaveColor = formDataConverter.WaveColor;
-                            dp[i].SrcWaveLength = formDataConverter.Wavelength;
-                            dp[i].SrcEnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-                            dp[i].SrcAxisMode = formDataConverter.AxisMode;
-                            dp[i].SrcXrayElementNumber = formDataConverter.XraySourceElementNumber;
-                            dp[i].SrcXrayLine = formDataConverter.XrayLine;
+                            dp[i].SrcProp.WaveSource = formDataConverter.WaveSource;
+                            dp[i].SrcProp.WaveColor = formDataConverter.WaveColor;
+                            dp[i].SrcProp.WaveLength = formDataConverter.Wavelength;
+                            dp[i].SrcProp.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
+                            dp[i].SrcProp.AxisMode = formDataConverter.AxisMode;
+                            dp[i].SrcProp.XrayElementNumber = formDataConverter.XraySourceElementNumber;
+                            dp[i].SrcProp.XrayLine = formDataConverter.XrayLine;
                             dp[i].ExposureTime = formDataConverter.ExposureTime;
                             dp[i].SubtractBackground = false;
                         }
@@ -3209,15 +3216,15 @@ public partial class FormMain : Form
             #endregion
 
 
-            diffProf.SrcWaveSource = formDataConverter.WaveSource;
-            diffProf.SrcWaveColor = formDataConverter.WaveColor;
-            diffProf.SrcWaveLength = formDataConverter.Wavelength;
-            diffProf.SrcEnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-            diffProf.SrcAxisMode = formDataConverter.AxisMode;
-            diffProf.SrcXrayElementNumber = formDataConverter.XraySourceElementNumber;
-            diffProf.SrcXrayLine = formDataConverter.XrayLine;
-            diffProf.SrcTofAngle = formDataConverter.TofAngle;
-            diffProf.SrcTofLength = formDataConverter.TofLength;
+            diffProf.SrcProp.WaveSource = formDataConverter.WaveSource;
+            diffProf.SrcProp.WaveColor = formDataConverter.WaveColor;
+            diffProf.SrcProp.WaveLength = formDataConverter.Wavelength;
+            diffProf.SrcProp.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
+            diffProf.SrcProp.AxisMode = formDataConverter.AxisMode;
+            diffProf.SrcProp.XrayElementNumber = formDataConverter.XraySourceElementNumber;
+            diffProf.SrcProp.XrayLine = formDataConverter.XrayLine;
+            diffProf.SrcProp.TofAngle = formDataConverter.TofAngle;
+            diffProf.SrcProp.TofLength = formDataConverter.TofLength;
 
             diffProf.ExposureTime = formDataConverter.ExposureTime;
 
@@ -3235,7 +3242,7 @@ public partial class FormMain : Form
 
             if (diffProf.SourceProfile.Pt.Count > 0)
             {
-                if (diffProf.SrcAxisMode == HorizontalAxis.NeutronTOF)
+                if (diffProf.SrcProp.AxisMode == HorizontalAxis.NeutronTOF)
                     if (formDataConverter.TofUnitNanoSec)//単位を変換する必要がある場合は
                         for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
                             diffProf.SourceProfile.Pt[i] = new PointD(diffProf.SourceProfile.Pt[i].X / 1000, diffProf.SourceProfile.Pt[i].Y);
@@ -3266,22 +3273,22 @@ public partial class FormMain : Form
          //dp.CopyParameter(defaultDP);
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
-                if (WaveColor != dp.SrcWaveColor) WaveColor = dp.SrcWaveColor;
-                if (WaveSource != dp.SrcWaveSource) WaveSource = dp.SrcWaveSource;
-                if (AxisMode != dp.SrcAxisMode) AxisMode = dp.SrcAxisMode;
-                if (WaveLength != dp.SrcWaveLength) WaveLength = dp.SrcWaveLength;
+                if (WaveColor != dp.SrcProp.WaveColor) WaveColor = dp.SrcProp.WaveColor;
+                if (WaveSource != dp.SrcProp.WaveSource) WaveSource = dp.SrcProp.WaveSource;
+                if (AxisMode != dp.SrcProp.AxisMode) AxisMode = dp.SrcProp.AxisMode;
+                if (WaveLength != dp.SrcProp.WaveLength) WaveLength = dp.SrcProp.WaveLength;
                 if (WaveSource == WaveSource.Xray)
                 {
                     if (WaveColor == WaveColor.Monochrome)
                     {
-                        if (XraySourceElementNumber != dp.SrcXrayElementNumber) XraySourceElementNumber = dp.SrcXrayElementNumber;
-                        if (XraySourceLine != dp.SrcXrayLine) XraySourceLine = dp.SrcXrayLine;
+                        if (XraySourceElementNumber != dp.SrcProp.XrayElementNumber) XraySourceElementNumber = dp.SrcProp.XrayElementNumber;
+                        if (XraySourceLine != dp.SrcProp.XrayLine) XraySourceLine = dp.SrcProp.XrayLine;
                     }
                 }
 
-                if (TakeoffAngle != dp.SrcEnergyTakeoffAngle) TakeoffAngle = dp.SrcEnergyTakeoffAngle;
-                if (TofAngle != dp.SrcTofAngle) TofAngle = dp.SrcTofAngle;
-                if (TofLength != dp.SrcTofLength) TofLength = dp.SrcTofLength;
+                if (TakeoffAngle != dp.SrcProp.EnergyTakeoffAngle) TakeoffAngle = dp.SrcProp.EnergyTakeoffAngle;
+                if (TofAngle != dp.SrcProp.TofAngle) TofAngle = dp.SrcProp.TofAngle;
+                if (TofLength != dp.SrcProp.TofLength) TofLength = dp.SrcProp.TofLength;
             }
             dp.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
 
@@ -3319,11 +3326,11 @@ public partial class FormMain : Form
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
                 AxisMode = HorizontalAxis.None;
-                XraySourceElementNumber = dp.SrcXrayElementNumber;
-                XraySourceLine = dp.SrcXrayLine;
+                XraySourceElementNumber = dp.SrcProp.XrayElementNumber;
+                XraySourceLine = dp.SrcProp.XrayLine;
                 if (XraySourceElementNumber == 0)
-                    WaveLength = dp.SrcWaveLength;
-                TakeoffAngle = dp.SrcEnergyTakeoffAngle;
+                    WaveLength = dp.SrcProp.WaveLength;
+                TakeoffAngle = dp.SrcProp.EnergyTakeoffAngle;
             }
             dp.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
 

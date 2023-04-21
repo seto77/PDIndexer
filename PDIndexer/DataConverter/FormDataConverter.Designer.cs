@@ -165,7 +165,7 @@
             // 
             resources.ApplyResources(horizontalAxisUserControl, "horizontalAxisUserControl");
             horizontalAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
-            horizontalAxisUserControl.ElectronAccVoltage = 8.05091703D;
+            horizontalAxisUserControl.ElectronAccVol = 8.05091703D;
             horizontalAxisUserControl.ElectronAccVoltageText = "8.05091703";
             horizontalAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
             horizontalAxisUserControl.Name = "horizontalAxisUserControl";
@@ -178,8 +178,8 @@
             horizontalAxisUserControl.WaveLength = 0.154D;
             horizontalAxisUserControl.WaveLengthText = "1.54";
             horizontalAxisUserControl.WaveSource = Crystallography.WaveSource.Xray;
-            horizontalAxisUserControl.XrayWaveSourceElementNumber = 0;
-            horizontalAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
+            horizontalAxisUserControl.XrayNumber = 0;
+            horizontalAxisUserControl.XrayLine = Crystallography.XrayLine.Ka1;
             horizontalAxisUserControl.AxisPropertyChanged += horizontalAxisUserControl_AxisPropertyChanged;
             // 
             // FormDataConverter

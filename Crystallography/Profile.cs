@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
-using System.Windows.Forms;
 using System.Xml.Serialization;
 
 namespace Crystallography;
@@ -521,14 +520,14 @@ public class DiffractionProfile : ICloneable
 
     public object Clone()
     {
-        var dp = (DiffractionProfile)this.MemberwiseClone();
-        dp.SourceProfile = (Profile)this.SourceProfile.Clone();
-        dp.Profile = (Profile)this.Profile.Clone();
-        dp.InterpolatedProfile = (Profile)this.InterpolatedProfile.Clone();
-        dp.SmoothedProfile = (Profile)this.SmoothedProfile.Clone();
-        dp.Kalpha2RemovedProfile = (Profile)this.Kalpha2RemovedProfile.Clone();
-        dp.ConvertedProfile = (Profile)this.ConvertedProfile.Clone();
-        dp.BackgroundProfile = (Profile)this.BackgroundProfile.Clone();
+        var dp = (DiffractionProfile)MemberwiseClone();
+        dp.SourceProfile = (Profile)SourceProfile.Clone();
+        dp.Profile = (Profile)Profile.Clone();
+        dp.InterpolatedProfile = (Profile)InterpolatedProfile.Clone();
+        dp.SmoothedProfile = (Profile)SmoothedProfile.Clone();
+        dp.Kalpha2RemovedProfile = (Profile)Kalpha2RemovedProfile.Clone();
+        dp.ConvertedProfile = (Profile)ConvertedProfile.Clone();
+        dp.BackgroundProfile = (Profile)BackgroundProfile.Clone();
         return dp;
     }
 
@@ -584,141 +583,16 @@ public class DiffractionProfile : ICloneable
     /// </summary>
     public DiffractionProfileMode Mode = DiffractionProfileMode.Concentric;
 
+    public HorizontalAxisProperty SrcProp;
+    public HorizontalAxisProperty DstProp;
+
     #region ソースプロファイルに関するプロパティ
 
-    /// <summary>
-    /// ソースプロファイルの横軸の種類
-    /// </summary>
-    public HorizontalAxis SrcAxisMode;
-    /// <summary>
-    /// ソースの入射波の種類
-    /// </summary>
-    public WaveSource SrcWaveSource;
-    /// <summary>
-    /// ソースプロファイルの入射波の色
-    /// </summary>
-    public WaveColor SrcWaveColor;
-    /// <summary>
-    /// ソースプロファイルがモノクロの時の入射波の波長 (nm単位)
-    /// </summary>
-    public double SrcWaveLength;
-
-    /// <summary>
-    /// ソースプロファイルが特性X線の時のターゲット原子番号 (0はカスタム)
-    /// </summary>
-    public int SrcXrayElementNumber;
-    /// <summary>
-    /// ソースプロファイルが特性X線の時のライン
-    /// </summary>
-    public XrayLine SrcXrayLine;
-
-    /// <summary>
-    /// ソースプロファイルが2θの時の単位
-    /// </summary>
-    public AngleUnit SrcTwoThetaUnit = AngleUnit.Degree;
-    /// <summary>
-    /// ソースプロファイルがD値の時の単位
-    /// </summary>
-    public LengthUnitEnum SrcDspacingUnit = LengthUnitEnum.Angstrom;
-    /// <summary>
-    /// ソースプロファイルが波数(2π/d) の時の単位
-    /// </summary>
-    public LengthUnitEnum SrcWaveNumberUnit = LengthUnitEnum.AngstromInverse;
-
-    /// <summary>
-    /// ソースプロファイルが電子線の場合の加速電圧
-    /// </summary>
-    public double SrcElectronAccVolatage;
-
-    /// <summary>
-    /// ソースプロファイルが白色の時のエネルギーの単位
-    /// </summary>
-    public EnergyUnitEnum SrcEnergyUnit = EnergyUnitEnum.eV;
-    /// <summary>
-    /// ソースプロファイルが白色の時の Takeoff angle (radian)
-    /// </summary>
-    public double SrcEnergyTakeoffAngle;
-
-    /// <summary>
-    /// ソースプロファイルが白色TOF時の角度
-    /// </summary>
-    public double SrcTofAngle;
-    /// <summary>
-    /// ソースプロファイルが白色TOF時の検出器距離
-    /// </summary>
-    public double SrcTofLength;
-    /// <summary>
-    /// ソースプロファイルが白色TOF時の 時間単位
-    /// </summary>
-    public TimeUnitEnum SrcTofTimeUnit = TimeUnitEnum.MicroSecond;
 
     #endregion
 
     #region 最終プロファイルのプロパティ
-    /// <summary>
-    /// 最終プロファイルの横軸の種類
-    /// </summary>
-    public HorizontalAxis DstAxisMode;
-    /// <summary>
-    /// 最終プロファイルの入射波の種類
-    /// </summary>
-    public WaveSource DstWaveSource;
-    /// <summary>
-    /// 最終プロファイルの入射波の色
-    /// </summary>
-    public WaveColor DstWaveColor;
-    /// <summary>
-    /// 最終プロファイルがモノクロの時の入射波の波長 (nm単位)
-    /// </summary>
-    public double DstWaveLength;
-
-    /// <summary>
-    /// 最終プロファイルが特性X線の時のターゲット原子番号 (0はカスタム)
-    /// </summary>
-    public int DstXrayElementNumber;
-    /// <summary>
-    /// 最終プロファイルが特性X線の時のライン
-    /// </summary>
-    public XrayLine DstXrayLine;
-
-    /// <summary>
-    /// 最終プロファイルが2θの時の単位
-    /// </summary>
-    public AngleUnit DstTwoThetaUnit = AngleUnit.Degree;
-    /// <summary>
-    /// 最終プロファイルがD値の時の単位
-    /// </summary>
-    public LengthUnitEnum DstDspacingUnit = LengthUnitEnum.Angstrom;
-    /// <summary>
-    /// 最終プロファイルが波数(2π/d) の時の単位
-    /// </summary>
-    public LengthUnitEnum DstWaveNumberUnit = LengthUnitEnum.AngstromInverse;
-
-    /// <summary>
-    /// 最終プロファイルが電子線の場合の加速電圧
-    /// </summary>
-    public double DstElectronAccVolatage;
-
-    /// <summary>
-    /// 最終プロファイルが白色の時のエネルギーの単位
-    /// </summary>
-    public EnergyUnitEnum DstEnergyUnit = EnergyUnitEnum.eV;
-    /// <summary>
-    /// 最終プロファイルが白色の時の Takeoff angle (radian)
-    /// </summary>
-    public double DstEnergyTakeoffAngle;
-    /// <summary>
-    /// 最終プロファイルが白色TOF時の角度
-    /// </summary>
-    public double DstTofAngle;
-    /// <summary>
-    /// 最終プロファイルが白色TOF時の検出器距離
-    /// </summary>
-    public double DstTofLength;
-    /// <summary>
-    /// 最終プロファイルが白色TOF時の 時間単位
-    /// </summary>
-    public TimeUnitEnum DstTofTimeUnit = TimeUnitEnum.MicroSecond;
+    
 
     #endregion
 
@@ -830,14 +704,14 @@ public class DiffractionProfile : ICloneable
         InterpolatedProfile = new Profile();
         Profile = new Profile();
         BackgroundProfile = new Profile();
-        SrcAxisMode = HorizontalAxis.Angle;
+        SrcProp.AxisMode = HorizontalAxis.Angle;
 
-        SrcWaveSource = WaveSource.Xray;
+        SrcProp.WaveSource = WaveSource.Xray;
 
-        SrcXrayElementNumber = 0;
-        SrcXrayLine = XrayLine.Ka1;
+        SrcProp.XrayElementNumber = 0;
+        SrcProp.XrayLine = XrayLine.Ka1;
 
-        SrcElectronAccVolatage = 200;
+        SrcProp.ElectronAccVolatage = 200;
 
         ColorARGB = null;
     }
@@ -880,7 +754,7 @@ public class DiffractionProfile : ICloneable
     /// </summary>
     public void SetConvertedProfile()
     {
-        SetConvertedProfile(SrcAxisMode, SrcWaveLength, SrcEnergyTakeoffAngle, SrcTofAngle, SrcTofLength);
+        SetConvertedProfile(SrcProp.AxisMode, SrcProp.WaveLength, SrcProp.EnergyTakeoffAngle, SrcProp.TofAngle, SrcProp.TofLength);
     }
 
     #region 一連の変換 SourceProfile => MaskingProfile => SmoothingProfile =>  Kalpha2RemovedProfile => BackgroundProfile & Profile
@@ -890,11 +764,11 @@ public class DiffractionProfile : ICloneable
     /// </summary>
     public void SetConvertedProfile(HorizontalAxis destAxisMode, double destWavelength, double destTakeoffAngle, double destTofAngle, double destTofLength)
     {
-        DstAxisMode = destAxisMode;
-        DstWaveLength = destWavelength;
-        DstEnergyTakeoffAngle = destTakeoffAngle;
-        DstTofAngle = destTofAngle;
-        DstTofLength = destTofLength;
+        DstProp.AxisMode = destAxisMode;
+        DstProp.WaveLength = destWavelength;
+        DstProp.EnergyTakeoffAngle = destTakeoffAngle;
+        DstProp.TofAngle = destTofAngle;
+        DstProp.TofLength = destTofLength;
 
         ConvertedProfile.Clear();
 
@@ -1046,10 +920,10 @@ public class DiffractionProfile : ICloneable
         for (int i = 0; i < SmoothedProfile.Err.Count; i++)
             Kalpha2RemovedProfile.Err.Add(SmoothedProfile.Err[i]);
 
-        if (DoesRemoveKalpha2 && SrcWaveSource == WaveSource.Xray && SrcXrayElementNumber != 0 && SrcXrayLine == XrayLine.Ka1)
+        if (DoesRemoveKalpha2 && SrcProp.WaveSource == WaveSource.Xray && SrcProp.XrayElementNumber != 0 && SrcProp.XrayLine == XrayLine.Ka1)
         {
-            double alpha1 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka1);
-            double alpha2 = AtomStatic.CharacteristicXrayWavelength(SrcXrayElementNumber, XrayLine.Ka2);
+            double alpha1 = AtomStatic.CharacteristicXrayWavelength(SrcProp.XrayElementNumber, XrayLine.Ka1);
+            double alpha2 = AtomStatic.CharacteristicXrayWavelength(SrcProp.XrayElementNumber, XrayLine.Ka2);
             double startY = Kalpha2RemovedProfile.Pt[0].Y * 2 / 3;
 
             var theta = new List<double>();
@@ -1381,16 +1255,16 @@ public class DiffractionProfile : ICloneable
 
     public double[] Convert(double[] x, bool SrcToDst)
     {
-        var (srcAxisMode, dstAxisMode) = SrcToDst ? (SrcAxisMode, DstAxisMode) : (DstAxisMode, SrcAxisMode);
-        var (srcWaveLength, dstWaveLength) = SrcToDst ? (SrcWaveLength, DstWaveLength) : (DstWaveLength, SrcWaveLength);
-        var (srcDspacingUnit, dstDspacingUnit) = SrcToDst ? (SrcDspacingUnit, DstDspacingUnit) : (DstDspacingUnit, SrcDspacingUnit);
-        var (srcEnergyUnit, dstEnergyUnit) = SrcToDst ? (SrcEnergyUnit, DstEnergyUnit) : (DstEnergyUnit, SrcEnergyUnit);
-        var (srcTakeoffAngle, dstTakeoffAngle) = SrcToDst ? (SrcEnergyTakeoffAngle, DstEnergyTakeoffAngle) : (DstEnergyTakeoffAngle, SrcEnergyTakeoffAngle);
-        var (srcTofTimeUnit, dstTofTimeUnit) = SrcToDst ? (SrcTofTimeUnit, DstTofTimeUnit) : (DstTofTimeUnit, SrcTofTimeUnit);
-        var (srcTofAngle, dstTofAngle) = SrcToDst ? (SrcTofAngle, DstTofAngle) : (DstTofAngle, SrcTofAngle);
-        var (srcTofLength, dstTofLength) = SrcToDst ? (SrcTofLength, DstTofLength) : (DstTofLength, SrcTofLength);
-        var (srcWaveNumberUnit, dstWaveNumberUnit) = SrcToDst ? (SrcWaveNumberUnit, DstWaveNumberUnit) : (DstWaveNumberUnit, SrcWaveNumberUnit);
-        var (srcTwoThetaUnit, dstTwoThetaUnit) = SrcToDst ? (SrcTwoThetaUnit, DstTwoThetaUnit) : (DstTwoThetaUnit, SrcTwoThetaUnit);
+        var (srcAxisMode, dstAxisMode) = SrcToDst ? (SrcProp.AxisMode, DstProp.AxisMode) : (DstProp.AxisMode, SrcProp.AxisMode);
+        var (srcWaveLength, dstWaveLength) = SrcToDst ? (SrcProp.WaveLength, DstProp.WaveLength) : (DstProp.WaveLength, SrcProp.WaveLength);
+        var (srcDspacingUnit, dstDspacingUnit) = SrcToDst ? (SrcProp.DspacingUnit, DstProp.DspacingUnit) : (DstProp.DspacingUnit, SrcProp.DspacingUnit);
+        var (srcEnergyUnit, dstEnergyUnit) = SrcToDst ? (SrcProp.EnergyUnit, DstProp.EnergyUnit) : (DstProp.EnergyUnit, SrcProp.EnergyUnit);
+        var (srcTakeoffAngle, dstTakeoffAngle) = SrcToDst ? (SrcProp.EnergyTakeoffAngle, DstProp.EnergyTakeoffAngle) : (DstProp.EnergyTakeoffAngle, SrcProp.EnergyTakeoffAngle);
+        var (srcTofTimeUnit, dstTofTimeUnit) = SrcToDst ? (SrcProp.TofTimeUnit, DstProp.TofTimeUnit) : (DstProp.TofTimeUnit, SrcProp.TofTimeUnit);
+        var (srcTofAngle, dstTofAngle) = SrcToDst ? (SrcProp.TofAngle, DstProp.TofAngle) : (DstProp.TofAngle, SrcProp.TofAngle);
+        var (srcTofLength, dstTofLength) = SrcToDst ? (SrcProp.TofLength, DstProp.TofLength) : (DstProp.TofLength, SrcProp.TofLength);
+        var (srcWaveNumberUnit, dstWaveNumberUnit) = SrcToDst ? (SrcProp.WaveNumberUnit, DstProp.WaveNumberUnit) : (DstProp.WaveNumberUnit, SrcProp.WaveNumberUnit);
+        var (srcTwoThetaUnit, dstTwoThetaUnit) = SrcToDst ? (SrcProp.TwoThetaUnit, DstProp.TwoThetaUnit) : (DstProp.TwoThetaUnit, SrcProp.TwoThetaUnit);
 
         #region はじめにSrcとDstのAxisモードが等しいときをチェック
 
@@ -1401,7 +1275,7 @@ public class DiffractionProfile : ICloneable
             {
                 if (srcTwoThetaUnit == dstTwoThetaUnit)
                     return x;
-                else if (srcTwoThetaUnit == AngleUnit.Radian)
+                else if (srcTwoThetaUnit == AngleUnitEnum.Radian)
                     return x.Select(x => x / Math.PI * 180).ToArray();
                 else
                     return x.Select(x => x * Math.PI / 180).ToArray();
@@ -1468,7 +1342,7 @@ public class DiffractionProfile : ICloneable
         else if (srcAxisMode == HorizontalAxis.Angle)
         {
             var twoTheta= Array.Empty<double>();
-            if(srcTwoThetaUnit == AngleUnit.Degree)
+            if(srcTwoThetaUnit == AngleUnitEnum.Degree)
                 d = HorizontalAxisConverter.TwoThetaInDegreeToD(x, srcWaveLength);
             else 
                 d = HorizontalAxisConverter.TwoThetaInRadianToD(x, srcWaveLength);
@@ -1555,8 +1429,104 @@ public class DiffractionProfile : ICloneable
    
 
     #endregion
-
 }
+
+
+#region プロファイルの性質を表す構造体
+
+[Serializable]
+public struct HorizontalAxisProperty
+{
+    /// <summary>
+    /// 横軸の種類
+    /// </summary>
+    public HorizontalAxis AxisMode { get; set; }
+    /// <summary>
+    /// 入射波の種類
+    /// </summary>
+    public WaveSource WaveSource { get; set; }
+    /// <summary>
+    /// 入射波の色
+    /// </summary>
+    public WaveColor WaveColor { get; set; }
+    /// <summary>
+    /// 入射波がモノクロの時の入射波の波長 (nm単位)
+    /// </summary>
+    public double WaveLength { get; set; }
+
+    /// <summary>
+    /// 入射波が特性X線の時のターゲット原子番号 (0はカスタム)
+    /// </summary>
+    public int XrayElementNumber { get; set; }
+    /// <summary>
+    /// 入射線が特性X線の時のライン
+    /// </summary>
+    public XrayLine XrayLine { get; set; }
+
+
+    /// <summary>
+    /// 入射波が電子線の場合の加速電圧
+    /// </summary>
+    public double ElectronAccVolatage { get; set; }
+
+
+    /// <summary>
+    /// 入射波が白色の時の Takeoff angle (radian)
+    /// </summary>
+    public double EnergyTakeoffAngle { get; set; }
+
+    /// <summary>
+    /// ソースプロファイルが白色TOF時の角度
+    /// </summary>
+    public double TofAngle { get; set; }
+    /// <summary>
+    /// 白色TOF時の検出器距離
+    /// </summary>
+    public double TofLength { get; set; }
+
+
+    /// <summary>
+    /// 横軸が角度の時の2θの時の単位
+    /// </summary>
+    public AngleUnitEnum TwoThetaUnit { get; set; }
+    /// <summary>
+    /// 横軸がD値の時の単位
+    /// </summary>
+    public LengthUnitEnum DspacingUnit { get; set; }
+    /// <summary>
+    /// 横軸が波数(2π/d) の時の単位
+    /// </summary>
+    public LengthUnitEnum WaveNumberUnit { get; set; }
+    /// <summary>
+    /// 入射波が白色の時のエネルギーの単位
+    /// </summary>
+    public EnergyUnitEnum EnergyUnit { get; set; }
+    /// <summary>
+    /// 白色TOF時の 時間単位
+    /// </summary>
+    public TimeUnitEnum TofTimeUnit { get; set; }
+
+    public HorizontalAxisProperty(HorizontalAxis axisMode, WaveSource waveSource, WaveColor waveColor, double waveLength, int xrayElementNumber, XrayLine xrayLine, double electronAccVolatage,
+        double energyTakeoffAngle, double tofAngle, double tofLength, AngleUnitEnum twoThetaUnit, LengthUnitEnum dspacingUnit, LengthUnitEnum waveNumberUnit, EnergyUnitEnum energyUnit, TimeUnitEnum tofTimeUnit)
+    {
+        AxisMode = axisMode;
+        WaveSource = waveSource;
+        WaveColor = waveColor;
+        WaveLength = waveLength;
+        XrayElementNumber = xrayElementNumber;
+        XrayLine = xrayLine;
+        ElectronAccVolatage = electronAccVolatage;
+        EnergyTakeoffAngle = energyTakeoffAngle;
+        TofAngle = tofAngle;
+        TofAngle = tofLength;
+        TwoThetaUnit = twoThetaUnit;
+        DspacingUnit = dspacingUnit;
+        WaveNumberUnit = waveNumberUnit;
+        EnergyUnit = energyUnit;
+        TofTimeUnit = tofTimeUnit;
+    }
+}
+#endregion
 
 /// <summary>
 /// 横軸を変換するクラス

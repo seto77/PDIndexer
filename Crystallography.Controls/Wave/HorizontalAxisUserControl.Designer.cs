@@ -57,13 +57,13 @@
             groupBoxOption = new System.Windows.Forms.GroupBox();
             flowLayoutPanel12 = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelTwoTheta = new System.Windows.Forms.FlowLayoutPanel();
-            radioButton4 = new System.Windows.Forms.RadioButton();
+            radioButtonAngleUnitRadian = new System.Windows.Forms.RadioButton();
             flowLayoutPanelDspacing = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonDspacingUnitAng = new System.Windows.Forms.RadioButton();
             radioButtonDspacingUnitNm = new System.Windows.Forms.RadioButton();
             flowLayoutPanelWavenumber = new System.Windows.Forms.FlowLayoutPanel();
-            radioButtonAngInv = new System.Windows.Forms.RadioButton();
-            radioButtonNmInv = new System.Windows.Forms.RadioButton();
+            radioButtonWavenumberAngInv = new System.Windows.Forms.RadioButton();
+            radioButtonWavenumberUnitNmInv = new System.Windows.Forms.RadioButton();
             flowLayoutPanelEnergy = new System.Windows.Forms.FlowLayoutPanel();
             radioButtonEnergyUnitEv = new System.Windows.Forms.RadioButton();
             radioButtonEnergyUnitKev = new System.Windows.Forms.RadioButton();
@@ -76,6 +76,7 @@
             numericBoxTofDistance = new NumericBox();
             toolTip = new System.Windows.Forms.ToolTip(components);
             flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            radioButtonAngleUnitDegree = new System.Windows.Forms.RadioButton();
             groupBox1.SuspendLayout();
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel5.SuspendLayout();
@@ -304,16 +305,15 @@
             // flowLayoutPanelTwoTheta
             // 
             resources.ApplyResources(flowLayoutPanelTwoTheta, "flowLayoutPanelTwoTheta");
-            flowLayoutPanelTwoTheta.Controls.Add(radioButton4);
+            flowLayoutPanelTwoTheta.Controls.Add(radioButtonAngleUnitDegree);
+            flowLayoutPanelTwoTheta.Controls.Add(radioButtonAngleUnitRadian);
             flowLayoutPanelTwoTheta.Name = "flowLayoutPanelTwoTheta";
             // 
-            // radioButton4
+            // radioButtonAngleUnitRadian
             // 
-            resources.ApplyResources(radioButton4, "radioButton4");
-            radioButton4.Checked = true;
-            radioButton4.Name = "radioButton4";
-            radioButton4.TabStop = true;
-            radioButton4.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonAngleUnitRadian, "radioButtonAngleUnitRadian");
+            radioButtonAngleUnitRadian.Name = "radioButtonAngleUnitRadian";
+            radioButtonAngleUnitRadian.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelDspacing
             // 
@@ -339,23 +339,23 @@
             // flowLayoutPanelWavenumber
             // 
             resources.ApplyResources(flowLayoutPanelWavenumber, "flowLayoutPanelWavenumber");
-            flowLayoutPanelWavenumber.Controls.Add(radioButtonAngInv);
-            flowLayoutPanelWavenumber.Controls.Add(radioButtonNmInv);
+            flowLayoutPanelWavenumber.Controls.Add(radioButtonWavenumberAngInv);
+            flowLayoutPanelWavenumber.Controls.Add(radioButtonWavenumberUnitNmInv);
             flowLayoutPanelWavenumber.Name = "flowLayoutPanelWavenumber";
             // 
             // radioButtonAngInv
             // 
-            resources.ApplyResources(radioButtonAngInv, "radioButtonAngInv");
-            radioButtonAngInv.Checked = true;
-            radioButtonAngInv.Name = "radioButtonAngInv";
-            radioButtonAngInv.TabStop = true;
-            radioButtonAngInv.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonWavenumberAngInv, "radioButtonAngInv");
+            radioButtonWavenumberAngInv.Checked = true;
+            radioButtonWavenumberAngInv.Name = "radioButtonAngInv";
+            radioButtonWavenumberAngInv.TabStop = true;
+            radioButtonWavenumberAngInv.UseVisualStyleBackColor = true;
             // 
             // radioButtonNmInv
             // 
-            resources.ApplyResources(radioButtonNmInv, "radioButtonNmInv");
-            radioButtonNmInv.Name = "radioButtonNmInv";
-            radioButtonNmInv.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButtonWavenumberUnitNmInv, "radioButtonNmInv");
+            radioButtonWavenumberUnitNmInv.Name = "radioButtonNmInv";
+            radioButtonWavenumberUnitNmInv.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelEnergy
             // 
@@ -380,10 +380,10 @@
             radioButtonEnergyUnitKev.Name = "radioButtonEnergyUnitKev";
             radioButtonEnergyUnitKev.UseVisualStyleBackColor = true;
             // 
-            // radioButtonEnergyMev
+            // radioButtonEnergyUnitMev
             // 
-            resources.ApplyResources(radioButtonEnergyUnitMev, "radioButtonEnergyMev");
-            radioButtonEnergyUnitMev.Name = "radioButtonEnergyMev";
+            resources.ApplyResources(radioButtonEnergyUnitMev, "radioButtonEnergyUnitMev");
+            radioButtonEnergyUnitMev.Name = "radioButtonEnergyUnitMev";
             radioButtonEnergyUnitMev.UseVisualStyleBackColor = true;
             // 
             // numericBoxTwoTheta
@@ -458,6 +458,13 @@
             flowLayoutPanel6.Controls.Add(groupBox1);
             flowLayoutPanel6.Controls.Add(groupBox2);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
+            // radioButtonAngleUnitDegree
+            // 
+            resources.ApplyResources(radioButtonAngleUnitDegree, "radioButtonAngleUnitDegree");
+            radioButtonAngleUnitDegree.Checked = true;
+            radioButtonAngleUnitDegree.Name = "radioButtonAngleUnitDegree";
+            radioButtonAngleUnitDegree.UseVisualStyleBackColor = true;
             // 
             // HorizontalAxisUserControl
             // 
@@ -545,15 +552,16 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel12;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDspacing;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelWavenumber;
-        public System.Windows.Forms.RadioButton radioButtonNmInv;
-        public System.Windows.Forms.RadioButton radioButtonAngInv;
+        public System.Windows.Forms.RadioButton radioButtonWavenumberUnitNmInv;
+        public System.Windows.Forms.RadioButton radioButtonWavenumberAngInv;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelEnergy;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelNeutronTOF;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.GroupBox groupBoxOption;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTwoTheta;
-        public System.Windows.Forms.RadioButton radioButton4;
+        public System.Windows.Forms.RadioButton radioButtonAngleUnitRadian;
         private System.Windows.Forms.RadioButton radioButtonEnergyUnitMev;
+        public System.Windows.Forms.RadioButton radioButtonAngleUnitDegree;
     }
 }

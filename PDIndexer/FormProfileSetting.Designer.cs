@@ -608,7 +608,7 @@ namespace PDIndexer
             // 
             resources.ApplyResources(this.xAxisUserControl, "xAxisUserControl");
             this.xAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
-            this.xAxisUserControl.ElectronAccVoltage = 8.04151786D;
+            this.xAxisUserControl.ElectronAccVol = 8.04151786D;
             this.xAxisUserControl.ElectronAccVoltageText = "8.04151786";
             this.xAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
             this.xAxisUserControl.Name = "xAxisUserControl";
@@ -621,8 +621,8 @@ namespace PDIndexer
             this.xAxisUserControl.WaveLength = 0.15418D;
             this.xAxisUserControl.WaveLengthText = "1.5418";
             this.xAxisUserControl.WaveSource = Crystallography.WaveSource.Xray;
-            this.xAxisUserControl.XrayWaveSourceElementNumber = 0;
-            this.xAxisUserControl.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
+            this.xAxisUserControl.XrayNumber = 0;
+            this.xAxisUserControl.XrayLine = Crystallography.XrayLine.Ka1;
             // 
             // groupBox1
             // 

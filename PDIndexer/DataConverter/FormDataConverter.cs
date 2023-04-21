@@ -32,14 +32,14 @@ namespace PDIndexer
             get => horizontalAxisUserControl.AxisMode;
         }
 
-        public int XraySourceElementNumber { set => horizontalAxisUserControl.XrayWaveSourceElementNumber = value; get => horizontalAxisUserControl.XrayWaveSourceElementNumber; }
+        public int XraySourceElementNumber { set => horizontalAxisUserControl.XrayNumber = value; get => horizontalAxisUserControl.XrayNumber; }
 
-        public XrayLine XrayLine { set => horizontalAxisUserControl.XrayWaveSourceLine = value; get => horizontalAxisUserControl.XrayWaveSourceLine; }
+        public XrayLine XrayLine { set => horizontalAxisUserControl.XrayLine = value; get => horizontalAxisUserControl.XrayLine; }
         
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
-        public double ElectronAccVolatage { set => horizontalAxisUserControl.ElectronAccVoltage = value; get => horizontalAxisUserControl.ElectronAccVoltage; }
+        public double ElectronAccVolatage { set => horizontalAxisUserControl.ElectronAccVol = value; get => horizontalAxisUserControl.ElectronAccVol; }
 
         public WaveSource WaveSource { set => horizontalAxisUserControl.WaveSource = value; get => horizontalAxisUserControl.WaveSource; }
 
