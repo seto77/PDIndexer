@@ -575,7 +575,7 @@ public class Macro : MacroBase
             get => Execute(() => p.main.formFitting.bindingSourcePlanes.Position);
         }
 
-        public void Range(double r) => p.main.formFitting.numericUpDownSearchRange.Value = (decimal)r;
+        public void Range(double r) => p.main.formFitting.numericBoxSearchRange.Value = r;
     }
     #endregion
 

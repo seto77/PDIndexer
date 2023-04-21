@@ -31,7 +31,7 @@ public partial class FormFitting : Form
             else return null;
         }
     }
-    
+
     public Profile TargetProfile = new Profile();
 
     public Crystal temp_crystal;
@@ -290,37 +290,37 @@ public partial class FormFitting : Form
         //ピーク分離フィッティングモードのとき
         else
         {
-                #region すべてをまとめてフィッティング
-                
-                //全てのフィッティング対象ピークをいったん格納
-                var pvpTemp2 = new List<PeakFunction>();
-                for (int h = 0; h < checkedCrystals.Count; h++)
-                    for (int i = 0; i < checkedCrystals[h].Plane.Count; i++)
-                        if (checkedCrystals[h].Plane[i].IsFittingChecked && checkedCrystals[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
-                            pvpTemp2.Add(checkedCrystals[h].Plane[i].peakFunction);
-                //並び替え
-                pvpTemp2.Sort();
+            #region すべてをまとめてフィッティング
 
-                //List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
-                groupIndex = 0;
-                for (int i = 0; i < pvpTemp2.Count; i++)
-                {
-                    if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
-                        pvpTemp2[i].GroupIndex = groupIndex;
-                    else
-                        pvpTemp2[i].GroupIndex = ++groupIndex;
-                }
+            //全てのフィッティング対象ピークをいったん格納
+            var pvpTemp2 = new List<PeakFunction>();
+            for (int h = 0; h < checkedCrystals.Count; h++)
+                for (int i = 0; i < checkedCrystals[h].Plane.Count; i++)
+                    if (checkedCrystals[h].Plane[i].IsFittingChecked && checkedCrystals[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
+                        pvpTemp2.Add(checkedCrystals[h].Plane[i].peakFunction);
+            //並び替え
+            pvpTemp2.Sort();
 
-                PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
-                for (int i = 0; i < groupIndex + 1; i++)
-                    pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
+            //List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
+            groupIndex = 0;
+            for (int i = 0; i < pvpTemp2.Count; i++)
+            {
+                if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
+                    pvpTemp2[i].GroupIndex = groupIndex;
+                else
+                    pvpTemp2[i].GroupIndex = ++groupIndex;
+            }
 
-                Parallel.For(0, pvpTemp.Length, i =>
-                {
-                   FittingPeak.FitMultiPeaksThread(TargetProfile.Pt, true, 0, ref pvpTemp[i]);
-                });
+            PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
+            for (int i = 0; i < groupIndex + 1; i++)
+                pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
 
-                #endregion
+            Parallel.For(0, pvpTemp.Length, i =>
+            {
+                FittingPeak.FitMultiPeaksThread(TargetProfile.Pt, true, 0, ref pvpTemp[i]);
+            });
+
+            #endregion
 
         }//ピーク分離フィッティングモード終了
 
@@ -390,7 +390,7 @@ public partial class FormFitting : Form
     #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
     public void FittingDiffraction()
     {
-        var p = TargetCrystal.Plane.Where(e => e.IsFittingChecked).Where(e=>e.SerchOption== PeakFunctionForm.Simple || e.observedIntensity>0).ToList();
+        var p = TargetCrystal.Plane.Where(e => e.IsFittingChecked).Where(e => e.SerchOption == PeakFunctionForm.Simple || e.observedIntensity > 0).ToList();
 
         Matrix<double> Q, A, W, C;
         double a, b, c, alfa, beta, gamma, V;
@@ -1232,8 +1232,8 @@ public partial class FormFitting : Form
             IsRadioButtonChangeEventSkip = false;
 
             IsSkipChangeEvent = true;
-            numericUpDownSearchRange.Value = (decimal)(TargetCrystal.Plane[n].SerchRange * SerchRangeFactor);
-            numericUpDownInitialFWHM.Value = (decimal)(TargetCrystal.Plane[n].FWHM * SerchRangeFactor);
+            numericBoxSearchRange.Value = TargetCrystal.Plane[n].SerchRange * SerchRangeFactor;
+            numericBoxInitialFWHM.Value = TargetCrystal.Plane[n].FWHM * SerchRangeFactor;
             IsSkipChangeEvent = false;
         }
     }
@@ -1307,9 +1307,9 @@ public partial class FormFitting : Form
         if (IsSkipChangeEvent) return;
         if (dataGridViewPlaneList.SelectedRows[0].Index < 0) return;
         int n = dataGridViewPlaneList.SelectedRows[0].Index;
-        TargetCrystal.Plane[n].SerchRange = (double)numericUpDownSearchRange.Value / SerchRangeFactor;
+        TargetCrystal.Plane[n].SerchRange = numericBoxSearchRange.Value / SerchRangeFactor;
         if (checkBoxUseInitialFWHM.Checked)
-            TargetCrystal.Plane[n].FWHM = (double)numericUpDownInitialFWHM.Value / SerchRangeFactor;
+            TargetCrystal.Plane[n].FWHM = numericBoxInitialFWHM.Value / SerchRangeFactor;
         else
             TargetCrystal.Plane[n].FWHM = TargetCrystal.Plane[n].SerchRange / 2.0;
 
@@ -1322,14 +1322,14 @@ public partial class FormFitting : Form
     private void buttonApplyRangeToAll_Click(object sender, EventArgs e)
     {
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-            TargetCrystal.Plane[i].SerchRange = (double)numericUpDownSearchRange.Value / SerchRangeFactor;
+            TargetCrystal.Plane[i].SerchRange = (double)numericBoxSearchRange.Value / SerchRangeFactor;
         Fitting();
     }
 
     private void buttonApplyFWHMToAll_Click(object sender, EventArgs e)
     {
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-            TargetCrystal.Plane[i].FWHM = (double)numericUpDownInitialFWHM.Value / SerchRangeFactor;
+            TargetCrystal.Plane[i].FWHM = numericBoxInitialFWHM.Value / SerchRangeFactor;
         Fitting();
     }
 
@@ -1400,6 +1400,8 @@ public partial class FormFitting : Form
     #region formMainから横軸単位が変更されたとき
     internal void ChangeHorizontalAxis()
     {
+        //0.1
+
         if (formMain.AxisMode == HorizontalAxis.Angle)
             SerchRangeFactor = 1;
         else if (formMain.AxisMode == HorizontalAxis.EnergyXray)
@@ -1411,7 +1413,7 @@ public partial class FormFitting : Form
         else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
             SerchRangeFactor = 0.2;
 
-        numericUpDownInitialFWHM.Increment = (decimal)(SerchRangeFactor * 0.02);
+        //numericBoxInitialFWHM.Increment = (decimal)(SerchRangeFactor * 0.02);
 
         SetPlanes(false);
     }

@@ -761,6 +761,9 @@ public class DiffractionProfile : ICloneable
     /// </summary>
     public void SetConvertedProfile(HorizontalAxisProperty property)
     {
+        if (SourceProfile == null)
+            return;
+
         DstProperty = property;
 
         ConvertedProfile.Clear();
