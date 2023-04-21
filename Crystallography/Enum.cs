@@ -43,9 +43,9 @@
 
     public enum EnergyUnitEnum
     {
-        eV = 1,
-        KeV = 10,
-        MeV = 100
+        eV,
+        KeV,
+        MeV
     }
 
     public enum TimeUnitEnum

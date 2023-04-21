@@ -49,16 +49,20 @@ public partial class FormMain : Form
     public class FileProperty
     {
         public bool Valid;
-        public WaveSource WaveSource;
-        public WaveColor WaveColor;
-        public double Wavelength;
-        public double TakeoffAngle;
-        public HorizontalAxis AxisMode;
-        public int XraySourceElementNumber;
-        public XrayLine XrayLine;
-        public double TofAngle;
-        public double TofLength;
+        //public WaveSource WaveSource;
+        //public WaveColor WaveColor;
+        //public double Wavelength;
+        //public double TakeoffAngle;
+        //public HorizontalAxis AxisMode;
+        //public int XraySourceElementNumber;
+        //public XrayLine XrayLine;
+        //public double TofAngle;
+        //public double TofLength;
+        
+        public HorizontalAxisProperty HorizontalAxisProperty;
+
         public double ExposureTime;
+
         /// <summary>
         /// EDX detector用の変換係数 E  = (a₀ + a₁ n + a₂ n²) * 10³　多チャンネルを考慮して配列として用意しておく
         /// </summary>
@@ -176,7 +180,11 @@ public partial class FormMain : Form
 
     public HorizontalAxisProperty HorizontalAxisProperty
     {
-        set => horizontalAxisUserControl.HorizontalAxisProperty = value;
+        set
+        {
+            if (value != HorizontalAxisProperty)
+                horizontalAxisUserControl.HorizontalAxisProperty = value;
+        }
         get => horizontalAxisUserControl.HorizontalAxisProperty;
     }
 
@@ -858,18 +866,18 @@ public partial class FormMain : Form
 
                 if (f.Valid)
                 {
-                    f.WaveSource = (WaveSource)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveSource{i}", 0));
-                    f.WaveColor = (WaveColor)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveColor{i}", 0));
-                    f.Wavelength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.Wavelength{i}", "0"));
-                    f.TakeoffAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TakeoffAngle{i}", "0"));
+                    f.HorizontalAxisProperty.WaveSource = (WaveSource)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveSource{i}", 0));
+                    f.HorizontalAxisProperty.WaveColor = (WaveColor)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveColor{i}", 0));
+                    f.HorizontalAxisProperty.WaveLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.Wavelength{i}", "0"));
+                    f.HorizontalAxisProperty.EnergyTakeoffAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TakeoffAngle{i}", "0"));
 
-                    f.AxisMode = (HorizontalAxis)Convert.ToInt32(regKey.GetValue($"FileProperty.AxisMode{i}", 0));
+                    f.HorizontalAxisProperty.AxisMode = (HorizontalAxis)Convert.ToInt32(regKey.GetValue($"FileProperty.AxisMode{i}", 0));
 
-                    f.XraySourceElementNumber = Convert.ToInt32(regKey.GetValue($"FileProperty.XraySourceElementNumber{i}", 0));
-                    f.XrayLine = (XrayLine)Convert.ToInt32(regKey.GetValue($"FileProperty.XrayLine{i}", 0));
+                    f.HorizontalAxisProperty.XrayElementNumber = Convert.ToInt32(regKey.GetValue($"FileProperty.XraySourceElementNumber{i}", 0));
+                    f.HorizontalAxisProperty.XrayLine = (XrayLine)Convert.ToInt32(regKey.GetValue($"FileProperty.XrayLine{i}", 0));
 
-                    f.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0"));
-                    f.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "0"));
+                    f.HorizontalAxisProperty.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0"));
+                    f.HorizontalAxisProperty.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "0"));
 
                     //EGCは、1.1,　2.2,　3.2 ,, 4.5, 5.7, 0.2みたいな感じで格納されている
                     var egc = (string)regKey.GetValue($"FileProperty.EGC{i}", "0.0,0.0,0.0");
@@ -890,31 +898,21 @@ public partial class FormMain : Form
             FileProperties[(int)FileType.RAS] ??= new FileProperty
             {
                 Valid = true,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.Monochrome,
-                AxisMode = HorizontalAxis.Angle,
-                XraySourceElementNumber = 29,
-                XrayLine = XrayLine.Ka1,
+                HorizontalAxisProperty = new HorizontalAxisProperty(29, XrayLine.Ka1, AngleUnitEnum.Degree)
             };
 
             //CSVの場合
             FileProperties[(int)FileType.CSV] ??= new FileProperty
             {
                 Valid = true,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.Monochrome,
-                Wavelength = 0.4,
-                AxisMode = HorizontalAxis.Angle
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray,0.4,AngleUnitEnum.Degree)
             };
 
             //NXS
             FileProperties[(int)FileType.NXS] ??= new FileProperty
             {
                 Valid = true,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.FlatWhite,
-                TakeoffAngle = 4.95 / 180 * Math.PI,
-                AxisMode = HorizontalAxis.EnergyXray,
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 4.95 / 180 * Math.PI,EnergyUnitEnum.KeV),
                 EGC = new[] { new[] { 0, 0, 66.6, 0.0 } }
             };
 
@@ -922,55 +920,41 @@ public partial class FormMain : Form
             FileProperties[(int)FileType.CHI] ??= new FileProperty
             {
                 Valid = true,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.Monochrome,
-                AxisMode = HorizontalAxis.Angle,
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
             };
 
             //XBM
             FileProperties[(int)FileType.XBM] ??= new FileProperty
             {
                 Valid = true,
-                AxisMode = HorizontalAxis.EnergyXray,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.FlatWhite,
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
             };
             //RPT
             FileProperties[(int)FileType.RPT] ??= new FileProperty
             {
                 Valid = true,
-                AxisMode = HorizontalAxis.EnergyXray,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.FlatWhite,
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
             };
 
             //NPD
             FileProperties[(int)FileType.NPD] ??= new FileProperty
             {
                 Valid = true,
-                AxisMode = HorizontalAxis.EnergyXray,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.FlatWhite,
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
             };
 
             //TOF
             FileProperties[(int)FileType.TOF] ??= new FileProperty
             {
                 Valid = true,
-                AxisMode = HorizontalAxis.NeutronTOF,
-                WaveSource = WaveSource.Neutron,
-                WaveColor = WaveColor.FlatWhite,
-                TakeoffAngle = 90 / 180.0 * Math.PI,
-                TofLength = 26.5,
+                HorizontalAxisProperty = new HorizontalAxisProperty(90.0/180.0*Math.PI,26.5, TimeUnitEnum.MicroSecond)
             };
 
             //MISC
             FileProperties[(int)FileType.OTHRES] ??= new FileProperty
             {
                 Valid = true,
-                AxisMode = HorizontalAxis.Angle,
-                WaveSource = WaveSource.Xray,
-                WaveColor = WaveColor.Monochrome,
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
             };
             #endregion
 
@@ -1065,15 +1049,15 @@ public partial class FormMain : Form
             if (FileProperties[i] != null)
             {
 
-                regKey.SetValue($"FileProperty.WaveSource{i}", (int)FileProperties[i].WaveSource);
-                regKey.SetValue($"FileProperty.WaveColor{i}", (int)FileProperties[i].WaveColor);
-                regKey.SetValue($"FileProperty.Wavelength{i}", FileProperties[i].Wavelength);
-                regKey.SetValue($"FileProperty.TakeoffAngle{i}", FileProperties[i].TakeoffAngle);
-                regKey.SetValue($"FileProperty.AxisMode{i}", (int)(FileProperties[i].AxisMode));
-                regKey.SetValue($"FileProperty.XraySourceElementNumber{i}", FileProperties[i].XraySourceElementNumber);
-                regKey.SetValue($"FileProperty.XrayLine{i}", (int)(FileProperties[i].XrayLine));
-                regKey.SetValue($"FileProperty.TofAngle{i}", FileProperties[i].TofAngle);
-                regKey.SetValue($"FileProperty.TofLength{i}", FileProperties[i].TofLength);
+                regKey.SetValue($"FileProperty.WaveSource{i}", (int)FileProperties[i].HorizontalAxisProperty.WaveSource);
+                regKey.SetValue($"FileProperty.WaveColor{i}", (int)FileProperties[i].HorizontalAxisProperty.WaveColor);
+                regKey.SetValue($"FileProperty.Wavelength{i}", FileProperties[i].HorizontalAxisProperty.WaveLength);
+                regKey.SetValue($"FileProperty.TakeoffAngle{i}", FileProperties[i].HorizontalAxisProperty.EnergyTakeoffAngle);
+                regKey.SetValue($"FileProperty.AxisMode{i}", (int)(FileProperties[i].HorizontalAxisProperty.AxisMode));
+                regKey.SetValue($"FileProperty.XraySourceElementNumber{i}", FileProperties[i].HorizontalAxisProperty.XrayElementNumber);
+                regKey.SetValue($"FileProperty.XrayLine{i}", (int)(FileProperties[i].HorizontalAxisProperty.XrayLine));
+                regKey.SetValue($"FileProperty.TofAngle{i}", FileProperties[i].HorizontalAxisProperty.TofAngle);
+                regKey.SetValue($"FileProperty.TofLength{i}", FileProperties[i].HorizontalAxisProperty.TofLength);
                 regKey.SetValue($"FileProperty.ExposureTime{i}", FileProperties[i].ExposureTime);
 
                 var sb = new StringBuilder();
@@ -1542,17 +1526,7 @@ public partial class FormMain : Form
                     int shiftY = 40;
                     for (int j = 0; j < cry.Plane.Count; j++)
                     {
-                        cry.Plane[j].XCalc = AxisMode switch
-                        {
-                            HorizontalAxis.Angle => (2 * Math.Asin(WaveLength / 2 / cry.Plane[j].d) / Math.PI * 180),
-                            HorizontalAxis.d => cry.Plane[j].d * 10,
-                            HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(cry.Plane[j].d, TakeoffAngle),
-                            HorizontalAxis.EnergyElectron => HorizontalAxisConverter.DToElectronEnergy(cry.Plane[j].d, TakeoffAngle),
-                            HorizontalAxis.EnergyNeutron => HorizontalAxisConverter.DToNeutronEnergy(cry.Plane[j].d, TakeoffAngle),
-                            HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(cry.Plane[j].d, TofAngle, TofLength),
-                            HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(cry.Plane[j].d) / 10.0,
-                            _ => cry.Plane[j].XCalc
-                        };
+                        cry.Plane[j].XCalc = HorizontalAxisConverter.ConvertFromD(cry.Plane[j].d, HorizontalAxisProperty);
 
                         if (cry.Plane[j].XCalc > LowerX && cry.Plane[j].XCalc < UpperX)
                         {
@@ -1812,48 +1786,18 @@ public partial class FormMain : Form
     //各結晶の描画範囲内の回折線の位置計算
     public void InitializeCrystalPlane()
     {
+        //nm単位
         double dMin = 1, dMax = 1;
-        if (AxisMode == HorizontalAxis.Angle)
-        {
-            dMin = WaveLength / 2 / Math.Sin(MaximalX / 360 * Math.PI);
-            dMax = WaveLength / 2 / Math.Sin(MinimalX / 360 * Math.PI);
-        }
-        else if (AxisMode == HorizontalAxis.d)
-        {
-            dMax = MaximalX / 10;
-            dMin = Math.Max(MinimalX / 10, 0.05);
-        }
-        else if (AxisMode == HorizontalAxis.EnergyXray)
-        {
-            dMax = HorizontalAxisConverter.XrayEnergyToD(MinimalX, TakeoffAngle);
-            dMin = HorizontalAxisConverter.XrayEnergyToD(MaximalX, TakeoffAngle);
-            if (dMax < 0)
-                dMax = 1000;
 
-        }
-        else if (AxisMode == HorizontalAxis.EnergyElectron)
-        {
-            dMax = HorizontalAxisConverter.ElectronEnergyToD(MinimalX, TakeoffAngle);
-            dMin = HorizontalAxisConverter.ElectronEnergyToD(MaximalX, TakeoffAngle);
+        var val1 = HorizontalAxisConverter.ConvertToD(MinimalX, HorizontalAxisProperty);
+        var val2 = HorizontalAxisConverter.ConvertToD(MaximalX, HorizontalAxisProperty);
 
-        }
-        else if (AxisMode == HorizontalAxis.EnergyNeutron)
-        {
-            dMax = HorizontalAxisConverter.NeutronEnergyToD(MinimalX, TakeoffAngle);
-            dMin = HorizontalAxisConverter.NeutronEnergyToD(MaximalX, TakeoffAngle);
+        dMin = Math.Min(val1, val2);
+        dMin = Math.Max(dMin, 0.01);
 
-        }
-        else if (AxisMode == HorizontalAxis.NeutronTOF)
-        {
-            dMax = HorizontalAxisConverter.NeutronTofToD(MaximalX, TofAngle, TofLength);
-            dMin = Math.Max(HorizontalAxisConverter.NeutronTofToD(MinimalX, TofAngle, TofLength), 0.02);
-        }
-        else if (AxisMode == HorizontalAxis.WaveNumber)
-        {
-            dMax = HorizontalAxisConverter.WaveNumberToD(MinimalX * 10);
-            dMin = HorizontalAxisConverter.WaveNumberToD(MaximalX * 10);
-
-        }
+        dMax = Math.Max(val1, val2);
+        if (dMax < 0)
+            dMax = 1000;
 
         for (int i = 1; i < dataSet.DataTableCrystal.Items.Count; i++)
         {
@@ -1907,16 +1851,23 @@ public partial class FormMain : Form
             (double)(x - OriginPos.X) / (pictureBoxMain.Width - OriginPos.X) * (UpperX - LowerX) + LowerX,
             (double)(pictureBoxMain.Height - y - OriginPos.Y - BottomMargin) / (pictureBoxMain.Height - OriginPos.Y - BottomMargin) * (UpperY - LowerY) + LowerY);
     }
+    /// <summary>
+    /// プロファイル座標の横軸をd値(nm)に変換( 縦軸はそのまま)
+    /// </summary>
+    /// <param name="pt"></param>
+    /// <returns></returns>
     public PointD ConvToDspacing(PointD pt)
-    {//プロファイル座標の横軸をd値に変換( 縦軸はそのまま)
-        if (AxisMode == HorizontalAxis.Angle)
-            pt.X = WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI);
-        else if (AxisMode == HorizontalAxis.EnergyXray)
-            pt.X = HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle);
-        else if (AxisMode == HorizontalAxis.NeutronTOF)
-            pt.X = HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength);
-        else if (AxisMode == HorizontalAxis.d)
-            pt.X = pt.X / 10;
+    {
+        //if (AxisMode == HorizontalAxis.Angle)
+        //    pt.X = WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI);
+        //else if (AxisMode == HorizontalAxis.EnergyXray)
+        //    pt.X = HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle);
+        //else if (AxisMode == HorizontalAxis.NeutronTOF)
+        //    pt.X = HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength);
+        //else if (AxisMode == HorizontalAxis.d)
+        //    pt.X = pt.X / 10;
+
+        pt.X = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty);
         return pt;
     }
 
@@ -2229,15 +2180,17 @@ public partial class FormMain : Form
         };
         #endregion
 
-        var d = AxisMode switch
-        {
-            HorizontalAxis.Angle => 10 * WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI),
-            HorizontalAxis.EnergyXray => 10 * HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle),
-            HorizontalAxis.d => pt.X,
-            HorizontalAxis.NeutronTOF => 10 * HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength),
-            HorizontalAxis.WaveNumber => HorizontalAxisConverter.WaveNumberToD(pt.X),
-            _ => pt.X
-        };
+        var d = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty)*10;
+
+        //var d = AxisMode switch
+        //{
+        //    HorizontalAxis.Angle => 10 * WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI),
+        //    HorizontalAxis.EnergyXray => 10 * HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle),
+        //    HorizontalAxis.d => pt.X,
+        //    HorizontalAxis.NeutronTOF => 10 * HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength),
+        //    HorizontalAxis.WaveNumber => HorizontalAxisConverter.WaveNumberToD(pt.X),
+        //    _ => pt.X
+        //};
 
         labelD.Text = $"d: {d:g5} Å";
         labelQ.Text = $"q: {2 * Math.PI / d:g5} Å⁻¹";
@@ -2299,25 +2252,14 @@ public partial class FormMain : Form
             if (SelectedCrysatlIndex == 0 && IsPlaneSelected && e.Button == MouseButtons.Left)//flexibleCrystalのPlane選択モードのとき
             {
                 Crystal cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
-                cry.Plane[SelectedPlaneIndex].d = ConvToDspacing(pt).X;
+                cry.Plane[SelectedPlaneIndex].d = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty); //ConvToDspacing(pt).X;
                 cry.Plane.Sort();
                 Draw();
             }
             else if (IsPlaneSelected && e.Button == MouseButtons.Left)//通常結晶のPlane選択モードのとき
             {
                 Crystal cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
-                double mag = 1;
-                if (AxisMode == HorizontalAxis.Angle)
-                    mag = WaveLength / 2 / Math.Sin(pt.X / 360 * Math.PI) / cry.Plane[SelectedPlaneIndex].d;
-                else if (AxisMode == HorizontalAxis.d)
-                    mag = pt.X / 10 / cry.Plane[SelectedPlaneIndex].d;
-                else if (AxisMode == HorizontalAxis.EnergyXray)
-                    mag = HorizontalAxisConverter.XrayEnergyToD(pt.X, TakeoffAngle) / cry.Plane[SelectedPlaneIndex].d;
-                else if (AxisMode == HorizontalAxis.NeutronTOF)
-                    mag = HorizontalAxisConverter.NeutronTofToD(pt.X, TofAngle, TofLength) / cry.Plane[SelectedPlaneIndex].d;
-                else if (AxisMode == HorizontalAxis.WaveNumber)
-                    mag = HorizontalAxisConverter.WaveNumberToD(pt.X * 10) / cry.Plane[SelectedPlaneIndex].d;
-
+                var mag = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty) / cry.Plane[SelectedPlaneIndex].d;
                 cry.A *= mag; cry.B *= mag; cry.C *= mag;
 
                 //VariableRatioOfIntensityがTrueのとき
@@ -2803,8 +2745,8 @@ public partial class FormMain : Form
                     return;
                 for (int i = 0; i < dp.Count; i++)
                 {
-                    if (dp[i].SrcProp.WaveSource == WaveSource.Xray && dp[i].SrcProp.WaveLength > 1)
-                        dp[i].SrcProp.WaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcProp.WaveLength * 10000);
+                    if (dp[i].SrcProperty.WaveSource == WaveSource.Xray && dp[i].SrcProperty.WaveLength > 1)
+                        dp[i].SrcProperty.WaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcProperty.WaveLength * 10000);
                     dp[i].SubtractBackground = false;
                     for (int j = 0; j < dp[i].SourceProfile.Pt.Count; j++)
                         if (dp[i].SourceProfile.Pt[j].Y == 0)
@@ -2880,13 +2822,13 @@ public partial class FormMain : Form
                     if (dp.Count > 0)
                         for (int i = 0; i < dp.Count; i++)
                         {
-                            dp[i].SrcProp.WaveSource = formDataConverter.WaveSource;
-                            dp[i].SrcProp.WaveColor = formDataConverter.WaveColor;
-                            dp[i].SrcProp.WaveLength = formDataConverter.Wavelength;
-                            dp[i].SrcProp.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-                            dp[i].SrcProp.AxisMode = formDataConverter.AxisMode;
-                            dp[i].SrcProp.XrayElementNumber = formDataConverter.XraySourceElementNumber;
-                            dp[i].SrcProp.XrayLine = formDataConverter.XrayLine;
+                            dp[i].SrcProperty.WaveSource = formDataConverter.WaveSource;
+                            dp[i].SrcProperty.WaveColor = formDataConverter.WaveColor;
+                            dp[i].SrcProperty.WaveLength = formDataConverter.Wavelength;
+                            dp[i].SrcProperty.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
+                            dp[i].SrcProperty.AxisMode = formDataConverter.AxisMode;
+                            dp[i].SrcProperty.XrayElementNumber = formDataConverter.XraySourceElementNumber;
+                            dp[i].SrcProperty.XrayLine = formDataConverter.XrayLine;
                             dp[i].ExposureTime = formDataConverter.ExposureTime;
                             dp[i].SubtractBackground = false;
                         }
@@ -3216,15 +3158,15 @@ public partial class FormMain : Form
             #endregion
 
 
-            diffProf.SrcProp.WaveSource = formDataConverter.WaveSource;
-            diffProf.SrcProp.WaveColor = formDataConverter.WaveColor;
-            diffProf.SrcProp.WaveLength = formDataConverter.Wavelength;
-            diffProf.SrcProp.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-            diffProf.SrcProp.AxisMode = formDataConverter.AxisMode;
-            diffProf.SrcProp.XrayElementNumber = formDataConverter.XraySourceElementNumber;
-            diffProf.SrcProp.XrayLine = formDataConverter.XrayLine;
-            diffProf.SrcProp.TofAngle = formDataConverter.TofAngle;
-            diffProf.SrcProp.TofLength = formDataConverter.TofLength;
+            diffProf.SrcProperty.WaveSource = formDataConverter.WaveSource;
+            diffProf.SrcProperty.WaveColor = formDataConverter.WaveColor;
+            diffProf.SrcProperty.WaveLength = formDataConverter.Wavelength;
+            diffProf.SrcProperty.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
+            diffProf.SrcProperty.AxisMode = formDataConverter.AxisMode;
+            diffProf.SrcProperty.XrayElementNumber = formDataConverter.XraySourceElementNumber;
+            diffProf.SrcProperty.XrayLine = formDataConverter.XrayLine;
+            diffProf.SrcProperty.TofAngle = formDataConverter.TofAngle;
+            diffProf.SrcProperty.TofLength = formDataConverter.TofLength;
 
             diffProf.ExposureTime = formDataConverter.ExposureTime;
 
@@ -3242,7 +3184,7 @@ public partial class FormMain : Form
 
             if (diffProf.SourceProfile.Pt.Count > 0)
             {
-                if (diffProf.SrcProp.AxisMode == HorizontalAxis.NeutronTOF)
+                if (diffProf.SrcProperty.AxisMode == HorizontalAxis.NeutronTOF)
                     if (formDataConverter.TofUnitNanoSec)//単位を変換する必要がある場合は
                         for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
                             diffProf.SourceProfile.Pt[i] = new PointD(diffProf.SourceProfile.Pt[i].X / 1000, diffProf.SourceProfile.Pt[i].Y);
@@ -3273,24 +3215,24 @@ public partial class FormMain : Form
          //dp.CopyParameter(defaultDP);
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
-                if (WaveColor != dp.SrcProp.WaveColor) WaveColor = dp.SrcProp.WaveColor;
-                if (WaveSource != dp.SrcProp.WaveSource) WaveSource = dp.SrcProp.WaveSource;
-                if (AxisMode != dp.SrcProp.AxisMode) AxisMode = dp.SrcProp.AxisMode;
-                if (WaveLength != dp.SrcProp.WaveLength) WaveLength = dp.SrcProp.WaveLength;
+                if (WaveColor != dp.SrcProperty.WaveColor) WaveColor = dp.SrcProperty.WaveColor;
+                if (WaveSource != dp.SrcProperty.WaveSource) WaveSource = dp.SrcProperty.WaveSource;
+                if (AxisMode != dp.SrcProperty.AxisMode) AxisMode = dp.SrcProperty.AxisMode;
+                if (WaveLength != dp.SrcProperty.WaveLength) WaveLength = dp.SrcProperty.WaveLength;
                 if (WaveSource == WaveSource.Xray)
                 {
                     if (WaveColor == WaveColor.Monochrome)
                     {
-                        if (XraySourceElementNumber != dp.SrcProp.XrayElementNumber) XraySourceElementNumber = dp.SrcProp.XrayElementNumber;
-                        if (XraySourceLine != dp.SrcProp.XrayLine) XraySourceLine = dp.SrcProp.XrayLine;
+                        if (XraySourceElementNumber != dp.SrcProperty.XrayElementNumber) XraySourceElementNumber = dp.SrcProperty.XrayElementNumber;
+                        if (XraySourceLine != dp.SrcProperty.XrayLine) XraySourceLine = dp.SrcProperty.XrayLine;
                     }
                 }
 
-                if (TakeoffAngle != dp.SrcProp.EnergyTakeoffAngle) TakeoffAngle = dp.SrcProp.EnergyTakeoffAngle;
-                if (TofAngle != dp.SrcProp.TofAngle) TofAngle = dp.SrcProp.TofAngle;
-                if (TofLength != dp.SrcProp.TofLength) TofLength = dp.SrcProp.TofLength;
+                if (TakeoffAngle != dp.SrcProperty.EnergyTakeoffAngle) TakeoffAngle = dp.SrcProperty.EnergyTakeoffAngle;
+                if (TofAngle != dp.SrcProperty.TofAngle) TofAngle = dp.SrcProperty.TofAngle;
+                if (TofLength != dp.SrcProperty.TofLength) TofLength = dp.SrcProperty.TofLength;
             }
-            dp.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
+            dp.SetConvertedProfile(HorizontalAxisProperty);
 
             //マルチパターンモードかつChangeColorモードのときは
             if (dp.ColorARGB == null)
@@ -3326,13 +3268,13 @@ public partial class FormMain : Form
             if (checkBoxChangeHorizontalAppearance.Checked)
             {
                 AxisMode = HorizontalAxis.None;
-                XraySourceElementNumber = dp.SrcProp.XrayElementNumber;
-                XraySourceLine = dp.SrcProp.XrayLine;
+                XraySourceElementNumber = dp.SrcProperty.XrayElementNumber;
+                XraySourceLine = dp.SrcProperty.XrayLine;
                 if (XraySourceElementNumber == 0)
-                    WaveLength = dp.SrcProp.WaveLength;
-                TakeoffAngle = dp.SrcProp.EnergyTakeoffAngle;
+                    WaveLength = dp.SrcProperty.WaveLength;
+                TakeoffAngle = dp.SrcProperty.EnergyTakeoffAngle;
             }
-            dp.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
+            dp.SetConvertedProfile(HorizontalAxisProperty);
 
             //マルチパターンモードかつChangeColorモードのときは
             if (dp.ColorARGB == null)
@@ -3972,7 +3914,7 @@ public partial class FormMain : Form
         for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
         {
             var d = dataSet.DataTableProfile.Items[i];
-            d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
+            d.SetConvertedProfile(HorizontalAxisProperty);
         }
         SetDrawRangeLimit();
         ResetDrawRange();
@@ -4037,7 +3979,7 @@ public partial class FormMain : Form
             var d = dataSet.DataTableProfile.Items[i];
             d.IsCPS = radioButtonCountsPerStep.Checked;
             d.IsLogIntensity = radioButtonLogarithm.Checked;
-            d.SetConvertedProfile(AxisMode, WaveLength, TakeoffAngle, TofAngle, TofLength);
+            d.SetConvertedProfile(HorizontalAxisProperty);
         }
         SetDrawRangeLimit();
         ResetDrawRange();

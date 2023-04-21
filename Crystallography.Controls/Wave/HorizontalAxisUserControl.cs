@@ -10,21 +10,22 @@ namespace Crystallography.Controls
         public event MyEventHandler AxisPropertyChanged;
 
         public bool SkipAxisPropertyChangedEvent = false;
-
-
         #region プロパティ
 
         public HorizontalAxisProperty HorizontalAxisProperty
         {
-            get => new(AxisMode, WaveSource, WaveColor, WaveLength, XrayNumber, XrayLine, ElectronAccVol, TakeoffAngle, TofAngle, TofLength, 
+            get => new(AxisMode, WaveSource, WaveColor, WaveLength, XrayNumber, XrayLine, ElectronAccVol, TakeoffAngle, TofAngle, TofLength,
                 TwoThetaUnit, DspacingUnit, WaveNumberUnit, EnergyUnit, TofTimeUnit);
 
             set
             {
+                bool tmp = SkipAxisPropertyChangedEvent;
                 SkipAxisPropertyChangedEvent = true;
-                AxisMode = value.AxisMode;
                 WaveSource = value.WaveSource;
-                WaveLength= value.WaveLength;
+                WaveColor = value.WaveColor;
+
+                AxisMode = value.AxisMode;
+
                 XrayNumber = value.XrayElementNumber;
                 XrayLine = value.XrayLine;
                 ElectronAccVol = value.ElectronAccVolatage;
@@ -37,10 +38,17 @@ namespace Crystallography.Controls
                 EnergyUnit = value.EnergyUnit;
                 TofTimeUnit = value.TofTimeUnit;
 
+                if (WaveColor == WaveColor.Monochrome)
+                {
+                    if (WaveSource == WaveSource.Electron || WaveSource == WaveSource.Neutron)
+                        WaveLength = value.WaveLength;
+                    else if (XrayNumber == 0)
+                        WaveLength = value.WaveLength;
+                }
+                SkipAxisPropertyChangedEvent = tmp;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
         }
-
-
 
         //現在の軸の情報を返すプロパティ
         public HorizontalAxis AxisMode
@@ -102,7 +110,7 @@ namespace Crystallography.Controls
         {
             set
             {
-                waveLengthControl.WaveLengthText = value; 
+                waveLengthControl.WaveLengthText = value;
                 if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
             get => waveLengthControl.WaveLengthText;
@@ -164,6 +172,7 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (value == EnergyUnit) return;
                 if (value != EnergyUnitEnum.eV && value != EnergyUnitEnum.KeV && value != EnergyUnitEnum.MeV)
                     return;
                 radioButtonEnergyUnitEv.Checked = (value == EnergyUnitEnum.eV);
@@ -189,6 +198,7 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (value == DspacingUnit) return;
                 if (value != LengthUnitEnum.Angstrom && value != LengthUnitEnum.NanoMeter)
                     return;
                 radioButtonDspacingUnitAng.Checked = (value == LengthUnitEnum.Angstrom);
@@ -199,7 +209,7 @@ namespace Crystallography.Controls
             {
                 if (radioButtonDspacingUnitAng.Checked)
                     return LengthUnitEnum.Angstrom;
-                else 
+                else
                     return LengthUnitEnum.NanoMeter;
             }
         }
@@ -211,6 +221,7 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (value == WaveNumberUnit) return;
                 if (value != LengthUnitEnum.NanoMeterInverse && value != LengthUnitEnum.AngstromInverse)
                     return;
                 radioButtonWavenumberUnitNmInv.Checked = (value == LengthUnitEnum.NanoMeterInverse);
@@ -231,8 +242,9 @@ namespace Crystallography.Controls
         {
             set
             {
-                if (value != AngleUnitEnum.Degree && value != AngleUnitEnum.Radian)
-                    return;
+                if (value == TwoThetaUnit) return;
+                if (value != AngleUnitEnum.Degree && value != AngleUnitEnum.Radian) return;
+
                 radioButtonAngleUnitRadian.Checked = (value == AngleUnitEnum.Radian);
                 radioButtonAngleUnitDegree.Checked = (value == AngleUnitEnum.Degree);
                 if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
@@ -252,9 +264,12 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (value == TofTimeUnit)
+                    return;
+
                 radioButtonTofUnitNanoSec.Checked = value == TimeUnitEnum.NanoSecond;
                 radioButtonTofUnitMicroSec.Checked = value == TimeUnitEnum.MicroSecond;
-                if (!SkipAxisPropertyChangedEvent)                AxisPropertyChanged();
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged();
             }
             get
             {
@@ -273,7 +288,7 @@ namespace Crystallography.Controls
                 try
                 {
                     numericBoxTofTakeOffAngle.Value = Convert.ToDouble(value);
-                    AxisPropertyChanged?.Invoke();
+                    if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
                 }
                 catch { }
             }
@@ -290,7 +305,7 @@ namespace Crystallography.Controls
                 if (value > 0 && numericBoxTofTakeOffAngle.Value != value / Math.PI * 180.0)
                 {
                     numericBoxTofTakeOffAngle.Value = value / Math.PI * 180.0;
-                    AxisPropertyChanged?.Invoke();
+                    if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
                 }
             }
             get => numericBoxTofTakeOffAngle.Value / 180.0 * Math.PI;
@@ -308,8 +323,7 @@ namespace Crystallography.Controls
                     if (numericBoxTofDistance.Value != value)
                     {
                         numericBoxTofDistance.Value = value;
-
-                        AxisPropertyChanged?.Invoke();
+                        if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
                     }
                 }
                 catch { }
@@ -324,12 +338,16 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (value == WaveSource)
+                    return;
+
                 if (value == WaveSource.Xray)
                     radioButtonXray.Checked = true;
                 else if (value == WaveSource.Electron)
                     radioButtonElectron.Checked = true;
                 else if (value == WaveSource.Neutron)
                     radioButtonNeutron.Checked = true;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
             get
             {
@@ -348,12 +366,16 @@ namespace Crystallography.Controls
         {
             set
             {
+                if (WaveColor == value)
+                    return;
+
                 if (value == WaveColor.Monochrome)
                     radioButtonMonochro.Checked = true;
                 else if (value == WaveColor.FlatWhite)
                     radioButtonFlatWhite.Checked = true;
                 else if (value == WaveColor.CustomWhite)
                     radioButtonCustomWhite.Checked = true;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
             }
             get
             {
@@ -371,22 +393,62 @@ namespace Crystallography.Controls
         /// <summary>
         /// X線の線源を取得/設定
         /// </summary>
-        public int XrayNumber { set => waveLengthControl.XrayWaveSourceElementNumber = value; get => waveLengthControl.XrayWaveSourceElementNumber; }
+        public int XrayNumber
+        {
+            set
+            {
+                if (waveLengthControl.XrayWaveSourceElementNumber == value)
+                    return;
+                waveLengthControl.XrayWaveSourceElementNumber = value;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get => waveLengthControl.XrayWaveSourceElementNumber;
+        }
 
         /// <summary>
         /// X線の線源を取得/設定
         /// </summary>
-        public XrayLine XrayLine { set => waveLengthControl.XrayWaveSourceLine = value; get => waveLengthControl.XrayWaveSourceLine; }
+        public XrayLine XrayLine
+        {
+            set
+            {
+                if (waveLengthControl.XrayWaveSourceLine == value)
+                    return;
+                waveLengthControl.XrayWaveSourceLine = value;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get => waveLengthControl.XrayWaveSourceLine;
+        }
 
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
-        public double ElectronAccVol { set => waveLengthControl.Energy = value; get => waveLengthControl.Energy; }
+        public double ElectronAccVol
+        {
+            set
+            {
+                if (waveLengthControl.Energy == value)
+                    return;
+                waveLengthControl.Energy = value;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get => waveLengthControl.Energy;
+        }
 
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>
-        public string ElectronAccVoltageText { set => waveLengthControl.EnergyText = value; get => waveLengthControl.EnergyText; }
+        public string ElectronAccVoltageText
+        {
+            set
+            {
+                if (waveLengthControl.EnergyText == value)
+                    return;
+                waveLengthControl.EnergyText = value;
+                if (!SkipAxisPropertyChangedEvent) AxisPropertyChanged?.Invoke();
+            }
+            get => waveLengthControl.EnergyText;
+        }
 
         #endregion プロパティ
 

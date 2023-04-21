@@ -17,10 +17,21 @@ namespace PDIndexer
             InitializeComponent();
         }
 
+        public HorizontalAxisProperty HorizontalAxisProperty
+        {
+            set
+            {
+                if (value != HorizontalAxisProperty)
+                    horizontalAxisUserControl.HorizontalAxisProperty = value;
+            }
+            get => horizontalAxisUserControl.HorizontalAxisProperty;
+        }
+
         /// <summary>
         /// 露出時間
         /// </summary>
         public double ExposureTime { set => numericalTextBox1.Value = value; get => numericalTextBox1.Value; }
+
 
         public HorizontalAxis AxisMode
         {
@@ -144,16 +155,19 @@ namespace PDIndexer
 
         public void SetProperty(FormMain.FileProperty property)
         {
-            WaveSource = property.WaveSource;
-            WaveColor = property.WaveColor;
-            Wavelength = property.Wavelength;
-            TakeoffAngle = property.TakeoffAngle;
-            AxisMode = property.AxisMode;
-            XraySourceElementNumber = property.XraySourceElementNumber;
-            XrayLine = property.XrayLine;
-            TofAngle = property.TofAngle;
-            TofLength = property.TofLength;
-            ExposureTime = property.ExposureTime;
+
+            HorizontalAxisProperty = property.HorizontalAxisProperty;
+
+            //WaveSource = property.WaveSource;
+            //WaveColor = property.WaveColor;
+            //Wavelength = property.Wavelength;
+            //TakeoffAngle = property.TakeoffAngle;
+            //AxisMode = property.AxisMode;
+            //XraySourceElementNumber = property.XraySourceElementNumber;
+            //XrayLine = property.XrayLine;
+            //TofAngle = property.TofAngle;
+            //TofLength = property.TofLength;
+            //ExposureTime = property.ExposureTime;
             EGC = property.EGC;
 
         }
@@ -162,17 +176,18 @@ namespace PDIndexer
             return new FormMain.FileProperty()
             {
                 Valid = true,
-                WaveSource = this.WaveSource,
-                WaveColor = this.WaveColor,
-                Wavelength = this.Wavelength,
-                TakeoffAngle = this.TakeoffAngle,
-                AxisMode = this.AxisMode,
+                //WaveSource = this.WaveSource,
+                //WaveColor = this.WaveColor,
+                //Wavelength = this.Wavelength,
+                //TakeoffAngle = this.TakeoffAngle,
+                //AxisMode = this.AxisMode,
 
-                XraySourceElementNumber = XraySourceElementNumber,
-                XrayLine = XrayLine,
-                TofAngle = TofAngle,
-                TofLength = TofLength,
-                ExposureTime = ExposureTime,
+                //XraySourceElementNumber = XraySourceElementNumber,
+                //XrayLine = XrayLine,
+                //TofAngle = TofAngle,
+                //TofLength = TofLength,
+                //ExposureTime = ExposureTime,
+                HorizontalAxisProperty = HorizontalAxisProperty,
                 EGC = EGC,
             };
         }

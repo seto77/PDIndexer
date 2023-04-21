@@ -125,17 +125,17 @@ namespace Crystallography
                         if (strList[0].Contains("Wave Length", StringComparison.Ordinal))
                         {
                             if (strList[0].Contains("(nm)", StringComparison.Ordinal))
-                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
+                                diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]);
                             else if (strList[0].Contains("(0.1nm)", StringComparison.Ordinal))
-                                diffProf.SrcWaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
+                                diffProf.SrcProperty.WaveLength = Convert.ToDouble((strList[0].Split(':', true))[1]) / 10.0;
                         }
 
                         if ((strList[4].Split(':', true))[1] == "Angle")
-                            diffProf.SrcAxisMode = HorizontalAxis.Angle;
+                            diffProf.SrcProperty.AxisMode = HorizontalAxis.Angle;
                         else if ((strList[4].Split(':', true))[1] == "d-spacing")
-                            diffProf.SrcAxisMode = HorizontalAxis.d;
+                            diffProf.SrcProperty.AxisMode = HorizontalAxis.d;
                         else if ((strList[4].Split(':', true))[1] == "Energy")
-                            diffProf.SrcAxisMode = HorizontalAxis.EnergyXray;
+                            diffProf.SrcProperty.AxisMode = HorizontalAxis.EnergyXray;
                         else
                             return Array.Empty<DiffractionProfile>();
 
