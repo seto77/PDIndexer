@@ -3631,13 +3631,12 @@ public partial class FormMain : Form
     private void resetInitialCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
         => readCrystal(Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "\\default.Xml", false, true);
 
-
     //プロファイル保存
     public void savePatternProfileToolStripMenuItem_Click(object sender, EventArgs e)
     {
         if (dataSet.DataTableProfile.Items.Count > 0)
         {
-            var dialog = new SaveFileDialog { Filter = "*.pdi|*.pdi" };
+            var dialog = new SaveFileDialog { Filter = "*.pdi2|*.pdi2" };
             if (dialog.ShowDialog() == DialogResult.OK)
                 SaveProfile(dialog.FileName);
         }
@@ -3650,8 +3649,8 @@ public partial class FormMain : Form
             var dp = new List<DiffractionProfile2>();
             for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
                 dp.Add(dataSet.DataTableProfile.Items[i]);
-            if (!filename.ToLower().EndsWith(".pdi"))
-                filename += ".pdi";
+            if (!filename.ToLower().EndsWith(".pdi2"))
+                filename += ".pdi2";
 
             XYFile.SavePdi2File(dp.ToArray(), filename);
         }
