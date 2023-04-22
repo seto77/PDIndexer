@@ -111,7 +111,7 @@ public partial class FormMain : Form
 
     public bool IsPlaneSelected = false;
 
-    public DiffractionProfile defaultDP = new();
+    public DiffractionProfile2 defaultDP = new();
     int filterIndex;
     string initialDirectory = "";
 
@@ -349,19 +349,19 @@ public partial class FormMain : Form
                     {
                         try
                         {
-                            if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile)))
+                            if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2)))
                             {
                                 var data = Clipboard.GetDataObject();
-                                var dp = (DiffractionProfile)data.GetData(typeof(DiffractionProfile));
+                                var dp = (DiffractionProfile2)data.GetData(typeof(DiffractionProfile2));
 
                                 if (dp != null)
                                     AddProfileToCheckedListBox(dp, true, true);
                             }
-                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile[])))
+                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2[])))
                             {
                                 var dataObject = Clipboard.GetDataObject();
                                 var data = dataObject;
-                                var dp = (DiffractionProfile[])data.GetData(typeof(DiffractionProfile[]));
+                                var dp = (DiffractionProfile2[])data.GetData(typeof(DiffractionProfile2[]));
 
                                 if (dp != null && dp.Length >= 1)
                                 {
@@ -1102,7 +1102,7 @@ public partial class FormMain : Form
         double maximalY = double.NegativeInfinity;
         for (int n = 0; n < dataSet.DataTableProfile.Items.Count; n++)
         {
-            var diffProf = (DiffractionProfile)dataSet.DataTableProfile.Items[n];
+            var diffProf = (DiffractionProfile2)dataSet.DataTableProfile.Items[n];
             if (diffProf.Profile.Pt.Count > 2)
             {
                 if (minimalX > diffProf.Profile.Pt[0].X)
@@ -1249,7 +1249,7 @@ public partial class FormMain : Form
                     for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
                     {
                         gMain.DrawString(dataSet.DataTableProfile.CheckedItems[i].ToString(),
-                            font, new SolidBrush(Color.FromArgb(((DiffractionProfile)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)),
+                            font, new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)),
                             new PointF(startPosition.X, startPosition.Y + (dataSet.DataTableProfile.CheckedItems.Count - 1 - i) * maxSizeF.Height));
                     }
                 }
@@ -1301,7 +1301,7 @@ public partial class FormMain : Form
         if (checkBoxShowUnrolledImage.Checked)
             if (bindingSourceProfile.Position > -1 && dataSet.DataTableProfile.GetItemChecked(bindingSourceProfile.Position))
             {
-                DiffractionProfile dif = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                DiffractionProfile2 dif = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 if (dif.ImageArray != null)
                 {
                     var bmp = new Bitmap(pictureBoxMain.Width - OriginPos.X, pictureBoxMain.Height - OriginPos.Y, PixelFormat.Format24bppRgb);
@@ -1378,7 +1378,7 @@ public partial class FormMain : Form
                     gMain.DrawLine(pen, endX, top, endX, zero);
                 gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
 
-                var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 var original = new List<PointF>();
                 float basePosition = bindingSourceProfile.Position * IntervalOfProfiles;
                 for (int j = endIndex; j < dp.ConvertedProfile.Pt.Count && dp.ConvertedProfile.Pt[j].X < ranges[i].Maximum; j++)
@@ -1472,7 +1472,7 @@ public partial class FormMain : Form
             gMain.DrawString("Background Control Points Select Mode", new Font("Tahoma", 8), new SolidBrush(Color.Black), new PointF(50, 0));
         if (bindingSourceProfile.Position >= 0 && dataSet.DataTableProfile.GetItemChecked(bindingSourceProfile.Position))
         {
-            DiffractionProfile dp = (DiffractionProfile)dataSet.DataTableProfile.Items[bindingSourceProfile.Position];
+            DiffractionProfile2 dp = (DiffractionProfile2)dataSet.DataTableProfile.Items[bindingSourceProfile.Position];
             if (dp.SubtractBackground && ShowBackgroundProfile)
             {
                 Color color = Color.FromArgb(dp.ColorARGB.Value);
@@ -1620,7 +1620,7 @@ public partial class FormMain : Form
         float basePosition = dataSet.DataTableProfile.ConvertRawIndexToCheckedIndex(bindingSourceProfile.Position) * IntervalOfProfiles;
         if (basePosition < 0) return;
 
-        var dp = (DiffractionProfile)dataSet.DataTableProfile.Rows[bindingSourceProfile.Position][1];
+        var dp = (DiffractionProfile2)dataSet.DataTableProfile.Rows[bindingSourceProfile.Position][1];
 
         var color = Color.FromArgb(dp.ColorARGB.Value);
         var penSubtraction = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.3)), (255 - (int)((255 - color.G) * 0.3)), (255 - (int)((255 - color.B) * 0.3))), dp.LineWidth);
@@ -1885,14 +1885,14 @@ public partial class FormMain : Form
         {
             if (e.Button == MouseButtons.Left && e.Clicks == 2 && bindingSourceProfile.Position >= 0)
             {//左ダブルクリックのときはBg点追加
-                DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 dp.AddBgPoints(pt);
                 dp.SetBackGroundProfile();
                 Draw();
             }
             else if (e.Button == MouseButtons.Left && e.Clicks == 1 && bindingSourceProfile.Position >= 0)
             { //左シングルクリックのときBg点選択
-                DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 double dev = pt.X - ConvToRealCoord(e.X - 3, e.Y).X;
                 int i = SearchPt(new PointD(e.X, e.Y), dp.ConvertSrcToDest(dp.BgPoints), 3);
                 if (i >= 0)
@@ -1904,7 +1904,7 @@ public partial class FormMain : Form
             }
             else if (e.Button == MouseButtons.Right && e.Clicks == 1 && bindingSourceProfile.Position >= 0)
             {//右シングルでかつバックグラウンド設定モードのとき
-                DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 int i = SearchPt(new PointD(e.X, e.Y), dp.ConvertSrcToDest(dp.BgPoints), 5);
                 if (i >= 0)
                 {
@@ -2020,7 +2020,7 @@ public partial class FormMain : Form
             if (i[0] < 0)
             {
                 double x = ConvToRealCoord(e.X, 0).X;
-                formProfile.AddMaskRange(new DiffractionProfile.MaskingRange(x, x));
+                formProfile.AddMaskRange(new DiffractionProfile2.MaskingRange(x, x));
                 formProfile.SortMaskRanges();
                 i = SearchMaskBoundary(pt.X, formProfile.GetMaskRanges(), dev);
             }
@@ -2206,7 +2206,7 @@ public partial class FormMain : Form
 
         else if (MaskingMode && formProfile.Visible && formProfile.checkBoxShowMaskedRange.Checked && bindingSourceProfile.Position >= 0)//MaskRange選択時
         {
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             int[] i = SearchMaskBoundary(pt.X, formProfile.GetMaskRanges(), dev);
             if (i[0] >= 0)
                 pictureBoxMain.Cursor = Cursors.VSplit;
@@ -2237,7 +2237,7 @@ public partial class FormMain : Form
         {//Bgモードで、Bg点を選択していて、左ドラッグのとき
             if (bindingSourceProfile.Position >= 0)
             {
-                var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+                var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 var newBgPoint = dp.ConvertDestToSrc(pt);
                 if (!double.IsNaN(newBgPoint.X) && !double.IsInfinity(newBgPoint.X))
                 {
@@ -2310,7 +2310,7 @@ public partial class FormMain : Form
             formProfile.SetMaskRange(SelectedMaskingBoundaryIndex, ConvToRealCoord(e.X, 0).X);
             if (formProfile.SortMaskRanges())
                 SelectedMaskingBoundaryIndex = SearchMaskBoundary(pt.X, formProfile.GetMaskRanges(), dev);
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.SetMaskingProfile();
             Draw();
         }
@@ -2396,7 +2396,7 @@ public partial class FormMain : Form
         else return -1;
     }
 
-    public static int[] SearchMaskBoundary(double x, DiffractionProfile.MaskingRange[] ranges, double dev)
+    public static int[] SearchMaskBoundary(double x, DiffractionProfile2.MaskingRange[] ranges, double dev)
     {
         if (ranges == null) return new int[] { -1, -1 };
         int index1 = 0;
@@ -2658,7 +2658,7 @@ public partial class FormMain : Form
     {
         var dlg = new OpenFileDialog
         {
-            Filter = "Powder Pattern File (WinPIP[*.csv];Fit2D[*.chi];PDI[*.pdi], EDX profile[*.rpt, *.npd, *.nxs])|*.csv;*.chi;*.pdi*.rpt;*npd;*nxs"
+            Filter = "Powder Pattern File (WinPIP[*.csv]; Fit2D[*.chi]; PDI[*.pdi,pdi2], EDX profile[*.rpt, *.npd, *.nxs])|*.csv;*.chi;*.pdi;*.pdi2;*.rpt;*.npd;*.nxs"
             + "|Any format(Auto[*.*])|*.*",
             Multiselect = true,
             FilterIndex = filterIndex
@@ -2736,11 +2736,11 @@ public partial class FormMain : Form
         //pdi, ras, nxs 形式の時. csvは拡張の場合
         if (ext == "pdi" || ext == "ras" || ext == "csv" || ext == "nxs")
         {
-            var dp = new List<DiffractionProfile>();
-            if (ext == "pdi")
+            var dp = new List<DiffractionProfile2>();
+            if (ext == "pdi" || ext == "pdi2")
             #region pdi形式のとき
             {
-                dp.AddRange(XYFile.ReadPdiFile(fileName));
+                dp.AddRange(XYFile.ReadPdi2File(fileName, ext == "pdi" ? 1 : 2));
                 if (dp.Count == 0)
                     return;
                 for (int i = 0; i < dp.Count; i++)
@@ -2797,7 +2797,7 @@ public partial class FormMain : Form
                                 var (data, result) = nxs.GetValue2<int>(channel + "/histogram");
                                 if (result && data.Length > 0)
                                 {
-                                    var diffProf = new DiffractionProfile { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {channel}" };
+                                    var diffProf = new DiffractionProfile2 { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {channel}" };
 
                                     var sumData = new int[data[0].Length];
                                     foreach (var d in data)
@@ -2847,7 +2847,7 @@ public partial class FormMain : Form
                 AddProfileToCheckedListBox(dp[^1], checkBoxAll.Checked, true, false);
 
                 Text = $"PDIndexer   {Version.VersionAndDate}   {dp[^1].Name}";
-
+                formFitting.ChangeHorizontalAxis();
                 return;
             }
         }
@@ -2862,7 +2862,7 @@ public partial class FormMain : Form
             if (strList.Count <= 3)
                 return;
 
-            var diffProf = new DiffractionProfile();
+            var diffProf = new DiffractionProfile2();
             formDataConverter.textBox.Lines = strList.ToArray();
 
             #region Fit2Dデータ
@@ -3194,6 +3194,7 @@ public partial class FormMain : Form
 
             Text = $"PDIndexer   {Version.VersionAndDate}   {Path.GetFileName(fileName)}";
         }
+        formFitting.ChangeHorizontalAxis();
     }
 
     #endregion
@@ -3208,7 +3209,7 @@ public partial class FormMain : Form
     /// <param name="isDrawn">描画範囲をリセットし描画するか</param>
     /// <param name="changePos">チェックリストボックスの選択を変更するか</param>
     /// <param name="isRenewOtherProfiles"></param>
-    public void AddProfileToCheckedListBox(DiffractionProfile dp, bool isCheked, bool isDrawn, bool changePos = true)
+    public void AddProfileToCheckedListBox(DiffractionProfile2 dp, bool isCheked, bool isDrawn, bool changePos = true)
     {
         if (dp.Mode == DiffractionProfileMode.Concentric)
         {//ConcentricModeのとき
@@ -3646,13 +3647,13 @@ public partial class FormMain : Form
     {
         if (dataSet.DataTableProfile.Items.Count > 0)
         {
-            var dp = new List<DiffractionProfile>();
+            var dp = new List<DiffractionProfile2>();
             for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
                 dp.Add(dataSet.DataTableProfile.Items[i]);
             if (!filename.ToLower().EndsWith(".pdi"))
                 filename += ".pdi";
 
-            XYFile.SavePdiFile(dp.ToArray(), filename);
+            XYFile.SavePdi2File(dp.ToArray(), filename);
         }
     }
 
@@ -3836,7 +3837,7 @@ public partial class FormMain : Form
         if (bindingSourceProfile.Position < 0) return;
 
         var dlg = new SaveFileDialog { Filter = "*.gsa|*.gsa" };
-        var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1]; ;
+        var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1]; ;
         dlg.FileName = Path.GetFileNameWithoutExtension(dp.Name);
         if (dlg.ShowDialog() == DialogResult.OK)
         {
@@ -3996,7 +3997,7 @@ public partial class FormMain : Form
         if (dataSet.DataTableProfile.GetItemChecked(bindingSourceProfile.Position))
         {
 
-            var dif = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            var dif = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             if (dif.ImageArray != null)
             {
                 tabControl1.Visible = true;

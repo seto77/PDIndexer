@@ -23,6 +23,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.437(2023/03/18) Fixed minor bugs." +
         "\r\n ver4.436(2023/03/18) Fixed minor bugs." +
         "\r\n ver4.435(2023/03/07) Fixed bugs on the 'Macro function'." +
         "\r\n ver4.434(2023/02/13) Improved 'Sequential Analysis'." +

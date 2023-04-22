@@ -17,7 +17,7 @@ namespace PDIndexer
     public partial class FormExportGSAS : Form
     {
         public FormMain formMain;
-        private  DiffractionProfile profile;
+        private  DiffractionProfile2 profile;
         private void FormExportGSAS_Load(object sender, EventArgs e)
         {
             setGsasFileContents();
@@ -34,7 +34,7 @@ namespace PDIndexer
                 div = 1;
 
             StringBuilder sb = new StringBuilder();
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]; ;
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]; ;
 
             //一行目
             string str = dp.Name;

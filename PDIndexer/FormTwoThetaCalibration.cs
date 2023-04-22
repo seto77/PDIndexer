@@ -55,7 +55,7 @@ namespace PDIndexer
         private void buttonCalibrate_Click(object sender, EventArgs e)
         {
             //まず、現在のcoeffを保存
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
             coeff0_old = dp.TwoThetaOffsetCoeff0;
             coeff1_old = dp.TwoThetaOffsetCoeff1;
             coeff2_old = dp.TwoThetaOffsetCoeff2;

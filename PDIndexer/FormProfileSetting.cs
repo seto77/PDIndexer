@@ -90,7 +90,7 @@ public partial class FormProfileSetting : Form
         panelBandPassFilter.Visible = checkBoxBandPassFilter.Checked;
         if (bindingSourceProfile.Position >= 0)
         {
-            var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             string unit = "";
             switch (dp.DstProperty.AxisMode)
             {
@@ -166,7 +166,7 @@ public partial class FormProfileSetting : Form
     {
         if (bindingSourceProfile.Position >= 0)
         {
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.BgPointsNumber = (int)numericUpDownBgPointsNumber.Value;
             dp.getBgPointsAuto();
             dp.SetSmoothingProfile();
@@ -179,7 +179,7 @@ public partial class FormProfileSetting : Form
     {
         if (bindingSourceProfile.Position >= 0)
         {
-            setCommentOption((DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1]);
+            setCommentOption((DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1]);
         }
     }
 
@@ -191,7 +191,7 @@ public partial class FormProfileSetting : Form
         if (skipEvent) return;
         if (bindingSourceProfile.Position >= 0)
         {
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             setTwoThetaOffsetOption(dp);
             setMaskingOption(dp);
             setNormarizeOption(dp);
@@ -212,7 +212,7 @@ public partial class FormProfileSetting : Form
     {
         for (int i = 0; i < dataSetProfile.DataTableProfile.Rows.Count; i++)
         {
-            DiffractionProfile dp = (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[i][1];
+            DiffractionProfile2 dp = (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[i][1];
             setMaskingOption(dp);
             setNormarizeOption(dp);
             setSmoothingOption(dp);
@@ -223,13 +223,13 @@ public partial class FormProfileSetting : Form
         formMain.SetDrawRangeLimit();
         formMain.Draw();
     }
-    private void setMaskingOption(DiffractionProfile dp)
+    private void setMaskingOption(DiffractionProfile2 dp)
     {
         dp.DoesMaskAndInterpolate = checkBoxMaskingMode.Checked;
         dp.InterpolationOrder = (int)numericUpDownInterpolationOrder.Value;
         dp.InterpolationPoints = (int)numericUpDownInterpolationPoints.Value;
     }
-    private void setNormarizeOption(DiffractionProfile dp)
+    private void setNormarizeOption(DiffractionProfile2 dp)
     {
         //ノーマライズ関連
         dp.DoesNormarizeIntensity = checkBoxNormarizeIntensity.Checked;
@@ -238,25 +238,25 @@ public partial class FormProfileSetting : Form
         dp.NormarizeRangeEnd = (double)numericUpDownNormarizeRangeHigh.Value;
         dp.NormarizeIntensity = (double)numericUpDownNormarizeIntensity.Value;
     }
-    private void setSmoothingOption(DiffractionProfile dp)
+    private void setSmoothingOption(DiffractionProfile2 dp)
     {
         //smoothing関連
         dp.DoesSmoothing = checkBoxSmoothing.Checked;
         dp.SazitkyGorayM = (int)numericUpDownSmoothingSavitzkyAndGolayM.Value;
         dp.SazitkyGorayN = (int)numericUpDownSmoothingSavitzkyAndGolayN.Value;
     }
-    private void setTwoThetaOffsetOption(DiffractionProfile dp)
+    private void setTwoThetaOffsetOption(DiffractionProfile2 dp)
     {
         dp.DoesTwoThetaOffset = checkBoxTwoThetaOffset.Checked;
         dp.TwoThetaOffsetCoeff0 = numericBoxTwhoThetaOffsetCoeff0.Value;
         dp.TwoThetaOffsetCoeff1 = numericBoxTwhoThetaOffsetCoeff1.Value;
         dp.TwoThetaOffsetCoeff2 = numericBoxTwhoThetaOffsetCoeff2.Value;
     }
-    private void setRemoveKalpha2Option(DiffractionProfile dp)
+    private void setRemoveKalpha2Option(DiffractionProfile2 dp)
     {
         dp.DoesRemoveKalpha2 = checkBoxRemoveKalpha2.Checked;
     }
-    private void setBandPassOption(DiffractionProfile dp){
+    private void setBandPassOption(DiffractionProfile2 dp){
 
         //bandpass関連
         dp.DoesBandpassFilter = checkBoxBandPassFilter.Checked;
@@ -265,20 +265,20 @@ public partial class FormProfileSetting : Form
         dp.HighPathLimit = (double)numericUpDownHighPass.Value;
         dp.LowPathLimit = (double)numericUpDownLowPass.Value;
     }
-    private void setBackgroundOption(DiffractionProfile dp)
+    private void setBackgroundOption(DiffractionProfile2 dp)
     {
 
         //background関連
         dp.SubtractBackground = checkBoxBackgroundSubtraction.Checked;
         dp.BgMode = radioButtonBagkgroundBSpline.Checked ? BackgroundMode.BSplineCurve : BackgroundMode.ReferrenceProfile;
         if (comboBoxBackgroundReferrence.SelectedIndex >= 0 && comboBoxBackgroundReferrence.SelectedIndex != bindingSourceProfile.Position)
-            dp.BackgroundReferrenceProfile = ((DiffractionProfile)dataSetProfile.DataTableProfile.Rows[comboBoxBackgroundReferrence.SelectedIndex][1]).Profile;
+            dp.BackgroundReferrenceProfile = ((DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[comboBoxBackgroundReferrence.SelectedIndex][1]).Profile;
         else
             dp.BackgroundReferrenceProfile = null;
         dp.BackgroundReferrenceScale = (double)numericUpDownBackgroundReferrenceScale.Value;
 
     }
-    private void setShiftOption(DiffractionProfile dp)
+    private void setShiftOption(DiffractionProfile2 dp)
     {
         //shift関連
         dp.IsShiftX = checkBoxShiftHorizontalAxis.Checked;
@@ -287,7 +287,7 @@ public partial class FormProfileSetting : Form
         dp.SetConvertedProfile(formMain.HorizontalAxisProperty);
     }
 
-    private void setCommentOption(DiffractionProfile dp) => dp.Comment = textBoxComment.Text;
+    private void setCommentOption(DiffractionProfile2 dp) => dp.Comment = textBoxComment.Text;
 
     private void buttonSetDefaultProfile_Click(object sender, EventArgs e)
     {
@@ -323,7 +323,7 @@ public partial class FormProfileSetting : Form
     {
         if (bindingSourceProfile.Position >= 0)
         {
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.SrcProperty.AxisMode = xAxisUserControl.AxisMode;
             dp.SrcProperty.EnergyTakeoffAngle = xAxisUserControl.TakeoffAngle;
             dp.SrcProperty.WaveLength = xAxisUserControl.WaveLength;
@@ -346,7 +346,7 @@ public partial class FormProfileSetting : Form
         if (bindingSourceProfile.Position >= 0)
         {
             skipEvent = true;
-            DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
            colorControlLineColor.Color = Color.FromArgb(dp.ColorARGB.Value);
 
             //TwoThetaOffset関連
@@ -460,7 +460,7 @@ public partial class FormProfileSetting : Form
         
         if (bindingSourceProfile.Position >= 0)
         {
-            var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.ColorARGB = colorControlLineColor.Color.ToArgb();
 
            var g = Graphics.FromImage((Bitmap)dataSetProfile.DataTableProfile.Rows[bindingSourceProfile.Position][2]);
@@ -476,7 +476,7 @@ public partial class FormProfileSetting : Form
         bindingSource_ListChanged(new object(), new ListChangedEventArgs( ListChangedType.ItemChanged,0));
         if (bindingSourceProfile.Position >= 0)
         {
-            var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+            var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.Name = textBoxProfileName.Text;
             dataGridViewProfile.Refresh();
             formMain.dataGridViewProfiles.Refresh();
@@ -488,7 +488,7 @@ public partial class FormProfileSetting : Form
         if (skipEvent) return;
         if (bindingSourceProfile.Position >= 0)
         {
-           var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+           var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.LineWidth = (float)numericUpDownLineWidth.Value;
         }
         formMain.Draw();
@@ -534,7 +534,7 @@ public partial class FormProfileSetting : Form
         {
             for (int i = 0; i < dataSetProfile.DataTableProfile.Rows.Count; i++)
             {
-                var str = ((DiffractionProfile)dataSetProfile.DataTableProfile.Rows[i][1]).Name;
+                var str = ((DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[i][1]).Name;
                 listBoxTwoProfiles1.Items.Add(str);
                 listBoxTwoProfiles2.Items.Add(str);
             }
@@ -555,10 +555,10 @@ public partial class FormProfileSetting : Form
         {
             var baseIndex = 0;
             var max = double.NegativeInfinity;
-            var dp = new DiffractionProfile[listBoxTwoProfiles1.SelectedIndices.Count];
+            var dp = new DiffractionProfile2[listBoxTwoProfiles1.SelectedIndices.Count];
             for (int i = 0; i < listBoxTwoProfiles1.SelectedIndices.Count; i++)
             {
-                dp[i] = (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndices[i]][1];
+                dp[i] = (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndices[i]][1];
                 if (max < dp[i].Profile.Pt[^1].X - dp[i].Profile.Pt[0].X)
                 {
                     max = dp[i].Profile.Pt[^1].X - dp[i].Profile.Pt[0].X;
@@ -598,9 +598,9 @@ public partial class FormProfileSetting : Form
             && listBoxTwoProfiles1.SelectedIndex >= 0 && listBoxTwoProfiles2.SelectedIndex >= 0
             && listBoxTwoProfiles1.SelectedIndex != listBoxTwoProfiles2.SelectedIndex)
         {
-            var dp = new DiffractionProfile[]{
-                (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndex][1],
-                (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles2.SelectedIndex][1]};
+            var dp = new DiffractionProfile2[]{
+                (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndex][1],
+                (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles2.SelectedIndex][1]};
 
             for (int j = 0; j < dp[0].Profile.Pt.Count; j++)
             {
@@ -655,7 +655,7 @@ public partial class FormProfileSetting : Form
         }
         else if (radioButtonProfileAndValue.Checked && listBoxTwoProfiles1.SelectedIndex >= 0)
         {
-            var dp = (DiffractionProfile)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndex][1];
+            var dp = (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndex][1];
             for (int j = 0; j < dp.Profile.Pt.Count; j++)
             {
                 p.Pt.Add(new PointD(dp.Profile.Pt[j].X, dp.Profile.Pt[j].Y));//参照渡しを避けるため
@@ -677,7 +677,7 @@ public partial class FormProfileSetting : Form
         else
             return;
 
-        var output = new DiffractionProfile
+        var output = new DiffractionProfile2
         {
             SourceProfile = p,
             Name = textBoxOutputFilename.Text,
@@ -707,23 +707,23 @@ public partial class FormProfileSetting : Form
 
     #region マスク関連
 
-    public void AddMaskRange(DiffractionProfile.MaskingRange range)
+    public void AddMaskRange(DiffractionProfile2.MaskingRange range)
     {
         if (bindingSourceProfile.Position < 0) return;
-        DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         dp.maskingRanges.Add(range);
         listBoxMaskRanges.Items.Add(range);
     }
-    public DiffractionProfile.MaskingRange[] GetMaskRanges()
+    public DiffractionProfile2.MaskingRange[] GetMaskRanges()
     {
         if (bindingSourceProfile.Position < 0) return null;
-        DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         return dp.maskingRanges.ToArray();
     }
     public bool SortMaskRanges()
     {
         if (bindingSourceProfile.Position < 0) return false;
-        DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         bool flag = dp.SortMaskRanges();
         skipEvent = true;
         for (int i = 0; i < dp.maskingRanges.Count; i++)
@@ -736,7 +736,7 @@ public partial class FormProfileSetting : Form
         skipEvent = true;
         if (index == null || index.Length != 2) return;
         if (bindingSourceProfile.Position < 0) return;
-        DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         if (index[0] >= 0 && index[0] < dp.maskingRanges.Count && index[1] >= 0 && index[1] < 2)
         {
             dp.maskingRanges[index[0]].X[index[1]] = x;
@@ -747,7 +747,7 @@ public partial class FormProfileSetting : Form
     public void DeleteMaskRange(int index)
     {
         if (bindingSourceProfile.Position < 0) return;
-        DiffractionProfile dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         if (listBoxMaskRanges.Items.Count > index && dp.maskingRanges.Count > index)
         {
             dp.maskingRanges.RemoveAt(index);
@@ -757,7 +757,7 @@ public partial class FormProfileSetting : Form
     private void buttonDeleteMask_Click(object sender, EventArgs e)
     {
         if (bindingSourceProfile.Position < 0 || listBoxMaskRanges.SelectedIndex < 0) return;
-        var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         int n = listBoxMaskRanges.SelectedIndex;
         if (n >= 0)
         {
@@ -775,7 +775,7 @@ public partial class FormProfileSetting : Form
     private void buttonDeleteAllMask_Click(object sender, EventArgs e)
     {
         if (bindingSourceProfile.Position < 0) return;
-        var dp = (DiffractionProfile)((DataRowView)bindingSourceProfile.Current).Row[1];
+        var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         listBoxMaskRanges.Items.Clear();
         dp.maskingRanges.Clear();
         SetCurrentProfile();

@@ -155,19 +155,8 @@ namespace PDIndexer
 
         public void SetProperty(FormMain.FileProperty property)
         {
-
             HorizontalAxisProperty = property.HorizontalAxisProperty;
-
-            //WaveSource = property.WaveSource;
-            //WaveColor = property.WaveColor;
-            //Wavelength = property.Wavelength;
-            //TakeoffAngle = property.TakeoffAngle;
-            //AxisMode = property.AxisMode;
-            //XraySourceElementNumber = property.XraySourceElementNumber;
-            //XrayLine = property.XrayLine;
-            //TofAngle = property.TofAngle;
-            //TofLength = property.TofLength;
-            //ExposureTime = property.ExposureTime;
+            ExposureTime = property.ExposureTime;
             EGC = property.EGC;
 
         }
@@ -176,17 +165,7 @@ namespace PDIndexer
             return new FormMain.FileProperty()
             {
                 Valid = true,
-                //WaveSource = this.WaveSource,
-                //WaveColor = this.WaveColor,
-                //Wavelength = this.Wavelength,
-                //TakeoffAngle = this.TakeoffAngle,
-                //AxisMode = this.AxisMode,
-
-                //XraySourceElementNumber = XraySourceElementNumber,
-                //XrayLine = XrayLine,
-                //TofAngle = TofAngle,
-                //TofLength = TofLength,
-                //ExposureTime = ExposureTime,
+                ExposureTime = ExposureTime,
                 HorizontalAxisProperty = HorizontalAxisProperty,
                 EGC = EGC,
             };

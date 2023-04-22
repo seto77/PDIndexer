@@ -476,7 +476,7 @@ public class Macro : MacroBase
 
         public int Count => Execute(() => p.main.bindingSourceProfile.Count);
 
-        public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((DiffractionProfile)((DataRowView)p.main.bindingSourceProfile.Current).Row[1]).Name : "");
+        public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((DiffractionProfile2)((DataRowView)p.main.bindingSourceProfile.Current).Row[1]).Name : "");
 
         public int SelectedIndex
         {

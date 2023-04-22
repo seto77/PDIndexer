@@ -180,7 +180,7 @@ public partial class FormSequentialAnalysis : Form
             formMain.SkipDrawing = false;
             formMain.Draw();
 
-            var profileName = ((DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]).Name;
+            var profileName = ((DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]).Name;
             var angle = 0.0;
             if (stressMode)
             {

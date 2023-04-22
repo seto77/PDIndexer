@@ -424,7 +424,7 @@ public enum BackgroundMode{    BSplineCurve, ReferrenceProfile}
 #endregion
 
 [Serializable]
-public class DiffractionProfile : ICloneable
+public class DiffractionProfile2 : ICloneable
 {
     #region マスク関連ここから
     [Serializable]
@@ -520,7 +520,7 @@ public class DiffractionProfile : ICloneable
 
     public object Clone()
     {
-        var dp = (DiffractionProfile)MemberwiseClone();
+        var dp = (DiffractionProfile2)MemberwiseClone();
         dp.SourceProfile = (Profile)SourceProfile.Clone();
         dp.Profile = (Profile)Profile.Clone();
         dp.InterpolatedProfile = (Profile)InterpolatedProfile.Clone();
@@ -690,7 +690,7 @@ public class DiffractionProfile : ICloneable
     #endregion
 
     #region コンストラクタ
-    public DiffractionProfile()
+    public DiffractionProfile2()
     {
         BgPoints = Array.Empty<PointD>();
 
@@ -714,7 +714,7 @@ public class DiffractionProfile : ICloneable
     }
     #endregion
 
-    public void CopyParameter(DiffractionProfile defaultDP)
+    public void CopyParameter(DiffractionProfile2 defaultDP)
     {
         DoesSmoothing = defaultDP.DoesSmoothing;
         SazitkyGorayM = defaultDP.SazitkyGorayM;
@@ -1251,16 +1251,11 @@ public class DiffractionProfile : ICloneable
     #endregion
 }
 
-
-#region プロファイルの性質を表す構造体
+#region HorizontalAxisProperty プロファイルの性質を表す構造体
 
 [Serializable]
 public record struct HorizontalAxisProperty
 {
-
-   
-
-
     /// <summary>
     /// 横軸の種類
     /// </summary>
@@ -1438,6 +1433,8 @@ public record struct HorizontalAxisProperty
 
 }
 #endregion
+
+#region HorizontalAxisConverter 横軸を変換するクラス
 
 /// <summary>
 /// 横軸を変換するクラス
@@ -1903,3 +1900,286 @@ public static class HorizontalAxisConverter
 
     #endregion 横軸を変換するメソッド群
 }
+#endregion
+
+#region 古いDiffractionProfileクラス 後方互換性のために維持
+[Serializable]
+public class DiffractionProfile : ICloneable
+{
+    public object Clone()
+    {
+        DiffractionProfile dp = (DiffractionProfile)this.MemberwiseClone();
+        dp.OriginalProfile = (Profile)this.OriginalProfile.Clone();
+        dp.Profile = (Profile)this.Profile.Clone();
+        dp.InterpolatedProfile = (Profile)this.InterpolatedProfile.Clone();
+        dp.SmoothedProfile = (Profile)this.SmoothedProfile.Clone();
+        dp.Kalpha2RemovedProfile = (Profile)this.Kalpha2RemovedProfile.Clone();
+        dp.ConvertedProfile = (Profile)this.ConvertedProfile.Clone();
+        dp.BackgroundProfile = (Profile)this.BackgroundProfile.Clone();
+        return dp;
+    }
+
+    //Masking関連ここから
+    [Serializable]
+    public class MaskingRange
+    {
+        public double[] X = new double[2];
+        public override string ToString()
+            => X[0] < X[1] ? $"{X[0]:g8} - {X[1]:g8}" : $"{X[1]:g8} - {X[0]:g8}";
+    }
+
+    public List<MaskingRange> maskingRanges = new List<MaskingRange>();
+    private int interpolationOrder = 2;
+    public int InterpolationOrder
+    {
+        set
+        {
+            if (value > 0)
+            {
+                interpolationOrder = value;
+            }
+        }
+        get => interpolationOrder;
+    }
+
+    private int interpolationPoints = 20;
+
+    public int InterpolationPoints
+    {
+        set
+        {
+            if (value > 0)
+            {
+                interpolationPoints = value;
+            }
+        }
+        get => interpolationPoints;
+    }
+
+    public bool DoesMaskAndInterpolate = false;
+    //Masking関連ここまで
+    public Profile OriginalProfile;//ソースのプロファイル
+
+    public PointD[] BgPoints;
+
+    [XmlIgnore]
+    public Profile ConvertedProfile;//軸変換後のプロファイル
+
+    [XmlIgnore]
+    public Profile InterpolatedProfile;//
+
+    [XmlIgnore]
+    public Profile SmoothedProfile;//
+
+    [XmlIgnore]
+    public Profile Kalpha2RemovedProfile;//
+
+    [XmlIgnore]
+    public Profile BackgroundProfile;
+
+    [XmlIgnore]
+    public Profile Profile;
+
+    public HorizontalAxis SrcAxisMode;
+    public double SrcWaveLength;
+    public double SrcTakeoffAngle;
+
+    public double SrcTofAngle;
+    public double SrcTofLength;
+
+    /// <summary>
+    /// プロファイルモード
+    /// </summary>
+    public DiffractionProfileMode Mode = DiffractionProfileMode.Concentric;
+
+    public HorizontalAxis DestAxisMode;
+    public double DestWaveLength;
+    public double DestTakeoffAngle;
+    public double DestTofAngle;
+    public double DestTofLength;
+
+    //ノーマライズ関連ここから
+    /// <summary>
+    /// 強度のノーマライズをするかどうか
+    /// </summary>
+    public bool DoesNormarizeIntensity = false;
+
+    /// <summary>
+    /// 縦軸にかける係数
+    /// </summary>
+    public double NormarizeRangeStart = 0;
+
+    public double NormarizeRangeEnd = 180;
+    public bool NormarizeAsAverage = true;
+    public double NormarizeIntensity = 1000;
+
+    //スムージング関連ここから
+    public bool DoesSmoothing = false;
+
+    public int SazitkyGorayM = 3, SazitkyGorayN = 3;
+
+    //2θシフトここから
+    public bool DoesTwoThetaOffset = false;
+
+    public double TwoThetaOffsetCoeff0 = 0, TwoThetaOffsetCoeff1 = 0, TwoThetaOffsetCoeff2 = 0;
+
+    //Kalpha2除去ここから
+    public bool DoesRemoveKalpha2 = false;
+
+    public double Kalpha1 = 0, Kalpha2 = 0;
+
+    //shift関連
+    public bool IsShiftX = false;
+
+    public double ShiftX = 0;
+
+    //FFT関連
+    public bool DoesBandpassFilter = false;
+
+    public bool DoesLowPath = false, DoesHighPath = false;
+    public double LowPathLimit = double.NaN, HighPathLimit = double.NaN;
+
+    /// <summary>
+    /// count per second モードかどうか
+    /// </summary>
+    public bool IsCPS = true;
+
+    /// <summary>
+    /// 露出時間
+    /// </summary>
+    public double ExposureTime = 1;
+
+    /// <summary>
+    /// 縦軸をログスケールにするかどうか
+    /// </summary>
+    public bool IsLogIntensity = false;
+
+    //描画線の設定
+    public float LineWidth = 1f;
+
+    public int? ColorARGB;
+
+    //生データの波の種類、波長など
+    public WaveSource WaveSource;
+
+    public WaveColor WaveColor;
+    public int XrayElementNumber;
+    public XrayLine XrayLine;
+    public double ElectronAccVolatage;
+
+    //バックグランド設定関連
+    public int BgPointsNumber = 15;
+
+    public bool SubtractBackground = false;
+    public BackgroundMode BgMode = BackgroundMode.BSplineCurve;
+    public Profile BackgroundReferrenceProfile = null;
+    public double BackgroundReferrenceScale = 1;
+
+    public string Name;
+
+    public string Comment { get; set; }
+
+    public bool IsLPOmain = false;
+    public bool IsLPOchild = false;
+
+    public double[] ImageArray = null;
+    public double ImageScale = 0;
+    public int ImageWidth = 0;
+    public int ImageHeight = 0;
+
+
+    public DiffractionProfile2 ConvertToDiffractionProfile2()
+    {
+        return new DiffractionProfile2()
+        {
+            BackgroundProfile = BackgroundProfile,
+            BackgroundReferrenceProfile = BackgroundReferrenceProfile,
+            BackgroundReferrenceScale = BackgroundReferrenceScale,
+            BgMode = BgMode,
+            BgPoints = BgPoints,
+            BgPointsNumber = BgPointsNumber,
+            ColorARGB = ColorARGB,
+            Comment = Comment,
+            IsLPOmain = IsLPOmain,
+            IsLPOchild = IsLPOchild,
+            ConvertedProfile = ConvertedProfile,
+            DoesBandpassFilter = DoesBandpassFilter,
+            DoesHighPath = DoesHighPath,
+            DoesLowPath = DoesLowPath,
+            DoesMaskAndInterpolate = DoesMaskAndInterpolate,
+            DoesNormarizeIntensity = DoesNormarizeIntensity,
+            DoesRemoveKalpha2 = DoesRemoveKalpha2,
+            DoesSmoothing = DoesSmoothing,
+            DoesTwoThetaOffset = DoesTwoThetaOffset,
+            DstProperty = new HorizontalAxisProperty(DestAxisMode, WaveSource, WaveColor,
+      DestWaveLength, XrayElementNumber, XrayLine, ElectronAccVolatage, DestTakeoffAngle, DestTofAngle, DestTofLength,
+      AngleUnitEnum.Degree, LengthUnitEnum.Angstrom, LengthUnitEnum.NanoMeterInverse, EnergyUnitEnum.eV, TimeUnitEnum.MicroSecond),
+            ExposureTime = ExposureTime,
+            HighPathLimit = HighPathLimit,
+            ImageArray = ImageArray,
+            ImageHeight = ImageHeight,
+            ImageScale = ImageScale,
+            ImageWidth = ImageWidth,
+            InterpolatedProfile = InterpolatedProfile,
+            InterpolationOrder = InterpolationOrder,
+            InterpolationPoints = InterpolationPoints,
+            IsCPS = IsCPS,
+            IsLogIntensity = IsLogIntensity,
+            IsShiftX = IsShiftX,
+            Kalpha1 = Kalpha1,
+            Kalpha2 = Kalpha2,
+            Kalpha2RemovedProfile = Kalpha2RemovedProfile,
+            LineWidth = LineWidth,
+            LowPathLimit = LowPathLimit,
+            maskingRanges = new List<DiffractionProfile2.MaskingRange>(),
+            Mode = Mode,
+            Name = Name,
+            NormarizeAsAverage = NormarizeAsAverage,
+            NormarizeIntensity = NormarizeIntensity,
+            NormarizeRangeEnd = NormarizeRangeEnd,
+            NormarizeRangeStart = NormarizeRangeStart,
+            Profile = Profile,
+            SazitkyGorayM = SazitkyGorayM,
+            SazitkyGorayN = SazitkyGorayN,
+            ShiftX = ShiftX,
+            SmoothedProfile = SmoothedProfile,
+            SourceProfile = OriginalProfile,
+            SrcProperty = new HorizontalAxisProperty(SrcAxisMode, WaveSource, WaveColor,
+      SrcWaveLength, 0, XrayLine, ElectronAccVolatage, SrcTakeoffAngle, SrcTofAngle, SrcTofLength,
+      AngleUnitEnum.Degree, LengthUnitEnum.Angstrom, LengthUnitEnum.NanoMeterInverse, EnergyUnitEnum.eV, TimeUnitEnum.MicroSecond),
+            SubtractBackground = SubtractBackground,
+            TwoThetaOffsetCoeff0 = TwoThetaOffsetCoeff0,
+            TwoThetaOffsetCoeff1 = TwoThetaOffsetCoeff1,
+            TwoThetaOffsetCoeff2 = TwoThetaOffsetCoeff2,
+        };
+
+    }
+
+
+    public DiffractionProfile()
+    {
+        BgPoints = Array.Empty<PointD>();
+
+        OriginalProfile = new Profile();
+        ConvertedProfile = new Profile();
+        SmoothedProfile = new Profile();
+        Kalpha2RemovedProfile = new Profile();
+        InterpolatedProfile = new Profile();
+        Profile = new Profile();
+        BackgroundProfile = new Profile();
+        SrcAxisMode = HorizontalAxis.Angle;
+
+        WaveSource = WaveSource.Xray;
+
+        XrayElementNumber = 0;
+        XrayLine = XrayLine.Ka1;
+
+        ElectronAccVolatage = 200;
+
+        ColorARGB = null;
+    }
+
+
+}
+
+#endregion

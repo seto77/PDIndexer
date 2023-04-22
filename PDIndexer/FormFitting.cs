@@ -232,8 +232,8 @@ public partial class FormFitting : Form
     {
         if (TargetCrystal == null || TargetCrystal.Plane == null || formMain == null || SkipFitting) return;
 
-        DiffractionProfile dp;
-        if (!(formMain.bindingSourceProfile.Position >= 0 && (dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]) != null)) return;
+        DiffractionProfile2 dp;
+        if (!(formMain.bindingSourceProfile.Position >= 0 && (dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]) != null)) return;
 
         TargetProfile = dp.Profile;
         var sw = new Stopwatch();
@@ -247,15 +247,8 @@ public partial class FormFitting : Form
         foreach (var c in checkedCrystals)
             foreach (var p in c.Plane.Where(e => e.IsFittingChecked))
             {
-                p.XCalc = formMain.AxisMode switch
-                {
-                    HorizontalAxis.Angle => Math.Asin(formMain.WaveLength / p.d / 2) / Math.PI * 360,
-                    HorizontalAxis.EnergyXray => HorizontalAxisConverter.DToXrayEnergy(p.d, formMain.TakeoffAngle),
-                    HorizontalAxis.d => p.d * 10,
-                    HorizontalAxis.NeutronTOF => HorizontalAxisConverter.DToTOF(p.d, formMain.TofAngle, formMain.TofLength),
-                    HorizontalAxis.WaveNumber => HorizontalAxisConverter.DToWaveNumber(p.d * 10),
-                    _ => p.XCalc
-                };
+
+                p.XCalc = HorizontalAxisConverter.ConvertFromD(p.d, formMain.HorizontalAxisProperty);
 
                 p.XObs = 0;
                 p.observedIntensity = 0;
@@ -337,31 +330,17 @@ public partial class FormFitting : Form
                             p.observedIntensity = p.peakFunction.GetIntegral() / (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X);
                         }
 
-                        if (formMain.AxisMode == HorizontalAxis.Angle)
+                        p.dObs = HorizontalAxisConverter.ConvertToD(p.XObs, formMain.HorizontalAxisProperty);
+
+                        if (formMain.HorizontalAxisProperty.AxisMode == HorizontalAxis.Angle)
                         {
-                            p.dObs = formMain.WaveLength / 2 / Math.Sin(p.XObs / 360 * Math.PI);
-                            p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
+                            if (formMain.HorizontalAxisProperty.TwoThetaUnit == AngleUnitEnum.Degree)
+                                p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
+                            else
+                                p.Weight = 1 / Math.Sin(p.XObs / 2) / Math.Sin(p.XObs / 2);
                         }
-                        else if (formMain.AxisMode == HorizontalAxis.EnergyXray)
-                        {
-                            p.dObs = HorizontalAxisConverter.XrayEnergyToD(p.XObs, formMain.TakeoffAngle);
+                        else
                             p.Weight = 1;
-                        }
-                        else if (formMain.AxisMode == HorizontalAxis.d)
-                        {
-                            p.dObs = p.XObs / 10;
-                            p.Weight = 1;
-                        }
-                        else if (formMain.AxisMode == HorizontalAxis.NeutronTOF)
-                        {
-                            p.dObs = HorizontalAxisConverter.NeutronTofToD(p.XObs, formMain.TofAngle, formMain.TofLength);
-                            p.Weight = 1;
-                        }
-                        else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
-                        {
-                            p.dObs = HorizontalAxisConverter.WaveNumberToD(p.XObs * 10);
-                            p.Weight = 1;
-                        }
                     }
                     else
                     {
@@ -1390,7 +1369,7 @@ public partial class FormFitting : Form
     {
         if (formMain.AxisMode == HorizontalAxis.EnergyXray)
         {
-            var dp = (DiffractionProfile)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
+            var dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
             //dp.SrcTakeoffAngle = xAxisUserControl.TakeoffAngle;
             formMain.horizontalAxisUserControl_AxisPropertyChanged();
         }
@@ -1400,21 +1379,32 @@ public partial class FormFitting : Form
     #region formMainから横軸単位が変更されたとき
     internal void ChangeHorizontalAxis()
     {
-        //0.1
+        //1.00 nm ~ 1.05 nm を基準とする 
 
-        if (formMain.AxisMode == HorizontalAxis.Angle)
-            SerchRangeFactor = 1;
-        else if (formMain.AxisMode == HorizontalAxis.EnergyXray)
-            SerchRangeFactor = 5000;
-        else if (formMain.AxisMode == HorizontalAxis.d)
-            SerchRangeFactor = 0.2;
-        else if (formMain.AxisMode == HorizontalAxis.NeutronTOF)
-            SerchRangeFactor = 5000;
-        else if (formMain.AxisMode == HorizontalAxis.WaveNumber)
-            SerchRangeFactor = 0.2;
+        var val1 = HorizontalAxisConverter.ConvertFromD(1.00, formMain.HorizontalAxisProperty);
+        var val2 = HorizontalAxisConverter.ConvertFromD(1.06, formMain.HorizontalAxisProperty);
 
-        //numericBoxInitialFWHM.Increment = (decimal)(SerchRangeFactor * 0.02);
+        // 1.0, 2.0, 5.0 * 10^n　の中で近い数字にする。
 
+        var dif = Math.Abs(val2 - val1) *8;
+
+        int n, x;
+
+        n = (int)Math.Floor(Math.Log10(dif));
+        x = (int)Math.Round( dif/Math.Pow(10, n));
+
+        SerchRangeFactor = x*Math.Pow(10, n);
+
+        if (n <3)
+        {
+            numericBoxSearchRange.DecimalPlaces = 3 - n;
+            numericBoxInitialFWHM.DecimalPlaces = 3 - n;
+        }
+        else
+        {
+            numericBoxSearchRange.DecimalPlaces = -1;
+            numericBoxInitialFWHM.DecimalPlaces = -1;
+        }
         SetPlanes(false);
     }
     #endregion
@@ -1461,7 +1451,7 @@ public partial class FormFitting : Form
                 }
 
 
-        var output = new DiffractionProfile
+        var output = new DiffractionProfile2
         {
             SourceProfile = p,
             Name = RemovedProfileName,

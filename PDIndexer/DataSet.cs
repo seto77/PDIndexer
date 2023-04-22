@@ -123,15 +123,15 @@ public partial class DataSet
         /// <summary>
         /// チェックされているプロファイル群をList形式で取得
         /// </summary>
-        public List<DiffractionProfile> CheckedItems
+        public List<DiffractionProfile2> CheckedItems
         {
             set { }
             get
             {
-                List<DiffractionProfile> p = new List<DiffractionProfile>();
+                List<DiffractionProfile2> p = new List<DiffractionProfile2>();
                 for (int i = 0; i < this.Rows.Count; i++)
                     if ((bool)this.Rows[i][0])
-                        p.Add((DiffractionProfile)this.Rows[i][1]);
+                        p.Add((DiffractionProfile2)this.Rows[i][1]);
                 return p;
             }
         }
@@ -139,19 +139,19 @@ public partial class DataSet
         /// <summary>
         /// プロファイル群をList形式で取得
         /// </summary>
-        public List<DiffractionProfile> Items
+        public List<DiffractionProfile2> Items
         {
             set { }
             get
             {
                 try
                 {
-                    List<DiffractionProfile> p = new List<DiffractionProfile>();
+                    List<DiffractionProfile2> p = new List<DiffractionProfile2>();
                     for (int i = 0; i < this.Rows.Count; i++)
-                        p.Add((DiffractionProfile)this.Rows[i][1]);
+                        p.Add((DiffractionProfile2)this.Rows[i][1]);
                     return p;
                 }
-                catch { return new List<DiffractionProfile>(); }
+                catch { return new List<DiffractionProfile2>(); }
             }
         }
 
@@ -164,7 +164,7 @@ public partial class DataSet
                 this.Rows[destIndex][0] = check;
 
 
-                DiffractionProfile c = (DiffractionProfile)this.Rows[srcIndex][1];
+                DiffractionProfile2 c = (DiffractionProfile2)this.Rows[srcIndex][1];
                 this.Rows[srcIndex][1] = this.Rows[destIndex][1];
                 this.Rows[destIndex][1] = c;
 
@@ -189,7 +189,7 @@ public partial class DataSet
         /// index位置に行を挿入する
         /// </summary>
         /// <param name="index"></param>
-        public void InsertItemAt(int index, bool check, DiffractionProfile dp)
+        public void InsertItemAt(int index, bool check, DiffractionProfile2 dp)
         {
             if (index < this.Rows.Count)
             {
