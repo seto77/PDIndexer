@@ -1001,7 +1001,6 @@ namespace PDIndexer
         private Button buttonApplyFunctionToAll;
         private Button buttonSaveTableAsCSV;
         private FlowLayoutPanel flowLayoutPanelPatternDecomposition;
-        private DataGridViewTextBoxColumn peakObjectDataGridViewTextBoxColumn;
         public DataGridView dataGridViewPlaneList;
         private Crystallography.Controls.NumericBox numericBoxEffectiveDigit;
         private Button buttonResetTakeoffAngle;

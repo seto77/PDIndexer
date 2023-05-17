@@ -425,9 +425,6 @@ namespace PDIndexer
         private System.Windows.Forms.TabPage tabPageSingh;
         private System.Windows.Forms.TextBox textBoxSingh;
         private Crystallography.Controls.GraphControl graphControl1;
-        private Crystallography.Controls.NumericBox numericalTextBoxAlpha;
-        private Crystallography.Controls.NumericBox numericalTextBoxPsimax;
-        private Crystallography.Controls.NumericBox numericalTextBoxD0;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.TabPage tabPageCellConstants;

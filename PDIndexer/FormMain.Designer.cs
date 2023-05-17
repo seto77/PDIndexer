@@ -4066,7 +4066,6 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn78;
         private DataGridViewImageColumn dataGridViewImageColumn54;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn79;
-        private ToolStripButton toolStripButtonShowText;
         private TableLayoutPanel tableLayoutPanel2;
         private DataGridViewImageColumn dataGridViewImageColumn55;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn80;

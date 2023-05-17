@@ -861,7 +861,7 @@ public partial class FormMain : Form
             //ここからファイルタイプごとのパラメータ読み込み
             for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
             {
-                FileProperty f = new FileProperty();
+                var f = new FileProperty();
                 f.Valid = (string)regKey.GetValue($"FileProperty.Valid{i}", "False") == "True";
 
                 if (f.Valid)
@@ -1475,8 +1475,8 @@ public partial class FormMain : Form
             DiffractionProfile2 dp = (DiffractionProfile2)dataSet.DataTableProfile.Items[bindingSourceProfile.Position];
             if (dp.SubtractBackground && ShowBackgroundProfile)
             {
-                Color color = Color.FromArgb(dp.ColorARGB.Value);
-                Pen pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1);
+               var color = Color.FromArgb(dp.ColorARGB.Value);
+               var pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1);
 
                 PointD[] pt;
                 if (BackGroundPointSelectMode)
@@ -2804,11 +2804,10 @@ public partial class FormMain : Form
                                         for (int i = 0; i < sumData.Length; i++)
                                             sumData[i] += d[i];
 
-                                    var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).ToList();
-                                    if (formDataConverter.LowEnergyCutoff && pts[0].X < formDataConverter.LowEnergyCutoffValue)
-                                        for (int i = 0; i < pts.Count; i++)
-                                            if (pts[i].X < formDataConverter.LowEnergyCutoffValue)
-                                                pts.RemoveAt(i--);
+                                    var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).Where(p => p.X > 0).ToList();
+
+                                    if (formDataConverter.LowEnergyCutoff)
+                                        pts = pts.Where(p => p.X < formDataConverter.LowEnergyCutoffValue).ToList();
 
                                     pts.RemoveAt(pts.Count - 1);
                                     diffProf.SourceProfile.Pt = pts;
@@ -3802,7 +3801,7 @@ public partial class FormMain : Form
             var dp = dataSet.DataTableProfile.CheckedItems;
 
             if (merge)//ひとつのファイルにマージする場合
-                using (StreamWriter writer = new StreamWriter(dlg.FileName))
+                using (var writer = new StreamWriter(dlg.FileName))
                 {
                     dp.ForEach(d => writer.Write($"{d.Name}{s}{s}{s}")); //一行目
                     writer.Write("\r\n");

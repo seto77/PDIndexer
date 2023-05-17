@@ -46,7 +46,7 @@ namespace PDIndexer
         public int XraySourceElementNumber { set => horizontalAxisUserControl.XrayNumber = value; get => horizontalAxisUserControl.XrayNumber; }
 
         public XrayLine XrayLine { set => horizontalAxisUserControl.XrayLine = value; get => horizontalAxisUserControl.XrayLine; }
-        
+
         /// <summary>
         /// 電子線加速電圧(kV)を取得/設定
         /// </summary>

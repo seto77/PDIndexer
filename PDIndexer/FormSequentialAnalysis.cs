@@ -521,16 +521,6 @@ public partial class FormSequentialAnalysis : Form
         }
         return bestD;
     }
-    private void numericalTextBoxD0_ValueChanged(object sender, EventArgs e)
-    {
-        graphControl1.ClearProfile();
-        Profile p2 = new Profile();
-        for (int j = 0; j < 360; j++)
-            p2.Pt.Add(new PointD(j, 10 * dValue(numericalTextBoxD0.Value * 0.1, numericalTextBoxAlpha.Value, j / 180.0 * Math.PI, numericalTextBoxPsimax.Value / 180 * Math.PI, numericalTextBoxD0.Value * 0.1)));
-        graphControl1.ClearProfile();
-        graphControl1.AddProfile(p2);
-    }
-
 
     #endregion
 
