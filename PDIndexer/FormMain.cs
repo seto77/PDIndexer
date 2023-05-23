@@ -2689,7 +2689,7 @@ public partial class FormMain : Form
 
             if (i % 10 == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
             {
-                if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following pfofiles?", "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following profiles?", "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     stopwatch.Restart();
                     showFormDataConverter = false;
