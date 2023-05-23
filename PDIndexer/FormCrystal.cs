@@ -160,7 +160,7 @@ public partial class FormCrystal : Form
     //êŠ‚ª•ÏX‚³‚ê‚½‚Æ‚«
     private void bindingSource_PositionChanged(object sender, EventArgs e)
     {
-        formMain.SelectedCrysatlIndex = bindingSource.Position;
+        formMain.SelectedCrystalIndex = bindingSource.Position;
         formMain.Draw();
     }
 

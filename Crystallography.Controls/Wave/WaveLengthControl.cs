@@ -256,9 +256,10 @@ namespace Crystallography.Controls
         public WaveLengthControl()
 
         {
-            InitializeComponent();
             if (DesignMode)
                 return;
+            InitializeComponent();
+           
 
             comboBoxXRayElement.SelectedIndex = 0;
         }

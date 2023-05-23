@@ -1358,7 +1358,7 @@ public record struct HorizontalAxisProperty
         ElectronAccVolatage = electronAccVolatage;
         EnergyTakeoffAngle = energyTakeoffAngle;
         TofAngle = tofAngle;
-        TofAngle = tofLength;
+        TofLength = tofLength;
         TwoThetaUnit = twoThetaUnit;
         DspacingUnit = dspacingUnit;
         WaveNumberUnit = waveNumberUnit;

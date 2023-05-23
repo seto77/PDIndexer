@@ -86,6 +86,7 @@ namespace PDIndexer
         public EnergyUnitEnum EnergyUnit { set => horizontalAxisUserControl.EnergyUnit = value; get => horizontalAxisUserControl.EnergyUnit; }
         public LengthUnitEnum DspacingUnit { set => horizontalAxisUserControl.DspacingUnit = value; get => horizontalAxisUserControl.DspacingUnit; }
         public AngleUnitEnum TwoThetaUnit { set => horizontalAxisUserControl.TwoThetaUnit = value; get => horizontalAxisUserControl.TwoThetaUnit; }
+        public LengthUnitEnum WaveNumberUnit { set => horizontalAxisUserControl.WaveNumberUnit = value;get=> horizontalAxisUserControl.WaveNumberUnit; }
 
 
         public double[][] EGC
@@ -149,6 +150,7 @@ namespace PDIndexer
 
         private void horizontalAxisUserControl_AxisPropertyChanged()
         {
+            
             groupBox1.Enabled = WaveSource == WaveSource.Xray && XrayLine == XrayLine.Ka;
             VisibleEDXSetting = WaveSource == WaveSource.Xray && WaveColor == WaveColor.FlatWhite;
         }

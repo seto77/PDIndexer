@@ -117,32 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="numericBoxLowEnergyCutoff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="numericBoxLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>143, 0</value>
-  </data>
-  <data name="numericBoxLowEnergyCutoff.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 24</value>
-  </data>
-  <data name="numericBoxLowEnergyCutoff.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 16</value>
-  </data>
-  <data name="numericBoxLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>103, 24</value>
-  </data>
-  <data name="checkBoxLowEnergyCutoff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="checkBoxLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="checkBoxLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 28</value>
-  </data>
   <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 41</value>
   </data>
@@ -174,29 +149,54 @@
   <data name="groupBoxEDX.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 73</value>
   </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxLowEnergyCutoff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>143, 0</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>103, 28</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 28</value>
+  </data>
   <data name="textBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 433</value>
   </data>
   <data name="textBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 254</value>
+    <value>372, 252</value>
   </data>
   <data name="buttonOK.Location" type="System.Drawing.Point, System.Drawing">
-    <value>213, 3</value>
+    <value>210, 4</value>
   </data>
   <data name="buttonOK.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 30</value>
   </data>
   <data name="buttonCancel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>294, 3</value>
+    <value>293, 4</value>
   </data>
   <data name="buttonCancel.Size" type="System.Drawing.Size, System.Drawing">
     <value>75, 30</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 687</value>
+    <value>2, 685</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 36</value>
+    <value>372, 38</value>
   </data>
   <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
     <value>128, 24</value>
@@ -207,12 +207,6 @@
   <data name="label6.Text" xml:space="preserve">
     <value>秒</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 18</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>268, 30</value>
-  </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 257</value>
   </data>
@@ -222,20 +216,11 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>デコンボリューション</value>
   </data>
-  <data name="numericalTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 21</value>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>14, 18</value>
   </data>
-  <data name="numericalTextBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericalTextBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 22</value>
-  </data>
-  <data name="numericalTextBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 14</value>
-  </data>
-  <data name="numericalTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>66, 22</value>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>268, 30</value>
   </data>
   <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
@@ -248,6 +233,21 @@
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>露出時間 (/ステップ)</value>
+  </data>
+  <data name="numericalTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 21</value>
+  </data>
+  <data name="numericalTextBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 4, 3, 4</value>
+  </data>
+  <data name="numericalTextBox1.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 27</value>
+  </data>
+  <data name="numericalTextBox1.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 17</value>
+  </data>
+  <data name="numericalTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 22</value>
   </data>
   <data name="horizontalAxisUserControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>

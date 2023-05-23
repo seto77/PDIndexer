@@ -70,8 +70,8 @@
             // 
             // numericBoxLowEnergyCutoff
             // 
-            resources.ApplyResources(numericBoxLowEnergyCutoff, "numericBoxLowEnergyCutoff");
             numericBoxLowEnergyCutoff.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxLowEnergyCutoff, "numericBoxLowEnergyCutoff");
             numericBoxLowEnergyCutoff.Name = "numericBoxLowEnergyCutoff";
             numericBoxLowEnergyCutoff.RadianValue = 174.53292519943295D;
             numericBoxLowEnergyCutoff.RoundErrorAccuracy = -1;
@@ -129,8 +129,8 @@
             // 
             // groupBox1
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Controls.Add(label1);
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             // 
@@ -141,9 +141,9 @@
             // 
             // groupBox2
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(numericalTextBox1);
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
@@ -164,10 +164,10 @@
             // horizontalAxisUserControl
             // 
             resources.ApplyResources(horizontalAxisUserControl, "horizontalAxisUserControl");
-            horizontalAxisUserControl.AxisMode = Crystallography.HorizontalAxis.Angle;
+            horizontalAxisUserControl.AxisMode = Crystallography.HorizontalAxis.NeutronTOF;
             horizontalAxisUserControl.DspacingUnit = Crystallography.LengthUnitEnum.Angstrom;
-            horizontalAxisUserControl.ElectronAccVol = 8.05091703D;
-            horizontalAxisUserControl.ElectronAccVoltageText = "8.05091703";
+            horizontalAxisUserControl.ElectronAccVol = 34.49324999D;
+            horizontalAxisUserControl.ElectronAccVoltageText = "34.49324999";
             horizontalAxisUserControl.EnergyUnit = Crystallography.EnergyUnitEnum.eV;
             horizontalAxisUserControl.HorizontalAxisProperty = (Crystallography.HorizontalAxisProperty)resources.GetObject("horizontalAxisUserControl.HorizontalAxisProperty");
             horizontalAxisUserControl.Name = "horizontalAxisUserControl";
@@ -178,11 +178,11 @@
             horizontalAxisUserControl.TofLength = 42D;
             horizontalAxisUserControl.TofTimeUnit = Crystallography.TimeUnitEnum.MicroSecond;
             horizontalAxisUserControl.TwoThetaUnit = Crystallography.AngleUnitEnum.Degree;
-            horizontalAxisUserControl.WaveColor = Crystallography.WaveColor.Monochrome;
+            horizontalAxisUserControl.WaveColor = Crystallography.WaveColor.FlatWhite;
             horizontalAxisUserControl.WaveLength = 0.154D;
             horizontalAxisUserControl.WaveLengthText = "1.54";
             horizontalAxisUserControl.WaveNumberUnit = Crystallography.LengthUnitEnum.AngstromInverse;
-            horizontalAxisUserControl.WaveSource = Crystallography.WaveSource.Xray;
+            horizontalAxisUserControl.WaveSource = Crystallography.WaveSource.Neutron;
             horizontalAxisUserControl.XrayLine = Crystallography.XrayLine.Ka1;
             horizontalAxisUserControl.XrayNumber = 0;
             horizontalAxisUserControl.AxisPropertyChanged += horizontalAxisUserControl_AxisPropertyChanged;

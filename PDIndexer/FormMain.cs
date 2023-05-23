@@ -58,7 +58,7 @@ public partial class FormMain : Form
         //public XrayLine XrayLine;
         //public double TofAngle;
         //public double TofLength;
-        
+
         public HorizontalAxisProperty HorizontalAxisProperty;
 
         public double ExposureTime;
@@ -105,7 +105,7 @@ public partial class FormMain : Form
 
     public bool IsSkipCheckedListBoxEvent = false;
 
-    public int SelectedCrysatlIndex { set; get; } = -1;
+    public int SelectedCrystalIndex { set; get; } = -1;
 
     public int SelectedPlaneIndex { set; get; } = -1;
 
@@ -905,14 +905,14 @@ public partial class FormMain : Form
             FileProperties[(int)FileType.CSV] ??= new FileProperty
             {
                 Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray,0.4,AngleUnitEnum.Degree)
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
             };
 
             //NXS
             FileProperties[(int)FileType.NXS] ??= new FileProperty
             {
                 Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 4.95 / 180 * Math.PI,EnergyUnitEnum.KeV),
+                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 4.95 / 180 * Math.PI, EnergyUnitEnum.KeV),
                 EGC = new[] { new[] { 0, 0, 66.6, 0.0 } }
             };
 
@@ -947,7 +947,7 @@ public partial class FormMain : Form
             FileProperties[(int)FileType.TOF] ??= new FileProperty
             {
                 Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(90.0/180.0*Math.PI,26.5, TimeUnitEnum.MicroSecond)
+                HorizontalAxisProperty = new HorizontalAxisProperty(90.0 / 180.0 * Math.PI, 26.5, TimeUnitEnum.MicroSecond)
             };
 
             //MISC
@@ -1453,7 +1453,11 @@ public partial class FormMain : Form
             }
         });
 
-        profiles.ForEach(p => gMain.DrawLines(p.pen, p.points));
+        profiles.ForEach(p =>
+        {
+            if (p.points.Length > 2)
+                gMain.DrawLines(p.pen, p.points);
+        });
     }
 
 
@@ -1475,8 +1479,8 @@ public partial class FormMain : Form
             DiffractionProfile2 dp = (DiffractionProfile2)dataSet.DataTableProfile.Items[bindingSourceProfile.Position];
             if (dp.SubtractBackground && ShowBackgroundProfile)
             {
-               var color = Color.FromArgb(dp.ColorARGB.Value);
-               var pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1);
+                var color = Color.FromArgb(dp.ColorARGB.Value);
+                var pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1);
 
                 PointD[] pt;
                 if (BackGroundPointSelectMode)
@@ -1918,7 +1922,7 @@ public partial class FormMain : Form
         #endregion
 
         //Diffractionモード
-        else if (e.Button == MouseButtons.Left && e.Clicks == 1 && SelectedCrysatlIndex > 0)
+        else if (e.Button == MouseButtons.Left && e.Clicks == 1 && SelectedCrystalIndex > 0)
         {
             var cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
             int i;
@@ -1937,7 +1941,7 @@ public partial class FormMain : Form
                 return;
             }
         }
-        else if (SelectedCrysatlIndex == 0 && dataSet.DataTableCrystal.GetItemChecked(0))//flexibleCrystalを選択時
+        else if (SelectedCrystalIndex == 0 && dataSet.DataTableCrystal.GetItemChecked(0))//flexibleCrystalを選択時
         {
             var cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
             if (e.Button == MouseButtons.Left && e.Clicks == 1)//選択
@@ -2180,7 +2184,7 @@ public partial class FormMain : Form
         };
         #endregion
 
-        var d = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty)*10;
+        var d = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty) * 10;
 
         //var d = AxisMode switch
         //{
@@ -2249,7 +2253,7 @@ public partial class FormMain : Form
         }
         else if (!ShowBackgroundProfile || !BackGroundPointSelectMode)
         {
-            if (SelectedCrysatlIndex == 0 && IsPlaneSelected && e.Button == MouseButtons.Left)//flexibleCrystalのPlane選択モードのとき
+            if (SelectedCrystalIndex == 0 && IsPlaneSelected && e.Button == MouseButtons.Left)//flexibleCrystalのPlane選択モードのとき
             {
                 Crystal cry = (Crystal)((DataRowView)bindingSourceCrystal.Current).Row[1];
                 cry.Plane[SelectedPlaneIndex].d = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty); //ConvToDspacing(pt).X;
@@ -2630,7 +2634,7 @@ public partial class FormMain : Form
     /// <param name="ReCalcDensity">格子定数のみを変更する場合はTrue</param>
     public void SetFormCrystal(bool changeCellConstantsOnly = false)
     {
-        if (SelectedCrysatlIndex < 0) return;
+        if (SelectedCrystalIndex < 0) return;
         if (formCrystal.crystalControl != null)
         {
             var c = dataSet.DataTableCrystal.Items[bindingSourceCrystal.Position];
@@ -2857,7 +2861,7 @@ public partial class FormMain : Form
             using (var reader = new StreamReader(fileName))
                 while (!reader.EndOfStream)
                     strList.Add(reader.ReadLine());
-            
+
 
             if (strList.Count <= 3)
                 return;
@@ -3158,20 +3162,23 @@ public partial class FormMain : Form
             #endregion
 
 
-            diffProf.SrcProperty.WaveSource = formDataConverter.WaveSource;
-            diffProf.SrcProperty.WaveColor = formDataConverter.WaveColor;
-            diffProf.SrcProperty.WaveLength = formDataConverter.Wavelength;
-            diffProf.SrcProperty.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-            diffProf.SrcProperty.AxisMode = formDataConverter.AxisMode;
-            diffProf.SrcProperty.XrayElementNumber = formDataConverter.XraySourceElementNumber;
-            diffProf.SrcProperty.XrayLine = formDataConverter.XrayLine;
-            diffProf.SrcProperty.TofAngle = formDataConverter.TofAngle;
-            diffProf.SrcProperty.TofLength = formDataConverter.TofLength;
+            //diffProf.SrcProperty.WaveSource = formDataConverter.WaveSource;
+            //diffProf.SrcProperty.WaveColor = formDataConverter.WaveColor;
+            //diffProf.SrcProperty.WaveLength = formDataConverter.Wavelength;
+            //diffProf.SrcProperty.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
+            //diffProf.SrcProperty.AxisMode = formDataConverter.AxisMode;
+            //diffProf.SrcProperty.XrayElementNumber = formDataConverter.XraySourceElementNumber;
+            //diffProf.SrcProperty.XrayLine = formDataConverter.XrayLine;
+            //diffProf.SrcProperty.TofAngle = formDataConverter.TofAngle;
+            //diffProf.SrcProperty.TofLength = formDataConverter.TofLength;
 
-            diffProf.SrcProperty.TofTimeUnit = formDataConverter.TofTimeUnit;
-            diffProf.SrcProperty.EnergyUnit = formDataConverter.EnergyUnit;
-            diffProf.SrcProperty.DspacingUnit = formDataConverter.DspacingUnit;
-            diffProf.SrcProperty.TwoThetaUnit = formDataConverter.TwoThetaUnit;
+            //diffProf.SrcProperty.TofTimeUnit = formDataConverter.TofTimeUnit;
+            //diffProf.SrcProperty.EnergyUnit = formDataConverter.EnergyUnit;
+            //diffProf.SrcProperty.DspacingUnit = formDataConverter.DspacingUnit;
+            //diffProf.SrcProperty.WaveNumberUnit = formDataConverter.WaveNumberUnit;
+            //diffProf.SrcProperty.TwoThetaUnit = formDataConverter.TwoThetaUnit;
+
+            diffProf.SrcProperty = formDataConverter.HorizontalAxisProperty;
 
             diffProf.ExposureTime = formDataConverter.ExposureTime;
 
@@ -3190,7 +3197,7 @@ public partial class FormMain : Form
             if (diffProf.SourceProfile.Pt.Count > 0)
             {
                 if (diffProf.SrcProperty.AxisMode == HorizontalAxis.NeutronTOF)
-                    if (diffProf.SrcProperty.TofTimeUnit== TimeUnitEnum.NanoSecond)//単位を変換する必要がある場合は
+                    if (diffProf.SrcProperty.TofTimeUnit == TimeUnitEnum.NanoSecond)//単位を変換する必要がある場合は
                         for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
                             diffProf.SourceProfile.Pt[i] = new PointD(diffProf.SourceProfile.Pt[i].X / 1000, diffProf.SourceProfile.Pt[i].Y);
 
@@ -4125,19 +4132,19 @@ public partial class FormMain : Form
         e.SuppressKeyPress = true;
         if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down)
         {
-            int index = SelectedCrysatlIndex;
+            int index = SelectedCrystalIndex;
             if (e.KeyCode == Keys.Down && bindingSourceCrystal.Position < bindingSourceCrystal.Count)
-                index = bindingSourceCrystal.Position = SelectedCrysatlIndex + 1;
+                index = bindingSourceCrystal.Position = SelectedCrystalIndex + 1;
             else if (e.KeyCode == Keys.Up && bindingSourceCrystal.Position > 0)
-                index = bindingSourceCrystal.Position = SelectedCrysatlIndex - 1;
-            if (index != SelectedCrysatlIndex)
+                index = bindingSourceCrystal.Position = SelectedCrystalIndex - 1;
+            if (index != SelectedCrystalIndex)
                 dataGridViewCrystals_CellMouseClick(new object(),
-                    new DataGridViewCellMouseEventArgs(1, SelectedCrysatlIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
+                    new DataGridViewCellMouseEventArgs(1, SelectedCrystalIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
         }
         else if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Enter)
         {
             dataGridViewCrystals_CellMouseClick(new object(),
-                    new DataGridViewCellMouseEventArgs(0, SelectedCrysatlIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
+                    new DataGridViewCellMouseEventArgs(0, SelectedCrystalIndex, 0, 0, new MouseEventArgs(MouseButtons.Left, 1, 0, 0, 0)));
         }
     }
 
@@ -4149,7 +4156,7 @@ public partial class FormMain : Form
         //if(sender != formFitting)
         if (e.Button == MouseButtons.Left)
         {
-            if ((e.ColumnIndex == 0 && e.RowIndex >= 0) || (e.ColumnIndex != 0 && e.RowIndex >= 0 && SelectedCrysatlIndex == bindingSourceCrystal.Position))
+            if ((e.ColumnIndex == 0 && e.RowIndex >= 0) || (e.ColumnIndex != 0 && e.RowIndex >= 0 && SelectedCrystalIndex == bindingSourceCrystal.Position))
                 ((DataRowView)bindingSourceCrystal.Current).Row[0] = !(bool)((DataRowView)bindingSourceCrystal.Current).Row[0];
         }
 
@@ -4169,10 +4176,10 @@ public partial class FormMain : Form
             timerBlinkDiffraction.Start();
 
         //クリックによってセレクションが変更された場合
-        bool crystalChanged = SelectedCrysatlIndex != bindingSourceCrystal.Position;
+        bool crystalChanged = SelectedCrystalIndex != bindingSourceCrystal.Position;
         if (crystalChanged)
         {
-            SelectedCrysatlIndex = bindingSourceCrystal.Position;
+            SelectedCrystalIndex = bindingSourceCrystal.Position;
             SelectedPlaneIndex = -1;
         }
 

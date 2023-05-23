@@ -1,4 +1,64 @@
-﻿<root>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing"">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -73,6 +133,34 @@
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="horizontalAxisUserControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
+  </data>
+  <data name="horizontalAxisUserControl.HorizontalAxisProperty" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAADVDcnlzdGFsbG9ncmFwaHksIEN1bHR1cmU9bmV1dHJhbCwgUHVi
+        bGljS2V5VG9rZW49bnVsbAUBAAAAJkNyeXN0YWxsb2dyYXBoeS5Ib3Jpem9udGFsQXhpc1Byb3BlcnR5
+        DwAAABk8QXhpc01vZGU+a19fQmFja2luZ0ZpZWxkGzxXYXZlU291cmNlPmtfX0JhY2tpbmdGaWVsZBo8
+        V2F2ZUNvbG9yPmtfX0JhY2tpbmdGaWVsZBs8V2F2ZUxlbmd0aD5rX19CYWNraW5nRmllbGQiPFhyYXlF
+        bGVtZW50TnVtYmVyPmtfX0JhY2tpbmdGaWVsZBk8WHJheUxpbmU+a19fQmFja2luZ0ZpZWxkJDxFbGVj
+        dHJvbkFjY1ZvbGF0YWdlPmtfX0JhY2tpbmdGaWVsZCM8RW5lcmd5VGFrZW9mZkFuZ2xlPmtfX0JhY2tp
+        bmdGaWVsZBk8VG9mQW5nbGU+a19fQmFja2luZ0ZpZWxkGjxUb2ZMZW5ndGg+a19fQmFja2luZ0ZpZWxk
+        HTxUd29UaGV0YVVuaXQ+a19fQmFja2luZ0ZpZWxkHTxEc3BhY2luZ1VuaXQ+a19fQmFja2luZ0ZpZWxk
+        HzxXYXZlTnVtYmVyVW5pdD5rX19CYWNraW5nRmllbGQbPEVuZXJneVVuaXQ+a19fQmFja2luZ0ZpZWxk
+        HDxUb2ZUaW1lVW5pdD5rX19CYWNraW5nRmllbGQEBAQAAAQAAAAABAQEBAQeQ3J5c3RhbGxvZ3JhcGh5
+        Lkhvcml6b250YWxBeGlzAgAAABpDcnlzdGFsbG9ncmFwaHkuV2F2ZVNvdXJjZQIAAAAZQ3J5c3RhbGxv
+        Z3JhcGh5LldhdmVDb2xvcgIAAAAGCBhDcnlzdGFsbG9ncmFwaHkuWHJheUxpbmUCAAAABgYGBh1Dcnlz
+        dGFsbG9ncmFwaHkuQW5nbGVVbml0RW51bQIAAAAeQ3J5c3RhbGxvZ3JhcGh5Lkxlbmd0aFVuaXRFbnVt
+        AgAAAB5DcnlzdGFsbG9ncmFwaHkuTGVuZ3RoVW5pdEVudW0CAAAAHkNyeXN0YWxsb2dyYXBoeS5FbmVy
+        Z3lVbml0RW51bQIAAAAcQ3J5c3RhbGxvZ3JhcGh5LlRpbWVVbml0RW51bQIAAAACAAAABf3///8eQ3J5
+        c3RhbGxvZ3JhcGh5Lkhvcml6b250YWxBeGlzAQAAAAd2YWx1ZV9fAAgCAAAAAAAAAAX8////GkNyeXN0
+        YWxsb2dyYXBoeS5XYXZlU291cmNlAQAAAAd2YWx1ZV9fAAgCAAAAAAAAAAX7////GUNyeXN0YWxsb2dy
+        YXBoeS5XYXZlQ29sb3IBAAAAB3ZhbHVlX18ACAIAAAAAAAAAaJZMMme8wz8dAAAABfr///8YQ3J5c3Rh
+        bGxvZ3JhcGh5LlhyYXlMaW5lAQAAAAd2YWx1ZV9fAAgCAAAAAAAAABWLQj8RFSBAAAAAAAAAAAAAAAAA
+        AAA5QAAAAAAAADlABfn///8dQ3J5c3RhbGxvZ3JhcGh5LkFuZ2xlVW5pdEVudW0BAAAAB3ZhbHVlX18A
+        CAIAAAAAAAAABfj///8eQ3J5c3RhbGxvZ3JhcGh5Lkxlbmd0aFVuaXRFbnVtAQAAAAd2YWx1ZV9fAAgC
+        AAAABgAAAAH3////+P///w0AAAAF9v///x5DcnlzdGFsbG9ncmFwaHkuRW5lcmd5VW5pdEVudW0BAAAA
+        B3ZhbHVlX18ACAIAAAAAAAAABfX///8cQ3J5c3RhbGxvZ3JhcGh5LlRpbWVVbml0RW51bQEAAAAHdmFs
+        dWVfXwAIAgAAAAIAAAAL
+</value>
   </data>
   <data name="horizontalAxisUserControl.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 38</value>
@@ -297,7 +385,7 @@
     <value>4, 27</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>344, 272</value>
+    <value>344, 285</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>色設定 + 複数プロファイル表示設定</value>
