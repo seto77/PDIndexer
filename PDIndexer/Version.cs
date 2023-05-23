@@ -23,7 +23,8 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
-        "\r\n ver4.438(2023/05/23) Fixed a minor bug on loading edx profiles'." +
+        "\r\n ver4.439(2023/05/23) Fixed bugs on loading txt-format profiles'." +
+        "\r\n ver4.438(2023/05/18) Fixed a minor bug on loading edx profiles'." +
         "\r\n ver4.437(2023/04/22) Fixed a problem where changes in horizontal axis units were not working. Changed the profile format to '*.pdi2'." +
         "\r\n ver4.436(2023/03/18) Fixed minor bugs." +
         "\r\n ver4.435(2023/03/07) Fixed bugs on the 'Macro function'." +

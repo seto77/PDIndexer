@@ -2858,7 +2858,7 @@ public partial class FormMain : Form
         if (ext != "pdi" && ext != "ras" && ext != "nxs")
         {
             var strList = new List<string>();
-            using (var reader = new StreamReader(fileName))
+            using (var reader = new StreamReader(fileName, Encoding.UTF8))
                 while (!reader.EndOfStream)
                     strList.Add(reader.ReadLine());
 
