@@ -130,7 +130,7 @@ namespace Crystallography.Controls
         }
 
         /// <summary>
-        /// EDXの取り出し角 度単位で取得/設定
+        /// EDXの取り出し角(テキスト) 度単位で取得/設定
         /// </summary>
         public string TakeoffAngleText
         {

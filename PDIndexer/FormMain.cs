@@ -876,8 +876,8 @@ public partial class FormMain : Form
                     f.HorizontalAxisProperty.XrayElementNumber = Convert.ToInt32(regKey.GetValue($"FileProperty.XraySourceElementNumber{i}", 0));
                     f.HorizontalAxisProperty.XrayLine = (XrayLine)Convert.ToInt32(regKey.GetValue($"FileProperty.XrayLine{i}", 0));
 
-                    f.HorizontalAxisProperty.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0"));
-                    f.HorizontalAxisProperty.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "0"));
+                    f.HorizontalAxisProperty.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0.7853981634"));
+                    f.HorizontalAxisProperty.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "25"));
 
                     //EGCは、1.1,　2.2,　3.2 ,, 4.5, 5.7, 0.2みたいな感じで格納されている
                     var egc = (string)regKey.GetValue($"FileProperty.EGC{i}", "0.0,0.0,0.0");
@@ -2857,6 +2857,7 @@ public partial class FormMain : Form
             using (var reader = new StreamReader(fileName))
                 while (!reader.EndOfStream)
                     strList.Add(reader.ReadLine());
+            
 
             if (strList.Count <= 3)
                 return;
@@ -3167,6 +3168,11 @@ public partial class FormMain : Form
             diffProf.SrcProperty.TofAngle = formDataConverter.TofAngle;
             diffProf.SrcProperty.TofLength = formDataConverter.TofLength;
 
+            diffProf.SrcProperty.TofTimeUnit = formDataConverter.TofTimeUnit;
+            diffProf.SrcProperty.EnergyUnit = formDataConverter.EnergyUnit;
+            diffProf.SrcProperty.DspacingUnit = formDataConverter.DspacingUnit;
+            diffProf.SrcProperty.TwoThetaUnit = formDataConverter.TwoThetaUnit;
+
             diffProf.ExposureTime = formDataConverter.ExposureTime;
 
             diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
@@ -3184,7 +3190,7 @@ public partial class FormMain : Form
             if (diffProf.SourceProfile.Pt.Count > 0)
             {
                 if (diffProf.SrcProperty.AxisMode == HorizontalAxis.NeutronTOF)
-                    if (formDataConverter.TofUnitNanoSec)//単位を変換する必要がある場合は
+                    if (diffProf.SrcProperty.TofTimeUnit== TimeUnitEnum.NanoSecond)//単位を変換する必要がある場合は
                         for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
                             diffProf.SourceProfile.Pt[i] = new PointD(diffProf.SourceProfile.Pt[i].X / 1000, diffProf.SourceProfile.Pt[i].Y);
 

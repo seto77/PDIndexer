@@ -31,8 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDataConverter));
             groupBoxEDX = new System.Windows.Forms.GroupBox();
             panel1 = new System.Windows.Forms.Panel();
-            checkBoxLowEnergyCutoff = new System.Windows.Forms.CheckBox();
             numericBoxLowEnergyCutoff = new Crystallography.Controls.NumericBox();
+            checkBoxLowEnergyCutoff = new System.Windows.Forms.CheckBox();
             flowLayoutPanelEDX = new System.Windows.Forms.FlowLayoutPanel();
             label2 = new System.Windows.Forms.Label();
             textBox = new System.Windows.Forms.TextBox();
@@ -68,12 +68,6 @@
             panel1.Controls.Add(checkBoxLowEnergyCutoff);
             panel1.Name = "panel1";
             // 
-            // checkBoxLowEnergyCutoff
-            // 
-            resources.ApplyResources(checkBoxLowEnergyCutoff, "checkBoxLowEnergyCutoff");
-            checkBoxLowEnergyCutoff.Name = "checkBoxLowEnergyCutoff";
-            checkBoxLowEnergyCutoff.UseVisualStyleBackColor = true;
-            // 
             // numericBoxLowEnergyCutoff
             // 
             resources.ApplyResources(numericBoxLowEnergyCutoff, "numericBoxLowEnergyCutoff");
@@ -84,6 +78,12 @@
             numericBoxLowEnergyCutoff.ShowUpDown = true;
             numericBoxLowEnergyCutoff.SmartIncrement = true;
             numericBoxLowEnergyCutoff.Value = 10000D;
+            // 
+            // checkBoxLowEnergyCutoff
+            // 
+            resources.ApplyResources(checkBoxLowEnergyCutoff, "checkBoxLowEnergyCutoff");
+            checkBoxLowEnergyCutoff.Name = "checkBoxLowEnergyCutoff";
+            checkBoxLowEnergyCutoff.UseVisualStyleBackColor = true;
             // 
             // flowLayoutPanelEDX
             // 

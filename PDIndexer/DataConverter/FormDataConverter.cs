@@ -64,11 +64,11 @@ namespace PDIndexer
         /// </summary>
         public double TakeoffAngle { set => horizontalAxisUserControl.TakeoffAngle = value; get => horizontalAxisUserControl.TakeoffAngle; }
         /// <summary>
-        /// EDXの取り出し角 度単位で取得/設定
+        /// EDXの取り出し角のテキスト  度単位で取得/設定
         /// </summary>
         public string TakeoffAngleText { set => horizontalAxisUserControl.TakeoffAngleText = value; get => horizontalAxisUserControl.TakeoffAngleText; }
 
-        public EnergyUnitEnum EnergyUnit { set => horizontalAxisUserControl.EnergyUnit = value; get => horizontalAxisUserControl.EnergyUnit; }
+
         /// <summary>
         /// TOFの取り出し角 ラジアン単位で取得/設定
         /// </summary>
@@ -82,11 +82,11 @@ namespace PDIndexer
         /// </summary>
         public double TofLength { set => horizontalAxisUserControl.TofLength = value; get => horizontalAxisUserControl.TofLength; }
 
-        public bool TofUnitMicroSec { set => horizontalAxisUserControl.radioButtonTofUnitMicroSec.Checked = value; get => horizontalAxisUserControl.radioButtonTofUnitMicroSec.Checked; }
+        public TimeUnitEnum TofTimeUnit { set => horizontalAxisUserControl.TofTimeUnit = value; get => horizontalAxisUserControl.TofTimeUnit; }
+        public EnergyUnitEnum EnergyUnit { set => horizontalAxisUserControl.EnergyUnit = value; get => horizontalAxisUserControl.EnergyUnit; }
+        public LengthUnitEnum DspacingUnit { set => horizontalAxisUserControl.DspacingUnit = value; get => horizontalAxisUserControl.DspacingUnit; }
+        public AngleUnitEnum TwoThetaUnit { set => horizontalAxisUserControl.TwoThetaUnit = value; get => horizontalAxisUserControl.TwoThetaUnit; }
 
-        public bool TofUnitNanoSec { set => horizontalAxisUserControl.radioButtonTofUnitNanoSec.Checked = value; get => horizontalAxisUserControl.radioButtonTofUnitNanoSec.Checked; }
-
-        public EnergyUnitEnum EnergyUnitEV { set => horizontalAxisUserControl.EnergyUnit = value; get => horizontalAxisUserControl.EnergyUnit; }
 
         public double[][] EGC
         {
