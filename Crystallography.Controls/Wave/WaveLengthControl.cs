@@ -259,7 +259,7 @@ public partial class WaveLengthControl : UserControl
         if (DesignMode)
             return;
         InitializeComponent();
-       
+
 
         comboBoxXRayElement.SelectedIndex = 0;
     }

@@ -685,22 +685,23 @@ public partial class FormProfileSetting : Form
             
         };
 
-        output.SrcProperty.WaveSource = formMain.WaveSource;
-        output.SrcProperty.WaveColor = formMain.WaveColor;
-        output.SrcProperty.AxisMode = formMain.AxisMode;
-        output.SrcProperty.XrayElementNumber = formMain.XraySourceElementNumber;
-        output.SrcProperty.XrayLine = formMain.XraySourceLine;
-        output.SrcProperty.WaveLength = formMain.WaveLength;
-        output.SrcProperty.EnergyTakeoffAngle = formMain.TakeoffAngle;
-        output.SrcProperty.TofAngle = formMain.TakeoffAngle;
-        output.SrcProperty.TofLength = formMain.TofLength;
+        //output.SrcProperty.WaveSource = formMain.WaveSource;
+        //output.SrcProperty.WaveColor = formMain.WaveColor;
+        //output.SrcProperty.AxisMode = formMain.AxisMode;
+        //output.SrcProperty.XrayElementNumber = formMain.XraySourceElementNumber;
+        //output.SrcProperty.XrayLine = formMain.XraySourceLine;
+        //output.SrcProperty.WaveLength = formMain.WaveLength;
+        //output.SrcProperty.EnergyTakeoffAngle = formMain.TakeoffAngle;
+        //output.SrcProperty.TofAngle = formMain.TakeoffAngle;
+        //output.SrcProperty.TofLength = formMain.TofLength;
+        output.SrcProperty = formMain.HorizontalAxisProperty;
 
         formMain.AddProfileToCheckedListBox(output, true, true);
 
         try
         {
-            int n = Convert.ToInt32(textBoxOutputFilename.Text.Substring(textBoxOutputFilename.Text.Length - 2));
-            textBoxOutputFilename.Text = textBoxOutputFilename.Text.Substring(0, textBoxOutputFilename.Text.Length - 2) + (n + 1).ToString("00");
+            int n = Convert.ToInt32(textBoxOutputFilename.Text[^2..]);
+            textBoxOutputFilename.Text = $"{textBoxOutputFilename.Text[..^2]}{n + 1:00}";
         }
         catch { }
     }
