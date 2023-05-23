@@ -69,7 +69,7 @@ static class Version
         "\r\n ver4.392(2020/10/22) Added: 3rd order Vinet equation to the EOS function." +
         "\r\n ver4.391(2020/10/17) Improved: Macro functions." +
         "\r\n ver4.390(2020/10/16) Improved: Speed up drawing profiles. Added: New macro functions." +
-        "\r\n ver4.388(2020/10/15) Added new EOS foumulae (4th BM, AP2, Keane)." +
+        "\r\n ver4.388(2020/10/15) Added new EOS formulae (4th BM, AP2, Keane)." +
         "\r\n ver4.387(2020/10/14) Added three EOS for Re (Thank you, Dr. Sakai), and fixed minor bugs." +
         "\r\n ver4.386(2020/09/04) Fixed minor bugs. Thank you, Dr. Farla!" +
         "\r\n ver4.385(2020/09/03) Fixed minor bugs." +
@@ -111,7 +111,7 @@ static class Version
         "\r\n ver4.32 (2016/06/15) Improved to read a '*.xbm' (XRayBinFile) files. Fixed minor bugs." +
         "\r\n ver4.316(2016/06/13) Fixed minor bugs." +
         "\r\n ver4.315(2015/12/23) Fixed a bugs on initial loading." +
-        "\r\n ver4.314(2015/12/21) Added: Initializing steps are diplayed." +
+        "\r\n ver4.314(2015/12/21) Added: Initializing steps are displayed." +
         "\r\n ver4.313(2015/12/18) Fixed a minor bug on input form for rhombohedral settings." +
         "\r\n ver4.312(2015/12/11) Fixed a minor bug on Wyckoff position." +
         "\r\n ver4.312(2015/12/09) Fixed minor bugs." +
@@ -119,7 +119,7 @@ static class Version
         "\r\n ver4.31 (2015/10/31) Added: EOS of MgO (Tange+ 2009) and Pt, Au (Yokoo+ 2009)." +
         "\r\n ver4.306(2015/08/28) Fixed a minor bug." +
         "\r\n ver4.305(2015/03/18) Fixed a bug about the calculation of Debye-Waller factor" +
-        "\r\n ver4.304(2015/03/06) Fixed: a bug on editing monocliic crystal. (thx Niwa-san)" +
+        "\r\n ver4.304(2015/03/06) Fixed: a bug on editing monoclinic crystal. (thx Niwa-san)" +
         "\r\n ver4.303(2015/03/04) Improved macro functions." +
         "\r\n ver4.302(2015/03/02) Improved macro functions." +
         "\r\n ver4.301(2015/01/25) Fixed: a minor bug on an initial loading for ZIP version." +
@@ -128,20 +128,20 @@ static class Version
         "\r\n ver4.296(2014/11/20) Fixed bugs on the refinements of cell constants for triclinic symmetry." +
         "\r\n ver4.295(2014/11/14) Fixed minor bugs." +
         "\r\n ver4.294(2014/11/10) Fixed minor bugs." +
-        "\r\n ver4.293(2014/11/08) Fixed a minor bug on UI. Added bliking mode, by right double clicks on crystal list" +
+        "\r\n ver4.293(2014/11/08) Fixed a minor bug on UI. Added blinking mode, by right double clicks on crystal list" +
         "\r\n ver4.292(2014/10/28) Added: EOS of NaCl B1 (Matsui et al 2012) and NaCl B2 (Ueda et al. 2008)." +
         "\r\n ver4.291(2014/10/08) Fixed minor bugs." +
         "\r\n ver4.29 (2014/10/06) Improved: possible to receive multi profiles from IPAnalyzer" +
-        "\r\n ver4.28 (2014/05/15) Improved: 'Fittng parameter' design. Fixed: load error on nertron TOF data format." +
+        "\r\n ver4.28 (2014/05/15) Improved: 'Fitting parameter' design. Fixed: load error on neutron TOF data format." +
         "\r\n ver4.273(2014/02/13) Fixed minor bugs." +
         "\r\n ver4.272(2014/02/12) Fixed minor bugs." +
         "\r\n ver4.271(2014/01/31) Fixed minor bugs." +
-        "\r\n ver4.27 (2014/01/30) Added: Unit q (wavenumver) has been available as horizontal axis units." +
+        "\r\n ver4.27 (2014/01/30) Added: Unit q (wavenumber) has been available as horizontal axis units." +
         "\r\n ver4.264(2013/12/26) Fixed minor bugs." +
         "\r\n ver4.263(2013/12/25) Fixed minor bugs." +
         "\r\n ver4.262(2013/12/17) Improved: Language option." +
         "\r\n ver4.261(2013/11/10) Fixed a minor bug when profile reading" +
-        "\r\n ver4.26 (2013/11/10) Added: Comment option for profiles. A button which checks/uncheks all profiles " +
+        "\r\n ver4.26 (2013/11/10) Added: Comment option for profiles. A button which checks/unchecks all profiles " +
         "\r\n ver4.255(2013/11/10) Fixed a bug on design." +
         "\r\n ver4.254(2013/11/06) Fixed minor bug on a clipboard operation." +
         "\r\n ver4.253(2013/10/01) Fixed minor bug on an FFT calculation." +
@@ -149,11 +149,11 @@ static class Version
         "\r\n ver4.251(2013/07/15) Fixed minor bug on CIF file conversion." +
         "\r\n ver4.25 (2013/06/14) Added: EOS of NaCl (B2) (Sakai et al. 2011) and Pt (Matsui et al., 2009) into 'EOS form'." +
         "\r\n ver4.242(2013/03/11) Fixed small bug." +
-        "\r\n ver4.241(2013/02/26) Changed adress of help page." +
+        "\r\n ver4.241(2013/02/26) Changed address of help page." +
         "\r\n ver4.24 (2013/02/25) Added: Update check function." +
         "\r\n ver4.23 (2013/02/21) Added: CIF file export function" +
-        "\r\n ver4.22 (2013/02/09) Imploved: GSAS export function" +
-        "\r\n ver4.21 (2013/01/25) Imploved: speed of bandpass function" +
+        "\r\n ver4.22 (2013/02/09) Improved: GSAS export function" +
+        "\r\n ver4.21 (2013/01/25) Improved: speed of bandpass function" +
         "\r\n ver4.20 (2013/01/23) Added: Remove Kalpha2 function" +
         "\r\n ver4.19 (2013/01/07) Added 'Mask and Interpolation' function, and 'Remove diffraction peaks' function." +
         "\r\n ver4.184(2012/12/27) Fixed minor bugs." +
@@ -161,7 +161,7 @@ static class Version
         "\r\n ver4.182(2012/11/29) Fixed bugs about 'Profile Operation'." +
         "\r\n ver4.181(2012/11/28) Fixed: many minor bugs." +
         "\r\n ver4.18 (2012/11/26) Added: Algebraic operation of profile(s). Fixed many bugs." +
-        "\r\n ver4.17 (2012/11/25) Improved: Appearance of profile list box, bug fixed: zoom out behaviour." +
+        "\r\n ver4.17 (2012/11/25) Improved: Appearance of profile list box, bug fixed: zoom out behabiour." +
         "\r\n ver4.161(2012/11/12) Improved: Appearance of vertical and horizontal unit." +
         "\r\n ver4.16 (2012/07/18) Added: A function to shift x-axis." +
         "\r\n ver4.15 (2012/06/29) Added: Error bar option." +
@@ -172,12 +172,12 @@ static class Version
         "\r\n ver4.12 (2012/05/22) Added: Conunts per second mode for vertical axis." +
         "\r\n ver4.11 (2011/12/25) Fixed: a multiplicity calculation for trigonal symmetry was corrected." +
         "\r\n ver4.1  (2011/11/15) Improved: color of diffraction peaks is shown next to the crystal name." +
-        "\r\n ver4.02 (2011/11/14) Fixed: infinite loop error on EOS calculation and diffraction peak error of frexible crystal mode (thanks motty)." +
+        "\r\n ver4.02 (2011/11/14) Fixed: infinite loop error on EOS calculation and diffraction peak error of flexible crystal mode (thanks motty)." +
         "\r\n ver4.01 (2011/10/31) Fixed: crystal control design in Japanese mode (thanks riko)." +
         "\r\n ver4.00 (2011/10/21) Added language option (English/Japanese)." +
         "\r\n ver3.91 (2011/08/21) 横軸を角度にすると回折線の位置が表示できなかったバグを修正 (大藤さんに感謝)" +
         "\r\n ver3.90 (2011/07/22) 中性子回折強度の計算を導入。横軸の設定が大きく変わっていますので、バグがありましたらご連絡ください。" +
-        "\r\n ver3.82 (2011/07/04) 「Crystal information」中の「Detailed Informatio」の機能が充実しました。" +
+        "\r\n ver3.82 (2011/07/04) 「Crystal information」中の「Detailed Information」の機能が充実しました。" +
         "\r\n ver3.815(2011/03/23) FormFittingで初期半値幅が反映されないバグを修正" +
         "\r\n ver3.814(2011/03/22) 一部のCIFファイルなどで「.66667」などと記載されている場合に「2/3」と読み替えるように内部仕様を変更" +
         "\r\n ver3.813(2011/03/16) 点群6/mに属する結晶の多重度の計算ミスを修正" +
