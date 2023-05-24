@@ -744,12 +744,11 @@ public partial class FormMain : Form
         var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
         if (key == null) return;
 
-        Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
-
-       
-            if (mode == Reg.Mode.Write)
+        if (mode == Reg.Mode.Write)
             key.SetValue("Version", Version.VersionValue);
 
+        Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
+                
         Reg.RW<Rectangle>(key, mode, this, "Bounds");
         WindowLocation.Adjust(this);
 
