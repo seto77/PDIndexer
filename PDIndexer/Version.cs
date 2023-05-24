@@ -6,6 +6,7 @@ static class Version
 {
     public const string Software = "PDIndexer";
     static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
+    static public double VersionValue { get=> Convert.ToDouble(VersionAndDate[3..^12]); }
     static public string RecentHistory
     {
         get
@@ -23,6 +24,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.440(2023/05/24) Improved registry read/write.The registry is cleared the first time this version is launched." +
         "\r\n ver4.439(2023/05/23) Fixed bugs on loading txt-format profiles." +
         "\r\n ver4.438(2023/05/18) Fixed a minor bug on loading edx profiles." +
         "\r\n ver4.437(2023/04/22) Fixed a problem where changes in horizontal axis units were not working. Changed the profile format to '*.pdi2'." +

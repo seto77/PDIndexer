@@ -154,16 +154,16 @@ public partial class FormDataConverter : Form
         VisibleEDXSetting = WaveSource == WaveSource.Xray && WaveColor == WaveColor.FlatWhite;
     }
 
-    public void SetProperty(FormMain.FileProperty property)
+    public void SetProperty(FileProperty property)
     {
         HorizontalAxisProperty = property.HorizontalAxisProperty;
         ExposureTime = property.ExposureTime;
         EGC = property.EGC;
 
     }
-    public FormMain.FileProperty GetProperty()
+    public FileProperty GetProperty()
     {
-        return new FormMain.FileProperty()
+        return new FileProperty()
         {
             Valid = true,
             ExposureTime = ExposureTime,

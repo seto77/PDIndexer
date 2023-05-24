@@ -10,7 +10,7 @@ public static class XYFile
 {
     public static bool SavePdi2File(DiffractionProfile2[] dp, string fileName)
     {
-        System.IO.FileStream fs = null;
+        FileStream fs = null;
         try
         {
             System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(DiffractionProfile2[]));

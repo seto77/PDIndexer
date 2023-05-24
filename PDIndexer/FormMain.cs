@@ -12,7 +12,6 @@ using Crystallography;
 using Crystallography.Controls;
 using System.Runtime.InteropServices;
 using System.Collections.Generic;
-using Microsoft.Win32;
 using System.Reflection;
 using System.Drawing.Printing;
 using System.Drawing.Imaging;
@@ -22,10 +21,32 @@ using System.Linq;
 using IronPython.Hosting;
 using System.Net;
 using System.Threading.Tasks;
+using MemoryPack;
+using System.CodeDom;
 
 #endregion
 
 namespace PDIndexer;
+
+
+#region FilePropertyクラス
+[MemoryPackable]
+public partial record struct FileProperty
+{
+    public bool Valid = false;
+    public HorizontalAxisProperty HorizontalAxisProperty;
+
+    public double ExposureTime=1;
+
+    /// <summary>
+    /// EDX detector用の変換係数 E  = (a₀ + a₁ n + a₂ n²) * 10³　多チャンネルを考慮して配列として用意しておく
+    /// </summary>
+    public double[][] EGC = new[] { new[] { 0.0, 0.0, 0.0 } };
+    [MemoryPackConstructor]
+    public FileProperty()
+    { }
+}
+#endregion
 
 public partial class FormMain : Form
 {
@@ -45,32 +66,9 @@ public partial class FormMain : Form
     }
     #endregion
 
-    #region FilePropertyクラス
-    public class FileProperty
-    {
-        public bool Valid;
-        //public WaveSource WaveSource;
-        //public WaveColor WaveColor;
-        //public double Wavelength;
-        //public double TakeoffAngle;
-        //public HorizontalAxis AxisMode;
-        //public int XraySourceElementNumber;
-        //public XrayLine XrayLine;
-        //public double TofAngle;
-        //public double TofLength;
-
-        public HorizontalAxisProperty HorizontalAxisProperty;
-
-        public double ExposureTime;
-
-        /// <summary>
-        /// EDX detector用の変換係数 E  = (a₀ + a₁ n + a₂ n²) * 10³　多チャンネルを考慮して配列として用意しておく
-        /// </summary>
-        public double[][] EGC = new[] { new[] { 0.0, 0.0, 0.0 } };
-    }
-    #endregion
-
     #region プロパティ
+
+    public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
 
     public FormCrystal formCrystal;
     public FormEOS formEOS;
@@ -84,7 +82,6 @@ public partial class FormMain : Form
     public FormTwoThetaCalibration formTwoThetaCalibration;
 
     Crystallography.Controls.CommonDialog initialDialog;
-
 
     public bool BackGroundPointSelectMode { get; set; } = false;
     public int[] SelectedMaskingBoundaryIndex { set; get; } = new int[] { -1, -1 };
@@ -109,11 +106,11 @@ public partial class FormMain : Form
 
     public int SelectedPlaneIndex { set; get; } = -1;
 
-    public bool IsPlaneSelected = false;
+    public bool IsPlaneSelected { get; set; } = false;
 
     public DiffractionProfile2 defaultDP = new();
-    int filterIndex;
-    string initialDirectory = "";
+    public int FilterIndex { get; set; }
+    public string InitialDirectory { get; set; } = "";
 
     public double LowerX
     {
@@ -176,8 +173,6 @@ public partial class FormMain : Form
 
     public Bitmap BmpMain, BmpIntensity, BmpAngle;
     public Graphics gMain, gAngle, gIntensity;
-
-
     public HorizontalAxisProperty HorizontalAxisProperty
     {
         set
@@ -290,7 +285,7 @@ public partial class FormMain : Form
         get => horizontalAxisUserControl.AxisMode;
     }
 
-    public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
+
 
     private Stopwatch stopwatch { get; set; } = new Stopwatch();
 
@@ -471,57 +466,34 @@ public partial class FormMain : Form
     #region コンストラクタ、ロード、クローズ
     public FormMain()
     {
-        ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
-
-        if (!this.DesignMode)
-        {
-            RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-            try
-            {
-                string culture = (string)regKey.GetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-                if (culture.ToLower().StartsWith("ja"))
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ja");
-                else
-                    Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("en");
-            }
-            catch { }
-        }
-
         InitializeComponent();
 
-        if (!this.DesignMode)
-            setScale();
+        if (DesignMode) return;
+
+        stopwatch.Start();
+
+        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
+        if (4.440 > Convert.ToDouble(key.GetValue("Version", "0")))
+            ClearRegistry();
+
+        //カルチャーを決めるため、レジストリ読込
+        Registry(Reg.Mode.Read);
+
+        ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
+
+        setScale();
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystals, true, null);
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewProfiles, true, null);
-
     }
 
     //メインがロードされたときに実行
     private void FormMain_Load(object sender, System.EventArgs e)
     {
-        stopwatch.Start();
-
-        if (this.DesignMode)
-            return;
-
-        //#if !DEBUG
-        //            Ngen.Compile();
-        //#endif
+        if (DesignMode) return;
 
         englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
         japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
-
-        RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-        if (regKey != null)
-        {
-            if ((int)regKey.GetValue("formMainLocationX", this.Location.X) >= 0)
-            {
-                this.Width = (int)regKey.GetValue("formMainWidth", this.Width);
-                this.Height = (int)regKey.GetValue("formMainHeight", this.Height);
-                this.Location = new Point((int)regKey.GetValue("formMainLocationX", this.Location.X), (int)regKey.GetValue("formMainLocationY", this.Location.Y));
-            }
-        }
 
         initialDialog = new Crystallography.Controls.CommonDialog()
         {
@@ -535,12 +507,6 @@ public partial class FormMain : Form
             Location = new Point(this.Location.X, this.Location.Y),
         };
 
-        if (Thread.CurrentThread.CurrentUICulture.ToString().Contains("ja"))
-            initialDialog.Hint = Version.HintJa;
-        else
-            initialDialog.Hint = Version.HintEn;
-
-        initialDialog.AutomaticallyClose = (string)regKey.GetValue("initialDialog.AutomaricallyClose", "True") == "True";
         initialDialog.Show();
         Application.DoEvents();
 
@@ -639,9 +605,6 @@ public partial class FormMain : Form
         }
 
 
-
-
-
         initialDialog.Text = "Now Loading... Binding dataset between forms.";
         //formCrystalとの連携
         formCrystal.dataSet = this.dataSet;
@@ -707,7 +670,7 @@ public partial class FormMain : Form
         pictureBoxMain.BringToFront();
 
         initialDialog.Text = "Now Loading... Reading registry.";
-        ReadInitialRegistry();
+        Registry(Reg.Mode.Read);
 
         numericBoxUpperX.Value = 30;
 
@@ -759,7 +722,7 @@ public partial class FormMain : Form
         //クリップボードを切る
         ChangeClipboardChain(this.Handle, NextHandle);
         if (!clearRegistryToolStripMenuItem.Checked)//Flagが立っていなければレジストリに書き込み
-            SaveInitialRegistry();
+            Registry(Reg.Mode.Write);
         else
             ClearRegistry();
     }
@@ -771,319 +734,168 @@ public partial class FormMain : Form
 
     private void ClearRegistry()
     {
-        try { Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\PDIndexer"); }
+        try { Microsoft.Win32.Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\PDIndexer"); }
         catch { }
 
     }
-    //レジストリの読み込み
-    private void ReadInitialRegistry()
+
+    private void Registry(Reg.Mode mode)
     {
-        try
-        {
-            RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-            if (regKey == null) return;
+        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
+        if (key == null) return;
 
-            if ((int)regKey.GetValue("formCrystalLocationX", this.formCrystal.Location.X) >= 0)
-            {
-                this.formCrystal.Width = (int)regKey.GetValue("formCrystalWidth", this.formCrystal.Width);
-                this.formCrystal.Height = (int)regKey.GetValue("formCrystalHeight", this.formCrystal.Height);
-                this.formCrystal.Location = new Point((int)regKey.GetValue("formCrystalLocationX", this.formCrystal.Location.X),
-                    (int)regKey.GetValue("formCrystalLocationY", this.formCrystal.Location.Y));
-            }
-            if ((int)regKey.GetValue("formEOSLocationY", this.formEOS.Location.Y) >= 0)
-            {
-                this.formEOS.Width = (int)regKey.GetValue("formEOSWidth", this.formEOS.Width);
-                this.formEOS.Height = (int)regKey.GetValue("formEOSHeight", this.formEOS.Height);
-                this.formEOS.Location = new Point((int)regKey.GetValue("formEOSLocationX", this.formEOS.Location.X),
-                    (int)regKey.GetValue("formEOSLocationY", this.formEOS.Location.Y));
-            }
-            if ((int)regKey.GetValue("formFittingLocationY", this.formFitting.Location.Y) >= 0)
-            {
-                this.formFitting.Width = (int)regKey.GetValue("formFittingWidth", this.formFitting.Width);
-                this.formFitting.Height = (int)regKey.GetValue("formFittingHeight", this.formFitting.Height);
-                this.formFitting.Location = new Point((int)regKey.GetValue("formFittingLocationX", this.formFitting.Location.X),
-                    (int)regKey.GetValue("formFittingLocationY", this.formFitting.Location.Y));
-            }
-            if ((int)regKey.GetValue("formProfileSettingLocationY", this.formProfile.Location.Y) >= 0)
-            {
-                this.formProfile.Width = (int)regKey.GetValue("formProfileSettingWidth", this.formProfile.Width);
-                this.formProfile.Height = (int)regKey.GetValue("formProfileSettingHeight", this.formProfile.Height);
-                this.formProfile.Location = new Point((int)regKey.GetValue("formProfileSettingLocationX", this.formProfile.Location.X),
-                (int)regKey.GetValue("formProfileSettingLocationY", this.formProfile.Location.Y));
-            }
+        Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
 
-            this.horizontalAxisUserControl.ElectronAccVoltageText = (string)regKey.GetValue("horizontalAxisUserControlElectronAccVoltageText", this.horizontalAxisUserControl.ElectronAccVoltageText);
+       
+            if (mode == Reg.Mode.Write)
+            key.SetValue("Version", Version.VersionValue);
 
-            this.horizontalAxisUserControl.WaveLengthText = (string)regKey.GetValue("horizontalAxisUserControlWaveLengthText", this.horizontalAxisUserControl.WaveLengthText);
-            this.horizontalAxisUserControl.TakeoffAngleText = (string)regKey.GetValue("horizontalAxisUserControlTakeoffAngleText", this.horizontalAxisUserControl.TakeoffAngleText);
+        Reg.RW<Rectangle>(key, mode, this, "Bounds");
+        WindowLocation.Adjust(this);
 
-            this.horizontalAxisUserControl.AxisMode = (HorizontalAxis)regKey.GetValue("horizontalAxisUserControlAxisMode", (int)this.horizontalAxisUserControl.AxisMode);
-            this.horizontalAxisUserControl.WaveSource = (WaveSource)regKey.GetValue("horizontalAxisUserControl.WaveSource", (int)horizontalAxisUserControl.WaveSource);
-            this.horizontalAxisUserControl.XrayNumber = (int)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayNumber);
-            this.horizontalAxisUserControl.XrayLine = (XrayLine)regKey.GetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayLine);
+        if (initialDialog == null)
+            return;
 
+        Reg.RW<bool>(key, mode, initialDialog, "AutomaticallyClose");
 
+        if (formEOS == null) return;
 
-            this.numericalTextBoxIncreasingPixels.Text = (string)regKey.GetValue("numericalTextBoxIncreasingPixelsText", (string)this.numericalTextBoxIncreasingPixels.Text);
-            if (numericalTextBoxIncreasingPixels.Value > 1)
-                numericUpDownIncreasingPixels.Value = (int)Math.Round(Math.Log(numericalTextBoxIncreasingPixels.Value, 2));
-            else if (numericalTextBoxIncreasingPixels.Value >= 0.5)
-                numericUpDownIncreasingPixels.Value = -1;
-            else if (numericalTextBoxIncreasingPixels.Value >= 0.1)
-                numericUpDownIncreasingPixels.Value = -2;
-            else if (numericalTextBoxIncreasingPixels.Value >= 0.05)
-                numericUpDownIncreasingPixels.Value = -3;
-            else if (numericalTextBoxIncreasingPixels.Value >= 0.01)
-                numericUpDownIncreasingPixels.Value = -4;
-            else
-                numericUpDownIncreasingPixels.Value = -5;
+        Reg.RW<Rectangle>(key, mode, formEOS, "Bounds");
+        Reg.RW<Rectangle>(key, mode, formCrystal, "Bounds");
+        Reg.RW<Rectangle>(key, mode, formFitting, "Bounds");
+        Reg.RW<Rectangle>(key, mode, formProfile, "Bounds");
 
-            this.automaticallySaveTheCrystalListToolStripMenuItem.Checked = (string)regKey.GetValue("automaticallySaveTheCrystal", "True") == "True";
+        #region FormMain
+        Reg.RW<HorizontalAxisProperty>(key, mode, this, "HorizontalAxisProperty");
 
+        Reg.RW<string>(key, mode, this.numeriBoxIncreasingPixels, "Text");
 
-            formCrystal.checkBoxShowPeakOverProfiles.Checked = (string)regKey.GetValue("formCrystal.checkBoxShowPeakOverProfiles.Checked", "True") == "True";
-            formCrystal.checkBoxCalculateIntensity.Checked = (string)regKey.GetValue("formCrystal.checkBoxCalculateIntensity.Checked", "True") == "True";
-            formCrystal.checkBoxVariableRatioOfIntensity.Checked = false;// (string)regKey.GetValue("formCrystal.checkBoxVariableRatioOfIntensity.Checked", "True") == "True";
-            formCrystal.checkBoxShowPeakUnderProfile.Checked = (string)regKey.GetValue("formCrystal.checkBoxShowPeakUnderProfile.Checked", "False") == "True";
-            formCrystal.radioButtonAllCheckedCrystals.Checked = (string)regKey.GetValue("formCrystal.radioButtonAllCheckedCrystals.Checked", "True") == "True";
-            formCrystal.numericUpDownHeightOfBottomPeak.Value = Convert.ToDecimal(regKey.GetValue("formCrystal.numericUpDownHeightOfBottomPeak.Value", formCrystal.numericUpDownHeightOfBottomPeak.Value.ToString()));
+        Reg.RW<bool>(key, mode, this.automaticallySaveTheCrystalListToolStripMenuItem, "Checked");
 
-            this.initialDirectory = (string)regKey.GetValue("initialDirectory", "");
-            this.filterIndex = (int)regKey.GetValue("filterIndex", 0);
-
-            colorControlBack.Color = Color.FromArgb((int)regKey.GetValue("colorControlBack.Color", colorControlBack.Color.ToArgb()));
-            colorControlScaleLine.Color = Color.FromArgb((int)regKey.GetValue("colorControlScaleLine.Color", colorControlScaleLine.Color.ToArgb()));
-            colorControlScaleText.Color = Color.FromArgb((int)regKey.GetValue("colorControlScaleText.Color", colorControlScaleText.Color.ToArgb()));
-
-            FormMacro.ZippedMacros = (byte[])regKey.GetValue("Macro", Array.Empty<byte>());
-
-
-            //ここからファイルタイプごとのパラメータ読み込み
-            for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
-            {
-                var f = new FileProperty();
-                f.Valid = (string)regKey.GetValue($"FileProperty.Valid{i}", "False") == "True";
-
-                if (f.Valid)
-                {
-                    f.HorizontalAxisProperty.WaveSource = (WaveSource)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveSource{i}", 0));
-                    f.HorizontalAxisProperty.WaveColor = (WaveColor)Convert.ToInt32(regKey.GetValue($"FileProperty.WaveColor{i}", 0));
-                    f.HorizontalAxisProperty.WaveLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.Wavelength{i}", "0"));
-                    f.HorizontalAxisProperty.EnergyTakeoffAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TakeoffAngle{i}", "0"));
-
-                    f.HorizontalAxisProperty.AxisMode = (HorizontalAxis)Convert.ToInt32(regKey.GetValue($"FileProperty.AxisMode{i}", 0));
-
-                    f.HorizontalAxisProperty.XrayElementNumber = Convert.ToInt32(regKey.GetValue($"FileProperty.XraySourceElementNumber{i}", 0));
-                    f.HorizontalAxisProperty.XrayLine = (XrayLine)Convert.ToInt32(regKey.GetValue($"FileProperty.XrayLine{i}", 0));
-
-                    f.HorizontalAxisProperty.TofAngle = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofAngle{i}", "0.7853981634"));
-                    f.HorizontalAxisProperty.TofLength = Convert.ToDouble((string)regKey.GetValue($"FileProperty.TofLength{i}", "25"));
-
-                    //EGCは、1.1,　2.2,　3.2 ,, 4.5, 5.7, 0.2みたいな感じで格納されている
-                    var egc = (string)regKey.GetValue($"FileProperty.EGC{i}", "0.0,0.0,0.0");
-
-                    f.EGC = egc.Split(",,", true).Select(str => str.Split(",", true).Select(e => Convert.ToDouble(e)).ToArray()).ToArray();
-
-                    f.ExposureTime = Convert.ToDouble((string)regKey.GetValue($"FileProperty.ExposureTime{i}", "1"));
-                }
-                else
-                    f = null;
-
-                FileProperties[i] = f;
-            }
-
-            #region  レジストリが存在しなかった場合あるいは無効な場合には、初期化
-
-            //RAS
-            FileProperties[(int)FileType.RAS] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(29, XrayLine.Ka1, AngleUnitEnum.Degree)
-            };
-
-            //CSVの場合
-            FileProperties[(int)FileType.CSV] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
-            };
-
-            //NXS
-            FileProperties[(int)FileType.NXS] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 4.95 / 180 * Math.PI, EnergyUnitEnum.KeV),
-                EGC = new[] { new[] { 0, 0, 66.6, 0.0 } }
-            };
-
-            //CHI
-            FileProperties[(int)FileType.CHI] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
-            };
-
-            //XBM
-            FileProperties[(int)FileType.XBM] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
-            };
-            //RPT
-            FileProperties[(int)FileType.RPT] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
-            };
-
-            //NPD
-            FileProperties[(int)FileType.NPD] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
-            };
-
-            //TOF
-            FileProperties[(int)FileType.TOF] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(90.0 / 180.0 * Math.PI, 26.5, TimeUnitEnum.MicroSecond)
-            };
-
-            //MISC
-            FileProperties[(int)FileType.OTHRES] ??= new FileProperty
-            {
-                Valid = true,
-                HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
-            };
-            #endregion
-
-            #region EOS関連の読み込み
-            formEOS.numericBoxArA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxArA0.Value", formEOS.numericBoxArA0.Value));
-            formEOS.numericBoxColundumV0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxColundumV0.Value", formEOS.numericBoxColundumV0.Value));
-            formEOS.numericBoxGoldA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxGoldA0.Value", formEOS.numericBoxGoldA0.Value));
-            formEOS.numericBoxMgOA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxMgOA0.Value", formEOS.numericBoxMgOA0.Value));
-            formEOS.numericBoxNaClB1A0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxNaClB1A0.Value", formEOS.numericBoxNaClB1A0.Value));
-            formEOS.numericBoxPtA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxPtA0.Value", formEOS.numericBoxPtA0.Value));
-            formEOS.numericBoxMoV0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxMoV0.Value", formEOS.numericBoxMoV0.Value));
-            formEOS.numerictBoxReV0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numerictBoxReV0.Value", formEOS.numerictBoxReV0.Value));
-            formEOS.numericBoxPbA0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxPbA0.Value", formEOS.numericBoxPbA0.Value));
-            formEOS.numericBoxTemperature0.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxTemperature0.Value", formEOS.numericBoxTemperature0.Value));
-            formEOS.numericBoxTemperature.Value = Convert.ToDouble(regKey.GetValue("formEOS.numericBoxTemperature.Value", formEOS.numericBoxTemperature.Value));
-            #endregion
-
-            regKey.Close();
-        }
-        catch { }
-    }
-
-    //.iniファイルを書き込み
-    private void SaveInitialRegistry()
-    {
-        RegistryKey regKey = Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-        if (regKey == null) return;
-
-        regKey.SetValue("Culture", Thread.CurrentThread.CurrentUICulture.Name);
-
-        regKey.SetValue("formMainWidth", this.Width);
-        regKey.SetValue("formMainHeight", this.Height);
-        regKey.SetValue("formMainLocationX", this.Location.X);
-        regKey.SetValue("formMainLocationY", this.Location.Y);
-        regKey.SetValue("formCrystalWidth", this.formCrystal.Width);
-        regKey.SetValue("formCrystalHeight", this.formCrystal.Height);
-        regKey.SetValue("formCrystalLocationX", this.formCrystal.Location.X);
-        regKey.SetValue("formCrystalLocationY", this.formCrystal.Location.Y);
-        regKey.SetValue("formEOSWidth", this.formEOS.Width);
-        regKey.SetValue("formEOSHeight", this.formEOS.Height);
-        regKey.SetValue("formEOSLocationX", this.formEOS.Location.X);
-        regKey.SetValue("formEOSLocationY", this.formEOS.Location.Y);
-        regKey.SetValue("formFittingWidth", this.formFitting.Width);
-        regKey.SetValue("formFittingHeight", this.formFitting.Height);
-        regKey.SetValue("formFittingLocationX", this.formFitting.Location.X);
-        regKey.SetValue("formFittingLocationY", this.formFitting.Location.Y);
-        regKey.SetValue("formProfileSettingWidth", this.formProfile.Width);
-        regKey.SetValue("formProfileSettingHeight", this.formProfile.Height);
-        regKey.SetValue("formProfileSettingLocationX", this.formProfile.Location.X);
-        regKey.SetValue("formProfileSettingLocationY", this.formProfile.Location.Y);
-
-        regKey.SetValue("automaticallySaveTheCrystal", this.automaticallySaveTheCrystalListToolStripMenuItem.Checked);
-
-        regKey.SetValue("horizontalAxisUserControlWaveLengthText", this.horizontalAxisUserControl.WaveLengthText);
-        regKey.SetValue("horizontalAxisUserControlTakeoffAngleText", this.horizontalAxisUserControl.TakeoffAngleText);
-
-
-        regKey.SetValue("horizontalAxisUserControlAxisModeInt", (int)this.horizontalAxisUserControl.AxisMode);
-        regKey.SetValue("horizontalAxisUserControl.WaveSource", (int)horizontalAxisUserControl.WaveSource);
-        regKey.SetValue("horizontalAxisUserControlXrayWaveSourceElementNumber", (int)this.horizontalAxisUserControl.XrayNumber);
-        regKey.SetValue("horizontalAxisUserControlXrayWaveSourceLine", (int)this.horizontalAxisUserControl.XrayLine);
-
-        regKey.SetValue("horizontalAxisUserControlElectronAccVoltageText", this.horizontalAxisUserControl.ElectronAccVoltageText);
-
-        regKey.SetValue("numericalTextBoxIncreasingPixelsText", this.numericalTextBoxIncreasingPixels.Text);
-
-        regKey.SetValue("formCrystal.checkBoxShowPeakOverProfiles.Checked", formCrystal.checkBoxShowPeakOverProfiles.Checked);
-        regKey.SetValue("formCrystal.checkBoxCalculateIntensity.Checked", formCrystal.checkBoxCalculateIntensity.Checked);
-        regKey.SetValue("formCrystal.checkBoxVariableRatioOfIntensity.Checked", formCrystal.checkBoxVariableRatioOfIntensity.Checked);
-        regKey.SetValue("formCrystal.checkBoxShowPeakUnderProfile.Checked", formCrystal.checkBoxShowPeakUnderProfile.Checked);
-        regKey.SetValue("formCrystal.radioButtonAllCheckedCrystals.Checked", formCrystal.radioButtonAllCheckedCrystals.Checked);
-        regKey.SetValue("formCrystal.numericUpDownHeightOfBottomPeak.Value", formCrystal.numericUpDownHeightOfBottomPeak.Value);
-
-        regKey.SetValue("initialDirectory", initialDirectory);
-        regKey.SetValue("filterIndex", filterIndex);
-
-        regKey.SetValue("initialDialog.AutomaricallyClose", initialDialog.AutomaticallyClose);
-
-        regKey.SetValue("colorControlBack.Color", colorControlBack.Color.ToArgb());
-        regKey.SetValue("colorControlScaleLine.Color", colorControlScaleLine.Color.ToArgb());
-        regKey.SetValue("colorControlScaleText.Color", colorControlScaleText.Color.ToArgb());
-
-        regKey.SetValue("Macro", FormMacro.ZippedMacros);
-
-
-
-        //ここからファイルタイプごとのパラメータ読み込み
-        for (int i = 0; i < Enum.GetValues(typeof(FileType)).Length; i++)
-        {
-            regKey.SetValue($"FileProperty.Valid{i}", true);
-
-            if (FileProperties[i] != null)
-            {
-
-                regKey.SetValue($"FileProperty.WaveSource{i}", (int)FileProperties[i].HorizontalAxisProperty.WaveSource);
-                regKey.SetValue($"FileProperty.WaveColor{i}", (int)FileProperties[i].HorizontalAxisProperty.WaveColor);
-                regKey.SetValue($"FileProperty.Wavelength{i}", FileProperties[i].HorizontalAxisProperty.WaveLength);
-                regKey.SetValue($"FileProperty.TakeoffAngle{i}", FileProperties[i].HorizontalAxisProperty.EnergyTakeoffAngle);
-                regKey.SetValue($"FileProperty.AxisMode{i}", (int)(FileProperties[i].HorizontalAxisProperty.AxisMode));
-                regKey.SetValue($"FileProperty.XraySourceElementNumber{i}", FileProperties[i].HorizontalAxisProperty.XrayElementNumber);
-                regKey.SetValue($"FileProperty.XrayLine{i}", (int)(FileProperties[i].HorizontalAxisProperty.XrayLine));
-                regKey.SetValue($"FileProperty.TofAngle{i}", FileProperties[i].HorizontalAxisProperty.TofAngle);
-                regKey.SetValue($"FileProperty.TofLength{i}", FileProperties[i].HorizontalAxisProperty.TofLength);
-                regKey.SetValue($"FileProperty.ExposureTime{i}", FileProperties[i].ExposureTime);
-
-                var sb = new StringBuilder();
-                foreach (var egcs in FileProperties[i].EGC)
-                    sb.Append(egcs[0].ToString() + "," + egcs[1].ToString() + "," + egcs[2].ToString() + ",,");
-
-                regKey.SetValue($"FileProperty.EGC{i}", sb.ToString().TrimEnd(new[] { ',' }));
-            }
-        }
-
-        #region EOS関連の書き込み
-        regKey.SetValue("formEOS.numericBoxArA0.Value", formEOS.numericBoxArA0.Value);
-        regKey.SetValue("formEOS.numericBoxColundumV0.Value", formEOS.numericBoxColundumV0.Value);
-        regKey.SetValue("formEOS.numericBoxGoldA0.Value", formEOS.numericBoxGoldA0.Value);
-        regKey.SetValue("formEOS.numericBoxMgOA0.Value", formEOS.numericBoxMgOA0.Value);
-        regKey.SetValue("formEOS.numericBoxNaClB1A0.Value", formEOS.numericBoxNaClB1A0.Value);
-        regKey.SetValue("formEOS.numericBoxPtA0.Value", formEOS.numericBoxPtA0.Value);
-        regKey.SetValue("formEOS.numericBoxMoV0.Value", formEOS.numericBoxMoV0.Value);
-        regKey.SetValue("formEOS.numerictBoxReV0.Value", formEOS.numerictBoxReV0.Value);
-        regKey.SetValue("formEOS.numericBoxPbA0.Value", formEOS.numericBoxPbA0.Value);
-        regKey.SetValue("formEOS.numericBoxTemperature0.Value", formEOS.numericBoxTemperature0.Value);
-        regKey.SetValue("formEOS.numericBoxTemperature.Value", formEOS.numericBoxTemperature.Value);
+        Reg.RW<string>(key, mode, this, "InitialDirectory");
+        Reg.RW<int>(key, mode, this, "FilterIndex");
         #endregion
 
-        regKey.Close();
+        #region FormCrystal
+
+        Reg.RW<bool>(key, mode, formCrystal.checkBoxShowPeakOverProfiles, "Checked");
+        Reg.RW<bool>(key, mode, formCrystal.checkBoxCalculateIntensity, "Checked");
+        Reg.RW<bool>(key, mode, formCrystal.checkBoxVariableRatioOfIntensity, "Checked");
+        Reg.RW<bool>(key, mode, formCrystal.checkBoxShowPeakUnderProfile, "Checked");
+        Reg.RW<bool>(key, mode, formCrystal.radioButtonAllCheckedCrystals, "Checked");
+        Reg.RW<decimal>(key, mode, formCrystal.numericUpDownHeightOfBottomPeak, "Value");
+        #endregion
+
+        #region マクロ
+
+        if (mode == Reg.Mode.Read)
+            FormMacro.ZippedMacros = (byte[])key.GetValue("Macro", Array.Empty<byte>());
+        else
+            key.SetValue("Macro", FormMacro.ZippedMacros);
+        #endregion
+
+        #region ファイルタイプごとのパラメータ
+
+        Reg.RW<FileProperty[]>(key, mode, this, "FileProperties");
+
+        #region  レジストリが無効な場合には、初期化
+        if (mode == Reg.Mode.Read)
+        {
+            //RAS
+            if (!FileProperties[(int)FileType.RAS].Valid)
+
+                FileProperties[(int)FileType.RAS] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(29, XrayLine.Ka1, AngleUnitEnum.Degree)
+                };
+
+            //CSVの場合
+            if (!FileProperties[(int)FileType.CSV].Valid)
+                FileProperties[(int)FileType.CSV] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
+                };
+
+            //NXS
+            if (!FileProperties[(int)FileType.NXS].Valid)
+                FileProperties[(int)FileType.NXS] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 4.95 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    EGC = new[] { new[] { 0, 0, 66.6, 0.0 } }
+                };
+
+            //CHI
+            if (!FileProperties[(int)FileType.CHI].Valid)
+                FileProperties[(int)FileType.CHI] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
+                };
+
+            //XBM
+            if (!FileProperties[(int)FileType.XBM].Valid)
+                FileProperties[(int)FileType.XBM] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                };
+            //RPT
+            if (!FileProperties[(int)FileType.RPT].Valid)
+                FileProperties[(int)FileType.RPT] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                };
+
+            //NPD
+            if (!FileProperties[(int)FileType.NPD].Valid)
+                FileProperties[(int)FileType.NPD] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                };
+
+            //TOF
+            if (!FileProperties[(int)FileType.TOF].Valid)
+                FileProperties[(int)FileType.TOF] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(90.0 / 180.0 * Math.PI, 26.5, TimeUnitEnum.MicroSecond)
+                };
+
+            //MISC
+            if (!FileProperties[(int)FileType.OTHRES].Valid)
+                FileProperties[(int)FileType.OTHRES] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
+                };
+        }
+        #endregion
+
+        #endregion
+
+        #region FormEOS
+        Reg.RW<double>(key, mode, formEOS, "Ar_a0");
+        Reg.RW<double>(key, mode, formEOS, "Al2O3_v0");
+        Reg.RW<double>(key, mode, formEOS, "Au_a0");
+        Reg.RW<double>(key, mode, formEOS, "MgO_a0");
+        Reg.RW<double>(key, mode, formEOS, "NaCl_a0");
+        Reg.RW<double>(key, mode, formEOS, "Pt_a0");
+        Reg.RW<double>(key, mode, formEOS, "Mo_v0");
+        Reg.RW<double>(key, mode, formEOS, "Re_v0");
+        Reg.RW<double>(key, mode, formEOS, "Pb_a0");
+        Reg.RW<double>(key, mode, formEOS, "Temperature0");
+        Reg.RW<double>(key, mode, formEOS, "Temperature");
+        #endregion
+        key.Close();
     }
+
+    
+    
 
 
     #endregion
@@ -2665,15 +2477,15 @@ public partial class FormMain : Form
             Filter = "Powder Pattern File (WinPIP[*.csv]; Fit2D[*.chi]; PDI[*.pdi,pdi2], EDX profile[*.rpt, *.npd, *.nxs])|*.csv;*.chi;*.pdi;*.pdi2;*.rpt;*.npd;*.nxs"
             + "|Any format(Auto[*.*])|*.*",
             Multiselect = true,
-            FilterIndex = filterIndex
+            FilterIndex = FilterIndex
         };
-        if (initialDirectory != "")
-            dlg.InitialDirectory = initialDirectory;
+        if (InitialDirectory != "")
+            dlg.InitialDirectory = InitialDirectory;
 
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             readProfile(dlg.FileNames);
-            initialDirectory = Path.GetDirectoryName(dlg.FileName);
+            InitialDirectory = Path.GetDirectoryName(dlg.FileName);
         }
     }
 
@@ -3161,22 +2973,6 @@ public partial class FormMain : Form
             }
             #endregion
 
-
-            //diffProf.SrcProperty.WaveSource = formDataConverter.WaveSource;
-            //diffProf.SrcProperty.WaveColor = formDataConverter.WaveColor;
-            //diffProf.SrcProperty.WaveLength = formDataConverter.Wavelength;
-            //diffProf.SrcProperty.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-            //diffProf.SrcProperty.AxisMode = formDataConverter.AxisMode;
-            //diffProf.SrcProperty.XrayElementNumber = formDataConverter.XraySourceElementNumber;
-            //diffProf.SrcProperty.XrayLine = formDataConverter.XrayLine;
-            //diffProf.SrcProperty.TofAngle = formDataConverter.TofAngle;
-            //diffProf.SrcProperty.TofLength = formDataConverter.TofLength;
-
-            //diffProf.SrcProperty.TofTimeUnit = formDataConverter.TofTimeUnit;
-            //diffProf.SrcProperty.EnergyUnit = formDataConverter.EnergyUnit;
-            //diffProf.SrcProperty.DspacingUnit = formDataConverter.DspacingUnit;
-            //diffProf.SrcProperty.WaveNumberUnit = formDataConverter.WaveNumberUnit;
-            //diffProf.SrcProperty.TwoThetaUnit = formDataConverter.TwoThetaUnit;
 
             diffProf.SrcProperty = formDataConverter.HorizontalAxisProperty;
 
@@ -3951,10 +3747,10 @@ public partial class FormMain : Form
     {
         radioButtonSingleProfileMode.Checked = !radioButtonMultiProfileMode.Checked;
 
-        if (numericalTextBoxIncreasingPixels.Value > float.MaxValue)
-            numericalTextBoxIncreasingPixels.Value = numericalTextBoxIncreasingPixels.Value;
+        if (numeriBoxIncreasingPixels.Value > float.MaxValue)
+            numeriBoxIncreasingPixels.Value = numeriBoxIncreasingPixels.Value;
 
-        IntervalOfProfiles = (float)numericalTextBoxIncreasingPixels.Value;
+        IntervalOfProfiles = (float)numeriBoxIncreasingPixels.Value;
         //checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
         //formProfile.checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
         SetDrawRangeLimit();
@@ -3965,20 +3761,20 @@ public partial class FormMain : Form
     private void numericUpDownIncreasingPixels_ValueChanged(object sender, EventArgs e)
     {
         if (numericUpDownIncreasingPixels.Value == -1)
-            numericalTextBoxIncreasingPixels.Value = 0.5;
+            numeriBoxIncreasingPixels.Value = 0.5;
         else if (numericUpDownIncreasingPixels.Value == -2)
-            numericalTextBoxIncreasingPixels.Value = 0.1;
+            numeriBoxIncreasingPixels.Value = 0.1;
         else if (numericUpDownIncreasingPixels.Value == -3)
-            numericalTextBoxIncreasingPixels.Value = 0.05;
+            numeriBoxIncreasingPixels.Value = 0.05;
         else if (numericUpDownIncreasingPixels.Value == -4)
-            numericalTextBoxIncreasingPixels.Value = 0.01;
+            numeriBoxIncreasingPixels.Value = 0.01;
         else if (numericUpDownIncreasingPixels.Value == -5)
-            numericalTextBoxIncreasingPixels.Value = 0;
+            numeriBoxIncreasingPixels.Value = 0;
         else
-            numericalTextBoxIncreasingPixels.Value = Math.Pow(2, (double)numericUpDownIncreasingPixels.Value);
+            numeriBoxIncreasingPixels.Value = Math.Pow(2, (double)numericUpDownIncreasingPixels.Value);
 
-        if (numericalTextBoxIncreasingPixels.Value > float.MaxValue)
-            numericalTextBoxIncreasingPixels.Value = numericalTextBoxIncreasingPixels.Value;
+        if (numeriBoxIncreasingPixels.Value > float.MaxValue)
+            numeriBoxIncreasingPixels.Value = numeriBoxIncreasingPixels.Value;
         radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
     }
 

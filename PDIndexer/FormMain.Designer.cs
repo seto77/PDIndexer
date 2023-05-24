@@ -144,7 +144,7 @@ namespace PDIndexer
             radioButtonRawCounts = new RadioButton();
             radioButtonCountsPerStep = new RadioButton();
             groupBox3 = new GroupBox();
-            numericalTextBoxIncreasingPixels = new Crystallography.Controls.NumericBox();
+            numeriBoxIncreasingPixels = new Crystallography.Controls.NumericBox();
             numericUpDownIncreasingPixels = new NumericUpDown();
             radioButtonMultiProfileMode = new RadioButton();
             checkBoxChangeColor = new CheckBox();
@@ -741,7 +741,7 @@ namespace PDIndexer
             // groupBox3
             // 
             resources.ApplyResources(groupBox3, "groupBox3");
-            groupBox3.Controls.Add(numericalTextBoxIncreasingPixels);
+            groupBox3.Controls.Add(numeriBoxIncreasingPixels);
             groupBox3.Controls.Add(numericUpDownIncreasingPixels);
             groupBox3.Controls.Add(radioButtonMultiProfileMode);
             groupBox3.Controls.Add(checkBoxChangeColor);
@@ -754,18 +754,18 @@ namespace PDIndexer
             // 
             // numericalTextBoxIncreasingPixels
             // 
-            resources.ApplyResources(numericalTextBoxIncreasingPixels, "numericalTextBoxIncreasingPixels");
-            numericalTextBoxIncreasingPixels.BackColor = SystemColors.Control;
-            numericalTextBoxIncreasingPixels.FooterBackColor = SystemColors.Control;
-            numericalTextBoxIncreasingPixels.HeaderBackColor = SystemColors.Control;
-            numericalTextBoxIncreasingPixels.Name = "numericalTextBoxIncreasingPixels";
-            numericalTextBoxIncreasingPixels.RadianValue = 17.872171540421935D;
-            numericalTextBoxIncreasingPixels.RestrictLimitValue = false;
-            numericalTextBoxIncreasingPixels.RoundErrorAccuracy = -1;
-            numericalTextBoxIncreasingPixels.SkipEventDuringInput = false;
-            toolTip.SetToolTip(numericalTextBoxIncreasingPixels, resources.GetString("numericalTextBoxIncreasingPixels.ToolTip"));
-            numericalTextBoxIncreasingPixels.Value = 1024D;
-            numericalTextBoxIncreasingPixels.ValueChanged += radioButtonMultiProfileMode_CheckChanged;
+            resources.ApplyResources(numeriBoxIncreasingPixels, "numericalTextBoxIncreasingPixels");
+            numeriBoxIncreasingPixels.BackColor = SystemColors.Control;
+            numeriBoxIncreasingPixels.FooterBackColor = SystemColors.Control;
+            numeriBoxIncreasingPixels.HeaderBackColor = SystemColors.Control;
+            numeriBoxIncreasingPixels.Name = "numericalTextBoxIncreasingPixels";
+            numeriBoxIncreasingPixels.RadianValue = 17.872171540421935D;
+            numeriBoxIncreasingPixels.RestrictLimitValue = false;
+            numeriBoxIncreasingPixels.RoundErrorAccuracy = -1;
+            numeriBoxIncreasingPixels.SkipEventDuringInput = false;
+            toolTip.SetToolTip(numeriBoxIncreasingPixels, resources.GetString("numericalTextBoxIncreasingPixels.ToolTip"));
+            numeriBoxIncreasingPixels.Value = 1024D;
+            numeriBoxIncreasingPixels.ValueChanged += radioButtonMultiProfileMode_CheckChanged;
             // 
             // numericUpDownIncreasingPixels
             // 
@@ -3865,7 +3865,7 @@ namespace PDIndexer
         private CheckBox checkBoxChangeColor;
         private Label label2;
         private Label label5;
-        private Crystallography.Controls.NumericBox numericalTextBoxIncreasingPixels;
+        private Crystallography.Controls.NumericBox numeriBoxIncreasingPixels;
         private Label label6;
         private Crystallography.Controls.ColorControl colorControlScaleText;
         private Crystallography.Controls.ColorControl colorControlScaleLine;

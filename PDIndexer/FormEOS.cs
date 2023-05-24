@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Crystallography;
 using MathNet.Numerics;
 using System.Linq;
+using OpenTK.Input;
 
 namespace PDIndexer;
 
@@ -14,7 +15,20 @@ public partial class FormEOS : Form
     #region プロパティ、フィールド、イベント
     public bool skipTextChangeEvent = false;
     public FormMain formMain;
-    
+
+
+    public double Ar_a0 { get => numericBoxArA0.Value; set => numericBoxArA0.Value = value; }
+    public double Al2O3_v0 { get => numericBoxColundumV0.Value; set => numericBoxColundumV0.Value = value; }
+    public double Au_a0 { get => numericBoxGoldA0.Value; set => numericBoxGoldA0.Value = value; }
+    public double MgO_a0 { get => numericBoxMgOA0.Value; set => numericBoxMgOA0.Value = value; }
+    public double NaCl_a0 { get => numericBoxNaClB1A0.Value; set => numericBoxNaClB1A0.Value = value; }
+    public double Pt_a0 { get => numericBoxPtA0.Value; set => numericBoxPtA0.Value = value; }
+    public double Mo_v0 { get => numericBoxMoV0.Value; set => numericBoxMoV0.Value = value; }
+    public double Re_v0 { get => numerictBoxReV0.Value; set => numerictBoxReV0.Value = value; }
+    public double Pb_a0 { get => numericBoxPbA0.Value; set => numericBoxPbA0.Value = value; }
+    public double Temperature0 { get => numericBoxTemperature0.Value; set => numericBoxTemperature0.Value = value; }
+    public double Temperature { get => numericBoxTemperature.Value; set => numericBoxTemperature.Value = value; }
+
     #endregion
 
     #region コンストラクタ、ロード、クローズ
