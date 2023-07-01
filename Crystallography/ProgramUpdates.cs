@@ -20,15 +20,15 @@ public static class ProgramUpdates
 
             //V上手くダウンロードできなかった場合
             if (ver == null || ver.Length == 0)
-                return ("Error!", $"An error occured while trying to locate the update to {software}.\r\n " +
+                return ("Error!", $"An error occurred while trying to locate the update to {software}.\r\n " +
                     "This could be caused if you do not have an active internet connection, or host server may be down. ", false, "", "");
 
             var temp = System.Text.Encoding.UTF8.GetString(ver).Split(new[] { '\r', '\n' });
-            var newVersion = temp.First(s => s.Contains("ver"));
+            var newVersion = temp.First(s => s.Contains(" ver", StringComparison.Ordinal));
             newVersion = newVersion.Substring(newVersion.IndexOf("ver") + 3, 5);
 
             if (Convert.ToDouble(newVersion) <= Convert.ToDouble(version.Substring(3, 5)))
-                return ("Update checked!", $"You are runnning the latest version of {software}. Thank you!", false, "", "");
+                return ("Update checked!", $"You are running the latest version of {software}. Thank you!", false, "", "");
             else
                 return ($"Update checked!", $"Now, new version {newVersion} is available.\r\n" +
                      $"If you press 'Yes', the current {software} will be closed immediately and the installer of new {software} launched.", true,
@@ -37,7 +37,7 @@ public static class ProgramUpdates
         }
         catch
         {
-            return ("Error!", "An error occured while trying to locate the update to " + software + ".\r\n" +
+            return ("Error!", "An error occurred while trying to locate the update to " + software + ".\r\n" +
                 " This could be caused if you do not have an active internet connection, administrative" +
                 " right to access to internet, or host server may be down. Sorry.", false, "", "");
         }
@@ -63,12 +63,12 @@ public static class ProgramUpdates
     }
 
     public static (long Current, long Total, long ElapsedMilliseconds, string Message)
-        ProgressMessage(DownloadProgressChangedEventArgs e, Stopwatch stopwath)
+        ProgressMessage(DownloadProgressChangedEventArgs e, Stopwatch stopwatch)
     {
         var receivedMb = e.BytesReceived / 1E6;
         var totalMb = e.TotalBytesToReceive / 1E6;
         var message = $"Downloading setup file.  Received: {receivedMb:f1} MB / {totalMb:f1} MB.  ";
-        return (e.BytesReceived, e.TotalBytesToReceive, stopwath.ElapsedMilliseconds, message);
+        return (e.BytesReceived, e.TotalBytesToReceive, stopwatch.ElapsedMilliseconds, message);
     }
 
 }

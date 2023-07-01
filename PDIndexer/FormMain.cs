@@ -466,18 +466,23 @@ public partial class FormMain : Form
     #region コンストラクタ、ロード、クローズ
     public FormMain()
     {
+        //カルチャーを決めるため、レジストリ読込
+        if (!DesignMode)
+        {
+            var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
+            if (4.440 > Convert.ToDouble(key.GetValue("Version", "0")))
+                ClearRegistry();
+            Registry(Reg.Mode.Read);
+        }
+
         InitializeComponent();
 
         if (DesignMode) return;
 
-        stopwatch.Start();
-
-        var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-        if (4.440 > Convert.ToDouble(key.GetValue("Version", "0")))
-            ClearRegistry();
-
-        //カルチャーを決めるため、レジストリ読込
+        //MainWindowの場所を読み込むため (InitializeComponentの後にに読み込む)
         Registry(Reg.Mode.Read);
+
+        stopwatch.Start();
 
         ip = new Progress<(long, long, long, string)>(o => reportProgress(o));//IReport
 
@@ -2549,7 +2554,7 @@ public partial class FormMain : Form
 
 
         //pdi, ras, nxs 形式の時. csvは拡張の場合
-        if (ext == "pdi" || ext == "ras" || ext == "csv" || ext == "nxs")
+        if (ext == "pdi" || ext == "pdi2" || ext == "ras" || ext == "csv" || ext == "nxs")
         {
             var dp = new List<DiffractionProfile2>();
             if (ext == "pdi" || ext == "pdi2")

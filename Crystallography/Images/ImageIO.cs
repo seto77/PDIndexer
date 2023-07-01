@@ -970,6 +970,12 @@ public static class ImageIO
 
             int imageWidth = Convert.ToInt32(headers[4].Split(new char[] { '=', ';' })[1]);
             int imageHeight = Convert.ToInt32(headers[5].Split(new char[] { '=', ';' })[1]);
+
+
+            var data_length = 0; // 0 は ushort (16bit), 1 は uint (32bit), それ以外は無効
+            if (headers.Length>13 && headers[13] == "TYPE=long_integer;")
+                data_length = 1;
+
             Ring.SrcImgSize = new Size(imageWidth, imageHeight);
 
             Ring.Comments = "";
@@ -979,22 +985,22 @@ public static class ImageIO
             br.BaseStream.Position = 512;
             int length = imageWidth * imageHeight;
 
-            if (Ring.Intensity.Count != length)//前回と同じサイズではないとき
-            {
                 Ring.Intensity.Clear();
-                for (int y = 0; y < imageHeight; y++)
-                    for (int x = 0; x < imageWidth; x++)
-                        Ring.Intensity.Add((uint)(br.ReadByte() + br.ReadByte() * 256));
-            }
-            else
-            {
-                int n = 0;
-                for (int y = 0; y < imageHeight; y++)
-                    for (int x = 0; x < imageWidth; x++)
-                        Ring.Intensity[n++] = ((uint)(br.ReadByte() + br.ReadByte() * 256));
-            }
+                if (data_length == 0)
+                    for (int i = 0; i < length; i++)
+                        Ring.Intensity.Add(br.ReadUInt16());
+                else
+                    for (int i = 0; i < length; i++)
+                    {
+                        var val = br.ReadUInt32();
+                        if (val > uint.MaxValue/2)
+                            val= 0;
+                        Ring.Intensity.Add(val);
+                     }
 
-            Ring.BitsPerPixels = 16;
+                
+            Ring.BitsPerPixels = data_length == 0 ? 16:32;
+
 
             Ring.ImageType = Ring.ImageTypeEnum.ADXV;
 

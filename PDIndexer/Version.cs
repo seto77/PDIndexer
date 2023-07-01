@@ -24,6 +24,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.441(2023/07/01) Fixed a bug on loading *.pdi2 format files." +
         "\r\n ver4.440(2023/05/24) Improved registry read/write.The registry is cleared the first time this version is launched." +
         "\r\n ver4.439(2023/05/23) Fixed bugs on loading txt-format profiles." +
         "\r\n ver4.438(2023/05/18) Fixed a minor bug on loading edx profiles." +
