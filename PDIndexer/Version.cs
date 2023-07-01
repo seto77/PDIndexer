@@ -5,8 +5,7 @@ namespace PDIndexer;
 static class Version
 {
     public const string Software = "PDIndexer";
-    static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
-    static public double VersionValue { get=> Convert.ToDouble(VersionAndDate[3..^12]); }
+
     static public string RecentHistory
     {
         get
@@ -303,7 +302,8 @@ static class Version
         "\r\n ver1.00 (2005/06/??) とりあえず動くものをつくる"
         ;
 
-
+    static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
+    static public double VersionValue { get => Convert.ToDouble(VersionAndDate[3..^12]); }
 
     /// <summary>
     /// はじめに
