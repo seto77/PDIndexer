@@ -510,7 +510,7 @@ public partial class ScalablePictureBox : UserControl
             _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
             Zoom *= 0.5f;
         }
-        else if (e.Button == MouseButtons.Left && e.Clicks == 1)
+        else if ((e.Button == MouseButtons.Left||e.Button== MouseButtons.Middle) && e.Clicks == 1)
         {
             justBeforePoint = e.Location;
         }
@@ -538,7 +538,7 @@ public partial class ScalablePictureBox : UserControl
             mouseRangeEnd = e.Location;
             pictureBox.Refresh();
         }
-        else if (e.Button == MouseButtons.Left && MouseTranslation && justBeforePoint != e.Location)
+        else if ((e.Button == MouseButtons.Left||e.Button == MouseButtons.Middle) && MouseTranslation && justBeforePoint != e.Location)
         {
             Center = new PointD(Center.X + (justBeforePoint.X - e.Location.X) / Zoom, Center.Y + (justBeforePoint.Y - e.Location.Y) / Zoom);
             justBeforePoint = e.Location;

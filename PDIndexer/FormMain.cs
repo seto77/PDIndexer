@@ -1817,14 +1817,7 @@ public partial class FormMain : Form
             Draw();
         }
 
-        if (e.Button == MouseButtons.Middle)
-        {
-            MouseMovingMode = true;
-            mouseMovingStartPt = pt;
-            pictureBoxMain.Cursor = Cursors.SizeAll;
-            return;
-        }
-
+      
         if (e.Button == MouseButtons.Right)
         {
             MouseRangingMode = true;
@@ -1847,7 +1840,18 @@ public partial class FormMain : Form
             if (i[0] >= 0)
                 SelectedMaskingBoundaryIndex = i;
             formProfile.SelectedMaskIndex = SelectedMaskingBoundaryIndex[0];
+            return;
         }
+
+
+        if (e.Button == MouseButtons.Middle || e.Button == MouseButtons.Left)
+        {
+            MouseMovingMode = true;
+            mouseMovingStartPt = pt;
+            pictureBoxMain.Cursor = Cursors.SizeAll;
+            return;
+        }
+
     }
 
 
