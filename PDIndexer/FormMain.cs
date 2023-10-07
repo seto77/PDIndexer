@@ -737,7 +737,7 @@ public partial class FormMain : Form
 
     #region レジストリ操作
 
-    private void ClearRegistry()
+    private static void ClearRegistry()
     {
         try { Microsoft.Win32.Registry.CurrentUser.DeleteSubKey("Software\\Crystallography\\PDIndexer"); }
         catch { }
@@ -1551,7 +1551,7 @@ public partial class FormMain : Form
         var pen = new Pen(colorControlScaleLine.Color, 1);
 
         gMain.DrawLine(pen, OriginPos.X, pictureBoxMain.Height - OriginPos.Y, pictureBoxMain.Width, pictureBoxMain.Height - OriginPos.Y);
-        Font strFont = new Font(new FontFamily("tahoma"), 8);
+        using Font strFont = new(new FontFamily("tahoma"), 8);
         for (int i = (int)(LowerX / AngleGradiation) + 1; i < UpperX / AngleGradiation; i++)
         {
             pen = new Pen(colorControlScaleLine.Color, 1);
