@@ -934,8 +934,9 @@ public partial class FormMain : Form
         }
         if (double.IsInfinity(MinimalX)) return;
 
-        MinimalX = minimalX;
+        MinimalX = minimalX;//MinimalXが直近のMaximalXより大きかった場合、正常に更新できない。そのため、2行下でもう一回更新。
         MaximalX = maximalX;
+        MinimalX = minimalX;//2行上のコメント参照
         MinimalY = Math.Min(0, minimalY);
         MaximalY = maximalY * 1.1;
     }
@@ -3031,6 +3032,7 @@ public partial class FormMain : Form
                 if (WaveColor != dp.SrcProperty.WaveColor) WaveColor = dp.SrcProperty.WaveColor;
                 if (WaveSource != dp.SrcProperty.WaveSource) WaveSource = dp.SrcProperty.WaveSource;
                 if (AxisMode != dp.SrcProperty.AxisMode) AxisMode = dp.SrcProperty.AxisMode;
+             
                 if (WaveLength != dp.SrcProperty.WaveLength) WaveLength = dp.SrcProperty.WaveLength;
                 if (WaveSource == WaveSource.Xray)
                 {
@@ -3044,6 +3046,17 @@ public partial class FormMain : Form
                 if (TakeoffAngle != dp.SrcProperty.EnergyTakeoffAngle) TakeoffAngle = dp.SrcProperty.EnergyTakeoffAngle;
                 if (TofAngle != dp.SrcProperty.TofAngle) TofAngle = dp.SrcProperty.TofAngle;
                 if (TofLength != dp.SrcProperty.TofLength) TofLength = dp.SrcProperty.TofLength;
+
+                if (AxisMode == HorizontalAxis.d && horizontalAxisUserControl.DspacingUnit != dp.SrcProperty.DspacingUnit)
+                    horizontalAxisUserControl.DspacingUnit = dp.SrcProperty.DspacingUnit;
+                if (AxisMode == HorizontalAxis.EnergyXray || AxisMode == HorizontalAxis.EnergyElectron || AxisMode== HorizontalAxis.EnergyNeutron )
+                if(horizontalAxisUserControl.EnergyUnit != dp.SrcProperty.EnergyUnit)
+                    horizontalAxisUserControl.EnergyUnit = dp.SrcProperty.EnergyUnit;
+                
+                if(AxisMode== HorizontalAxis.Angle && horizontalAxisUserControl.TwoThetaUnit != dp.SrcProperty.TwoThetaUnit)
+                    horizontalAxisUserControl.TwoThetaUnit = dp.SrcProperty.TwoThetaUnit;
+                if (AxisMode == HorizontalAxis.WaveNumber && horizontalAxisUserControl.WaveNumberUnit != dp.SrcProperty.WaveNumberUnit)
+                    horizontalAxisUserControl.WaveNumberUnit = dp.SrcProperty.WaveNumberUnit;
             }
             dp.SetConvertedProfile(HorizontalAxisProperty);
 
