@@ -1578,6 +1578,8 @@ public partial class FormMain : Form
         else if (d / unit / 5 < maxDivisionNumber) IntensityGradiation = unit * 5;
         else IntensityGradiation = unit * 10;
 
+        if (double.IsInfinity(IntensityGradiation)) return;
+
         decimalPlaces = IntensityGradiation >= 1 ? 0 : Math.Abs((int)Math.Floor((Math.Log10(IntensityGradiation))));
         format = "0.";
         for (int i = 0; i < decimalPlaces; i++) format += "0";
@@ -2645,13 +2647,7 @@ public partial class FormMain : Form
                     if (dp.Count > 0)
                         for (int i = 0; i < dp.Count; i++)
                         {
-                            dp[i].SrcProperty.WaveSource = formDataConverter.WaveSource;
-                            dp[i].SrcProperty.WaveColor = formDataConverter.WaveColor;
-                            dp[i].SrcProperty.WaveLength = formDataConverter.Wavelength;
-                            dp[i].SrcProperty.EnergyTakeoffAngle = formDataConverter.TakeoffAngle;
-                            dp[i].SrcProperty.AxisMode = formDataConverter.AxisMode;
-                            dp[i].SrcProperty.XrayElementNumber = formDataConverter.XraySourceElementNumber;
-                            dp[i].SrcProperty.XrayLine = formDataConverter.XrayLine;
+                            dp[i].SrcProperty = formDataConverter.HorizontalAxisProperty;
                             dp[i].ExposureTime = formDataConverter.ExposureTime;
                             dp[i].SubtractBackground = false;
                         }
@@ -2984,7 +2980,7 @@ public partial class FormMain : Form
 
             diffProf.SrcProperty = formDataConverter.HorizontalAxisProperty;
 
-            diffProf.ExposureTime = formDataConverter.ExposureTime;
+            diffProf.ExposureTime =  formDataConverter.ExposureTime;
 
             diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
 

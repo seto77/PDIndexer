@@ -27,9 +27,9 @@ public partial class FormDataConverter : Form
     }
 
     /// <summary>
-    /// 露出時間
+    /// 露出時間　かならずゼロより大きい数値を返す. ゼロがnumericBoxがゼロの場合は1を返す
     /// </summary>
-    public double ExposureTime { set => numericalTextBox1.Value = value; get => numericalTextBox1.Value; }
+    public double ExposureTime { set => numericalTextBox1.Value = value; get => numericalTextBox1.Value > 0 ? numericalTextBox1.Value : 1; }
 
 
     public HorizontalAxis AxisMode

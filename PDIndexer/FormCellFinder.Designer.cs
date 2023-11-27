@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCellFinder));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -37,854 +38,797 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCellFinder));
-            this.dataSet1 = new System.Data.DataSet();
-            this.dataTable1 = new System.Data.DataTable();
-            this.dataColumn1 = new System.Data.DataColumn();
-            this.dataColumn2 = new System.Data.DataColumn();
-            this.dataColumn3 = new System.Data.DataColumn();
-            this.dataColumn14 = new System.Data.DataColumn();
-            this.dataColumn15 = new System.Data.DataColumn();
-            this.dataColumn16 = new System.Data.DataColumn();
-            this.dataColumn17 = new System.Data.DataColumn();
-            this.dataColumn18 = new System.Data.DataColumn();
-            this.dataColumn19 = new System.Data.DataColumn();
-            this.dataTable2 = new System.Data.DataTable();
-            this.dataColumn4 = new System.Data.DataColumn();
-            this.dataColumn5 = new System.Data.DataColumn();
-            this.dataColumn6 = new System.Data.DataColumn();
-            this.dataColumn7 = new System.Data.DataColumn();
-            this.dataColumn8 = new System.Data.DataColumn();
-            this.dataColumn9 = new System.Data.DataColumn();
-            this.dataColumn10 = new System.Data.DataColumn();
-            this.dataColumn11 = new System.Data.DataColumn();
-            this.dataColumn12 = new System.Data.DataColumn();
-            this.dataColumn13 = new System.Data.DataColumn();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonFind = new System.Windows.Forms.Button();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.numericUpDownMinB = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMinA = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMinC = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMinAlpha = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMinBeta = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMinGamma = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxB = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxC = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxA = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxAlpha = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxBeta = new System.Windows.Forms.NumericUpDown();
-            this.numericUpDownMaxGamma = new System.Windows.Forms.NumericUpDown();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label46 = new System.Windows.Forms.Label();
-            this.label45 = new System.Windows.Forms.Label();
-            this.label44 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.comboBoxCrystalSystem = new System.Windows.Forms.ComboBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.useForCalcDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.reliabilityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.dObsDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dCalcDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.diff = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Intensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Delete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBoxReliability = new System.Windows.Forms.ComboBox();
-            this.numericalTextBox1 = new Crystallography.Controls.NumericBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buttonAddPeak = new System.Windows.Forms.Button();
-            this.dataGridViewResult = new System.Windows.Forms.DataGridView();
-            this.aDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alphaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.betaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gammaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.volumeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.σDQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alphaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.betaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.gammaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.volumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label9 = new System.Windows.Forms.Label();
-            this.backgroundWorker = new System.ComponentModel.BackgroundWorker();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabelTryNumber = new System.Windows.Forms.ToolStripStatusLabel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dObsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.reliabilityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.useForCalcDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dCalcDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dObsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dObsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Reliability = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.h = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.k = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.l = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
-            this.comboBoxX = new System.Windows.Forms.ComboBox();
-            this.comboBoxY = new System.Windows.Forms.ComboBox();
-            this.distributionGraphControl1 = new Crystallography.Controls.DistributionGraphControl();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.buttonSendToAtomicPositionFinder = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).BeginInit();
-            this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinAlpha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinBeta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinGamma)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxB)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxA)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxAlpha)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxBeta)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxGamma)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).BeginInit();
-            this.statusStrip1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.SuspendLayout();
+            dataSet1 = new System.Data.DataSet();
+            dataTable1 = new System.Data.DataTable();
+            dataColumn1 = new System.Data.DataColumn();
+            dataColumn2 = new System.Data.DataColumn();
+            dataColumn3 = new System.Data.DataColumn();
+            dataColumn14 = new System.Data.DataColumn();
+            dataColumn15 = new System.Data.DataColumn();
+            dataColumn16 = new System.Data.DataColumn();
+            dataColumn17 = new System.Data.DataColumn();
+            dataColumn18 = new System.Data.DataColumn();
+            dataColumn19 = new System.Data.DataColumn();
+            dataTable2 = new System.Data.DataTable();
+            dataColumn4 = new System.Data.DataColumn();
+            dataColumn5 = new System.Data.DataColumn();
+            dataColumn6 = new System.Data.DataColumn();
+            dataColumn7 = new System.Data.DataColumn();
+            dataColumn8 = new System.Data.DataColumn();
+            dataColumn9 = new System.Data.DataColumn();
+            dataColumn10 = new System.Data.DataColumn();
+            dataColumn11 = new System.Data.DataColumn();
+            dataColumn12 = new System.Data.DataColumn();
+            dataColumn13 = new System.Data.DataColumn();
+            menuStrip1 = new System.Windows.Forms.MenuStrip();
+            fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            buttonFind = new System.Windows.Forms.Button();
+            label23 = new System.Windows.Forms.Label();
+            label24 = new System.Windows.Forms.Label();
+            label25 = new System.Windows.Forms.Label();
+            label26 = new System.Windows.Forms.Label();
+            label27 = new System.Windows.Forms.Label();
+            label28 = new System.Windows.Forms.Label();
+            numericUpDownMinB = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMinA = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMinC = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMinAlpha = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMinBeta = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMinGamma = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMaxB = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMaxC = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMaxA = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMaxAlpha = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMaxBeta = new System.Windows.Forms.NumericUpDown();
+            numericUpDownMaxGamma = new System.Windows.Forms.NumericUpDown();
+            label1 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label48 = new System.Windows.Forms.Label();
+            label47 = new System.Windows.Forms.Label();
+            label46 = new System.Windows.Forms.Label();
+            label45 = new System.Windows.Forms.Label();
+            label44 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
+            comboBoxCrystalSystem = new System.Windows.Forms.ComboBox();
+            label19 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            dataGridView1 = new System.Windows.Forms.DataGridView();
+            useForCalcDataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            reliabilityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            dObsDataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            kDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dCalcDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            diff = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Intensity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Delete = new System.Windows.Forms.DataGridViewButtonColumn();
+            groupBox2 = new System.Windows.Forms.GroupBox();
+            comboBoxReliability = new System.Windows.Forms.ComboBox();
+            numericalTextBox1 = new Crystallography.Controls.NumericBox();
+            label8 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            buttonAddPeak = new System.Windows.Forms.Button();
+            dataGridViewResult = new System.Windows.Forms.DataGridView();
+            aDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            alphaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            betaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gammaDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            volumeDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            σDQDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            rDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            aDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            bDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            cDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            alphaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            betaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            gammaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            volumeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            label9 = new System.Windows.Forms.Label();
+            backgroundWorker = new System.ComponentModel.BackgroundWorker();
+            statusStrip1 = new System.Windows.Forms.StatusStrip();
+            toolStripStatusLabelTryNumber = new System.Windows.Forms.ToolStripStatusLabel();
+            button1 = new System.Windows.Forms.Button();
+            dObsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            reliabilityDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            useForCalcDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            hDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            kDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            lDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dCalcDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dObsDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dObsDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Reliability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ColumnDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            h = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            k = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            l = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            groupBox3 = new System.Windows.Forms.GroupBox();
+            waveLengthControl1 = new Crystallography.Controls.WaveLengthControl();
+            comboBoxX = new System.Windows.Forms.ComboBox();
+            comboBoxY = new System.Windows.Forms.ComboBox();
+            distributionGraphControl1 = new Crystallography.Controls.DistributionGraphControl();
+            label10 = new System.Windows.Forms.Label();
+            label11 = new System.Windows.Forms.Label();
+            buttonSendToAtomicPositionFinder = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)dataSet1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataTable1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataTable2).BeginInit();
+            menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinA).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinC).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinAlpha).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinBeta).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinGamma).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxC).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxA).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxAlpha).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxBeta).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxGamma).BeginInit();
+            groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewResult).BeginInit();
+            statusStrip1.SuspendLayout();
+            groupBox3.SuspendLayout();
+            SuspendLayout();
             // 
             // dataSet1
             // 
-            this.dataSet1.DataSetName = "NewDataSet";
-            this.dataSet1.Tables.AddRange(new System.Data.DataTable[] {
-            this.dataTable1,
-            this.dataTable2});
+            dataSet1.DataSetName = "NewDataSet";
+            dataSet1.Tables.AddRange(new System.Data.DataTable[] { dataTable1, dataTable2 });
             // 
             // dataTable1
             // 
-            this.dataTable1.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn1,
-            this.dataColumn2,
-            this.dataColumn3,
-            this.dataColumn14,
-            this.dataColumn15,
-            this.dataColumn16,
-            this.dataColumn17,
-            this.dataColumn18,
-            this.dataColumn19});
-            this.dataTable1.TableName = "TableInput";
+            dataTable1.Columns.AddRange(new System.Data.DataColumn[] { dataColumn1, dataColumn2, dataColumn3, dataColumn14, dataColumn15, dataColumn16, dataColumn17, dataColumn18, dataColumn19 });
+            dataTable1.Namespace = "";
+            dataTable1.TableName = "TableInput";
             // 
             // dataColumn1
             // 
-            this.dataColumn1.AllowDBNull = false;
-            this.dataColumn1.Caption = "d obs";
-            this.dataColumn1.ColumnName = "d obs";
-            this.dataColumn1.DataType = typeof(double);
+            dataColumn1.AllowDBNull = false;
+            dataColumn1.Caption = "d obs";
+            dataColumn1.ColumnName = "d obs";
+            dataColumn1.DataType = typeof(double);
+            dataColumn1.DefaultValue = resources.GetObject("dataColumn1.DefaultValue");
+            dataColumn1.Namespace = "";
             // 
             // dataColumn2
             // 
-            this.dataColumn2.AllowDBNull = false;
-            this.dataColumn2.Caption = "Reliability";
-            this.dataColumn2.ColumnName = "Reliability";
+            dataColumn2.AllowDBNull = false;
+            dataColumn2.Caption = "Reliability";
+            dataColumn2.ColumnName = "Reliability";
+            dataColumn2.DefaultValue = resources.GetObject("dataColumn2.DefaultValue");
+            dataColumn2.Namespace = "";
             // 
             // dataColumn3
             // 
-            this.dataColumn3.AllowDBNull = false;
-            this.dataColumn3.Caption = "Use for Calc.";
-            this.dataColumn3.ColumnName = "Use for Calc.";
-            this.dataColumn3.DataType = typeof(bool);
+            dataColumn3.AllowDBNull = false;
+            dataColumn3.Caption = "Use for Calc.";
+            dataColumn3.ColumnName = "Use for Calc.";
+            dataColumn3.DataType = typeof(bool);
+            dataColumn3.DefaultValue = resources.GetObject("dataColumn3.DefaultValue");
+            dataColumn3.Namespace = "";
             // 
             // dataColumn14
             // 
-            this.dataColumn14.ColumnName = "h";
-            this.dataColumn14.DataType = typeof(int);
+            dataColumn14.Caption = "h";
+            dataColumn14.ColumnName = "h";
+            dataColumn14.DataType = typeof(int);
+            dataColumn14.DefaultValue = resources.GetObject("dataColumn14.DefaultValue");
+            dataColumn14.Namespace = "";
             // 
             // dataColumn15
             // 
-            this.dataColumn15.ColumnName = "k";
-            this.dataColumn15.DataType = typeof(int);
+            dataColumn15.Caption = "k";
+            dataColumn15.ColumnName = "k";
+            dataColumn15.DataType = typeof(int);
+            dataColumn15.DefaultValue = resources.GetObject("dataColumn15.DefaultValue");
+            dataColumn15.Namespace = "";
             // 
             // dataColumn16
             // 
-            this.dataColumn16.ColumnName = "l";
-            this.dataColumn16.DataType = typeof(int);
+            dataColumn16.Caption = "l";
+            dataColumn16.ColumnName = "l";
+            dataColumn16.DataType = typeof(int);
+            dataColumn16.DefaultValue = resources.GetObject("dataColumn16.DefaultValue");
+            dataColumn16.Namespace = "";
             // 
             // dataColumn17
             // 
-            this.dataColumn17.ColumnName = "d calc";
-            this.dataColumn17.DataType = typeof(double);
+            dataColumn17.Caption = "d calc";
+            dataColumn17.ColumnName = "d calc";
+            dataColumn17.DataType = typeof(double);
+            dataColumn17.DefaultValue = resources.GetObject("dataColumn17.DefaultValue");
+            dataColumn17.Namespace = "";
             // 
             // dataColumn18
             // 
-            this.dataColumn18.Caption = "diff";
-            this.dataColumn18.ColumnName = "diff";
-            this.dataColumn18.DataType = typeof(double);
+            dataColumn18.Caption = "diff";
+            dataColumn18.ColumnName = "diff";
+            dataColumn18.DataType = typeof(double);
+            dataColumn18.DefaultValue = resources.GetObject("dataColumn18.DefaultValue");
+            dataColumn18.Namespace = "";
             // 
             // dataColumn19
             // 
-            this.dataColumn19.ColumnName = "Intensity";
+            dataColumn19.Caption = "Intensity";
+            dataColumn19.ColumnName = "Intensity";
+            dataColumn19.DefaultValue = resources.GetObject("dataColumn19.DefaultValue");
+            dataColumn19.Namespace = "";
             // 
             // dataTable2
             // 
-            this.dataTable2.Columns.AddRange(new System.Data.DataColumn[] {
-            this.dataColumn4,
-            this.dataColumn5,
-            this.dataColumn6,
-            this.dataColumn7,
-            this.dataColumn8,
-            this.dataColumn9,
-            this.dataColumn10,
-            this.dataColumn11,
-            this.dataColumn12,
-            this.dataColumn13});
-            this.dataTable2.TableName = "TableOutput";
+            dataTable2.Columns.AddRange(new System.Data.DataColumn[] { dataColumn4, dataColumn5, dataColumn6, dataColumn7, dataColumn8, dataColumn9, dataColumn10, dataColumn11, dataColumn12, dataColumn13 });
+            dataTable2.Namespace = "";
+            dataTable2.TableName = "TableOutput";
             // 
             // dataColumn4
             // 
-            this.dataColumn4.Caption = "a";
-            this.dataColumn4.ColumnName = "a";
-            this.dataColumn4.DataType = typeof(double);
+            dataColumn4.Caption = "a";
+            dataColumn4.ColumnName = "a";
+            dataColumn4.DataType = typeof(double);
+            dataColumn4.DefaultValue = resources.GetObject("dataColumn4.DefaultValue");
+            dataColumn4.Namespace = "";
             // 
             // dataColumn5
             // 
-            this.dataColumn5.Caption = "b";
-            this.dataColumn5.ColumnName = "b";
-            this.dataColumn5.DataType = typeof(double);
+            dataColumn5.Caption = "b";
+            dataColumn5.ColumnName = "b";
+            dataColumn5.DataType = typeof(double);
+            dataColumn5.DefaultValue = resources.GetObject("dataColumn5.DefaultValue");
+            dataColumn5.Namespace = "";
             // 
             // dataColumn6
             // 
-            this.dataColumn6.Caption = "c";
-            this.dataColumn6.ColumnName = "c";
-            this.dataColumn6.DataType = typeof(double);
+            dataColumn6.Caption = "c";
+            dataColumn6.ColumnName = "c";
+            dataColumn6.DataType = typeof(double);
+            dataColumn6.DefaultValue = resources.GetObject("dataColumn6.DefaultValue");
+            dataColumn6.Namespace = "";
             // 
             // dataColumn7
             // 
-            this.dataColumn7.Caption = "alpha";
-            this.dataColumn7.ColumnName = "alpha";
-            this.dataColumn7.DataType = typeof(double);
+            dataColumn7.Caption = "alpha";
+            dataColumn7.ColumnName = "alpha";
+            dataColumn7.DataType = typeof(double);
+            dataColumn7.DefaultValue = resources.GetObject("dataColumn7.DefaultValue");
+            dataColumn7.Namespace = "";
             // 
             // dataColumn8
             // 
-            this.dataColumn8.Caption = "beta";
-            this.dataColumn8.ColumnName = "beta";
-            this.dataColumn8.DataType = typeof(double);
+            dataColumn8.Caption = "beta";
+            dataColumn8.ColumnName = "beta";
+            dataColumn8.DataType = typeof(double);
+            dataColumn8.DefaultValue = resources.GetObject("dataColumn8.DefaultValue");
+            dataColumn8.Namespace = "";
             // 
             // dataColumn9
             // 
-            this.dataColumn9.Caption = "gamma";
-            this.dataColumn9.ColumnName = "gamma";
-            this.dataColumn9.DataType = typeof(double);
+            dataColumn9.Caption = "gamma";
+            dataColumn9.ColumnName = "gamma";
+            dataColumn9.DataType = typeof(double);
+            dataColumn9.DefaultValue = resources.GetObject("dataColumn9.DefaultValue");
+            dataColumn9.Namespace = "";
             // 
             // dataColumn10
             // 
-            this.dataColumn10.ColumnName = "Volume";
-            this.dataColumn10.DataType = typeof(double);
+            dataColumn10.Caption = "Volume";
+            dataColumn10.ColumnName = "Volume";
+            dataColumn10.DataType = typeof(double);
+            dataColumn10.DefaultValue = resources.GetObject("dataColumn10.DefaultValue");
+            dataColumn10.Namespace = "";
             // 
             // dataColumn11
             // 
-            this.dataColumn11.ColumnName = "Σ dQ";
+            dataColumn11.Caption = "Σ dQ";
+            dataColumn11.ColumnName = "Σ dQ";
+            dataColumn11.DefaultValue = resources.GetObject("dataColumn11.DefaultValue");
+            dataColumn11.Namespace = "";
             // 
             // dataColumn12
             // 
-            this.dataColumn12.ColumnName = "R";
-            this.dataColumn12.DataType = typeof(double);
+            dataColumn12.Caption = "R";
+            dataColumn12.ColumnName = "R";
+            dataColumn12.DataType = typeof(double);
+            dataColumn12.DefaultValue = resources.GetObject("dataColumn12.DefaultValue");
+            dataColumn12.Namespace = "";
             // 
             // dataColumn13
             // 
-            this.dataColumn13.ColumnName = "Planes";
-            this.dataColumn13.DataType = typeof(object);
+            dataColumn13.Caption = "Planes";
+            dataColumn13.ColumnName = "Planes";
+            dataColumn13.DataType = typeof(object);
+            dataColumn13.DefaultValue = resources.GetObject("dataColumn13.DefaultValue");
+            dataColumn13.Namespace = "";
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(904, 24);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem });
+            menuStrip1.Location = new System.Drawing.Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            menuStrip1.Size = new System.Drawing.Size(904, 24);
+            menuStrip1.TabIndex = 0;
+            menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.readToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem });
+            fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            fileToolStripMenuItem.Text = "File";
             // 
             // readToolStripMenuItem
             // 
-            this.readToolStripMenuItem.Name = "readToolStripMenuItem";
-            this.readToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-            this.readToolStripMenuItem.Text = "Read";
-            this.readToolStripMenuItem.Click += new System.EventHandler(this.readToolStripMenuItem_Click);
+            readToolStripMenuItem.Name = "readToolStripMenuItem";
+            readToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            readToolStripMenuItem.Text = "Read";
+            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
             // 
             // buttonFind
             // 
-            this.buttonFind.Location = new System.Drawing.Point(5, 610);
-            this.buttonFind.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonFind.Name = "buttonFind";
-            this.buttonFind.Size = new System.Drawing.Size(243, 29);
-            this.buttonFind.TabIndex = 1;
-            this.buttonFind.Text = "Find!";
-            this.buttonFind.UseVisualStyleBackColor = true;
-            this.buttonFind.Click += new System.EventHandler(this.buttonFind_Click);
+            buttonFind.Location = new System.Drawing.Point(10, 610);
+            buttonFind.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            buttonFind.Name = "buttonFind";
+            buttonFind.Size = new System.Drawing.Size(243, 29);
+            buttonFind.TabIndex = 1;
+            buttonFind.Text = "Find!";
+            buttonFind.UseVisualStyleBackColor = true;
+            buttonFind.Click += buttonFind_Click;
             // 
             // label23
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.Location = new System.Drawing.Point(11, 21);
-            this.label23.Margin = new System.Windows.Forms.Padding(0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(16, 17);
-            this.label23.TabIndex = 114;
-            this.label23.Text = "a";
+            label23.AutoSize = true;
+            label23.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label23.Location = new System.Drawing.Point(11, 21);
+            label23.Margin = new System.Windows.Forms.Padding(0);
+            label23.Name = "label23";
+            label23.Size = new System.Drawing.Size(16, 17);
+            label23.TabIndex = 114;
+            label23.Text = "a";
             // 
             // label24
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(11, 45);
-            this.label24.Margin = new System.Windows.Forms.Padding(0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(16, 17);
-            this.label24.TabIndex = 113;
-            this.label24.Text = "b";
+            label24.AutoSize = true;
+            label24.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label24.Location = new System.Drawing.Point(11, 45);
+            label24.Margin = new System.Windows.Forms.Padding(0);
+            label24.Name = "label24";
+            label24.Size = new System.Drawing.Size(16, 17);
+            label24.TabIndex = 113;
+            label24.Text = "b";
             // 
             // label25
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(11, 69);
-            this.label25.Margin = new System.Windows.Forms.Padding(0);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(15, 17);
-            this.label25.TabIndex = 112;
-            this.label25.Text = "c";
+            label25.AutoSize = true;
+            label25.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label25.Location = new System.Drawing.Point(11, 69);
+            label25.Margin = new System.Windows.Forms.Padding(0);
+            label25.Name = "label25";
+            label25.Size = new System.Drawing.Size(15, 17);
+            label25.TabIndex = 112;
+            label25.Text = "c";
             // 
             // label26
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.Location = new System.Drawing.Point(171, 20);
-            this.label26.Margin = new System.Windows.Forms.Padding(0);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(16, 17);
-            this.label26.TabIndex = 117;
-            this.label26.Text = "α";
+            label26.AutoSize = true;
+            label26.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label26.Location = new System.Drawing.Point(171, 20);
+            label26.Margin = new System.Windows.Forms.Padding(0);
+            label26.Name = "label26";
+            label26.Size = new System.Drawing.Size(16, 17);
+            label26.TabIndex = 117;
+            label26.Text = "α";
             // 
             // label27
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label27.Location = new System.Drawing.Point(171, 44);
-            this.label27.Margin = new System.Windows.Forms.Padding(0);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(15, 17);
-            this.label27.TabIndex = 116;
-            this.label27.Text = "β";
+            label27.AutoSize = true;
+            label27.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label27.Location = new System.Drawing.Point(171, 44);
+            label27.Margin = new System.Windows.Forms.Padding(0);
+            label27.Name = "label27";
+            label27.Size = new System.Drawing.Size(15, 17);
+            label27.TabIndex = 116;
+            label27.Text = "β";
             // 
             // label28
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(171, 68);
-            this.label28.Margin = new System.Windows.Forms.Padding(0);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(14, 17);
-            this.label28.TabIndex = 115;
-            this.label28.Text = "γ";
+            label28.AutoSize = true;
+            label28.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            label28.Location = new System.Drawing.Point(171, 68);
+            label28.Margin = new System.Windows.Forms.Padding(0);
+            label28.Name = "label28";
+            label28.Size = new System.Drawing.Size(14, 17);
+            label28.TabIndex = 115;
+            label28.Text = "γ";
             // 
             // numericUpDownMinB
             // 
-            this.numericUpDownMinB.DecimalPlaces = 1;
-            this.numericUpDownMinB.Location = new System.Drawing.Point(36, 44);
-            this.numericUpDownMinB.Name = "numericUpDownMinB";
-            this.numericUpDownMinB.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDownMinB.TabIndex = 118;
-            this.numericUpDownMinB.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+            numericUpDownMinB.DecimalPlaces = 1;
+            numericUpDownMinB.Location = new System.Drawing.Point(36, 44);
+            numericUpDownMinB.Name = "numericUpDownMinB";
+            numericUpDownMinB.Size = new System.Drawing.Size(46, 21);
+            numericUpDownMinB.TabIndex = 118;
+            numericUpDownMinB.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
             // numericUpDownMinA
             // 
-            this.numericUpDownMinA.DecimalPlaces = 1;
-            this.numericUpDownMinA.Location = new System.Drawing.Point(36, 20);
-            this.numericUpDownMinA.Name = "numericUpDownMinA";
-            this.numericUpDownMinA.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDownMinA.TabIndex = 118;
-            this.numericUpDownMinA.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+            numericUpDownMinA.DecimalPlaces = 1;
+            numericUpDownMinA.Location = new System.Drawing.Point(36, 20);
+            numericUpDownMinA.Name = "numericUpDownMinA";
+            numericUpDownMinA.Size = new System.Drawing.Size(46, 21);
+            numericUpDownMinA.TabIndex = 118;
+            numericUpDownMinA.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
             // numericUpDownMinC
             // 
-            this.numericUpDownMinC.DecimalPlaces = 1;
-            this.numericUpDownMinC.Location = new System.Drawing.Point(36, 68);
-            this.numericUpDownMinC.Name = "numericUpDownMinC";
-            this.numericUpDownMinC.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDownMinC.TabIndex = 118;
-            this.numericUpDownMinC.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
+            numericUpDownMinC.DecimalPlaces = 1;
+            numericUpDownMinC.Location = new System.Drawing.Point(36, 68);
+            numericUpDownMinC.Name = "numericUpDownMinC";
+            numericUpDownMinC.Size = new System.Drawing.Size(46, 21);
+            numericUpDownMinC.TabIndex = 118;
+            numericUpDownMinC.Value = new decimal(new int[] { 2, 0, 0, 0 });
             // 
             // numericUpDownMinAlpha
             // 
-            this.numericUpDownMinAlpha.DecimalPlaces = 1;
-            this.numericUpDownMinAlpha.Location = new System.Drawing.Point(188, 19);
-            this.numericUpDownMinAlpha.Name = "numericUpDownMinAlpha";
-            this.numericUpDownMinAlpha.Size = new System.Drawing.Size(56, 21);
-            this.numericUpDownMinAlpha.TabIndex = 118;
-            this.numericUpDownMinAlpha.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
+            numericUpDownMinAlpha.DecimalPlaces = 1;
+            numericUpDownMinAlpha.Location = new System.Drawing.Point(188, 19);
+            numericUpDownMinAlpha.Name = "numericUpDownMinAlpha";
+            numericUpDownMinAlpha.Size = new System.Drawing.Size(56, 21);
+            numericUpDownMinAlpha.TabIndex = 118;
+            numericUpDownMinAlpha.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
             // numericUpDownMinBeta
             // 
-            this.numericUpDownMinBeta.DecimalPlaces = 1;
-            this.numericUpDownMinBeta.Location = new System.Drawing.Point(188, 43);
-            this.numericUpDownMinBeta.Name = "numericUpDownMinBeta";
-            this.numericUpDownMinBeta.Size = new System.Drawing.Size(56, 21);
-            this.numericUpDownMinBeta.TabIndex = 118;
-            this.numericUpDownMinBeta.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
+            numericUpDownMinBeta.DecimalPlaces = 1;
+            numericUpDownMinBeta.Location = new System.Drawing.Point(188, 43);
+            numericUpDownMinBeta.Name = "numericUpDownMinBeta";
+            numericUpDownMinBeta.Size = new System.Drawing.Size(56, 21);
+            numericUpDownMinBeta.TabIndex = 118;
+            numericUpDownMinBeta.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
             // numericUpDownMinGamma
             // 
-            this.numericUpDownMinGamma.DecimalPlaces = 1;
-            this.numericUpDownMinGamma.Location = new System.Drawing.Point(188, 67);
-            this.numericUpDownMinGamma.Name = "numericUpDownMinGamma";
-            this.numericUpDownMinGamma.Size = new System.Drawing.Size(56, 21);
-            this.numericUpDownMinGamma.TabIndex = 118;
-            this.numericUpDownMinGamma.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
+            numericUpDownMinGamma.DecimalPlaces = 1;
+            numericUpDownMinGamma.Location = new System.Drawing.Point(188, 67);
+            numericUpDownMinGamma.Name = "numericUpDownMinGamma";
+            numericUpDownMinGamma.Size = new System.Drawing.Size(56, 21);
+            numericUpDownMinGamma.TabIndex = 118;
+            numericUpDownMinGamma.Value = new decimal(new int[] { 60, 0, 0, 0 });
             // 
             // numericUpDownMaxB
             // 
-            this.numericUpDownMaxB.DecimalPlaces = 1;
-            this.numericUpDownMaxB.Location = new System.Drawing.Point(98, 44);
-            this.numericUpDownMaxB.Name = "numericUpDownMaxB";
-            this.numericUpDownMaxB.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDownMaxB.TabIndex = 118;
-            this.numericUpDownMaxB.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            numericUpDownMaxB.DecimalPlaces = 1;
+            numericUpDownMaxB.Location = new System.Drawing.Point(98, 44);
+            numericUpDownMaxB.Name = "numericUpDownMaxB";
+            numericUpDownMaxB.Size = new System.Drawing.Size(46, 21);
+            numericUpDownMaxB.TabIndex = 118;
+            numericUpDownMaxB.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // numericUpDownMaxC
             // 
-            this.numericUpDownMaxC.DecimalPlaces = 1;
-            this.numericUpDownMaxC.Location = new System.Drawing.Point(98, 68);
-            this.numericUpDownMaxC.Name = "numericUpDownMaxC";
-            this.numericUpDownMaxC.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDownMaxC.TabIndex = 118;
-            this.numericUpDownMaxC.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            numericUpDownMaxC.DecimalPlaces = 1;
+            numericUpDownMaxC.Location = new System.Drawing.Point(98, 68);
+            numericUpDownMaxC.Name = "numericUpDownMaxC";
+            numericUpDownMaxC.Size = new System.Drawing.Size(46, 21);
+            numericUpDownMaxC.TabIndex = 118;
+            numericUpDownMaxC.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // numericUpDownMaxA
             // 
-            this.numericUpDownMaxA.DecimalPlaces = 1;
-            this.numericUpDownMaxA.Location = new System.Drawing.Point(98, 20);
-            this.numericUpDownMaxA.Name = "numericUpDownMaxA";
-            this.numericUpDownMaxA.Size = new System.Drawing.Size(46, 21);
-            this.numericUpDownMaxA.TabIndex = 118;
-            this.numericUpDownMaxA.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
+            numericUpDownMaxA.DecimalPlaces = 1;
+            numericUpDownMaxA.Location = new System.Drawing.Point(98, 20);
+            numericUpDownMaxA.Name = "numericUpDownMaxA";
+            numericUpDownMaxA.Size = new System.Drawing.Size(46, 21);
+            numericUpDownMaxA.TabIndex = 118;
+            numericUpDownMaxA.Value = new decimal(new int[] { 20, 0, 0, 0 });
             // 
             // numericUpDownMaxAlpha
             // 
-            this.numericUpDownMaxAlpha.DecimalPlaces = 1;
-            this.numericUpDownMaxAlpha.Location = new System.Drawing.Point(261, 19);
-            this.numericUpDownMaxAlpha.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxAlpha.Name = "numericUpDownMaxAlpha";
-            this.numericUpDownMaxAlpha.Size = new System.Drawing.Size(56, 21);
-            this.numericUpDownMaxAlpha.TabIndex = 118;
-            this.numericUpDownMaxAlpha.Value = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
+            numericUpDownMaxAlpha.DecimalPlaces = 1;
+            numericUpDownMaxAlpha.Location = new System.Drawing.Point(261, 19);
+            numericUpDownMaxAlpha.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            numericUpDownMaxAlpha.Name = "numericUpDownMaxAlpha";
+            numericUpDownMaxAlpha.Size = new System.Drawing.Size(56, 21);
+            numericUpDownMaxAlpha.TabIndex = 118;
+            numericUpDownMaxAlpha.Value = new decimal(new int[] { 150, 0, 0, 0 });
             // 
             // numericUpDownMaxBeta
             // 
-            this.numericUpDownMaxBeta.DecimalPlaces = 1;
-            this.numericUpDownMaxBeta.Location = new System.Drawing.Point(261, 43);
-            this.numericUpDownMaxBeta.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxBeta.Name = "numericUpDownMaxBeta";
-            this.numericUpDownMaxBeta.Size = new System.Drawing.Size(56, 21);
-            this.numericUpDownMaxBeta.TabIndex = 118;
-            this.numericUpDownMaxBeta.Value = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
+            numericUpDownMaxBeta.DecimalPlaces = 1;
+            numericUpDownMaxBeta.Location = new System.Drawing.Point(261, 43);
+            numericUpDownMaxBeta.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            numericUpDownMaxBeta.Name = "numericUpDownMaxBeta";
+            numericUpDownMaxBeta.Size = new System.Drawing.Size(56, 21);
+            numericUpDownMaxBeta.TabIndex = 118;
+            numericUpDownMaxBeta.Value = new decimal(new int[] { 150, 0, 0, 0 });
             // 
             // numericUpDownMaxGamma
             // 
-            this.numericUpDownMaxGamma.DecimalPlaces = 1;
-            this.numericUpDownMaxGamma.Location = new System.Drawing.Point(261, 67);
-            this.numericUpDownMaxGamma.Maximum = new decimal(new int[] {
-            180,
-            0,
-            0,
-            0});
-            this.numericUpDownMaxGamma.Name = "numericUpDownMaxGamma";
-            this.numericUpDownMaxGamma.Size = new System.Drawing.Size(56, 21);
-            this.numericUpDownMaxGamma.TabIndex = 118;
-            this.numericUpDownMaxGamma.Value = new decimal(new int[] {
-            150,
-            0,
-            0,
-            0});
+            numericUpDownMaxGamma.DecimalPlaces = 1;
+            numericUpDownMaxGamma.Location = new System.Drawing.Point(261, 67);
+            numericUpDownMaxGamma.Maximum = new decimal(new int[] { 180, 0, 0, 0 });
+            numericUpDownMaxGamma.Name = "numericUpDownMaxGamma";
+            numericUpDownMaxGamma.Size = new System.Drawing.Size(56, 21);
+            numericUpDownMaxGamma.TabIndex = 118;
+            numericUpDownMaxGamma.Value = new decimal(new int[] { 150, 0, 0, 0 });
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(84, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(11, 15);
-            this.label1.TabIndex = 119;
-            this.label1.Text = "-";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(84, 22);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(11, 15);
+            label1.TabIndex = 119;
+            label1.Text = "-";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(84, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(11, 15);
-            this.label2.TabIndex = 119;
-            this.label2.Text = "-";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(84, 46);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(11, 15);
+            label2.TabIndex = 119;
+            label2.Text = "-";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(84, 70);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(11, 15);
-            this.label3.TabIndex = 119;
-            this.label3.Text = "-";
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(84, 70);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(11, 15);
+            label3.TabIndex = 119;
+            label3.Text = "-";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(247, 21);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(11, 15);
-            this.label4.TabIndex = 119;
-            this.label4.Text = "-";
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(247, 21);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(11, 15);
+            label4.TabIndex = 119;
+            label4.Text = "-";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(247, 45);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(11, 15);
-            this.label5.TabIndex = 119;
-            this.label5.Text = "-";
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(247, 45);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(11, 15);
+            label5.TabIndex = 119;
+            label5.Text = "-";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(247, 69);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(11, 15);
-            this.label6.TabIndex = 119;
-            this.label6.Text = "-";
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(247, 69);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(11, 15);
+            label6.TabIndex = 119;
+            label6.Text = "-";
             // 
             // label48
             // 
-            this.label48.AutoSize = true;
-            this.label48.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label48.Location = new System.Drawing.Point(319, 20);
-            this.label48.Margin = new System.Windows.Forms.Padding(0);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(13, 16);
-            this.label48.TabIndex = 123;
-            this.label48.Text = "°";
+            label48.AutoSize = true;
+            label48.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label48.Location = new System.Drawing.Point(319, 20);
+            label48.Margin = new System.Windows.Forms.Padding(0);
+            label48.Name = "label48";
+            label48.Size = new System.Drawing.Size(12, 15);
+            label48.TabIndex = 123;
+            label48.Text = "°";
             // 
             // label47
             // 
-            this.label47.AutoSize = true;
-            this.label47.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label47.Location = new System.Drawing.Point(319, 68);
-            this.label47.Margin = new System.Windows.Forms.Padding(0);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(13, 16);
-            this.label47.TabIndex = 124;
-            this.label47.Text = "°";
+            label47.AutoSize = true;
+            label47.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label47.Location = new System.Drawing.Point(319, 68);
+            label47.Margin = new System.Windows.Forms.Padding(0);
+            label47.Name = "label47";
+            label47.Size = new System.Drawing.Size(12, 15);
+            label47.TabIndex = 124;
+            label47.Text = "°";
             // 
             // label46
             // 
-            this.label46.AutoSize = true;
-            this.label46.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label46.Location = new System.Drawing.Point(319, 44);
-            this.label46.Margin = new System.Windows.Forms.Padding(0);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(13, 16);
-            this.label46.TabIndex = 125;
-            this.label46.Text = "°";
+            label46.AutoSize = true;
+            label46.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label46.Location = new System.Drawing.Point(319, 44);
+            label46.Margin = new System.Windows.Forms.Padding(0);
+            label46.Name = "label46";
+            label46.Size = new System.Drawing.Size(12, 15);
+            label46.TabIndex = 125;
+            label46.Text = "°";
             // 
             // label45
             // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label45.Location = new System.Drawing.Point(147, 69);
-            this.label45.Margin = new System.Windows.Forms.Padding(0);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(16, 16);
-            this.label45.TabIndex = 120;
-            this.label45.Text = "Å";
+            label45.AutoSize = true;
+            label45.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label45.Location = new System.Drawing.Point(147, 69);
+            label45.Margin = new System.Windows.Forms.Padding(0);
+            label45.Name = "label45";
+            label45.Size = new System.Drawing.Size(15, 15);
+            label45.TabIndex = 120;
+            label45.Text = "Å";
             // 
             // label44
             // 
-            this.label44.AutoSize = true;
-            this.label44.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label44.Location = new System.Drawing.Point(147, 45);
-            this.label44.Margin = new System.Windows.Forms.Padding(0);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(16, 16);
-            this.label44.TabIndex = 121;
-            this.label44.Text = "Å";
+            label44.AutoSize = true;
+            label44.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label44.Location = new System.Drawing.Point(147, 45);
+            label44.Margin = new System.Windows.Forms.Padding(0);
+            label44.Name = "label44";
+            label44.Size = new System.Drawing.Size(15, 15);
+            label44.TabIndex = 121;
+            label44.Text = "Å";
             // 
             // label18
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label18.Location = new System.Drawing.Point(147, 21);
-            this.label18.Margin = new System.Windows.Forms.Padding(0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(16, 16);
-            this.label18.TabIndex = 122;
-            this.label18.Text = "Å";
+            label18.AutoSize = true;
+            label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label18.Location = new System.Drawing.Point(147, 21);
+            label18.Margin = new System.Windows.Forms.Padding(0);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(15, 15);
+            label18.TabIndex = 122;
+            label18.Text = "Å";
             // 
             // comboBoxCrystalSystem
             // 
-            this.comboBoxCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxCrystalSystem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxCrystalSystem.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.comboBoxCrystalSystem.Items.AddRange(new object[] {
-            "triclinic",
-            "monoclinic",
-            "orthorhombic",
-            "tetragonal",
-            "trigonal",
-            "hexagonal",
-            "cubic"});
-            this.comboBoxCrystalSystem.Location = new System.Drawing.Point(100, 28);
-            this.comboBoxCrystalSystem.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxCrystalSystem.Name = "comboBoxCrystalSystem";
-            this.comboBoxCrystalSystem.Size = new System.Drawing.Size(126, 25);
-            this.comboBoxCrystalSystem.TabIndex = 126;
+            comboBoxCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxCrystalSystem.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            comboBoxCrystalSystem.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            comboBoxCrystalSystem.Items.AddRange(new object[] { "triclinic", "monoclinic", "orthorhombic", "tetragonal", "trigonal", "hexagonal", "cubic" });
+            comboBoxCrystalSystem.Location = new System.Drawing.Point(100, 28);
+            comboBoxCrystalSystem.Margin = new System.Windows.Forms.Padding(0);
+            comboBoxCrystalSystem.Name = "comboBoxCrystalSystem";
+            comboBoxCrystalSystem.Size = new System.Drawing.Size(126, 25);
+            comboBoxCrystalSystem.TabIndex = 126;
             // 
             // label19
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(7, 32);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(89, 15);
-            this.label19.TabIndex = 127;
-            this.label19.Text = "Crystal System";
+            label19.AutoSize = true;
+            label19.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label19.Location = new System.Drawing.Point(7, 32);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(89, 15);
+            label19.TabIndex = 127;
+            label19.Text = "Crystal System";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numericUpDownMinA);
-            this.groupBox1.Controls.Add(this.label28);
-            this.groupBox1.Controls.Add(this.label27);
-            this.groupBox1.Controls.Add(this.label26);
-            this.groupBox1.Controls.Add(this.label48);
-            this.groupBox1.Controls.Add(this.label25);
-            this.groupBox1.Controls.Add(this.label47);
-            this.groupBox1.Controls.Add(this.label24);
-            this.groupBox1.Controls.Add(this.label46);
-            this.groupBox1.Controls.Add(this.label23);
-            this.groupBox1.Controls.Add(this.label45);
-            this.groupBox1.Controls.Add(this.numericUpDownMinB);
-            this.groupBox1.Controls.Add(this.label44);
-            this.groupBox1.Controls.Add(this.numericUpDownMinC);
-            this.groupBox1.Controls.Add(this.label18);
-            this.groupBox1.Controls.Add(this.numericUpDownMaxB);
-            this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.numericUpDownMaxC);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.numericUpDownMinAlpha);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.numericUpDownMinBeta);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.numericUpDownMaxAlpha);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.numericUpDownMinGamma);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.numericUpDownMaxBeta);
-            this.groupBox1.Controls.Add(this.numericUpDownMaxA);
-            this.groupBox1.Controls.Add(this.numericUpDownMaxGamma);
-            this.groupBox1.Location = new System.Drawing.Point(4, 56);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(337, 98);
-            this.groupBox1.TabIndex = 129;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Restrictions of cell parameters";
+            groupBox1.Controls.Add(numericUpDownMinA);
+            groupBox1.Controls.Add(label28);
+            groupBox1.Controls.Add(label27);
+            groupBox1.Controls.Add(label26);
+            groupBox1.Controls.Add(label48);
+            groupBox1.Controls.Add(label25);
+            groupBox1.Controls.Add(label47);
+            groupBox1.Controls.Add(label24);
+            groupBox1.Controls.Add(label46);
+            groupBox1.Controls.Add(label23);
+            groupBox1.Controls.Add(label45);
+            groupBox1.Controls.Add(numericUpDownMinB);
+            groupBox1.Controls.Add(label44);
+            groupBox1.Controls.Add(numericUpDownMinC);
+            groupBox1.Controls.Add(label18);
+            groupBox1.Controls.Add(numericUpDownMaxB);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(numericUpDownMaxC);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(numericUpDownMinAlpha);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(numericUpDownMinBeta);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(numericUpDownMaxAlpha);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(numericUpDownMinGamma);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(numericUpDownMaxBeta);
+            groupBox1.Controls.Add(numericUpDownMaxA);
+            groupBox1.Controls.Add(numericUpDownMaxGamma);
+            groupBox1.Location = new System.Drawing.Point(4, 56);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(337, 98);
+            groupBox1.TabIndex = 129;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Restrictions of cell parameters";
             // 
             // dataGridView1
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.useForCalcDataGridViewCheckBoxColumn1,
-            this.reliabilityDataGridViewTextBoxColumn,
-            this.dObsDataGridViewTextBoxColumn3,
-            this.hDataGridViewTextBoxColumn1,
-            this.kDataGridViewTextBoxColumn1,
-            this.lDataGridViewTextBoxColumn1,
-            this.dCalcDataGridViewTextBoxColumn1,
-            this.diff,
-            this.Intensity,
-            this.Delete});
-            this.dataGridView1.DataMember = "TableInput";
-            this.dataGridView1.DataSource = this.dataSet1;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 50);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 25;
-            this.dataGridView1.RowTemplate.Height = 21;
-            this.dataGridView1.Size = new System.Drawing.Size(532, 249);
-            this.dataGridView1.TabIndex = 130;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
+            dataGridView1.AutoGenerateColumns = false;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { useForCalcDataGridViewCheckBoxColumn1, reliabilityDataGridViewTextBoxColumn, dObsDataGridViewTextBoxColumn3, hDataGridViewTextBoxColumn1, kDataGridViewTextBoxColumn1, lDataGridViewTextBoxColumn1, dCalcDataGridViewTextBoxColumn1, diff, Intensity, Delete });
+            dataGridView1.DataMember = "TableInput";
+            dataGridView1.DataSource = dataSet1;
+            dataGridView1.Location = new System.Drawing.Point(6, 50);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 25;
+            dataGridView1.RowTemplate.Height = 21;
+            dataGridView1.Size = new System.Drawing.Size(532, 249);
+            dataGridView1.TabIndex = 130;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // useForCalcDataGridViewCheckBoxColumn1
             // 
-            this.useForCalcDataGridViewCheckBoxColumn1.DataPropertyName = "Use for Calc.";
-            this.useForCalcDataGridViewCheckBoxColumn1.HeaderText = "Use fo Calc.";
-            this.useForCalcDataGridViewCheckBoxColumn1.Name = "useForCalcDataGridViewCheckBoxColumn1";
-            this.useForCalcDataGridViewCheckBoxColumn1.Width = 80;
+            useForCalcDataGridViewCheckBoxColumn1.DataPropertyName = "Use for Calc.";
+            useForCalcDataGridViewCheckBoxColumn1.HeaderText = "Use fo Calc.";
+            useForCalcDataGridViewCheckBoxColumn1.Name = "useForCalcDataGridViewCheckBoxColumn1";
+            useForCalcDataGridViewCheckBoxColumn1.Width = 80;
             // 
             // reliabilityDataGridViewTextBoxColumn
             // 
-            this.reliabilityDataGridViewTextBoxColumn.DataPropertyName = "Reliability";
-            this.reliabilityDataGridViewTextBoxColumn.HeaderText = "Reliability";
-            this.reliabilityDataGridViewTextBoxColumn.Items.AddRange(new object[] {
-            "High",
-            "Medium",
-            "Low"});
-            this.reliabilityDataGridViewTextBoxColumn.Name = "reliabilityDataGridViewTextBoxColumn";
-            this.reliabilityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.reliabilityDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.reliabilityDataGridViewTextBoxColumn.Width = 70;
+            reliabilityDataGridViewTextBoxColumn.DataPropertyName = "Reliability";
+            reliabilityDataGridViewTextBoxColumn.HeaderText = "Reliability";
+            reliabilityDataGridViewTextBoxColumn.Items.AddRange(new object[] { "High", "Medium", "Low" });
+            reliabilityDataGridViewTextBoxColumn.Name = "reliabilityDataGridViewTextBoxColumn";
+            reliabilityDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            reliabilityDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            reliabilityDataGridViewTextBoxColumn.Width = 70;
             // 
             // dObsDataGridViewTextBoxColumn3
             // 
-            this.dObsDataGridViewTextBoxColumn3.DataPropertyName = "d obs";
-            this.dObsDataGridViewTextBoxColumn3.HeaderText = "d_obs";
-            this.dObsDataGridViewTextBoxColumn3.Name = "dObsDataGridViewTextBoxColumn3";
-            this.dObsDataGridViewTextBoxColumn3.Width = 50;
+            dObsDataGridViewTextBoxColumn3.DataPropertyName = "d obs";
+            dObsDataGridViewTextBoxColumn3.HeaderText = "d_obs";
+            dObsDataGridViewTextBoxColumn3.Name = "dObsDataGridViewTextBoxColumn3";
+            dObsDataGridViewTextBoxColumn3.Width = 50;
             // 
             // hDataGridViewTextBoxColumn1
             // 
-            this.hDataGridViewTextBoxColumn1.DataPropertyName = "h";
-            this.hDataGridViewTextBoxColumn1.HeaderText = "h";
-            this.hDataGridViewTextBoxColumn1.Name = "hDataGridViewTextBoxColumn1";
-            this.hDataGridViewTextBoxColumn1.Width = 25;
+            hDataGridViewTextBoxColumn1.DataPropertyName = "h";
+            hDataGridViewTextBoxColumn1.HeaderText = "h";
+            hDataGridViewTextBoxColumn1.Name = "hDataGridViewTextBoxColumn1";
+            hDataGridViewTextBoxColumn1.Width = 25;
             // 
             // kDataGridViewTextBoxColumn1
             // 
-            this.kDataGridViewTextBoxColumn1.DataPropertyName = "k";
-            this.kDataGridViewTextBoxColumn1.HeaderText = "k";
-            this.kDataGridViewTextBoxColumn1.Name = "kDataGridViewTextBoxColumn1";
-            this.kDataGridViewTextBoxColumn1.Width = 25;
+            kDataGridViewTextBoxColumn1.DataPropertyName = "k";
+            kDataGridViewTextBoxColumn1.HeaderText = "k";
+            kDataGridViewTextBoxColumn1.Name = "kDataGridViewTextBoxColumn1";
+            kDataGridViewTextBoxColumn1.Width = 25;
             // 
             // lDataGridViewTextBoxColumn1
             // 
-            this.lDataGridViewTextBoxColumn1.DataPropertyName = "l";
-            this.lDataGridViewTextBoxColumn1.HeaderText = "l";
-            this.lDataGridViewTextBoxColumn1.Name = "lDataGridViewTextBoxColumn1";
-            this.lDataGridViewTextBoxColumn1.Width = 25;
+            lDataGridViewTextBoxColumn1.DataPropertyName = "l";
+            lDataGridViewTextBoxColumn1.HeaderText = "l";
+            lDataGridViewTextBoxColumn1.Name = "lDataGridViewTextBoxColumn1";
+            lDataGridViewTextBoxColumn1.Width = 25;
             // 
             // dCalcDataGridViewTextBoxColumn1
             // 
-            this.dCalcDataGridViewTextBoxColumn1.DataPropertyName = "d calc";
-            this.dCalcDataGridViewTextBoxColumn1.HeaderText = "d_calc";
-            this.dCalcDataGridViewTextBoxColumn1.Name = "dCalcDataGridViewTextBoxColumn1";
-            this.dCalcDataGridViewTextBoxColumn1.Width = 50;
+            dCalcDataGridViewTextBoxColumn1.DataPropertyName = "d calc";
+            dCalcDataGridViewTextBoxColumn1.HeaderText = "d_calc";
+            dCalcDataGridViewTextBoxColumn1.Name = "dCalcDataGridViewTextBoxColumn1";
+            dCalcDataGridViewTextBoxColumn1.Width = 50;
             // 
             // diff
             // 
-            this.diff.DataPropertyName = "diff";
+            diff.DataPropertyName = "diff";
             dataGridViewCellStyle1.Format = "N6";
             dataGridViewCellStyle1.NullValue = null;
-            this.diff.DefaultCellStyle = dataGridViewCellStyle1;
-            this.diff.HeaderText = "diff";
-            this.diff.Name = "diff";
-            this.diff.Width = 50;
+            diff.DefaultCellStyle = dataGridViewCellStyle1;
+            diff.HeaderText = "diff";
+            diff.Name = "diff";
+            diff.Width = 50;
             // 
             // Intensity
             // 
-            this.Intensity.DataPropertyName = "Intensity";
-            this.Intensity.HeaderText = "Int.";
-            this.Intensity.Name = "Intensity";
-            this.Intensity.Width = 50;
+            Intensity.DataPropertyName = "Intensity";
+            Intensity.HeaderText = "Int.";
+            Intensity.Name = "Intensity";
+            Intensity.Width = 50;
             // 
             // Delete
             // 
@@ -893,576 +837,547 @@
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.DarkRed;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.Delete.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Delete.HeaderText = "";
-            this.Delete.Name = "Delete";
-            this.Delete.Text = "Delete";
-            this.Delete.UseColumnTextForButtonValue = true;
-            this.Delete.Width = 60;
+            Delete.DefaultCellStyle = dataGridViewCellStyle2;
+            Delete.HeaderText = "";
+            Delete.Name = "Delete";
+            Delete.Text = "Delete";
+            Delete.UseColumnTextForButtonValue = true;
+            Delete.Width = 60;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBoxReliability);
-            this.groupBox2.Controls.Add(this.numericalTextBox1);
-            this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.label7);
-            this.groupBox2.Controls.Add(this.buttonAddPeak);
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(4, 293);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.groupBox2.Size = new System.Drawing.Size(544, 310);
-            this.groupBox2.TabIndex = 131;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Peak Information";
+            groupBox2.Controls.Add(comboBoxReliability);
+            groupBox2.Controls.Add(numericalTextBox1);
+            groupBox2.Controls.Add(label8);
+            groupBox2.Controls.Add(label7);
+            groupBox2.Controls.Add(buttonAddPeak);
+            groupBox2.Controls.Add(dataGridView1);
+            groupBox2.Location = new System.Drawing.Point(4, 293);
+            groupBox2.Name = "groupBox2";
+            groupBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            groupBox2.Size = new System.Drawing.Size(544, 310);
+            groupBox2.TabIndex = 131;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Peak Information";
             // 
             // comboBoxReliability
             // 
-            this.comboBoxReliability.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxReliability.FormattingEnabled = true;
-            this.comboBoxReliability.Items.AddRange(new object[] {
-            "High",
-            "Medium",
-            "Low"});
-            this.comboBoxReliability.Location = new System.Drawing.Point(139, 20);
-            this.comboBoxReliability.Name = "comboBoxReliability";
-            this.comboBoxReliability.Size = new System.Drawing.Size(71, 23);
-            this.comboBoxReliability.TabIndex = 123;
+            comboBoxReliability.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxReliability.FormattingEnabled = true;
+            comboBoxReliability.Items.AddRange(new object[] { "High", "Medium", "Low" });
+            comboBoxReliability.Location = new System.Drawing.Point(139, 20);
+            comboBoxReliability.Name = "comboBoxReliability";
+            comboBoxReliability.Size = new System.Drawing.Size(71, 23);
+            comboBoxReliability.TabIndex = 123;
             // 
             // numericalTextBox1
             // 
-            this.numericalTextBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.numericalTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericalTextBox1.DecimalPlaces = -1;
-            this.numericalTextBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBox1.Location = new System.Drawing.Point(11, 22);
-            this.numericalTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.numericalTextBox1.Multiline = false;
-            this.numericalTextBox1.Name = "numericalTextBox1";
-            this.numericalTextBox1.RadianValue = 0D;
-            this.numericalTextBox1.ReadOnly = false;
-            this.numericalTextBox1.ShowFraction = false;
-            this.numericalTextBox1.ShowPositiveSign = false;
-            this.numericalTextBox1.Size = new System.Drawing.Size(43, 22);
-            this.numericalTextBox1.TabIndex = 0;
-            this.numericalTextBox1.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numericalTextBox1.Value = 0D;
-            this.numericalTextBox1.WordWrap = true;
+            numericalTextBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            numericalTextBox1.BackColor = System.Drawing.SystemColors.Control;
+            numericalTextBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericalTextBox1.FooterBackColor = System.Drawing.SystemColors.Control;
+            numericalTextBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
+            numericalTextBox1.Location = new System.Drawing.Point(11, 22);
+            numericalTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            numericalTextBox1.MaximumSize = new System.Drawing.Size(1000, 27);
+            numericalTextBox1.MinimumSize = new System.Drawing.Size(1, 17);
+            numericalTextBox1.Name = "numericalTextBox1";
+            numericalTextBox1.RoundErrorAccuracy = -1;
+            numericalTextBox1.Size = new System.Drawing.Size(43, 22);
+            numericalTextBox1.TabIndex = 0;
+            numericalTextBox1.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label8.Location = new System.Drawing.Point(78, 23);
-            this.label8.Margin = new System.Windows.Forms.Padding(0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 16);
-            this.label8.TabIndex = 122;
-            this.label8.Text = "Reliability";
+            label8.AutoSize = true;
+            label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label8.Location = new System.Drawing.Point(78, 23);
+            label8.Margin = new System.Windows.Forms.Padding(0);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(60, 15);
+            label8.TabIndex = 122;
+            label8.Text = "Reliability";
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label7.Location = new System.Drawing.Point(55, 23);
-            this.label7.Margin = new System.Windows.Forms.Padding(0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(16, 16);
-            this.label7.TabIndex = 122;
-            this.label7.Text = "Å";
+            label7.AutoSize = true;
+            label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label7.Location = new System.Drawing.Point(55, 23);
+            label7.Margin = new System.Windows.Forms.Padding(0);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(15, 15);
+            label7.TabIndex = 122;
+            label7.Text = "Å";
             // 
             // buttonAddPeak
             // 
-            this.buttonAddPeak.BackColor = System.Drawing.Color.SteelBlue;
-            this.buttonAddPeak.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddPeak.ForeColor = System.Drawing.Color.White;
-            this.buttonAddPeak.Location = new System.Drawing.Point(217, 15);
-            this.buttonAddPeak.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonAddPeak.Name = "buttonAddPeak";
-            this.buttonAddPeak.Size = new System.Drawing.Size(97, 33);
-            this.buttonAddPeak.TabIndex = 1;
-            this.buttonAddPeak.Text = "↓ Add Peak ↓";
-            this.buttonAddPeak.UseVisualStyleBackColor = false;
-            this.buttonAddPeak.Click += new System.EventHandler(this.buttonAddPeak_Click);
+            buttonAddPeak.BackColor = System.Drawing.Color.SteelBlue;
+            buttonAddPeak.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            buttonAddPeak.ForeColor = System.Drawing.Color.White;
+            buttonAddPeak.Location = new System.Drawing.Point(217, 15);
+            buttonAddPeak.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            buttonAddPeak.Name = "buttonAddPeak";
+            buttonAddPeak.Size = new System.Drawing.Size(97, 33);
+            buttonAddPeak.TabIndex = 1;
+            buttonAddPeak.Text = "↓ Add Peak ↓";
+            buttonAddPeak.UseVisualStyleBackColor = false;
+            buttonAddPeak.Click += buttonAddPeak_Click;
             // 
             // dataGridViewResult
             // 
-            this.dataGridViewResult.AllowUserToAddRows = false;
-            this.dataGridViewResult.AllowUserToDeleteRows = false;
-            this.dataGridViewResult.AutoGenerateColumns = false;
-            this.dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.aDataGridViewTextBoxColumn1,
-            this.bDataGridViewTextBoxColumn1,
-            this.cDataGridViewTextBoxColumn1,
-            this.alphaDataGridViewTextBoxColumn1,
-            this.betaDataGridViewTextBoxColumn1,
-            this.gammaDataGridViewTextBoxColumn1,
-            this.volumeDataGridViewTextBoxColumn1,
-            this.σDQDataGridViewTextBoxColumn,
-            this.rDataGridViewTextBoxColumn});
-            this.dataGridViewResult.DataMember = "TableOutput";
-            this.dataGridViewResult.DataSource = this.dataSet1;
-            this.dataGridViewResult.Location = new System.Drawing.Point(397, 50);
-            this.dataGridViewResult.Name = "dataGridViewResult";
-            this.dataGridViewResult.RowHeadersWidth = 25;
-            this.dataGridViewResult.RowTemplate.Height = 21;
-            this.dataGridViewResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResult.Size = new System.Drawing.Size(501, 170);
-            this.dataGridViewResult.TabIndex = 130;
-            this.dataGridViewResult.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewResult_CellClick);
-            this.dataGridViewResult.SelectionChanged += new System.EventHandler(this.dataGridViewResult_CurrentCellChanged);
+            dataGridViewResult.AllowUserToAddRows = false;
+            dataGridViewResult.AllowUserToDeleteRows = false;
+            dataGridViewResult.AutoGenerateColumns = false;
+            dataGridViewResult.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewResult.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { aDataGridViewTextBoxColumn1, bDataGridViewTextBoxColumn1, cDataGridViewTextBoxColumn1, alphaDataGridViewTextBoxColumn1, betaDataGridViewTextBoxColumn1, gammaDataGridViewTextBoxColumn1, volumeDataGridViewTextBoxColumn1, σDQDataGridViewTextBoxColumn, rDataGridViewTextBoxColumn });
+            dataGridViewResult.DataMember = "TableOutput";
+            dataGridViewResult.DataSource = dataSet1;
+            dataGridViewResult.Location = new System.Drawing.Point(397, 50);
+            dataGridViewResult.Name = "dataGridViewResult";
+            dataGridViewResult.RowHeadersWidth = 25;
+            dataGridViewResult.RowTemplate.Height = 21;
+            dataGridViewResult.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewResult.Size = new System.Drawing.Size(501, 170);
+            dataGridViewResult.TabIndex = 130;
+            dataGridViewResult.CellClick += dataGridViewResult_CellClick;
+            dataGridViewResult.SelectionChanged += dataGridViewResult_CurrentCellChanged;
             // 
             // aDataGridViewTextBoxColumn1
             // 
-            this.aDataGridViewTextBoxColumn1.DataPropertyName = "a";
+            aDataGridViewTextBoxColumn1.DataPropertyName = "a";
             dataGridViewCellStyle3.Format = "N4";
             dataGridViewCellStyle3.NullValue = null;
-            this.aDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
-            this.aDataGridViewTextBoxColumn1.HeaderText = "a";
-            this.aDataGridViewTextBoxColumn1.Name = "aDataGridViewTextBoxColumn1";
-            this.aDataGridViewTextBoxColumn1.Width = 50;
+            aDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle3;
+            aDataGridViewTextBoxColumn1.HeaderText = "a";
+            aDataGridViewTextBoxColumn1.Name = "aDataGridViewTextBoxColumn1";
+            aDataGridViewTextBoxColumn1.Width = 50;
             // 
             // bDataGridViewTextBoxColumn1
             // 
-            this.bDataGridViewTextBoxColumn1.DataPropertyName = "b";
+            bDataGridViewTextBoxColumn1.DataPropertyName = "b";
             dataGridViewCellStyle4.Format = "N4";
             dataGridViewCellStyle4.NullValue = null;
-            this.bDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
-            this.bDataGridViewTextBoxColumn1.HeaderText = "b";
-            this.bDataGridViewTextBoxColumn1.Name = "bDataGridViewTextBoxColumn1";
-            this.bDataGridViewTextBoxColumn1.Width = 50;
+            bDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
+            bDataGridViewTextBoxColumn1.HeaderText = "b";
+            bDataGridViewTextBoxColumn1.Name = "bDataGridViewTextBoxColumn1";
+            bDataGridViewTextBoxColumn1.Width = 50;
             // 
             // cDataGridViewTextBoxColumn1
             // 
-            this.cDataGridViewTextBoxColumn1.DataPropertyName = "c";
+            cDataGridViewTextBoxColumn1.DataPropertyName = "c";
             dataGridViewCellStyle5.Format = "N4";
             dataGridViewCellStyle5.NullValue = null;
-            this.cDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.cDataGridViewTextBoxColumn1.HeaderText = "c";
-            this.cDataGridViewTextBoxColumn1.Name = "cDataGridViewTextBoxColumn1";
-            this.cDataGridViewTextBoxColumn1.Width = 50;
+            cDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            cDataGridViewTextBoxColumn1.HeaderText = "c";
+            cDataGridViewTextBoxColumn1.Name = "cDataGridViewTextBoxColumn1";
+            cDataGridViewTextBoxColumn1.Width = 50;
             // 
             // alphaDataGridViewTextBoxColumn1
             // 
-            this.alphaDataGridViewTextBoxColumn1.DataPropertyName = "alpha";
-            this.alphaDataGridViewTextBoxColumn1.HeaderText = "α";
-            this.alphaDataGridViewTextBoxColumn1.Name = "alphaDataGridViewTextBoxColumn1";
-            this.alphaDataGridViewTextBoxColumn1.Width = 50;
+            alphaDataGridViewTextBoxColumn1.DataPropertyName = "alpha";
+            alphaDataGridViewTextBoxColumn1.HeaderText = "α";
+            alphaDataGridViewTextBoxColumn1.Name = "alphaDataGridViewTextBoxColumn1";
+            alphaDataGridViewTextBoxColumn1.Width = 50;
             // 
             // betaDataGridViewTextBoxColumn1
             // 
-            this.betaDataGridViewTextBoxColumn1.DataPropertyName = "beta";
-            this.betaDataGridViewTextBoxColumn1.HeaderText = "β";
-            this.betaDataGridViewTextBoxColumn1.Name = "betaDataGridViewTextBoxColumn1";
-            this.betaDataGridViewTextBoxColumn1.Width = 50;
+            betaDataGridViewTextBoxColumn1.DataPropertyName = "beta";
+            betaDataGridViewTextBoxColumn1.HeaderText = "β";
+            betaDataGridViewTextBoxColumn1.Name = "betaDataGridViewTextBoxColumn1";
+            betaDataGridViewTextBoxColumn1.Width = 50;
             // 
             // gammaDataGridViewTextBoxColumn1
             // 
-            this.gammaDataGridViewTextBoxColumn1.DataPropertyName = "gamma";
-            this.gammaDataGridViewTextBoxColumn1.HeaderText = "γ";
-            this.gammaDataGridViewTextBoxColumn1.Name = "gammaDataGridViewTextBoxColumn1";
-            this.gammaDataGridViewTextBoxColumn1.Width = 50;
+            gammaDataGridViewTextBoxColumn1.DataPropertyName = "gamma";
+            gammaDataGridViewTextBoxColumn1.HeaderText = "γ";
+            gammaDataGridViewTextBoxColumn1.Name = "gammaDataGridViewTextBoxColumn1";
+            gammaDataGridViewTextBoxColumn1.Width = 50;
             // 
             // volumeDataGridViewTextBoxColumn1
             // 
-            this.volumeDataGridViewTextBoxColumn1.DataPropertyName = "Volume";
+            volumeDataGridViewTextBoxColumn1.DataPropertyName = "Volume";
             dataGridViewCellStyle6.Format = "N2";
             dataGridViewCellStyle6.NullValue = null;
-            this.volumeDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
-            this.volumeDataGridViewTextBoxColumn1.HeaderText = "Volume";
-            this.volumeDataGridViewTextBoxColumn1.Name = "volumeDataGridViewTextBoxColumn1";
-            this.volumeDataGridViewTextBoxColumn1.Width = 50;
+            volumeDataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            volumeDataGridViewTextBoxColumn1.HeaderText = "Volume";
+            volumeDataGridViewTextBoxColumn1.Name = "volumeDataGridViewTextBoxColumn1";
+            volumeDataGridViewTextBoxColumn1.Width = 50;
             // 
             // σDQDataGridViewTextBoxColumn
             // 
-            this.σDQDataGridViewTextBoxColumn.DataPropertyName = "Σ dQ";
+            σDQDataGridViewTextBoxColumn.DataPropertyName = "Σ dQ";
             dataGridViewCellStyle7.Format = "N6";
             dataGridViewCellStyle7.NullValue = null;
-            this.σDQDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.σDQDataGridViewTextBoxColumn.HeaderText = "ΣdQ";
-            this.σDQDataGridViewTextBoxColumn.Name = "σDQDataGridViewTextBoxColumn";
-            this.σDQDataGridViewTextBoxColumn.Width = 50;
+            σDQDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            σDQDataGridViewTextBoxColumn.HeaderText = "ΣdQ";
+            σDQDataGridViewTextBoxColumn.Name = "σDQDataGridViewTextBoxColumn";
+            σDQDataGridViewTextBoxColumn.Width = 50;
             // 
             // rDataGridViewTextBoxColumn
             // 
-            this.rDataGridViewTextBoxColumn.DataPropertyName = "R";
+            rDataGridViewTextBoxColumn.DataPropertyName = "R";
             dataGridViewCellStyle8.Format = "N6";
             dataGridViewCellStyle8.NullValue = null;
-            this.rDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            this.rDataGridViewTextBoxColumn.HeaderText = "R";
-            this.rDataGridViewTextBoxColumn.Name = "rDataGridViewTextBoxColumn";
-            this.rDataGridViewTextBoxColumn.Width = 50;
+            rDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            rDataGridViewTextBoxColumn.HeaderText = "R";
+            rDataGridViewTextBoxColumn.Name = "rDataGridViewTextBoxColumn";
+            rDataGridViewTextBoxColumn.Width = 50;
             // 
             // aDataGridViewTextBoxColumn
             // 
-            this.aDataGridViewTextBoxColumn.DataPropertyName = "a";
-            this.aDataGridViewTextBoxColumn.HeaderText = "a";
-            this.aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
-            this.aDataGridViewTextBoxColumn.Width = 70;
+            aDataGridViewTextBoxColumn.DataPropertyName = "a";
+            aDataGridViewTextBoxColumn.HeaderText = "a";
+            aDataGridViewTextBoxColumn.Name = "aDataGridViewTextBoxColumn";
+            aDataGridViewTextBoxColumn.Width = 70;
             // 
             // bDataGridViewTextBoxColumn
             // 
-            this.bDataGridViewTextBoxColumn.DataPropertyName = "b";
-            this.bDataGridViewTextBoxColumn.HeaderText = "b";
-            this.bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
-            this.bDataGridViewTextBoxColumn.Width = 70;
+            bDataGridViewTextBoxColumn.DataPropertyName = "b";
+            bDataGridViewTextBoxColumn.HeaderText = "b";
+            bDataGridViewTextBoxColumn.Name = "bDataGridViewTextBoxColumn";
+            bDataGridViewTextBoxColumn.Width = 70;
             // 
             // cDataGridViewTextBoxColumn
             // 
-            this.cDataGridViewTextBoxColumn.DataPropertyName = "c";
-            this.cDataGridViewTextBoxColumn.HeaderText = "c";
-            this.cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
-            this.cDataGridViewTextBoxColumn.Width = 70;
+            cDataGridViewTextBoxColumn.DataPropertyName = "c";
+            cDataGridViewTextBoxColumn.HeaderText = "c";
+            cDataGridViewTextBoxColumn.Name = "cDataGridViewTextBoxColumn";
+            cDataGridViewTextBoxColumn.Width = 70;
             // 
             // alphaDataGridViewTextBoxColumn
             // 
-            this.alphaDataGridViewTextBoxColumn.DataPropertyName = "alpha";
-            this.alphaDataGridViewTextBoxColumn.HeaderText = "alpha";
-            this.alphaDataGridViewTextBoxColumn.Name = "alphaDataGridViewTextBoxColumn";
-            this.alphaDataGridViewTextBoxColumn.Width = 70;
+            alphaDataGridViewTextBoxColumn.DataPropertyName = "alpha";
+            alphaDataGridViewTextBoxColumn.HeaderText = "alpha";
+            alphaDataGridViewTextBoxColumn.Name = "alphaDataGridViewTextBoxColumn";
+            alphaDataGridViewTextBoxColumn.Width = 70;
             // 
             // betaDataGridViewTextBoxColumn
             // 
-            this.betaDataGridViewTextBoxColumn.DataPropertyName = "beta";
-            this.betaDataGridViewTextBoxColumn.HeaderText = "beta";
-            this.betaDataGridViewTextBoxColumn.Name = "betaDataGridViewTextBoxColumn";
-            this.betaDataGridViewTextBoxColumn.Width = 70;
+            betaDataGridViewTextBoxColumn.DataPropertyName = "beta";
+            betaDataGridViewTextBoxColumn.HeaderText = "beta";
+            betaDataGridViewTextBoxColumn.Name = "betaDataGridViewTextBoxColumn";
+            betaDataGridViewTextBoxColumn.Width = 70;
             // 
             // gammaDataGridViewTextBoxColumn
             // 
-            this.gammaDataGridViewTextBoxColumn.DataPropertyName = "gamma";
-            this.gammaDataGridViewTextBoxColumn.HeaderText = "gamma";
-            this.gammaDataGridViewTextBoxColumn.Name = "gammaDataGridViewTextBoxColumn";
-            this.gammaDataGridViewTextBoxColumn.Width = 70;
+            gammaDataGridViewTextBoxColumn.DataPropertyName = "gamma";
+            gammaDataGridViewTextBoxColumn.HeaderText = "gamma";
+            gammaDataGridViewTextBoxColumn.Name = "gammaDataGridViewTextBoxColumn";
+            gammaDataGridViewTextBoxColumn.Width = 70;
             // 
             // volumeDataGridViewTextBoxColumn
             // 
-            this.volumeDataGridViewTextBoxColumn.DataPropertyName = "Volume";
-            this.volumeDataGridViewTextBoxColumn.HeaderText = "Volume";
-            this.volumeDataGridViewTextBoxColumn.Name = "volumeDataGridViewTextBoxColumn";
-            this.volumeDataGridViewTextBoxColumn.Width = 70;
+            volumeDataGridViewTextBoxColumn.DataPropertyName = "Volume";
+            volumeDataGridViewTextBoxColumn.HeaderText = "Volume";
+            volumeDataGridViewTextBoxColumn.Name = "volumeDataGridViewTextBoxColumn";
+            volumeDataGridViewTextBoxColumn.Width = 70;
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Arial Unicode MS", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label9.Location = new System.Drawing.Point(402, 31);
-            this.label9.Margin = new System.Windows.Forms.Padding(0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(129, 16);
-            this.label9.TabIndex = 122;
-            this.label9.Text = "Candidates (best 300)";
+            label9.AutoSize = true;
+            label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label9.Location = new System.Drawing.Point(402, 31);
+            label9.Margin = new System.Windows.Forms.Padding(0);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(127, 15);
+            label9.TabIndex = 122;
+            label9.Text = "Candidates (best 300)";
             // 
             // backgroundWorker
             // 
-            this.backgroundWorker.WorkerReportsProgress = true;
-            this.backgroundWorker.WorkerSupportsCancellation = true;
-            this.backgroundWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker_DoWork);
-            this.backgroundWorker.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker_ProgressChanged);
-            this.backgroundWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker_RunWorkerCompleted);
+            backgroundWorker.WorkerReportsProgress = true;
+            backgroundWorker.WorkerSupportsCancellation = true;
+            backgroundWorker.DoWork += backgroundWorker_DoWork;
+            backgroundWorker.ProgressChanged += backgroundWorker_ProgressChanged;
+            backgroundWorker.RunWorkerCompleted += backgroundWorker_RunWorkerCompleted;
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabelTryNumber});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 646);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(904, 22);
-            this.statusStrip1.TabIndex = 133;
-            this.statusStrip1.Text = "statusStrip1";
+            statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { toolStripStatusLabelTryNumber });
+            statusStrip1.Location = new System.Drawing.Point(0, 646);
+            statusStrip1.Name = "statusStrip1";
+            statusStrip1.Size = new System.Drawing.Size(904, 22);
+            statusStrip1.TabIndex = 133;
+            statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabelTryNumber
             // 
-            this.toolStripStatusLabelTryNumber.Name = "toolStripStatusLabelTryNumber";
-            this.toolStripStatusLabelTryNumber.Size = new System.Drawing.Size(86, 17);
-            this.toolStripStatusLabelTryNumber.Text = "Try Number: ";
+            toolStripStatusLabelTryNumber.Name = "toolStripStatusLabelTryNumber";
+            toolStripStatusLabelTryNumber.Size = new System.Drawing.Size(74, 17);
+            toolStripStatusLabelTryNumber.Text = "Try Number: ";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(259, 610);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 29);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Resume!";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.buttonFind_Click);
+            button1.Location = new System.Drawing.Point(259, 610);
+            button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new System.Drawing.Size(77, 29);
+            button1.TabIndex = 1;
+            button1.Text = "Resume!";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += buttonFind_Click;
             // 
             // dObsDataGridViewTextBoxColumn
             // 
-            this.dObsDataGridViewTextBoxColumn.DataPropertyName = "d obs";
-            this.dObsDataGridViewTextBoxColumn.HeaderText = "d obs";
-            this.dObsDataGridViewTextBoxColumn.Name = "dObsDataGridViewTextBoxColumn";
+            dObsDataGridViewTextBoxColumn.DataPropertyName = "d obs";
+            dObsDataGridViewTextBoxColumn.HeaderText = "d obs";
+            dObsDataGridViewTextBoxColumn.Name = "dObsDataGridViewTextBoxColumn";
             // 
             // reliabilityDataGridViewTextBoxColumn1
             // 
-            this.reliabilityDataGridViewTextBoxColumn1.DataPropertyName = "Reliability";
-            this.reliabilityDataGridViewTextBoxColumn1.HeaderText = "Reliability";
-            this.reliabilityDataGridViewTextBoxColumn1.Name = "reliabilityDataGridViewTextBoxColumn1";
+            reliabilityDataGridViewTextBoxColumn1.DataPropertyName = "Reliability";
+            reliabilityDataGridViewTextBoxColumn1.HeaderText = "Reliability";
+            reliabilityDataGridViewTextBoxColumn1.Name = "reliabilityDataGridViewTextBoxColumn1";
             // 
             // useForCalcDataGridViewCheckBoxColumn
             // 
-            this.useForCalcDataGridViewCheckBoxColumn.DataPropertyName = "Use for Calc.";
-            this.useForCalcDataGridViewCheckBoxColumn.HeaderText = "Use for Calc.";
-            this.useForCalcDataGridViewCheckBoxColumn.Name = "useForCalcDataGridViewCheckBoxColumn";
+            useForCalcDataGridViewCheckBoxColumn.DataPropertyName = "Use for Calc.";
+            useForCalcDataGridViewCheckBoxColumn.HeaderText = "Use for Calc.";
+            useForCalcDataGridViewCheckBoxColumn.Name = "useForCalcDataGridViewCheckBoxColumn";
             // 
             // hDataGridViewTextBoxColumn
             // 
-            this.hDataGridViewTextBoxColumn.DataPropertyName = "h";
-            this.hDataGridViewTextBoxColumn.HeaderText = "h";
-            this.hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
+            hDataGridViewTextBoxColumn.DataPropertyName = "h";
+            hDataGridViewTextBoxColumn.HeaderText = "h";
+            hDataGridViewTextBoxColumn.Name = "hDataGridViewTextBoxColumn";
             // 
             // kDataGridViewTextBoxColumn
             // 
-            this.kDataGridViewTextBoxColumn.DataPropertyName = "k";
-            this.kDataGridViewTextBoxColumn.HeaderText = "k";
-            this.kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
+            kDataGridViewTextBoxColumn.DataPropertyName = "k";
+            kDataGridViewTextBoxColumn.HeaderText = "k";
+            kDataGridViewTextBoxColumn.Name = "kDataGridViewTextBoxColumn";
             // 
             // lDataGridViewTextBoxColumn
             // 
-            this.lDataGridViewTextBoxColumn.DataPropertyName = "l";
-            this.lDataGridViewTextBoxColumn.HeaderText = "l";
-            this.lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
+            lDataGridViewTextBoxColumn.DataPropertyName = "l";
+            lDataGridViewTextBoxColumn.HeaderText = "l";
+            lDataGridViewTextBoxColumn.Name = "lDataGridViewTextBoxColumn";
             // 
             // dCalcDataGridViewTextBoxColumn
             // 
-            this.dCalcDataGridViewTextBoxColumn.DataPropertyName = "d calc";
-            this.dCalcDataGridViewTextBoxColumn.HeaderText = "d calc";
-            this.dCalcDataGridViewTextBoxColumn.Name = "dCalcDataGridViewTextBoxColumn";
+            dCalcDataGridViewTextBoxColumn.DataPropertyName = "d calc";
+            dCalcDataGridViewTextBoxColumn.HeaderText = "d calc";
+            dCalcDataGridViewTextBoxColumn.Name = "dCalcDataGridViewTextBoxColumn";
             // 
             // dObsDataGridViewTextBoxColumn1
             // 
-            this.dObsDataGridViewTextBoxColumn1.DataPropertyName = "d obs";
-            this.dObsDataGridViewTextBoxColumn1.HeaderText = "d obs";
-            this.dObsDataGridViewTextBoxColumn1.Name = "dObsDataGridViewTextBoxColumn1";
+            dObsDataGridViewTextBoxColumn1.DataPropertyName = "d obs";
+            dObsDataGridViewTextBoxColumn1.HeaderText = "d obs";
+            dObsDataGridViewTextBoxColumn1.Name = "dObsDataGridViewTextBoxColumn1";
             // 
             // dObsDataGridViewTextBoxColumn2
             // 
-            this.dObsDataGridViewTextBoxColumn2.DataPropertyName = "d obs";
-            this.dObsDataGridViewTextBoxColumn2.HeaderText = "d obs";
-            this.dObsDataGridViewTextBoxColumn2.Name = "dObsDataGridViewTextBoxColumn2";
+            dObsDataGridViewTextBoxColumn2.DataPropertyName = "d obs";
+            dObsDataGridViewTextBoxColumn2.HeaderText = "d obs";
+            dObsDataGridViewTextBoxColumn2.Name = "dObsDataGridViewTextBoxColumn2";
             // 
             // Reliability
             // 
-            this.Reliability.DataPropertyName = "Reliability";
-            this.Reliability.HeaderText = "Reliability";
-            this.Reliability.Name = "Reliability";
+            Reliability.DataPropertyName = "Reliability";
+            Reliability.HeaderText = "Reliability";
+            Reliability.Name = "Reliability";
             // 
             // ColumnDelete
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.Color.IndianRed;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.DarkRed;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.White;
-            this.ColumnDelete.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnDelete.HeaderText = "";
-            this.ColumnDelete.Name = "ColumnDelete";
-            this.ColumnDelete.Text = "delete";
-            this.ColumnDelete.UseColumnTextForButtonValue = true;
-            this.ColumnDelete.Width = 70;
+            ColumnDelete.DefaultCellStyle = dataGridViewCellStyle9;
+            ColumnDelete.HeaderText = "";
+            ColumnDelete.Name = "ColumnDelete";
+            ColumnDelete.Text = "delete";
+            ColumnDelete.UseColumnTextForButtonValue = true;
+            ColumnDelete.Width = 70;
             // 
             // h
             // 
-            this.h.DataPropertyName = "h";
-            this.h.HeaderText = "h";
-            this.h.Name = "h";
-            this.h.Width = 20;
+            h.DataPropertyName = "h";
+            h.HeaderText = "h";
+            h.Name = "h";
+            h.Width = 20;
             // 
             // k
             // 
-            this.k.DataPropertyName = "k";
-            this.k.HeaderText = "k";
-            this.k.Name = "k";
-            this.k.Width = 20;
+            k.DataPropertyName = "k";
+            k.HeaderText = "k";
+            k.Name = "k";
+            k.Width = 20;
             // 
             // l
             // 
-            this.l.DataPropertyName = "l";
-            this.l.HeaderText = "l";
-            this.l.Name = "l";
-            this.l.Width = 20;
+            l.DataPropertyName = "l";
+            l.HeaderText = "l";
+            l.Name = "l";
+            l.Width = 20;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.waveLengthControl1);
-            this.groupBox3.Location = new System.Drawing.Point(4, 160);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(301, 127);
-            this.groupBox3.TabIndex = 135;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Wave Source";
+            groupBox3.Controls.Add(waveLengthControl1);
+            groupBox3.Location = new System.Drawing.Point(4, 160);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new System.Drawing.Size(301, 127);
+            groupBox3.TabIndex = 135;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Wave Source";
             // 
             // waveLengthControl1
             // 
-            this.waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.waveLengthControl1.Energy = 8.0415178561814322D;
-            this.waveLengthControl1.EnergyText = "8.04151785618143";
-            this.waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.waveLengthControl1.Location = new System.Drawing.Point(7, 17);
-            this.waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
-            this.waveLengthControl1.MinimumSize = new System.Drawing.Size(190, 0);
-            this.waveLengthControl1.Name = "waveLengthControl1";
-            this.waveLengthControl1.Property = ((Crystallography.WaveProperty)(resources.GetObject("waveLengthControl1.Property")));
-            this.waveLengthControl1.ShowWaveSource = true;
-            this.waveLengthControl1.Size = new System.Drawing.Size(291, 100);
-            this.waveLengthControl1.TabIndex = 134;
-            this.waveLengthControl1.WaveLength = 0.15418D;
-            this.waveLengthControl1.WaveLengthText = "1.5418";
-            this.waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
-            this.waveLengthControl1.XrayWaveSourceElementNumber = 0;
-            this.waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
+            waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl1.Energy = 8.04151786D;
+            waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl1.Location = new System.Drawing.Point(7, 17);
+            waveLengthControl1.Margin = new System.Windows.Forms.Padding(0);
+            waveLengthControl1.MaximumSize = new System.Drawing.Size(500, 500);
+            waveLengthControl1.MinimumSize = new System.Drawing.Size(190, 0);
+            waveLengthControl1.Name = "waveLengthControl1";
+            waveLengthControl1.ShowWaveSource = true;
+            waveLengthControl1.Size = new System.Drawing.Size(291, 100);
+            waveLengthControl1.TabIndex = 134;
+            waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl1.WaveLength = 0.15418D;
+            waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
+            waveLengthControl1.XrayWaveSourceElementNumber = 0;
+            waveLengthControl1.XrayWaveSourceLine = Crystallography.XrayLine.Ka1;
             // 
             // comboBoxX
             // 
-            this.comboBoxX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxX.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxX.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.comboBoxX.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c",
-            "α",
-            "β",
-            "γ"});
-            this.comboBoxX.Location = new System.Drawing.Point(848, 606);
-            this.comboBoxX.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxX.Name = "comboBoxX";
-            this.comboBoxX.Size = new System.Drawing.Size(47, 27);
-            this.comboBoxX.TabIndex = 126;
-            this.comboBoxX.SelectedIndexChanged += new System.EventHandler(this.comboBoxX_SelectedIndexChanged);
+            comboBoxX.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxX.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            comboBoxX.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            comboBoxX.Items.AddRange(new object[] { "a", "b", "c", "α", "β", "γ" });
+            comboBoxX.Location = new System.Drawing.Point(848, 606);
+            comboBoxX.Margin = new System.Windows.Forms.Padding(0);
+            comboBoxX.Name = "comboBoxX";
+            comboBoxX.Size = new System.Drawing.Size(47, 27);
+            comboBoxX.TabIndex = 126;
+            comboBoxX.SelectedIndexChanged += comboBoxX_SelectedIndexChanged;
             // 
             // comboBoxY
             // 
-            this.comboBoxY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxY.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxY.ImeMode = System.Windows.Forms.ImeMode.Disable;
-            this.comboBoxY.Items.AddRange(new object[] {
-            "a",
-            "b",
-            "c",
-            "α",
-            "β",
-            "γ"});
-            this.comboBoxY.Location = new System.Drawing.Point(599, 606);
-            this.comboBoxY.Margin = new System.Windows.Forms.Padding(0);
-            this.comboBoxY.Name = "comboBoxY";
-            this.comboBoxY.Size = new System.Drawing.Size(47, 27);
-            this.comboBoxY.TabIndex = 126;
-            this.comboBoxY.SelectedIndexChanged += new System.EventHandler(this.comboBoxY_SelectedIndexChanged);
+            comboBoxY.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            comboBoxY.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            comboBoxY.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            comboBoxY.Items.AddRange(new object[] { "a", "b", "c", "α", "β", "γ" });
+            comboBoxY.Location = new System.Drawing.Point(599, 606);
+            comboBoxY.Margin = new System.Windows.Forms.Padding(0);
+            comboBoxY.Name = "comboBoxY";
+            comboBoxY.Size = new System.Drawing.Size(47, 27);
+            comboBoxY.TabIndex = 126;
+            comboBoxY.SelectedIndexChanged += comboBoxY_SelectedIndexChanged;
             // 
             // distributionGraphControl1
             // 
-            this.distributionGraphControl1.BackgroundColor = System.Drawing.Color.White;
-            this.distributionGraphControl1.BottomMargin = 0F;
-            this.distributionGraphControl1.DivisionLineColor = System.Drawing.Color.Gray;
-            this.distributionGraphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
-            this.distributionGraphControl1.IsIntegerX = false;
-            this.distributionGraphControl1.IsIntegerY = false;
-            this.distributionGraphControl1.LabelX = "X:";
-            this.distributionGraphControl1.LabelY = "Y:";
-            this.distributionGraphControl1.LeftMargin = 0F;
-            this.distributionGraphControl1.LineColor = System.Drawing.Color.Empty;
-            this.distributionGraphControl1.Location = new System.Drawing.Point(554, 263);
-            this.distributionGraphControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.distributionGraphControl1.Name = "distributionGraphControl1";
-            this.distributionGraphControl1.OriginPosition = new System.Drawing.Point(40, 20);
-            this.distributionGraphControl1.SelectedIndex = -1;
-            this.distributionGraphControl1.Size = new System.Drawing.Size(344, 339);
-            this.distributionGraphControl1.TabIndex = 136;
-            this.distributionGraphControl1.XLog = false;
-            this.distributionGraphControl1.YLog = false;
+            distributionGraphControl1.BackgroundColor = System.Drawing.Color.White;
+            distributionGraphControl1.BottomMargin = 0F;
+            distributionGraphControl1.DivisionLineColor = System.Drawing.Color.Gray;
+            distributionGraphControl1.DivisionSubLineColor = System.Drawing.Color.LightGray;
+            distributionGraphControl1.IsIntegerX = false;
+            distributionGraphControl1.IsIntegerY = false;
+            distributionGraphControl1.LabelX = "X:";
+            distributionGraphControl1.LabelY = "Y:";
+            distributionGraphControl1.LeftMargin = 0F;
+            distributionGraphControl1.LineColor = System.Drawing.Color.Empty;
+            distributionGraphControl1.Location = new System.Drawing.Point(554, 263);
+            distributionGraphControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            distributionGraphControl1.Name = "distributionGraphControl1";
+            distributionGraphControl1.OriginPosition = new System.Drawing.Point(40, 20);
+            distributionGraphControl1.SelectedIndex = -1;
+            distributionGraphControl1.Size = new System.Drawing.Size(344, 339);
+            distributionGraphControl1.TabIndex = 136;
+            distributionGraphControl1.XLog = false;
+            distributionGraphControl1.YLog = false;
             // 
             // label10
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(556, 612);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(39, 15);
-            this.label10.TabIndex = 127;
-            this.label10.Text = "Y-Axis";
+            label10.AutoSize = true;
+            label10.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label10.Location = new System.Drawing.Point(556, 612);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(39, 15);
+            label10.TabIndex = 127;
+            label10.Text = "Y-Axis";
             // 
             // label11
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(805, 612);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 15);
-            this.label11.TabIndex = 127;
-            this.label11.Text = "X-Axis";
+            label11.AutoSize = true;
+            label11.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            label11.Location = new System.Drawing.Point(805, 612);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(40, 15);
+            label11.TabIndex = 127;
+            label11.Text = "X-Axis";
             // 
             // buttonSendToAtomicPositionFinder
             // 
-            this.buttonSendToAtomicPositionFinder.Location = new System.Drawing.Point(397, 227);
-            this.buttonSendToAtomicPositionFinder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.buttonSendToAtomicPositionFinder.Name = "buttonSendToAtomicPositionFinder";
-            this.buttonSendToAtomicPositionFinder.Size = new System.Drawing.Size(501, 29);
-            this.buttonSendToAtomicPositionFinder.TabIndex = 1;
-            this.buttonSendToAtomicPositionFinder.Text = "Send the selected cell constant to \"Atomic Position Finder\"";
-            this.buttonSendToAtomicPositionFinder.UseVisualStyleBackColor = true;
-            this.buttonSendToAtomicPositionFinder.Click += new System.EventHandler(this.buttonSendToAtomicPositionFinder_Click);
+            buttonSendToAtomicPositionFinder.Location = new System.Drawing.Point(397, 227);
+            buttonSendToAtomicPositionFinder.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            buttonSendToAtomicPositionFinder.Name = "buttonSendToAtomicPositionFinder";
+            buttonSendToAtomicPositionFinder.Size = new System.Drawing.Size(501, 29);
+            buttonSendToAtomicPositionFinder.TabIndex = 1;
+            buttonSendToAtomicPositionFinder.Text = "Send the selected cell constant to \"Atomic Position Finder\"";
+            buttonSendToAtomicPositionFinder.UseVisualStyleBackColor = true;
+            buttonSendToAtomicPositionFinder.Click += buttonSendToAtomicPositionFinder_Click;
             // 
             // FormCellFinder
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(904, 668);
-            this.Controls.Add(this.distributionGraphControl1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.dataGridViewResult);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.comboBoxY);
-            this.Controls.Add(this.comboBoxX);
-            this.Controls.Add(this.comboBoxCrystalSystem);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonSendToAtomicPositionFinder);
-            this.Controls.Add(this.buttonFind);
-            this.Controls.Add(this.menuStrip1);
-            this.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "FormCellFinder";
-            this.Text = "Cell Finder";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormCellFinder_FormClosing);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataTable2)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinAlpha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinBeta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMinGamma)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxB)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxA)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxAlpha)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxBeta)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDownMaxGamma)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResult)).EndInit();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            ClientSize = new System.Drawing.Size(904, 668);
+            Controls.Add(distributionGraphControl1);
+            Controls.Add(groupBox3);
+            Controls.Add(statusStrip1);
+            Controls.Add(groupBox2);
+            Controls.Add(dataGridViewResult);
+            Controls.Add(label9);
+            Controls.Add(groupBox1);
+            Controls.Add(label11);
+            Controls.Add(label10);
+            Controls.Add(label19);
+            Controls.Add(comboBoxY);
+            Controls.Add(comboBoxX);
+            Controls.Add(comboBoxCrystalSystem);
+            Controls.Add(button1);
+            Controls.Add(buttonSendToAtomicPositionFinder);
+            Controls.Add(buttonFind);
+            Controls.Add(menuStrip1);
+            Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            MainMenuStrip = menuStrip1;
+            Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            Name = "FormCellFinder";
+            Text = "Cell Finder";
+            FormClosing += FormCellFinder_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)dataSet1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataTable1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataTable2).EndInit();
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinA).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinC).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinAlpha).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinBeta).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMinGamma).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxC).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxA).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxAlpha).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxBeta).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownMaxGamma).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewResult).EndInit();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

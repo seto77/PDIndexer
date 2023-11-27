@@ -1,11 +1,13 @@
 #region using
 using MathNet.Numerics;
+using MathNet.Numerics.LinearAlgebra.Factorization;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 #endregion
@@ -123,44 +125,44 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Plane> Plane = new();
+    public List<Plane> Plane = [];
 
-    public List<Plane> FlexiblePlane = new();
+    public List<Plane> FlexiblePlane = [];
 
     /// <summary>
     /// 軸ベクトル配列
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Vector3D> VectorOfAxis = new();
+    public List<Vector3D> VectorOfAxis = [];
 
     /// <summary>
     /// 面ベクトル配列
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Vector3D> VectorOfPlane = new();
+    public List<Vector3D> VectorOfPlane = [];
 
     /// <summary>
     /// 逆格子点ベクトル (kinematical)
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Vector3D> VectorOfG = new();
+    public Vector3D[] VectorOfG = [];
 
     /// <summary>
     /// 菊池線ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Vector3D> VectorOfG_KikuchiLine = new();
+    public List<Vector3D> VectorOfG_KikuchiLine = [];
 
     /// <summary>
     /// 極ベクトル
     /// </summary>
     [NonSerialized]
     [XmlIgnore]
-    public List<Vector3D> VectorOfPole = new();
+    public List<Vector3D> VectorOfPole = [];
     #endregion
 
     #region ベーテ法
@@ -357,7 +359,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <summary>
     /// 原子の情報を取り扱うAtomsクラスの配列
     /// </summary>
-    public Atoms[] Atoms = Array.Empty<Atoms>();
+    public Atoms[] Atoms = [];
 
     /// <summary>
     /// 原子の情報を取り扱うAtomsクラスのParallelQuery
@@ -371,7 +373,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <summary>
     /// 結合の情報を取り扱うBondクラスの配列
     /// </summary>
-    public Bonds[] Bonds = Array.Empty<Bonds>();
+    public Bonds[] Bonds = [];
 
     public Bound[] Bounds;
 
@@ -408,14 +410,14 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     {
         set
         {
-            ElasticStiffnessArray = new double[]{
+            ElasticStiffnessArray = [
                  value[0, 0],value[0, 1], value[0, 2] ,value[0, 3] , value[0, 4] ,value[0, 5] ,
                  value[1, 1], value[1, 2] ,value[1, 3] , value[1, 4] ,value[1, 5] ,
                  value[2, 2] ,value[2, 3] , value[2, 4] ,value[2, 5] ,
                  value[3, 3] , value[3, 4] ,value[3, 5] ,
                  value[4, 4] ,value[4, 5] ,
                   value[5, 5]
-                };
+                ];
         }
         get
         {
@@ -484,8 +486,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public Crystal()
     {
         Symmetry = SymmetryStatic.Symmetries[0];
-        Plane = new List<Plane>();
-        Atoms = Array.Empty<Atoms>();
+        Plane = [];
+        Atoms = [];
         ElasticStiffnessArray = new double[21];
         Bethe = new BetheMethod(this);
         A = B = C = Alpha = Beta = Gamma = 0;
@@ -879,7 +881,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public void SetVectorOfAxis((int U, int V, int W)[] indices)
     {
         if (A_Axis == null) return;
-        VectorOfAxis = new List<Vector3D>();
+        VectorOfAxis = [];
         foreach (var (U, V, W) in indices)
         {
             var vec = U * A_Axis + V * B_Axis + W * C_Axis;
@@ -897,7 +899,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     public void SetVectorOfAxis(int uMax, int vMax, int wMax)
     {
         if (A_Axis == null) return;
-        VectorOfAxis = new List<Vector3D>();
+        VectorOfAxis = [];
         var vec = new Vector3D();
         vec = A_Axis; vec.Text = "[100]"; VectorOfAxis.Add(vec);
         vec = B_Axis; vec.Text = "[010]"; VectorOfAxis.Add(vec);
@@ -927,7 +929,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="indices"></param>
     public void SetVectorOfPlane((int H, int K, int L)[] indices)
     {
-        VectorOfPlane = new List<Vector3D>();
+        VectorOfPlane = [];
         foreach (var (H, K, L) in indices)
         {
             var vec = H * A_Star + K * B_Star + L * C_Star;
@@ -944,7 +946,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="lMax"></param>
     public void SetVectorOfPlane(int hMax, int kMax, int lMax)
     {
-        VectorOfPlane = new List<Vector3D>();
+        VectorOfPlane = [];
         Vector3D vec;
 
         vec = CalcHklVector(1, 0, 0); vec = vec * GetLengthPlane(1, 0, 0) / vec.d; vec.Text = "(100)"; VectorOfPlane.Add(vec);
@@ -1027,7 +1029,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                                     l = l,
                                     d = 1 / len,
                                     strHKL = $"{h} {k} {l}",
-                                    Multi = new[] { multi },
+                                    Multi = [multi],
                                 });
                             }
                         }
@@ -1212,6 +1214,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     static int composeKey(in int h, in int k, in int l) => ((h > 0) || (h == 0 && k > 0) || (h == 0 && k == 0 && l > 0)) ? ((h + 255) << 20) + ((k + 255) << 10) + l + 255 : -1;
     static (int h, int k, int l) decomposeKey(in int key) => (((key << 2) >> 22) - 255, ((key << 12) >> 22) - 255, ((key << 22) >> 22) - 255);
 
+    private readonly object lockObj = new();
+
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
     /// </summary>
@@ -1228,7 +1232,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         double bX = B_Star.X, bY = B_Star.Y, bZ = B_Star.Z;
         double cX = C_Star.X, cY = C_Star.Y, cZ = C_Star.Z;
 
-        var gMax = 1 / dMin;
+        double gMax = 1 / dMin, gMax2 = gMax * gMax;
         (int h, int k, int l)[] directions;
         #region directionを初期化
         if (excludeLatticeCondition)
@@ -1259,55 +1263,56 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         var maxGnum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
-        var outer = new List<(int key, double len)>() { (zeroKey, 0) };
         var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
-        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5));
-        var minG = 0.0;
-
-        while (gList.Count < maxGnum && (minG = outer.Min(o => o.len)) < gMax)
+        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0) };
+        int start = 0, end = 1;
+        var outer = CollectionsMarshal.AsSpan(gList)[start..end];
+        while (gList.Count < maxGnum && outer.Length > 0)
         {
-            var end = outer.FindLastIndex(o => o.len - minG < shift * 2);
-            foreach (var (key1, _) in CollectionsMarshal.AsSpan(outer)[..(end + 1)])
+            foreach (var (key1, _, _, _, _) in outer)
             {
                 var (h1, k1, l1) = decomposeKey(key1);
-                foreach ((int h2, int k2, int l2) in directions)
+                foreach (var (h2, k2, l2) in directions)
                 {
                     int h = h1 + h2, k = k1 + k2, l = l1 + l2, key2 = composeKey(h, k, l);
                     if (key2 > 0 && gHash.Add(key2))
                     {
-                        double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ;
-                        var len = Math.Sqrt(x * x + y * y + z * z);
-                        gList.Add((key2, x, y, z, len));
-                        outer.Add((key2, len));
+                        double x = h * aX + k * bX + l * cX, y = h * aY + k * bY + l * cY, z = h * aZ + k * bZ + l * cZ, len2 = x * x + y * y + z * z;
+                        if (len2 < gMax2)
+                            gList.Add((key2, x, y, z, Math.Sqrt(len2)));
                     }
                 }
             }
-            outer.RemoveRange(0, end + 1);
+            start += end;
+            outer = CollectionsMarshal.AsSpan(gList)[start..];
             outer.Sort((e1, e2) => e1.len.CompareTo(e2.len));
+            for (end = 0; end < outer.Length && outer[end].len < outer[0].len + shift * 2; end++)
+                ;
+            outer = outer[..end];
         }
+        gList.RemoveAt(0);
 
-        var gArray = new Vector3D[gList.Count * 2];
+        VectorOfG = new Vector3D[gList.Count * 2];
         Parallel.For(0, gList.Count, i =>
         {
             var (key, x, y, z, glen) = gList[i];
             var (h, k, l) = decomposeKey(key);
             var extinction = Symmetry.CheckExtinctionRule(h, k, l);
-            gArray[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
-            gArray[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
+            VectorOfG[i * 2] = new Vector3D(x, y, z, false) { Index = (h, k, l), d = 1 / glen, Extinction = extinction, Text = $"{h} {k} {l}" };
+            VectorOfG[i * 2 + 1] = new Vector3D(-x, -y, -z, false) { Index = (-h, -k, -l), d = 1 / glen, Extinction = extinction, Text = $"{-h} {-k} {-l}" };
         });
 
-        if (wavesource != WaveSource.None)//強度計算する場合 250msくらい
+        if (VectorOfG != null && VectorOfG.Length > 0 && wavesource != WaveSource.None)//強度計算する場合 250msくらい
         {
-            Parallel.ForEach(gArray, _g =>
+            Parallel.ForEach(VectorOfG, _g =>
             {
                 _g.F = _g.Extinction.Length == 0 ? GetStructureFactor(wavesource, Atoms, _g.Index, _g.Length2 / 4.0) : 0;
                 _g.RawIntensity = _g.F.MagnitudeSquared();// _g.F.Magnitude2();
             });
 
-            var maxIntensity = gArray.Max(v => v.RawIntensity);
-            Parallel.ForEach(gArray, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
+            var maxIntensity = VectorOfG.Max(v => v.RawIntensity);
+            Parallel.ForEach(VectorOfG, _g => _g.RelativeIntensity = _g.RawIntensity / maxIntensity);
         }
-        VectorOfG = gArray.ToList(); //最後に値を代入
     }
 
     #endregion
@@ -1321,7 +1326,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         int hMax = (int)(A / d_limit);
         int kMax = (int)(B / d_limit);
         int lMax = (int)(C / d_limit);
-        VectorOfG_KikuchiLine = new List<Vector3D>();
+        VectorOfG_KikuchiLine = [];
         for (int h = 0; h <= hMax; h++)
             for (int k = h == 0 ? 0 : -kMax; k <= kMax; k++)
                 for (int l = (h == 0 && k == 0) ? 1 : -lMax; l <= lMax; l++)
@@ -1675,14 +1680,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         {
             var key = Atoms[i].ElementName.Split(' ', true)[1];
             var num = Atoms[i].Multiplicity * Atoms[i].Occ;
-            if (dic.ContainsKey(key))
+            if (!dic.TryAdd(key, num))
                 dic[key] += num;
-            else
-                dic.Add(key, num);
         }
 
-        ElementName = dic.Keys.ToArray();
-        ElementNum = dic.Values.ToArray();
+        ElementName = [.. dic.Keys];
+        ElementNum = [.. dic.Values];
 
         if (ElementNum.Sum() == 0)
             return;

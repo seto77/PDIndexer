@@ -9,6 +9,7 @@ using Crystallography;
 using System.IO;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
+using System.Threading.Tasks;
 
 namespace PDIndexer
 {
@@ -52,10 +53,10 @@ namespace PDIndexer
                 for (int i = 0; i < medium.Length; i++) D[i + high.Length] = medium[i];
                 for (int i = 0; i < low.Length; i++) D[i + high.Length + medium.Length] = low[i];
 
-                WaveLength=wavelength;
+                WaveLength = wavelength;
 
                 SortedD = new Plane[D.Length];
-                for (int i = 0; i < high.Length; i++) SortedD[i] = new Plane(high[i],0,0,0, 1,1 / Math.Pow((Math.Asin(wavelength/2/high[i])*2),2) );
+                for (int i = 0; i < high.Length; i++) SortedD[i] = new Plane(high[i], 0, 0, 0, 1, 1 / Math.Pow((Math.Asin(wavelength / 2 / high[i]) * 2), 2));
                 for (int i = 0; i < medium.Length; i++) SortedD[i + high.Length] = new Plane(medium[i], 0, 0, 0, 0.5, 1 / Math.Pow((Math.Asin(wavelength / 2 / medium[i]) * 2), 2));
                 for (int i = 0; i < low.Length; i++) SortedD[i + high.Length + medium.Length] = new Plane(low[i], 0, 0, 0, 0.1, 1 / Math.Pow((Math.Asin(wavelength / 2 / low[i]) * 2), 2));
                 Array.Sort(SortedD);
@@ -105,9 +106,9 @@ namespace PDIndexer
             public int H, K, L;
             public double Reliability;
             public double Weight;
-            public Plane(double d,  int h, int k, int l, double reliability,double weight)
+            public Plane(double d, int h, int k, int l, double reliability, double weight)
             {
-                D = d; H = h; K = k; L = l;Reliability=reliability;Weight=weight;
+                D = d; H = h; K = k; L = l; Reliability = reliability; Weight = weight;
             }
             #region IComparable メンバ
             public int CompareTo(object obj)
@@ -143,7 +144,7 @@ namespace PDIndexer
 
         private void buttonAddPeak_Click(object sender, EventArgs e)
         {
-            dataSet1.Tables[0].Rows.Add(new object[] { numericalTextBox1.Value,comboBoxReliability.Text,true });
+            dataSet1.Tables[0].Rows.Add(new object[] { numericalTextBox1.Value, comboBoxReliability.Text, true });
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -174,7 +175,7 @@ namespace PDIndexer
                             medium.Add((double)dataSet1.Tables[0].Rows[i][0] / 10.0);
                         else if ((string)dataSet1.Tables[0].Rows[i][1] == "Low")
                             low.Add((double)dataSet1.Tables[0].Rows[i][0] / 10.0);
-             
+
                     }
                 high.Sort(); medium.Sort(); low.Sort();
                 high.Reverse(); medium.Reverse(); low.Reverse();
@@ -210,35 +211,39 @@ namespace PDIndexer
             }
         }
 
-        int threadTotal = 1;
+        int threadTotal = 32;
         private void backgroundWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             FindCondition condition = (FindCondition)e.Argument;
 
-            GetCandidatesDelegate[] d = new GetCandidatesDelegate[threadTotal];
-            IAsyncResult[] ar = new IAsyncResult[threadTotal];
             Candidate[][] c = new Candidate[threadTotal][];
-            for (int i = 0; i < threadTotal; i++)
-                d[i] = new GetCandidatesDelegate(GetCandidatesForThread);
 
             int counter = 0;
             int lastCounter = 0;
             Random r = new Random();
-            int tryNumber = 1000;
+            int tryNumber = 10000;
             while (!backgroundWorker.CancellationPending)
             {
                 counter += threadTotal * tryNumber;
-                for (int i = 0; i < threadTotal; i++)
-                    ar[i] = d[i].BeginInvoke(condition,r.Next(), tryNumber,ref c[i], null, null);//各スレッド起動転送
-                for (int i = 0; i < threadTotal; i++)//スレッド終了待ち
-                {
-                    d[i].EndInvoke(ref c[i], ar[i]);
+                //for (int i = 0; i < threadTotal; i++)
+                //    ar[i] = d[i].BeginInvoke(condition,r.Next(), tryNumber,ref c[i], null, null);//各スレッド起動転送
+                //for (int i = 0; i < threadTotal; i++)//スレッド終了待ち
+                //{
+                //    d[i].EndInvoke(ref c[i], ar[i]);
 
-                    for (int j = 0; j < c[i].Length; j++)
-                        Candidates.Add(c[i][j]);
-                }
-                
-                if (counter - lastCounter > 20000 || Candidates.Count>1200)
+                //    for (int j = 0; j < c[i].Length; j++)
+                //        Candidates.Add(c[i][j]);
+                //}
+
+                Parallel.For(0, threadTotal, i =>
+                {
+                    c[i] = GetCandidates(condition, r.Next(), tryNumber);
+
+                });
+                for (int i = 0; i < threadTotal; i++)
+                    Candidates.AddRange(c[i]);
+
+                if (counter - lastCounter > 20000 || Candidates.Count > 1200)
                 {
                     lastCounter = counter;
                     Candidates.Sort();
@@ -253,25 +258,19 @@ namespace PDIndexer
             }
         }
 
-        delegate void GetCandidatesDelegate(FindCondition condition, int seed, int tryNumber, ref Candidate[] c);
-        private void GetCandidatesForThread(FindCondition condition, int seed, int tryNumber, ref Candidate[] c)
-        {
-            c = GetCandidates(condition, seed, tryNumber);
-        }
-
         private Candidate[] GetCandidates(FindCondition condition, int seed, int tryNumber)
         {
-            Random r = new Random(seed);
+            var r = new Random(seed);
             List<Candidate> c = new List<Candidate>();
             for (int i = 0; i < tryNumber && !backgroundWorker.CancellationPending; i++)
             {
                 Candidate temp = FindCellParameter(condition, r.Next());
-                if(temp.R<1000)
+                if (temp.R < 1000)
                     c.Add(temp);
             }
             return c.ToArray();
         }
-        
+
         private Candidate FindCellParameter(FindCondition condition, int seed)
         {
             Random r = new Random(seed);
@@ -290,13 +289,13 @@ namespace PDIndexer
                 return new Candidate();
 
             Plane[] planes = new Plane[unk];
-            
+
             //まず対象となるピークをunk本選ぶ 
             List<int> targetPeak = new List<int>();
             for (int j = 0; j < unk; j++)
             {
                 targetPeak.Sort();
-                int tempTarget =r.Next(r.Next(condition.DtoSortedD.Length / 2));
+                int tempTarget = r.Next(r.Next(condition.DtoSortedD.Length / 2));
                 for (int n = 0; n < targetPeak.Count; n++) //0からtempTargetの間で既に選ばれている指数を検索し、tempTargetから外す
                     if (tempTarget >= targetPeak[n])
                         tempTarget++;
@@ -340,8 +339,8 @@ namespace PDIndexer
             }
             Candidate c = RefineCellParameter(condition.CrystalSystem, planes);
 
-            if (double.IsInfinity( c.SigmaDQ)) return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-            
+            if (double.IsInfinity(c.SigmaDQ)) return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+
             //軸を組み替える
             if (condition.CrystalSystem == 2)//orthoのとき
             {
@@ -351,10 +350,10 @@ namespace PDIndexer
             }
             if (condition.CrystalSystem == 1)//monoclinicのとき
             {//βがもっとも90°に近くなるように
-               // c.A = 0.9737;
-               // c.C = 0.5242;
-               // c.Beta = 105.7 / 180.0 * Math.PI;
-                
+             // c.A = 0.9737;
+             // c.C = 0.5242;
+             // c.Beta = 105.7 / 180.0 * Math.PI;
+
                 PointD u = new PointD(c.A, 0);
                 PointD v = new PointD(c.C * Math.Cos(c.Beta), c.C * Math.Sin(c.Beta));
                 double area = c.A * c.C * Math.Sin(c.Beta);
@@ -365,9 +364,9 @@ namespace PDIndexer
                             p.Add(i * u + j * v);
                 PointD temp1 = new PointD(0, 0), temp2 = new PointD(0, 0);
                 double tempBeta = double.MaxValue;
-                for(int i= 0 ; i<p.Count ; i++)
+                for (int i = 0; i < p.Count; i++)
                     for (int j = i + 1; j < p.Count; j++)
-                        if (Math.Abs(area - Math.Abs( p[i].X * p[j].Y - p[i].Y * p[j].X)) < 0.0000001)
+                        if (Math.Abs(area - Math.Abs(p[i].X * p[j].Y - p[i].Y * p[j].X)) < 0.0000001)
                         {
                             double beta = Math.Acos((p[i].X * p[j].X + p[i].Y * p[j].Y) / p[i].Length / p[j].Length);
                             if (beta >= Math.PI / 2 && tempBeta > beta)
@@ -380,7 +379,7 @@ namespace PDIndexer
                 c.A = temp1.Length;
                 c.C = temp2.Length;
                 c.Beta = tempBeta;
-                
+
                 if (c.A < c.C) { double temp = c.A; c.A = c.C; c.C = temp; }
             }
             if (condition.MaxA >= c.A && condition.MinA <= c.A && condition.MaxB >= c.B && condition.MinB <= c.B && condition.MaxC >= c.C && condition.MinC <= c.C
@@ -502,7 +501,7 @@ namespace PDIndexer
                 if (obsToCalcIndex[i] == obsToCalcIndex[i + 1])//重複があったら
                 {
                     if (retry++ > retryMax) return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    
+
                     if (r.Next(2) == 1)//さいころを振って選ばれたほうを残す
                     {
                         if (obsToCalcIndex[i] > 0)
@@ -552,7 +551,7 @@ namespace PDIndexer
 
         private Candidate RefineCellParameter(int system, Plane[] p)
         {
-           
+
             double a = 0, b = 0, c = 0, alpha = 0, beta = 0, gamma = 0, V = 0;
             double sigmaDQ = double.PositiveInfinity;
             int column = p.Length;
@@ -572,7 +571,7 @@ namespace PDIndexer
             var Q = new DenseMatrix(column, unk);
             var A = new DenseMatrix(column, 1);
             var W = new DenseMatrix(column, column);
-            Matrix<double> C = new DenseMatrix(column,1);
+            Matrix<double> C = new DenseMatrix(column, 1);
 
             switch (system)
             {
@@ -594,7 +593,7 @@ namespace PDIndexer
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
 
                     C = inv * Q.Transpose() * W * A;
-                    
+
                     double a_star = Math.Sqrt(C[0, 0]);
                     double b_star = Math.Sqrt(C[1, 0]);
                     double c_star = Math.Sqrt(C[2, 0]);
@@ -666,7 +665,7 @@ namespace PDIndexer
                         alpha = Math.PI - alpha; beta = Math.PI - beta; gamma = Math.PI - gamma;
                     }
                     break;
-                    #endregion
+                #endregion
 
                 case 1: //
                     #region monoclinic
@@ -680,11 +679,11 @@ namespace PDIndexer
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
 
-                   if(! (Q.Transpose() * W * Q).TryInverse(out inv))
+                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
 
                     C = inv * Q.Transpose() * W * A;
-                    
+
                     beta = Math.Acos(-C[3, 0] / 2 / Math.Sqrt(C[0, 0] * C[2, 0]));
                     a = Math.Sqrt(1 / C[0, 0]) / Math.Sin(beta);
                     b = Math.Sqrt(1 / C[1, 0]);
@@ -692,7 +691,7 @@ namespace PDIndexer
                     alpha = gamma = Math.PI / 2;
                     V = a * b * c * Math.Sin(beta);
                     break;
-                    #endregion
+                #endregion
 
                 case 2: //
                     #region orthorhombic
@@ -714,7 +713,7 @@ namespace PDIndexer
                     alpha = beta = gamma = Math.PI / 2;
                     V = a * b * c;
                     break;
-                    #endregion
+                #endregion
 
                 case 3:
                     #region tetragonal
@@ -735,7 +734,7 @@ namespace PDIndexer
                     alpha = beta = gamma = Math.PI / 2;
                     V = a * a * c;
                     break;
-                    #endregion
+                #endregion
 
                 case 4://trigonal
                     #region trigonal
@@ -749,14 +748,14 @@ namespace PDIndexer
                     if (!(Q.Transpose() * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
                     C = inv * Q.Transpose() * W * A;
-                    
+
                     a = b = Math.Sqrt(1 / C[0, 0]);
                     c = Math.Sqrt(1 / C[1, 0]);
                     alpha = beta = Math.PI / 2;
                     gamma = Math.PI / 1.5;
                     V = a * a * c * Math.Sqrt(3) / 2;
                     break;
-                    #endregion
+                #endregion
 
                 case 5://hexagonal
                     #region hexagonal
@@ -777,7 +776,7 @@ namespace PDIndexer
                     gamma = Math.PI / 1.5;
                     V = a * a * c * Math.Sqrt(3) / 2;
                     break;
-                    #endregion
+                #endregion
 
                 case 6://cubic
                     #region cubic
@@ -811,14 +810,14 @@ namespace PDIndexer
             //TableOutputの情報を元に図を描画する
 
             Candidate[] candidates = ((Candidate[])e.UserState);
-            
+
             dataSet1.Tables[1].Rows.Clear();
             for (int i = 0; i < candidates.Length; i++)
                 dataSet1.Tables[1].Rows.Add(candidates[i].GenerateRow());
 
             toolStripStatusLabelTryNumber.Text = "Try Number: " + e.ProgressPercentage.ToString();
             DrawDistributionMap();
-            //this.Refresh();
+            this.Refresh();
             Application.DoEvents();
         }
 
@@ -869,8 +868,8 @@ namespace PDIndexer
                     dataSet1.Tables[0].Rows[i][3] = p[i].H;
                     dataSet1.Tables[0].Rows[i][4] = p[i].K;
                     dataSet1.Tables[0].Rows[i][5] = p[i].L;
-                    dataSet1.Tables[0].Rows[i][6] = p[i].D*10;
-                    dataSet1.Tables[0].Rows[i][7] = (double)dataSet1.Tables[0].Rows[i][0] - p[i].D*10;
+                    dataSet1.Tables[0].Rows[i][6] = p[i].D * 10;
+                    dataSet1.Tables[0].Rows[i][7] = (double)dataSet1.Tables[0].Rows[i][0] - p[i].D * 10;
                 }
                 Application.DoEvents();
             }
@@ -900,7 +899,7 @@ namespace PDIndexer
 
             //pictureBoxに分布を描く
             distributionGraphControl1.ClearData();
-            for (int i = dataSet1.Tables[1].Rows.Count-1; i >=0; i--)
+            for (int i = dataSet1.Tables[1].Rows.Count - 1; i >= 0; i--)
             {
                 double x = 0, y = 0;
                 switch (comboBoxX.Text)
@@ -922,9 +921,9 @@ namespace PDIndexer
                     case "γ": y = (double)dataSet1.Tables[1].Rows[i][5]; break;
                 }
                 double r = (double)dataSet1.Tables[1].Rows[i][8];
-                int index =(int)(65535 * ((maxR - r) / (maxR-minR)));
-                if(index<1)index=0;
-                if(index>65535) index = 65535;
+                int index = (int)(65535 * ((maxR - r) / (maxR - minR)));
+                if (index < 1) index = 0;
+                if (index > 65535) index = 65535;
 
                 distributionGraphControl1.AddData(new PointD(x, y), 5, 5, color[index], color[index], 0, false);
 
