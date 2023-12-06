@@ -945,6 +945,9 @@ public partial class FormMain : Form
         }
         if (double.IsInfinity(MinimalX)) return;
 
+        if (minimalX < 0)
+            minimalX = 0;
+
         MinimalX = minimalX;//MinimalXが直近のMaximalXより大きかった場合、正常に更新できない。そのため、2行下でもう一回更新。
         MaximalX = maximalX;
         MinimalX = minimalX;//2行上のコメント参照

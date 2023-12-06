@@ -11,7 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
-        "\r\n ver4.444(2023/12/06) Fixed bugs when loading *.npd files (thx to Shibasaki-san)." +
+        "\r\n ver4.445(2023/12/06) Fixed bugs when loading *.npd files (thx to Shibasaki-san)." +
         "\r\n ver4.443(2023/11/27) The target framework has been changed to .Net Desktop Runtime 8.0. Fixed a minor bug (thx to Okazaki-san)." +
         "\r\n ver4.442(2023/10/07) Update crystal database. Fixed minor bugs." +
         "\r\n ver4.441(2023/07/01) Fixed a bug on loading *.pdi2 format files." +
