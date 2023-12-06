@@ -33,6 +33,8 @@ public partial class BoundControl : UserControl
 
     private bool equivalency { get => checkBoxEquivalency.Checked; set => checkBoxEquivalency.Checked = value; }
 
+    public double MaximumDistance => numericBoxMaximumDistanceFromOrigin.Value / 10;
+
     private readonly DataSet.DataTableBoundDataTable table;
 
     #endregion
@@ -52,11 +54,11 @@ public partial class BoundControl : UserControl
     #endregion
 
     #region　Boundを画面下部から生成 / Boundを画面下部にセット
-    public Bound GetFromInterface()
-        => new Bound(true, Crystal, index.H, index.K, index.L, equivalency, numericBoxDistance.Value / 10, colorControl.Argb);
+    public Bound GetFromInterface() => new(true, Crystal, index.H, index.K, index.L, equivalency, numericBoxDistance.Value / 10, numericBoxTranslation.Value / 10, colorControl.Argb);
 
     public void SetToInterface(Bound b)
     {
+        SkipEvent = true;
         numericBoxH.Value = b.Index.H;
         numericBoxK.Value = b.Index.K;
         numericBoxL.Value = b.Index.L;
@@ -65,7 +67,12 @@ public partial class BoundControl : UserControl
 
         numericBoxDistance.Value = b.Distance * 10;//Åとnmの変換
 
+        numericBoxDistanceD.Value = numericBoxDistance.Value * 0.1 * (index.H * Crystal.A_Star + index.K * Crystal.B_Star + index.L * Crystal.C_Star).Length;
+
+        numericBoxTranslation.Value = b.Translation * 10;//Åとnmの変換
+
         colorControl.Color = Color.FromArgb(b.ColorArgb);
+        SkipEvent = false;
     }
     #endregion
 
@@ -137,7 +144,7 @@ public partial class BoundControl : UserControl
     }
 
     /// <summary>
-    /// データベース中の全ての境界面面を取得
+    /// データベース中の全ての境界面を取得
     /// </summary>
     /// <returns></returns>
     public Bound[] GetAll() => table.GetAll();
@@ -202,8 +209,10 @@ public partial class BoundControl : UserControl
     {
         if (SkipEvent) return;
 
+        SkipEvent = true;
         if (bindingSource.Position >= 0 && bindingSource.Count > 0)
             SetToInterface(dataSet.DataTableBound.Get(bindingSource.Position));
+        SkipEvent = false;
     }
     #endregion
 
@@ -218,18 +227,24 @@ public partial class BoundControl : UserControl
         {
             label1.Text = "("; label2.Text = ")";
         }
+
+        if (checkBoxImmediateUpdate.Checked)
+            buttonChange_Click(sender, e);
     }
 
 
     #endregion
 
-    #region numericBoxのイベント
+    #region numericBoxなどのイベント
     private void numericBoxDistance_ValueChanged(object sender, EventArgs e)
     {
         if (SkipEvent || index == (0, 0, 0)) return;
         SkipEvent = true;
         numericBoxDistanceD.Value = numericBoxDistance.Value * 0.1 * (index.H * Crystal.A_Star + index.K * Crystal.B_Star + index.L * Crystal.C_Star).Length;
         SkipEvent = false;
+
+        if (checkBoxImmediateUpdate.Checked)
+            buttonChange_Click(sender, e);
     }
 
     private void numericBoxDistanceD_ValueChanged(object sender, EventArgs e)
@@ -239,7 +254,22 @@ public partial class BoundControl : UserControl
         SkipEvent = true;
         numericBoxDistance.Value = numericBoxDistanceD.Value * 10 / (index.H * Crystal.A_Star + index.K * Crystal.B_Star + index.L * Crystal.C_Star).Length;
         SkipEvent = false;
+
+        if (checkBoxImmediateUpdate.Checked)
+            buttonChange_Click(sender, e);
+
     }
+
+    private void numericBoxMaximumDistanceFromOrigin_ValueChanged(object sender, EventArgs e) => ItemsChanged?.Invoke(this, new EventArgs());
+
+    private void colorControl_ColorChanged(object sender, EventArgs e)
+    {
+        if (SkipEvent) return;
+
+        if (checkBoxImmediateUpdate.Checked)
+            buttonChange_Click(sender, e);
+    }
+
     #endregion
 
     #region dataGridViewのイベント
@@ -258,4 +288,8 @@ public partial class BoundControl : UserControl
         }
     }
     #endregion
+
+  
+
+   
 }

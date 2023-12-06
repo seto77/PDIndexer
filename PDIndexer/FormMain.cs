@@ -274,7 +274,7 @@ public partial class FormMain : Form
         get => horizontalAxisUserControl.TofLength;
     }
 
-    //軸の状態
+    //横軸の種類
     public HorizontalAxis AxisMode
     {
         set
@@ -285,6 +285,16 @@ public partial class FormMain : Form
         get => horizontalAxisUserControl.AxisMode;
     }
 
+    //横軸の状態
+    public HorizontalAxisProperty AxisProperty
+    {
+        set
+        {
+            if (horizontalAxisUserControl.HorizontalAxisProperty != value)
+                horizontalAxisUserControl.HorizontalAxisProperty = value;
+        }
+        get => horizontalAxisUserControl.HorizontalAxisProperty;
+    }
 
 
     private Stopwatch stopwatch { get; set; } = new Stopwatch();
@@ -510,6 +520,7 @@ public partial class FormMain : Form
             History = Version.History,
 
             Location = new Point(this.Location.X, this.Location.Y),
+            Width=580,
         };
 
         initialDialog.Show();
@@ -1984,6 +1995,8 @@ public partial class FormMain : Form
         //マウス位置情報の更新
         PointD pt = ConvToRealCoord(e.X, e.Y);
 
+        
+
         #region 横軸と縦軸の単位の設定
         labelTwoTheta.Text = AxisMode switch
         {
@@ -1996,13 +2009,14 @@ public partial class FormMain : Form
         };
         labelTwoTheta.Text += pt.X < 10000 ? pt.X.ToString("g6") : pt.X.ToString("#,0");
 
+
         labelTwoTheta.Text += AxisMode switch
         {
-            HorizontalAxis.Angle => " °",
-            HorizontalAxis.d => " Å",
-            HorizontalAxis.EnergyXray => " eV",
-            HorizontalAxis.NeutronTOF => " μs",
-            HorizontalAxis.WaveNumber => " Å⁻¹",
+            HorizontalAxis.Angle => " " + AxisProperty.TwoThetaUnitText,
+            HorizontalAxis.d => " " + AxisProperty.DspacingUnitText,
+            HorizontalAxis.EnergyXray => " " + AxisProperty.EnegyUnitText,
+            HorizontalAxis.NeutronTOF => " " + AxisProperty.TofTimeUnitText,
+            HorizontalAxis.WaveNumber => " " + AxisProperty.WaveNumberUnitText,
             _ => ""
         };
         #endregion
@@ -2717,8 +2731,6 @@ public partial class FormMain : Form
             }
             #endregion
 
-
-
             #region XBM形式 SP8_BL4B2のデータらしい
             else if (fileName.ToLower().EndsWith("xbm"))
             {
@@ -2834,8 +2846,9 @@ public partial class FormMain : Form
                 formDataConverter.SetProperty(FileProperties[(int)FileType.NPD]);
 
                 formDataConverter.EDXDetectorNumber = 1;
+                formDataConverter.EnergyUnit = EnergyUnitEnum.eV;
 
-                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } };
+                double[][] egc = [[0.0, 0.0, 0.0]];
                 for (int i = 0; i < strList.Count || i < 25; i++)
                 {
                     if (strList[i].StartsWith("EGC0"))
@@ -2991,8 +3004,8 @@ public partial class FormMain : Form
                        && formDataConverter.AxisMode == HorizontalAxis.EnergyXray
                        && formDataConverter.EnergyUnit == EnergyUnitEnum.KeV)
             {
-                for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
-                    diffProf.SourceProfile.Pt[i] = new PointD(1000 * diffProf.SourceProfile.Pt[i].X, diffProf.SourceProfile.Pt[i].Y);
+                //for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
+                //    diffProf.SourceProfile.Pt[i] = new PointD(1000 * diffProf.SourceProfile.Pt[i].X, diffProf.SourceProfile.Pt[i].Y);
             }
 
             if (diffProf.SourceProfile.Pt.Count > 0)
@@ -3724,15 +3737,15 @@ public partial class FormMain : Form
     public void horizontalAxisUserControl_AxisPropertyChanged()
     {
         if (AxisMode == HorizontalAxis.Angle)
-            labelX.Text = "2θ(deg.): ";
+            labelX.Text = "2θ ("+ AxisProperty.TwoThetaUnitText + "): ";
         else if (AxisMode == HorizontalAxis.d)
-            labelX.Text = "d (Å): ";
+            labelX.Text = "d (" +AxisProperty.DspacingUnitText +  "): ";
         else if (AxisMode == HorizontalAxis.WaveNumber)
-            labelX.Text = "q (/Å)";
+            labelX.Text = "q (" + AxisProperty.WaveNumberUnitText +  "):";
         else if (AxisMode == HorizontalAxis.EnergyXray || AxisMode == HorizontalAxis.EnergyElectron || AxisMode == HorizontalAxis.EnergyNeutron)
-            labelX.Text = "Energy (eV): ";
+            labelX.Text = "Energy (" + AxisProperty.EnegyUnitText +  "): ";
         else if (AxisMode == HorizontalAxis.NeutronTOF)
-            labelX.Text = "TOF (μs)";
+            labelX.Text = "TOF (" +AxisProperty.TofTimeUnitText + "): ";
 
         if (skipAxisPropertyChangedEvent) return;
 

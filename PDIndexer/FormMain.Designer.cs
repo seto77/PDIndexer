@@ -1,17 +1,6 @@
-﻿using System;
-using System.Drawing;
-using System.Collections;
-using System.ComponentModel;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 using System.Data;
-using System.IO;
-using System.Text;
-using System.Drawing.Drawing2D;
 using Crystallography;
-using System.Runtime.InteropServices;
-using System.Collections.Generic;
-using Microsoft.Win32;
-using System.Reflection;
 
 namespace PDIndexer
 {
@@ -397,7 +386,7 @@ namespace PDIndexer
             dataGridViewTextBoxColumn73 = new DataGridViewTextBoxColumn();
             dataGridViewImageColumn49 = new DataGridViewImageColumn();
             dataGridViewTextBoxColumn74 = new DataGridViewTextBoxColumn();
-            timerBlinkDiffraction = new Timer(components);
+            timerBlinkDiffraction = new System.Windows.Forms.Timer(components);
             dataGridViewImageColumn51 = new DataGridViewImageColumn();
             dataGridViewTextBoxColumn76 = new DataGridViewTextBoxColumn();
             dataGridViewImageColumn52 = new DataGridViewImageColumn();
@@ -4060,7 +4049,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn73;
         private DataGridViewImageColumn dataGridViewImageColumn49;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn74;
-        private Timer timerBlinkDiffraction;
+        private System.Windows.Forms.Timer timerBlinkDiffraction;
         private DataGridViewImageColumn dataGridViewImageColumn50;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn75;
         private DataGridViewImageColumn dataGridViewImageColumn51;
