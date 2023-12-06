@@ -336,7 +336,7 @@ static class Version
     public const string CopyRight = 
         "著作権:\r\n "
         + "　本プログラムの著作権は、作者である瀬戸雄介、"
-        + "およびその所属機関である神戸大学大学院理学研究科地球惑星科学専攻が保有しています。"
+        + "およびその所属機関である大阪公立大学理学研究科が保有しています。"
         ;
 
     /// <summary>
@@ -368,8 +368,7 @@ static class Version
         "連絡先:\r\n"
         +"　プログラムの不具合、改善要望などがありましたらメールにてご連絡ください。"
         +"また詳しい使い方についてはホームページでも解説しています。"
-        + "\r\n mail: seto@crystal.kobe-u.ac.jp" 
-        + "\r\n Home Page: http://pmsl.planet.sci.kobe-u.ac.jp/~seto/"
+        + "\r\n mail: seto.y@omu.ac.jp" 
         + "\r\nできるだけご要望にお応えしたいと思います。"
         ;
 
