@@ -103,15 +103,15 @@ public partial class FormEOS : Form
         //Fratanduono
         numericBoxAuFratanduono.Value = EOS.Au_Fratanduono_Vinet(v0, v);
 
-        return new (string Reseacher, double Pressure)[]
-        {
+        return
+        [
         ("Jamieson82",numericalTextBoxGoldJamieson.Value ),
         ("Anderson89",numericalTextBoxGoldAnderson.Value ),
         ("Sim02",numericalTextBoxGoldSim.Value ),
         ("Tsuchiya03",numericalTextBoxGoldTsuchiya.Value ),
         ("Yokoo09",numericBoxAuYokoo.Value ),
         ("Fratanduono21",numericBoxAuFratanduono.Value ),
-        };
+        ];
     }
     #endregion
 
@@ -136,14 +136,14 @@ public partial class FormEOS : Form
         //Fratanduono
         numericBoxPtFratanduono.Value = EOS.Pt_Fratanduono_Vinet(v0, v);
 
-        return new (string Reseacher, double Pressure)[]
-        {
+        return
+        [
         ("Jamieson82",numericalTextBoxPtJamieson.Value),
         ("Holmes89",numericalTextBoxPtHolmes.Value ),
         ("Matsui09",numericalTextBoxPtMatsui.Value ),
         ("Yokoo09",numericBoxPtYokoo.Value),
         ("Fratanduono21",numericBoxPtFratanduono.Value ),
-        };
+        ];
     }
     #endregion
 
@@ -183,14 +183,14 @@ public partial class FormEOS : Form
         //Tange BM
         numericBoxMgOTangeBM.Value = EOS.MgO_Tange_BM(t, v0, v);
 
-        return new (string Reseacher, double Pressure)[]
-       {
+        return
+       [
         ("Jackson98",numericalTextBoxMgOJacson.Value),
         ("Dewaele00",numericalTextBoxMgODewaele.Value ),
         ("Aizawa06",numericalTextBoxMgOAizawa.Value ),
         ("Tange09Vinet",numericBoxMgOTangeVinet.Value ),
         ("Tange09BM",numericBoxMgOTangeBM.Value ),
-       };
+       ];
     }
     #endregion
 
@@ -211,14 +211,14 @@ public partial class FormEOS : Form
         //Sakai Vinet
         numericalTextBoxNaClB2SakaiVinet.Value = EOS.NaClB2_SakaiVinet(a);
 
-        return new (string Reseacher, double Pressure)[]
-      {
+        return
+      [
         ("Sata02Pt",numericalTextBoxNaClB2SataPt.Value),
         ("Sata02MgO",numericalTextBoxNaClB2SataMgO.Value ),
         ("Ueda08",numericalTextBoxNaClB2Ueda.Value),
         ("Sakai11BM",numericalTextBoxNaClB2SakaiBM.Value ),
         ("Sakai11Vinet",numericalTextBoxNaClB2SakaiVinet.Value ),
-      };
+      ];
     }
     #endregion
 
@@ -310,11 +310,11 @@ public partial class FormEOS : Form
             IsothermalPressureApproach = IsothermalPressure.BM4
         }.GetPressure(v);
 
-        return new (string Reseacher, double Pressure)[]
-           {
+        return
+           [
                  ("Huang16",numericBoxMoHuang.Value),
                  ("Zhao00",numericBoxMoZhao.Value),
-           };
+           ];
     }
     #endregion
 

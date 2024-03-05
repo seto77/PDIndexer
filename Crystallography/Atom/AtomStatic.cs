@@ -7242,7 +7242,7 @@ new(4.86738014,0.319974401,4.58872425,
                 if (energy == coef[i].X)
                 {
                     if (massAbsorption[z] == null)
-                        massAbsorption[z] = new Dictionary<double, double>();
+                        massAbsorption[z] = [];
                     lock (lockObjForMassAbsorption)
                         massAbsorption[z].Add(energy, coef[i].Y);
                     return coef[i].Y;
@@ -7439,7 +7439,7 @@ new(4.86738014,0.319974401,4.58872425,
                 absorp.Add(new PointD(Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)[1])));
             //sbAbsorption.AppendLine("new PointD(" + str[i].Replace("  ", ",") + ")" + (i == str.Count - 2 ? "" : ","));
             absorp.Sort();
-            var pf = new List<Profile> { new Profile() };
+            var pf = new List<Profile> { new() };
             for (int j = 0; j < absorp.Count; j++)
             {
                 if (double.IsPositiveInfinity(absorp[j].Y) && pf[^1].Pt.Count != 0)
@@ -7471,7 +7471,7 @@ new(4.86738014,0.319974401,4.58872425,
             {
                 sbAbsorption.AppendLine("new PointD[]{");
                 for (int k = 0; k < pf[j].Pt.Count; k++)
-                    sbAbsorption.AppendLine("new PointD(" + pf[j].Pt[k].X.ToString("E6") + "," + pf[j].Pt[k].Y.ToString("E6") + (k == pf[j].Pt.Count - 1 ? ")" : "),"));
+                    sbAbsorption.AppendLine($"new PointD({pf[j].Pt[k].X.ToString("E6")},{pf[j].Pt[k].Y.ToString("E6")}{(k == pf[j].Pt.Count - 1 ? ")" : "),")}");
                 sbAbsorption.AppendLine("}" + (j == pf.Count - 1 ? "" : ","));
             }
             sbAbsorption.AppendLine("}" + (fileName.Contains("92") ? "" : ","));
