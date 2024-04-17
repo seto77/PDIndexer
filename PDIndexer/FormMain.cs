@@ -28,7 +28,6 @@ using System.CodeDom;
 
 namespace PDIndexer;
 
-
 #region FilePropertyクラス
 [MemoryPackable]
 public partial record struct FileProperty
