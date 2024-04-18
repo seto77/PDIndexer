@@ -40,7 +40,7 @@ public partial record struct FileProperty
     /// <summary>
     /// EDX detector用の変換係数 E  = (a₀ + a₁ n + a₂ n²) * 10³　多チャンネルを考慮して配列として用意しておく
     /// </summary>
-    public double[][] EGC = new[] { new[] { 0.0, 0.0, 0.0 } };
+    public double[][] EGC = [[0.0, 0.0, 0.0]];
     [MemoryPackConstructor]
     public FileProperty()
     { }
@@ -83,7 +83,7 @@ public partial class FormMain : Form
     Crystallography.Controls.CommonDialog initialDialog;
 
     public bool BackGroundPointSelectMode { get; set; } = false;
-    public int[] SelectedMaskingBoundaryIndex { set; get; } = new int[] { -1, -1 };
+    public int[] SelectedMaskingBoundaryIndex { set; get; } = [-1, -1];
 
     public bool MaskingMode { get; set; } = false;
 
@@ -728,7 +728,7 @@ public partial class FormMain : Form
             for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
 
                 cry.Add(dataSet.DataTableCrystal.Items[i]);
-            ConvertCrystalData.SaveCrystalListXml(cry.ToArray(), UserAppDataPath + "default.xml");
+            ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
         }
     }
     //フォームクローズ時
@@ -741,8 +741,6 @@ public partial class FormMain : Form
         else
             ClearRegistry();
     }
-
-
     #endregion
 
     #region レジストリ操作
@@ -838,7 +836,7 @@ public partial class FormMain : Form
                 {
                     Valid = true,
                     HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 4.95 / 180 * Math.PI, EnergyUnitEnum.KeV),
-                    EGC = new[] { new[] { 0, 0, 66.6, 0.0 } }
+                    EGC = [[0, 0, 66.6, 0.0]]
                 };
 
             //CHI
@@ -907,10 +905,6 @@ public partial class FormMain : Form
         #endregion
         key.Close();
     }
-
-    
-    
-
 
     #endregion
 
@@ -1324,7 +1318,7 @@ public partial class FormMain : Form
                             gMain.FillEllipse(new SolidBrush(color), p.X - 5, p.Y - 5, 10, 10);
                     }
                 }
-                pt = dp.BackgroundProfile.Pt.ToArray();
+                pt = [.. dp.BackgroundProfile.Pt];
                 if (pt.Length > 2)
                     for (int i = 0; i < pt.Length - 1; i++)
                     {
@@ -1905,7 +1899,7 @@ public partial class FormMain : Form
                 if (ranges[SelectedMaskingBoundaryIndex[0]].Maximum == ranges[SelectedMaskingBoundaryIndex[0]].Minimum)
                     formProfile.DeleteMaskRange(SelectedMaskingBoundaryIndex[0]);
             }
-            SelectedMaskingBoundaryIndex = new int[] { -1, -1 };
+            SelectedMaskingBoundaryIndex = [-1, -1];
             Draw();
         }
 
@@ -2241,7 +2235,7 @@ public partial class FormMain : Form
 
     public static int[] SearchMaskBoundary(double x, DiffractionProfile2.MaskingRange[] ranges, double dev)
     {
-        if (ranges == null) return new int[] { -1, -1 };
+        if (ranges == null) return [-1, -1];
         int index1 = 0;
         int index2 = 0;
         double temp = double.PositiveInfinity;
@@ -2254,8 +2248,8 @@ public partial class FormMain : Form
                     temp = Math.Abs(ranges[i].X[j] - x);
                 }
         if (temp < dev)
-            return new int[] { index1, index2 };
-        return new int[] { -1, -1 };
+            return [index1, index2];
+        return [-1, -1];
     }
     #endregion
 
@@ -2700,7 +2694,7 @@ public partial class FormMain : Form
                 return;
 
             var diffProf = new DiffractionProfile2();
-            formDataConverter.textBox.Lines = strList.ToArray();
+            formDataConverter.textBox.Lines = [.. strList];
 
             #region Fit2Dデータ
             if (ext == "chi")
@@ -2779,7 +2773,7 @@ public partial class FormMain : Form
                 formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
                 formDataConverter.ExposureTime = getDouble(0x05F4);
 
-                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } };
+                double[][] egc = [[0.0, 0.0, 0.0]];
                 egc[0][0] = getDouble(0x59A);
                 egc[0][1] = getDouble(0x5A2);
                 egc[0][2] = getDouble(0x5AA);
@@ -2816,7 +2810,7 @@ public partial class FormMain : Form
                 formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ', true)[1]);
 
                 formDataConverter.EDXDetectorNumber = 1;
-                double[][] egc = new[] { new[] { 0.0, 0.0, 0.0 } };
+                double[][] egc = [[0.0, 0.0, 0.0]];
                 egc[0][0] = Convert.ToDouble(strList[^1].Split(',', true)[0]);
                 egc[0][1] = Convert.ToDouble(strList[^1].Split(',', true)[1]);
                 formDataConverter.EGC = egc;
@@ -3089,7 +3083,7 @@ public partial class FormMain : Form
             if (radioButtonSingleProfileMode.Checked)//シングルパターンモードのとき
                 dataSet.DataTableProfile.Rows.Clear();
 
-            dataSet.DataTableProfile.Rows.Add(new object[] { isCheked, dp, bmp });
+            dataSet.DataTableProfile.Rows.Add([isCheked, dp, bmp]);
             if (changePos)
                 bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
 
@@ -3131,7 +3125,7 @@ public partial class FormMain : Form
             if (radioButtonSingleProfileMode.Checked)//シングルパターンモードのとき
                 dataSet.DataTableProfile.Rows.Clear();//消去
 
-            dataSet.DataTableProfile.Rows.Add(new object[] { isCheked, dp, bmp });//新しいプロファイルを追加
+            dataSet.DataTableProfile.Rows.Add([isCheked, dp, bmp]);//新しいプロファイルを追加
             if (changePos)
                 bindingSourceProfile.Position = dataSet.DataTableProfile.Items.Count - 1;
 
@@ -3206,7 +3200,7 @@ public partial class FormMain : Form
                 var cry = new List<Crystal>();
                 for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
                     cry.Add(dataSet.DataTableCrystal.Items[i]);
-                crystals = cry.ToArray();
+                crystals = [.. cry];
             }
             if (!filename.ToLower().EndsWith(".xml"))
                 filename += ".xml";
@@ -3315,7 +3309,7 @@ public partial class FormMain : Form
             var bmp = new Bitmap(22, 22);
             var g = Graphics.FromImage(bmp);
             g.Clear(Color.FromArgb(c.Argb));
-            dataSet.DataTableCrystal.Rows.Add(new object[] { false, c, bmp });
+            dataSet.DataTableCrystal.Rows.Add([false, c, bmp]);
         }
 
         dataGridViewCrystals.Rows[0].DefaultCellStyle = cellStyle1;
@@ -3492,7 +3486,7 @@ public partial class FormMain : Form
             if (!filename.ToLower().EndsWith(".pdi2"))
                 filename += ".pdi2";
 
-            XYFile.SavePdi2File(dp.ToArray(), filename);
+            XYFile.SavePdi2File([.. dp], filename);
         }
     }
 
@@ -3844,12 +3838,12 @@ public partial class FormMain : Form
                 Ring.Intensity.AddRange(dif.ImageArray);
                 Ring.CalcFreq();
 
-                var frequencyProfile = new Profile { Pt = new List<PointD>() };
+                var frequencyProfile = new Profile { Pt = [] };
 
                 for (int i = 0; i < Ring.Frequency.Count; i++)
                     frequencyProfile.Pt.Add(new PointD(Ring.Frequency.Keys[i], Ring.Frequency[Ring.Frequency.Keys[i]]));
                 graphControlFrequency.Profile = frequencyProfile;
-                graphControlFrequency.VerticalLines = new PointD[2] { new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN) };
+                graphControlFrequency.VerticalLines = [new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN)];
                 graphControlFrequency.Draw();
                 uint max = uint.MinValue;
                 foreach (uint u in dif.ImageArray.Select(v => (uint)v))
@@ -3976,7 +3970,7 @@ public partial class FormMain : Form
         }
     }
 
-    readonly List<int> blinkingCrystals = new();
+    readonly List<int> blinkingCrystals = [];
     bool blinkFlag = false;
     public void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
     {
