@@ -389,7 +389,7 @@ namespace PDIndexer
             dataGridViewTextBoxColumn73 = new DataGridViewTextBoxColumn();
             dataGridViewImageColumn49 = new DataGridViewImageColumn();
             dataGridViewTextBoxColumn74 = new DataGridViewTextBoxColumn();
-            timerBlinkDiffraction = new System.Windows.Forms.Timer(components);
+            timerBlinkDiffraction = new Timer(components);
             dataGridViewImageColumn51 = new DataGridViewImageColumn();
             dataGridViewTextBoxColumn76 = new DataGridViewTextBoxColumn();
             dataGridViewImageColumn52 = new DataGridViewImageColumn();
@@ -744,18 +744,18 @@ namespace PDIndexer
             groupBox3.TabStop = false;
             toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
-            // numericalTextBoxIncreasingPixels
+            // numeriBoxIncreasingPixels
             // 
-            resources.ApplyResources(numeriBoxIncreasingPixels, "numericalTextBoxIncreasingPixels");
+            resources.ApplyResources(numeriBoxIncreasingPixels, "numeriBoxIncreasingPixels");
             numeriBoxIncreasingPixels.BackColor = SystemColors.Control;
             numeriBoxIncreasingPixels.FooterBackColor = SystemColors.Control;
             numeriBoxIncreasingPixels.HeaderBackColor = SystemColors.Control;
-            numeriBoxIncreasingPixels.Name = "numericalTextBoxIncreasingPixels";
+            numeriBoxIncreasingPixels.Name = "numeriBoxIncreasingPixels";
             numeriBoxIncreasingPixels.RadianValue = 17.872171540421935D;
             numeriBoxIncreasingPixels.RestrictLimitValue = false;
             numeriBoxIncreasingPixels.RoundErrorAccuracy = -1;
             numeriBoxIncreasingPixels.SkipEventDuringInput = false;
-            toolTip.SetToolTip(numeriBoxIncreasingPixels, resources.GetString("numericalTextBoxIncreasingPixels.ToolTip"));
+            toolTip.SetToolTip(numeriBoxIncreasingPixels, resources.GetString("numeriBoxIncreasingPixels.ToolTip"));
             numeriBoxIncreasingPixels.Value = 1024D;
             numeriBoxIncreasingPixels.ValueChanged += radioButtonMultiProfileMode_CheckChanged;
             // 
@@ -1031,7 +1031,7 @@ namespace PDIndexer
             graphControlFrequency.AllowMouseOperation = true;
             graphControlFrequency.AxisLineColor = Color.Gray;
             graphControlFrequency.AxisTextColor = Color.Black;
-            graphControlFrequency.AxisTextFont = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            graphControlFrequency.AxisTextFont = new Font("Segoe UI", 9F);
             graphControlFrequency.AxisXTextVisible = true;
             graphControlFrequency.AxisYTextVisible = true;
             graphControlFrequency.BackgroundColor = Color.White;
@@ -1057,7 +1057,7 @@ namespace PDIndexer
             graphControlFrequency.MinimalX = 0D;
             graphControlFrequency.MinimalY = 0D;
             graphControlFrequency.Mode = Crystallography.Controls.GraphControl.DrawingMode.Line;
-            graphControlFrequency.MousePositionVisible = true;
+            graphControlFrequency.MousePositionVisible = false;
             graphControlFrequency.MousePositionXDigit = -1;
             graphControlFrequency.MousePositionYDigit = -1;
             graphControlFrequency.Name = "graphControlFrequency";
@@ -1067,8 +1067,8 @@ namespace PDIndexer
             toolTip.SetToolTip(graphControlFrequency, resources.GetString("graphControlFrequency.ToolTip"));
             graphControlFrequency.UnitX = "";
             graphControlFrequency.UnitY = "";
-            graphControlFrequency.UpperPanelFont = new Font("Segoe UI Symbol", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            graphControlFrequency.UpperPanelVisible = true;
+            graphControlFrequency.UpperPanelFont = new Font("Segoe UI Symbol", 9F);
+            graphControlFrequency.UpperPanelVisible = false;
             graphControlFrequency.UpperX = 1D;
             graphControlFrequency.UpperY = 1D;
             graphControlFrequency.UseLineWidth = true;
@@ -1286,7 +1286,7 @@ namespace PDIndexer
             dataGridViewProfiles.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = SystemColors.Control;
-            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle2.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
@@ -1298,7 +1298,7 @@ namespace PDIndexer
             dataGridViewProfiles.DataSource = bindingSourceProfile;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
-            dataGridViewCellStyle3.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.Font = new Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = Color.MidnightBlue;
             dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
@@ -1395,7 +1395,7 @@ namespace PDIndexer
             dataGridViewCrystals.CellBorderStyle = DataGridViewCellBorderStyle.None;
             dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.Font = new Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
             dataGridViewCellStyle5.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
@@ -1407,7 +1407,7 @@ namespace PDIndexer
             dataGridViewCrystals.DataSource = bindingSourceCrystal;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle7.Font = new Font("Segoe UI Symbol", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle7.Font = new Font("Segoe UI Symbol", 9.75F);
             dataGridViewCellStyle7.ForeColor = SystemColors.ControlText;
             dataGridViewCellStyle7.SelectionBackColor = Color.Blue;
             dataGridViewCellStyle7.SelectionForeColor = SystemColors.HighlightText;
@@ -1448,7 +1448,7 @@ namespace PDIndexer
             // 
             Crystal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Crystal.DataPropertyName = "Crystal";
-            dataGridViewCellStyle6.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle6.Font = new Font("Arial", 9.75F);
             Crystal.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(Crystal, "Crystal");
             Crystal.Name = "Crystal";
@@ -1956,7 +1956,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn10.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn10.DataPropertyName = "Crystal";
-            dataGridViewCellStyle8.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle8.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn10.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(dataGridViewTextBoxColumn10, "dataGridViewTextBoxColumn10");
             dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
@@ -1966,7 +1966,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn11.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn11.DataPropertyName = "Crystal";
-            dataGridViewCellStyle9.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle9.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn11.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(dataGridViewTextBoxColumn11, "dataGridViewTextBoxColumn11");
             dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
@@ -1976,7 +1976,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn12.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn12.DataPropertyName = "Crystal";
-            dataGridViewCellStyle10.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle10.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn12.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(dataGridViewTextBoxColumn12, "dataGridViewTextBoxColumn12");
             dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
@@ -1986,7 +1986,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn13.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn13.DataPropertyName = "Crystal";
-            dataGridViewCellStyle11.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle11.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn13.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(dataGridViewTextBoxColumn13, "dataGridViewTextBoxColumn13");
             dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
@@ -1996,7 +1996,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn14.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn14.DataPropertyName = "Crystal";
-            dataGridViewCellStyle12.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle12.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn14.DefaultCellStyle = dataGridViewCellStyle12;
             resources.ApplyResources(dataGridViewTextBoxColumn14, "dataGridViewTextBoxColumn14");
             dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
@@ -2006,7 +2006,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn15.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn15.DataPropertyName = "Crystal";
-            dataGridViewCellStyle13.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle13.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn15.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(dataGridViewTextBoxColumn15, "dataGridViewTextBoxColumn15");
             dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
@@ -2016,7 +2016,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn16.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn16.DataPropertyName = "Crystal";
-            dataGridViewCellStyle14.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle14.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn16.DefaultCellStyle = dataGridViewCellStyle14;
             resources.ApplyResources(dataGridViewTextBoxColumn16, "dataGridViewTextBoxColumn16");
             dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
@@ -2026,7 +2026,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn17.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn17.DataPropertyName = "Crystal";
-            dataGridViewCellStyle15.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle15.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn17.DefaultCellStyle = dataGridViewCellStyle15;
             resources.ApplyResources(dataGridViewTextBoxColumn17, "dataGridViewTextBoxColumn17");
             dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
@@ -2036,7 +2036,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn18.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn18.DataPropertyName = "Crystal";
-            dataGridViewCellStyle16.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle16.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn18.DefaultCellStyle = dataGridViewCellStyle16;
             resources.ApplyResources(dataGridViewTextBoxColumn18, "dataGridViewTextBoxColumn18");
             dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
@@ -2045,7 +2045,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn19.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn19.DataPropertyName = "Crystal";
-            dataGridViewCellStyle17.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle17.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn19.DefaultCellStyle = dataGridViewCellStyle17;
             resources.ApplyResources(dataGridViewTextBoxColumn19, "dataGridViewTextBoxColumn19");
             dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
@@ -2055,7 +2055,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn20.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn20.DataPropertyName = "Crystal";
-            dataGridViewCellStyle18.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle18.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn20.DefaultCellStyle = dataGridViewCellStyle18;
             resources.ApplyResources(dataGridViewTextBoxColumn20, "dataGridViewTextBoxColumn20");
             dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
@@ -2065,7 +2065,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn21.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn21.DataPropertyName = "Crystal";
-            dataGridViewCellStyle19.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle19.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn21.DefaultCellStyle = dataGridViewCellStyle19;
             resources.ApplyResources(dataGridViewTextBoxColumn21, "dataGridViewTextBoxColumn21");
             dataGridViewTextBoxColumn21.Name = "dataGridViewTextBoxColumn21";
@@ -2074,7 +2074,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn22.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn22.DataPropertyName = "Crystal";
-            dataGridViewCellStyle20.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle20.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn22.DefaultCellStyle = dataGridViewCellStyle20;
             resources.ApplyResources(dataGridViewTextBoxColumn22, "dataGridViewTextBoxColumn22");
             dataGridViewTextBoxColumn22.Name = "dataGridViewTextBoxColumn22";
@@ -2084,7 +2084,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn23.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn23.DataPropertyName = "Crystal";
-            dataGridViewCellStyle21.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle21.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn23.DefaultCellStyle = dataGridViewCellStyle21;
             resources.ApplyResources(dataGridViewTextBoxColumn23, "dataGridViewTextBoxColumn23");
             dataGridViewTextBoxColumn23.Name = "dataGridViewTextBoxColumn23";
@@ -2110,7 +2110,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn24.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn24.DataPropertyName = "Crystal";
-            dataGridViewCellStyle22.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle22.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn24.DefaultCellStyle = dataGridViewCellStyle22;
             resources.ApplyResources(dataGridViewTextBoxColumn24, "dataGridViewTextBoxColumn24");
             dataGridViewTextBoxColumn24.Name = "dataGridViewTextBoxColumn24";
@@ -2129,7 +2129,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn26.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn26.DataPropertyName = "Crystal";
-            dataGridViewCellStyle23.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle23.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn26.DefaultCellStyle = dataGridViewCellStyle23;
             resources.ApplyResources(dataGridViewTextBoxColumn26, "dataGridViewTextBoxColumn26");
             dataGridViewTextBoxColumn26.Name = "dataGridViewTextBoxColumn26";
@@ -2148,7 +2148,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn27.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn27.DataPropertyName = "Crystal";
-            dataGridViewCellStyle24.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle24.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn27.DefaultCellStyle = dataGridViewCellStyle24;
             resources.ApplyResources(dataGridViewTextBoxColumn27, "dataGridViewTextBoxColumn27");
             dataGridViewTextBoxColumn27.Name = "dataGridViewTextBoxColumn27";
@@ -2159,7 +2159,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn30.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn30.DataPropertyName = "Crystal";
-            dataGridViewCellStyle25.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle25.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn30.DefaultCellStyle = dataGridViewCellStyle25;
             resources.ApplyResources(dataGridViewTextBoxColumn30, "dataGridViewTextBoxColumn30");
             dataGridViewTextBoxColumn30.Name = "dataGridViewTextBoxColumn30";
@@ -2195,7 +2195,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn29.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn29.DataPropertyName = "Color";
-            dataGridViewCellStyle26.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle26.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn29.DefaultCellStyle = dataGridViewCellStyle26;
             resources.ApplyResources(dataGridViewTextBoxColumn29, "dataGridViewTextBoxColumn29");
             dataGridViewTextBoxColumn29.Name = "dataGridViewTextBoxColumn29";
@@ -2232,7 +2232,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn32.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn32.DataPropertyName = "Crystal";
-            dataGridViewCellStyle27.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle27.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn32.DefaultCellStyle = dataGridViewCellStyle27;
             resources.ApplyResources(dataGridViewTextBoxColumn32, "dataGridViewTextBoxColumn32");
             dataGridViewTextBoxColumn32.Name = "dataGridViewTextBoxColumn32";
@@ -2269,7 +2269,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn34.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn34.DataPropertyName = "Crystal";
-            dataGridViewCellStyle28.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle28.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn34.DefaultCellStyle = dataGridViewCellStyle28;
             resources.ApplyResources(dataGridViewTextBoxColumn34, "dataGridViewTextBoxColumn34");
             dataGridViewTextBoxColumn34.Name = "dataGridViewTextBoxColumn34";
@@ -2306,7 +2306,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn36.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn36.DataPropertyName = "Crystal";
-            dataGridViewCellStyle29.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle29.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn36.DefaultCellStyle = dataGridViewCellStyle29;
             resources.ApplyResources(dataGridViewTextBoxColumn36, "dataGridViewTextBoxColumn36");
             dataGridViewTextBoxColumn36.Name = "dataGridViewTextBoxColumn36";
@@ -2343,7 +2343,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn38.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn38.DataPropertyName = "Crystal";
-            dataGridViewCellStyle30.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle30.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn38.DefaultCellStyle = dataGridViewCellStyle30;
             resources.ApplyResources(dataGridViewTextBoxColumn38, "dataGridViewTextBoxColumn38");
             dataGridViewTextBoxColumn38.Name = "dataGridViewTextBoxColumn38";
@@ -2363,7 +2363,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn40.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn40.DataPropertyName = "Crystal";
-            dataGridViewCellStyle31.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle31.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn40.DefaultCellStyle = dataGridViewCellStyle31;
             resources.ApplyResources(dataGridViewTextBoxColumn40, "dataGridViewTextBoxColumn40");
             dataGridViewTextBoxColumn40.Name = "dataGridViewTextBoxColumn40";
@@ -2383,7 +2383,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn39.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn39.DataPropertyName = "Profile";
-            dataGridViewCellStyle32.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle32.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn39.DefaultCellStyle = dataGridViewCellStyle32;
             resources.ApplyResources(dataGridViewTextBoxColumn39, "dataGridViewTextBoxColumn39");
             dataGridViewTextBoxColumn39.Name = "dataGridViewTextBoxColumn39";
@@ -2420,7 +2420,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn42.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn42.DataPropertyName = "Crystal";
-            dataGridViewCellStyle33.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle33.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn42.DefaultCellStyle = dataGridViewCellStyle33;
             resources.ApplyResources(dataGridViewTextBoxColumn42, "dataGridViewTextBoxColumn42");
             dataGridViewTextBoxColumn42.Name = "dataGridViewTextBoxColumn42";
@@ -2439,7 +2439,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn44.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn44.DataPropertyName = "Crystal";
-            dataGridViewCellStyle34.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle34.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn44.DefaultCellStyle = dataGridViewCellStyle34;
             resources.ApplyResources(dataGridViewTextBoxColumn44, "dataGridViewTextBoxColumn44");
             dataGridViewTextBoxColumn44.Name = "dataGridViewTextBoxColumn44";
@@ -2458,7 +2458,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn43.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn43.DataPropertyName = "Profile";
-            dataGridViewCellStyle35.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle35.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn43.DefaultCellStyle = dataGridViewCellStyle35;
             resources.ApplyResources(dataGridViewTextBoxColumn43, "dataGridViewTextBoxColumn43");
             dataGridViewTextBoxColumn43.Name = "dataGridViewTextBoxColumn43";
@@ -2495,7 +2495,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn46.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn46.DataPropertyName = "Crystal";
-            dataGridViewCellStyle36.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle36.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn46.DefaultCellStyle = dataGridViewCellStyle36;
             resources.ApplyResources(dataGridViewTextBoxColumn46, "dataGridViewTextBoxColumn46");
             dataGridViewTextBoxColumn46.Name = "dataGridViewTextBoxColumn46";
@@ -2532,7 +2532,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn48.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn48.DataPropertyName = "Crystal";
-            dataGridViewCellStyle37.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle37.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn48.DefaultCellStyle = dataGridViewCellStyle37;
             resources.ApplyResources(dataGridViewTextBoxColumn48, "dataGridViewTextBoxColumn48");
             dataGridViewTextBoxColumn48.Name = "dataGridViewTextBoxColumn48";
@@ -2566,7 +2566,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn50.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn50.DataPropertyName = "Crystal";
-            dataGridViewCellStyle38.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle38.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn50.DefaultCellStyle = dataGridViewCellStyle38;
             resources.ApplyResources(dataGridViewTextBoxColumn50, "dataGridViewTextBoxColumn50");
             dataGridViewTextBoxColumn50.Name = "dataGridViewTextBoxColumn50";
@@ -2599,7 +2599,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn52.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn52.DataPropertyName = "Crystal";
-            dataGridViewCellStyle39.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle39.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn52.DefaultCellStyle = dataGridViewCellStyle39;
             resources.ApplyResources(dataGridViewTextBoxColumn52, "dataGridViewTextBoxColumn52");
             dataGridViewTextBoxColumn52.Name = "dataGridViewTextBoxColumn52";
@@ -2617,7 +2617,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn54.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn54.DataPropertyName = "Crystal";
-            dataGridViewCellStyle40.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle40.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn54.DefaultCellStyle = dataGridViewCellStyle40;
             resources.ApplyResources(dataGridViewTextBoxColumn54, "dataGridViewTextBoxColumn54");
             dataGridViewTextBoxColumn54.Name = "dataGridViewTextBoxColumn54";
@@ -2636,7 +2636,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn53.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn53.DataPropertyName = "Profile";
-            dataGridViewCellStyle41.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle41.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn53.DefaultCellStyle = dataGridViewCellStyle41;
             resources.ApplyResources(dataGridViewTextBoxColumn53, "dataGridViewTextBoxColumn53");
             dataGridViewTextBoxColumn53.Name = "dataGridViewTextBoxColumn53";
@@ -2656,7 +2656,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn55.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn55.DataPropertyName = "Profile";
-            dataGridViewCellStyle42.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle42.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn55.DefaultCellStyle = dataGridViewCellStyle42;
             resources.ApplyResources(dataGridViewTextBoxColumn55, "dataGridViewTextBoxColumn55");
             dataGridViewTextBoxColumn55.Name = "dataGridViewTextBoxColumn55";
@@ -2675,7 +2675,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn56.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn56.DataPropertyName = "Crystal";
-            dataGridViewCellStyle43.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle43.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn56.DefaultCellStyle = dataGridViewCellStyle43;
             resources.ApplyResources(dataGridViewTextBoxColumn56, "dataGridViewTextBoxColumn56");
             dataGridViewTextBoxColumn56.Name = "dataGridViewTextBoxColumn56";
@@ -2708,7 +2708,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn58.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn58.DataPropertyName = "Crystal";
-            dataGridViewCellStyle44.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle44.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn58.DefaultCellStyle = dataGridViewCellStyle44;
             resources.ApplyResources(dataGridViewTextBoxColumn58, "dataGridViewTextBoxColumn58");
             dataGridViewTextBoxColumn58.Name = "dataGridViewTextBoxColumn58";
@@ -2744,7 +2744,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn60.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn60.DataPropertyName = "Crystal";
-            dataGridViewCellStyle45.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle45.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn60.DefaultCellStyle = dataGridViewCellStyle45;
             resources.ApplyResources(dataGridViewTextBoxColumn60, "dataGridViewTextBoxColumn60");
             dataGridViewTextBoxColumn60.Name = "dataGridViewTextBoxColumn60";
@@ -2781,7 +2781,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn62.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn62.DataPropertyName = "Crystal";
-            dataGridViewCellStyle46.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle46.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn62.DefaultCellStyle = dataGridViewCellStyle46;
             resources.ApplyResources(dataGridViewTextBoxColumn62, "dataGridViewTextBoxColumn62");
             dataGridViewTextBoxColumn62.Name = "dataGridViewTextBoxColumn62";
@@ -2815,7 +2815,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn64.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn64.DataPropertyName = "Crystal";
-            dataGridViewCellStyle47.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle47.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn64.DefaultCellStyle = dataGridViewCellStyle47;
             resources.ApplyResources(dataGridViewTextBoxColumn64, "dataGridViewTextBoxColumn64");
             dataGridViewTextBoxColumn64.Name = "dataGridViewTextBoxColumn64";
@@ -2848,7 +2848,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn66.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn66.DataPropertyName = "Crystal";
-            dataGridViewCellStyle48.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle48.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn66.DefaultCellStyle = dataGridViewCellStyle48;
             resources.ApplyResources(dataGridViewTextBoxColumn66, "dataGridViewTextBoxColumn66");
             dataGridViewTextBoxColumn66.Name = "dataGridViewTextBoxColumn66";
@@ -2881,7 +2881,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn68.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn68.DataPropertyName = "Crystal";
-            dataGridViewCellStyle49.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle49.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn68.DefaultCellStyle = dataGridViewCellStyle49;
             resources.ApplyResources(dataGridViewTextBoxColumn68, "dataGridViewTextBoxColumn68");
             dataGridViewTextBoxColumn68.Name = "dataGridViewTextBoxColumn68";
@@ -2917,7 +2917,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn70.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn70.DataPropertyName = "Crystal";
-            dataGridViewCellStyle50.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle50.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn70.DefaultCellStyle = dataGridViewCellStyle50;
             resources.ApplyResources(dataGridViewTextBoxColumn70, "dataGridViewTextBoxColumn70");
             dataGridViewTextBoxColumn70.Name = "dataGridViewTextBoxColumn70";
@@ -2954,7 +2954,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn72.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn72.DataPropertyName = "Crystal";
-            dataGridViewCellStyle51.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle51.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn72.DefaultCellStyle = dataGridViewCellStyle51;
             resources.ApplyResources(dataGridViewTextBoxColumn72, "dataGridViewTextBoxColumn72");
             dataGridViewTextBoxColumn72.Name = "dataGridViewTextBoxColumn72";
@@ -2988,7 +2988,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn74.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn74.DataPropertyName = "Crystal";
-            dataGridViewCellStyle52.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle52.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn74.DefaultCellStyle = dataGridViewCellStyle52;
             resources.ApplyResources(dataGridViewTextBoxColumn74, "dataGridViewTextBoxColumn74");
             dataGridViewTextBoxColumn74.Name = "dataGridViewTextBoxColumn74";
@@ -3011,7 +3011,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn76.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn76.DataPropertyName = "Crystal";
-            dataGridViewCellStyle53.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle53.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn76.DefaultCellStyle = dataGridViewCellStyle53;
             resources.ApplyResources(dataGridViewTextBoxColumn76, "dataGridViewTextBoxColumn76");
             dataGridViewTextBoxColumn76.Name = "dataGridViewTextBoxColumn76";
@@ -3030,7 +3030,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn77.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn77.DataPropertyName = "Crystal";
-            dataGridViewCellStyle54.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle54.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn77.DefaultCellStyle = dataGridViewCellStyle54;
             resources.ApplyResources(dataGridViewTextBoxColumn77, "dataGridViewTextBoxColumn77");
             dataGridViewTextBoxColumn77.Name = "dataGridViewTextBoxColumn77";
@@ -3050,7 +3050,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn75.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn75.DataPropertyName = "Profile";
-            dataGridViewCellStyle55.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle55.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn75.DefaultCellStyle = dataGridViewCellStyle55;
             resources.ApplyResources(dataGridViewTextBoxColumn75, "dataGridViewTextBoxColumn75");
             dataGridViewTextBoxColumn75.Name = "dataGridViewTextBoxColumn75";
@@ -3087,7 +3087,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn79.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn79.DataPropertyName = "Crystal";
-            dataGridViewCellStyle56.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle56.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn79.DefaultCellStyle = dataGridViewCellStyle56;
             resources.ApplyResources(dataGridViewTextBoxColumn79, "dataGridViewTextBoxColumn79");
             dataGridViewTextBoxColumn79.Name = "dataGridViewTextBoxColumn79";
@@ -3121,7 +3121,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn81.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn81.DataPropertyName = "Crystal";
-            dataGridViewCellStyle57.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle57.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn81.DefaultCellStyle = dataGridViewCellStyle57;
             resources.ApplyResources(dataGridViewTextBoxColumn81, "dataGridViewTextBoxColumn81");
             dataGridViewTextBoxColumn81.Name = "dataGridViewTextBoxColumn81";
@@ -3157,7 +3157,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn83.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn83.DataPropertyName = "Crystal";
-            dataGridViewCellStyle58.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle58.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn83.DefaultCellStyle = dataGridViewCellStyle58;
             resources.ApplyResources(dataGridViewTextBoxColumn83, "dataGridViewTextBoxColumn83");
             dataGridViewTextBoxColumn83.Name = "dataGridViewTextBoxColumn83";
@@ -3191,7 +3191,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn85.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn85.DataPropertyName = "Crystal";
-            dataGridViewCellStyle59.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle59.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn85.DefaultCellStyle = dataGridViewCellStyle59;
             resources.ApplyResources(dataGridViewTextBoxColumn85, "dataGridViewTextBoxColumn85");
             dataGridViewTextBoxColumn85.Name = "dataGridViewTextBoxColumn85";
@@ -3227,7 +3227,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn87.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn87.DataPropertyName = "Crystal";
-            dataGridViewCellStyle60.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle60.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn87.DefaultCellStyle = dataGridViewCellStyle60;
             resources.ApplyResources(dataGridViewTextBoxColumn87, "dataGridViewTextBoxColumn87");
             dataGridViewTextBoxColumn87.Name = "dataGridViewTextBoxColumn87";
@@ -3264,7 +3264,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn89.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn89.DataPropertyName = "Crystal";
-            dataGridViewCellStyle61.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle61.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn89.DefaultCellStyle = dataGridViewCellStyle61;
             resources.ApplyResources(dataGridViewTextBoxColumn89, "dataGridViewTextBoxColumn89");
             dataGridViewTextBoxColumn89.Name = "dataGridViewTextBoxColumn89";
@@ -3298,7 +3298,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn91.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn91.DataPropertyName = "Crystal";
-            dataGridViewCellStyle62.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle62.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn91.DefaultCellStyle = dataGridViewCellStyle62;
             resources.ApplyResources(dataGridViewTextBoxColumn91, "dataGridViewTextBoxColumn91");
             dataGridViewTextBoxColumn91.Name = "dataGridViewTextBoxColumn91";
@@ -3334,7 +3334,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn93.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn93.DataPropertyName = "Crystal";
-            dataGridViewCellStyle63.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle63.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn93.DefaultCellStyle = dataGridViewCellStyle63;
             resources.ApplyResources(dataGridViewTextBoxColumn93, "dataGridViewTextBoxColumn93");
             dataGridViewTextBoxColumn93.Name = "dataGridViewTextBoxColumn93";
@@ -3371,7 +3371,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn95.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn95.DataPropertyName = "Crystal";
-            dataGridViewCellStyle64.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle64.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn95.DefaultCellStyle = dataGridViewCellStyle64;
             resources.ApplyResources(dataGridViewTextBoxColumn95, "dataGridViewTextBoxColumn95");
             dataGridViewTextBoxColumn95.Name = "dataGridViewTextBoxColumn95";
@@ -3408,7 +3408,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn97.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn97.DataPropertyName = "Crystal";
-            dataGridViewCellStyle65.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle65.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn97.DefaultCellStyle = dataGridViewCellStyle65;
             resources.ApplyResources(dataGridViewTextBoxColumn97, "dataGridViewTextBoxColumn97");
             dataGridViewTextBoxColumn97.Name = "dataGridViewTextBoxColumn97";
@@ -3442,7 +3442,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn99.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn99.DataPropertyName = "Crystal";
-            dataGridViewCellStyle66.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle66.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn99.DefaultCellStyle = dataGridViewCellStyle66;
             resources.ApplyResources(dataGridViewTextBoxColumn99, "dataGridViewTextBoxColumn99");
             dataGridViewTextBoxColumn99.Name = "dataGridViewTextBoxColumn99";
@@ -3478,7 +3478,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn101.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn101.DataPropertyName = "Crystal";
-            dataGridViewCellStyle67.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle67.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn101.DefaultCellStyle = dataGridViewCellStyle67;
             resources.ApplyResources(dataGridViewTextBoxColumn101, "dataGridViewTextBoxColumn101");
             dataGridViewTextBoxColumn101.Name = "dataGridViewTextBoxColumn101";
@@ -3512,7 +3512,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn103.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn103.DataPropertyName = "Crystal";
-            dataGridViewCellStyle68.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle68.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn103.DefaultCellStyle = dataGridViewCellStyle68;
             resources.ApplyResources(dataGridViewTextBoxColumn103, "dataGridViewTextBoxColumn103");
             dataGridViewTextBoxColumn103.Name = "dataGridViewTextBoxColumn103";
@@ -3545,7 +3545,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn105.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn105.DataPropertyName = "Crystal";
-            dataGridViewCellStyle69.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle69.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn105.DefaultCellStyle = dataGridViewCellStyle69;
             resources.ApplyResources(dataGridViewTextBoxColumn105, "dataGridViewTextBoxColumn105");
             dataGridViewTextBoxColumn105.Name = "dataGridViewTextBoxColumn105";
@@ -3563,7 +3563,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn107.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn107.DataPropertyName = "Crystal";
-            dataGridViewCellStyle70.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle70.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn107.DefaultCellStyle = dataGridViewCellStyle70;
             resources.ApplyResources(dataGridViewTextBoxColumn107, "dataGridViewTextBoxColumn107");
             dataGridViewTextBoxColumn107.Name = "dataGridViewTextBoxColumn107";
@@ -3582,7 +3582,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn106.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn106.DataPropertyName = "Profile";
-            dataGridViewCellStyle71.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle71.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn106.DefaultCellStyle = dataGridViewCellStyle71;
             resources.ApplyResources(dataGridViewTextBoxColumn106, "dataGridViewTextBoxColumn106");
             dataGridViewTextBoxColumn106.Name = "dataGridViewTextBoxColumn106";
@@ -3602,7 +3602,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn108.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn108.DataPropertyName = "Crystal";
-            dataGridViewCellStyle72.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle72.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn108.DefaultCellStyle = dataGridViewCellStyle72;
             resources.ApplyResources(dataGridViewTextBoxColumn108, "dataGridViewTextBoxColumn108");
             dataGridViewTextBoxColumn108.Name = "dataGridViewTextBoxColumn108";
@@ -3636,7 +3636,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn110.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn110.DataPropertyName = "Crystal";
-            dataGridViewCellStyle73.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle73.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn110.DefaultCellStyle = dataGridViewCellStyle73;
             resources.ApplyResources(dataGridViewTextBoxColumn110, "dataGridViewTextBoxColumn110");
             dataGridViewTextBoxColumn110.Name = "dataGridViewTextBoxColumn110";
@@ -3672,7 +3672,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn112.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn112.DataPropertyName = "Crystal";
-            dataGridViewCellStyle74.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle74.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn112.DefaultCellStyle = dataGridViewCellStyle74;
             resources.ApplyResources(dataGridViewTextBoxColumn112, "dataGridViewTextBoxColumn112");
             dataGridViewTextBoxColumn112.Name = "dataGridViewTextBoxColumn112";
@@ -3706,7 +3706,7 @@ namespace PDIndexer
             // 
             dataGridViewTextBoxColumn114.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridViewTextBoxColumn114.DataPropertyName = "Crystal";
-            dataGridViewCellStyle75.Font = new Font("Arial", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle75.Font = new Font("Arial", 9.75F);
             dataGridViewTextBoxColumn114.DefaultCellStyle = dataGridViewCellStyle75;
             resources.ApplyResources(dataGridViewTextBoxColumn114, "dataGridViewTextBoxColumn114");
             dataGridViewTextBoxColumn114.Name = "dataGridViewTextBoxColumn114";
