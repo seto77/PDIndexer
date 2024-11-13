@@ -1249,7 +1249,7 @@ public partial class FormMain : Form
             {
                 var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
 
-                foreach (var trimmedPts in Geometriy.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
+                foreach (var trimmedPts in Geometry.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
                 {
                     var finalPts = ConvToPicBoxCoord(trimmedPts);
                     lock (lockObj)

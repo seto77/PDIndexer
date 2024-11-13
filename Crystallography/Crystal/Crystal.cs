@@ -877,6 +877,43 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         return true;
     }
 
+    /// <summary>
+    /// 二組の(hkl)が既約かどうかを判定
+    /// </summary>
+    /// <param name="index1"></param>
+    /// <param name="index2"></param>
+    /// <returns></returns>
+    public static bool CheckIrreducible((int h, int k, int l) index1, (int h, int k, int l) index2)
+    {
+        if (index1.h == index2.h && index1.k == index2.k && index1.l == index2.l)
+            return false;
+
+        int coeff1 = 0, coeff2 = 0;
+        if (index1.h != 0 && index2.h != 0)
+        {
+            coeff1 = index1.h / index2.h;
+            coeff2 = index2.h / index1.h;
+        }
+        else if (index1.k != 0 && index2.k != 0)
+        {
+            coeff1 = index1.k / index2.k;
+            coeff2 = index2.k / index1.k;
+        }
+        else if (index1.l != 0 && index2.l != 0)
+        {
+            coeff1 = index1.l / index2.l;
+            coeff2 = index2.l / index1.l;
+        }
+
+        if (Math.Abs(coeff1) > 1)
+            return !(index2.h * coeff1 == index1.h && index2.k * coeff1 == index1.k && index2.l * coeff1 == index1.l);
+        else if (Math.Abs(coeff2) > 1)
+            return !(index1.h * coeff2 == index2.h && index1.k * coeff2 == index2.k && index1.l * coeff2 == index2.l);
+        else
+            return true;
+    }
+
+
     #endregion 結晶幾何学関連
 
     #region 軸ベクトルの計算
@@ -926,11 +963,25 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// 引数で指定された指数の面ベクトルを計算し、VectorOfPlaneに格納
     /// </summary>
     /// <param name="indices"></param>
-    public void SetVectorOfPlane((int H, int K, int L)[] indices)
+    public void SetVectorOfPlane((int h, int k, int l)[] indices, WaveSource waveSource)
     {
         VectorOfPlane = [];
-        foreach (var (H, K, L) in indices)
-            VectorOfPlane.Add(new Vector3D(H * A_Star + K * B_Star + L * C_Star) { Text = $"({H}{K}{L})" });
+        foreach (var (h, k, l) in indices)
+        {
+            var vec = new Vector3D(h * A_Star + k * B_Star + l * C_Star);
+            vec.F = GetStructureFactor(waveSource, Atoms, (h, k, l), vec.Length2 / 4.0);
+            vec.RawIntensity = vec.F.MagnitudeSquared();
+            vec.Text = $"({h}{k}{l})";
+            vec.Index = (h, k, l);
+            VectorOfPlane.Add(vec);
+        }
+
+        if (VectorOfPlane.Count > 0)
+        {
+            var max = VectorOfPlane.Max(v => v.RawIntensity);
+            if (max > 0)
+                VectorOfPlane.ForEach(v => v.RelativeIntensity = v.RawIntensity / max);
+        }
     }
 
     /// <summary>
@@ -939,28 +990,16 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="hMax"></param>
     /// <param name="kMax"></param>
     /// <param name="lMax"></param>
-    public void SetVectorOfPlane(int hMax, int kMax, int lMax)
+    public void SetVectorOfPlane(int hMax, int kMax, int lMax, WaveSource waveSource)
     {
-        VectorOfPlane = [];
-        Vector3D vec;
-
-        vec = CalcHklVector(1, 0, 0); vec = vec * GetLengthPlane(1, 0, 0) / vec.d; vec.Text = "(100)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, 1, 0); vec = vec * GetLengthPlane(0, 1, 0) / vec.d; vec.Text = "(010)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, 0, 1); vec = vec * GetLengthPlane(0, 0, 1) / vec.d; vec.Text = "(001)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(-1, 0, 0); vec = vec * GetLengthPlane(-1, 0, 0) / vec.d; vec.Text = "(-100)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, -1, 0); vec = vec * GetLengthPlane(0, -1, 0) / vec.d; vec.Text = "(0-10)"; VectorOfPlane.Add(vec);
-        vec = CalcHklVector(0, 0, -1); vec = vec * GetLengthPlane(0, 0, -1) / vec.d; vec.Text = "(00-1)"; VectorOfPlane.Add(vec);
+        var indices = new List<(int h, int k, int l)> { (1, 0, 0), (0, 1, 0), (0, 0, 1), (-1, 0, 0), (0, -1, 0), (0, 0, -1) };
         for (int h = -hMax; h <= hMax; h++)
             for (int k = -kMax; k <= kMax; k++)
                 for (int l = -lMax; l <= lMax; l++)
-
                     if (CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
-                    {
-                        vec = CalcHklVector(h, k, l);
-                        vec = vec * GetLengthPlane(h, k, l) / vec.d;
-                        vec.Text = $"({h}{k}{l})";
-                        VectorOfPlane.Add(vec);
-                    }
+                        indices.Add((h, k, l));
+
+        SetVectorOfPlane([.. indices], waveSource);
     }
 
     /// <summary>
@@ -989,7 +1028,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         (int h, int k, int l)[] directions = [(1, 0, 0), (-1, 0, 0), (0, 1, 0), (0, -1, 0), (0, 0, 1), (0, 0, -1)];
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
-
 
         var maxNum = _maxNum;
         var outer = new List<(int H, int K, int L, double len)>() { (0, 0, 0, 0) };
@@ -1218,8 +1256,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="wavesource"></param>
     /// <param name="excludeLatticeCondition"></param>
-    public void SetVectorOfG(double dMin, WaveSource wavesource, bool excludeLatticeCondition = true)
-        => SetVectorOfG(dMin,double.PositiveInfinity,wavesource,excludeLatticeCondition);
+    public void SetVectorOfG(double dMin, WaveSource wavesource, int maxNum = 25000)
+        => SetVectorOfG(dMin, double.PositiveInfinity, wavesource, maxNum);
 
     /// <summary>
     /// dMin以上、dMax以下の範囲で逆格子ベクトルを計算し、wavesorceに従って、構造因子を計算
@@ -1227,7 +1265,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="dMin"></param>
     /// <param name="dMax"></param>
     /// <param name="wavesource"></param>
-    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, bool excludeLatticeCondition = true)
+    public void SetVectorOfG(double dMin, double dMax, WaveSource wavesource, int maxNum = 25000)
     {
         if (double.IsNaN(dMin)) return;
 
@@ -1268,13 +1306,13 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
 
         var shift = directions.Select(dir => (MatrixInverse * dir).Length).Max();
 
-        var maxGnum = 250000;
+        //var maxNum = 250000;
         var zeroKey = (255 << 20) + (255 << 10) + 255;
-        var gHash = new HashSet<int>((int)(maxGnum * 1.5)) { zeroKey };
-        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxGnum * 1.5)) { (zeroKey, 0, 0, 0, 0) };
+        var gHash = new HashSet<int>((int)(maxNum * 1.5)) { zeroKey };
+        var gList = new List<(int key, double x, double y, double z, double len)>((int)(maxNum * 1.5)) { (zeroKey, 0, 0, 0, 0) };
         int start = 0, end = 1;
         var outer = CollectionsMarshal.AsSpan(gList)[start..end];
-        while (gList.Count < maxGnum && outer.Length > 0)
+        while (gList.Count < maxNum && outer.Length > 0)
         {
             foreach (var (key1, _, _, _, _) in outer)
             {
@@ -1497,6 +1535,77 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     [NonSerialized]
     [XmlIgnore]
     private static readonly Complex TwoPiI = 2 * Complex.ImaginaryOne * Math.PI;
+
+    //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する (h, k, lが非整数の場合に対応させたテストコード)
+    /// <summary>
+    /// 構造因子を求める s2の単位はnm^-2
+    /// </summary>
+    /// <param name="wave"></param>
+    /// <param name="atomsArray"></param>
+    /// <param name="h"></param>
+    /// <param name="k"></param>
+    /// <param name="l"></param>
+    /// <param name="s2">単位はnm^-2</param>
+    /// <returns></returns>
+    public static Complex GetStructureFactor(WaveSource wave, Atoms[] atomsArray, (double h, double k, double l) index, double s2)
+    {
+        #region
+        (double h, double k, double l) = index;
+        //s2 = (sin(theta)/ramda)^2 = 1 / 4 /d^2
+        if (atomsArray.Length == 0)
+            return new Complex(0, 0);
+        Complex F = 0, f = 0;
+        int atomicNum = -1, subNum = -1;
+
+        foreach (var atoms in atomsArray)
+        {
+            if (wave == WaveSource.Electron)
+            {
+                if (atoms.AtomicNumber != atomicNum || atoms.SubNumberElectron != subNum)
+                {
+                    f = new Complex(atoms.GetAtomicScatteringFactorForElectron(s2), 0);
+                    atomicNum = atoms.AtomicNumber;
+                    subNum = atoms.SubNumberElectron;
+                }
+            }
+            else if (wave == WaveSource.Xray)
+            {
+                if (atoms.AtomicNumber != atomicNum || atoms.SubNumberXray != subNum)
+                {
+                    f = new Complex(atoms.GetAtomicScatteringFactorForXray(s2), 0);
+                    atomicNum = atoms.AtomicNumber;
+                    subNum = atoms.SubNumberXray;
+                }
+            }
+            else
+                f = atoms.GetAtomicScatteringFactorForNeutron();
+
+
+            if (atoms.Dsf.UseIso)
+            {
+                var T = Math.Exp(-atoms.Dsf.Biso * s2);
+                if (double.IsNaN(T))
+                    T = 1;
+                foreach (var atom in atoms.Atom)
+                    F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
+            }
+            else
+            {
+                foreach (var atom in atoms.Atom)
+                {
+                    var (H, K, L) = atom.Operation.ConvertPlaneIndex(h, k, l);
+                    var T = Math.Exp(-(atoms.Dsf.B11 * H * H + atoms.Dsf.B22 * K * K + atoms.Dsf.B33 * L * L
+                        + 2 * atoms.Dsf.B12 * H * K + 2 * atoms.Dsf.B23 * K * L + 2 * atoms.Dsf.B31 * L * H));
+                    if (double.IsNaN(T))
+                        T = 1;
+                    F += f * T * Complex.Exp(-TwoPiI * (h * atom.X + k * atom.Y + l * atom.Z));
+                }
+            }
+        }
+        return F;// Complex(Real, Inverse);
+        #endregion
+    }
+
 
     //(h,k,l)の構造散乱因子(熱散漫散乱込み)のF (複素数) を計算する
     /// <summary>
