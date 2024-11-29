@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Numerics;
+using System.Threading;
 using System.Xml.Serialization;
 
 namespace Crystallography;
@@ -122,21 +123,21 @@ public class Matrix3D : ICloneable
 
     #endregion
 
-    public double[] ToArrayRight() => new[] { E11, E12, E13, E21, E22, E23, E31, E32, E33 };
+    public double[] ToArrayRight() => [E11, E12, E13, E21, E22, E23, E31, E32, E33];
 
     /// <summary>
     /// E11, E12, E13, E21, E22, E23, E31, E32, E33
     /// </summary>
     /// <returns></returns>
-    public double[] ToArrayRowMajorOrder() => new[] { E11, E12, E13, E21, E22, E23, E31, E32, E33 };
+    public double[] ToArrayRowMajorOrder() => [E11, E12, E13, E21, E22, E23, E31, E32, E33];
 
     /// <summary>
     /// E11, E21, E31, E12, E22, E32, E13, E23, E33
     /// </summary>
     /// <returns></returns>
-    public double[] ToArrayColumnMajorOrder() => new[] { E11, E21, E31, E12, E22, E32, E13, E23, E33 };
+    public double[] ToArrayColumnMajorOrder() => [E11, E21, E31, E12, E22, E32, E13, E23, E33];
 
-    public Matrix3d ToMatrix() => new(E11, E12, E13, E21, E22, E23, E31, E32, E33);
+    public Matrix3d ToMatrix() => new(E11, E12, E13, E21, E22, E23, m20: E31, E32, E33);
 
     public Vector3DBase Column1 => new(E11, E21, E31);
     public Vector3DBase Column2 => new(E12, E22, E32);
@@ -433,11 +434,11 @@ public class Matrix3D : ICloneable
 
     public static Matrix3D GenerateRamdomRotationMatrix(int seed) => GenerateRamdomRotationMatrix(new Random(seed));
 
-    private static readonly object o = new();
+    private static readonly Lock lockObj = new();
     public static Matrix3D GenerateRamdomRotationMatrix(Random rn)
     {
         double rn1, rn2, rn3;
-        lock (o)
+        lock (lockObj)
         {
             rn1 = rn.NextDouble();
             rn2 = rn.NextDouble();
@@ -559,6 +560,7 @@ public class Matrix3D : ICloneable
 public class Vector3DBase : ICloneable
 {
     public static readonly Vector3DBase Zero = new(0, 0, 0);
+    private object arr;
 
     public double X { get; set; }
     public double Y { get; set; }
@@ -615,9 +617,9 @@ public class Vector3DBase : ICloneable
         X = v.X; Y = v.Y; Z = v.Z;
     }
 
-    public double[] ToDoublearray() => new double[] { X, Y, Z };
+    public double[] ToDoublearray() => [X, Y, Z];
 
-    public float[] ToSingleArray() => new float[] { (float)X, (float)Y, (float)Z };
+    public float[] ToSingleArray() => [(float)X, (float)Y, (float)Z];
 
     /// <summary>
     /// X,Y座標をPointDクラスに映す (Zは破棄)
@@ -1023,7 +1025,7 @@ public class Vector3D : Vector3DBase, IComparable<Vector3D>, ICloneable
 
     //2つのベクトルの外積を返す
     public static Vector3D VectorProduct(Vector3D v1, Vector3D v2)
-        => new Vector3D(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
+        => new(v1.Y * v2.Z - v1.Z * v2.Y, v1.Z * v2.X - v1.X * v2.Z, v1.X * v2.Y - v1.Y * v2.X);
 
     /// <summary>
     /// 座標一ずつを加減算し、0から1の範囲内に収める
@@ -1100,12 +1102,12 @@ public class Quaternion
     {
         // 回転行列→クォータニオン変換
 
-        double[] elem = new double[]{ // 0:x, 1:y, 2:z, 3:w
+        double[] elem = [ // 0:x, 1:y, 2:z, 3:w
                 r.E11 - r.E22 - r.E33 + 1.0,
                -r.E11 + r.E22 - r.E33 + 1.0,
                -r.E11 - r.E22 + r.E33 + 1.0,
                 r.E11 + r.E22 + r.E33 + 1.0
-            };
+            ];
 
         // 最大成分を検索
         int biggestIndex = 0;
@@ -1315,7 +1317,7 @@ public class Quaternion
     /// <returns></returns>
     public static Vector3DBase ToLogQuaternion(Quaternion q)
     {
-        Vector3DBase v = new Vector3DBase(q.X, q.Y, q.Z);
+        Vector3DBase v = new(q.X, q.Y, q.Z);
         double theta = Math.Acos(q.W);
         if (q.W >= 1)
             return v;
