@@ -11,6 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", 
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDindexerSetup", "PDindexerSetup\PDindexerSetup.vdproj", "{80EF52B7-7757-4980-A47A-0772A37AB289}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{965242BA-7668-45BD-AB8B-C1F8CD894B2D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

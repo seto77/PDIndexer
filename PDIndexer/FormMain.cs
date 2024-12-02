@@ -22,8 +22,6 @@ using IronPython.Hosting;
 using System.Net;
 using System.Threading.Tasks;
 using MemoryPack;
-using System.CodeDom;
-
 #endregion
 
 namespace PDIndexer;
@@ -67,7 +65,7 @@ public partial class FormMain : Form
 
     #region プロパティ
 
-    public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
+   
 
     public FormCrystal formCrystal;
     public FormEOS formEOS;
@@ -81,6 +79,9 @@ public partial class FormMain : Form
     public FormTwoThetaCalibration formTwoThetaCalibration;
 
     Crystallography.Controls.CommonDialog initialDialog;
+
+    [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
+    public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
 
     public bool BackGroundPointSelectMode { get; set; } = false;
     public int[] SelectedMaskingBoundaryIndex { set; get; } = [-1, -1];
@@ -475,6 +476,8 @@ public partial class FormMain : Form
     #region コンストラクタ、ロード、クローズ
     public FormMain()
     {
+        var x = "10,25/5,5/9".ToDouble();
+
         //カルチャーを決めるため、レジストリ読込
         if (!DesignMode)
         {
@@ -2712,12 +2715,13 @@ public partial class FormMain : Form
                         {
                             var str1 = str[1];
                             var str3 = str[3];
-                            if (Miscellaneous.IsDecimalPointComma)
-                            {
-                                str1 = str1.Replace('.', ',');
-                                str3 = str3.Replace('.', ',');
-                            }
-                            diffProf.SourceProfile.Pt.Add(new PointD(Convert.ToDouble(str1), Convert.ToDouble(str3)));
+                            //if (Miscellaneous.IsDecimalPointComma)
+                            //{
+                            //    str1 = str1.Replace('.', ',');
+                            //    str3 = str3.Replace('.', ',');
+                            //}
+                            //diffProf.SourceProfile.Pt.Add(new PointD(Convert.ToDouble(str1), Convert.ToDouble(str3)));
+                            diffProf.SourceProfile.Pt.Add(new PointD(str1.ToDouble(), str3.ToDouble()));
                         }
                         else
                             break;
@@ -2807,12 +2811,15 @@ public partial class FormMain : Form
 
                 //TakeoffAngle
                 formDataConverter.TakeoffAngleText = strList[^4].Split(',', true)[0];
-                formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ', true)[1]);
+                //formDataConverter.ExposureTime = Convert.ToDouble(strList[^5].Split(' ', true)[1]);
+                formDataConverter.ExposureTime = strList[^5].Split(' ', true)[1].ToDouble();
 
                 formDataConverter.EDXDetectorNumber = 1;
                 double[][] egc = [[0.0, 0.0, 0.0]];
-                egc[0][0] = Convert.ToDouble(strList[^1].Split(',', true)[0]);
-                egc[0][1] = Convert.ToDouble(strList[^1].Split(',', true)[1]);
+                //egc[0][0] = Convert.ToDouble(strList[^1].Split(',', true)[0]);
+                //egc[0][1] = Convert.ToDouble(strList[^1].Split(',', true)[1]);
+                egc[0][0] = strList[^1].Split(',', true)[0].ToDouble();
+                egc[0][1] = strList[^1].Split(',', true)[1].ToDouble();
                 formDataConverter.EGC = egc;
 
                 if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
@@ -2827,7 +2834,8 @@ public partial class FormMain : Form
                             double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n) * 1000;
                             n++;
                             if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
-                                diffProf.SourceProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
+                                //diffProf.SourceProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
+                                diffProf.SourceProfile.Pt.Add(new PointD(x, str[j].ToDouble()));
                         }
                     }
                 }
@@ -2872,8 +2880,10 @@ public partial class FormMain : Form
 
                             for (int j = i + 2; j < i + 2 + length; j++)
                             {
-                                var x = Convert.ToDouble(strList[j].Split(',', true)[1]) * 1000;
-                                var y = Convert.ToDouble(strList[j].Split(',', true)[2]);
+                                //var x = Convert.ToDouble(strList[j].Split(',', true)[1]) * 1000;
+                                //var y = Convert.ToDouble(strList[j].Split(',', true)[2]);
+                                var x = strList[j].Split(',', true)[1].ToDouble() * 1000;
+                                var y = strList[j].Split(',', true)[2].ToDouble();
                                 if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
                                     diffProf.SourceProfile.Pt.Add(new PointD(x, y));
                             }
@@ -2905,9 +2915,12 @@ public partial class FormMain : Form
                             for (int j = i + 1; j < strList.Count - 1; j++)
                             {
                                 var str = strList[j].Split(" ", true);
-                                var x = Convert.ToDouble(str[0]);
-                                var y = Convert.ToDouble(str[1]);
-                                var err = Convert.ToDouble(str[2]);
+                                //var x = Convert.ToDouble(str[0]);
+                                //var y = Convert.ToDouble(str[1]);
+                                //var err = Convert.ToDouble(str[2]);
+                                var x = str[0].ToDouble();
+                                var y = str[1].ToDouble();
+                                var err = str[2].ToDouble();
                                 diffProf.SourceProfile.Pt.Add(new PointD(x, y));
                                 diffProf.SourceProfile.Err.Add(new PointD(x, err));
                             }
@@ -2939,8 +2952,11 @@ public partial class FormMain : Form
             #region xy形式 
             else if (ext == "xy" && strList[0] == "# == pyFAI calibration ==")
             {
-                if (double.TryParse(strList[15].Split(" ")[2], out var wave))
+                //if (double.TryParse(strList[15].Split(" ")[2], out var wave))
+                try
                 {
+                    double wave = strList[15].Split(" ")[2].ToDouble();
+
                     formDataConverter.SetProperty(FileProperties[(int)FileType.XY]);
 
                     formDataConverter.WaveSource = WaveSource.Xray;
@@ -2955,12 +2971,13 @@ public partial class FormMain : Form
                             var str = strList[i].Split(' ', true);
                             if (str.Length == 2)
                             {
-                                if (Miscellaneous.IsDecimalPointComma)
-                                {
-                                    str[0] = str[0].Replace('.', ',');
-                                    str[1] = str[1].Replace('.', ',');
-                                }
-                                diffProf.SourceProfile.Pt.Add(new PointD(Convert.ToDouble(str[0]), Convert.ToDouble(str[1])));
+                                //if (Miscellaneous.IsDecimalPointComma)
+                                //{
+                                //    str[0] = str[0].Replace('.', ',');
+                                //    str[1] = str[1].Replace('.', ',');
+                                //}
+
+                                diffProf.SourceProfile.Pt.Add(new PointD(str[0].ToDouble(), str[1].ToDouble()));
                             }
                             else
                                 break;
@@ -2968,6 +2985,7 @@ public partial class FormMain : Form
                     }
                     else return;
                 }
+                catch { return; }
             }
             #endregion
 

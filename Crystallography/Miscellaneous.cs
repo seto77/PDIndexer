@@ -116,6 +116,7 @@ public static class Miscellaneous
     /// <returns></returns>
     public static bool isFileExistsAndLocked(string path)
     {
+       
         if (File.Exists(path))
         {
             FileStream stream = null;

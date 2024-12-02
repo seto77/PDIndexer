@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# WFO1000: プロパティ コンテンツのコード シリアル化構成がありません
+dotnet_diagnostic.WFO1000.severity = silent

@@ -164,7 +164,7 @@ public partial class FormFitting : Form
         {
             var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
             if (dlg.ShowDialog() == DialogResult.OK)
-                using (StreamWriter sw = new StreamWriter(dlg.FileName, false))
+                using (StreamWriter sw = new(dlg.FileName, false))
                     sw.Write(text.Replace("\t", ","));
         }
     }
@@ -181,41 +181,39 @@ public partial class FormFitting : Form
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
         if (fileName.Length == 1 && fileName[0].ToLower().EndsWith("csv"))
         {
-            using (var sr = new StreamReader(fileName[0]))
+            using var sr = new StreamReader(fileName[0]);
+            if (sr.ReadLine().StartsWith("Checked,hkl"))
             {
-                if (sr.ReadLine().StartsWith("Checked,hkl"))
+                int n = 0;
+                while (sr.Peek() > -1)
                 {
-                    int n = 0;
-                    while (sr.Peek() > -1)
+                    var line = sr.ReadLine().Split(new[] { ',' }, StringSplitOptions.None);
+                    if (line.Length > 2 && n < dataSet.DataTablePeakFitting.Rows.Count)
                     {
-                        var line = sr.ReadLine().Split(new[] { ',' }, StringSplitOptions.None);
-                        if (line.Length > 2 && n < dataSet.DataTablePeakFitting.Rows.Count)
+                        var dr = dataSet.DataTablePeakFitting.Rows[n] as DataSet.DataTablePeakFittingRow;
+                        dr.Check = line[0] == "True";
+                        dr.Function = line[3];
+                        dr.X = Convert.ToDouble(line[4]);
+                        dr.XErr = Convert.ToDouble(line[5]);
+                        dr.FWHM = Convert.ToDouble(line[6]);
+                        dr.Intensity = Convert.ToDouble(line[7]);
+                        dr.R = Convert.ToDouble(line[8]);
+                        if (n < TargetCrystal.Plane.Count)
                         {
-                            var dr = dataSet.DataTablePeakFitting.Rows[n] as DataSet.DataTablePeakFittingRow;
-                            dr.Check = line[0] == "True";
-                            dr.Function = line[3];
-                            dr.X = Convert.ToDouble(line[4]);
-                            dr.XErr = Convert.ToDouble(line[5]);
-                            dr.FWHM = Convert.ToDouble(line[6]);
-                            dr.Intensity = Convert.ToDouble(line[7]);
-                            dr.R = Convert.ToDouble(line[8]);
-                            if (n < TargetCrystal.Plane.Count)
+                            TargetCrystal.Plane[n].IsFittingChecked = line[0] == "True";
+                            TargetCrystal.Plane[n].peakFunction.Option = line[3] switch
                             {
-                                TargetCrystal.Plane[n].IsFittingChecked = line[0] == "True";
-                                TargetCrystal.Plane[n].peakFunction.Option = line[3] switch
-                                {
-                                    "Simple" => PeakFunctionForm.Simple,
-                                    "Sym PV" => PeakFunctionForm.PseudoVoigt,
-                                    "Sym Pea" => PeakFunctionForm.Peason,
-                                    "Spl PV" => PeakFunctionForm.SplitPseudoVoigt,
-                                    "Spl Pea" => PeakFunctionForm.SplitPseudoVoigt,
-                                    _ => PeakFunctionForm.PseudoVoigt
-                                };
+                                "Simple" => PeakFunctionForm.Simple,
+                                "Sym PV" => PeakFunctionForm.PseudoVoigt,
+                                "Sym Pea" => PeakFunctionForm.Peason,
+                                "Spl PV" => PeakFunctionForm.SplitPseudoVoigt,
+                                "Spl Pea" => PeakFunctionForm.SplitPseudoVoigt,
+                                _ => PeakFunctionForm.PseudoVoigt
+                            };
 
-                            }
                         }
-                        n++;
                     }
+                    n++;
                 }
             }
         }
@@ -253,12 +251,14 @@ public partial class FormFitting : Form
                 p.XObs = 0;
                 p.observedIntensity = 0;
                 p.DecompositionGroup = -1;
-                p.peakFunction = new PeakFunction();
-                p.peakFunction.X = p.XCalc;
-                p.peakFunction.range = p.SerchRange * SerchRangeFactor; ;
-                p.peakFunction.Hk = p.FWHM * SerchRangeFactor;
-                p.peakFunction.Option = p.SerchOption;
-                p.peakFunction.Color = Color.FromArgb(c.Argb);
+                p.peakFunction = new PeakFunction
+                {
+                    X = p.XCalc,
+                    range = p.SerchRange * SerchRangeFactor,
+                    Hk = p.FWHM * SerchRangeFactor,
+                    Option = p.SerchOption,
+                    Color = Color.FromArgb(c.Argb)
+                };
 
                 if (p.SerchOption == PeakFunctionForm.Simple) //SimpleÇ‡Å[Ç«ÇÃÇ∆Ç´ÇÕÇ±Ç±Ç≈èàóù
                 {
@@ -804,7 +804,7 @@ public partial class FormFitting : Form
             case "triclinic":
                 #region triclinic
 
-                var constants = CrystalGeometry.GetErrorTriclinic(p.ToArray());
+                var constants = CrystalGeometry.GetErrorTriclinic([.. p]);
                 if (constants.Length != 0)
                 {
                     a = constants[0];
