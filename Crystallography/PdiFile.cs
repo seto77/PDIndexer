@@ -166,9 +166,9 @@ public static class XYFile
                         diffProf.SourceProfile.Pt.Add(new PointD(str[0].ToDouble(), str[1].ToDouble()));
                     }
                     diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
-                    return new DiffractionProfile2[] { diffProf };
+                    return [diffProf];
                 }
-                catch { return Array.Empty<DiffractionProfile2>(); }
+                catch { return []; }
             }
         }
     }
@@ -233,10 +233,10 @@ public static class XYFile
         }
 
         if (strArray.Count <= 3)
-            return Array.Empty<DiffractionProfile2>();
+            return [];
 
         if (!strArray[1].StartsWith("X,Y,"))
-            return Array.Empty<DiffractionProfile2>();
+            return [];
 
         try
         {
@@ -276,7 +276,7 @@ public static class XYFile
         }
         catch
         {
-            return Array.Empty<DiffractionProfile2>();
+            return [];
         }
     }
 
@@ -409,7 +409,7 @@ public static class XYFile
         //if (yRow == -1) return null;
 
         //最後に値を代入
-        DiffractionProfile2 dif = new DiffractionProfile2();
+        DiffractionProfile2 dif = new();
         for (int i = 0; i < doubleList.Count; i++)
             dif.SourceProfile.Pt.Add(new PointD(doubleList[i][xRow], doubleList[i][yRow]));
 
