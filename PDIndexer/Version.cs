@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.448(2024/12/03) Further bug fixes have been made regarding the decimal separator issue. (thx to Loïc Toraille-san)" +
         "\r\n ver4.447(2024/12/02) The framework has been changed to .Net Desktop Runtime 9.0. Fixed bugs on decimal separator symbols (thx to Loïc Toraille-san)." +
         "\r\n ver4.446(2024/06/30) Fixed a bug where the app icon was not displayed. Updated the crystal database." +
         "\r\n ver4.445(2023/12/06) Fixed bugs when loading *.npd files (thx to Shibasaki-san)." +
@@ -296,7 +297,7 @@ static class Version
         ;
 
     static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
-    static public double VersionValue { get => Convert.ToDouble(VersionAndDate[3..^12]); }
+    static public double VersionValue { get => Convert.ToDouble(VersionAndDate[3..^12], System.Globalization.CultureInfo.InvariantCulture); }
 
     /// <summary>
     /// はじめに

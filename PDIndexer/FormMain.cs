@@ -2696,7 +2696,7 @@ public partial class FormMain : Form
             if (strList.Count <= 3)
                 return;
 
-            var diffProf = new DiffractionProfile2();
+            DiffractionProfile2 diffProf = new DiffractionProfile2();
             formDataConverter.textBox.Lines = [.. strList];
 
             #region Fit2Dデータ
@@ -2997,14 +2997,26 @@ public partial class FormMain : Form
                 {
                     FileProperties[(int)FileType.OTHRES] = formDataConverter.GetProperty();
 
-                    if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ',')) == null)
-                        if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ' ')) == null)
-                            if ((diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, '\t')) == null)
-                                return;
+                    //カンマが小数点記号の場合は、カンマ区切りを最初ではなく最後に回す
+                    if (!Miscellaneous.IsDecimalPointComma)
+                        diffProf = XYFile.ConvertUnknownFileToProfileData(fileName, ',');
+                    else
+                        diffProf = null;
+
+                    diffProf ??= XYFile.ConvertUnknownFileToProfileData(fileName, ' ');
+                    
+                    diffProf ??= XYFile.ConvertUnknownFileToProfileData(fileName, '\t');
+
+                    diffProf ??= XYFile.ConvertUnknownFileToProfileData(fileName, ',');
+
+                    if (diffProf == null)
+                        return;
                 }
             }
             #endregion
 
+            if (diffProf.SourceProfile.Pt.Count == 0)
+                return;
 
             diffProf.SrcProperty = formDataConverter.HorizontalAxisProperty;
 

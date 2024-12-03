@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -313,7 +314,9 @@ public static class XYFile
                 //var str = Miscellaneous.IsDecimalPointComma ? stringList[i][j].Replace('.', ',') : stringList[i][j].Replace(',', '.');
                 //if (double.TryParse(str, out double result))
                 //    doubleTemp.Add(result);
-                doubleTemp.Add(stringList[i][j].ToDouble());
+                var val = stringList[i][j].ToDouble();
+                if(val.IsFinite())
+                    doubleTemp.Add(stringList[i][j].ToDouble());
             }
             doubleList.Add([.. doubleTemp]);
         }

@@ -295,7 +295,7 @@ public static class StringEx
 
 
     /// <summary>
-    /// 拡張メソッド. ConvertToDoubleを拡張メソッドとして呼び出す. 実数と、分数に対応. 変換できない場合は例外発生
+    /// 拡張メソッド. ConvertToDoubleを拡張メソッドとして呼び出す. 実数と、分数に対応. 変換できない場合はNaNを返す
     /// </summary>
     /// <param name="s"></param>
     /// <returns></returns>
@@ -310,7 +310,11 @@ public static class StringEx
         else
         {
             s = s.Replace(',', '.');
-            return Convert.ToDouble(s,InvCul);
+            if (double.TryParse(s, InvCul, out var result))
+                return result;
+            else
+                return double.NaN;
+            //return Convert.ToDouble(s,InvCul);
         }
         //return !s.Contains('/') ? Convert.ToDouble(s) : s.Split("/", true)[0].ToDouble() / s.Split("/", true)[1].ToDouble();
     }

@@ -100,7 +100,7 @@ public static class Miscellaneous
         {
             if (isDecimalPointCommaFlag)
             {
-                isDecimalPointComma = double.TryParse("1.000,01", out _);
+                isDecimalPointComma = (1.01).ToString().Contains(',');
                 isDecimalPointCommaFlag = false;
             }
             return isDecimalPointComma;
