@@ -11,8 +11,9 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.449(2024/12/06) Fixed a minor bug when loading/saving the version number. (thx to Loïc Toraille-san)" +
         "\r\n ver4.448(2024/12/03) Further bug fixes have been made regarding the decimal separator issue. (thx to Loïc Toraille-san)" +
-        "\r\n ver4.447(2024/12/02) The framework has been changed to .Net Desktop Runtime 9.0. Fixed bugs on decimal separator symbols (thx to Loïc Toraille-san)." +
+        "\r\n ver4.447(2024/12/02) The framework has been changed to .Net Desktop Runtime 9.0. Fixed bugs on decimal separator symbols (thx to Loïc Toraille-san, see github.com/seto77/PDIndexer/issues/2)." +
         "\r\n ver4.446(2024/06/30) Fixed a bug where the app icon was not displayed. Updated the crystal database." +
         "\r\n ver4.445(2023/12/06) Fixed bugs when loading *.npd files (thx to Shibasaki-san)." +
         "\r\n ver4.443(2023/11/27) The target framework has been changed to .Net Desktop Runtime 8.0. Fixed a minor bug (thx to Okazaki-san)." +
