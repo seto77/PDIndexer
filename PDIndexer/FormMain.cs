@@ -482,8 +482,12 @@ public partial class FormMain : Form
         if (!DesignMode)
         {
             var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
-            if (4.440 > Convert.ToDouble(key.GetValue("Version", "0")))
-                ClearRegistry();
+            try
+            {
+                if (4440 > Convert.ToInt32(key.GetValue("Version".Replace(".", ""), "0")))
+                    ClearRegistry();
+            }
+            catch { ClearRegistry(); }
             Registry(Reg.Mode.Read);
         }
 

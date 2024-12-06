@@ -297,7 +297,8 @@ static class Version
         ;
 
     static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
-    static public double VersionValue { get => Convert.ToDouble(VersionAndDate[3..^12], System.Globalization.CultureInfo.InvariantCulture); }
+    //バージョンの値 (20241206 doubleから整数に変換)
+    static public int VersionValue { get => Convert.ToInt32(VersionAndDate[3..^12].Replace(".",""), System.Globalization.CultureInfo.InvariantCulture); }
 
     /// <summary>
     /// はじめに
