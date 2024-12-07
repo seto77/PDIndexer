@@ -354,15 +354,16 @@ public partial class FormMain : Form
                     {
                         try
                         {
-                            if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2)))
-                            {
-                                var data = Clipboard.GetDataObject();
-                                var dp = (DiffractionProfile2)data.GetData(typeof(DiffractionProfile2));
+                            //if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2)))
+                            //{
+                            //    var data = Clipboard.GetDataObject();
+                            //    var dp = (DiffractionProfile2)data.GetData(typeof(DiffractionProfile2));
 
-                                if (dp != null)
-                                    AddProfileToCheckedListBox(dp, true, true);
-                            }
-                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2[])))
+                            //    if (dp != null)
+                            //        AddProfileToCheckedListBox(dp, true, true);
+                            //}
+                            //else
+                            if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2[])))
                             {
                                 var dataObject = Clipboard.GetDataObject();
                                 var data = dataObject;
@@ -398,10 +399,9 @@ public partial class FormMain : Form
                                 }
                             }
 
-                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(Crystal2)) && formCrystal.Visible)
+                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(byte[])) && formCrystal.Visible)
                             {
-                                IDataObject data = Clipboard.GetDataObject();
-                                var c2 = (Crystal2)data.GetData(typeof(Crystal2));
+                                var c2 =Crystal2.Deserialize((byte[])Clipboard.GetDataObject().GetData(typeof(byte[])));
                                 formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
                             }
                             else if ((Clipboard.GetDataObject()).GetDataPresent(typeof(MacroTriger)))

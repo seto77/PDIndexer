@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.450(2024/12/07) Fixed a minor bug on the clipboard operation." +
         "\r\n ver4.449(2024/12/06) Fixed a minor bug when loading/saving the version number. (thx to Loïc Toraille-san)" +
         "\r\n ver4.448(2024/12/03) Further bug fixes have been made regarding the decimal separator issue. (thx to Loïc Toraille-san)" +
         "\r\n ver4.447(2024/12/02) The framework has been changed to .Net Desktop Runtime 9.0. Fixed bugs on decimal separator symbols (thx to Loïc Toraille-san, see github.com/seto77/PDIndexer/issues/2)." +

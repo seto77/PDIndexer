@@ -599,7 +599,7 @@ namespace PDIndexer
             horizontalAxisUserControl.AxisMode = HorizontalAxis.Angle;
             horizontalAxisUserControl.DspacingUnit = LengthUnitEnum.Angstrom;
             horizontalAxisUserControl.ElectronAccVol = 8.04114721D;
-            horizontalAxisUserControl.ElectronAccVoltageText = "8,04114721";
+            horizontalAxisUserControl.ElectronAccVoltageText = "8.04114721";
             horizontalAxisUserControl.EnergyUnit = EnergyUnitEnum.eV;
             horizontalAxisUserControl.HorizontalAxisProperty = (HorizontalAxisProperty)resources.GetObject("horizontalAxisUserControl.HorizontalAxisProperty");
             horizontalAxisUserControl.Name = "horizontalAxisUserControl";
@@ -612,7 +612,7 @@ namespace PDIndexer
             horizontalAxisUserControl.TwoThetaUnit = AngleUnitEnum.Degree;
             horizontalAxisUserControl.WaveColor = WaveColor.Monochrome;
             horizontalAxisUserControl.WaveLength = 0.1541871066667D;
-            horizontalAxisUserControl.WaveLengthText = "1,541871066667";
+            horizontalAxisUserControl.WaveLengthText = "1.541871066667";
             horizontalAxisUserControl.WaveNumberUnit = LengthUnitEnum.AngstromInverse;
             horizontalAxisUserControl.WaveSource = WaveSource.Xray;
             horizontalAxisUserControl.XrayLine = XrayLine.Ka;
