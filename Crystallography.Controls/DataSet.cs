@@ -1,4 +1,6 @@
-﻿using Microsoft.Scripting.Utils;
+﻿using MemoryPack.Compression;
+using MemoryPack;
+using Microsoft.Scripting.Utils;
 using System;
 using System.Buffers;
 using System.Data;
@@ -6,6 +8,9 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
+using System.IO;
+using static IronPython.Modules._ast;
+using System.Text.RegularExpressions;
 
 namespace Crystallography.Controls;
 
@@ -227,7 +232,7 @@ public partial class DataSet
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? (Crystal2)r[Crystal2Column] : null;
+        public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? Crystal2.Deserialize((byte[]) r[Crystal2Column]) : null;
 
 
         /// <summary>
@@ -235,7 +240,7 @@ public partial class DataSet
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public Crystal2 Get(int i) => (Crystal2)Rows[i][0];
+        public Crystal2 Get(int i) => Crystal2.Deserialize((byte[])Rows[i][0]);
 
         public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
         public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);
@@ -248,33 +253,43 @@ public partial class DataSet
         /// srcCrystalはbindingSourceMain.Currentオブジェクト. 
         /// </summary>
         /// <param name="srcCrystal"></param>
-        /// <param name="targetcrystal"></param>
-        public void Replace(object srcCrystal, Crystal2 targetcrystal)
+        /// <param name="targetCrystal"></param>
+        public void Replace(object srcCrystal, Crystal2 targetCrystal)
         {
             if (srcCrystal is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow src)
             {
-                var target = CreateRow(targetcrystal);
+                var target = CreateRow(targetCrystal);
                 for (int j = 0; j < drv.Row.ItemArray.Length; j++)
                     src[j] = target[j];
             }
         }
 
         readonly Lock lockObj = new();
+
+        //public DataTableCrystalDatabaseRow CreateRow(Crystal2 c) => CreateRow(c,null);
         public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
         {
             DataTableCrystalDatabaseRow dr;
             lock (lockObj)
                 dr = NewDataTableCrystalDatabaseRow();
 
-            dr.Crystal2 = c;
+            dr.Crystal2 = Crystal2.Serialize(c);
             dr.Name = c.name;
             dr.Formula = c.formula;
             dr.Density = c.density;
-            (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValue;
+            (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValueFloat;
             dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
             dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
-            dr.SpaceGroup = SymmetryStatic.StrArray[c.sym][3];
-            dr.Authors = c.auth;
+
+            var sg = SymmetryStatic.StrArray[c.sym][3].Replace("sub", "_").Replace("Hex", " H").Replace("Rho", " R");
+            if (dr.CrystalSystem == "monoclinic")
+                sg = sg.Split("=")[0];
+            dr.SpaceGroup = sg;
+
+            var auth = c.auth;
+            if (Regex.Matches(auth, ",").Count>1)
+                auth = auth.Split(",")[0] + ", et al.";
+            dr.Authors = auth;
             dr.Title = c.sect;
             dr.Journal = c.jour;
             dr.Flag = true;

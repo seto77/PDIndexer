@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
-using V3 = OpenTK.Vector3d;
-using V4 = OpenTK.Vector4d;
+using V3 = OpenTK.Mathematics.Vector3d;
+using V4 = OpenTK.Mathematics.Vector4d;
 
 namespace Crystallography.Controls;
 
@@ -123,6 +123,7 @@ public partial class PoleFigureControl2 : UserControl
         }
 
         //ベクトルからPixelのインデックスを計算するファンクション
+        //iが放射方向、jが円周に沿った方向
         var f = new Func<V3, (int i, int j)>(v =>
         {
             v.Normalize();
@@ -202,7 +203,7 @@ public partial class PoleFigureControl2 : UserControl
         if (pixels == null) return;
         var max = pixels.Max(e => e.Max());
         var min = pixels.Min(e => e.Min());
-        label1.Text = "Max: " + max.ToString("g5") + ";   Min: " + min.ToString("g5");
+        label1.Text = $"Max: {max:g5};   Min: {min:g5}";
 
         var scale = comboBoxColor.SelectedIndex == 0 ? PseudoBitmap.ColorScaleColdWarmLiner : PseudoBitmap.ColorScaleGrayLiner;
 
@@ -214,8 +215,10 @@ public partial class PoleFigureControl2 : UserControl
                 int density = Math.Min(65535, Math.Max((int)(val * 65535), 0));
 
                 g.FillPie(new SolidBrush(Color.FromArgb(scale[density].R, scale[density].G, scale[density].B)),
-                    -(i + 1.0) / pixels.Length, -(i + 1.0) / pixels.Length, (i + 1.0) / pixels.Length * 2, (i + 1.0) / pixels.Length * 2,
-                    -(double)j / pixels[i].Length * 360.0, 1.0 / pixels[i].Length * 360.0);
+                    -(i + 1.0) / pixels.Length, -(i + 1.0) / pixels.Length,
+                    (i + 1.0) / pixels.Length * 2, (i + 1.0) / pixels.Length * 2,
+                    -(double)(j + 1) / pixels[i].Length * 360.0,
+                    1.0 / pixels[i].Length * 360.0);
             }
     }
 

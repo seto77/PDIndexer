@@ -8,9 +8,10 @@ using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
+using System.Net.Http;
 using System.Text;
 using System.Threading;
-using V3 = OpenTK.Vector3d;
+using V3 = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography;
 
@@ -108,7 +109,7 @@ public class ConvertCrystalData
             while ((strTemp = reader.ReadLine()) != null)
                 stringList.Add(strTemp);
             reader.Close();
-            cry = ConvertFromSMAP(stringList.ToArray());
+            cry = ConvertFromSMAP([.. stringList]);
         }
 
         for (int i = 0; i < cry.Length; i++)
@@ -217,7 +218,7 @@ public class ConvertCrystalData
                     cry.Add(tempCrystal);
                 }
         }
-        return cry.ToArray();
+        return [.. cry];
     }
 
     /// <summary>
@@ -303,7 +304,7 @@ public class ConvertCrystalData
         while ((strTemp = reader.ReadLine()) != null)
             if (strTemp != "")
                 stringList.Add(strTemp);
-        return ConvertFromAmc(stringList.ToArray());
+        return ConvertFromAmc([.. stringList]);
     }
 
 
@@ -351,9 +352,9 @@ public class ConvertCrystalData
         }
 
         if (Title.Contains("_cod_database_code"))
-            Title = Title.Replace("_cod_database_code", "\r\n_cod_database_code");
+            Title = Title.Replace("_cod_database_code", "\r\nCOD:");
         else if (Title.Contains("_database_code_amcsd"))
-            Title = Title.Replace("_database_code_amcsd", "\r\n_database_code_amcsd");
+            Title = Title.Replace("_database_code_amcsd", "\r\nAMCSD:");
 
         n++; if (str.Length <= n) return null;
 
@@ -528,9 +529,9 @@ public class ConvertCrystalData
             var atomsEx = new List<Atoms>();
             foreach (var a in c.Atoms)
             {
-                foreach (var t in translation) 
+                foreach (var (X, Y, Z) in translation) 
                     atomsEx.Add(new Atoms(a.Label,a.AtomicNumber,a.SubNumberXray,a.SubNumberElectron,a.Isotope,a.SymmetrySeriesNumber,
-                        new Vector3DBase( a.X+t.X,a.Y+t.Y,a.Z+t.Z ), a.PositionError,a.Occ,a.Occ_err,a.Dsf,a.Material,a.Radius,true,false));
+                        new Vector3DBase( a.X+X,a.Y+Y,a.Z+Z ), a.PositionError,a.Occ,a.Occ_err,a.Dsf,a.Material,a.Radius,true,false));
             }
             c.Atoms = [.. atomsEx];
             crystal = c.ToCrystal2();
@@ -743,7 +744,7 @@ public class ConvertCrystalData
         {
             if (sg[i].Length < length)
             {
-                var sg_list = new List<string>(new[] { sg[i] });
+                var sg_list = new List<string>([sg[i]]);
 
                 if (sg[i].Contains('e'))
                 {
@@ -859,6 +860,8 @@ public class ConvertCrystalData
             if (strTemp.Contains('\r'))
                 strTemp = strTemp.Replace("\r", "\n");
 
+            strTemp = EscapeString(strTemp);
+
             stringList = [.. strTemp.Split('\n', true)];
         }
 
@@ -926,13 +929,13 @@ public class ConvertCrystalData
                 {
                     while (m >= str.Count || !str[m].StartsWith(";", Ord))
                         temp.Append(str[m++] + " ");
-                    str[n] = "'" + temp.ToString().Trim().TrimEnd() + "'";
+                    str[n] = $"'{temp.ToString().Trim().TrimEnd()}'";
                     str.RemoveRange(n + 1, m - n);
                 }
             }
         }
 
-        if (str[^1].StartsWith("#"))
+        if (str[^1].StartsWith('#'))
             str[^1] = "#End of data";
 
 
@@ -1005,7 +1008,7 @@ public class ConvertCrystalData
                 }
                 else
                     tempData = "";
-                CIF.Add(new List<(string Label, string Data)>(new[] { (tempLabel, tempData.Replace("薔", " ")) }));
+                CIF.Add(new List<(string Label, string Data)>([(tempLabel, tempData.Replace("薔", " "))]));
             }
             else if (str[n].Trim().StartsWith("loop_", Ord))
             {//ループのとき
@@ -1212,7 +1215,6 @@ public class ConvertCrystalData
             string bIso = "", b11 = "", b22 = "", b33 = "", b12 = "", b13 = "", b23 = "";
 
             //まず基本的な原子位置や占有率などの情報を探す
-            occ = "1";
             for (int j = 0; j < cif.Count; j++)
             {
                 var label = cif[j].Label;
@@ -1231,11 +1233,6 @@ public class ConvertCrystalData
                 }
             }
 
-            if (x == "0021|" || y == "0021|" || z == "0021|")
-            {
-
-            }
-
             if (shift.X != 0 || shift.Y != 0 || shift.Z != 0)
             {
                 var _x = Crystal2.Decompose(x, sgnum);
@@ -1247,7 +1244,6 @@ public class ConvertCrystalData
             }
 
             //次に異方性の温度散乱因子をさがす (等方性の温度因子は既に上のループで読み込まれている)
-
             for (int k = 0; k < CIF.Count; k++)
             {
                 if (CIF[k].Exists(item => item.Label == "_atom_site_aniso_label" && item.Data == atomLabel))
@@ -1332,9 +1328,12 @@ public class ConvertCrystalData
         if (pageFirst != "") journal.Append(", ").Append(pageFirst);
         if (pageLast != "") journal.Append('-').Append(pageLast);
 
-        var authours = new StringBuilder();
-        foreach (string s in author)
-            authours.Append(s).Append("; ");
+        var authors = new StringBuilder();
+        for(int i = 0; i< author.Count; i++)
+            if(i== author.Count -1)
+                authors.Append(author[i].Replace(",", ""));
+            else
+                authors.Append(author[i].Replace(",", "") + ", \r\n");
 
         return new Crystal2
         {
@@ -1342,11 +1341,22 @@ public class ConvertCrystalData
             sym = (short)sgnum,
             name = name,
             atoms = atoms,
-            auth = authours.ToString(),
+            auth = authors.ToString().TrimEnd([' ', ',']).Replace(".", ""),
             jour = journal.ToString(),
             sect = sectionTitle,
             argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
         };
+    }
+
+    public static string EscapeString(string s)
+    {
+        return s
+            .Replace("&amp;", "&", StringComparison.Ordinal)
+            .Replace("&lt;", "<", StringComparison.Ordinal)
+            .Replace("&gt;", ">", StringComparison.Ordinal)
+            .Replace("&quot;", "\"", StringComparison.Ordinal)
+            .Replace("&nbsp;", " ", StringComparison.Ordinal)
+            .Replace("&#39;", "'", StringComparison.Ordinal);
     }
 
     private static V3 norm(V3 v)
@@ -1392,7 +1402,7 @@ public class ConvertCrystalData
 
         SgNameHM = SgNameHM.Replace("_", " ");
 
-        SgNameHM = SgNameHM.Replace("{hexagonalal axes}", " ");
+        SgNameHM = SgNameHM.Replace("{hexagonal axes}", " ");
         SgNameHM = SgNameHM.Replace("{rhombohedral axes}", " ");
 
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
@@ -1649,7 +1659,7 @@ public class ConvertCrystalData
         {
             if (sg[i].Length < length)
             {
-                var sg_list = new List<string>(new[] { sg[i] });
+                var sg_list = new List<string>([sg[i]]);
 
                 if (sg[i].Contains('e'))
                 {
@@ -1749,7 +1759,7 @@ public class ConvertCrystalData
         #region 原子の等価位置
         sb.AppendLine("loop_");
         sb.AppendLine("_symmetry_equiv_pos_as_xyz");
-        bool[][] flag = Array.Empty<bool[]>();
+        bool[][] flag = [];
         if (sym.LatticeTypeStr == "P") flag = [[false, false, false]];
         else if (sym.LatticeTypeStr == "A") flag = [[false, false, false], [false, true, true]];
         else if (sym.LatticeTypeStr == "B") flag = [[false, false, false], [true, false, true]];

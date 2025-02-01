@@ -84,6 +84,14 @@ public partial class Crystal2
                 DecomposeOnlyValue(CellTexts[0]), DecomposeOnlyValue(CellTexts[1]), DecomposeOnlyValue(CellTexts[2]),
                 DecomposeOnlyValue(CellTexts[3]), DecomposeOnlyValue(CellTexts[4]), DecomposeOnlyValue(CellTexts[5])));
 
+    /// <summary>
+    /// a,b,c,α,β,γ の順番. Getのみ. 長さはA, 角度は度単位. エラーの値は含まない.
+    /// </summary>
+    [MemoryPackIgnore]
+    public (float A, float B, float C, float Alpha, float Beta, float Gamma) CellOnlyValueFloat => ((
+                (float)DecomposeOnlyValue(CellTexts[0]), (float)DecomposeOnlyValue(CellTexts[1]), (float)DecomposeOnlyValue(CellTexts[2]),
+                (float)DecomposeOnlyValue(CellTexts[3]), (float)DecomposeOnlyValue(CellTexts[4]), (float)DecomposeOnlyValue(CellTexts[5])));
+
 
     /// <summary>
     /// a,b,c,α,β,γ の順番. Getのみ. 長さはnm, 角度はradian.
@@ -136,14 +144,14 @@ public partial class Crystal2
             iso = (iso.Value / 100, double.IsNaN(iso.Error) ? iso.Error : iso.Error / 100);
 
             (double Value, double Error)[] aniso = a.AnisoTexts != null ? a.AnisoTexts.Select(x => Decompose(x)).ToArray() :
-                 new[] { (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN) };
+                 [(0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN), (0.0, double.NaN)];
 
             var anisoValues = a.IsU ? aniso.Select(an => an.Value / 100).ToArray() : aniso.Select(an => an.Value).ToArray();
             var anisoErrors = a.IsU ? aniso.Select(an => an.Error / 100).ToArray() : aniso.Select(an => an.Error).ToArray();
             var _atom = new Atoms(
                     a.Label, a.AtomNo, a.SubXray, a.SubElectron, null, c.sym,
-                    new Vector3D(pos[0].Value, pos[1].Value, pos[2].Value, false),
-                    new Vector3D(pos[0].Error, pos[1].Error, pos[2].Error, false),
+                    new Vector3DBase(pos[0].Value, pos[1].Value, pos[2].Value),
+                    new Vector3DBase(pos[0].Error, pos[1].Error, pos[2].Error),
                     occ.Value, occ.Error,
                     new DiffuseScatteringFactor(a.IsU ? DiffuseScatteringFactor.Type.U : DiffuseScatteringFactor.Type.B, a.IsIso,
                         iso.Value, iso.Error, anisoValues, anisoErrors, cell.Values)
@@ -219,13 +227,10 @@ public partial class Crystal2
     }
 
     /// <summary>
-    /// MemoryPackでシリアライズしてbyte[]配列を返す
+    /// MemoryPackでシリアライズして byte[] 配列を返す
     /// </summary>
     /// <returns></returns>
-    public byte[] Serialize()
-    {
-        return Serialize(this);
-    }
+    public byte[] Serialize() => Serialize(this);
 
     /// <summary>
     /// 静的メソッド　MemoryPackでシリアライズしてbyte[]配列を返す
@@ -234,14 +239,13 @@ public partial class Crystal2
     /// <returns></returns>
     public static byte[] Serialize(Crystal2 c )
     {
-        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal);
+        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal, 24);
         MemoryPackSerializer.Serialize(compressor, c);
-        var data = compressor.ToArray();
-        return data;
+        return compressor.ToArray();
     }
 
     /// <summary>
-    /// MemoryPackでシリアライズされたbyte[]配列からCrystal2を返す. 不適切な入力値だった場合はnull返し。
+    /// MemoryPackでシリアライズされた byte[] 配列からCrystal2を返す. 不適切な入力値だった場合は null 返し。
     /// </summary>
     /// <param name="bytes"></param>
     /// <returns></returns>
@@ -265,262 +269,22 @@ public partial class Crystal2
     static readonly string[] toStringDic =
         [
             #region 
-            "00"
-            ,"10"
-            ,"20"
-            ,"30"
-            ,"40"
-            ,"50"
-            ,"60"
-            ,"70"
-            ,"80"
-            ,"90"
-            ,".0"
-            ,"/0"
-            ,"-0"
-            ,"|0"
-            ,"E0"
-            ,"0"
-            ,"01"
-            ,"11"
-            ,"21"
-            ,"31"
-            ,"41"
-            ,"51"
-            ,"61"
-            ,"71"
-            ,"81"
-            ,"91"
-            ,".1"
-            ,"/1"
-            ,"-1"
-            ,"|1"
-            ,"E1"
-            ,"1"
-            ,"02"
-            ,"12"
-            ,"22"
-            ,"32"
-            ,"42"
-            ,"52"
-            ,"62"
-            ,"72"
-            ,"82"
-            ,"92"
-            ,".2"
-            ,"/2"
-            ,"-2"
-            ,"|2"
-            ,"E2"
-            ,"2"
-            ,"03"
-            ,"13"
-            ,"23"
-            ,"33"
-            ,"43"
-            ,"53"
-            ,"63"
-            ,"73"
-            ,"83"
-            ,"93"
-            ,".3"
-            ,"/3"
-            ,"-3"
-            ,"|3"
-            ,"E3"
-            ,"3"
-            ,"04"
-            ,"14"
-            ,"24"
-            ,"34"
-            ,"44"
-            ,"54"
-            ,"64"
-            ,"74"
-            ,"84"
-            ,"94"
-            ,".4"
-            ,"/4"
-            ,"-4"
-            ,"|4"
-            ,"E4"
-            ,"4"
-            ,"05"
-            ,"15"
-            ,"25"
-            ,"35"
-            ,"45"
-            ,"55"
-            ,"65"
-            ,"75"
-            ,"85"
-            ,"95"
-            ,".5"
-            ,"/5"
-            ,"-5"
-            ,"|5"
-            ,"E5"
-            ,"5"
-            ,"06"
-            ,"16"
-            ,"26"
-            ,"36"
-            ,"46"
-            ,"56"
-            ,"66"
-            ,"76"
-            ,"86"
-            ,"96"
-            ,".6"
-            ,"/6"
-            ,"-6"
-            ,"|6"
-            ,"E6"
-            ,"6"
-            ,"07"
-            ,"17"
-            ,"27"
-            ,"37"
-            ,"47"
-            ,"57"
-            ,"67"
-            ,"77"
-            ,"87"
-            ,"97"
-            ,".7"
-            ,"/7"
-            ,"-7"
-            ,"|7"
-            ,"E7"
-            ,"7"
-            ,"08"
-            ,"18"
-            ,"28"
-            ,"38"
-            ,"48"
-            ,"58"
-            ,"68"
-            ,"78"
-            ,"88"
-            ,"98"
-            ,".8"
-            ,"/8"
-            ,"-8"
-            ,"|8"
-            ,"E8"
-            ,"8"
-            ,"09"
-            ,"19"
-            ,"29"
-            ,"39"
-            ,"49"
-            ,"59"
-            ,"69"
-            ,"79"
-            ,"89"
-            ,"99"
-            ,".9"
-            ,"/9"
-            ,"-9"
-            ,"|9"
-            ,"E9"
-            ,"9"
-            ,"0."
-            ,"1."
-            ,"2."
-            ,"3."
-            ,"4."
-            ,"5."
-            ,"6."
-            ,"7."
-            ,"8."
-            ,"9."
-            ,".."
-            ,"/."
-            ,"-."
-            ,"|."
-            ,"E."
-            ,"."
-            ,"0/"
-            ,"1/"
-            ,"2/"
-            ,"3/"
-            ,"4/"
-            ,"5/"
-            ,"6/"
-            ,"7/"
-            ,"8/"
-            ,"9/"
-            ,"./"
-            ,"//"
-            ,"-/"
-            ,"|/"
-            ,"E/"
-            ,"/"
-            ,"0-"
-            ,"1-"
-            ,"2-"
-            ,"3-"
-            ,"4-"
-            ,"5-"
-            ,"6-"
-            ,"7-"
-            ,"8-"
-            ,"9-"
-            ,".-"
-            ,"/-"
-            ,"--"
-            ,"|-"
-            ,"E-"
-            ,"-"
-            ,"0|"
-            ,"1|"
-            ,"2|"
-            ,"3|"
-            ,"4|"
-            ,"5|"
-            ,"6|"
-            ,"7|"
-            ,"8|"
-            ,"9|"
-            ,".|"
-            ,"/|"
-            ,"-|"
-            ,"||"
-            ,"E|"
-            ,"|"
-            ,"0E"
-            ,"1E"
-            ,"2E"
-            ,"3E"
-            ,"4E"
-            ,"5E"
-            ,"6E"
-            ,"7E"
-            ,"8E"
-            ,"9E"
-            ,".E"
-            ,"/E"
-            ,"-E"
-            ,"|E"
-            ,"EE"
-            ,"E"
-            ,"0"
-            ,"1"
-            ,"2"
-            ,"3"
-            ,"4"
-            ,"5"
-            ,"6"
-            ,"7"
-            ,"8"
-            ,"9"
-            ,"."
-            ,"/"
-            ,"-"
-            ,"|"
-            ,"E"
-            ,""
+            "00"            ,"10"            ,"20"            ,"30"            ,"40"            ,"50"            ,"60"            ,"70"            ,"80"            ,"90"            ,".0"            ,"/0"            ,"-0"            ,"|0"            ,"E0"            ,"0"
+            ,"01"            ,"11"            ,"21"            ,"31"            ,"41"            ,"51"            ,"61"            ,"71"            ,"81"            ,"91"            ,".1"            ,"/1"            ,"-1"            ,"|1"            ,"E1"            ,"1"
+            ,"02"            ,"12"            ,"22"            ,"32"            ,"42"            ,"52"            ,"62"            ,"72"            ,"82"            ,"92"            ,".2"            ,"/2"            ,"-2"            ,"|2"            ,"E2"            ,"2"
+            ,"03"            ,"13"            ,"23"            ,"33"            ,"43"            ,"53"            ,"63"            ,"73"            ,"83"            ,"93"            ,".3"            ,"/3"            ,"-3"            ,"|3"            ,"E3"            ,"3"
+            ,"04"            ,"14"            ,"24"            ,"34"            ,"44"            ,"54"            ,"64"            ,"74"            ,"84"            ,"94"            ,".4"            ,"/4"            ,"-4"            ,"|4"            ,"E4"            ,"4"
+            ,"05"            ,"15"            ,"25"            ,"35"            ,"45"            ,"55"            ,"65"            ,"75"            ,"85"            ,"95"            ,".5"            ,"/5"            ,"-5"            ,"|5"            ,"E5"            ,"5"
+            ,"06"            ,"16"            ,"26"            ,"36"            ,"46"            ,"56"            ,"66"            ,"76"            ,"86"            ,"96"            ,".6"            ,"/6"            ,"-6"            ,"|6"            ,"E6"            ,"6"
+            ,"07"            ,"17"            ,"27"            ,"37"            ,"47"            ,"57"            ,"67"            ,"77"            ,"87"            ,"97"            ,".7"            ,"/7"            ,"-7"            ,"|7"            ,"E7"            ,"7"
+            ,"08"            ,"18"            ,"28"            ,"38"            ,"48"            ,"58"            ,"68"            ,"78"            ,"88"            ,"98"            ,".8"            ,"/8"            ,"-8"            ,"|8"            ,"E8"            ,"8"
+            ,"09"            ,"19"            ,"29"            ,"39"            ,"49"            ,"59"            ,"69"            ,"79"            ,"89"            ,"99"            ,".9"            ,"/9"            ,"-9"            ,"|9"            ,"E9"            ,"9"
+            ,"0."            ,"1."            ,"2."            ,"3."            ,"4."            ,"5."            ,"6."            ,"7."            ,"8."            ,"9."            ,".."            ,"/."            ,"-."            ,"|."            ,"E."            ,"."            
+            ,"0/"            ,"1/"            ,"2/"            ,"3/"            ,"4/"            ,"5/"            ,"6/"            ,"7/"            ,"8/"            ,"9/"            ,"./"            ,"//"            ,"-/"            ,"|/"            ,"E/"            ,"/"            
+            ,"0-"            ,"1-"            ,"2-"            ,"3-"            ,"4-"            ,"5-"            ,"6-"            ,"7-"            ,"8-"            ,"9-"            ,".-"            ,"/-"            ,"--"            ,"|-"            ,"E-"            ,"-"            
+            ,"0|"            ,"1|"            ,"2|"            ,"3|"            ,"4|"            ,"5|"            ,"6|"            ,"7|"            ,"8|"            ,"9|"            ,".|"            ,"/|"            ,"-|"            ,"||"            ,"E|"            ,"|"            
+            ,"0E"            ,"1E"            ,"2E"            ,"3E"            ,"4E"            ,"5E"            ,"6E"            ,"7E"            ,"8E"            ,"9E"            ,".E"            ,"/E"            ,"-E"            ,"|E"            ,"EE"            ,"E"
+            ,"0"            ,"1"            ,"2"            ,"3"            ,"4"            ,"5"            ,"6"            ,"7"            ,"8"            ,"9"            ,"."            ,"/"            ,"-"            ,"|"            ,"E"            ,""
             #endregion
         ];
 
@@ -540,22 +304,7 @@ public partial class Crystal2
     [MemoryPackIgnore]
     static readonly FrozenDictionary<char, byte> toByteDic = new Dictionary<char, byte>()
     {
-        { '0', 0 },
-        { '1', 1 },
-        { '2', 2 },
-        { '3', 3 },
-        { '4', 4 },
-        { '5', 5 },
-        { '6', 6 },
-        { '7', 7 },
-        { '8', 8 },
-        { '9', 9 },
-        { '.', 10 },
-        { '/', 11 },
-        { '-', 12 },
-        { '(', 13 },
-        { ')', 13 },
-        { 'E', 14 },
+        { '0', 0 }, { '1', 1 }, { '2', 2 }, { '3', 3 },  { '4', 4 }, { '5', 5 }, { '6', 6 }, { '7', 7 }, { '8', 8 }, { '9', 9 }, { '.', 10 }, { '/', 11 }, { '-', 12 }, { '(', 13 }, { ')', 13 }, { 'E', 14 },
     }.ToFrozenDictionary();
 
     /// <summary>
@@ -567,9 +316,9 @@ public partial class Crystal2
     {
         s = s.Trim().TrimEnd().Replace('e', 'E');
         if (s.Length == 0 || s == "?" || s == "NaN")
-            return [(byte)255];
+            return [255];
         else if (s == "0")
-            return [(byte)(240 + 0)];
+            return [(240 + 0)];
         else
         {
             if (s.StartsWith("0.", Ord))
@@ -603,7 +352,7 @@ public partial class Crystal2
             {
                 if (AssemblyState.IsDebug)
                     MessageBox.Show(e.ToString());
-                return [(byte)255];
+                return [255];
             }
         }
     }
@@ -622,7 +371,7 @@ public partial class Crystal2
 
     /// <summary>
     /// 9.726|5|, 1.234|12|E-6 のような文字列を、ValueとErrorに分解してタプルで返す. 
-    /// 例外の場合は(double.NaN,double.NaN). 括弧が存在しない場合、Errorはdouble.NaN. 
+    /// 例外の場合は(double.NaN,double.NaN). 括弧が存在しない場合、Errorは double.NaN. 
     /// </summary>
     /// <param name="str"></param>
     /// <param name="IsHex"></param>

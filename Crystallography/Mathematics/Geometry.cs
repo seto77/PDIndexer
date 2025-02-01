@@ -1,11 +1,12 @@
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
-using OpenTK;
+using OpenTK.Mathematics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using V3d = OpenTK.Vector3d;
+using V3d = OpenTK.Mathematics.Vector3d;
+using OpenTK.Graphics;
 
 namespace Crystallography;
 
@@ -701,7 +702,7 @@ public static class Geometry
     /// <param name="p1"></param>
     /// <param name="p2"></param>
     /// <returns></returns>
-    public static Vector3d GetCrossPoint(in double a, in double b, in double c, in double d, in V3d p1, in V3d p2)
+    public static V3d GetCrossPoint(in double a, in double b, in double c, in double d, in V3d p1, in V3d p2)
     {
         //ŽŸ‚Ì3‚Â‚Ì•û’öŽ®‚ð–ž‚½‚·x, y, z ‚ð‹‚ß‚ê‚Î‚æ‚¢ (2020/02/04C³)
         // a x + b y + c z = d
@@ -930,7 +931,7 @@ public static class Geometry
         var mtx = new DenseMatrix(points.Count(), 3);
         int n = 0;
         foreach (var p in points.Select(p => p - ave))
-            mtx.SetRow(n++, p.ToDoublearray());
+            mtx.SetRow(n++, p.ToDoubleArray());
 
         var evd = (mtx.Transpose() * mtx).Evd(Symmetricity.Unknown);
         var index = evd.EigenValues.AbsoluteMinimumIndex();
@@ -949,7 +950,7 @@ public static class Geometry
         //http://sysplan.nams.kyushu-u.ac.jp/gen/edu/Algorithms/PlaneFitting/index.html
         //pdf‚ÍCrystallograpy/Ž‘—¿ƒtƒHƒ‹ƒ_
 
-        var ave = new OpenTK.Vector3d();
+        var ave = new OpenTK.Mathematics.Vector3d();
         foreach (var p in points)
             ave += p;
         ave /= points.Count();
