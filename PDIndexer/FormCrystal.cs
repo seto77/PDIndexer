@@ -21,7 +21,7 @@ public partial class FormCrystal : Form
     public bool SkipEvent = false;
     #endregion
 
-#region オープン、クローズ、コンストラクタ
+    #region オープン、クローズ、コンストラクタ
     public FormCrystal()
     {
         InitializeComponent();
@@ -259,5 +259,8 @@ public partial class FormCrystal : Form
 
     private void dataGridViewCrystal_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
 
+    private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
+    {
+    }
 }
 

@@ -1998,8 +1998,6 @@ public partial class FormMain : Form
         //マウス位置情報の更新
         PointD pt = ConvToRealCoord(e.X, e.Y);
 
-        
-
         #region 横軸と縦軸の単位の設定
         labelTwoTheta.Text = AxisMode switch
         {

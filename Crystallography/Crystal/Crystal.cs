@@ -1949,6 +1949,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             Alpha_err = InitialAlpha_err;
             Beta_err = InitialBeta_err;
             Gamma_err = InitialGamma_err;
+            SetAxis();
         }
     }
     #endregion

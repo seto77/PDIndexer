@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
-    Microsoft ResX Schema 
+    Microsoft ResX Schema
 
     Version 2.0
 
@@ -48,7 +48,7 @@
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
     value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
@@ -117,275 +117,140 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="checkBoxCombineSameDspacingPeaks.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label6.Name" xml:space="preserve">
-    <value>label6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn4</value>
-  </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="checkBoxShowPeakIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn3.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn3</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 38</value>
-  </data>
-  <data name="numericUpDownAngleThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 0</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.Name" xml:space="preserve">
-    <value>buttonLower</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
-    <value>113, 0</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 23</value>
-  </data>
-  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="radioButtonAngleThreshold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>rel.%</value>
-  </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
-    <value>79</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEnergyThreshold.Name" xml:space="preserve">
-    <value>numericUpDownEnergyThreshold</value>
-  </data>
-  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 196</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="buttonDelete.Text" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
-    <value>buttonDelete</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="searchCrystalControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 0, 3, 0</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonLower.Text" xml:space="preserve">
-    <value>↓</value>
-  </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>156, 100</value>
-  </data>
-  <data name="searchCrystalControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakIndices.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEnergyThreshold.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
   <data name="splitContainer1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="&gt;&gt;dataGridViewImageColumn1.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn1</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 3</value>
   </data>
-  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
-    <value>groupBox1</value>
+  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
+    <value>Horizontal</value>
   </data>
-  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
-    <value>82</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 127</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 132</value>
-  </data>
-  <data name="buttonChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="numericUpDownAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt</value>
-  </data>
-  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label3.Name" xml:space="preserve">
-    <value>label3</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Text" xml:space="preserve">
-    <value>all checked crystals</value>
-  </data>
-  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>72</value>
+  <data name="crystalControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="crystalControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
+  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
   </data>
-  <data name="numericUpDownEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>FormCrystal</value>
-  </data>
-  <data name="dataGridViewCrystal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="numericUpDownEnergyThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownAngleThreshold.Name" xml:space="preserve">
-    <value>numericUpDownAngleThreshold</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="numericUpDownEnergyThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 23</value>
-  </data>
-  <data name="searchCrystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 266</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownAngleThreshold.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonAllClear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="crystalControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="crystalControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 3, 3, 3</value>
   </data>
-  <data name="checkBoxVariableRatioOfIntensity.TabIndex" type="System.Int32, mscorlib">
+  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>482, 341</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
+  </data>
+  <data name="&gt;&gt;crystalControl.Name" xml:space="preserve">
+    <value>crystalControl</value>
+  </data>
+  <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;crystalControl.Parent" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;crystalControl.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="crystalDatabaseControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
+  <data name="groupBox3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>458, 0</value>
+  </data>
+  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 10, 10, 10</value>
+  </data>
+  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>488, 365</value>
+  </data>
+  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Crystal Information</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
+    <value>groupBox3</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="buttonAdd.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>3, 365</value>
+  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="radioButtonAllCheckedCrystals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label5.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 27</value>
+  </data>
+  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 61</value>
+  </data>
+  <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
   </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>⇐
 Add
 ⇐</value>
   </data>
-  <data name="&gt;&gt;numericUpDownThresholdIntesity.Name" xml:space="preserve">
-    <value>numericUpDownThresholdIntesity</value>
+  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
+    <value>buttonAdd</value>
   </data>
-  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
+  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;buttonAdd.Parent" xml:space="preserve">
+    <value>panel2</value>
   </data>
-  <data name="checkBoxCombineSameDspacingPeaks.TabIndex" type="System.Int32, mscorlib">
+  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="numericUpDownThresholdIntesity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 25</value>
+  <data name="buttonChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
+    <value>2, 88</value>
+  </data>
+  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 77</value>
+  </data>
+  <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>⇔
@@ -393,50 +258,1296 @@ Re-
 place
 ⇔</value>
   </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
+    <value>buttonChange</value>
+  </data>
+  <data name="&gt;&gt;buttonChange.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonChange.Parent" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;buttonChange.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 0</value>
+  </data>
+  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>52, 365</value>
+  </data>
+  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
+    <value>panel2</value>
+  </data>
+  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="dataGridViewCrystal.ColumnHeadersHeight" type="System.Int32, mscorlib">
+    <value>46</value>
+  </data>
+  <metadata name="checkDataGridViewCheckBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="checkDataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <metadata name="PeakColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="PeakColor.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <metadata name="Crystal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="Crystal.HeaderText" xml:space="preserve">
+    <value>Crysal</value>
+  </data>
+  <data name="Crystal.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <metadata name="bindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>133, 12</value>
+  </metadata>
+  <data name="dataGridViewCrystal.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="dataGridViewCrystal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 48</value>
+  </data>
+  <data name="dataGridViewCrystal.RowHeadersWidth" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="dataGridViewCrystal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 314</value>
+  </data>
+  <data name="dataGridViewCrystal.TabIndex" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCrystal.Name" xml:space="preserve">
+    <value>dataGridViewCrystal</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCrystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCrystal.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;dataGridViewCrystal.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonUpper.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonUpper.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonUpper.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonUpper.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="buttonUpper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 26</value>
+  </data>
+  <data name="buttonUpper.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="buttonUpper.Text" xml:space="preserve">
+    <value>↑</value>
+  </data>
+  <data name="buttonUpper.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.Name" xml:space="preserve">
+    <value>buttonUpper</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;buttonUpper.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="buttonLower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonLower.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonLower.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
   <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
     <value>Arial, 9.75pt</value>
   </data>
-  <data name="radioButtonEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt</value>
+  <data name="buttonLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Crystal</value>
+  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 0</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="buttonLower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
   </data>
-  <data name="checkBoxShowPeakUnderProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 89</value>
+  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 26</value>
   </data>
-  <data name="&gt;&gt;searchCrystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.SearchCrystalControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  <data name="buttonLower.TabIndex" type="System.Int32, mscorlib">
+    <value>77</value>
   </data>
-  <data name="&gt;&gt;crystalDatabaseControl.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="buttonLower.Text" xml:space="preserve">
+    <value>↓</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="buttonLower.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
+    <value>TopCenter</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Crystal Information</value>
+  <data name="&gt;&gt;buttonLower.Name" xml:space="preserve">
+    <value>buttonLower</value>
   </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
+  <data name="&gt;&gt;buttonLower.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
-    <value>contextMenuStrip1</value>
+  <data name="&gt;&gt;buttonLower.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
   </data>
-  <data name="groupBox4.Text" xml:space="preserve">
-    <value>Crystal database</value>
+  <data name="&gt;&gt;buttonLower.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="buttonDelete.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonDelete.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
+    <value>58, 0</value>
+  </data>
+  <data name="buttonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>10, 0, 0, 0</value>
+  </data>
+  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
+    <value>55, 27</value>
+  </data>
+  <data name="buttonDelete.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.Name" xml:space="preserve">
+    <value>buttonDelete</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="buttonAllClear.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="buttonAllClear.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="buttonAllClear.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonAllClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="buttonAllClear.Location" type="System.Drawing.Point, System.Drawing">
+    <value>113, 0</value>
+  </data>
+  <data name="buttonAllClear.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 27</value>
+  </data>
+  <data name="buttonAllClear.TabIndex" type="System.Int32, mscorlib">
+    <value>59</value>
+  </data>
+  <data name="buttonAllClear.Text" xml:space="preserve">
+    <value>Delete all</value>
+  </data>
+  <data name="&gt;&gt;buttonAllClear.Name" xml:space="preserve">
+    <value>buttonAllClear</value>
+  </data>
+  <data name="&gt;&gt;buttonAllClear.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;buttonAllClear.Parent" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;buttonAllClear.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="flowLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Top</value>
+  </data>
+  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 27</value>
+  </data>
+  <data name="flowLayoutPanel3.TabIndex" type="System.Int32, mscorlib">
+    <value>79</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
+    <value>flowLayoutPanel3</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel3.ZOrder" xml:space="preserve">
+    <value>1</value>
   </data>
   <data name="groupBox1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Left</value>
   </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>198, 0</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>208, 365</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>72</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Crystal List</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>195, 0</value>
+  </data>
+  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>3, 365</value>
+  </data>
+  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
+    <value>78</value>
+  </data>
+  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
+    <value>panel3</value>
+  </data>
+  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radioButtonAngleThreshold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>114, 18</value>
+  </data>
+  <data name="radioButtonAngleThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
+    <value>Angle Threshold</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleThreshold.Name" xml:space="preserve">
+    <value>radioButtonAngleThreshold</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleThreshold.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAngleThreshold.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>344, 15</value>
+  </metadata>
+  <data name="incrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>196, 22</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Increment &amp;&amp; Decimal Places</value>
+  </data>
+  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 26</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Name" xml:space="preserve">
+    <value>contextMenuStrip1</value>
+  </data>
+  <data name="&gt;&gt;contextMenuStrip1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ContextMenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 0</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 22</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleThreshold.Name" xml:space="preserve">
+    <value>numericUpDownAngleThreshold</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleThreshold.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownAngleThreshold.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>170, 0</value>
+  </data>
+  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>11, 13</value>
+  </data>
+  <data name="label5.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="&gt;&gt;label5.Name" xml:space="preserve">
+    <value>label5</value>
+  </data>
+  <data name="&gt;&gt;label5.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label5.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 23</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 0</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>118, 18</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
+    <value>Energy threshold</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyThreshold.Name" xml:space="preserve">
+    <value>radioButtonEnergyThreshold</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyThreshold.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;radioButtonEnergyThreshold.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 9pt</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 23</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 0</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.Size" type="System.Drawing.Size, System.Drawing">
+    <value>44, 22</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownEnergyThreshold.Name" xml:space="preserve">
+    <value>numericUpDownEnergyThreshold</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownEnergyThreshold.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownEnergyThreshold.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownEnergyThreshold.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 8.25pt</value>
+  </data>
+  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>162, 23</value>
+  </data>
+  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 1, 0, 0</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>20, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>eV</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="flowLayoutPanel1.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 196</value>
+  </data>
+  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>182, 48</value>
+  </data>
+  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
+    <value>flowLayoutPanel1</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 171</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Size" type="System.Drawing.Size, System.Drawing">
+    <value>173, 21</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Text" xml:space="preserve">
+    <value>Combine adjacent peaks:</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.Name" xml:space="preserve">
+    <value>checkBoxCombineSameDspacingPeaks</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>156, 100</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 17</value>
+  </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>pixel</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 276</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Size" type="System.Drawing.Size, System.Drawing">
+    <value>137, 21</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Text" xml:space="preserve">
+    <value>all checked crystals</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllCheckedCrystals.Name" xml:space="preserve">
+    <value>radioButtonAllCheckedCrystals</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllCheckedCrystals.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllCheckedCrystals.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonAllCheckedCrystals.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 296</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Size" type="System.Drawing.Size, System.Drawing">
+    <value>143, 21</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
+    <value>only selected crystal</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.Name" xml:space="preserve">
+    <value>radioButtonOnlySelectedCrystal</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="numericUpDownThresholdIntesity.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericUpDownThresholdIntesity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericUpDownThresholdIntesity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 132</value>
+  </data>
+  <data name="numericUpDownThresholdIntesity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 25</value>
+  </data>
+  <data name="numericUpDownThresholdIntesity.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownThresholdIntesity.Name" xml:space="preserve">
+    <value>numericUpDownThresholdIntesity</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownThresholdIntesity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownThresholdIntesity.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownThresholdIntesity.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="numericUpDownHeightOfBottomPeak.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="numericUpDownHeightOfBottomPeak.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericUpDownHeightOfBottomPeak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>114, 98</value>
+  </data>
+  <data name="numericUpDownHeightOfBottomPeak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 25</value>
+  </data>
+  <data name="numericUpDownHeightOfBottomPeak.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.Name" xml:space="preserve">
+    <value>numericUpDownHeightOfBottomPeak</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 22</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Size" type="System.Drawing.Size, System.Drawing">
+    <value>174, 21</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Text" xml:space="preserve">
+    <value>Show peaks over profiles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.Name" xml:space="preserve">
+    <value>checkBoxShowPeakOverProfiles</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 258</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Size" type="System.Drawing.Size, System.Drawing">
+    <value>134, 21</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Text" xml:space="preserve">
+    <value>Show peak indices</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakIndices.Name" xml:space="preserve">
+    <value>checkBoxShowPeakIndices</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakIndices.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakIndices.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakIndices.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 127</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 38</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
+    <value>Hide peaks
+ below</value>
+  </data>
+  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.Name" xml:space="preserve">
+    <value>checkBoxInvisibleWeakPeak</value>
+  </data>
+  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>51, 62</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>126, 21</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
+    <value>Scalable intensity</value>
+  </data>
+  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>16, 15</value>
+  </metadata>
+  <data name="checkBoxVariableRatioOfIntensity.ToolTip" xml:space="preserve">
+    <value>Check if you want to change diffraction peak height by mouse drag.
+(relative intensity ratio is always reserved)</value>
+  </data>
+  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.Name" xml:space="preserve">
+    <value>checkBoxVariableRatioOfIntensity</value>
+  </data>
+  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Location" type="System.Drawing.Point, System.Drawing">
+    <value>30, 43</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 21</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
+    <value>Calculate intensity ratio</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.ToolTip" xml:space="preserve">
+    <value>Check if you want to calculate intensity ratios
+of  diffraction peaks based on crystal structures</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateIntensity.Name" xml:space="preserve">
+    <value>checkBoxCalculateIntensity</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateIntensity.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateIntensity.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxCalculateIntensity.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label6.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
+    <value>153, 134</value>
+  </data>
+  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 17</value>
+  </data>
+  <data name="label6.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>rel.%</value>
+  </data>
+  <data name="&gt;&gt;label6.Name" xml:space="preserve">
+    <value>label6</value>
+  </data>
+  <data name="&gt;&gt;label6.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label6.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>8, 89</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>107, 38</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
+    <value>Show peaks
+ under profile</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.Name" xml:space="preserve">
+    <value>checkBoxShowPeakUnderProfile</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Left</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 365</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>76</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Diffraction Peak Option</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="splitContainer1.Panel1MinSize" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="crystalDatabaseControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="crystalDatabaseControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="crystalDatabaseControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>3, 21</value>
+  </data>
+  <data name="crystalDatabaseControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 0, 4, 0</value>
+  </data>
+  <data name="crystalDatabaseControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>746, 266</value>
+  </data>
+  <data name="crystalDatabaseControl.TabIndex" type="System.Int32, mscorlib">
+    <value>80</value>
+  </data>
+  <data name="&gt;&gt;crystalDatabaseControl.Name" xml:space="preserve">
+    <value>crystalDatabaseControl</value>
+  </data>
+  <data name="&gt;&gt;crystalDatabaseControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.CrystalDatabaseControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;crystalDatabaseControl.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;crystalDatabaseControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="searchCrystalControl.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="searchCrystalControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="searchCrystalControl.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="searchCrystalControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>3, 0, 3, 0</value>
+  </data>
+  <data name="searchCrystalControl.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 266</value>
+  </data>
+  <data name="searchCrystalControl.TabIndex" type="System.Int32, mscorlib">
+    <value>81</value>
+  </data>
+  <data name="&gt;&gt;searchCrystalControl.Name" xml:space="preserve">
+    <value>searchCrystalControl</value>
+  </data>
+  <data name="&gt;&gt;searchCrystalControl.Type" xml:space="preserve">
+    <value>Crystallography.Controls.SearchCrystalControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;searchCrystalControl.Parent" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;searchCrystalControl.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Right</value>
+  </data>
+  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>749, 21</value>
+  </data>
+  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>194, 266</value>
+  </data>
+  <data name="panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
+    <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;panel1.Parent" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="groupBox4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
+    <value>Fill</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 290</value>
+  </data>
+  <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
+    <value>82</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Crystal database</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
+    <value>groupBox4</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
+    <value>splitContainer1.Panel2</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Panel2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="splitContainer1.Panel2MinSize" type="System.Int32, mscorlib">
+    <value>100</value>
+  </data>
+  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>946, 659</value>
+  </data>
+  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
+    <value>365</value>
+  </data>
+  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
+    <value>83</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Name" xml:space="preserve">
+    <value>splitContainer1</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Check</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewImageColumn2.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="dataGridViewImageColumn3.Width" type="System.Int32, mscorlib">
+    <value>30</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.MinimumWidth" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>45</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 17</value>
+  </data>
+  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>952, 665</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -512,1349 +1623,112 @@ place
         AAD+HwAA//8AAA==
 </value>
   </data>
-  <data name="buttonUpper.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;buttonChange.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 88</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="groupBox3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>pixel</value>
-  </data>
-  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 77</value>
-  </data>
-  <data name="radioButtonAngleThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 17</value>
-  </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="panel3.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakIndices.Name" xml:space="preserve">
-    <value>checkBoxShowPeakIndices</value>
-  </data>
-  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 3, 3, 3</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllCheckedCrystals.Name" xml:space="preserve">
-    <value>radioButtonAllCheckedCrystals</value>
-  </data>
-  <data name="buttonAllClear.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 296</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleThreshold.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>92, 38</value>
-  </data>
-  <data name="splitContainer1.Panel1MinSize" type="System.Int32, mscorlib">
-    <value>100</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Show peaks
- under profile</value>
-  </data>
-  <data name="buttonLower.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="label5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;panel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;panel3.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="radioButtonAngleThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="buttonAllClear.Text" xml:space="preserve">
-    <value>Delete all</value>
-  </data>
-  <data name="&gt;&gt;panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Panel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="flowLayoutPanel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdIntesity.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="panel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="panel2.TabIndex" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn1</value>
-  </data>
-  <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;radioButtonAngleThreshold.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonAllClear.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="flowLayoutPanel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakIndices.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="splitContainer1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox4.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>749, 21</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="splitContainer1.Panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>153, 134</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Parent" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="crystalControl.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.Text" xml:space="preserve">
-    <value>Show peak indices</value>
-  </data>
-  <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="buttonLower.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label6.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>37, 17</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>198, 0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
-    <value>only selected crystal</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>126, 21</value>
-  </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="flowLayoutPanel1.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonDelete.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="buttonLower.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Name" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.Name" xml:space="preserve">
-    <value>checkBoxShowPeakUnderProfile</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>406, 0</value>
-  </data>
-  <data name="numericUpDownEnergyThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 0</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn1.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;label3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="radioButtonAngleThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="searchCrystalControl.TabIndex" type="System.Int32, mscorlib">
-    <value>81</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="contextMenuStrip1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label6.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 258</value>
-  </data>
-  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
-    <value>Increment &amp;&amp; Decimal Places</value>
-  </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>°</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 266</value>
-  </data>
-  <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.Name" xml:space="preserve">
-    <value>checkBoxCombineSameDspacingPeaks</value>
-  </data>
-  <data name="groupBox2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyThreshold.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="panel2.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Check</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Crystal List</value>
-  </data>
-  <data name="&gt;&gt;panel3.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="dataGridViewCrystal.ColumnHeadersHeight" type="System.Int32, mscorlib">
-    <value>46</value>
-  </data>
-  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 26</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="crystalDatabaseControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;incrementToolStripMenuItem.Name" xml:space="preserve">
-    <value>incrementToolStripMenuItem</value>
-  </data>
-  <data name="dataGridViewCrystal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 48</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>173, 21</value>
-  </data>
-  <data name="&gt;&gt;buttonChange.Name" xml:space="preserve">
-    <value>buttonChange</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxShowPeakIndices.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="searchCrystalControl.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAngleThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="crystalControl.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="dataGridViewCrystal.TabIndex" type="System.Int32, mscorlib">
-    <value>78</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>20</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Name" xml:space="preserve">
-    <value>buttonAdd</value>
-  </data>
-  <data name="&gt;&gt;buttonAllClear.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="crystalDatabaseControl.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Fill</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="dataGridViewCrystal.RowHeadersWidth" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="dataGridViewCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 314</value>
-  </data>
-  <data name="incrementToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>196, 22</value>
-  </data>
-  <data name="flowLayoutPanel3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCombineSameDspacingPeaks.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="flowLayoutPanel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value>Check</value>
-  </data>
-  <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
-    <value>Angle Threshold</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleThreshold.Name" xml:space="preserve">
-    <value>radioButtonAngleThreshold</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitterPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="dataGridViewImageColumn2.Width" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="buttonDelete.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonAllClear.Name" xml:space="preserve">
-    <value>buttonAllClear</value>
-  </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>170, 0</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllCheckedCrystals.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllCheckedCrystals.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="flowLayoutPanel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.Name" xml:space="preserve">
-    <value>numericUpDownHeightOfBottomPeak</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkDataGridViewCheckBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;searchCrystalControl.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="Crystal.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Hide peaks
- below</value>
-  </data>
-  <data name="&gt;&gt;searchCrystalControl.Parent" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystal.Parent" xml:space="preserve">
-    <value>groupBox1</value>
-  </data>
-  <data name="buttonAllClear.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 22</value>
-  </data>
-  <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
-    <value>83</value>
-  </data>
-  <data name="crystalDatabaseControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>746, 266</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>161, 21</value>
-  </data>
-  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 0</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 25</value>
-  </data>
-  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>24, 26</value>
-  </data>
-  <data name="groupBox1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.ZOrder" xml:space="preserve">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.SplitContainer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="PeakColor.HeaderText" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 98</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdIntesity.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="buttonDelete.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;panel3.Name" xml:space="preserve">
-    <value>panel3</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="crystalControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 365</value>
-  </data>
-  <data name="panel2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;label5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateIntensity.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="radioButtonAngleThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>114, 18</value>
-  </data>
-  <data name="$this.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 21</value>
-  </data>
-  <data name="crystalControl.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Name" xml:space="preserve">
-    <value>buttonUpper</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>488, 365</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn3</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="numericUpDownAngleThreshold.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.ToolTip" xml:space="preserve">
-    <value>Check if you want to calculate intensity ratios
-of  diffraction peaks based on crystal structures</value>
-  </data>
-  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 21</value>
-  </data>
-  <data name="buttonLower.TabIndex" type="System.Int32, mscorlib">
-    <value>77</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 43</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="buttonUpper.Text" xml:space="preserve">
-    <value>↑</value>
-  </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 10, 10, 10</value>
-  </data>
-  <data name="groupBox2.Text" xml:space="preserve">
-    <value>Diffraction Peak Option</value>
-  </data>
-  <data name="PeakColor.Width" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystal.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="dataGridViewImageColumn3.Width" type="System.Int32, mscorlib">
-    <value>30</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewCrystal.Name" xml:space="preserve">
-    <value>dataGridViewCrystal</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEnergyThreshold.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>182, 48</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="buttonUpper.TabIndex" type="System.Int32, mscorlib">
-    <value>76</value>
-  </data>
-  <data name="buttonAllClear.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>24, 0</value>
-  </data>
-  <data name="&gt;&gt;buttonAdd.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;crystalDatabaseControl.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CrystalDatabaseControl, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.Panel1.Parent" xml:space="preserve">
-    <value>splitContainer1</value>
-  </data>
-  <data name="buttonAllClear.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="label6.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakIndices.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label5.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonLower.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 365</value>
-  </data>
-  <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 27</value>
-  </data>
-  <data name="buttonUpper.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="buttonAllClear.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>946, 290</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;incrementToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.ZOrder" xml:space="preserve">
-    <value>10</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>51, 62</value>
   </data>
   <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>968, 704</value>
   </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>458, 0</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownAngleThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="crystalDataGridViewTextBoxColumn.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>174, 21</value>
-  </data>
-  <data name="&gt;&gt;panel1.Name" xml:space="preserve">
-    <value>panel1</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
-    <value>Calculate intensity ratio</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonChange.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="checkBoxShowPeakIndices.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Text" xml:space="preserve">
-    <value>Combine adjacent peaks:</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 8.25pt</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 365</value>
-  </data>
-  <data name="buttonDelete.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn2.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn2</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>952, 665</value>
-  </data>
-  <data name="flowLayoutPanel3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Top</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAllCheckedCrystals.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;crystalDatabaseControl.Parent" xml:space="preserve">
-    <value>groupBox4</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownAngleThreshold.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="&gt;&gt;label5.Parent" xml:space="preserve">
-    <value>flowLayoutPanel1</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 13</value>
-  </data>
-  <data name="label5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;flowLayoutPanel1.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 21</value>
-  </data>
-  <data name="&gt;&gt;buttonChange.Parent" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 17</value>
-  </data>
-  <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
-    <value>79</value>
-  </data>
-  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 27</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
-  </data>
-  <data name="buttonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>10, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="buttonLower.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;buttonAllClear.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="buttonDelete.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
-    <value>Scalable intensity</value>
-  </data>
-  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>11, 276</value>
-  </data>
-  <data name="&gt;&gt;groupBox4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="$this.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;panel2.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel1</value>
-  </data>
-  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
-    <value>groupBox2</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 171</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>118, 18</value>
-  </data>
-  <data name="groupBox2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Left</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
-    <value>59</value>
-  </data>
-  <data name="&gt;&gt;buttonLower.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownEnergyThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="groupBox3.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="numericUpDownEnergyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>44, 22</value>
-  </data>
-  <data name="&gt;&gt;buttonUpper.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>162, 23</value>
-  </data>
-  <data name="&gt;&gt;radioButtonEnergyThreshold.Name" xml:space="preserve">
-    <value>radioButtonEnergyThreshold</value>
-  </data>
-  <data name="searchCrystalControl.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonLower.TextAlign" type="System.Drawing.ContentAlignment, System.Drawing">
-    <value>TopCenter</value>
-  </data>
-  <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 27</value>
-  </data>
-  <data name="buttonUpper.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateIntensity.Name" xml:space="preserve">
-    <value>checkBoxCalculateIntensity</value>
-  </data>
-  <data name="numericUpDownAngleThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 22</value>
-  </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;groupBox3.Name" xml:space="preserve">
-    <value>groupBox3</value>
-  </data>
-  <data name="&gt;&gt;bindingSource.Name" xml:space="preserve">
-    <value>bindingSource</value>
-  </data>
-  <data name="numericUpDownAngleThreshold.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.Name" xml:space="preserve">
-    <value>radioButtonOnlySelectedCrystal</value>
-  </data>
-  <data name="&gt;&gt;numericUpDownThresholdIntesity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.NumericUpDown, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label5.Name" xml:space="preserve">
-    <value>label5</value>
-  </data>
-  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="crystalDatabaseControl.TabIndex" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="crystalControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 3, 3, 3</value>
-  </data>
-  <data name="&gt;&gt;radioButtonOnlySelectedCrystal.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn4.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="&gt;&gt;crystalDatabaseControl.Name" xml:space="preserve">
-    <value>crystalDatabaseControl</value>
-  </data>
-  <data name="&gt;&gt;buttonDelete.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;radioButtonAngleThreshold.Type" xml:space="preserve">
-    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 26</value>
-  </data>
-  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="label1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 1, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;crystalControl.Name" xml:space="preserve">
-    <value>crystalControl</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.ToolTip" xml:space="preserve">
-    <value>Check if you want to change diffraction peak height by mouse drag.
-(relative intensity ratio is always reserved)</value>
-  </data>
-  <data name="buttonAdd.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>eV</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>137, 21</value>
-  </data>
-  <data name="label1.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="panel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>195, 0</value>
-  </data>
-  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>482, 341</value>
-  </data>
-  <data name="Crystal.HeaderText" xml:space="preserve">
-    <value>Crysal</value>
-  </data>
-  <data name="&gt;&gt;splitContainer1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 61</value>
-  </data>
-  <data name="&gt;&gt;checkBoxVariableRatioOfIntensity.Name" xml:space="preserve">
-    <value>checkBoxVariableRatioOfIntensity</value>
-  </data>
-  <data name="dataGridViewCrystal.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="&gt;&gt;numericUpDownHeightOfBottomPeak.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="buttonChange.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;checkBoxInvisibleWeakPeak.Name" xml:space="preserve">
-    <value>checkBoxInvisibleWeakPeak</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.ToolTip" xml:space="preserve">
-    <value />
-  </data>
-  <data name="buttonLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;checkBoxShowPeakUnderProfile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Text" xml:space="preserve">
-    <value>Show peaks over profiles</value>
-  </data>
-  <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
-    <value>Horizontal</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>202, 27</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
-  <data name="&gt;&gt;panel2.Name" xml:space="preserve">
-    <value>panel2</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="label5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Crystal Parameter</value>
   </data>
-  <data name="buttonUpper.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
   </data>
-  <data name="&gt;&gt;checkBoxShowPeakOverProfiles.Name" xml:space="preserve">
-    <value>checkBoxShowPeakOverProfiles</value>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;bindingSource.Name" xml:space="preserve">
+    <value>bindingSource</value>
   </data>
   <data name="&gt;&gt;bindingSource.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 13</value>
+  <data name="&gt;&gt;incrementToolStripMenuItem.Name" xml:space="preserve">
+    <value>incrementToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;flowLayoutPanel3.Name" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+  <data name="&gt;&gt;incrementToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkBoxCalculateIntensity.Type" xml:space="preserve">
-    <value>System.Windows.Forms.CheckBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn</value>
   </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>946, 659</value>
-  </data>
-  <data name="&gt;&gt;searchCrystalControl.Name" xml:space="preserve">
-    <value>searchCrystalControl</value>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Name" xml:space="preserve">
     <value>crystalDataGridViewTextBoxColumn</value>
   </data>
-  <data name="checkBoxVariableRatioOfIntensity.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="searchCrystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>365</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;checkBoxCalculateIntensity.ZOrder" xml:space="preserve">
-    <value>11</value>
-  </data>
-  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;crystalDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;toolTip.Name" xml:space="preserve">
     <value>toolTip</value>
   </data>
-  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9.75pt</value>
+  <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;dataGridViewImageColumn1.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn1</value>
   </data>
-  <data name="radioButtonAllCheckedCrystals.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;dataGridViewImageColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonChange.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn1</value>
   </data>
-  <data name="&gt;&gt;groupBox4.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="label3.ToolTip" xml:space="preserve">
-    <value />
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn2</value>
   </data>
-  <data name="radioButtonAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 9pt</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="splitContainer1.Panel2MinSize" type="System.Int32, mscorlib">
-    <value>100</value>
+  <data name="&gt;&gt;dataGridViewImageColumn2.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn2</value>
   </data>
-  <data name="buttonUpper.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
+  <data name="&gt;&gt;dataGridViewImageColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;radioButtonEnergyThreshold.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn3</value>
   </data>
-  <data name="crystalDatabaseControl.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="crystalDatabaseControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="&gt;&gt;dataGridViewImageColumn3.Name" xml:space="preserve">
+    <value>dataGridViewImageColumn3</value>
   </data>
-  <data name="&gt;&gt;buttonAllClear.Parent" xml:space="preserve">
-    <value>flowLayoutPanel3</value>
+  <data name="&gt;&gt;dataGridViewImageColumn3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Name" xml:space="preserve">
+    <value>dataGridViewTextBoxColumn4</value>
   </data>
-  <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
-    <value>Energy threshold</value>
+  <data name="&gt;&gt;dataGridViewTextBoxColumn4.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label6.ZOrder" xml:space="preserve">
-    <value>12</value>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>FormCrystal</value>
   </data>
-  <metadata name="checkDataGridViewCheckBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="bindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>133, 12</value>
-  </metadata>
-  <metadata name="contextMenuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>344, 15</value>
-  </metadata>
-  <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>16, 15</value>
-  </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja</value>
-  </metadata>
-  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>45</value>
-  </metadata>
-  <metadata name="Crystal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="PeakColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

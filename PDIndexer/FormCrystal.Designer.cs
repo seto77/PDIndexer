@@ -128,35 +128,29 @@ namespace PDIndexer
             // 
             // splitContainer1.Panel1
             // 
-            resources.ApplyResources(splitContainer1.Panel1, "splitContainer1.Panel1");
             splitContainer1.Panel1.Controls.Add(groupBox3);
             splitContainer1.Panel1.Controls.Add(panel2);
             splitContainer1.Panel1.Controls.Add(groupBox1);
             splitContainer1.Panel1.Controls.Add(panel3);
             splitContainer1.Panel1.Controls.Add(groupBox2);
-            toolTip.SetToolTip(splitContainer1.Panel1, resources.GetString("splitContainer1.Panel1.ToolTip"));
             // 
             // splitContainer1.Panel2
             // 
-            resources.ApplyResources(splitContainer1.Panel2, "splitContainer1.Panel2");
             splitContainer1.Panel2.Controls.Add(groupBox4);
-            toolTip.SetToolTip(splitContainer1.Panel2, resources.GetString("splitContainer1.Panel2.ToolTip"));
-            toolTip.SetToolTip(splitContainer1, resources.GetString("splitContainer1.ToolTip"));
             // 
             // groupBox3
             // 
-            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Controls.Add(crystalControl);
+            resources.ApplyResources(groupBox3, "groupBox3");
             groupBox3.Name = "groupBox3";
             groupBox3.TabStop = false;
-            toolTip.SetToolTip(groupBox3, resources.GetString("groupBox3.ToolTip"));
             // 
             // crystalControl
             // 
             crystalControl.A = 0D;
-            resources.ApplyResources(crystalControl, "crystalControl");
             crystalControl.AllowDrop = true;
             crystalControl.Alpha = 0D;
+            resources.ApplyResources(crystalControl, "crystalControl");
             crystalControl.B = 0D;
             crystalControl.Beta = 0D;
             crystalControl.C = 0D;
@@ -168,7 +162,6 @@ namespace PDIndexer
             crystalControl.SkipEvent = false;
             crystalControl.SymmetryInformationVisible = false;
             crystalControl.SymmetrySeriesNumber = 0;
-            toolTip.SetToolTip(crystalControl, resources.GetString("crystalControl.ToolTip"));
             crystalControl.VisibleAtomTab = true;
             crystalControl.VisibleBasicInfoTab = true;
             crystalControl.VisibleBondsPolyhedraTab = false;
@@ -179,6 +172,7 @@ namespace PDIndexer
             crystalControl.VisiblePolycrystallineTab = false;
             crystalControl.VisibleReferenceTab = true;
             crystalControl.VisibleStressStrainTab = false;
+            crystalControl.CrystalChanged += crystalControl_CrystalChanged_1;
             // 
             // panel2
             // 
@@ -186,7 +180,6 @@ namespace PDIndexer
             panel2.Controls.Add(buttonAdd);
             panel2.Controls.Add(buttonChange);
             panel2.Name = "panel2";
-            toolTip.SetToolTip(panel2, resources.GetString("panel2.ToolTip"));
             // 
             // buttonAdd
             // 
@@ -194,7 +187,6 @@ namespace PDIndexer
             buttonAdd.BackColor = Color.SteelBlue;
             buttonAdd.ForeColor = SystemColors.ControlLightLight;
             buttonAdd.Name = "buttonAdd";
-            toolTip.SetToolTip(buttonAdd, resources.GetString("buttonAdd.ToolTip"));
             buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += buttonAddCrystal_Click;
             // 
@@ -204,23 +196,20 @@ namespace PDIndexer
             buttonChange.BackColor = Color.SteelBlue;
             buttonChange.ForeColor = SystemColors.ControlLightLight;
             buttonChange.Name = "buttonChange";
-            toolTip.SetToolTip(buttonChange, resources.GetString("buttonChange.ToolTip"));
             buttonChange.UseVisualStyleBackColor = false;
             buttonChange.Click += buttonChangeCrystal_Click;
             // 
             // groupBox1
             // 
-            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.BackColor = SystemColors.Control;
             groupBox1.Controls.Add(dataGridViewCrystal);
             groupBox1.Controls.Add(flowLayoutPanel3);
+            resources.ApplyResources(groupBox1, "groupBox1");
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
-            toolTip.SetToolTip(groupBox1, resources.GetString("groupBox1.ToolTip"));
             // 
             // dataGridViewCrystal
             // 
-            resources.ApplyResources(dataGridViewCrystal, "dataGridViewCrystal");
             dataGridViewCrystal.AllowUserToAddRows = false;
             dataGridViewCrystal.AllowUserToDeleteRows = false;
             dataGridViewCrystal.AllowUserToResizeColumns = false;
@@ -236,6 +225,7 @@ namespace PDIndexer
             dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dataGridViewCrystal.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            resources.ApplyResources(dataGridViewCrystal, "dataGridViewCrystal");
             dataGridViewCrystal.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCrystal.ColumnHeadersVisible = false;
             dataGridViewCrystal.Columns.AddRange(new DataGridViewColumn[] { checkDataGridViewCheckBoxColumn1, PeakColor, Crystal });
@@ -264,7 +254,6 @@ namespace PDIndexer
             dataGridViewCrystal.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridViewCrystal.RowTemplate.Height = 21;
             dataGridViewCrystal.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            toolTip.SetToolTip(dataGridViewCrystal, resources.GetString("dataGridViewCrystal.ToolTip"));
             dataGridViewCrystal.CellMouseClick += dataGridViewCrystal_CellMouseClick;
             dataGridViewCrystal.CellMouseDoubleClick += dataGridViewCrystal_CellMouseClick;
             dataGridViewCrystal.KeyDown += dataGridViewCrystal_KeyDown;
@@ -308,20 +297,17 @@ namespace PDIndexer
             flowLayoutPanel3.Controls.Add(buttonDelete);
             flowLayoutPanel3.Controls.Add(buttonAllClear);
             flowLayoutPanel3.Name = "flowLayoutPanel3";
-            toolTip.SetToolTip(flowLayoutPanel3, resources.GetString("flowLayoutPanel3.ToolTip"));
             // 
             // buttonUpper
             // 
             resources.ApplyResources(buttonUpper, "buttonUpper");
             buttonUpper.Name = "buttonUpper";
-            toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
             buttonUpper.Click += buttonUpper_Click;
             // 
             // buttonLower
             // 
             resources.ApplyResources(buttonLower, "buttonLower");
             buttonLower.Name = "buttonLower";
-            toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
             buttonLower.Click += buttonLower_Click;
             // 
             // buttonDelete
@@ -330,7 +316,6 @@ namespace PDIndexer
             buttonDelete.BackColor = Color.IndianRed;
             buttonDelete.ForeColor = Color.White;
             buttonDelete.Name = "buttonDelete";
-            toolTip.SetToolTip(buttonDelete, resources.GetString("buttonDelete.ToolTip"));
             buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += buttonDeleteCrystal_Click;
             // 
@@ -340,7 +325,6 @@ namespace PDIndexer
             buttonAllClear.BackColor = Color.DarkRed;
             buttonAllClear.ForeColor = Color.White;
             buttonAllClear.Name = "buttonAllClear";
-            toolTip.SetToolTip(buttonAllClear, resources.GetString("buttonAllClear.ToolTip"));
             buttonAllClear.UseVisualStyleBackColor = false;
             buttonAllClear.Click += buttonAllClear_Click;
             // 
@@ -348,11 +332,9 @@ namespace PDIndexer
             // 
             resources.ApplyResources(panel3, "panel3");
             panel3.Name = "panel3";
-            toolTip.SetToolTip(panel3, resources.GetString("panel3.ToolTip"));
             // 
             // groupBox2
             // 
-            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.BackColor = SystemColors.Control;
             groupBox2.Controls.Add(flowLayoutPanel1);
             groupBox2.Controls.Add(checkBoxCombineSameDspacingPeaks);
@@ -368,21 +350,20 @@ namespace PDIndexer
             groupBox2.Controls.Add(checkBoxCalculateIntensity);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(checkBoxShowPeakUnderProfile);
+            resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
-            toolTip.SetToolTip(groupBox2, resources.GetString("groupBox2.ToolTip"));
             // 
             // flowLayoutPanel1
             // 
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Controls.Add(radioButtonAngleThreshold);
             flowLayoutPanel1.Controls.Add(numericUpDownAngleThreshold);
             flowLayoutPanel1.Controls.Add(label5);
             flowLayoutPanel1.Controls.Add(radioButtonEnergyThreshold);
             flowLayoutPanel1.Controls.Add(numericUpDownEnergyThreshold);
             flowLayoutPanel1.Controls.Add(label1);
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            toolTip.SetToolTip(flowLayoutPanel1, resources.GetString("flowLayoutPanel1.ToolTip"));
             // 
             // radioButtonAngleThreshold
             // 
@@ -390,56 +371,50 @@ namespace PDIndexer
             radioButtonAngleThreshold.Checked = true;
             radioButtonAngleThreshold.Name = "radioButtonAngleThreshold";
             radioButtonAngleThreshold.TabStop = true;
-            toolTip.SetToolTip(radioButtonAngleThreshold, resources.GetString("radioButtonAngleThreshold.ToolTip"));
             radioButtonAngleThreshold.UseVisualStyleBackColor = true;
             // 
             // numericUpDownAngleThreshold
             // 
-            resources.ApplyResources(numericUpDownAngleThreshold, "numericUpDownAngleThreshold");
             numericUpDownAngleThreshold.ContextMenuStrip = contextMenuStrip1;
             numericUpDownAngleThreshold.DecimalPlaces = 3;
+            resources.ApplyResources(numericUpDownAngleThreshold, "numericUpDownAngleThreshold");
             numericUpDownAngleThreshold.Increment = new decimal(new int[] { 1, 0, 0, 196608 });
             numericUpDownAngleThreshold.Maximum = new decimal(new int[] { 2, 0, 0, 0 });
             numericUpDownAngleThreshold.Name = "numericUpDownAngleThreshold";
-            toolTip.SetToolTip(numericUpDownAngleThreshold, resources.GetString("numericUpDownAngleThreshold.ToolTip"));
             numericUpDownAngleThreshold.Value = new decimal(new int[] { 1, 0, 0, 131072 });
             numericUpDownAngleThreshold.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             numericUpDownAngleThreshold.MouseDown += numericUpDownThreshold_MouseDown;
             // 
             // contextMenuStrip1
             // 
-            resources.ApplyResources(contextMenuStrip1, "contextMenuStrip1");
             contextMenuStrip1.ImageScalingSize = new Size(32, 32);
             contextMenuStrip1.Items.AddRange(new ToolStripItem[] { incrementToolStripMenuItem });
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.ShowImageMargin = false;
-            toolTip.SetToolTip(contextMenuStrip1, resources.GetString("contextMenuStrip1.ToolTip"));
+            resources.ApplyResources(contextMenuStrip1, "contextMenuStrip1");
             // 
             // incrementToolStripMenuItem
             // 
-            resources.ApplyResources(incrementToolStripMenuItem, "incrementToolStripMenuItem");
             incrementToolStripMenuItem.Name = "incrementToolStripMenuItem";
+            resources.ApplyResources(incrementToolStripMenuItem, "incrementToolStripMenuItem");
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
             label5.Name = "label5";
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // radioButtonEnergyThreshold
             // 
             resources.ApplyResources(radioButtonEnergyThreshold, "radioButtonEnergyThreshold");
             radioButtonEnergyThreshold.Name = "radioButtonEnergyThreshold";
-            toolTip.SetToolTip(radioButtonEnergyThreshold, resources.GetString("radioButtonEnergyThreshold.ToolTip"));
             radioButtonEnergyThreshold.UseVisualStyleBackColor = true;
             // 
             // numericUpDownEnergyThreshold
             // 
-            resources.ApplyResources(numericUpDownEnergyThreshold, "numericUpDownEnergyThreshold");
             numericUpDownEnergyThreshold.DecimalPlaces = 1;
+            resources.ApplyResources(numericUpDownEnergyThreshold, "numericUpDownEnergyThreshold");
             numericUpDownEnergyThreshold.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
             numericUpDownEnergyThreshold.Name = "numericUpDownEnergyThreshold";
-            toolTip.SetToolTip(numericUpDownEnergyThreshold, resources.GetString("numericUpDownEnergyThreshold.ToolTip"));
             numericUpDownEnergyThreshold.Value = new decimal(new int[] { 5, 0, 0, 0 });
             numericUpDownEnergyThreshold.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             numericUpDownEnergyThreshold.MouseDown += numericUpDownThreshold_MouseDown;
@@ -448,13 +423,11 @@ namespace PDIndexer
             // 
             resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // checkBoxCombineSameDspacingPeaks
             // 
             resources.ApplyResources(checkBoxCombineSameDspacingPeaks, "checkBoxCombineSameDspacingPeaks");
             checkBoxCombineSameDspacingPeaks.Name = "checkBoxCombineSameDspacingPeaks";
-            toolTip.SetToolTip(checkBoxCombineSameDspacingPeaks, resources.GetString("checkBoxCombineSameDspacingPeaks.ToolTip"));
             checkBoxCombineSameDspacingPeaks.UseVisualStyleBackColor = true;
             checkBoxCombineSameDspacingPeaks.CheckedChanged += checkBoxCombineSameDspacingPeaks_CheckedChanged;
             // 
@@ -462,7 +435,6 @@ namespace PDIndexer
             // 
             resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // radioButtonAllCheckedCrystals
             // 
@@ -470,23 +442,20 @@ namespace PDIndexer
             radioButtonAllCheckedCrystals.Checked = true;
             radioButtonAllCheckedCrystals.Name = "radioButtonAllCheckedCrystals";
             radioButtonAllCheckedCrystals.TabStop = true;
-            toolTip.SetToolTip(radioButtonAllCheckedCrystals, resources.GetString("radioButtonAllCheckedCrystals.ToolTip"));
             radioButtonAllCheckedCrystals.UseVisualStyleBackColor = true;
             // 
             // radioButtonOnlySelectedCrystal
             // 
             resources.ApplyResources(radioButtonOnlySelectedCrystal, "radioButtonOnlySelectedCrystal");
             radioButtonOnlySelectedCrystal.Name = "radioButtonOnlySelectedCrystal";
-            toolTip.SetToolTip(radioButtonOnlySelectedCrystal, resources.GetString("radioButtonOnlySelectedCrystal.ToolTip"));
             radioButtonOnlySelectedCrystal.UseVisualStyleBackColor = true;
             radioButtonOnlySelectedCrystal.CheckedChanged += radioButtonOnlySelectedCrystal_CheckedChanged;
             // 
             // numericUpDownThresholdIntesity
             // 
-            resources.ApplyResources(numericUpDownThresholdIntesity, "numericUpDownThresholdIntesity");
             numericUpDownThresholdIntesity.DecimalPlaces = 1;
+            resources.ApplyResources(numericUpDownThresholdIntesity, "numericUpDownThresholdIntesity");
             numericUpDownThresholdIntesity.Name = "numericUpDownThresholdIntesity";
-            toolTip.SetToolTip(numericUpDownThresholdIntesity, resources.GetString("numericUpDownThresholdIntesity.ToolTip"));
             numericUpDownThresholdIntesity.Value = new decimal(new int[] { 1, 0, 0, 0 });
             numericUpDownThresholdIntesity.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             numericUpDownThresholdIntesity.MouseDown += numericUpDownThreshold_MouseDown;
@@ -495,7 +464,6 @@ namespace PDIndexer
             // 
             resources.ApplyResources(numericUpDownHeightOfBottomPeak, "numericUpDownHeightOfBottomPeak");
             numericUpDownHeightOfBottomPeak.Name = "numericUpDownHeightOfBottomPeak";
-            toolTip.SetToolTip(numericUpDownHeightOfBottomPeak, resources.GetString("numericUpDownHeightOfBottomPeak.ToolTip"));
             numericUpDownHeightOfBottomPeak.Value = new decimal(new int[] { 5, 0, 0, 0 });
             numericUpDownHeightOfBottomPeak.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             numericUpDownHeightOfBottomPeak.MouseDown += numericUpDownThreshold_MouseDown;
@@ -506,7 +474,6 @@ namespace PDIndexer
             checkBoxShowPeakOverProfiles.Checked = true;
             checkBoxShowPeakOverProfiles.CheckState = CheckState.Checked;
             checkBoxShowPeakOverProfiles.Name = "checkBoxShowPeakOverProfiles";
-            toolTip.SetToolTip(checkBoxShowPeakOverProfiles, resources.GetString("checkBoxShowPeakOverProfiles.ToolTip"));
             checkBoxShowPeakOverProfiles.UseVisualStyleBackColor = true;
             checkBoxShowPeakOverProfiles.CheckedChanged += checkBoxShowPeakOverProfiles_CheckedChanged;
             // 
@@ -516,7 +483,6 @@ namespace PDIndexer
             checkBoxShowPeakIndices.Checked = true;
             checkBoxShowPeakIndices.CheckState = CheckState.Checked;
             checkBoxShowPeakIndices.Name = "checkBoxShowPeakIndices";
-            toolTip.SetToolTip(checkBoxShowPeakIndices, resources.GetString("checkBoxShowPeakIndices.ToolTip"));
             checkBoxShowPeakIndices.UseVisualStyleBackColor = true;
             checkBoxShowPeakIndices.CheckedChanged += checkBoxCombineSameDspacingPeaks_CheckedChanged;
             // 
@@ -524,7 +490,6 @@ namespace PDIndexer
             // 
             resources.ApplyResources(checkBoxInvisibleWeakPeak, "checkBoxInvisibleWeakPeak");
             checkBoxInvisibleWeakPeak.Name = "checkBoxInvisibleWeakPeak";
-            toolTip.SetToolTip(checkBoxInvisibleWeakPeak, resources.GetString("checkBoxInvisibleWeakPeak.ToolTip"));
             checkBoxInvisibleWeakPeak.UseVisualStyleBackColor = true;
             checkBoxInvisibleWeakPeak.CheckedChanged += checkBoxInvisibleWeakPeak_CheckedChanged;
             // 
@@ -549,24 +514,21 @@ namespace PDIndexer
             // 
             resources.ApplyResources(label6, "label6");
             label6.Name = "label6";
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // checkBoxShowPeakUnderProfile
             // 
             resources.ApplyResources(checkBoxShowPeakUnderProfile, "checkBoxShowPeakUnderProfile");
             checkBoxShowPeakUnderProfile.Name = "checkBoxShowPeakUnderProfile";
-            toolTip.SetToolTip(checkBoxShowPeakUnderProfile, resources.GetString("checkBoxShowPeakUnderProfile.ToolTip"));
             checkBoxShowPeakUnderProfile.UseVisualStyleBackColor = true;
             checkBoxShowPeakUnderProfile.CheckedChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             // 
             // groupBox4
             // 
-            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Controls.Add(crystalDatabaseControl);
             groupBox4.Controls.Add(panel1);
+            resources.ApplyResources(groupBox4, "groupBox4");
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
-            toolTip.SetToolTip(groupBox4, resources.GetString("groupBox4.ToolTip"));
             // 
             // crystalDatabaseControl
             // 
@@ -574,20 +536,17 @@ namespace PDIndexer
             crystalDatabaseControl.Filter = null;
             crystalDatabaseControl.FontSize = 9.75F;
             crystalDatabaseControl.Name = "crystalDatabaseControl";
-            toolTip.SetToolTip(crystalDatabaseControl, resources.GetString("crystalDatabaseControl.ToolTip"));
             // 
             // panel1
             // 
-            resources.ApplyResources(panel1, "panel1");
             panel1.Controls.Add(searchCrystalControl);
+            resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
-            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // searchCrystalControl
             // 
             resources.ApplyResources(searchCrystalControl, "searchCrystalControl");
             searchCrystalControl.Name = "searchCrystalControl";
-            toolTip.SetToolTip(searchCrystalControl, resources.GetString("searchCrystalControl.ToolTip"));
             // 
             // checkDataGridViewCheckBoxColumn
             // 
@@ -676,7 +635,6 @@ namespace PDIndexer
             KeyPreview = true;
             MaximizeBox = false;
             Name = "FormCrystal";
-            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
             Closed += FormCrystal_Closed;
             FormClosing += FormCrystal_FormClosing;
             Load += FormCrystal_Load;
