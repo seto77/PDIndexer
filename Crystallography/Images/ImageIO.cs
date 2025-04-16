@@ -324,16 +324,26 @@ public static class ImageIO
     {
         try
         {
-            #region 2064*1548のサイズを持つ検出器 (SACLA EH5の場合)
-            if (new FileInfo(str).Length == 6390144)
+            var fileSize = new FileInfo(str).Length;
+
+            #region 2064*1548 あるいは 2080*2238 のサイズを持つ検出器 (SACLA EH5の場合)
+
+            if (fileSize == 2064 * 1548 * 2 || fileSize== 2080 * 2238 * 2)
             {
-                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
-                int imageWidth = 2064, imageHeight = 1548, length = imageWidth * imageHeight;
+                var (imageWidth, imageHeight) = fileSize switch
+                {
+                    2064 * 1548 * 2 => (2064, 1548),
+                    _ => (2080, 2238)
+                };
+
+                int length = imageWidth * imageHeight;
                 var sameSize = Ring.Intensity.Count == length;
 
-                if (!sameSize)//前回と同じサイズではないとき
-                    Ring.Intensity.Clear();
 
+                if (!sameSize)//前回と同じサイズではないとき
+                    Ring.Intensity = new List<double>(length);
+
+                var br = new BinaryReader(new FileStream(str, FileMode.Open, FileAccess.Read));
                 for (int n = 0; n < length; n++)
                 {
                     //マイナスの値が入ることを考慮した変更 2024/02/27 辻野さんからのメール参考
