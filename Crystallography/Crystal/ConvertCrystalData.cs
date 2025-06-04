@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,8 +9,11 @@ using System.IO;
 using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
+using System.Net;
 using System.Text;
 using System.Threading;
+using System.Windows.Forms;
+using ZLinq;
 using V3 = OpenTK.Mathematics.Vector3d;
 
 namespace Crystallography;
@@ -17,6 +21,37 @@ namespace Crystallography;
 public class ConvertCrystalData
 {
     private static readonly StringComparison Ord = StringComparison.Ordinal;
+
+    #region 文字列操作の高速化を狙った関数群
+    static void Replace(ref string str, string oldValue, string newValue)
+    {
+        if (str.Contains(oldValue))
+            str = str.Replace(oldValue, newValue);
+    }
+
+    static void TrimStartEnd(ref string str)
+    {
+        if (str.StartsWith(' '))
+            str = str.TrimStart(' ');
+        if (str.EndsWith(' '))
+            str = str.TrimEnd(' ');
+    }
+    public static void EscapeString(ref string s)
+    {
+        Replace(ref s, "&amp;", "&");
+        Replace(ref s, "&lt;", "<");
+        Replace(ref s, "&gt;", ">");
+        Replace(ref s, "&quot;", "\"");
+        Replace(ref s, "&nbsp;", " ");
+        Replace(ref s, "&#39;", "'");
+    }
+
+    static void RemoveAt(ref string[] str, int index) => str = [..str[..index] , ..str[(index + 1)..]];
+    static void RemoveRange(ref string[] str, int start, int count) => str = [..str[..start] ,.. str[(start + count)..]];
+
+    static void Insert(ref string[] str, int index, string value) => str = [.. str[..index], value, .. str[index..]];
+
+    #endregion
 
     #region CrystalList(xml形式)の読み込み/書き込み
     public static bool SaveCrystalListXml(Crystal[] crystals, string filename)
@@ -182,8 +217,10 @@ public class ConvertCrystalData
                 if (str[line].StartsWith("No =", Ord))
                 {
                     var tempCrystal = new Crystal((a, b, c, alpha, beta, gamma), null, spaceGroupSeriesNum,
-                        ChemicalFormula.Split('=', true)[1].Trim() + "-" + (n++).ToString(), Color.Blue);
-                    tempCrystal.Note = wavelength + "  " + ChemicalFormula + "\r\n" + str[line];
+                        ChemicalFormula.Split('=', true)[1].Trim() + "-" + (n++).ToString(), Color.Blue)
+                    {
+                        Note = $"{wavelength}  {ChemicalFormula}\r\n{str[line]}"
+                    };
                     line++;
                     for (; line < str.Length; line++)
                     {
@@ -312,7 +349,7 @@ public class ConvertCrystalData
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
-    private static Crystal2 ConvertFromAmc(string[] str)
+    public static Crystal2 ConvertFromAmc(string[] str)
     {
         var n = 0;
         if (str[n].Length == 0)
@@ -565,6 +602,8 @@ public class ConvertCrystalData
             Alpha = s[3].ToDouble();
             Beta = s[4].ToDouble();
             Gamma = s[5].ToDouble();
+            if (double.IsNaN(A) || double.IsNaN(B) || double.IsNaN(C) || double.IsNaN(Alpha) || double.IsNaN(Beta) || double.IsNaN(Gamma))
+                return (null, null);
         }
         catch { return (null, null); }
         string SgName = s[6];
@@ -842,110 +881,135 @@ public class ConvertCrystalData
     #endregion
 
     #region CIFファイルの読み込み
-    static readonly Random r = new();
+    static readonly Random rnd = Random.Shared;
 
-    static readonly string[] ignoreWords1 = ["_shelx_hkl_", "_shelx_fab_", "_shelx_res_"];
-    static readonly string[] ignoreWords2 = ["_refln", "_geom", "_platon"];
+    static readonly FrozenSet<string> ignoreWords1 = ["_shelx_hkl_file", "_shelxl_hkl_file", "_shelx_fab_file", "_shelx_res_file", "_shelxl_res_file", "_iucr_refine_reflections_details"];//語尾に何もつかない
+
+    static readonly FrozenSet<string> ignoreWords2 = ["_shelx_hkl_", "_shelx_fab_", "_shelx_res_"];//語尾に fileかchecksumがつく
+
+    static readonly FrozenSet<string> ignoreWords3 = ["_refln", "_geom", "_platon", "_diffrn_refln"];
     private static Crystal2 ConvertFromCIF(string fileName)
     {
-        var sb = new StringBuilder();
-
-        var stringList = new List<string>();
+        string[] str;
         using (var reader = new StreamReader(fileName))
         {
             var strTemp = reader.ReadToEnd();
-            if (strTemp.Contains("\r\n"))
-                strTemp = strTemp.Replace("\r\n", "\n");
-            if (strTemp.Contains('\r'))
-                strTemp = strTemp.Replace("\r", "\n");
+            Replace(ref strTemp, "\r\n", "\n");
+            Replace(ref strTemp, "\r", "\n");
 
-            strTemp = EscapeString(strTemp);
+            EscapeString(ref strTemp);
 
-            stringList = [.. strTemp.Split('\n', true)];
+            foreach (var word in ignoreWords1 )
+            {
+                if (strTemp.Contains(word + "\n;"))
+                {
+                    int start = strTemp.IndexOf(word + "\n;");
+                    int end = strTemp.IndexOf("\n;", start + word.Length + 3);
+                    if (end > start && end + 3 < strTemp.Length)
+                        strTemp = string.Concat(strTemp[..start], strTemp[(end + 3)..]);
+                }
+            }
+
+            str = strTemp.Split('\n', true);
         }
 
-        foreach (var word in ignoreWords1)
-        {
-            int start = -1, end = -1;
-            while ((start = stringList.IndexOf(word + "file")) > -1 &&
-                (end = stringList.FindIndex(s => s.StartsWith(word + "checksum", Ord))) > -1)
-                stringList.RemoveRange(Math.Min(start, end), Math.Abs(start - end) + 1);
-        }
         foreach (var word in ignoreWords2)
         {
+            int start = -1, end = -1;
+            while ((start = Array.IndexOf( str, word + "file")) > -1 &&
+                (end =Array.FindIndex(str, s => s.StartsWith(word + "checksum", Ord))) > -1)
+                RemoveRange(ref str, Math.Min(start, end), Math.Abs(start - end) + 1);
+        }
+     
+
+        foreach (var word in ignoreWords3)
+        {
             int start = -1;
-            while ((start = stringList.FindIndex(s => s.StartsWith(word, Ord)) - 1) > -1)
+            while ((start = Array.FindIndex(str, s => s.Trim().StartsWith(word, Ord)) - 1) > -1)
             {
-                if (stringList[start] == "loop_")
+                if (str[start] == "loop_")
                 {
                     var end = start + 1;
-                    while (stringList[end].StartsWith(word, Ord))
+                    while (str[end].StartsWith(word, Ord))
                         end++;
 
-                    for (; end < stringList.Count; end++)
-                        if (stringList[end] == "loop_" || stringList[end].StartsWith("_", Ord) || stringList[end].StartsWith("#", Ord))
+                    for (; end < str.Length; end++)
+                        if (str[end] == "loop_" || str[end].StartsWith("_", Ord) || str[end].StartsWith("#", Ord))
                             break;
-                    stringList.RemoveRange(start, end - start);
+                    RemoveRange(ref str, start, end - start);
                 }
                 else
-                    stringList.RemoveAt(start + 1);
+                    RemoveAt(ref str, start + 1);
             }
         }
-        return ConvertFromCIF(stringList);
-    }
 
+        return ConvertFromCIF(str);
+    }
 
     /// <summary>
     /// CIFファイルを読み込む
     /// </summary>
     /// <param name="str"></param>
     /// <returns></returns>
-    private static Crystal2 ConvertFromCIF(List<string> str)
+    private static Crystal2 ConvertFromCIF(string[] str)
     {
         //まず ;と; で囲まれている複数にわたる行を一行にする
         //var str = new List<string>();
         var note = "";
         if (str[0].StartsWith("data", Ord))
             note = str[0];
-        for (int n = 0; n < str.Count; n++)
+        for (int n = 0; n < str.Length; n++)
         {
-            while ((str[n].StartsWith("#", Ord) || str[n].Trim().Length == 0) && n < str.Count - 1)
-                str.RemoveAt(n);
-            //全ての先頭行の空白あるいはタブを削除する
-            str[n] = str[n].Replace("\t", " ");
-            str[n] = str[n].TrimEnd(' ').TrimStart(' ');
-
-            if (str[n].Trim().StartsWith(";", Ord))//;で始まる行を見つけたら
+            //全てのコメントを削除
+            while (str[n].StartsWith("#", Ord) && n < str.Length - 1)
+                RemoveAt(ref str, n);
+        }
+        for (int n = 0; n < str.Length; n++)
+        {
+            if (str[n].StartsWith(";", Ord))//;で始まる行を見つけたら
             {
+                //次の;の位置を見つけて mに格納
                 int m = n + 1;
-
-                var temp = new StringBuilder();
-                //次に;が出てくるところまですすめてまとめて一行にする
-                //但し、次の行が「loop_」の場合や「_」で始まる場合は、;を一文字だけ消して終了
-                if (str[m].StartsWith("loop_", Ord) || str[m].StartsWith("_", Ord))
+                for (; m < str.Length; m++)
+                    if (str[m].StartsWith(';'))
+                        break;
+                //直後の行が「loop_」の場合や「_」で始まる場合は、;を一文字だけ消す
+                if (n + 1 < str.Length && (str[n + 1].StartsWith("loop_", Ord) || str[n + 1].StartsWith("_", Ord)))
+                    str[n] = "";
+                //次の;が見つからない場合も、;を一文字だけ消す
+                else if (m == str.Length)
                     str[n] = "";
                 else
                 {
-                    while (m >= str.Count || !str[m].StartsWith(";", Ord))
-                        temp.Append(str[m++] + " ");
+                    var temp = new StringBuilder();
+                    //次に;が出てくるところまですすめてまとめて一行にする
+                    for (int i = n + 1; i < m; i++)
+                        temp.Append(str[i] + " ");
                     str[n] = $"'{temp.ToString().Trim().TrimEnd()}'";
-                    str.RemoveRange(n + 1, m - n);
+                    RemoveRange(ref str, n + 1, m - n);
                 }
             }
         }
 
-        if (str[^1].StartsWith('#'))
+        if (str[^1]=="")
             str[^1] = "#End of data";
 
+        for (int n = 0; n <str.Length; n++)
+        {
+            Replace(ref str[n], "\t", " ");
+            TrimStartEnd(ref str[n]);
+            if (str[n] == "")
+                RemoveAt(ref str, n--);
+        }
 
         //次に'あるいは"で囲まれている文字列中の空白を偶然出てこないような文字列に変換する
-        for (int n = 0; n < str.Count; n++)
+        for (int n = 0; n < str.Length; n++)
         {
             if (str[n].Contains("''"))//''という文字列が含まれていたら
             {
-                var temp = str[n].Remove(0, str[n].IndexOf("'"));
-                temp = temp.Replace("''", "薔");
-                str[n] = str[n].Remove(str[n].IndexOf("'")) + temp;
+                var temp = str[n][str[n].IndexOf("'")..];
+                Replace(ref temp, "''", "薔");
+                str[n] = $"{str[n][..str[n].IndexOf("'")]}{temp}";
             }
 
             if (str[n].Contains('\''))//'が含まれていたら
@@ -957,8 +1021,8 @@ public class ConvertCrystalData
                     if (next == -1)
                         break;
                     var substring = str[n].Substring(firstIndex, next - firstIndex + 1);
-                    substring = substring.Replace(" ", "薔");
-                    substring = substring.Replace("'", "");
+                    Replace(ref substring, " ", "薔");
+                    Replace(ref substring, "'", "");
 
                     str[n] = $"{str[n][..firstIndex]}{substring}{str[n][(next + 1)..]}";
                 }
@@ -973,26 +1037,26 @@ public class ConvertCrystalData
                     if (next == -1)
                         break;
                     var substring = str[n].Substring(firstIndex, next - firstIndex + 1);
-                    substring = substring.Replace(" ", "薔");
-                    substring = substring.Replace("\"", "");
+                    Replace(ref substring, " ", "薔");
+                    Replace(ref substring, "\"", "");
                     str[n] = $"{str[n][..firstIndex]}{substring}{str[n][(next + 1)..]}";
                 }
             }
         }
 
         //次にloop_に続く行が　"label  data"だった時に対応
-        for (int n = 0; n < str.Count - 1; n++)
+        for (int n = 0; n < str.Length - 1; n++)
         {
             if (str[n].StartsWith("loop_", Ord) && str[n + 1].Contains(' '))
             {
                 var temp = str[n + 1].Split(' ', true);
                 str[n + 1] = temp[0];
-                str.Insert(n + 2, temp[1]);
+                Insert(ref str, n + 2, temp[1]);
             }
         }
 
         var CIF = new List<List<(string Label, string Data)>>();
-        for (int n = 0; n < str.Count; n++)
+        for (int n = 0; n < str.Length; n++)
         {
             if (str[n].Trim().StartsWith("_", Ord))
             {//単体アイテムのとき
@@ -1015,11 +1079,11 @@ public class ConvertCrystalData
                 var tempLoopDatas = new List<string>();
                 n++;
                 //"_"で始まるラベルを数える
-                while (n < str.Count && str[n].Trim().StartsWith("_", Ord))
+                while (n < str.Length && str[n].Trim().StartsWith("_", Ord))
                     tempLoopLabels.Add(str[n++].Trim());
 
                 //次に"_"か"loop_"か"#End of"で始まる行が出てくるまでループ
-                while (n < str.Count && !str[n].Trim().StartsWith("_", Ord) && !str[n].Trim().StartsWith("loop_", Ord) && !str[n].Trim().StartsWith("#End of", Ord))
+                while (n < str.Length && !str[n].Trim().StartsWith("_", Ord) && !str[n].Trim().StartsWith("loop_", Ord) && !str[n].Trim().StartsWith("#End of", Ord))
                 {
                     var temp = str[n].Split(' ', true);
                     for (int i = 0; i < temp.Length; i++)
@@ -1343,20 +1407,11 @@ public class ConvertCrystalData
             auth = authors.ToString().TrimEnd([' ', ',']).Replace(".", ""),
             jour = journal.ToString(),
             sect = sectionTitle,
-            argb = Color.FromArgb(r.Next(255), r.Next(255), r.Next(255)).ToArgb()
+            argb = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255)).ToArgb()
         };
     }
 
-    public static string EscapeString(string s)
-    {
-        return s
-            .Replace("&amp;", "&", StringComparison.Ordinal)
-            .Replace("&lt;", "<", StringComparison.Ordinal)
-            .Replace("&gt;", ">", StringComparison.Ordinal)
-            .Replace("&quot;", "\"", StringComparison.Ordinal)
-            .Replace("&nbsp;", " ", StringComparison.Ordinal)
-            .Replace("&#39;", "'", StringComparison.Ordinal);
-    }
+ 
 
     private static V3 norm(V3 v)
     {
@@ -1399,21 +1454,21 @@ public class ConvertCrystalData
                     i += 3;
                 }
 
-        SgNameHM = SgNameHM.Replace("_", " ");
+        Replace(ref SgNameHM, "_", " ");
 
-        SgNameHM = SgNameHM.Replace("{hexagonal axes}", " ");
-        SgNameHM = SgNameHM.Replace("{rhombohedral axes}", " ");
+        Replace(ref SgNameHM, "{hexagonal axes}", " ");
+        Replace(ref SgNameHM, "{rhombohedral axes}", " ");
 
         SgNameHM = SgNameHM.TrimStart(' ').TrimEnd(' ');
 
         if (SgNameHM.EndsWith("RS", Ord) || SgNameHM.EndsWith("HR", Ord))
-            SgNameHM = SgNameHM.Remove(SgNameHM.Length - 2, 2).TrimEnd(' ');
+            SgNameHM = SgNameHM[..^2].TrimEnd(' ');
 
         if (SgNameHM.EndsWith("H", Ord) || SgNameHM.EndsWith("h", Ord) || SgNameHM.EndsWith("R", Ord) || SgNameHM.EndsWith("r", Ord))
-            SgNameHM = SgNameHM.Remove(SgNameHM.Length - 1, 1).TrimEnd(' ');
+            SgNameHM = SgNameHM[..^1].TrimEnd(' ');
 
         if (SgNameHM.EndsWith(":", Ord))
-            SgNameHM = SgNameHM.Remove(SgNameHM.Length - 1, 1).TrimEnd(' ');
+            SgNameHM = SgNameHM[..^1].TrimEnd(' ');
 
         bool IsOrigineChoice2 = false;
         if (SgNameHM.EndsWith("Z", Ord))//最後にZがついていたらOriginChoice2
@@ -1459,63 +1514,65 @@ public class ConvertCrystalData
             IsOrigineChoice2 = true;
         }
 
-        SgNameHM = SgNameHM.Replace("~", "");
+     
+
+        Replace(ref SgNameHM, "~", "");
 
         //一文字目以降の英字は全て小文字に
-        SgNameHM = SgNameHM[0] + SgNameHM.Remove(0, 1).ToLower();
+        SgNameHM = SgNameHM[0] + SgNameHM[1..].ToLower();
 
-        SgNameHM = SgNameHM.Replace("P(-1)", "P-1");
+        Replace(ref SgNameHM,"P(-1)", "P-1");
 
-        SgNameHM = SgNameHM.Replace("R 32", "R32");
+        Replace(ref SgNameHM,"R 32", "R32");
 
-        SgNameHM = SgNameHM.Replace("P3(1)21", "P 3sub1 2 1");
-        SgNameHM = SgNameHM.Replace("P3(2)21", "P 3sub2 2 1");
-        SgNameHM = SgNameHM.Replace("P3121", "P 3sub1 2 1");
-        SgNameHM = SgNameHM.Replace("P3221", "P 3sub2 2 1");
-        SgNameHM = SgNameHM.Replace("P 31 21", "P 3sub1 2 1");
-        SgNameHM = SgNameHM.Replace("P 32 21", "P 3sub2 2 1");
-        SgNameHM = SgNameHM.Replace("P321", "P 3 2 1");
+        Replace(ref SgNameHM,"P3(1)21", "P 3sub1 2 1");
+        Replace(ref SgNameHM,"P3(2)21", "P 3sub2 2 1");
+        Replace(ref SgNameHM,"P3121", "P 3sub1 2 1");
+        Replace(ref SgNameHM,"P3221", "P 3sub2 2 1");
+        Replace(ref SgNameHM,"P 31 21", "P 3sub1 2 1");
+        Replace(ref SgNameHM,"P 32 21", "P 3sub2 2 1");
+        Replace(ref SgNameHM,"P321", "P 3 2 1");
 
-        SgNameHM = SgNameHM.Replace("P61", "P 6sub1");
-        SgNameHM = SgNameHM.Replace("P62", "P 6sub2");
-        SgNameHM = SgNameHM.Replace("P63", "P 6sub3");
-        SgNameHM = SgNameHM.Replace("P64", "P 6sub4");
-        SgNameHM = SgNameHM.Replace("P65", "P 6sub5");
+        Replace(ref SgNameHM,"P61", "P 6sub1");
+        Replace(ref SgNameHM,"P62", "P 6sub2");
+        Replace(ref SgNameHM,"P63", "P 6sub3");
+        Replace(ref SgNameHM,"P64", "P 6sub4");
+        Replace(ref SgNameHM,"P65", "P 6sub5");
 
-        SgNameHM = SgNameHM.Replace("I41", "I 4sub1");
-        SgNameHM = SgNameHM.Replace("P42", "P 4sub2");
+        Replace(ref SgNameHM,"I41", "I 4sub1");
+        Replace(ref SgNameHM,"P42", "P 4sub2");
 
-        SgNameHM = SgNameHM.Replace("P42/m b c", "P 4sub2/m b c");
+        Replace(ref SgNameHM,"P42/m b c", "P 4sub2/m b c");
 
-        SgNameHM = SgNameHM.Replace("P4322", "P 4sub3 2 2");
+        Replace(ref SgNameHM,"P4322", "P 4sub3 2 2");
 
-        SgNameHM = SgNameHM.Replace(" 61", " 6sub1");
-        SgNameHM = SgNameHM.Replace(" 62", " 6sub2");
-        SgNameHM = SgNameHM.Replace(" 63", " 6sub3");
-        SgNameHM = SgNameHM.Replace(" 64", " 6sub4");
-        SgNameHM = SgNameHM.Replace(" 65", " 6sub5");
-        SgNameHM = SgNameHM.Replace(" 41", " 4sub1");
-        SgNameHM = SgNameHM.Replace(" 42", " 4sub2");
-        SgNameHM = SgNameHM.Replace(" 43", " 4sub3");
-        SgNameHM = SgNameHM.Replace(" 31", " 3sub1");
-        SgNameHM = SgNameHM.Replace(" 32", " 3sub2");
-        SgNameHM = SgNameHM.Replace(" 21", " 2sub1");
+        Replace(ref SgNameHM," 61", " 6sub1");
+        Replace(ref SgNameHM," 62", " 6sub2");
+        Replace(ref SgNameHM," 63", " 6sub3");
+        Replace(ref SgNameHM," 64", " 6sub4");
+        Replace(ref SgNameHM," 65", " 6sub5");
+        Replace(ref SgNameHM," 41", " 4sub1");
+        Replace(ref SgNameHM," 42", " 4sub2");
+        Replace(ref SgNameHM," 43", " 4sub3");
+        Replace(ref SgNameHM," 31", " 3sub1");
+        Replace(ref SgNameHM," 32", " 3sub2");
+        Replace(ref SgNameHM," 21", " 2sub1");
 
-        SgNameHM = SgNameHM.Replace("2(1)", " 2sub1");
-        SgNameHM = SgNameHM.Replace("3(1)", " 3sub1");
-        SgNameHM = SgNameHM.Replace("3(2)", " 3sub2");
-        SgNameHM = SgNameHM.Replace("4(1)", " 4sub1");
-        SgNameHM = SgNameHM.Replace("4(2)", " 4sub2");
-        SgNameHM = SgNameHM.Replace("4(3)", " 4sub3");
-        SgNameHM = SgNameHM.Replace("6(1)", " 6sub1");
-        SgNameHM = SgNameHM.Replace("6(2)", " 6sub2");
-        SgNameHM = SgNameHM.Replace("6(3)", " 6sub3");
-        SgNameHM = SgNameHM.Replace("6(4)", " 6sub4");
-        SgNameHM = SgNameHM.Replace("6(5)", " 6sub5");
+        Replace(ref SgNameHM,"2(1)", " 2sub1");
+        Replace(ref SgNameHM,"3(1)", " 3sub1");
+        Replace(ref SgNameHM,"3(2)", " 3sub2");
+        Replace(ref SgNameHM,"4(1)", " 4sub1");
+        Replace(ref SgNameHM,"4(2)", " 4sub2");
+        Replace(ref SgNameHM,"4(3)", " 4sub3");
+        Replace(ref SgNameHM,"6(1)", " 6sub1");
+        Replace(ref SgNameHM,"6(2)", " 6sub2");
+        Replace(ref SgNameHM,"6(3)", " 6sub3");
+        Replace(ref SgNameHM,"6(4)", " 6sub4");
+        Replace(ref SgNameHM,"6(5)", " 6sub5");
 
-        SgNameHM = SgNameHM.Replace("21", " 2sub1");
+        Replace(ref SgNameHM,"21", " 2sub1");
 
-        SgNameHM = SgNameHM.Replace("  ", " ");
+        Replace(ref SgNameHM,"  ", " ");
 
         string temp = SgNameHM.Replace(" ", "");
         #region
@@ -1653,7 +1710,7 @@ public class ConvertCrystalData
 
         int length = int.MaxValue;
         var sg = SymmetryStatic.SpaceGroupListWithoutSpace;
-        SgNameHM = SgNameHM.Replace(" ", "");
+        Replace(ref SgNameHM, " ", "");
         for (int i = 0; i < SymmetryStatic.TotalSpaceGroupNumber; i++)
         {
             if (sg[i].Length < length)

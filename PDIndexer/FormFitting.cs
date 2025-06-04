@@ -1434,7 +1434,7 @@ public partial class FormFitting : Form
         if (TargetCrystal == null || TargetProfile == null) return;
 
         var p = new Profile();
-        p.Pt.AddRange(TargetProfile.Pt.ToArray());
+        p.Pt.AddRange([.. TargetProfile.Pt]);
         if (TargetCrystal.Plane != null)
             foreach (Plane plane in TargetCrystal.Plane)
                 if (plane.IsFittingChecked && plane.SerchOption != PeakFunctionForm.Simple)

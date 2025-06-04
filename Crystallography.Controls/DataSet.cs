@@ -1,6 +1,4 @@
-﻿using MemoryPack.Compression;
-using MemoryPack;
-using Microsoft.Scripting.Utils;
+﻿using Microsoft.Scripting.Utils;
 using System;
 using System.Buffers;
 using System.Data;
@@ -8,8 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
-using System.IO;
-using static IronPython.Modules._ast;
 using System.Text.RegularExpressions;
 
 namespace Crystallography.Controls;
@@ -121,7 +117,7 @@ public partial class DataSet
     partial class DataTableAtomDataTable
     {
         public Atoms Get(int i) => Rows[i][AtomColumn] as Atoms;
-        public Atoms[] GetAll() => Rows.Select(r => (r as DataTableAtomRow)[AtomColumn] as Atoms).ToArray();
+        public Atoms[] GetAll() => [.. Rows.Select(r => (r as DataTableAtomRow)[AtomColumn] as Atoms)];
         public void Replace(Atoms atoms, int i) => ReplaceBase(Rows, createRow(atoms), i);
         public void Add(Atoms atom) => Rows.Add(createRow(atom));
         public new void Clear() => Rows.Clear();
@@ -234,13 +230,9 @@ public partial class DataSet
         /// <returns></returns>
         public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? Crystal2.Deserialize((byte[]) r[Crystal2Column]) : null;
 
-
-        /// <summary>
-        /// 引数はbindingSourceMain.Currentオブジェクト. 
-        /// </summary>
-        /// <param name="o"></param>
-        /// <returns></returns>
         public Crystal2 Get(int i) => Crystal2.Deserialize((byte[])Rows[i][0]);
+
+        public byte GetDataType(int i) => (byte)(Rows[i][DataTypeColumn]);
 
         public void Add(Crystal2 crystal) => Add(CreateRow(crystal));
         public void Add(DataTableCrystalDatabaseRow row) => Rows.Add(row);
@@ -250,7 +242,7 @@ public partial class DataSet
         public void Remove(int i) => Rows.RemoveAt(i);
 
         /// <summary>
-        /// srcCrystalはbindingSourceMain.Currentオブジェクト. 
+        /// srcCrystalは bindingSourceMain.Currentオブジェクト. 
         /// </summary>
         /// <param name="srcCrystal"></param>
         /// <param name="targetCrystal"></param>
@@ -267,35 +259,48 @@ public partial class DataSet
         readonly Lock lockObj = new();
 
         //public DataTableCrystalDatabaseRow CreateRow(Crystal2 c) => CreateRow(c,null);
-        public DataTableCrystalDatabaseRow CreateRow(Crystal2 c)
+        public DataTableCrystalDatabaseRow CreateRow(Crystal2 c, byte[] serializedC = null)
         {
             DataTableCrystalDatabaseRow dr;
             lock (lockObj)
                 dr = NewDataTableCrystalDatabaseRow();
 
-            dr.Crystal2 = Crystal2.Serialize(c);
+            dr.Crystal2 = serializedC ?? Crystal2.Serialize(c);
+
+            dr.DataType = c.datatype;
+
             dr.Name = c.name;
             dr.Formula = c.formula;
             dr.Density = c.density;
             (dr.A, dr.B, dr.C, dr.Alpha, dr.Beta, dr.Gamma) = c.CellOnlyValueFloat;
-            dr.CrystalSystem = SymmetryStatic.StrArray[c.sym][16];//s.CrystalSystemStr;
-            dr.PointGroup = SymmetryStatic.StrArray[c.sym][13];
-
-            var sg = SymmetryStatic.StrArray[c.sym][3].Replace("sub", "_").Replace("Hex", " H").Replace("Rho", " R");
-            if (dr.CrystalSystem == "monoclinic")
-                sg = sg.Split("=")[0];
-            dr.SpaceGroup = sg;
+            (dr.CrystalSystem, dr.PointGroup, dr.SpaceGroup) = Coeff[c.sym];
 
             var auth = c.auth;
-            if (Regex.Matches(auth, ",").Count>1)
+            if (Regex.Matches(auth, ",").Count > 1)
                 auth = auth.Split(",")[0] + ", et al.";
             dr.Authors = auth;
+
             dr.Title = c.sect;
             dr.Journal = c.jour;
             dr.Flag = true;
 
             return dr;
         }
+
+        static readonly (string CrystalSystem, string PointGroup, string SpaceGroup) [] Coeff 
+            = [.. SymmetryStatic.StrArray.Select(s =>
+        {
+            var sg = s[3];
+            if (sg.Contains("sub"))
+                sg = sg.Replace("sub", "_");
+            if (sg.Contains("Hex"))
+                sg = sg.Replace("Hex", " H");
+            if (sg.Contains("Rho"))
+                sg = sg.Replace("Rho", " R");
+            if (sg.Contains("="))
+                sg = sg.Split("=")[0];
+           return (s[16], s[13], sg);
+        })];
 
     }
 }

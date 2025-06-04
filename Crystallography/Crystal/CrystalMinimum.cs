@@ -5,6 +5,7 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using ZLinq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -17,6 +18,9 @@ namespace Crystallography;
 public partial class Crystal2
 {
     #region フィールド プライベートメンバーの場合[MemoryPackInclude]が必要
+    public enum DataType { None = 0, AMCSD = 1, COD = 2, }
+
+
     [MemoryPackInclude]
     private byte[][] cellBytes;
 
@@ -43,6 +47,8 @@ public partial class Crystal2
     public float[] d;//強度8位までのd値
 
     public string fileName;
+
+    public byte datatype; //DatabaseType (AMCSD, CODなど) の値を格納する
 
     #endregion
 
@@ -239,7 +245,7 @@ public partial class Crystal2
     /// <returns></returns>
     public static byte[] Serialize(Crystal2 c )
     {
-        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal, 24);
+        using var compressor = new BrotliCompressor(System.IO.Compression.CompressionLevel.Optimal, 22);
         MemoryPackSerializer.Serialize(compressor, c);
         return compressor.ToArray();
     }

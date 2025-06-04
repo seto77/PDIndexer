@@ -36,8 +36,8 @@ public partial class FormCrystal : Form
     }
     private void FormCrystal_Load(object sender, EventArgs e)
     {
-        if (File.Exists(formMain.UserAppDataPath + "StdDB.cdb3"))
-            crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "StdDB.cdb3");
+        if (File.Exists(formMain.UserAppDataPath + "AMCSD.cdb3"))
+            crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "AMCSD.cdb3");
     }
     private void FormCrystal_Closed(object sender, System.EventArgs e)
     {
