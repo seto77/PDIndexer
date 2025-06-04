@@ -1180,13 +1180,25 @@ public partial class FormFitting : Form
     }
     private void dataGridViewPlanes_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
-        if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+        try
         {
-            TargetCrystal.Plane[e.RowIndex].IsFittingChecked = (bool)((DataGridView)sender)[e.ColumnIndex, e.RowIndex].EditedFormattedValue;
-            Fitting();
+            if (e.ColumnIndex == 0 && e.RowIndex >= 0)
+            {
+                var view = (DataGridView)sender;
+                if (e.ColumnIndex < view.ColumnCount && e.RowIndex < view.RowCount)
+                {
+                    var editedFormattedValue = view[e.ColumnIndex, e.RowIndex].EditedFormattedValue;
+                    if (editedFormattedValue != null && editedFormattedValue is bool flag)
+                    {
+                        TargetCrystal.Plane[e.RowIndex].IsFittingChecked = flag;
+                        Fitting();
+                    }
+                }
+            }
+                dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
         }
 
-        dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
+        catch { }
     }
 
     public void dataGridViewPlaneList_SelectionChanged(object sender, EventArgs e)

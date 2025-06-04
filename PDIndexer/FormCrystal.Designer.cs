@@ -534,7 +534,7 @@ namespace PDIndexer
             // 
             crystalDatabaseControl.DatabaseSelection = true;
             resources.ApplyResources(crystalDatabaseControl, "crystalDatabaseControl");
-            crystalDatabaseControl.Filter = null;
+            crystalDatabaseControl.SearchFilter = null;
             crystalDatabaseControl.FontSize = 9.75F;
             crystalDatabaseControl.Name = "crystalDatabaseControl";
             // 

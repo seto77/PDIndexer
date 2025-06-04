@@ -602,7 +602,7 @@ public partial class FormMain : Form
             File.Delete(UserAppDataPath + "PDIndexerSetup.msi");
 
         //StdDbをコピー
-        File.Copy(appPath + "StdDb.cdb3", UserAppDataPath + "StdDb.cdb3", true);
+        File.Copy(appPath + "AMCSD.cdb3", UserAppDataPath + "AMCSD.cdb3", true);
 
         //UserAppDataPathに空フォルダがあったら削除
         foreach (var dir in Directory.GetDirectories(UserAppDataPath))
@@ -1269,7 +1269,7 @@ public partial class FormMain : Form
                     var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
                     var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
                     for (int i = 0; i < srcPts.Length; i++)
-                        if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInsde(srcPts[i]))
+                        if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i]))
                         {
                             var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y);
                             var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
@@ -2610,9 +2610,14 @@ public partial class FormMain : Form
 
                 if (ext == "nxs")//NXSファイルの場合は事前にチャンネル数を確認
                 {
-                    var nxs = new Crystallography.HDF(fileName);
-                    nxs.Move("/entry/instrument/xspress3");
-                    detectorNum = nxs.GetGroups().Length;
+                    var nxs = new HDF(fileName);
+
+                    
+
+                    detectorNum = nxs.Datasets.Where(e => e.Path.Contains("/histogram")).Count();
+
+                    //   nxs.Move("/entry/instrument/xspress3");
+                    //  detectorNum = nxs.GetGroups().Length;
                 }
 
                 formDataConverter.EDXDetectorNumber = detectorNum;
@@ -2628,23 +2633,23 @@ public partial class FormMain : Form
                         dp.AddRange(XYFile.ReadCSVFile(fileName));
                     else if (ext == "nxs")
                     {
-                        var nxs = new Crystallography.HDF(fileName);
-                        nxs.Move("/entry/instrument/xspress3");
+                        var nxs = new HDF(fileName);
                         int n = 0;
-                        foreach (var channel in nxs.GetGroups())
+                        foreach (var dataset in nxs.Datasets.Where(e => e.Path.Contains("/histogram")))
                         {
                             if (formDataConverter.EDXDetectorValid[n])
                             {
                                 double a0 = formDataConverter.EGC[n][0], a1 = formDataConverter.EGC[n][1], a2 = formDataConverter.EGC[n][2];
-                                var (data, result) = nxs.GetValue2<int>(channel + "/histogram");
-                                if (result && data.Length > 0)
-                                {
-                                    var diffProf = new DiffractionProfile2 { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {channel}" };
+                                var data = dataset.Read<int[,]>();
 
-                                    var sumData = new int[data[0].Length];
-                                    foreach (var d in data)
-                                        for (int i = 0; i < sumData.Length; i++)
-                                            sumData[i] += d[i];
+                                if (data.Length > 0)
+                                {
+                                    var diffProf = new DiffractionProfile2 { Name = $"{Path.GetFileNameWithoutExtension(fileName)} - {data}" };
+
+                                    var sumData = new int[data.GetLength(1)];
+                                    for(int j=0; j<data.GetLength(0); j++)
+                                        for (int i = 0; i < data.GetLength(1); i++)
+                                            sumData[i] += data[j,i];
 
                                     var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).Where(p => p.X > 0).ToList();
 
@@ -3866,8 +3871,8 @@ public partial class FormMain : Form
             if (dif.ImageArray != null)
             {
                 tabControl1.Visible = true;
-                Ring.Intensity.Clear();
-                Ring.Intensity.AddRange(dif.ImageArray);
+                //Ring.Intensity.Clear();
+                Ring.Intensity = dif.ImageArray;
                 Ring.CalcFreq();
 
                 var frequencyProfile = new Profile { Pt = [] };
