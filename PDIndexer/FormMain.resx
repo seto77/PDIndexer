@@ -1661,7 +1661,7 @@
     <value>0, 54</value>
   </data>
   <data name="pictureBoxMain.Size" type="System.Drawing.Size, System.Drawing">
-    <value>862, 537</value>
+    <value>862, 546</value>
   </data>
   <data name="pictureBoxMain.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2288,7 +2288,7 @@ You can set the limit value in right-click menu.</value>
     <value>22</value>
   </data>
   <data name="dataGridViewProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 134</value>
+    <value>244, 137</value>
   </data>
   <data name="dataGridViewProfiles.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2320,7 +2320,7 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxProfileParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 179</value>
+    <value>3, 182</value>
   </data>
   <data name="checkBoxProfileParameter.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 21</value>
@@ -2392,7 +2392,7 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 203</value>
+    <value>250, 206</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2470,7 +2470,7 @@ You can set the limit value in right-click menu.</value>
     <value>22</value>
   </data>
   <data name="dataGridViewCrystals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>244, 341</value>
+    <value>244, 347</value>
   </data>
   <data name="dataGridViewCrystals.TabIndex" type="System.Int32, mscorlib">
     <value>32</value>
@@ -2503,7 +2503,7 @@ You can set the limit value in right-click menu.</value>
     <value>NoControl</value>
   </data>
   <data name="checkBoxCrystalParameter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 362</value>
+    <value>3, 368</value>
   </data>
   <data name="checkBoxCrystalParameter.Size" type="System.Drawing.Size, System.Drawing">
     <value>244, 19</value>
@@ -2539,7 +2539,7 @@ You can set the limit value in right-click menu.</value>
     <value>0, 0</value>
   </data>
   <data name="groupBoxCrystalData.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 384</value>
+    <value>250, 390</value>
   </data>
   <data name="groupBoxCrystalData.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
@@ -2572,10 +2572,10 @@ You can set the limit value in right-click menu.</value>
     <value>1</value>
   </data>
   <data name="splitContainer2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 591</value>
+    <value>250, 600</value>
   </data>
   <data name="splitContainer2.SplitterDistance" type="System.Int32, mscorlib">
-    <value>203</value>
+    <value>206</value>
   </data>
   <data name="splitContainer2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -2605,7 +2605,7 @@ You can set the limit value in right-click menu.</value>
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1116, 591</value>
+    <value>1116, 600</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>862</value>
@@ -2626,7 +2626,7 @@ You can set the limit value in right-click menu.</value>
     <value>0</value>
   </data>
   <data name="toolStripContainer1.ContentPanel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1116, 591</value>
+    <value>1116, 600</value>
   </data>
   <data name="&gt;&gt;toolStripContainer1.ContentPanel.Name" xml:space="preserve">
     <value>toolStripContainer1.ContentPanel</value>
@@ -3143,7 +3143,7 @@ You can set the limit value in right-click menu.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 29</value>
+    <value>39, 24</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>File</value>
@@ -3185,7 +3185,7 @@ You can set the limit value in right-click menu.</value>
     <value>  Clear Registry (check and restart)</value>
   </data>
   <data name="automaticallySaveTheCrystalListToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>277, 22</value>
+    <value>277, 20</value>
   </data>
   <data name="automaticallySaveTheCrystalListToolStripMenuItem.Text" xml:space="preserve">
     <value>  Save the crystal list when closing</value>
@@ -3197,7 +3197,7 @@ You can set the limit value in right-click menu.</value>
     <value>None</value>
   </data>
   <data name="optionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 21</value>
+    <value>60, 24</value>
   </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>Option</value>
@@ -3206,13 +3206,13 @@ You can set the limit value in right-click menu.</value>
     <value>Overlay</value>
   </data>
   <data name="editorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>111, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>Editor</value>
   </data>
   <data name="macroToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 29</value>
+    <value>58, 24</value>
   </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
     <value>Macro</value>
@@ -3245,7 +3245,7 @@ You can set the limit value in right-click menu.</value>
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="helpToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 29</value>
+    <value>47, 24</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>Help</value>
@@ -3285,7 +3285,7 @@ You can set the limit value in right-click menu.</value>
     <value>Japanese (need restart)</value>
   </data>
   <data name="languageToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 29</value>
+    <value>77, 24</value>
   </data>
   <data name="languageToolStripMenuItem.Text" xml:space="preserve">
     <value>Language</value>
@@ -3293,8 +3293,14 @@ You can set the limit value in right-click menu.</value>
   <data name="menuStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 41</value>
   </data>
+  <data name="menuStrip.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>6, 6, 6, 6</value>
+  </data>
+  <data name="menuStrip.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
   <data name="menuStrip.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1116, 33</value>
+    <value>1116, 24</value>
   </data>
   <data name="menuStrip.TabIndex" type="System.Int32, mscorlib">
     <value>23</value>

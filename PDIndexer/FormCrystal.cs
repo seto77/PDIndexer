@@ -5,6 +5,7 @@ using Crystallography;
 using Crystallography.Controls;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 
 namespace PDIndexer;
 
@@ -27,8 +28,6 @@ public partial class FormCrystal : Form
         InitializeComponent();
         crystalControl.CrystalChanged += crystalControl_CrystalChanged;
 
-        crystalDatabaseControl.ProgressChanged += CrystalDatabaseControl_ProgressChanged;
-
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
 
         searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
@@ -36,8 +35,7 @@ public partial class FormCrystal : Form
     }
     private void FormCrystal_Load(object sender, EventArgs e)
     {
-        if (File.Exists(formMain.UserAppDataPath + "AMCSD.cdb3"))
-            crystalDatabaseControl.ReadDatabase(formMain.UserAppDataPath + "AMCSD.cdb3");
+        crystalDatabaseControl.AMCSD_Checked = true;
     }
     private void FormCrystal_Closed(object sender, System.EventArgs e)
     {
@@ -52,11 +50,6 @@ public partial class FormCrystal : Form
     }
     #endregion
 
-    private void CrystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
-    {
-        if (message.Contains("Total"))
-            crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;
-    }
     private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
     {
         if (SkipEvent) return;
@@ -262,5 +255,27 @@ public partial class FormCrystal : Form
     private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
     {
     }
+
+    bool flag = true;
+    private void crystalDatabaseControl_ProgressChanged(object sender, double progress, string message)
+    {
+        toolStripStatusLabel1.Text = message;
+        toolStripProgressBar1.Value = (int)(progress * 100);
+
+        //最初のデータベース読み込み時の後に、crystalDatabaseControl.CrystalChangedをセット
+        if (toolStripStatusLabel1.Text.Contains("Total") && flag)
+        {
+            crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;
+            flag = false;
+        }
+    }
+
+    private void searchCrystalControl_ProgressChanged(object sender, double progress, string message)
+    {
+        toolStripStatusLabel1.Text = message;
+        toolStripProgressBar1.Value = (int)(progress * 100);
+    }
+
+
 }
 

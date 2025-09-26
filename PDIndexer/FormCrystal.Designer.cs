@@ -99,6 +99,9 @@ namespace PDIndexer
             dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
             dataGridViewImageColumn3 = new DataGridViewImageColumn();
             dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
+            statusStrip1 = new StatusStrip();
+            toolStripProgressBar1 = new ToolStripProgressBar();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
             ((ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -118,6 +121,7 @@ namespace PDIndexer
             ((ISupportInitialize)numericUpDownHeightOfBottomPeak).BeginInit();
             groupBox4.SuspendLayout();
             panel1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // splitContainer1
@@ -532,11 +536,16 @@ namespace PDIndexer
             // 
             // crystalDatabaseControl
             // 
+            crystalDatabaseControl.AMCSD_Checked = false;
+            crystalDatabaseControl.AMCSD_Has_Read = false;
+            crystalDatabaseControl.COD_Checked = false;
+            crystalDatabaseControl.COD_Has_Read = false;
             crystalDatabaseControl.DatabaseSelection = true;
             resources.ApplyResources(crystalDatabaseControl, "crystalDatabaseControl");
-            crystalDatabaseControl.SearchFilter = null;
             crystalDatabaseControl.FontSize = 9.75F;
             crystalDatabaseControl.Name = "crystalDatabaseControl";
+            crystalDatabaseControl.SearchFilter = null;
+            crystalDatabaseControl.ProgressChanged += crystalDatabaseControl_ProgressChanged;
             // 
             // panel1
             // 
@@ -547,7 +556,9 @@ namespace PDIndexer
             // searchCrystalControl
             // 
             resources.ApplyResources(searchCrystalControl, "searchCrystalControl");
+            searchCrystalControl.CrystalDatabaseControl = null;
             searchCrystalControl.Name = "searchCrystalControl";
+            searchCrystalControl.ProgressChanged += searchCrystalControl_ProgressChanged;
             // 
             // checkDataGridViewCheckBoxColumn
             // 
@@ -628,11 +639,28 @@ namespace PDIndexer
             dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
             dataGridViewTextBoxColumn4.Resizable = DataGridViewTriState.False;
             // 
+            // statusStrip1
+            // 
+            resources.ApplyResources(statusStrip1, "statusStrip1");
+            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripProgressBar1, toolStripStatusLabel1 });
+            statusStrip1.Name = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            toolStripProgressBar1.Name = "toolStripProgressBar1";
+            resources.ApplyResources(toolStripProgressBar1, "toolStripProgressBar1");
+            // 
+            // toolStripStatusLabel1
+            // 
+            toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
+            // 
             // FormCrystal
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(splitContainer1);
+            Controls.Add(statusStrip1);
             KeyPreview = true;
             MaximizeBox = false;
             Name = "FormCrystal";
@@ -666,7 +694,10 @@ namespace PDIndexer
             groupBox4.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
         #endregion
 
@@ -727,6 +758,9 @@ namespace PDIndexer
         private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn1;
         private DataGridViewImageColumn PeakColor;
         private DataGridViewTextBoxColumn Crystal;
+        private StatusStrip statusStrip1;
+        private ToolStripProgressBar toolStripProgressBar1;
+        private ToolStripStatusLabel toolStripStatusLabel1;
     }
 
 

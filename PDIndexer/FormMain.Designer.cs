@@ -1498,7 +1498,7 @@ namespace PDIndexer
             // menuStrip
             // 
             resources.ApplyResources(menuStrip, "menuStrip");
-            menuStrip.ImageScalingSize = new Size(32, 32);
+            menuStrip.GripMargin = new Padding(1);
             menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, macroToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem });
             menuStrip.Name = "menuStrip";
             // 
@@ -1652,7 +1652,6 @@ namespace PDIndexer
             optionToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
             optionToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolTipToolStripMenuItem, watchReadClipboardToolStripMenuItem, watchReadANewProfileToolStripMenuItem, clearRegistryToolStripMenuItem, automaticallySaveTheCrystalListToolStripMenuItem });
             resources.ApplyResources(optionToolStripMenuItem, "optionToolStripMenuItem");
-            optionToolStripMenuItem.Margin = new Padding(4);
             optionToolStripMenuItem.Name = "optionToolStripMenuItem";
             // 
             // toolTipToolStripMenuItem
@@ -1706,6 +1705,7 @@ namespace PDIndexer
             automaticallySaveTheCrystalListToolStripMenuItem.CheckState = CheckState.Checked;
             automaticallySaveTheCrystalListToolStripMenuItem.DisplayStyle = ToolStripItemDisplayStyle.Text;
             automaticallySaveTheCrystalListToolStripMenuItem.Name = "automaticallySaveTheCrystalListToolStripMenuItem";
+            automaticallySaveTheCrystalListToolStripMenuItem.Padding = new Padding(0);
             resources.ApplyResources(automaticallySaveTheCrystalListToolStripMenuItem, "automaticallySaveTheCrystalListToolStripMenuItem");
             // 
             // macroToolStripMenuItem

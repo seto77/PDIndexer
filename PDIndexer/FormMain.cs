@@ -65,8 +65,6 @@ public partial class FormMain : Form
 
     #region プロパティ
 
-   
-
     public FormCrystal formCrystal;
     public FormEOS formEOS;
     public FormFitting formFitting;
@@ -77,6 +75,7 @@ public partial class FormMain : Form
     public FormSequentialAnalysis formSequentialAnalysis;
     public FormMacro FormMacro;
     public FormTwoThetaCalibration formTwoThetaCalibration;
+
 
     Crystallography.Controls.CommonDialog initialDialog;
 
@@ -777,12 +776,16 @@ public partial class FormMain : Form
 
         Reg.RW<bool>(key, mode, initialDialog, "AutomaticallyClose");
 
+        
+        //Reg.RW<bool>(key, mode, clearRegistryToolStripMenuItem, "Checked");
+
         if (formEOS == null) return;
 
         Reg.RW<Rectangle>(key, mode, formEOS, "Bounds");
         Reg.RW<Rectangle>(key, mode, formCrystal, "Bounds");
         Reg.RW<Rectangle>(key, mode, formFitting, "Bounds");
         Reg.RW<Rectangle>(key, mode, formProfile, "Bounds");
+
 
         #region FormMain
         Reg.RW<HorizontalAxisProperty>(key, mode, this, "HorizontalAxisProperty");

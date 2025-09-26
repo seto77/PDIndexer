@@ -58,6 +58,11 @@ public static class ImageIO
 
     private static readonly char[] separator = ['='];
 
+    /// <summary>
+    /// 拡張子を渡して、その拡張子が読み込み可能かどうかを返す。
+    /// </summary>
+    /// <param name="_ext"></param>
+    /// <returns></returns>
     public static bool IsReadable(string _ext)
     {
         var ext = _ext.StartsWith('.') ? _ext[1..] : _ext;
@@ -742,7 +747,12 @@ public static class ImageIO
             Ring.Intensity = [.. data.Read<int[]>().Select(e => (double)e)];
         else
         {
-            var src = data.Read<int[]>().Select(e=>(double)e).ToArray();
+            var src = Array.Empty<double>();
+            if(data.Type.Size==4)
+                src = [.. data.Read<int[]>().Select(e => (double)e)];
+            else if (data.Type.Size == 2)
+                src = [.. data.Read<short[]>().Select(e => (double)e)];
+
             Ring.SequentialImageIntensities = [];
             for(int i=0; i< num; i++)
                 Ring.SequentialImageIntensities.Add( src[(i*width*height)..((i+1)*(width*height))] );
