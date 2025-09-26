@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net9.0-windows10.0.26100.0</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2025.9.26.0937</AssemblyVersion>
-    <FileVersion>2025.9.26.0937</FileVersion>
+    <AssemblyVersion>2025.9.26.1008</AssemblyVersion>
+    <FileVersion>2025.9.26.1008</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
