@@ -231,13 +231,16 @@ public partial class FormEOS : Form
         //Brown
         numericalTextBoxNaClB1Brown.Value = EOS.NaCl_Brown(a / 10, a0 / 10, t);
         //Matsui
-        numericalTextBoxNaClB1Matsui.Value = EOS.NaClB1_Matsui(a0, a, t);
+        numericBoxNaClB1Matsui.Value = EOS.NaClB1_Matsui(a0, a, t);
+        //Skelton
+        numericBoxNaClB1Skelton.Value = EOS.NaClB1_Skelton(a0, a, t);
 
-        return new (string Reseacher, double Pressure)[]
-            {
+        return
+            [
                  ("Brown99",numericalTextBoxNaClB1Brown.Value),
-             ("Matsui12",numericalTextBoxNaClB1Matsui.Value ),
-            };
+             ("Matsui12",numericBoxNaClB1Matsui.Value ),
+             ("Skelton84",numericBoxNaClB1Skelton.Value ),
+            ];
     }
     #endregion
 

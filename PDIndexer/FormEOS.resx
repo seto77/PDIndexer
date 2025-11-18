@@ -1,4 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
 <root>
+  <!--
+    Microsoft ResX Schema
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -82,10 +142,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPtFratanduono.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPtFratanduono.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPtFratanduono.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -96,6 +156,9 @@
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="numericBoxPtFratanduono.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxPtFratanduono.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxPtFratanduono.Name" xml:space="preserve">
     <value>numericBoxPtFratanduono</value>
@@ -131,10 +194,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPtYokoo.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPtYokoo.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPtYokoo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -144,6 +207,9 @@
   </data>
   <data name="numericBoxPtYokoo.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxPtYokoo.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxPtYokoo.Name" xml:space="preserve">
     <value>numericBoxPtYokoo</value>
@@ -179,10 +245,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxPtMatsui.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxPtMatsui.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxPtMatsui.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -192,6 +258,9 @@
   </data>
   <data name="numericalTextBoxPtMatsui.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxPtMatsui.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtMatsui.Name" xml:space="preserve">
     <value>numericalTextBoxPtMatsui</value>
@@ -227,10 +296,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxPtHolmes.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxPtHolmes.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxPtHolmes.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -240,6 +309,9 @@
   </data>
   <data name="numericalTextBoxPtHolmes.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxPtHolmes.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtHolmes.Name" xml:space="preserve">
     <value>numericalTextBoxPtHolmes</value>
@@ -308,10 +380,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxPtJamieson.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxPtJamieson.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxPtJamieson.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -321,6 +393,9 @@
   </data>
   <data name="numericalTextBoxPtJamieson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxPtJamieson.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtJamieson.Name" xml:space="preserve">
     <value>numericalTextBoxPtJamieson</value>
@@ -452,10 +527,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxPtA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxPtA.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxPtA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -465,6 +540,9 @@
   </data>
   <data name="numericalTextBoxPtA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxPtA.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtA.Name" xml:space="preserve">
     <value>numericalTextBoxPtA</value>
@@ -497,10 +575,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPtA0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPtA0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPtA0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -510,6 +588,9 @@
   </data>
   <data name="numericBoxPtA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxPtA0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPtA0.Name" xml:space="preserve">
     <value>numericBoxPtA0</value>
@@ -602,10 +683,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxTemperature0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxTemperature0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxTemperature0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -615,6 +696,9 @@
   </data>
   <data name="numericBoxTemperature0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxTemperature0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTemperature0.Name" xml:space="preserve">
     <value>numericBoxTemperature0</value>
@@ -628,53 +712,140 @@
   <data name="&gt;&gt;numericBoxTemperature0.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxNaClB1Skelton.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNaClB1Skelton.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNaClB1Skelton.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.FooterText" xml:space="preserve">
+  <data name="numericBoxNaClB1Skelton.FooterText" xml:space="preserve">
     <value>GPa</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNaClB1Skelton.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.Location" type="System.Drawing.Point, System.Drawing">
-    <value>84, 75</value>
+  <data name="numericBoxNaClB1Skelton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 100</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxNaClB1Skelton.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+  <data name="numericBoxNaClB1Skelton.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+  <data name="numericBoxNaClB1Skelton.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxNaClB1Skelton.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxNaClB1Skelton.Size" type="System.Drawing.Size, System.Drawing">
     <value>123, 27</value>
   </data>
-  <data name="numericalTextBoxNaClB1Matsui.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxNaClB1Skelton.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.Name" xml:space="preserve">
-    <value>numericalTextBoxNaClB1Matsui</value>
+  <data name="numericBoxNaClB1Skelton.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxNaClB1Skelton.Name" xml:space="preserve">
+    <value>numericBoxNaClB1Skelton</value>
+  </data>
+  <data name="&gt;&gt;numericBoxNaClB1Skelton.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxNaClB1Skelton.Parent" xml:space="preserve">
     <value>groupBoxNaClB1</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxNaClB1Matsui.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxNaClB1Skelton.ZOrder" xml:space="preserve">
     <value>0</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.FooterFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.FooterText" xml:space="preserve">
+    <value>GPa</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.HeaderFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.Location" type="System.Drawing.Point, System.Drawing">
+    <value>84, 75</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 0, 0</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 0, 1, 0</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.Size" type="System.Drawing.Size, System.Drawing">
+    <value>123, 27</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.TabIndex" type="System.Int32, mscorlib">
+    <value>12</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;numericBoxNaClB1Matsui.Name" xml:space="preserve">
+    <value>numericBoxNaClB1Matsui</value>
+  </data>
+  <data name="&gt;&gt;numericBoxNaClB1Matsui.Type" xml:space="preserve">
+    <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;numericBoxNaClB1Matsui.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;numericBoxNaClB1Matsui.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label31.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label31.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label31.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label31.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 105</value>
+  </data>
+  <data name="label31.Size" type="System.Drawing.Size, System.Drawing">
+    <value>69, 15</value>
+  </data>
+  <data name="label31.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="label31.Text" xml:space="preserve">
+    <value>Skelton (84)</value>
+  </data>
+  <data name="&gt;&gt;label31.Name" xml:space="preserve">
+    <value>label31</value>
+  </data>
+  <data name="&gt;&gt;label31.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label31.Parent" xml:space="preserve">
+    <value>groupBoxNaClB1</value>
+  </data>
+  <data name="&gt;&gt;label31.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
   <data name="numericalTextBoxNaClB1Brown.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -698,10 +869,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB1Brown.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB1Brown.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB1Brown.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -711,6 +882,9 @@
   </data>
   <data name="numericalTextBoxNaClB1Brown.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxNaClB1Brown.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB1Brown.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB1Brown</value>
@@ -722,7 +896,7 @@
     <value>groupBoxNaClB1</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB1Brown.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>3</value>
   </data>
   <data name="label4.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -755,7 +929,7 @@
     <value>groupBoxNaClB1</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>4</value>
   </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -788,7 +962,7 @@
     <value>groupBoxNaClB1</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>5</value>
   </data>
   <data name="numericalTextBoxNaClB1A.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -809,10 +983,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB1A.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB1A.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB1A.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -822,6 +996,9 @@
   </data>
   <data name="numericalTextBoxNaClB1A.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB1A.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB1A</value>
@@ -833,7 +1010,7 @@
     <value>groupBoxNaClB1</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB1A.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>6</value>
   </data>
   <data name="numericBoxNaClB1A0.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -854,10 +1031,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxNaClB1A0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxNaClB1A0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxNaClB1A0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -867,6 +1044,9 @@
   </data>
   <data name="numericBoxNaClB1A0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxNaClB1A0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxNaClB1A0.Name" xml:space="preserve">
     <value>numericBoxNaClB1A0</value>
@@ -878,7 +1058,7 @@
     <value>groupBoxNaClB1</value>
   </data>
   <data name="&gt;&gt;numericBoxNaClB1A0.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>7</value>
   </data>
   <data name="groupBoxNaClB1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
@@ -887,13 +1067,13 @@
     <value>3, 401</value>
   </data>
   <data name="groupBoxNaClB1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>218, 104</value>
+    <value>218, 130</value>
   </data>
   <data name="groupBoxNaClB1.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
   </data>
   <data name="groupBoxNaClB1.Text" xml:space="preserve">
-    <value>NaCl B1</value>
+    <value>NaCl (B1)</value>
   </data>
   <data name="&gt;&gt;groupBoxNaClB1.Name" xml:space="preserve">
     <value>groupBoxNaClB1</value>
@@ -929,10 +1109,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAuFratanduono.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAuFratanduono.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAuFratanduono.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -942,6 +1122,9 @@
   </data>
   <data name="numericBoxAuFratanduono.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxAuFratanduono.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxAuFratanduono.Name" xml:space="preserve">
     <value>numericBoxAuFratanduono</value>
@@ -977,10 +1160,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxAuYokoo.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxAuYokoo.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxAuYokoo.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -990,6 +1173,9 @@
   </data>
   <data name="numericBoxAuYokoo.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxAuYokoo.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxAuYokoo.Name" xml:space="preserve">
     <value>numericBoxAuYokoo</value>
@@ -1025,10 +1211,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxGoldJamieson.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxGoldJamieson.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxGoldJamieson.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1038,6 +1224,9 @@
   </data>
   <data name="numericalTextBoxGoldJamieson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxGoldJamieson.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldJamieson.Name" xml:space="preserve">
     <value>numericalTextBoxGoldJamieson</value>
@@ -1073,10 +1262,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1086,6 +1275,9 @@
   </data>
   <data name="numericalTextBoxGoldTsuchiya.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxGoldTsuchiya.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldTsuchiya.Name" xml:space="preserve">
     <value>numericalTextBoxGoldTsuchiya</value>
@@ -1121,10 +1313,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxGoldSim.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxGoldSim.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxGoldSim.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1134,6 +1326,9 @@
   </data>
   <data name="numericalTextBoxGoldSim.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxGoldSim.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldSim.Name" xml:space="preserve">
     <value>numericalTextBoxGoldSim</value>
@@ -1202,10 +1397,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxGoldAnderson.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxGoldAnderson.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxGoldAnderson.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1215,6 +1410,9 @@
   </data>
   <data name="numericalTextBoxGoldAnderson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxGoldAnderson.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldAnderson.Name" xml:space="preserve">
     <value>numericalTextBoxGoldAnderson</value>
@@ -1280,10 +1478,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxGoldA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxGoldA.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxGoldA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1293,6 +1491,9 @@
   </data>
   <data name="numericalTextBoxGoldA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxGoldA.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldA.Name" xml:space="preserve">
     <value>numericalTextBoxGoldA</value>
@@ -1325,10 +1526,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxGoldA0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxGoldA0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxGoldA0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1338,6 +1539,9 @@
   </data>
   <data name="numericBoxGoldA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxGoldA0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxGoldA0.Name" xml:space="preserve">
     <value>numericBoxGoldA0</value>
@@ -1532,10 +1736,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMgOTangeBM.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMgOTangeBM.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMgOTangeBM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1545,6 +1749,9 @@
   </data>
   <data name="numericBoxMgOTangeBM.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxMgOTangeBM.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMgOTangeBM.Name" xml:space="preserve">
     <value>numericBoxMgOTangeBM</value>
@@ -1580,10 +1787,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMgOTangeVinet.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMgOTangeVinet.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMgOTangeVinet.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1593,6 +1800,9 @@
   </data>
   <data name="numericBoxMgOTangeVinet.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxMgOTangeVinet.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMgOTangeVinet.Name" xml:space="preserve">
     <value>numericBoxMgOTangeVinet</value>
@@ -1628,10 +1838,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxMgOAizawa.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxMgOAizawa.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxMgOAizawa.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1641,6 +1851,9 @@
   </data>
   <data name="numericalTextBoxMgOAizawa.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxMgOAizawa.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgOAizawa.Name" xml:space="preserve">
     <value>numericalTextBoxMgOAizawa</value>
@@ -1709,10 +1922,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxMgODewaele.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxMgODewaele.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxMgODewaele.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1722,6 +1935,9 @@
   </data>
   <data name="numericalTextBoxMgODewaele.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxMgODewaele.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgODewaele.Name" xml:space="preserve">
     <value>numericalTextBoxMgODewaele</value>
@@ -1790,10 +2006,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxMgOJacson.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxMgOJacson.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxMgOJacson.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1803,6 +2019,9 @@
   </data>
   <data name="numericalTextBoxMgOJacson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxMgOJacson.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgOJacson.Name" xml:space="preserve">
     <value>numericalTextBoxMgOJacson</value>
@@ -1901,10 +2120,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxMgOA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxMgOA.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxMgOA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1914,6 +2133,9 @@
   </data>
   <data name="numericalTextBoxMgOA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxMgOA.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgOA.Name" xml:space="preserve">
     <value>numericalTextBoxMgOA</value>
@@ -1979,10 +2201,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMgOA0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMgOA0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMgOA0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -1992,6 +2214,9 @@
   </data>
   <data name="numericBoxMgOA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxMgOA0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMgOA0.Name" xml:space="preserve">
     <value>numericBoxMgOA0</value>
@@ -2054,10 +2279,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiVinet.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiVinet.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiVinet.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2067,6 +2292,9 @@
   </data>
   <data name="numericalTextBoxNaClB2SakaiVinet.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiVinet.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SakaiVinet.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2SakaiVinet</value>
@@ -2102,10 +2330,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiBM.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiBM.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2SakaiBM.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2115,6 +2343,9 @@
   </data>
   <data name="numericalTextBoxNaClB2SakaiBM.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiBM.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SakaiBM.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2SakaiBM</value>
@@ -2150,10 +2381,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2Ueda.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2Ueda.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2Ueda.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2163,6 +2394,9 @@
   </data>
   <data name="numericalTextBoxNaClB2Ueda.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxNaClB2Ueda.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2Ueda.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2Ueda</value>
@@ -2231,10 +2465,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2SataMgO.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2SataMgO.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2SataMgO.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2244,6 +2478,9 @@
   </data>
   <data name="numericalTextBoxNaClB2SataMgO.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataMgO.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SataMgO.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2SataMgO</value>
@@ -2312,10 +2549,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2SataPt.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2SataPt.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2SataPt.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2325,6 +2562,9 @@
   </data>
   <data name="numericalTextBoxNaClB2SataPt.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataPt.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SataPt.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2SataPt</value>
@@ -2423,10 +2663,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2A.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2A.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2A.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2436,6 +2676,9 @@
   </data>
   <data name="numericalTextBoxNaClB2A.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2A.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2A</value>
@@ -2504,10 +2747,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxNaClB2A0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxNaClB2A0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxNaClB2A0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2517,6 +2760,9 @@
   </data>
   <data name="numericalTextBoxNaClB2A0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2A0.Name" xml:space="preserve">
     <value>numericalTextBoxNaClB2A0</value>
@@ -2543,7 +2789,7 @@
     <value>8</value>
   </data>
   <data name="groupBoxNaClB2.Text" xml:space="preserve">
-    <value>NaCl B2</value>
+    <value>NaCl (B2)</value>
   </data>
   <data name="&gt;&gt;groupBoxNaClB2.Name" xml:space="preserve">
     <value>groupBoxNaClB2</value>
@@ -2557,52 +2803,55 @@
   <data name="&gt;&gt;groupBoxNaClB2.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxCorundumDubrovinsky.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCorundumDubrovinsky.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.FooterFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCorundumDubrovinsky.FooterFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.FooterText" xml:space="preserve">
+  <data name="numericBoxCorundumDubrovinsky.FooterText" xml:space="preserve">
     <value>GPa</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.HeaderFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCorundumDubrovinsky.HeaderFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxCorundumDubrovinsky.Location" type="System.Drawing.Point, System.Drawing">
     <value>103, 50</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCorundumDubrovinsky.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+  <data name="numericBoxCorundumDubrovinsky.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+  <data name="numericBoxCorundumDubrovinsky.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxCorundumDubrovinsky.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxCorundumDubrovinsky.Size" type="System.Drawing.Size, System.Drawing">
     <value>104, 27</value>
   </data>
-  <data name="numericalTextBoxCorundumDubrovinsky.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxCorundumDubrovinsky.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.Name" xml:space="preserve">
-    <value>numericalTextBoxCorundumDubrovinsky</value>
+  <data name="numericBoxCorundumDubrovinsky.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCorundumDubrovinsky.Name" xml:space="preserve">
+    <value>numericBoxCorundumDubrovinsky</value>
+  </data>
+  <data name="&gt;&gt;numericBoxCorundumDubrovinsky.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCorundumDubrovinsky.Parent" xml:space="preserve">
     <value>groupBoxCorundum</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxCorundumDubrovinsky.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxCorundumDubrovinsky.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="numericalTextBoxColundumV.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
@@ -2624,10 +2873,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxColundumV.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxColundumV.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxColundumV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2637,6 +2886,9 @@
   </data>
   <data name="numericalTextBoxColundumV.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxColundumV.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxColundumV.Name" xml:space="preserve">
     <value>numericalTextBoxColundumV</value>
@@ -2702,10 +2954,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxColundumV0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxColundumV0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxColundumV0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2715,6 +2967,9 @@
   </data>
   <data name="numericBoxColundumV0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxColundumV0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxColundumV0.Name" xml:space="preserve">
     <value>numericBoxColundumV0</value>
@@ -2780,10 +3035,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxArRoss.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxArRoss.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxArRoss.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2793,6 +3048,9 @@
   </data>
   <data name="numericalTextBoxArRoss.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxArRoss.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxArRoss.Name" xml:space="preserve">
     <value>numericalTextBoxArRoss</value>
@@ -2828,10 +3086,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxArJephcoat.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxArJephcoat.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxArJephcoat.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2841,6 +3099,9 @@
   </data>
   <data name="numericalTextBoxArJephcoat.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxArJephcoat.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxArJephcoat.Name" xml:space="preserve">
     <value>numericalTextBoxArJephcoat</value>
@@ -2873,10 +3134,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxArA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxArA.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxArA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2886,6 +3147,9 @@
   </data>
   <data name="numericalTextBoxArA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericalTextBoxArA.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxArA.Name" xml:space="preserve">
     <value>numericalTextBoxArA</value>
@@ -2984,10 +3248,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxArA0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxArA0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxArA0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -2997,6 +3261,9 @@
   </data>
   <data name="numericBoxArA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxArA0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxArA0.Name" xml:space="preserve">
     <value>numericBoxArA0</value>
@@ -3059,10 +3326,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxReDub.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxReDub.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxReDub.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3072,6 +3339,9 @@
   </data>
   <data name="numericBoxReDub.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxReDub.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxReDub.Name" xml:space="preserve">
     <value>numericBoxReDub</value>
@@ -3107,10 +3377,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxReSakai.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxReSakai.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxReSakai.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3120,6 +3390,9 @@
   </data>
   <data name="numericBoxReSakai.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxReSakai.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxReSakai.Name" xml:space="preserve">
     <value>numericBoxReSakai</value>
@@ -3188,10 +3461,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxReAnz.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxReAnz.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxReAnz.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3201,6 +3474,9 @@
   </data>
   <data name="numericBoxReAnz.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxReAnz.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxReAnz.Name" xml:space="preserve">
     <value>numericBoxReAnz</value>
@@ -3269,10 +3545,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericalTextBoxReZha.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericalTextBoxReZha.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericalTextBoxReZha.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3282,6 +3558,9 @@
   </data>
   <data name="numericalTextBoxReZha.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericalTextBoxReZha.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxReZha.Name" xml:space="preserve">
     <value>numericalTextBoxReZha</value>
@@ -3347,10 +3626,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxReV.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxReV.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxReV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3360,6 +3639,9 @@
   </data>
   <data name="numericBoxReV.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxReV.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxReV.Name" xml:space="preserve">
     <value>numericBoxReV</value>
@@ -3425,10 +3707,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numerictBoxReV0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numerictBoxReV0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numerictBoxReV0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3438,6 +3720,9 @@
   </data>
   <data name="numerictBoxReV0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numerictBoxReV0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numerictBoxReV0.Name" xml:space="preserve">
     <value>numerictBoxReV0</value>
@@ -3500,10 +3785,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMoZhao.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMoZhao.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMoZhao.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3513,6 +3798,9 @@
   </data>
   <data name="numericBoxMoZhao.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxMoZhao.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMoZhao.Name" xml:space="preserve">
     <value>numericBoxMoZhao</value>
@@ -3548,10 +3836,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMoHuang.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMoHuang.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMoHuang.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3561,6 +3849,9 @@
   </data>
   <data name="numericBoxMoHuang.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxMoHuang.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMoHuang.Name" xml:space="preserve">
     <value>numericBoxMoHuang</value>
@@ -3626,10 +3917,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMoV.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMoV.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMoV.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3639,6 +3930,9 @@
   </data>
   <data name="numericBoxMoV.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxMoV.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMoV.Name" xml:space="preserve">
     <value>numericBoxMoV</value>
@@ -3704,10 +3998,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxMoV0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxMoV0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxMoV0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3717,6 +4011,9 @@
   </data>
   <data name="numericBoxMoV0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxMoV0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMoV0.Name" xml:space="preserve">
     <value>numericBoxMoV0</value>
@@ -3782,10 +4079,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPbStrassle.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPbStrassle.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPbStrassle.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3795,6 +4092,9 @@
   </data>
   <data name="numericBoxPbStrassle.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
+  </data>
+  <data name="numericBoxPbStrassle.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxPbStrassle.Name" xml:space="preserve">
     <value>numericBoxPbStrassle</value>
@@ -3827,10 +4127,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPbA.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPbA.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPbA.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3840,6 +4140,9 @@
   </data>
   <data name="numericBoxPbA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxPbA.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPbA.Name" xml:space="preserve">
     <value>numericBoxPbA</value>
@@ -3905,10 +4208,10 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxPbA0.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+    <value>1000, 30</value>
   </data>
   <data name="numericBoxPbA0.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+    <value>1, 20</value>
   </data>
   <data name="numericBoxPbA0.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -3918,6 +4221,9 @@
   </data>
   <data name="numericBoxPbA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
+  </data>
+  <data name="numericBoxPbA0.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPbA0.Name" xml:space="preserve">
     <value>numericBoxPbA0</value>
@@ -4399,49 +4705,52 @@
   <data name="tableLayoutPanel1.LayoutSettings" type="System.Windows.Forms.TableLayoutSettings, System.Windows.Forms">
     <value>&lt;?xml version="1.0" encoding="utf-16"?&gt;&lt;TableLayoutSettings&gt;&lt;Controls&gt;&lt;Control Name="flowLayoutPanel1" Row="1" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;Control Name="flowLayoutPanel2" Row="0" RowSpan="1" Column="0" ColumnSpan="1" /&gt;&lt;/Controls&gt;&lt;Columns Styles="Percent,100" /&gt;&lt;Rows Styles="AutoSize,0,Percent,100" /&gt;&lt;/TableLayoutSettings&gt;</value>
   </data>
-  <data name="numericalTextBoxTemperature.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="numericBoxTemperature.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericalTextBoxTemperature.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTemperature.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>
   </data>
-  <data name="numericalTextBoxTemperature.FooterText" xml:space="preserve">
+  <data name="numericBoxTemperature.FooterText" xml:space="preserve">
     <value>K</value>
   </data>
-  <data name="numericalTextBoxTemperature.HeaderText" xml:space="preserve">
+  <data name="numericBoxTemperature.HeaderText" xml:space="preserve">
     <value>Temperature</value>
   </data>
-  <data name="numericalTextBoxTemperature.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="numericBoxTemperature.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 3</value>
   </data>
-  <data name="numericalTextBoxTemperature.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTemperature.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
-  <data name="numericalTextBoxTemperature.MaximumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1000, 27</value>
+  <data name="numericBoxTemperature.MaximumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1000, 30</value>
   </data>
-  <data name="numericalTextBoxTemperature.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1, 25</value>
+  <data name="numericBoxTemperature.MinimumSize" type="System.Drawing.Size, System.Drawing">
+    <value>1, 20</value>
   </data>
-  <data name="numericalTextBoxTemperature.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="numericBoxTemperature.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
   </data>
-  <data name="numericalTextBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="numericBoxTemperature.Size" type="System.Drawing.Size, System.Drawing">
     <value>185, 27</value>
   </data>
-  <data name="numericalTextBoxTemperature.TabIndex" type="System.Int32, mscorlib">
+  <data name="numericBoxTemperature.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTemperature.Name" xml:space="preserve">
-    <value>numericalTextBoxTemperature</value>
+  <data name="numericBoxTemperature.TextFont" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 9pt</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTemperature.Type" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTemperature.Name" xml:space="preserve">
+    <value>numericBoxTemperature</value>
+  </data>
+  <data name="&gt;&gt;numericBoxTemperature.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTemperature.Parent" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTemperature.Parent" xml:space="preserve">
     <value>$this</value>
   </data>
-  <data name="&gt;&gt;numericalTextBoxTemperature.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;numericBoxTemperature.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
