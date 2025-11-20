@@ -2248,6 +2248,21 @@ You can set the limit value in right-click menu.</value>
   <data name="dataGridViewProfiles.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>46</value>
   </data>
+  <data name="checkDataGridViewCheckBoxColumn2.HeaderText" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn2</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn2.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="colorDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>profileDataGridViewTextBoxColumn</value>
+  </data>
   <metadata name="bindingSourceProfile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>1126, 17</value>
   </metadata>
@@ -2403,6 +2418,12 @@ You can set the limit value in right-click menu.</value>
   <data name="dataGridViewCrystals.ColumnHeadersHeight" type="System.Int32, mscorlib">
     <value>46</value>
   </data>
+  <data name="checkDataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn1.Width" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
   <metadata name="PeakColor.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2413,7 +2434,7 @@ You can set the limit value in right-click menu.</value>
     <value>10</value>
   </data>
   <data name="PeakColor.Width" type="System.Int32, mscorlib">
-    <value>20</value>
+    <value>24</value>
   </data>
   <metadata name="Crystal.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -4892,6 +4913,9 @@ You can set the limit value in right-click menu.</value>
   <data name="dataGridViewTextBoxColumn114.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
+  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
+    <value>ja</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4962,24 +4986,6 @@ You can set the limit value in right-click menu.</value>
   <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>colorDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>profileDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;bindingSourceProfile.Name" xml:space="preserve">
     <value>bindingSourceProfile</value>
   </data>
@@ -4991,24 +4997,6 @@ You can set the limit value in right-click menu.</value>
   </data>
   <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
     <value>PDIndexer.DataSet, PDIndexer, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bindingSourceCrystal.Name" xml:space="preserve">
     <value>bindingSourceCrystal</value>
@@ -6616,6 +6604,42 @@ You can set the limit value in right-click menu.</value>
     <value>dataGridViewTextBoxColumn114</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn114.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>profileDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

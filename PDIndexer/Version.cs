@@ -11,7 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
-        "\r\n ver4.454(2025/11/20) Fixed a minor bug." +
+        "\r\n ver4.455(2025/11/20) Fixed a minor bug." +
         "\r\n ver4.453(2025/11/19) Added a new EOS for NaCl B1 (Skelton et al. 1984). The framework has been changed to .Net Desktop Runtime 10.0." +
         "\r\n ver4.452(2025/09/26) Fixed bugs on loading crystal database." +
         "\r\n ver4.451(2025/06/04) Fixed a minor bug on the 'Fitting Diffraction Peaks'. Crystal Database has been updated." +

@@ -52,9 +52,6 @@ namespace PDIndexer
             buttonChange = new Button();
             groupBox1 = new GroupBox();
             dataGridViewCrystal = new DataGridView();
-            checkDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
-            PeakColor = new DataGridViewImageColumn();
-            Crystal = new DataGridViewTextBoxColumn();
             bindingSource = new BindingSource(components);
             flowLayoutPanel3 = new FlowLayoutPanel();
             buttonUpper = new Button();
@@ -102,6 +99,9 @@ namespace PDIndexer
             statusStrip1 = new StatusStrip();
             toolStripProgressBar1 = new ToolStripProgressBar();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
+            checkDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
+            PeakColor = new DataGridViewImageColumn();
+            Crystal = new DataGridViewTextBoxColumn();
             ((ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -261,32 +261,6 @@ namespace PDIndexer
             dataGridViewCrystal.CellMouseClick += dataGridViewCrystal_CellMouseClick;
             dataGridViewCrystal.CellMouseDoubleClick += dataGridViewCrystal_CellMouseClick;
             dataGridViewCrystal.KeyDown += dataGridViewCrystal_KeyDown;
-            // 
-            // checkDataGridViewCheckBoxColumn1
-            // 
-            checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
-            resources.ApplyResources(checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
-            checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
-            checkDataGridViewCheckBoxColumn1.ReadOnly = true;
-            checkDataGridViewCheckBoxColumn1.Resizable = DataGridViewTriState.False;
-            // 
-            // PeakColor
-            // 
-            PeakColor.DataPropertyName = "PeakColor";
-            resources.ApplyResources(PeakColor, "PeakColor");
-            PeakColor.Name = "PeakColor";
-            PeakColor.ReadOnly = true;
-            PeakColor.Resizable = DataGridViewTriState.True;
-            PeakColor.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // Crystal
-            // 
-            Crystal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Crystal.DataPropertyName = "Crystal";
-            resources.ApplyResources(Crystal, "Crystal");
-            Crystal.Name = "Crystal";
-            Crystal.ReadOnly = true;
-            Crystal.Resizable = DataGridViewTriState.False;
             // 
             // bindingSource
             // 
@@ -655,6 +629,32 @@ namespace PDIndexer
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
             resources.ApplyResources(toolStripStatusLabel1, "toolStripStatusLabel1");
             // 
+            // checkDataGridViewCheckBoxColumn1
+            // 
+            checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
+            resources.ApplyResources(checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
+            checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
+            checkDataGridViewCheckBoxColumn1.ReadOnly = true;
+            checkDataGridViewCheckBoxColumn1.Resizable = DataGridViewTriState.False;
+            // 
+            // PeakColor
+            // 
+            PeakColor.DataPropertyName = "PeakColor";
+            resources.ApplyResources(PeakColor, "PeakColor");
+            PeakColor.Name = "PeakColor";
+            PeakColor.ReadOnly = true;
+            PeakColor.Resizable = DataGridViewTriState.True;
+            PeakColor.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Crystal
+            // 
+            Crystal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Crystal.DataPropertyName = "Crystal";
+            resources.ApplyResources(Crystal, "Crystal");
+            Crystal.Name = "Crystal";
+            Crystal.ReadOnly = true;
+            Crystal.Resizable = DataGridViewTriState.False;
+            // 
             // FormCrystal
             // 
             resources.ApplyResources(this, "$this");
@@ -755,12 +755,12 @@ namespace PDIndexer
         private Panel panel3;
         private DataGridViewImageColumn dataGridViewImageColumn3;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn1;
-        private DataGridViewImageColumn PeakColor;
-        private DataGridViewTextBoxColumn Crystal;
         private StatusStrip statusStrip1;
         private ToolStripProgressBar toolStripProgressBar1;
         private ToolStripStatusLabel toolStripStatusLabel1;
+        private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn1;
+        private DataGridViewImageColumn PeakColor;
+        private DataGridViewTextBoxColumn Crystal;
     }
 
 

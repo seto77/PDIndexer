@@ -46,7 +46,6 @@ namespace PDIndexer
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
@@ -115,6 +114,7 @@ namespace PDIndexer
             DataGridViewCellStyle dataGridViewCellStyle73 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle74 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle75 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             toolStripContainer1 = new ToolStripContainer();
             statusStrip1 = new StatusStrip();
             toolStripProgressBar = new ToolStripProgressBar();
@@ -184,18 +184,12 @@ namespace PDIndexer
             splitContainer2 = new SplitContainer();
             groupBox1 = new GroupBox();
             dataGridViewProfiles = new DataGridView();
-            checkDataGridViewCheckBoxColumn2 = new DataGridViewCheckBoxColumn();
-            colorDataGridViewTextBoxColumn = new DataGridViewImageColumn();
-            profileDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             bindingSourceProfile = new BindingSource(components);
             dataSet = new DataSet();
             checkBoxProfileParameter = new CheckBox();
             checkBoxAll = new CheckBox();
             groupBoxCrystalData = new GroupBox();
             dataGridViewCrystals = new DataGridView();
-            checkDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
-            PeakColor = new DataGridViewImageColumn();
-            Crystal = new DataGridViewTextBoxColumn();
             bindingSourceCrystal = new BindingSource(components);
             checkBoxCrystalParameter = new CheckBox();
             toolStrip2 = new ToolStrip();
@@ -470,6 +464,12 @@ namespace PDIndexer
             dataGridViewTextBoxColumn113 = new DataGridViewTextBoxColumn();
             dataGridViewImageColumn89 = new DataGridViewImageColumn();
             dataGridViewTextBoxColumn114 = new DataGridViewTextBoxColumn();
+            checkDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
+            PeakColor = new DataGridViewImageColumn();
+            Crystal = new DataGridViewTextBoxColumn();
+            checkDataGridViewCheckBoxColumn2 = new DataGridViewCheckBoxColumn();
+            colorDataGridViewTextBoxColumn = new DataGridViewImageColumn();
+            profileDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             toolStripContainer1.ContentPanel.SuspendLayout();
             toolStripContainer1.TopToolStripPanel.SuspendLayout();
@@ -1247,27 +1247,6 @@ namespace PDIndexer
             dataGridViewProfiles.CellDoubleClick += dataGridViewProfiles_CellClick;
             dataGridViewProfiles.KeyDown += dataGridViewProfiles_KeyDown;
             // 
-            // checkDataGridViewCheckBoxColumn2
-            // 
-            checkDataGridViewCheckBoxColumn2.DataPropertyName = "Check";
-            checkDataGridViewCheckBoxColumn2.Name = "checkDataGridViewCheckBoxColumn2";
-            checkDataGridViewCheckBoxColumn2.ReadOnly = true;
-            // 
-            // colorDataGridViewTextBoxColumn
-            // 
-            colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
-            colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
-            colorDataGridViewTextBoxColumn.ReadOnly = true;
-            colorDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
-            colorDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // profileDataGridViewTextBoxColumn
-            // 
-            profileDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            profileDataGridViewTextBoxColumn.DataPropertyName = "Profile";
-            profileDataGridViewTextBoxColumn.Name = "profileDataGridViewTextBoxColumn";
-            profileDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
             // bindingSourceProfile
             // 
             bindingSourceProfile.DataMember = "DataTableProfile";
@@ -1351,33 +1330,6 @@ namespace PDIndexer
             dataGridViewCrystals.CellMouseClick += dataGridViewCrystals_CellMouseClick;
             dataGridViewCrystals.CellMouseDoubleClick += dataGridViewCrystals_CellMouseClick;
             dataGridViewCrystals.KeyDown += dataGridViewCrystals_KeyDown;
-            // 
-            // checkDataGridViewCheckBoxColumn1
-            // 
-            checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
-            checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
-            checkDataGridViewCheckBoxColumn1.ReadOnly = true;
-            checkDataGridViewCheckBoxColumn1.Resizable = DataGridViewTriState.False;
-            // 
-            // PeakColor
-            // 
-            PeakColor.DataPropertyName = "PeakColor";
-            resources.ApplyResources(PeakColor, "PeakColor");
-            PeakColor.Name = "PeakColor";
-            PeakColor.ReadOnly = true;
-            PeakColor.Resizable = DataGridViewTriState.False;
-            PeakColor.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // Crystal
-            // 
-            Crystal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Crystal.DataPropertyName = "Crystal";
-            dataGridViewCellStyle6.Font = new Font("Arial", 9.75F);
-            Crystal.DefaultCellStyle = dataGridViewCellStyle6;
-            resources.ApplyResources(Crystal, "Crystal");
-            Crystal.Name = "Crystal";
-            Crystal.ReadOnly = true;
-            Crystal.Resizable = DataGridViewTriState.False;
             // 
             // bindingSourceCrystal
             // 
@@ -3631,6 +3583,58 @@ namespace PDIndexer
             dataGridViewTextBoxColumn114.Name = "dataGridViewTextBoxColumn114";
             dataGridViewTextBoxColumn114.Resizable = DataGridViewTriState.False;
             // 
+            // checkDataGridViewCheckBoxColumn1
+            // 
+            checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
+            resources.ApplyResources(checkDataGridViewCheckBoxColumn1, "checkDataGridViewCheckBoxColumn1");
+            checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
+            checkDataGridViewCheckBoxColumn1.ReadOnly = true;
+            checkDataGridViewCheckBoxColumn1.Resizable = DataGridViewTriState.False;
+            // 
+            // PeakColor
+            // 
+            PeakColor.DataPropertyName = "PeakColor";
+            resources.ApplyResources(PeakColor, "PeakColor");
+            PeakColor.Name = "PeakColor";
+            PeakColor.ReadOnly = true;
+            PeakColor.Resizable = DataGridViewTriState.False;
+            PeakColor.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // Crystal
+            // 
+            Crystal.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Crystal.DataPropertyName = "Crystal";
+            dataGridViewCellStyle6.Font = new Font("Arial", 9.75F);
+            Crystal.DefaultCellStyle = dataGridViewCellStyle6;
+            resources.ApplyResources(Crystal, "Crystal");
+            Crystal.Name = "Crystal";
+            Crystal.ReadOnly = true;
+            Crystal.Resizable = DataGridViewTriState.False;
+            // 
+            // checkDataGridViewCheckBoxColumn2
+            // 
+            checkDataGridViewCheckBoxColumn2.DataPropertyName = "Check";
+            resources.ApplyResources(checkDataGridViewCheckBoxColumn2, "checkDataGridViewCheckBoxColumn2");
+            checkDataGridViewCheckBoxColumn2.Name = "checkDataGridViewCheckBoxColumn2";
+            checkDataGridViewCheckBoxColumn2.ReadOnly = true;
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            resources.ApplyResources(colorDataGridViewTextBoxColumn, "colorDataGridViewTextBoxColumn");
+            colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            colorDataGridViewTextBoxColumn.ReadOnly = true;
+            colorDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
+            colorDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // profileDataGridViewTextBoxColumn
+            // 
+            profileDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            profileDataGridViewTextBoxColumn.DataPropertyName = "Profile";
+            resources.ApplyResources(profileDataGridViewTextBoxColumn, "profileDataGridViewTextBoxColumn");
+            profileDataGridViewTextBoxColumn.Name = "profileDataGridViewTextBoxColumn";
+            profileDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // FormMain
             // 
             AllowDrop = true;
@@ -3841,9 +3845,6 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn24;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn25;
         private DataGridViewImageColumn dataGridViewImageColumn1;
-        private DataGridViewImageColumn PeakColor;
-        private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn1;
-        private DataGridViewTextBoxColumn Crystal;
         private GroupBox groupBox4;
         private RadioButton radioButtonCountsPerStep;
         private RadioButton radioButtonRawCounts;
@@ -3858,9 +3859,6 @@ namespace PDIndexer
         private CheckBox checkBoxErrorBar;
         public DataGridView dataGridViewProfiles;
         public BindingSource bindingSourceProfile;
-        private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn2;
-        private DataGridViewImageColumn colorDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn profileDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private DataGridViewImageColumn dataGridViewImageColumn4;
@@ -4059,5 +4057,11 @@ namespace PDIndexer
         private DataGridViewImageColumn dataGridViewImageColumn89;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn114;
         private Label labelQ;
+        private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn2;
+        private DataGridViewImageColumn colorDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn profileDataGridViewTextBoxColumn;
+        private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn1;
+        private DataGridViewImageColumn PeakColor;
+        private DataGridViewTextBoxColumn Crystal;
     }
 }
