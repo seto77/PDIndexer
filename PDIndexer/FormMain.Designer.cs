@@ -184,11 +184,16 @@ namespace PDIndexer
             splitContainer2 = new SplitContainer();
             groupBox1 = new GroupBox();
             dataGridViewProfiles = new DataGridView();
+            checkDataGridViewCheckBoxColumn2 = new DataGridViewCheckBoxColumn();
+            colorDataGridViewTextBoxColumn = new DataGridViewImageColumn();
+            profileDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             bindingSourceProfile = new BindingSource(components);
+            dataSet = new DataSet();
             checkBoxProfileParameter = new CheckBox();
             checkBoxAll = new CheckBox();
             groupBoxCrystalData = new GroupBox();
             dataGridViewCrystals = new DataGridView();
+            checkDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
             PeakColor = new DataGridViewImageColumn();
             Crystal = new DataGridViewTextBoxColumn();
             bindingSourceCrystal = new BindingSource(components);
@@ -498,6 +503,7 @@ namespace PDIndexer
             groupBox1.SuspendLayout();
             ((ISupportInitialize)dataGridViewProfiles).BeginInit();
             ((ISupportInitialize)bindingSourceProfile).BeginInit();
+            ((ISupportInitialize)dataSet).BeginInit();
             groupBoxCrystalData.SuspendLayout();
             ((ISupportInitialize)dataGridViewCrystals).BeginInit();
             ((ISupportInitialize)bindingSourceCrystal).BeginInit();
@@ -1217,6 +1223,7 @@ namespace PDIndexer
             resources.ApplyResources(dataGridViewProfiles, "dataGridViewProfiles");
             dataGridViewProfiles.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewProfiles.ColumnHeadersVisible = false;
+            dataGridViewProfiles.Columns.AddRange(new DataGridViewColumn[] { checkDataGridViewCheckBoxColumn2, colorDataGridViewTextBoxColumn, profileDataGridViewTextBoxColumn });
             dataGridViewProfiles.DataSource = bindingSourceProfile;
             dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = Color.White;
@@ -1240,9 +1247,38 @@ namespace PDIndexer
             dataGridViewProfiles.CellDoubleClick += dataGridViewProfiles_CellClick;
             dataGridViewProfiles.KeyDown += dataGridViewProfiles_KeyDown;
             // 
+            // checkDataGridViewCheckBoxColumn2
+            // 
+            checkDataGridViewCheckBoxColumn2.DataPropertyName = "Check";
+            checkDataGridViewCheckBoxColumn2.Name = "checkDataGridViewCheckBoxColumn2";
+            checkDataGridViewCheckBoxColumn2.ReadOnly = true;
+            // 
+            // colorDataGridViewTextBoxColumn
+            // 
+            colorDataGridViewTextBoxColumn.DataPropertyName = "Color";
+            colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            colorDataGridViewTextBoxColumn.ReadOnly = true;
+            colorDataGridViewTextBoxColumn.Resizable = DataGridViewTriState.True;
+            colorDataGridViewTextBoxColumn.SortMode = DataGridViewColumnSortMode.Automatic;
+            // 
+            // profileDataGridViewTextBoxColumn
+            // 
+            profileDataGridViewTextBoxColumn.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            profileDataGridViewTextBoxColumn.DataPropertyName = "Profile";
+            profileDataGridViewTextBoxColumn.Name = "profileDataGridViewTextBoxColumn";
+            profileDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // bindingSourceProfile
             // 
             bindingSourceProfile.DataMember = "DataTableProfile";
+            bindingSourceProfile.DataSource = dataSet;
+            // 
+            // dataSet
+            // 
+            dataSet.DataSetName = "DataSet1";
+            dataSet.Locale = new System.Globalization.CultureInfo("ja");
+            dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
+            dataSet.SchemaSerializationMode = SchemaSerializationMode.IncludeSchema;
             // 
             // checkBoxProfileParameter
             // 
@@ -1292,7 +1328,7 @@ namespace PDIndexer
             resources.ApplyResources(dataGridViewCrystals, "dataGridViewCrystals");
             dataGridViewCrystals.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCrystals.ColumnHeadersVisible = false;
-            dataGridViewCrystals.Columns.AddRange(new DataGridViewColumn[] { PeakColor, Crystal });
+            dataGridViewCrystals.Columns.AddRange(new DataGridViewColumn[] { checkDataGridViewCheckBoxColumn1, PeakColor, Crystal });
             dataGridViewCrystals.DataSource = bindingSourceCrystal;
             dataGridViewCellStyle7.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = Color.FromArgb(192, 255, 192);
@@ -1315,6 +1351,13 @@ namespace PDIndexer
             dataGridViewCrystals.CellMouseClick += dataGridViewCrystals_CellMouseClick;
             dataGridViewCrystals.CellMouseDoubleClick += dataGridViewCrystals_CellMouseClick;
             dataGridViewCrystals.KeyDown += dataGridViewCrystals_KeyDown;
+            // 
+            // checkDataGridViewCheckBoxColumn1
+            // 
+            checkDataGridViewCheckBoxColumn1.DataPropertyName = "Check";
+            checkDataGridViewCheckBoxColumn1.Name = "checkDataGridViewCheckBoxColumn1";
+            checkDataGridViewCheckBoxColumn1.ReadOnly = true;
+            checkDataGridViewCheckBoxColumn1.Resizable = DataGridViewTriState.False;
             // 
             // PeakColor
             // 
@@ -1339,6 +1382,7 @@ namespace PDIndexer
             // bindingSourceCrystal
             // 
             bindingSourceCrystal.DataMember = "DataTableCrystal";
+            bindingSourceCrystal.DataSource = dataSet;
             // 
             // checkBoxCrystalParameter
             // 
@@ -3648,6 +3692,7 @@ namespace PDIndexer
             groupBox1.ResumeLayout(false);
             ((ISupportInitialize)dataGridViewProfiles).EndInit();
             ((ISupportInitialize)bindingSourceProfile).EndInit();
+            ((ISupportInitialize)dataSet).EndInit();
             groupBoxCrystalData.ResumeLayout(false);
             ((ISupportInitialize)dataGridViewCrystals).EndInit();
             ((ISupportInitialize)bindingSourceCrystal).EndInit();

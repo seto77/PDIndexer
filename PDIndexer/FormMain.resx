@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>116, 10</value>
+    <value>218, 17</value>
   </metadata>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="statusStrip1.AutoSize" type="System.Boolean, mscorlib">
@@ -300,7 +300,7 @@
     <value>After reading profile, change horizontanl axis</value>
   </data>
   <metadata name="toolTip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>379, 10</value>
+    <value>438, 17</value>
   </metadata>
   <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
     <value>プロファイルを読み込み後、横軸モードを変更します。
@@ -2249,7 +2249,10 @@ You can set the limit value in right-click menu.</value>
     <value>46</value>
   </data>
   <metadata name="bindingSourceProfile.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 51</value>
+    <value>1126, 17</value>
+  </metadata>
+  <metadata name="dataSet.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
   <data name="dataGridViewProfiles.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2422,7 +2425,7 @@ You can set the limit value in right-click menu.</value>
     <value>10</value>
   </data>
   <metadata name="bindingSourceCrystal.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>762, 13</value>
+    <value>798, 17</value>
   </metadata>
   <data name="dataGridViewCrystals.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
@@ -2644,7 +2647,7 @@ You can set the limit value in right-click menu.</value>
     <value>toolStripContainer1</value>
   </data>
   <metadata name="toolStrip2.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>256, 13</value>
+    <value>333, 17</value>
   </metadata>
   <data name="toolStrip2.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -2957,7 +2960,7 @@ You can set the limit value in right-click menu.</value>
     <value>0</value>
   </data>
   <metadata name="menuStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>10, 10</value>
+    <value>110, 17</value>
   </metadata>
   <data name="menuStrip.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>None</value>
@@ -3372,10 +3375,10 @@ You can set the limit value in right-click menu.</value>
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <metadata name="pageSetupDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>618, 10</value>
+    <value>648, 17</value>
   </metadata>
   <metadata name="printDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>509, 9</value>
+    <value>529, 17</value>
   </metadata>
   <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
     <value />
@@ -4287,7 +4290,7 @@ You can set the limit value in right-click menu.</value>
     <value>10</value>
   </data>
   <metadata name="timerBlinkDiffraction.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>1114, 7</value>
+    <value>964, 17</value>
   </metadata>
   <data name="dataGridViewImageColumn51.HeaderText" xml:space="preserve">
     <value>PeakColor</value>
@@ -4959,11 +4962,41 @@ You can set the limit value in right-click menu.</value>
   <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>profileDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;bindingSourceProfile.Name" xml:space="preserve">
     <value>bindingSourceProfile</value>
   </data>
   <data name="&gt;&gt;bindingSourceProfile.Type" xml:space="preserve">
     <value>System.Windows.Forms.BindingSource, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dataSet.Name" xml:space="preserve">
+    <value>dataSet</value>
+  </data>
+  <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
+    <value>PDIndexer.DataSet, PDIndexer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
     <value>PeakColor</value>
