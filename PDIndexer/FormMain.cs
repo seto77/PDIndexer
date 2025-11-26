@@ -353,55 +353,53 @@ public partial class FormMain : Form
                     {
                         try
                         {
-                            //if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2)))
-                            //{
-                            //    var data = Clipboard.GetDataObject();
-                            //    var dp = (DiffractionProfile2)data.GetData(typeof(DiffractionProfile2));
-
-                            //    if (dp != null)
-                            //        AddProfileToCheckedListBox(dp, true, true);
-                            //}
-                            //else
-                            if (Clipboard.GetDataObject().GetDataPresent(typeof(DiffractionProfile2[])))
+                            if (Clipboard.GetDataObject().GetDataPresent(typeof(byte[])))
                             {
                                 var dataObject = Clipboard.GetDataObject();
-                                var data = dataObject;
-                                var dp = (DiffractionProfile2[])data.GetData(typeof(DiffractionProfile2[]));
+                                var bytes = (byte[])dataObject.GetData(typeof(byte[]));
 
-                                if (dp != null && dp.Length >= 1)
+                                //先頭バイトで判定
+                                //DiffractionProfile2[]配列の時
+                                if (bytes[0] == DiffractionProfile2.ID)
                                 {
-                                    if (dp[0].Name != null && dp[0].Name.EndsWith("whole"))
+                                    var dp = MemoryPackEx.Deserialize<DiffractionProfile2[]>(bytes[1..]);
+
+                                    if (dp != null && dp.Length >= 1)
                                     {
-                                        radioButtonMultiProfileMode.Checked = false;
-                                        radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
-                                        AddProfileToCheckedListBox(dp[0], true, true);
-                                        radioButtonMultiProfileMode.Checked = true;
-                                        radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
-                                        for (int i = 1; i < dp.Length; i++)
-                                            AddProfileToCheckedListBox(dp[i], false, true);
-                                        bindingSourceProfile.Position = 0;
-                                    }
-                                    else
-                                    {
-                                        if (dp.Length == 1)
+                                        if (dp[0].Name != null && dp[0].Name.EndsWith("whole"))
+                                        {
+                                            radioButtonMultiProfileMode.Checked = false;
+                                            radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
                                             AddProfileToCheckedListBox(dp[0], true, true);
+                                            radioButtonMultiProfileMode.Checked = true;
+                                            radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
+                                            for (int i = 1; i < dp.Length; i++)
+                                                AddProfileToCheckedListBox(dp[i], false, true);
+                                            bindingSourceProfile.Position = 0;
+                                        }
                                         else
                                         {
-                                            skipAxisPropertyChangedEvent = true;
-                                            for (int i = 0; i < dp.Length - 1; i++)
-                                                AddProfileToCheckedListBox(dp[i], false, false);
-                                            skipAxisPropertyChangedEvent = false;
-                                            AddProfileToCheckedListBox(dp[^1], false, true);
-                                            horizontalAxisUserControl_AxisPropertyChanged();
+                                            if (dp.Length == 1)
+                                                AddProfileToCheckedListBox(dp[0], true, true);
+                                            else
+                                            {
+                                                skipAxisPropertyChangedEvent = true;
+                                                for (int i = 0; i < dp.Length - 1; i++)
+                                                    AddProfileToCheckedListBox(dp[i], false, false);
+                                                skipAxisPropertyChangedEvent = false;
+                                                AddProfileToCheckedListBox(dp[^1], false, true);
+                                                horizontalAxisUserControl_AxisPropertyChanged();
+                                            }
                                         }
                                     }
-                                }
-                            }
 
-                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(byte[])) && formCrystal.Visible)
-                            {
-                                var c2 =Crystal2.Deserialize((byte[])Clipboard.GetDataObject().GetData(typeof(byte[])));
-                                formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
+                                }
+                                //Crystal2クラスの時
+                                else if (bytes[0] == Crystal2.ID && formCrystal.Visible)
+                                {
+                                    var c2 = Crystal2.Deserialize(bytes[1..]);
+                                    formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
+                                }
                             }
                             else if ((Clipboard.GetDataObject()).GetDataPresent(typeof(MacroTriger)))
                             {
