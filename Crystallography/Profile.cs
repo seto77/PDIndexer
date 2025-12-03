@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.LinearAlgebra.Double;
+﻿#region using
+using MathNet.Numerics.LinearAlgebra.Double;
 using MemoryPack;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Xml.Serialization;
+#endregion
 
 namespace Crystallography;
 
