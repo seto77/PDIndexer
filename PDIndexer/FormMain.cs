@@ -50,16 +50,17 @@ public partial class FormMain : Form
     #region enum
     public enum FileType
     {
-        CSV,
-        RAS,
-        NXS,
-        CHI,
-        XBM,
-        RPT,
-        NPD,
-        TOF,
-        XY,
-        OTHRES,
+        CSV = 0,
+        RAS = 1,
+        NXS = 2,
+        CHI = 3,
+        XBM = 4,
+        RPT = 5,
+        NPD = 6,
+        TOF = 7,
+        XY = 8,
+        OTHRES = 9,
+        GSA = 10,
     }
     #endregion
 
@@ -80,7 +81,7 @@ public partial class FormMain : Form
     Crystallography.Controls.CommonDialog initialDialog;
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues(typeof(FileType)).Length];
+    public FileProperty[] FileProperties { get; set; } = new FileProperty[Enum.GetValues<FileType>().Length];
 
     public bool BackGroundPointSelectMode { get; set; } = false;
     public int[] SelectedMaskingBoundaryIndex { set; get; } = [-1, -1];
@@ -523,7 +524,7 @@ public partial class FormMain : Form
             History = Version.History,
 
             Location = new Point(this.Location.X, this.Location.Y),
-            Width=580,
+            Width = 580,
         };
 
         initialDialog.Show();
@@ -765,7 +766,7 @@ public partial class FormMain : Form
             key.SetValue("Version", Version.VersionValue);
 
         Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
-                
+
         Reg.RW<Rectangle>(key, mode, this, "Bounds");
         WindowLocation.Adjust(this);
 
@@ -774,7 +775,7 @@ public partial class FormMain : Form
 
         Reg.RW<bool>(key, mode, initialDialog, "AutomaticallyClose");
 
-        
+
         //Reg.RW<bool>(key, mode, clearRegistryToolStripMenuItem, "Checked");
 
         if (formEOS == null) return;
@@ -817,6 +818,18 @@ public partial class FormMain : Form
         #region ファイルタイプごとのパラメータ
 
         Reg.RW<FileProperty[]>(key, mode, this, "FileProperties");
+
+        if (FileProperties == null)
+        {
+            FileProperties = new FileProperty[Enum.GetValues<FileType>().Length];
+        }
+        else if (FileProperties.Length != Enum.GetValues<FileType>().Length)
+        {
+            var temp = new FileProperty[Enum.GetValues<FileType>().Length];
+            for (int i = 0; i < Math.Min(temp.Length, FileProperties.Length); i++)
+                temp[i] = FileProperties[i];
+            FileProperties = temp;
+        }
 
         #region  レジストリが無効な場合には、初期化
         if (mode == Reg.Mode.Read)
@@ -886,12 +899,20 @@ public partial class FormMain : Form
                     HorizontalAxisProperty = new HorizontalAxisProperty(90.0 / 180.0 * Math.PI, 26.5, TimeUnitEnum.MicroSecond)
                 };
 
-            //MISC
+            //Others
             if (!FileProperties[(int)FileType.OTHRES].Valid)
                 FileProperties[(int)FileType.OTHRES] = new FileProperty
                 {
                     Valid = true,
                     HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.Degree)
+                };
+
+            //GSA
+            if (!FileProperties[(int)FileType.GSA].Valid)
+                FileProperties[(int)FileType.GSA] = new FileProperty
+                {
+                    Valid = true,
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 0.4, AngleUnitEnum.CentiDegree)
                 };
         }
         #endregion
@@ -1287,7 +1308,7 @@ public partial class FormMain : Form
 
         profiles.ForEach(p =>
         {
-            if (p.points.Length > 2)
+            if (p.points.Length > 1)
                 gMain.DrawLines(p.pen, p.points);
         });
     }
@@ -2576,7 +2597,7 @@ public partial class FormMain : Form
         };
 
 
-        //pdi, ras, nxs 形式の時. csvは拡張の場合
+        //pdi, ras, nxs 形式の時. 拡張csvの場合も含む
         if (ext == "pdi" || ext == "pdi2" || ext == "ras" || ext == "csv" || ext == "nxs")
         {
             var dp = new List<DiffractionProfile2>();
@@ -2613,10 +2634,7 @@ public partial class FormMain : Form
                 {
                     var nxs = new HDF(fileName);
 
-                    
-
                     detectorNum = nxs.Datasets.Where(e => e.Path.Contains("/histogram")).Count();
-
                     //   nxs.Move("/entry/instrument/xspress3");
                     //  detectorNum = nxs.GetGroups().Length;
                 }
@@ -2692,7 +2710,8 @@ public partial class FormMain : Form
                 return;
             }
         }
-        //pdi,ras, csv, nxs 形式ではないとき. csvは通常の場合はこちらに入ってくる
+        
+        //pdi,ras, 拡張csv, nxs 形式ではないとき. csvは通常の場合はこちらに入ってくる
         if (ext != "pdi" && ext != "ras" && ext != "nxs")
         {
             var strList = new List<string>();
@@ -2978,20 +2997,38 @@ public partial class FormMain : Form
                         {
                             var str = strList[i].Split(' ', true);
                             if (str.Length == 2)
-                            {
-                                //if (Miscellaneous.IsDecimalPointComma)
-                                //{
-                                //    str[0] = str[0].Replace('.', ',');
-                                //    str[1] = str[1].Replace('.', ',');
-                                //}
-
                                 diffProf.SourceProfile.Pt.Add(new PointD(str[0].ToDouble(), str[1].ToDouble()));
-                            }
                             else
                                 break;
                         }
                     }
                     else return;
+                }
+                catch { return; }
+            }
+            #endregion
+
+            #region GSA形式
+            else if (ext == "gsa")
+            {
+                try
+                {
+                    formDataConverter.SetProperty(FileProperties[(int)FileType.GSA]);
+                    if (!showFormDataConverter || formDataConverter.ShowDialog() == DialogResult.OK)
+                    {
+                        FileProperties[(int)FileType.GSA] = formDataConverter.GetProperty();
+
+                        int i = 0;
+                        for (i = strList.FindIndex(e => e.StartsWith("BANK")) + 1; i < strList.Count; i++)
+                        {
+                            var str = strList[i].Split(' ', true);
+                            if (str.Length == 3)
+                            {
+                                diffProf.SourceProfile.Pt.Add(new PointD(str[0].ToDouble(), str[1].ToDouble()));
+                                diffProf.SourceProfile.Err.Add(new PointD(str[0].ToDouble(), str[2].ToDouble()));
+                            }
+                        }
+                    }
                 }
                 catch { return; }
             }
@@ -3012,7 +3049,7 @@ public partial class FormMain : Form
                         diffProf = null;
 
                     diffProf ??= XYFile.ConvertUnknownFileToProfileData(fileName, ' ');
-                    
+
                     diffProf ??= XYFile.ConvertUnknownFileToProfileData(fileName, '\t');
 
                     diffProf ??= XYFile.ConvertUnknownFileToProfileData(fileName, ',');

@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.457(2025/12/03) Added new horizontal axis units (centi-degree and milli-radian)." +
         "\r\n ver4.456(2025/11/26) Fixed a minor bug." +
         "\r\n ver4.455(2025/11/20) Fixed a minor bug." +
         "\r\n ver4.453(2025/11/19) Added a new EOS for NaCl B1 (Skelton et al. 1984). The framework has been changed to .Net Desktop Runtime 10.0." +

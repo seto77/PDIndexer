@@ -325,7 +325,7 @@
     <value>3, 3</value>
   </data>
   <data name="flowLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>356, 24</value>
+    <value>342, 24</value>
   </data>
   <data name="flowLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
@@ -349,7 +349,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 274</value>
+    <value>348, 305</value>
   </data>
   <data name="tabPage1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1165,7 +1165,7 @@
     <value>3, 3, 3, 3</value>
   </data>
   <data name="tabPage2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>362, 274</value>
+    <value>348, 305</value>
   </data>
   <data name="tabPage2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1192,7 +1192,7 @@
     <value>2, 31</value>
   </data>
   <data name="tabControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>370, 304</value>
+    <value>356, 335</value>
   </data>
   <data name="tabControl.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
@@ -4913,9 +4913,6 @@ You can set the limit value in right-click menu.</value>
   <data name="dataGridViewTextBoxColumn114.MinimumWidth" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">
-    <value>ja</value>
-  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -4986,6 +4983,24 @@ You can set the limit value in right-click menu.</value>
   <data name="&gt;&gt;toolStripStatusLabel2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn2</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>colorDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
+    <value>profileDataGridViewTextBoxColumn</value>
+  </data>
+  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;bindingSourceProfile.Name" xml:space="preserve">
     <value>bindingSourceProfile</value>
   </data>
@@ -4997,6 +5012,24 @@ You can set the limit value in right-click menu.</value>
   </data>
   <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
     <value>PDIndexer.DataSet, PDIndexer, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;bindingSourceCrystal.Name" xml:space="preserve">
     <value>bindingSourceCrystal</value>
@@ -6604,42 +6637,6 @@ You can set the limit value in right-click menu.</value>
     <value>dataGridViewTextBoxColumn114</value>
   </data>
   <data name="&gt;&gt;dataGridViewTextBoxColumn114.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>colorDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;colorDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>profileDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;profileDataGridViewTextBoxColumn.Type" xml:space="preserve">
     <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
