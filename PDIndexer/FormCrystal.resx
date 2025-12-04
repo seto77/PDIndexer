@@ -1674,6 +1674,24 @@ of  diffraction peaks based on crystal structures</value>
   <data name="$this.Text" xml:space="preserve">
     <value>Crystal Parameter</value>
   </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
+    <value>checkDataGridViewCheckBoxColumn1</value>
+  </data>
+  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
+    <value>PeakColor</value>
+  </data>
+  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
+    <value>Crystal</value>
+  </data>
+  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;bindingSource.Name" xml:space="preserve">
     <value>bindingSource</value>
   </data>
@@ -1757,24 +1775,6 @@ of  diffraction peaks based on crystal structures</value>
   </data>
   <data name="&gt;&gt;toolStripStatusLabel1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripStatusLabel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Name" xml:space="preserve">
-    <value>checkDataGridViewCheckBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;checkDataGridViewCheckBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Name" xml:space="preserve">
-    <value>PeakColor</value>
-  </data>
-  <data name="&gt;&gt;PeakColor.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Name" xml:space="preserve">
-    <value>Crystal</value>
-  </data>
-  <data name="&gt;&gt;Crystal.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FormCrystal</value>

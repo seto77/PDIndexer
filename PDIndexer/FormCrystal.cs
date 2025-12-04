@@ -1,11 +1,11 @@
+#region using
 using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Crystallography;
 using Crystallography.Controls;
-using System.IO;
 using System.Reflection;
-using System.Threading;
+#endregion
 
 namespace PDIndexer;
 
@@ -31,7 +31,7 @@ public partial class FormCrystal : Form
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
 
         searchCrystalControl.CrystalDatabaseControl = crystalDatabaseControl;
-        this.AcceptButton = searchCrystalControl.buttonSearch;
+        //this.AcceptButton = searchCrystalControl.buttonSearch;
     }
     private void FormCrystal_Load(object sender, EventArgs e)
     {
@@ -50,11 +50,7 @@ public partial class FormCrystal : Form
     }
     #endregion
 
-    private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
-    {
-        if (SkipEvent) return;
-        crystalControl.Crystal = crystalDatabaseControl.Crystal;
-    }
+
 
     #region Œ‹»‚Ì’Ç‰ÁAíœA•ÏX
     void crystalControl_CrystalChanged(object sender, EventArgs e)
@@ -238,7 +234,6 @@ public partial class FormCrystal : Form
 
     private void FormCrystal_KeyDown(object sender, KeyEventArgs e) => formMain.FormMain_KeyDown(sender, e);
 
-
     private void numericUpDownThreshold_MouseDown(object sender, MouseEventArgs e)
     {
         if (e.Button == MouseButtons.Right)
@@ -252,8 +247,11 @@ public partial class FormCrystal : Form
 
     private void dataGridViewCrystal_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
 
-    private void crystalControl_CrystalChanged_1(object sender, EventArgs e)
+
+    private void crystalDatabaseControl_CrystalChanged(object sender, EventArgs e)
     {
+        if (SkipEvent) return;
+        crystalControl.Crystal = crystalDatabaseControl.Crystal;
     }
 
     bool flag = true;

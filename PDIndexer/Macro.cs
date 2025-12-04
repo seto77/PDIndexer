@@ -1,11 +1,12 @@
 ﻿#region using, namespace
-using Crystallography.Controls;
 using Crystallography;
+using Crystallography.Controls;
 using System;
 using System.Data;
 using System.IO;
 using System.Threading;
 using System.Windows.Forms;
+using static IronPython.Modules._ast;
 namespace PDIndexer;
 #endregion
 
@@ -30,21 +31,41 @@ public class Macro : MacroBase
     {
         main = _main;
         Drawing = new DrawingClass(this);
+        HelpAttribute.GenerateHelpText(Drawing.GetType(), nameof(Drawing)).ForEach(s => help.Add(s));
+
         ProfileList = new ProfileListClass(this);
+        HelpAttribute.GenerateHelpText(ProfileList.GetType(), nameof(ProfileList)).ForEach(s => help.Add(s));
+
         Profile = new ProfileClass(this);
+        HelpAttribute.GenerateHelpText(Profile.GetType(), nameof(Profile)).ForEach(s => help.Add(s));
+
+
         ProfileOperator = new ProfileOperatorClass(this);
+        HelpAttribute.GenerateHelpText(ProfileOperator.GetType(), nameof(ProfileOperator)).ForEach(s => help.Add(s));
+
+
         File = new FileClass(this);
+        HelpAttribute.GenerateHelpText(File.GetType(), nameof(File)).ForEach(s => help.Add(s));
+
         CrystalList = new CrystalListClass(this);
+        HelpAttribute.GenerateHelpText(CrystalList.GetType(), nameof(CrystalList)).ForEach(s => help.Add(s));
+
         Crystal = new CrystalClass(this);
+        HelpAttribute.GenerateHelpText(Crystal.GetType(), nameof(Crystal)).ForEach(s => help.Add(s));
+
         Fitting = new FittingClass(this);
+        HelpAttribute.GenerateHelpText(Fitting.GetType(), nameof(Fitting)).ForEach(s => help.Add(s));
 
         Sequential = new SequentialClass(this);
+        HelpAttribute.GenerateHelpText(Sequential.GetType(), nameof(Sequential)).ForEach(s => help.Add(s));
 
-        help.Add("PDI.Obj[] # Get object sent from other program.");
-        help.Add("PDI.Sleep(int millisec) # Sleep.");
     }
 
+    [Help("PDI.Sleep(int millisec) # Sleep.")]
     public static void Sleep(int millisec) => Thread.Sleep(millisec);
+
+    [Help("Get object sent from other program.")]
+
     public object[] Obj { get; set; }
 
     #endregion
@@ -54,25 +75,12 @@ public class Macro : MacroBase
     /// <summary>
     /// ファイル入出力関係
     /// </summary>
-    public class FileClass : MacroSub
+    public class FileClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public FileClass(Macro _p) : base(_p.main)
-        {
-            this.p = _p;
-            p.help.Add("PDI.File.GetFileName() # Get a file name.  \r\n Returned string is a full path of the selected file.");
-            p.help.Add("PDI.File.GetFileNames() # Get file names.  \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.");
-            p.help.Add("PDI.File.GetDirectoryPath(string filename) # Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.");
+        //private readonly Macro p = _p;
+        private FormMain main => _p.main;
 
-            p.help.Add("PDI.File.ReadProfiles(string filename) # Read profile data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("PDI.File.SaveProfiles(string filename) # Save profile data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("PDI.File.ReadCrystals(string filename) # Read crystal data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("PDI.File.SaveCrystals(string filename) # Save crystal data. \r\n If filename is omitted, selection dialog will open.");
-            p.help.Add("PDI.File.SaveMetafile(string filename) # Save metafile object. \r\n If filename is omitted, selection dialog will open.");
-
-            p.help.Add("PDI.File.SaveText(string text, string filename) # Save textfile object. \r\n If filename is omitted, selection dialog will open.");
-        }
-
+        [Help("Get a directory path.\r\n Returned string is a full path to the filename.\r\n If filename is omitted, selection dialog will open.", "string filename")]
         public string GetDirectoryPath(string filename = "") => Execute<string>(new Func<string>(() => getDirectoryPath(filename)));
         private static string getDirectoryPath(string filename = "")
         {
@@ -87,7 +95,7 @@ public class Macro : MacroBase
             return path + "\\";
         }
 
-
+        [Help("Get a file name. \r\n Returned string is a full path of the selected file.")]
         public string GetFileName() => Execute(() => getFileName());
         private static string getFileName()
         {
@@ -95,58 +103,66 @@ public class Macro : MacroBase
             return dlg.ShowDialog() == DialogResult.OK ? dlg.FileName : "";
         }
 
+        [Help("Get file names. \r\n Returned value is a string array, \r\n  each of which is a full path of selected files.")]
         public string[] GetFileNames() => Execute<string[]>(new Func<string[]>(() => getFileNames()));
         private static string[] getFileNames()
         {
             var dlg = new OpenFileDialog() { Multiselect = true };
-            return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : Array.Empty<string>();
+            return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : [];
         }
+
+       [Help("Read profile data. \r\n If filename is omitted, selection dialog will open.","string filename")]
 
         public void ReadProfiles(string fileName = "") => Execute(() => readProfiles(fileName));
         private void readProfiles(string fileName = "")
         {
             if (!System.IO.File.Exists(fileName))
-                p.main.menuItemFileRead_Click(new object(), new EventArgs());
+                main.menuItemFileRead_Click(new object(), new EventArgs());
             else
-                p.main.readProfile(fileName);
+                main.readProfile(fileName);
         }
 
+        [Help("Save profile data. \r\n If filename is omitted, selection dialog will open.", "string filename")]
         public void SaveProfiles(string filename = "") => Execute(new Action(() => saveProfiles(filename)));
         private void saveProfiles(string filename = "")
         {
             if (filename == "")
-                p.main.savePatternProfileToolStripMenuItem_Click(new object(), new EventArgs());
+                main.savePatternProfileToolStripMenuItem_Click(new object(), new EventArgs());
             else
-                p.main.SaveProfile(filename);
+                main.SaveProfile(filename);
         }
 
+        [Help("Read crystal data. \r\n If filename is omitted, selection dialog will open.", "string filename")]
         public void ReadCrystals(string filename = "") => Execute(new Action(() => readCrystals(filename)));
         private void readCrystals(string filename = "")
         {
             if (!System.IO.File.Exists(filename))
-                p.main.menuItemReadCrystalData_Click(new object(), new EventArgs());
+                main.menuItemReadCrystalData_Click(new object(), new EventArgs());
             else
-                p.main.readCrystal(filename, false, true);
+                main.readCrystal(filename, false, true);
         }
 
+        [He:p("Save crystal data. \r\n If filename is omitted, selection dialog will open.", "string filename")]
         public void SaveCrystals(string filename = "") => Execute(new Action(() => saveCrystals(filename)));
         private void saveCrystals(string filename = "")
         {
             if (filename == "")
-                p.main.menuItemSaveCrystalData_Click(new object(), new EventArgs());
+                main.menuItemSaveCrystalData_Click(new object(), new EventArgs());
             else
-                p.main.saveCrystal(filename);
+                main.saveCrystal(filename);
         }
 
+        [Help("Save metafile object. \r\n If filename is omitted, selection dialog will open.", "string filename")]
         public void SaveMetafile(string filename = "") { Execute(new Action(() => saveMetafile(filename))); }
         private void saveMetafile(string filename = "")
         {
             if (filename == "")
-                p.main.toolStripMenuItemSaveMetafile_Click(new object(), new EventArgs());
+                main.toolStripMenuItemSaveMetafile_Click(new object(), new EventArgs());
             else
-                p.main.saveMetafile(filename);
+                main.saveMetafile(filename);
         }
 
+        [Help("Save textfile object. \r\n If filename is omitted, selection dialog will open.", "string text, string filename")]
         public void SaveText(string text, string filename = "") { Execute(new Action(() => saveText(text, filename))); }
         private static void saveText(string text, string filename = "")
         {
@@ -168,36 +184,29 @@ public class Macro : MacroBase
     #endregion
 
     #region Drawingクラス 描画関係
-    public class DrawingClass : MacroSub
+    public class DrawingClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public DrawingClass(Macro _p) : base(_p.main)
-        {
-            this.p = _p;
-            p.help.Add("PDI.Drawing.SetBounds(int StartX, int EndX, int StartY, int EndY) # Set drawing bounds.");
+        private FormMain main => _p.main;
 
-            p.help.Add("PDI.Drawing.StartX # Set/get starting (left-side) value of X in drawing bounds.");
-            p.help.Add("PDI.Drawing.EndX # Set/get ending (right-side) value of X in drawing bounds.");
-            p.help.Add("PDI.Drawing.StartY # Set/get starting (top) value of Y in drawing bounds.");
-            p.help.Add("PDI.Drawing.EndY # Set/get ending (bottom) value of Y in drawing bounds.");
+        [Help("Set/get maximum value of X,  \r\n which is settable limit (not drawing bounds)")]
+        public double MaxX { get => Execute(() => main.MaximalX); set => Execute(new Action(() => main.MaximalX = value)); }
+        [Help("Set/get minimum value of X,  \r\n which is settable limit (not drawing bounds)")]
+        public double MinX { get => Execute(() => main.MinimalX); set => Execute(new Action(() => main.MinimalX = value)); }
+        [Help("Set/get maximum value of Y,  \r\n which is settable limit (not drawing bounds)")]
+        public double MaxY { get => Execute(() => main.MaximalY); set => Execute(new Action(() => main.MaximalY = value)); }
+        [Help("Set/get minimum value of Y,  \r\n which is settable limit (not drawing bounds)")]
+        public double MinY { get => Execute(() => main.MinimalY); set => Execute(new Action(() => main.MinimalY = value)); }
 
-            p.help.Add("PDI.Drawing.MaximumX #Set/get maximum value of X,  \r\n which is settable limit (not drawing bounds)");
-            p.help.Add("PDI.Drawing.MaximumY #Set/get maximum value of Y,  \r\n which is settable limit (not drawing bounds)");
-            p.help.Add("PDI.Drawing.MinimumX #Set/get minimum value of X,  \r\n which is settable limit (not drawing bounds)");
-            p.help.Add("PDI.Drawing.MinimumY #Set/get minimum value of Y,  \r\n which is settable limit (not drawing bounds)");
-
-        }
-
-        public double MaxX { get => Execute(() => p.main.MaximalX); set => Execute(new Action(() => p.main.MaximalX = value)); }
-        public double MinX { get => Execute(() => p.main.MinimalX); set => Execute(new Action(() => p.main.MinimalX = value)); }
-        public double MaxY { get => Execute(() => p.main.MaximalY); set => Execute(new Action(() => p.main.MaximalY = value)); }
-        public double MinY { get => Execute(() => p.main.MinimalY); set => Execute(new Action(() => p.main.MinimalY = value)); }
-
-        public double EndX { get => Execute(() => p.main.UpperX); set => Execute(new Action(() => p.main.UpperX = value)); }
-        public double StartX { get => Execute(() => p.main.LowerX); set => Execute(new Action(() => p.main.LowerX = value)); }
-        public double EndY { get => Execute(() => p.main.UpperY); set { Execute(new Action(() => p.main.UpperY = value)); } }
-        public double StartY { get => Execute(() => p.main.LowerY); set => Execute(new Action(() => p.main.LowerY = value)); }
-
+        [Help("Set/get ending (right-side) value of X in drawing bounds.")]
+        public double EndX { get => Execute(() => main.UpperX); set => Execute(new Action(() => main.UpperX = value)); }
+        [Help("Set/get starting (left-side) value of X in drawing bounds.")]
+        public double StartX { get => Execute(() => main.LowerX); set => Execute(new Action(() => main.LowerX = value)); }
+        [Help("Set/get ending (bottom) value of Y in drawing bounds.")]
+        public double EndY { get => Execute(() => main.UpperY); set { Execute(new Action(() => main.UpperY = value)); } }
+        [Help("Set/get starting (top) value of Y in drawing bounds.")]
+        public double StartY { get => Execute(() => main.LowerY); set => Execute(new Action(() => main.LowerY = value)); }
+     
+        [Help("PDI.Drawing.SetBounds() # Set drawing bounds.","int StartX, int EndX, int StartY, int EndY")]
         public void SetBounds(double xStart, double xEnd, double yStart, double yEnd)
         {
             StartX = xStart; EndX = xEnd; StartY = yStart; EndY = yEnd;
@@ -206,59 +215,58 @@ public class Macro : MacroBase
     #endregion
 
     #region Crystalクラス
-    public class CrystalClass : MacroSub
+    public class CrystalClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public CrystalClass(Macro _p) : base(_p.main)
-        {
-            p = _p;
-            p.help.Add("PDI.Crystal.Name # Get/Set the name of the selected crystal.");
-            p.help.Add("PDI.Crystal.CellVolume # Get the cell volume (Å^3) of the selected crystal.");
-            p.help.Add("PDI.Crystal.Pressure(float volume) # Get the pressure (GPa) of the selected crystal by EOS.");
-            p.help.Add("PDI.Crystal.CellA # Get/Set the cell constant a (Å) of the selected crystal.");
-            p.help.Add("PDI.Crystal.CellB # Get/Set the cell constant b (Å) of the selected crystal.");
-            p.help.Add("PDI.Crystal.CellC # Get/Set the cell constant c (Å) of the selected crystal.");
-            p.help.Add("PDI.Crystal.CellAlpha # Get/Set the cell constant alpha (deg) of the selected crystal.");
-            p.help.Add("PDI.Crystal.CellBeta # Get/Set the cell constant beta (deg) of the selected crystal.");
-            p.help.Add("PDI.Crystal.CellGamma # Get/Set the cell constant gamma (deg) of the selected crystal.");
-        }
-        private Crystal SelectedCrystal => (Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1];
+        private FormMain main => _p.main;
+
+        private Crystal SelectedCrystal => (Crystal)((DataRowView)main.bindingSourceCrystal.Current).Row[1];
+
+
+        [Help("Get the cell volume (Å^3) of the selected crystal.")]
         public double CellVolume => Execute(() => SelectedCrystal.Volume * 1000);
+        [Help("Get the pressure (GPa) of the selected crystal by EOS.", "float volume")]
         public double Pressure(double volume = 0) => Execute<double>(new Func<double>(()
             => SelectedCrystal.EOSCondition.GetPressure(volume == 0 ? SelectedCrystal.Volume * 1000 : volume)));
 
+        [Help("Get/Set the name of the selected crystal.")]
         public string Name
         {
             get => Execute(() => SelectedCrystal.Name);
-            set => Execute(new Action(() => p.main.formCrystal.crystalControl.Name = value));
+            set => Execute(new Action(() => main.formCrystal.crystalControl.Name = value));
         }
 
         #region 格子定数
+        [Help("Get/Set the cell constant a (Å) of the selected crystal.")]
         public double CellA
         {
             set => Execute(new Action(() => changeCellConstants(0, value)));
             get => Execute(() => SelectedCrystal.A * 10);
         }
+        [Help("Get/Set the cell constant b (Å) of the selected crystal.")]
         public double CellB
         {
             set => Execute(new Action(() => changeCellConstants(1, value)));
             get => Execute(() => SelectedCrystal.B * 10);
         }
+        [Help("Get/Set the cell constant c (Å) of the selected crystal.")]
         public double CellC
         {
             set => Execute(new Action(() => changeCellConstants(2, value)));
             get => Execute(() => SelectedCrystal.C * 10);
         }
+        [Help("Get/Set the cell constant alpha (deg) of the selected crystal.")]
         public double CellAlpha
         {
             set => Execute(new Action(() => changeCellConstants(3, value)));
             get => Execute(() => SelectedCrystal.Alpha / Math.PI * 180);
         }
+        [Help("Get/Set the cell constant beta (deg) of the selected crystal.")]
         public double CellBeta
         {
             set => Execute(new Action(() => changeCellConstants(4, value)));
             get => Execute(() => SelectedCrystal.Beta / Math.PI * 180);
         }
+        [Help("Get/Set the cell constant gamma (deg) of the selected crystal.")]
         public double CellGamma
         {
             set => Execute(new Action(() => changeCellConstants(5, value)));
@@ -276,10 +284,10 @@ public class Macro : MacroBase
 
             SelectedCrystal.SetAxis();
             SelectedCrystal.SetPlanes();
-            p.main.SetFormEOS();
-            p.main.SetFormCrystal(true);
-            p.main.InitializeCrystalPlane();
-            p.main.Draw();
+            main.SetFormEOS();
+            main.SetFormCrystal(true);
+            main.InitializeCrystalPlane();
+            main.Draw();
         }
         #endregion
 
@@ -287,64 +295,66 @@ public class Macro : MacroBase
     #endregion
 
     #region CrystalListクラス
-    public class CrystalListClass : MacroSub
+    public class CrystalListClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public CrystalListClass(Macro _p) : base(_p.main)
-        {
-            p = _p;
-            p.help.Add("PDI.CrystalList.Open() # Open 'Crystal List' window'.");
-            p.help.Add("PDI.CrystalList.Close() # Close 'Crystal List' window'.");
-            p.help.Add("PDI.CrystalList.Count # Get total count of crystals.");
-            p.help.Add("PDI.CrystalList.SelectedName # Get name of the selected crystal.");
-            p.help.Add("PDI.CrystalList.SelectedIndex # Set/get index of the selected crystal.");
-            p.help.Add("PDI.CrystalList.Select(int index) # Set index of a selected crystal.");
-            p.help.Add("PDI.CrystalList.Check(int index) # Check a crystal assigned by 'index'. If index is omitted, the selected crystal will be checked.");
-            p.help.Add("PDI.CrystalList.Uncheck(int index) # Uncheck a crystal assigned by 'index'. If index is omitted, the selected crystal will be unchecked.");
+        //public CrystalListClass(Macro _p) : base(_p.main) => p = _p;
 
-        }
+        private FormMain main => _p.main;
 
-        public void Open() => p.main.checkBoxCrystalParameter.Checked = true;
-        public void Close() => p.main.checkBoxCrystalParameter.Checked = false;
 
-        public int Count => Execute(() => p.main.bindingSourceCrystal.Count);
-        public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((Crystal)((DataRowView)p.main.bindingSourceCrystal.Current).Row[1]).Name : "");
+        [Help("Open 'Crystal List' window'.")]
+        public void Open() => main.checkBoxCrystalParameter.Checked = true;
+        [Help("Close 'Crystal List' window'.")]
+        public void Close() => main.checkBoxCrystalParameter.Checked = false;
+
+        [Help("Get total count of crystals.")]
+        public int Count => Execute(() => main.bindingSourceCrystal.Count);
+      
+        [Help("Get name of the selected crystal.")]
+        public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((Crystal)((DataRowView)main.bindingSourceCrystal.Current).Row[1]).Name : "");
+       
+        [Help("Set/get index of the selected crystal.")]
         public int SelectedIndex
         {
             set
             {
                 Execute(new Action(() =>
                 {
-                    if (value >= 0 && value < p.main.bindingSourceCrystal.Count)
-                        p.main.bindingSourceCrystal.Position = value;
+                    if (value >= 0 && value < main.bindingSourceCrystal.Count)
+                        main.bindingSourceCrystal.Position = value;
                 }));
             }
-            get => Execute(() => p.main.bindingSourceCrystal.Position);
+            get => Execute(() => main.bindingSourceCrystal.Position);
         }
 
+        [Help("Set index of a selected crystal.", "int index")]
         public void Select(int n) { Execute(() => select(n)); }
         private void select(int n)
         {
-            if (n >= 0 && n < p.main.bindingSourceCrystal.Count)
-                p.main.bindingSourceCrystal.Position = n;
+            if (n >= 0 && n < main.bindingSourceCrystal.Count)
+                main.bindingSourceCrystal.Position = n;
         }
 
+        [Help("Check a crystal assigned by 'index'. If index is omitted, the selected crystal will be checked.", "int index")]
         public void Check() => Check(SelectedIndex, true);
         public void Check(int n) => Check(n, true);
+
+        [Help("Uncheck a crystal assigned by 'index'. If index is omitted, the selected crystal will be unchecked.", "int index")]
         public void Uncheck() => Check(SelectedIndex, false);
         public void Uncheck(int n) => Check(n, false);
 
+        [Help("Check/uncheck a crystal assigned by 'index'.", "int indexm bool state")]
         public void Check(int n, bool checkState) => Execute(() => check(n, checkState));
         private void check(int n, bool checkState)
         {
-            if (n >= 0 && n < p.main.bindingSourceCrystal.Count)
+            if (n >= 0 && n < main.bindingSourceCrystal.Count)
             {
-                ((DataRowView)p.main.bindingSourceCrystal[n]).Row[0] = checkState;
-                p.main.dataGridViewCrystals_CellMouseClick(new object(), new DataGridViewCellMouseEventArgs(-1, -1, 0, 0, new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 0, 0, 0, 0)));
+                ((DataRowView)main.bindingSourceCrystal[n]).Row[0] = checkState;
+                main.dataGridViewCrystals_CellMouseClick(new object(), new DataGridViewCellMouseEventArgs(-1, -1, 0, 0, new MouseEventArgs(System.Windows.Forms.MouseButtons.None, 0, 0, 0, 0)));
             }
         }
 
-        public double GetCellVolume => Execute(() => p.main.bindingSourceCrystal.Count);
+        public double GetCellVolume => Execute(() => main.bindingSourceCrystal.Count);
     }
     #endregion
 
@@ -355,16 +365,16 @@ public class Macro : MacroBase
         public ProfileClass(Macro _p) : base(_p.main)
         {
             p = _p;
-            p.help.Add("PDI.Profile.Comment #  Set/get the comment of the selected profile.");
-            p.help.Add("PDI.Profile.Name #  Set/get the comment of the selected profile.");
         }
 
+        [Help("Set/get the comment of the selected profile.")]
         public string Comment
         {
             get => Execute(() => p.main.formProfile.textBoxComment.Text);
             set => Execute(new Action(() => p.main.formProfile.textBoxComment.Text = value));
         }
 
+        [Help("Set/get the comment of the selected profile.")]
         public string Name
         {
             get => Execute(() => p.main.formProfile.textBoxProfileName.Text);
@@ -374,299 +384,294 @@ public class Macro : MacroBase
     #endregion
 
     #region ProfileOperatorクラス
-    public class ProfileOperatorClass : MacroSub
+    public class ProfileOperatorClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public ProfileOperatorClass(Macro _p) : base(_p.main)
-        {
-            p = _p;
-            p.help.Add("PDI.ProfileOperator.Average(int[] indices, string output) # Get average profile. 'indices' is array of itegers (like iArray = 1,3,5,9),  \r\n and 'output' is the profile name of result");
-            p.help.Add("PDI.ProfileOperator.AddTwoProfiles(int index1, int index2, string output)      # Calculate profile1 + profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
-            p.help.Add("PDI.ProfileOperator.SubtractTwoProfiles(int index1, int index2, string output) # Calculate profile1 - profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
-            p.help.Add("PDI.ProfileOperator.MultiplyTwoProfiles(int index1, int index2, string output) # Calculate profile1 * profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
-            p.help.Add("PDI.ProfileOperator.DivideTwoProfiles(int index1, int index2, string output)   # Calculate profile1 / profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result");
-            p.help.Add("PDI.ProfileOperator.AddValueToProfile(int index, double value, string output)   # Calculate profile + value. \r\n  Profile is assingned by index.  \r\n 'output' is the profile name of result");
-            p.help.Add("PDI.ProfileOperator.MultiplyValueToProfile(int index, double value, string output)   # Calculate profile * value. \r\n  Profile is assingned by index (integer), and .  \r\n 'out' is the profile name of result");
-        }
+        private FormMain main => _p.main;
 
+        // [Help("PDI.ProfileOperator.AddValueToProfile(int index, double value, string output)   # Calculate profile + value. \r\n  Profile is assingned by index.  \r\n 'output' is the profile name of result")]
+        // [Help("PDI.ProfileOperator.MultiplyValueToProfile(int index, double value, string output)   # Calculate profile * value. \r\n  Profile is assingned by index (integer), and .  \r\n 'out' is the profile name of result")]
+
+        [Help("Get average profile. 'indices' is array of itegers (like iArray = 1,3,5,9),  \r\n and 'output' is the profile name of result", "int[] indices, string output")]
         public void Average(int[] intArray, string outputName = "") { Execute(() => average(intArray, outputName)); }
         private void average(int[] intArray, string outputName = "")
         {
-            p.main.formProfile.radioButtonAverage.Checked = true;
+            main.formProfile.radioButtonAverage.Checked = true;
             foreach (int i in intArray)
             {
-                if (i >= 0 && i < p.main.formProfile.listBoxTwoProfiles1.Items.Count)
-                    p.main.formProfile.listBoxTwoProfiles1.SelectedIndex = i;
+                if (i >= 0 && i < main.formProfile.listBoxTwoProfiles1.Items.Count)
+                    main.formProfile.listBoxTwoProfiles1.SelectedIndex = i;
             }
-            if (outputName != "") p.main.formProfile.textBoxOutputFilename.Text = outputName;
-            p.main.formProfile.buttonCalculate_Click(new object(), new EventArgs());
+            if (outputName != "") main.formProfile.textBoxOutputFilename.Text = outputName;
+            main.formProfile.buttonCalculate_Click(new object(), new EventArgs());
         }
 
+        [Help("Calculate profile1 + profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result", "int index1, int index2, string output")]
         public void AddTwoProfiles(int index1, int index2, string outputName = "") { Execute(() => addTwoProfiles(index1, index2, outputName)); }
         private void addTwoProfiles(int index1, int index2, string outputName = "")
         {
-            p.main.formProfile.radioButtonAddition.Checked = true;
+            main.formProfile.radioButtonAddition.Checked = true;
             Arithmetic(index1, index2, outputName);
         }
 
+        [Help("Calculate profile1 - profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result", "int index1, int index2, string output")]
         public void SubtractTwoProfiles(int index1, int index2, string outputName = "") { Execute(() => subtractTwoProfiles(index1, index2, outputName)); }
         private void subtractTwoProfiles(int index1, int index2, string outputName = "")
         {
-            p.main.formProfile.radioButtonSubtraction.Checked = true;
+            main.formProfile.radioButtonSubtraction.Checked = true;
             Arithmetic(index1, index2, outputName);
         }
 
+        [Help("Calculate profile1 * profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result", "int index1, int index2, string output")]
         public void MultiplyTwoProfiles(int index1, int index2, string outputName = "") { Execute(() => multiplyTwoProfiles(index1, index2, outputName)); }
         private void multiplyTwoProfiles(int index1, int index2, string outputName = "")
         {
-            p.main.formProfile.radioButtonMutiplication.Checked = true;
+            main.formProfile.radioButtonMutiplication.Checked = true;
             Arithmetic(index1, index2, outputName);
         }
 
+        [Help("Calculate profile1 / profile2. \r\n  Each profile is assingned by index.  \r\n 'output' is the profile name of result", "int index1, int index2, string output")]
         public void DivideTwoProfiles(int index1, int index2, string outputName = "") { Execute(() => divideTwoProfiles(index1, index2, outputName)); }
         private void divideTwoProfiles(int index1, int index2, string outputName = "")
         {
-            p.main.formProfile.radioButtonDivision.Checked = true;
+            main.formProfile.radioButtonDivision.Checked = true;
             Arithmetic(index1, index2, outputName);
         }
 
         private void Arithmetic(int index1, int index2, string outputName = "")
         {
-            p.main.formProfile.radioButtonTwoProfiles.Checked = true;
-            if (Math.Min(index1, index2) >= 0 && Math.Max(index1, index2) < p.main.formProfile.listBoxTwoProfiles1.Items.Count)
+            main.formProfile.radioButtonTwoProfiles.Checked = true;
+            if (Math.Min(index1, index2) >= 0 && Math.Max(index1, index2) < main.formProfile.listBoxTwoProfiles1.Items.Count)
             {
-                p.main.formProfile.listBoxTwoProfiles1.SelectedIndex = index1;
-                p.main.formProfile.listBoxTwoProfiles2.SelectedIndex = index2;
-                if (outputName != "") p.main.formProfile.textBoxOutputFilename.Text = outputName;
-                p.main.formProfile.buttonCalculate_Click(new object(), new EventArgs());
+                main.formProfile.listBoxTwoProfiles1.SelectedIndex = index1;
+                main.formProfile.listBoxTwoProfiles2.SelectedIndex = index2;
+                if (outputName != "") main.formProfile.textBoxOutputFilename.Text = outputName;
+                main.formProfile.buttonCalculate_Click(new object(), new EventArgs());
             }
         }
     }
     #endregion
 
     #region ProfileListクラス
-    public class ProfileListClass : MacroSub
+    public class ProfileListClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public ProfileListClass(Macro _p) : base(_p.main)
-        {
-            p = _p;
-            p.help.Add("PDI.ProfileList.Open() # Open 'Profile List' window'.");
-            p.help.Add("PDI.ProfileList.Close() # Close 'Profile List' window'.");
-            p.help.Add("PDI.ProfileList.Count # Get total count of profiles.");
-            p.help.Add("PDI.ProfileList.SelectedName # Get name of a selected profile.");
-            p.help.Add("PDI.ProfileList.SelectedIndex # Set/get index of a selected profile.");
-            p.help.Add("PDI.ProfileList.Select(int index) # Set index of a selected profile.");
-            p.help.Add("PDI.ProfileList.Check(int index) # Check a profile assigned by index. If index is omitted, the selected profile will be checked.");
-            p.help.Add("PDI.ProfileList.Uncheck(int index) # Uncheck a profile assigned by index. If index is omitted, the selected profile will be unchecked.");
-            p.help.Add("PDI.ProfileList.CheckAll() # Check all profiles.");
-            p.help.Add("PDI.ProfileList.UncheckAll() # Uncheck all profiles.");
-            p.help.Add("PDI.ProfileList.DeleteAll() # Delete all profiles.");
-            p.help.Add("PDI.ProfileList.Delete(int index) # Delete a profile assigned by index.");
-        }
-        public void Open() => p.main.checkBoxProfileParameter.Checked = true;
-        public void Close() => p.main.checkBoxProfileParameter.Checked = false;
-        public void DeleteAll() => Execute(() => p.main.formProfile.DeleteAllProfiles(false));
+        private FormMain main => _p.main;
+
+        [Help("Open 'Profile List' window'.")]
+        public void Open() => main.checkBoxProfileParameter.Checked = true;
+        
+        [Help("Close 'Profile List' window'.")]
+        public void Close() => main.checkBoxProfileParameter.Checked = false;
+        
+        [Help("Delete all profiles.")]
+        public void DeleteAll() => Execute(() => main.formProfile.DeleteAllProfiles(false));
+        
+        [Help("Delete a profile assigned by index.", "int index")]
         public void Delete(int n)
-            => Execute(new Action(() =>
-            {
-                Select(n);
-                p.main.formProfile.DeleteProfiles(n);
-            }));
+        => Execute(new Action(() =>
+        {
+            Select(n);
+            main.formProfile.DeleteProfiles(n);
+        }));
 
-        public int Count => Execute(() => p.main.bindingSourceProfile.Count);
+        [Help("Get total count of profiles.")]
+        public int Count => Execute(() => main.bindingSourceProfile.Count);
 
-        public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((DiffractionProfile2)((DataRowView)p.main.bindingSourceProfile.Current).Row[1]).Name : "");
+        [Help("Get name of a selected profile.")]
+        public string SelectedName => Execute(() => (SelectedIndex >= 0) ? ((DiffractionProfile2)((DataRowView)main.bindingSourceProfile.Current).Row[1]).Name : "");
 
+        [Help("Set/get index of a selected profile.")]
         public int SelectedIndex
         {
             set
             {
                 Execute(new Action(() =>
                 {
-                    if (value >= 0 && value < p.main.bindingSourceProfile.Count)
-                        p.main.bindingSourceProfile.Position = value;
+                    if (value >= 0 && value < main.bindingSourceProfile.Count)
+                        main.bindingSourceProfile.Position = value;
                 }));
             }
-            get => Execute(() => p.main.bindingSourceProfile.Position);
+            get => Execute(() => main.bindingSourceProfile.Position);
         }
 
+        [Help("Set index of a selected profile.", "int index")]
         public void Select(int n)
         {
             Execute(new Action(() =>
             {
-                if (n >= 0 && n < p.main.bindingSourceProfile.Count)
-                    p.main.bindingSourceProfile.Position = n;
+                if (n >= 0 && n < main.bindingSourceProfile.Count)
+                    main.bindingSourceProfile.Position = n;
             }));
         }
 
+        [Help("Check the profile assigned by index. If index is omitted, the selected profile will be checked.", "int index")]
         public void Check() => Execute(new Action(() => Check(SelectedIndex, true)));
         public void Check(int n) => Execute(new Action(() => Check(n, true)));
+        
+        [Help("Uncheck the profile assigned by index. If index is omitted, the selected profile will be unchecked.", "int index")]
         public void Uncheck() => Execute(new Action(() => Check(SelectedIndex, false)));
         public void Uncheck(int n) => Execute(new Action(() => Check(n, false)));
 
+        [Help("Check/uncheck the profile assigned by index.", "int index, bool state")]
         public void Check(int n, bool checkState) => Execute(() => check(n, checkState));
         private void check(int n, bool checkState)
         {
-            if (n >= 0 && n < p.main.bindingSourceProfile.Count)
+            if (n >= 0 && n < main.bindingSourceProfile.Count)
             {
-                ((DataRowView)p.main.bindingSourceProfile[n]).Row[0] = checkState;
-                p.main.dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(-1, -1));
+                ((DataRowView)main.bindingSourceProfile[n]).Row[0] = checkState;
+                main.dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(-1, -1));
             }
         }
 
-        public void CheckAll() => Execute(new Action(() => p.main.checkBoxAll.Checked = true));
+        [Help("PDI.ProfileList.CheckAll() # Check all profiles.")]
+        public void CheckAll() => Execute(new Action(() => main.checkBoxAll.Checked = true));
 
-        public void UncheckAll() => Execute(new Action(() => p.main.checkBoxAll.Checked = false));
+        [Help("PDI.ProfileList.UncheckAll() # Uncheck all profiles.")]
+        public void UncheckAll() => Execute(new Action(() => main.checkBoxAll.Checked = false));
 
     }
     #endregion
 
     #region Fittingクラス
-    public class FittingClass : MacroSub
+    public class FittingClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public FittingClass(Macro _p) : base(_p.main)
-        {
-            p = _p;
-            p.help.Add("PDI.Fitting.Open() # Open 'Fitting peaks' window.");
-            p.help.Add("PDI.Fitting.Close() # Close 'Fitting peaks' window.");
+        private FormMain main => _p.main;
 
-            p.help.Add("PDI.Fitting.Check(int index) # Check the lattice plane assigned by index.");
-            p.help.Add("PDI.Fitting.Uncheck(int index) # Uncheck the lattice plane assigned by index.");
-            p.help.Add("PDI.Fitting.Select(int index) # Select the lattice plane assigned by index.");
-            p.help.Add("PDI.Fitting.SelectedIndex #Set/get the index of a lattice plane.");
+        [Help("Open 'Fitting peaks' window.")]
+        public void Open() => main.toolStripButtonFittingParameter.Checked = true;
+        
+        [Help("Close 'Fitting peaks' window.")]
+        public void Close() => main.toolStripButtonFittingParameter.Checked = false;
+        
+        [Help("Apply the optimized cell constants to the selected crystal.")]
+        public void Apply() => Execute(() => main.formFitting.Confirm(true));
+        
 
-            p.help.Add("PDI.Fitting.Apply() # Apply the optimized cell constants to the selected crystal.");
-
-            p.help.Add("PDI.Fitting.Range(double value) # Set fitting range of the selected lattice plane.");
-
-        }
-
-        public void Open() => p.main.toolStripButtonFittingParameter.Checked = true;
-        public void Close() => p.main.toolStripButtonFittingParameter.Checked = false;
-        public void Apply() => Execute(() => p.main.formFitting.Confirm(true));
-        public void Check() => Check(SelectedIndex, true);
+        [Help("Check the lattice plane assigned by index.", "int index")]
         public void Check(int n) => Check(n, true);
+        public void Check() => Check(SelectedIndex, true);
+
+        [Help("Uncheck the lattice plane assigned by index.", "int index")]
         public void Uncheck(int n) => Check(n, false);
         public void Uncheck() => Check(SelectedIndex, false);
+
+        [Help("Check/uncheck the lattice plane assigned by index.", "int index, bool state")]
         private void Check(int n, bool checkState) { Execute(() => check(n, checkState)); }
         private void check(int n, bool checkState)
         {
-            if (n >= 0 && n < p.main.formFitting.bindingSourcePlanes.Count)
+            if (n >= 0 && n < main.formFitting.bindingSourcePlanes.Count)
             {
-                p.main.formFitting.TargetCrystal.Plane[n].IsFittingChecked = checkState;
-                ((DataRowView)p.main.formFitting.bindingSourcePlanes[n]).Row[0] = checkState;
-                p.main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
+                main.formFitting.TargetCrystal.Plane[n].IsFittingChecked = checkState;
+                ((DataRowView)main.formFitting.bindingSourcePlanes[n]).Row[0] = checkState;
+                main.formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
             }
         }
+
+        [Help("Select the lattice plane assigned by index.", "int index")]
         public void Select(int n) => SelectedIndex = n;
 
+        [Help("Set/get the index of a lattice plane.", "int index")]
         public int SelectedIndex
         {
             set
             {
                 Execute(new Action(() =>
                 {
-                    if (value >= 0 && value < p.main.formFitting.bindingSourcePlanes.Count)
-                        p.main.formFitting.bindingSourcePlanes.Position = value;
+                    if (value >= 0 && value < main.formFitting.bindingSourcePlanes.Count)
+                        main.formFitting.bindingSourcePlanes.Position = value;
                 }));
             }
-            get => Execute(() => p.main.formFitting.bindingSourcePlanes.Position);
+            get => Execute(() => main.formFitting.bindingSourcePlanes.Position);
         }
 
-        public void Range(double r) => p.main.formFitting.numericBoxSearchRange.Value = r;
+        [Help(" Set fitting range of the selected lattice plane.", "double range")]
+        public void Range(double r) => main.formFitting.numericBoxSearchRange.Value = r;
     }
     #endregion
 
     #region Sequentialクラス
-    public class SequentialClass : MacroSub
+    public class SequentialClass(Macro _p) : MacroSub(_p.main)
     {
-        private readonly Macro p;
-        public SequentialClass(Macro _p) : base(_p.main)
-        {
-            p = _p;
-            p.help.Add("PDI.Sequential.Open() # Open 'Sequential Analysis' window.");
-            p.help.Add("PDI.Sequential.Close() # Close 'Sequential Analysis' window.");
+        private FormMain main => _p.main;
 
-            p.help.Add("PDI.Sequential.Execute() # Execute the sequential analysis.");
-
-            p.help.Add("PDI.Sequential.GetCSV_2theta() # Get results of 2 theta in CSV format.");
-            p.help.Add("PDI.Sequential.GetCSV_D() # Get results of d-spacing in CSV format.");
-            p.help.Add("PDI.Sequential.GetCSV_FWHM() # Get results of FWHM in CSV format.");
-            p.help.Add("PDI.Sequential.GetCSV_Intensity() # Get results of peak intensity in CSV format.");
-            p.help.Add("PDI.Sequential.GetCSV_CellConstants() # Get results of cell constants in CSV format.");
-            p.help.Add("PDI.Sequential.GetCSV_Pressure() # Get results of pressure in CSV format.");
-            p.help.Add("PDI.Sequential.GetCSV_Singh() # Get results of Singh equation in CSV format.");
-
-            p.help.Add("PDI.Sequential.Directory # Get/set the full directory path to be saved.");
-
-            p.help.Add("PDI.Sequential.AutoSave2theta # Get/set True or False.");
-            p.help.Add("PDI.Sequential.AutoSaveDspacing # Get/set True or False.");
-            p.help.Add("PDI.Sequential.AutoSaveFWHM # Get/set True or False.");
-            p.help.Add("PDI.Sequential.AutoSaveIntensity # Get/set True or False.");
-            p.help.Add("PDI.Sequential.AutoSaveCellConstants # Get/set True or False.");
-            p.help.Add("PDI.Sequential.AutoSavePressure # Get/set True or False.");
-            p.help.Add("PDI.Sequential.AutoSaveSingh # Get/set True or False.");
-
-        }
+        [Help("Get/set the full directory path to be saved.")]
         public string Directory
         {
-            get => p.main.formSequentialAnalysis.textBoxDirectory.Text;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.textBoxDirectory.Text = value));
+            get => main.formSequentialAnalysis.textBoxDirectory.Text;
+            set => Execute(new Action(() => main.formSequentialAnalysis.textBoxDirectory.Text = value));
         }
 
-        public void Open() => Execute(new Action(() => p.main.toolStripButtonSequentialAnalysis.Checked = true));
-        public void Close() => Execute(new Action(() => p.main.toolStripButtonSequentialAnalysis.Checked = false));
-        public void Execute() => Execute(() => p.main.formSequentialAnalysis.buttonExecute.PerformClick());
+        [Help("Open 'Sequential Analysis' window.")]
+        public void Open() => Execute(new Action(() => main.toolStripButtonSequentialAnalysis.Checked = true));
 
-        public string GetCSV_2theta() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 0));
-        public string GetCSV_D() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 1));
-        public string GetCSV_FWHM() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 2));
-        public string GetCSV_Intensity() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 3));
-        public string GetCSV_CellConstants() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 4));
-        public string GetCSV_Pressure() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 5));
-        public string GetCSV_Singh() => Execute(() => p.main.formSequentialAnalysis.GetText(true, 6));
+        [Help("Close 'Sequential Analysis' window.")]
+        public void Close() => Execute(new Action(() => main.toolStripButtonSequentialAnalysis.Checked = false));
 
+        [Help("Execute the sequential analysis.")]
+        public void Execute() => Execute(() => main.formSequentialAnalysis.buttonExecute.PerformClick());
+
+        [Help("Get results of 2 theta in CSV format.")]
+        public string GetCSV_2theta() => Execute(() => main.formSequentialAnalysis.GetText(true, 0));
+
+        [Help("Get results of d-spacing in CSV format.")]
+        public string GetCSV_D() => Execute(() => main.formSequentialAnalysis.GetText(true, 1));
+        [Help("Get results of FWHM in CSV format.")]
+        public string GetCSV_FWHM() => Execute(() => main.formSequentialAnalysis.GetText(true, 2));
+        [Help("Get results of peak intensity in CSV format.")]
+        public string GetCSV_Intensity() => Execute(() => main.formSequentialAnalysis.GetText(true, 3));
+        [Help("Get results of cell constants in CSV format.")]
+        public string GetCSV_CellConstants() => Execute(() => main.formSequentialAnalysis.GetText(true, 4));
+        [Help("Get results of pressure in CSV format.")]
+        public string GetCSV_Pressure() => Execute(() => main.formSequentialAnalysis.GetText(true, 5));
+        [Help("Get results of Singh equation in CSV format.")]
+        public string GetCSV_Singh() => Execute(() => main.formSequentialAnalysis.GetText(true, 6));
+
+        [Help("Get/set True or False.")]
         public bool AutoSave2theta
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked = value));
         }
 
+        [Help("Get/set True or False.")]
         public bool AutoSaveDspacing
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSaveD.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveD.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSaveD.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSaveD.Checked = value));
         }
 
+        [Help("Get/set True or False.")]
         public bool AutoSaveFWHM
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked = value));
         }
 
+        [Help("Get/set True or False.")]
         public bool AutoSaveIntensity
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSaveInt.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveInt.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSaveInt.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSaveInt.Checked = value));
         }
 
+        [Help("Get/set True or False.")]
         public bool AutoSaveCellConstants
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSaveCell.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveCell.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSaveCell.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSaveCell.Checked = value));
         }
 
+        [Help("Get/set True or False.")]
         public bool AutoSavePressure
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSavePressure.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSavePressure.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSavePressure.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSavePressure.Checked = value));
         }
+
+        [Help("Get/set True or False.")]
         public bool AutoSaveSingh
         {
-            get => p.main.formSequentialAnalysis.checkBoxAutoSaveSingh.Checked;
-            set => Execute(new Action(() => p.main.formSequentialAnalysis.checkBoxAutoSaveSingh.Checked = value));
+            get => main.formSequentialAnalysis.checkBoxAutoSaveSingh.Checked;
+            set => Execute(new Action(() => main.formSequentialAnalysis.checkBoxAutoSaveSingh.Checked = value));
         }
 
     }
