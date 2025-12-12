@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.458(2025/12/12) Fixed bugs on program update and crysta database functions." +
         "\r\n ver4.457(2025/12/03) Added new horizontal axis units (centi-degree and milli-radian)." +
         "\r\n ver4.456(2025/11/26) Fixed a minor bug." +
         "\r\n ver4.455(2025/11/20) Fixed a minor bug." +
