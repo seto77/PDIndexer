@@ -9,17 +9,19 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Xml.Serialization;
+using ZLinq;
 using static System.Buffers.ArrayPool<System.Numerics.Complex>;
 using static System.Numerics.Complex;
 using DMat = MathNet.Numerics.LinearAlgebra.Complex.DenseMatrix;
 using DVec = MathNet.Numerics.LinearAlgebra.Complex.DenseVector;
-using ZLinq;
 #endregion
 
 namespace Crystallography;
@@ -40,7 +42,7 @@ public class BetheMethod
     /// (001)ベクトル
     /// </summary>
     private static readonly Vector3DBase zNorm = new(0, 0, 1);
-    public static readonly bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
+    public static bool EigenEnabled, MklEnabled, BlasEnabled, CudaEnabled;
 
     public static readonly int ProcessorCount = Environment.ProcessorCount;
     #endregion
@@ -70,7 +72,6 @@ public class BetheMethod
     public double Thickness { get; set; }
     public double[] Thicknesses { get; set; }
     public enum Solver { Eigen_MKL, Eigen_Eigen, MtxExp_MKL, MtxExp_Eigen, Auto }
-
     public Complex[] EigenValues { get; set; }
     public Complex[] EigenVectors { get; set; }
     public Complex[] EigenVectorsInverse { get; set; }
@@ -463,12 +464,473 @@ public class BetheMethod
         bwEBSD.RunWorkerAsync((solver, thread, voltages));
     }
 
+
     /// <summary>
-    /// EBSD計算用
+    /// EBSD (Electron Backscatter Diffraction) 計算用
+    ///
+    /// 【物理的背景】
+    /// EBSDでは、入射電子が結晶内部の原子と非弾性散乱し、原子位置に「点光源」が生じる。この点光源から放出された電子が、
+    /// 結晶のポテンシャル中をコヒーレントに回折しながら結晶表面に到達し、検出器で菊池パターンとして観測される。
+    ///
+    /// これはCBED（収束電子回折）とは根本的に異なる。CBEDでは外部から平面波が入射するのに対し、EBSDでは結晶内部が光源である。
+    ///
+    /// 【相反定理 (Reciprocity Theorem) の利用】
+    /// 検出器方向 k̂_f に向かう電子の強度を直接計算する代わりに、相反定理により「k̂_f 方向から逆向きに平面波を入射させたときの、
+    /// 結晶内部の原子位置における波動関数の強度」を計算する。これにより、CBED と同じ固有値問題の枠組みを利用できる。
+    ///
+    /// 【強度の計算式】
+    /// I(k̂_f, t) = Σ_n σ_n  Σ_{j,j'} β_n^(j) conj(β_n^(j')) F_{jj'}(t)
+    ///
+    /// ここで：
+    ///   n : 原子のインデックス（全対称等価位置を含む）
+    ///   j, j' : ブロッホ状態のインデックス
+    ///   σ_n : 原子 n の後方散乱断面積 (∝ Z² × Occ)
+    ///   β_n^(j) = α_j × μ_n^(j) : 励起振幅 × ブロッホ波場
+    ///   α_j = [C⁻¹]_{j,0} : 平面波 ψ_0 に対するブロッホ状態 j の励起振幅
+    ///   μ_n^(j) = Σ_g C_g^(j) exp(2πi g·r_n) : 原子位置 r_n でのブロッホ波場
+    ///   C_g^(j) : 固有ベクトル（ブロッホ状態 j の平面波 g 成分）
+    ///   g·r_n = h_g x_n + k_g y_n + l_g z_n : ミラー指数と分率座標の内積
+    ///
+    ///   F_{jj'}(t) = [exp(λ_{jj'} t) - 1] / λ_{jj'} : 厚さ依存因子
+    ///   λ_{jj'} = 2πi(γ_j - conj(γ_j')) : ブロッホ状態間の結合定数
+    ///   γ_j : 固有値（ブロッホ状態 j の結晶内波数の z 成分）
+    ///
+    /// 【交差項の物理的意味】
+    ///   j = j' (対角項) : F_{jj}(t) は単調関数 → パターンの全体的なコントラスト
+    ///   j ≠ j' (交差項) : F_{jj'}(t) は振動関数 → 菊池バンドの厚さ依存変化
+    ///   交差項がないと、パターン形状が厚さに依存しなくなる。
+    ///
+    /// 【計算効率の工夫】
+    /// 上式を S_{jj'} = Σ_n σ_n β_n^(j) conj(β_n^(j')) と分離すると、
+    ///   I(t) = Σ_{j,j'} S_{jj'} × F_{jj'}(t) = Tr(S · F(t))
+    /// となり、原子依存部(S)と厚さ依存部(F)が分離される。
+    /// S は方向ごとに1回、F は厚さごとに計算するだけでよい。
+    ///
+    /// さらに、位相因子 exp(2πi g·r_n) はビームのミラー指数と原子の分率座標
+    /// だけで決まり検出器方向に依存しないため、beamsPreliminary の段階で
+    /// 事前計算してキャッシュし、全検出器方向で再利用する。
+    ///
+    /// β と S の計算は行列積として定式化でき (B = P·C·diag(α), S = B†·diag(σ)·B)、
+    /// ネイティブの Eigen ライブラリの BLAS ルーチンで高速に実行される。
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ebsd_DoWork(object sender, DoWorkEventArgs e)
+    {
+        var (solver, thread, voltages) = ((Solver, int, double[]))e.Argument;
+
+        Disks = new CBED_Disk[voltages.Length][];
+        int count = 0;
+
+        var beamDirectionsP = BeamDirections.AsParallel();
+        int width = (int)Math.Sqrt(BeamDirections.Length);
+        int height = width;
+        double radius = width / 2.0;
+
+        #region solver, thread の設定
+        // CBED と同じソルバー選択ロジック。
+        // Eigen ネイティブライブラリが利用可能なら優先的に使用する。
+        if (solver == Solver.Auto || (!EigenEnabled && (solver == Solver.Eigen_Eigen || solver == Solver.MtxExp_Eigen)))
+        {
+            if (EigenEnabled)
+                (solver, thread) = (Solver.Eigen_Eigen, ProcessorCount);
+            else
+                (solver, thread) = (Solver.Eigen_MKL, MklEnabled ? Math.Max(1, ProcessorCount / 4) : ProcessorCount);
+        }
+        var reportString = $"{solver}{thread}";
+        #endregion
+
+        #region 原子情報の事前準備
+        // 結晶内の全原子位置（対称操作で生成された等価位置を含む）と、
+        // 各原子の後方散乱断面積 σ を収集する。
+        //
+        // 後方散乱断面積は Rutherford 散乱の近似として σ ∝ Z² × Occ とする。
+        // Z : 原子番号, Occ : 占有率
+        // これは、重い原子ほど強く後方散乱するという物理を反映している。
+        var atomSites = new List<(double x, double y, double z, double sigma)>();
+        foreach (var atoms in Crystal.Atoms)
+        {
+            double sigma = (double)(atoms.AtomicNumber * atoms.AtomicNumber) * atoms.Occ;
+            foreach (var atom in atoms.Atom)   // atoms.Atom[] は対称操作で展開された全等価位置
+                atomSites.Add((atom.X, atom.Y, atom.Z, sigma));
+        }
+        var atomArray = atomSites.ToArray();
+        int nAtoms = atomArray.Length;
+
+        // σ 配列は全検出器方向で共通なので、ループ外で1回だけ作成する。
+        var sigmaArray = new double[nAtoms];
+        for (int n = 0; n < nAtoms; n++)
+            sigmaArray[n] = atomArray[n].sigma;
+        #endregion
+
+        // 加速電圧ごとのループ (電圧依存性を調べる場合に複数)
+        for (int vIndex = 0; vIndex < voltages.Length; vIndex++)
+        {
+            AccVoltage = voltages[vIndex];
+
+            // 真空中の電子の波数 k_vac (相対論補正込み)
+            var kvac = UniversalConstants.Convert.EnergyToElectronWaveNumber(AccVoltage);
+
+            // 結晶内平均ポテンシャル U_0 (屈折効果を与える)
+            // 結晶に入った電子は U_0 分だけ運動エネルギーが増加し、波数が変化する。
+            var u0 = getU(AccVoltage).Real.Real;
+
+            // ポテンシャルのキャッシュをクリア
+            uDictionary.Clear();
+
+            #region beamsPreliminary: g ベクトルの事前計算
+            // 検出器ピクセルを grid×grid のブロックに分割し、各ブロックの中心方向で
+            // 代表的な g ベクトル集合を計算する。
+            // Find_gVectors は計算コストが高い (全逆格子点を探索) ため、
+            // 全ピクセルで個別に呼ぶのではなくグリッド化して計算量を削減する。
+            //
+            // また、位相因子 P[n,g] = exp(2πi g·r_n) をここで事前計算する。
+            // この値はビームのミラー指数 (h,k,l) と原子の分率座標 (x,y,z) だけで決まり、
+            // 検出器方向（入射方向）には依存しない。
+            // したがって、全検出器方向で使い回すことで Complex.Exp の呼び出しを大幅に削減できる。
+            //
+            // 格納順序: column-major (Eigen の既定に合わせる)
+            //   phaseNG[g * nAtoms + n] = P(n, g) = exp(2πi(h_g x_n + k_g y_n + l_g z_n))
+            //
+            // 位相因子の符号について:
+            //   getU では構造因子を exp(+2πi g·r_n) で定義 (2024/05/24 に変更済み)。
+            //   ブロッホ波の平面波展開 ψ^(j)(r) = Σ_g C_g^(j) exp(+2πi g·r) と同じ符号。
+            //   ポテンシャルのフーリエ逆変換 V(r) = Σ_g U_g exp(-2πi g·r) とは逆符号だが、
+            //   これはフーリエ変換/逆変換の規約の違いであり、物理的に整合している。
+            var grid = 3;
+            // ピクセルのインデックス i のマッピング
+            var mapping = beamDirectionsP.Select((_, i) =>
+                {
+                    int w = i % width, h = i / width;//ピクセル位置
+                    int wIndex = Math.Min((w / grid) * grid + grid / 2, width - 1);
+                    int hIndex = Math.Min((h / grid) * grid + grid / 2, height - 1);
+                    return  wIndex + hIndex * width;//代表ピクセルのインデックス
+                }
+                ).ToArray();
+
+            var beamsPreliminary = beamDirectionsP.Select((e,i) =>
+                {
+                    if (!mapping.Contains(i))
+                        return (null, null, null);
+
+                    var beams = Find_gVectors(BaseRotation, getVecK0(kvac, u0, e), MaxNumOfBloch);
+                    var potentialMatrix = getPotentialMatrix(beams);
+
+                    var bLen = beams.Length;
+                    var phaseNG = new Complex[nAtoms * bLen];
+                    for (int n = 0; n < nAtoms; n++)
+                    {
+                        var (xn, yn, zn, _) = atomArray[n];
+                        for (int g = 0; g < bLen; g++)
+                        {
+                            var (h, k, l) = beams[g].Index;
+                            phaseNG[g * nAtoms + n] = Exp(TwoPiI * (h * xn + k * yn + l * zn));
+                        }
+                    }
+                    return (beams, potentialMatrix, phaseNG);
+                }).ToArray();
+            #endregion
+
+            #region 各検出器方向での EBSD 強度計算
+            // 各検出器方向 k̂_f に対して、相反定理により「k̂_f から逆向きに平面波を
+            // 入射させたときの、原子位置でのブロッホ波場強度」を計算する。
+            //
+            // 処理の流れ:
+            //   1. k̂_f に対応する K₀ ベクトルを計算
+            //   2. 各ビームの励起誤差 (P, Q) を再計算 (reset_gVectors)
+            //   3. 固有値問題マトリックス A を構築 (getEigenMatrix)
+            //   4. A の固有値 γ_j と固有ベクトル C_g^(j) を求める
+            //   5. 励起振幅 α_j = [C⁻¹]_{j,0} を計算
+            //   6. S 行列と F 行列から各厚さでの強度 I(t) を計算
+            //     (ネイティブの場合は 5-6 を NativeWrapper.EBSDSolver で一括実行)
+            var ebsdIntensity = beamDirectionsP.Select((beamDirection, i) =>
+            {
+                if (bwEBSD.CancellationPending) return null;
+
+                // 結晶内での K₀ ベクトルを計算。
+                // K₀ は真空中の波数ベクトル k_vac を、結晶の平均内部ポテンシャル U₀ による
+                // 屈折を考慮して修正したもの。表面法線方向の成分のみが変化する。
+                var vecK0 = getVecK0(kvac, u0, beamDirection);
+
+                // この検出器方向に対応するグリッドセルの事前計算結果を取得
+                var (beamsBase, potentialMatrix, phaseNG) = beamsPreliminary[mapping[i]];
+
+                // 各ビームの励起誤差 (P, Q) を、この検出器方向の K₀ に対して再計算する。
+                // P = 2 n·(K₀+g) : ビームが出射面から出ていく条件 (P > 0)
+                // Q = K₀² - |K₀+g|² : 励起誤差に関連する量 (ブラッグ条件で Q = 0)
+                // P > 0 のビームのみ選択する (出射面から出ないビームは物理的に寄与しない)。
+                var beams = reset_gVectors(beamsBase, BaseRotation, vecK0).Where(e => e.P > 0).ToArray();
+
+                var bLen = beams.Length;
+                if (bLen == 0) return null;
+
+                var psi0Native = new Complex[bLen];
+                psi0Native[0] = One;
+
+                var eigenMatrix = Shared.Rent(bLen * bLen);
+                try
+                {
+                    // 固有値問題マトリックス A を構築。
+                    // A_{gg'} = U_{g'-g}/P_{g'} + δ_{gg'} Q_g/P_g
+                    // ここで U_{g'-g} は結晶ポテンシャルのフーリエ係数。
+                    // この行列の固有値 γ_j がブロッホ状態の結晶内波数 z 成分、
+                    // 固有ベクトル C_g^(j) がブロッホ状態の平面波成分を与える。
+                    getEigenMatrix(bLen, beams, ref eigenMatrix, potentialMatrix);
+
+                    Complex[] eigenValues, eigenVectors, alpha;
+
+                    if (solver == Solver.Eigen_Eigen && EigenEnabled)
+                    {
+                        // Eigen ネイティブライブラリで固有値分解
+                        (eigenValues, eigenVectors) = NativeWrapper.EigenSolver(bLen, eigenMatrix);
+
+                        // 逆行列 C⁻¹ を計算し、α_j = [C⁻¹]_{j,0} (0列目の j 行目) を取得。
+                        // α_j は「平面波 ψ₀ = (1,0,...,0)ᵀ がブロッホ状態 j をどれだけ励起するか」
+                        // を表す。column-major なので [C⁻¹]_{j,0} = eigenVectorsInv[j]。
+
+                        var eigenVectorsInv = NativeWrapper.Inverse(bLen, eigenVectors);
+                        alpha = new Complex[bLen];
+                        for (int j = 0; j < bLen; j++)
+                            alpha[j] = eigenVectorsInv[j];
+
+                        //alpha = NativeWrapper.PartialPivLuSolve(bLen, eigenVectors, psi0Native);
+                    }
+                    else
+                    {
+                        // MathNet.Numerics による固有値分解 (MKL バックエンド or マネージド)
+                        var evd = new DMat(bLen, bLen, eigenMatrix.AsSpan()[..(bLen * bLen)].ToArray()).Evd(Symmetricity.Asymmetric);
+                        eigenValues = ((DVec)evd.EigenValues).Values;
+                        eigenVectors = ((DMat)evd.EigenVectors).Values;
+
+                        // LU 分解で C α = ψ₀ を直接解く (逆行列を明示的に作らない)
+                        var psi0 = new DVec(new Complex[bLen]) { [0] = One };
+                        alpha = ((DVec)(evd.EigenVectors as DMat).LU().Solve(psi0)).Values;
+                    }
+
+                    // beamsBase → beams のインデックスマッピング。
+                    // reset_gVectors 後に P > 0 でフィルタされたため、beams は beamsBase の
+                    // 部分集合になっている。事前計算した phaseNG は beamsBase のインデックスを
+                    // 使っているので、beams[g] が beamsBase の何番目に対応するかを調べる。
+                    // (reset_gVectors は P, Q のみ再計算し、ミラー指数 Index は不変)
+                    var baseLen = beamsBase.Length;
+                    var gMap = new int[bLen];
+                    for (int g = 0; g < bLen; g++)
+                    {
+                        var idx = beams[g].Index;
+                        for (int gb = 0; gb < baseLen; gb++)
+                            if (beamsBase[gb].Index == idx) { gMap[g] = gb; break; }
+                    }
+
+                    // phaseNG からフィルタ後のビームに対応する列だけを抽出する。
+                    // column-major: phaseFiltered[g * nAtoms + n] = P(n, g)
+                    // これにより、C++ の Eigen::Map<MatrixXcd>(phaseFiltered, nAtoms, bLen) で
+                    // 正しく nAtoms × bLen の行列として読み込まれる。
+                    var phaseFiltered = new Complex[nAtoms * bLen];
+                    for (int n = 0; n < nAtoms; n++)
+                        for (int g = 0; g < bLen; g++)
+                            phaseFiltered[g * nAtoms + n] = phaseNG[gMap[g] * nAtoms + n];
+
+                    // EBSD 強度を計算。
+                    // ネイティブ版 (_EBSDSolver) では、以下の処理が Eigen の行列演算で一括実行される:
+                    //   B = P · C · diag(α)         ... β_n^(j) の行列 (nAtoms × bLen)
+                    //   S = B† · diag(σ) · B        ... S 行列 (bLen × bLen, Hermitian)
+                    //   I(t) = Σ_{jj'} S_{jj'} F_{jj'}(t)  ... 各厚さの強度
+                    double[] intensity;
+                    if (EigenEnabled)
+                        intensity = NativeWrapper.EBSDSolver(
+                            eigenValues, eigenVectors, alpha,
+                            phaseFiltered, sigmaArray, Thicknesses);
+                    else
+                        intensity = EBSDSolverManaged(
+                            bLen, nAtoms, eigenValues, eigenVectors, alpha,
+                            phaseFiltered, sigmaArray, Thicknesses);
+
+                    if (Interlocked.Increment(ref count) % 50 == 0)
+                        bwEBSD.ReportProgress(count, reportString);
+
+                    return intensity;
+                }
+                finally { Shared.Return(eigenMatrix); }
+            }).ToArray();
+            #endregion
+
+            #region Disk への格納
+            // 各厚さの結果を CBED_Disk 構造に格納する。
+            // CBED_Disk.Amplitudes は本来は振幅(Complex)だが、EBSD では強度の
+            // 平方根を実部に入れ、虚部を 0 とすることで既存の描画コードと互換性を保つ。
+            Disks[vIndex] = new CBED_Disk[Thicknesses.Length];
+            Parallel.For(0, Thicknesses.Length, t =>
+            {
+                var amplitudes = new Complex[BeamDirections.Length];
+                for (int r = 0; r < BeamDirections.Length; r++)
+                    if (ebsdIntensity[r] is not null)
+                        amplitudes[r] = new Complex(Math.Sqrt(Math.Max(0, ebsdIntensity[r][t])), 0);
+
+                Disks[vIndex][t] = new CBED_Disk([0, 0, 0], new Vector3DBase(0, 0, 0),
+                    Thicknesses[t], amplitudes);
+                Disks[vIndex][t].Amplitudes = Disks[vIndex][t].RawAmplitudes;
+            });
+            #endregion
+
+            if (bwEBSD.CancellationPending)
+                e.Cancel = true;
+        }
+    }
+
+    /// <summary>
+    /// EigenEnabled = false (ネイティブライブラリなし) の場合のフォールバック。
+    /// マネージドコードで EBSD 強度を計算する。
+    ///
+    /// 計算手順:
+    ///   1. S 行列の構築 : S_{jj'} = Σ_n σ_n β_n^(j) conj(β_n^(j'))
+    ///   2. λ の事前計算 : λ_{jj'} = 2πi(γ_j - conj(γ_j'))
+    ///   3. 強度の計算   : I(t) = Real{ Σ_{jj'} S_{jj'} × F_{jj'}(t) }
+    ///
+    /// ネイティブ版 (_EBSDSolver) と数学的に等価だが、C# の手動ループで実行されるため
+    /// Eigen の BLAS ルーチンを使うネイティブ版より遅い。
+    /// </summary>
+    /// <param name="bLen">ブロッホ波の数 (= 考慮する逆格子ベクトルの数)</param>
+    /// <param name="nAtoms">原子の数 (対称等価位置を含む)</param>
+    /// <param name="eigenValues">固有値 γ_j (bLen 個)</param>
+    /// <param name="eigenVectors">固有ベクトル C_g^(j) (bLen×bLen, column-major)</param>
+    /// <param name="alpha">励起振幅 α_j (bLen 個)</param>
+    /// <param name="phaseNG">位相因子 P[n,g] = exp(2πi g·r_n) (nAtoms×bLen, column-major)</param>
+    /// <param name="sigma">後方散乱断面積 σ_n (nAtoms 個)</param>
+    /// <param name="thicknesses">厚さの配列 (tLen 個, nm 単位)</param>
+    /// <returns>各厚さでの EBSD 強度 (tLen 個)</returns>
+    private static double[] EBSDSolverManaged(
+        int bLen, int nAtoms,
+        Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, double[] thicknesses)
+    {
+        int tLen = thicknesses.Length;
+
+        #region Step 1: S 行列の計算
+        // ================================================================
+        // Step 1: S 行列の計算
+        //
+        // S_{jj'} = Σ_n σ_n β_n^(j) conj(β_n^(j'))
+        //
+        // β_n^(j) = α_j × μ_n^(j)
+        //         = α_j × Σ_g C_g^(j) exp(2πi g·r_n)
+        //
+        // 物理的意味:
+        //   μ_n^(j) はブロッホ状態 j の波動関数を原子位置 r_n で評価した値。
+        //   α_j はそのブロッホ状態の励起振幅。
+        //   β_n^(j) はこれらの積で、「原子 n における状態 j の寄与」を表す。
+        //   S_{jj'} は全原子にわたる β の相関を集約したもの。
+        //
+        // 行列積としての解釈:
+        //   B[n,j] = β_n^(j) = Σ_g P[n,g] × C[g,j] × α_j
+        //   S = B† diag(σ) B
+        //   ネイティブ版ではこの行列積を Eigen の BLAS で高速に計算する。
+        //
+        // メモリ最適化:
+        //   B 全体 (nAtoms×bLen) を保持せず、原子ごとに β_n を
+        //   stackalloc した Span に計算し、即座に S に蓄積する。
+        //   これにより GC プレッシャーを回避する。
+        // ================================================================
+        var S = new Complex[bLen * bLen];
+        for (int n = 0; n < nAtoms; n++)
+        {
+            double sig = sigma[n];
+
+            // β_n^(j) を原子 n について計算
+            Span<Complex> betaN = stackalloc Complex[bLen];
+            for (int j = 0; j < bLen; j++)
+            {
+                // μ_n^(j) = Σ_g C_g^(j) × P(n,g)
+                // eigenVectors[j * bLen + g] = C_g^(j) (column-major: j列目のg行目)
+                // phaseNG[g * nAtoms + n] = P(n,g) (column-major: g列目のn行目)
+                Complex mu = 0;
+                for (int g = 0; g < bLen; g++)
+                    mu += eigenVectors[j * bLen + g] * phaseNG[g * nAtoms + n];
+                betaN[j] = alpha[j] * mu;
+            }
+
+            // S に蓄積: S_{jj'} += σ_n × β_n^(j) × conj(β_n^(j'))
+            // S は Hermitian (S_{jj'} = conj(S_{j'j})) だが、
+            // 最終的に Tr(S·F) の実部だけを使うので、全要素を計算して問題ない。
+            for (int j = 0; j < bLen; j++)
+            {
+                var bj = betaN[j];
+                for (int jp = 0; jp < bLen; jp++)
+                    S[j * bLen + jp] += sig * bj * betaN[jp].Conjugate();
+            }
+        }
+        #endregion
+
+        #region Step 2: λ_{jj'} の事前計算
+        // ================================================================
+        // Step 2: λ_{jj'} の事前計算
+        //
+        // λ_{jj'} = 2πi (γ_j - conj(γ_j'))
+        //         = 2πi (Re(γ_j) - Re(γ_j')) + 2πi · i · (Im(γ_j) + Im(γ_j'))
+        //         = 2πi (Re(γ_j) - Re(γ_j')) - 2π (Im(γ_j) + Im(γ_j'))
+        //
+        // 実部: -2π(Im(γ_j) + Im(γ_j'))  → 減衰を制御
+        //   Im(γ_j) > 0 なので実部は負 → exp(λt) は t とともに減衰
+        //
+        // 虚部: 2π(Re(γ_j) - Re(γ_j'))   → 振動を制御
+        //   j ≠ j' のとき Re(γ_j) ≠ Re(γ_j') → 振動的な厚さ依存性
+        //   これが菊池バンドの厚さ変化を生む
+        //
+        // j = j' のとき:
+        //   λ_{jj} = -4π Im(γ_j) (純実数、負)
+        //   F_{jj}(t) = [1 - exp(-4π Im(γ_j) t)] / (4π Im(γ_j))
+        //   → 単調に t とともに増加（飽和あり）
+        //
+        // 吸収の物理 (電子回折の場合):
+        //   Im(γ_j) > 0 のブロッホ状態は結晶内で減衰する。
+        //   type-1 状態（原子位置に集中）は TDS による吸収が最大 → Im(γ) が最大。
+        //   これはX線のボルマン効果（type-1 が最小吸収）とは逆。
+        // ================================================================
+        var lambda = new Complex[bLen * bLen];
+        for (int j = 0; j < bLen; j++)
+            for (int jp = 0; jp < bLen; jp++)
+                lambda[j * bLen + jp] = TwoPiI * (eigenValues[j] - eigenValues[jp].Conjugate());
+        #endregion
+
+        #region Step 3: 各厚さでの強度計算
+        // ================================================================
+        // Step 3: 各厚さでの強度計算
+        //
+        // I(t) = Real{ Σ_{jj'} S_{jj'} × F_{jj'}(t) }
+        //
+        // F_{jj'}(t) = [exp(λ_{jj'} t) - 1] / λ_{jj'}
+        //
+        // λ_{jj'} ≈ 0 の場合 (縮退した固有値):
+        //   ロピタルの定理より F → t
+        //
+        // I(t) は S の Hermitian 性から理論的に実数。
+        // 数値誤差で微小な負値が出ることがあるため、0 でクランプする。
+        // ================================================================
+        var intensity = new double[tLen];
+        for (int t = 0; t < tLen; t++)
+        {
+            double thick = thicknesses[t];
+            Complex sum = 0;
+            for (int j = 0; j < bLen; j++)
+                for (int jp = 0; jp < bLen; jp++)
+                {
+                    var lam = lambda[j * bLen + jp];
+                    var F = lam.MagnitudeSquared() < 1e-30 ? thick : (Exp(lam * thick) - One) / lam;
+                    sum += S[j * bLen + jp] * F;
+                }
+            intensity[t] = Math.Max(0, sum.Real);
+        }
+        #endregion
+
+        return intensity;
+    }
+
+
+    /// <summary>
+    /// EBSD計算用 ずっと悩んでいたバージョン。 結局Claudeに助けてもらって、上のバージョンに落ち着いた。
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void ebsd_DoWork_old(object sender, DoWorkEventArgs e)
     {
         var (solver, thread, voltages) = ((Solver, int, double[]))e.Argument;
 
@@ -652,7 +1114,7 @@ public class BetheMethod
         }
     }
 
-    private static readonly int[] pow = [ 4,  1];
+    private static readonly int[] pow = [4, 1];
     static int getIndex(in PointD p, in PointD[] pts, int w) => getIndex(p.X, p.Y, pts, w);
 
     //与えられたposに最も近いインデックスを返す
@@ -726,7 +1188,7 @@ public class BetheMethod
             var potentialMatrix = getEigenMatrix(Beams);
             dim = Beams.Length;
             //A行列に関する固有値、固有ベクトルを取得 
-            if (EigenEnabled || maxNumOfBloch < 400)
+            if (EigenEnabled && maxNumOfBloch < 400)
             {
                 (EigenValues, EigenVectors) = NativeWrapper.EigenSolver(dim, potentialMatrix);
                 EigenVectorsInverse = NativeWrapper.Inverse(Beams.Length, EigenVectors);
@@ -1262,24 +1724,29 @@ public class BetheMethod
                     if (bwSTEM.CancellationPending) return;
 
                     #region まず厚み_thick[t][_t]における透過係数_tc_kを計算
+                    //validTc = validTc.WithDegreeOfParallelism(1);
                     validTc.ForAll(kIndex =>
                     {
-                        #region この内容をNativeコードで実行
-                        //Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
-                        //for (int i = 0; i < bLen; i++)
-                        //{
-                        //    exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
-                        //    exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
-                        //    tc_k[kIndex][i] = 0;
-                        //}
+                        if (EigenEnabled)
+                        {
+                            fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
+                            fixed (double* _kg_z = kg_z[kIndex])
+                                NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
+                        }
+                        else
+                        {
+                            Complex[] exp_kgz = new Complex[bLen], exp_λ = new Complex[bLen];
+                            for (int i = 0; i < bLen; i++)
+                            {
+                                exp_kgz[i] = Exp(TwoPiI * kg_z[kIndex][i] * thickness);
+                                exp_λ[i] = Exp(TwoPiI * eVal[kIndex][i] * thickness);
+                                tc_k[kIndex * bLen + i] = 0;
+                            }
 
-                        //for (int g = 0; g < bLen; g++)
-                        //    for (int j = 0; j < bLen; j++)
-                        //        tc_k[kIndex][g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
-                        #endregion
-                        fixed (Complex* _tc_k = tc_k, _eVal = eVal[kIndex], _eVec = eVec[kIndex])
-                        fixed (double* _kg_z = kg_z[kIndex])
-                            NativeWrapper.GenerateTC1(bLen, thickness, _kg_z, _eVal, _eVec, _tc_k + kIndex * bLen);
+                            for (int g = 0; g < bLen; g++)
+                                for (int j = 0; j < bLen; j++)
+                                    tc_k[kIndex * bLen + g] += eVec[kIndex][j * bLen + g] * exp_kgz[g] * exp_λ[j];
+                        }
                     });
                     #endregion
 
@@ -1291,12 +1758,21 @@ public class BetheMethod
                             fixed (Complex* _tc_k = tc_k, _U = U, _tc_kq = tc_kq)
                                 for (int i = 0; i < list[kIndex].Count; i++)
                                 {
+                                    Complex tmp;
                                     var (qIndex, n, r, lenz) = list[kIndex][i];
                                     //厚み_thick[t][_t]における透過係数_tc_kqを計算
-                                    NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
-
-                                    var tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
-
+                                    if (EigenEnabled)
+                                    {
+                                        NativeWrapper.BlendAndConjugate(bLen, _tc_k + n[0] * bLen, _tc_k + n[1] * bLen, _tc_k + n[2] * bLen, _tc_k + n[3] * bLen, r[0], r[1], r[2], r[3], _tc_kq);
+                                        tmp = NativeWrapper.RowVec_SqMat_ColVec(bLen, _tc_kq, _U + qIndex * bLen2, _tc_k + kIndex * bLen);
+                                    }
+                                    else
+                                    {
+                                        MathNet.Numerics.LinearAlgebra.Vector<Complex> tc_kq_vec = new DVec(bLen);
+                                        for (int j = 0; j < 4; j++)
+                                            tc_kq_vec += (new DVec(tc_k[(n[j] * bLen)..((n[j] + 1) * bLen)]).Conjugate() * r[j]);
+                                        tmp = tc_kq_vec * (new DMat(bLen, bLen, U[(qIndex * bLen2)..((qIndex + 1) * bLen2)]) * new DVec(tc_k[(kIndex * bLen)..((kIndex + 1) * bLen)]));
+                                    }
                                     for (int dIndex = 0; dIndex < dLen; dIndex++)
                                         sumTmp[i * dLen + dIndex] = tmp * lenz[dIndex];
                                 }
@@ -1588,7 +2064,7 @@ public class BetheMethod
             //各ピクセルの計算
             double cX = width / 2.0, cY = height / 2.0;
             var shift = Crystal.RotationMatrix * (Crystal.A_Axis + Crystal.B_Axis + Crystal.C_Axis) / 2;
-            if (native && NativeWrapper.Enabled)//ネイティブC++で実行 3倍速い
+            if (native && EigenEnabled)//ネイティブC++で実行 3倍速い
             {
                 var (gPsi, gVec, gLenz) = NativeWrapper.HRTEM_Helper(gList);
                 int divTotal = Environment.ProcessorCount * 4, step = width * height / divTotal;
@@ -1643,7 +2119,7 @@ public class BetheMethod
     public (Complex Real, Complex Imag) getU(in double kV, in Beam g, in Beam h = null, double inner = double.NaN, double outer = double.NaN)
     {
         var key1 = compose(g.Index);
-        var key2 = h is null ?  int.MaxValue: compose(h.Index);
+        var key2 = h is null ? int.MaxValue : compose(h.Index);
         if (!uDictionary.TryGetValue((key1, key2), out (Complex real, Complex imag) U))
         {
             var index = h is null ? g.Index : g.Index.Minus(h.Index);// (g.H - h.H, g.K - h.K, g.L - h.L) ;
@@ -1776,7 +2252,7 @@ public class BetheMethod
                 eigenMatrix[row + col * dim] = potentialMatrix[row + col * dim] / b[col].P;
             eigenMatrix[col * dim + col] += b[col].Q / b[col].P;
         }
-        if(isNull)
+        if (isNull)
             Shared.Return(potentialMatrix);//potentialMatrixを返却
     }
 
@@ -1807,7 +2283,7 @@ public class BetheMethod
     {
         if (maxNumOfBloch == -1)
             maxNumOfBloch = MaxNumOfBloch;
-        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        
         #region directionを初期化
 
         FrozenSet<(int h, int k, int l)> direction;
@@ -1826,15 +2302,18 @@ public class BetheMethod
         var beamsSpan = pool.AsSpan(0, limit);
         int count = 0;
         beamsSpan[count++] = (compose(0, 0, 0), 0);
-        var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
+        
+        //var outer = new List<(int key, double gLen)> { (compose(0, 0, 0), 0) };
+        var outer = new PriorityQueue<int, double>();
+        outer.Enqueue(compose(0, 0, 0), 0);
+
         var whole = new HashSet<int>(limit * 16) { compose(0, 0, 0) };
 
-        var shift = direction.Select(dir => (mat * dir).Length).Max() * 0.5;//この数字が妥当かどうか？
+        var mat = baseRotation * Crystal.MatrixInverseTransposed;
+        var shift = direction.Max(dir => (mat * dir).Length) * 0.5;//この数字が妥当かどうか？
 
         double k0_2 = vecK0.Length2, k0 = vecK0.Length;
-        var k0_2F = (float)k0_2;
         var maxQ = Math.Abs(k0_2 - (k0 + shift) * (k0 + shift));
-        var maxQF = (float)maxQ;
 
         var (m11, m12, m13, m21, m22, m23, m31, m32, m33) = mat.Tuple;
         var (kX, kY, kZ) = vecK0.Tuple;
@@ -1842,12 +2321,20 @@ public class BetheMethod
 
         while (count < limit && whole.Count < 1_000_000 && outer.Count > 0)
         {
-            outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
-            var min = outer[0].gLen + shift * 3;
-            var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
-            foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
+            //outer.Sort((o1, o2) => o1.gLen.CompareTo(o2.gLen));
+            //var min = outer[0].gLen + shift * 3;
+            //var end = outer.FindLastIndex(o => o.gLen - min < 0) + 1;
+            //foreach (var o in CollectionsMarshal.AsSpan(outer)[..end])
+            //{
+
+            if (!outer.TryPeek(out _, out var minGlen))
+                break;
+            var min = minGlen + shift * 3;
+            while (count < limit && outer.Count > 0 && outer.TryPeek(out var key, out var currentGlen) && currentGlen < min)
             {
-                var (h1, k1, l1) = decompose(o.key);
+                outer.Dequeue();
+
+                var (h1, k1, l1) = decompose(key);
                 foreach (var (h2, k2, l2) in direction)
                     if (count < limit)
                     {
@@ -1862,11 +2349,13 @@ public class BetheMethod
 
                             if (Math.Abs(q) < maxQ && sX * vX + sY * vY + sZ * vZ > 0) // p(=2*(sX*vX+sY*vY+sZ*vZ)) <=0 の場合は出射面から回折波が出ていかないことを意味する
                                 beamsSpan[count++] = (newKey, (float)(gLen * q * q));
-                            outer.Add((newKey, gLen));
+                           
+                            //outer.Add((newKey, gLen));
+                            outer.Enqueue(newKey, gLen);
                         }
                     }
             }
-            outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
+            //outer.RemoveRange(0, end); //outer = outer[end..]; //こちらのほうが遅い。
         }
 
         count = Math.Min(count, maxNumOfBloch + 1);
@@ -1888,21 +2377,34 @@ public class BetheMethod
 
         beams.Sort(static (a, b) => a.Rating.CompareTo(b.Rating));
 
-        //X,Y座標が同じものを削除
+        // X,Y座標が同じものを削除
+        // 以前の O(N^2) + 配列シフト実装だと MaxNumOfBloch を増やした際に律速になりやすいため、
+        // 量子化キーで一意化する O(N) 実装に変更する。
+        const double duplicateTol = 1E-6;
+        var uniqueXY = new HashSet<long>(beams.Length * 2);
+        int uniqueCount = 0;
         for (int i = 0; i < beams.Length; i++)
         {
-            var bi = beams[i];
-            for (int j = i + 1; j < beams.Length; j++)
-            {
-                var bj = beams[j];
-                if (Math.Abs(bi.Vec.X - bj.Vec.X) < 1E-6 && Math.Abs(bi.Vec.Y - bj.Vec.Y) < 1E-6)
-                {
-                    for (int k = j; k < beams.Length - 1; k++)
-                        beams[k] = beams[k + 1];
-                    beams = beams[..(beams.Length - 1)];
-                }
-            }
+            //var bi = beams[i];
+            //for (int j = i + 1; j < beams.Length; j++)
+            //{
+            //    var bj = beams[j];
+            //    if (Math.Abs(bi.Vec.X - bj.Vec.X) < 1E-6 && Math.Abs(bi.Vec.Y - bj.Vec.Y) < 1E-6)
+            //    {
+            //        for (int k = j; k < beams.Length - 1; k++)
+            //            beams[k] = beams[k + 1];
+            //        beams = beams[..(beams.Length - 1)];
+            //    }
+            //}
+            var b = beams[i];
+            long xKey = (long)Math.Round(b.Vec.X / duplicateTol, MidpointRounding.AwayFromZero);
+            long yKey = (long)Math.Round(b.Vec.Y / duplicateTol, MidpointRounding.AwayFromZero);
+            long xyKey = (xKey << 32) ^ (yKey & 0xFFFFFFFFL);
+
+            if (uniqueXY.Add(xyKey))
+                beams[uniqueCount++] = b;
         }
+        beams = beams[..uniqueCount];
 
         int n = beams.Length - 1;
         for (int i = beams.Length - 1; i >= 1; i--)

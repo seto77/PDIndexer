@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Diagnostics.Metrics;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -51,7 +50,7 @@ public static class ImageIO
                     filterString += "*." + ListOfExtension[i] + ";";
                 else
                     filterString += "*." + ListOfExtension[i];
-
+            
             return filterString;
         }
     }
@@ -168,7 +167,7 @@ public static class ImageIO
     {
         str = str.TrimEnd('\n');
         str = str.TrimEnd('\r');
-
+        
         if (!File.Exists(str))
             return false;
 
@@ -782,76 +781,33 @@ public static class ImageIO
 
         int num = (int)data.Space.Dimensions[0], height = (int)data.Space.Dimensions[1], width = (int)data.Space.Dimensions[2];
 
-        if(num==1)
-            Ring.Intensity = [.. data.Read<int[]>().Select(e => (double)e)];
+        if (num == 1)
+            Ring.Intensity = data.ReadAsDoubleArray();
         else
         {
-            var src = Array.Empty<double>();
-            if(data.Type.Size==4)
-                src = [.. data.Read<int[]>().Select(e => (double)e)];
-            else if (data.Type.Size == 2)
-                src = [.. data.Read<short[]>().Select(e => (double)e)];
-
+            int[] blocks = [1, height, width];
             Ring.SequentialImageIntensities = [];
-            for(int i=0; i< num; i++)
-                Ring.SequentialImageIntensities.Add( src[(i*width*height)..((i+1)*(width*height))] );
+            for (int i = 0; i < num; i++)
+                Ring.SequentialImageIntensities.Add(data.ReadAsDoubleArray([i, 0, 0], blocks));
 
-            Ring.SequentialImageNames = [..Enumerable.Range(1,num+1).Select(e=>e.ToString("000"))];
-          
-
+            Ring.SequentialImageNames = [.. Enumerable.Range(1, num + 1).Select(e => e.ToString("000"))];
             Ring.Intensity = Ring.SequentialImageIntensities[0];
         }
-
-
-
-        // double pixSizeX = hdf.GetDataset(header + "x_pixel_size").Read<double>(), pixSizeY = hdf.GetDataset(header + "y_pixel_size").Read<double>();
 
         Ring.SrcImgSize = new Size(width, height);
         Ring.ImageType = Ring.ImageTypeEnum.NXS;
 
         #region コメント情報の取得
-
-        (string Name, Type Type)[] comments = [
-            ("acquisition_mode", typeof(string)),
-            ("bit_depth_readout", typeof(int)),
-            ("calibration_date", typeof(string)),
-            ("countrate_correction_applied", typeof(byte)),
-            ("description", typeof(string)),
-            ("detector_readout_time", typeof(double)),
-            ("flatfield_applied", typeof(byte)),
-            ("layout", typeof(string)),
-            ("local_name", typeof(string)),
-            ("pixelmask_applied", typeof(byte)),
-            ("saturation_value", typeof(int)),
-            ("sensor_material", typeof(string)),
-            ("sensor_thickness", typeof(float)),
-            ("sequence_number", typeof(int[])),
-            ("trigger_dead_time", typeof(double)),
-            ("trigger_delay_time", typeof(double)),
-            ("type", typeof(string)),
-            ("x_pixel_size", typeof(double)),
-            ("y_pixel_size", typeof(double)),
-        ];
         var sb = new StringBuilder();
-        foreach (var (name, type) in comments)
+        foreach (var d in hdf.Datasets.Where(d => d.Name != "data" && d.Space.Rank == 1 && d.Space.Dimensions != null && d.Space.Dimensions.Length > 0 && d.Space.Dimensions[0] == 1))
         {
-            var dataset = hdf.GetDataset(header + name);
-
-            if (dataset != null && dataset.Space.Dimensions.Length ==1)
+            try
             {
-                if (type == typeof(string))
-                    sb.AppendLine($"{name}: {dataset.ReadStr()}");
-                else if (type == typeof(int))
-                    sb.AppendLine($"{name}: {dataset.Read<int>()}");
-                else if (type == typeof(double))
-                    sb.AppendLine($"{name}: {dataset.Read<double>()}");
-                else if (type == typeof(float))
-                    sb.AppendLine($"{name}: {dataset.Read<float>()}");
-                else if (type == typeof(long))
-                    sb.AppendLine($"{name}: {dataset.Read<long>()}");
-                else if (type == typeof(byte))
-                    sb.AppendLine($"{name}: {dataset.Read<byte>()}");
+                var name = d.Path.Replace(header, "");
+                var str = d.ReadAsStr();
+                sb.AppendLine($"{name}: {str}");
             }
+            catch { }
         }
         Ring.Comments = sb.ToString();
         #endregion

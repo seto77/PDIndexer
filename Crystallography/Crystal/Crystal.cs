@@ -939,7 +939,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         if (A_Axis == null) return;
         VectorOfAxis = [];
         foreach (var (U, V, W) in indices)
-            VectorOfAxis.Add(new Vector3D(U * A_Axis + V * B_Axis + W * C_Axis) { Text = $"[{U}{V}{W}]" });
+            VectorOfAxis.Add(new Vector3D(U * A_Axis + V * B_Axis + W * C_Axis) { Index = (U, V, W) });
     }
 
     /// <summary>
@@ -948,23 +948,23 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
     /// <param name="uMax"></param>
     /// <param name="vMax"></param>
     /// <param name="wMax"></param>
-    public void SetVectorOfAxis(int uMax, int vMax, int wMax)
+    public void SetVectorOfAxis(int uMax, int vMax, int wMax, bool IncludeEquivalentAxes = true)
     {
         if (A_Axis == null) return;
-        VectorOfAxis = [];
-
-        VectorOfAxis.Add(new Vector3D(A_Axis) { Text = "[100]" });
-        VectorOfAxis.Add(new Vector3D(B_Axis) { Text = "[010]" });
-        VectorOfAxis.Add(new Vector3D(C_Axis) { Text = "[001]" });
-        VectorOfAxis.Add(new Vector3D(-A_Axis) { Text = "[-100]" });
-        VectorOfAxis.Add(new Vector3D(-B_Axis) { Text = "[0-10]" });
-        VectorOfAxis.Add(new Vector3D(-C_Axis) { Text = "[00-1]" });
+        var indices = new HashSet<(int h, int k, int l)>();
 
         for (int u = -uMax; u <= uMax; u++)
             for (int v = -vMax; v <= vMax; v++)
                 for (int w = -wMax; w <= wMax; w++)
-                    if (CheckIrreducible(u, v, w) && !(u * v == 0 && v * w == 0 && w * u == 0))
-                        VectorOfAxis.Add(new Vector3D(u * A_Axis + v * B_Axis + w * C_Axis) { Text = $"[{u}{v}{w}]" });
+                    if (CheckIrreducible(u, v, w) && !(u == 0 && v == 0 && w == 0))
+                    {
+                        if (IncludeEquivalentAxes)
+                            foreach (var index in SymmetryStatic.GenerateEquivalentAxes((u, v, w), Symmetry,false))
+                                indices.Add(index);
+                        else
+                            indices.Add((u, v, w));
+                    }
+        SetVectorOfAxis([.. indices]);
     }
 
     #endregion é≤ÉxÉNÉgÉãÇÃåvéZ
@@ -983,7 +983,6 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
             var vec = new Vector3D(h * A_Star + k * B_Star + l * C_Star);
             vec.F = GetStructureFactor(waveSource, Atoms, (h, k, l), vec.Length2 / 4.0);
             vec.RawIntensity = vec.F.MagnitudeSquared();
-            vec.Text = $"({h}{k}{l})";
             vec.Index = (h, k, l);
             VectorOfPlane.Add(vec);
         }
@@ -996,21 +995,28 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
     }
 
+ 
+
     /// <summary>
     /// à¯êîÇ≈éwíËÇ≥ÇÍÇΩhMax,kMax,lMaxÇÃîÕàÕÇ≈é≤ÉxÉNÉgÉãÇåvéZÇµÅAVectorOfAxisÇ…äiî[
     /// </summary>
     /// <param name="hMax"></param>
     /// <param name="kMax"></param>
     /// <param name="lMax"></param>
-    public void SetVectorOfPlane(int hMax, int kMax, int lMax, WaveSource waveSource)
+    public void SetVectorOfPlane(int hMax, int kMax, int lMax, WaveSource waveSource, bool IncludeEquivalentPlanes = true)
     {
-        var indices = new List<(int h, int k, int l)> { (1, 0, 0), (0, 1, 0), (0, 0, 1), (-1, 0, 0), (0, -1, 0), (0, 0, -1) };
+        var indices = new HashSet<(int h, int k, int l)>(); 
         for (int h = -hMax; h <= hMax; h++)
             for (int k = -kMax; k <= kMax; k++)
                 for (int l = -lMax; l <= lMax; l++)
-                    if (CheckIrreducible(h, k, l) && !(h * k == 0 && k * l == 0 && l * h == 0))
-                        indices.Add((h, k, l));
-
+                    if (CheckIrreducible(h, k, l) && !(h  == 0 && k  == 0 && l  == 0))
+                    {
+                        if (IncludeEquivalentPlanes)
+                            foreach (var index in SymmetryStatic.GenerateEquivalentPlanes((h, k, l), Symmetry, false))
+                                indices.Add(index);
+                        else
+                            indices.Add((h, k, l));
+                    }
         SetVectorOfPlane([.. indices], waveSource);
     }
 
@@ -1063,7 +1069,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         outer.Add((h, k, l, len));
                         if (len < gMax && len > 1 / dMax)
                         {
-                            var root = SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi);
+                            var root = SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices);
                             var extinction = Symmetry.CheckExtinctionRule(h, k, l);
                             if ((!excludeEquivalentPlane || root) && (!excludeForbiddenPlane || extinction.Length == 0))
                             {
@@ -1075,7 +1081,7 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                                     l = l,
                                     d = 1 / len,
                                     strHKL = $"{h} {k} {l}",
-                                    Multi = [multi],
+                                    Multi = [indices.Length],
                                 });
                             }
                         }
@@ -1455,12 +1461,12 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
                         double gLen2 = x * x + y * y + z * z, gLen = Math.Sqrt(gLen2);
                         outer.Add((h, k, l, gLen));
 
-                        if (SymmetryStatic.IsRootIndex((h, k, l), Symmetry, out int multi))
+                        if (SymmetryStatic.IsRootPlane((h, k, l), Symmetry, out var indices))
                             if (Symmetry.CheckExtinctionRule(h, k, l).Length == 0)
                             {
                                 double sinTheta = waveLength / 2 * gLen, twoTheta = 2 * Math.Asin(sinTheta), cosTwoTheta = 1 - 2 * sinTheta * sinTheta, sinTwoTheta = Math.Sin(twoTheta);
                                 var F2 = GetStructureFactor(WaveSource.Xray, Atoms, (h, k, l), gLen2 / 4.0).MagnitudeSquared();
-                                var intensity = F2 * multi  * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;  
+                                var intensity = F2 * indices.Length  * (1 + cosTwoTheta * cosTwoTheta) / sinTwoTheta / sinTheta;  
                                 list.Add((1 / gLen, intensity));
                             }
                     }
@@ -1645,10 +1651,8 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         #endregion
     }
 
-
-    //(h,k,l)ÇÃç\ë¢éUóêàˆéq(îMéUñüéUóêçûÇ›)ÇÃF (ï°ëfêî) ÇåvéZÇ∑ÇÈ
     /// <summary>
-    /// ç\ë¢àˆéqÇãÅÇﬂÇÈ s2ÇÃíPà ÇÕnm^-2
+    /// ç\ë¢éUóêàˆéq(îMéUñüéUóêçûÇ›)ÇÃF (ï°ëfêî) ÇãÅÇﬂÇÈ s2ÇÃíPà ÇÕnm^-2
     /// </summary>
     /// <param name="wave"></param>
     /// <param name="atomsArray"></param>
@@ -1714,6 +1718,18 @@ public class Crystal : IEquatable<Crystal>, ICloneable, IComparable<Crystal>
         }
         return F;// Complex(Real, Inverse);
         #endregion
+    }
+
+    /// <summary>
+    /// ç\ë¢éUóêàˆéq(îMéUñüéUóêçûÇ›)ÇÃF (ï°ëfêî) ÇãÅÇﬂÇÈ s2ÇÃíPà ÇÕnm^-2
+    /// </summary>
+    /// <param name="index"></param>
+    /// <param name="waveSource"></param>
+    /// <returns></returns>
+    public Complex GetStructureFactor( WaveSource waveSource, (int h, int k, int l) index)
+    {
+        var vec = index.h * A_Star + index.k * B_Star + index.l * C_Star;
+        return GetStructureFactor(waveSource, Atoms, index, vec.Length2 / 4.0);
     }
 
     /// <summary>

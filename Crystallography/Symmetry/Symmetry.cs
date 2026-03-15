@@ -50,6 +50,8 @@ public readonly struct Symmetry
     #region コンストラクタ
     public Symmetry(in int seriesNumber)
     {
+       
+
         if (seriesNumber >= 0 && seriesNumber < SymmetryStatic.TotalSpaceGroupNumber)
         {
             var str = SymmetryStatic.StrArray[seriesNumber];
@@ -102,9 +104,8 @@ public readonly struct Symmetry
     #endregion
 
     #region メソッド
-    public readonly bool IsPlaneRootIndex(int h, int k, int l) => SymmetryStatic.IsRootIndex((h, k, l), this);
 
-    public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootIndex(index, this);
+    public readonly bool IsPlaneRootIndex((int h, int k, int l) index) => SymmetryStatic.IsRootPlane(index, this,out var indices);
 
     public readonly string[] CheckExtinctionRule((int h, int k, int l) index)
         => [.. CheckExtinctionFunc.Select(check => check(index.h, index.k, index.l)).Where(str => str != null)];

@@ -7,11 +7,20 @@ using System.Linq;
 using System.Numerics;
 using System.Runtime.InteropServices;
 namespace Crystallography;
+
+using System.IO;
+using System.Reflection;
+using System.Runtime.Intrinsics.X86;
 #endregion
 
 public static partial class NativeWrapper
 {
+    private const string NativeLibraryFileName = "Crystallography.Native.dll";
+    private static readonly string[] NativeLibraryCandidates = GetNativeLibraryCandidates();
+
     #region LibraryImport
+
+
     public enum Library { None, Eigen, Cuda }
     //[DllImport("msvcrt.dll", EntryPoint = "memcpy", CallingConvention = CallingConvention.Cdecl, SetLastError = false)]
     //public static extern IntPtr Memcpy(IntPtr dest, IntPtr src, UIntPtr count);
@@ -161,6 +170,18 @@ public static partial class NativeWrapper
     [LibraryImport("Crystallography.Native.dll")]
     private static unsafe partial void _STEM_INEL1(int dim, double* rowVec, int* n, double* r, double* sqMat, double* colVec, double* _result);
 
+
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _EBSDSolver(
+    int bLen, int nAtoms, int tLen,
+    double* eigenValues,
+    double* eigenVectors,
+    double* alpha,
+    double* phaseNG,
+    double* sigma,
+    double[] thicknesses,
+    double* intensity);
+
     #endregion
 
     #region Nativeライブラリが有効かどうか
@@ -172,9 +193,12 @@ public static partial class NativeWrapper
 
     static NativeWrapper()
     {
+        //var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
+        //if (!System.IO.File.Exists(appPath))
+        NativeLibrary.SetDllImportResolver(typeof(NativeWrapper).Assembly, ResolveNativeLibrary);
 
-        var appPath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace(".dll", ".Native.dll");
-        if (!System.IO.File.Exists(appPath))
+        var appPath = GetExistingNativeLibraryPath();
+        if (appPath == null)
             Enabled = false;
         else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
             Enabled = false;
@@ -185,6 +209,40 @@ public static partial class NativeWrapper
         }
         catch { Enabled = false; }
     }
+
+    private static IntPtr ResolveNativeLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
+    {
+        if (!string.Equals(libraryName, NativeLibraryFileName, StringComparison.OrdinalIgnoreCase))
+            return IntPtr.Zero;
+
+        foreach (var candidate in NativeLibraryCandidates)
+            if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out var handle))
+                return handle;
+
+        return IntPtr.Zero;
+    }
+
+    private static string[] GetNativeLibraryCandidates()
+    {
+        if (Avx512F.IsSupported)
+            return ["Crystallography.Native.avx512.dll", "Crystallography.Native.avx2.dll", NativeLibraryFileName];
+        if (Avx2.IsSupported)
+            return ["Crystallography.Native.avx2.dll", NativeLibraryFileName];
+        return [NativeLibraryFileName];
+    }
+
+    private static string? GetExistingNativeLibraryPath()
+    {
+        foreach (var candidate in NativeLibraryCandidates)
+        {
+            var path = Path.Combine(AppContext.BaseDirectory, candidate);
+            if (File.Exists(path))
+                return path;
+        }
+
+        return null;
+    }
+
     #endregion
 
     #region 変換関数
@@ -553,7 +611,6 @@ public static partial class NativeWrapper
     #endregion 逆行列
 
     #region 固有値
-
     static unsafe public (Complex[] eigenvalues, Complex[] eigenvectors) EigenSolver(int dim, Complex[] mat)
     {
         var values = GC.AllocateUninitializedArray<Complex>(dim);//new Complex[dim];
@@ -624,12 +681,14 @@ public static partial class NativeWrapper
 
     unsafe static public void GenerateTC1(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k)
     {
-        _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
+        if (Enabled)
+            _GenerateTC1(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k);
     }
 
     unsafe static public void GenerateTC2(in int dim, in double thickness, double* _kg_z, Complex* _val, Complex* _vec, Complex* _tc_k, Complex* _tc_kq)
     {
-        _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
+        if (Enabled)
+            _GenerateTC2(dim, thickness, _kg_z, (double*)_val, (double*)_vec, (double*)_tc_k, (double*)_tc_kq);
     }
 
     /// <summary>
@@ -705,7 +764,7 @@ public static partial class NativeWrapper
     unsafe static private Complex[] CBEDSolver(Complex[] potential, Complex[] psi0, double[] thickness, in bool eigen)
     {
         var dim = psi0.Length;
-        var result =  new Complex[dim * thickness.Length];//GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);
+        var result = new Complex[dim * thickness.Length];//GC.AllocateUninitializedArray<Complex>(dim * thickness.Length);
         fixed (Complex* _potential = potential, _psi0 = psi0, _result = result)
         {
             if (eigen)
@@ -773,6 +832,40 @@ public static partial class NativeWrapper
     }
     #endregion
 
+
+    #region EBSD
+    /// <summary>
+    /// EBSD強度を計算する。原子位置でのブロッホ波場に基づく。
+    /// </summary>
+    /// <param name="eigenValues">固有値 γ_j (bLen個)</param>
+    /// <param name="eigenVectors">固有ベクトル C (bLen×bLen, column-major)</param>
+    /// <param name="alpha">励起振幅 α_j (bLen個)</param>
+    /// <param name="phaseNG">位相因子 P[n,g] (nAtoms×bLen, フィルタ済み)</param>
+    /// <param name="sigma">後方散乱断面積 σ_n (nAtoms個)</param>
+    /// <param name="thicknesses">厚さ配列 (tLen個)</param>
+    /// <returns>各厚さでのEBSD強度 (tLen個)</returns>
+    public static unsafe double[] EBSDSolver(
+        Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, double[] thicknesses)
+    {
+        int bLen = eigenValues.Length;
+        int nAtoms = sigma.Length;
+        int tLen = thicknesses.Length;
+        var intensity = new double[tLen];
+
+        fixed (Complex* _vals = eigenValues, _vecs = eigenVectors, _alpha = alpha, _phase = phaseNG)
+        fixed (double* _sigma = sigma, _intensity = intensity)
+        {
+            _EBSDSolver(bLen, nAtoms, tLen,
+                (double*)_vals, (double*)_vecs, (double*)_alpha,
+                (double*)_phase, _sigma, thicknesses, _intensity);
+        }
+        return intensity;
+    }
+
+    #endregion
+
+
     #region Histogram
     static public (double[] profile, double[] pixels) Histogram(
         int width, int height,
@@ -804,9 +897,5 @@ public static partial class NativeWrapper
 
         return (profile, pixels);
     }
-
-
-
-
     #endregion
 }
