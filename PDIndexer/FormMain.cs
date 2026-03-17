@@ -616,7 +616,7 @@ public partial class FormMain : Form
             else
                 readCrystal(UserAppDataPath + "initial.Xml", false, true);
 
-            if (bindingSourceCrystal.Count == 0)
+            if (bindingSourceCrystal.Count is 0) //260317Cl == 0 → is 0
                 readCrystal(UserAppDataPath + "initial.Xml", false, true);
         }
         catch
@@ -640,8 +640,8 @@ public partial class FormMain : Form
         formProfile.bindingSourceProfile.DataMember = "DataTableProfile";
         formProfile.dataGridViewProfile.DataSource = this.bindingSourceProfile;
         formProfile.comboBoxBackgroundReferrence.DataSource = this.dataSet;
-        formProfile.bindingSourceProfile.ListChanged += new ListChangedEventHandler(formProfile.bindingSource_ListChanged);
-        formProfile.bindingSourceProfile.CurrentChanged += new EventHandler(formProfile.bindingSource_CurrentChanged);
+        formProfile.bindingSourceProfile.ListChanged += formProfile.bindingSource_ListChanged; //260317Cl new ListChangedEventHandler() → メソッドグループ
+        formProfile.bindingSourceProfile.CurrentChanged += formProfile.bindingSource_CurrentChanged; //260317Cl new EventHandler() → メソッドグループ
 
         //formFittingとの連携
         formFitting.dataSet = this.dataSet;
@@ -729,7 +729,7 @@ public partial class FormMain : Form
 
         if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
         {
-            var cry = new List<Crystal>();
+            List<Crystal> cry = []; //260317Cl new List<T>() → []
             for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
 
                 cry.Add(dataSet.DataTableCrystal.Items[i]);
@@ -944,7 +944,7 @@ public partial class FormMain : Form
     /// </summary>
     public void SetDrawRangeLimit()
     {
-        if (dataSet.DataTableProfile.Items.Count == 0) return;
+        if (dataSet.DataTableProfile.Items.Count is 0) return; //260317Cl == 0 → is 0
         double minimalX = double.PositiveInfinity;
         double maximalX = double.NegativeInfinity;
         double minimalY = double.PositiveInfinity;
@@ -1232,7 +1232,7 @@ public partial class FormMain : Form
                 gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
 
                 var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
-                var original = new List<PointF>();
+                List<PointF> original = []; //260317Cl new List<T>() → []
                 float basePosition = bindingSourceProfile.Position * IntervalOfProfiles;
                 for (int j = endIndex; j < dp.ConvertedProfile.Pt.Count && dp.ConvertedProfile.Pt[j].X < ranges[i].Maximum; j++)
                 {
@@ -1268,7 +1268,7 @@ public partial class FormMain : Form
     private void DrawProfile()
     {
         var rect = new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY);
-        var profiles = new List<(Pen pen, PointF[] points)>();
+        List<(Pen pen, PointF[] points)> profiles = []; //260317Cl new List<T>() → []
 
         Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
         {
@@ -1484,7 +1484,7 @@ public partial class FormMain : Form
         penSubtraction.LineJoin = LineJoin.Round;
 
 
-        var planeList = new List<Plane>();
+        List<Plane> planeList = []; //260317Cl new List<T>() → []
 
         //先ず、fittigチェックの結晶面を探す。
         for (int c = 0; c < dataSet.DataTableCrystal.CheckedItems.Count; c++)
@@ -1516,8 +1516,8 @@ public partial class FormMain : Form
                 if (planeList3.Length != 0)
                 {
                     //まず、バックグラウンドと、減算プロファイルを描く
-                    var subtraction = new List<PointF>();
-                    var background = new List<PointF>();
+                    List<PointF> subtraction = []; //260317Cl new List<T>() → []
+                    List<PointF> background = []; //260317Cl new List<T>() → []
                     double minX = Math.Max(planeList3.Min(p => p.XCalc - p.SerchRange * formFitting.SerchRangeFactor), ConvToRealCoord(OriginPos.X, 0).X);
                     double maxX = Math.Min(planeList3.Max(p => p.XCalc + p.SerchRange * formFitting.SerchRangeFactor), ConvToRealCoord(pictureBoxMain.Width, 0).X);
 
@@ -1544,7 +1544,7 @@ public partial class FormMain : Form
                     foreach (Plane p in planeList3)
                     {
                         var penPeak = new Pen(p.peakFunction.Color, 2f);
-                        var peaks = new List<PointF>();
+                        List<PointF> peaks = []; //260317Cl new List<T>() → []
                         var startTheta = Math.Max(p.XCalc - p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(OriginPos.X, 0).X);
                         var endTheta = Math.Min(p.XCalc + p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(pictureBoxMain.Width, 0).X);
                         if (ConvToPicBoxCoord(startTheta, 0).X < pictureBoxMain.Width || ConvToPicBoxCoord(endTheta, 0).X > 0)
@@ -2097,7 +2097,7 @@ public partial class FormMain : Form
         }
         #endregion 
 
-        if (ShowBackgroundProfile && BackGroundPointSelectMode && IsBgPtSelected == true && e.Button == MouseButtons.Left)
+        if (ShowBackgroundProfile && BackGroundPointSelectMode && IsBgPtSelected && e.Button == MouseButtons.Left) //260317Cl == true 削除
         {//Bgモードで、Bg点を選択していて、左ドラッグのとき
             if (bindingSourceProfile.Position >= 0)
             {
@@ -2600,12 +2600,12 @@ public partial class FormMain : Form
         //pdi, ras, nxs 形式の時. 拡張csvの場合も含む
         if (ext == "pdi" || ext == "pdi2" || ext == "ras" || ext == "csv" || ext == "nxs")
         {
-            var dp = new List<DiffractionProfile2>();
+            List<DiffractionProfile2> dp = []; //260317Cl new List<T>() → []
             if (ext == "pdi" || ext == "pdi2")
             #region pdi形式のとき
             {
                 dp.AddRange(XYFile.ReadPdi2File(fileName, ext == "pdi" ? 1 : 2));
-                if (dp.Count == 0)
+                if (dp.Count is 0) //260317Cl == 0 → is 0
                     return;
                 for (int i = 0; i < dp.Count; i++)
                 {
@@ -2714,7 +2714,7 @@ public partial class FormMain : Form
         //pdi,ras, 拡張csv, nxs 形式ではないとき. csvは通常の場合はこちらに入ってくる
         if (ext != "pdi" && ext != "ras" && ext != "nxs")
         {
-            var strList = new List<string>();
+            List<string> strList = []; //260317Cl new List<T>() → []
             using (var reader = new StreamReader(fileName, Encoding.UTF8))
                 while (!reader.EndOfStream)
                     strList.Add(reader.ReadLine());
@@ -3060,7 +3060,7 @@ public partial class FormMain : Form
             }
             #endregion
 
-            if (diffProf.SourceProfile.Pt.Count == 0)
+            if (diffProf.SourceProfile.Pt.Count is 0) //260317Cl == 0 → is 0
                 return;
 
             diffProf.SrcProperty = formDataConverter.HorizontalAxisProperty;
@@ -3219,7 +3219,7 @@ public partial class FormMain : Form
         var max = 192 + r.Next(64);
         var mid1 = r.Next(128);
         var mid2 = r.Next(128);
-        if (dataSet.DataTableProfile.Items.Count == 0)//直前のプロファイルがない時はR>G>Bの色を返す
+        if (dataSet.DataTableProfile.Items.Count is 0) //260317Cl == 0 → is 0 //直前のプロファイルがない時はR>G>Bの色を返す
             return Color.FromArgb(max, mid1, mid2);
         else//直前のプロファイルがある時はその色となるべく違う色を返す  
         {
@@ -3245,7 +3245,7 @@ public partial class FormMain : Form
     //結晶データのセーブ
     public void menuItemSaveCrystalData_Click(object sender, System.EventArgs e)
     {
-        var cry = new List<Crystal>();
+        List<Crystal> cry = []; //260317Cl new List<T>() → []
         for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
             cry.Add(dataSet.DataTableCrystal.Items[i]);
 
@@ -3272,7 +3272,7 @@ public partial class FormMain : Form
         {
             if (crystals == null)
             {
-                var cry = new List<Crystal>();
+                List<Crystal> cry = []; //260317Cl new List<T>() → []
                 for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
                     cry.Add(dataSet.DataTableCrystal.Items[i]);
                 crystals = [.. cry];
@@ -3317,13 +3317,13 @@ public partial class FormMain : Form
         sw.Close();
 
 
-        var crystalArray = new List<Crystal>();
+        List<Crystal> crystalArray = []; //260317Cl new List<T>() → []
 
 
         crystalArray.AddRange(ConvertCrystalData.ConvertToCrystalList(fileName));
 
 
-        if (crystalArray.Count == 0) return;
+        if (crystalArray.Count is 0) return; //260317Cl == 0 → is 0
 
         if (showSelectionDialog)
         {
@@ -3555,7 +3555,7 @@ public partial class FormMain : Form
     {
         if (dataSet.DataTableProfile.Items.Count > 0)
         {
-            var dp = new List<DiffractionProfile2>();
+            List<DiffractionProfile2> dp = []; //260317Cl new List<T>() → []
             for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
                 dp.Add(dataSet.DataTableProfile.Items[i]);
             if (!filename.ToLower().EndsWith(".pdi2"))
@@ -3694,7 +3694,7 @@ public partial class FormMain : Form
     #region export関連
     private void toolStripMenuItemExportCSVFile_Click(object sender, EventArgs e)
     {
-        if (dataSet.DataTableProfile.Items.Count == 0) return;
+        if (dataSet.DataTableProfile.Items.Count is 0) return; //260317Cl == 0 → is 0
 
         var s = ((ToolStripMenuItem)sender).Name.Contains("CSV") ? "," : "\t";
         var dlg = new SaveFileDialog { Filter = s == "," ? "*.csv|*.csv" : "*.tsv|*.tsv" };
@@ -3759,7 +3759,7 @@ public partial class FormMain : Form
             var ptCount = dp.Profile.Pt.Count;
             var startAngle = dp.Profile.Pt[0].X * div;
             var stepAngle = (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X) * div;
-            writer.WriteLine("BANK 1 " + ptCount.ToString() + " " + ptCount.ToString() + " CONST " + startAngle.ToString("f2") + " " + stepAngle.ToString("f2") + " 0 0 FXYE");
+            writer.WriteLine($"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE"); //260317Cl 文字列連結 → 文字列補間
 
             //errが有効なデータかどうかを判定
             bool validErr = true;
@@ -4177,39 +4177,30 @@ public partial class FormMain : Form
     #endregion
 
     #region プログラムアップデート
-    private void programUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+    private async void programUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        var sw = new Stopwatch();
         (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
 
         if (!NeedUpdate)
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);
         else if (MessageBox.Show(Message, Title, MessageBoxButtons.YesNo) == DialogResult.Yes)
-            using (var wc = new WebClient())
+        {
+            sw.Restart();
+            try
             {
-                long counter = 1;
-                wc.DownloadProgressChanged += (s, ev) =>
-                {
-                    if (counter++ % 10 == 0)
-                        ip.Report(ProgramUpdates.ProgressMessage(ev, stopwatch));
-                };
-
-                wc.DownloadFileCompleted += (s, ev) =>
-                {
-                    if (ProgramUpdates.Execute(Path))
-                        Close();
-                    else
-                        MessageBox.Show($"Failed to downlod {Path}. \r\nSorry!", "Error!");
-                };
-                stopwatch.Restart();
-                try
-                {
-                    wc.DownloadFileAsync(new Uri(URL), Path);
-                }
-                catch
-                {
-                    MessageBox.Show("Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/PDindexer/releases/latest", "Error");
-                }
+                var progress = new Progress<(long Current, long Total, long ElapsedMilliseconds, string Message)>(p => ip.Report(p));
+                await ProgramUpdates.DownloadFileWithProgressAsync(URL, Path, progress, sw);
+                if (ProgramUpdates.Execute(Path))
+                    Close();
+                else
+                    MessageBox.Show($"Failed to download {Path}. \r\nSorry!", "Error!");
             }
+            catch
+            {
+                MessageBox.Show($"Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/{Version.Software}/releases/latest", "Error");
+            }
+        }
     }
 
 
@@ -4251,7 +4242,7 @@ public partial class FormMain : Form
 
             if (sleep != 0) Thread.Sleep(sleep);
         }
-        catch (Exception e)
+        catch (Exception) //260317Cl 未使用変数 e 削除
         {
 
         }

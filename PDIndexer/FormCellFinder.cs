@@ -16,7 +16,7 @@ namespace PDIndexer
     public partial class FormCellFinder : Form
     {
         public FormMain formMain;
-        List<Candidate> Candidates = new List<Candidate>();
+        List<Candidate> Candidates = []; //260317Cl new List<Candidate>() → []
 
         public struct FindCondition
         {
@@ -163,11 +163,11 @@ namespace PDIndexer
                 Candidates.Clear();
 
                 //まずHigh,Medium,Low別にd値を抜き出す。
-                List<double> high = new List<double>();
-                List<double> medium = new List<double>();
-                List<double> low = new List<double>();
+                List<double> high = []; //260317Cl new List<double>() → []
+                List<double> medium = []; //260317Cl new List<double>() → []
+                List<double> low = []; //260317Cl new List<double>() → []
                 for (int i = 0; i < dataSet1.Tables[0].Rows.Count; i++)
-                    if ((bool)dataSet1.Tables[0].Rows[i][2] == true)
+                    if ((bool)dataSet1.Tables[0].Rows[i][2]) //260317Cl == true 削除
                     {
                         if ((string)dataSet1.Tables[0].Rows[i][1] == "High")
                             high.Add((double)dataSet1.Tables[0].Rows[i][0] / 10.0);
@@ -261,7 +261,7 @@ namespace PDIndexer
         private Candidate[] GetCandidates(FindCondition condition, int seed, int tryNumber)
         {
             var r = new Random(seed);
-            List<Candidate> c = new List<Candidate>();
+            List<Candidate> c = []; //260317Cl new List<Candidate>() → []
             for (int i = 0; i < tryNumber && !backgroundWorker.CancellationPending; i++)
             {
                 Candidate temp = FindCellParameter(condition, r.Next());
@@ -291,7 +291,7 @@ namespace PDIndexer
             Plane[] planes = new Plane[unk];
 
             //まず対象となるピークをunk本選ぶ 
-            List<int> targetPeak = new List<int>();
+            List<int> targetPeak = []; //260317Cl new List<int>() → []
             for (int j = 0; j < unk; j++)
             {
                 targetPeak.Sort();
@@ -357,7 +357,7 @@ namespace PDIndexer
                 PointD u = new PointD(c.A, 0);
                 PointD v = new PointD(c.C * Math.Cos(c.Beta), c.C * Math.Sin(c.Beta));
                 double area = c.A * c.C * Math.Sin(c.Beta);
-                List<PointD> p = new List<PointD>();
+                List<PointD> p = []; //260317Cl new List<PointD>() → []
                 for (int i = -2; i <= 2; i++)
                     for (int j = -2; j <= 2; j++)
                         if (!(i == 0 && j == 0))
@@ -413,7 +413,7 @@ namespace PDIndexer
                 obs[i] = condition.SortedD[i];
 
             //計算上のd値を格納するリストを定義
-            List<Plane> calcPlanes = new List<Plane>();
+            List<Plane> calcPlanes = []; //260317Cl new List<Plane>() → []
 
             //観測値が計算値のどの配列位置か対応付ける整数配列を定義
             int[] obsToCalcIndex = new int[condition.SortedD.Length];
@@ -835,7 +835,7 @@ namespace PDIndexer
                 try
                 {
                     StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8"));
-                    List<string> strList = new List<string>();
+                    List<string> strList = []; //260317Cl new List<string>() → []
                     string tempstr;
                     while ((tempstr = reader.ReadLine()) != null)
                         strList.Add(tempstr);

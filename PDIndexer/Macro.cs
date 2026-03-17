@@ -142,7 +142,7 @@ public class Macro : MacroBase
                 main.readCrystal(filename, false, true);
         }
 
-        [He:p("Save crystal data. \r\n If filename is omitted, selection dialog will open.", "string filename")]
+        [Help("Save crystal data. \r\n If filename is omitted, selection dialog will open.", "string filename")] //260317Cl [He:p → [Help
         public void SaveCrystals(string filename = "") => Execute(new Action(() => saveCrystals(filename)));
         private void saveCrystals(string filename = "")
         {

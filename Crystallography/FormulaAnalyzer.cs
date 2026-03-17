@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using ZLinq;
 
 public sealed record SiteGroup(string Name, string[] Elements);
 public sealed class SiteBasedParameterization
@@ -56,7 +57,8 @@ public sealed class SiteBasedParameterization
                 $"Too many occupancy params ({occDim}) for AffineDim={space.AffineDim}. Reduce site group sizes or lock some ratios.");
 
         // 4) extent 候補生成（サイト群内の部分和を中心に）→二値性で上位を選ぶ
-        var endmemberComps = Enumerable.Range(0, space.V.ColumnCount)
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+        var endmemberComps = ValueEnumerable.Range(0, space.V.ColumnCount)
                                        .Select(j => space.V.Column(j))
                                        .ToArray();
 
@@ -165,7 +167,7 @@ public sealed class SiteBasedParameterization
             // 例: (A_{x}B_{1-x})_{T}
             // ここでは (e1_{x1} e2_{x2} ... ek_{1-Σ})_{T} の形
             var occSymbols = new List<string>();
-            double dummy = 0; // 表示なので計算しない
+            //double dummy = 0; // 表示なので計算しない //260317Cl 未使用変数削除
             for (int j = 0; j < els.Length - 1; j++)
                 occSymbols.Add($"{els[j]}_{{x[{Groups[g].Name}:{els[j]}]}}");
 
@@ -680,7 +682,8 @@ public sealed class InterpretableParameterizer
         int maxCandidates = 2000)
     {
         // 端成分組成（列ベクトル）
-        var endmemberComps = Enumerable.Range(0, space.V.ColumnCount)
+        //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+        var endmemberComps = ValueEnumerable.Range(0, space.V.ColumnCount)
                                        .Select(j => space.V.Column(j))
                                        .ToArray();
 
@@ -847,7 +850,8 @@ public sealed class InterpretableParameterizer
     {
         for (int size = 1; size <= maxSize; size++)
         {
-            foreach (var comb in Combinations(Enumerable.Range(0, n).ToArray(), size))
+            //260317Cl 変更: Enumerable.Range → ValueEnumerable.Range
+            foreach (var comb in Combinations(ValueEnumerable.Range(0, n).ToArray(), size))
                 yield return comb;
         }
     }

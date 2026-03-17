@@ -10,11 +10,11 @@ using System.Reflection;
 namespace PDIndexer;
 
 /// <summary>
-/// FormCrystal ‚ÌŠT—v‚Ìà–¾‚Å‚·B
+/// FormCrystal ï¿½ÌŠTï¿½vï¿½Ìï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½B
 /// </summary>
 public partial class FormCrystal : Form
 {
-    #region ƒvƒƒpƒeƒB\AƒtƒB[ƒ‹ƒh
+    #region ï¿½vï¿½ï¿½ï¿½pï¿½eï¿½Bï¿½\ï¿½Aï¿½tï¿½Bï¿½[ï¿½ï¿½ï¿½h
     public FormMain formMain;
     public int atomSeriesNum;
     public int SymmetrySeriesNumber;
@@ -22,7 +22,7 @@ public partial class FormCrystal : Form
     public bool SkipEvent = false;
     #endregion
 
-    #region ƒI[ƒvƒ“AƒNƒ[ƒYAƒRƒ“ƒXƒgƒ‰ƒNƒ^
+    #region ï¿½Iï¿½[ï¿½vï¿½ï¿½ï¿½Aï¿½Nï¿½ï¿½ï¿½[ï¿½Yï¿½Aï¿½Rï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½Nï¿½^
     public FormCrystal()
     {
         InitializeComponent();
@@ -52,7 +52,7 @@ public partial class FormCrystal : Form
 
 
 
-    #region Œ‹»‚Ì’Ç‰ÁAíœA•ÏX
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½Ì’Ç‰ï¿½ï¿½Aï¿½íœï¿½Aï¿½ÏX
     void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
         formMain.InitializeCrystalPlane();
@@ -80,7 +80,7 @@ public partial class FormCrystal : Form
         if (crystalControl.Crystal != null)
             ChangeCrystal(crystalControl.Crystal);
     }
-    //V‹K’Ç‰Á‚ªŒÄ‚Ño‚³‚ê‚½‚Æ‚«
+    //ï¿½Vï¿½Kï¿½Ç‰ï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
     public void AddCrystal(Crystal cry)
     {
         if (cry != null)
@@ -106,7 +106,7 @@ public partial class FormCrystal : Form
         }
     }
 
-    //•ÏX‚ªŒÄ‚Ño‚³‚ê‚½‚Æ‚«
+    //ï¿½ÏXï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
     public void ChangeCrystal(Crystal cry)
     {
         if (cry != null && bindingSource.Position >= 0)
@@ -122,7 +122,7 @@ public partial class FormCrystal : Form
             formMain.SetFormEOS();
         }
     }
-    //íœ
+    //ï¿½íœ
     private void buttonDeleteCrystal_Click(object sender, System.EventArgs e)
     {
         if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved && (ModifierKeys & Keys.Control) != Keys.Control)
@@ -134,7 +134,7 @@ public partial class FormCrystal : Form
         formMain.SetFormEOS();
 
     }
-    //‚·‚×‚Äíœ
+    //ï¿½ï¿½ï¿½×‚Äíœ
     private void buttonAllClear_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Do you want to clear all crystals?", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -146,7 +146,7 @@ public partial class FormCrystal : Form
     #endregion
 
 
-    //êŠ‚ª•ÏX‚³‚ê‚½‚Æ‚«
+    //ï¿½êŠï¿½ï¿½ï¿½ÏXï¿½ï¿½ï¿½ê‚½ï¿½Æ‚ï¿½
     private void bindingSource_PositionChanged(object sender, EventArgs e)
     {
         formMain.SelectedCrystalIndex = bindingSource.Position;
@@ -206,11 +206,11 @@ public partial class FormCrystal : Form
         formMain.Draw();
     }
 
-    #region Œ‹»‚Ì‡”Ô•ÏX
+    #region ï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½Ô•ÏX
     private void buttonUpper_Click(object sender, EventArgs e)
     {
         int n = bindingSource.Position;
-        if (n < 1 || ((Crystal)dataSet.DataTableCrystal.Rows[n - 1][1]).Reserved == true) return;
+        if (n < 1 || ((Crystal)dataSet.DataTableCrystal.Rows[n - 1][1]).Reserved) return; //260317Cl == true å‰Šé™¤
         dataSet.DataTableCrystal.MoveItem(n, n - 1);
         bindingSource.Position = n - 1;
     }
@@ -227,7 +227,7 @@ public partial class FormCrystal : Form
 
     private void FormCrystal_VisibleChanged(object sender, EventArgs e)
     {
-        //dataGridView‚ÌF‚Ìİ’è
+        //dataGridViewï¿½ÌFï¿½Ìİ’ï¿½
         for (int i = 0; i < dataGridViewCrystal.Rows.Count; i++)
             dataGridViewCrystal.Rows[i].DefaultCellStyle = formMain.dataGridViewCrystals.Rows[i].DefaultCellStyle;
     }
@@ -260,7 +260,7 @@ public partial class FormCrystal : Form
         toolStripStatusLabel1.Text = message;
         toolStripProgressBar1.Value = (int)(progress * 100);
 
-        //Å‰‚Ìƒf[ƒ^ƒx[ƒX“Ç‚İ‚İ‚ÌŒã‚ÉAcrystalDatabaseControl.CrystalChanged‚ğƒZƒbƒg
+        //ï¿½Åï¿½ï¿½Ìƒfï¿½[ï¿½^ï¿½xï¿½[ï¿½Xï¿½Ç‚İï¿½ï¿½İï¿½ï¿½ÌŒï¿½ÉAcrystalDatabaseControl.CrystalChangedï¿½ï¿½ï¿½Zï¿½bï¿½g
         if (toolStripStatusLabel1.Text.Contains("Total") && flag)
         {
             crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;

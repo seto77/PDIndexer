@@ -17,8 +17,8 @@ namespace PDIndexer
 
         public FormMain formMain;
 
-        public List<NumericBox> numericTexBox = new List<NumericBox>();
-        public List<Label> label = new List<Label>();
+        public List<NumericBox> numericTexBox = []; //260317Cl new List<NumericBox>() → []
+        public List<Label> label = []; //260317Cl new List<Label>() → []
 
         public FormAtomicPositionFinder()
         {
@@ -210,7 +210,7 @@ namespace PDIndexer
             if (stopCycling) return;
             stopCycling = true;
 
-            List<int> constituentsList = new List<int>();
+            List<int> constituentsList = []; //260317Cl new List<int>() → []
             double max = 0;
             for (int i = 0; i < numericTexBox.Count; i++)
                 if (numericTexBox[i].Value != 0)
@@ -274,9 +274,9 @@ namespace PDIndexer
                     inputFormula = inputFormula.Insert(i + 1, " ");//数字とアルファベットが並んでいたらスペースを挿入
 
             //スペース区切りで分割
-            List<string> dividedFormula = new List<string>(inputFormula.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+            List<string> dividedFormula = new List<string>(inputFormula.Split(' ', StringSplitOptions.RemoveEmptyEntries)); //260317Cl new char[] → char
 
-            List<object> temp2 = new List<object>();
+            List<object> temp2 = []; //260317Cl new List<object>() → []
 
             //文字列が2つ以上の元素名で構成されていたら分割
             for (int i = 0; i < dividedFormula.Count; i++)
@@ -348,7 +348,7 @@ namespace PDIndexer
 
 
         //イオン半径入力コントロールの配置
-        public List<UserControlIonicRadius> ionicRadius = new List<UserControlIonicRadius>();
+        public List<UserControlIonicRadius> ionicRadius = []; //260317Cl new List<UserControlIonicRadius>() → []
 
         private void textBoxFormula_TextChanged(object sender, EventArgs e)
         {
@@ -552,7 +552,7 @@ namespace PDIndexer
                 if (s.CrystalSystemNumber == comboBoxCrystalSystem.SelectedIndex + 1)
                 {
                     string str = "";
-                    str += s.SpaceGroupNumber.ToString() + "." + s.SpaceGroupSubNumber.ToString();
+                    str += $"{s.SpaceGroupNumber}.{s.SpaceGroupSubNumber}"; //260317Cl 文字列連結 → 文字列補間
                     str += ": ";
                     str += s.SpaceGroupHMStr;
                     if (str.IndexOf("=") > 0)
@@ -561,7 +561,7 @@ namespace PDIndexer
                         str = str.Substring(0, str.IndexOf("("));
                     if (str.IndexOf("Hex") > 0)
                         str = str.Substring(0, str.IndexOf("Hex"));
-                    str = str.TrimEnd(new char[] { ' ' });
+                    str = str.TrimEnd(' '); //260317Cl new char[] → char
                     listBoxSpaceGroupCandidate.Items.Add(str);
                 }
             }
@@ -670,8 +670,8 @@ namespace PDIndexer
             if (dataSet.DataTableDiffractionData.Rows.Count < 1 || listBoxSpaceGroupCandidate.SelectedItems.Count < 1 || textBoxFormula.Text == "") return null;
 
             //ユニットセルあたりの原子の種類、数を求める
-            List<int> atomSpecies = new List<int>();
-            List<int> atomNumber = new List<int>();
+            List<int> atomSpecies = []; //260317Cl new List<int>() → []
+            List<int> atomNumber = []; //260317Cl new List<int>() → []
             for (int i = 0; i < numericTexBox.Count; i++)
                 if (numericTexBox[i].Value != 0)
                 {
@@ -680,7 +680,7 @@ namespace PDIndexer
                 }
 
             //DatagridView DiffractionPeakをまず整列
-            List<Peak> peak = new List<Peak>();
+            List<Peak> peak = []; //260317Cl new List<Peak>() → []
             for (int i = 0; i < dataSet.DataTableDiffractionData.Rows.Count; i++)
                 peak.Add(new Peak((bool)dataSet.DataTableDiffractionData.Rows[i][0], (double)dataSet.DataTableDiffractionData.Rows[i][1] * 0.1, (double)dataSet.DataTableDiffractionData.Rows[i][2]));
             peak.Sort();
@@ -694,7 +694,7 @@ namespace PDIndexer
             if (max <= 0) return null;
 
             //ディフラクションピークを読み取り、peaks配列に格納
-            List<PointD> peaks = new List<PointD>();
+            List<PointD> peaks = []; //260317Cl new List<PointD>() → []
             for (int i = 0; i < dataSet.DataTableDiffractionData.Rows.Count; i++)
                 if ((bool)dataSet.DataTableDiffractionData.Rows[i][0])
                     peaks.Add(new PointD((double)dataSet.DataTableDiffractionData.Rows[i][1] * 0.1, (double)dataSet.DataTableDiffractionData.Rows[i][2] / max));
@@ -704,12 +704,12 @@ namespace PDIndexer
                 observedIntensity[i] = peaks[i].Y;
 
             //候補となる空間群に属する結晶リストを作成する
-            List<Crystal> crystal = new List<Crystal>();
+            List<Crystal> crystal = []; //260317Cl new List<Crystal>() → []
             for (int i = 0; i < listBoxSpaceGroupCandidate.SelectedItems.Count; i++)
             {
-                string tempstr = ((string)listBoxSpaceGroupCandidate.SelectedItems[i]).Split(new char[] { ':' })[0];
-                int sg_num = Convert.ToInt32(tempstr.Split(new char[] { '.' })[0]);
-                int sg_sub_num = Convert.ToInt32(tempstr.Split(new char[] { '.' })[1]);
+                string tempstr = ((string)listBoxSpaceGroupCandidate.SelectedItems[i]).Split(':')[0]; //260317Cl new char[] → char
+                int sg_num = int.Parse(tempstr.Split('.')[0]); //260317Cl Convert.ToInt32 → int.Parse, new char[] → char
+                int sg_sub_num = int.Parse(tempstr.Split('.')[1]); //260317Cl Convert.ToInt32 → int.Parse, new char[] → char
                 for (int j = 0; j < SymmetryStatic.TotalSpaceGroupNumber; j++)
                 {
                     var s = SymmetryStatic.Symmetries[j];
@@ -781,7 +781,7 @@ namespace PDIndexer
 
             //結晶リストごとに候補となるワイコフ位置リストを作成する
             //candidate[i][j][k][l]はi番目の空間群候補の、j番目のワイコフ配列候補の、k番目の原子がl番目のワイコフ位置に収まる数
-            List<int[][][]> candidate = new List<int[][][]>();
+            List<int[][][]> candidate = []; //260317Cl new List<int[][][]>() → []
             for (int i = 0; i < crystal.Count; i++)
                 candidate.Add(GenerateWyckoff(crystal[i].Symmetry.SeriesNumber, atomNumber.ToArray()).ToArray());
 
@@ -813,7 +813,7 @@ namespace PDIndexer
             #endregion
 
             //ワイコフ位置だけが決まっている（原子位置は決まっていない)結晶候補リストを作成
-            List<Crystal[]> crystalTemplates = new List<Crystal[]>();
+            List<Crystal[]> crystalTemplates = []; //260317Cl new List<Crystal[]>() → []
             for (int i = 0; i < candidate.Count; i++)
             {
                 crystalTemplates.Add(new Crystal[candidate[i].Length]);
@@ -883,7 +883,7 @@ namespace PDIndexer
             FindCondition fc = getFindingCondition();
             if (fc != null)
             {
-                List<Crystal> candidates = new List<Crystal>();
+                List<Crystal> candidates = []; //260317Cl new List<Crystal>() → []
                 for (int i = 0; i < dataSet.DataTableCrystalCandidates.Rows.Count; i++)
                     candidates.Add((Crystal)dataSet.DataTableCrystalCandidates.Rows[i][0]);
                 buttonStart.Text = "Stop!";
@@ -926,7 +926,7 @@ namespace PDIndexer
             Crystal[][] crystalTemplates = ((FindCondition)e.Argument).CrystalTemplates;
             if (crystalTemplates.Length == 0) return;
             double[] observedIntensity = ((FindCondition)e.Argument).ObservedIntensity;
-            List<Crystal> allCandidate = new List<Crystal>();
+            List<Crystal> allCandidate = []; //260317Cl new List<Crystal>() → []
             if (((FindCondition)e.Argument).Candidates != null)
                 allCandidate.AddRange(((FindCondition)e.Argument).Candidates);
 
@@ -1010,7 +1010,7 @@ namespace PDIndexer
 
                 List<Crystal>[] candidates = new List<Crystal>[threadTotal];
                 for (int thread = 0; thread < threadTotal; thread++)
-                    candidates[thread] = new List<Crystal>();
+                    candidates[thread] = []; //260317Cl new List<Crystal>() → []
                 for (int i = 0; i < allCandidate.Count; i++)
                     candidates[r.Next(threadTotal)].Add((Crystal)allCandidate[i].Clone());
 
@@ -1044,7 +1044,7 @@ namespace PDIndexer
                         allCandidate.RemoveAt(i--);
                 }
 
-                List<Crystal> candidatesTemp = new List<Crystal>();
+                List<Crystal> candidatesTemp = []; //260317Cl new List<Crystal>() → []
                 for (int i = 0; i < allCandidate.Count; i++)
                     candidatesTemp.Add((Crystal)allCandidate[i].Clone());
 
@@ -1060,12 +1060,12 @@ namespace PDIndexer
 
             //まずcrystal2から原子を一つ選ぶ
             Random r = new Random();
-            List<int> elementList = new List<int>();
+            List<int> elementList = []; //260317Cl new List<int>() → []
             for (int i = 0; i < crystals[0].Atoms.Length; i++)
                 if (!elementList.Contains(crystals[0].Atoms[i].AtomicNumber))
                     elementList.Add(crystals[0].Atoms[i].AtomicNumber);
 
-            List<Atoms> atomsList = new List<Atoms>();
+            List<Atoms> atomsList = []; //260317Cl new List<Atoms>() → []
             for (int i = 0; i < elementList.Count; i++)
             {
                 int j = r.Next(crystals.Length);
@@ -1082,8 +1082,8 @@ namespace PDIndexer
         {
             if (c == null || c.Atoms == null || c.Atoms.Length < 1) return false;
 
-            List<Vector3DBase> v = new List<Vector3DBase>();
-            List<double> r = new List<double>();
+            List<Vector3DBase> v = []; //260317Cl new List<Vector3DBase>() → []
+            List<double> r = []; //260317Cl new List<double>() → []
             for (int i = 0; i < c.Atoms.Length; i++)
             {
                 Vector3DBase temp = (c.Atoms[i].Atom[0].X * c.A_Axis + c.Atoms[i].Atom[0].Y * c.B_Axis + c.Atoms[i].Atom[0].Z * c.C_Axis);
@@ -1203,7 +1203,7 @@ namespace PDIndexer
 
         public Crystal generateCrystalTemplates(Crystal crystal, int[][] wykcoffCandidate, int[] atomSpecies)
         {
-            var atoms = new List<Atoms>();
+            List<Atoms> atoms = []; //260317Cl new List<Atoms>() → []
             var wyk = SymmetryStatic.WyckoffPositions[crystal.SymmetrySeriesNumber];
             for (int i = 0; i < wykcoffCandidate.Length; i++)
                 for (int j = 0; j < wykcoffCandidate[i].Length; j++)
@@ -1287,7 +1287,7 @@ namespace PDIndexer
                     if (freedom[j] == false && housingAtom[i][j] != 0)
                         tempFlag[j] = false;
 
-            List<int[][]> answer = new List<int[][]>();
+            List<int[][]> answer = []; //260317Cl new List<int[][]>() → []
             for (int i = startPosition; i < multiplicity.Length; i++)
             {
                 if (tempFlag[i])
@@ -1372,7 +1372,7 @@ namespace PDIndexer
                         {
                             double residual = a.Candidates[i].Residual;
                             a.Candidates[i] = Crystal2.GetCrystal(a.Candidates[i].ToCrystal2());
-                            a.Candidates[i].Plane = new List<Plane>();
+                            a.Candidates[i].Plane = []; //260317Cl new List<Plane>() → []
                             a.Candidates[i].Residual = residual;
                             if (a.Planes != null)
                                 a.Candidates[i].Plane.AddRange(a.Planes[i]);
@@ -1420,7 +1420,7 @@ namespace PDIndexer
             a.Beta = numericBoxBeta.Value;
             a.Gamma = numericBoxGamma.Value;
 
-            List<int> sg = new List<int>();
+            List<int> sg = []; //260317Cl new List<int>() → []
             for (int i = 0; i < listBoxSpaceGroupCandidate.SelectedIndices.Count; i++)
                 sg.Add(listBoxSpaceGroupCandidate.SelectedIndices[i]);
             a.SpaceGroupList = sg.ToArray();
@@ -1429,12 +1429,12 @@ namespace PDIndexer
             a.Source = waveLengthControl1.WaveSource;
             a.WaveLength = waveLengthControl1.WaveLength;
 
-            List<Peak> peaks = new List<Peak>();
+            List<Peak> peaks = []; //260317Cl new List<Peak>() → []
             for (int i = 0; i < dataSet.DataTableDiffractionData.Rows.Count; i++)
                 peaks.Add(new Peak((bool)dataSet.DataTableDiffractionData.Rows[i][0], (double)dataSet.DataTableDiffractionData.Rows[i][1] * 0.1, (double)dataSet.DataTableDiffractionData.Rows[i][2]));
             a.PeakList = peaks.ToArray();
 
-            List<Crystal> cry = new List<Crystal>();
+            List<Crystal> cry = []; //260317Cl new List<Crystal>() → []
             for (int i = 0; i < dataSet.DataTableCrystalCandidates.Rows.Count; i++)
                 cry.Add((Crystal)dataSet.DataTableCrystalCandidates.Rows[i][0]);
             a.Candidates = cry.ToArray();
@@ -1443,7 +1443,7 @@ namespace PDIndexer
             for (int i = 0; i < cry.Count; i++)
                 a.Planes[i] = cry[i].Plane.ToArray();
 
-            List<double> radius = new List<double>();
+            List<double> radius = []; //260317Cl new List<double>() → []
             for (int i = 0; i < ionicRadius.Count; i++)
                 radius.Add(ionicRadius[i].Radius);
             a.IonRadius = radius.ToArray();

@@ -108,7 +108,7 @@ public partial class FormDataConverter : Form
         }
     }
 
-    public List<EDXControl> EDXControls = new List<EDXControl>();
+    public List<EDXControl> EDXControls = []; //260317Cl new List<EDXControl>() → []
     public int EDXDetectorNumber
     {
         get => EDXControls.Count;

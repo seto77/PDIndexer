@@ -1,4 +1,5 @@
-﻿#region using, namespace
+﻿#nullable enable //260317Cl 追加
+#region using, namespace
 using MathNet.Numerics.LinearAlgebra.Complex;
 using System;
 using System.Buffers;
@@ -182,6 +183,20 @@ public static partial class NativeWrapper
     double[] thicknesses,
     double* intensity);
 
+    [LibraryImport("Crystallography.Native.dll")]
+    private static unsafe partial void _EBSDSolverWithTDS(
+    int bLen, int nAtoms, int tLen,
+    double* eigenValues,
+    double* eigenVectors,
+    double* alpha,
+    double* phaseNG,
+    double* sigma,
+    double* muBack,
+    double tdsCoeff,
+    double[] thicknesses,
+    double* intensity,
+    double* tdsIntensity);
+
     #endregion
 
     #region Nativeライブラリが有効かどうか
@@ -190,6 +205,7 @@ public static partial class NativeWrapper
     /// Native ライブラリが有効かどうか
     /// </summary>
     public static bool Enabled { get; }
+    public static string? LastLoadError { get; private set; }
 
     static NativeWrapper()
     {
@@ -199,15 +215,24 @@ public static partial class NativeWrapper
 
         var appPath = GetExistingNativeLibraryPath();
         if (appPath == null)
+        {
+            LastLoadError = $"Native library not found in base directory: {AppContext.BaseDirectory}";
             Enabled = false;
-        else if (System.IO.File.GetCreationTime(appPath).Ticks < new DateTime(2019, 08, 06, 19, 45, 00).Ticks)
-            Enabled = false;
+            return;
+        }
+
         try
         {
             var result = Inverse(2, [new Complex(1, 0), new Complex(0, 0), new Complex(0, 0), new Complex(1, 0)]);
             Enabled = result[0].Real + result[3].Real > 1;
+            if (!Enabled)
+                LastLoadError = "Native self-test returned unexpected result.";
         }
-        catch { Enabled = false; }
+        catch (Exception ex)
+        {
+            LastLoadError = ex.Message;
+            Enabled = false;
+        }
     }
 
     private static IntPtr ResolveNativeLibrary(string libraryName, Assembly assembly, DllImportSearchPath? searchPath)
@@ -216,8 +241,16 @@ public static partial class NativeWrapper
             return IntPtr.Zero;
 
         foreach (var candidate in NativeLibraryCandidates)
-            if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out var handle))
+        {
+            var absolutePath = Path.Combine(AppContext.BaseDirectory, candidate);
+            if (NativeLibrary.TryLoad(absolutePath, out var handle))
                 return handle;
+
+            if (NativeLibrary.TryLoad(candidate, assembly, searchPath, out handle))
+                return handle;
+        }
+
+        LastLoadError = $"Failed to resolve native library. BaseDir={AppContext.BaseDirectory}, Candidates={string.Join(",", NativeLibraryCandidates)}";
 
         return IntPtr.Zero;
     }
@@ -577,7 +610,7 @@ public static partial class NativeWrapper
     /// </summary>
     /// <param name="mat"></param>
     /// <returns></returns>
-    static unsafe public Complex[] Inverse(Complex[] mat)
+    static unsafe public Complex[]? Inverse(Complex[] mat) //260317Cl 戻り値をnullable化
     {
         var dim = (int)Math.Sqrt(mat.Length);
         return dim * dim == mat.Length ? Inverse(dim, mat) : null;
@@ -602,7 +635,7 @@ public static partial class NativeWrapper
     /// </summary>
     /// <param name="mat"></param>
     /// <returns></returns>
-    static unsafe public double[] Inverse(double[] mat)
+    static unsafe public double[]? Inverse(double[] mat) //260317Cl 戻り値をnullable化
     {
         var dim = (int)Math.Sqrt(mat.Length);
         return dim * dim == mat.Length ? Inverse(dim, mat) : null;
@@ -863,6 +896,32 @@ public static partial class NativeWrapper
         return intensity;
     }
 
+    /// <summary>
+    /// EBSD強度とTDSバックグラウンドを一括計算する。 (260316Cl 追加)
+    /// 弾性信号 (S行列) と TDS (M行列) で同じ F_{jj'}(t) を共有し、
+    /// exp(λt) の重複計算を排除する。C†×U×C は Eigen BLAS で高速に実行。
+    /// </summary>
+    public static unsafe (double[] intensity, double[] tdsIntensity) EBSDSolverWithTDS(
+        Complex[] eigenValues, Complex[] eigenVectors, Complex[] alpha,
+        Complex[] phaseNG, double[] sigma, Complex[] muBack, double tdsCoeff, double[] thicknesses)
+    {
+        int bLen = eigenValues.Length;
+        int nAtoms = sigma.Length;
+        int tLen = thicknesses.Length;
+        var intensity = new double[tLen];
+        var tdsIntensity = new double[tLen];
+
+        fixed (Complex* _vals = eigenValues, _vecs = eigenVectors, _alpha = alpha, _phase = phaseNG, _muBack = muBack)
+        fixed (double* _sigma = sigma, _intensity = intensity, _tds = tdsIntensity)
+        {
+            _EBSDSolverWithTDS(bLen, nAtoms, tLen,
+                (double*)_vals, (double*)_vecs, (double*)_alpha,
+                (double*)_phase, _sigma, (double*)_muBack, tdsCoeff,
+                thicknesses, _intensity, _tds);
+        }
+        return (intensity, tdsIntensity);
+    }
+
     #endregion
 
 
@@ -898,4 +957,5 @@ public static partial class NativeWrapper
         return (profile, pixels);
     }
     #endregion
+
 }

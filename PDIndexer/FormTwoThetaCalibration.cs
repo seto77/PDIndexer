@@ -67,8 +67,8 @@ namespace PDIndexer
             {
                 formMain.formFitting.Fitting();
 
-                List<double> twoThetaObs = new List<double>();
-                List<double> twoThetaCalc = new List<double>();
+                List<double> twoThetaObs = []; //260317Cl new List<double>() → []
+                List<double> twoThetaCalc = []; //260317Cl new List<double>() → []
 
                 foreach (var p in formMain.formFitting.TargetCrystal.Plane)
                     if (p.IsFittingChecked && !double.IsNaN(p.XObs) && !double.IsNaN(p.XCalc))

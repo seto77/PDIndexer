@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.5.11605.296 insiders
+VisualStudioVersion = 18.5.11605.296
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDIndexer", "PDIndexer\PDIndexer.csproj", "{D29BD053-810E-4797-9985-00CD41BC60FD}"
 EndProject
@@ -27,17 +27,13 @@ Global
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D29BD053-810E-4797-9985-00CD41BC60FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Debug|x64.ActiveCfg = Debug|x64
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Debug|x64.Build.0 = Debug|x64
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D29BD053-810E-4797-9985-00CD41BC60FD}.Debug|x86.Build.0 = Debug|Any CPU
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|x64.ActiveCfg = Release|x64
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|x64.Build.0 = Release|x64
 		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|x86.ActiveCfg = Release|Any CPU
-		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|x86.Build.0 = Release|Any CPU
 		{86A34A41-32E0-4033-9C4E-4BFA8C621E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86A34A41-32E0-4033-9C4E-4BFA8C621E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86A34A41-32E0-4033-9C4E-4BFA8C621E90}.Debug|x64.ActiveCfg = Debug|x64

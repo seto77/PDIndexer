@@ -17,7 +17,7 @@ namespace PDIndexer
     public partial class FormExportGSAS : Form
     {
         public FormMain formMain;
-        private  DiffractionProfile2 profile;
+        //private  DiffractionProfile2 profile; //260317Cl 未使用フィールドをコメントアウト
         private void FormExportGSAS_Load(object sender, EventArgs e)
         {
             setGsasFileContents();
@@ -44,7 +44,7 @@ namespace PDIndexer
             int ptCount = dp.Profile.Pt.Count;
             double startAngle = dp.Profile.Pt[0].X * div;
             double stepAngle = (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X) * div;
-            str = "BANK 1 " + ptCount.ToString() + " " + ptCount.ToString() + " CONST " + startAngle.ToString("f2") + " " + stepAngle.ToString("f2") + " 0 0 FXYE";
+            str = $"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE"; //260317Cl 文字列連結 → 文字列補間
             sb.Append(str + "\r\n");
             str = "";
             bool validErr = false;
@@ -94,7 +94,7 @@ namespace PDIndexer
                      int ptCount = dp.Profile.Pt.Count;
                      double startAngle = dp.Profile.Pt[0].X * 100;
                      double stepAngle = (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X) * 100;
-                     str = "BANK 1 " + ptCount.ToString() + " " + (ptCount / 5).ToString() + " CONST " + startAngle.ToString("f2") + " " + stepAngle.ToString("f2") + " 0 0 ESD";
+                     str = $"BANK 1 {ptCount} {ptCount / 5} CONST {startAngle:f2} {stepAngle:f2} 0 0 ESD"; //260317Cl 文字列連結 → 文字列補間
                      while (str.Length < 80)
                          str += " ";
                      sb.Append(str + "\r\n");

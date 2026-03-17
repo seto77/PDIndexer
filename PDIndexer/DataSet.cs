@@ -84,7 +84,7 @@ public partial class DataSet
         {
             set
             {
-                if (value == true)
+                if (value) //260317Cl == true 削除
                 {
                     for (int i = 0; i < this.Rows.Count; i++)
                         this.Rows[i][0] = true;
@@ -104,7 +104,7 @@ public partial class DataSet
         {
             set
             {
-                if (value == true)
+                if (value) //260317Cl == true 削除
                 {
                     for (int i = 0; i < this.Rows.Count; i++)
                         this.Rows[i][0] = false;
@@ -128,7 +128,7 @@ public partial class DataSet
             set { }
             get
             {
-                List<DiffractionProfile2> p = new List<DiffractionProfile2>();
+                List<DiffractionProfile2> p = []; //260317Cl new List<T>() → []
                 for (int i = 0; i < this.Rows.Count; i++)
                     if ((bool)this.Rows[i][0])
                         p.Add((DiffractionProfile2)this.Rows[i][1]);
@@ -146,12 +146,12 @@ public partial class DataSet
             {
                 try
                 {
-                    List<DiffractionProfile2> p = new List<DiffractionProfile2>();
+                    List<DiffractionProfile2> p = []; //260317Cl new List<T>() → []
                     for (int i = 0; i < this.Rows.Count; i++)
                         p.Add((DiffractionProfile2)this.Rows[i][1]);
                     return p;
                 }
-                catch { return new List<DiffractionProfile2>(); }
+                catch { return []; } //260317Cl new List<T>() → []
             }
         }
 
@@ -279,7 +279,7 @@ public partial class DataSet
             set { }
             get
             {
-                List<Crystal> c = new List<Crystal>();
+                List<Crystal> c = []; //260317Cl new List<T>() → []
                 for (int i = 0; i < this.Rows.Count; i++)
                     if ((bool)this.Rows[i][0])
                         c.Add((Crystal)this.Rows[i][1]);
@@ -292,7 +292,7 @@ public partial class DataSet
             set { }
             get
             {
-                List<int> indices = new List<int>();
+                List<int> indices = []; //260317Cl new List<T>() → []
                 for (int i = 0; i < this.Rows.Count; i++)
                     if ((bool)this.Rows[i][0])
                         indices.Add(i);
@@ -305,7 +305,7 @@ public partial class DataSet
             set { }
             get
             {
-                List<Crystal> c = new List<Crystal>();
+                List<Crystal> c = []; //260317Cl new List<T>() → []
                 for (int i = 0; i < this.Rows.Count; i++)
                     c.Add((Crystal)this.Rows[i][1]);
                 return c;

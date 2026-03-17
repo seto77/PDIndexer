@@ -65,8 +65,8 @@ public partial class FormSequentialAnalysis : Form
 
 
 
-        var indexStr = new List<string>();
-        var results = new List<List<PointD>>();
+        List<string> indexStr = []; //260317Cl new List<string>() → []
+        List<List<PointD>> results = []; //260317Cl new List<List<PointD>>() → []
 
         var text = stressMode ? "Degree | Index" : "Profile Name | Index";
         var plane = formMain.formFitting.TargetCrystal.Plane.ToArray();
@@ -84,7 +84,7 @@ public partial class FormSequentialAnalysis : Form
                 text += "\t" + p.strHKL;
                 indexStr.Add(p.strHKL);
             }
-            results.Add(new List<PointD>());
+            results.Add([]); //260317Cl new List<PointD>() → []
         }
 
         textBox2theta.Text = textBoxDspacing.Text = textBoxFWHM.Text = textBoxIntensity.Text = $"{text}\r\n";
@@ -119,7 +119,7 @@ public partial class FormSequentialAnalysis : Form
 
         var total = formMain.dataSet.DataTableProfile.Items.Count;
 
-        var targetList = new List<int>();
+        List<int> targetList = []; //260317Cl new List<int>() → []
         for (int i = checkBoxStartNumber.Checked ? numericBoxStartNumber.ValueInteger : 0; i < total; i++)
             targetList.Add(i);
         if (checkBoxStartNumber.Checked && checkBoxLoop.Checked)
@@ -130,7 +130,7 @@ public partial class FormSequentialAnalysis : Form
         var initialPosition = formMain.bindingSourceProfile.Position;
 
         //現在のプロファイルチェック状況を保存後、全てチェック外す
-        var checkStates = new List<bool>();
+        List<bool> checkStates = []; //260317Cl new List<bool>() → []
         for (int i = 0; i < total; i++)
             checkStates.Add(formMain.dataSet.DataTableProfile.GetItemChecked(i));
         formMain.dataSet.DataTableProfile.AllUnchecked = true;

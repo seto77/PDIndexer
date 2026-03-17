@@ -1,4 +1,5 @@
-﻿using MathNet.Numerics.Integration;
+﻿#region using
+using MathNet.Numerics.Integration;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System;
 using System.Collections.Generic;
@@ -8,8 +9,8 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using Edge = Crystallography.XrayLineEdge;
-
 namespace Crystallography;
+#endregion
 
 public static class AtomStatic
 {
@@ -2565,6 +2566,43 @@ new(4.86738014,0.319974401,4.58872425,
             Factor = new Func<double, double>(s2 => Prms.Sum(p => p.A * Math.Exp(-s2 * 0.01 * p.B)) * 0.1);//0.1倍や0.01倍は単位の修正
         }
 
+        /// <summary>
+        /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)
+        /// </summary>
+        /// <param name="a1"></param>
+        /// <param name="a2"></param>
+        /// <param name="a3"></param>
+        /// <param name="b1"></param>
+        /// <param name="b2"></param>
+        /// <param name="b3"></param>
+        /// <param name="c1"></param>
+        /// <param name="c2"></param>
+        /// <param name="c3"></param>
+        /// <param name="d1"></param>
+        /// <param name="d2"></param>
+        /// <param name="d3"></param>
+        public ES(double a1, double a2, double a3, double b1, double b2, double b3, double c1, double c2, double c3, double d1, double d2, double d3)
+        {
+            Factor = new Func<double, double>(
+                S2 => a1 / (S2 + b1) + a2 / (S2 + b2) + a3 / (S2 + b3) + c1 * Math.Exp(-S2 * d1) + c2 * Math.Exp(-S2 * d2) + c3 * Math.Exp(-S2 * d3));
+
+            double a0 = UniversalConstants.a0 * 1E10, e = UniversalConstants.Ry * 2 * a0;
+            double sqrtB1 = Math.Sqrt(b1), sqrtB2 = Math.Sqrt(b2), sqrtB3 = Math.Sqrt(b3);
+            double pi2 = Math.PI * Math.PI;
+            double d1inv = 1 / d1, d2inv = 1 / d2, d3inv = 1 / d3;
+            ProjectedPotential = new Func<double, double>(
+                r => r <= 0 ? 0 :
+                    2 * pi2 * a0 * e * (
+                2 * a1 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB1) +
+                2 * a2 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB2) +
+                2 * a3 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB3) +
+                c1 * d1inv * Math.Exp(-pi2 * r * r * d1inv) +
+                c2 * d2inv * Math.Exp(-pi2 * r * r * d2inv) +
+                c3 * d3inv * Math.Exp(-pi2 * r * r * d3inv)
+                ));
+        }
+
+        #endregion
 
         #region 非弾性散乱因子の計算
 
@@ -2606,7 +2644,7 @@ new(4.86738014,0.319974401,4.58872425,
         /// <param name="inner"> 検出器の内側 単位はラジアン</param>
         /// <param name="outer"> 検出器の外側 単位はラジアン</param>
         /// <returns></returns>
-        public double FactorImaginaryAnnularFlatEwald(double kV, Vector3DBase g, double m, double inner, double outer)
+        public double FactorImaginaryAnnularFlatEwald(double kV, Vector3DBase g, double m, double inner, double outer, int nTheta = 80, int nPhi = 30)
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
@@ -2620,7 +2658,8 @@ new(4.86738014,0.319974401,4.58872425,
                 //double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
                 return GaussLegendreRule.Integrate(φ =>
                 {
-                    var K = R * new PointD(Math.Cos(φ), Math.Sin(φ));
+                    var (sin, cos) = Math.SinCos(φ);
+                    var K = R * new PointD(cos, sin);
                     //var K = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
                     double kMinusG = (K - G / 2).Length2, kPlusG = (K + G / 2).Length2;//単位はnm^-2
                     double f_kMinusG = 0, f_kPlusG = 0;
@@ -2630,51 +2669,91 @@ new(4.86738014,0.319974401,4.58872425,
                         f_kPlusG += A * Math.Exp(-kPlusG / 400 * B);
                     }
                     return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG) / 4));// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 30);
-            }, k0 * Math.Sin(inner), k0 * Math.Sin(outer), 80);
+                }, 0, 2 * Math.PI, nPhi);
+            }, k0 * Math.Sin(inner), k0 * Math.Sin(outer), nTheta);
 
             return gamma / Math.PI / Math.PI / k0 * result * 0.01;
         }
 
         /// <summary>
         /// 局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
+        /// 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開。
+        ///            nTheta/nPhi をデフォルト引数で指定可能に変更。
         /// </summary>
         /// <param name="kV"></param>
         /// <param name="g"> g ベクトル 単位は nm </param>
-        /// <param name="h"> hベクトル 単位はnm</param>
         /// <param name="m"> U ×8×π^2 単位は nm^2 </param>
         /// <param name="inner"> 検出器の内側 単位はラジアン</param>
         /// <param name="outer"> 検出器の外側 単位はラジアン</param>
+        /// <param name="nTheta"> θ方向の Gauss-Legendre 求積点数 (デフォルト60)</param>
+        /// <param name="nPhi"> φ方向の Gauss-Legendre 求積点数 (デフォルト20)</param>
         /// <returns></returns>
-        public double FactorImaginaryAnnular(double kV, Vector3DBase g, double m, double inner, double outer)
+        public double FactorImaginaryAnnular(double kV, Vector3DBase g, double m, double inner, double outer, int nTheta = 60, int nPhi = 20)
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            var gLen2 = g.Length2 / 4;//単位はnm^-2
+
+            #region 260316Cl以前のコード (Vector3DBase をループ内で生成していたためヒープ割り当てが多い)
+            //var g2 = g / 2;
+            //var result = GaussLegendreRule.Integrate(θ =>
+            //{
+            //    var sinθ = Math.Sin(θ);
+            //    var cosθ = Math.Cos(θ);
+            //    return GaussLegendreRule.Integrate(φ =>
+            //    {
+            //        var k = new Vector3DBase(k0 * sinθ * Math.Cos(φ), k0 * sinθ * Math.Sin(φ), k0 * cosθ - k0);
+            //        var kMinusG = (k - g2).Length2 / 4;
+            //        var kPlusG = (k + g2).Length2 / 4;
+            //        double f_kMinusG = 0, f_kPlusG = 0;
+            //        foreach (var (A, B) in Prms)
+            //        {
+            //            f_kMinusG += A * Math.Exp(-kMinusG * B / 100);
+            //            f_kPlusG += A * Math.Exp(-kPlusG * B / 100);
+            //        }
+            //        return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (g2.Length2 - kMinusG - kPlusG)));
+            //    }, 0, 2 * Math.PI, nPhi) * sinθ;
+            //}, inner, outer, nTheta);
+            //return gamma * k0 / 2 * result * 0.01;
+            #endregion
+
+            // 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開
+            // g/2 の各成分を事前計算 (ループ内での Vector3DBase 生成を回避)
+            double gx2 = g.X / 2, gy2 = g.Y / 2, gz2 = g.Z / 2;
+            double gLen2 = (g.X * g.X + g.Y * g.Y + g.Z * g.Z) / 4;
 
             var result = GaussLegendreRule.Integrate(θ =>
             {
-                double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                var (sinθ, cosθ) = Math.SinCos(θ);
+                double kSinθ = k0 * sinθ, kCosθmk0 = k0 * cosθ - k0;
                 return GaussLegendreRule.Integrate(φ =>
                 {
-                    var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
-                    double kMinusG = (k - g / 2).Length2 / 4, kPlusG = (k + g / 2).Length2 / 4;//単位はnm^-2
+                    var (sinφ, cosφ) = Math.SinCos(φ);
+                    double kx = kSinθ * cosφ, ky = kSinθ * sinφ;
+                    // |k - g/2|² / 4
+                    double dx = kx - gx2, dy = ky - gy2, dz = kCosθmk0 - gz2;
+                    double kMinusG = (dx * dx + dy * dy + dz * dz) / 4;
+                    // |k + g/2|² / 4
+                    double ex = kx + gx2, ey = ky + gy2, ez = kCosθmk0 + gz2;
+                    double kPlusG = (ex * ex + ey * ey + ez * ez) / 4;
+
                     double f_kMinusG = 0, f_kPlusG = 0;
                     foreach (var (A, B) in Prms)
                     {
                         f_kMinusG += A * Math.Exp(-kMinusG * B / 100);
                         f_kPlusG += A * Math.Exp(-kPlusG * B / 100);
                     }
-                    return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG))); ;// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60);
+                    return f_kMinusG * f_kPlusG * (1 - Math.Exp(m * (gLen2 - kMinusG - kPlusG)));
+                }, 0, 2 * Math.PI, nPhi) * sinθ;
+            }, inner, outer, nTheta);
             return gamma * k0 / 2 * result * 0.01;
         }
 
 
         /// <summary>
         /// 非局所形式の非弾性散乱因子 近軸近似(ビーム径射角ゼロ)
+        /// 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開。
+        ///            nTheta/nPhi をデフォルト引数で指定可能に変更。
         /// </summary>
         /// <param name="kV"></param>
         /// <param name="g"></param>
@@ -2682,30 +2761,64 @@ new(4.86738014,0.319974401,4.58872425,
         /// <param name="m"></param>
         /// <param name="inner"></param>
         /// <param name="outer"></param>
+        /// <param name="nTheta"> θ方向の Gauss-Legendre 求積点数 (デフォルト60)</param>
+        /// <param name="nPhi"> φ方向の Gauss-Legendre 求積点数 (デフォルト20)</param>
         /// <returns></returns>
-        public double FactorImaginaryAnnular(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer)
+        public double FactorImaginaryAnnular(double kV, Vector3DBase g, Vector3DBase h, double m, double inner, double outer, int nTheta = 60, int nPhi = 20)
         {
             if (double.IsNaN(m)) return 0;
             var gamma = 1 + UniversalConstants.e0 * kV * 1E3 / UniversalConstants.m0 / UniversalConstants.c2;
             var k0 = UniversalConstants.Convert.EnergyToElectronWaveNumber(kV);
-            var g_h = (g - h).Length2 / 4;
+
+            #region 260316Cl以前のコード (Vector3DBase をループ内で生成していたためヒープ割り当てが多い)
+            //var g_h = ((g - h) / 2).Length2;
+            //return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
+            //{
+            //    var sinθ = Math.Sin(θ);
+            //    var cosθ = Math.Cos(θ);
+            //    return GaussLegendreRule.Integrate(φ =>
+            //    {
+            //        var k = new Vector3DBase(k0 * sinθ * Math.Cos(φ), k0 * sinθ * Math.Sin(φ), k0 * cosθ - k0);
+            //        var k_g = (k - g).Length2 / 400;
+            //        var k_h = (k - h).Length2 / 400;
+            //        double f_k_g = 0, f_k_h = 0;
+            //        foreach (var (A, B) in Prms)
+            //        {
+            //            f_k_g += A * Math.Exp(-k_g * B);
+            //            f_k_h += A * Math.Exp(-k_h * B);
+            //        }
+            //        return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));
+            //    }, 0, 2 * Math.PI, nPhi) * sinθ;
+            //}, inner, outer, nTheta);
+            #endregion
+
+            // 260316Cl ヒープ割り当て回避のためベクトル演算をスカラーにインライン展開
+            double gx = g.X, gy = g.Y, gz = g.Z;
+            double hx = h.X, hy = h.Y, hz = h.Z;
+            double dgx = gx - hx, dgy = gy - hy, dgz = gz - hz;
+            double g_h = (dgx * dgx + dgy * dgy + dgz * dgz) / 4;
 
             return gamma * k0 / 2 * GaussLegendreRule.Integrate(θ =>
             {
-                double sinθ = Math.Sin(θ), kSinθ = k0 * sinθ, kCosθ = k0 * Math.Cos(θ);
+                var (sinθ, cosθ) = Math.SinCos(θ);
+                double kSinθ = k0 * sinθ, kCosθmk0 = k0 * cosθ - k0;
                 return GaussLegendreRule.Integrate(φ =>
                 {
-                    var k = new Vector3DBase(kSinθ * Math.Cos(φ), kSinθ * Math.Sin(φ), kCosθ - k0);
-                    double k_g = (k - g).Length2 / 400, k_h = (k - h).Length2 / 400;
+                    var (sinφ, cosφ) = Math.SinCos(φ);
+                    double kx = kSinθ * cosφ, ky = kSinθ * sinφ;
+                    double dx1 = kx - gx, dy1 = ky - gy, dz1 = kCosθmk0 - gz;
+                    double k_g = (dx1 * dx1 + dy1 * dy1 + dz1 * dz1) / 400;
+                    double dx2 = kx - hx, dy2 = ky - hy, dz2 = kCosθmk0 - hz;
+                    double k_h = (dx2 * dx2 + dy2 * dy2 + dz2 * dz2) / 400;
                     double f_k_g = 0, f_k_h = 0;
                     foreach (var (A, B) in Prms)
                     {
                         f_k_g += A * Math.Exp(-k_g * B);
                         f_k_h += A * Math.Exp(-k_h * B);
                     }
-                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));// * sinThetaを外に出して、少しでも早く
-                }, 0, 2 * Math.PI, 20) * sinθ;
-            }, inner, outer, 60);
+                    return f_k_g * f_k_h * 0.01 * (1 - Math.Exp(m * (g_h - k_g * 100 - k_h * 100)));
+                }, 0, 2 * Math.PI, nPhi) * sinθ;
+            }, inner, outer, nTheta);
         }
 
         /// <summary>
@@ -2727,51 +2840,15 @@ new(4.86738014,0.319974401,4.58872425,
             PointD g2 = g.ToPointD, h2 = h.ToPointD;
             return GaussLegendreRule.Integrate((phi, r) =>
             {
-                var k = r * new PointD(Math.Cos(phi), Math.Sin(phi));
+                var (sinφ, cosφ) = Math.SinCos(phi);
+                var k = r * new PointD(cosφ, sinφ);
                 double k_g = (k - g2).Length2 / 4, k_h = (k - h2).Length2 / 4;
                 return Factor(k_g) * Factor(k_h) * (1 - Math.Exp(m * (g_h - k_g - k_h))) * r;
             }
             , 0, 2 * Math.PI, k0 * Math.Tan(inner), k0 * Math.Tan(outer), 40) * gamma / k0 / 2;
         }
         #endregion
-
-        /// <summary>
-        /// 電子線用のコンストラクタ (3 lorentian, 3 gaussian)
-        /// </summary>
-        /// <param name="a1"></param>
-        /// <param name="a2"></param>
-        /// <param name="a3"></param>
-        /// <param name="b1"></param>
-        /// <param name="b2"></param>
-        /// <param name="b3"></param>
-        /// <param name="c1"></param>
-        /// <param name="c2"></param>
-        /// <param name="c3"></param>
-        /// <param name="d1"></param>
-        /// <param name="d2"></param>
-        /// <param name="d3"></param>
-        public ES(double a1, double a2, double a3, double b1, double b2, double b3, double c1, double c2, double c3, double d1, double d2, double d3)
-        {
-            Factor = new Func<double, double>(
-                S2 => a1 / (S2 + b1) + a2 / (S2 + b2) + a3 / (S2 + b3) + c1 * Math.Exp(-S2 * d1) + c2 * Math.Exp(-S2 * d2) + c3 * Math.Exp(-S2 * d3));
-
-            double a0 = UniversalConstants.a0 * 1E10, e = UniversalConstants.Ry * 2 * a0;
-            double sqrtB1 = Math.Sqrt(b1), sqrtB2 = Math.Sqrt(b2), sqrtB3 = Math.Sqrt(b3);
-            double pi2 = Math.PI * Math.PI;
-            double d1inv = 1 / d1, d2inv = 1 / d2, d3inv = 1 / d3;
-            ProjectedPotential = new Func<double, double>(
-                r => r <= 0 ? 0 :
-                    2 * pi2 * a0 * e * (
-                2 * a1 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB1) +
-                2 * a2 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB2) +
-                2 * a3 * MathNet.Numerics.SpecialFunctions.BesselK0(2 * Math.PI * r * sqrtB3) +
-                c1 * d1inv * Math.Exp(-pi2 * r * r * d1inv) +
-                c2 * d2inv * Math.Exp(-pi2 * r * r * d2inv) +
-                c3 * d3inv * Math.Exp(-pi2 * r * r * d3inv)
-                ));
-        }
-
-        #endregion
+       
     }
     #endregion
 
@@ -7491,10 +7568,12 @@ new(4.86738014,0.319974401,4.58872425,
             reader.Close();
 
             int i = 0;
-            int z = Convert.ToInt32(str[1].Split([','])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
+            //260317Cl 変更: Convert.ToInt32 → int.Parse
+            int z = int.Parse(str[1].Split([','])[0].Replace("<b>Z=", ""));//2行目から原子番号を読み取る
                                                                                  //edgeの値を読み取る
             while (!str[i].Contains("edge")) i++;
-            var edgeNo = Convert.ToInt32(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]);
+            //260317Cl 変更: Convert.ToInt32 → int.Parse
+            var edgeNo = int.Parse(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]);
             i += 2;
 
             var edge = new List<PointD>();
@@ -7524,10 +7603,11 @@ new(4.86738014,0.319974401,4.58872425,
                         {
                             sbEdgeEnergy.AppendLine("case XrayLineEdge." + temp[j] + ": return " + temp[j + 1] + ";");
                             //edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), -((temp[j][0] - 'J') * 10 + (temp[j].Length > 1 ? temp[j][1] - '0' : 0))));
-                            if (edge.Count == 0 || (edge.Count != 0 && edge[^1].X != Convert.ToDouble(temp[j + 1])))
+                            //260317Cl 変更: Convert.ToDouble → double.Parse
+                            if (edge.Count == 0 || (edge.Count != 0 && edge[^1].X != double.Parse(temp[j + 1])))
                             {
-                                edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.PositiveInfinity));
-                                edge.Add(new PointD(Convert.ToDouble(temp[j + 1]), double.NegativeInfinity));
+                                edge.Add(new PointD(double.Parse(temp[j + 1]), double.PositiveInfinity));
+                                edge.Add(new PointD(double.Parse(temp[j + 1]), double.NegativeInfinity));
                             }
                         }
                     i++;
@@ -7540,7 +7620,11 @@ new(4.86738014,0.319974401,4.58872425,
             var absorp = new List<PointD>([.. edge]);
             sbAbsorption.AppendLine("new PointD[][]{");
             for (; i < str.Count - 1; i++)
-                absorp.Add(new PointD(Convert.ToDouble(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[0]), Convert.ToDouble(str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries)[1])));
+                //260317Cl 変更: Convert.ToDouble → double.Parse、Splitの重複呼出しを解消
+                {
+                    var parts = str[i].Split([' '], StringSplitOptions.RemoveEmptyEntries);
+                    absorp.Add(new PointD(double.Parse(parts[0]), double.Parse(parts[1])));
+                }
             //sbAbsorption.AppendLine("new PointD(" + str[i].Replace("  ", ",") + ")" + (i == str.Count - 2 ? "" : ","));
             absorp.Sort();
             var pf = new List<Profile> { new() };
