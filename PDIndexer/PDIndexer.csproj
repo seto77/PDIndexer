@@ -3,9 +3,10 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net10.0-windows10.0.26100.0</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.17.0019</AssemblyVersion>
-    <FileVersion>2026.3.17.0019</FileVersion>
+    <AssemblyVersion>2026.3.20.0027</AssemblyVersion>
+    <FileVersion>2026.3.20.0027</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
