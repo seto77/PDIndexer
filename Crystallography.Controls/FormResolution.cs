@@ -3,19 +3,24 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormResolution : Form
+    public partial class FormResolution : CaptureFormBase
     {
         public FormResolution()
         {
             InitializeComponent();
         }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public int ResolutionWidth
         {
             set { numericUpDownWidth.Value = (decimal)value; }
             get { return (int)numericUpDownWidth.Value; }
         }
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public int ResolutionHeight
         {
             set { numericUpDownHeight.Value = (decimal)value; }

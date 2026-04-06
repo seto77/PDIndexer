@@ -11,11 +11,9 @@ using V4 = OpenTK.Mathematics.Vector4d;
 
 namespace Crystallography.Controls;
 
-public partial class PoleFigureControl2 : UserControl
+public partial class PoleFigureControl2 : CaptureUserControlBase
 {
-    /// <summary>
-    /// Histogram:方位ベクトルの頻度,  Average: 方位ベクトルが持つ値の平均値,  Sigma: 方位ベクトルが持つ値の標準偏差 
-    /// </summary>
+    /// <summary>Histogram:方位ベクトルの頻度,  Average: 方位ベクトルが持つ値の平均値,  Sigma: 方位ベクトルが持つ値の標準偏差</summary>
     public enum DrawingModeEnum { Histogram, Average, Sigma }
 
     public DrawingModeEnum DrawingMode = DrawingModeEnum.Histogram;
@@ -31,9 +29,10 @@ public partial class PoleFigureControl2 : UserControl
     private Color NinetyDegColor = Color.FromArgb(0, 0, 255);
 
     private V4[] vectors = null;
-    /// <summary>
-    /// 
-    /// </summary>
+    /// <summary></summary>
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public V4[] Vectors
     {
         get => vectors;
@@ -106,9 +105,7 @@ public partial class PoleFigureControl2 : UserControl
     }
 
     Lock lockObj = new();
-    /// <summary>
-    /// Vectors[]から、Pixels[][]を生成
-    /// </summary>
+    /// <summary>Vectors[]から、Pixels[][]を生成</summary>
     private void GeneratePixels()
     {
         if (vectors == null) return;

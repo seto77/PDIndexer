@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class FormAtomDetailedInfo : Form
+    public partial class FormAtomDetailedInfo : CaptureFormBase
     {
         public FormAtomDetailedInfo()
         {
@@ -13,6 +13,9 @@ namespace Crystallography.Controls
 
         private Atoms atoms = new Atoms();
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public Atoms Atoms
         {
             set { atoms = value; setAtomDetailedInfo(); }

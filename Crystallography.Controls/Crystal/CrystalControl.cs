@@ -14,13 +14,11 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [TypeConverter(typeof(DefinitionOrderTypeConverter))]
-public partial class CrystalControl : UserControl
+public partial class CrystalControl : CaptureUserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -38,43 +36,59 @@ public partial class CrystalControl : UserControl
         }
     }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool SymmetryInformationVisible { set => FormSymmetryInformation.Visible = value; get => FormSymmetryInformation.Visible; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ScatteringFactorVisible { set { FormScatteringFactor.Visible = value; } get => FormScatteringFactor.Visible; }
 
     public bool StrainControlVisible { get => formStrain.Visible; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ColorControlVisible { get => colorControl.Visible; set => colorControl.Visible = value; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public int SymmetrySeriesNumber { get => symmetryControl.SymmetrySeriesNumber; set => symmetryControl.SymmetrySeriesNumber = value; }
 
     #region Tabページの表示/非表示プロパティ
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleBasicInfoTab { set { visibleBasicInfoTab = value; setTabPages(); } get => visibleBasicInfoTab; }
     private bool visibleBasicInfoTab = true;
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleAtomTab { set { visibleAtomTab = value; setTabPages(); } get => visibleAtomTab; }
     private bool visibleAtomTab = true;
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleElasticityTab { set { visibleElasticityTab = value; setTabPages(); } get { return visibleElasticityTab; } }
     private bool visibleElasticityTab = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleBondsPolyhedraTab { set { visibleBondsPolyhedraTab = value; setTabPages(); } get => visibleBondsPolyhedraTab; }
     private bool visibleBondsPolyhedraTab = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleReferenceTab { set { visibleReferenceTab = value; setTabPages(); } get => visibleReferenceTab; }
     private bool visibleReferenceTab = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleEOSTab { set { visibleEOSTab = value; setTabPages(); } get => visibleEOSTab; }
     private bool visibleEOSTab = true;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleStressStrainTab { set { visibleStressStrainTab = value; setTabPages(); } get => visibleStressStrainTab; }
     private bool visibleStressStrainTab = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisiblePolycrystallineTab { set { visiblePolycrystallineTab = value; setTabPages(); } get => visiblePolycrystallineTab; }
     private bool visiblePolycrystallineTab = false;
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleBoundTab { set { visibleBoundTab = value; setTabPages(); } get => visibleBoundTab; }
     private bool visibleBoundTab = false;
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VisibleLatticePlaneTab { set { visibleLatticePlaneTab = value; setTabPages(); } get => visibleLatticePlaneTab; }
     private bool visibleLatticePlaneTab = false;
 
@@ -128,13 +142,21 @@ public partial class CrystalControl : UserControl
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
     { get => symmetryControl.CellConstants; set => symmetryControl.CellConstants = value; }
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double A { get => symmetryControl.A; set => symmetryControl.A = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double B { get => symmetryControl.B; set => symmetryControl.B = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double C { get => symmetryControl.C; set => symmetryControl.C = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Alpha { get => symmetryControl.Alpha; set => symmetryControl.Alpha = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Beta { get => symmetryControl.Beta; set => symmetryControl.Beta = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Gamma { get => symmetryControl.Gamma; set => symmetryControl.Gamma = value; }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public int DefaultTabNumber { set => tabControl.SelectedIndex = value; get => tabControl.SelectedIndex; }
 
     public event EventHandler CrystalChanged;
@@ -185,9 +207,7 @@ public partial class CrystalControl : UserControl
 
     #region Crystalクラスを画面下部 から生成/にセット
 
-    /// <summary>
-    /// Formに入力された内容からからCrystalを生成する
-    /// </summary>
+    /// <summary>Formに入力された内容からからCrystalを生成する</summary>
     public void GenerateFromInterface()
     {
         if (SkipEvent) return;
@@ -236,9 +256,7 @@ public partial class CrystalControl : UserControl
     }
 
 
-    /// <summary>
-    /// 現在のCrystalによってFormのテキストボックスなどを設定する。
-    /// </summary>
+    /// <summary>現在のCrystalによってFormのテキストボックスなどを設定する。</summary>
     /// <param name="ChangeCellParameter">コントロールのCellParaterを変化させた時はFalse</param>
     public void SetToInterface(bool ChangeCellParameter = true)
     {
@@ -336,9 +354,7 @@ public partial class CrystalControl : UserControl
     #endregion
 
     #region EOS関連
-    /// <summary>
-    /// 外部から呼び出されることを想定.
-    /// </summary>
+    /// <summary>外部から呼び出されることを想定.</summary>
     public void CalculateEOS() => eosControl.CalculatePressure();
 
     #endregion EOSタブの入力設定
@@ -378,9 +394,7 @@ public partial class CrystalControl : UserControl
     #endregion Polycrystalline関連
 
     #region poleFigureの右クリックメニュー
-    /// <summary>
-    /// poleFigureの右クリックメニュー　読み込み
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　読み込み</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void readToolStripMenuItem_Click(object sender, EventArgs e)
@@ -413,9 +427,7 @@ public partial class CrystalControl : UserControl
         //}
     }
 
-    /// <summary>
-    /// poleFigureの右クリックメニュー　書き込み
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　書き込み</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void saveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -445,9 +457,7 @@ public partial class CrystalControl : UserControl
         //}
     }
 
-    /// <summary>
-    /// poleFigureの右クリックメニュー　ctfファイルで出力
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　ctfファイルで出力</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void asCTFFilecomatibleToCHANNEL5FileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -511,9 +521,7 @@ public partial class CrystalControl : UserControl
         #endregion Export CTFボタンをクリックしたときの動作
     }
 
-    /// <summary>
-    /// poleFigureの右クリックメニュー　txtファイルで出力
-    /// </summary>
+    /// <summary>poleFigureの右クリックメニュー　txtファイルで出力</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void asTXTFileAllEulerAngleAndDensityToolStripMenuItem_Click(object sender, EventArgs e)
@@ -679,9 +687,7 @@ public partial class CrystalControl : UserControl
         formStrain.Visible = !formStrain.Visible;
     }
 
-    /// <summary>
-    /// 空間群P1に変換
-    /// </summary>
+    /// <summary>空間群P1に変換</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void convertToP1ToolStripMenuItem_Click(object sender, EventArgs e) => toSuperStructure(1, 1, 1);
@@ -702,9 +708,7 @@ public partial class CrystalControl : UserControl
     #region 空間群を変換する関数群
 
     #region 超構造に変換
-    /// <summary>
-    /// 超構造に変換する関数
-    /// </summary>
+    /// <summary>超構造に変換する関数</summary>
     /// <param name="_u"></param>
     /// <param name="_v"></param>
     /// <param name="_w"></param>
@@ -778,9 +782,7 @@ public partial class CrystalControl : UserControl
             toAnotherSpaceGroup(dlg.SeriesNum);
     }
 
-    /// <summary>
-    /// 別の空間群に変換する 原子位置や格子定数のエラー、および熱散漫散乱因子の変換は考慮していない
-    /// </summary>
+    /// <summary>別の空間群に変換する 原子位置や格子定数のエラー、および熱散漫散乱因子の変換は考慮していない</summary>
     public void toAnotherSpaceGroup(int destNum)
     {
         var srcNum = symmetryControl.SymmetrySeriesNumber;
@@ -907,9 +909,7 @@ public partial class CrystalControl : UserControl
     #endregion
 
     #region Monoclinic用の関数
-    /// <summary>
-    /// 原子位置を変換。Monoclinic用。
-    /// </summary>
+    /// <summary>原子位置を変換。Monoclinic用。</summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
     /// <param name="z"></param>

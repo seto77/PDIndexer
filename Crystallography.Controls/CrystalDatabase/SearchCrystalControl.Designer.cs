@@ -2,14 +2,10 @@
 
 partial class SearchCrystalControl
 {
-    /// <summary> 
-    /// 必要なデザイナー変数です。
-    /// </summary>
+    /// <summary>必要なデザイナー変数です。</summary>
     private System.ComponentModel.IContainer components = null;
 
-    /// <summary> 
-    /// 使用中のリソースをすべてクリーンアップします。
-    /// </summary>
+    /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
     /// <param name="disposing">マネージド リソースを破棄する場合は true を指定し、その他の場合は false を指定します。</param>
     protected override void Dispose(bool disposing)
     {
@@ -154,6 +150,7 @@ partial class SearchCrystalControl
         // 
         // groupBoxCellParameter
         // 
+        captureExtender.SetCapture(groupBoxCellParameter, true);
         groupBoxCellParameter.Controls.Add(numericBoxCellGamma);
         groupBoxCellParameter.Controls.Add(numericBoxCellAngleErr);
         groupBoxCellParameter.Controls.Add(numericBoxCellLengthErr);
@@ -279,6 +276,7 @@ partial class SearchCrystalControl
         // 
         // groupBoxDspacing
         // 
+        captureExtender.SetCapture(groupBoxDspacing, true);
         groupBoxDspacing.Controls.Add(checkBoxD3);
         groupBoxDspacing.Controls.Add(numericBoxD3Err);
         groupBoxDspacing.Controls.Add(numericBoxD2Err);
@@ -418,6 +416,7 @@ partial class SearchCrystalControl
         // 
         // groupBoxDensity
         // 
+        captureExtender.SetCapture(groupBoxDensity, true);
         groupBoxDensity.Controls.Add(numericBoxDensity);
         groupBoxDensity.Controls.Add(numericBoxDensityErr);
         resources.ApplyResources(groupBoxDensity, "groupBoxDensity");
@@ -472,7 +471,9 @@ partial class SearchCrystalControl
         // SearchCrystalControl
         // 
         resources.ApplyResources(this, "$this");
+        AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
         AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+        captureExtender.SetCapture(this, true);
         Controls.Add(flowLayoutPanel1);
         Controls.Add(buttonSearch);
         Name = "SearchCrystalControl";

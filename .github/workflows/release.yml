@@ -1,0 +1,216 @@
+# 260406Cl PDIndexer 用に CSManager の release.yml を改修
+name: Build And Release Installer
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - "PDIndexer/Version.cs"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "既存リリースを削除してリビルドする"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Parse version and check if release needed
+        id: version
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $content = Get-Content "PDIndexer\Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') {
+            throw "Could not parse version from Version.cs History."
+          }
+          $ver = $Matches[1]
+          $tag = "v.$ver"
+
+          # 同じバージョンのリリースが既にあればスキップ (force 時は既存を削除して続行)
+          gh release view $tag 2>&1 | Out-Null
+          $releaseExists = ($LASTEXITCODE -eq 0)
+          $global:LASTEXITCODE = 0
+          if ($releaseExists) {
+            if ("${{ inputs.force }}" -eq "true") {
+              Write-Host "Force mode: deleting existing release $tag..."
+              gh release delete $tag --yes
+              git push origin :refs/tags/$tag 2>&1 | Out-Null
+              $global:LASTEXITCODE = 0
+            } else {
+              Write-Host "Release $tag already exists. Skipping."
+              "needed=false" >> $env:GITHUB_OUTPUT
+              return
+            }
+          }
+
+          # History の先頭行をリリースノートに使う
+          $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
+          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
+          $historyLine | Set-Content -Path $notesPath -Encoding UTF8
+
+          # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
+          $now = [System.DateTime]::UtcNow
+          $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
+
+          Write-Host "New version detected: $ver (tag: $tag, assembly: $assemblyVer)"
+          "needed=true"           >> $env:GITHUB_OUTPUT
+          "version=$ver"          >> $env:GITHUB_OUTPUT
+          "tag=$tag"              >> $env:GITHUB_OUTPUT
+          "product_version=0.$ver" >> $env:GITHUB_OUTPUT
+          "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
+          "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
+
+      # ---- 以降、新バージョンが検出されたときのみ実行 ----
+
+      - name: Setup .NET 10
+        if: steps.version.outputs.needed == 'true'
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore managed dependencies
+        if: steps.version.outputs.needed == 'true'
+        shell: pwsh
+        run: dotnet restore PDIndexer\PDIndexer.csproj
+
+      - name: Find devenv.com
+        if: steps.version.outputs.needed == 'true'
+        id: devenv
+        shell: pwsh
+        run: |
+          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
+          if (-not $devenvExe) { throw "Visual Studio was not found." }
+          $cli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
+          if (-not (Test-Path $cli)) { throw "devenv.com was not found." }
+          Write-Host "devenv.com: $cli"
+          "cli=$cli" >> $env:GITHUB_OUTPUT
+
+      - name: Build managed application
+        if: steps.version.outputs.needed == 'true'
+        shell: pwsh
+        run: dotnet build PDIndexer\PDIndexer.csproj -c Release -p:Platform=x64 -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }} --no-restore
+
+      - name: Update installer version in vdproj
+        if: steps.version.outputs.needed == 'true'
+        shell: pwsh
+        run: |
+          $vdproj = Get-Content "PDindexerSetup\PDindexerSetup.vdproj" -Raw
+
+          # ProductVersion を更新 (例: "8:0.4.459")
+          $vdproj = $vdproj -replace '"ProductVersion" = "8:[^"]*"', '"ProductVersion" = "8:${{ steps.version.outputs.product_version }}"'
+
+          # ProductCode と PackageCode を新しい GUID に更新 (UpgradeCode は変えない)
+          $newProductCode = ([guid]::NewGuid()).ToString("B").ToUpper()
+          $newPackageCode = ([guid]::NewGuid()).ToString("B").ToUpper()
+          $vdproj = $vdproj -replace '"ProductCode" = "8:\{[^}]+\}"', "`"ProductCode`" = `"8:$newProductCode`""
+          $vdproj = $vdproj -replace '"PackageCode" = "8:\{[^}]+\}"', "`"PackageCode`" = `"8:$newPackageCode`""
+
+          Set-Content "PDindexerSetup\PDindexerSetup.vdproj" $vdproj -NoNewline
+          Write-Host "ProductVersion = 0.${{ steps.version.outputs.version }}"
+          Write-Host "ProductCode    = $newProductCode"
+          Write-Host "PackageCode    = $newPackageCode"
+
+      - name: Disable out-of-proc setup project build
+        if: steps.version.outputs.needed == 'true'
+        shell: pwsh
+        run: |
+          $visualStudioRoot = "HKCU:\Software\Microsoft\VisualStudio"
+          Get-ChildItem $visualStudioRoot -ErrorAction SilentlyContinue |
+            Where-Object { $_.PSChildName -like '17.0*_Config' -or $_.PSChildName -like '18.0*_Config' } |
+            ForEach-Object {
+              $key = Join-Path $_.PSPath "MSBuild"
+              if (-not (Test-Path $key)) { New-Item -Path $key -Force | Out-Null }
+              New-ItemProperty -Path $key -Name DisableOutOfProcBuild -PropertyType DWord -Value 1 -Force | Out-Null
+              Write-Host "Set DisableOutOfProcBuild=1 at $key"
+            }
+
+      - name: Create installer-only solution
+        if: steps.version.outputs.needed == 'true'
+        id: pack_solution
+        shell: pwsh
+        run: |
+          $solutionPath = Join-Path (Get-Location) "PDindexerSetup.CI.sln"
+          @'
+          Microsoft Visual Studio Solution File, Format Version 12.00
+          # Visual Studio Version 18
+          VisualStudioVersion = 18.1.11304.174
+          MinimumVisualStudioVersion = 10.0.40219.1
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDIndexer", "PDIndexer\PDIndexer.csproj", "{D29BD053-810E-4797-9985-00CD41BC60FD}"
+          EndProject
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography", "Crystallography\Crystallography.csproj", "{86A34A41-32E0-4033-9C4E-4BFA8C621E90}"
+          EndProject
+          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{B6074BFC-0860-42DE-9525-49D97029F595}"
+          EndProject
+          Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDindexerSetup", "PDindexerSetup\PDindexerSetup.vdproj", "{80EF52B7-7757-4980-A47A-0772A37AB289}"
+          EndProject
+          Global
+          	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+          		Release|x64 = Release|x64
+          	EndGlobalSection
+          	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+          		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|x64.ActiveCfg = Release|x64
+          		{86A34A41-32E0-4033-9C4E-4BFA8C621E90}.Release|x64.ActiveCfg = Release|x64
+          		{B6074BFC-0860-42DE-9525-49D97029F595}.Release|x64.ActiveCfg = Release|x64
+          		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x64.ActiveCfg = Release
+          		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x64.Build.0 = Release
+          	EndGlobalSection
+          EndGlobal
+          '@ | Set-Content -Path $solutionPath -Encoding ASCII
+          "path=$solutionPath" >> $env:GITHUB_OUTPUT
+
+      - name: Build installer with Visual Studio
+        id: build_installer
+        if: steps.version.outputs.needed == 'true'
+        timeout-minutes: 10
+        shell: pwsh
+        run: |
+          $log = Join-Path $env:RUNNER_TEMP "devenv-setup.log"
+          & "${{ steps.devenv.outputs.cli }}" "${{ steps.pack_solution.outputs.path }}" /Build "Release|x64" /Project "PDindexerSetup" /Out $log
+          $exitCode = $LASTEXITCODE
+          if (Test-Path $log) { Get-Content $log }
+          if ($exitCode -ne 0) { throw "PDindexerSetup build failed (exit $exitCode)." }
+
+          # MSI の存在確認
+          $msi = Get-ChildItem -Path "PDindexerSetup" -Filter "PDindexerSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $msi) { throw "PDindexerSetup.msi was not found." }
+          Write-Host "MSI built: $($msi.FullName)"
+          "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
+
+      - name: Upload workflow artifacts
+        if: steps.version.outputs.needed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: PDIndexer-installer-v.${{ steps.version.outputs.version }}
+          path: ${{ steps.build_installer.outputs.msi_path }}
+
+      - name: Create tag and GitHub Release
+        if: steps.version.outputs.needed == 'true'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $tag = "${{ steps.version.outputs.tag }}"
+
+          # タグを作成してプッシュ
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag -a $tag -m "PDIndexer ${{ steps.version.outputs.version }}"
+          git push origin $tag
+
+          # リリースを作成して MSI を添付
+          gh release create $tag `
+            "${{ steps.build_installer.outputs.msi_path }}" `
+            --title "PDIndexer $tag" `
+            --notes-file "${{ steps.version.outputs.notes_path }}"

@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class DistributionGraphControl : UserControl
+    public partial class DistributionGraphControl : CaptureUserControlBase
     {
         public DistributionGraphControl()
         {
@@ -50,6 +50,8 @@ namespace Crystallography.Controls
 
         private int selectedIndex = -1;
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public int SelectedIndex
         {
             set { selectedIndex = value; }
@@ -58,6 +60,7 @@ namespace Crystallography.Controls
 
         private Color lineColor;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Color LineColor
         {
             set { lineColor = value; Draw(); }
@@ -66,6 +69,7 @@ namespace Crystallography.Controls
 
         private Color divisionLineColor = Color.Gray;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Color DivisionLineColor
         {
             set { divisionLineColor = value; Draw(); }
@@ -74,6 +78,7 @@ namespace Crystallography.Controls
 
         private Color divisionSubLineColor = Color.LightGray;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Color DivisionSubLineColor
         {
             set { divisionSubLineColor = value; Draw(); }
@@ -82,6 +87,8 @@ namespace Crystallography.Controls
 
         private SolidBrush divisionTextBrush = new SolidBrush(Color.Black);
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public SolidBrush DivisionTextBrush
         {
             set { divisionTextBrush = value; Draw(); }
@@ -90,6 +97,8 @@ namespace Crystallography.Controls
 
         private Color backgroundColor = Color.White;
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Color BackgroundColor
         {
             set { backgroundColor = value; Draw(); }
@@ -98,9 +107,8 @@ namespace Crystallography.Controls
 
         private bool xLog = false;
 
-        /// <summary>
-        /// X軸が対数スケールかどうか
-        /// </summary>
+        /// <summary>X軸が対数スケールかどうか</summary>
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool XLog
         {
             set { xLog = value; }
@@ -109,9 +117,8 @@ namespace Crystallography.Controls
 
         private bool yLog = false;
 
-        /// <summary>
-        /// Y軸が対数スケールかどうか
-        /// </summary>
+        /// <summary>Y軸が対数スケールかどうか</summary>
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool YLog
         {
             set { yLog = value; Initialize(); Draw(); }
@@ -120,9 +127,8 @@ namespace Crystallography.Controls
 
         private bool isIntegerX = false;
 
-        /// <summary>
-        /// Xの値が０以上の整数値かどうか
-        /// </summary>
+        /// <summary>Xの値が０以上の整数値かどうか</summary>
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool IsIntegerX
         {
             set { isIntegerX = value; Initialize(); Draw(); }
@@ -131,21 +137,22 @@ namespace Crystallography.Controls
 
         private bool isIntegerY = false;
 
-        /// <summary>
-        /// Yの値が０以上の整数値かどうか
-        /// </summary>
+        /// <summary>Yの値が０以上の整数値かどうか</summary>
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool IsIntegerY
         {
             set { isIntegerY = value; Initialize(); Draw(); }
             get { return isIntegerY; }
         }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public string LabelX
         {
             set { labelX.Text = value; }
             get { return labelX.Text; }
         }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public string LabelY
         {
             set { labelY.Text = value; }
@@ -154,6 +161,7 @@ namespace Crystallography.Controls
 
         private Point originPosition = new Point(40, 20);
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Point OriginPosition
         {
             set { originPosition = value; Draw(); }
@@ -162,6 +170,7 @@ namespace Crystallography.Controls
 
         private float bottomMargin = 0f;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public float BottomMargin
         {
             set { bottomMargin = value; Draw(); }
@@ -170,6 +179,7 @@ namespace Crystallography.Controls
 
         private float leftMargin = 0f;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public float LeftMargin
         {
             set { leftMargin = value; Draw(); }
@@ -220,9 +230,7 @@ namespace Crystallography.Controls
             this.yLog = yLog;
         }
 
-        /// <summary>
-        /// 対数目盛の場合は軸を変換する
-        /// </summary>
+        /// <summary>対数目盛の場合は軸を変換する</summary>
         private void convertAxis()
         {
             destData = new Ellipse[data.Count];
@@ -254,9 +262,7 @@ namespace Crystallography.Controls
             }
         }
 
-        /// <summary>
-        /// 現在のプロファイルから描画範囲の上限、下限値を設定　描画範囲は変更しない
-        /// </summary>
+        /// <summary>現在のプロファイルから描画範囲の上限、下限値を設定　描画範囲は変更しない</summary>
         private void setDrawRangeLimit()
         {
             if (destData == null || destData.Length < 2) return;
@@ -322,9 +328,7 @@ namespace Crystallography.Controls
             }
         }
 
-        /// <summary>
-        /// 描画範囲Upper,LowerをMaximal,Minimalに設定する
-        /// </summary>
+        /// <summary>描画範囲Upper,LowerをMaximal,Minimalに設定する</summary>
         private void resetDrawRange()
         {
             LowerX = MinimalX;

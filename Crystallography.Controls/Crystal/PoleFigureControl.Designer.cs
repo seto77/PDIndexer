@@ -2,14 +2,10 @@
 {
     partial class PoleFigureControl
     {
-        /// <summary> 
-        /// 必要なデザイナー変数です。
-        /// </summary>
+        /// <summary>必要なデザイナー変数です。</summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
+        /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
         /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
         protected override void Dispose(bool disposing)
         {
@@ -26,6 +22,10 @@
         /// デザイナー サポートに必要なメソッドです。このメソッドの内容を 
         /// コード エディターで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox1 -> groupBoxProjectionScheme
+        // groupBox2 -> groupBoxProjectionObject
+        // groupBox3 -> groupBoxAppearance
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PoleFigureControl));
@@ -49,15 +49,15 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBoxAppearance = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxScale = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.comboBoxColor = new System.Windows.Forms.ComboBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBoxProjectionObject = new System.Windows.Forms.GroupBox();
             this.labelU = new System.Windows.Forms.Label();
             this.labelW = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxProjectionScheme = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
@@ -67,9 +67,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxAppearance.SuspendLayout();
+            this.groupBoxProjectionObject.SuspendLayout();
+            this.groupBoxProjectionScheme.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -264,29 +264,29 @@
             // 
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.BackColor = System.Drawing.SystemColors.Control;
-            this.tabPage1.Controls.Add(this.groupBox3);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.groupBoxAppearance);
+            this.tabPage1.Controls.Add(this.groupBoxProjectionObject);
+            this.tabPage1.Controls.Add(this.groupBoxProjectionScheme);
             this.tabPage1.Controls.Add(this.pictureBox1);
             this.tabPage1.Controls.Add(this.pictureBox);
             this.tabPage1.Name = "tabPage1";
             // 
-            // groupBox3
+            // groupBoxAppearance
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.comboBoxScale);
-            this.groupBox3.Controls.Add(this.numericUpDownResolution);
-            this.groupBox3.Controls.Add(this.textBox1);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.comboBoxColor);
-            this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.numericUpDownFullscale);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.TabStop = false;
+            resources.ApplyResources(this.groupBoxAppearance, "groupBoxAppearance");
+            this.groupBoxAppearance.Controls.Add(this.label7);
+            this.groupBoxAppearance.Controls.Add(this.comboBoxScale);
+            this.groupBoxAppearance.Controls.Add(this.numericUpDownResolution);
+            this.groupBoxAppearance.Controls.Add(this.textBox1);
+            this.groupBoxAppearance.Controls.Add(this.label9);
+            this.groupBoxAppearance.Controls.Add(this.comboBoxColor);
+            this.groupBoxAppearance.Controls.Add(this.label1);
+            this.groupBoxAppearance.Controls.Add(this.label2);
+            this.groupBoxAppearance.Controls.Add(this.label4);
+            this.groupBoxAppearance.Controls.Add(this.numericUpDownFullscale);
+            this.groupBoxAppearance.Controls.Add(this.label3);
+            this.groupBoxAppearance.Name = "groupBoxAppearance";
+            this.groupBoxAppearance.TabStop = false;
             // 
             // label7
             // 
@@ -320,19 +320,19 @@
             this.comboBoxColor.Name = "comboBoxColor";
             this.comboBoxColor.SelectedIndexChanged += new System.EventHandler(this.Combobox_SelectedIndexChanged);
             // 
-            // groupBox2
+            // groupBoxProjectionObject
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
-            this.groupBox2.Controls.Add(this.radioButtonAxes);
-            this.groupBox2.Controls.Add(this.radioButtonPlanes);
-            this.groupBox2.Controls.Add(this.numericUpDown2);
-            this.groupBox2.Controls.Add(this.numericUpDown1);
-            this.groupBox2.Controls.Add(this.numericUpDown3);
-            this.groupBox2.Controls.Add(this.labelU);
-            this.groupBox2.Controls.Add(this.labelW);
-            this.groupBox2.Controls.Add(this.labelV);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.TabStop = false;
+            resources.ApplyResources(this.groupBoxProjectionObject, "groupBoxProjectionObject");
+            this.groupBoxProjectionObject.Controls.Add(this.radioButtonAxes);
+            this.groupBoxProjectionObject.Controls.Add(this.radioButtonPlanes);
+            this.groupBoxProjectionObject.Controls.Add(this.numericUpDown2);
+            this.groupBoxProjectionObject.Controls.Add(this.numericUpDown1);
+            this.groupBoxProjectionObject.Controls.Add(this.numericUpDown3);
+            this.groupBoxProjectionObject.Controls.Add(this.labelU);
+            this.groupBoxProjectionObject.Controls.Add(this.labelW);
+            this.groupBoxProjectionObject.Controls.Add(this.labelV);
+            this.groupBoxProjectionObject.Name = "groupBoxProjectionObject";
+            this.groupBoxProjectionObject.TabStop = false;
             // 
             // labelU
             // 
@@ -344,17 +344,18 @@
             resources.ApplyResources(this.labelW, "labelW");
             this.labelW.Name = "labelW";
             // 
-            // groupBox1
+            // groupBoxProjectionScheme
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
-            this.groupBox1.Controls.Add(this.radioButtonInversePoleFigure);
-            this.groupBox1.Controls.Add(this.radioButtonPoleFigure);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.TabStop = false;
+            resources.ApplyResources(this.groupBoxProjectionScheme, "groupBoxProjectionScheme");
+            this.groupBoxProjectionScheme.Controls.Add(this.radioButtonInversePoleFigure);
+            this.groupBoxProjectionScheme.Controls.Add(this.radioButtonPoleFigure);
+            this.groupBoxProjectionScheme.Name = "groupBoxProjectionScheme";
+            this.groupBoxProjectionScheme.TabStop = false;
             // 
             // PoleFigureControl
             // 
             resources.ApplyResources(this, "$this");
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.flowLayoutPanel1);
@@ -369,12 +370,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxAppearance.ResumeLayout(false);
+            this.groupBoxAppearance.PerformLayout();
+            this.groupBoxProjectionObject.ResumeLayout(false);
+            this.groupBoxProjectionObject.PerformLayout();
+            this.groupBoxProjectionScheme.ResumeLayout(false);
+            this.groupBoxProjectionScheme.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -402,9 +403,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxAppearance;
+        private System.Windows.Forms.GroupBox groupBoxProjectionObject;
+        private System.Windows.Forms.GroupBox groupBoxProjectionScheme;
         private System.Windows.Forms.Label label7;
         public System.Windows.Forms.ComboBox comboBoxScale;
         private System.Windows.Forms.Label label9;

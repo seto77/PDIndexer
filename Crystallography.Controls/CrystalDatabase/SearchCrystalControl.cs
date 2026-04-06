@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class SearchCrystalControl : UserControl
+public partial class SearchCrystalControl : CaptureUserControlBase
 {
     #region フィールド、プロパティ、イベント
 
     private CrystalDatabaseControl crystalDatabaseControl;
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public CrystalDatabaseControl CrystalDatabaseControl
     {
         get => crystalDatabaseControl;
@@ -351,9 +354,7 @@ public partial class SearchCrystalControl : UserControl
 
     }
 
-    /// <summary>
-    /// テキストボックスで改行文字が押されたときに検索を実行する
-    /// </summary>
+    /// <summary>テキストボックスで改行文字が押されたときに検索を実行する</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void textBoxSearchName_KeyDown(object sender, KeyEventArgs e)
@@ -362,3 +363,4 @@ public partial class SearchCrystalControl : UserControl
             buttonSearch_Click(sender, e);
     }
 }
+

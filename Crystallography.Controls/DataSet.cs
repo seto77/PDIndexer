@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Numerics;
 using System.Threading;
-using System.Text.RegularExpressions;
 
 namespace Crystallography.Controls;
 
@@ -223,9 +222,7 @@ public partial class DataSet
         public void SetFlag(int i, bool flag) => Rows[i][columnFlag] = flag;
         public bool GetFlag(int i) => (bool)Rows[i][columnFlag];
 
-        /// <summary>
-        /// 引数はbindingSourceMain.Currentオブジェクト. 
-        /// </summary>
+        /// <summary>引数はbindingSourceMain.Currentオブジェクト.</summary>
         /// <param name="o"></param>
         /// <returns></returns>
         public Crystal2 Get(object o) => o is DataRowView drv && drv.Row is DataTableCrystalDatabaseRow r ? Crystal2.Deserialize((byte[]) r[Crystal2Column]) : null;
@@ -241,9 +238,7 @@ public partial class DataSet
 
         public void Remove(int i) => Rows.RemoveAt(i);
 
-        /// <summary>
-        /// srcCrystalは bindingSourceMain.Currentオブジェクト. 
-        /// </summary>
+        /// <summary>srcCrystalは bindingSourceMain.Currentオブジェクト.</summary>
         /// <param name="srcCrystal"></param>
         /// <param name="targetCrystal"></param>
         public void Replace(object srcCrystal, Crystal2 targetCrystal)
@@ -276,8 +271,14 @@ public partial class DataSet
             (dr.CrystalSystem, dr.PointGroup, dr.SpaceGroup) = Coeff[c.sym];
 
             var auth = c.auth;
-            if (Regex.Matches(auth, ",").Count > 1)
-                auth = auth.Split(",")[0] + ", et al.";
+            //if (Regex.Matches(auth, ",").Count > 1)
+            //    auth = auth.Split(",")[0] + ", et al.";
+            if (!string.IsNullOrEmpty(auth)) // (260322Ch) Regex と Split を避けて CreateRow 内の著者整形コストを削減
+            {
+                var firstComma = auth.IndexOf(',');
+                if (firstComma >= 0 && auth.IndexOf(',', firstComma + 1) >= 0)
+                    auth = auth[..firstComma] + ", et al.";
+            }
             dr.Authors = auth;
 
             dr.Title = c.sect;

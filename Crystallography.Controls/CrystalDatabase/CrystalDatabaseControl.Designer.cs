@@ -2,14 +2,10 @@
 {
     partial class CrystalDatabaseControl
     {
-        /// <summary> 
-        /// 必要なデザイナー変数です。
-        /// </summary>
+        /// <summary>必要なデザイナー変数です。</summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
+        /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
         /// <param name="disposing">マネージド リソースを破棄する場合は true を指定し、その他の場合は false を指定します。</param>
         protected override void Dispose(bool disposing)
         {
@@ -303,6 +299,7 @@
             bindingNavigator.AddNewItem = null;
             bindingNavigator.BindingSource = bindingSource;
             bindingNavigator.CountItem = bindingNavigatorCountItem;
+            bindingNavigator.DeleteItem = null;
             bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
             bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem });
             bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
@@ -455,6 +452,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            captureExtender.SetCapture(this, true);
             Controls.Add(dataGridView);
             Controls.Add(bindingNavigator);
             Controls.Add(panel1);

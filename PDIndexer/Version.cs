@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History = 
         "History" +
+        "\r\n ver4.460(2026/04/06) Reduced the size of the installer package." +
         "\r\n ver4.459(2026/03/17) Overall code optimization and removal of deprecated syntax." +
         "\r\n ver4.458(2025/12/12) Fixed bugs on program update and crystal database functions." +
         "\r\n ver4.457(2025/12/03) Added new horizontal axis units (centi-degree and milli-radian)." +

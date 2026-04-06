@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class AtomCoordinateTable : UserControl
+public partial class AtomCoordinateTable : CaptureUserControlBase
 {
     readonly ReaderWriterLockSlim rwLock = new();
     private bool skipEvent { get; set; } = false;
@@ -19,6 +19,8 @@ public partial class AtomCoordinateTable : UserControl
 
     private Crystal crystal;
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         set
@@ -39,6 +41,9 @@ public partial class AtomCoordinateTable : UserControl
 
     private Atoms atom;
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Atoms Atom
     {
         set

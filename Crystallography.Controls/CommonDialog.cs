@@ -4,10 +4,12 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class CommonDialog : Form
+    public partial class CommonDialog : CaptureFormBase
     {
         #region プロパティ,フィールド
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public (string Text, double Ratio) Progress
         {
             set
@@ -21,6 +23,8 @@ namespace Crystallography.Controls
 
         public enum DialogModeEnum { Initialize, History, License, Hint }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public DialogModeEnum DialogMode
         {
             set
@@ -36,7 +40,9 @@ namespace Crystallography.Controls
 
                     labelSoftwareAndVersion.Visible = true;
 
-                    ClientSize = new Size(420, progressBar.Height + flowLayoutPanelSoftwareInformation.Height + panelOK.Height);
+                    //ClientSize = new Size(420, progressBar.Height + flowLayoutPanelSoftwareInformation.Height + panelOK.Height); // 260331Cl 変更: DPIスケーリング対応
+                    var dpiScale1 = DeviceDpi / 96f;
+                    ClientSize = new Size((int)(420 * dpiScale1), progressBar.Height + flowLayoutPanelSoftwareInformation.Height + panelOK.Height);
                 }
                 else
                 {
@@ -65,12 +71,16 @@ namespace Crystallography.Controls
                             setToolTips();
                         }
                     }
-                    Size = new Size(400, 200);
+                    //Size = new Size(400, 200); // 260331Cl 変更: DPIスケーリング対応
+                    var dpiScale2 = DeviceDpi / 96f;
+                    Size = new Size((int)(400 * dpiScale2), (int)(200 * dpiScale2));
                 }
             }
         }
 
         private string software = "";// e.g., "ReciPro"　
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string Software
         {
             get => software;
@@ -82,6 +92,8 @@ namespace Crystallography.Controls
         }
 
         private string versionAndDate = "";// e.g., "ver3.456(2020/12/31)"　
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string VersionAndDate
         {
             get => versionAndDate;
@@ -94,24 +106,31 @@ namespace Crystallography.Controls
                 labelCopyRight.Text = "Copyright(C) 2005-" + year;
             }
         }
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string Author
         {
             get => labelAuthor.Text;
             set => labelAuthor.Text = value;
         }
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string History { get; set; } = "";
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public string[] Hint { set { hint = value; setToolTips(); } get => hint; }
         private string[] hint;
 
+        [System.ComponentModel.Browsable(false)]
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public bool AutomaticallyClose { set => checkBoxCloseWindow.Checked = value; get => checkBoxCloseWindow.Checked; }
 
         private int currentHintIndex = 0;
 
-        /// <summary>
-        /// License
-        /// </summary>
+        /// <summary>License</summary>
         static public string License =
             "Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation" +
             " files(the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy," +

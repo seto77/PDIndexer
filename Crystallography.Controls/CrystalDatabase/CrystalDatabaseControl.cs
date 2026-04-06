@@ -18,8 +18,8 @@ using System.Security.Cryptography;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Windows.Media.Core;
-using Windows.UI.StartScreen;
+//using Windows.Media.Core; //260405Cl 未使用のWinRT参照を削除
+//using Windows.UI.StartScreen; //260405Cl 未使用のWinRT参照を削除
 using ZLinq;
 using static Community.CsharpSqlite.Sqlite3;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -27,16 +27,23 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Crystallography.Controls;
 
-public partial class CrystalDatabaseControl : UserControl
+public partial class CrystalDatabaseControl : CaptureUserControlBase
 {
     //260317Cl 追加 HttpClientはstaticで再利用
     private static readonly HttpClient httpClient = new() { Timeout = TimeSpan.FromSeconds(600) };
 
     #region フィールド、メソッド、イベント
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool AMCSD_Checked {get=> checkBoxAMCSD.Checked; set => checkBoxAMCSD.Checked = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool COD_Checked {get=>checkBoxCOD.Checked;set => checkBoxCOD.Checked = value; }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool AMCSD_Has_Read { get; set; }=false;
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool COD_Has_Read { get; set; }=false;
 
     public static string UserAppDataPath => new DirectoryInfo(Application.UserAppDataPath).Parent.FullName + @"\";
@@ -53,10 +60,13 @@ public partial class CrystalDatabaseControl : UserControl
         bindingSource.ResetBindings(false);
     }
 
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public string SearchFilter { get => bindingSource.Filter; set => bindingSource.Filter = value; }
 
     public string DataTypeFilter;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public float FontSize
     {
         get => dataGridView.Font.Size;
@@ -78,6 +88,7 @@ public partial class CrystalDatabaseControl : UserControl
     public delegate void ProgressChangedEventHandler(object sender, double progress, string message);
     public event ProgressChangedEventHandler ProgressChanged;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool DatabaseSelection { set => flowLayoutPanelDatabase.Visible = value; get => flowLayoutPanelDatabase.Visible; }
 
     #endregion
@@ -167,6 +178,9 @@ public partial class CrystalDatabaseControl : UserControl
             {
                 using var fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
                 int flag = readByte(fs), total = readInt(fs);
+                Table.BeginLoadData(); //260322Cl 追加 DataTable一括読み込み高速化
+                try //260322Cl 追加
+                {
                 if (flag == 100)//単一ファイルの時
                 {
                     while (fs.Length != fs.Position)
@@ -198,6 +212,8 @@ public partial class CrystalDatabaseControl : UserControl
                     });
 
                 }
+                } //260322Cl 追加
+                finally { Table.EndLoadData(); } //260322Cl 追加
             }
             else
                 return;
@@ -356,9 +372,7 @@ public partial class CrystalDatabaseControl : UserControl
     #endregion
 
     #region データベースの正当性チェック
-    /// <summary>
-    /// 分割ファイルがきちんと作成されているかをチェック
-    /// </summary>
+    /// <summary>分割ファイルがきちんと作成されているかをチェック</summary>
     /// <param name="filename"></param>
     /// <returns></returns>
     public (bool Valid, int DataNum, int FileNum, long[] FileSizes, byte[][] CheckSums) CheckDatabaseFiles(string filename, bool checkMD5)
@@ -407,9 +421,7 @@ public partial class CrystalDatabaseControl : UserControl
     }
 
 
-    /// <summary>
-    /// MD5を取得する。ファイルが存在しない場合は null を返す。
-    /// </summary>
+    /// <summary>MD5を取得する。ファイルが存在しない場合は null を返す。</summary>
     /// <param name="path"></param>
     /// <returns></returns>
     private static byte[] getMD5(string path)
@@ -438,9 +450,7 @@ public partial class CrystalDatabaseControl : UserControl
 
     #region CODデータベースのダウロード、読み込み
 
-    /// <summary>
-    /// CODデータベースのダウンロードや読み込み. 
-    /// </summary>
+    /// <summary>CODデータベースのダウンロードや読み込み.</summary>
     /// <returns>正常に読み込めた場合はtrue, 途中キャンセルされたりした場合はfalse</returns>
     public bool ReadCOD()
     {
@@ -578,9 +588,7 @@ public partial class CrystalDatabaseControl : UserControl
     #endregion
 
     #region 進捗状況のレポート
-    /// <summary>
-    /// 進捗状況
-    /// </summary>
+    /// <summary>進捗状況</summary>
     /// <param name="current"></param>
     /// <param name="total"></param>
     /// <param name="elapsedMilliseconds">経過時間</param>
@@ -731,4 +739,5 @@ public partial class CrystalDatabaseControl : UserControl
 
     }
 }
+
 

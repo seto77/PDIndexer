@@ -2,14 +2,10 @@
 {
     partial class ScalablePictureBoxAdvanced
     {
-        /// <summary> 
-        /// 必要なデザイナー変数です。
-        /// </summary>
+        /// <summary>必要なデザイナー変数です。</summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
+        /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
         /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
         protected override void Dispose(bool disposing)
         {
@@ -42,6 +38,9 @@
             label9 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
             flowLayoutPanelGradient = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelPolarity = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelScale = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelColor = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelImageFilter = new System.Windows.Forms.FlowLayoutPanel();
             flowLayoutPanelDustScratches = new System.Windows.Forms.FlowLayoutPanel();
             checkBoxDustScratches = new System.Windows.Forms.CheckBox();
@@ -56,7 +55,7 @@
             toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             scalablePictureBox = new ScalablePictureBox();
             graphControl = new GraphControl();
-            panel1 = new System.Windows.Forms.Panel();
+            panelMagInfo = new System.Windows.Forms.Panel();
             label14 = new System.Windows.Forms.Label();
             labelResolution = new System.Windows.Forms.Label();
             buttonMag1 = new System.Windows.Forms.Button();
@@ -69,12 +68,15 @@
             label1 = new System.Windows.Forms.Label();
             panelTrackBar.SuspendLayout();
             flowLayoutPanelGradient.SuspendLayout();
+            flowLayoutPanelPolarity.SuspendLayout();
+            flowLayoutPanelScale.SuspendLayout();
+            flowLayoutPanelColor.SuspendLayout();
             flowLayoutPanelImageFilter.SuspendLayout();
             flowLayoutPanelDustScratches.SuspendLayout();
             flowLayoutPanelGaussianBlur2.SuspendLayout();
             panelUpper.SuspendLayout();
             statusStrip1.SuspendLayout();
-            panel1.SuspendLayout();
+            panelMagInfo.SuspendLayout();
             SuspendLayout();
             // 
             // panelTrackBar
@@ -180,13 +182,31 @@
             // flowLayoutPanelGradient
             // 
             resources.ApplyResources(flowLayoutPanelGradient, "flowLayoutPanelGradient");
-            flowLayoutPanelGradient.Controls.Add(label5);
-            flowLayoutPanelGradient.Controls.Add(comboBoxGradient);
-            flowLayoutPanelGradient.Controls.Add(label7);
-            flowLayoutPanelGradient.Controls.Add(comboBoxScale1);
-            flowLayoutPanelGradient.Controls.Add(label9);
-            flowLayoutPanelGradient.Controls.Add(comboBoxScale2);
+            flowLayoutPanelGradient.Controls.Add(flowLayoutPanelPolarity);
+            flowLayoutPanelGradient.Controls.Add(flowLayoutPanelScale);
+            flowLayoutPanelGradient.Controls.Add(flowLayoutPanelColor);
             flowLayoutPanelGradient.Name = "flowLayoutPanelGradient";
+            // 
+            // flowLayoutPanelPolarity
+            // 
+            resources.ApplyResources(flowLayoutPanelPolarity, "flowLayoutPanelPolarity");
+            flowLayoutPanelPolarity.Controls.Add(label5);
+            flowLayoutPanelPolarity.Controls.Add(comboBoxGradient);
+            flowLayoutPanelPolarity.Name = "flowLayoutPanelPolarity";
+            // 
+            // flowLayoutPanelScale
+            // 
+            resources.ApplyResources(flowLayoutPanelScale, "flowLayoutPanelScale");
+            flowLayoutPanelScale.Controls.Add(label7);
+            flowLayoutPanelScale.Controls.Add(comboBoxScale1);
+            flowLayoutPanelScale.Name = "flowLayoutPanelScale";
+            // 
+            // flowLayoutPanelColor
+            // 
+            resources.ApplyResources(flowLayoutPanelColor, "flowLayoutPanelColor");
+            flowLayoutPanelColor.Controls.Add(label9);
+            flowLayoutPanelColor.Controls.Add(comboBoxScale2);
+            flowLayoutPanelColor.Name = "flowLayoutPanelColor";
             // 
             // flowLayoutPanelImageFilter
             // 
@@ -221,7 +241,6 @@
             numericBoxDustScratchesRadius.Minimum = 0D;
             numericBoxDustScratchesRadius.Name = "numericBoxDustScratchesRadius";
             numericBoxDustScratchesRadius.RadianValue = 0.017453292519943295D;
-            numericBoxDustScratchesRadius.RoundErrorAccuracy = -1;
             numericBoxDustScratchesRadius.ShowUpDown = true;
             numericBoxDustScratchesRadius.SkipEventDuringInput = false;
             numericBoxDustScratchesRadius.ThonsandsSeparator = true;
@@ -240,7 +259,6 @@
             numericBoxDustScratchesThreshold.Minimum = 0D;
             numericBoxDustScratchesThreshold.Name = "numericBoxDustScratchesThreshold";
             numericBoxDustScratchesThreshold.RadianValue = 0.052359877559829883D;
-            numericBoxDustScratchesThreshold.RoundErrorAccuracy = -1;
             numericBoxDustScratchesThreshold.ShowUpDown = true;
             numericBoxDustScratchesThreshold.SkipEventDuringInput = false;
             numericBoxDustScratchesThreshold.SmartIncrement = true;
@@ -273,7 +291,6 @@
             numericBoxGaussianFWHM.Minimum = 0D;
             numericBoxGaussianFWHM.Name = "numericBoxGaussianFWHM";
             numericBoxGaussianFWHM.RadianValue = 0.017453292519943295D;
-            numericBoxGaussianFWHM.RoundErrorAccuracy = -1;
             numericBoxGaussianFWHM.ShowUpDown = true;
             numericBoxGaussianFWHM.SkipEventDuringInput = false;
             numericBoxGaussianFWHM.SmartIncrement = true;
@@ -316,7 +333,6 @@
             scalablePictureBox.Name = "scalablePictureBox";
             scalablePictureBox.ShowAreaRectangle = false;
             scalablePictureBox.ShowRimRentangle = false;
-            scalablePictureBox.Title = ((string, System.Drawing.Font, System.Drawing.Color, System.Drawing.Color))resources.GetObject("scalablePictureBox.Title");
             scalablePictureBox.TitleVisible = false;
             scalablePictureBox.VerticalFlip = false;
             scalablePictureBox.Zoom = 128D;
@@ -332,7 +348,7 @@
             graphControl.AllowMouseOperation = true;
             graphControl.AxisLineColor = System.Drawing.Color.Gray;
             graphControl.AxisTextColor = System.Drawing.Color.Black;
-            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControl.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
             graphControl.AxisXTextVisible = true;
             graphControl.AxisYTextVisible = true;
             graphControl.BackgroundColor = System.Drawing.Color.White;
@@ -341,11 +357,9 @@
             graphControl.DivisionLineXVisible = true;
             graphControl.DivisionLineYVisible = true;
             resources.ApplyResources(graphControl, "graphControl");
-            graphControl.DrawingRange = (RectangleD)resources.GetObject("graphControl.DrawingRange");
             graphControl.FixRangeHorizontal = false;
             graphControl.FixRangeVertical = false;
             graphControl.GraphTitle = "";
-            graphControl.Interpolation = false;
             graphControl.IsIntegerX = false;
             graphControl.IsIntegerY = false;
             graphControl.LabelX = "X:";
@@ -364,11 +378,9 @@
             graphControl.MousePositionYDigit = -1;
             graphControl.Name = "graphControl";
             graphControl.OriginPosition = new System.Drawing.Point(20, 20);
-            graphControl.Profile = null;
-            graphControl.Smoothing = false;
             graphControl.UnitX = "";
             graphControl.UnitY = "";
-            graphControl.UpperPanelFont = new System.Drawing.Font("メイリオ", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            graphControl.UpperPanelFont = new System.Drawing.Font("メイリオ", 7F);
             graphControl.UpperPanelVisible = false;
             graphControl.UpperX = 1D;
             graphControl.UpperY = 1D;
@@ -378,20 +390,20 @@
             graphControl.YLog = true;
             graphControl.LinePositionChanged += graphControl_LinePositionChanged;
             // 
-            // panel1
+            // panelMagInfo
             // 
-            resources.ApplyResources(panel1, "panel1");
-            panel1.Controls.Add(label14);
-            panel1.Controls.Add(labelResolution);
-            panel1.Controls.Add(buttonMag1);
-            panel1.Controls.Add(buttonMag2);
-            panel1.Controls.Add(buttonMag4);
-            panel1.Controls.Add(buttonMag_2);
-            panel1.Controls.Add(buttonMag_4);
-            panel1.Controls.Add(buttonMag_8);
-            panel1.Controls.Add(buttonMag_16);
-            panel1.Controls.Add(label1);
-            panel1.Name = "panel1";
+            resources.ApplyResources(panelMagInfo, "panelMagInfo");
+            panelMagInfo.Controls.Add(label14);
+            panelMagInfo.Controls.Add(labelResolution);
+            panelMagInfo.Controls.Add(buttonMag1);
+            panelMagInfo.Controls.Add(buttonMag2);
+            panelMagInfo.Controls.Add(buttonMag4);
+            panelMagInfo.Controls.Add(buttonMag_2);
+            panelMagInfo.Controls.Add(buttonMag_4);
+            panelMagInfo.Controls.Add(buttonMag_8);
+            panelMagInfo.Controls.Add(buttonMag_16);
+            panelMagInfo.Controls.Add(label1);
+            panelMagInfo.Name = "panelMagInfo";
             // 
             // label14
             // 
@@ -460,9 +472,10 @@
             // ScalablePictureBoxAdvanced
             // 
             resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(scalablePictureBox);
-            Controls.Add(panel1);
+            Controls.Add(panelMagInfo);
             Controls.Add(panelTrackBar);
             Controls.Add(graphControl);
             Controls.Add(flowLayoutPanelGradient);
@@ -476,6 +489,12 @@
             panelTrackBar.PerformLayout();
             flowLayoutPanelGradient.ResumeLayout(false);
             flowLayoutPanelGradient.PerformLayout();
+            flowLayoutPanelPolarity.ResumeLayout(false);
+            flowLayoutPanelPolarity.PerformLayout();
+            flowLayoutPanelScale.ResumeLayout(false);
+            flowLayoutPanelScale.PerformLayout();
+            flowLayoutPanelColor.ResumeLayout(false);
+            flowLayoutPanelColor.PerformLayout();
             flowLayoutPanelImageFilter.ResumeLayout(false);
             flowLayoutPanelImageFilter.PerformLayout();
             flowLayoutPanelDustScratches.ResumeLayout(false);
@@ -486,8 +505,8 @@
             panelUpper.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            panelMagInfo.ResumeLayout(false);
+            panelMagInfo.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -521,7 +540,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelMagInfo;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label labelResolution;
         private System.Windows.Forms.Button buttonMag1;
@@ -532,5 +551,8 @@
         private System.Windows.Forms.Button buttonMag_8;
         private System.Windows.Forms.Button buttonMag_16;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelPolarity;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelScale;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelColor;
     }
 }

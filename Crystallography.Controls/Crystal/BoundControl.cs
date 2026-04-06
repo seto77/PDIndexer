@@ -9,12 +9,17 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [System.Runtime.InteropServices.Guid("99E21F3C-6FF6-4084-9097-A88566830F29")]
-public partial class BoundControl : UserControl
+public partial class BoundControl : CaptureUserControlBase
 {
     #region プロパティ
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
     // public Crystal Crystal { get; set; } = null;
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public Crystal Crystal
     {
         get => crystal; 
@@ -78,9 +83,7 @@ public partial class BoundControl : UserControl
     #endregion
 
     #region データベース操作
-    /// <summary>
-    /// データベースにboundsを追加する
-    /// </summary>
+    /// <summary>データベースにboundsを追加する</summary>
     /// <param name="bounds"></param>
     public void Add(Bound bounds)
     {
@@ -93,9 +96,7 @@ public partial class BoundControl : UserControl
 
     }
 
-    /// <summary>
-    /// データベースにboundsを追加する
-    /// </summary>
+    /// <summary>データベースにboundsを追加する</summary>
     /// <param name="bounds"></param>
     public void AddRange(IEnumerable<Bound> bounds)
     {
@@ -111,9 +112,7 @@ public partial class BoundControl : UserControl
         }
     }
 
-    /// <summary>
-    /// データベースのi番目の原子を削除
-    /// </summary>
+    /// <summary>データベースのi番目の原子を削除</summary>
     /// <param name="i"></param>
     public void Delete(int i)
     {
@@ -122,9 +121,7 @@ public partial class BoundControl : UserControl
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベースのi番目の原子を置換
-    /// </summary>
+    /// <summary>データベースのi番目の原子を置換</summary>
     /// <param name="bonds"></param>
     /// <param name="i"></param>
     public void Replace(Bound bounds, int i)
@@ -134,9 +131,7 @@ public partial class BoundControl : UserControl
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベースの境界面を全て削除する
-    /// </summary>
+    /// <summary>データベースの境界面を全て削除する</summary>
     public void Clear()
     {
         table.Clear();
@@ -144,9 +139,7 @@ public partial class BoundControl : UserControl
         ItemsChanged?.Invoke(this, new EventArgs());
     }
 
-    /// <summary>
-    /// データベース中の全ての境界面を取得
-    /// </summary>
+    /// <summary>データベース中の全ての境界面を取得</summary>
     /// <returns></returns>
     public Bound[] GetAll()
     {
@@ -160,9 +153,7 @@ public partial class BoundControl : UserControl
 
     #region 追加/削除/置換 ボタン
 
-    /// <summary>
-    /// 追加ボタン
-    /// </summary>
+    /// <summary>追加ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonAdd_Click(object sender, System.EventArgs e)
@@ -175,9 +166,7 @@ public partial class BoundControl : UserControl
         }
     }
 
-    /// <summary>
-    /// 変更ボタン
-    /// </summary>
+    /// <summary>変更ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonChange_Click(object sender, System.EventArgs e)
@@ -190,9 +179,7 @@ public partial class BoundControl : UserControl
         }
     }
 
-    /// <summary>
-    /// 削除ボタン
-    /// </summary>
+    /// <summary>削除ボタン</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void buttonDelete_Click(object sender, System.EventArgs e)
@@ -300,3 +287,4 @@ public partial class BoundControl : UserControl
 
 
 }
+

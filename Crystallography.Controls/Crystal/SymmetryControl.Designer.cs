@@ -2,14 +2,10 @@
 {
     partial class SymmetryControl
     {
-        /// <summary> 
-        /// 必要なデザイナー変数です。
-        /// </summary>
+        /// <summary>必要なデザイナー変数です。</summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
+        /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
         /// <param name="disposing">マネージド リソースを破棄する場合は true を指定し、その他の場合は false を指定します。</param>
         protected override void Dispose(bool disposing)
         {
@@ -26,11 +22,13 @@
         /// デザイナー サポートに必要なメソッドです。このメソッドの内容を 
         /// コード エディターで変更しないでください。
         /// </summary>
+        // (260323Ch) renamed numeric container controls:
+        // groupBox4 -> groupBoxCellConstants
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SymmetryControl));
-            groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBoxCellConstants = new System.Windows.Forms.GroupBox();
             panel2 = new System.Windows.Forms.Panel();
             radioButtonNanoMeter = new System.Windows.Forms.RadioButton();
             radioButtonAngstrom = new System.Windows.Forms.RadioButton();
@@ -73,20 +71,21 @@
             comboBoxSearchResult = new System.Windows.Forms.ComboBox();
             panel1 = new System.Windows.Forms.Panel();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            groupBox4.SuspendLayout();
+            groupBoxCellConstants.SuspendLayout();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             groupBoxSymmetry.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox4
+            // groupBoxCellConstants
             // 
-            groupBox4.Controls.Add(panel2);
-            groupBox4.Controls.Add(checkBoxShowError);
-            groupBox4.Controls.Add(tableLayoutPanel1);
-            resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Name = "groupBox4";
-            groupBox4.TabStop = false;
+            resources.ApplyResources(groupBoxCellConstants, "groupBoxCellConstants");
+            groupBoxCellConstants.Controls.Add(panel2);
+            groupBoxCellConstants.Controls.Add(checkBoxShowError);
+            groupBoxCellConstants.Controls.Add(tableLayoutPanel1);
+            groupBoxCellConstants.Name = "groupBoxCellConstants";
+            groupBoxCellConstants.TabStop = false;
+            toolTip.SetToolTip(groupBoxCellConstants, resources.GetString("groupBoxCellConstants.ToolTip"));
             // 
             // panel2
             // 
@@ -95,11 +94,13 @@
             panel2.Controls.Add(radioButtonAngstrom);
             panel2.Controls.Add(label1);
             panel2.Name = "panel2";
+            toolTip.SetToolTip(panel2, resources.GetString("panel2.ToolTip"));
             // 
             // radioButtonNanoMeter
             // 
             resources.ApplyResources(radioButtonNanoMeter, "radioButtonNanoMeter");
             radioButtonNanoMeter.Name = "radioButtonNanoMeter";
+            toolTip.SetToolTip(radioButtonNanoMeter, resources.GetString("radioButtonNanoMeter.ToolTip"));
             radioButtonNanoMeter.UseVisualStyleBackColor = true;
             radioButtonNanoMeter.CheckedChanged += radioButtonNanoMeter_CheckedChanged;
             // 
@@ -109,6 +110,7 @@
             radioButtonAngstrom.Checked = true;
             radioButtonAngstrom.Name = "radioButtonAngstrom";
             radioButtonAngstrom.TabStop = true;
+            toolTip.SetToolTip(radioButtonAngstrom, resources.GetString("radioButtonAngstrom.ToolTip"));
             radioButtonAngstrom.UseVisualStyleBackColor = true;
             // 
             // label1
@@ -153,16 +155,19 @@
             tableLayoutPanel1.Controls.Add(numericBoxAErr, 2, 0);
             tableLayoutPanel1.Controls.Add(labelLengthUnitA, 3, 0);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
+            toolTip.SetToolTip(tableLayoutPanel1, resources.GetString("tableLayoutPanel1.ToolTip"));
             // 
             // label48
             // 
             resources.ApplyResources(label48, "label48");
             label48.Name = "label48";
+            toolTip.SetToolTip(label48, resources.GetString("label48.ToolTip"));
             // 
             // label46
             // 
             resources.ApplyResources(label46, "label46");
             label46.Name = "label46";
+            toolTip.SetToolTip(label46, resources.GetString("label46.ToolTip"));
             // 
             // numericBoxBeta
             // 
@@ -196,6 +201,7 @@
             // 
             resources.ApplyResources(label47, "label47");
             label47.Name = "label47";
+            toolTip.SetToolTip(label47, resources.GetString("label47.ToolTip"));
             // 
             // numericBoxGammaErr
             // 
@@ -209,12 +215,14 @@
             numericBoxGammaErr.SkipEventDuringInput = false;
             numericBoxGammaErr.SmartIncrement = true;
             numericBoxGammaErr.TabStop = false;
+            toolTip.SetToolTip(numericBoxGammaErr, resources.GetString("numericBoxGammaErr.ToolTip1"));
             numericBoxGammaErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // label23
             // 
             resources.ApplyResources(label23, "label23");
             label23.Name = "label23";
+            toolTip.SetToolTip(label23, resources.GetString("label23.ToolTip"));
             // 
             // numericBoxAlphaErr
             // 
@@ -228,6 +236,7 @@
             numericBoxAlphaErr.SkipEventDuringInput = false;
             numericBoxAlphaErr.SmartIncrement = true;
             numericBoxAlphaErr.TabStop = false;
+            toolTip.SetToolTip(numericBoxAlphaErr, resources.GetString("numericBoxAlphaErr.ToolTip1"));
             numericBoxAlphaErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // numericBoxBetaErr
@@ -242,6 +251,7 @@
             numericBoxBetaErr.SkipEventDuringInput = false;
             numericBoxBetaErr.SmartIncrement = true;
             numericBoxBetaErr.TabStop = false;
+            toolTip.SetToolTip(numericBoxBetaErr, resources.GetString("numericBoxBetaErr.ToolTip1"));
             numericBoxBetaErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // numericBoxA
@@ -262,11 +272,13 @@
             // 
             resources.ApplyResources(label26, "label26");
             label26.Name = "label26";
+            toolTip.SetToolTip(label26, resources.GetString("label26.ToolTip"));
             // 
             // labelLengthUnitC
             // 
             resources.ApplyResources(labelLengthUnitC, "labelLengthUnitC");
             labelLengthUnitC.Name = "labelLengthUnitC";
+            toolTip.SetToolTip(labelLengthUnitC, resources.GetString("labelLengthUnitC.ToolTip"));
             // 
             // numericBoxGamma
             // 
@@ -286,6 +298,7 @@
             // 
             resources.ApplyResources(labelLengthUnitB, "labelLengthUnitB");
             labelLengthUnitB.Name = "labelLengthUnitB";
+            toolTip.SetToolTip(labelLengthUnitB, resources.GetString("labelLengthUnitB.ToolTip"));
             // 
             // numericBoxBErr
             // 
@@ -299,6 +312,7 @@
             numericBoxBErr.SkipEventDuringInput = false;
             numericBoxBErr.SmartIncrement = true;
             numericBoxBErr.TabStop = false;
+            toolTip.SetToolTip(numericBoxBErr, resources.GetString("numericBoxBErr.ToolTip1"));
             numericBoxBErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // numericBoxB
@@ -319,21 +333,25 @@
             // 
             resources.ApplyResources(label24, "label24");
             label24.Name = "label24";
+            toolTip.SetToolTip(label24, resources.GetString("label24.ToolTip"));
             // 
             // label25
             // 
             resources.ApplyResources(label25, "label25");
             label25.Name = "label25";
+            toolTip.SetToolTip(label25, resources.GetString("label25.ToolTip"));
             // 
             // label28
             // 
             resources.ApplyResources(label28, "label28");
             label28.Name = "label28";
+            toolTip.SetToolTip(label28, resources.GetString("label28.ToolTip"));
             // 
             // label27
             // 
             resources.ApplyResources(label27, "label27");
             label27.Name = "label27";
+            toolTip.SetToolTip(label27, resources.GetString("label27.ToolTip"));
             // 
             // numericBoxC
             // 
@@ -361,6 +379,7 @@
             numericBoxCErr.SkipEventDuringInput = false;
             numericBoxCErr.SmartIncrement = true;
             numericBoxCErr.TabStop = false;
+            toolTip.SetToolTip(numericBoxCErr, resources.GetString("numericBoxCErr.ToolTip1"));
             numericBoxCErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // numericBoxAErr
@@ -375,15 +394,18 @@
             numericBoxAErr.SkipEventDuringInput = false;
             numericBoxAErr.SmartIncrement = true;
             numericBoxAErr.TabStop = false;
+            toolTip.SetToolTip(numericBoxAErr, resources.GetString("numericBoxAErr.ToolTip1"));
             numericBoxAErr.ValueChanged += numericBoxCellConstants_ValueChanged;
             // 
             // labelLengthUnitA
             // 
             resources.ApplyResources(labelLengthUnitA, "labelLengthUnitA");
             labelLengthUnitA.Name = "labelLengthUnitA";
+            toolTip.SetToolTip(labelLengthUnitA, resources.GetString("labelLengthUnitA.ToolTip"));
             // 
             // groupBoxSymmetry
             // 
+            resources.ApplyResources(groupBoxSymmetry, "groupBoxSymmetry");
             groupBoxSymmetry.Controls.Add(comboBoxSpaceGroup);
             groupBoxSymmetry.Controls.Add(comboBoxPointGroup);
             groupBoxSymmetry.Controls.Add(comboBoxCrystalSystem);
@@ -393,9 +415,9 @@
             groupBoxSymmetry.Controls.Add(textBoxSearch);
             groupBoxSymmetry.Controls.Add(label21);
             groupBoxSymmetry.Controls.Add(comboBoxSearchResult);
-            resources.ApplyResources(groupBoxSymmetry, "groupBoxSymmetry");
             groupBoxSymmetry.Name = "groupBoxSymmetry";
             groupBoxSymmetry.TabStop = false;
+            toolTip.SetToolTip(groupBoxSymmetry, resources.GetString("groupBoxSymmetry.ToolTip"));
             // 
             // comboBoxSpaceGroup
             // 
@@ -465,6 +487,7 @@
             comboBoxSearchResult.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             comboBoxSearchResult.DropDownWidth = 200;
             comboBoxSearchResult.Name = "comboBoxSearchResult";
+            toolTip.SetToolTip(comboBoxSearchResult, resources.GetString("comboBoxSearchResult.ToolTip"));
             comboBoxSearchResult.DrawItem += comboBoxSpaceGroup_DrawItem;
             comboBoxSearchResult.SelectedIndexChanged += comboBoxSearchResult_SelectedIndexChanged;
             // 
@@ -472,17 +495,19 @@
             // 
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
+            toolTip.SetToolTip(panel1, resources.GetString("panel1.ToolTip"));
             // 
             // SymmetryControl
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            Controls.Add(groupBox4);
+            Controls.Add(groupBoxCellConstants);
             Controls.Add(panel1);
             Controls.Add(groupBoxSymmetry);
             Name = "SymmetryControl";
-            groupBox4.ResumeLayout(false);
-            groupBox4.PerformLayout();
+            toolTip.SetToolTip(this, resources.GetString("$this.ToolTip"));
+            groupBoxCellConstants.ResumeLayout(false);
+            groupBoxCellConstants.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
@@ -493,7 +518,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBoxCellConstants;
         private NumericBox numericBoxGammaErr;
         private NumericBox numericBoxBetaErr;
         private NumericBox numericBoxAlphaErr;

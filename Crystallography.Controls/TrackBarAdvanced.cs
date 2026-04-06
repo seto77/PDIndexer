@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls
 {
-    public partial class TrackBarAdvanced : UserControl
+    public partial class TrackBarAdvanced : CaptureUserControlBase
     {
         public TrackBarAdvanced()
         {
@@ -42,39 +42,49 @@ namespace Crystallography.Controls
 
         private bool logScrollBar = false;
 
-        /// <summary>
-        /// スクロールバーがログスケールで動くかどうか
-        /// </summary>
+        /// <summary>スクロールバーがログスケールで動くかどうか</summary>
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool LogScrollBar
         {
             set { logScrollBar = value; }
             get { return logScrollBar; }
         }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public int DecimalPlaces { get { return numericBox.DecimalPlaces; } set { numericBox.DecimalPlaces = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
         public string HeaderText { get { return numericBox.HeaderText; } set { numericBox.HeaderText = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
         public Font HeaderFont { get { return numericBox.HeaderFont; } set { numericBox.HeaderFont = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
         public string FooterText { get { return numericBox.FooterText; } set { numericBox.FooterText = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         [Localizable(true)]
         public Font FooterFont { get { return numericBox.FooterFont; } set { numericBox.FooterFont = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public int NumericBoxSize { get { return splitContainer.SplitterDistance; } set { splitContainer.SplitterDistance = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public Orientation Orientation { get { return splitContainer.Orientation; } set { splitContainer.Orientation = value; } }
 
+        // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public int ControlHeight { get { return this.Height; } set { this.Height = value; } }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public TickStyle TickStyle { get { return trackBar.TickStyle; } set { trackBar.TickStyle = value; } }
 
         private double _value = 0;
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public double Value
         {
             get { return _value; }
@@ -127,6 +137,7 @@ namespace Crystallography.Controls
         }
 
         //private double maximum = 65535;
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public double Maximum
         {
             get => numericBox.Maximum;
@@ -139,6 +150,7 @@ namespace Crystallography.Controls
         }
 
         //private double minimum = 0;
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public double Minimum
         {
             get => numericBox.Minimum;
@@ -150,9 +162,11 @@ namespace Crystallography.Controls
             }
         }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public double UpDown_Increment
         { get => numericBox.UpDown_Increment; set => numericBox.UpDown_Increment = value; }
 
+        [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public bool Smart_Increment
         { get => numericBox.SmartIncrement; set => numericBox.SmartIncrement = value; }
 

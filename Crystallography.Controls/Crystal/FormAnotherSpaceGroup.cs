@@ -4,10 +4,13 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace Crystallography.Controls;
-public partial class FormAnotherSpaceGroup : Form
+public partial class FormAnotherSpaceGroup : CaptureFormBase
 {
 
     private (int SeriesNum, string Notation)[] candidates;
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public (int SeriesNum, string Notation)[] Candidates
     {
         set
@@ -120,3 +123,4 @@ public partial class FormAnotherSpaceGroup : Form
     }
     #endregion
 }
+

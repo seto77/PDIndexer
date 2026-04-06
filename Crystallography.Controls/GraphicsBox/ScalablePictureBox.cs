@@ -12,8 +12,9 @@ using System.Windows.Forms;
 namespace Crystallography.Controls;
 
 [Serializable]
-public partial class ScalablePictureBox : UserControl
+public partial class ScalablePictureBox : CaptureUserControlBase
 {
+    private const string SymbolFontName = "Arial"; // (260322Ch) overlay 描画で使うフォント名を一箇所へ集約する
     public bool SkipEvent = false;
     public bool SkipDrawing = false;
     public enum SymbolShape { Circle, Cross, Line, CircleAndCross };
@@ -59,9 +60,7 @@ public partial class ScalablePictureBox : UserControl
         {
         }
 
-        /// <summary>
-        /// Circleのコンストラクタ
-        /// </summary>
+        /// <summary>Circleのコンストラクタ</summary>
         /// <param name="label"></param>
         /// <param name="position"></param>
         /// <param name="radius"></param>
@@ -89,9 +88,7 @@ public partial class ScalablePictureBox : UserControl
         }
 
 
-        /// <summary>
-        /// Crossのコンストラクタ
-        /// </summary>
+        /// <summary>Crossのコンストラクタ</summary>
         /// <param name="position"></param>
         /// <param name="label"></param>
         /// <param name="color1"></param>
@@ -106,9 +103,7 @@ public partial class ScalablePictureBox : UserControl
             CrossSize = (float)size;
         }
 
-        /// <summary>
-        /// Lineのコンストラクタ
-        /// </summary>
+        /// <summary>Lineのコンストラクタ</summary>
         /// <param name="label"></param>
         /// <param name="position1"></param>
         /// <param name="position2"></param>
@@ -141,9 +136,7 @@ public partial class ScalablePictureBox : UserControl
 
     #region プロパティ
 
-    /// <summary>
-    /// VisualStudioデザイナーの編集の時はTrue
-    /// </summary>
+    /// <summary>VisualStudioデザイナーの編集の時はTrue</summary>
     public new bool DesignMode
     {
         get
@@ -161,23 +154,31 @@ public partial class ScalablePictureBox : UserControl
         }
     }
 
-    /// <summary>
-    /// 上下方向の反転をするかどうか
-    /// </summary>
+    /// <summary>上下方向の反転をするかどうか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool VerticalFlip
     {
-        set { PseudoBitmap.VerticalFlip = value; drawPictureBox(); }
+        // set { PseudoBitmap.VerticalFlip = value; drawPictureBox(); } // (260322Ch) 旧コード: 再描画だけ行い scrollbar 側の状態同期は呼んでいなかった
+        set
+        {
+            PseudoBitmap.VerticalFlip = value; // (260322Ch) flip 状態は PseudoBitmap を正とする
+            ApplyDrawingAreaChange(updateLayout: false, raiseEvent: false); // (260322Ch) 表示反転後も scrollbar と描画範囲を同期する
+        }
         get => PseudoBitmap.VerticalFlip;
     }
 
-    private bool horizontalFlip = false;
+    // private bool horizontalFlip = false; // (260322Ch) 旧コード: HorizontalFlip をローカル field と PseudoBitmap で二重管理していた
 
-    /// <summary>
-    /// 上下方向の反転をするかどうか
-    /// </summary>
+    /// <summary>上下方向の反転をするかどうか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool HorizontalFlip
     {
-        set { PseudoBitmap.HorizontalFlip = value; drawPictureBox(); }
+        // set { PseudoBitmap.HorizontalFlip = value; drawPictureBox(); } // (260322Ch) 旧コード: scrollbar 計算に使う状態と setter の更新先が分かれていた
+        set
+        {
+            PseudoBitmap.HorizontalFlip = value; // (260322Ch) flip 状態を PseudoBitmap 側へ一本化する
+            ApplyDrawingAreaChange(updateLayout: false, raiseEvent: false); // (260322Ch) 反転後の scrollbar 値も合わせて更新する
+        }
         get => PseudoBitmap.HorizontalFlip;
     }
 
@@ -186,25 +187,16 @@ public partial class ScalablePictureBox : UserControl
 
     private double _Zoom = 1;
 
-    /// <summary>
-    /// 表示倍率
-    /// </summary>
+    /// <summary>表示倍率</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Zoom
     {
         set
         {
             if (_Zoom != value)
             {
-                _Zoom = Math.Min(maxZoom, Math.Max(minZoom, value));//閾値を超えないように
-                setControlLayout();//ズームに応じたコントロールをセッティングする
-                skipScrollBarEvent = true;
-                checkInvalidCenter();//center位置が適切かどうかチェックする
-                skipScrollBarEvent = false;
-
-                drawPictureBox();//イメージを描画する
-
-                if (!SkipEvent)
-                    DrawingAreaChanged?.Invoke(this, Zoom, Center);
+                _Zoom = ClampZoomValue(value);// (260322Ch) clamp の責務を共通化する
+                ApplyDrawingAreaChange(updateLayout: true, raiseEvent: true); // (260322Ch) Zoom/Center 更新後の共通反映処理へ集約する
             }
         }
         get { return _Zoom; }
@@ -213,9 +205,7 @@ public partial class ScalablePictureBox : UserControl
     private PointD _Center = new(double.NaN, double.NaN);
 
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
-    /// <summary>
-    /// 中心ピクセル
-    /// </summary>
+    /// <summary>中心ピクセル</summary>
     public PointD Center
     {
         set
@@ -223,13 +213,7 @@ public partial class ScalablePictureBox : UserControl
             if (!value.IsNaN)
             {
                 _Center = value;
-                if (hScrollBar == null || vScrollBar == null || _pseudoBitmap == null) return;
-                skipScrollBarEvent = true;
-                checkInvalidCenter();//center位置が適切かどうかチェックする
-                skipScrollBarEvent = false;
-                drawPictureBox();//イメージを描画する
-                if (!SkipEvent)
-                    DrawingAreaChanged?.Invoke(this, Zoom, Center);
+                ApplyDrawingAreaChange(updateLayout: false, raiseEvent: true); // (260322Ch) Center 更新後の反映処理を共通化する
             }
         }
         get => _Center.IsNaN ? new PointD(0, 0) : _Center;
@@ -241,37 +225,27 @@ public partial class ScalablePictureBox : UserControl
         set
         {
             if (FixZoomAndCenter) return;
-            skipScrollBarEvent = true;
-            _Zoom = Math.Min(maxZoom, Math.Max(minZoom, value.Zoom));//閾値を超えないように
+            _Zoom = ClampZoomValue(value.Zoom); // (260322Ch) zoom clamp のロジックを setter 間で揃える
             _Center = new PointD(value.Center);
-            if (hScrollBar == null || vScrollBar == null || _pseudoBitmap == null) return;
-            setControlLayout();//ズームに応じたコントロールをセッティングする
-            checkInvalidCenter();//center位置が適切かどうかチェックする
-            skipScrollBarEvent = false;
-            drawPictureBox();//イメージを描画する
-
-            DrawingAreaChanged?.Invoke(this, Zoom, Center);
+            ApplyDrawingAreaChange(updateLayout: true, raiseEvent: true); // (260322Ch) ZoomAndCenter 反映も共通経路へ寄せる
         }
         get { return (Zoom, new PointD(Center.X, Center.Y)); }
     }
 
-    /// <summary>
-    /// ZoomやCenter位置を固定するかどうか
-    /// </summary>
+    /// <summary>ZoomやCenter位置を固定するかどうか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FixZoomAndCenter { get; set; } = false;
 
     public Size CanvasSize { get { return pictureBox.ClientSize; } }
 
-    /// <summary>
-    /// フォーカスイベント(Enter)を有効にするかどうか
-    /// </summary>
+    /// <summary>フォーカスイベント(Enter)を有効にするかどうか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool FocusEventEnabled { get; set; } = false;
 
     private bool showFocusRectangle = false;
 
-    /// <summary>
-    /// 外枠を表示する
-    /// </summary>
+    /// <summary>外枠を表示する</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowRimRentangle
     {
         get => showFocusRectangle;
@@ -287,9 +261,8 @@ public partial class ScalablePictureBox : UserControl
 
     private bool showAreaRectangle = false;
 
-    /// <summary>
-    /// AreaRectangleで指定した矩形を表示するかどうか
-    /// </summary>
+    /// <summary>AreaRectangleで指定した矩形を表示するかどうか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowAreaRectangle
     {
         set
@@ -317,14 +290,10 @@ public partial class ScalablePictureBox : UserControl
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public List<Symbol> Symbols { set; get; } = [];
 
-    /// <summary>
-    /// 左上に表示するテキスト
-    /// </summary>
+    /// <summary>左上に表示するテキスト</summary>
     public override string Text { get => label.Text; set => label.Text = value; }
 
-    /// <summary>
-    /// 左上に表示するテキストの色
-    /// </summary>
+    /// <summary>左上に表示するテキストの色</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     public Color TextColor { get => label.ForeColor; set => label.ForeColor = value; }
 
@@ -351,50 +320,127 @@ public partial class ScalablePictureBox : UserControl
         get { return _pseudoBitmap; }
     }
 
-    /// <summary>
-    /// マウスによるスケーリングが可能かどうか
-    /// </summary>
+    /// <summary>マウスによるスケーリングが可能かどうか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool MouseScaling { set; get; }//マウスによるスケーリングが可能かどうか
 
-    /// <summary>
-    /// マウスによる平行移動が可能かどうか
-    /// </summary>
+    /// <summary>マウスによる平行移動が可能かどうか </summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool MouseTranslation { set; get; }
 
     private bool hScrollBarVisible = false;
     private bool vScrollBarVisible = false;
 
-    /// <summary>
-    /// クライアント領域の左上にタイトルを表示するか
-    /// </summary>
+    /// <summary>クライアント領域の左上にタイトルを表示するか</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool TitleVisible { get; set; } = false;
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public (string Text, Font Font, Color Color1, Color Color2) Title { get; set; }
 
 
     #endregion プロパティ
 
-    /// <summary>
-    /// スクロールバーが表示されているかどうかを取得する。読み取り専用.
-    /// </summary>
+    /// <summary>スクロールバーが表示されているかどうかを取得する。読み取り専用.</summary>
     public bool ScrollBarVisible => hScrollBar.Visible || vScrollBarVisible;
 
-    /// <summary>
-    /// 現在のソース画像中の描画範囲 RectangleD　を得る。読み取り専用.
-    /// </summary>
+    /// <summary>現在のソース画像中の描画範囲 RectangleD　を得る。読み取り専用.</summary>
     public RectangleD DrawingArea => PseudoBitmap.GetDrawingArea(Center, Zoom, pictureBox.ClientSize);
 
+    private double ClampZoomValue(double value)
+        => Math.Min(maxZoom, Math.Max(minZoom, value)); // (260322Ch) Zoom の上下限判定を一箇所で扱う
+
+    private void ExecuteWithoutScrollBarEvents(Action action)
+    {
+        skipScrollBarEvent = true; // (260322Ch) scrollbar 同期中の再入を抑止する
+        try
+        {
+            action?.Invoke();
+        }
+        finally
+        {
+            skipScrollBarEvent = false;
+        }
+    }
+
+    private void ApplyDrawingAreaChange(bool updateLayout, bool raiseEvent)
+    {
+        if (hScrollBar == null || vScrollBar == null || _pseudoBitmap == null)
+            return;
+
+        ExecuteWithoutScrollBarEvents(() =>
+        {
+            if (updateLayout)
+                setControlLayout(); // (260322Ch) Zoom 変化時だけ layout 計算を更新する
+            checkInvalidCenter(); // (260322Ch) Center / flip / scrollbar の整合を共通で保つ
+        });
+
+        drawPictureBox();
+
+        if (raiseEvent && !SkipEvent)
+            DrawingAreaChanged?.Invoke(this, Zoom, Center); // (260322Ch) 反映後の通知を一箇所へ集約する
+    }
+
+    private void UpdateScrollBarVisibility()
+    {
+        if (PseudoBitmap == null)
+            return;
+
+        if (hScrollBarVisible != hScrollBar.Visible)
+            hScrollBar.Visible = hScrollBarVisible; // (260322Ch) visible state の差分だけを反映する
+        if (vScrollBarVisible != vScrollBar.Visible)
+            vScrollBar.Visible = vScrollBarVisible;
+    }
+
+    private Image GetCurrentPictureImage()
+    {
+        if (pictureBox.Image != null)
+            return pictureBox.Image; // (260322Ch) 画面上にある最新描画を優先して export に使う
+
+        if (PseudoBitmap == null || pictureBox.ClientSize.Width == 0 || pictureBox.ClientSize.Height == 0 || Center.IsNaN)
+            return null;
+
+        return PseudoBitmap.GetImage(Center, Zoom, pictureBox.ClientSize); // (260322Ch) 画面描画前でも現在条件から再構成できるようにする
+    }
+
+    private void PaintPictureBoxOverlay(Graphics graphics)
+    {
+        using var args = new PaintEventArgs(graphics, pictureBox.ClientRectangle); // (260322Ch) export 時も通常 Paint と同じ overlay を流用する
+        pictureBox_Paint(this, args);
+    }
+
+    private Bitmap CreateSnapshotBitmap()
+    {
+        var width = Math.Max(1, pictureBox.ClientSize.Width);
+        var height = Math.Max(1, pictureBox.ClientSize.Height);
+        var bitmap = new Bitmap(width, height, PixelFormat.Format24bppRgb);
+        using var graphics = Graphics.FromImage(bitmap);
+
+        graphics.Clear(pictureBox.BackColor); // (260322Ch) 画像未設定時でも export 背景を一定にする
+        if (GetCurrentPictureImage() is Image image)
+            graphics.DrawImage(image, new Rectangle(Point.Empty, new Size(width, height)));
+        PaintPictureBoxOverlay(graphics);
+
+        return bitmap;
+    }
+
+    private bool IsPointInExtendedClientArea(PointF pt)
+        => pt.X > -pictureBox.ClientSize.Width
+        && pt.X < 2 * pictureBox.ClientSize.Width
+        && pt.Y > -pictureBox.ClientSize.Height
+        && pt.Y < 2 * pictureBox.ClientSize.Height; // (260322Ch) overlay 描画の可視判定を共通化する
 
 
-    /// <summary>
-    /// centerの位置が適切かどうか(=はみ出していないか)チェックする
-    /// </summary>
+
+    /// <summary>centerの位置が適切かどうか(=はみ出していないか)チェックする</summary>
     /// <returns></returns>
     private void checkInvalidCenter()
     {
         if (_Center.IsNaN) return;
         if (hScrollBarVisible)//水平スクロールバーが出ているとき
         {
-            if (!horizontalFlip)
+            // if (!horizontalFlip) // (260322Ch) 旧コード: local field 参照
+            if (!HorizontalFlip)
             {
                 if (hScrollBar.Maximum - hScrollBar.LargeChange + 1 < _Center.X)
                     _Center.X = hScrollBar.Maximum - hScrollBar.LargeChange + 1;
@@ -445,11 +491,7 @@ public partial class ScalablePictureBox : UserControl
             return;
 
 
-        if (PseudoBitmap != null)
-        {
-            if (hScrollBarVisible != hScrollBar.Visible) hScrollBar.Visible = hScrollBarVisible;
-            if (vScrollBarVisible != vScrollBar.Visible) vScrollBar.Visible = vScrollBarVisible;
-        }
+        UpdateScrollBarVisibility(); // (260322Ch) scrollbar visible の同期を helper に集約する
 
         if (Draw != null)//Drawイベントを発生 このときは自前で描画せず、通知先に任せる。
         {
@@ -476,15 +518,25 @@ public partial class ScalablePictureBox : UserControl
         if (MouseWheel2 != null && MouseWheel2(this, e, ConvertToSrcPt(e.Location)))
             return;
 
+        // if (e.Delta > 0 && MouseScaling)
+        // {//縮小モード
+        //     _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
+        //     Zoom *= 0.5f;
+        // }
+        // else if (e.Delta < 0 && MouseScaling)
+        // {//拡大モード
+        //     _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
+        //     Zoom *= 2f;
+        // }
         if (e.Delta > 0 && MouseScaling)
-        {//縮小モード
-            _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
-            Zoom *= 0.5f;
-        }
-        else if (e.Delta < 0 && MouseScaling)
-        {//拡大モード
+        {//拡大モード (260322Ch) ホイール上回転でズームインするように長年の向きを反転
             _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
             Zoom *= 2f;
+        }
+        else if (e.Delta < 0 && MouseScaling)
+        {//縮小モード (260322Ch) ホイール下回転でズームアウト
+            _Center = ConvertToSrcPt(e.Location);//イベントを起こさないように小文字のcenterに代入
+            Zoom *= 0.5f;
         }
     }
 
@@ -516,6 +568,7 @@ public partial class ScalablePictureBox : UserControl
 
     private bool manualSpotMode = false;
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ManualSpotMode
     {
         set { manualSpotMode = value; if (manualSpotMode) MouseRangeMode = false; }
@@ -595,9 +648,7 @@ public partial class ScalablePictureBox : UserControl
 
     #endregion
 
-    /// <summary>
-    /// PictureBoxのPaintイベント
-    /// </summary>
+    /// <summary>PictureBoxのPaintイベント</summary>
     public event PaintEventHandler Paint2;
     private void pictureBox_Paint(object sender, PaintEventArgs e)
     {
@@ -608,21 +659,19 @@ public partial class ScalablePictureBox : UserControl
 
         if (MouseRangeMode)
         {
-            var pen = new Pen(Brushes.Pink);
-            if ((ModifierKeys & Keys.Control) == Keys.Control)
-                pen = new Pen(Brushes.Yellow);
+            using var pen = new Pen((ModifierKeys & Keys.Control) == Keys.Control ? Color.Yellow : Color.Pink); // (260322Ch) disposable Pen を Paint スコープ内で閉じる
             pen.DashStyle = DashStyle.Dash;
             g.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
                 Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y));
         }
         if (showFocusRectangle)
         {
-            Brush b = new HatchBrush(HatchStyle.Percent10, Color.Green, Color.Transparent);
+            using Brush b = new HatchBrush(HatchStyle.Percent10, Color.Green, Color.Transparent);
             g.FillRectangle(b, pictureBox.ClientRectangle);
         }
         if (ShowAreaRectangle)
         {
-            var pen = new Pen(Brushes.Yellow);
+            using var pen = new Pen(Color.Yellow);
             var rect = ConvertToClientRect(areaRentagle).ToRectangleF();
             g.DrawRectangle(pen, rect.X, rect.Y, rect.Width, rect.Height);
         }
@@ -630,18 +679,20 @@ public partial class ScalablePictureBox : UserControl
         //drawSymbols(e)
         if (!DesignMode)
         {
+            using var symbolFontFamily = new FontFamily(SymbolFontName); // (260322Ch) symbol label 用 FontFamily を Paint ごとに再利用する
             if (Symbols != null)
                 foreach (var s in Symbols)
                 {
                     if (s.SymbolVisible)
                     {
-                        var ff = new FontFamily("Arial");
                         if (s.Shape == SymbolShape.Cross || s.Shape == SymbolShape.CircleAndCross)
                         {
-                            Pen pen1 = new(new SolidBrush(s.CrossColor1)), pen2 = new(new SolidBrush(s.CrossColor2));
+                            using var brush1 = new SolidBrush(s.CrossColor1);
+                            using var brush2 = new SolidBrush(s.CrossColor2);
+                            using Pen pen1 = new(brush1), pen2 = new(brush2);
                             pen1.Width = pen2.Width = s.Bold ? 2f : 1f;
                             var pt = ConvertToClientPt(s.CrossPosition).ToPointF();
-                            if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
+                            if (IsPointInExtendedClientArea(pt))
                             {
                                 g.DrawLine(pen2, new PointF(pt.X - s.CrossSize + 1, pt.Y - s.CrossSize - 1), new PointF(pt.X + s.CrossSize + 1, pt.Y + s.CrossSize - 1));
                                 g.DrawLine(pen2, new PointF(pt.X - s.CrossSize - 1, pt.Y - s.CrossSize + 1), new PointF(pt.X + s.CrossSize - 1, pt.Y + s.CrossSize + 1));
@@ -653,17 +704,17 @@ public partial class ScalablePictureBox : UserControl
                                 pen1.Width = pen2.Width = 1f;
                                 if (s.LabelVisible)
                                 {
-                                    var gp = new GraphicsPath();
-                                    gp.AddString(s.Label, ff, (int)FontStyle.Bold, s.Bold ? 18f : 16f, new PointF(pt.X + 5, pt.Y + 5), StringFormat.GenericDefault);
+                                    using var gp = new GraphicsPath();
+                                    gp.AddString(s.Label, symbolFontFamily, (int)FontStyle.Bold, s.Bold ? 18f : 16f, new PointF(pt.X + 5, pt.Y + 5), StringFormat.GenericDefault);
 
                                     if (s.Bold)
                                     {
-                                        g.FillPath(new SolidBrush(s.CrossColor2), gp);
+                                        g.FillPath(brush2, gp);
                                         g.DrawPath(pen1, gp);
                                     }
                                     else
                                     {
-                                        g.FillPath(new SolidBrush(s.CrossColor1), gp);
+                                        g.FillPath(brush1, gp);
                                         g.DrawPath(pen2, gp);
                                     }
                                 }
@@ -671,10 +722,10 @@ public partial class ScalablePictureBox : UserControl
                         }
                         if (s.Shape == SymbolShape.Circle || s.Shape == SymbolShape.CircleAndCross)
                         {
-                            var pen1 = new Pen(Color.FromArgb(128, s.CircleColor)) { Width = s.Bold ? 2f : 1f };
+                            using var pen1 = new Pen(Color.FromArgb(128, s.CircleColor)) { Width = s.Bold ? 2f : 1f };
 
                             var pt = ConvertToClientPt(s.CircleCenter).ToPointF();
-                            if (pt.X > -pictureBox.ClientSize.Width && pt.X < 2 * pictureBox.ClientSize.Width && pt.Y > -pictureBox.ClientSize.Height && pt.Y < 2 * pictureBox.ClientSize.Height)
+                            if (IsPointInExtendedClientArea(pt))
                             {
                                 var rect = ConvertToClientRect(new RectangleD(s.CircleCenter.X - s.CircleRadius, s.CircleCenter.Y - s.CircleRadius, s.CircleRadius * 2, s.CircleRadius * 2)).ToRectangleF();
                                 g.DrawEllipse(pen1, rect);
@@ -682,10 +733,10 @@ public partial class ScalablePictureBox : UserControl
                         }
                         if (s.Shape == SymbolShape.Line)
                         {
-                            var pen1 = new Pen(Color.FromArgb(128, s.LineColor)) { Width = 2f };
+                            using var pen1 = new Pen(Color.FromArgb(128, s.LineColor)) { Width = 2f };
                             var pt1 = ConvertToClientPt(s.LinePosition1).ToPointF();
                             var pt2 = ConvertToClientPt(s.LinePosition2).ToPointF();
-                            if (pt1.X > -pictureBox.ClientSize.Width && pt1.X < 2 * pictureBox.ClientSize.Width && pt1.Y > -pictureBox.ClientSize.Height && pt1.Y < 2 * pictureBox.ClientSize.Height)
+                            if (IsPointInExtendedClientArea(pt1))
                             {
                                 g.DrawLine(pen1, pt1, pt2);
                             }
@@ -696,11 +747,13 @@ public partial class ScalablePictureBox : UserControl
             if (TitleVisible)
             {
                 var ff = Title.Font.FontFamily;
-                var gp = new GraphicsPath();
+                using var gp = new GraphicsPath();
                 gp.AddString(Title.Text, ff, (int)FontStyle.Bold, Title.Font.Size, new PointF(0, 0), StringFormat.GenericDefault);
 
-                g.FillPath(new SolidBrush(Title.Color1), gp);
-                g.DrawPath(new Pen(Title.Color2, 1f), gp);
+                using var brush = new SolidBrush(Title.Color1);
+                using var pen = new Pen(Title.Color2, 1f);
+                g.FillPath(brush, gp);
+                g.DrawPath(pen, gp);
 
 
                 //g.DrawString(Title.Text, Title.Font, Title.Brush, new Point(0, 0));
@@ -722,9 +775,8 @@ public partial class ScalablePictureBox : UserControl
 
     private void drawSymbols(PaintEventArgs e, List<PointD> spot, List<string> spotLabel, Brush brush1, Brush brush2, bool showLabel, int? emphasizeNum)
     {
-        GraphicsPath gp;
-        FontFamily ff = new("Arial");
-        Pen pen1 = new(brush1), pen2 = new(brush2);
+        using var ff = new FontFamily(SymbolFontName); // (260322Ch) 旧 helper も同じ FontFamily 共通定数を使う
+        using Pen pen1 = new(brush1), pen2 = new(brush2);
         if (spot != null && spot.Count > 0)
             for (int i = 0; i < spot.Count; i++)
             {
@@ -742,7 +794,7 @@ public partial class ScalablePictureBox : UserControl
                 pen1.Width = pen2.Width = 1f;
                 if (showLabel)
                 {
-                    gp = new GraphicsPath();
+                    using var gp = new GraphicsPath();
                     string label = spotLabel == null || spotLabel.Count != spot.Count ? i.ToString("000") : spotLabel[i];
                     gp.AddString(label, ff, (int)FontStyle.Bold, i == emphasizeNum ? 18f : 16f, new PointF(pt.X + 5, pt.Y + 5), StringFormat.GenericDefault);
 
@@ -760,16 +812,12 @@ public partial class ScalablePictureBox : UserControl
             }
     }
 
-    /// /// <summary>
-    /// コントロール全体のペイントイベント
-    /// </summary>
+    /// /// <summary>コントロール全体のペイントイベント</summary>
     public event PaintEventHandler PaintControl;
 
     private void ScalablePictureBox_Paint(object sender, PaintEventArgs e) => PaintControl?.Invoke(sender, e);
 
-    /// <summary>
-    /// コントロール全体がリサイズされたとき
-    /// </summary>
+    /// <summary>コントロール全体がリサイズされたとき</summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void ScalablePictureBox_Resize(object sender, EventArgs e)
@@ -791,9 +839,7 @@ public partial class ScalablePictureBox : UserControl
 
     #region イベント
 
-    /// <summary>
-    /// マウスイベント用のデリゲート
-    /// </summary>
+    /// <summary>マウスイベント用のデリゲート</summary>
     /// <param name="sender">sender</param>
     /// <param name="e">e</param>
     /// <param name="pt">ソース画像座標</param>
@@ -818,9 +864,7 @@ public partial class ScalablePictureBox : UserControl
 
     #endregion イベント
 
-    /// <summary>
-    /// 初期化直後、画面リサイズ後、Zoom変更後にPictureBox,ScrollBarコントロールなどを適切に配置するメソッド
-    /// </summary>
+    /// <summary>初期化直後、画面リサイズ後、Zoom変更後にPictureBox,ScrollBarコントロールなどを適切に配置するメソッド</summary>
     private void setControlLayout()
     {
         hScrollBar.Location = new Point(0, this.ClientSize.Height - hScrollBar.Height);
@@ -909,7 +953,7 @@ public partial class ScalablePictureBox : UserControl
         if (skipScrollBarEvent) return;
         if (_Center.X != hScrollBar.Value)
         {
-            if (!horizontalFlip)
+            if (!HorizontalFlip)
                 Center = new PointD(hScrollBar.Value, _Center.Y);
             else
                 Center = new PointD(hScrollBar.Maximum - hScrollBar.Minimum - hScrollBar.Value, _Center.Y);
@@ -924,17 +968,13 @@ public partial class ScalablePictureBox : UserControl
 
     #region 座標変換関連
 
-    /// <summary>
-    /// クライアントのPointをソースのPointに変換
-    /// </summary>
+    /// <summary>クライアントのPointをソースのPointに変換</summary>
     /// <param name="clientPt"></param>
     /// <returns></returns>
     public PointD ConvertToSrcPt(Point clientPt)
     { return ConvertToSrcPt(new PointD(clientPt.X, clientPt.Y)); }
 
-    /// <summary>
-    /// クライアントのPointDをソースのPointDに変換
-    /// </summary>
+    /// <summary>クライアントのPointDをソースのPointDに変換</summary>
     /// <param name="clientPt"></param>
     /// <returns></returns>
     public PointD ConvertToSrcPt(PointD clientPt)
@@ -953,17 +993,13 @@ public partial class ScalablePictureBox : UserControl
         return new PointD(x, y);
     }
 
-    /// <summary>
-    /// クライアントのRectangleをSrcのRectangleに変換
-    /// </summary>
+    /// <summary>クライアントのRectangleをSrcのRectangleに変換</summary>
     /// <param name="clientRect"></param>
     /// <returns></returns>
     public RectangleD ConvertToSrcRect(Rectangle clientRect)
     { return ConvertToSrcRect(new RectangleD(clientRect.X, clientRect.Y, clientRect.Width, clientRect.Height)); }
 
-    /// <summary>
-    /// クライアントのRectangleDをSrcのRectangleDに変換
-    /// </summary>
+    /// <summary>クライアントのRectangleDをSrcのRectangleDに変換</summary>
     /// <param name="clientRect"></param>
     /// <returns></returns>
     public RectangleD ConvertToSrcRect(RectangleD clientRect)
@@ -973,9 +1009,7 @@ public partial class ScalablePictureBox : UserControl
         return new RectangleD(ul, new SizeD(lr.X - ul.X, lr.Y - ul.Y));
     }
 
-    /// <summary>
-    /// ソースのPointDをクライアントのPointDに変換
-    /// </summary>
+    /// <summary>ソースのPointDをクライアントのPointDに変換</summary>
     /// <param name="srcPt"></param>
     /// <returns></returns>
     public PointD ConvertToClientPt(PointD srcPt)
@@ -983,9 +1017,7 @@ public partial class ScalablePictureBox : UserControl
         return new PointD(((srcPt.X - _Center.X) * Zoom + pictureBox.ClientSize.Width / 2.0f), ((srcPt.Y - _Center.Y) * Zoom + pictureBox.ClientSize.Height / 2.0f));
     }
 
-    /// <summary>
-    /// ソースのRectangleDをクライアントのRectangleDに変換
-    /// </summary>
+    /// <summary>ソースのRectangleDをクライアントのRectangleDに変換</summary>
     /// <param name="srcRect"></param>
     /// <returns></returns>
     public RectangleD ConvertToClientRect(RectangleD srcRect)
@@ -1001,25 +1033,21 @@ public partial class ScalablePictureBox : UserControl
     {
     }
 
-    /// <summary>
-    /// 現在表示している画像をBitmapクラスで返す
-    /// </summary>
+    /// <summary>現在表示している画像をBitmapクラスで返す</summary>
     /// <returns></returns>
     public Bitmap GetBitmapImage()
     {
-        var bmp = new Bitmap(pictureBox.Image.Width, pictureBox.Height, System.Drawing.Imaging.PixelFormat.Format24bppRgb);
-        var g = Graphics.FromImage(bmp);
-        g.DrawImage(pictureBox.Image, new Point(0, 0));
-
-        pictureBox_Paint(new object(), new PaintEventArgs(g, pictureBox.ClientRectangle));
-        return bmp;
+        return CreateSnapshotBitmap(); // (260322Ch) 画面 export 用の bitmap 生成を共通 helper へ集約する
     }
 
     public void SaveAsPNG()
     {
-        var dlg = new SaveFileDialog() { Filter = "*.png|*.png" };
+        using var dlg = new SaveFileDialog() { Filter = "*.png|*.png" };
         if (dlg.ShowDialog() == DialogResult.OK)
-            GetBitmapImage().Save(dlg.FileName);
+        {
+            using var bmp = GetBitmapImage();
+            bmp.Save(dlg.FileName); // (260322Ch) 保存専用の bitmap は即座に破棄する
+        }
     }
 
     public void CopyAsBitmap()
@@ -1035,33 +1063,28 @@ public partial class ScalablePictureBox : UserControl
     {
         using Graphics grfx = CreateGraphics();
         IntPtr ipHdc = grfx.GetHdc();
-        MemoryStream ms = new();
-        Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
+        using MemoryStream ms = new();
+        using Metafile mf = new(ms, ipHdc, EmfType.EmfPlusDual);
         grfx.ReleaseHdc(ipHdc);
-        grfx.Dispose();
-        var g = Graphics.FromImage(mf);
+        using (var g = Graphics.FromImage(mf))
+        {
+            var width = Math.Max(1, pictureBox.ClientSize.Width);
+            var height = Math.Max(1, pictureBox.ClientSize.Height);
+            g.Clear(pictureBox.BackColor); // (260322Ch) export 先でも背景を画面表示に合わせる
 
-        var destRect = new RectangleF(0, 0, pictureBox.ClientSize.Width, pictureBox.ClientSize.Height);
-        //var srcRect = PseudoBitmap.GetDrawingArea(Center, Zoom, pictureBox.ClientSize).ToRectangleF();
-        //var image = PseudoBitmap.GetImage();
-        //g.DrawImage(image, destRect, srcRect, GraphicsUnit.Pixel);
+            if (GetCurrentPictureImage() is Image image)
+                g.DrawImage(image, new Rectangle(0, 0, width, height));
 
-        var srcRect = PseudoBitmap.GetDrawingArea(Center, Zoom, pictureBox.ClientSize);
-        var image = PseudoBitmap.GetImage(srcRect, srcRect.ToSize());
-        g.DrawImage(image, destRect);
-
-        pictureBox_Paint(new object(), new PaintEventArgs(g, pictureBox.ClientRectangle));
-
-        g.Dispose();
+            PaintPictureBoxOverlay(g); // (260322Ch) metafile export も bitmap export と同じ overlay 経路へ揃える
+        }
 
         if (save)
         {
-            SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
+            using SaveFileDialog dlg = new() { Filter = "*.emf|*.emf" };
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                FileStream fsm = new(dlg.FileName, FileMode.Create, FileAccess.Write);
+                using FileStream fsm = new(dlg.FileName, FileMode.Create, FileAccess.Write);
                 fsm.Write(ms.GetBuffer(), 0, (int)ms.Length);
-                fsm.Close();
             }
         }
         else
@@ -1081,3 +1104,4 @@ public partial class ScalablePictureBox : UserControl
             ShowRimRentangle = false;
     }
 }
+

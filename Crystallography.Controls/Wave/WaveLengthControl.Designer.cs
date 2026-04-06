@@ -2,14 +2,10 @@
 {
     partial class WaveLengthControl
     {
-        /// <summary> 
-        /// 必要なデザイナ変数です。
-        /// </summary>
+        /// <summary>必要なデザイナ変数です。</summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
+        /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
         /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
         protected override void Dispose(bool disposing)
         {
@@ -98,7 +94,7 @@
             numericBoxEnergy.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEnergy.Name = "numericBoxEnergy";
             numericBoxEnergy.RoundErrorAccuracy = 8;
-            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip1"));
+            toolTip.SetToolTip(numericBoxEnergy, resources.GetString("numericBoxEnergy.ToolTip"));
             numericBoxEnergy.ValueChanged += numericBoxEnergy_ValueChanged;
             // 
             // label1
@@ -115,7 +111,7 @@
             numericBoxWaveLength.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxWaveLength.Name = "numericBoxWaveLength";
             numericBoxWaveLength.RoundErrorAccuracy = 12;
-            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip1"));
+            toolTip.SetToolTip(numericBoxWaveLength, resources.GetString("numericBoxWaveLength.ToolTip"));
             numericBoxWaveLength.ValueChanged += numericBoxWaveLength_ValueChanged;
             // 
             // radioButtonNeutron
@@ -169,6 +165,7 @@
             // WaveLengthControl
             // 
             resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel2);

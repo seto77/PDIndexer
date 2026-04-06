@@ -2,14 +2,10 @@
 {
     partial class PoleFigureControl2
     {
-        /// <summary> 
-        /// 必要なデザイナー変数です。
-        /// </summary>
+        /// <summary>必要なデザイナー変数です。</summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// 使用中のリソースをすべてクリーンアップします。
-        /// </summary>
+        /// <summary>使用中のリソースをすべてクリーンアップします。</summary>
         /// <param name="disposing">マネージ リソースが破棄される場合 true、破棄されない場合は false です。</param>
         protected override void Dispose(bool disposing)
         {
@@ -136,6 +132,7 @@
             // PoleFigureControl2
             // 
             resources.ApplyResources(this, "$this");
+            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             Controls.Add(pictureBox);
             Controls.Add(pictureBox1);
@@ -148,6 +145,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }

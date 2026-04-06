@@ -1,14 +1,16 @@
-﻿using IronPython.Runtime.Operations;
+﻿#region using
+using IronPython.Runtime.Operations;
 using System;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+#endregion
 
 namespace Crystallography.Controls;
 
-public partial class SymmetryControl : UserControl
+public partial class SymmetryControl : CaptureUserControlBase
 {
     #region プロパティ、フィールド、イベントハンドラ
     public new bool DesignMode
@@ -27,12 +29,15 @@ public partial class SymmetryControl : UserControl
             return false;
         }
     }
+    [System.ComponentModel.Browsable(false)]
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
     public bool SkipEvent { get; set; } = false;
     public int CrystalSystemIndex => comboBoxCrystalSystem.SelectedIndex;
     public int PointGroupIndex => comboBoxPointGroup.SelectedIndex;
     public int SpaceGroupIndex => comboBoxSpaceGroup.SelectedIndex;
 
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public int SymmetrySeriesNumber
     {
         get => (CrystalSystemIndex >= 0 && PointGroupIndex >= 0 && SpaceGroupIndex >= 0) ?
@@ -63,9 +68,8 @@ public partial class SymmetryControl : UserControl
         }
     }
 
-    /// <summary>
-    /// 長さの単位の get/set
-    /// </summary>
+    /// <summary>長さの単位の get/set</summary>
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public LengthUnitEnum LengthUnit
     {
         get => radioButtonAngstrom.Checked ? LengthUnitEnum.Angstrom : LengthUnitEnum.NanoMeter;
@@ -76,9 +80,7 @@ public partial class SymmetryControl : UserControl
         }
     }
 
-    /// <summary>
-    /// Cell constants の get/set. 単位はnm, radian.
-    /// </summary>
+    /// <summary>Cell constants の get/set. 単位はnm, radian.</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Browsable(false)]
     public (double A, double B, double C, double Alpha, double Beta, double Gamma) CellConstants
@@ -105,29 +107,34 @@ public partial class SymmetryControl : UserControl
         }
     }
 
+    // (260322Ch) WFO1000: Microsoft ??????????????????? ???????????
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double A
     {
         get => LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxA.Value : numericBoxA.Value / 10;
         set => numericBoxA.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value : value * 10;
     }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double B
     {
         get => LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxB.Value : numericBoxB.Value / 10;
         set => numericBoxB.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value : value * 10;
     }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double C
     {
         get => LengthUnit == LengthUnitEnum.NanoMeter ? numericBoxC.Value: numericBoxC.Value / 10;
         set => numericBoxC.Value = LengthUnit == LengthUnitEnum.NanoMeter ? value : value * 10;
     }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Alpha { get => numericBoxAlpha.RadianValue; set => numericBoxAlpha.RadianValue = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Beta { get => numericBoxBeta.RadianValue; set => numericBoxBeta.RadianValue = value; }
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public double Gamma { get => numericBoxGamma.RadianValue; set => numericBoxGamma.RadianValue = value; }
 
 
-    /// <summary>
-    /// Cell constants error の get/set. 単位はnm, radian.
-    /// </summary>
+    /// <summary>Cell constants error の get/set. 単位はnm, radian.</summary>
     [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
     [Browsable(false)]
     public (double AErr, double BErr, double CErr, double AlphaErr, double BetaErr, double GammaErr) CellConstantsErr
@@ -152,6 +159,7 @@ public partial class SymmetryControl : UserControl
         }
     }
 
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     public bool ShowError
     {
         get => checkBoxShowError.Checked;
@@ -173,8 +181,9 @@ public partial class SymmetryControl : UserControl
 
     public SymmetryControl()
     {
-        if (DesignMode) return;
         InitializeComponent();
+        // if (DesignMode) return; // (260322Ch) 旧コード: design 時に子コントロール未生成のまま return していた
+        if (DesignMode) return; // (260322Ch) Designer 安定化のため InitializeComponent 後に打ち切る
         SymmetrySeriesNumber = 0;
         tableLayoutPanel1.ColumnStyles[2].Width = tableLayoutPanel1.ColumnStyles[6].Width = 0;
     }
@@ -504,6 +513,7 @@ public partial class SymmetryControl : UserControl
     }
     #endregion
 
+    #region nm/Åの切り替え
     private void radioButtonNanoMeter_CheckedChanged(object sender, EventArgs e)
     {
         var (a, b, c, aErr, bErr, cErr) = (numericBoxA.Value, numericBoxB.Value, numericBoxC.Value, numericBoxAErr.Value, numericBoxBErr.Value, numericBoxCErr.Value);
@@ -530,4 +540,6 @@ public partial class SymmetryControl : UserControl
         }
         SkipEvent = false;
     }
+    #endregion
 }
+
