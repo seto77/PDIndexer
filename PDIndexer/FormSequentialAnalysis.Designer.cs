@@ -433,7 +433,7 @@ namespace PDIndexer
         private System.Windows.Forms.TextBox textBoxPressure;
         private System.Windows.Forms.Button buttonCopy;
         private System.Windows.Forms.Button buttonSave;
-        public System.Windows.Forms.Button buttonExecute;
+        internal System.Windows.Forms.Button buttonExecute; // 260414Cl public→internal
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonSetDirectory;
@@ -443,13 +443,13 @@ namespace PDIndexer
         private Crystallography.Controls.NumericBox numericBoxToleranceFactor;
         private System.Windows.Forms.CheckBox checkBoxToleranceFactor;
         private System.Windows.Forms.BindingSource bindingSource1;
-        public CheckBox checkBoxAutoSaveTwoTheta;
-        public CheckBox checkBoxAutoSaveD;
-        public CheckBox checkBoxAutoSaveFWHM;
-        public CheckBox checkBoxAutoSaveInt;
-        public CheckBox checkBoxAutoSaveCell;
-        public CheckBox checkBoxAutoSavePressure;
-        public CheckBox checkBoxAutoSaveSingh;
-        public TextBox textBoxDirectory;
+        internal CheckBox checkBoxAutoSaveTwoTheta; // 260414Cl public→internal
+        internal CheckBox checkBoxAutoSaveD;        // 260414Cl public→internal
+        internal CheckBox checkBoxAutoSaveFWHM;     // 260414Cl public→internal
+        internal CheckBox checkBoxAutoSaveInt;      // 260414Cl public→internal
+        internal CheckBox checkBoxAutoSaveCell;     // 260414Cl public→internal
+        internal CheckBox checkBoxAutoSavePressure; // 260414Cl public→internal
+        internal CheckBox checkBoxAutoSaveSingh;    // 260414Cl public→internal
+        internal TextBox textBoxDirectory;          // 260414Cl public→internal
     }
 }

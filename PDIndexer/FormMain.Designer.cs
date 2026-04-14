@@ -3735,11 +3735,11 @@ namespace PDIndexer
         public ToolStrip toolStrip2;
         public ToolStripButton toolStripButtonEquationOfState;
         private ToolStripSeparator toolStripSeparator8;
-        public ToolStripButton toolStripButtonFittingParameter;
+        internal ToolStripButton toolStripButtonFittingParameter; // 260414Cl public→internal
         private GroupBox groupBox1;
         private PictureBox pictureBoxMain;
-        public CheckBox checkBoxProfileParameter;
-        public CheckBox checkBoxCrystalParameter;
+        internal CheckBox checkBoxProfileParameter; // 260414Cl public→internal
+        internal CheckBox checkBoxCrystalParameter; // 260414Cl public→internal
         private Label labelTwoTheta;
         private Label labelIntensity;
         private Label labelD;
@@ -3794,7 +3794,7 @@ namespace PDIndexer
         public ToolStripButton toolStripButtonCellFinder;
         private Crystallography.Controls.HorizontalAxisUserControl horizontalAxisUserControl;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        public BindingSource bindingSourceCrystal;
+        internal BindingSource bindingSourceCrystal; // 260414Cl public→internal
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         public DataSet dataSet;
         private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn;
@@ -3813,7 +3813,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
         private ToolStripMenuItem clearRegistryToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator12;
-        public ToolStripButton toolStripButtonSequentialAnalysis;
+        internal ToolStripButton toolStripButtonSequentialAnalysis; // 260414Cl public→internal
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
@@ -3858,7 +3858,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn27;
         private CheckBox checkBoxErrorBar;
         public DataGridView dataGridViewProfiles;
-        public BindingSource bindingSourceProfile;
+        internal BindingSource bindingSourceProfile; // 260414Cl public→internal
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn28;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn29;
         private DataGridViewImageColumn dataGridViewImageColumn4;
@@ -3935,7 +3935,7 @@ namespace PDIndexer
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn63;
         private DataGridViewImageColumn dataGridViewImageColumn39;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn64;
-        public CheckBox checkBoxAll;
+        internal CheckBox checkBoxAll; // 260414Cl public→internal
         private ToolStripMenuItem languageToolStripMenuItem;
         private ToolStripMenuItem englishToolStripMenuItem;
         private ToolStripMenuItem japaneseToolStripMenuItem;

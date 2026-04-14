@@ -1310,8 +1310,8 @@ namespace PDIndexer
         private Crystallography.Controls.ColorControl colorControlLineColor;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Label label18;
-        public System.Windows.Forms.ListBox listBoxTwoProfiles1;
-        public System.Windows.Forms.ListBox listBoxTwoProfiles2;
+        internal System.Windows.Forms.ListBox listBoxTwoProfiles1; // 260414Cl public→internal
+        internal System.Windows.Forms.ListBox listBoxTwoProfiles2; // 260414Cl public→internal
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelFourCalculator;
         private Crystallography.Controls.NumericBox numericalTextBoxTargetValue;
@@ -1331,14 +1331,14 @@ namespace PDIndexer
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemReadMaskingRange;
         private System.Windows.Forms.Label label24;
         private System.Windows.Forms.Label label22;
-        public System.Windows.Forms.TextBox textBoxOutputFilename;
-        public System.Windows.Forms.RadioButton radioButtonDivision;
-        public System.Windows.Forms.RadioButton radioButtonMutiplication;
-        public System.Windows.Forms.RadioButton radioButtonSubtraction;
-        public System.Windows.Forms.RadioButton radioButtonAddition;
-        public System.Windows.Forms.RadioButton radioButtonAverage;
+        internal System.Windows.Forms.TextBox textBoxOutputFilename; // 260414Cl public→internal
+        internal System.Windows.Forms.RadioButton radioButtonDivision; // 260414Cl public→internal
+        internal System.Windows.Forms.RadioButton radioButtonMutiplication; // 260414Cl public→internal
+        internal System.Windows.Forms.RadioButton radioButtonSubtraction; // 260414Cl public→internal
+        internal System.Windows.Forms.RadioButton radioButtonAddition; // 260414Cl public→internal
+        internal System.Windows.Forms.RadioButton radioButtonAverage; // 260414Cl public→internal
         public System.Windows.Forms.RadioButton radioButtonProfileAndValue;
-        public System.Windows.Forms.RadioButton radioButtonTwoProfiles;
+        internal System.Windows.Forms.RadioButton radioButtonTwoProfiles; // 260414Cl public→internal
         private System.Windows.Forms.Button buttonCalculate;
         private System.Windows.Forms.Button buttonDeleteProfile;
         private System.Windows.Forms.Button button1;
@@ -1359,8 +1359,8 @@ namespace PDIndexer
         private System.Windows.Forms.Panel panelBackgroundSubtraction;
         private System.Windows.Forms.Panel panelNormarizeIntensity;
         private System.Windows.Forms.Button buttonTwoThetaOffsetReset;
-        public System.Windows.Forms.TextBox textBoxComment;
-        public System.Windows.Forms.TextBox textBoxProfileName;
+        internal System.Windows.Forms.TextBox textBoxComment; // 260414Cl public→internal
+        internal System.Windows.Forms.TextBox textBoxProfileName; // 260414Cl public→internal
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn;

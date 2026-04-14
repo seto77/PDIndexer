@@ -28,10 +28,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NumericBox));
             textBox = new System.Windows.Forms.TextBox();
             labelHeader = new System.Windows.Forms.Label();
-            numericUpDown = new System.Windows.Forms.NumericUpDown();
             labelFooter = new System.Windows.Forms.Label();
+            spinButtonPanel = new System.Windows.Forms.Panel();                                                                                       // 260413Cl 追加 SpinButtonの入れ物
             toolTip = new System.Windows.Forms.ToolTip(components);
-            ((System.ComponentModel.ISupportInitialize)numericUpDown).BeginInit();
             SuspendLayout();
             // 
             // textBox
@@ -52,33 +51,31 @@
             resources.ApplyResources(labelHeader, "labelHeader");
             labelHeader.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             labelHeader.Name = "labelHeader";
-            // 
-            // numericUpDown
-            // 
-            resources.ApplyResources(numericUpDown, "numericUpDown");
-            numericUpDown.Minimum = new decimal(new int[] { 100, 0, 0, int.MinValue });
-            numericUpDown.Name = "numericUpDown";
-            numericUpDown.TabStop = false;
-            numericUpDown.ValueChanged += numericUpDown_ValueChanged;
-            // 
+            labelHeader.UseCompatibleTextRendering = false;                                                                                           // 260413Cl 追加 textBox(GDI)と描画エンジンを揃えベースラインずれを解消
+            //
             // labelFooter
-            // 
+            //
             resources.ApplyResources(labelFooter, "labelFooter");
             labelFooter.Name = "labelFooter";
-            // 
+            labelFooter.UseCompatibleTextRendering = false;                                                                                           // 260413Cl 追加 textBox(GDI)と描画エンジンを揃えベースラインずれを解消
+            //
+            // spinButtonPanel                                                                                                                        // 260413Cl 追加
+            //
+            resources.ApplyResources(spinButtonPanel, "spinButtonPanel");
+            spinButtonPanel.Name = "spinButtonPanel";
+            spinButtonPanel.BackColor = System.Drawing.Color.Transparent;
+            //
             // NumericBox
-            // 
+            //
             resources.ApplyResources(this, "$this");
-            AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             BackColor = System.Drawing.Color.Transparent;
             Controls.Add(textBox);
-            Controls.Add(numericUpDown);
+            Controls.Add(spinButtonPanel);                                                                                                            // 260413Cl 追加 textBoxの直後に配置
             Controls.Add(labelHeader);
             Controls.Add(labelFooter);
             Name = "NumericBox";
             SizeChanged += numericBox_SizeChanged;
-            ((System.ComponentModel.ISupportInitialize)numericUpDown).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -88,6 +85,8 @@
         private System.Windows.Forms.Label labelFooter;
         public System.Windows.Forms.ToolTip toolTip;
         internal System.Windows.Forms.TextBox textBox;
-        internal System.Windows.Forms.NumericUpDown numericUpDown;
+        //internal System.Windows.Forms.NumericUpDown numericUpDown;                                                                                  // 260413Cl
+        internal System.Windows.Forms.Panel spinButtonPanel;                                                                                          // 260413Cl 追加 SpinButtonの入れ物
+        internal SpinButton spinButton;                                                                                                               // 260413Cl 追加
     }
 }

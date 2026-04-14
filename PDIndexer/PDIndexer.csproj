@@ -5,8 +5,8 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.3.20.0027</AssemblyVersion>
-    <FileVersion>2026.3.20.0027</FileVersion>
+    <AssemblyVersion>2026.4.14.0147</AssemblyVersion>
+    <FileVersion>2026.4.14.0147</FileVersion>
     <ApplicationIcon>App.ico</ApplicationIcon>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>

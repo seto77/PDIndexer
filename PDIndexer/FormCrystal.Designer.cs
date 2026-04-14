@@ -13,12 +13,12 @@ using Crystallography.Controls;
 namespace PDIndexer
 {
     /// <summary>
-    /// FormCrystal ‚ÌŠT—v‚Ìà–¾‚Å‚·B
+    /// FormCrystal ï¿½ÌŠTï¿½vï¿½Ìï¿½ï¿½ï¿½ï¿½Å‚ï¿½ï¿½B
     /// </summary>
     public partial class FormCrystal : System.Windows.Forms.Form
     {
         /// <summary>
-        /// g—p‚³‚ê‚Ä‚¢‚éƒŠƒ\[ƒX‚ÉŒãˆ—‚ğÀs‚µ‚Ü‚·B
+        /// ï¿½gï¿½pï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½éƒŠï¿½\ï¿½[ï¿½Xï¿½ÉŒãˆï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ü‚ï¿½ï¿½B
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -32,10 +32,10 @@ namespace PDIndexer
             base.Dispose(disposing);
         }
 
-        #region Windows ƒtƒH[ƒ€ ƒfƒUƒCƒi‚Å¶¬‚³‚ê‚½ƒR[ƒh
+        #region Windows ï¿½tï¿½Hï¿½[ï¿½ï¿½ ï¿½fï¿½Uï¿½Cï¿½iï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‚½ï¿½Rï¿½[ï¿½h
         /// <summary>
-        /// ƒfƒUƒCƒi ƒTƒ|[ƒg‚É•K—v‚Èƒƒ\ƒbƒh‚Å‚·B‚±‚Ìƒƒ\ƒbƒh‚Ì“à—e‚ğ
-        /// ƒR[ƒh ƒGƒfƒBƒ^‚Å•ÏX‚µ‚È‚¢‚Å‚­‚¾‚³‚¢B
+        /// ï¿½fï¿½Uï¿½Cï¿½i ï¿½Tï¿½|ï¿½[ï¿½gï¿½É•Kï¿½vï¿½Èƒï¿½ï¿½\ï¿½bï¿½hï¿½Å‚ï¿½ï¿½Bï¿½ï¿½ï¿½Ìƒï¿½ï¿½\ï¿½bï¿½hï¿½Ì“ï¿½ï¿½eï¿½ï¿½
+        /// ï¿½Rï¿½[ï¿½h ï¿½Gï¿½fï¿½Bï¿½^ï¿½Å•ÏXï¿½ï¿½ï¿½È‚ï¿½ï¿½Å‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½B
         /// </summary>
         private void InitializeComponent()
         {
@@ -729,7 +729,7 @@ namespace PDIndexer
         public Button buttonAllClear;
         public Button buttonDelete;
         public Button buttonChange;
-        public CrystalControl crystalControl;
+        internal CrystalControl crystalControl; // 260414Cl publicâ†’internal
         public DataSet dataSet;
         public BindingSource bindingSource;
         public DataGridView dataGridViewCrystal;

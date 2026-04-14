@@ -302,6 +302,144 @@ public partial class FormMain : Form
 
     #endregion
 
+    #region Macro 用 公開 API  // 260414Cl 追加: Macro.cs が生 Control を叩けるように public 昇格していたのをやめ、
+    // ここで宣言した高レベルな public プロパティ/メソッド経由のみで扱うようにする。
+    // サブフォームの Control 参照は同一アセンブリ内なので、Designer.cs 側は internal で十分アクセスできる。
+    // (姉妹プロジェクト ReciPro と同じパターン)
+
+    // ---- ウィンドウ可視化フラグ ----
+    public bool CrystalListVisible { get => checkBoxCrystalParameter.Checked; set => checkBoxCrystalParameter.Checked = value; }
+    public bool ProfileListVisible { get => checkBoxProfileParameter.Checked; set => checkBoxProfileParameter.Checked = value; }
+    public bool AllProfilesChecked { get => checkBoxAll.Checked; set => checkBoxAll.Checked = value; }
+    public bool FittingWindowVisible { get => toolStripButtonFittingParameter.Checked; set => toolStripButtonFittingParameter.Checked = value; }
+    public bool SequentialWindowVisible { get => toolStripButtonSequentialAnalysis.Checked; set => toolStripButtonSequentialAnalysis.Checked = value; }
+
+    // ---- Crystal リスト (bindingSourceCrystal ラッパ) ----
+    public int CrystalCount => bindingSourceCrystal.Count;
+    public int CrystalListPosition
+    {
+        get => bindingSourceCrystal.Position;
+        set { if (value >= 0 && value < bindingSourceCrystal.Count) bindingSourceCrystal.Position = value; }
+    }
+    public Crystal CurrentCrystal =>
+        bindingSourceCrystal.Current is DataRowView v ? (Crystal)v.Row[1] : null;
+    public void SetCrystalChecked(int index, bool checkState)
+    {
+        if (index < 0 || index >= bindingSourceCrystal.Count) return;
+        ((DataRowView)bindingSourceCrystal[index]).Row[0] = checkState;
+        dataGridViewCrystals_CellMouseClick(new object(),
+            new DataGridViewCellMouseEventArgs(-1, -1, 0, 0, new MouseEventArgs(MouseButtons.None, 0, 0, 0, 0)));
+    }
+
+    // ---- Profile リスト (bindingSourceProfile ラッパ) ----
+    public int ProfileCount => bindingSourceProfile.Count;
+    public int ProfileListPosition
+    {
+        get => bindingSourceProfile.Position;
+        set { if (value >= 0 && value < bindingSourceProfile.Count) bindingSourceProfile.Position = value; }
+    }
+    public DiffractionProfile2 CurrentProfile =>
+        bindingSourceProfile.Current is DataRowView v ? (DiffractionProfile2)v.Row[1] : null;
+    public void SetProfileChecked(int index, bool checkState)
+    {
+        if (index < 0 || index >= bindingSourceProfile.Count) return;
+        ((DataRowView)bindingSourceProfile[index]).Row[0] = checkState;
+        dataGridViewProfiles_CellClick(new object(), new DataGridViewCellEventArgs(-1, -1));
+    }
+    public void DeleteAllProfilesFromMacro(bool alert) => formProfile.DeleteAllProfiles(alert);
+    public void DeleteProfileFromMacro(int index) => formProfile.DeleteProfiles(index);
+
+    // ---- Profile 属性 ----
+    public string SelectedProfileComment
+    {
+        get => formProfile.textBoxComment.Text;
+        set => formProfile.textBoxComment.Text = value;
+    }
+    public string SelectedProfileDisplayName
+    {
+        get => formProfile.textBoxProfileName.Text;
+        set => formProfile.textBoxProfileName.Text = value;
+    }
+
+    // ---- Crystal 表示名 (formCrystal.crystalControl.Name ラッパ) ----
+    public string SelectedCrystalDisplayName
+    {
+        get => formCrystal.crystalControl.Name;
+        set => formCrystal.crystalControl.Name = value;
+    }
+
+    // ---- Profile 演算 ----
+    public int ProfileOperandCount => formProfile.listBoxTwoProfiles1.Items.Count;
+
+    public void RunProfileAverage(int[] indices, string outputName)
+    {
+        formProfile.radioButtonAverage.Checked = true;
+        foreach (int i in indices)
+            if (i >= 0 && i < formProfile.listBoxTwoProfiles1.Items.Count)
+                formProfile.listBoxTwoProfiles1.SelectedIndex = i;
+        if (outputName != "") formProfile.textBoxOutputFilename.Text = outputName;
+        formProfile.buttonCalculate_Click(new object(), new EventArgs());
+    }
+    public void RunProfileAddition(int i1, int i2, string outputName)
+    { formProfile.radioButtonAddition.Checked = true; runProfileArithmetic(i1, i2, outputName); }
+    public void RunProfileSubtraction(int i1, int i2, string outputName)
+    { formProfile.radioButtonSubtraction.Checked = true; runProfileArithmetic(i1, i2, outputName); }
+    public void RunProfileMultiplication(int i1, int i2, string outputName)
+    { formProfile.radioButtonMutiplication.Checked = true; runProfileArithmetic(i1, i2, outputName); }
+    public void RunProfileDivision(int i1, int i2, string outputName)
+    { formProfile.radioButtonDivision.Checked = true; runProfileArithmetic(i1, i2, outputName); }
+    private void runProfileArithmetic(int i1, int i2, string outputName)
+    {
+        formProfile.radioButtonTwoProfiles.Checked = true;
+        if (Math.Min(i1, i2) >= 0 && Math.Max(i1, i2) < formProfile.listBoxTwoProfiles1.Items.Count)
+        {
+            formProfile.listBoxTwoProfiles1.SelectedIndex = i1;
+            formProfile.listBoxTwoProfiles2.SelectedIndex = i2;
+            if (outputName != "") formProfile.textBoxOutputFilename.Text = outputName;
+            formProfile.buttonCalculate_Click(new object(), new EventArgs());
+        }
+    }
+
+    // ---- Fitting ウィンドウ ----
+    public int FittingPlaneCount => formFitting.bindingSourcePlanes.Count;
+    public int SelectedFittingPlaneIndex
+    {
+        get => formFitting.bindingSourcePlanes.Position;
+        set { if (value >= 0 && value < formFitting.bindingSourcePlanes.Count) formFitting.bindingSourcePlanes.Position = value; }
+    }
+    public double FittingSearchRange
+    {
+        get => formFitting.numericBoxSearchRange.Value;
+        set => formFitting.numericBoxSearchRange.Value = value;
+    }
+    public void ConfirmFitting(bool copyFlag) => formFitting.Confirm(copyFlag);
+    public void SetFittingPlaneChecked(int index, bool checkState)
+    {
+        if (index < 0 || index >= formFitting.bindingSourcePlanes.Count) return;
+        formFitting.TargetCrystal.Plane[index].IsFittingChecked = checkState;
+        ((DataRowView)formFitting.bindingSourcePlanes[index]).Row[0] = checkState;
+        formFitting.dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
+    }
+
+    // ---- Sequential Analysis ----
+    public string SequentialDirectory
+    {
+        get => formSequentialAnalysis.textBoxDirectory.Text;
+        set => formSequentialAnalysis.textBoxDirectory.Text = value;
+    }
+    public void RunSequentialAnalysis() => formSequentialAnalysis.buttonExecute.PerformClick();
+    public string GetSequentialCsv(int index) => formSequentialAnalysis.GetText(true, index);
+
+    public bool SeqAutoSaveTwoTheta      { get => formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked; set => formSequentialAnalysis.checkBoxAutoSaveTwoTheta.Checked = value; }
+    public bool SeqAutoSaveD             { get => formSequentialAnalysis.checkBoxAutoSaveD.Checked;        set => formSequentialAnalysis.checkBoxAutoSaveD.Checked        = value; }
+    public bool SeqAutoSaveFWHM          { get => formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked;     set => formSequentialAnalysis.checkBoxAutoSaveFWHM.Checked     = value; }
+    public bool SeqAutoSaveIntensity     { get => formSequentialAnalysis.checkBoxAutoSaveInt.Checked;      set => formSequentialAnalysis.checkBoxAutoSaveInt.Checked      = value; }
+    public bool SeqAutoSaveCellConstants { get => formSequentialAnalysis.checkBoxAutoSaveCell.Checked;     set => formSequentialAnalysis.checkBoxAutoSaveCell.Checked     = value; }
+    public bool SeqAutoSavePressure      { get => formSequentialAnalysis.checkBoxAutoSavePressure.Checked; set => formSequentialAnalysis.checkBoxAutoSavePressure.Checked = value; }
+    public bool SeqAutoSaveSingh         { get => formSequentialAnalysis.checkBoxAutoSaveSingh.Checked;    set => formSequentialAnalysis.checkBoxAutoSaveSingh.Checked    = value; }
+
+    #endregion
+
     #region フィールド
     public bool IsBgPtSelected = false;
     public int SelectedBgPtIndex = -1;
@@ -402,15 +540,25 @@ public partial class FormMain : Form
                                     formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
                                 }
                             }
-                            else if ((Clipboard.GetDataObject()).GetDataPresent(typeof(MacroTriger)))
+                            // 260414Cl MacroTriger 受信
+                            // 旧版: (MacroTriger)Clipboard.GetData(typeof(MacroTriger)) で
+                            //       直接インスタンスを受け取っていたが、.NET 9 以降は
+                            //       BinaryFormatter 廃止によりサイレント失敗していた。
+                            // 新版: MacroTriger は DataObject 派生になり、コンストラクタ内で
+                            //       自身を JSON シリアライズして byte[] として登録する。
+                            //       受信側は byte[] を取り出して Deserialize で復元する。
+                            //       IPAnalyzer 側の送信コードは無変更のまま動作する。
+                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(MacroTriger)))
                             {
-                                MacroTriger trigger = (MacroTriger)Clipboard.GetDataObject().GetData(typeof(MacroTriger));
+                                var trigger = Clipboard.GetDataObject().GetData(typeof(MacroTriger)) is byte[] json
+                                    ? MacroTriger.Deserialize(json)
+                                    : null;
 
-                                if (trigger.Target == "PDI")
+                                if (trigger != null && trigger.Target == "PDI")
                                 {
                                     macro.Obj = trigger.Obj;
                                     FormMacro.Visible = true;
-                                    if (trigger.MacroName == "")
+                                    if (string.IsNullOrEmpty(trigger.MacroName))
                                         FormMacro.RunMacro(trigger.Debug);
                                     else
                                         FormMacro.RunMacroName(trigger.MacroName, trigger.Debug);
