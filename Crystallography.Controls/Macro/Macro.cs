@@ -7,23 +7,23 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-// 注: クラス名 "MacroTriger" は typo ("Trigger") だが、IPAnalyzer 等から
-// `new MacroTriger("PDI", ...)` で参照されているため改名不可。
+// 注: クラス名 "MacroTrigger" は typo ("Trigger") だが、IPAnalyzer 等から
+// `new MacroTrigger("PDI", ...)` で参照されているため改名不可。
 //
 // 260414Cl 全面改修:
-//  旧版は [Serializable] + Clipboard.SetDataObject(triger) で送信していたが、
+//  旧版は [Serializable] + Clipboard.SetDataObject(trigger) で送信していたが、
 //  .NET 9 以降 WinForms Clipboard の BinaryFormatter ベース経路が廃止されサイレント
 //  失敗していた (csproj の EnableUnsafeBinaryFormatterSerialization は .NET 9 以降 no-op)。
 //
 //  対策: DataObject を継承し、コンストラクタ内で自身を JSON シリアライズして byte[] を
-//  format=typeof(MacroTriger).FullName で SetData する。これにより呼び出し側
-//  (IPAnalyzer など) は従来通り `Clipboard.SetDataObject(new MacroTriger(...))` だけで
+//  format=typeof(MacroTrigger).FullName で SetData する。これにより呼び出し側
+//  (IPAnalyzer など) は従来通り `Clipboard.SetDataObject(new MacroTrigger(...))` だけで
 //  済み、IPAnalyzer 本体のコードを 1 行も触らずに済む。
 //
-//  受信側 (PDIndexer) は GetData(typeof(MacroTriger)) で byte[] を受け取って
-//  MacroTriger.Deserialize(byte[]) で復元する (旧版は MacroTriger インスタンスを
+//  受信側 (PDIndexer) は GetData(typeof(MacroTrigger)) で byte[] を受け取って
+//  MacroTrigger.Deserialize(byte[]) で復元する (旧版は MacroTrigger インスタンスを
 //  そのまま受け取っていたが、現在は byte[] 経由になる)。
-public class MacroTriger : DataObject
+public class MacroTrigger : DataObject
 {
     public string Target { get; set; }
     public bool Debug { get; set; }
@@ -31,9 +31,9 @@ public class MacroTriger : DataObject
     public object[] Obj { get; set; }
 
     // 260414Cl JSON デシリアライズ用 parameterless ctor
-    public MacroTriger() { }
+    public MacroTrigger() { }
 
-    public MacroTriger(string target, bool debug, object[] obj, string macroName = "")
+    public MacroTrigger(string target, bool debug, object[] obj, string macroName = "")
     {
         Target = target;
         Debug = debug;
@@ -42,7 +42,7 @@ public class MacroTriger : DataObject
 
         // 自身を JSON 化して byte[] として登録。
         // クリップボード経由の cross-process 転送で受信側はこの byte[] を受け取る。
-        SetData(typeof(MacroTriger), Serialize());
+        SetData(typeof(MacroTrigger), Serialize());
     }
 
     private static readonly JsonSerializerOptions JsonOpts = new() { WriteIndented = false };
@@ -51,13 +51,13 @@ public class MacroTriger : DataObject
     public byte[] Serialize() => JsonSerializer.SerializeToUtf8Bytes(this, JsonOpts);
 
     /// <summary>
-    /// JSON byte[] から <see cref="MacroTriger"/> を復元する。
+    /// JSON byte[] から <see cref="MacroTrigger"/> を復元する。
     /// JSON で復元すると <see cref="Obj"/> 配列要素は <see cref="JsonElement"/> になるため
     /// プリミティブ型へ戻す。
     /// </summary>
-    public static MacroTriger Deserialize(byte[] json)
+    public static MacroTrigger Deserialize(byte[] json)
     {
-        var t = JsonSerializer.Deserialize<MacroTriger>(json, JsonOpts);
+        var t = JsonSerializer.Deserialize<MacroTrigger>(json, JsonOpts);
         if (t?.Obj != null)
         {
             for (int i = 0; i < t.Obj.Length; i++)

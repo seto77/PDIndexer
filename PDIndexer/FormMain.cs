@@ -540,18 +540,18 @@ public partial class FormMain : Form
                                     formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
                                 }
                             }
-                            // 260414Cl MacroTriger 受信
-                            // 旧版: (MacroTriger)Clipboard.GetData(typeof(MacroTriger)) で
+                            // 260414Cl MacroTrigger 受信
+                            // 旧版: (MacroTrigger)Clipboard.GetData(typeof(MacroTrigger)) で
                             //       直接インスタンスを受け取っていたが、.NET 9 以降は
                             //       BinaryFormatter 廃止によりサイレント失敗していた。
-                            // 新版: MacroTriger は DataObject 派生になり、コンストラクタ内で
+                            // 新版: MacroTrigger は DataObject 派生になり、コンストラクタ内で
                             //       自身を JSON シリアライズして byte[] として登録する。
                             //       受信側は byte[] を取り出して Deserialize で復元する。
                             //       IPAnalyzer 側の送信コードは無変更のまま動作する。
-                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(MacroTriger)))
+                            else if (Clipboard.GetDataObject().GetDataPresent(typeof(MacroTrigger)))
                             {
-                                var trigger = Clipboard.GetDataObject().GetData(typeof(MacroTriger)) is byte[] json
-                                    ? MacroTriger.Deserialize(json)
+                                var trigger = Clipboard.GetDataObject().GetData(typeof(MacroTrigger)) is byte[] json
+                                    ? MacroTrigger.Deserialize(json)
                                     : null;
 
                                 if (trigger != null && trigger.Target == "PDI")
