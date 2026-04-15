@@ -905,6 +905,7 @@ public partial class FormMain : Form
 
     }
 
+    //260415Cl Reg.RW のラムダ式オーバーロードで記述を短縮
     private void Registry(Reg.Mode mode)
     {
         var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
@@ -913,50 +914,41 @@ public partial class FormMain : Form
         if (mode == Reg.Mode.Write)
             key.SetValue("Version", Version.VersionValue);
 
-        Reg.RW<string>(key, mode, Thread.CurrentThread.CurrentUICulture, "Name");
+        Reg.RW(key, mode, () => Thread.CurrentThread.CurrentUICulture.Name);
 
-        Reg.RW<Rectangle>(key, mode, this, "Bounds");
+        Reg.RW(key, mode, () => Bounds);
         WindowLocation.Adjust(this);
 
         if (initialDialog == null)
             return;
 
-        Reg.RW<bool>(key, mode, initialDialog, "AutomaticallyClose");
-
-
-        //Reg.RW<bool>(key, mode, clearRegistryToolStripMenuItem, "Checked");
+        Reg.RW(key, mode, () => initialDialog.AutomaticallyClose);
 
         if (formEOS == null) return;
 
-        Reg.RW<Rectangle>(key, mode, formEOS, "Bounds");
-        Reg.RW<Rectangle>(key, mode, formCrystal, "Bounds");
-        Reg.RW<Rectangle>(key, mode, formFitting, "Bounds");
-        Reg.RW<Rectangle>(key, mode, formProfile, "Bounds");
-
+        Reg.RW(key, mode, () => formEOS.Bounds);
+        Reg.RW(key, mode, () => formCrystal.Bounds);
+        Reg.RW(key, mode, () => formFitting.Bounds);
+        Reg.RW(key, mode, () => formProfile.Bounds);
 
         #region FormMain
-        Reg.RW<HorizontalAxisProperty>(key, mode, this, "HorizontalAxisProperty");
-
-        Reg.RW<string>(key, mode, this.numeriBoxIncreasingPixels, "Text");
-
-        Reg.RW<bool>(key, mode, this.automaticallySaveTheCrystalListToolStripMenuItem, "Checked");
-
-        Reg.RW<string>(key, mode, this, "InitialDirectory");
-        Reg.RW<int>(key, mode, this, "FilterIndex");
+        Reg.RW(key, mode, () => HorizontalAxisProperty);
+        Reg.RW(key, mode, () => numeriBoxIncreasingPixels.Text);
+        Reg.RW(key, mode, () => automaticallySaveTheCrystalListToolStripMenuItem.Checked);
+        Reg.RW(key, mode, () => InitialDirectory);
+        Reg.RW(key, mode, () => FilterIndex);
         #endregion
 
         #region FormCrystal
-
-        Reg.RW<bool>(key, mode, formCrystal.checkBoxShowPeakOverProfiles, "Checked");
-        Reg.RW<bool>(key, mode, formCrystal.checkBoxCalculateIntensity, "Checked");
-        Reg.RW<bool>(key, mode, formCrystal.checkBoxVariableRatioOfIntensity, "Checked");
-        Reg.RW<bool>(key, mode, formCrystal.checkBoxShowPeakUnderProfile, "Checked");
-        Reg.RW<bool>(key, mode, formCrystal.radioButtonAllCheckedCrystals, "Checked");
-        Reg.RW<decimal>(key, mode, formCrystal.numericUpDownHeightOfBottomPeak, "Value");
+        Reg.RW(key, mode, () => formCrystal.checkBoxShowPeakOverProfiles.Checked);
+        Reg.RW(key, mode, () => formCrystal.checkBoxCalculateIntensity.Checked);
+        Reg.RW(key, mode, () => formCrystal.checkBoxVariableRatioOfIntensity.Checked);
+        Reg.RW(key, mode, () => formCrystal.checkBoxShowPeakUnderProfile.Checked);
+        Reg.RW(key, mode, () => formCrystal.radioButtonAllCheckedCrystals.Checked);
+        Reg.RW(key, mode, () => formCrystal.numericUpDownHeightOfBottomPeak.Value);
         #endregion
 
         #region マクロ
-
         if (mode == Reg.Mode.Read)
             FormMacro.ZippedMacros = (byte[])key.GetValue("Macro", Array.Empty<byte>());
         else
@@ -964,8 +956,7 @@ public partial class FormMain : Form
         #endregion
 
         #region ファイルタイプごとのパラメータ
-
-        Reg.RW<FileProperty[]>(key, mode, this, "FileProperties");
+        Reg.RW(key, mode, () => FileProperties);
 
         if (FileProperties == null)
         {
@@ -1068,17 +1059,17 @@ public partial class FormMain : Form
         #endregion
 
         #region FormEOS
-        Reg.RW<double>(key, mode, formEOS, "Ar_a0");
-        Reg.RW<double>(key, mode, formEOS, "Al2O3_v0");
-        Reg.RW<double>(key, mode, formEOS, "Au_a0");
-        Reg.RW<double>(key, mode, formEOS, "MgO_a0");
-        Reg.RW<double>(key, mode, formEOS, "NaCl_a0");
-        Reg.RW<double>(key, mode, formEOS, "Pt_a0");
-        Reg.RW<double>(key, mode, formEOS, "Mo_v0");
-        Reg.RW<double>(key, mode, formEOS, "Re_v0");
-        Reg.RW<double>(key, mode, formEOS, "Pb_a0");
-        Reg.RW<double>(key, mode, formEOS, "Temperature0");
-        Reg.RW<double>(key, mode, formEOS, "Temperature");
+        Reg.RW(key, mode, () => formEOS.Ar_a0);
+        Reg.RW(key, mode, () => formEOS.Al2O3_v0);
+        Reg.RW(key, mode, () => formEOS.Au_a0);
+        Reg.RW(key, mode, () => formEOS.MgO_a0);
+        Reg.RW(key, mode, () => formEOS.NaCl_a0);
+        Reg.RW(key, mode, () => formEOS.Pt_a0);
+        Reg.RW(key, mode, () => formEOS.Mo_v0);
+        Reg.RW(key, mode, () => formEOS.Re_v0);
+        Reg.RW(key, mode, () => formEOS.Pb_a0);
+        Reg.RW(key, mode, () => formEOS.Temperature0);
+        Reg.RW(key, mode, () => formEOS.Temperature);
         #endregion
         key.Close();
     }

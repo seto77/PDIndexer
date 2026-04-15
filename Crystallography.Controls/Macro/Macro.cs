@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -7,9 +7,6 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-// 注: クラス名 "MacroTrigger" は typo ("Trigger") だが、IPAnalyzer 等から
-// `new MacroTrigger("PDI", ...)` で参照されているため改名不可。
-//
 // 260414Cl 全面改修:
 //  旧版は [Serializable] + Clipboard.SetDataObject(trigger) で送信していたが、
 //  .NET 9 以降 WinForms Clipboard の BinaryFormatter ベース経路が廃止されサイレント
@@ -21,8 +18,7 @@ namespace Crystallography.Controls;
 //  済み、IPAnalyzer 本体のコードを 1 行も触らずに済む。
 //
 //  受信側 (PDIndexer) は GetData(typeof(MacroTrigger)) で byte[] を受け取って
-//  MacroTrigger.Deserialize(byte[]) で復元する (旧版は MacroTrigger インスタンスを
-//  そのまま受け取っていたが、現在は byte[] 経由になる)。
+//  MacroTrigger.Deserialize(byte[]) で復元する 
 public class MacroTrigger : DataObject
 {
     public string Target { get; set; }
@@ -100,6 +96,11 @@ public class MacroBase
     // 260414Cl virtual 化 (旧: 非 virtual)。FormMacro.obj が MacroBase 型に
     // なったあとも、IPAnalyzer 側 Macro が override で固有処理を維持できるように。
     public virtual void SetMacroToMenu(string[] name) => mainObject.SetMacroToMenu(name);
+
+    // 260414Cl 追加 サンプルマクロ。保存済みマクロが空のとき FormMacro が初回表示時に
+    // この一覧を挿入する。各アプリの Macro 派生クラスで override して初心者向けテンプレを
+    // 提供できる。既定では空。各要素は (名前, コード本体) の tuple。
+    public virtual (string name, string body)[] SampleMacros => [];
 }
 
 [Serializable]

@@ -67,6 +67,268 @@ public class Macro : MacroBase
     [Help("Get/Set objects passed in from another program (inter-process arguments).")]
     public object[] Obj { get; set; }
 
+    #region マクロサンプル集
+    // 260415Cl 追加
+    public override (string name, string body)[] SampleMacros =>
+        Thread.CurrentThread.CurrentUICulture.Name == "ja" ? _sampleMacrosJa : _sampleMacrosEn;
+
+    private static readonly (string nameEn, string bodyEn, string nameJa, string bodyJa)[] _sampleMacros =
+    [
+        (
+            "01. Basic loop and if",
+            """
+            # Loop 10 times computing the squares. Inside the loop, an if/else classifies 'i' as "even" or "odd"
+            # and an if adds a "big" flag once 'sq' exceeds 25. Run with "Step by step" mode and watch
+            # 'i', 'sq', 'kind', 'big' change in the debug panel (print() is not available here).
+            for i in range(10):
+                sq = i * i
+                if i % 2 == 0:
+                    kind = "even"
+                else:
+                    kind = "odd"
+                big = sq > 25
+            """,
+            "01. 基本的なループと条件分岐",
+            """
+            # 10 回ループして二乗を計算し、ループ内の if/else で 'i' を "even" / "odd" に分類しつつ、
+            # 'sq' が 25 を超えたら 'big' フラグを立てます。「Step by step」モードで実行すると、デバッグ
+            # パネルで i・sq・kind・big の値の変化を確認できます (print() は使えません)。
+            for i in range(10):
+                sq = i * i
+                if i % 2 == 0:
+                    kind = "even"
+                else:
+                    kind = "odd"
+                big = sq > 25
+            """
+        ),
+        (
+            "02. Math functions",
+            """
+            # The math module is pre-imported, so you can use it directly without an explicit import statement.
+            # This sample shows pi, trigonometric (sin/cos), sqrt, exponential (exp), and logarithm (log).
+            # Run in Step mode to inspect each variable in the debug panel.
+            r = 5.0
+            area          = math.pi * r * r            # circle area
+            circumference = 2 * math.pi * r            # circle circumference
+            s   = math.sin(math.pi / 6)                # sin(30°) = 0.5
+            c   = math.cos(math.pi / 3)                # cos(60°) = 0.5
+            t   = math.tan(math.pi / 4)                # tan(45°) = 1.0
+            rt2 = math.sqrt(2)                         # square root of 2
+            e2  = math.exp(2)                          # e^2 ≈ 7.389
+            ln  = math.log(math.e)                     # natural log of e = 1.0
+            lg  = math.log10(1000)                     # base-10 log of 1000 = 3.0
+            """,
+            "02. 数学関数の使用",
+            """
+            # math モジュールはあらかじめ import 済みなので、明示的な import 文なしにそのまま使えます。
+            # このサンプルでは pi, 三角関数 (sin/cos/tan), sqrt, 指数関数 (exp), 対数関数 (log) を扱います。
+            # Step モードで実行して各変数の値をデバッグパネルで確認しましょう。
+            r = 5.0
+            area          = math.pi * r * r            # 円の面積
+            circumference = 2 * math.pi * r            # 円周の長さ
+            s   = math.sin(math.pi / 6)                # sin(30°) = 0.5
+            c   = math.cos(math.pi / 3)                # cos(60°) = 0.5
+            t   = math.tan(math.pi / 4)                # tan(45°) = 1.0
+            rt2 = math.sqrt(2)                         # 2 の平方根
+            e2  = math.exp(2)                          # e^2 ≒ 7.389
+            ln  = math.log(math.e)                     # e の自然対数 = 1.0
+            lg  = math.log10(1000)                     # 1000 の常用対数 = 3.0
+            """
+        ),
+        (
+            "03. Drawing view setup",
+            """
+            # Configure the X/Y axis view to zoom into a specific 2-theta range. SetBounds takes the four edges
+            # (startX, endX, startY, endY). You can also read/write each edge individually via StartX/EndX/...
+            PDI.Drawing.SetBounds(10, 40, 0, 5000)
+            start_x = PDI.Drawing.StartX
+            end_x   = PDI.Drawing.EndX
+            """,
+            "03. 描画範囲の設定",
+            """
+            # X/Y 軸の表示範囲を特定の 2θ 領域に絞り込みます。SetBounds は 4 辺 (startX, endX, startY, endY)
+            # をまとめて指定できます。StartX/EndX などで個別に読み書きすることも可能です。
+            PDI.Drawing.SetBounds(10, 40, 0, 5000)
+            start_x = PDI.Drawing.StartX
+            end_x   = PDI.Drawing.EndX
+            """
+        ),
+        (
+            "04. Load profiles and crystals",
+            """
+            # Load a profile file and a crystal list file via dialogs (pass a path to skip the dialog).
+            # After loading, inspect how many items are in each list. Run in Step mode to watch the counts.
+            PDI.File.ReadProfiles()
+            PDI.File.ReadCrystals()
+            n_profiles = PDI.ProfileList.Count
+            n_crystals = PDI.CrystalList.Count
+            """,
+            "04. プロファイル・結晶データの読み込み",
+            """
+            # プロファイルファイルと結晶リストファイルをダイアログ経由で読み込みます (パス指定でダイアログ省略可)。
+            # 読み込み後、それぞれのリスト件数を取得します。Step モードで件数の変化を確認できます。
+            PDI.File.ReadProfiles()
+            PDI.File.ReadCrystals()
+            n_profiles = PDI.ProfileList.Count
+            n_crystals = PDI.CrystalList.Count
+            """
+        ),
+        (
+            "05. Inspect crystal cell constants",
+            """
+            # Select the first crystal in the list and read its name, cell constants (Å / deg), and cell volume.
+            # Also compute the pressure from the current EOS. Run in Step mode to see each value.
+            PDI.CrystalList.SelectedIndex = 0
+            name   = PDI.Crystal.Name
+            a      = PDI.Crystal.CellA
+            b      = PDI.Crystal.CellB
+            c      = PDI.Crystal.CellC
+            alpha  = PDI.Crystal.CellAlpha
+            beta   = PDI.Crystal.CellBeta
+            gamma  = PDI.Crystal.CellGamma
+            volume = PDI.Crystal.CellVolume
+            press  = PDI.Crystal.Pressure()
+            """,
+            "05. 結晶の格子定数を確認",
+            """
+            # リスト先頭の結晶を選択し、名前・格子定数 (Å / deg)・単位胞体積を取得します。
+            # 現在の EOS から圧力も計算します。Step モードで各値を確認しましょう。
+            PDI.CrystalList.SelectedIndex = 0
+            name   = PDI.Crystal.Name
+            a      = PDI.Crystal.CellA
+            b      = PDI.Crystal.CellB
+            c      = PDI.Crystal.CellC
+            alpha  = PDI.Crystal.CellAlpha
+            beta   = PDI.Crystal.CellBeta
+            gamma  = PDI.Crystal.CellGamma
+            volume = PDI.Crystal.CellVolume
+            press  = PDI.Crystal.Pressure()
+            """
+        ),
+        (
+            "06. Scan crystal list",
+            """
+            # Iterate over every crystal in the list and collect names and volumes into Python lists.
+            # Use CrystalList.Count to iterate the whole list safely. Step mode shows the lists growing.
+            names   = []
+            volumes = []
+            for i in range(PDI.CrystalList.Count):
+                PDI.CrystalList.SelectedIndex = i
+                names.append(PDI.Crystal.Name)
+                volumes.append(PDI.Crystal.CellVolume)
+            """,
+            "06. 結晶リストの走査",
+            """
+            # 結晶リスト全件を走査し、名前と単位胞体積を Python リストに収集します。
+            # CrystalList.Count で全件を安全にループできます。Step モードでリストが増えていく様子を確認できます。
+            names   = []
+            volumes = []
+            for i in range(PDI.CrystalList.Count):
+                PDI.CrystalList.SelectedIndex = i
+                names.append(PDI.Crystal.Name)
+                volumes.append(PDI.Crystal.CellVolume)
+            """
+        ),
+        (
+            "07. Average multiple profiles",
+            """
+            # Compute the average of profiles #0, #1, #2, #3 and add it to the list as "averaged".
+            # ProfileOperator also supports pair-wise Add/Subtract/Multiply/Divide.
+            PDI.ProfileOperator.Average([0, 1, 2, 3], "averaged")
+            # PDI.ProfileOperator.SubtractTwoProfiles(1, 0, "background-subtracted")
+            """,
+            "07. 複数プロファイルの平均",
+            """
+            # プロファイル #0, #1, #2, #3 の平均を計算し、"averaged" という名前でリストに追加します。
+            # ProfileOperator には 2 本同士の加減乗除 (Add/Subtract/Multiply/Divide) もあります。
+            PDI.ProfileOperator.Average([0, 1, 2, 3], "averaged")
+            # PDI.ProfileOperator.SubtractTwoProfiles(1, 0, "background-subtracted")
+            """
+        ),
+        (
+            "08. Fitting workflow",
+            """
+            # Open the fitting window, set a peak-search range for the selected plane, run fitting,
+            # and apply the optimized cell constants back to the crystal (equivalent to clicking 'Confirm').
+            PDI.Fitting.Open()
+            PDI.Fitting.SelectedIndex = 0
+            PDI.Fitting.Range(0.2)
+            PDI.Fitting.Apply()
+            """,
+            "08. フィッティング操作",
+            """
+            # フィッティングウィンドウを開き、選択中の面にピーク探索範囲を設定してフィッティングを実行し、
+            # 最適化された格子定数を結晶に反映します ('Confirm' ボタン相当)。
+            PDI.Fitting.Open()
+            PDI.Fitting.SelectedIndex = 0
+            PDI.Fitting.Range(0.2)
+            PDI.Fitting.Apply()
+            """
+        ),
+        (
+            "09. Sequential analysis and export",
+            """
+            # Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing / cell-constant /
+            # pressure results as CSV strings and save each to a file. SaveText with no filename opens a dialog.
+            PDI.ProfileList.CheckAll()
+            PDI.Sequential.Open()
+            PDI.Sequential.Execute()
+            dir_path = PDI.File.GetDirectoryPath()
+            PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+            PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+            PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+            PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+            """,
+            "09. 逐次解析と結果の保存",
+            """
+            # 全プロファイルにチェックを入れて逐次解析を実行し、2θ / 面間隔 / 格子定数 / 圧力の結果を
+            # CSV 文字列として取得してそれぞれファイルに保存します。SaveText にファイル名なしで呼ぶとダイアログが開きます。
+            PDI.ProfileList.CheckAll()
+            PDI.Sequential.Open()
+            PDI.Sequential.Execute()
+            dir_path = PDI.File.GetDirectoryPath()
+            PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+            PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+            PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+            PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+            """
+        ),
+        (
+            "10. Save metafile series per profile",
+            """
+            # For each profile in the list, make it the sole checked one and save the current plot as an EMF.
+            # Useful for generating one image per profile for reports.
+            dir_path = PDI.File.GetDirectoryPath()
+            for i in range(PDI.ProfileList.Count):
+                PDI.ProfileList.UncheckAll()
+                PDI.ProfileList.Check(i, True)
+                PDI.ProfileList.SelectedIndex = i
+                fname = dir_path + "profile_" + str(i).zfill(3) + ".emf"
+                PDI.File.SaveMetafile(fname)
+            """,
+            "10. プロファイル毎のメタファイル保存",
+            """
+            # リスト内の各プロファイルについて、その 1 本だけをチェック状態にして現在の描画を EMF として保存します。
+            # レポート用にプロファイル毎の画像を一括生成するのに便利です。
+            dir_path = PDI.File.GetDirectoryPath()
+            for i in range(PDI.ProfileList.Count):
+                PDI.ProfileList.UncheckAll()
+                PDI.ProfileList.Check(i, True)
+                PDI.ProfileList.SelectedIndex = i
+                fname = dir_path + "profile_" + str(i).zfill(3) + ".emf"
+                PDI.File.SaveMetafile(fname)
+            """
+        ),
+    ];
+
+    private static readonly (string name, string body)[] _sampleMacrosEn
+        = Array.ConvertAll(_sampleMacros, m => (name: m.nameEn, body: m.bodyEn));
+
+    private static readonly (string name, string body)[] _sampleMacrosJa
+        = Array.ConvertAll(_sampleMacros, m => (name: m.nameJa, body: m.bodyJa));
+    #endregion
+
     #endregion
 
     #region Fileクラス ファイル入出力関係

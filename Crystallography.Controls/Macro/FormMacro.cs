@@ -1,4 +1,4 @@
-using Microsoft.Scripting.Hosting;
+﻿using Microsoft.Scripting.Hosting;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +20,6 @@ public partial class FormMacro : CaptureFormBase
     // (IronPython 自体はトークンを尊重しないので Cancel ボタンはステップ実行時のみ有効)。
     private CancellationTokenSource _cancelSource;
     public bool stepByStepMode;
-
     private readonly MacroBase obj; // 260414Cl 旧: dynamic obj
     private readonly ScriptEngine Engine;
     private readonly ScriptScope Scope;
@@ -28,6 +27,21 @@ public partial class FormMacro : CaptureFormBase
 
     // 260414Cl OnTraceback で生成しないようキャッシュ。
     private readonly IronPython.Runtime.Exceptions.TracebackDelegate _tracebackDelegate;
+
+    // 260414Cl 追加 未保存編集を検知するためのダーティフラグ
+    private bool _isDirty = false;
+    // 260414Cl 追加 選択戻し・プログラマティック代入時の再入防止 (リポジトリ共通の命名)
+    private bool skipEvent = false;
+    // 260414Cl 追加 SelectedIndexChanged は変更後に発火するため、直前の選択を保持する
+    private int _previousSelectedIndex = -1;
+    // 260414Cl 追加 ダーティ時に "*" を付与する基準タイトル。コンストラクタで Text から取得する
+    private readonly string _titleBase;
+
+    // 260415Cl 追加 サンプルマクロ表示トグル用フィールド。表示状態は checkBoxSamples.Checked が真実の情報源。
+    private MacroEntry[] _userMacroSnapshot = [];
+    private int _userSelectedIndex = -1;
+    // Cancel 時に checkBoxSamples.Checked を戻す際の CheckedChanged 再入防止ガード
+    private bool _suppressSamplesToggleEvent = false;
 
     #endregion
 
@@ -51,8 +65,8 @@ public partial class FormMacro : CaptureFormBase
 
                 dataGridView.Rows.Add(temp);
             }
-            exRichTextBox.AutoCompleteItems = [.. autoCompleteItems];
-            exRichTextBox.ToolTipItems = [.. toolTipItems];
+            pyRichTextBox.AutoCompleteItems = [.. autoCompleteItems];
+            pyRichTextBox.ToolTipItems = [.. toolTipItems];
         }
     }
 
@@ -67,11 +81,116 @@ public partial class FormMacro : CaptureFormBase
         Scope = Engine.CreateScope();
         ScopeName = obj.ScopeName;
         Scope.SetVariable(ScopeName, scopeObject);
+        // 260414Cl 追加 math モジュールを事前 import (ユーザーマクロで math.sqrt 等をそのまま使えるように)
+        try { Engine.CreateScriptSourceFromString("import math").Execute(Scope); }
+        catch { /* math モジュール未搭載の環境でも起動は続行 */ }
         HelpItems = obj.Help;
 
         _tracebackDelegate = OnTraceback;
 
+        // 260414Cl 追加 Designer で設定済みのタイトルを基準値として保持 (ダーティ時に "*" を付与する)
+        _titleBase = Text;
+
+        // 260414Cl 追加 PyRichTextBox へ行番号ガターとステータスバーを紐付け。
+        // 行番号描画・スクロール同期・オートインデント等は PyRichTextBox 側に集約済み。
+        pyRichTextBox.AttachGutter(panelGutter);
+        pyRichTextBox.SelectionChanged += updateStatusPos;
+        updateStatusPos(null, null);
+
+        // 260415Cl 削除 Shown 時の自動サンプル挿入を撤去 (旧: this.Shown += loadSampleMacrosIfEmpty;)
+        // 理由: 初回起動時の言語でユーザーのマクロリストに英語サンプルが永続保存され、
+        // 後から日本語 UI に切り替えても英語のまま残ってしまう問題があったため。
+        // 代替: Designer 配置の checkBoxSamples から常時・現行言語で参照できる。
+
+        // 260415Cl 追加 派生クラスが SampleMacros を上書きしていなければチェックボックスは非表示
+        var _samples = obj?.SampleMacros;
+        if (_samples == null || _samples.Length == 0)
+            checkBoxSamples.Visible = false;
+
         splitContainer2.SplitterDistance = splitContainer2.Width;
+    }
+
+    // 260415Cl 追加 listBoxMacro を items で置き換え、selectIdx を選択してエディタへ反映する共通処理。
+    // skipEvent ガード + BeginUpdate/EndUpdate で SelectedIndexChanged / TextChanged / 再描画を抑止する。
+    private void replaceListBoxAndSelect(MacroEntry[] items, int selectIdx)
+    {
+        skipEvent = true;
+        try
+        {
+            listBoxMacro.BeginUpdate();
+            try
+            {
+                listBoxMacro.Items.Clear();
+                foreach (var m in items)
+                    listBoxMacro.Items.Add(m);
+            }
+            finally { listBoxMacro.EndUpdate(); }
+
+            int idx = selectIdx >= 0 && selectIdx < listBoxMacro.Items.Count ? selectIdx
+                    : listBoxMacro.Items.Count > 0 ? 0 : -1;
+            if (idx >= 0)
+            {
+                listBoxMacro.SelectedIndex = idx;
+                var v = (MacroEntry)listBoxMacro.SelectedItem;
+                textBoxMacroName.Text = v.Name;
+                pyRichTextBox.Text = v.Body;
+            }
+            else
+            {
+                textBoxMacroName.Text = "";
+                pyRichTextBox.Text = "";
+            }
+        }
+        finally { skipEvent = false; }
+    }
+
+    // 260415Cl 改修 checkBoxSamples.CheckedChanged でサンプル表示とユーザーマクロをトグル切り替え (旧: samplesToolStripMenuItem.Click)
+    private void toggleSamplesMode(object sender, EventArgs e)
+    {
+        if (_suppressSamplesToggleEvent) return;
+
+        if (checkBoxSamples.Checked)
+        {
+            // 未保存変更の確認
+            if (_isDirty && _previousSelectedIndex >= 0 && _previousSelectedIndex < listBoxMacro.Items.Count)
+            {
+                var dr = MessageBox.Show(
+                    "Save changes to the current macro?",
+                    "Unsaved changes",
+                    MessageBoxButtons.YesNoCancel,
+                    MessageBoxIcon.Warning);
+                if (dr == DialogResult.Cancel || (dr == DialogResult.Yes && !saveCurrentToIndex(_previousSelectedIndex)))
+                {
+                    // Cancel / 保存失敗 → checkBoxSamples を元に戻す (CheckedChanged 再入は _suppress で無効化)
+                    _suppressSamplesToggleEvent = true;
+                    try { checkBoxSamples.Checked = false; }
+                    finally { _suppressSamplesToggleEvent = false; }
+                    return;
+                }
+            }
+
+            // 現在のユーザーマクロを退避してサンプルを読み込む
+            _userMacroSnapshot = listBoxMacro.Items.Cast<MacroEntry>().ToArray();
+            _userSelectedIndex = listBoxMacro.SelectedIndex;
+
+            var samples = obj.SampleMacros;
+            var sampleEntries = samples == null ? []
+                : Array.ConvertAll(samples, s => new MacroEntry(s.name, s.body));
+            replaceListBoxAndSelect(sampleEntries, 0);
+            setDirty(false);
+            pyRichTextBox.ReadOnly = textBoxMacroName.ReadOnly = true;
+        }
+        else
+        {
+            // ユーザーマクロへ復元
+            replaceListBoxAndSelect(_userMacroSnapshot, _userSelectedIndex);
+            setDirty(false);
+            pyRichTextBox.ReadOnly = textBoxMacroName.ReadOnly = false;
+            _previousSelectedIndex = listBoxMacro.SelectedIndex;
+            setMenuItemOfMain();
+        }
+        // 260415Cl 両分岐共通の再描画 (updateListButtons が checkBoxSamples.Checked を見て編集系を一括制御)
+        updateListButtons();
     }
 
     private void FormMacro_FormClosing(object sender, FormClosingEventArgs e)
@@ -90,16 +209,13 @@ public partial class FormMacro : CaptureFormBase
 
         // スクリプトは UI スレッド上で同期実行されているため、Wait + Sleep だけだと
         // UI が固まってボタンが押せない。Application.DoEvents で短いポンプを行いつつ
-        // 50ms ごとにキャンセル要求をチェックする。本格的に消すには別スレッド実行への
-        // 全面切り替えが必要だが、互換性確保のため現状維持。
+        // 50ms ごとにキャンセル要求をチェックする。260414Cl Cancel 要求時は
+        // OperationCanceledException を握り潰さず投げ上げ、IronPython の Execute から
+        // そのまま RunMacro へ伝播させることで、次の行に進む前にスクリプトを中断する。
         while (stepByStepMode && nextStepFlag == false)
         {
-            try
-            {
-                _cancelSource.Token.ThrowIfCancellationRequested();
-                Application.DoEvents();
-            }
-            catch { }
+            _cancelSource?.Token.ThrowIfCancellationRequested();
+            Application.DoEvents();
             Thread.Sleep(50);
         }
         nextStepFlag = false;
@@ -122,12 +238,11 @@ public partial class FormMacro : CaptureFormBase
         dataGridViewDebug.Rows.Clear();
         if (i > 0 && result != "exception")
         {
-            exRichTextBox.HideSelection = false;
-            int start = 0;
-            for (int j = 0; j < i - 1; j++)
-                start += exRichTextBox.TextLines[j].Length + 1;
-            exRichTextBox.SelectionStart = start;
-            exRichTextBox.SelectionLength = exRichTextBox.TextLines[i - 1].Length;
+            pyRichTextBox.HideSelection = false;
+            // 260414Cl 旧: TextLines[j].Length+1 を手で総和して O(n) 計算 + Split 配列再生成。
+            // GetFirstCharIndexFromLine / Lines に置き換え (highlightErrorLine と同じ作法)。
+            pyRichTextBox.SelectionStart = pyRichTextBox.GetFirstCharIndexFromLine(i - 1);
+            pyRichTextBox.SelectionLength = pyRichTextBox.Lines[i - 1].Length;
 
             foreach (object o in (IronPython.Runtime.PythonDictionary)frame.f_locals)
             {
@@ -160,8 +275,10 @@ public partial class FormMacro : CaptureFormBase
     {
         // 260414Cl 旧: task != null && task.Status == TaskStatus.Running を見ていた。
         // Task を撤去したので _cancelSource の有無だけで判定する。
-        // 注: ステップ実行の待機解除にしか効かない (IronPython 実行自体は中断不能)。
-        _cancelSource?.Cancel(true);
+        // 260414Cl Step モード限定でキャンセル可能。OnTraceback で次行実行前に
+        // ThrowIfCancellationRequested が発火し、OperationCanceledException が
+        // Execute から RunMacro まで伝播してスクリプトが中断される。
+        _cancelSource?.Cancel();
     }
 
     private void buttonRunMacro_Click(object sender, EventArgs e)
@@ -169,7 +286,7 @@ public partial class FormMacro : CaptureFormBase
         stepByStepMode = false;
 
         buttonStepByStep.Visible = buttonRunMacro.Visible = false;
-        RunMacro(exRichTextBox.Text);
+        RunMacro(pyRichTextBox.Text);
         buttonCancelStep.Visible = false;
         buttonStepByStep.Visible = buttonRunMacro.Visible = true;
     }
@@ -178,10 +295,12 @@ public partial class FormMacro : CaptureFormBase
     {
         stepByStepMode = true;
 
-        buttonNextStep.Visible = true;
+        // 260414Cl 追加 buttonCancelStep を Step 実行中のみ可視化
+        // 260414Cl 旧: try/catch (Exception) で囲んでいたが RunMacro 内で全例外を捕捉する
+        // 構造に変えたので不到達。削除。
+        buttonCancelStep.Visible = buttonNextStep.Visible = true;
         buttonStepByStep.Visible = buttonRunMacro.Visible = false;
-        try { RunMacro(exRichTextBox.Text); }
-        catch (Exception ex) { MessageBox.Show(ex.Message); }
+        RunMacro(pyRichTextBox.Text);
         buttonCancelStep.Visible = buttonNextStep.Visible = false;
         buttonStepByStep.Visible = buttonRunMacro.Visible = true;
     }
@@ -205,19 +324,38 @@ public partial class FormMacro : CaptureFormBase
         RunMacro(match.Body);
     }
 
-    public void RunMacro() => RunMacro(exRichTextBox.Text);
+    public void RunMacro() => RunMacro(pyRichTextBox.Text);
     public void RunMacro(bool _stepByStepMode)
     {
         stepByStepMode = _stepByStepMode;
-        RunMacro(exRichTextBox.Text);
+        RunMacro(pyRichTextBox.Text);
     }
     public void RunMacro(string srcCode)
     {
+        // 260414Cl 旧: Compile() を 2 回呼んでいたが ErrorListener 方式に差し替え。
+        // IronPython は文法エラー時に例外を投げず黙って null を返すケースがあるため、
+        // ErrorListener でエラーを収集し、行番号付きでまとめて表示する。
+        var source = Engine.CreateScriptSourceFromString(srcCode);
+        var errorListener = new CollectingErrorListener();
+        Microsoft.Scripting.Hosting.CompiledCode compiled = null;
+        try { compiled = source.Compile(errorListener); }
+        catch (Microsoft.Scripting.SyntaxErrorException ex)
+        {
+            // ErrorListener で拾えなかったフォールバック
+            errorListener.Errors.Add($"Line {ex.Line}: {ex.Message}");
+        }
+
+        if (compiled == null || errorListener.Errors.Count > 0)
+        {
+            var msg = errorListener.Errors.Count > 0
+                ? string.Join(Environment.NewLine, errorListener.Errors)
+                : "Syntax error (no details available)";
+            MessageBox.Show(msg, "Syntax error");
+            return;
+        }
+
         try
         {
-            // 構文チェックのみ先に走らせて SyntaxErrorException を分離キャッチ。
-            Engine.CreateScriptSourceFromString(srcCode).Compile();
-
             dataGridViewDebug.Rows.Clear();
 
             if (stepByStepMode)
@@ -230,13 +368,39 @@ public partial class FormMacro : CaptureFormBase
             // 260414Cl 旧: new Task(...).RunSynchronously() で同期実行していたが、
             // RunSynchronously は呼び出しスレッド (UI スレッド) で動くだけで Task の
             // 意味が無く、CancellationToken も IronPython 側で尊重されないので撤去。
-            Engine.CreateScriptSourceFromString(srcCode).Execute(Scope);
+            compiled.Execute(Scope);
         }
-        catch (Microsoft.Scripting.ArgumentTypeException ex) { MessageBox.Show(ex.Message); }
-        catch (Microsoft.Scripting.SyntaxErrorException ex) { MessageBox.Show("Syntax error in line " + ex.Line.ToString()); }
-        catch (MissingMemberException ex) { MessageBox.Show(ex.Message); }
-        catch (Exception e) { MessageBox.Show(e.Message); }
+        // 260414Cl Step 実行の Cancel による中断は通知不要 (ユーザー操作)
+        catch (OperationCanceledException) { }
+        // 260414Cl ArgumentTypeException / MissingMemberException / 一般例外を統合。
+        // ExceptionOperations.FormatException は Python スタイルのトレースバック
+        // (行番号・呼び出しチェーン付き) を返すので "素の ex.Message" より情報量が多い。
+        catch (Exception ex)
+        {
+            var ops = Engine.GetService<Microsoft.Scripting.Hosting.ExceptionOperations>();
+            var msg = ops.FormatException(ex);
+            pyRichTextBox.HighlightErrorLineFromTraceback(msg); // 260414Cl 該当行を選択状態にしてから表示
+            MessageBox.Show(msg, "Runtime error");
+        }
         splitContainer2.SplitterDistance = splitContainer2.Width;
+    }
+
+    // 260414Cl 追加 Compile 時の文法エラーを行番号付きで収集する ErrorListener
+    private sealed class CollectingErrorListener : Microsoft.Scripting.Hosting.ErrorListener
+    {
+        public readonly List<string> Errors = [];
+        public override void ErrorReported(
+            Microsoft.Scripting.Hosting.ScriptSource source,
+            string message,
+            Microsoft.Scripting.SourceSpan span,
+            int errorCode,
+            Microsoft.Scripting.Severity severity)
+        {
+            if (severity == Microsoft.Scripting.Severity.Warning || severity == Microsoft.Scripting.Severity.Ignore)
+                return;
+            var line = span.Start.Line;
+            Errors.Add(line > 0 ? $"Line {line}: {message}" : message);
+        }
     }
 
     #region マクロファイルを読み込み・書き込み
@@ -265,10 +429,16 @@ public partial class FormMacro : CaptureFormBase
     {
         // 260414Cl 旧: StreamReader を手で Close。File.ReadLines は遅延読み込みで
         // \r\n / \n 両方の改行を吸収するので、元の StreamReader.ReadLine と同等。
-        exRichTextBox.Text = "";
-        foreach (var line in File.ReadLines(filename, Encoding.UTF8))
-            exRichTextBox.AppendText(line + "\n");
-        textBoxMacroName.Text = Path.GetFileNameWithoutExtension(filename);
+        // 260414Cl テキスト一括ロード中は TextChanged によるダーティ更新を抑止する
+        skipEvent = true;
+        try
+        {
+            pyRichTextBox.Text = "";
+            foreach (var line in File.ReadLines(filename, Encoding.UTF8))
+                pyRichTextBox.AppendText(line + "\n");
+            textBoxMacroName.Text = Path.GetFileNameWithoutExtension(filename);
+        }
+        finally { skipEvent = false; }
         buttonAddMacro_Click(new object(), new EventArgs());
     }
 
@@ -282,7 +452,7 @@ public partial class FormMacro : CaptureFormBase
         if (dlg.ShowDialog() != DialogResult.OK)
             return;
         // 260414Cl 旧: StreamWriter を手で Close していた。
-        File.WriteAllLines(dlg.FileName, exRichTextBox.TextLines, Encoding.UTF8);
+        File.WriteAllLines(dlg.FileName, pyRichTextBox.TextLines, Encoding.UTF8);
     }
     #endregion
 
@@ -292,9 +462,9 @@ public partial class FormMacro : CaptureFormBase
         {
             string str = (string)dataGridView.Rows[e.RowIndex].Cells[0].Value;
 
-            int selectionStart = exRichTextBox.SelectionStart;
-            exRichTextBox.Text = exRichTextBox.Text.Remove(selectionStart, exRichTextBox.SelectionLength);
-            exRichTextBox.Text = exRichTextBox.Text.Insert(selectionStart, str);
+            int selectionStart = pyRichTextBox.SelectionStart;
+            pyRichTextBox.Text = pyRichTextBox.Text.Remove(selectionStart, pyRichTextBox.SelectionLength);
+            pyRichTextBox.Text = pyRichTextBox.Text.Insert(selectionStart, str);
         }
     }
 
@@ -302,36 +472,98 @@ public partial class FormMacro : CaptureFormBase
     // どちらも Designer から配線されていない死コード。obj.SaveToMenuItem / obj.ReadFromMenuItem も
     // どのリポジトリにも実装が無く、呼ぶと RuntimeBinderException で必ず落ちる潜在バグだった。
 
+    // 260414Cl ステータスバー (Line/Col) 表示 — PyRichTextBox.GetLineColumn() に委譲
+    private void updateStatusPos(object sender, EventArgs e)
+    {
+        var (line, col) = pyRichTextBox.GetLineColumn();
+        statusLabelPos.Text = $"Line {line}, Col {col}";
+    }
+
+    #region ダーティ状態管理 260414Cl 追加
+    // 260414Cl 追加 ダーティフラグを更新しタイトルバーに "*" を反映する
+    private void setDirty(bool dirty)
+    {
+        if (_isDirty == dirty) return;
+        _isDirty = dirty;
+        this.Text = dirty ? _titleBase + "*" : _titleBase;
+    }
+
+    // 260414Cl 追加 現在のテキストボックス内容を指定インデックスへ書き戻す (Replace 相当)
+    private bool saveCurrentToIndex(int index)
+    {
+        if (index < 0 || index >= listBoxMacro.Items.Count) return false;
+        if (textBoxMacroName.Text.Length == 0)
+        {
+            MessageBox.Show("Please input macro name", "Alert");
+            return false;
+        }
+        // 260415Cl Items[index] への代入は ListBox 内部で SelectedIndexChanged を発火させるため、
+        // skipEvent で再入ガードし、事前に dirty を解除して未保存確認ダイアログの多重表示を防ぐ。
+        setDirty(false);
+        skipEvent = true;
+        try { listBoxMacro.Items[index] = new MacroEntry(textBoxMacroName.Text, pyRichTextBox.Text); }
+        finally { skipEvent = false; }
+        _previousSelectedIndex = listBoxMacro.SelectedIndex;
+        setMenuItemOfMain();
+        return true;
+    }
+
+    // 260414Cl 追加 pyRichTextBox / textBoxMacroName の TextChanged から呼ばれる共通ハンドラ。
+    // 編集結果が選択項目と完全一致に戻ったら自動でクリーン扱いに戻す (revert-to-clean)。
+    // RichTextBox.Text 全文の比較を伴うが、マクロは数十行程度なので実測で問題無し。
+    private void markDirtyFromEdit(object sender, EventArgs e)
+    {
+        if (skipEvent) return;
+        if (listBoxMacro.SelectedIndex >= 0)
+        {
+            var cur = (MacroEntry)listBoxMacro.SelectedItem;
+            if (cur.Name == textBoxMacroName.Text && cur.Body == pyRichTextBox.Text)
+            {
+                setDirty(false);
+                return;
+            }
+        }
+        setDirty(true);
+    }
+    #endregion
+
     #region リストボックス操作
     private void buttonAddMacro_Click(object sender, EventArgs e)
     {
-        var m = new MacroEntry(textBoxMacroName.Text, exRichTextBox.Text);
-        var items = listBoxMacro.Items;
+        var m = new MacroEntry(textBoxMacroName.Text, pyRichTextBox.Text);
         if (m.Name.Length == 0)
         {
             MessageBox.Show("Please input macro name", "Alert");
             return;
         }
-        if (items.Cast<MacroEntry>().Any(o => o.Name == m.Name))
+        // 260415Cl 旧: Any + First + IndexOf の三重走査 → 単一ループで一発検索に簡素化
+        var items = listBoxMacro.Items;
+        int existing = -1;
+        for (int i = 0; i < items.Count; i++)
+            if (((MacroEntry)items[i]).Name == m.Name) { existing = i; break; }
+        if (existing >= 0 && MessageBox.Show("The name already exists. Do you replace the macro?", "Alert", MessageBoxButtons.YesNo) != DialogResult.Yes)
+            return;
+
+        // 260415Cl Items[i]=x / Items.Add は SelectedIndexChanged を発火させ得るため、
+        // dirty を先に解除 + skipEvent ガードで未保存確認ダイアログの多重表示を防ぐ。
+        setDirty(false);
+        skipEvent = true;
+        try
         {
-            if (MessageBox.Show("The name already exists. Do you replace the macro?", "Alert", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                items[items.IndexOf(items.Cast<MacroEntry>().First(item => item.Name == m.Name))] = m;
-            setMenuItemOfMain();
+            if (existing >= 0) items[existing] = m;
+            else items.Add(m);
         }
-        else
-        {
-            items.Add(m);
-            setMenuItemOfMain();
-        }
+        finally { skipEvent = false; }
+        setMenuItemOfMain();
+        _previousSelectedIndex = listBoxMacro.SelectedIndex;
     }
 
     private void buttonChangeMacro_Click(object sender, EventArgs e)
     {
-        if (listBoxMacro.SelectedIndex >= 0)
-        {
-            listBoxMacro.Items[listBoxMacro.SelectedIndex] = new MacroEntry(textBoxMacroName.Text, exRichTextBox.Text);
-            setMenuItemOfMain();
-        }
+        // 260414Cl 旧: Items[...] への直接代入 + setMenuItemOfMain() をインライン展開していたが、
+        // saveCurrentToIndex に集約 (名前未入力チェックも共通化)。
+        // 260415Cl saveCurrentToIndex が setDirty / _previousSelectedIndex 更新を内包するため、呼び出し側での重複処理を削除。
+        saveCurrentToIndex(listBoxMacro.SelectedIndex);
     }
 
     private void buttonDeleteMacro_Click(object sender, EventArgs e)
@@ -339,6 +571,10 @@ public partial class FormMacro : CaptureFormBase
         int n = listBoxMacro.SelectedIndex;
         if (n >= 0)
         {
+            // 260414Cl 追加 削除操作で SelectedIndexChanged が走るので、事前にダーティを
+            // クリアして確認ダイアログが出ないようにする (削除時は編集内容は捨てる前提)
+            setDirty(false);
+            _previousSelectedIndex = -1;
             listBoxMacro.Items.RemoveAt(n);
             if (n < listBoxMacro.Items.Count)
                 listBoxMacro.SelectedIndex = n;
@@ -349,21 +585,96 @@ public partial class FormMacro : CaptureFormBase
 
     private void listBox_SelectedIndexChanged(object sender, EventArgs e)
     {
-        buttonChange.Enabled = buttonDeleteProfile.Enabled = listBoxMacro.SelectedIndex >= 0;
+        // 260414Cl 旧ロジックは未保存編集を黙って上書きしていたため、
+        // Yes/No/Cancel 確認ダイアログを挟む新ロジックに差し替え。
+        //buttonChange.Enabled = buttonDeleteProfile.Enabled = listBoxMacro.SelectedIndex >= 0;
+        //buttonLower.Enabled = listBoxMacro.SelectedIndex >= 0 && listBoxMacro.SelectedIndex < listBoxMacro.Items.Count - 1;
+        //buttonUpper.Enabled = listBoxMacro.SelectedIndex >= 1;
+        //if (listBoxMacro.SelectedIndex < 0)
+        //    return;
+        //var value = (MacroEntry)listBoxMacro.SelectedItem;
+        //if (textBoxMacroName.Text != value.Name)
+        //    textBoxMacroName.Text = value.Name;
+        //if (pyRichTextBox.Text != value.Body)
+        //    pyRichTextBox.Text = value.Body;
+        //setMenuItemOfMain();
 
-        buttonLower.Enabled = listBoxMacro.SelectedIndex >= 0 && listBoxMacro.SelectedIndex < listBoxMacro.Items.Count - 1;
-        buttonUpper.Enabled = listBoxMacro.SelectedIndex >= 1;
-
-        if (listBoxMacro.SelectedIndex < 0)
+        // 260414Cl 追加 プログラマティックな選択変更 (Cancel 時の戻し等) は素通しする
+        if (skipEvent)
+        {
+            if (listBoxMacro.SelectedIndex >= 0)
+            {
+                var v = (MacroEntry)listBoxMacro.SelectedItem;
+                textBoxMacroName.Text = v.Name;
+                pyRichTextBox.Text = v.Body;
+            }
+            _previousSelectedIndex = listBoxMacro.SelectedIndex;
+            updateListButtons();
             return;
+        }
 
-        var value = (MacroEntry)listBoxMacro.SelectedItem;
-        if (textBoxMacroName.Text != value.Name)
-            textBoxMacroName.Text = value.Name;
-        if (exRichTextBox.Text != value.Body)
-            exRichTextBox.Text = value.Body;
+        // 260415Cl 追加 サンプル表示モードではダーティチェック不要・読み取り専用で表示するだけ
+        if (checkBoxSamples.Checked)
+        {
+            if (listBoxMacro.SelectedIndex >= 0)
+            {
+                var v = (MacroEntry)listBoxMacro.SelectedItem;
+                skipEvent = true;
+                try { textBoxMacroName.Text = v.Name; pyRichTextBox.Text = v.Body; }
+                finally { skipEvent = false; }
+            }
+            return;
+        }
 
+        // 260414Cl 追加 未保存編集がある場合は確認ダイアログ
+        if (_isDirty && _previousSelectedIndex >= 0 && _previousSelectedIndex < listBoxMacro.Items.Count)
+        {
+            var dr = MessageBox.Show(
+                "Save changes to the current macro?",
+                "Unsaved changes",
+                MessageBoxButtons.YesNoCancel,
+                MessageBoxIcon.Warning);
+            // Yes: 旧選択に書き戻して続行。保存失敗 (名前空) は Cancel 扱いで巻き戻し
+            // No:  破棄してそのまま新選択を読み込む
+            // Cancel: 新選択を無視して旧選択に戻す
+            if (dr == DialogResult.Cancel || (dr == DialogResult.Yes && !saveCurrentToIndex(_previousSelectedIndex)))
+            {
+                skipEvent = true;
+                try { listBoxMacro.SelectedIndex = _previousSelectedIndex; }
+                finally { skipEvent = false; }
+                return;
+            }
+        }
+
+        if (listBoxMacro.SelectedIndex >= 0)
+        {
+            var value = (MacroEntry)listBoxMacro.SelectedItem;
+            skipEvent = true;
+            try
+            {
+                if (textBoxMacroName.Text != value.Name)
+                    textBoxMacroName.Text = value.Name;
+                if (pyRichTextBox.Text != value.Body)
+                    pyRichTextBox.Text = value.Body;
+            }
+            finally { skipEvent = false; }
+        }
+        setDirty(false);
+        _previousSelectedIndex = listBoxMacro.SelectedIndex;
+        updateListButtons();
         setMenuItemOfMain();
+    }
+
+    // 260414Cl 追加 選択状態に応じてボタンの Enabled を設定 (旧 listBox_SelectedIndexChanged から抽出)
+    // 260415Cl サンプル表示モードでは一括で編集系を無効化 (旧: toggleSamplesMode 側で手動 disable)
+    private void updateListButtons()
+    {
+        bool editable = !checkBoxSamples.Checked;
+        int idx = listBoxMacro.SelectedIndex;
+        buttonAdd.Enabled = editable;
+        buttonChange.Enabled = buttonDeleteProfile.Enabled = editable && idx >= 0;
+        buttonLower.Enabled = editable && idx >= 0 && idx < listBoxMacro.Items.Count - 1;
+        buttonUpper.Enabled = editable && idx >= 1;
     }
 
     private void buttonUpper_Click(object sender, EventArgs e)
@@ -396,8 +707,11 @@ public partial class FormMacro : CaptureFormBase
         // 260414Cl 旧: e.Modifiers == Keys.Control & e.KeyCode == Keys.S (ビット AND)
         if (e.Modifiers == Keys.Control && e.KeyCode == Keys.S)
         {
-            if (listBoxMacro.SelectedIndex >= 0 && textBoxMacroName.Text == ((MacroEntry)listBoxMacro.SelectedItem).Name)
-                listBoxMacro.Items[listBoxMacro.SelectedIndex] = new MacroEntry(textBoxMacroName.Text, exRichTextBox.Text);
+            // 260414Cl 名前一致条件を維持しつつ saveCurrentToIndex に委譲 (重複削除)
+            // 260415Cl saveCurrentToIndex が setDirty / _previousSelectedIndex を内包するため後処理を削除。
+            if (listBoxMacro.SelectedIndex >= 0
+                && textBoxMacroName.Text == ((MacroEntry)listBoxMacro.SelectedItem).Name)
+                saveCurrentToIndex(listBoxMacro.SelectedIndex);
         }
         // F10 次のステップに進む
         if (e.KeyCode == Keys.F10 && buttonNextStep.Visible)
@@ -405,19 +719,23 @@ public partial class FormMacro : CaptureFormBase
     }
     #endregion
 
+    // 260415Cl 簡素化 旧: List<string> + for ループ
     private void setMenuItemOfMain()
-    {
-        var list = new List<string>();
-        for (int i = 0; i < listBoxMacro.Items.Count; i++)
-            list.Add(((MacroEntry)listBoxMacro.Items[i]).Name);
-        obj.SetMacroToMenu(list.ToArray());
-    }
+        => obj.SetMacroToMenu([.. listBoxMacro.Items.Cast<MacroEntry>().Select(m => m.Name)]);
 
     public void SetMacroList(KeyValuePair<string, string>[] list)
     {
-        listBoxMacro.Items.Clear();
-        for (int i = 0; i < list.Length; i++)
-            listBoxMacro.Items.Add(new MacroEntry(list[i].Key, list[i].Value));
+        // 260414Cl 一括ロード中は SelectedIndexChanged / TextChanged による確認ダイアログを抑止
+        skipEvent = true;
+        try
+        {
+            listBoxMacro.Items.Clear();
+            for (int i = 0; i < list.Length; i++)
+                listBoxMacro.Items.Add(new MacroEntry(list[i].Key, list[i].Value));
+        }
+        finally { skipEvent = false; }
+        setDirty(false);
+        _previousSelectedIndex = listBoxMacro.SelectedIndex;
     }
 
     [System.ComponentModel.Browsable(false)]
@@ -426,10 +744,15 @@ public partial class FormMacro : CaptureFormBase
     {
         get
         {
+            // 260415Cl サンプル表示中は listBoxMacro にサンプルが入っているため、退避済みユーザーマクロを参照する。
+            // これを怠るとプログラム終了時にサンプルがユーザー保存領域 (レジストリ) に書き込まれてしまう。
+            var entries = checkBoxSamples.Checked
+                ? _userMacroSnapshot
+                : listBoxMacro.Items.Cast<MacroEntry>().ToArray();
+
             var strList = new List<string>();
-            for (int i = 0; i < listBoxMacro.Items.Count; i++)
+            foreach (var m in entries)
             {
-                var m = (MacroEntry)listBoxMacro.Items[i];
                 strList.Add(m.Name);
                 strList.Add(m.Body);
             }
@@ -452,11 +775,19 @@ public partial class FormMacro : CaptureFormBase
             var serializer = new XmlSerializer(typeof(List<string>));
             var strList = (List<string>)serializer.Deserialize(ds);
 
-            listBoxMacro.Items.Clear();
-            for (int i = 0; i < strList.Count; i += 2)
-                listBoxMacro.Items.Add(new MacroEntry(strList[i], strList[i + 1]));
+            // 260414Cl 一括ロード中は SelectedIndexChanged / TextChanged による確認ダイアログを抑止
+            skipEvent = true;
+            try
+            {
+                listBoxMacro.Items.Clear();
+                for (int i = 0; i < strList.Count; i += 2)
+                    listBoxMacro.Items.Add(new MacroEntry(strList[i], strList[i + 1]));
+            }
+            finally { skipEvent = false; }
             if (listBoxMacro.Items.Count > 0)
                 setMenuItemOfMain();
+            setDirty(false);
+            _previousSelectedIndex = listBoxMacro.SelectedIndex;
         }
     }
 
@@ -464,9 +795,7 @@ public partial class FormMacro : CaptureFormBase
     // public な Macro 派生クラスと紛らわしかったため。
     private struct MacroEntry(string name, string body)
     {
-        public string Name = name;
-        public string Body = body;
-
-        public override string ToString() => Name;
+        public string Name = name, Body = body;
+        public override readonly string ToString() => Name;
     }
 }
