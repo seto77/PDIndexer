@@ -4,7 +4,7 @@ Last updated: 2026-04-17
 
 ## Views
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-04-16 | 11 | 7 |
@@ -20,28 +20,27 @@ Last updated: 2026-04-17
 | 2026-04-06 | 6 | 6 |
 | 2026-04-05 | 1 | 1 |
 | 2026-04-04 | 3 | 2 |
-| 2026-04-03 | 2 | 2 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-W16 | 71 | 38 |
 | 2026-W15 | 134 | 42 |
 | 2026-W14 | 6 | 5 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-04 | 211 | 85 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026 | 211 | 85 |
 
 ## Clones
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-04-16 | 5 | 2 |
@@ -57,28 +56,27 @@ Last updated: 2026-04-17
 | 2026-04-06 | 25 | 14 |
 | 2026-04-05 | 2 | 2 |
 | 2026-04-04 | 1 | 1 |
-| 2026-04-03 | 0 | 0 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-W16 | 90 | 33 |
 | 2026-W15 | 35 | 23 |
 | 2026-W14 | 3 | 3 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-04 | 128 | 59 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026 | 128 | 59 |
 
 ## Referrers
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date Collected | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-04-17 | yseto.net | 73 | 38 |
@@ -86,7 +84,7 @@ Last updated: 2026-04-17
 | 2026-04-17 | Bing | 12 | 7 |
 | 2026-04-17 | github.com | 7 | 5 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-W16 | yseto.net | 73 | 38 |
@@ -94,7 +92,7 @@ Last updated: 2026-04-17
 | 2026-W16 | Bing | 12 | 7 |
 | 2026-W16 | github.com | 7 | 5 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-04 | yseto.net | 73 | 38 |
@@ -102,7 +100,7 @@ Last updated: 2026-04-17
 | 2026-04 | Bing | 12 | 7 |
 | 2026-04 | github.com | 7 | 5 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026 | yseto.net | 73 | 38 |
@@ -112,7 +110,7 @@ Last updated: 2026-04-17
 
 ## Popular Paths
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date Collected | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04-17 | /seto77/PDIndexer/releases/tag/v.4.460 | /releases/tag/v.4.460 | 47 | 29 |
@@ -126,7 +124,7 @@ Last updated: 2026-04-17
 | 2026-04-17 | /seto77/PDIndexer/blob/master/LICENSE.md | /blob/master/LICENSE.md | 5 | 3 |
 | 2026-04-17 | /seto77/PDIndexer/projects | /projects | 5 | 2 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-W16 | /seto77/PDIndexer/releases/tag/v.4.460 | /releases/tag/v.4.460 | 47 | 29 |
@@ -140,7 +138,7 @@ Last updated: 2026-04-17
 | 2026-W16 | /seto77/PDIndexer/blob/master/LICENSE.md | /blob/master/LICENSE.md | 5 | 3 |
 | 2026-W16 | /seto77/PDIndexer/projects | /projects | 5 | 2 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04 | /seto77/PDIndexer/releases/tag/v.4.460 | /releases/tag/v.4.460 | 47 | 29 |
@@ -154,7 +152,7 @@ Last updated: 2026-04-17
 | 2026-04 | /seto77/PDIndexer/blob/master/LICENSE.md | /blob/master/LICENSE.md | 5 | 3 |
 | 2026-04 | /seto77/PDIndexer/projects | /projects | 5 | 2 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026 | /seto77/PDIndexer/releases/tag/v.4.460 | /releases/tag/v.4.460 | 47 | 29 |
@@ -254,22 +252,22 @@ Last updated: 2026-04-17
 
 ## Stats
 
-### Daily (最大1年保持)
+### Daily (最大14日保持)
 | Date | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04-17 | 15 | 3 | 3 | 2 |
 
-### Weekly
+### Weekly (最大14週保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-W16 | 15 | 3 | 3 | 2 |
 
-### Monthly
+### Monthly (最大12か月保持)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04 | 15 | 3 | 3 | 2 |
 
-### Yearly
+### Yearly (無制限)
 | Period | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026 | 15 | 3 | 3 | 2 |
