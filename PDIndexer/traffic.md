@@ -25,19 +25,19 @@ Last updated: 2026-04-27
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
 | 2026-W17 | 88 | 41 |
-| 2026-W16 | 114 | 49 |
+| 2026-W16 | 125 | 60 |
 | 2026-W15 | 134 | 42 |
 | 2026-W14 | 8 | 7 |
 
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-04 | 344 | 139 |
+| 2026-04 | 355 | 150 |
 
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 344 | 139 |
+| 2026 | 355 | 150 |
 
 ## Clones
 
@@ -62,23 +62,23 @@ Last updated: 2026-04-27
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
 | 2026-W17 | 74 | 33 |
-| 2026-W16 | 211 | 85 |
+| 2026-W16 | 213 | 87 |
 | 2026-W15 | 35 | 23 |
 | 2026-W14 | 3 | 3 |
 
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-04 | 323 | 144 |
+| 2026-04 | 325 | 146 |
 
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 323 | 144 |
+| 2026 | 325 | 146 |
 
 ## Referrers
 
-### Weekly (最大14週保持)
+### Weekly (最大2週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-W18 | yseto.net | 95 | 44 |
@@ -92,7 +92,7 @@ Last updated: 2026-04-27
 | 2026-W17 | github.com | 11 | 7 |
 | 2026-W17 | kyoiku-kenkyudb.omu.ac.jp | 1 | 1 |
 
-### Monthly (最大12か月保持)
+### Monthly (最大3か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
 | 2026-04 | yseto.net | 433 | 213 |
@@ -112,7 +112,7 @@ Last updated: 2026-04-27
 
 ## Popular Paths
 
-### Weekly (最大14週保持)
+### Weekly (最大2週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-W18 | /seto77/PDIndexer/releases/tag/v.4.461 | /releases/tag/v.4.461 | 99 | 48 |
@@ -136,7 +136,7 @@ Last updated: 2026-04-27
 | 2026-W17 | /seto77/PDIndexer/security | /security | 6 | 3 |
 | 2026-W17 | /seto77/PDIndexer/tree/master/PDindexerSetup | /tree/master/PDindexerSetup | 5 | 4 |
 
-### Monthly (最大12か月保持)
+### Monthly (最大3か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
 | 2026-04 | /seto77/PDIndexer/releases/tag/v.4.461 | /releases/tag/v.4.461 | 292 | 147 |
