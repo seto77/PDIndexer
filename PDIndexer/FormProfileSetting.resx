@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -1514,7 +1514,7 @@
   <data name="numericalTextBoxExposureTime.TabIndex" type="System.Int32, mscorlib">
     <value>15</value>
   </data>
-  <data name="numericalTextBoxExposureTime.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxExposureTime.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxExposureTime.Name" xml:space="preserve">
@@ -1925,7 +1925,7 @@
   <data name="numericBoxTwhoThetaOffsetCoeff2.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff2.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff2.Name" xml:space="preserve">
@@ -1976,7 +1976,7 @@
   <data name="numericBoxTwhoThetaOffsetCoeff0.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff0.Name" xml:space="preserve">
@@ -2099,7 +2099,7 @@
   <data name="numericBoxTwhoThetaOffsetCoeff1.TabIndex" type="System.Int32, mscorlib">
     <value>78</value>
   </data>
-  <data name="numericBoxTwhoThetaOffsetCoeff1.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTwhoThetaOffsetCoeff1.Name" xml:space="preserve">
@@ -2256,7 +2256,9 @@
     <value>332, 22</value>
   </metadata>
   <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
-    <value>Interpolate from # points adjacent to the masked range</value>
+    <value>Number of data points taken from EACH side of the
+masked range to fit the interpolation (used with the
+polynomial order). Larger = wider fitting window.</value>
   </data>
   <data name="&gt;&gt;numericUpDownInterpolationPoints.Name" xml:space="preserve">
     <value>numericUpDownInterpolationPoints</value>
@@ -2292,7 +2294,8 @@
     <value>(eath sides)</value>
   </data>
   <data name="label20.ToolTip" xml:space="preserve">
-    <value>Interpolate from # points adjacent to the masked range</value>
+    <value>Number of data points taken from each side
+of the masked range to fit the interpolation.</value>
   </data>
   <data name="&gt;&gt;label20.Name" xml:space="preserve">
     <value>label20</value>
@@ -2379,7 +2382,8 @@
     <value>Point No.</value>
   </data>
   <data name="label21.ToolTip" xml:space="preserve">
-    <value>Interpolate from # points adjacent to the masked range</value>
+    <value>Number of data points taken from each side
+of the masked range to fit the interpolation.</value>
   </data>
   <data name="&gt;&gt;label21.Name" xml:space="preserve">
     <value>label21</value>
@@ -3347,7 +3351,7 @@
   <data name="numericalTextBoxTargetValue.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericalTextBoxTargetValue.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxTargetValue.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxTargetValue.Name" xml:space="preserve">
@@ -3846,5 +3850,248 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
+    <value>List of loaded profiles. Select a row to
+edit it below; the checkbox toggles its
+plot and the swatch shows its line color.</value>
+  </data>
+  <data name="textBoxProfileName.ToolTip" xml:space="preserve">
+    <value>Display name of the selected profile
+(shown in lists and legends).</value>
+  </data>
+  <data name="textBoxComment.ToolTip" xml:space="preserve">
+    <value>Free-text comment stored with the selected
+profile; does not affect processing.</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value>Set the line (plot) color of the selected profile.</value>
+  </data>
+  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+    <value>Set the plot line width of the
+selected profile, in points (pt).</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>Delete the currently selected profile.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Delete ALL loaded profiles (asks for confirmation).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Move the selected profile up one position in the list.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>Move the selected profile down one position in the list.</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.ToolTip" xml:space="preserve">
+    <value>Step 1: Apply a 2theta-angle offset
+Delta(2theta) = c0 + c1*tan(theta) +
+c2*tan^2(theta) (angle-dispersive data only).</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
+    <value>Constant term c0 of the 2theta offset Delta(2theta)
+= c0 + c1*tan(theta) + c2*tan^2(theta), in degrees.</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
+    <value>Coefficient c1 of the tan(theta) term
+in the 2theta offset, in degrees.</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
+    <value>Coefficient c2 of the tan^2(theta)
+term in the 2theta offset, in degrees.</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.ToolTip" xml:space="preserve">
+    <value>Reset all three 2theta offset
+coefficients (c0, c1, c2) to zero.</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.ToolTip" xml:space="preserve">
+    <value>Open/close the calibration window to determine
+the 2theta offset from an internal standard.</value>
+  </data>
+  <data name="checkBoxMaskingMode.ToolTip" xml:space="preserve">
+    <value>Step 2: Mask selected x-ranges and replace them by
+polynomial interpolation (e.g. to remove artifacts).</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.ToolTip" xml:space="preserve">
+    <value>Enable setting/showing masking ranges
+directly on the graph with the mouse.</value>
+  </data>
+  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+    <value>Polynomial order used to interpolate across
+masked ranges (0-5). Higher = more flexible curve.</value>
+  </data>
+  <data name="listBoxMaskRanges.ToolTip" xml:space="preserve">
+    <value>List of masking ranges (start-end on the
+horizontal axis). Select one to highlight
+it; drop a .mas file to load ranges.</value>
+  </data>
+  <data name="buttonDeleteMask.ToolTip" xml:space="preserve">
+    <value>Delete the masking range selected in the list.</value>
+  </data>
+  <data name="buttonDeleteAllMask.ToolTip" xml:space="preserve">
+    <value>Delete all masking ranges of this profile.</value>
+  </data>
+  <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
+    <value>Step 3: Smooth the profile using a Savitzky-Golay filter.</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay window half-width (points
+on each side). Larger = stronger smoothing.</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay polynomial order (0-5).
+Higher preserves peaks but smooths less.</value>
+  </data>
+  <data name="checkBoxBandPassFilter.ToolTip" xml:space="preserve">
+    <value>Step 4: Apply an FFT bandpass filter to
+suppress unwanted frequency components.</value>
+  </data>
+  <data name="checkBoxHighPassFilter.ToolTip" xml:space="preserve">
+    <value>Enable a high-pass filter: remove low-frequency
+(long-period) components below the threshold.</value>
+  </data>
+  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+    <value>High-pass cutoff frequency (in
+1/[horizontal-axis unit]); components below
+it are removed. Range adapts to the data.</value>
+  </data>
+  <data name="checkBoxLowPassFilter.ToolTip" xml:space="preserve">
+    <value>Enable a low-pass filter: remove high-frequency
+(short-period noise) components above the threshold.</value>
+  </data>
+  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+    <value>Low-pass cutoff frequency (in
+1/[horizontal-axis unit]); components above
+it are removed. Range adapts to the data.</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.ToolTip" xml:space="preserve">
+    <value>Step 5: Strip the Kalpha2 contribution
+from the profile (only when the source
+is an X-ray Kalpha1 line).</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.ToolTip" xml:space="preserve">
+    <value>Step 6: Subtract a background curve from the profile.</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.ToolTip" xml:space="preserve">
+    <value>Define the background as a B-spline curve
+through manually/auto-placed points.</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>Use another profile as the reference background to subtract.</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
+    <value>Automatically place the specified number
+of background points along the profile.</value>
+  </data>
+  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+    <value>Number of background points (3-50) used
+for auto-detection / B-spline fitting.</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>Select which loaded profile is
+used as the reference background.</value>
+  </data>
+  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+    <value>Scale factor multiplied to the
+reference background before subtraction.</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
+    <value>Show/hide the background curve on the
+graph (background subtraction must be on).</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>Step 7: Normalize the intensity within
+a chosen x-range to a target value.</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.ToolTip" xml:space="preserve">
+    <value>Normalize so that the AVERAGE intensity
+in the range equals the target value.</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
+    <value>Normalize so that the MAXIMUM intensity
+in the range equals the target value.</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+    <value>Lower bound (horizontal-axis units) of the
+range used to compute the normalization.</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+    <value>Upper bound (horizontal-axis units) of the
+range used to compute the normalization.</value>
+  </data>
+  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>Target intensity value (1-100000) the
+range's average/maximum is scaled to.</value>
+  </data>
+  <data name="buttonApplyAllProfiles.ToolTip" xml:space="preserve">
+    <value>Apply the current processing settings to
+ALL profiles (background settings excluded).</value>
+  </data>
+  <data name="xAxisUserControl.ToolTip" xml:space="preserve">
+    <value>Edit the source horizontal-axis settings (axis
+type 2theta/d/energy/TOF, radiation source,
+wavelength, takeoff angle). Apply with 'Change'.</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.ToolTip" xml:space="preserve">
+    <value>Apply the edited horizontal-axis source settings
+(and exposure time) to the selected profile.</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>Shift the entire profile along the
+horizontal axis by a fixed amount.</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>Amount to shift the profile along the
+horizontal axis (in horizontal-axis units).</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+    <value>Exposure time in seconds, used to convert intensity
+to counts-per-second (CPS) on the vertical axis.</value>
+  </data>
+  <data name="radioButtonAverage.ToolTip" xml:space="preserve">
+    <value>Operator mode: average multiple selected
+profiles (with error propagation).</value>
+  </data>
+  <data name="radioButtonProfileAndValue.ToolTip" xml:space="preserve">
+    <value>Operator mode: combine one profile with
+a constant value (add or multiply).</value>
+  </data>
+  <data name="radioButtonTwoProfiles.ToolTip" xml:space="preserve">
+    <value>Operator mode: perform +, -, * or
+/ between two selected profiles.</value>
+  </data>
+  <data name="radioButtonAddition.ToolTip" xml:space="preserve">
+    <value>Select addition (+) as the operation.</value>
+  </data>
+  <data name="radioButtonSubtraction.ToolTip" xml:space="preserve">
+    <value>Select subtraction (-) as the operation.</value>
+  </data>
+  <data name="radioButtonMutiplication.ToolTip" xml:space="preserve">
+    <value>Select multiplication as the operation (the button
+shows no symbol; this is the multiply operator).</value>
+  </data>
+  <data name="radioButtonDivision.ToolTip" xml:space="preserve">
+    <value>Select division as the operation (the button
+shows no symbol; this is the divide operator).</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
+    <value>Constant value combined with the
+profile in 'Profile and value' mode.</value>
+  </data>
+  <data name="listBoxTwoProfiles1.ToolTip" xml:space="preserve">
+    <value>Select the first (primary) profile for the
+operation; allows multiple selection in Average mode.</value>
+  </data>
+  <data name="listBoxTwoProfiles2.ToolTip" xml:space="preserve">
+    <value>Select the second profile for two-profile operations.</value>
+  </data>
+  <data name="textBoxOutputFilename.ToolTip" xml:space="preserve">
+    <value>Name given to the newly created result
+profile (trailing number
+auto-increments after each calculation).</value>
+  </data>
+  <data name="buttonCalculate.ToolTip" xml:space="preserve">
+    <value>Perform the selected operation and
+add the result as a new profile.</value>
   </data>
 </root>

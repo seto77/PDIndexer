@@ -32,6 +32,10 @@ namespace PDIndexer
             labelLanthanoid1.Font = labelLanthanoid2.Font = labelActinoid1.Font = labelActinoid2.Font =
                 new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 
+            // 260531Cl 追加: 動的生成する周期表の元素入力箱に共通ツールチップを付与(localize 用にリソースから取得)
+            var elemTipRm = new System.ComponentModel.ComponentResourceManager(typeof(FormAtomicPositionFinder));
+            string elemTip = elemTipRm.GetString("numericTexBox.SharedToolTip");
+
             for (int i = 0; i < 112; i++)
             {
                 numericTexBox.Add(new NumericBox());
@@ -48,6 +52,7 @@ namespace PDIndexer
                     this.tabPage2.Controls.Add(numericTexBox[i]);
                     this.tabPage2.Controls.Add(label[i]);
                     numericTexBox[i].ValueChanged += new NumericBox.MyEventHandler(numerictextBoxElement_ValueChanged);
+                    toolTip.SetToolTip(numericTexBox[i], elemTip); // 260531Cl 追加: 元素入力箱の共通ツールチップ
                 }
             }
 

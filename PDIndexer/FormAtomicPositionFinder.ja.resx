@@ -1,0 +1,195 @@
+﻿<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>結晶系（triclinic〜cubic）を選択します。
+選んだ結晶系に応じて編集できる格子定数が
+制限され、空間群候補一覧が更新されます。</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>単位格子の a 軸長（Å）です。対称性の
+高い結晶系では b・c が a に連動します。</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>単位格子の b 軸長（Å）です。正方・三方・
+六方・立方晶系では a と等しく固定されます。</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>単位格子の c 軸長（Å）です。
+立方晶系では a と等しく固定されます。</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>格子角 α（度）です。結晶系に応じ
+て 90° などに自動固定されます。</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>格子角 β（度）です。斜方晶系以上で
+は 90° に自動固定されます。</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>格子角 γ（度）です。三方・六方晶系では 120°、そ
+の他の高対称晶系では 90° に自動固定されます。</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>探索対象とする空間群候補（番号.副番号:
+Hermann-Mauguin 記号）を選びます。複数選択で
+き、選んだ各空間群について構造探索を行います。</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>化学式（最簡組成式、例: Ti O2）を入力します。解析され
+て各元素の原子数欄と式単位数 Z が自動計算されます。</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>単位格子あたりの式単位数 Z（最小 1）です。
+組成式に掛けて単位格子内の全原子数を決めます。</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>単位格子内の全原子組成を表示します（組成式 × Z、読み
+取り専用）。組成式や Z の変更で自動更新されます。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>波源（X線など）と波長を設定します。面間隔から
+回折角への変換と回折強度の計算に使われます。</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>表に追加するピークの面間隔 d（Å）を入力します。
+Add Peak ボタンで回折ピーク表に追加されます。</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>追加するピークの相対回折強度（rel %）を入力しま
+す。R 因子計算時には最強ピークで規格化されます。</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>入力した d 値と強度を回折ピーク表に 1 行追加します。</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>現在の格子定数と空間群で全ピークの
+hkl 指数（ミラー指数）を再計算します。</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>（デバッグ用）クリップボードのタブ区切り
+テキスト（0 列目=d, 4 列目=強度）を読み
+込み、回折ピーク表を置き換えます。</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>観測回折ピーク一覧です。Check 列で探索に使う
+ピークを選び、Delete 列で行を削除します。Index
+列には割り当てられた hkl が表示されます。</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>回折角の差が下のしきい値より小さい反射を 1
+本のピークとして併合するモードを選びます。</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>角度しきい値（度、0〜2）です。これより 2θ が
+近い反射どうしを 1 本のピークに併合します。</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>角度の代わりにエネルギーしきい値で反射を
+併合するモードを選びます（現コードでは
+エネルギー分岐が無効の可能性あり）。</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>ピーク併合に用いるエネルギーしきい値（eV、0〜10）で
+す（エネルギーしきい値モードでのみ有効）。</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>各モンテカルロ試行で原子配置を新規にランダム
+生成する確率（%、既定 95）です。3 つの確率は
+合計 100% になるよう自動調整されます。</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>既存の候補 2 つを掛け合わせる遺伝的アルゴリズム
+（交叉）を行う確率（%、既定 2）です。他の 2 つ
+と合わせて 100% に自動調整されます。</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>既存候補の原子座標をわずかに揺らす（shaking）確率（%、
+既定 3）です。合計 100% になるよう自動調整されます。</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>原子の重なり判定に用いるイオン半径和の
+許容係数（%、既定 70）です。値が小さい
+ほど近接した配置を強く棄却します。</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>探索に使う並列スレッド数（1〜16、既定 2）です。
+値を大きくすると多くの CPU コアを使います。</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>構造探索を新規に開始します（既存候補をクリア）。
+実行中は 'Stop!' 表示になり、押すと探索を中断します。</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>現在の候補一覧を初期集団として探索を
+再開します（候補をクリアしません）。</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>探索で得られた結晶構造候補（R 因子の昇順）です。
+Residual は R、Info は空間群・各原子のワイコフ位置と
+分率座標を表します。行をクリックすると Crystal
+フォームへ送られ、クリップボードにもコピーされます。</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>探索中の R 因子の収束を表示するグラフです。</value>
+  </data>
+  <data name="numericTexBox.SharedToolTip" xml:space="preserve">
+    <value>この元素の単位格子内の原子数を入力します（周期表配置）。値を変えると組成式と式単位数 Z が再計算されます。</value>
+  </data>
+</root>

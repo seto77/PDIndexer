@@ -120,7 +120,6 @@
   <metadata name="captureExtender.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="splitContainer3.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
@@ -132,7 +131,7 @@
     <value>Fill</value>
   </data>
   <data name="listBoxMacro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="listBoxMacro.IntegralHeight" type="System.Boolean, mscorlib">
@@ -172,7 +171,7 @@
     <value>False</value>
   </data>
   <data name="buttonDeleteProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonDeleteProfile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -215,7 +214,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonAdd.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -266,7 +265,7 @@
     <value>False</value>
   </data>
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonChange.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -341,7 +340,7 @@
     <value>False</value>
   </data>
   <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonUpper.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -386,7 +385,7 @@
     <value>False</value>
   </data>
   <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonLower.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -425,7 +424,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxSamples.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="checkBoxSamples.Location" type="System.Drawing.Point, System.Drawing">
     <value>51, 3</value>
@@ -476,7 +475,7 @@
     <value>2</value>
   </data>
   <data name="splitContainer3.Panel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 11.25pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;splitContainer3.Panel1.Name" xml:space="preserve">
     <value>splitContainer3.Panel1</value>
@@ -494,7 +493,7 @@
     <value>Fill</value>
   </data>
   <data name="pyRichTextBox.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 11.25pt</value>
+    <value>Yu Gothic UI, 9.75pt</value>
   </data>
   <data name="pyRichTextBox.Location" type="System.Drawing.Point, System.Drawing">
     <value>30, 45</value>
@@ -635,7 +634,7 @@
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 8.25pt</value>
+    <value>Segoe UI, 8.25pt</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -757,6 +756,9 @@
   <data name="dataGridViewDebug.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="dataGridViewDebug.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="dataGridViewDebug.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -770,7 +772,7 @@
     <value>dataGridViewDebug</value>
   </data>
   <data name="&gt;&gt;dataGridViewDebug.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridViewDebug.Parent" xml:space="preserve">
     <value>splitContainer2.Panel2</value>
@@ -835,46 +837,46 @@
   <data name="flowLayoutPanel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonCancelStep.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="buttonStopMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
-  <data name="buttonCancelStep.AutoSize" type="System.Boolean, mscorlib">
+  <data name="buttonStopMacro.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="buttonCancelStep.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+  <data name="buttonStopMacro.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="buttonCancelStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+  <data name="buttonStopMacro.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
   </data>
-  <data name="buttonCancelStep.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="buttonStopMacro.Location" type="System.Drawing.Point, System.Drawing">
     <value>299, 0</value>
   </data>
-  <data name="buttonCancelStep.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+  <data name="buttonStopMacro.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 0, 3, 0</value>
   </data>
-  <data name="buttonCancelStep.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="buttonStopMacro.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 27</value>
   </data>
-  <data name="buttonCancelStep.TabIndex" type="System.Int32, mscorlib">
+  <data name="buttonStopMacro.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="buttonCancelStep.Text" xml:space="preserve">
-    <value>Abort</value>
+  <data name="buttonStopMacro.Text" xml:space="preserve">
+    <value>Stop</value>
   </data>
-  <data name="buttonCancelStep.Visible" type="System.Boolean, mscorlib">
+  <data name="buttonStopMacro.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.Name" xml:space="preserve">
-    <value>buttonCancelStep</value>
+  <data name="&gt;&gt;buttonStopMacro.Name" xml:space="preserve">
+    <value>buttonStopMacro</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.Type" xml:space="preserve">
+  <data name="&gt;&gt;buttonStopMacro.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.Parent" xml:space="preserve">
+  <data name="&gt;&gt;buttonStopMacro.Parent" xml:space="preserve">
     <value>flowLayoutPanel1</value>
   </data>
-  <data name="&gt;&gt;buttonCancelStep.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;buttonStopMacro.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="buttonRunMacro.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
@@ -887,7 +889,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonRunMacro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonRunMacro.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 0</value>
@@ -926,7 +928,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonNextStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonNextStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>100, 0</value>
@@ -968,7 +970,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonStepByStep.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="buttonStepByStep.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 0</value>
@@ -1084,6 +1086,9 @@
   <data name="dataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1097,7 +1102,7 @@
     <value>dataGridView</value>
   </data>
   <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -1141,11 +1146,11 @@
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>272, 17</value>
   </metadata>
-  <data name="readToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="loadToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
   </data>
-  <data name="readToolStripMenuItem.Text" xml:space="preserve">
-    <value>Read file</value>
+  <data name="loadToolStripMenuItem.Text" xml:space="preserve">
+    <value>Load file</value>
   </data>
   <data name="saveToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>127, 22</value>
@@ -1154,7 +1159,7 @@
     <value>Save file</value>
   </data>
   <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="fileToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 21</value>
@@ -1226,7 +1231,7 @@
     <value>784, 561</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 5, 3, 5</value>
@@ -1270,10 +1275,10 @@
   <data name="&gt;&gt;fileToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;readToolStripMenuItem.Name" xml:space="preserve">
-    <value>readToolStripMenuItem</value>
+  <data name="&gt;&gt;loadToolStripMenuItem.Name" xml:space="preserve">
+    <value>loadToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;readToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;loadToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;saveToolStripMenuItem.Name" xml:space="preserve">
@@ -1292,6 +1297,81 @@
     <value>FormMacro</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureFormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.FormBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="buttonAdd.ToolTip" xml:space="preserve">
+    <value>Add the macro currently in the editor
+(name and body) as a new entry in the list.</value>
+  </data>
+  <data name="buttonChange.ToolTip" xml:space="preserve">
+    <value>Replace the selected macro in the
+list with the current editor contents.</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>Delete the selected macro from the list.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>Move the selected macro one position down in the list.</value>
+  </data>
+  <data name="buttonNextStep.ToolTip" xml:space="preserve">
+    <value>Advance to the next line during
+step-by-step execution (shortcut: F10).</value>
+  </data>
+  <data name="buttonRunMacro.ToolTip" xml:space="preserve">
+    <value>Run the macro (Python script) in
+the editor from start to finish.</value>
+  </data>
+  <data name="buttonStepByStep.ToolTip" xml:space="preserve">
+    <value>Run the macro one line at a time (debug mode), pausing
+at each line so you can inspect variable values.</value>
+  </data>
+  <data name="buttonStopMacro.ToolTip" xml:space="preserve">
+    <value>Stop the running macro (effective
+during step-by-step execution).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Move the selected macro one position up in the list.</value>
+  </data>
+  <data name="checkBoxSamples.ToolTip" xml:space="preserve">
+    <value>Toggle display of the built-in sample
+macros (read-only). Your own macros are
+kept aside and restored when unchecked.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>Reference list of ReciPro's built-in macro
+functions and their descriptions. Double-click a
+function to insert it at the cursor in the editor.</value>
+  </data>
+  <data name="dataGridViewDebug.ToolTip" xml:space="preserve">
+    <value>Debug watch: during step-by-step execution,
+shows the local variable names and their
+current values at the paused line.</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Macros use basic Python syntax together with
+the built-in functions provided by ReciPro.</value>
+  </data>
+  <data name="listBoxMacro.ToolTip" xml:space="preserve">
+    <value>List of saved macros. Select one to
+load its name and body into the editor.</value>
+  </data>
+  <data name="loadToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Load a macro file (*.mcr) into the editor.</value>
+  </data>
+  <data name="pyRichTextBox.ToolTip" xml:space="preserve">
+    <value>Code editor for the macro body. Write the Python
+(IronPython) script here; auto-complete, line
+numbers, and error highlighting are provided.</value>
+  </data>
+  <data name="saveToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save the current editor contents to a macro file (*.mcr).</value>
+  </data>
+  <data name="textBoxMacroName.ToolTip" xml:space="preserve">
+    <value>Name of the macro. Used as its entry in the list
+and as its menu item name when added or replaced.</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>Name of the macro. Used as its entry in the list
+and as its menu item name when added or replaced.</value>
   </data>
 </root>

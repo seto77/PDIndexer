@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonXray.Size" type="System.Drawing.Size, System.Drawing">
     <value>46, 22</value>
@@ -128,7 +128,7 @@
     <value>X線</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonElectron.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 22</value>
@@ -140,7 +140,7 @@
     <value>電子線</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonNeutron.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 44</value>
@@ -161,7 +161,7 @@
     <value>4, 15</value>
   </data>
   <data name="groupBoxSource.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxSource.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 2</value>
@@ -183,7 +183,7 @@
     <value>波源を選択</value>
   </data>
   <data name="radioButtonMonochro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonMonochro.Size" type="System.Drawing.Size, System.Drawing">
     <value>50, 22</value>
@@ -192,7 +192,7 @@
     <value>単色</value>
   </data>
   <data name="radioButtonFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonFlatWhite.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 22</value>
@@ -204,11 +204,12 @@
     <value>白色</value>
   </data>
   <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>X線の場合、入射ビームの単位エネルギー範囲あたりの強度が一定です。
-中性子の場合、単位波長間隔あたりの入射中性子数が一定です。</value>
+    <value>平坦な白色スペクトルを使用します。X線では入射ビーム
+の単位エネルギー範囲あたりの強度が一定、中性子では
+単位波長間隔あたりの入射中性子数が一定です。</value>
   </data>
   <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonCustomWhite.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 44</value>
@@ -226,7 +227,7 @@
     <value>86, 66</value>
   </data>
   <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxColor.Location" type="System.Drawing.Point, System.Drawing">
     <value>85, 2</value>
@@ -247,7 +248,7 @@
     <value>178, 92</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="waveLengthControl.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>188, 60</value>
@@ -256,7 +257,7 @@
     <value>188, 80</value>
   </data>
   <data name="groupBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>2, 95</value>
@@ -274,7 +275,7 @@
     <value>198, 433</value>
   </data>
   <data name="groupBoxWaveProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
+    <value>Yu Gothic UI, 9pt, style=Bold</value>
   </data>
   <data name="groupBoxWaveProperty.Size" type="System.Drawing.Size, System.Drawing">
     <value>204, 457</value>
@@ -283,7 +284,7 @@
     <value>線源の設定</value>
   </data>
   <data name="radioButtonTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
     <value>106, 22</value>
@@ -292,7 +293,7 @@
     <value>2θ (角度)       </value>
   </data>
   <data name="radioButtonDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonDspacing.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 22</value>
@@ -304,7 +305,7 @@
     <value>d値</value>
   </data>
   <data name="radioButtonWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonWavenumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 44</value>
@@ -316,7 +317,7 @@
     <value>波数</value>
   </data>
   <data name="radioButtonEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 66</value>
@@ -328,7 +329,7 @@
     <value>エネルギー</value>
   </data>
   <data name="radioButtonTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonTOF.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 88</value>
@@ -343,7 +344,7 @@
     <value>106, 110</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Size" type="System.Drawing.Size, System.Drawing">
     <value>38, 22</value>
@@ -356,9 +357,8 @@
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitCentiDegree.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButtonAngleUnitCentiDegree.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -372,7 +372,7 @@
     <value>センチ度</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 44</value>
@@ -387,7 +387,7 @@
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -399,49 +399,55 @@
     <value>ミリラディアン</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
     <value>110, 88</value>
   </data>
   <data name="flowLayoutPanelDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelDspacing.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 97</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 124</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value>2θ値を設定</value>
+    <value>エネルギー分散（白色ビーム）測定での検出器の
+散乱角（取り出し角）2θ を度単位で設定します。</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value>2θ値を設定</value>
+    <value>エネルギー分散（白色ビーム）測定での検出器の
+散乱角（取り出し角）2θ を度単位で設定します。</value>
   </data>
   <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelEnergy.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 151</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value>TOF角度を設定</value>
+    <value>中性子 TOF（飛行時間, Time-Of-Flight）測定にお
+ける検出器の散乱角 2θ を度単位で設定します。</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value>TOF角度を設定</value>
+    <value>中性子 TOF（飛行時間, Time-Of-Flight）測定にお
+ける検出器の散乱角 2θ を度単位で設定します。</value>
   </data>
   <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value>TOF飛行経路長を設定</value>
+    <value>中性子 TOF（飛行時間）測定における線源から
+検出器までの飛行経路長 L を m 単位で設定します。</value>
   </data>
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value>TOF飛行経路長を設定</value>
+    <value>中性子 TOF（飛行時間）測定における線源から
+検出器までの飛行経路長 L を m 単位で設定します。</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 223</value>
@@ -453,7 +459,7 @@
     <value>124, 299</value>
   </data>
   <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="groupBoxOption.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 119</value>
@@ -477,7 +483,7 @@
     <value>None</value>
   </data>
   <data name="groupBoxHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
+    <value>Yu Gothic UI, 9pt, style=Bold</value>
   </data>
   <data name="groupBoxHorizontalAxis.Location" type="System.Drawing.Point, System.Drawing">
     <value>210, 0</value>
@@ -495,7 +501,7 @@
     <value>横軸</value>
   </data>
   <data name="flowLayoutPanelMain.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="flowLayoutPanelMain.Size" type="System.Drawing.Size, System.Drawing">
     <value>346, 463</value>
@@ -511,5 +517,86 @@
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>350, 466</value>
+  </data>
+  <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位をセンチ度（1/100 度）にします。</value>
+  </data>
+  <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位を度（°）にします。</value>
+  </data>
+  <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位をミリラジアン（1/1000 ラジアン）にします。</value>
+  </data>
+  <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
+    <value>2θ 軸の角度単位をラジアン（rad）にします。</value>
+  </data>
+  <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
+    <value>波長・エネルギーの分布をユーザー定義の
+連続（白色）スペクトルにします。</value>
+  </data>
+  <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
+    <value>水平軸を d 値（各反射の格子面間隔 d-spacing）で表示します。</value>
+  </data>
+  <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
+    <value>d 値軸の長さ単位をオングストローム（Å = 0.1 nm）にします。</value>
+  </data>
+  <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
+    <value>d 値軸の長さ単位をナノメートル（nm）にします。</value>
+  </data>
+  <data name="radioButtonElectron.ToolTip" xml:space="preserve">
+    <value>線源を電子線にします（波長は加速電圧から決まります）。</value>
+  </data>
+  <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
+    <value>水平軸をエネルギーで表示します
+（エネルギー分散・白色ビームモード用）。</value>
+  </data>
+  <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
+    <value>エネルギー軸の単位を eV（電子ボルト）にします。</value>
+  </data>
+  <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
+    <value>エネルギー軸の単位を keV（キロ電子ボルト）にします。</value>
+  </data>
+  <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
+    <value>エネルギー軸の単位を MeV（メガ電子ボルト）にします。</value>
+  </data>
+  <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
+    <value>単色（単一波長）にします。2θ・d 軸が利用可能になります。</value>
+  </data>
+  <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
+    <value>線源を中性子線にします（飛行時間
+TOF 軸が利用可能になります）。</value>
+  </data>
+  <data name="radioButtonTOF.ToolTip" xml:space="preserve">
+    <value>水平軸を中性子の飛行時間 TOF
+（Time-Of-Flight、検出器まで飛行する時間）で
+表示します。中性子・白色ビームモード専用。</value>
+  </data>
+  <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
+    <value>TOF 軸の時間単位を μs（マイクロ秒）にします。</value>
+  </data>
+  <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
+    <value>TOF 軸の時間単位を ns（ナノ秒）にします。</value>
+  </data>
+  <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
+    <value>水平軸を回折角 2θ（入射ビームと回折ビームのな
+す散乱角）で表示します。単色ビームモード用。</value>
+  </data>
+  <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
+    <value>水平軸を散乱波数 q = 4π·sinθ/λ（散乱
+ベクトルの大きさ）で表示します。</value>
+  </data>
+  <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
+    <value>波数 q 軸の単位を Å⁻¹（逆オングストローム）にします。</value>
+  </data>
+  <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
+    <value>波数 q 軸の単位を nm⁻¹（逆ナノメートル）にします。</value>
+  </data>
+  <data name="radioButtonXray.ToolTip" xml:space="preserve">
+    <value>線源を X 線にします（特性 X 線または任意波長を指定可能）。</value>
+  </data>
+  <data name="waveLengthControl.ToolTip" xml:space="preserve">
+    <value>線源の波長を設定します。波長の
+直接入力、電子線の加速電圧、または特性
+X 線（元素＋線種）から指定できます。</value>
   </data>
 </root>

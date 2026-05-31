@@ -826,7 +826,7 @@ namespace PDIndexer
 
         }
 
-        private void readToolStripMenuItem_Click(object sender, EventArgs e)
+        private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
 

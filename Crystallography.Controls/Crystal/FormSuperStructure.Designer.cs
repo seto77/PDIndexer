@@ -24,6 +24,10 @@ partial class FormSuperStructure
     /// </summary>
     private void InitializeComponent()
     {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSuperStructure)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
         numericBoxA = new NumericBox();
         numericBoxB = new NumericBox();
         numericBoxC = new NumericBox();
@@ -34,7 +38,6 @@ partial class FormSuperStructure
         // numericBoxA
         // 
         numericBoxA.BackColor = System.Drawing.Color.Transparent;
-        numericBoxA.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
         numericBoxA.HeaderText = "a × ";
         numericBoxA.Location = new System.Drawing.Point(9, 9);
         numericBoxA.Margin = new System.Windows.Forms.Padding(0);
@@ -43,6 +46,7 @@ partial class FormSuperStructure
         numericBoxA.Minimum = 1D;
         numericBoxA.MinimumSize = new System.Drawing.Size(1, 25);
         numericBoxA.Name = "numericBoxA";
+        toolTip.SetToolTip(numericBoxA, resources.GetString("numericBoxA.ToolTip")); // 260531Cl
         numericBoxA.RadianValue = 0.017453292519943295D;
         numericBoxA.ShowUpDown = true;
         numericBoxA.Size = new System.Drawing.Size(77, 25);
@@ -52,7 +56,6 @@ partial class FormSuperStructure
         // numericBoxB
         // 
         numericBoxB.BackColor = System.Drawing.Color.Transparent;
-        numericBoxB.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
         numericBoxB.HeaderText = "b × ";
         numericBoxB.Location = new System.Drawing.Point(96, 9);
         numericBoxB.Margin = new System.Windows.Forms.Padding(0);
@@ -61,6 +64,7 @@ partial class FormSuperStructure
         numericBoxB.Minimum = 1D;
         numericBoxB.MinimumSize = new System.Drawing.Size(1, 25);
         numericBoxB.Name = "numericBoxB";
+        toolTip.SetToolTip(numericBoxB, resources.GetString("numericBoxB.ToolTip")); // 260531Cl
         numericBoxB.RadianValue = 0.017453292519943295D;
         numericBoxB.ShowUpDown = true;
         numericBoxB.Size = new System.Drawing.Size(77, 25);
@@ -70,7 +74,6 @@ partial class FormSuperStructure
         // numericBoxC
         // 
         numericBoxC.BackColor = System.Drawing.Color.Transparent;
-        numericBoxC.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
         numericBoxC.HeaderText = "c × ";
         numericBoxC.Location = new System.Drawing.Point(187, 9);
         numericBoxC.Margin = new System.Windows.Forms.Padding(0);
@@ -79,6 +82,7 @@ partial class FormSuperStructure
         numericBoxC.Minimum = 1D;
         numericBoxC.MinimumSize = new System.Drawing.Size(1, 25);
         numericBoxC.Name = "numericBoxC";
+        toolTip.SetToolTip(numericBoxC, resources.GetString("numericBoxC.ToolTip")); // 260531Cl
         numericBoxC.RadianValue = 0.017453292519943295D;
         numericBoxC.ShowUpDown = true;
         numericBoxC.Size = new System.Drawing.Size(77, 25);
@@ -90,6 +94,7 @@ partial class FormSuperStructure
         buttonOK.AutoSize = true;
         buttonOK.Location = new System.Drawing.Point(138, 40);
         buttonOK.Name = "buttonOK";
+        toolTip.SetToolTip(buttonOK, resources.GetString("buttonOK.ToolTip")); // 260531Cl
         buttonOK.Size = new System.Drawing.Size(60, 25);
         buttonOK.TabIndex = 1;
         buttonOK.Text = "OK";
@@ -101,6 +106,7 @@ partial class FormSuperStructure
         buttonCancel.AutoSize = true;
         buttonCancel.Location = new System.Drawing.Point(204, 40);
         buttonCancel.Name = "buttonCancel";
+        toolTip.SetToolTip(buttonCancel, resources.GetString("buttonCancel.ToolTip")); // 260531Cl
         buttonCancel.Size = new System.Drawing.Size(60, 25);
         buttonCancel.TabIndex = 1;
         buttonCancel.Text = "Cancel";
@@ -122,7 +128,7 @@ partial class FormSuperStructure
         Controls.Add(numericBoxC);
         Controls.Add(numericBoxB);
         Controls.Add(numericBoxA);
-        Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
+        Font = new System.Drawing.Font("Segoe UI", 9F);
         FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
         Name = "FormSuperStructure";
         ShowIcon = false;
@@ -135,6 +141,8 @@ partial class FormSuperStructure
     }
 
     #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
     private NumericBox numericBoxA;
     private NumericBox numericBoxB;

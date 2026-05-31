@@ -661,4 +661,11 @@
   <data name="$this.Text" xml:space="preserve">
     <value>回折線/結晶情報</value>
   </data>
+  <data name="checkBoxVariableRatioOfIntensity.ToolTip" xml:space="preserve">
+    <value>マウスドラッグで回折ピークの高さ
+を変えたい場合にチェックします。</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.ToolTip" xml:space="preserve">
+    <value>回折強度比を計算したい場合にチェックします。</value>
+  </data>
 </root>

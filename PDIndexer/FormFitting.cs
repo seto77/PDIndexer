@@ -1,4 +1,4 @@
-#region using
+﻿#region using
 using System;
 using System.Drawing;
 using System.Windows.Forms;

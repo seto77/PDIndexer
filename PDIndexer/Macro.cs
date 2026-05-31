@@ -1,4 +1,4 @@
-using Crystallography.Controls;
+﻿using Crystallography.Controls;
 using System;
 using System.IO;
 using System.Threading;

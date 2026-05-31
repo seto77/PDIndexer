@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -303,8 +303,9 @@
     <value>438, 17</value>
   </metadata>
   <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
-    <value>プロファイルを読み込み後、横軸モードを変更します。
-</value>
+    <value>When loading a profile, automatically switch
+the horizontal-axis settings (radiation source,
+wavelength, axis mode) to match the loaded file.</value>
   </data>
   <data name="&gt;&gt;checkBoxChangeHorizontalAppearance.Name" xml:space="preserve">
     <value>checkBoxChangeHorizontalAppearance</value>
@@ -394,7 +395,7 @@
     <value>Linearity</value>
   </data>
   <data name="radioButtonLinearity.ToolTip" xml:space="preserve">
-    <value>Intensity are linealy plotted</value>
+    <value>Plot intensity on a linear vertical scale.</value>
   </data>
   <data name="&gt;&gt;radioButtonLinearity.Name" xml:space="preserve">
     <value>radioButtonLinearity</value>
@@ -427,7 +428,8 @@
     <value>Logarithm</value>
   </data>
   <data name="radioButtonLogarithm.ToolTip" xml:space="preserve">
-    <value>Intensity are logarithmically plotted</value>
+    <value>Plot intensity on a logarithmic
+vertical scale (emphasizes weak peaks).</value>
   </data>
   <data name="&gt;&gt;radioButtonLogarithm.Name" xml:space="preserve">
     <value>radioButtonLogarithm</value>
@@ -490,7 +492,7 @@
     <value>Raw Counts</value>
   </data>
   <data name="radioButtonRawCounts.ToolTip" xml:space="preserve">
-    <value>Raw count mode</value>
+    <value>Show raw integrated counts (no division by step width).</value>
   </data>
   <data name="&gt;&gt;radioButtonRawCounts.Name" xml:space="preserve">
     <value>radioButtonRawCounts</value>
@@ -523,7 +525,7 @@
     <value>Count per Step (CPS)</value>
   </data>
   <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
-    <value>Count per step mode</value>
+    <value>Show counts normalized per step (CPS = counts / step width).</value>
   </data>
   <data name="&gt;&gt;radioButtonCountsPerStep.Name" xml:space="preserve">
     <value>radioButtonCountsPerStep</value>
@@ -574,7 +576,7 @@
     <value>Vertical Axis</value>
   </data>
   <data name="groupBox4.ToolTip" xml:space="preserve">
-    <value>Choose vertical axis mode. </value>
+    <value>Choose the vertical (intensity) axis display mode.</value>
   </data>
   <data name="&gt;&gt;groupBox4.Name" xml:space="preserve">
     <value>groupBox4</value>
@@ -609,7 +611,7 @@
   <data name="numeriBoxIncreasingPixels.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numeriBoxIncreasingPixels.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numeriBoxIncreasingPixels.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numeriBoxIncreasingPixels.Name" xml:space="preserve">
@@ -694,7 +696,8 @@
     <value>Change automaticaly color</value>
   </data>
   <data name="checkBoxChangeColor.ToolTip" xml:space="preserve">
-    <value>Check this if you want to change the color of  the next profile automatically</value>
+    <value>In Multi-Profile mode, assign a random
+color to each newly added profile.</value>
   </data>
   <data name="&gt;&gt;checkBoxChangeColor.Name" xml:space="preserve">
     <value>checkBoxChangeColor</value>
@@ -853,10 +856,10 @@
     <value>5</value>
   </data>
   <data name="colorControlScaleText.ToolTip" xml:space="preserve">
-    <value>Choose the scale-text's color</value>
+    <value>Color of the scale (axis tick) labels.</value>
   </data>
   <data name="colorControlScaleText.ToolTip1" xml:space="preserve">
-    <value>Choose the scale-text's color</value>
+    <value>Color of the scale (axis tick) labels.</value>
   </data>
   <data name="&gt;&gt;colorControlScaleText.Name" xml:space="preserve">
     <value>colorControlScaleText</value>
@@ -907,10 +910,10 @@
     <value>5</value>
   </data>
   <data name="colorControlScaleLine.ToolTip" xml:space="preserve">
-    <value>Choose the scale-line's color</value>
+    <value>Color of the scale / grid lines.</value>
   </data>
   <data name="colorControlScaleLine.ToolTip1" xml:space="preserve">
-    <value>Choose the scale-line's color</value>
+    <value>Color of the scale / grid lines.</value>
   </data>
   <data name="&gt;&gt;colorControlScaleLine.Name" xml:space="preserve">
     <value>colorControlScaleLine</value>
@@ -961,10 +964,10 @@
     <value>5</value>
   </data>
   <data name="colorControlBack.ToolTip" xml:space="preserve">
-    <value>Choose the background color</value>
+    <value>Background color of the profile viewer.</value>
   </data>
   <data name="colorControlBack.ToolTip1" xml:space="preserve">
-    <value>Choose the background color</value>
+    <value>Background color of the profile viewer.</value>
   </data>
   <data name="&gt;&gt;colorControlBack.Name" xml:space="preserve">
     <value>colorControlBack</value>
@@ -994,7 +997,7 @@
     <value>Scale Text</value>
   </data>
   <data name="label5.ToolTip" xml:space="preserve">
-    <value>Choose the scale-text's color</value>
+    <value>Color of the scale (axis tick) labels.</value>
   </data>
   <data name="&gt;&gt;label5.Name" xml:space="preserve">
     <value>label5</value>
@@ -1024,7 +1027,7 @@
     <value>Scale Line</value>
   </data>
   <data name="label2.ToolTip" xml:space="preserve">
-    <value>Choose the scale-line's color</value>
+    <value>Color of the scale / grid lines.</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -1054,7 +1057,7 @@
     <value>Back Color</value>
   </data>
   <data name="label4.ToolTip" xml:space="preserve">
-    <value>Choose the background color</value>
+    <value>Background color of the profile viewer.</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -1111,7 +1114,8 @@
     <value>Error bar</value>
   </data>
   <data name="checkBoxErrorBar.ToolTip" xml:space="preserve">
-    <value>Show error bar (if profiles have it)</value>
+    <value>Show error bars on data points when
+the profile contains error values.</value>
   </data>
   <data name="&gt;&gt;checkBoxErrorBar.Name" xml:space="preserve">
     <value>checkBoxErrorBar</value>
@@ -1144,7 +1148,7 @@
     <value>Scale Line</value>
   </data>
   <data name="checkBoxShowScaleLine.ToolTip" xml:space="preserve">
-    <value>Show scale line</value>
+    <value>Show grid (scale) lines on the profile viewer.</value>
   </data>
   <data name="&gt;&gt;checkBoxShowScaleLine.Name" xml:space="preserve">
     <value>checkBoxShowScaleLine</value>
@@ -1712,16 +1716,18 @@
   <data name="numericBoxUpperX.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
   </data>
-  <data name="numericBoxUpperX.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxUpperX.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxUpperX.ToolTip" xml:space="preserve">
-    <value>Maximum value of horizontal axis.
-You can set the limit value in right-click menu.</value>
+    <value>Upper bound of the displayed horizontal-axis
+range (2theta / d / energy, etc.). Set the
+axis limit via the right-click menu.</value>
   </data>
   <data name="numericBoxUpperX.ToolTip1" xml:space="preserve">
-    <value>Maximum value of horizontal axis.
-You can set the limit value in right-click menu.</value>
+    <value>Upper bound of the displayed horizontal-axis
+range (2theta / d / energy, etc.). Set the
+axis limit via the right-click menu.</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperX.Name" xml:space="preserve">
     <value>numericBoxUpperX</value>
@@ -1765,16 +1771,14 @@ You can set the limit value in right-click menu.</value>
   <data name="numericBoxUpperY.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxUpperY.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxUpperY.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxUpperY.ToolTip" xml:space="preserve">
-    <value>Maximum value of verticall axis.
-You can set the limit value in right-click menu.</value>
+    <value>Upper bound of the displayed intensity (vertical) axis.</value>
   </data>
   <data name="numericBoxUpperY.ToolTip1" xml:space="preserve">
-    <value>Maximum value of verticall axis.
-You can set the limit value in right-click menu.</value>
+    <value>Upper bound of the displayed intensity (vertical) axis.</value>
   </data>
   <data name="&gt;&gt;numericBoxUpperY.Name" xml:space="preserve">
     <value>numericBoxUpperY</value>
@@ -1812,16 +1816,16 @@ You can set the limit value in right-click menu.</value>
   <data name="numericBoxLowerX.TabIndex" type="System.Int32, mscorlib">
     <value>89</value>
   </data>
-  <data name="numericBoxLowerX.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxLowerX.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxLowerX.ToolTip" xml:space="preserve">
-    <value>Minimum value of horizontal axis.
-You can set the limit value in right-click menu.</value>
+    <value>Lower bound of the displayed horizontal-axis
+range. Set the axis limit via the right-click menu.</value>
   </data>
   <data name="numericBoxLowerX.ToolTip1" xml:space="preserve">
-    <value>Minimum value of horizontal axis.
-You can set the limit value in right-click menu.</value>
+    <value>Lower bound of the displayed horizontal-axis
+range. Set the axis limit via the right-click menu.</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerX.Name" xml:space="preserve">
     <value>numericBoxLowerX</value>
@@ -1865,16 +1869,14 @@ You can set the limit value in right-click menu.</value>
   <data name="numericBoxLowerY.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxLowerY.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxLowerY.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxLowerY.ToolTip" xml:space="preserve">
-    <value>Minimum value of verticall axis.
-You can set the limit value in right-click menu.</value>
+    <value>Lower bound of the displayed intensity (vertical) axis.</value>
   </data>
   <data name="numericBoxLowerY.ToolTip1" xml:space="preserve">
-    <value>Minimum value of verticall axis.
-You can set the limit value in right-click menu.</value>
+    <value>Lower bound of the displayed intensity (vertical) axis.</value>
   </data>
   <data name="&gt;&gt;numericBoxLowerY.Name" xml:space="preserve">
     <value>numericBoxLowerY</value>
@@ -2323,7 +2325,8 @@ You can set the limit value in right-click menu.</value>
     <value>Profile Parameter</value>
   </data>
   <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
-    <value>Detailed profile parameter</value>
+    <value>Open the Profile Parameter window for
+detailed settings of the selected profile.</value>
   </data>
   <data name="&gt;&gt;checkBoxProfileParameter.Name" xml:space="preserve">
     <value>checkBoxProfileParameter</value>
@@ -2359,7 +2362,7 @@ You can set the limit value in right-click menu.</value>
     <value>Check/Uncheck all</value>
   </data>
   <data name="checkBoxAll.ToolTip" xml:space="preserve">
-    <value>Check/Uncheck all profiles</value>
+    <value>Check or uncheck all profiles at once (show / hide all).</value>
   </data>
   <data name="&gt;&gt;checkBoxAll.Name" xml:space="preserve">
     <value>checkBoxAll</value>
@@ -2503,7 +2506,8 @@ You can set the limit value in right-click menu.</value>
     <value>Crystal Parameter (C)</value>
   </data>
   <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
-    <value>Detailed crystal information</value>
+    <value>Open the Crystal Parameter window for
+detailed settings of the selected crystal.</value>
   </data>
   <data name="&gt;&gt;checkBoxCrystalParameter.Name" xml:space="preserve">
     <value>checkBoxCrystalParameter</value>
@@ -2723,7 +2727,7 @@ You can set the limit value in right-click menu.</value>
  Parameter (C)</value>
   </data>
   <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
-    <value>Display the detailed crystal information</value>
+    <value>Toggle the Crystal Parameter window.</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 41</value>
@@ -2767,7 +2771,7 @@ You can set the limit value in right-click menu.</value>
  Parameter (P)</value>
   </data>
   <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
-    <value>Display the detailde profile parameters </value>
+    <value>Toggle the Profile Parameter window.</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 41</value>
@@ -2809,7 +2813,8 @@ You can set the limit value in right-click menu.</value>
  State (E)</value>
   </data>
   <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
-    <value>Calculate the pressure using equation of state</value>
+    <value>Toggle the Equation of State window to estimate
+pressure from the cell volume of a standard material.</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 41</value>
@@ -2849,7 +2854,8 @@ You can set the limit value in right-click menu.</value>
  Peaks (F)</value>
   </data>
   <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
-    <value>Fit the diffraction peaks</value>
+    <value>Toggle the Peak Fitting window to fit
+diffraction peaks (position, FWHM, intensity).</value>
   </data>
   <data name="toolStripSeparator5.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 41</value>
@@ -3059,7 +3065,7 @@ You can set the limit value in right-click menu.</value>
     <value>Export the selected crystal to CIF</value>
   </data>
   <data name="toolStripMenuItemExportCIF.ToolTipText" xml:space="preserve">
-    <value>The selected crrystal will be saved as CIF format</value>
+    <value>Export the selected crystal as a CIF file.</value>
   </data>
   <data name="resetInitialCrystalDataToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>319, 22</value>
@@ -6644,5 +6650,122 @@ You can set the limit value in right-click menu.</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="toolStripButtonCellFinder.ToolTipText" xml:space="preserve">
+    <value>Toggle the Cell Finder window to search
+lattice constants from peak positions.</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.ToolTipText" xml:space="preserve">
+    <value>Toggle the Sequential Analysis window
+for batch processing of a file series.</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.ToolTipText" xml:space="preserve">
+    <value>Toggle the Atomic Position Finder window to search
+atomic positions from diffraction intensities.</value>
+  </data>
+  <data name="toolStripButtonLPO.ToolTipText" xml:space="preserve">
+    <value>Toggle the LPO (lattice-preferred
+orientation) Analysis window.</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open and read diffraction profile file(s) as a new list.</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save all loaded profiles to a .pdi2 file.</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.ToolTipText" xml:space="preserve">
+    <value>Export the selected profile(s) to a text or GSAS file.</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Export the profile(s) as a comma-separated (CSV) file.</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Export the profile(s) as a tab-separated (TSV) file.</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Export the profile(s) as a GSAS (Rietveld) data file.</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Load crystals from an XML file as a new list.</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Load crystals from an XML file
+and add them to the current list.</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Save the current crystal list to a file.</value>
+  </data>
+  <data name="toolStripMenuItemImport.ToolTipText" xml:space="preserve">
+    <value>Import a crystal structure from a CIF or AMC file.</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Revert the crystal list to the initial (default) state.</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.ToolTipText" xml:space="preserve">
+    <value>Open the page setup dialog for printing.</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.ToolTipText" xml:space="preserve">
+    <value>Show a print preview of the profile viewer.</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Print the profile viewer.</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Copy the viewer to the clipboard as a bitmap.</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Copy the viewer to the clipboard as a metafile (vector).</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.ToolTipText" xml:space="preserve">
+    <value>Save the viewer as an EMF metafile.</value>
+  </data>
+  <data name="closeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Close PDIndexer.</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Enable or disable the tooltips on the main window.</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Watch the clipboard and auto-read profiles/crystals
+copied from other apps (e.g. IPAnalyzer).</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Watch a folder and automatically read
+newly created .pdi profile files.</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Choose the folder to watch for new profile files.</value>
+  </data>
+  <data name="toolStripTextBoxDirectoryToWatch.ToolTipText" xml:space="preserve">
+    <value>Path of the folder being watched (editable).</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>When checked, clear all saved settings from
+the registry on exit (restart to reset).</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>When checked, automatically save the crystal
+list on exit and reload it on startup.</value>
+  </data>
+  <data name="editorToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open the macro editor window.</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Show version and author information.</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Check for a newer version online and download/install it.</value>
+  </data>
+  <data name="hintToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Show usage hints.</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Open the PDIndexer manual (PDF).</value>
+  </data>
+  <data name="englishToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Switch the UI language to English (requires restart).</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Switch the UI language to Japanese (requires restart).</value>
   </data>
 </root>

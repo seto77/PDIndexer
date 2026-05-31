@@ -140,4 +140,11 @@
         AABtbQAAq20AAKurAACrqwAAx6sAAMerAADvqwAA76sAAP/HAAD/xwAA/8cAAP/HAAD/7wAA/+8AAA==
 </value>
   </data>
+  <data name="linkLabelMail.ToolTip" xml:space="preserve">
+    <value>クリックすると表示中のアドレス宛にメールソフトを開きます。</value>
+  </data>
+  <data name="linkLabelHomePage.ToolTip" xml:space="preserve">
+    <value>クリックするとプロジェクトの
+ホームページをブラウザで開きます。</value>
+  </data>
 </root>

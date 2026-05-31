@@ -335,7 +335,7 @@
   <data name="numericBoxEffectiveDigit.Size" type="System.Drawing.Size, System.Drawing">
     <value>146, 25</value>
   </data>
-  <data name="numericBoxEffectiveDigit.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxEffectiveDigit.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
@@ -426,5 +426,49 @@
         ////////////////////////////////////////////////////////////////////////////////
         //////////////////////////////////////////////////////////////////w=
 </value>
+  </data>
+  <data name="buttonClearPeaks.ToolTip" xml:space="preserve">
+    <value>選択中の結晶（フレキシブルモード時のみ
+表示）に手動追加した全ピークを削除します。</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
+    <value>上で選択したピーク形状関数を、こ
+の結晶の全ピークに適用します。</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
+    <value>上の初期半値全幅（FWHM）を全ピーク
+の初期ピーク幅として適用します。</value>
+  </data>
+  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
+    <value>上の探索範囲（フィッティング窓の
+半幅）を全ピークに適用します。</value>
+  </data>
+  <data name="buttonRemovePeaks.ToolTip" xml:space="preserve">
+    <value>選択中の結晶のフィットしたピーク形状を現在の
+プロファイルから差し引き、新しいプロファイル（下で
+命名）を作成します。Simple 探索のピークは除外されます。</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>ピーク一覧テーブルの表示有効桁数（1〜16）を設定しま
+す。表示のみで、フィッティング結果には影響しません。</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
+    <value>ピーク一覧テーブルの表示有効桁数（1〜16）を設定しま
+す。表示のみで、フィッティング結果には影響しません。</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
+    <value>精密化した格子定数をクリップボードにコピー
+します。Excel に直接貼り付けられます。</value>
+  </data>
+  <data name="buttonConfirm.ToolTip" xml:space="preserve">
+    <value>精密化した格子定数を、選択中の
+結晶の格子定数として適用します。</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
+    <value>下のテーブルのデータをクリップボードにコピー
+します。Excel に直接貼り付けられます。</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.ToolTip" xml:space="preserve">
+    <value>下のテーブルのデータを CSV 形式で保存します。</value>
   </data>
 </root>

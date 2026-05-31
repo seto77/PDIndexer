@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema
@@ -157,7 +157,7 @@
   <data name="numericBoxPtFratanduono.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxPtFratanduono.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPtFratanduono.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxPtFratanduono.Name" xml:space="preserve">
@@ -208,7 +208,7 @@
   <data name="numericBoxPtYokoo.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxPtYokoo.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPtYokoo.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxPtYokoo.Name" xml:space="preserve">
@@ -259,7 +259,7 @@
   <data name="numericalTextBoxPtMatsui.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxPtMatsui.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxPtMatsui.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtMatsui.Name" xml:space="preserve">
@@ -310,7 +310,7 @@
   <data name="numericalTextBoxPtHolmes.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxPtHolmes.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxPtHolmes.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtHolmes.Name" xml:space="preserve">
@@ -394,7 +394,7 @@
   <data name="numericalTextBoxPtJamieson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxPtJamieson.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxPtJamieson.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtJamieson.Name" xml:space="preserve">
@@ -541,7 +541,7 @@
   <data name="numericalTextBoxPtA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxPtA.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxPtA.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxPtA.Name" xml:space="preserve">
@@ -589,7 +589,7 @@
   <data name="numericBoxPtA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxPtA0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPtA0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPtA0.Name" xml:space="preserve">
@@ -697,7 +697,7 @@
   <data name="numericBoxTemperature0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxTemperature0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTemperature0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTemperature0.Name" xml:space="preserve">
@@ -748,7 +748,7 @@
   <data name="numericBoxNaClB1Skelton.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxNaClB1Skelton.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNaClB1Skelton.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxNaClB1Skelton.Name" xml:space="preserve">
@@ -799,7 +799,7 @@
   <data name="numericBoxNaClB1Matsui.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxNaClB1Matsui.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNaClB1Matsui.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxNaClB1Matsui.Name" xml:space="preserve">
@@ -883,7 +883,7 @@
   <data name="numericalTextBoxNaClB1Brown.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxNaClB1Brown.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB1Brown.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB1Brown.Name" xml:space="preserve">
@@ -997,7 +997,7 @@
   <data name="numericalTextBoxNaClB1A.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxNaClB1A.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB1A.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB1A.Name" xml:space="preserve">
@@ -1045,7 +1045,7 @@
   <data name="numericBoxNaClB1A0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxNaClB1A0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxNaClB1A0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxNaClB1A0.Name" xml:space="preserve">
@@ -1123,7 +1123,7 @@
   <data name="numericBoxAuFratanduono.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxAuFratanduono.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAuFratanduono.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxAuFratanduono.Name" xml:space="preserve">
@@ -1174,7 +1174,7 @@
   <data name="numericBoxAuYokoo.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxAuYokoo.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxAuYokoo.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxAuYokoo.Name" xml:space="preserve">
@@ -1225,7 +1225,7 @@
   <data name="numericalTextBoxGoldJamieson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxGoldJamieson.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxGoldJamieson.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldJamieson.Name" xml:space="preserve">
@@ -1276,7 +1276,7 @@
   <data name="numericalTextBoxGoldTsuchiya.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxGoldTsuchiya.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxGoldTsuchiya.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldTsuchiya.Name" xml:space="preserve">
@@ -1327,7 +1327,7 @@
   <data name="numericalTextBoxGoldSim.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxGoldSim.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxGoldSim.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldSim.Name" xml:space="preserve">
@@ -1411,7 +1411,7 @@
   <data name="numericalTextBoxGoldAnderson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxGoldAnderson.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxGoldAnderson.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldAnderson.Name" xml:space="preserve">
@@ -1492,7 +1492,7 @@
   <data name="numericalTextBoxGoldA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxGoldA.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxGoldA.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxGoldA.Name" xml:space="preserve">
@@ -1540,7 +1540,7 @@
   <data name="numericBoxGoldA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxGoldA0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxGoldA0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxGoldA0.Name" xml:space="preserve">
@@ -1750,7 +1750,7 @@
   <data name="numericBoxMgOTangeBM.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxMgOTangeBM.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMgOTangeBM.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMgOTangeBM.Name" xml:space="preserve">
@@ -1801,7 +1801,7 @@
   <data name="numericBoxMgOTangeVinet.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxMgOTangeVinet.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMgOTangeVinet.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMgOTangeVinet.Name" xml:space="preserve">
@@ -1852,7 +1852,7 @@
   <data name="numericalTextBoxMgOAizawa.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxMgOAizawa.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxMgOAizawa.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgOAizawa.Name" xml:space="preserve">
@@ -1936,7 +1936,7 @@
   <data name="numericalTextBoxMgODewaele.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxMgODewaele.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxMgODewaele.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgODewaele.Name" xml:space="preserve">
@@ -2020,7 +2020,7 @@
   <data name="numericalTextBoxMgOJacson.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxMgOJacson.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxMgOJacson.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgOJacson.Name" xml:space="preserve">
@@ -2134,7 +2134,7 @@
   <data name="numericalTextBoxMgOA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxMgOA.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxMgOA.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxMgOA.Name" xml:space="preserve">
@@ -2215,7 +2215,7 @@
   <data name="numericBoxMgOA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxMgOA0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMgOA0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMgOA0.Name" xml:space="preserve">
@@ -2293,7 +2293,7 @@
   <data name="numericalTextBoxNaClB2SakaiVinet.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxNaClB2SakaiVinet.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2SakaiVinet.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SakaiVinet.Name" xml:space="preserve">
@@ -2344,7 +2344,7 @@
   <data name="numericalTextBoxNaClB2SakaiBM.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxNaClB2SakaiBM.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2SakaiBM.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SakaiBM.Name" xml:space="preserve">
@@ -2395,7 +2395,7 @@
   <data name="numericalTextBoxNaClB2Ueda.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxNaClB2Ueda.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2Ueda.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2Ueda.Name" xml:space="preserve">
@@ -2479,7 +2479,7 @@
   <data name="numericalTextBoxNaClB2SataMgO.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxNaClB2SataMgO.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2SataMgO.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SataMgO.Name" xml:space="preserve">
@@ -2563,7 +2563,7 @@
   <data name="numericalTextBoxNaClB2SataPt.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxNaClB2SataPt.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2SataPt.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2SataPt.Name" xml:space="preserve">
@@ -2677,7 +2677,7 @@
   <data name="numericalTextBoxNaClB2A.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxNaClB2A.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2A.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2A.Name" xml:space="preserve">
@@ -2761,7 +2761,7 @@
   <data name="numericalTextBoxNaClB2A0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxNaClB2A0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxNaClB2A0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxNaClB2A0.Name" xml:space="preserve">
@@ -2839,7 +2839,7 @@
   <data name="numericBoxCorundumDubrovinsky.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxCorundumDubrovinsky.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxCorundumDubrovinsky.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxCorundumDubrovinsky.Name" xml:space="preserve">
@@ -2887,7 +2887,7 @@
   <data name="numericalTextBoxColundumV.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxColundumV.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxColundumV.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxColundumV.Name" xml:space="preserve">
@@ -2968,7 +2968,7 @@
   <data name="numericBoxColundumV0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxColundumV0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxColundumV0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxColundumV0.Name" xml:space="preserve">
@@ -3049,7 +3049,7 @@
   <data name="numericalTextBoxArRoss.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxArRoss.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxArRoss.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxArRoss.Name" xml:space="preserve">
@@ -3100,7 +3100,7 @@
   <data name="numericalTextBoxArJephcoat.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxArJephcoat.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxArJephcoat.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxArJephcoat.Name" xml:space="preserve">
@@ -3148,7 +3148,7 @@
   <data name="numericalTextBoxArA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericalTextBoxArA.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxArA.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxArA.Name" xml:space="preserve">
@@ -3262,7 +3262,7 @@
   <data name="numericBoxArA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxArA0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxArA0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxArA0.Name" xml:space="preserve">
@@ -3340,7 +3340,7 @@
   <data name="numericBoxReDub.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxReDub.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxReDub.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxReDub.Name" xml:space="preserve">
@@ -3391,7 +3391,7 @@
   <data name="numericBoxReSakai.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxReSakai.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxReSakai.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxReSakai.Name" xml:space="preserve">
@@ -3475,7 +3475,7 @@
   <data name="numericBoxReAnz.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxReAnz.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxReAnz.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxReAnz.Name" xml:space="preserve">
@@ -3559,7 +3559,7 @@
   <data name="numericalTextBoxReZha.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericalTextBoxReZha.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBoxReZha.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericalTextBoxReZha.Name" xml:space="preserve">
@@ -3640,7 +3640,7 @@
   <data name="numericBoxReV.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxReV.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxReV.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxReV.Name" xml:space="preserve">
@@ -3721,7 +3721,7 @@
   <data name="numerictBoxReV0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numerictBoxReV0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numerictBoxReV0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numerictBoxReV0.Name" xml:space="preserve">
@@ -3799,7 +3799,7 @@
   <data name="numericBoxMoZhao.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxMoZhao.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMoZhao.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMoZhao.Name" xml:space="preserve">
@@ -3850,7 +3850,7 @@
   <data name="numericBoxMoHuang.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxMoHuang.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMoHuang.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxMoHuang.Name" xml:space="preserve">
@@ -3931,7 +3931,7 @@
   <data name="numericBoxMoV.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxMoV.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMoV.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMoV.Name" xml:space="preserve">
@@ -4012,7 +4012,7 @@
   <data name="numericBoxMoV0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxMoV0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxMoV0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxMoV0.Name" xml:space="preserve">
@@ -4093,7 +4093,7 @@
   <data name="numericBoxPbStrassle.TabIndex" type="System.Int32, mscorlib">
     <value>12</value>
   </data>
-  <data name="numericBoxPbStrassle.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPbStrassle.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxPbStrassle.Name" xml:space="preserve">
@@ -4141,7 +4141,7 @@
   <data name="numericBoxPbA.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxPbA.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPbA.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPbA.Name" xml:space="preserve">
@@ -4222,7 +4222,7 @@
   <data name="numericBoxPbA0.TabIndex" type="System.Int32, mscorlib">
     <value>10</value>
   </data>
-  <data name="numericBoxPbA0.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxPbA0.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxPbA0.Name" xml:space="preserve">
@@ -4738,7 +4738,7 @@
   <data name="numericBoxTemperature.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
   </data>
-  <data name="numericBoxTemperature.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxTemperature.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxTemperature.Name" xml:space="preserve">
@@ -4847,5 +4847,272 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>Sample temperature T (K) at which the cell was
+measured. Shared by all standards; raising T
+adds thermal pressure and lowers the computed P.</value>
+  </data>
+  <data name="numericBoxTemperature0.ToolTip" xml:space="preserve">
+    <value>Reference temperature T0 (K) of the a0/V0 reference
+values; used by the Pt (Matsui) and Pb models. Usually
+300 K. Distinct from the measurement temperature T.</value>
+  </data>
+  <data name="numericalTextBoxGoldA.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of
+the gold (Au) marker; V = a³ is fed to
+all Au equations of state to compute P.</value>
+  </data>
+  <data name="numericalTextBoxPtA.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of the platinum
+(Pt) marker; V = a³ for the Pt equation of state.</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of
+the B1 (rock-salt) phase of NaCl.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of the B2 (CsCl-type)
+high-pressure phase of NaCl (a separate phase from B1).</value>
+  </data>
+  <data name="numericalTextBoxMgOA.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of the
+MgO (periclase) marker (default 4.2112);
+V = a³ for the MgO equation of state.</value>
+  </data>
+  <data name="numericalTextBoxColundumV.ToolTip" xml:space="preserve">
+    <value>Measured unit-cell volume V (Å³) of Al2O3 (corundum).
+This standard takes the volume directly, not a.</value>
+  </data>
+  <data name="numericalTextBoxArA.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of solid argon
+(Ar). The Ar models use a directly (no a0).</value>
+  </data>
+  <data name="numericBoxReV.ToolTip" xml:space="preserve">
+    <value>Measured unit-cell volume V (Å³) of rhenium (Re).</value>
+  </data>
+  <data name="numericBoxMoV.ToolTip" xml:space="preserve">
+    <value>Measured unit-cell volume V (Å³)
+of molybdenum (Mo) (default 31.14).</value>
+  </data>
+  <data name="numericBoxPbA.ToolTip" xml:space="preserve">
+    <value>Measured lattice parameter a (Å) of lead (Pb);
+the Strassle model uses a/a0(T) in a Vinet form.</value>
+  </data>
+  <data name="numericBoxGoldA0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference lattice parameter a0 (Å) of
+Au (default 4.07825); P depends on the V/V0 ratio.</value>
+  </data>
+  <data name="numericBoxPtA0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference lattice
+parameter a0 (Å) of Pt (default 3.9231).</value>
+  </data>
+  <data name="numericBoxNaClB1A0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference lattice parameter
+a0 (Å) of the NaCl B1 phase (default 5.639).</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.ToolTip" xml:space="preserve">
+    <value>Reference lattice parameter a0 (Å)
+for NaCl B2 (read-only reference; the
+B2 models compute P directly from a).</value>
+  </data>
+  <data name="numericBoxMgOA0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference lattice
+parameter a0 (Å) of MgO (default 4.2112).</value>
+  </data>
+  <data name="numericBoxColundumV0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference unit-cell volume
+V0 (Å³) of Al2O3 (default 255.89472).</value>
+  </data>
+  <data name="numericBoxArA0.ToolTip" xml:space="preserve">
+    <value>Reference lattice parameter a0 (Å) of Ar (reference
+display only; the Ross/Jephcoat models do not use it).</value>
+  </data>
+  <data name="numerictBoxReV0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference volume V0 (Å³)
+of Re (default 29.42795); used by the
+Zha model (the others use a built-in V0).</value>
+  </data>
+  <data name="numericBoxMoV0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference volume V0 (Å³) of Mo (default
+31.14); used by the Huang (MGD) and Zhao models.</value>
+  </data>
+  <data name="numericBoxPbA0.ToolTip" xml:space="preserve">
+    <value>Zero-pressure reference lattice parameter
+a0 (Å) of Pb (default 4.95059); scales the
+internal a0(T) table to your sample at T0.</value>
+  </data>
+  <data name="checkBoxGold.ToolTip" xml:space="preserve">
+    <value>Show or hide the gold (Au) pressure-standard panel.</value>
+  </data>
+  <data name="checkBoxPlatinum.ToolTip" xml:space="preserve">
+    <value>Show or hide the platinum (Pt) pressure-standard panel.</value>
+  </data>
+  <data name="checkBoxNaClB1.ToolTip" xml:space="preserve">
+    <value>Show or hide the NaCl B1 (rock-salt phase) panel.</value>
+  </data>
+  <data name="checkBoxNaClB2.ToolTip" xml:space="preserve">
+    <value>Show or hide the NaCl B2 (CsCl-type
+high-pressure phase) panel.</value>
+  </data>
+  <data name="checkBoxPericlase.ToolTip" xml:space="preserve">
+    <value>Show or hide the MgO (periclase) panel.</value>
+  </data>
+  <data name="checkBoxCorundum.ToolTip" xml:space="preserve">
+    <value>Show or hide the Al2O3 (corundum) panel.</value>
+  </data>
+  <data name="checkBoxAr.ToolTip" xml:space="preserve">
+    <value>Show or hide the solid argon (Ar) panel.</value>
+  </data>
+  <data name="checkBoxRe.ToolTip" xml:space="preserve">
+    <value>Show or hide the rhenium (Re) panel.</value>
+  </data>
+  <data name="checkBoxMo.ToolTip" xml:space="preserve">
+    <value>Show or hide the molybdenum (Mo) panel.</value>
+  </data>
+  <data name="checkBoxPb.ToolTip" xml:space="preserve">
+    <value>Show or hide the lead (Pb) panel.</value>
+  </data>
+  <data name="numericalTextBoxGoldJamieson.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for gold
+from Jamieson (1982). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxGoldAnderson.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for gold
+from Anderson (1989). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for gold from Sim
+(2002), BM3 + Mie-Grüneisen. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for gold
+from Tsuchiya (2003). Read-only result.</value>
+  </data>
+  <data name="numericBoxAuYokoo.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for gold
+from Yokoo (2009). Read-only result.</value>
+  </data>
+  <data name="numericBoxAuFratanduono.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for gold from
+Fratanduono (2021), Vinet. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxPtJamieson.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for platinum
+from Jamieson (1982). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxPtHolmes.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for platinum
+from Holmes (1989). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxPtMatsui.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for platinum
+from Matsui (2009); uses the reference
+temperature T0. Read-only result.</value>
+  </data>
+  <data name="numericBoxPtYokoo.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for platinum
+from Yokoo (2009). Read-only result.</value>
+  </data>
+  <data name="numericBoxPtFratanduono.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for platinum from
+Fratanduono (2021), Vinet. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxNaClB1Brown.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B1
+from Brown (1999). Read-only result.</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B1
+from Matsui (2012). Read-only result.</value>
+  </data>
+  <data name="numericBoxNaClB1Skelton.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B1
+from Skelton (1984). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataPt.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B2
+from Sata (2002), cross-calibrated to
+the Pt scale. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataMgO.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B2
+from Sata (2002), cross-calibrated to
+the MgO scale. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2Ueda.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B2
+from Ueda (2008). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiBM.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B2 from
+Sakai (2011), Birch-Murnaghan. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiVinet.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for NaCl B2 from
+Sakai (2011), Vinet. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxMgOJacson.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for MgO from Jackson
+(1998), BM3 + Mie-Grüneisen. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxMgODewaele.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for MgO from Dewaele
+(2000), BM3 + Mie-Grüneisen. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxMgOAizawa.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for MgO from Aizawa
+(2006), BM3 + Mie-Grüneisen. Read-only result.</value>
+  </data>
+  <data name="numericBoxMgOTangeVinet.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for MgO from
+Tange (2009), Vinet. Read-only result.</value>
+  </data>
+  <data name="numericBoxMgOTangeBM.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for MgO from Tange
+(2009), Birch-Murnaghan. Read-only result.</value>
+  </data>
+  <data name="numericBoxCorundumDubrovinsky.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for Al2O3 (corundum)
+from Dubrovinsky (1998). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxArRoss.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for solid
+Ar from Ross (1986). Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxArJephcoat.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for solid Ar from Jephcoat
+(1998), temperature-dependent. Read-only result.</value>
+  </data>
+  <data name="numericalTextBoxReZha.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for rhenium from Zha (2004);
+uses the reference volume V0. Read-only result.</value>
+  </data>
+  <data name="numericBoxReAnz.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for rhenium from
+Anzellini, Vinet with fixed K0/K0'. Read-only result.</value>
+  </data>
+  <data name="numericBoxReSakai.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for rhenium from
+Sakai, Vinet with fixed K0/K0'. Read-only result.</value>
+  </data>
+  <data name="numericBoxReDub.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for
+rhenium from Dubrovinsky, 4th-order
+Birch-Murnaghan. Read-only result.</value>
+  </data>
+  <data name="numericBoxMoHuang.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for molybdenum from Huang
+(2016), BM3 + Mie-Grüneisen-Debye. Read-only result.</value>
+  </data>
+  <data name="numericBoxMoZhao.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for molybdenum
+from Zhao (2000), BM4 + thermal-pressure
+correction. Read-only result.</value>
+  </data>
+  <data name="numericBoxPbStrassle.ToolTip" xml:space="preserve">
+    <value>Computed pressure P (GPa) for lead from
+Strassle (2014), Vinet form with B(T), B'(T),
+a0(T) from a built-in table. Read-only result.</value>
   </data>
 </root>

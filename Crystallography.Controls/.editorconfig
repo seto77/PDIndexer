@@ -1,4 +1,4 @@
-﻿[*.cs]
+[*.cs]
 
 # WFO1000: A property should determine its property content serialization with the DesignerSerializationVisibilityAttribute, DefaultValueAttribute or the ShouldSerializeProperty method
 dotnet_diagnostic.WFO1000.severity = silent

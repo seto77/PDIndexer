@@ -36,8 +36,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CrystalDatabaseControl));
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             ReadDatabaseWorker = new System.ComponentModel.BackgroundWorker();
-            dataGridView = new System.Windows.Forms.DataGridView();
+            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
+            dataGridView = new DpiAwareDataGridView(); // 260518Cl
             nameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             densityDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             formulaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,7 +100,7 @@
             dataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -108,7 +111,7 @@
             dataGridView.DataSource = bindingSource;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -119,10 +122,11 @@
             dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.ReadOnly = true;
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -300,7 +304,7 @@
             bindingNavigator.BindingSource = bindingSource;
             bindingNavigator.CountItem = bindingNavigatorCountItem;
             bindingNavigator.DeleteItem = null;
-            bindingNavigator.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            bindingNavigator.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             bindingNavigator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { bindingNavigatorMoveFirstItem, bindingNavigatorMovePreviousItem, bindingNavigatorSeparator, bindingNavigatorPositionItem, bindingNavigatorCountItem, bindingNavigatorSeparator1, bindingNavigatorMoveNextItem, bindingNavigatorMoveLastItem });
             bindingNavigator.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             bindingNavigator.Location = new System.Drawing.Point(0, 47);
@@ -387,10 +391,11 @@
             // checkBoxAMCSD
             // 
             checkBoxAMCSD.AutoSize = true;
-            checkBoxAMCSD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxAMCSD.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             checkBoxAMCSD.Location = new System.Drawing.Point(3, 0);
             checkBoxAMCSD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             checkBoxAMCSD.Name = "checkBoxAMCSD";
+            toolTip.SetToolTip(checkBoxAMCSD, resources.GetString("checkBoxAMCSD.ToolTip")); // 260531Cl
             checkBoxAMCSD.Size = new System.Drawing.Size(71, 21);
             checkBoxAMCSD.TabIndex = 0;
             checkBoxAMCSD.Text = "AMCSD";
@@ -400,10 +405,11 @@
             // checkBoxCOD
             // 
             checkBoxCOD.AutoSize = true;
-            checkBoxCOD.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            checkBoxCOD.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             checkBoxCOD.Location = new System.Drawing.Point(3, 21);
             checkBoxCOD.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             checkBoxCOD.Name = "checkBoxCOD";
+            toolTip.SetToolTip(checkBoxCOD, resources.GetString("checkBoxCOD.ToolTip")); // 260531Cl
             checkBoxCOD.Size = new System.Drawing.Size(54, 21);
             checkBoxCOD.TabIndex = 0;
             checkBoxCOD.Text = "COD";
@@ -428,7 +434,7 @@
             // 
             textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            textBox1.Font = new System.Drawing.Font("Segoe UI Symbol", 8F);
+            textBox1.Font = new System.Drawing.Font("Segoe UI", 8F);
             textBox1.Location = new System.Drawing.Point(77, 0);
             textBox1.Margin = new System.Windows.Forms.Padding(0);
             textBox1.Multiline = true;
@@ -456,7 +462,7 @@
             Controls.Add(dataGridView);
             Controls.Add(bindingNavigator);
             Controls.Add(panel1);
-            Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F);
+            Font = new System.Drawing.Font("Segoe UI", 9.75F);
             Name = "CrystalDatabaseControl";
             Size = new System.Drawing.Size(913, 596);
             Resize += CrystalDatabaseControl_Resize;
@@ -476,8 +482,11 @@
 
         #endregion
 
+        public System.Windows.Forms.ToolTip toolTip; // (260531Ch) 260531Cl private->public: FormMainのToolTip表示トグルから一括制御するため
+
         private System.Windows.Forms.BindingSource bindingSource;
-        private System.Windows.Forms.DataGridView dataGridView;
+        // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
+        private DpiAwareDataGridView dataGridView; // 260518Cl
         private DataSet dataSet;
         public System.ComponentModel.BackgroundWorker SaveDatabaseWorker;
         public System.ComponentModel.BackgroundWorker ReadDatabaseWorker;

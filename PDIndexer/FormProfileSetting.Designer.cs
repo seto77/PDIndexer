@@ -597,7 +597,7 @@ namespace PDIndexer
             numericalTextBoxExposureTime.Name = "numericalTextBoxExposureTime";
             numericalTextBoxExposureTime.SkipEventDuringInput = false;
             numericalTextBoxExposureTime.SmartIncrement = true;
-            numericalTextBoxExposureTime.ThonsandsSeparator = true;
+            numericalTextBoxExposureTime.ThousandsSeparator = true;
             // 
             // label24
             // 
@@ -727,7 +727,7 @@ namespace PDIndexer
             numericBoxTwhoThetaOffsetCoeff2.Name = "numericBoxTwhoThetaOffsetCoeff2";
             numericBoxTwhoThetaOffsetCoeff2.SkipEventDuringInput = false;
             numericBoxTwhoThetaOffsetCoeff2.SmartIncrement = true;
-            numericBoxTwhoThetaOffsetCoeff2.ThonsandsSeparator = true;
+            numericBoxTwhoThetaOffsetCoeff2.ThousandsSeparator = true;
             numericBoxTwhoThetaOffsetCoeff2.ValueChanged += checkBoxTwoThetaOffset_CheckedChanged;
             // 
             // numericBoxTwhoThetaOffsetCoeff0
@@ -740,7 +740,7 @@ namespace PDIndexer
             numericBoxTwhoThetaOffsetCoeff0.Name = "numericBoxTwhoThetaOffsetCoeff0";
             numericBoxTwhoThetaOffsetCoeff0.SkipEventDuringInput = false;
             numericBoxTwhoThetaOffsetCoeff0.SmartIncrement = true;
-            numericBoxTwhoThetaOffsetCoeff0.ThonsandsSeparator = true;
+            numericBoxTwhoThetaOffsetCoeff0.ThousandsSeparator = true;
             numericBoxTwhoThetaOffsetCoeff0.ValueChanged += checkBoxTwoThetaOffset_CheckedChanged;
             // 
             // buttonTwoThetaOffsetReset
@@ -767,7 +767,7 @@ namespace PDIndexer
             numericBoxTwhoThetaOffsetCoeff1.Name = "numericBoxTwhoThetaOffsetCoeff1";
             numericBoxTwhoThetaOffsetCoeff1.SkipEventDuringInput = false;
             numericBoxTwhoThetaOffsetCoeff1.SmartIncrement = true;
-            numericBoxTwhoThetaOffsetCoeff1.ThonsandsSeparator = true;
+            numericBoxTwhoThetaOffsetCoeff1.ThousandsSeparator = true;
             numericBoxTwhoThetaOffsetCoeff1.ValueChanged += checkBoxTwoThetaOffset_CheckedChanged;
             // 
             // label25
@@ -1103,7 +1103,7 @@ namespace PDIndexer
             numericalTextBoxTargetValue.Name = "numericalTextBoxTargetValue";
             numericalTextBoxTargetValue.SkipEventDuringInput = false;
             numericalTextBoxTargetValue.SmartIncrement = true;
-            numericalTextBoxTargetValue.ThonsandsSeparator = true;
+            numericalTextBoxTargetValue.ThousandsSeparator = true;
             // 
             // listBoxTwoProfiles2
             // 
@@ -1244,6 +1244,83 @@ namespace PDIndexer
             panel1.PerformLayout();
             flowLayoutPanelFourCalculator.ResumeLayout(false);
             flowLayoutPanelFourCalculator.PerformLayout();
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(他遅延値を上書き・5000ちょうど回避)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: 基本プロパティ/一覧操作
+            toolTip.SetToolTip(dataGridViewProfile, resources.GetString("dataGridViewProfile.ToolTip"));
+            toolTip.SetToolTip(textBoxProfileName, resources.GetString("textBoxProfileName.ToolTip"));
+            toolTip.SetToolTip(textBoxComment, resources.GetString("textBoxComment.ToolTip"));
+            toolTip.SetToolTip(colorControlLineColor, resources.GetString("colorControlLineColor.ToolTip"));
+            toolTip.SetToolTip(numericUpDownLineWidth, resources.GetString("numericUpDownLineWidth.ToolTip"));
+            toolTip.SetToolTip(buttonDeleteProfile, resources.GetString("buttonDeleteProfile.ToolTip"));
+            toolTip.SetToolTip(button1, resources.GetString("button1.ToolTip"));
+            toolTip.SetToolTip(buttonUpper, resources.GetString("buttonUpper.ToolTip"));
+            toolTip.SetToolTip(buttonLower, resources.GetString("buttonLower.ToolTip"));
+            // 260531Cl 追加: 1. 2θ offset
+            toolTip.SetToolTip(checkBoxTwoThetaOffset, resources.GetString("checkBoxTwoThetaOffset.ToolTip"));
+            toolTip.SetToolTip(numericBoxTwhoThetaOffsetCoeff0, resources.GetString("numericBoxTwhoThetaOffsetCoeff0.ToolTip"));
+            toolTip.SetToolTip(numericBoxTwhoThetaOffsetCoeff1, resources.GetString("numericBoxTwhoThetaOffsetCoeff1.ToolTip"));
+            toolTip.SetToolTip(numericBoxTwhoThetaOffsetCoeff2, resources.GetString("numericBoxTwhoThetaOffsetCoeff2.ToolTip"));
+            toolTip.SetToolTip(buttonTwoThetaOffsetReset, resources.GetString("buttonTwoThetaOffsetReset.ToolTip"));
+            toolTip.SetToolTip(buttonTwoThetaCalibration, resources.GetString("buttonTwoThetaCalibration.ToolTip"));
+            // 260531Cl 追加: 2. Mask and Interpolation
+            toolTip.SetToolTip(checkBoxMaskingMode, resources.GetString("checkBoxMaskingMode.ToolTip"));
+            toolTip.SetToolTip(checkBoxShowMaskedRange, resources.GetString("checkBoxShowMaskedRange.ToolTip"));
+            toolTip.SetToolTip(numericUpDownInterpolationOrder, resources.GetString("numericUpDownInterpolationOrder.ToolTip"));
+            toolTip.SetToolTip(listBoxMaskRanges, resources.GetString("listBoxMaskRanges.ToolTip"));
+            toolTip.SetToolTip(buttonDeleteMask, resources.GetString("buttonDeleteMask.ToolTip"));
+            toolTip.SetToolTip(buttonDeleteAllMask, resources.GetString("buttonDeleteAllMask.ToolTip"));
+            // 260531Cl 追加: 3. Smoothing
+            toolTip.SetToolTip(checkBoxSmoothing, resources.GetString("checkBoxSmoothing.ToolTip"));
+            toolTip.SetToolTip(numericUpDownSmoothingSavitzkyAndGolayM, resources.GetString("numericUpDownSmoothingSavitzkyAndGolayM.ToolTip"));
+            toolTip.SetToolTip(numericUpDownSmoothingSavitzkyAndGolayN, resources.GetString("numericUpDownSmoothingSavitzkyAndGolayN.ToolTip"));
+            // 260531Cl 追加: 4. Bandpass filter
+            toolTip.SetToolTip(checkBoxBandPassFilter, resources.GetString("checkBoxBandPassFilter.ToolTip"));
+            toolTip.SetToolTip(checkBoxHighPassFilter, resources.GetString("checkBoxHighPassFilter.ToolTip"));
+            toolTip.SetToolTip(numericUpDownHighPass, resources.GetString("numericUpDownHighPass.ToolTip"));
+            toolTip.SetToolTip(checkBoxLowPassFilter, resources.GetString("checkBoxLowPassFilter.ToolTip"));
+            toolTip.SetToolTip(numericUpDownLowPass, resources.GetString("numericUpDownLowPass.ToolTip"));
+            // 260531Cl 追加: 5. Remove Kα2
+            toolTip.SetToolTip(checkBoxRemoveKalpha2, resources.GetString("checkBoxRemoveKalpha2.ToolTip"));
+            // 260531Cl 追加: 6. Background
+            toolTip.SetToolTip(checkBoxBackgroundSubtraction, resources.GetString("checkBoxBackgroundSubtraction.ToolTip"));
+            toolTip.SetToolTip(radioButtonBagkgroundBSpline, resources.GetString("radioButtonBagkgroundBSpline.ToolTip"));
+            toolTip.SetToolTip(radioButtonBackgroundReferrence, resources.GetString("radioButtonBackgroundReferrence.ToolTip"));
+            toolTip.SetToolTip(buttonBackgroundAutoDetectBG, resources.GetString("buttonBackgroundAutoDetectBG.ToolTip"));
+            toolTip.SetToolTip(numericUpDownBgPointsNumber, resources.GetString("numericUpDownBgPointsNumber.ToolTip"));
+            toolTip.SetToolTip(comboBoxBackgroundReferrence, resources.GetString("comboBoxBackgroundReferrence.ToolTip"));
+            toolTip.SetToolTip(numericUpDownBackgroundReferrenceScale, resources.GetString("numericUpDownBackgroundReferrenceScale.ToolTip"));
+            toolTip.SetToolTip(checkBoxShowBackgroundProfile, resources.GetString("checkBoxShowBackgroundProfile.ToolTip"));
+            // 260531Cl 追加: 7. Normalize intensity
+            toolTip.SetToolTip(checkBoxNormarizeIntensity, resources.GetString("checkBoxNormarizeIntensity.ToolTip"));
+            toolTip.SetToolTip(radioButtonNormarizeAverage, resources.GetString("radioButtonNormarizeAverage.ToolTip"));
+            toolTip.SetToolTip(radioButtonNormarizeMaximum, resources.GetString("radioButtonNormarizeMaximum.ToolTip"));
+            toolTip.SetToolTip(numericUpDownNormarizeRangeLow, resources.GetString("numericUpDownNormarizeRangeLow.ToolTip"));
+            toolTip.SetToolTip(numericUpDownNormarizeRangeHigh, resources.GetString("numericUpDownNormarizeRangeHigh.ToolTip"));
+            toolTip.SetToolTip(numericUpDownNormarizeIntensity, resources.GetString("numericUpDownNormarizeIntensity.ToolTip"));
+            toolTip.SetToolTip(buttonApplyAllProfiles, resources.GetString("buttonApplyAllProfiles.ToolTip"));
+            // 260531Cl 追加: Axis setting
+            toolTip.SetToolTip(xAxisUserControl, resources.GetString("xAxisUserControl.ToolTip"));
+            toolTip.SetToolTip(buttonChangeSourceXAxis, resources.GetString("buttonChangeSourceXAxis.ToolTip"));
+            toolTip.SetToolTip(checkBoxShiftHorizontalAxis, resources.GetString("checkBoxShiftHorizontalAxis.ToolTip"));
+            toolTip.SetToolTip(numericUpDownShiftHorizontalAxis, resources.GetString("numericUpDownShiftHorizontalAxis.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxExposureTime, resources.GetString("numericalTextBoxExposureTime.ToolTip"));
+            // 260531Cl 追加: Profile Operator
+            toolTip.SetToolTip(radioButtonAverage, resources.GetString("radioButtonAverage.ToolTip"));
+            toolTip.SetToolTip(radioButtonProfileAndValue, resources.GetString("radioButtonProfileAndValue.ToolTip"));
+            toolTip.SetToolTip(radioButtonTwoProfiles, resources.GetString("radioButtonTwoProfiles.ToolTip"));
+            toolTip.SetToolTip(radioButtonAddition, resources.GetString("radioButtonAddition.ToolTip"));
+            toolTip.SetToolTip(radioButtonSubtraction, resources.GetString("radioButtonSubtraction.ToolTip"));
+            toolTip.SetToolTip(radioButtonMutiplication, resources.GetString("radioButtonMutiplication.ToolTip"));
+            toolTip.SetToolTip(radioButtonDivision, resources.GetString("radioButtonDivision.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxTargetValue, resources.GetString("numericalTextBoxTargetValue.ToolTip"));
+            toolTip.SetToolTip(listBoxTwoProfiles1, resources.GetString("listBoxTwoProfiles1.ToolTip"));
+            toolTip.SetToolTip(listBoxTwoProfiles2, resources.GetString("listBoxTwoProfiles2.ToolTip"));
+            toolTip.SetToolTip(textBoxOutputFilename, resources.GetString("textBoxOutputFilename.ToolTip"));
+            toolTip.SetToolTip(buttonCalculate, resources.GetString("buttonCalculate.ToolTip"));
             ResumeLayout(false);
         }
 

@@ -27,6 +27,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.hScrollBar = new System.Windows.Forms.HScrollBar();
             this.vScrollBar = new System.Windows.Forms.VScrollBar();
@@ -78,7 +81,7 @@
             // 
             this.label.AutoSize = true;
             this.label.BackColor = System.Drawing.Color.Transparent;
-            this.label.Font = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point); // 260522Cl 変更: Yu Gothic UI → Segoe UI (英語GUI)
             this.label.Location = new System.Drawing.Point(6, 7);
             this.label.Name = "label";
             this.label.Size = new System.Drawing.Size(0, 18);
@@ -109,6 +112,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         public System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.HScrollBar hScrollBar;

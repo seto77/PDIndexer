@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema 
@@ -154,7 +154,7 @@
   <data name="numericBoxLowEnergyCutoff.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxLowEnergyCutoff.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxLowEnergyCutoff.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxLowEnergyCutoff.Name" xml:space="preserve">
@@ -582,7 +582,7 @@ If need to remove Kα2, select Kα1 as X-ray source.
   <data name="numericalTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericalTextBox1.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericalTextBox1.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Arial Narrow, 9.75pt</value>
   </data>
   <data name="&gt;&gt;numericalTextBox1.Name" xml:space="preserve">
@@ -720,5 +720,28 @@ If need to remove Kα2, select Kα1 as X-ray source.
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>Exposure (measurement) time per data step,
+in seconds. Values &lt;= 0 are treated as 1.</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>Enable cutting off the low-energy side of the
+EDX spectrum below the threshold at right.</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>Energy threshold (eV) below which the EDX spectrum
+is discarded; enabled by the checkbox at left.</value>
+  </data>
+  <data name="horizontalAxisUserControl.ToolTip" xml:space="preserve">
+    <value>Set the data's horizontal-axis type and the
+associated source parameters (wavelength/energy,
+2theta, TOF length/angle, etc.).</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Apply the settings and convert the data.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Cancel the conversion.</value>
   </data>
 </root>

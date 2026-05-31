@@ -24,6 +24,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCalculator)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -39,7 +43,7 @@
             // 
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label1.Location = new System.Drawing.Point(251, 8);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(63, 17);
@@ -51,7 +55,7 @@
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.Location = new System.Drawing.Point(251, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(123, 17);
@@ -62,7 +66,7 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label4.Location = new System.Drawing.Point(251, 144);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(135, 17);
@@ -74,7 +78,7 @@
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.SystemColors.ActiveCaption;
             this.label3.Location = new System.Drawing.Point(251, 174);
             this.label3.Name = "label3";
@@ -97,7 +101,7 @@
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.IndianRed;
             this.label5.Location = new System.Drawing.Point(272, 28);
             this.label5.Name = "label5";
@@ -110,7 +114,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.IndianRed;
             this.label8.Location = new System.Drawing.Point(272, 158);
             this.label8.Name = "label8";
@@ -123,7 +127,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.IndianRed;
             this.label9.Location = new System.Drawing.Point(272, 69);
             this.label9.Name = "label9";
@@ -139,13 +143,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.numericTextBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.numericTextBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.numericTextBox1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.numericTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericTextBox1.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericTextBox1.HeaderBackColor = System.Drawing.SystemColors.Control;
             this.numericTextBox1.Location = new System.Drawing.Point(0, 4);
             this.numericTextBox1.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.numericTextBox1.Multiline = true;
             this.numericTextBox1.Name = "numericTextBox1";
+            this.toolTip.SetToolTip(this.numericTextBox1, resources.GetString("numericTextBox1.ToolTip")); // 260531Cl
             this.numericTextBox1.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericTextBox1.RoundErrorAccuracy = -1;
             this.numericTextBox1.Size = new System.Drawing.Size(245, 239);
@@ -165,7 +170,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.numericTextBox1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FormCalculator";
@@ -177,6 +182,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private Crystallography.Controls.NumericBox numericTextBox1;
         private System.Windows.Forms.Label label1;

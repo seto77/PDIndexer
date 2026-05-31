@@ -777,4 +777,246 @@
   <data name="$this.Text" xml:space="preserve">
     <value>プロファイル情報</value>
   </data>
+  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+    <value>マスク範囲の左右それぞれから補間に使うデータ
+点数を設定します。多項式次数と組み合わせ、
+点数を増やすほど広い範囲を参照します。</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>マスク範囲の左右それぞれから補間に
+使うデータ点数を設定します。</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>マスク範囲の左右それぞれから補間に
+使うデータ点数を設定します。</value>
+  </data>
+  <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
+    <value>読み込み済みプロファイルの一覧です。行を
+選ぶと下の各設定で編集でき、チェックで
+表示/非表示、色見本で線色を示します。</value>
+  </data>
+  <data name="textBoxProfileName.ToolTip" xml:space="preserve">
+    <value>選択中プロファイルの表示名を設定し
+ます。一覧や凡例に表示されます。</value>
+  </data>
+  <data name="textBoxComment.ToolTip" xml:space="preserve">
+    <value>選択中プロファイルに付ける任意のコメント
+を設定します。処理には影響しません。</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value>選択中プロファイルの線（プロット）の色を設定します。</value>
+  </data>
+  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+    <value>選択中プロファイルのプロット線の太さを pt 単位で設定します。</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>選択中のプロファイルを削除します。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>読み込み済みのすべてのプロファイルを削除します（確認あり）。</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>選択中プロファイルを一覧で 1 つ上へ移動します。</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>選択中プロファイルを一覧で 1 つ下へ移動します。</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.ToolTip" xml:space="preserve">
+    <value>手順1: 角度分散測定の回折角に
+Δ(2θ)=c0+c1·tan(θ)+c2·tan²(θ)
+のオフセット補正を適用します。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
+    <value>2θオフセット式 Δ(2θ)=c0+c1·tan(θ)+c2·tan²(θ)
+の定数項 c0（度）を設定します。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
+    <value>2θオフセット式の tan(θ) 項の係数 c1（度）を設定します。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
+    <value>2θオフセット式の tan²(θ) 項の係数 c2（度）を設定します。</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.ToolTip" xml:space="preserve">
+    <value>2θオフセットの 3 係数（c0, c1, c2）をすべて 0 に戻します。</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.ToolTip" xml:space="preserve">
+    <value>内部標準を用いて 2θ オフセットを求める
+校正ウィンドウの表示/非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxMaskingMode.ToolTip" xml:space="preserve">
+    <value>手順2: 指定した範囲をマスクし、多項式補間で
+置き換えます（アーティファクト除去など）。</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.ToolTip" xml:space="preserve">
+    <value>グラフ上でマウス操作によりマスク範囲を
+設定・表示するモードを有効にします。</value>
+  </data>
+  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+    <value>マスク範囲を補間する多項式の次数（0〜5）を
+設定します。大きいほど曲線が柔軟になります。</value>
+  </data>
+  <data name="listBoxMaskRanges.ToolTip" xml:space="preserve">
+    <value>設定済みマスク範囲（横軸の開始〜終了）の
+一覧です。選択で強調表示し、.mas
+ファイルをドロップして読み込めます。</value>
+  </data>
+  <data name="buttonDeleteMask.ToolTip" xml:space="preserve">
+    <value>一覧で選択中のマスク範囲を 1 件削除します。</value>
+  </data>
+  <data name="buttonDeleteAllMask.ToolTip" xml:space="preserve">
+    <value>このプロファイルのマスク範囲をすべて削除します。</value>
+  </data>
+  <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
+    <value>手順3: Savitzky-Golay フィルタでプロファイルを平滑化します。</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 平滑化の窓幅（片側の点数）を
+設定します。大きいほど強く平滑化します。</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 平滑化の多項式次数（0〜5）を設定します。
+大きいほどピーク形状を保ちますが平滑化は弱まります。</value>
+  </data>
+  <data name="checkBoxBandPassFilter.ToolTip" xml:space="preserve">
+    <value>手順4: FFT によるバンドパスフィルタ
+で不要な周波数成分を抑制します。</value>
+  </data>
+  <data name="checkBoxHighPassFilter.ToolTip" xml:space="preserve">
+    <value>ハイパスフィルタを有効にし、しきい値より
+低い周波数（長周期）成分を除去します。</value>
+  </data>
+  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+    <value>ハイパスのしきい値（横軸単位の逆数＝周波数）
+を設定します。これより低周波の成分を除去しま
+す（範囲はデータに応じて自動）。</value>
+  </data>
+  <data name="checkBoxLowPassFilter.ToolTip" xml:space="preserve">
+    <value>ローパスフィルタを有効にし、しきい値より高い
+周波数（短周期ノイズ）成分を除去します。</value>
+  </data>
+  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+    <value>ローパスのしきい値（横軸単位の逆数＝周波数）
+を設定します。これより高周波の成分を除去しま
+す（範囲はデータに応じて自動）。</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.ToolTip" xml:space="preserve">
+    <value>手順5: プロファイルから Kα2 成分を除去し
+ます（線源がX線 Kα1 の場合のみ）。</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.ToolTip" xml:space="preserve">
+    <value>手順6: プロファイルからバックグラウンド曲線を差し引きます。</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.ToolTip" xml:space="preserve">
+    <value>バックグラウンドを、手動または自動で配置した
+点を通る B-スプライン曲線として定義します。</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>別のプロファイルを参照バックグラウンド
+として差し引くモードにします。</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
+    <value>指定した点数でバックグラウンド点を
+プロファイル上に自動配置します。</value>
+  </data>
+  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+    <value>自動検出・B-スプライン用のバックグラウンド
+点の数（3〜50）を設定します。</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>参照バックグラウンドとして差し引くプロファイルを選択します。</value>
+  </data>
+  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+    <value>参照バックグラウンドに掛ける倍率を設定します。</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
+    <value>バックグラウンド曲線をグラフに表示/非表示し
+ます（BG 差し引きが有効なときのみ）。</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>手順7: 指定した範囲内の強度を目標値に規格化します。</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.ToolTip" xml:space="preserve">
+    <value>範囲内の平均強度が目標値になるように規格化します。</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
+    <value>範囲内の最大強度が目標値になるように規格化します。</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+    <value>規格化の基準とする横軸範囲の下端（横軸単位）を設定します。</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+    <value>規格化の基準とする横軸範囲の上端（横軸単位）を設定します。</value>
+  </data>
+  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>範囲の平均/最大強度を合わせる
+目標強度値（1〜100000）を設定します。</value>
+  </data>
+  <data name="buttonApplyAllProfiles.ToolTip" xml:space="preserve">
+    <value>現在の各処理設定を、バックグラウンド設定を
+除いてすべてのプロファイルに適用します。</value>
+  </data>
+  <data name="xAxisUserControl.ToolTip" xml:space="preserve">
+    <value>線源の横軸設定（横軸種別 2θ/d/エネルギー
+/TOF、線源、波長、取り出し角）を編集しま
+す。「Change」で確定します。</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.ToolTip" xml:space="preserve">
+    <value>編集した横軸の線源設定（と露光時間）を
+選択中プロファイルに反映します。</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>プロファイル全体を横軸方向に一定量だけ平行移動します。</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>横軸方向の平行移動量（横軸単位）を設定します。</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+    <value>縦軸を CPS（毎秒カウント）表示に換算す
+る際に使う露光時間（秒）を設定します。</value>
+  </data>
+  <data name="radioButtonAverage.ToolTip" xml:space="preserve">
+    <value>演算モード: 選択した複数プロファイル
+の平均を計算します（誤差も伝播）。</value>
+  </data>
+  <data name="radioButtonProfileAndValue.ToolTip" xml:space="preserve">
+    <value>演算モード: 1 つのプロファイルと
+定数値を演算します（加算・乗算）。</value>
+  </data>
+  <data name="radioButtonTwoProfiles.ToolTip" xml:space="preserve">
+    <value>演算モード: 選択した 2 つのプロファイル
+間で ＋・－・×・÷ を行います。</value>
+  </data>
+  <data name="radioButtonAddition.ToolTip" xml:space="preserve">
+    <value>演算として加算（＋）を選びます。</value>
+  </data>
+  <data name="radioButtonSubtraction.ToolTip" xml:space="preserve">
+    <value>演算として減算（－）を選びます。</value>
+  </data>
+  <data name="radioButtonMutiplication.ToolTip" xml:space="preserve">
+    <value>演算として乗算（×）を選びます
+（ボタンに記号は表示されません）。</value>
+  </data>
+  <data name="radioButtonDivision.ToolTip" xml:space="preserve">
+    <value>演算として除算（÷）を選びます
+（ボタンに記号は表示されません）。</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
+    <value>「Profile and value」モードでプロファイル
+に演算する定数値を設定します。</value>
+  </data>
+  <data name="listBoxTwoProfiles1.ToolTip" xml:space="preserve">
+    <value>演算の第 1（主）プロファイルを選択しま
+す。平均モードでは複数選択できます。</value>
+  </data>
+  <data name="listBoxTwoProfiles2.ToolTip" xml:space="preserve">
+    <value>2 プロファイル演算における第 2 プロファイルを選択します。</value>
+  </data>
+  <data name="textBoxOutputFilename.ToolTip" xml:space="preserve">
+    <value>演算結果として生成するプロファイルの名前を設定し
+ます（計算ごとに末尾の連番が自動で増えます）。</value>
+  </data>
+  <data name="buttonCalculate.ToolTip" xml:space="preserve">
+    <value>選択した演算を実行し、結果を新しい
+プロファイルとして一覧に追加します。</value>
+  </data>
 </root>

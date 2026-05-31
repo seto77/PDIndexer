@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormTwoThetaCalibration));
+            this.components = new System.ComponentModel.Container(); // 260531Cl 追加: ToolTip 用 IContainer を生成(Dispose は既存の components.Dispose() が処理)
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl 追加
             this.label1 = new System.Windows.Forms.Label();
             this.buttonCalibrate = new System.Windows.Forms.Button();
             this.buttonRevert = new System.Windows.Forms.Button();
@@ -142,6 +144,15 @@
             this.VisibleChanged += new System.EventHandler(this.FormTwoThetaCalibration_VisibleChanged);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FormTwoThetaCalibration_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownOrder)).EndInit();
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(5000ちょうど回避)
+            this.toolTip.IsBalloon = true;
+            this.toolTip.AutoPopDelay = 10000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: ToolTip 配線(文案は resx/ja.resx)
+            this.toolTip.SetToolTip(this.numericUpDownOrder, resources.GetString("numericUpDownOrder.ToolTip"));
+            this.toolTip.SetToolTip(this.buttonCalibrate, resources.GetString("buttonCalibrate.ToolTip"));
+            this.toolTip.SetToolTip(this.buttonRevert, resources.GetString("buttonRevert.ToolTip"));
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +166,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown numericUpDownOrder;
         private System.Windows.Forms.Label labelEquation;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
     }
 }

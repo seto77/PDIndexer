@@ -1,4 +1,4 @@
-<root>
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -1201,5 +1201,109 @@ the specified number
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>Run the sequential analysis: fit every loaded
+profile in turn and tabulate 2theta, d-spacing,
+FWHM, intensity, cell constants and pressure.
+Requires the Fitting window open with peaks checked.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>Copy the active tab's table to
+the clipboard (tab-separated).</value>
+  </data>
+  <data name="buttonSave.ToolTip" xml:space="preserve">
+    <value>Save the active tab's table to a CSV file.</value>
+  </data>
+  <data name="checkBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>Start the analysis from the profile
+number set at right instead of the first
+one (the first profile is number 0).</value>
+  </data>
+  <data name="numericBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>Profile index to start from (integer, minimum 1);
+enabled only when 'start from number' is checked.</value>
+  </data>
+  <data name="checkBoxLoop.ToolTip" xml:space="preserve">
+    <value>When starting from a number, also process
+the skipped earlier profiles (0 ... start-1)
+after reaching the end, wrapping around.</value>
+  </data>
+  <data name="checkBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>Reject a fit (output NaN) when the refined
+cell volume changes from the initial value
+by more than the tolerance factor at right.</value>
+  </data>
+  <data name="numericBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>Allowed cell-volume change as a percentage
+(0-100%); fits exceeding it are discarded.</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ToolTip" xml:space="preserve">
+    <value>Automatically save the 2theta results to
+'*_2theta.csv' in the chosen directory after analysis.</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ToolTip" xml:space="preserve">
+    <value>Automatically save the d-spacing
+results to '*_d.csv' after analysis.</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ToolTip" xml:space="preserve">
+    <value>Automatically save the FWHM (full width
+at half maximum) results to '*_fwhm.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ToolTip" xml:space="preserve">
+    <value>Automatically save the integrated-intensity
+results to '*_intensity.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ToolTip" xml:space="preserve">
+    <value>Automatically save the lattice-constant
+results (with errors) to '*_cell.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ToolTip" xml:space="preserve">
+    <value>Automatically save the pressure results to '*_pressure.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.ToolTip" xml:space="preserve">
+    <value>Automatically save the Singh's-equation
+parameters to '*_Singh.csv'.</value>
+  </data>
+  <data name="buttonSetDirectory.ToolTip" xml:space="preserve">
+    <value>Choose the folder where auto-saved CSV files are written.</value>
+  </data>
+  <data name="textBoxDirectory.ToolTip" xml:space="preserve">
+    <value>Shows the destination folder for auto-saved
+files; set it with the 'Set' button.</value>
+  </data>
+  <data name="textBox2theta.ToolTip" xml:space="preserve">
+    <value>Per-profile peak positions 2theta
+(degrees), one row per profile.</value>
+  </data>
+  <data name="textBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Per-profile d-spacings (Angstrom).</value>
+  </data>
+  <data name="textBoxFWHM.ToolTip" xml:space="preserve">
+    <value>Per-profile peak FWHM (full width at half maximum, degrees).</value>
+  </data>
+  <data name="textBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Per-profile integrated peak intensities.</value>
+  </data>
+  <data name="textBoxCellConstants.ToolTip" xml:space="preserve">
+    <value>Per-profile refined cell volume and lattice constants
+a-gamma with their errors (Angstrom, degrees).</value>
+  </data>
+  <data name="textBoxPressure.ToolTip" xml:space="preserve">
+    <value>Per-profile pressure (GPa) derived from the
+equation of state of the selected standard material.</value>
+  </data>
+  <data name="textBoxSingh.ToolTip" xml:space="preserve">
+    <value>Singh's-equation parameters (d0, Psi_max, t/6*G_hkl)
+refined from the stress-analysis profiles.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>Plot of the fitted Singh's-equation
+d-spacing vs. azimuth Psi (0-360 degrees).</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value>Switch between result categories (2theta / d /
+FWHM / intensity / cell / pressure / Singh);
+Copy and Save act on the currently selected tab.</value>
   </data>
 </root>

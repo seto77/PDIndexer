@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Drawing;
 using System.Collections;
 using System.ComponentModel;
@@ -7,12 +7,12 @@ using Crystallography;
 namespace PDIndexer
 {
     /// <summary>
-    /// FormEOS �̊T�v�̐����ł��B
+    /// FormEOS の概要の説明です。
     /// </summary>
    partial class FormEOS : System.Windows.Forms.Form
     {		
         /// <summary>
-        /// �g�p����Ă��郊�\�[�X�Ɍ㏈�������s���܂��B
+        /// 使用されているリソースに後処理を実行します。
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -27,18 +27,21 @@ namespace PDIndexer
         }
 
         /// <summary>
-        /// �K�v�ȃf�U�C�i�ϐ��ł��B
+        /// 必要なデザイナ変数です。
         /// </summary>
         private System.ComponentModel.Container components = null;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
 
-        #region Windows �t�H�[�� �f�U�C�i�Ő������ꂽ�R�[�h
+        #region Windows フォーム デザイナで生成されたコード
         /// <summary>
-        /// �f�U�C�i �T�|�[�g�ɕK�v�ȃ��\�b�h�ł��B���̃��\�b�h�̓��e��
-        /// �R�[�h �G�f�B�^�ŕύX���Ȃ��ł��������B
+        /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
+        /// コード エディタで変更しないでください。
         /// </summary>
         private void InitializeComponent()
         {
             ComponentResourceManager resources = new ComponentResourceManager(typeof(FormEOS));
+            components = new System.ComponentModel.Container(); // 260531Cl 追加: ToolTip 用 IContainer を生成(Dispose は既存の components.Dispose() が処理)
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl 追加
             groupBoxPlatinum = new GroupBox();
             numericBoxPtFratanduono = new Crystallography.Controls.NumericBox();
             numericBoxPtYokoo = new Crystallography.Controls.NumericBox();
@@ -196,9 +199,9 @@ namespace PDIndexer
             numericBoxPtFratanduono.Name = "numericBoxPtFratanduono";
             numericBoxPtFratanduono.SkipEventDuringInput = false;
             numericBoxPtFratanduono.SmartIncrement = true;
-            numericBoxPtFratanduono.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxPtFratanduono.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxPtFratanduono.ThonsandsSeparator = true;
+            numericBoxPtFratanduono.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxPtFratanduono.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxPtFratanduono.ThousandsSeparator = true;
             // 
             // numericBoxPtYokoo
             // 
@@ -210,9 +213,9 @@ namespace PDIndexer
             numericBoxPtYokoo.Name = "numericBoxPtYokoo";
             numericBoxPtYokoo.SkipEventDuringInput = false;
             numericBoxPtYokoo.SmartIncrement = true;
-            numericBoxPtYokoo.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxPtYokoo.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxPtYokoo.ThonsandsSeparator = true;
+            numericBoxPtYokoo.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxPtYokoo.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxPtYokoo.ThousandsSeparator = true;
             // 
             // numericalTextBoxPtMatsui
             // 
@@ -224,9 +227,9 @@ namespace PDIndexer
             numericalTextBoxPtMatsui.Name = "numericalTextBoxPtMatsui";
             numericalTextBoxPtMatsui.SkipEventDuringInput = false;
             numericalTextBoxPtMatsui.SmartIncrement = true;
-            numericalTextBoxPtMatsui.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxPtMatsui.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxPtMatsui.ThonsandsSeparator = true;
+            numericalTextBoxPtMatsui.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxPtMatsui.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxPtMatsui.ThousandsSeparator = true;
             // 
             // numericalTextBoxPtHolmes
             // 
@@ -238,9 +241,9 @@ namespace PDIndexer
             numericalTextBoxPtHolmes.Name = "numericalTextBoxPtHolmes";
             numericalTextBoxPtHolmes.SkipEventDuringInput = false;
             numericalTextBoxPtHolmes.SmartIncrement = true;
-            numericalTextBoxPtHolmes.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxPtHolmes.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxPtHolmes.ThonsandsSeparator = true;
+            numericalTextBoxPtHolmes.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxPtHolmes.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxPtHolmes.ThousandsSeparator = true;
             // 
             // label20
             // 
@@ -257,9 +260,9 @@ namespace PDIndexer
             numericalTextBoxPtJamieson.Name = "numericalTextBoxPtJamieson";
             numericalTextBoxPtJamieson.SkipEventDuringInput = false;
             numericalTextBoxPtJamieson.SmartIncrement = true;
-            numericalTextBoxPtJamieson.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxPtJamieson.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxPtJamieson.ThonsandsSeparator = true;
+            numericalTextBoxPtJamieson.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxPtJamieson.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxPtJamieson.ThousandsSeparator = true;
             // 
             // label9
             // 
@@ -286,7 +289,7 @@ namespace PDIndexer
             numericalTextBoxPtA.RadianValue = 0.068471011884989538D;
             numericalTextBoxPtA.SkipEventDuringInput = false;
             numericalTextBoxPtA.SmartIncrement = true;
-            numericalTextBoxPtA.ThonsandsSeparator = true;
+            numericalTextBoxPtA.ThousandsSeparator = true;
             numericalTextBoxPtA.Value = 3.9231D;
             numericalTextBoxPtA.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -300,7 +303,7 @@ namespace PDIndexer
             numericBoxPtA0.RadianValue = 0.068471011884989538D;
             numericBoxPtA0.SkipEventDuringInput = false;
             numericBoxPtA0.SmartIncrement = true;
-            numericBoxPtA0.ThonsandsSeparator = true;
+            numericBoxPtA0.ThousandsSeparator = true;
             numericBoxPtA0.Value = 3.9231D;
             numericBoxPtA0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -319,7 +322,7 @@ namespace PDIndexer
             numericBoxTemperature0.RadianValue = 5.2359877559829888D;
             numericBoxTemperature0.SkipEventDuringInput = false;
             numericBoxTemperature0.SmartIncrement = true;
-            numericBoxTemperature0.ThonsandsSeparator = true;
+            numericBoxTemperature0.ThousandsSeparator = true;
             numericBoxTemperature0.Value = 300D;
             numericBoxTemperature0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -347,9 +350,9 @@ namespace PDIndexer
             numericBoxNaClB1Skelton.Name = "numericBoxNaClB1Skelton";
             numericBoxNaClB1Skelton.SkipEventDuringInput = false;
             numericBoxNaClB1Skelton.SmartIncrement = true;
-            numericBoxNaClB1Skelton.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxNaClB1Skelton.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxNaClB1Skelton.ThonsandsSeparator = true;
+            numericBoxNaClB1Skelton.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxNaClB1Skelton.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxNaClB1Skelton.ThousandsSeparator = true;
             // 
             // numericBoxNaClB1Matsui
             // 
@@ -361,9 +364,9 @@ namespace PDIndexer
             numericBoxNaClB1Matsui.Name = "numericBoxNaClB1Matsui";
             numericBoxNaClB1Matsui.SkipEventDuringInput = false;
             numericBoxNaClB1Matsui.SmartIncrement = true;
-            numericBoxNaClB1Matsui.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxNaClB1Matsui.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxNaClB1Matsui.ThonsandsSeparator = true;
+            numericBoxNaClB1Matsui.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxNaClB1Matsui.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxNaClB1Matsui.ThousandsSeparator = true;
             // 
             // label31
             // 
@@ -380,9 +383,9 @@ namespace PDIndexer
             numericalTextBoxNaClB1Brown.Name = "numericalTextBoxNaClB1Brown";
             numericalTextBoxNaClB1Brown.SkipEventDuringInput = false;
             numericalTextBoxNaClB1Brown.SmartIncrement = true;
-            numericalTextBoxNaClB1Brown.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxNaClB1Brown.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxNaClB1Brown.ThonsandsSeparator = true;
+            numericalTextBoxNaClB1Brown.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxNaClB1Brown.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxNaClB1Brown.ThousandsSeparator = true;
             // 
             // label4
             // 
@@ -404,7 +407,7 @@ namespace PDIndexer
             numericalTextBoxNaClB1A.RadianValue = 0.098419116519960256D;
             numericalTextBoxNaClB1A.SkipEventDuringInput = false;
             numericalTextBoxNaClB1A.SmartIncrement = true;
-            numericalTextBoxNaClB1A.ThonsandsSeparator = true;
+            numericalTextBoxNaClB1A.ThousandsSeparator = true;
             numericalTextBoxNaClB1A.Value = 5.639D;
             numericalTextBoxNaClB1A.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -418,7 +421,7 @@ namespace PDIndexer
             numericBoxNaClB1A0.RadianValue = 0.098419116519960256D;
             numericBoxNaClB1A0.SkipEventDuringInput = false;
             numericBoxNaClB1A0.SmartIncrement = true;
-            numericBoxNaClB1A0.ThonsandsSeparator = true;
+            numericBoxNaClB1A0.ThousandsSeparator = true;
             numericBoxNaClB1A0.Value = 5.639D;
             numericBoxNaClB1A0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -452,9 +455,9 @@ namespace PDIndexer
             numericBoxAuFratanduono.Name = "numericBoxAuFratanduono";
             numericBoxAuFratanduono.SkipEventDuringInput = false;
             numericBoxAuFratanduono.SmartIncrement = true;
-            numericBoxAuFratanduono.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxAuFratanduono.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxAuFratanduono.ThonsandsSeparator = true;
+            numericBoxAuFratanduono.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxAuFratanduono.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxAuFratanduono.ThousandsSeparator = true;
             // 
             // numericBoxAuYokoo
             // 
@@ -466,9 +469,9 @@ namespace PDIndexer
             numericBoxAuYokoo.Name = "numericBoxAuYokoo";
             numericBoxAuYokoo.SkipEventDuringInput = false;
             numericBoxAuYokoo.SmartIncrement = true;
-            numericBoxAuYokoo.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxAuYokoo.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxAuYokoo.ThonsandsSeparator = true;
+            numericBoxAuYokoo.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxAuYokoo.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxAuYokoo.ThousandsSeparator = true;
             // 
             // numericalTextBoxGoldJamieson
             // 
@@ -480,9 +483,9 @@ namespace PDIndexer
             numericalTextBoxGoldJamieson.Name = "numericalTextBoxGoldJamieson";
             numericalTextBoxGoldJamieson.SkipEventDuringInput = false;
             numericalTextBoxGoldJamieson.SmartIncrement = true;
-            numericalTextBoxGoldJamieson.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxGoldJamieson.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxGoldJamieson.ThonsandsSeparator = true;
+            numericalTextBoxGoldJamieson.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxGoldJamieson.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxGoldJamieson.ThousandsSeparator = true;
             // 
             // numericalTextBoxGoldTsuchiya
             // 
@@ -494,9 +497,9 @@ namespace PDIndexer
             numericalTextBoxGoldTsuchiya.Name = "numericalTextBoxGoldTsuchiya";
             numericalTextBoxGoldTsuchiya.SkipEventDuringInput = false;
             numericalTextBoxGoldTsuchiya.SmartIncrement = true;
-            numericalTextBoxGoldTsuchiya.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxGoldTsuchiya.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxGoldTsuchiya.ThonsandsSeparator = true;
+            numericalTextBoxGoldTsuchiya.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxGoldTsuchiya.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxGoldTsuchiya.ThousandsSeparator = true;
             // 
             // numericalTextBoxGoldSim
             // 
@@ -508,9 +511,9 @@ namespace PDIndexer
             numericalTextBoxGoldSim.Name = "numericalTextBoxGoldSim";
             numericalTextBoxGoldSim.SkipEventDuringInput = false;
             numericalTextBoxGoldSim.SmartIncrement = true;
-            numericalTextBoxGoldSim.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxGoldSim.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxGoldSim.ThonsandsSeparator = true;
+            numericalTextBoxGoldSim.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxGoldSim.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxGoldSim.ThousandsSeparator = true;
             // 
             // label19
             // 
@@ -527,9 +530,9 @@ namespace PDIndexer
             numericalTextBoxGoldAnderson.Name = "numericalTextBoxGoldAnderson";
             numericalTextBoxGoldAnderson.SkipEventDuringInput = false;
             numericalTextBoxGoldAnderson.SmartIncrement = true;
-            numericalTextBoxGoldAnderson.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxGoldAnderson.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxGoldAnderson.ThonsandsSeparator = true;
+            numericalTextBoxGoldAnderson.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxGoldAnderson.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxGoldAnderson.ThousandsSeparator = true;
             // 
             // label49
             // 
@@ -546,7 +549,7 @@ namespace PDIndexer
             numericalTextBoxGoldA.RadianValue = 0.071178890219458738D;
             numericalTextBoxGoldA.SkipEventDuringInput = false;
             numericalTextBoxGoldA.SmartIncrement = true;
-            numericalTextBoxGoldA.ThonsandsSeparator = true;
+            numericalTextBoxGoldA.ThousandsSeparator = true;
             numericalTextBoxGoldA.Value = 4.07825D;
             numericalTextBoxGoldA.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -560,7 +563,7 @@ namespace PDIndexer
             numericBoxGoldA0.RadianValue = 0.071178890219458738D;
             numericBoxGoldA0.SkipEventDuringInput = false;
             numericBoxGoldA0.SmartIncrement = true;
-            numericBoxGoldA0.ThonsandsSeparator = true;
+            numericBoxGoldA0.ThousandsSeparator = true;
             numericBoxGoldA0.Value = 4.07825D;
             numericBoxGoldA0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -612,9 +615,9 @@ namespace PDIndexer
             numericBoxMgOTangeBM.Name = "numericBoxMgOTangeBM";
             numericBoxMgOTangeBM.SkipEventDuringInput = false;
             numericBoxMgOTangeBM.SmartIncrement = true;
-            numericBoxMgOTangeBM.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxMgOTangeBM.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxMgOTangeBM.ThonsandsSeparator = true;
+            numericBoxMgOTangeBM.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxMgOTangeBM.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxMgOTangeBM.ThousandsSeparator = true;
             // 
             // numericBoxMgOTangeVinet
             // 
@@ -626,9 +629,9 @@ namespace PDIndexer
             numericBoxMgOTangeVinet.Name = "numericBoxMgOTangeVinet";
             numericBoxMgOTangeVinet.SkipEventDuringInput = false;
             numericBoxMgOTangeVinet.SmartIncrement = true;
-            numericBoxMgOTangeVinet.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxMgOTangeVinet.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxMgOTangeVinet.ThonsandsSeparator = true;
+            numericBoxMgOTangeVinet.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxMgOTangeVinet.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxMgOTangeVinet.ThousandsSeparator = true;
             // 
             // numericalTextBoxMgOAizawa
             // 
@@ -640,9 +643,9 @@ namespace PDIndexer
             numericalTextBoxMgOAizawa.Name = "numericalTextBoxMgOAizawa";
             numericalTextBoxMgOAizawa.SkipEventDuringInput = false;
             numericalTextBoxMgOAizawa.SmartIncrement = true;
-            numericalTextBoxMgOAizawa.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxMgOAizawa.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxMgOAizawa.ThonsandsSeparator = true;
+            numericalTextBoxMgOAizawa.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxMgOAizawa.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxMgOAizawa.ThousandsSeparator = true;
             // 
             // label16
             // 
@@ -659,9 +662,9 @@ namespace PDIndexer
             numericalTextBoxMgODewaele.Name = "numericalTextBoxMgODewaele";
             numericalTextBoxMgODewaele.SkipEventDuringInput = false;
             numericalTextBoxMgODewaele.SmartIncrement = true;
-            numericalTextBoxMgODewaele.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxMgODewaele.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxMgODewaele.ThonsandsSeparator = true;
+            numericalTextBoxMgODewaele.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxMgODewaele.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxMgODewaele.ThousandsSeparator = true;
             // 
             // label13
             // 
@@ -678,9 +681,9 @@ namespace PDIndexer
             numericalTextBoxMgOJacson.Name = "numericalTextBoxMgOJacson";
             numericalTextBoxMgOJacson.SkipEventDuringInput = false;
             numericalTextBoxMgOJacson.SmartIncrement = true;
-            numericalTextBoxMgOJacson.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxMgOJacson.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxMgOJacson.ThonsandsSeparator = true;
+            numericalTextBoxMgOJacson.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxMgOJacson.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxMgOJacson.ThousandsSeparator = true;
             // 
             // label23
             // 
@@ -702,7 +705,7 @@ namespace PDIndexer
             numericalTextBoxMgOA.RadianValue = 0.0734993054599852D;
             numericalTextBoxMgOA.SkipEventDuringInput = false;
             numericalTextBoxMgOA.SmartIncrement = true;
-            numericalTextBoxMgOA.ThonsandsSeparator = true;
+            numericalTextBoxMgOA.ThousandsSeparator = true;
             numericalTextBoxMgOA.Value = 4.2112D;
             numericalTextBoxMgOA.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -721,7 +724,7 @@ namespace PDIndexer
             numericBoxMgOA0.RadianValue = 0.0734993054599852D;
             numericBoxMgOA0.SkipEventDuringInput = false;
             numericBoxMgOA0.SmartIncrement = true;
-            numericBoxMgOA0.ThonsandsSeparator = true;
+            numericBoxMgOA0.ThousandsSeparator = true;
             numericBoxMgOA0.Value = 4.2112D;
             numericBoxMgOA0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -753,9 +756,9 @@ namespace PDIndexer
             numericalTextBoxNaClB2SakaiVinet.Name = "numericalTextBoxNaClB2SakaiVinet";
             numericalTextBoxNaClB2SakaiVinet.SkipEventDuringInput = false;
             numericalTextBoxNaClB2SakaiVinet.SmartIncrement = true;
-            numericalTextBoxNaClB2SakaiVinet.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxNaClB2SakaiVinet.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxNaClB2SakaiVinet.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2SakaiVinet.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxNaClB2SakaiVinet.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxNaClB2SakaiVinet.ThousandsSeparator = true;
             // 
             // numericalTextBoxNaClB2SakaiBM
             // 
@@ -767,9 +770,9 @@ namespace PDIndexer
             numericalTextBoxNaClB2SakaiBM.Name = "numericalTextBoxNaClB2SakaiBM";
             numericalTextBoxNaClB2SakaiBM.SkipEventDuringInput = false;
             numericalTextBoxNaClB2SakaiBM.SmartIncrement = true;
-            numericalTextBoxNaClB2SakaiBM.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxNaClB2SakaiBM.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxNaClB2SakaiBM.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2SakaiBM.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxNaClB2SakaiBM.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxNaClB2SakaiBM.ThousandsSeparator = true;
             // 
             // numericalTextBoxNaClB2Ueda
             // 
@@ -781,9 +784,9 @@ namespace PDIndexer
             numericalTextBoxNaClB2Ueda.Name = "numericalTextBoxNaClB2Ueda";
             numericalTextBoxNaClB2Ueda.SkipEventDuringInput = false;
             numericalTextBoxNaClB2Ueda.SmartIncrement = true;
-            numericalTextBoxNaClB2Ueda.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxNaClB2Ueda.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxNaClB2Ueda.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2Ueda.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxNaClB2Ueda.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxNaClB2Ueda.ThousandsSeparator = true;
             // 
             // label12
             // 
@@ -800,9 +803,9 @@ namespace PDIndexer
             numericalTextBoxNaClB2SataMgO.Name = "numericalTextBoxNaClB2SataMgO";
             numericalTextBoxNaClB2SataMgO.SkipEventDuringInput = false;
             numericalTextBoxNaClB2SataMgO.SmartIncrement = true;
-            numericalTextBoxNaClB2SataMgO.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxNaClB2SataMgO.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxNaClB2SataMgO.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2SataMgO.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxNaClB2SataMgO.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxNaClB2SataMgO.ThousandsSeparator = true;
             // 
             // label11
             // 
@@ -819,9 +822,9 @@ namespace PDIndexer
             numericalTextBoxNaClB2SataPt.Name = "numericalTextBoxNaClB2SataPt";
             numericalTextBoxNaClB2SataPt.SkipEventDuringInput = false;
             numericalTextBoxNaClB2SataPt.SmartIncrement = true;
-            numericalTextBoxNaClB2SataPt.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxNaClB2SataPt.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxNaClB2SataPt.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2SataPt.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxNaClB2SataPt.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxNaClB2SataPt.ThousandsSeparator = true;
             // 
             // label10
             // 
@@ -843,7 +846,7 @@ namespace PDIndexer
             numericalTextBoxNaClB2A.RadianValue = 0.051138147083433859D;
             numericalTextBoxNaClB2A.SkipEventDuringInput = false;
             numericalTextBoxNaClB2A.SmartIncrement = true;
-            numericalTextBoxNaClB2A.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2A.ThousandsSeparator = true;
             numericalTextBoxNaClB2A.Value = 2.93D;
             numericalTextBoxNaClB2A.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -862,8 +865,8 @@ namespace PDIndexer
             numericalTextBoxNaClB2A0.ReadOnly = true;
             numericalTextBoxNaClB2A0.SkipEventDuringInput = false;
             numericalTextBoxNaClB2A0.SmartIncrement = true;
-            numericalTextBoxNaClB2A0.TextBoxBackColor = SystemColors.Control;
-            numericalTextBoxNaClB2A0.ThonsandsSeparator = true;
+            numericalTextBoxNaClB2A0.ValueBackColor = SystemColors.Control;
+            numericalTextBoxNaClB2A0.ThousandsSeparator = true;
             numericalTextBoxNaClB2A0.ValueChanged += numericalTextBox_ValueChanged;
             // 
             // groupBoxCorundum
@@ -886,9 +889,9 @@ namespace PDIndexer
             numericBoxCorundumDubrovinsky.Name = "numericBoxCorundumDubrovinsky";
             numericBoxCorundumDubrovinsky.SkipEventDuringInput = false;
             numericBoxCorundumDubrovinsky.SmartIncrement = true;
-            numericBoxCorundumDubrovinsky.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxCorundumDubrovinsky.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxCorundumDubrovinsky.ThonsandsSeparator = true;
+            numericBoxCorundumDubrovinsky.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxCorundumDubrovinsky.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxCorundumDubrovinsky.ThousandsSeparator = true;
             // 
             // numericalTextBoxColundumV
             // 
@@ -900,7 +903,7 @@ namespace PDIndexer
             numericalTextBoxColundumV.RadianValue = 4.4662054024689839D;
             numericalTextBoxColundumV.SkipEventDuringInput = false;
             numericalTextBoxColundumV.SmartIncrement = true;
-            numericalTextBoxColundumV.ThonsandsSeparator = true;
+            numericalTextBoxColundumV.ThousandsSeparator = true;
             numericalTextBoxColundumV.Value = 255.89472D;
             numericalTextBoxColundumV.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -919,7 +922,7 @@ namespace PDIndexer
             numericBoxColundumV0.RadianValue = 4.4662054024689839D;
             numericBoxColundumV0.SkipEventDuringInput = false;
             numericBoxColundumV0.SmartIncrement = true;
-            numericBoxColundumV0.ThonsandsSeparator = true;
+            numericBoxColundumV0.ThousandsSeparator = true;
             numericBoxColundumV0.Value = 255.89472D;
             numericBoxColundumV0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -960,9 +963,9 @@ namespace PDIndexer
             numericalTextBoxArRoss.Name = "numericalTextBoxArRoss";
             numericalTextBoxArRoss.SkipEventDuringInput = false;
             numericalTextBoxArRoss.SmartIncrement = true;
-            numericalTextBoxArRoss.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxArRoss.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxArRoss.ThonsandsSeparator = true;
+            numericalTextBoxArRoss.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxArRoss.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxArRoss.ThousandsSeparator = true;
             // 
             // numericalTextBoxArJephcoat
             // 
@@ -974,9 +977,9 @@ namespace PDIndexer
             numericalTextBoxArJephcoat.Name = "numericalTextBoxArJephcoat";
             numericalTextBoxArJephcoat.SkipEventDuringInput = false;
             numericalTextBoxArJephcoat.SmartIncrement = true;
-            numericalTextBoxArJephcoat.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxArJephcoat.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxArJephcoat.ThonsandsSeparator = true;
+            numericalTextBoxArJephcoat.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxArJephcoat.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxArJephcoat.ThousandsSeparator = true;
             // 
             // numericalTextBoxArA
             // 
@@ -988,7 +991,7 @@ namespace PDIndexer
             numericalTextBoxArA.RadianValue = 0.071184998871840724D;
             numericalTextBoxArA.SkipEventDuringInput = false;
             numericalTextBoxArA.SmartIncrement = true;
-            numericalTextBoxArA.ThonsandsSeparator = true;
+            numericalTextBoxArA.ThousandsSeparator = true;
             numericalTextBoxArA.Value = 4.0786D;
             numericalTextBoxArA.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1011,7 +1014,7 @@ namespace PDIndexer
             numericBoxArA0.Name = "numericBoxArA0";
             numericBoxArA0.SkipEventDuringInput = false;
             numericBoxArA0.SmartIncrement = true;
-            numericBoxArA0.ThonsandsSeparator = true;
+            numericBoxArA0.ThousandsSeparator = true;
             numericBoxArA0.ValueChanged += numericalTextBox_ValueChanged;
             // 
             // groupBoxRe
@@ -1040,9 +1043,9 @@ namespace PDIndexer
             numericBoxReDub.Name = "numericBoxReDub";
             numericBoxReDub.SkipEventDuringInput = false;
             numericBoxReDub.SmartIncrement = true;
-            numericBoxReDub.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxReDub.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxReDub.ThonsandsSeparator = true;
+            numericBoxReDub.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxReDub.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxReDub.ThousandsSeparator = true;
             // 
             // numericBoxReSakai
             // 
@@ -1054,9 +1057,9 @@ namespace PDIndexer
             numericBoxReSakai.Name = "numericBoxReSakai";
             numericBoxReSakai.SkipEventDuringInput = false;
             numericBoxReSakai.SmartIncrement = true;
-            numericBoxReSakai.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxReSakai.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxReSakai.ThonsandsSeparator = true;
+            numericBoxReSakai.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxReSakai.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxReSakai.ThousandsSeparator = true;
             // 
             // label26
             // 
@@ -1073,9 +1076,9 @@ namespace PDIndexer
             numericBoxReAnz.Name = "numericBoxReAnz";
             numericBoxReAnz.SkipEventDuringInput = false;
             numericBoxReAnz.SmartIncrement = true;
-            numericBoxReAnz.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxReAnz.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxReAnz.ThonsandsSeparator = true;
+            numericBoxReAnz.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxReAnz.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxReAnz.ThousandsSeparator = true;
             // 
             // label25
             // 
@@ -1092,9 +1095,9 @@ namespace PDIndexer
             numericalTextBoxReZha.Name = "numericalTextBoxReZha";
             numericalTextBoxReZha.SkipEventDuringInput = false;
             numericalTextBoxReZha.SmartIncrement = true;
-            numericalTextBoxReZha.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericalTextBoxReZha.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericalTextBoxReZha.ThonsandsSeparator = true;
+            numericalTextBoxReZha.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericalTextBoxReZha.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericalTextBoxReZha.ThousandsSeparator = true;
             // 
             // label24
             // 
@@ -1111,7 +1114,7 @@ namespace PDIndexer
             numericBoxReV.RadianValue = 0.51361461961226529D;
             numericBoxReV.SkipEventDuringInput = false;
             numericBoxReV.SmartIncrement = true;
-            numericBoxReV.ThonsandsSeparator = true;
+            numericBoxReV.ThousandsSeparator = true;
             numericBoxReV.Value = 29.42795D;
             numericBoxReV.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1130,7 +1133,7 @@ namespace PDIndexer
             numerictBoxReV0.RadianValue = 0.51361461961226529D;
             numerictBoxReV0.SkipEventDuringInput = false;
             numerictBoxReV0.SmartIncrement = true;
-            numerictBoxReV0.ThonsandsSeparator = true;
+            numerictBoxReV0.ThousandsSeparator = true;
             numerictBoxReV0.Value = 29.42795D;
             numerictBoxReV0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1156,9 +1159,9 @@ namespace PDIndexer
             numericBoxMoZhao.Name = "numericBoxMoZhao";
             numericBoxMoZhao.SkipEventDuringInput = false;
             numericBoxMoZhao.SmartIncrement = true;
-            numericBoxMoZhao.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxMoZhao.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxMoZhao.ThonsandsSeparator = true;
+            numericBoxMoZhao.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxMoZhao.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxMoZhao.ThousandsSeparator = true;
             // 
             // numericBoxMoHuang
             // 
@@ -1170,9 +1173,9 @@ namespace PDIndexer
             numericBoxMoHuang.Name = "numericBoxMoHuang";
             numericBoxMoHuang.SkipEventDuringInput = false;
             numericBoxMoHuang.SmartIncrement = true;
-            numericBoxMoHuang.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxMoHuang.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxMoHuang.ThonsandsSeparator = true;
+            numericBoxMoHuang.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxMoHuang.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxMoHuang.ThousandsSeparator = true;
             // 
             // label29
             // 
@@ -1189,7 +1192,7 @@ namespace PDIndexer
             numericBoxMoV.RadianValue = 0.54349552907103427D;
             numericBoxMoV.SkipEventDuringInput = false;
             numericBoxMoV.SmartIncrement = true;
-            numericBoxMoV.ThonsandsSeparator = true;
+            numericBoxMoV.ThousandsSeparator = true;
             numericBoxMoV.Value = 31.14D;
             numericBoxMoV.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1208,7 +1211,7 @@ namespace PDIndexer
             numericBoxMoV0.RadianValue = 0.54349552907103427D;
             numericBoxMoV0.SkipEventDuringInput = false;
             numericBoxMoV0.SmartIncrement = true;
-            numericBoxMoV0.ThonsandsSeparator = true;
+            numericBoxMoV0.ThousandsSeparator = true;
             numericBoxMoV0.Value = 31.14D;
             numericBoxMoV0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1232,9 +1235,9 @@ namespace PDIndexer
             numericBoxPbStrassle.Name = "numericBoxPbStrassle";
             numericBoxPbStrassle.SkipEventDuringInput = false;
             numericBoxPbStrassle.SmartIncrement = true;
-            numericBoxPbStrassle.TextBoxBackColor = Color.FromArgb(64, 64, 64);
-            numericBoxPbStrassle.TextBoxForeColor = Color.FromArgb(192, 192, 255);
-            numericBoxPbStrassle.ThonsandsSeparator = true;
+            numericBoxPbStrassle.ValueBackColor = Color.FromArgb(64, 64, 64);
+            numericBoxPbStrassle.ValueForeColor = Color.FromArgb(192, 192, 255);
+            numericBoxPbStrassle.ThousandsSeparator = true;
             // 
             // numericBoxPbA
             // 
@@ -1246,7 +1249,7 @@ namespace PDIndexer
             numericBoxPbA.RadianValue = 0.086404095416306087D;
             numericBoxPbA.SkipEventDuringInput = false;
             numericBoxPbA.SmartIncrement = true;
-            numericBoxPbA.ThonsandsSeparator = true;
+            numericBoxPbA.ThousandsSeparator = true;
             numericBoxPbA.Value = 4.95059D;
             numericBoxPbA.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1265,7 +1268,7 @@ namespace PDIndexer
             numericBoxPbA0.RadianValue = 0.086404095416306087D;
             numericBoxPbA0.SkipEventDuringInput = false;
             numericBoxPbA0.SmartIncrement = true;
-            numericBoxPbA0.ThonsandsSeparator = true;
+            numericBoxPbA0.ThousandsSeparator = true;
             numericBoxPbA0.Value = 4.95059D;
             numericBoxPbA0.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1400,7 +1403,7 @@ namespace PDIndexer
             numericBoxTemperature.RadianValue = 5.2359877559829888D;
             numericBoxTemperature.SkipEventDuringInput = false;
             numericBoxTemperature.SmartIncrement = true;
-            numericBoxTemperature.ThonsandsSeparator = true;
+            numericBoxTemperature.ThousandsSeparator = true;
             numericBoxTemperature.Value = 300D;
             numericBoxTemperature.ValueChanged += numericalTextBox_ValueChanged;
             // 
@@ -1444,6 +1447,80 @@ namespace PDIndexer
             flowLayoutPanel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(他遅延値を上書き・5000ちょうど回避)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: 入力欄(測定値/参照値/温度)
+            toolTip.SetToolTip(numericBoxTemperature, resources.GetString("numericBoxTemperature.ToolTip"));
+            toolTip.SetToolTip(numericBoxTemperature0, resources.GetString("numericBoxTemperature0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxGoldA, resources.GetString("numericalTextBoxGoldA.ToolTip"));
+            toolTip.SetToolTip(numericBoxGoldA0, resources.GetString("numericBoxGoldA0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxPtA, resources.GetString("numericalTextBoxPtA.ToolTip"));
+            toolTip.SetToolTip(numericBoxPtA0, resources.GetString("numericBoxPtA0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB1A, resources.GetString("numericalTextBoxNaClB1A.ToolTip"));
+            toolTip.SetToolTip(numericBoxNaClB1A0, resources.GetString("numericBoxNaClB1A0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2A, resources.GetString("numericalTextBoxNaClB2A.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2A0, resources.GetString("numericalTextBoxNaClB2A0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxMgOA, resources.GetString("numericalTextBoxMgOA.ToolTip"));
+            toolTip.SetToolTip(numericBoxMgOA0, resources.GetString("numericBoxMgOA0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxColundumV, resources.GetString("numericalTextBoxColundumV.ToolTip"));
+            toolTip.SetToolTip(numericBoxColundumV0, resources.GetString("numericBoxColundumV0.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxArA, resources.GetString("numericalTextBoxArA.ToolTip"));
+            toolTip.SetToolTip(numericBoxArA0, resources.GetString("numericBoxArA0.ToolTip"));
+            toolTip.SetToolTip(numericBoxReV, resources.GetString("numericBoxReV.ToolTip"));
+            toolTip.SetToolTip(numerictBoxReV0, resources.GetString("numerictBoxReV0.ToolTip"));
+            toolTip.SetToolTip(numericBoxMoV, resources.GetString("numericBoxMoV.ToolTip"));
+            toolTip.SetToolTip(numericBoxMoV0, resources.GetString("numericBoxMoV0.ToolTip"));
+            toolTip.SetToolTip(numericBoxPbA, resources.GetString("numericBoxPbA.ToolTip"));
+            toolTip.SetToolTip(numericBoxPbA0, resources.GetString("numericBoxPbA0.ToolTip"));
+            // 260531Cl 追加: 標準物質パネルの表示切替チェックボックス
+            toolTip.SetToolTip(checkBoxGold, resources.GetString("checkBoxGold.ToolTip"));
+            toolTip.SetToolTip(checkBoxPlatinum, resources.GetString("checkBoxPlatinum.ToolTip"));
+            toolTip.SetToolTip(checkBoxNaClB1, resources.GetString("checkBoxNaClB1.ToolTip"));
+            toolTip.SetToolTip(checkBoxNaClB2, resources.GetString("checkBoxNaClB2.ToolTip"));
+            toolTip.SetToolTip(checkBoxPericlase, resources.GetString("checkBoxPericlase.ToolTip"));
+            toolTip.SetToolTip(checkBoxCorundum, resources.GetString("checkBoxCorundum.ToolTip"));
+            toolTip.SetToolTip(checkBoxAr, resources.GetString("checkBoxAr.ToolTip"));
+            toolTip.SetToolTip(checkBoxRe, resources.GetString("checkBoxRe.ToolTip"));
+            toolTip.SetToolTip(checkBoxMo, resources.GetString("checkBoxMo.ToolTip"));
+            toolTip.SetToolTip(checkBoxPb, resources.GetString("checkBoxPb.ToolTip"));
+            // 260531Cl 追加: 算出圧力(表示専用)。各論文/手法の結果
+            toolTip.SetToolTip(numericalTextBoxGoldJamieson, resources.GetString("numericalTextBoxGoldJamieson.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxGoldAnderson, resources.GetString("numericalTextBoxGoldAnderson.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxGoldSim, resources.GetString("numericalTextBoxGoldSim.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxGoldTsuchiya, resources.GetString("numericalTextBoxGoldTsuchiya.ToolTip"));
+            toolTip.SetToolTip(numericBoxAuYokoo, resources.GetString("numericBoxAuYokoo.ToolTip"));
+            toolTip.SetToolTip(numericBoxAuFratanduono, resources.GetString("numericBoxAuFratanduono.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxPtJamieson, resources.GetString("numericalTextBoxPtJamieson.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxPtHolmes, resources.GetString("numericalTextBoxPtHolmes.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxPtMatsui, resources.GetString("numericalTextBoxPtMatsui.ToolTip"));
+            toolTip.SetToolTip(numericBoxPtYokoo, resources.GetString("numericBoxPtYokoo.ToolTip"));
+            toolTip.SetToolTip(numericBoxPtFratanduono, resources.GetString("numericBoxPtFratanduono.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB1Brown, resources.GetString("numericalTextBoxNaClB1Brown.ToolTip"));
+            toolTip.SetToolTip(numericBoxNaClB1Matsui, resources.GetString("numericBoxNaClB1Matsui.ToolTip"));
+            toolTip.SetToolTip(numericBoxNaClB1Skelton, resources.GetString("numericBoxNaClB1Skelton.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2SataPt, resources.GetString("numericalTextBoxNaClB2SataPt.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2SataMgO, resources.GetString("numericalTextBoxNaClB2SataMgO.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2Ueda, resources.GetString("numericalTextBoxNaClB2Ueda.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2SakaiBM, resources.GetString("numericalTextBoxNaClB2SakaiBM.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxNaClB2SakaiVinet, resources.GetString("numericalTextBoxNaClB2SakaiVinet.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxMgOJacson, resources.GetString("numericalTextBoxMgOJacson.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxMgODewaele, resources.GetString("numericalTextBoxMgODewaele.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxMgOAizawa, resources.GetString("numericalTextBoxMgOAizawa.ToolTip"));
+            toolTip.SetToolTip(numericBoxMgOTangeVinet, resources.GetString("numericBoxMgOTangeVinet.ToolTip"));
+            toolTip.SetToolTip(numericBoxMgOTangeBM, resources.GetString("numericBoxMgOTangeBM.ToolTip"));
+            toolTip.SetToolTip(numericBoxCorundumDubrovinsky, resources.GetString("numericBoxCorundumDubrovinsky.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxArRoss, resources.GetString("numericalTextBoxArRoss.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxArJephcoat, resources.GetString("numericalTextBoxArJephcoat.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxReZha, resources.GetString("numericalTextBoxReZha.ToolTip"));
+            toolTip.SetToolTip(numericBoxReAnz, resources.GetString("numericBoxReAnz.ToolTip"));
+            toolTip.SetToolTip(numericBoxReSakai, resources.GetString("numericBoxReSakai.ToolTip"));
+            toolTip.SetToolTip(numericBoxReDub, resources.GetString("numericBoxReDub.ToolTip"));
+            toolTip.SetToolTip(numericBoxMoHuang, resources.GetString("numericBoxMoHuang.ToolTip"));
+            toolTip.SetToolTip(numericBoxMoZhao, resources.GetString("numericBoxMoZhao.ToolTip"));
+            toolTip.SetToolTip(numericBoxPbStrassle, resources.GetString("numericBoxPbStrassle.ToolTip"));
             ResumeLayout(false);
 
         }

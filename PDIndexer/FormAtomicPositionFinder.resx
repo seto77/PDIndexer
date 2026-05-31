@@ -1,4 +1,4 @@
-<root>
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -85,4 +85,149 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>176</value>
   </metadata>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Crystal system (triclinic to cubic). Selecting
+one constrains the editable cell parameters
+and lists the matching space groups.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Unit-cell edge length a (Å). For high-symmetry
+systems b and c are auto-linked to a.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Unit-cell edge length b (Å). Becomes
+read-only and equal to a for tetragonal,
+trigonal, hexagonal and cubic systems.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Unit-cell edge length c (Å). Becomes
+read-only and equal to a for the cubic system.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Unit-cell angle alpha (degrees). Auto-fixed
+(e.g. to 90) according to the crystal system.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Unit-cell angle beta (degrees). Auto-fixed to
+90 for orthorhombic and higher-symmetry systems.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Unit-cell angle gamma (degrees). Auto-fixed to 120 for
+trigonal/hexagonal, 90 for other high-symmetry systems.</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>Candidate space groups (number.sub:
+Hermann-Mauguin symbol). Select one or more; each
+selected group is searched. Multi-select supported.</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>Chemical formula (empirical/reduced, e.g.
+'Ti O2'). Parsed to fill per-element atom
+counts and the formula-unit count Z.</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>Number of formula units per unit cell, Z
+(minimum 1). Multiplies the formula to
+give the total atom count per unit cell.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>Read-only: total atomic composition in the
+unit cell (formula times Z). Updates
+automatically when the formula or Z changes.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>X-ray wave source and wavelength used
+to convert d-spacings to angles and
+to compute diffraction intensities.</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>d-spacing (Å) of a peak to add to
+the table via the Add Peak button.</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Relative diffraction intensity (rel %) of
+the peak to add. Intensities are normalized
+to the strongest peak for the R-factor.</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Add the entered d-spacing and intensity as
+a new row in the diffraction peak table.</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>Recompute the hkl (Miller) indices for all
+peaks from the current cell and space group.</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>(Debug) Import peaks from clipboard
+tab-separated text (column 0 = d, column
+4 = intensity), replacing the peak table.</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Observed diffraction peaks. Use the Check column to
+include a peak in the search and the Delete button to
+remove a row; the Index column shows the assigned hkl.</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Merge reflections whose diffraction angles
+differ by less than the angle threshold below.</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Angle threshold in degrees (0-2). Reflections closer
+than this in 2theta are combined into one peak.</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Merge reflections by an energy threshold
+instead of an angle threshold (note: the energy
+branch may be inactive in the current code).</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Energy threshold in electron-volts
+(0-10) for combining peaks (effective
+only in energy-threshold mode).</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>Probability (%) of generating a brand-new random
+atomic arrangement each Monte-Carlo step. The three
+probabilities are auto-normalized to total 100%.</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>Probability (%) of the genetic-algorithm crossover
+that hybridizes two existing candidates.
+Auto-normalized with the other two to 100%.</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>Probability (%) of 'shaking', i.e. slightly
+perturbing the atomic positions of an existing
+candidate. Auto-normalized to total 100%.</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>Allowance (%) on the sum of ionic radii used
+to reject atomic positions that overlap.
+Lower values reject more crowded arrangements.</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>Number of parallel worker threads for the
+search (1-16). Higher values use more CPU cores.</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Start a new structure search from scratch
+(clears previous candidates). While running it
+shows 'Stop!' and stops the search when clicked.</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>Resume the search using the current candidate list
+as the starting population, rather than clearing it.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>Found structure candidates sorted by R-factor.
+Residual = R; Info lists space group, Wyckoff sites
+and fractional coordinates. Click a row to send it
+to the Crystal form and copy it to the clipboard.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>Plot of the R-factor convergence during the search.</value>
+  </data>
+  <data name="numericTexBox.SharedToolTip" xml:space="preserve">
+    <value>Number of atoms of this element in the unit cell. Editing any box recomputes the chemical formula and the formula-unit count Z. The boxes are laid out as a periodic table.</value>
+  </data>
 </root>

@@ -125,4 +125,19 @@
 3:  Set order of shift function.
 4:  Press the below button ("Calibrate"), and wait seconds.</value>
   </data>
+  <data name="numericUpDownOrder.ToolTip" xml:space="preserve">
+    <value>Number of terms (1-3) in the shift function
+Delta(2theta) = a1 + a2*tan(theta) +
+a3*tan^2(theta). 1 = zero-offset only;
+higher orders fit angle-dependent shift.</value>
+  </data>
+  <data name="buttonCalibrate.ToolTip" xml:space="preserve">
+    <value>Iteratively fit the observed vs. calculated 2theta of
+the standard and update the 2theta offset
+coefficients. (Requires the Fitting window to be open.)</value>
+  </data>
+  <data name="buttonRevert.ToolTip" xml:space="preserve">
+    <value>Restore the 2theta offset coefficients to
+the values before the last calibration.</value>
+  </data>
 </root>

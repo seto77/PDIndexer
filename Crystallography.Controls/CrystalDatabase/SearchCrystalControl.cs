@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Crystallography.Controls;
 
-public partial class SearchCrystalControl : CaptureUserControlBase
+public partial class SearchCrystalControl : UserControlBase
 {
     #region フィールド、プロパティ、イベント
 
@@ -349,7 +349,7 @@ public partial class SearchCrystalControl : CaptureUserControlBase
 
         Thread.Sleep(100);
         ProgressChanged?.Invoke(sender, 1.0, $"Completion of search. {sw.ElapsedMilliseconds / 1000.0:f2} msec.");
-        Application.DoEvents();
+        // 260428Cl Application.DoEvents() を削除 (RunWorkerCompleted は UI スレッドで動作するため不要)
 
 
     }

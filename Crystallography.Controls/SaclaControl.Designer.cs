@@ -27,6 +27,10 @@
         // groupBox2 -> groupBoxOpticalProperty
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SaclaControl)); // 260531Cl
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
             this.label3 = new System.Windows.Forms.Label();
             this.groupBoxDetectorProperty = new System.Windows.Forms.GroupBox();
             this.numericBoxPixelWidth = new Crystallography.Controls.NumericBox();
@@ -45,9 +49,10 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label3.Location = new System.Drawing.Point(6, 77);
             this.label3.Name = "label3";
+            this.toolTip.SetToolTip(this.label3, resources.GetString("label3.ToolTip")); // 260531Cl
             this.label3.Size = new System.Drawing.Size(31, 15);
             this.label3.TabIndex = 1;
             this.label3.Text = "Foot";
@@ -67,7 +72,6 @@
             // numericBoxPixelWidth
             // 
             this.numericBoxPixelWidth.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelWidth.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelWidth.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelWidth.FooterText = "pixel";
             this.numericBoxPixelWidth.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -77,6 +81,7 @@
             this.numericBoxPixelWidth.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPixelWidth.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelWidth.Name = "numericBoxPixelWidth";
+            this.toolTip.SetToolTip(this.numericBoxPixelWidth, resources.GetString("numericBoxPixelWidth.ToolTip")); // 260531Cl
             this.numericBoxPixelWidth.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelWidth.RadianValue = 17.872171540421935D;
             this.numericBoxPixelWidth.RoundErrorAccuracy = -1;
@@ -84,15 +89,14 @@
             this.numericBoxPixelWidth.SkipEventDuringInput = false;
             this.numericBoxPixelWidth.SmartIncrement = true;
             this.numericBoxPixelWidth.TabIndex = 0;
-            this.numericBoxPixelWidth.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPixelWidth.ThonsandsSeparator = true;
+            // 260522Cl: numericBox の ValueFont(Yu Gothic UI) ハードコードを撤去
+            this.numericBoxPixelWidth.ThousandsSeparator = true;
             this.numericBoxPixelWidth.Value = 1024D;
             this.numericBoxPixelWidth.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxPixelHeight
             // 
             this.numericBoxPixelHeight.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelHeight.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelHeight.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelHeight.FooterText = "pixel";
             this.numericBoxPixelHeight.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -102,6 +106,7 @@
             this.numericBoxPixelHeight.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPixelHeight.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelHeight.Name = "numericBoxPixelHeight";
+            this.toolTip.SetToolTip(this.numericBoxPixelHeight, resources.GetString("numericBoxPixelHeight.ToolTip")); // 260531Cl
             this.numericBoxPixelHeight.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelHeight.RadianValue = 17.872171540421935D;
             this.numericBoxPixelHeight.RoundErrorAccuracy = -1;
@@ -109,15 +114,13 @@
             this.numericBoxPixelHeight.SkipEventDuringInput = false;
             this.numericBoxPixelHeight.SmartIncrement = true;
             this.numericBoxPixelHeight.TabIndex = 0;
-            this.numericBoxPixelHeight.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPixelHeight.ThonsandsSeparator = true;
+            this.numericBoxPixelHeight.ThousandsSeparator = true;
             this.numericBoxPixelHeight.Value = 1024D;
             this.numericBoxPixelHeight.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxPixelSize
             // 
             this.numericBoxPixelSize.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPixelSize.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPixelSize.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPixelSize.FooterText = "mm";
             this.numericBoxPixelSize.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -127,6 +130,7 @@
             this.numericBoxPixelSize.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxPixelSize.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPixelSize.Name = "numericBoxPixelSize";
+            this.toolTip.SetToolTip(this.numericBoxPixelSize, resources.GetString("numericBoxPixelSize.ToolTip")); // 260531Cl
             this.numericBoxPixelSize.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPixelSize.RadianValue = 0.0008726646259971648D;
             this.numericBoxPixelSize.RoundErrorAccuracy = -1;
@@ -134,8 +138,7 @@
             this.numericBoxPixelSize.SkipEventDuringInput = false;
             this.numericBoxPixelSize.SmartIncrement = true;
             this.numericBoxPixelSize.TabIndex = 0;
-            this.numericBoxPixelSize.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPixelSize.ThonsandsSeparator = true;
+            this.numericBoxPixelSize.ThousandsSeparator = true;
             this.numericBoxPixelSize.Value = 0.05D;
             this.numericBoxPixelSize.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
@@ -157,7 +160,6 @@
             // numericBoxFootY
             // 
             this.numericBoxFootY.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFootY.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootY.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFootY.FooterText = "pix";
             this.numericBoxFootY.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -167,6 +169,7 @@
             this.numericBoxFootY.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxFootY.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxFootY.Name = "numericBoxFootY";
+            this.toolTip.SetToolTip(this.numericBoxFootY, resources.GetString("numericBoxFootY.ToolTip")); // 260531Cl
             this.numericBoxFootY.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxFootY.RadianValue = 8.9360857702109673D;
             this.numericBoxFootY.RoundErrorAccuracy = 10;
@@ -174,15 +177,13 @@
             this.numericBoxFootY.SkipEventDuringInput = false;
             this.numericBoxFootY.SmartIncrement = true;
             this.numericBoxFootY.TabIndex = 0;
-            this.numericBoxFootY.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxFootY.ThonsandsSeparator = true;
+            this.numericBoxFootY.ThousandsSeparator = true;
             this.numericBoxFootY.Value = 512D;
             this.numericBoxFootY.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxFootX
             // 
             this.numericBoxFootX.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxFootX.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxFootX.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxFootX.FooterText = "pix";
             this.numericBoxFootX.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -192,6 +193,7 @@
             this.numericBoxFootX.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxFootX.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxFootX.Name = "numericBoxFootX";
+            this.toolTip.SetToolTip(this.numericBoxFootX, resources.GetString("numericBoxFootX.ToolTip")); // 260531Cl
             this.numericBoxFootX.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxFootX.RadianValue = 8.9360857702109673D;
             this.numericBoxFootX.RoundErrorAccuracy = 10;
@@ -199,15 +201,13 @@
             this.numericBoxFootX.SkipEventDuringInput = false;
             this.numericBoxFootX.SmartIncrement = true;
             this.numericBoxFootX.TabIndex = 0;
-            this.numericBoxFootX.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxFootX.ThonsandsSeparator = true;
+            this.numericBoxFootX.ThousandsSeparator = true;
             this.numericBoxFootX.Value = 512D;
             this.numericBoxFootX.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxPhi
             // 
             this.numericBoxPhi.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxPhi.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxPhi.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxPhi.FooterText = "°";
             this.numericBoxPhi.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -219,20 +219,19 @@
             this.numericBoxPhi.Minimum = -360D;
             this.numericBoxPhi.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxPhi.Name = "numericBoxPhi";
+            this.toolTip.SetToolTip(this.numericBoxPhi, resources.GetString("numericBoxPhi.ToolTip")); // 260531Cl
             this.numericBoxPhi.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxPhi.RoundErrorAccuracy = 10;
             this.numericBoxPhi.Size = new System.Drawing.Size(83, 25);
             this.numericBoxPhi.SkipEventDuringInput = false;
             this.numericBoxPhi.SmartIncrement = true;
             this.numericBoxPhi.TabIndex = 0;
-            this.numericBoxPhi.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxPhi.ThonsandsSeparator = true;
+            this.numericBoxPhi.ThousandsSeparator = true;
             this.numericBoxPhi.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxTau
             // 
             this.numericBoxTau.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxTau.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxTau.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxTau.FooterText = "°";
             this.numericBoxTau.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -244,6 +243,7 @@
             this.numericBoxTau.Minimum = -90D;
             this.numericBoxTau.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxTau.Name = "numericBoxTau";
+            this.toolTip.SetToolTip(this.numericBoxTau, resources.GetString("numericBoxTau.ToolTip")); // 260531Cl
             this.numericBoxTau.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxTau.RadianValue = 0.3490658503988659D;
             this.numericBoxTau.RoundErrorAccuracy = 10;
@@ -251,15 +251,13 @@
             this.numericBoxTau.SkipEventDuringInput = false;
             this.numericBoxTau.SmartIncrement = true;
             this.numericBoxTau.TabIndex = 0;
-            this.numericBoxTau.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxTau.ThonsandsSeparator = true;
+            this.numericBoxTau.ThousandsSeparator = true;
             this.numericBoxTau.Value = 20D;
             this.numericBoxTau.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
             // numericBoxDistance
             // 
             this.numericBoxDistance.BackColor = System.Drawing.SystemColors.Control;
-            this.numericBoxDistance.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.numericBoxDistance.FooterBackColor = System.Drawing.SystemColors.Control;
             this.numericBoxDistance.FooterText = "mm";
             this.numericBoxDistance.HeaderBackColor = System.Drawing.SystemColors.Control;
@@ -269,6 +267,7 @@
             this.numericBoxDistance.MaximumSize = new System.Drawing.Size(1000, 25);
             this.numericBoxDistance.MinimumSize = new System.Drawing.Size(1, 25);
             this.numericBoxDistance.Name = "numericBoxDistance";
+            this.toolTip.SetToolTip(this.numericBoxDistance, resources.GetString("numericBoxDistance.ToolTip")); // 260531Cl
             this.numericBoxDistance.Padding = new System.Windows.Forms.Padding(0, 0, 1, 0);
             this.numericBoxDistance.RadianValue = 5.2359877559829888D;
             this.numericBoxDistance.RoundErrorAccuracy = 10;
@@ -276,8 +275,7 @@
             this.numericBoxDistance.SkipEventDuringInput = false;
             this.numericBoxDistance.SmartIncrement = true;
             this.numericBoxDistance.TabIndex = 0;
-            this.numericBoxDistance.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.numericBoxDistance.ThonsandsSeparator = true;
+            this.numericBoxDistance.ThousandsSeparator = true;
             this.numericBoxDistance.Value = 300D;
             this.numericBoxDistance.ValueChanged += new Crystallography.Controls.NumericBox.MyEventHandler(this.numericBoxPixelWidth_ValueChanged);
             // 
@@ -289,7 +287,7 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.Controls.Add(this.groupBoxOpticalProperty);
             this.Controls.Add(this.groupBoxDetectorProperty);
-            this.Font = new System.Drawing.Font("Segoe UI Symbol", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "SaclaControl";
             this.Size = new System.Drawing.Size(375, 103);
@@ -301,6 +299,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.ToolTip toolTip; // (260531Ch)
 
         private NumericBox numericBoxPixelWidth;
         private NumericBox numericBoxPixelHeight;

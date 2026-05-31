@@ -1,4 +1,4 @@
-<root>
+﻿<root>
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
     <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
@@ -991,9 +991,8 @@
     <value>647, 17</value>
   </metadata>
   <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
-    <value>Copy optimized cell constants to clipboard. 
-You can paste it to Excel directly.
-</value>
+    <value>Copy the optimized cell constants to the
+clipboard. You can paste them directly into Excel.</value>
   </data>
   <data name="&gt;&gt;buttonCopyCellConstantsToClipboard.Name" xml:space="preserve">
     <value>buttonCopyCellConstantsToClipboard</value>
@@ -1035,7 +1034,7 @@ You can paste it to Excel directly.
     <value>Apply to the crystal</value>
   </data>
   <data name="buttonConfirm.ToolTip" xml:space="preserve">
-    <value>The optimized cell constants is applied 
+    <value>Apply the optimized cell constants
 as those of the selected crystal.</value>
   </data>
   <data name="&gt;&gt;buttonConfirm.Name" xml:space="preserve">
@@ -1312,8 +1311,8 @@ as those of the selected crystal.</value>
     <value>Copy to Clipboard</value>
   </data>
   <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
-    <value>Copy below table data to clipboard. 
-You can paste it to Excel directly.</value>
+    <value>Copy the table data below to the clipboard.
+You can paste it directly into Excel.</value>
   </data>
   <data name="&gt;&gt;buttonCopyTableToClipboard.Name" xml:space="preserve">
     <value>buttonCopyTableToClipboard</value>
@@ -1358,7 +1357,7 @@ You can paste it to Excel directly.</value>
   <data name="numericBoxSearchRange.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
   </data>
-  <data name="numericBoxSearchRange.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxSearchRange.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxSearchRange.Name" xml:space="preserve">
@@ -1641,7 +1640,8 @@ You can paste it to Excel directly.</value>
     <value>Apply to all</value>
   </data>
   <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
-    <value>Apply to all</value>
+    <value>Apply the peak shape function selected
+above to all peaks of this crystal.</value>
   </data>
   <data name="&gt;&gt;buttonApplyFunctionToAll.Name" xml:space="preserve">
     <value>buttonApplyFunctionToAll</value>
@@ -1709,7 +1709,7 @@ You can paste it to Excel directly.</value>
   <data name="numericBoxInitialFWHM.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
   </data>
-  <data name="numericBoxInitialFWHM.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxInitialFWHM.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>
   </data>
   <data name="&gt;&gt;numericBoxInitialFWHM.Name" xml:space="preserve">
@@ -1746,7 +1746,8 @@ You can paste it to Excel directly.</value>
     <value>Apply to all</value>
   </data>
   <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
-    <value>Apply to all</value>
+    <value>Apply the initial FWHM value above to
+all peaks as their starting peak width.</value>
   </data>
   <data name="&gt;&gt;buttonApplyFWHMToAll.Name" xml:space="preserve">
     <value>buttonApplyFWHMToAll</value>
@@ -1977,7 +1978,8 @@ You can paste it to Excel directly.</value>
     <value>Apply to all</value>
   </data>
   <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
-    <value>Apply to all</value>
+    <value>Apply the search range (fitting
+window half-width) above to all peaks.</value>
   </data>
   <data name="&gt;&gt;buttonApplyRangeToAll.Name" xml:space="preserve">
     <value>buttonApplyRangeToAll</value>
@@ -2240,8 +2242,10 @@ to CellFinder
     <value>Remove fitted peaks</value>
   </data>
   <data name="buttonRemovePeaks.ToolTip" xml:space="preserve">
-    <value>Remove fitted peaks of the selected crystal from the current profiles, and generate the new profile
-</value>
+    <value>Subtract the fitted peak profiles of the
+selected crystal from the current
+profile and create a new profile (named
+below). Simple-search peaks are excluded.</value>
   </data>
   <data name="&gt;&gt;buttonRemovePeaks.Name" xml:space="preserve">
     <value>buttonRemovePeaks</value>
@@ -2385,7 +2389,7 @@ to CellFinder
     <value>Save as CSV</value>
   </data>
   <data name="buttonSaveTableAsCSV.ToolTip" xml:space="preserve">
-    <value>Save below table data as CSV file format.</value>
+    <value>Save the table data below as a CSV file.</value>
   </data>
   <data name="&gt;&gt;buttonSaveTableAsCSV.Name" xml:space="preserve">
     <value>buttonSaveTableAsCSV</value>
@@ -2438,14 +2442,16 @@ to CellFinder
   <data name="numericBoxEffectiveDigit.TabIndex" type="System.Int32, mscorlib">
     <value>58</value>
   </data>
-  <data name="numericBoxEffectiveDigit.TextFont" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxEffectiveDigit.ValueFont" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
   <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
-    <value>Set effective digit</value>
+    <value>Number of significant digits shown in the peak
+table (1-16). Display only; does not affect fitting.</value>
   </data>
   <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
-    <value>Set effective digit</value>
+    <value>Number of significant digits shown in the peak
+table (1-16). Display only; does not affect fitting.</value>
   </data>
   <data name="&gt;&gt;numericBoxEffectiveDigit.Name" xml:space="preserve">
     <value>numericBoxEffectiveDigit</value>
@@ -2481,7 +2487,8 @@ to CellFinder
     <value>Clear peaks</value>
   </data>
   <data name="buttonClearPeaks.ToolTip" xml:space="preserve">
-    <value>Save below table data as CSV file format.</value>
+    <value>Clear all manually added peaks of the
+selected crystal (Flexible mode only).</value>
   </data>
   <data name="buttonClearPeaks.Visible" type="System.Boolean, mscorlib">
     <value>False</value>

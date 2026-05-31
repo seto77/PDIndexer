@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!--
     Microsoft ResX Schema 
@@ -293,4 +293,96 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>96</value>
   </metadata>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Crystal system to search. Sets the number of free
+lattice parameters (triclinic=6 ... cubic=1); fewer
+unknowns means a faster, more constrained search.</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>Lower bound of axis length a (Å) for the search.
+Candidates with a outside this range are rejected.</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>Upper bound of axis length a (Å) for the search.</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>Lower bound of axis length b (Å) for the search.</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>Upper bound of axis length b (Å) for the search.</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>Lower bound of axis length c (Å) for the search.</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>Upper bound of axis length c (Å) for the search.</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>Lower bound of interaxial angle
+alpha (degrees) for the search.</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>Upper bound of interaxial angle alpha (degrees, max 180).</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>Lower bound of interaxial angle
+beta (degrees) for the search.</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>Upper bound of interaxial angle beta (degrees, max 180).</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>Lower bound of interaxial angle
+gamma (degrees) for the search.</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>Upper bound of interaxial angle gamma (degrees, max 180).</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Radiation source and wavelength used to convert
+observed d-spacings (default Cu Kalpha1, 0.15418 nm).</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>Observed d-spacing (Å) of the peak to add to the list below.</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>Reliability of the peak being added
+(High/Medium/Low); weights the least-squares
+fit (High=1, Medium=0.5, Low=0.1).</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Add the entered d-spacing and reliability
+as a new row in the peak list.</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>Editable list of observed peaks: tick 'Use for Calc.
+', set reliability and d_obs; Delete removes a row.
+Indexed h k l, d_calc and diff appear after a search.</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>Start the auto-indexing search; click again
+(the label changes to 'Stop!') to cancel it.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Resume the search keeping the current candidates
+instead of clearing them (shares the Find handler).</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>Candidate cells (best 300) sorted by R; click
+a row to apply its hkl indexing to the peak
+list and highlight it on the map. SigmadQ and
+R are figures of merit (smaller is better).</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>Lattice parameter (a/b/c/alpha/beta/gamma)
+plotted on the distribution map's X-axis.</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>Lattice parameter (a/b/c/alpha/beta/gamma)
+plotted on the distribution map's Y-axis.</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>Scatter map of candidate cells in the chosen X-Y
+parameter space, colored by R (figure of merit).</value>
+  </data>
 </root>

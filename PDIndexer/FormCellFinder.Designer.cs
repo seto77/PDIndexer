@@ -6,6 +6,7 @@
         /// 必要なデザイナ変数です。
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
 
         /// <summary>
         /// 使用中のリソースをすべてクリーンアップします。
@@ -29,6 +30,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCellFinder));
+            components = new System.ComponentModel.Container(); // 260531Cl 追加: ToolTip 用 IContainer を生成(Dispose は既存の components.Dispose() が処理)
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl 追加
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -62,7 +65,7 @@
             dataColumn13 = new System.Data.DataColumn();
             menuStrip1 = new System.Windows.Forms.MenuStrip();
             fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            readToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            loadToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             buttonFind = new System.Windows.Forms.Button();
             label23 = new System.Windows.Forms.Label();
             label24 = new System.Windows.Forms.Label();
@@ -363,17 +366,17 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { readToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { loadToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
             fileToolStripMenuItem.Text = "File";
             // 
-            // readToolStripMenuItem
+            // loadToolStripMenuItem
             // 
-            readToolStripMenuItem.Name = "readToolStripMenuItem";
-            readToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
-            readToolStripMenuItem.Text = "Read";
-            readToolStripMenuItem.Click += readToolStripMenuItem_Click;
+            loadToolStripMenuItem.Name = "loadToolStripMenuItem";
+            loadToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            loadToolStripMenuItem.Text = "Load"; // 260520Cl: Read→Load (用語統一)
+            loadToolStripMenuItem.Click += loadToolStripMenuItem_Click;
             // 
             // buttonFind
             // 
@@ -885,7 +888,7 @@
             numericalTextBox1.RoundErrorAccuracy = -1;
             numericalTextBox1.Size = new System.Drawing.Size(43, 22);
             numericalTextBox1.TabIndex = 0;
-            numericalTextBox1.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericalTextBox1.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // label8
             // 
@@ -1237,7 +1240,7 @@
             waveLengthControl1.ShowWaveSource = true;
             waveLengthControl1.Size = new System.Drawing.Size(291, 100);
             waveLengthControl1.TabIndex = 134;
-            waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl1.LabelFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             waveLengthControl1.WaveLength = 0.15418D;
             waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
@@ -1376,6 +1379,38 @@
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             groupBox3.ResumeLayout(false);
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(他遅延値を上書き・5000ちょうど回避)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: 晶系/探索範囲
+            toolTip.SetToolTip(comboBoxCrystalSystem, resources.GetString("comboBoxCrystalSystem.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMinA, resources.GetString("numericUpDownMinA.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMaxA, resources.GetString("numericUpDownMaxA.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMinB, resources.GetString("numericUpDownMinB.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMaxB, resources.GetString("numericUpDownMaxB.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMinC, resources.GetString("numericUpDownMinC.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMaxC, resources.GetString("numericUpDownMaxC.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMinAlpha, resources.GetString("numericUpDownMinAlpha.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMaxAlpha, resources.GetString("numericUpDownMaxAlpha.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMinBeta, resources.GetString("numericUpDownMinBeta.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMaxBeta, resources.GetString("numericUpDownMaxBeta.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMinGamma, resources.GetString("numericUpDownMinGamma.ToolTip"));
+            toolTip.SetToolTip(numericUpDownMaxGamma, resources.GetString("numericUpDownMaxGamma.ToolTip"));
+            // 260531Cl 追加: 波源/ピーク入力
+            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
+            toolTip.SetToolTip(numericalTextBox1, resources.GetString("numericalTextBox1.ToolTip"));
+            toolTip.SetToolTip(comboBoxReliability, resources.GetString("comboBoxReliability.ToolTip"));
+            toolTip.SetToolTip(buttonAddPeak, resources.GetString("buttonAddPeak.ToolTip"));
+            toolTip.SetToolTip(dataGridView1, resources.GetString("dataGridView1.ToolTip"));
+            // 260531Cl 追加: 実行/結果/分布図
+            toolTip.SetToolTip(buttonFind, resources.GetString("buttonFind.ToolTip"));
+            toolTip.SetToolTip(button1, resources.GetString("button1.ToolTip"));
+            toolTip.SetToolTip(dataGridViewResult, resources.GetString("dataGridViewResult.ToolTip"));
+            toolTip.SetToolTip(comboBoxX, resources.GetString("comboBoxX.ToolTip"));
+            toolTip.SetToolTip(comboBoxY, resources.GetString("comboBoxY.ToolTip"));
+            toolTip.SetToolTip(distributionGraphControl1, resources.GetString("distributionGraphControl1.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1449,7 +1484,7 @@
         private System.Windows.Forms.Label label9;
         private System.ComponentModel.BackgroundWorker backgroundWorker;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem readToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem loadToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelTryNumber;
         private System.Windows.Forms.Button button1;

@@ -192,4 +192,254 @@
         H////h////4f/w==
 </value>
   </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>測定時の試料温度 T（K）です。全標準物質で共通に使われ、
+温度を上げると熱圧力が加わり算出圧力 P は下がります。</value>
+  </data>
+  <data name="numericBoxTemperature0.ToolTip" xml:space="preserve">
+    <value>参照値（a0/V0）の基準温度 T0（K）です。
+Pt（Matsui）と Pb で参照格子を温度 T に補正する際に
+使われます。通常 300 K。測定温度 T とは別です。</value>
+  </data>
+  <data name="numericalTextBoxGoldA.ToolTip" xml:space="preserve">
+    <value>金（Au）標準の測定格子定数 a（Å）です。V = a³ と
+して各 Au 状態方程式に渡り圧力 P を算出します。</value>
+  </data>
+  <data name="numericalTextBoxPtA.ToolTip" xml:space="preserve">
+    <value>白金（Pt）標準の測定格子定数 a（Å）です。
+V = a³ として Pt 状態方程式に使われます。</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.ToolTip" xml:space="preserve">
+    <value>NaCl の B1（岩塩型）相の測定格子定数 a（Å）です。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.ToolTip" xml:space="preserve">
+    <value>NaCl の高圧 B2（CsCl型）相の測定格子定数
+a（Å）です（B1 相とは別相）。</value>
+  </data>
+  <data name="numericalTextBoxMgOA.ToolTip" xml:space="preserve">
+    <value>MgO（ペリクレース）標準の測定格子定数 a（Å）です（既定
+4.2112）。V = a³ として MgO 状態方程式に使われます。</value>
+  </data>
+  <data name="numericalTextBoxColundumV.ToolTip" xml:space="preserve">
+    <value>Al2O3（コランダム）の測定格子体積 V（Å³）です。こ
+の標準は格子定数 a ではなく体積を直接入力します。</value>
+  </data>
+  <data name="numericalTextBoxArA.ToolTip" xml:space="preserve">
+    <value>固体アルゴン（Ar）の測定格子定数 a（Å）です。Ar
+の各式は a0 を使わず a から直接 P を計算します。</value>
+  </data>
+  <data name="numericBoxReV.ToolTip" xml:space="preserve">
+    <value>レニウム（Re）の測定格子体積 V（Å³）です。</value>
+  </data>
+  <data name="numericBoxMoV.ToolTip" xml:space="preserve">
+    <value>モリブデン（Mo）の測定格子体積 V（Å³）です（既定 31.14）。</value>
+  </data>
+  <data name="numericBoxPbA.ToolTip" xml:space="preserve">
+    <value>鉛（Pb）標準の測定格子定数 a（Å）です。Strässle
+式は a/a0(T) を Vinet 形式で使い圧力を算出します。</value>
+  </data>
+  <data name="numericBoxGoldA0.ToolTip" xml:space="preserve">
+    <value>金（Au）の常圧基準格子定数 a0（Å）です（既定
+4.07825）。圧力は V/V0 比から計算されます。</value>
+  </data>
+  <data name="numericBoxPtA0.ToolTip" xml:space="preserve">
+    <value>白金（Pt）の常圧基準格子定数 a0（Å）です（既定 3.9231）。</value>
+  </data>
+  <data name="numericBoxNaClB1A0.ToolTip" xml:space="preserve">
+    <value>NaCl B1 相の常圧基準格子定数 a0（Å）です（既定 5.639）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.ToolTip" xml:space="preserve">
+    <value>NaCl B2 の基準格子定数 a0（Å）です（読み取り専用の
+参照値。B2 各式は a から直接 P を計算します）。</value>
+  </data>
+  <data name="numericBoxMgOA0.ToolTip" xml:space="preserve">
+    <value>MgO の常圧基準格子定数 a0（Å）です（既定 4.2112）。</value>
+  </data>
+  <data name="numericBoxColundumV0.ToolTip" xml:space="preserve">
+    <value>Al2O3 の常圧基準格子体積 V0（Å³）です（既定 255.89472）。</value>
+  </data>
+  <data name="numericBoxArA0.ToolTip" xml:space="preserve">
+    <value>Ar の基準格子定数 a0（Å）です（参照表示用。
+Ross/Jephcoat の計算には使われません）。</value>
+  </data>
+  <data name="numerictBoxReV0.ToolTip" xml:space="preserve">
+    <value>レニウム（Re）の常圧基準格子体積 V0（Å³）です（既定
+29.42795）。Zha 式で使用され、他は内蔵 V0 を使います。</value>
+  </data>
+  <data name="numericBoxMoV0.ToolTip" xml:space="preserve">
+    <value>モリブデン（Mo）の常圧基準格子体積 V0（Å³）です
+（既定 31.14）。Huang（MGD）・Zhao 式で使われます。</value>
+  </data>
+  <data name="numericBoxPbA0.ToolTip" xml:space="preserve">
+    <value>鉛（Pb）の常圧基準格子定数 a0（Å）で
+す（既定 4.95059）。内部の a0(T)
+表を T0 で試料に合わせて補正します。</value>
+  </data>
+  <data name="checkBoxGold.ToolTip" xml:space="preserve">
+    <value>金（Au）圧力標準のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxPlatinum.ToolTip" xml:space="preserve">
+    <value>白金（Pt）圧力標準のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxNaClB1.ToolTip" xml:space="preserve">
+    <value>NaCl B1（岩塩型相）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxNaClB2.ToolTip" xml:space="preserve">
+    <value>NaCl B2（CsCl型高圧相）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxPericlase.ToolTip" xml:space="preserve">
+    <value>MgO（ペリクレース）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxCorundum.ToolTip" xml:space="preserve">
+    <value>Al2O3（コランダム）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxAr.ToolTip" xml:space="preserve">
+    <value>固体アルゴン（Ar）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxRe.ToolTip" xml:space="preserve">
+    <value>レニウム（Re）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxMo.ToolTip" xml:space="preserve">
+    <value>モリブデン（Mo）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="checkBoxPb.ToolTip" xml:space="preserve">
+    <value>鉛（Pb）のパネル表示／非表示を切り替えます。</value>
+  </data>
+  <data name="numericalTextBoxGoldJamieson.ToolTip" xml:space="preserve">
+    <value>金の圧力 P（GPa）を Jamieson(1982) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxGoldAnderson.ToolTip" xml:space="preserve">
+    <value>金の圧力 P（GPa）を Anderson(1989) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
+    <value>金の圧力 P（GPa）を Sim(2002)（BM3＋
+Mie-Grüneisen）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">
+    <value>金の圧力 P（GPa）を Tsuchiya(2003) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxAuYokoo.ToolTip" xml:space="preserve">
+    <value>金の圧力 P（GPa）を Yokoo(2009) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxAuFratanduono.ToolTip" xml:space="preserve">
+    <value>金の圧力 P（GPa）を Fratanduono(2021)
+（Vinet）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxPtJamieson.ToolTip" xml:space="preserve">
+    <value>白金の圧力 P（GPa）を Jamieson(1982) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxPtHolmes.ToolTip" xml:space="preserve">
+    <value>白金の圧力 P（GPa）を Holmes(1989) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxPtMatsui.ToolTip" xml:space="preserve">
+    <value>白金の圧力 P（GPa）を Matsui(2009) で計算して
+表示します（基準温度 T0 を使用、表示専用）。</value>
+  </data>
+  <data name="numericBoxPtYokoo.ToolTip" xml:space="preserve">
+    <value>白金の圧力 P（GPa）を Yokoo(2009) の
+状態方程式で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxPtFratanduono.ToolTip" xml:space="preserve">
+    <value>白金の圧力 P（GPa）を Fratanduono(2021)
+（Vinet）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB1Brown.ToolTip" xml:space="preserve">
+    <value>NaCl B1 相の圧力 P（GPa）を Brown(1999)
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.ToolTip" xml:space="preserve">
+    <value>NaCl B1 相の圧力 P（GPa）を Matsui(2012)
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxNaClB1Skelton.ToolTip" xml:space="preserve">
+    <value>NaCl B1 相の圧力 P（GPa）を Skelton(1984)
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataPt.ToolTip" xml:space="preserve">
+    <value>NaCl B2 相の圧力 P（GPa）を Sata(2002)（Pt
+基準で較正）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataMgO.ToolTip" xml:space="preserve">
+    <value>NaCl B2 相の圧力 P（GPa）を Sata(2002)（MgO
+基準で較正）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2Ueda.ToolTip" xml:space="preserve">
+    <value>NaCl B2 相の圧力 P（GPa）を Ueda(2008)
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiBM.ToolTip" xml:space="preserve">
+    <value>NaCl B2 相の圧力 P（GPa）を Sakai(2011)
+（Birch-Murnaghan）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiVinet.ToolTip" xml:space="preserve">
+    <value>NaCl B2 相の圧力 P（GPa）を Sakai(2011)
+（Vinet）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxMgOJacson.ToolTip" xml:space="preserve">
+    <value>MgO の圧力 P（GPa）を Jackson(1998)（BM3＋
+Mie-Grüneisen）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxMgODewaele.ToolTip" xml:space="preserve">
+    <value>MgO の圧力 P（GPa）を Dewaele(2000)（BM3＋
+Mie-Grüneisen）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxMgOAizawa.ToolTip" xml:space="preserve">
+    <value>MgO の圧力 P（GPa）を Aizawa(2006)（BM3＋
+Mie-Grüneisen）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxMgOTangeVinet.ToolTip" xml:space="preserve">
+    <value>MgO の圧力 P（GPa）を Tange(2009)（Vinet）
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxMgOTangeBM.ToolTip" xml:space="preserve">
+    <value>MgO の圧力 P（GPa）を Tange(2009)（Birch-Murnaghan）
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxCorundumDubrovinsky.ToolTip" xml:space="preserve">
+    <value>Al2O3 の圧力 P（GPa）を Dubrovinsky(1998)
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxArRoss.ToolTip" xml:space="preserve">
+    <value>固体 Ar の圧力 P（GPa）を Ross(1986)
+で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxArJephcoat.ToolTip" xml:space="preserve">
+    <value>固体 Ar の圧力 P（GPa）を Jephcoat(1998)（温
+度依存）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericalTextBoxReZha.ToolTip" xml:space="preserve">
+    <value>レニウムの圧力 P（GPa）を Zha(2004) で計算して
+表示します（基準体積 V0 を使用、表示専用）。</value>
+  </data>
+  <data name="numericBoxReAnz.ToolTip" xml:space="preserve">
+    <value>レニウムの圧力 P（GPa）を Anzellini（固定 K0/K0'
+の Vinet）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxReSakai.ToolTip" xml:space="preserve">
+    <value>レニウムの圧力 P（GPa）を Sakai（固定 K0/K0'
+の Vinet）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxReDub.ToolTip" xml:space="preserve">
+    <value>レニウムの圧力 P（GPa）を Dubrovinsky（4次
+Birch-Murnaghan）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxMoHuang.ToolTip" xml:space="preserve">
+    <value>モリブデンの圧力 P（GPa）を Huang(2016)（BM3＋
+Mie-Grüneisen-Debye）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxMoZhao.ToolTip" xml:space="preserve">
+    <value>モリブデンの圧力 P（GPa）を Zhao(2000)（BM4＋
+熱圧力補正）で計算して表示します（表示専用）。</value>
+  </data>
+  <data name="numericBoxPbStrassle.ToolTip" xml:space="preserve">
+    <value>鉛の圧力 P（GPa）を Strässle(2014)（B(T)・
+B'(T)・a0(T) を内蔵表から補間する Vinet
+形式）で計算して表示します（表示専用）。</value>
+  </data>
 </root>

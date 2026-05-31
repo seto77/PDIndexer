@@ -1,0 +1,126 @@
+# 260531Ch: MkDocs Material configuration for the PDIndexer GitHub Pages manual.
+site_name: PDIndexer Manual
+site_description: PDIndexer user manual
+site_url: https://seto77.github.io/PDIndexer/
+repo_url: https://github.com/seto77/PDIndexer
+repo_name: seto77/PDIndexer
+edit_uri: edit/master/docs/src/
+
+docs_dir: src
+site_dir: site
+use_directory_urls: true
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # 260531Ch: Keep the ReciPro Pages behavior: nested side navigation, section indexes, and footer prev/next links.
+    - navigation.indexes
+    - navigation.footer
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue grey
+      accent: teal
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+  - glightbox
+  # 260531Ch: Add redirect maps here when a published manual page is renamed or moved.
+  - redirects:
+      redirect_maps: {}
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - abbr
+  - pymdownx.snippets:
+      base_path:
+        - docs
+        - .
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.keys
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.mark
+
+extra_css:
+  - assets/stylesheets/extra.css
+
+extra_javascript:
+  - assets/javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - assets/javascripts/language_switch.js
+
+extra:
+  alternate:
+    - name: English
+      link: /PDIndexer/
+      lang: en
+    - name: 日本語
+      link: /PDIndexer/ja/
+      lang: ja
+
+nav:
+  - English:
+      - Home: index.md
+      - 0. Overview: en/0-overview.md
+      - 1. Main window: en/1-main-window.md
+      - 2. Pattern profiles: en/2-pattern-profiles.md
+      - 3. Crystal parameter: en/3-crystal-parameter.md
+      - 4. Profile parameter: en/4-profile-parameter.md
+      - 5. Equation of states: en/5-equation-of-states.md
+      - 6. Fitting diffraction peaks: en/6-fitting-diffraction-peaks.md
+      - 7. Sequential analysis: en/7-sequential-analysis.md
+      - 8. Macro: en/8-macro.md
+      - Appendix:
+          - Runtime and installation: en/appendix/runtime-and-installation.md
+          - File formats: en/appendix/file-formats.md
+          - Troubleshooting: en/appendix/troubleshooting.md
+  - 日本語:
+      - ホーム: ja/index.md
+      - 0. 概要: ja/0-overview.md
+      - 1. メインウィンドウ: ja/1-main-window.md
+      - 2. プロファイルデータ: ja/2-pattern-profiles.md
+      - 3. Crystal Parameter: ja/3-crystal-parameter.md
+      - 4. Profile Parameter: ja/4-profile-parameter.md
+      - 5. Equation of States: ja/5-equation-of-states.md
+      - 6. Fitting diffraction peaks: ja/6-fitting-diffraction-peaks.md
+      - 7. Sequential Analysis: ja/7-sequential-analysis.md
+      - 8. Macro: ja/8-macro.md
+      - 付録:
+          - 動作環境とインストール: ja/appendix/runtime-and-installation.md
+          - ファイル形式: ja/appendix/file-formats.md
+          - トラブルシューティング: ja/appendix/troubleshooting.md

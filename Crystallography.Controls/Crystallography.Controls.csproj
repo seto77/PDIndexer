@@ -4,8 +4,9 @@
     <OutputType>Library</OutputType>
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
-    <AssemblyVersion>2026.4.15.0756</AssemblyVersion>
-    <FileVersion>2026.4.15.0756</FileVersion>
+    <UseWPF>true</UseWPF><!-- (260427Ch) LabelLaTeX で WpfMath の WPF 描画を使うため有効化 -->
+    <AssemblyVersion>2026.5.27.2326</AssemblyVersion>
+    <FileVersion>2026.5.27.2326</FileVersion>
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
@@ -48,7 +49,9 @@
     <PackageReference Include="MathNet.Numerics" Version="6.0.0-beta2" />
     <PackageReference Include="OpenTK" Version="4.9.4" />
     <PackageReference Include="SimdLinq" Version="1.3.2" />
-    <PackageReference Include="SixLabors.ImageSharp" Version="3.1.12" />
+    <!-- 260513Cl: SixLabors.ImageSharp v4 からビルド時ライセンスキー必須になったため削除。FormCaptureGUI の PNG 保存は System.Drawing 標準に置換 -->
+    <!-- <PackageReference Include="SixLabors.ImageSharp" Version="4.0.0" /> -->
+    <PackageReference Include="WpfMath" Version="2.1.0" /><!-- (260427Ch) LabelTex の LaTeX 数式レンダリング用 -->
     <PackageReference Include="ZLinq" Version="1.5.6" />
   </ItemGroup>
 
@@ -71,5 +74,7 @@
   <ItemGroup>
     <Using Include="SimdLinq" />
   </ItemGroup>
+
+  <Import Project="build\CheckResxDuplicates.targets" />
 
 </Project>

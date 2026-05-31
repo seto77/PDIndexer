@@ -28,6 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPrintOption)); // 260531Cl 追加: ツールチップ localize 用
+            this.components = new System.ComponentModel.Container(); // 260531Cl 追加: ToolTip 用 IContainer を生成(Dispose は既存の components.Dispose() が処理)
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl 追加
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.checkBoxPrintProfileName = new System.Windows.Forms.CheckBox();
@@ -177,6 +180,21 @@
             this.TopMost = true;
             this.flowLayoutPanel1.ResumeLayout(false);
             this.flowLayoutPanel1.PerformLayout();
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(5000ちょうど回避)
+            this.toolTip.IsBalloon = true;
+            this.toolTip.AutoPopDelay = 10000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: ToolTip 配線(文案は resx/ja.resx)
+            this.toolTip.SetToolTip(this.checkBoxPrintProfile, resources.GetString("checkBoxPrintProfile.ToolTip"));
+            this.toolTip.SetToolTip(this.checkBoxPrintProfileName, resources.GetString("checkBoxPrintProfileName.ToolTip"));
+            this.toolTip.SetToolTip(this.checkBoxPrintDiffractionPeak, resources.GetString("checkBoxPrintDiffractionPeak.ToolTip"));
+            this.toolTip.SetToolTip(this.radioButtonUpperLeft, resources.GetString("radioButtonUpperLeft.ToolTip"));
+            this.toolTip.SetToolTip(this.radioButtonUpperRight, resources.GetString("radioButtonUpperRight.ToolTip"));
+            this.toolTip.SetToolTip(this.radioButtonLowerLeft, resources.GetString("radioButtonLowerLeft.ToolTip"));
+            this.toolTip.SetToolTip(this.radioButtonLowerRight, resources.GetString("radioButtonLowerRight.ToolTip"));
+            this.toolTip.SetToolTip(this.button1, resources.GetString("button1.ToolTip"));
+            this.toolTip.SetToolTip(this.button2, resources.GetString("button2.ToolTip"));
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,6 +204,7 @@
 
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         public System.Windows.Forms.RadioButton radioButtonUpperLeft;
         public System.Windows.Forms.RadioButton radioButtonUpperRight;

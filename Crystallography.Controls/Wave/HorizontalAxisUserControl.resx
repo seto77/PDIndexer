@@ -140,7 +140,6 @@
   <data name="&gt;&gt;numericBoxTofLength.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="flowLayoutPanelAxisValues.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
@@ -163,7 +162,7 @@
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="radioButtonWavenumberUnitNmInv.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
@@ -182,7 +181,7 @@
     <value>77</value>
   </data>
   <data name="radioButtonAngleUnitCentiDegree.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelMain.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -203,13 +202,14 @@
     <value>0</value>
   </data>
   <data name="numericBoxTofAngle.ToolTip" xml:space="preserve">
-    <value>Set TOF angle</value>
+    <value>Detector scattering angle 2θ (degrees) for
+neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="&gt;&gt;radioButtonAngleUnitMilliRadian.ZOrder" xml:space="preserve">
     <value>3</value>
   </data>
   <data name="radioButtonTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelWaveProperty.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -230,7 +230,7 @@
     <value>True</value>
   </data>
   <data name="flowLayoutPanelEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelAxisSelection.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
@@ -245,7 +245,7 @@
     <value>True</value>
   </data>
   <data name="flowLayoutPanelAxisSelection.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+    <value>Segoe UI, 9.75pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergyUnitEv.Parent" xml:space="preserve">
     <value>flowLayoutPanelEnergy</value>
@@ -254,7 +254,7 @@
     <value>radioButtonFlatWhite</value>
   </data>
   <data name="numericBoxTofAngle.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="flowLayoutPanelAxisType.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -293,10 +293,10 @@
     <value>ns</value>
   </data>
   <data name="radioButtonEnergyUnitMev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxWaveProperty.ToolTip" xml:space="preserve">
     <value />
@@ -305,7 +305,7 @@
     <value>m</value>
   </data>
   <data name="radioButtonElectron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelEnergy.Name" xml:space="preserve">
     <value>flowLayoutPanelEnergy</value>
@@ -314,7 +314,7 @@
     <value>groupBoxSource</value>
   </data>
   <data name="radioButtonXray.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxTwoTheta.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 25</value>
@@ -332,7 +332,8 @@
     <value>0, 0</value>
   </data>
   <data name="radioButtonNeutron.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use a neutron beam as the radiation
+source (enables the time-of-flight axis).</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelNeutronTOF.ZOrder" xml:space="preserve">
     <value>4</value>
@@ -362,7 +363,7 @@
     <value />
   </data>
   <data name="numericBoxTofLength.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonFlatWhite.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -389,7 +390,7 @@
     <value>113, 21</value>
   </data>
   <data name="groupBoxWaveProperty.Text" xml:space="preserve">
-    <value>Wave Properties</value>
+    <value>Wave properties</value>
   </data>
   <data name="&gt;&gt;radioButtonDspacingUnitNm.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -401,7 +402,7 @@
     <value>1, 20</value>
   </data>
   <data name="numericBoxTwoTheta.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergyUnitMev.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -431,7 +432,7 @@
     <value>3</value>
   </data>
   <data name="radioButtonNeutron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxOption.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -449,7 +450,7 @@
     <value>Neutron TOF</value>
   </data>
   <data name="radioButtonEnergyUnitMev.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the energy axis in mega-electron-volts (MeV).</value>
   </data>
   <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -458,7 +459,7 @@
     <value>flowLayoutPanel1</value>
   </data>
   <data name="radioButtonDspacingUnitAng.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Location" type="System.Drawing.Point, System.Drawing">
     <value>3, 126</value>
@@ -484,11 +485,9 @@
   <data name="radioButtonXray.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="radioButtonEnergy.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as photon/particle
+energy (for energy-dispersive white-beam mode).</value>
   </data>
   <data name="flowLayoutPanelDspacing.TabIndex" type="System.Int32, mscorlib">
     <value>88</value>
@@ -497,7 +496,7 @@
     <value>3, 3</value>
   </data>
   <data name="flowLayoutPanelDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSourceType.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -506,7 +505,7 @@
     <value>False</value>
   </data>
   <data name="groupBoxTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonXray.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -521,7 +520,7 @@
     <value>L</value>
   </data>
   <data name="numericBoxTwoTheta.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonCustomWhite.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -554,7 +553,7 @@
     <value>98, 21</value>
   </data>
   <data name="radioButtonWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;groupBoxWaveProperty.Name" xml:space="preserve">
     <value>groupBoxWaveProperty</value>
@@ -569,7 +568,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="radioButtonEnergyUnitEv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonDspacing.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -593,7 +592,7 @@
     <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelMain.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -620,7 +619,7 @@
     <value>0, 66</value>
   </data>
   <data name="radioButtonWavenumberAngInv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonDspacingUnitAng.Parent" xml:space="preserve">
     <value>flowLayoutPanelDspacing</value>
@@ -644,7 +643,7 @@
     <value>groupBoxColor</value>
   </data>
   <data name="radioButtonAngleUnitRadian.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelSourceType.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 63</value>
@@ -656,7 +655,7 @@
     <value>Å</value>
   </data>
   <data name="radioButtonDspacingUnitNm.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the d-spacing axis in nanometres (nm).</value>
   </data>
   <data name="numericBoxTwoTheta.MaximumSize" type="System.Drawing.Size, System.Drawing">
     <value>1000, 30</value>
@@ -668,7 +667,7 @@
     <value>1</value>
   </data>
   <data name="radioButtonAngleUnitCentiDegree.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in centi-degrees (1/100 of a degree).</value>
   </data>
   <data name="radioButtonEnergyUnitEv.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -677,7 +676,7 @@
     <value>Crystallography.Controls.CaptureExtender, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="waveLengthControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergyUnitKev.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -698,7 +697,7 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonFlatWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonAngleUnitCentiDegree.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -707,7 +706,9 @@
     <value>0</value>
   </data>
   <data name="waveLengthControl.ToolTip" xml:space="preserve">
-    <value />
+    <value>Set the radiation wavelength here: enter it
+directly, via the electron accelerating voltage, or
+via a characteristic X-ray line (element + line).</value>
   </data>
   <data name="flowLayoutPanelAxisSelection.Size" type="System.Drawing.Size, System.Drawing">
     <value>126, 438</value>
@@ -719,7 +720,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="flowLayoutPanelNeutronTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonTofUnitMicroSec.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -731,7 +732,8 @@
     <value>NoControl</value>
   </data>
   <data name="numericBoxTofLength.ToolTip1" xml:space="preserve">
-    <value>Set TOF flight path length</value>
+    <value>Flight-path length L (metres) from source to detector
+for neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="radioButtonMonochro.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -791,7 +793,7 @@
     <value>0, 42</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureUserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="numericBoxTwoTheta.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 1, 0</value>
@@ -803,7 +805,7 @@
     <value>Wavelength</value>
   </data>
   <data name="radioButtonDspacingUnitNm.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonTofUnitMicroSec.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -841,9 +843,6 @@
   <data name="&gt;&gt;flowLayoutPanelMain.Name" xml:space="preserve">
     <value>flowLayoutPanelMain</value>
   </data>
-  <data name="waveLengthControl.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="&gt;&gt;radioButtonDspacingUnitAng.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -857,13 +856,15 @@
     <value>NoControl</value>
   </data>
   <data name="radioButtonTwoTheta.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as the diffraction
+angle 2θ (scattering angle between incident and
+diffracted beam); used in monochromatic mode.</value>
   </data>
   <data name="numericBoxTofLength.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
   </data>
   <data name="radioButtonMonochro.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonXray.Text" xml:space="preserve">
     <value>X-ray</value>
@@ -971,13 +972,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="groupBoxColor.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="groupBoxOption.Text" xml:space="preserve">
-    <value>Unit Options</value>
+    <value>Unit options</value>
   </data>
   <data name="numericBoxTofAngle.FooterPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="groupBoxOption.ToolTip" xml:space="preserve">
     <value />
@@ -1028,7 +1029,7 @@
     <value>2</value>
   </data>
   <data name="radioButtonDspacing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonEnergy.TabIndex" type="System.Int32, mscorlib">
     <value>77</value>
@@ -1049,7 +1050,7 @@
     <value>flowLayoutPanelDspacing</value>
   </data>
   <data name="groupBoxColor.Text" xml:space="preserve">
-    <value>Color Mode</value>
+    <value>Color mode</value>
   </data>
   <data name="numericBoxTwoTheta.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
@@ -1100,13 +1101,13 @@
     <value>True</value>
   </data>
   <data name="radioButtonTOF.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonWavenumberAngInv.Text" xml:space="preserve">
     <value>Å⁻¹</value>
   </data>
   <data name="groupBoxHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt, style=Bold</value>
+    <value>Segoe UI, 10pt, style=Bold</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>2, 3, 2, 3</value>
@@ -1142,7 +1143,8 @@
     <value>53, 21</value>
   </data>
   <data name="radioButtonMonochro.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use a single (monochromatic) wavelength;
+enables the 2θ and d-spacing axes.</value>
   </data>
   <data name="&gt;&gt;numericBoxTofLength.ZOrder" xml:space="preserve">
     <value>3</value>
@@ -1151,7 +1153,8 @@
     <value />
   </data>
   <data name="numericBoxTofAngle.ToolTip1" xml:space="preserve">
-    <value>Set TOF angle</value>
+    <value>Detector scattering angle 2θ (degrees) for
+neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="radioButtonEnergyUnitMev.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1175,7 +1178,7 @@
     <value>87</value>
   </data>
   <data name="radioButtonEnergy.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>HorizontalAxisUserControl</value>
@@ -1223,13 +1226,14 @@
     <value>1</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 13.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonDspacingUnitAng.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip1" xml:space="preserve">
-    <value>Set 2θ value</value>
+    <value>Detector scattering (take-off) angle 2θ in degrees
+for energy-dispersive (white-beam) measurement.</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>0, 0</value>
@@ -1262,7 +1266,7 @@
     <value />
   </data>
   <data name="radioButtonWavenumberUnitNmInv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the wavenumber q axis in inverse nanometres (nm⁻¹).</value>
   </data>
   <data name="&gt;&gt;numericBoxTofLength.Parent" xml:space="preserve">
     <value>flowLayoutPanelNeutronTOF</value>
@@ -1271,7 +1275,8 @@
     <value>0</value>
   </data>
   <data name="radioButtonDspacing.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as d-spacing
+(interplanar lattice spacing of each reflection).</value>
   </data>
   <data name="radioButtonTwoTheta.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1280,7 +1285,7 @@
     <value>flowLayoutPanelTwoTheta</value>
   </data>
   <data name="groupBoxHorizontalAxis.Text" xml:space="preserve">
-    <value>Horizontal Axis</value>
+    <value>Horizontal axis</value>
   </data>
   <data name="radioButtonDspacingUnitAng.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1289,10 +1294,10 @@
     <value>True</value>
   </data>
   <data name="radioButtonWavenumberUnitNmInv.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the time-of-flight axis in nanoseconds (ns).</value>
   </data>
   <data name="groupBoxOption.MinimumSize" type="System.Drawing.Size, System.Drawing">
     <value>120, 0</value>
@@ -1367,13 +1372,13 @@
     <value>0, 42</value>
   </data>
   <data name="flowLayoutPanelWavenumber.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonTofUnitNanoSec.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in milliradians (1/1000 of a radian).</value>
   </data>
   <data name="radioButtonEnergy.Text" xml:space="preserve">
     <value>Energy</value>
@@ -1385,7 +1390,7 @@
     <value>flowLayoutPanelMain</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the time-of-flight axis in microseconds (μs).</value>
   </data>
   <data name="&gt;&gt;toolTip.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolTip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1403,7 +1408,7 @@
     <value>1</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergyUnitMev.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1412,7 +1417,7 @@
     <value>flowLayoutPanelAxisValues</value>
   </data>
   <data name="numericBoxTofLength.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 3, 0, 0</value>
+    <value>0, 0, 0, 0</value>
   </data>
   <data name="radioButtonTofUnitMicroSec.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
@@ -1457,19 +1462,17 @@
     <value>0, 0</value>
   </data>
   <data name="radioButtonElectron.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use an electron beam as the radiation source
+(wavelength set by the accelerating voltage).</value>
   </data>
   <data name="radioButtonDspacingUnitNm.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
   <data name="radioButtonEnergyUnitKev.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the energy axis in kilo-electron-volts (keV).</value>
   </data>
   <data name="groupBoxTwoTheta.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
-  </data>
-  <data name="numericBoxTofAngle.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
   <data name="flowLayoutPanelAxisValues.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>TopDown</value>
@@ -1508,10 +1511,10 @@
     <value />
   </data>
   <data name="radioButtonAngleUnitRadian.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in radians (rad).</value>
   </data>
   <data name="radioButtonAngleUnitMilliRadian.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergyUnitEv.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1529,7 +1532,7 @@
     <value>False</value>
   </data>
   <data name="groupBoxOption.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="numericBoxTofAngle.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1562,8 +1565,10 @@
     <value>True</value>
   </data>
   <data name="radioButtonFlatWhite.ToolTip" xml:space="preserve">
-    <value>For X-ray, the intensity per unit energy range of the incident beam is constant.
-For neutron, the number of incident neutrons per unit wavelength interval is constant.</value>
+    <value>Use a flat white spectrum: for X-rays the
+incident intensity per unit energy is constant;
+for neutrons the number of incident neutrons
+per unit wavelength interval is constant.</value>
   </data>
   <data name="&gt;&gt;radioButtonWavenumber.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1572,7 +1577,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>2, 2, 0, 2</value>
   </data>
   <data name="radioButtonEnergyUnitEv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the energy axis in electron-volts (eV).</value>
   </data>
   <data name="&gt;&gt;radioButtonTOF.Type" xml:space="preserve">
     <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1625,9 +1630,6 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
   <data name="radioButtonAngleUnitMilliRadian.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
-  <data name="numericBoxTofLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="radioButtonXray.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -1638,7 +1640,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>KeV</value>
   </data>
   <data name="groupBoxWaveProperty.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 10pt, style=Bold</value>
+    <value>Segoe UI, 10pt, style=Bold</value>
   </data>
   <data name="&gt;&gt;numericBoxTofAngle.Type" xml:space="preserve">
     <value>Crystallography.Controls.NumericBox, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
@@ -1650,7 +1652,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>1000, 30</value>
   </data>
   <data name="numericBoxTwoTheta.ToolTip" xml:space="preserve">
-    <value>Set 2θ value</value>
+    <value>Detector scattering (take-off) angle 2θ in degrees
+for energy-dispersive (white-beam) measurement.</value>
   </data>
   <data name="radioButtonElectron.Size" type="System.Drawing.Size, System.Drawing">
     <value>73, 21</value>
@@ -1710,7 +1713,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>92</value>
   </data>
   <data name="flowLayoutPanelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 13.5pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;radioButtonNeutron.ZOrder" xml:space="preserve">
     <value>2</value>
@@ -1737,7 +1740,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonCustomWhite.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanelSourceType.Name" xml:space="preserve">
     <value>flowLayoutPanelSourceType</value>
@@ -1755,7 +1758,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>1</value>
   </data>
   <data name="groupBoxSource.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="radioButtonDspacing.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1767,7 +1770,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>flowLayoutPanelAxisType</value>
   </data>
   <data name="radioButtonCustomWhite.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use a user-defined continuous (white)
+spectrum of wavelengths/energies.</value>
   </data>
   <data name="radioButtonEnergyUnitKev.Location" type="System.Drawing.Point, System.Drawing">
     <value>41, 0</value>
@@ -1779,7 +1783,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="radioButtonAngleUnitDegree.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the 2θ axis in degrees (°).</value>
   </data>
   <data name="flowLayoutPanelAxisSelection.TabIndex" type="System.Int32, mscorlib">
     <value>94</value>
@@ -1800,7 +1804,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>groupBoxTwoTheta</value>
   </data>
   <data name="radioButtonDspacingUnitAng.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the d-spacing axis in ångströms (Å, 0.1 nm).</value>
   </data>
   <data name="radioButtonDspacing.Size" type="System.Drawing.Size, System.Drawing">
     <value>84, 21</value>
@@ -1815,7 +1819,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>44, 21</value>
   </data>
   <data name="numericBoxTofLength.ToolTip" xml:space="preserve">
-    <value>Set TOF flight path length</value>
+    <value>Flight-path length L (metres) from source to detector
+for neutron time-of-flight (TOF) measurement.</value>
   </data>
   <data name="radioButtonAngleUnitDegree.Text" xml:space="preserve">
     <value>Degree</value>
@@ -1884,7 +1889,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>groupBoxTwoTheta</value>
   </data>
   <data name="radioButtonXray.ToolTip" xml:space="preserve">
-    <value />
+    <value>Use an X-ray beam as the radiation source
+(characteristic line or custom wavelength).</value>
   </data>
   <data name="&gt;&gt;radioButtonElectron.Name" xml:space="preserve">
     <value>radioButtonElectron</value>
@@ -1908,7 +1914,7 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>54, 21</value>
   </data>
   <data name="radioButtonWavenumberAngInv.ToolTip" xml:space="preserve">
-    <value />
+    <value>Show the wavenumber q axis in inverse ångströms (Å⁻¹).</value>
   </data>
   <data name="&gt;&gt;radioButtonWavenumberUnitNmInv.ZOrder" xml:space="preserve">
     <value>1</value>
@@ -1989,7 +1995,8 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>91</value>
   </data>
   <data name="radioButtonWavenumber.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as the scattering wavenumber
+q = 4π·sinθ/λ (magnitude of the scattering vector).</value>
   </data>
   <data name="&gt;&gt;radioButtonEnergy.Name" xml:space="preserve">
     <value>radioButtonEnergy</value>
@@ -1998,7 +2005,9 @@ For neutron, the number of incident neutrons per unit wavelength interval is con
     <value>77</value>
   </data>
   <data name="radioButtonTOF.ToolTip" xml:space="preserve">
-    <value />
+    <value>Plot the horizontal axis as neutron time-of-flight
+(TOF), the time for a neutron to travel the flight
+path; available for neutron white-beam mode.</value>
   </data>
   <data name="&gt;&gt;radioButtonMonochro.ZOrder" xml:space="preserve">
     <value>0</value>

@@ -1076,7 +1076,7 @@ namespace PDIndexer
             numericBoxUpperX.RadianValue = 0.52359877559829882D;
             numericBoxUpperX.ShowUpDown = true;
             numericBoxUpperX.SmartIncrement = true;
-            numericBoxUpperX.ThonsandsSeparator = true;
+            numericBoxUpperX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxUpperX, resources.GetString("numericBoxUpperX.ToolTip1"));
             numericBoxUpperX.Value = 30D;
             numericBoxUpperX.WordWrap = false;
@@ -1096,7 +1096,7 @@ namespace PDIndexer
             numericBoxUpperY.RadianValue = 17.453292519943293D;
             numericBoxUpperY.ShowUpDown = true;
             numericBoxUpperY.SmartIncrement = true;
-            numericBoxUpperY.ThonsandsSeparator = true;
+            numericBoxUpperY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxUpperY, resources.GetString("numericBoxUpperY.ToolTip1"));
             numericBoxUpperY.Value = 1000D;
             numericBoxUpperY.WordWrap = false;
@@ -1115,7 +1115,7 @@ namespace PDIndexer
             numericBoxLowerX.Name = "numericBoxLowerX";
             numericBoxLowerX.ShowUpDown = true;
             numericBoxLowerX.SmartIncrement = true;
-            numericBoxLowerX.ThonsandsSeparator = true;
+            numericBoxLowerX.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLowerX, resources.GetString("numericBoxLowerX.ToolTip1"));
             numericBoxLowerX.WordWrap = false;
             numericBoxLowerX.LimitChanged += numericBoxUpperX_LimitChanged;
@@ -1133,7 +1133,7 @@ namespace PDIndexer
             numericBoxLowerY.Name = "numericBoxLowerY";
             numericBoxLowerY.ShowUpDown = true;
             numericBoxLowerY.SmartIncrement = true;
-            numericBoxLowerY.ThonsandsSeparator = true;
+            numericBoxLowerY.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxLowerY, resources.GetString("numericBoxLowerY.ToolTip1"));
             numericBoxLowerY.WordWrap = false;
             numericBoxLowerY.ValueChanged += numericBox_ValueChanged;
@@ -1501,6 +1501,7 @@ namespace PDIndexer
             menuStrip.GripMargin = new Padding(1);
             menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, optionToolStripMenuItem, macroToolStripMenuItem, helpToolStripMenuItem, languageToolStripMenuItem });
             menuStrip.Name = "menuStrip";
+            menuStrip.ShowItemToolTips = true; // 260531Cl 追加: メニュー項目のツールチップを表示(既定false)。各項目の.ToolTipTextはresx/ApplyResources経由で適用
             // 
             // fileToolStripMenuItem
             // 

@@ -1,4 +1,4 @@
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows.Forms;
 namespace PDIndexer
 {
@@ -370,6 +370,11 @@ namespace PDIndexer
             // 
             resources.ApplyResources(buttonCopyCellConstantsToClipboard, "buttonCopyCellConstantsToClipboard");
             buttonCopyCellConstantsToClipboard.Name = "buttonCopyCellConstantsToClipboard";
+            // 260531Cl 追加: バルーン表示・表示遅延を統一(長文ツールチップ対応)。AutomaticDelay は設定しない(他遅延値を上書きするため。5000ちょうどは Win11 既知バグにつき禁止)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
             toolTip.SetToolTip(buttonCopyCellConstantsToClipboard, resources.GetString("buttonCopyCellConstantsToClipboard.ToolTip"));
             buttonCopyCellConstantsToClipboard.Click += buttonCopyClipboard_Click;
             // 
@@ -847,7 +852,7 @@ namespace PDIndexer
             numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
             numericBoxEffectiveDigit.ShowUpDown = true;
             numericBoxEffectiveDigit.SkipEventDuringInput = false;
-            numericBoxEffectiveDigit.ThonsandsSeparator = true;
+            numericBoxEffectiveDigit.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEffectiveDigit, resources.GetString("numericBoxEffectiveDigit.ToolTip"));
             numericBoxEffectiveDigit.Value = 5D;
             numericBoxEffectiveDigit.ValueChanged += NumericBoxEffectiveDigit_ValueChanged;

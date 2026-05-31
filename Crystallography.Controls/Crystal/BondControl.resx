@@ -126,9 +126,8 @@
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="checkBoxShowPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="checkBoxShowPolyhedron.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
@@ -161,7 +160,7 @@
     <value>2</value>
   </data>
   <data name="comboBoxBondingAtom1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxBondingAtom1.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -185,7 +184,8 @@
     <value>381, 17</value>
   </metadata>
   <data name="comboBoxBondingAtom1.ToolTip" xml:space="preserve">
-    <value>Select an atom corresponding to the center</value>
+    <value>Select the element at the bond / polyhedron
+center (the coordinating central atom).</value>
   </data>
   <data name="&gt;&gt;comboBoxBondingAtom1.Name" xml:space="preserve">
     <value>comboBoxBondingAtom1</value>
@@ -200,7 +200,7 @@
     <value>0</value>
   </data>
   <data name="comboBoxBondingAtom2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="comboBoxBondingAtom2.ItemHeight" type="System.Int32, mscorlib">
     <value>15</value>
@@ -224,7 +224,8 @@
     <value>2</value>
   </data>
   <data name="comboBoxBondingAtom2.ToolTip" xml:space="preserve">
-    <value>Select an atom corresponding to the vertices</value>
+    <value>Select the element at the bond / polyhedron
+vertices (the coordinated ligand atoms).</value>
   </data>
   <data name="&gt;&gt;comboBoxBondingAtom2.Name" xml:space="preserve">
     <value>comboBoxBondingAtom2</value>
@@ -242,7 +243,7 @@
     <value>True</value>
   </data>
   <data name="label58.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label58.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -275,7 +276,7 @@
     <value>True</value>
   </data>
   <data name="label57.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label57.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -308,7 +309,7 @@
     <value>True</value>
   </data>
   <data name="label39.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label39.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>MiddleRight</value>
@@ -347,7 +348,7 @@
     <value>True</value>
   </data>
   <data name="label40.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="label40.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -379,14 +380,11 @@
   <data name="numericBoxPolyhedronAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxPolyhedronAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxPolyhedronAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxPolyhedronAlpha.HeaderText" xml:space="preserve">
     <value>Opacity</value>
@@ -412,8 +410,8 @@
   <data name="numericBoxPolyhedronAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxPolyhedronAlpha.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxPolyhedronAlpha.ValueFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxPolyhedronAlpha.Name" xml:space="preserve">
     <value>numericBoxPolyhedronAlpha</value>
@@ -431,7 +429,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowEdges.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowEdges.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -466,14 +464,11 @@
   <data name="numericBoxEdgeWidth.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxEdgeWidth.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxEdgeWidth.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxEdgeWidth.HeaderText" xml:space="preserve">
     <value>Width</value>
@@ -499,8 +494,8 @@
   <data name="numericBoxEdgeWidth.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
-  <data name="numericBoxEdgeWidth.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxEdgeWidth.ValueFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxEdgeWidth.Name" xml:space="preserve">
     <value>numericBoxEdgeWidth</value>
@@ -548,7 +543,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxShowInnerBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowInnerBonds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -587,7 +582,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxShowVertexAtoms.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowVertexAtoms.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -626,7 +621,7 @@
     <value>False</value>
   </data>
   <data name="checkBoxShowCenterAtom.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowCenterAtom.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -659,7 +654,7 @@
     <value>5</value>
   </data>
   <data name="groupBoxPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="groupBoxPolyhedron.Location" type="System.Drawing.Point, System.Drawing">
     <value>279, 0</value>
@@ -691,14 +686,11 @@
   <data name="numericBoxBondAlpha.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxBondAlpha.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxBondAlpha.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondAlpha.HeaderText" xml:space="preserve">
     <value>Opacity</value>
@@ -724,8 +716,8 @@
   <data name="numericBoxBondAlpha.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
   </data>
-  <data name="numericBoxBondAlpha.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxBondAlpha.ValueFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBondAlpha.Name" xml:space="preserve">
     <value>numericBoxBondAlpha</value>
@@ -742,17 +734,14 @@
   <data name="numericBoxBondRadius.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxBondRadius.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxBondRadius.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondRadius.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
   <data name="numericBoxBondRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondRadius.HeaderText" xml:space="preserve">
     <value>Radius</value>
@@ -778,14 +767,14 @@
   <data name="numericBoxBondRadius.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="numericBoxBondRadius.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxBondRadius.ValueFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip" xml:space="preserve">
-    <value>Radius of the bonds (cylinders)</value>
+    <value>Radius of the bond cylinders, in Å.</value>
   </data>
   <data name="numericBoxBondRadius.ToolTip1" xml:space="preserve">
-    <value>Radius of the bonds (cylinders)</value>
+    <value>Radius of the bond cylinders, in Å.</value>
   </data>
   <data name="&gt;&gt;numericBoxBondRadius.Name" xml:space="preserve">
     <value>numericBoxBondRadius</value>
@@ -802,17 +791,14 @@
   <data name="numericBoxBondMaxLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxBondMaxLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxBondMaxLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMaxLength.FooterText" xml:space="preserve">
     <value>Å</value>
   </data>
   <data name="numericBoxBondMaxLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMaxLength.HeaderText" xml:space="preserve">
     <value>-</value>
@@ -838,8 +824,8 @@
   <data name="numericBoxBondMaxLength.TabIndex" type="System.Int32, mscorlib">
     <value>4</value>
   </data>
-  <data name="numericBoxBondMaxLength.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxBondMaxLength.ValueFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMaxLength.Name" xml:space="preserve">
     <value>numericBoxBondMaxLength</value>
@@ -856,14 +842,11 @@
   <data name="numericBoxBondMinLength.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <data name="numericBoxBondMinLength.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
-  </data>
   <data name="numericBoxBondMinLength.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMinLength.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="numericBoxBondMinLength.HeaderText" xml:space="preserve">
     <value>Length between</value>
@@ -889,8 +872,8 @@
   <data name="numericBoxBondMinLength.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="numericBoxBondMinLength.TextFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+  <data name="numericBoxBondMinLength.ValueFontSize" type="System.Single, mscorlib">
+    <value>9</value>
   </data>
   <data name="&gt;&gt;numericBoxBondMinLength.Name" xml:space="preserve">
     <value>numericBoxBondMinLength</value>
@@ -932,7 +915,7 @@
     <value>True</value>
   </data>
   <data name="checkBoxShowBonds.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="checkBoxShowBonds.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
@@ -965,7 +948,7 @@
     <value>0</value>
   </data>
   <data name="buttonAddBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonAddBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -1001,7 +984,7 @@
     <value>0</value>
   </data>
   <data name="buttonChangeBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonChangeBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -1022,7 +1005,8 @@
     <value>Replace</value>
   </data>
   <data name="buttonChangeBond.ToolTip" xml:space="preserve">
-    <value>Replace the selected bond/polyhedron with the settings below.</value>
+    <value>Replace the selected bond/polyhedron
+with the settings below.</value>
   </data>
   <data name="&gt;&gt;buttonChangeBond.Name" xml:space="preserve">
     <value>buttonChangeBond</value>
@@ -1043,7 +1027,7 @@
     <value>True</value>
   </data>
   <data name="buttonDeleteBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="buttonDeleteBond.ImageAlign" type="System.Drawing.ContentAlignment, System.Drawing">
     <value>TopCenter</value>
@@ -1129,6 +1113,9 @@
   <data name="dataGridView.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
+  <data name="dataGridView.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
   <data name="dataGridView.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -1145,7 +1132,7 @@
     <value>dataGridView</value>
   </data>
   <data name="&gt;&gt;dataGridView.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>Crystallography.Controls.DpiAwareDataGridView, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;dataGridView.Parent" xml:space="preserve">
     <value>$this</value>
@@ -1160,10 +1147,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlEdges.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlEdges.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlEdges.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1172,7 +1159,7 @@
     <value />
   </data>
   <data name="colorControlEdges.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlEdges.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1193,7 +1180,8 @@
     <value>0</value>
   </data>
   <data name="colorControlEdges.ToolTip" xml:space="preserve">
-    <value>Edge color of polyhedron</value>
+    <value>Color of the polyhedron edges (the
+coordination-polyhedron wireframe).</value>
   </data>
   <data name="colorControlEdges.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1217,10 +1205,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlPolyhedron.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPolyhedron.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlPolyhedron.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1229,7 +1217,7 @@
     <value />
   </data>
   <data name="colorControlPolyhedron.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlPolyhedron.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1250,7 +1238,7 @@
     <value>3</value>
   </data>
   <data name="colorControlPolyhedron.ToolTip" xml:space="preserve">
-    <value>Face color of polyhedron</value>
+    <value>Color of the polyhedron faces (the coordination polyhedron).</value>
   </data>
   <data name="colorControlPolyhedron.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1274,10 +1262,10 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="colorControlBond.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBond.FooterFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9.75pt</value>
+    <value>Segoe UI, 9.75pt</value>
   </data>
   <data name="colorControlBond.FooterMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
@@ -1286,7 +1274,7 @@
     <value />
   </data>
   <data name="colorControlBond.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="colorControlBond.HeaderMargin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 2, 0, 0</value>
@@ -1307,7 +1295,7 @@
     <value>7</value>
   </data>
   <data name="colorControlBond.ToolTip" xml:space="preserve">
-    <value>Bond color</value>
+    <value>Color of the bond cylinders.</value>
   </data>
   <data name="colorControlBond.Visible" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -1378,120 +1366,6 @@
   <data name="&gt;&gt;panel2.ZOrder" xml:space="preserve">
     <value>2</value>
   </data>
-  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn1.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn2.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn1.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn2.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn3.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn4.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn4.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn5.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn5.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn6.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn6.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn7.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn7.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn8.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn8.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn9.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn9.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn10.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn10.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn11.HeaderText" xml:space="preserve">
-    <value>Bond color</value>
-  </data>
-  <data name="dataGridViewImageColumn11.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="dataGridViewImageColumn12.HeaderText" xml:space="preserve">
-    <value>Polyhedron color</value>
-  </data>
-  <data name="dataGridViewImageColumn12.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="enabledDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
-    <value>Enabled</value>
-  </data>
-  <data name="enabledDataGridViewCheckBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>60</value>
-  </data>
-  <data name="centerDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Center</value>
-  </data>
-  <data name="centerDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="vertexDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Vertex</value>
-  </data>
-  <data name="vertexDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="minLenDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Min len.</value>
-  </data>
-  <data name="minLenDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
-  <data name="maxLenDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
-    <value>Max len.</value>
-  </data>
-  <data name="maxLenDataGridViewTextBoxColumn.Width" type="System.Int32, mscorlib">
-    <value>80</value>
-  </data>
   <data name="Enabled.HeaderText" xml:space="preserve">
     <value>Enabled</value>
   </data>
@@ -1511,7 +1385,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Symbol, 9pt</value>
+    <value>Segoe UI, 9pt</value>
   </data>
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
@@ -1579,120 +1453,6 @@
   <data name="&gt;&gt;dataSet.Type" xml:space="preserve">
     <value>Crystallography.Controls.DataSet, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Name" xml:space="preserve">
-    <value>dataGridViewTextBoxColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewTextBoxColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn1.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn1</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn2.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn2</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn2.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn3.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn3</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn3.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn4.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn4</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn5.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn5</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn5.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn6.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn6</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn6.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn7.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn7</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn7.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn8.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn8</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn8.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn9.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn9</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn9.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn10.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn10</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn10.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn11.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn11</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn11.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn12.Name" xml:space="preserve">
-    <value>dataGridViewImageColumn12</value>
-  </data>
-  <data name="&gt;&gt;dataGridViewImageColumn12.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewImageColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Name" xml:space="preserve">
-    <value>enabledDataGridViewCheckBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;enabledDataGridViewCheckBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewCheckBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;centerDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>centerDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;centerDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;vertexDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>vertexDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;vertexDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;minLenDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>minLenDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;minLenDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;maxLenDataGridViewTextBoxColumn.Name" xml:space="preserve">
-    <value>maxLenDataGridViewTextBoxColumn</value>
-  </data>
-  <data name="&gt;&gt;maxLenDataGridViewTextBoxColumn.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridViewTextBoxColumn, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;Enabled.Name" xml:space="preserve">
     <value>Enabled</value>
   </data>
@@ -1721,6 +1481,68 @@
     <value>BondInputControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>Crystallography.Controls.CaptureUserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+    <value>Crystallography.Controls.UserControlBase, Crystallography.Controls, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="checkBoxShowBonds.ToolTip" xml:space="preserve">
+    <value>Show the bonds as cylinders, and enable the bond settings.</value>
+  </data>
+  <data name="checkBoxShowEdges.ToolTip" xml:space="preserve">
+    <value>Show the edges (wireframe) of the coordination
+polyhedron, and enable the edge-width setting.</value>
+  </data>
+  <data name="checkBoxShowInnerBonds.ToolTip" xml:space="preserve">
+    <value>Show the inner bonds (center-to-vertex
+bonds) inside the coordination polyhedron.</value>
+  </data>
+  <data name="checkBoxShowPolyhedron.ToolTip" xml:space="preserve">
+    <value>Show the coordination polyhedron,
+and enable the polyhedron settings.</value>
+  </data>
+  <data name="checkBoxShowVertexAtoms.ToolTip" xml:space="preserve">
+    <value>Show the vertex atoms (coordinated ligand
+atoms) of the coordination polyhedron.</value>
+  </data>
+  <data name="dataGridView.ToolTip" xml:space="preserve">
+    <value>List of defined bonds/polyhedra; select
+a row to edit it below, or toggle its
+Enabled / Show columns directly.</value>
+  </data>
+  <data name="numericBoxBondAlpha.ToolTip" xml:space="preserve">
+    <value>Opacity of the bond cylinders (0
+= fully transparent, 1 = opaque).</value>
+  </data>
+  <data name="numericBoxBondMaxLength.ToolTip" xml:space="preserve">
+    <value>Maximum interatomic distance (in Å)
+for two atoms to be treated as bonded.</value>
+  </data>
+  <data name="numericBoxBondMinLength.ToolTip" xml:space="preserve">
+    <value>Minimum interatomic distance (in Å)
+for two atoms to be treated as bonded.</value>
+  </data>
+  <data name="numericBoxEdgeWidth.ToolTip" xml:space="preserve">
+    <value>Line width of the polyhedron edges.</value>
+  </data>
+  <data name="numericBoxPolyhedronAlpha.ToolTip" xml:space="preserve">
+    <value>Opacity of the polyhedron faces (0
+= fully transparent, 1 = opaque).</value>
+  </data>
+  <data name="label39.ToolTip" xml:space="preserve">
+    <value>Select the pair of elements (center and
+vertex) that form the bond/polyhedron.</value>
+  </data>
+  <data name="label40.ToolTip" xml:space="preserve">
+    <value>Select the pair of elements (center and
+vertex) that form the bond/polyhedron.</value>
+  </data>
+  <data name="label57.ToolTip" xml:space="preserve">
+    <value>Select the element at the bond/polyhedron
+center (the coordinating central atom).</value>
+  </data>
+  <data name="label58.ToolTip" xml:space="preserve">
+    <value>Select the element at the bond/polyhedron
+vertices (the coordinated ligand atoms).</value>
+  </data>
+  <data name="checkBoxShowCenterAtom.ToolTip" xml:space="preserve">
+    <value>Show the central atom of the coordination polyhedron.</value>
   </data>
 </root>

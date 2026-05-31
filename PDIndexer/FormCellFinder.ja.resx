@@ -1,0 +1,205 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!--
+    Microsoft ResX Schema 
+
+    Version 2.0
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
+    associated with the data types.
+
+    Example:
+
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+
+    There are any number of "resheader" rows that contain simple
+    name/value pairs.
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
+    mimetype set.
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
+    extensible. For a given mimetype the value must be set accordingly:
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
+    read any of the formats listed below.
+
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>探索する晶系を選びます。格子定数の
+未知数（triclinic=6〜cubic=1）が決まり、対称性が
+高いほど高速かつ拘束の強い探索になります。</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>探索する軸長 a の下限（Å）です。
+範囲外の候補セルは棄却します。</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>探索する軸長 a の上限（Å）です。</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>探索する軸長 b の下限（Å）です。</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>探索する軸長 b の上限（Å）です。</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>探索する軸長 c の下限（Å）です。</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>探索する軸長 c の上限（Å）です。</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>探索する軸間角 α の下限（度）です。</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>探索する軸間角 α の上限（度、上限 180）です。</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>探索する軸間角 β の下限（度）です。</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>探索する軸間角 β の上限（度、上限 180）です。</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>探索する軸間角 γ の下限（度）です。</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>探索する軸間角 γ の上限（度、上限 180）です。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>観測 d 値の換算に用いる波源と波長を
+設定します（既定 Cu Kα1、0.15418 nm）。</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>一覧に追加するピークの観測 d 値（面間隔、Å）を入力します。</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>追加するピークの信頼度（High/Medium/Low）
+です。最小二乗の重み付け（High=1,
+Medium=0.5, Low=0.1）に反映します。</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>入力した d 値と信頼度を一覧に新しい行として追加します。</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>観測ピークの編集用一覧です。「Use for Calc.」の
+チェック・信頼度・d_obs を編集し、Delete で行を削除し
+ます。探索後は h k l・d_calc・diff が表示されます。</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>自動指数付け探索を開始します。実行中はラベル
+が 'Stop!' に変わり、再クリックで中止します。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Find と同じ処理で探索を再開します
+（候補をクリアせず継続します）。</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>候補セル一覧（R の小さい順に最良 300 件）です。行を
+クリックすると入力表に hkl を反映し、分布図で強調し
+ます。ΣdQ・R は評価指標（小さいほど良）です。</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>分布図の X 軸に表示する格子定数（a/b/c/α/β/γ）を選びます。</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>分布図の Y 軸に表示する格子定数（a/b/c/α/β/γ）を選びます。</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>選択した X–Y パラメータ空間での候補セルの
+散布図です。R（評価指標）で色付けします。</value>
+  </data>
+</root>

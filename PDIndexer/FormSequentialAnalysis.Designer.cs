@@ -70,6 +70,7 @@ namespace PDIndexer
             buttonSetDirectory = new Button();
             label1 = new Label();
             bindingSource1 = new BindingSource(components);
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl 追加
             tabControl.SuspendLayout();
             tabPage2theta.SuspendLayout();
             tabPageDspacing.SuspendLayout();
@@ -329,7 +330,7 @@ namespace PDIndexer
             numericBoxToleranceFactor.RadianValue = 0.17453292519943295D;
             numericBoxToleranceFactor.RoundErrorAccuracy = -1;
             numericBoxToleranceFactor.ShowUpDown = true;
-            numericBoxToleranceFactor.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxToleranceFactor.ValueFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxToleranceFactor.Value = 10D;
             // 
             // numericBoxStartNumber
@@ -341,7 +342,7 @@ namespace PDIndexer
             numericBoxStartNumber.RadianValue = 0.017453292519943295D;
             numericBoxStartNumber.RoundErrorAccuracy = -1;
             numericBoxStartNumber.ShowUpDown = true;
-            numericBoxStartNumber.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxStartNumber.ValueFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxStartNumber.Value = 1D;
             // 
             // checkBoxLoop
@@ -381,6 +382,38 @@ namespace PDIndexer
             // 
             // FormSequentialAnalysis
             // 
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(他遅延値を上書き・5000ちょうど回避)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: 各コントロールへ ToolTip を配線(文案は resx/ja.resx)
+            toolTip.SetToolTip(buttonExecute, resources.GetString("buttonExecute.ToolTip"));
+            toolTip.SetToolTip(buttonCopy, resources.GetString("buttonCopy.ToolTip"));
+            toolTip.SetToolTip(buttonSave, resources.GetString("buttonSave.ToolTip"));
+            toolTip.SetToolTip(buttonSetDirectory, resources.GetString("buttonSetDirectory.ToolTip"));
+            toolTip.SetToolTip(textBoxDirectory, resources.GetString("textBoxDirectory.ToolTip"));
+            toolTip.SetToolTip(checkBoxStartNumber, resources.GetString("checkBoxStartNumber.ToolTip"));
+            toolTip.SetToolTip(numericBoxStartNumber, resources.GetString("numericBoxStartNumber.ToolTip"));
+            toolTip.SetToolTip(checkBoxLoop, resources.GetString("checkBoxLoop.ToolTip"));
+            toolTip.SetToolTip(checkBoxToleranceFactor, resources.GetString("checkBoxToleranceFactor.ToolTip"));
+            toolTip.SetToolTip(numericBoxToleranceFactor, resources.GetString("numericBoxToleranceFactor.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSaveTwoTheta, resources.GetString("checkBoxAutoSaveTwoTheta.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSaveD, resources.GetString("checkBoxAutoSaveD.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSaveFWHM, resources.GetString("checkBoxAutoSaveFWHM.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSaveInt, resources.GetString("checkBoxAutoSaveInt.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSaveCell, resources.GetString("checkBoxAutoSaveCell.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSavePressure, resources.GetString("checkBoxAutoSavePressure.ToolTip"));
+            toolTip.SetToolTip(checkBoxAutoSaveSingh, resources.GetString("checkBoxAutoSaveSingh.ToolTip"));
+            toolTip.SetToolTip(textBox2theta, resources.GetString("textBox2theta.ToolTip"));
+            toolTip.SetToolTip(textBoxDspacing, resources.GetString("textBoxDspacing.ToolTip"));
+            toolTip.SetToolTip(textBoxFWHM, resources.GetString("textBoxFWHM.ToolTip"));
+            toolTip.SetToolTip(textBoxIntensity, resources.GetString("textBoxIntensity.ToolTip"));
+            toolTip.SetToolTip(textBoxCellConstants, resources.GetString("textBoxCellConstants.ToolTip"));
+            toolTip.SetToolTip(textBoxPressure, resources.GetString("textBoxPressure.ToolTip"));
+            toolTip.SetToolTip(textBoxSingh, resources.GetString("textBoxSingh.ToolTip"));
+            toolTip.SetToolTip(graphControl1, resources.GetString("graphControl1.ToolTip"));
+            toolTip.SetToolTip(tabControl, resources.GetString("tabControl.ToolTip"));
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(tabControl);
@@ -443,6 +476,7 @@ namespace PDIndexer
         private Crystallography.Controls.NumericBox numericBoxToleranceFactor;
         private System.Windows.Forms.CheckBox checkBoxToleranceFactor;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
         internal CheckBox checkBoxAutoSaveTwoTheta; // 260414Cl public→internal
         internal CheckBox checkBoxAutoSaveD;        // 260414Cl public→internal
         internal CheckBox checkBoxAutoSaveFWHM;     // 260414Cl public→internal

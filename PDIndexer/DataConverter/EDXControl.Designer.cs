@@ -29,6 +29,9 @@ namespace PDIndexer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EDXControl)); // 260531Cl 追加: ツールチップ localize 用
+            this.components = new System.ComponentModel.Container(); // 260531Cl 追加: ToolTip 用 IContainer を生成(Dispose は既存の components.Dispose() が処理)
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components); // 260531Cl 追加
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.numericBoxEGC0 = new Crystallography.Controls.NumericBox();
             this.numericBoxEGC1 = new Crystallography.Controls.NumericBox();
@@ -67,7 +70,7 @@ namespace PDIndexer
             this.numericBoxEGC0.SkipEventDuringInput = false;
             this.numericBoxEGC0.SmartIncrement = true;
             this.numericBoxEGC0.TabIndex = 1;
-            this.numericBoxEGC0.ThonsandsSeparator = true;
+            this.numericBoxEGC0.ThousandsSeparator = true;
             // 
             // numericBoxEGC1
             // 
@@ -88,7 +91,7 @@ namespace PDIndexer
             this.numericBoxEGC1.SkipEventDuringInput = false;
             this.numericBoxEGC1.SmartIncrement = true;
             this.numericBoxEGC1.TabIndex = 1;
-            this.numericBoxEGC1.ThonsandsSeparator = true;
+            this.numericBoxEGC1.ThousandsSeparator = true;
             this.numericBoxEGC1.Value = 1D;
             // 
             // numericBoxEGC2
@@ -109,7 +112,7 @@ namespace PDIndexer
             this.numericBoxEGC2.SkipEventDuringInput = false;
             this.numericBoxEGC2.SmartIncrement = true;
             this.numericBoxEGC2.TabIndex = 1;
-            this.numericBoxEGC2.ThonsandsSeparator = true;
+            this.numericBoxEGC2.ThousandsSeparator = true;
             // 
             // EDXControl
             // 
@@ -124,6 +127,16 @@ namespace PDIndexer
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "EDXControl";
             this.Size = new System.Drawing.Size(367, 30);
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(5000ちょうど回避)
+            this.toolTip.IsBalloon = true;
+            this.toolTip.AutoPopDelay = 10000;
+            this.toolTip.InitialDelay = 500;
+            this.toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: ToolTip 配線(文案は resx/ja.resx)
+            this.toolTip.SetToolTip(this.checkBox1, resources.GetString("checkBox1.ToolTip"));
+            this.toolTip.SetToolTip(this.numericBoxEGC0, resources.GetString("numericBoxEGC0.ToolTip"));
+            this.toolTip.SetToolTip(this.numericBoxEGC1, resources.GetString("numericBoxEGC1.ToolTip"));
+            this.toolTip.SetToolTip(this.numericBoxEGC2, resources.GetString("numericBoxEGC2.ToolTip"));
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -132,6 +145,7 @@ namespace PDIndexer
         #endregion
 
         private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
         private Crystallography.Controls.NumericBox numericBoxEGC0;
         private Crystallography.Controls.NumericBox numericBoxEGC1;
         private Crystallography.Controls.NumericBox numericBoxEGC2;

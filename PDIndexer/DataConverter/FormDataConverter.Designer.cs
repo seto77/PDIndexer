@@ -6,6 +6,7 @@
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
 
         /// <summary>
         /// Clean up any resources being used.
@@ -29,6 +30,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDataConverter));
+            components = new System.ComponentModel.Container(); // 260531Cl 追加: ToolTip 用 IContainer を生成(Dispose は既存の components.Dispose() が処理)
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl 追加
             groupBoxEDX = new System.Windows.Forms.GroupBox();
             panel1 = new System.Windows.Forms.Panel();
             numericBoxLowEnergyCutoff = new Crystallography.Controls.NumericBox();
@@ -158,7 +161,7 @@
             numericalTextBox1.RoundErrorAccuracy = -1;
             numericalTextBox1.SkipEventDuringInput = false;
             numericalTextBox1.SmartIncrement = true;
-            numericalTextBox1.ThonsandsSeparator = true;
+            numericalTextBox1.ThousandsSeparator = true;
             numericalTextBox1.Value = 1D;
             // 
             // horizontalAxisUserControl
@@ -212,6 +215,18 @@
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(5000ちょうど回避)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: ToolTip 配線(文案は resx/ja.resx)
+            toolTip.SetToolTip(numericalTextBox1, resources.GetString("numericalTextBox1.ToolTip"));
+            toolTip.SetToolTip(checkBoxLowEnergyCutoff, resources.GetString("checkBoxLowEnergyCutoff.ToolTip"));
+            toolTip.SetToolTip(numericBoxLowEnergyCutoff, resources.GetString("numericBoxLowEnergyCutoff.ToolTip"));
+            toolTip.SetToolTip(horizontalAxisUserControl, resources.GetString("horizontalAxisUserControl.ToolTip"));
+            toolTip.SetToolTip(buttonOK, resources.GetString("buttonOK.ToolTip"));
+            toolTip.SetToolTip(buttonCancel, resources.GetString("buttonCancel.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }

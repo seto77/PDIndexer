@@ -383,4 +383,102 @@
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt</value>
   </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>連続解析を実行します。読み込んだ全プロファイルを
+順にフィットし、2θ・d 値・FWHM・強度・格子定数・
+圧力を表に出力します。Fitting フォームでピークを
+チェックしておく必要があります。</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>表示中タブの表をタブ区切りでクリップボードにコピーします。</value>
+  </data>
+  <data name="buttonSave.ToolTip" xml:space="preserve">
+    <value>表示中タブの表を CSV ファイルに保存します。</value>
+  </data>
+  <data name="checkBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>解析を先頭ではなく右で指定した番号の
+プロファイルから開始します（先頭は 0 番）。</value>
+  </data>
+  <data name="numericBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>解析を開始するプロファイル番号（整数、最小 1）で
+す。左のチェックが ON のときだけ入力できます。</value>
+  </data>
+  <data name="checkBoxLoop.ToolTip" xml:space="preserve">
+    <value>開始番号を指定した場合に、末尾まで処理した後に飛ば
+した先頭側（0〜開始番号-1）も続けて処理します。</value>
+  </data>
+  <data name="checkBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>フィット後の体積が初期値から右の許容係数を超えて
+変化した場合、その結果を NaN として棄却します。</value>
+  </data>
+  <data name="numericBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>許容する体積変化の割合（%、0〜100）です。
+これを超えたフィット結果は破棄します。</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ToolTip" xml:space="preserve">
+    <value>解析後に 2θ 結果を指定ディレクトリへ
+'*_2theta.csv' として自動保存します。</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ToolTip" xml:space="preserve">
+    <value>解析後に d 値結果を '*_d.csv' として自動保存します。</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ToolTip" xml:space="preserve">
+    <value>解析後に FWHM（半値全幅）結果を
+'*_fwhm.csv' として自動保存します。</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ToolTip" xml:space="preserve">
+    <value>解析後に積分強度結果を
+'*_intensity.csv' として自動保存します。</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ToolTip" xml:space="preserve">
+    <value>解析後に格子定数（誤差付き）結果を
+'*_cell.csv' として自動保存します。</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ToolTip" xml:space="preserve">
+    <value>解析後に圧力結果を '*_pressure.csv' として自動保存します。</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.ToolTip" xml:space="preserve">
+    <value>解析後に Singh の式のパラメータを
+'*_Singh.csv' として自動保存します。</value>
+  </data>
+  <data name="buttonSetDirectory.ToolTip" xml:space="preserve">
+    <value>自動保存する CSV の出力先フォルダを選択します。</value>
+  </data>
+  <data name="textBoxDirectory.ToolTip" xml:space="preserve">
+    <value>自動保存先フォルダのパスを表示します
+（読み取り専用、「設定」で変更します）。</value>
+  </data>
+  <data name="textBox2theta.ToolTip" xml:space="preserve">
+    <value>プロファイルごとのピーク位置 2θ（°）を 1 行ずつ表示します。</value>
+  </data>
+  <data name="textBoxDspacing.ToolTip" xml:space="preserve">
+    <value>プロファイルごとの面間隔 d 値（Å）を表示します。</value>
+  </data>
+  <data name="textBoxFWHM.ToolTip" xml:space="preserve">
+    <value>プロファイルごとのピーク FWHM（半値全幅、°）を表示します。</value>
+  </data>
+  <data name="textBoxIntensity.ToolTip" xml:space="preserve">
+    <value>プロファイルごとのピークの積分強度を表示します。</value>
+  </data>
+  <data name="textBoxCellConstants.ToolTip" xml:space="preserve">
+    <value>プロファイルごとの精密化した体積・格子定数
+a〜γ とその誤差（Å, °）を表示します。</value>
+  </data>
+  <data name="textBoxPressure.ToolTip" xml:space="preserve">
+    <value>選択した標準物質の状態方程式から求めた
+各プロファイルの圧力（GPa）を表示します。</value>
+  </data>
+  <data name="textBoxSingh.ToolTip" xml:space="preserve">
+    <value>応力解析プロファイルから精密化した Singh の
+式パラメータ（d0, Ψmax, t/6·Ghkl）を表示します。</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>フィットした Singh の式の d 値–方位角
+Ψ（0〜360°）曲線を表示します。</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value>結果の種類（2θ／d 値／FWHM／強度／格
+子定数／圧力／Singh）を切り替えます。
+コピー／保存は表示中タブが対象です。</value>
+  </data>
 </root>

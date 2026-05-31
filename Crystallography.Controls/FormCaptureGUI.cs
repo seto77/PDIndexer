@@ -7,10 +7,11 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Windows.Forms;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.Formats.Png;
-using SixLabors.ImageSharp.Processing;
-using SixLabors.ImageSharp.Processing.Processors.Quantization;
+// 260513Cl: SixLabors.ImageSharp v4 のライセンス問題で削除。System.Drawing 標準の PNG 保存に切替
+// using SixLabors.ImageSharp;
+// using SixLabors.ImageSharp.Formats.Png;
+// using SixLabors.ImageSharp.Processing;
+// using SixLabors.ImageSharp.Processing.Processors.Quantization;
 
 namespace Crystallography.Controls;
 
@@ -18,7 +19,7 @@ namespace Crystallography.Controls;
 /// 260323Cl 追加
 /// アプリケーションの全フォーム・コントロールのスクリーンショットを一括保存するための開発者向けフォーム。
 /// </summary>
-public partial class FormCaptureGUI : CaptureFormBase
+public partial class FormCaptureGUI : FormBase
 {
     /// <summary>キャプチャ対象の最小サイズ (px)</summary>
     private const int MinCaptureSize = 20;
@@ -80,6 +81,7 @@ public partial class FormCaptureGUI : CaptureFormBase
 
     // 260323Cl: キャプチャ対象フォーム (ショートカット押下時のアクティブフォーム)
     private Form targetForm;
+    private bool populatingForms; // 260521Cl 追加: 対象フォーム ComboBox 構築中の SelectedIndexChanged 抑止
     private bool useCaptureExtenderMode = false; // (260323Ch) CaptureExtender が1つでも設定されているフォームでは flag 指定を最優先する
 
     public FormCaptureGUI()
@@ -92,6 +94,48 @@ public partial class FormCaptureGUI : CaptureFormBase
     {
         base.OnShown(e);
         textBoxOutputDir.Text = GetDefaultOutputDir(); // 260323Cl
+        // BuildTree(); // 260521Cl 旧: 直接 BuildTree。対象フォーム候補を列挙してから選択経由で構築する
+        PopulateTargetForms(); // 260521Cl
+    }
+
+    /// <summary>
+    /// 260521Cl 追加: 開いている全フォームを対象候補として ComboBox に列挙する。
+    /// 従来は Form.ActiveForm 固定で、TopMost の子フォーム (FormCTF 等) や非アクティブなフォームを選べなかった制約を解消する。
+    /// </summary>
+    private void PopulateTargetForms()
+    {
+        populatingForms = true;
+        try
+        {
+            comboBoxTargetForm.Items.Clear();
+            FormChoice selected = null;
+            foreach (Form form in Application.OpenForms)
+            {
+                if (form is FormCaptureGUI || form.IsDisposed)
+                    continue;
+                var choice = new FormChoice(form);
+                comboBoxTargetForm.Items.Add(choice);
+                if (ReferenceEquals(form, targetForm))
+                    selected = choice;
+            }
+            // ショートカット押下時のアクティブフォームが候補に無ければ先頭を採用
+            selected ??= comboBoxTargetForm.Items.Count > 0 ? (FormChoice)comboBoxTargetForm.Items[0] : null;
+            comboBoxTargetForm.SelectedItem = selected;
+            targetForm = selected?.Form;
+        }
+        finally
+        {
+            populatingForms = false;
+        }
+        BuildTree();
+    }
+
+    /// <summary>260521Cl 追加: 対象フォーム選択の変更でツリーを再構築する。</summary>
+    private void comboBoxTargetForm_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (populatingForms)
+            return;
+        targetForm = (comboBoxTargetForm.SelectedItem as FormChoice)?.Form;
         BuildTree();
     }
 
@@ -398,27 +442,33 @@ public partial class FormCaptureGUI : CaptureFormBase
     /// <summary>Refresh ボタン</summary>
     private void buttonRefresh_Click(object sender, EventArgs e)
     {
-        BuildTree();
+        // BuildTree(); // 260521Cl 旧: ツリーのみ再構築
+        PopulateTargetForms(); // 260521Cl: 開いているフォーム一覧も再取得 (capture 操作中に開いた FormCTF 等を拾う)
     }
 
-    /// <summary>デフォルトの保存先を取得 (言語に応じて doc/cap-en または doc/cap-ja)</summary>
+    /// <summary>デフォルトの保存先を取得 (手動キャプチャは docs/src/assets/cap-{en|ja}-manual)</summary>
     private static string GetDefaultOutputDir()
     {
-        // 260323Cl: ReciPro/doc/capture/ をデフォルトにする
-        // 260323Cl: 言語に応じて cap-en / cap-ja を切り替え
-        var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja" : "cap-en";
-        // 実行ファイルが bin/Debug/ 等にあるので、プロジェクトルートを探す
+        // 260525Cl: Pages 正本化に伴い保存先を docs/src/assets/cap-{en|ja}-manual に変更 (画像も docs/src 側へ集約)。
+        // 260524Cl: 保存先を Wiki リポ (ReciPro.wiki) の cap-{en|ja}-manual に変更。
+        //   旧: ReciPro/doc/cap-{en|ja} (= projectRoot/doc/cap-*)。doc/cap-* は廃止し、画像は Wiki リポに集約する。
+        // var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja" : "cap-en"; // 260524Cl 旧
+        var langDir = System.Threading.Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "cap-ja-manual" : "cap-en-manual";
+        // 実行ファイル (bin/Debug/...) からプロジェクトルート (...\ReciPro\ReciPro) → リポルート (...\ReciPro) を辿る
         var exeDir = AppDomain.CurrentDomain.BaseDirectory;
         var dir = new DirectoryInfo(exeDir);
-        // bin フォルダの2階層上がプロジェクトルート (bin/Debug/net10.0-windows... → ReciPro/)
         while (dir != null && dir.Name != "bin")
             dir = dir.Parent;
-        var projectRoot = dir?.Parent;
-        if (projectRoot != null)
-            return Path.Combine(projectRoot.FullName, "doc", langDir);
+        var projectRoot = dir?.Parent;                 // ...\source\repos\ReciPro\ReciPro
+        var repoRoot = projectRoot?.Parent;            // 260525Cl ...\source\repos\ReciPro (docs/ を持つリポルート)
+        // var reposRoot = projectRoot?.Parent?.Parent;   // ...\source\repos // 260525Cl 旧 (Wiki リポ用)
+        // if (projectRoot != null) return Path.Combine(projectRoot.FullName, "doc", langDir); // 260524Cl 旧: main リポ doc/cap-*
+        // if (reposRoot != null) return Path.Combine(reposRoot.FullName, "ReciPro.wiki", langDir); // 260525Cl 旧: Wiki リポ cap-*-manual
+        if (repoRoot != null)
+            return Path.Combine(repoRoot.FullName, "docs", "src", "assets", langDir);
 
         // フォールバック: 実行フォルダ直下
-        return Path.Combine(exeDir, "doc", langDir);
+        return Path.Combine(exeDir, langDir);
     }
 
     /// <summary>Capture ボタン</summary>
@@ -792,29 +842,27 @@ public partial class FormCaptureGUI : CaptureFormBase
     }
 
     /// <summary>
-    /// 260323Cl 追加
-    /// Bitmap を 8ビットパレット PNG (最高圧縮) で保存する。
-    /// GUIスクリーンショットは色数が少ないため、パレット化で大幅にサイズ削減できる。
+    /// 260323Cl 追加 / 260513Cl 改修: SixLabors.ImageSharp v4 ライセンス問題により System.Drawing 標準保存へ変更
+    /// Bitmap を PNG で保存する。
     /// </summary>
     private static void SaveCompressedPng(Bitmap bmp, string filePath)
     {
-        // System.Drawing.Bitmap → ImageSharp Image に変換
-        using var ms = new MemoryStream();
-        bmp.Save(ms, ImageFormat.Png);
-        ms.Position = 0;
+        // 260513Cl: 8bit パレット量子化は ImageSharp 依存だったため削除。開発者ツール用なのでファイルサイズより依存削減を優先
+        bmp.Save(filePath, ImageFormat.Png);
 
-        using var image = SixLabors.ImageSharp.Image.Load(ms);
-
-        // 8ビットパレット (256色) + 最高圧縮レベル
-        var encoder = new PngEncoder
-        {
-            ColorType = PngColorType.Palette,
-            CompressionLevel = PngCompressionLevel.BestCompression,
-            BitDepth = PngBitDepth.Bit8,
-            Quantizer = new WuQuantizer(new QuantizerOptions { MaxColors = 256 })
-        };
-
-        image.SaveAsPng(filePath, encoder);
+        // 260513Cl: 旧実装 (SixLabors.ImageSharp による 8bit パレット + BestCompression)
+        // using var ms = new MemoryStream();
+        // bmp.Save(ms, ImageFormat.Png);
+        // ms.Position = 0;
+        // using var image = SixLabors.ImageSharp.Image.Load(ms);
+        // var encoder = new PngEncoder
+        // {
+        //     ColorType = PngColorType.Palette,
+        //     CompressionLevel = PngCompressionLevel.BestCompression,
+        //     BitDepth = PngBitDepth.Bit8,
+        //     Quantizer = new WuQuantizer(new QuantizerOptions { MaxColors = 256 })
+        // };
+        // image.SaveAsPng(filePath, encoder);
     }
 
     /// <summary>ファイル名に使えない文字を置換</summary>
@@ -824,6 +872,16 @@ public partial class FormCaptureGUI : CaptureFormBase
         foreach (var c in invalid)
             name = name.Replace(c, '_');
         return name;
+    }
+
+    /// <summary>260521Cl 追加: 対象フォーム ComboBox の表示用ラッパ</summary>
+    private sealed record FormChoice(Form Form)
+    {
+        public override string ToString()
+        {
+            var typeName = Form.GetType().Name;
+            return string.IsNullOrEmpty(Form.Text) ? typeName : $"{typeName} — {Form.Text}";
+        }
     }
 
     /// <summary>ツリーノードに紐づけるキャプチャ対象情報</summary>

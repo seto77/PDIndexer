@@ -270,4 +270,25 @@
   <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>3, 4, 3, 4</value>
   </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>データ 1 ステップあたりの露出（測定）時間を
+秒単位で設定します。0 以下は 1 として扱われます。</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>EDX スペクトルの低エネルギー側を右の閾値以下で切り捨てます。</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>この値（eV）未満の EDX スペクトルを切り
+捨てます。左のチェックで有効化します。</value>
+  </data>
+  <data name="horizontalAxisUserControl.ToolTip" xml:space="preserve">
+    <value>データの横軸種別と関連パラメータ（波長/
+エネルギー・2θ・TOF 距離/角度など）を設定します。</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>設定を適用してデータを変換します。</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>変換をキャンセルします。</value>
+  </data>
 </root>

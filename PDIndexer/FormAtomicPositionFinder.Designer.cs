@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            toolTip = new System.Windows.Forms.ToolTip(components); // 260531Cl 追加
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAtomicPositionFinder));
             dataGridViewDiffractionPeaks = new System.Windows.Forms.DataGridView();
@@ -352,7 +353,7 @@
             numericBoxAlpha.RoundErrorAccuracy = -1;
             numericBoxAlpha.Size = new System.Drawing.Size(73, 21);
             numericBoxAlpha.TabIndex = 107;
-            numericBoxAlpha.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxAlpha.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxBeta
             // 
@@ -370,7 +371,7 @@
             numericBoxBeta.RoundErrorAccuracy = -1;
             numericBoxBeta.Size = new System.Drawing.Size(73, 21);
             numericBoxBeta.TabIndex = 109;
-            numericBoxBeta.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxBeta.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxGamma
             // 
@@ -388,7 +389,7 @@
             numericBoxGamma.RoundErrorAccuracy = -1;
             numericBoxGamma.Size = new System.Drawing.Size(73, 21);
             numericBoxGamma.TabIndex = 111;
-            numericBoxGamma.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxGamma.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxC
             // 
@@ -406,7 +407,7 @@
             numericBoxC.RoundErrorAccuracy = -1;
             numericBoxC.Size = new System.Drawing.Size(74, 21);
             numericBoxC.TabIndex = 105;
-            numericBoxC.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxC.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxB
             // 
@@ -424,7 +425,7 @@
             numericBoxB.RoundErrorAccuracy = -1;
             numericBoxB.Size = new System.Drawing.Size(74, 21);
             numericBoxB.TabIndex = 103;
-            numericBoxB.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxB.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericBoxA
             // 
@@ -442,7 +443,7 @@
             numericBoxA.RoundErrorAccuracy = -1;
             numericBoxA.Size = new System.Drawing.Size(74, 21);
             numericBoxA.TabIndex = 100;
-            numericBoxA.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericBoxA.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             numericBoxA.ValueChanged += numericTextBoxCellDimension_ValueChanged;
             // 
             // label23
@@ -912,7 +913,7 @@
             waveLengthControl1.ShowWaveSource = true;
             waveLengthControl1.Size = new System.Drawing.Size(190, 98);
             waveLengthControl1.TabIndex = 1;
-            waveLengthControl1.TextFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            waveLengthControl1.LabelFont = new System.Drawing.Font("メイリオ", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             waveLengthControl1.WaveLength = 0D;
             waveLengthControl1.WaveSource = Crystallography.WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 0;
@@ -934,7 +935,7 @@
             numericalTextBoxIntensity.RoundErrorAccuracy = -1;
             numericalTextBoxIntensity.Size = new System.Drawing.Size(92, 22);
             numericalTextBoxIntensity.TabIndex = 125;
-            numericalTextBoxIntensity.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericalTextBoxIntensity.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // numericalTextBoxDspacing
             // 
@@ -952,7 +953,7 @@
             numericalTextBoxDspacing.RoundErrorAccuracy = -1;
             numericalTextBoxDspacing.Size = new System.Drawing.Size(66, 22);
             numericalTextBoxDspacing.TabIndex = 124;
-            numericalTextBoxDspacing.TextFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            numericalTextBoxDspacing.ValueFont = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             // 
             // flowLayoutPanelIonicRadius
             // 
@@ -1471,6 +1472,48 @@
             groupBox6.ResumeLayout(false);
             groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownThreadTotal).EndInit();
+            // 260531Cl 追加: ToolTip 表示設定(バルーン統一・長文向け遅延)。AutomaticDelay は設定しない(他遅延値を上書き・5000ちょうど回避)
+            toolTip.IsBalloon = true;
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.ReshowDelay = 100;
+            // 260531Cl 追加: 対称性/格子定数
+            toolTip.SetToolTip(comboBoxCrystalSystem, resources.GetString("comboBoxCrystalSystem.ToolTip"));
+            toolTip.SetToolTip(numericBoxA, resources.GetString("numericBoxA.ToolTip"));
+            toolTip.SetToolTip(numericBoxB, resources.GetString("numericBoxB.ToolTip"));
+            toolTip.SetToolTip(numericBoxC, resources.GetString("numericBoxC.ToolTip"));
+            toolTip.SetToolTip(numericBoxAlpha, resources.GetString("numericBoxAlpha.ToolTip"));
+            toolTip.SetToolTip(numericBoxBeta, resources.GetString("numericBoxBeta.ToolTip"));
+            toolTip.SetToolTip(numericBoxGamma, resources.GetString("numericBoxGamma.ToolTip"));
+            toolTip.SetToolTip(listBoxSpaceGroupCandidate, resources.GetString("listBoxSpaceGroupCandidate.ToolTip"));
+            // 260531Cl 追加: 化学組成
+            toolTip.SetToolTip(textBoxInputFormula, resources.GetString("textBoxInputFormula.ToolTip"));
+            toolTip.SetToolTip(numericUpDownZ, resources.GetString("numericUpDownZ.ToolTip"));
+            toolTip.SetToolTip(textBoxFormula, resources.GetString("textBoxFormula.ToolTip"));
+            // 260531Cl 追加: 回折データ
+            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxDspacing, resources.GetString("numericalTextBoxDspacing.ToolTip"));
+            toolTip.SetToolTip(numericalTextBoxIntensity, resources.GetString("numericalTextBoxIntensity.ToolTip"));
+            toolTip.SetToolTip(buttonAddPeak, resources.GetString("buttonAddPeak.ToolTip"));
+            toolTip.SetToolTip(buttonReindexPeaks, resources.GetString("buttonReindexPeaks.ToolTip"));
+            toolTip.SetToolTip(buttonTest, resources.GetString("buttonTest.ToolTip"));
+            toolTip.SetToolTip(dataGridViewDiffractionPeaks, resources.GetString("dataGridViewDiffractionPeaks.ToolTip"));
+            // 260531Cl 追加: ピーク併合しきい値
+            toolTip.SetToolTip(radioButtonAngleThreshold, resources.GetString("radioButtonAngleThreshold.ToolTip"));
+            toolTip.SetToolTip(numericUpDownAngleThreshold, resources.GetString("numericUpDownAngleThreshold.ToolTip"));
+            toolTip.SetToolTip(radioButtonEnergyThreshold, resources.GetString("radioButtonEnergyThreshold.ToolTip"));
+            toolTip.SetToolTip(numericUpDownEnergyThreshold, resources.GetString("numericUpDownEnergyThreshold.ToolTip"));
+            // 260531Cl 追加: アルゴリズム比率/制約/スレッド
+            toolTip.SetToolTip(numericUpDownRandomization, resources.GetString("numericUpDownRandomization.ToolTip"));
+            toolTip.SetToolTip(numericUpDownHybridization, resources.GetString("numericUpDownHybridization.ToolTip"));
+            toolTip.SetToolTip(numericUpDownShaking, resources.GetString("numericUpDownShaking.ToolTip"));
+            toolTip.SetToolTip(numericUpDownIonRadiusThreshold, resources.GetString("numericUpDownIonRadiusThreshold.ToolTip"));
+            toolTip.SetToolTip(numericUpDownThreadTotal, resources.GetString("numericUpDownThreadTotal.ToolTip"));
+            // 260531Cl 追加: 実行/結果
+            toolTip.SetToolTip(buttonStart, resources.GetString("buttonStart.ToolTip"));
+            toolTip.SetToolTip(buttonResume, resources.GetString("buttonResume.ToolTip"));
+            toolTip.SetToolTip(dataGridView2, resources.GetString("dataGridView2.ToolTip"));
+            toolTip.SetToolTip(graphControl1, resources.GetString("graphControl1.ToolTip"));
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1478,6 +1521,7 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridViewDiffractionPeaks;
+        private System.Windows.Forms.ToolTip toolTip; // 260531Cl 追加
         private System.Windows.Forms.Label label19;
         public System.Windows.Forms.ComboBox comboBoxCrystalSystem;
         private System.Windows.Forms.TabControl tabControl1;

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -117,4 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="checkBoxPrintProfile.ToolTip" xml:space="preserve">
+    <value>Include the diffraction profile curve in the printout.</value>
+  </data>
+  <data name="checkBoxPrintProfileName.ToolTip" xml:space="preserve">
+    <value>Print the profile name label; its
+position is set by the buttons below.</value>
+  </data>
+  <data name="checkBoxPrintDiffractionPeak.ToolTip" xml:space="preserve">
+    <value>Include the marked diffraction
+peaks (index lines) in the printout.</value>
+  </data>
+  <data name="radioButtonUpperLeft.ToolTip" xml:space="preserve">
+    <value>Place the profile name in the upper-left corner.</value>
+  </data>
+  <data name="radioButtonUpperRight.ToolTip" xml:space="preserve">
+    <value>Place the profile name in the upper-right corner (default).</value>
+  </data>
+  <data name="radioButtonLowerLeft.ToolTip" xml:space="preserve">
+    <value>Place the profile name in the lower-left corner.</value>
+  </data>
+  <data name="radioButtonLowerRight.ToolTip" xml:space="preserve">
+    <value>Place the profile name in the lower-right corner.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Apply these print options.</value>
+  </data>
+  <data name="button2.ToolTip" xml:space="preserve">
+    <value>Cancel without changing the print options.</value>
+  </data>
 </root>

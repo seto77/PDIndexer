@@ -124,134 +124,129 @@
   <data name="trackBarAdvancedMaximum.Size" type="System.Drawing.Size, System.Drawing">
     <value>327, 22</value>
   </data>
-  <data name="panelTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 352</value>
-  </data>
   <data name="panelTrackBar.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 54</value>
   </data>
+  <data name="label.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9.75pt</value>
+  </data>
+  <data name="label.Size" type="System.Drawing.Size, System.Drawing">
+    <value>0, 19</value>
+  </data>
   <data name="comboBoxScale2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 0</value>
-  </data>
-  <data name="comboBoxScale1.Items" xml:space="preserve">
-    <value>Log</value>
-  </data>
-  <data name="comboBoxScale1.Items1" xml:space="preserve">
-    <value>Liner</value>
+    <value>19, 0</value>
   </data>
   <data name="comboBoxScale1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 0</value>
+    <value>53, 0</value>
   </data>
   <data name="comboBoxGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>63, 0</value>
+    <value>59, 0</value>
   </data>
   <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>56, 18</value>
+    <value>51, 12</value>
   </data>
   <data name="label7.Text" xml:space="preserve">
     <value>スケール</value>
   </data>
   <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 18</value>
+    <value>17, 12</value>
   </data>
   <data name="label9.Text" xml:space="preserve">
     <value>色</value>
   </data>
   <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>61, 18</value>
+    <value>57, 12</value>
   </data>
   <data name="label5.Text" xml:space="preserve">
     <value>ネガ/ポジ</value>
   </data>
-  <data name="flowLayoutPanelGradient.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 476</value>
+  <data name="flowLayoutPanelPolarity.Size" type="System.Drawing.Size, System.Drawing">
+    <value>127, 25</value>
+  </data>
+  <data name="flowLayoutPanelScale.Location" type="System.Drawing.Point, System.Drawing">
+    <value>127, 2</value>
+  </data>
+  <data name="flowLayoutPanelScale.Size" type="System.Drawing.Size, System.Drawing">
+    <value>129, 25</value>
+  </data>
+  <data name="flowLayoutPanelColor.Location" type="System.Drawing.Point, System.Drawing">
+    <value>256, 2</value>
+  </data>
+  <data name="flowLayoutPanelColor.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 25</value>
   </data>
   <data name="flowLayoutPanelGradient.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 29</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>131, 23</value>
-  </data>
-  <data name="flowLayoutPanel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>131, 2</value>
-  </data>
-  <data name="flowLayoutPanel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>134, 23</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>265, 2</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>102, 23</value>
-  </data>
-  <data name="flowLayoutPanelImageFilter.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 505</value>
-  </data>
-  <data name="flowLayoutPanelImageFilter.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 56</value>
-  </data>
-  <data name="flowLayoutPanelDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>315, 26</value>
+    <value>372, 31</value>
   </data>
   <data name="checkBoxDustScratches.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxDustScratches.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
+    <value>121, 16</value>
   </data>
   <data name="checkBoxDustScratches.Text" xml:space="preserve">
     <value>ダスト＆スクラッチ</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="numericBoxDustScratchesRadius.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.HeaderText" xml:space="preserve">
     <value>半径</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Location" type="System.Drawing.Point, System.Drawing">
-    <value>139, 0</value>
+    <value>125, 0</value>
   </data>
   <data name="numericBoxDustScratchesRadius.Size" type="System.Drawing.Size, System.Drawing">
     <value>97, 25</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderFont" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.HeaderPadding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>0, 7, 0, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.HeaderText" xml:space="preserve">
     <value>閾値</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>236, 0</value>
+    <value>222, 0</value>
   </data>
   <data name="numericBoxDustScratchesThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>79, 25</value>
   </data>
-  <data name="flowLayoutPanelGaussianBlur2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 28</value>
-  </data>
-  <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>242, 26</value>
+  <data name="flowLayoutPanelDustScratches.Size" type="System.Drawing.Size, System.Drawing">
+    <value>301, 25</value>
   </data>
   <data name="checkBoxGaussianBlur.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
+    <value>Yu Gothic UI, 9pt</value>
   </data>
   <data name="checkBoxGaussianBlur.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
+    <value>114, 16</value>
   </data>
   <data name="checkBoxGaussianBlur.Text" xml:space="preserve">
     <value>ガウシアンぼかし</value>
   </data>
   <data name="numericBoxGaussianFWHM.Location" type="System.Drawing.Point, System.Drawing">
-    <value>127, 0</value>
+    <value>118, 0</value>
+  </data>
+  <data name="flowLayoutPanelGaussianBlur2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>242, 25</value>
+  </data>
+  <data name="flowLayoutPanelImageFilter.Size" type="System.Drawing.Size, System.Drawing">
+    <value>372, 54</value>
   </data>
   <data name="panelUpper.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 30</value>
@@ -260,18 +255,131 @@
     <value>372, 22</value>
   </data>
   <data name="scalablePictureBox.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 293</value>
-  </data>
-  <data name="graphControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 406</value>
+    <value>372, 294</value>
   </data>
   <data name="graphControl.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 70</value>
   </data>
+  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>88, 0</value>
+  </data>
   <data name="panelMagInfo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>372, 29</value>
+    <value>372, 28</value>
   </data>
   <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
     <value>372, 583</value>
+  </data>
+  <data name="buttonMag1.ToolTip" xml:space="preserve">
+    <value>表示倍率を等倍 (×1、画像1ピクセル
+＝画面1ピクセル) に設定します。</value>
+  </data>
+  <data name="buttonMag2.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×2 (2倍拡大) に設定します。</value>
+  </data>
+  <data name="buttonMag4.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×4 (4倍拡大) に設定します。</value>
+  </data>
+  <data name="buttonMag_16.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/16 (1/16に縮小) に設定します。</value>
+  </data>
+  <data name="buttonMag_2.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/2 (1/2に縮小) に設定します。</value>
+  </data>
+  <data name="buttonMag_4.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/4 (1/4に縮小) に設定します。</value>
+  </data>
+  <data name="buttonMag_8.ToolTip" xml:space="preserve">
+    <value>表示倍率を ×1/8 (1/8に縮小) に設定します。</value>
+  </data>
+  <data name="checkBoxDustScratches.ToolTip" xml:space="preserve">
+    <value>Dust &amp; Scratches (除塵・傷除去) フィルタを適用します。
+近傍と大きく異なる小さな輝点や傷状ノイズを近傍値で置き
+換えて除去します (Radius と Threshold で調整)。</value>
+  </data>
+  <data name="checkBoxGaussianBlur.ToolTip" xml:space="preserve">
+    <value>Gaussian Blur (ガウシアンぼかし) を
+適用します。ガウス関数で画像を平滑化し
+ノイズを抑えます (FWHM で幅を指定)。</value>
+  </data>
+  <data name="comboBoxGradient.ToolTip" xml:space="preserve">
+    <value>表示の極性を切り替えます。Positive は通常表示、
+Negative は階調を反転します (明暗が逆転)。</value>
+  </data>
+  <data name="comboBoxScale1.ToolTip" xml:space="preserve">
+    <value>強度から明るさへの変換を選びます。Linear
+は比例、Log は対数表示で、強いシグナルと
+弱いシグナルを同時に見やすくします。</value>
+  </data>
+  <data name="comboBoxScale2.ToolTip" xml:space="preserve">
+    <value>強度表示に使うカラーマップ (Gray /
+Cold-Warm / Spectrum / Fire) を選択します。
+擬似カラーにすると強度差が見やすくなります。</value>
+  </data>
+  <data name="label.ToolTip" xml:space="preserve">
+    <value>カーソル位置 (画像座標 X, Y) と、グレースケール
+画像ではカーソル下の生の画素値を表示します。</value>
+  </data>
+  <data name="labelResolution.ToolTip" xml:space="preserve">
+    <value>現在の画像の表示倍率 (ズーム倍率) を表示し
+ます。拡大・縮小に応じて更新されます。</value>
+  </data>
+  <data name="numericBoxDustScratchesRadius.ToolTip" xml:space="preserve">
+    <value>Dust &amp; Scratches フィルタの処理半径をピクセル
+単位 (0〜5 px) で設定します。大きいほど大きな
+欠陥まで除去できますが細部もぼけます。</value>
+  </data>
+  <data name="numericBoxDustScratchesThreshold.ToolTip" xml:space="preserve">
+    <value>Dust &amp; Scratches のしきい値 (0〜10) を設定します。
+近傍との差がこの値を超える画素だけを欠陥として置換し
+ます。小さいほど多くの画素が除去対象になります。</value>
+  </data>
+  <data name="numericBoxGaussianFWHM.ToolTip" xml:space="preserve">
+    <value>ガウシアンぼかしの幅を FWHM (Full Width at Half
+Maximum = 半値全幅) でピクセル単位 (0〜100 px)
+に設定します。大きいほど強くぼけます。</value>
+  </data>
+  <data name="toolStripStatusLabel1.ToolTipText" xml:space="preserve">
+    <value>ステータス表示です。Dust &amp; Scratches や Gaussian Blur
+フィルタの処理経過時間などのメッセージを表示します。</value>
+  </data>
+  <data name="trackBarAdvancedMaximum.ToolTip" xml:space="preserve">
+    <value>強度の上限を設定します。これを超える画素値は白
+(最大輝度) に飽和します。Min. スライダと合わせ
+て表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="trackBarAdvancedMinimum.ToolTip" xml:space="preserve">
+    <value>強度の下限を設定します。これを下回る画素値は
+黒につぶれます。Max. スライダと合わせて
+表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="label1.ToolTip" xml:space="preserve">
+    <value>現在の画像の表示倍率 (ズーム倍率) を表示します。</value>
+  </data>
+  <data name="label14.ToolTip" xml:space="preserve">
+    <value>現在の画像の表示倍率 (Magnification = 倍率) を表示します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>強度の下限を設定します。これを下回る画素値は
+黒につぶれます。Max. スライダと合わせて
+表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="label3.ToolTip" xml:space="preserve">
+    <value>強度の上限を設定します。これを超える画素値は白
+(最大輝度) に飽和します。Min. スライダと合わせ
+て表示の明るさ・コントラスト範囲を決めます。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>表示の極性を切り替えます。Positive は通常表示、
+Negative は階調を反転します (明暗が逆転)。</value>
+  </data>
+  <data name="label7.ToolTip" xml:space="preserve">
+    <value>強度から明るさへの変換を選びます。Linear
+は比例、Log は対数表示で、強いシグナルと
+弱いシグナルを同時に見やすくします。</value>
+  </data>
+  <data name="label9.ToolTip" xml:space="preserve">
+    <value>強度表示に使うカラーマップ (Gray /
+Cold-Warm / Spectrum / Fire) を選択します。
+擬似カラーにすると強度差が見やすくなります。</value>
   </data>
 </root>

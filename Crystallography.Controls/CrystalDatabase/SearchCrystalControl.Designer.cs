@@ -24,6 +24,9 @@ partial class SearchCrystalControl
     /// </summary>
     private void InitializeComponent()
     {
+            components = new System.ComponentModel.Container(); // (260531Ch)
+            toolTip = new System.Windows.Forms.ToolTip(components); // (260531Ch)
+            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SearchCrystalControl));
         flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
         checkBoxSearchName = new System.Windows.Forms.CheckBox();
@@ -90,6 +93,7 @@ partial class SearchCrystalControl
         // checkBoxSearchName
         // 
         resources.ApplyResources(checkBoxSearchName, "checkBoxSearchName");
+        toolTip.SetToolTip(checkBoxSearchName, resources.GetString("checkBoxSearchName.ToolTip")); // 260531Cl
         checkBoxSearchName.Name = "checkBoxSearchName";
         checkBoxSearchName.UseVisualStyleBackColor = true;
         checkBoxSearchName.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -97,12 +101,14 @@ partial class SearchCrystalControl
         // textBoxSearchName
         // 
         resources.ApplyResources(textBoxSearchName, "textBoxSearchName");
+        toolTip.SetToolTip(textBoxSearchName, resources.GetString("textBoxSearchName.ToolTip")); // 260531Cl
         textBoxSearchName.Name = "textBoxSearchName";
         textBoxSearchName.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxSearchElements
         // 
         resources.ApplyResources(checkBoxSearchElements, "checkBoxSearchElements");
+        toolTip.SetToolTip(checkBoxSearchElements, resources.GetString("checkBoxSearchElements.ToolTip")); // 260531Cl
         checkBoxSearchElements.Name = "checkBoxSearchElements";
         checkBoxSearchElements.UseVisualStyleBackColor = true;
         checkBoxSearchElements.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -110,6 +116,7 @@ partial class SearchCrystalControl
         // buttonPeriodicTable
         // 
         resources.ApplyResources(buttonPeriodicTable, "buttonPeriodicTable");
+        toolTip.SetToolTip(buttonPeriodicTable, resources.GetString("buttonPeriodicTable.ToolTip")); // 260531Cl
         buttonPeriodicTable.Name = "buttonPeriodicTable";
         buttonPeriodicTable.UseVisualStyleBackColor = true;
         buttonPeriodicTable.Click += buttonPeriodicTable_Click;
@@ -117,6 +124,7 @@ partial class SearchCrystalControl
         // checkBoxSearchReference
         // 
         resources.ApplyResources(checkBoxSearchReference, "checkBoxSearchReference");
+        toolTip.SetToolTip(checkBoxSearchReference, resources.GetString("checkBoxSearchReference.ToolTip")); // 260531Cl
         checkBoxSearchReference.Name = "checkBoxSearchReference";
         checkBoxSearchReference.UseVisualStyleBackColor = true;
         checkBoxSearchReference.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -124,12 +132,14 @@ partial class SearchCrystalControl
         // textBoxSearchReference
         // 
         resources.ApplyResources(textBoxSearchReference, "textBoxSearchReference");
+        toolTip.SetToolTip(textBoxSearchReference, resources.GetString("textBoxSearchReference.ToolTip")); // 260531Cl
         textBoxSearchReference.Name = "textBoxSearchReference";
         textBoxSearchReference.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxSearchCrystalSystem
         // 
         resources.ApplyResources(checkBoxSearchCrystalSystem, "checkBoxSearchCrystalSystem");
+        toolTip.SetToolTip(checkBoxSearchCrystalSystem, resources.GetString("checkBoxSearchCrystalSystem.ToolTip")); // 260531Cl
         checkBoxSearchCrystalSystem.Name = "checkBoxSearchCrystalSystem";
         checkBoxSearchCrystalSystem.UseVisualStyleBackColor = true;
         checkBoxSearchCrystalSystem.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -138,12 +148,14 @@ partial class SearchCrystalControl
         // 
         comboBoxSearchCrystalSystem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         resources.ApplyResources(comboBoxSearchCrystalSystem, "comboBoxSearchCrystalSystem");
+        toolTip.SetToolTip(comboBoxSearchCrystalSystem, resources.GetString("comboBoxSearchCrystalSystem.ToolTip")); // 260531Cl
         comboBoxSearchCrystalSystem.Items.AddRange(new object[] { resources.GetString("comboBoxSearchCrystalSystem.Items"), resources.GetString("comboBoxSearchCrystalSystem.Items1"), resources.GetString("comboBoxSearchCrystalSystem.Items2"), resources.GetString("comboBoxSearchCrystalSystem.Items3"), resources.GetString("comboBoxSearchCrystalSystem.Items4"), resources.GetString("comboBoxSearchCrystalSystem.Items5"), resources.GetString("comboBoxSearchCrystalSystem.Items6"), resources.GetString("comboBoxSearchCrystalSystem.Items7") });
         comboBoxSearchCrystalSystem.Name = "comboBoxSearchCrystalSystem";
         // 
         // checkBoxSearchCellParameter
         // 
         resources.ApplyResources(checkBoxSearchCellParameter, "checkBoxSearchCellParameter");
+        toolTip.SetToolTip(checkBoxSearchCellParameter, resources.GetString("checkBoxSearchCellParameter.ToolTip")); // 260531Cl
         checkBoxSearchCellParameter.Name = "checkBoxSearchCellParameter";
         checkBoxSearchCellParameter.UseVisualStyleBackColor = true;
         checkBoxSearchCellParameter.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -166,18 +178,20 @@ partial class SearchCrystalControl
         // numericBoxCellGamma
         // 
         resources.ApplyResources(numericBoxCellGamma, "numericBoxCellGamma");
+        toolTip.SetToolTip(numericBoxCellGamma, resources.GetString("numericBoxCellGamma.ToolTip")); // 260531Cl
         numericBoxCellGamma.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellGamma.Maximum = 179D;
         numericBoxCellGamma.Minimum = 0D;
         numericBoxCellGamma.Name = "numericBoxCellGamma";
         numericBoxCellGamma.SkipEventDuringInput = false;
         numericBoxCellGamma.SmartIncrement = true;
-        numericBoxCellGamma.ThonsandsSeparator = true;
+        numericBoxCellGamma.ThousandsSeparator = true;
         numericBoxCellGamma.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellAngleErr
         // 
         resources.ApplyResources(numericBoxCellAngleErr, "numericBoxCellAngleErr");
+        toolTip.SetToolTip(numericBoxCellAngleErr, resources.GetString("numericBoxCellAngleErr.ToolTip")); // 260531Cl
         numericBoxCellAngleErr.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellAngleErr.DecimalPlaces = 1;
         numericBoxCellAngleErr.Maximum = 50D;
@@ -186,7 +200,7 @@ partial class SearchCrystalControl
         numericBoxCellAngleErr.RadianValue = 0.052359877559829883D;
         numericBoxCellAngleErr.ShowUpDown = true;
         numericBoxCellAngleErr.SkipEventDuringInput = false;
-        numericBoxCellAngleErr.ThonsandsSeparator = true;
+        numericBoxCellAngleErr.ThousandsSeparator = true;
         numericBoxCellAngleErr.UpDown_Increment = 0.5D;
         numericBoxCellAngleErr.Value = 3D;
         numericBoxCellAngleErr.KeyDown += textBoxSearchName_KeyDown;
@@ -194,6 +208,7 @@ partial class SearchCrystalControl
         // numericBoxCellLengthErr
         // 
         resources.ApplyResources(numericBoxCellLengthErr, "numericBoxCellLengthErr");
+        toolTip.SetToolTip(numericBoxCellLengthErr, resources.GetString("numericBoxCellLengthErr.ToolTip")); // 260531Cl
         numericBoxCellLengthErr.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellLengthErr.DecimalPlaces = 1;
         numericBoxCellLengthErr.Maximum = 50D;
@@ -202,7 +217,7 @@ partial class SearchCrystalControl
         numericBoxCellLengthErr.RadianValue = 0.052359877559829883D;
         numericBoxCellLengthErr.ShowUpDown = true;
         numericBoxCellLengthErr.SkipEventDuringInput = false;
-        numericBoxCellLengthErr.ThonsandsSeparator = true;
+        numericBoxCellLengthErr.ThousandsSeparator = true;
         numericBoxCellLengthErr.UpDown_Increment = 0.5D;
         numericBoxCellLengthErr.Value = 3D;
         numericBoxCellLengthErr.KeyDown += textBoxSearchName_KeyDown;
@@ -210,66 +225,72 @@ partial class SearchCrystalControl
         // numericBoxCellC
         // 
         resources.ApplyResources(numericBoxCellC, "numericBoxCellC");
+        toolTip.SetToolTip(numericBoxCellC, resources.GetString("numericBoxCellC.ToolTip")); // 260531Cl
         numericBoxCellC.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellC.Maximum = 100D;
         numericBoxCellC.Minimum = 0D;
         numericBoxCellC.Name = "numericBoxCellC";
         numericBoxCellC.SkipEventDuringInput = false;
         numericBoxCellC.SmartIncrement = true;
-        numericBoxCellC.ThonsandsSeparator = true;
+        numericBoxCellC.ThousandsSeparator = true;
         numericBoxCellC.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellBeta
         // 
         resources.ApplyResources(numericBoxCellBeta, "numericBoxCellBeta");
+        toolTip.SetToolTip(numericBoxCellBeta, resources.GetString("numericBoxCellBeta.ToolTip")); // 260531Cl
         numericBoxCellBeta.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellBeta.Maximum = 179D;
         numericBoxCellBeta.Minimum = 0D;
         numericBoxCellBeta.Name = "numericBoxCellBeta";
         numericBoxCellBeta.SkipEventDuringInput = false;
         numericBoxCellBeta.SmartIncrement = true;
-        numericBoxCellBeta.ThonsandsSeparator = true;
+        numericBoxCellBeta.ThousandsSeparator = true;
         numericBoxCellBeta.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellAlpha
         // 
         resources.ApplyResources(numericBoxCellAlpha, "numericBoxCellAlpha");
+        toolTip.SetToolTip(numericBoxCellAlpha, resources.GetString("numericBoxCellAlpha.ToolTip")); // 260531Cl
         numericBoxCellAlpha.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellAlpha.Maximum = 179D;
         numericBoxCellAlpha.Minimum = 0D;
         numericBoxCellAlpha.Name = "numericBoxCellAlpha";
         numericBoxCellAlpha.SkipEventDuringInput = false;
         numericBoxCellAlpha.SmartIncrement = true;
-        numericBoxCellAlpha.ThonsandsSeparator = true;
+        numericBoxCellAlpha.ThousandsSeparator = true;
         numericBoxCellAlpha.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellB
         // 
         resources.ApplyResources(numericBoxCellB, "numericBoxCellB");
+        toolTip.SetToolTip(numericBoxCellB, resources.GetString("numericBoxCellB.ToolTip")); // 260531Cl
         numericBoxCellB.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellB.Maximum = 100D;
         numericBoxCellB.Minimum = 0D;
         numericBoxCellB.Name = "numericBoxCellB";
         numericBoxCellB.SkipEventDuringInput = false;
         numericBoxCellB.SmartIncrement = true;
-        numericBoxCellB.ThonsandsSeparator = true;
+        numericBoxCellB.ThousandsSeparator = true;
         numericBoxCellB.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxCellA
         // 
         resources.ApplyResources(numericBoxCellA, "numericBoxCellA");
+        toolTip.SetToolTip(numericBoxCellA, resources.GetString("numericBoxCellA.ToolTip")); // 260531Cl
         numericBoxCellA.BackColor = System.Drawing.Color.Transparent;
         numericBoxCellA.Maximum = 100D;
         numericBoxCellA.Minimum = 0D;
         numericBoxCellA.Name = "numericBoxCellA";
         numericBoxCellA.SkipEventDuringInput = false;
         numericBoxCellA.SmartIncrement = true;
-        numericBoxCellA.ThonsandsSeparator = true;
+        numericBoxCellA.ThousandsSeparator = true;
         numericBoxCellA.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxDspacing
         // 
         resources.ApplyResources(checkBoxDspacing, "checkBoxDspacing");
+        toolTip.SetToolTip(checkBoxDspacing, resources.GetString("checkBoxDspacing.ToolTip")); // 260531Cl
         checkBoxDspacing.Name = "checkBoxDspacing";
         checkBoxDspacing.UseVisualStyleBackColor = true;
         checkBoxDspacing.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -294,6 +315,7 @@ partial class SearchCrystalControl
         // checkBoxD3
         // 
         resources.ApplyResources(checkBoxD3, "checkBoxD3");
+        toolTip.SetToolTip(checkBoxD3, resources.GetString("checkBoxD3.ToolTip")); // 260531Cl
         checkBoxD3.Name = "checkBoxD3";
         checkBoxD3.UseVisualStyleBackColor = true;
         checkBoxD3.CheckedChanged += checkBoxD3_CheckedChanged;
@@ -301,6 +323,7 @@ partial class SearchCrystalControl
         // numericBoxD3Err
         // 
         resources.ApplyResources(numericBoxD3Err, "numericBoxD3Err");
+        toolTip.SetToolTip(numericBoxD3Err, resources.GetString("numericBoxD3Err.ToolTip")); // 260531Cl
         numericBoxD3Err.BackColor = System.Drawing.Color.Transparent;
         numericBoxD3Err.DecimalPlaces = 1;
         numericBoxD3Err.Maximum = 50D;
@@ -309,7 +332,7 @@ partial class SearchCrystalControl
         numericBoxD3Err.RadianValue = 0.052359877559829883D;
         numericBoxD3Err.ShowUpDown = true;
         numericBoxD3Err.SkipEventDuringInput = false;
-        numericBoxD3Err.ThonsandsSeparator = true;
+        numericBoxD3Err.ThousandsSeparator = true;
         numericBoxD3Err.UpDown_Increment = 0.5D;
         numericBoxD3Err.Value = 3D;
         numericBoxD3Err.KeyDown += textBoxSearchName_KeyDown;
@@ -317,6 +340,7 @@ partial class SearchCrystalControl
         // numericBoxD2Err
         // 
         resources.ApplyResources(numericBoxD2Err, "numericBoxD2Err");
+        toolTip.SetToolTip(numericBoxD2Err, resources.GetString("numericBoxD2Err.ToolTip")); // 260531Cl
         numericBoxD2Err.BackColor = System.Drawing.Color.Transparent;
         numericBoxD2Err.DecimalPlaces = 1;
         numericBoxD2Err.Maximum = 50D;
@@ -325,7 +349,7 @@ partial class SearchCrystalControl
         numericBoxD2Err.RadianValue = 0.052359877559829883D;
         numericBoxD2Err.ShowUpDown = true;
         numericBoxD2Err.SkipEventDuringInput = false;
-        numericBoxD2Err.ThonsandsSeparator = true;
+        numericBoxD2Err.ThousandsSeparator = true;
         numericBoxD2Err.UpDown_Increment = 0.5D;
         numericBoxD2Err.Value = 3D;
         numericBoxD2Err.KeyDown += textBoxSearchName_KeyDown;
@@ -333,6 +357,7 @@ partial class SearchCrystalControl
         // numericBoxD1Err
         // 
         resources.ApplyResources(numericBoxD1Err, "numericBoxD1Err");
+        toolTip.SetToolTip(numericBoxD1Err, resources.GetString("numericBoxD1Err.ToolTip")); // 260531Cl
         numericBoxD1Err.BackColor = System.Drawing.Color.Transparent;
         numericBoxD1Err.DecimalPlaces = 1;
         numericBoxD1Err.Maximum = 50D;
@@ -341,7 +366,7 @@ partial class SearchCrystalControl
         numericBoxD1Err.RadianValue = 0.052359877559829883D;
         numericBoxD1Err.ShowUpDown = true;
         numericBoxD1Err.SkipEventDuringInput = false;
-        numericBoxD1Err.ThonsandsSeparator = true;
+        numericBoxD1Err.ThousandsSeparator = true;
         numericBoxD1Err.UpDown_Increment = 0.5D;
         numericBoxD1Err.Value = 3D;
         numericBoxD1Err.KeyDown += textBoxSearchName_KeyDown;
@@ -349,6 +374,7 @@ partial class SearchCrystalControl
         // checkBoxD2
         // 
         resources.ApplyResources(checkBoxD2, "checkBoxD2");
+        toolTip.SetToolTip(checkBoxD2, resources.GetString("checkBoxD2.ToolTip")); // 260531Cl
         checkBoxD2.Name = "checkBoxD2";
         checkBoxD2.UseVisualStyleBackColor = true;
         checkBoxD2.CheckedChanged += checkBoxD2_CheckedChanged;
@@ -356,6 +382,7 @@ partial class SearchCrystalControl
         // checkBoxD1
         // 
         resources.ApplyResources(checkBoxD1, "checkBoxD1");
+        toolTip.SetToolTip(checkBoxD1, resources.GetString("checkBoxD1.ToolTip")); // 260531Cl
         checkBoxD1.Checked = true;
         checkBoxD1.CheckState = System.Windows.Forms.CheckState.Checked;
         checkBoxD1.Name = "checkBoxD1";
@@ -365,6 +392,7 @@ partial class SearchCrystalControl
         // numericBoxD3
         // 
         resources.ApplyResources(numericBoxD3, "numericBoxD3");
+        toolTip.SetToolTip(numericBoxD3, resources.GetString("numericBoxD3.ToolTip")); // 260531Cl
         numericBoxD3.BackColor = System.Drawing.Color.Transparent;
         numericBoxD3.DecimalPlaces = 2;
         numericBoxD3.Maximum = 100D;
@@ -372,12 +400,13 @@ partial class SearchCrystalControl
         numericBoxD3.Name = "numericBoxD3";
         numericBoxD3.SkipEventDuringInput = false;
         numericBoxD3.SmartIncrement = true;
-        numericBoxD3.ThonsandsSeparator = true;
+        numericBoxD3.ThousandsSeparator = true;
         numericBoxD3.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD2
         // 
         resources.ApplyResources(numericBoxD2, "numericBoxD2");
+        toolTip.SetToolTip(numericBoxD2, resources.GetString("numericBoxD2.ToolTip")); // 260531Cl
         numericBoxD2.BackColor = System.Drawing.Color.Transparent;
         numericBoxD2.DecimalPlaces = 2;
         numericBoxD2.Maximum = 100D;
@@ -385,12 +414,13 @@ partial class SearchCrystalControl
         numericBoxD2.Name = "numericBoxD2";
         numericBoxD2.SkipEventDuringInput = false;
         numericBoxD2.SmartIncrement = true;
-        numericBoxD2.ThonsandsSeparator = true;
+        numericBoxD2.ThousandsSeparator = true;
         numericBoxD2.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxD1
         // 
         resources.ApplyResources(numericBoxD1, "numericBoxD1");
+        toolTip.SetToolTip(numericBoxD1, resources.GetString("numericBoxD1.ToolTip")); // 260531Cl
         numericBoxD1.BackColor = System.Drawing.Color.Transparent;
         numericBoxD1.DecimalPlaces = 2;
         numericBoxD1.Maximum = 100D;
@@ -398,18 +428,20 @@ partial class SearchCrystalControl
         numericBoxD1.Name = "numericBoxD1";
         numericBoxD1.SkipEventDuringInput = false;
         numericBoxD1.SmartIncrement = true;
-        numericBoxD1.ThonsandsSeparator = true;
+        numericBoxD1.ThousandsSeparator = true;
         numericBoxD1.KeyDown += textBoxSearchName_KeyDown;
         // 
         // checkBoxIgnoreScatteringFactor
         // 
         resources.ApplyResources(checkBoxIgnoreScatteringFactor, "checkBoxIgnoreScatteringFactor");
+        toolTip.SetToolTip(checkBoxIgnoreScatteringFactor, resources.GetString("checkBoxIgnoreScatteringFactor.ToolTip")); // 260531Cl
         checkBoxIgnoreScatteringFactor.Name = "checkBoxIgnoreScatteringFactor";
         checkBoxIgnoreScatteringFactor.UseVisualStyleBackColor = true;
         // 
         // checkBoxDensity
         // 
         resources.ApplyResources(checkBoxDensity, "checkBoxDensity");
+        toolTip.SetToolTip(checkBoxDensity, resources.GetString("checkBoxDensity.ToolTip")); // 260531Cl
         checkBoxDensity.Name = "checkBoxDensity";
         checkBoxDensity.UseVisualStyleBackColor = true;
         checkBoxDensity.CheckedChanged += checkBoxSearch_CheckedChanged;
@@ -426,6 +458,7 @@ partial class SearchCrystalControl
         // numericBoxDensity
         // 
         resources.ApplyResources(numericBoxDensity, "numericBoxDensity");
+        toolTip.SetToolTip(numericBoxDensity, resources.GetString("numericBoxDensity.ToolTip")); // 260531Cl
         numericBoxDensity.BackColor = System.Drawing.Color.Transparent;
         numericBoxDensity.DecimalPlaces = 3;
         numericBoxDensity.Maximum = 100D;
@@ -433,12 +466,13 @@ partial class SearchCrystalControl
         numericBoxDensity.Name = "numericBoxDensity";
         numericBoxDensity.SkipEventDuringInput = false;
         numericBoxDensity.SmartIncrement = true;
-        numericBoxDensity.ThonsandsSeparator = true;
+        numericBoxDensity.ThousandsSeparator = true;
         numericBoxDensity.KeyDown += textBoxSearchName_KeyDown;
         // 
         // numericBoxDensityErr
         // 
         resources.ApplyResources(numericBoxDensityErr, "numericBoxDensityErr");
+        toolTip.SetToolTip(numericBoxDensityErr, resources.GetString("numericBoxDensityErr.ToolTip")); // 260531Cl
         numericBoxDensityErr.BackColor = System.Drawing.Color.Transparent;
         numericBoxDensityErr.DecimalPlaces = 1;
         numericBoxDensityErr.Maximum = 50D;
@@ -447,7 +481,7 @@ partial class SearchCrystalControl
         numericBoxDensityErr.RadianValue = 0.052359877559829883D;
         numericBoxDensityErr.ShowUpDown = true;
         numericBoxDensityErr.SkipEventDuringInput = false;
-        numericBoxDensityErr.ThonsandsSeparator = true;
+        numericBoxDensityErr.ThousandsSeparator = true;
         numericBoxDensityErr.UpDown_Increment = 0.5D;
         numericBoxDensityErr.Value = 3D;
         numericBoxDensityErr.KeyDown += textBoxSearchName_KeyDown;
@@ -462,7 +496,9 @@ partial class SearchCrystalControl
         // buttonSearch
         // 
         resources.ApplyResources(buttonSearch, "buttonSearch");
-        buttonSearch.BackColor = System.Drawing.Color.Chocolate;
+        toolTip.SetToolTip(buttonSearch, resources.GetString("buttonSearch.ToolTip")); // 260531Cl
+        //buttonSearch.BackColor = System.Drawing.Color.Chocolate; // 260520Cl: orange→SteelBlue (主要アクション色を統一)
+        buttonSearch.BackColor = System.Drawing.Color.SteelBlue;
         buttonSearch.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
         buttonSearch.Name = "buttonSearch";
         buttonSearch.UseVisualStyleBackColor = false;
@@ -489,6 +525,8 @@ partial class SearchCrystalControl
     }
 
     #endregion
+
+        public System.Windows.Forms.ToolTip toolTip; // (260531Ch) 260531Cl private->public: FormMainのToolTip表示トグルから一括制御するため
 
     private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     private System.Windows.Forms.CheckBox checkBoxSearchName;

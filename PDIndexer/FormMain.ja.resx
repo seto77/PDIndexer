@@ -321,8 +321,9 @@
     <value>横軸を最後に読み込んだプロファイルのものにそろえる</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
-    <value>プロファイルを読み込み後、横軸モードを変更します。
- </value>
+    <value>プロファイル読み込み時に、横軸の
+設定（線源・波長・軸モード）をその
+ファイルに合わせて自動的に切り替えます。</value>
   </data>
   <data name="tabPage2.Location" type="System.Drawing.Point, System.Drawing">
     <value>4, 27</value>
@@ -770,8 +771,7 @@
     <value>プロファイル情報</value>
   </data>
   <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
-    <value>プロファイルの詳しい情報を表示/設定します。
-</value>
+    <value>選択中プロファイルの詳細設定ウィンドウを開きます。</value>
   </data>
   <data name="checkBoxAll.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -813,7 +813,7 @@
     <value>回折線/結晶情報 (C)</value>
   </data>
   <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
-    <value>結晶の詳しい情報を表示/設定します。 </value>
+    <value>選択中の結晶の詳細設定ウィンドウを開きます。</value>
   </data>
   <data name="toolStripButtonCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt</value>
@@ -856,7 +856,7 @@
 /結晶情報 (C)</value>
   </data>
   <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
-    <value>結晶の詳しい情報を表示/設定します</value>
+    <value>結晶の詳細設定ウィンドウを開閉します。</value>
   </data>
   <data name="toolStripSeparator4.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 49</value>
@@ -894,7 +894,7 @@
 情報 (P)</value>
   </data>
   <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
-    <value>プロファイルの詳しい情報を表示/設定します。</value>
+    <value>プロファイルの詳細設定ウィンドウを開閉します。</value>
   </data>
   <data name="toolStripSeparator6.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 49</value>
@@ -930,7 +930,8 @@
 方程式 (E)</value>
   </data>
   <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
-    <value>状態方程式から圧力を算出します</value>
+    <value>状態方程式ウィンドウを開閉し、標準物質の
+格子体積から圧力を算出します。</value>
   </data>
   <data name="toolStripSeparator8.Size" type="System.Drawing.Size, System.Drawing">
     <value>6, 49</value>
@@ -1354,5 +1355,217 @@
   </data>
   <data name="$this.ToolTip" xml:space="preserve">
     <value />
+  </data>
+  <data name="radioButtonLinearity.ToolTip" xml:space="preserve">
+    <value>強度を縦軸リニア（線形）スケールで表示します。</value>
+  </data>
+  <data name="radioButtonLogarithm.ToolTip" xml:space="preserve">
+    <value>強度を縦軸対数スケールで表示します
+（微弱なピークが見やすくなります）。</value>
+  </data>
+  <data name="radioButtonRawCounts.ToolTip" xml:space="preserve">
+    <value>各点の生のカウント値（ステップ幅で割らない）を表示します。</value>
+  </data>
+  <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
+    <value>1 ステップあたりのカウント（CPS = カウント
+/ ステップ幅）に正規化して表示します。</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>縦軸（強度軸）の表示モードを選びます。</value>
+  </data>
+  <data name="checkBoxChangeColor.ToolTip" xml:space="preserve">
+    <value>マルチプロファイル表示時に、新しく追加する
+プロファイルへ自動的に色を割り当てます。</value>
+  </data>
+  <data name="checkBoxErrorBar.ToolTip" xml:space="preserve">
+    <value>プロファイルが誤差値を持つ場合に、
+各データ点へエラーバーを表示します。</value>
+  </data>
+  <data name="checkBoxShowScaleLine.ToolTip" xml:space="preserve">
+    <value>プロファイル表示領域に目盛り（グリッド）線を表示します。</value>
+  </data>
+  <data name="checkBoxAll.ToolTip" xml:space="preserve">
+    <value>全プロファイルのチェックを一括でオン
+/ オフします（全表示 / 全非表示）。</value>
+  </data>
+  <data name="numericBoxUpperX.ToolTip" xml:space="preserve">
+    <value>横軸（2θ／d／エネルギー等）の表示範囲の上限値で
+す。右クリックメニューで軸の限界値を設定できます。</value>
+  </data>
+  <data name="numericBoxLowerX.ToolTip" xml:space="preserve">
+    <value>横軸の表示範囲の下限値です。右
+クリックメニューで軸の限界値を設定できます。</value>
+  </data>
+  <data name="numericBoxUpperY.ToolTip" xml:space="preserve">
+    <value>縦軸（強度）の表示範囲の上限値です。</value>
+  </data>
+  <data name="numericBoxLowerY.ToolTip" xml:space="preserve">
+    <value>縦軸（強度）の表示範囲の下限値です。</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip1" xml:space="preserve">
+    <value>軸目盛りの数値文字の色を設定します。</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip" xml:space="preserve">
+    <value>軸目盛りの数値文字の色を設定します。</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip1" xml:space="preserve">
+    <value>目盛り線・グリッド線の色を設定します。</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip" xml:space="preserve">
+    <value>目盛り線・グリッド線の色を設定します。</value>
+  </data>
+  <data name="colorControlBack.ToolTip1" xml:space="preserve">
+    <value>プロファイル描画領域の背景色を設定します。</value>
+  </data>
+  <data name="colorControlBack.ToolTip" xml:space="preserve">
+    <value>プロファイル描画領域の背景色を設定します。</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>軸目盛りの数値文字の色を設定します。</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>目盛り線・グリッド線の色を設定します。</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>プロファイル描画領域の背景色を設定します。</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
+    <value>ピークフィッティングウィンドウを開閉し、回折ピーク
+（位置・半値全幅・強度）をフィットします。</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.ToolTipText" xml:space="preserve">
+    <value>選択中の結晶を CIF 形式で保存します。</value>
+  </data>
+  <data name="toolStripButtonCellFinder.ToolTipText" xml:space="preserve">
+    <value>セルファインダーウィンドウを開閉し、
+ピーク位置から格子定数を探索します。</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.ToolTipText" xml:space="preserve">
+    <value>連続解析ウィンドウを開閉し、複数ファイルを一括処理します。</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.ToolTipText" xml:space="preserve">
+    <value>原子位置探索ウィンドウを開閉し、
+回折強度から原子座標を探索します。</value>
+  </data>
+  <data name="toolStripButtonLPO.ToolTipText" xml:space="preserve">
+    <value>LPO（格子選択配向）解析ウィンドウを開閉します。</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>回折プロファイルファイルを新規リストとして読み込みます。</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>読み込み済みの全プロファイルを .pdi2 形式で保存します。</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.ToolTipText" xml:space="preserve">
+    <value>選択中のプロファイルをテキストまた
+は GSAS ファイルへ書き出します。</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>プロファイルをカンマ区切り（CSV）ファイルへ書き出します。</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>プロファイルをタブ区切り（TSV）ファイルへ書き出します。</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>プロファイルを GSAS（リートベルト解析）形式で書き出します。</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>結晶データ（XML）を新規リストとして読み込みます。</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>結晶データ（XML）を読み込み、現在のリストへ追加します。</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>現在の結晶リストをファイルに保存します。</value>
+  </data>
+  <data name="toolStripMenuItemImport.ToolTipText" xml:space="preserve">
+    <value>CIF／AMC ファイルから結晶構造を取り込みます。</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>結晶リストを初期（既定）状態に戻します。</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.ToolTipText" xml:space="preserve">
+    <value>印刷のページ設定ダイアログを開きます。</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.ToolTipText" xml:space="preserve">
+    <value>プロファイル表示の印刷プレビューを表示します。</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>プロファイル表示を印刷します。</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>表示内容をビットマップとしてクリップボードへコピーします。</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>表示内容をメタファイル（ベクター）と
+してクリップボードへコピーします。</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.ToolTipText" xml:space="preserve">
+    <value>表示内容を EMF メタファイルとして保存します。</value>
+  </data>
+  <data name="closeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>PDIndexer を終了します。</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>このウィンドウ（メイン画面）の
+ツールチップ表示を有効／無効にします。</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>クリップボードを監視し、他アプリ（IPAnalyzer 等）から
+コピーされたプロファイル／結晶を自動で取り込みます。</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>指定フォルダを監視し、新しく作成された
+.pdi プロファイルを自動的に読み込みます。</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>監視対象とするフォルダを選択します。</value>
+  </data>
+  <data name="toolStripTextBoxDirectoryToWatch.ToolTipText" xml:space="preserve">
+    <value>監視対象フォルダのパスです（直接入力できます）。</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>チェックすると、終了時にレジストリの保存設定を
+すべて消去します（再起動で初期化）。</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>チェックすると、終了時に結晶リストを
+自動保存し、次回起動時に読み込みます。</value>
+  </data>
+  <data name="editorToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>マクロエディタウィンドウを開きます。</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>バージョン情報・作者情報を表示します。</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>オンラインで最新版を確認し、
+ダウンロード／インストールします。</value>
+  </data>
+  <data name="hintToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>使い方のヒントを表示します。</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>PDIndexer のマニュアル（PDF）を開きます。</value>
+  </data>
+  <data name="englishToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>UI 言語を英語に切り替えます（再起動が必要）。</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>UI 言語を日本語に切り替えます（再起動が必要）。</value>
+  </data>
+  <data name="numericBoxUpperX.ToolTip1" xml:space="preserve">
+    <value>横軸（2θ／d／エネルギー等）の表示範囲の上限値で
+す。右クリックメニューで軸の限界値を設定できます。</value>
+  </data>
+  <data name="numericBoxLowerX.ToolTip1" xml:space="preserve">
+    <value>横軸の表示範囲の下限値です。右
+クリックメニューで軸の限界値を設定できます。</value>
+  </data>
+  <data name="numericBoxUpperY.ToolTip1" xml:space="preserve">
+    <value>縦軸（強度）の表示範囲の上限値です。</value>
+  </data>
+  <data name="numericBoxLowerY.ToolTip1" xml:space="preserve">
+    <value>縦軸（強度）の表示範囲の下限値です。</value>
   </data>
 </root>
