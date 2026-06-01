@@ -9,6 +9,15 @@
   border-bottom: 0.05rem solid var(--md-default-fg-color--lightest);
 }
 
+/* 260602Cl: 検索ボックスは本体背景と区別がつくよう薄いグレーにする (ReciPro と同じ)。 */
+.md-search__input {
+  background-color: var(--md-default-fg-color--lightest);
+}
+.md-search__input::placeholder,
+.md-search__icon {
+  color: var(--md-default-fg-color--light);
+}
+
 .md-tabs {
   display: none;
 }
@@ -66,9 +75,53 @@
   width: 0.9rem;
 }
 
+/* 260602Cl: ヘッダーを少し低くする (既定 2.4rem → 2.0rem)。ReciPro と揃える。
+   高さは .md-header__title が支配するので、アイコンボタン/検索窓も一緒に詰める。 */
+.md-header__title {
+  height: 2.0rem;
+  line-height: 2.0rem;
+}
+.md-header__button {
+  margin-top: 0.1rem;
+  margin-bottom: 0.1rem;
+  padding: 0.3rem;
+}
+.md-search__input {
+  height: 1.8rem;
+}
+
 @media screen and (min-width: 76.25em) {
   .md-sidebar {
     top: 2.0rem;
-    width: 10rem;
+    /* 260602Cl: 左ナビと右目次を狭めて本体を広げる (ReciPro と同じ 9.5rem)。 */
+    width: 9.5rem;
+  }
+}
+
+/* 260602Cl: デスクトップ相当の中間幅 (60–76.25em) でも左ナビ (primary sidebar) を
+   ハンバーガーに畳まず常時表示する。これが無いとこの幅で左サイドバーが消える。ReciPro 移植。 */
+@media screen and (min-width: 60em) and (max-width: 76.234375em) {
+  .md-header__button[for="__drawer"] {
+    display: none;
+  }
+
+  .md-main__inner {
+    display: flex;
+  }
+
+  .md-sidebar--primary {
+    display: block;
+    flex: 0 0 9.5rem;
+    height: calc(100vh - 2.0rem);
+    opacity: 1;
+    order: 0;
+    position: sticky;
+    top: 2.0rem;
+    transform: none;
+    visibility: visible;
+  }
+
+  .md-content {
+    min-width: 0;
   }
 }
