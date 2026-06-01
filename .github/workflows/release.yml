@@ -115,7 +115,7 @@ jobs:
         if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
-          $vdproj = Get-Content "PDindexerSetup\PDindexerSetup.vdproj" -Raw
+          $vdproj = Get-Content "PDIndexerSetup\PDIndexerSetup.vdproj" -Raw
 
           # ProductVersion を更新 (例: "8:0.4.459")
           $vdproj = $vdproj -replace '"ProductVersion" = "8:[^"]*"', '"ProductVersion" = "8:${{ steps.version.outputs.product_version }}"'
@@ -126,7 +126,7 @@ jobs:
           $vdproj = $vdproj -replace '"ProductCode" = "8:\{[^}]+\}"', "`"ProductCode`" = `"8:$newProductCode`""
           $vdproj = $vdproj -replace '"PackageCode" = "8:\{[^}]+\}"', "`"PackageCode`" = `"8:$newPackageCode`""
 
-          Set-Content "PDindexerSetup\PDindexerSetup.vdproj" $vdproj -NoNewline
+          Set-Content "PDIndexerSetup\PDIndexerSetup.vdproj" $vdproj -NoNewline
           Write-Host "ProductVersion = 0.${{ steps.version.outputs.version }}"
           Write-Host "ProductCode    = $newProductCode"
           Write-Host "PackageCode    = $newPackageCode"
@@ -150,7 +150,7 @@ jobs:
         id: pack_solution
         shell: pwsh
         run: |
-          $solutionPath = Join-Path (Get-Location) "PDindexerSetup.CI.sln"
+          $solutionPath = Join-Path (Get-Location) "PDIndexerSetup.CI.sln"
           @'
           Microsoft Visual Studio Solution File, Format Version 12.00
           # Visual Studio Version 18
@@ -162,7 +162,7 @@ jobs:
           EndProject
           Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{B6074BFC-0860-42DE-9525-49D97029F595}"
           EndProject
-          Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDindexerSetup", "PDindexerSetup\PDindexerSetup.vdproj", "{80EF52B7-7757-4980-A47A-0772A37AB289}"
+          Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDIndexerSetup", "PDIndexerSetup\PDIndexerSetup.vdproj", "{80EF52B7-7757-4980-A47A-0772A37AB289}"
           EndProject
           Global
           	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -186,14 +186,14 @@ jobs:
         shell: pwsh
         run: |
           $log = Join-Path $env:RUNNER_TEMP "devenv-setup.log"
-          & "${{ steps.devenv.outputs.cli }}" "${{ steps.pack_solution.outputs.path }}" /Build "Release|x64" /Project "PDindexerSetup" /Out $log
+          & "${{ steps.devenv.outputs.cli }}" "${{ steps.pack_solution.outputs.path }}" /Build "Release|x64" /Project "PDIndexerSetup" /Out $log
           $exitCode = $LASTEXITCODE
           if (Test-Path $log) { Get-Content $log }
-          if ($exitCode -ne 0) { throw "PDindexerSetup build failed (exit $exitCode)." }
+          if ($exitCode -ne 0) { throw "PDIndexerSetup build failed (exit $exitCode)." }
 
           # MSI の存在確認
-          $msi = Get-ChildItem -Path "PDindexerSetup" -Filter "PDindexerSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $msi) { throw "PDindexerSetup.msi was not found." }
+          $msi = Get-ChildItem -Path "PDIndexerSetup" -Filter "PDIndexerSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+          if (-not $msi) { throw "PDIndexerSetup.msi was not found." }
           Write-Host "MSI built: $($msi.FullName)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
 
