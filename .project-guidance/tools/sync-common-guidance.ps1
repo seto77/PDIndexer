@@ -11,11 +11,16 @@ $commonFiles = @(
     "project-guidance運用方針(共通).md",
     "github pages編集方針(共通).md",
     "ツールチップ編集方針(共通).md",
-    "WinForms_ToolTip_共通注意点.md",
+    # 260601Cl: WinForms_ToolTip_共通注意点.md を廃止（正本: ツールチップ編集方針(共通).md）。削除は $removedCommonFiles で伝播。
     "WinForms UI編集方針(共通).md",
     "ローカライズ・用語方針(共通).md",
     "共有ライブラリ編集方針(共通).md",
     "tools\sync-common-guidance.ps1"
+)
+
+# 260601Cl 追加: 廃止した共通ファイル。-Apply で全リポジトリから削除し、check では残存を [LINGER] として検出する。
+$removedCommonFiles = @(
+    "WinForms_ToolTip_共通注意点.md"
 )
 
 function Get-RepoRootFromScript {
@@ -110,6 +115,25 @@ foreach ($repoName in $repoNames) {
             Write-Host "[OK] $repoName :: $relativeFile"
         } else {
             Write-Host "[DIFF] $repoName :: $relativeFile"
+            $hadMismatch = $true
+        }
+    }
+
+    # 260601Cl 追加: 廃止ファイルの削除伝播 / 残存検出。
+    foreach ($relativeFile in $removedCommonFiles) {
+        $dst = Join-Path $guidanceRoot $relativeFile
+        if (-not (Test-Path -LiteralPath $dst)) {
+            if (-not $Apply) { Write-Host "[REMOVED-OK] $repoName :: $relativeFile" }
+            continue
+        }
+        if ($Apply) {
+            if (-not (Test-IsUnderRoot $dst $repoRoot)) {
+                throw "Safety check failed for removal path: $dst"
+            }
+            Remove-Item -LiteralPath $dst -Force
+            Write-Host "[DELETED] $repoName :: $relativeFile"
+        } else {
+            Write-Host "[LINGER] $repoName :: $relativeFile"
             $hadMismatch = $true
         }
     }
