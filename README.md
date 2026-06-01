@@ -20,21 +20,25 @@
 
 ## Install
 
-* Access https://github.com/seto77/PDIndexer/releases/latest, download *PDIndexerSetup.msi*, and execute it.
-* *PDIndexer* runs on Windows OS with ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
+* Access https://github.com/seto77/PDIndexer/releases/latest and download the latest release.
+* Recommended: download `PDIndexerSetup.msi` and run the installer.
+* Alternative for managed Windows PCs: download `PDIndexer-*-win-x64-portable.zip`, extract it to a user-writable folder, and run `PDIndexer.exe` from the extracted folder.
+* The MSI installer requires ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
+* The portable ZIP package is self-contained for Windows x64 and does not require a separate .NET Desktop Runtime installation. It is a no-install package, but it still stores user settings and copied default data under the current user's AppData folder. <!-- 260601Ch -->
 * *PDIndexer* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
 
 ### Note on Windows Security Warnings
 
 * Please download *PDIndexer* only from the official GitHub Releases page: https://github.com/seto77/PDIndexer/releases/latest
 * On some Windows systems, Microsoft Defender SmartScreen or Smart App Control may display a warning before the installer is executed. This may happen for newly built or narrowly distributed research software, and the warning itself does not necessarily mean that the installer is malicious.
-* If you would like to verify the downloaded installer yourself, you can calculate its SHA256 hash in PowerShell:
+* If you would like to verify a downloaded file yourself, you can calculate its SHA256 hash in PowerShell:
 
 ```powershell
 Get-FileHash .\PDIndexerSetup.msi -Algorithm SHA256
+Get-FileHash .\PDIndexer-*-win-x64-portable.zip -Algorithm SHA256
 ```
 
-* For an additional check, you may also scan the installer with a multi-engine service such as VirusTotal.
+* For an additional check, you may also scan the downloaded file with a multi-engine service such as VirusTotal.
 
 ## Privacy
 

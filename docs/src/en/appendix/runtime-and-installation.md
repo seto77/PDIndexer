@@ -5,18 +5,23 @@ This page describes how to install PDIndexer and the environment recommended for
 
 ## Installation
 
-Download the latest installer `PDIndexerSetup.msi` from the GitHub releases page and run it.
+Download the latest release from the GitHub releases page.
 
 - Download: <https://github.com/seto77/PDIndexer/releases/latest>
 
-Double-click the downloaded `PDIndexerSetup.msi` to start installation.
+The recommended method is the MSI installer. Download `PDIndexerSetup.msi` and double-click it to start installation.
+
+If MSI installation is blocked on a managed Windows PC, use the no-install ZIP package as an alternative. Download `PDIndexer-*-win-x64-portable.zip`, extract the full folder to a user-writable location, and run `PDIndexer.exe` from the extracted folder. Do not run `PDIndexer.exe` directly from inside the ZIP viewer. <!-- 260601Ch -->
 
 !!! note "About the Windows protection warning"
-    When you run an unsigned installer, Windows may display a SmartScreen warning ("Windows protected your PC"). If this happens, click **More info** and then choose **Run anyway** to continue the installation.
+    When you run newly downloaded unsigned research software, Windows may display a SmartScreen warning ("Windows protected your PC"). If this happens, click **More info** and then choose **Run anyway** to continue.
+
+!!! note "About the no-install ZIP package"
+    The ZIP package is intended as an alternative for environments where MSI installation, administrator approval, or separate .NET Desktop Runtime installation is difficult. It is not a fully self-contained settings folder: PDIndexer still stores user settings and copied default data under the current user's AppData folder, and may store per-user options under `HKEY_CURRENT_USER\Software\Crystallography\PDIndexer`.
 
 ## Runtime requirements
 
-The following runtime is required to run PDIndexer.
+The following runtime is required when PDIndexer is installed from the MSI installer.
 
 | Item | Requirement |
 | --- | --- |
@@ -27,6 +32,8 @@ The following runtime is required to run PDIndexer.
     The download page offers two products: the ".NET Runtime" and the ".NET Desktop Runtime". Because PDIndexer is a WinForms application, be sure to install the **.NET Desktop Runtime**. The plain ".NET Runtime" alone will not launch the program.
 
 - Download the runtime: <https://dotnet.microsoft.com/download/dotnet/10.0>
+
+The no-install ZIP package is self-contained for Windows x64 and does not require a separate .NET Desktop Runtime installation. <!-- 260601Ch -->
 
 !!! note "About the version stated in older docs"
     The legacy manual (docx) mentions ".NET Desktop Runtime 6.0 or later", but the current PDIndexer requires **.NET 10.0**. Follow the requirement of the latest version.

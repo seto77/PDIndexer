@@ -1,5 +1,6 @@
 # 260406Cl PDIndexer 用に CSManager の release.yml を改修
-name: Build And Release Installer
+# 260601Ch portable ZIP も同じリリースに添付するため、MSI を主配布のまま workflow 名を更新
+name: Build And Release Installer And Portable ZIP
 
 on:
   push:
@@ -58,7 +59,15 @@ jobs:
           # History の先頭行をリリースノートに使う
           $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
           $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
-          $historyLine | Set-Content -Path $notesPath -Encoding UTF8
+          # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260601Ch 旧: 変更履歴 1 行のみ
+          @( # 260601Ch MSI を第一候補、portable ZIP を管理PC向け代替として release notes に明記
+            $historyLine
+            ""
+            "Assets:"
+            "- PDIndexerSetup.msi: recommended installer."
+            "- PDIndexer-v.$ver-win-x64-portable.zip: no-install, self-contained alternative for managed Windows PCs."
+            "- SHA256SUMS.txt: SHA256 hashes for release files."
+          ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
           $now = [System.DateTime]::UtcNow
@@ -101,6 +110,38 @@ jobs:
         if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: dotnet build PDIndexer\PDIndexer.csproj -c Release -p:Platform=x64 -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }} --no-restore
+
+      - name: Publish portable ZIP
+        if: steps.version.outputs.needed == 'true'
+        id: portable
+        shell: pwsh
+        run: |
+          # 260601Ch 管理された Windows PC 向けの代替配布。MSI が第一候補、ZIP は管理者権限や .NET Runtime 導入が難しい環境用。
+          $publishDir = Join-Path $env:RUNNER_TEMP "PDIndexer-portable\PDIndexer"
+          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ steps.version.outputs.version }}-win-x64-portable.zip"
+
+          if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
+          if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
+
+          dotnet publish PDIndexer\PDIndexer.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -p:Platform=x64 `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:PublishSingleFile=false `
+            -p:PublishTrimmed=false `
+            -p:DebugType=None `
+            -p:DebugSymbols=false `
+            -o $publishDir
+
+          Copy-Item "LICENSE.md" $publishDir -Force
+          Copy-Item "README-PORTABLE.txt" $publishDir -Force
+          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "PDIndexer") -DestinationPath $zipPath -Force
+
+          Write-Host "Portable ZIP built: $zipPath"
+          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
 
       - name: Update installer version in vdproj
         if: steps.version.outputs.needed == 'true'
@@ -188,12 +229,34 @@ jobs:
           Write-Host "MSI built: $($msi.FullName)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
 
+      - name: Generate release checksums
+        if: steps.version.outputs.needed == 'true'
+        id: checksums
+        shell: pwsh
+        run: |
+          # 260601Ch MSI と portable ZIP の検証用 SHA256 を同梱する。
+          $checksums = Join-Path (Get-Location) "SHA256SUMS.txt"
+          $files = @(
+            "${{ steps.build_installer.outputs.msi_path }}",
+            "${{ steps.portable.outputs.zip_path }}"
+          )
+          $lines = foreach ($file in $files) {
+            $hash = Get-FileHash $file -Algorithm SHA256
+            "$($hash.Hash)  $(Split-Path $file -Leaf)"
+          }
+          $lines | Set-Content -Path $checksums -Encoding ASCII
+          Get-Content $checksums
+          "checksums_path=$checksums" >> $env:GITHUB_OUTPUT
+
       - name: Upload workflow artifacts
         if: steps.version.outputs.needed == 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: PDIndexer-installer-v.${{ steps.version.outputs.version }}
-          path: ${{ steps.build_installer.outputs.msi_path }}
+          name: PDIndexer-release-v.${{ steps.version.outputs.version }}
+          path: |
+            ${{ steps.build_installer.outputs.msi_path }}
+            ${{ steps.portable.outputs.zip_path }}
+            ${{ steps.checksums.outputs.checksums_path }}
 
       - name: Create tag and GitHub Release
         if: steps.version.outputs.needed == 'true'
@@ -209,8 +272,10 @@ jobs:
           git tag -a $tag -m "PDIndexer ${{ steps.version.outputs.version }}"
           git push origin $tag
 
-          # リリースを作成して MSI を添付
+          # 260601Ch リリースを作成して、第一候補の MSI と第二候補の portable ZIP を添付
           gh release create $tag `
             "${{ steps.build_installer.outputs.msi_path }}" `
+            "${{ steps.portable.outputs.zip_path }}" `
+            "${{ steps.checksums.outputs.checksums_path }}" `
             --title "PDIndexer $tag" `
             --notes-file "${{ steps.version.outputs.notes_path }}"
