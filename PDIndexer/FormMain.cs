@@ -713,6 +713,11 @@ public partial class FormMain : Form
         englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
         japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
 
+        //260602Cl 追加 Portable-Zip版は実行フォルダに README-PORTABLE.txt を同梱する (MSI版には無い)。
+        //この場合インストーラ(MSI)による更新が成立しないため、Updateメニューを非表示にする。
+        if (File.Exists(Path.Combine(AppContext.BaseDirectory, "README-PORTABLE.txt")))
+            programUpdatesToolStripMenuItem.Visible = false;
+
         initialDialog = new Crystallography.Controls.CommonDialog()
         {
             Owner = this,
