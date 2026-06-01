@@ -1,4 +1,4 @@
-# PDIndexer License (MIT)
+MIT License
 
 Copyright (c) 2005-2025 Yusuke SETO
 
