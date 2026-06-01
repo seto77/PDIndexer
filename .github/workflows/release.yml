@@ -111,38 +111,6 @@ jobs:
         shell: pwsh
         run: dotnet build PDIndexer\PDIndexer.csproj -c Release -p:Platform=x64 -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }} --no-restore
 
-      - name: Publish portable ZIP
-        if: steps.version.outputs.needed == 'true'
-        id: portable
-        shell: pwsh
-        run: |
-          # 260601Ch 管理された Windows PC 向けの代替配布。MSI が第一候補、ZIP は管理者権限や .NET Runtime 導入が難しい環境用。
-          $publishDir = Join-Path $env:RUNNER_TEMP "PDIndexer-portable\PDIndexer"
-          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ steps.version.outputs.version }}-win-x64-portable.zip"
-
-          if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
-          if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
-
-          dotnet publish PDIndexer\PDIndexer.csproj `
-            -c Release `
-            -r win-x64 `
-            --self-contained true `
-            -p:Platform=x64 `
-            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
-            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
-            -p:PublishSingleFile=false `
-            -p:PublishTrimmed=false `
-            -p:DebugType=None `
-            -p:DebugSymbols=false `
-            -o $publishDir
-
-          Copy-Item "LICENSE.md" $publishDir -Force
-          Copy-Item "README-PORTABLE.txt" $publishDir -Force
-          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "PDIndexer") -DestinationPath $zipPath -Force
-
-          Write-Host "Portable ZIP built: $zipPath"
-          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
-
       - name: Update installer version in vdproj
         if: steps.version.outputs.needed == 'true'
         shell: pwsh
@@ -228,6 +196,39 @@ jobs:
           if (-not $msi) { throw "PDindexerSetup.msi was not found." }
           Write-Host "MSI built: $($msi.FullName)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
+
+      - name: Publish portable ZIP
+        if: steps.version.outputs.needed == 'true'
+        id: portable
+        shell: pwsh
+        run: |
+          # 260601Ch 管理された Windows PC 向けの代替配布。MSI が第一候補、ZIP は管理者権限や .NET Runtime 導入が難しい環境用。
+          # 260602Cl このステップは installer (MSI) ビルドより後に置く。self-contained publish が obj\x64\Release を symbol 無しで再生成し PDIndexer.pdb を消すため、MSI ビルドより前に走らせると vdproj の Debug Symbols 出力グループが pdb を見つけられず MSI ビルドが失敗する。
+          $publishDir = Join-Path $env:RUNNER_TEMP "PDIndexer-portable\PDIndexer"
+          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ steps.version.outputs.version }}-win-x64-portable.zip"
+
+          if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
+          if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
+
+          dotnet publish PDIndexer\PDIndexer.csproj `
+            -c Release `
+            -r win-x64 `
+            --self-contained true `
+            -p:Platform=x64 `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:PublishSingleFile=false `
+            -p:PublishTrimmed=false `
+            -p:DebugType=None `
+            -p:DebugSymbols=false `
+            -o $publishDir
+
+          Copy-Item "LICENSE.md" $publishDir -Force
+          Copy-Item "README-PORTABLE.txt" $publishDir -Force
+          Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "PDIndexer") -DestinationPath $zipPath -Force
+
+          Write-Host "Portable ZIP built: $zipPath"
+          "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
 
       - name: Generate release checksums
         if: steps.version.outputs.needed == 'true'
