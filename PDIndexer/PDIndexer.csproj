@@ -14,6 +14,8 @@
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
     <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
     <Platforms>x64</Platforms>
+    <!-- 260602Cl: 自動生成 typed DataSet (DataSet.Designer.cs) が formatter ベースのシリアライズ警告 SYSLIB0051 を多数出すため抑制 (Crystallography.Controls と同方針) -->
+    <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
