@@ -107,9 +107,28 @@ PDIndexer は GUI 操作マニュアルなので、UI 要素名は実際の GUI 
 
 自動キャプチャの品質が悪いフォームや、説明上トリミング・注釈が必要な画像は、手動画像を `cap-*-manual` に置き、本文から明示的に参照する。
 
-### 現状
+### 自動キャプチャ機構（260601Cl 実装）
 
-2026-05-31 時点では、PDIndexer 側には ReciPro と同等の Pages 用自動キャプチャ保存先変更はまだ入れていない。まずは Markdown とフォルダ構成を整え、後続作業でキャプチャ機構を追加する。
+ReciPro と同じ思想・同じ呼び出し方の GUI 一括キャプチャを PDIndexer に実装した。
+
+- `PDIndexer/GuiCapture.cs`: 全フォームを画面内 (0,0) に最前面表示し `CopyFromScreen` で撮る開発者ツール（PDIndexer は OpenGL 不使用のため GL 描画待ちは除去）。`FormMain` ＋ `FormMain` が配線して保持する子ウィンドウ（Crystal/Profile/EOS/Fitting/Sequential など＋ `FormMacro`）＋ parameterless な単独フォームを撮る。
+- `PDIndexer/Program.cs`: `--capture [出力ディレクトリ] [en|ja]` または `--capture [en|ja]`（出力先省略時は `docs/src/assets/cap-{en|ja}-auto`）。通常起動には影響しない。
+- `PDIndexer/GuiCaptureTargets.cs`: Designer (.Designer.cs) を改変せず partial クラスのフィールド `CaptureExtender` ＋ `SetCapture` でコントロール単位クロップ対象を指定（`FormProfileSetting` の処理ステップ、`FormEOS` の物質、`FormFitting` の各 groupBox、`FormSequentialAnalysis` の各出力タブ）。`Crystallography.Controls` 側の共有コントロール（crystalControl 等）は既存タグでクロップされる。
+- `FormMain.PrepareCaptureRepresentativeState()` / `EnumerateCaptureDependentForms()`: 代表結晶（Au/MgO/Si）をチェックして回折線を描いた代表状態にし、配線済み子フォームを GuiCapture へ渡す。
+- 出力: 粒度は ReciPro と同程度（フォーム全体 + groupBox/panel/tabPage 単位クロップ + メニュー展開クロップ）。命名は ReciPro と同じ `form.Name` 起点のドット連結。
+
+実行（リポルートで）:
+
+```powershell
+dotnet build PDIndexer\PDIndexer.csproj -c Debug -p:Platform=x64
+.\PDIndexer\bin\Debug\PDIndexer.exe --capture ja   # → docs\src\assets\cap-ja-auto
+.\PDIndexer\bin\Debug\PDIndexer.exe --capture en   # → docs\src\assets\cap-en-auto
+```
+
+2026-06-01 時点で両言語とも 49 枚を生成済み（cap-ja-auto は日本語 GUI、cap-en-auto は英語 GUI）。本文は `../assets/cap-{ja,en}-auto/<stem>.png`（付録は `../../assets/...`）で参照する。
+
+!!! warning "撮影は前面・フォーカスのある実画面で"
+    `CopyFromScreen` は物理画面を読むため、`--capture` は画面を前面・表示のまま実行すること（Run 冒頭の CAUTION 参照）。ヘッドレス/非フォアグラウンドのセッションでは、特に `FormMain` のメニュー＋左端ツールバーが描画されずグレーになる（他フォームは問題なし）。きれいな `FormMain.png` を得るには、ユーザーの実デスクトップを前面にしたまま `--capture` を流して撮り直す。
 
 ---
 
@@ -173,11 +192,20 @@ http://127.0.0.1:8020/PDIndexer/ja/
 
 ---
 
-## 7. 後続 TODO
+## 7. 進捗と後続 TODO
 
-- 旧 `PDIndexer/doc/*` の HTML/PDF/DOCX から本文を Markdown へ移行する。
-- 旧スクリーンショットを `docs/src/assets/` へ移すか、現行 GUI から撮り直す。
-- Help メニューと README のリンクを Pages へ切り替える。
-- PDIndexer 用の自動キャプチャ保存先を `docs/src/assets/cap-*-auto` に合わせる。
-- Macro API は `PDIndexer/Macro.cs` の `Help` 属性から自動生成または半自動生成する。
-- `dotnet build` と `mkdocs build --strict` を組み合わせた検証手順を `/pages` 相当の自動更新フローにまとめる。
+### 完了（260601Cl）
+
+- 旧 `PDIndexer/doc/*` の HTML/DOCX と現行 Web 版マニュアル（<https://yseto.net/soft/pdi/>）から、全ページ（0〜8 ＋付録3 ＋ index）を EN/JA で本文移行。`mkdocs build --strict` がクリーンに通る。
+- PDIndexer 用の自動キャプチャ機構を実装し、保存先を `docs/src/assets/cap-{en|ja}-auto` に合わせた（§3 参照）。両言語 49 枚を生成。
+- Macro API ページ（`8-macro`）を `PDIndexer/Macro.cs` の `Help` 属性から生成。
+- UI 要素名は `*.resx`（EN）/`*.ja.resx`（JA）の実ラベルに合わせた。
+
+### 後続 TODO
+
+- `FormMain.png` をユーザーの実デスクトップ前面で撮り直し、メニュー＋ツールバーまで完全描画した版に差し替える（§3 の warning 参照）。
+- 旧 `PDIndexer/doc/*`（PDF/DOCX/HTML）は移行元として残置。本文の正本は `docs/src/`。
+- Help メニューと README のリンクを Pages へ切り替える（Pages の公開フローが安定してから）。
+- `Cell Finder` / `Atomic Position Finder` / `LPO`（応力）など、現状は関連ページ内で簡単に触れているツールに、必要なら独立ページを追加する。
+- `dotnet build` ＋ `--capture en/ja` ＋ `mkdocs build --strict` を組み合わせた検証・更新手順を `/pages` 相当の自動フローにまとめる。
+- cap-*-auto の PNG を公開のため git 管理に含める（個別リポ方針に従う。`.gitignore` で除外されている場合は明示追加）。

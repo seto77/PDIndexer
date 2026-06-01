@@ -368,6 +368,57 @@ public partial class FormMain : Form
         set => formCrystal.crystalControl.Name = value;
     }
 
+    // ---- 260601Cl 追加: GUI 一括キャプチャ (GuiCapture / --capture) 用ヘルパー ----
+    /// <summary>
+    /// 260601Cl 追加: --capture (GuiCapture) 用。Main window をマニュアル代表状態にする。
+    /// 起動直後の初期ダイアログを閉じ、標準物質を 2,3 個チェックして回折線を描き、代表結晶を選択する。
+    /// サンプルプロファイルは同梱していないためグラフは空 (軸のみ) になるが、回折線と結晶選択で典型的な見た目になる。
+    /// </summary>
+    internal bool PrepareCaptureRepresentativeState()
+    {
+        // 起動直後の初期ダイアログ (CommonDialog) は (0,0) に出るため、--capture で (0,0) へ置いた FormMain の
+        // メニュー/ツールバー左上を覆う。閉じて破棄したうえで、その下の領域を確実に再描画する (Invalidate+Update)。
+        try { initialDialog?.Close(); initialDialog?.Dispose(); initialDialog = null; } catch { /* 初期ダイアログのクローズ失敗は無視 */ }
+        Application.DoEvents();
+
+        // 標準物質をいくつかチェックして回折線を表示する (index 0 は Flexible Crystal なので 1 以降から選ぶ)。
+        var representative = -1;
+        foreach (var i in new[] { 1, 5, 11 }) // 既定リストの Au, MgO, Si 付近
+            if (i < CrystalCount)
+            {
+                SetCrystalChecked(i, true);
+                if (representative < 0) representative = i;
+            }
+        if (representative >= 0)
+            CrystalListPosition = representative;
+
+        Invalidate(true); // メニュー・ツールバーを含む全子コントロールを再描画対象にする
+        Update();
+        try { Draw(); } catch { /* 代表描画の失敗は無視 (撮影は最善努力) */ }
+        Application.DoEvents();
+        return representative >= 0;
+    }
+
+    /// <summary>
+    /// 260601Cl 追加: --capture (GuiCapture) 用。FormMain が ctor 経由 (formMain) で配線して保持している
+    /// 子フォーム (toolbar のツール窓 + FormMacro) を返す。これらは reflection 単独生成では formMain=null で
+    /// 正しく描画されないため、配線済みインスタンスを GuiCapture へ渡して撮る。
+    /// </summary>
+    internal IEnumerable<Form> EnumerateCaptureDependentForms()
+    {
+        if (formCrystal != null) yield return formCrystal;
+        if (formProfile != null) yield return formProfile;
+        if (formEOS != null) yield return formEOS;
+        if (formFitting != null) yield return formFitting;
+        if (formSequentialAnalysis != null) yield return formSequentialAnalysis;
+        if (formCellFinder != null) yield return formCellFinder;
+        if (formAtomicPositionFinder != null) yield return formAtomicPositionFinder;
+        if (formLPO != null) yield return formLPO;
+        if (formTwoThetaCalibration != null) yield return formTwoThetaCalibration;
+        if (formDataConverter != null) yield return formDataConverter;
+        if (FormMacro != null) yield return FormMacro;
+    }
+
     // ---- Profile 演算 ----
     public int ProfileOperandCount => formProfile.listBoxTwoProfiles1.Items.Count;
 
@@ -675,7 +726,8 @@ public partial class FormMain : Form
             Width = 580,
         };
 
-        initialDialog.Show();
+        if (!GuiCapture.IsCapturing) // 260601Cl: --capture 中は初期ダイアログを表示しない (FormMain 左上のメニュー/ツールバーを覆わないため)
+            initialDialog.Show();
         Application.DoEvents();
 
         initialDialog.Text = "Now Loading... Initializing 'Profile Parameter' form.";
@@ -914,7 +966,10 @@ public partial class FormMain : Form
         if (mode == Reg.Mode.Write)
             key.SetValue("Version", Version.VersionValue);
 
-        Reg.RW(key, mode, () => Thread.CurrentThread.CurrentUICulture.Name);
+        // 260601Cl: --capture (GuiCapture.ForcedUICulture 設定時) はレジストリ保存値でカルチャを上書きせず、
+        // Program.cs / GuiCapture が強制した en/ja を保つ (上書きすると --capture en でも保存言語=ja の UI で撮られてしまう)。
+        if (GuiCapture.ForcedUICulture == null || mode != Reg.Mode.Read)
+            Reg.RW(key, mode, () => Thread.CurrentThread.CurrentUICulture.Name);
 
         Reg.RW(key, mode, () => Bounds);
         WindowLocation.Adjust(this);
