@@ -1,4 +1,5 @@
-﻿using System;
+﻿global using Crystallography.Controls; //260604Cl 追加: 全FormをFormBase継承にするため
+using System;
 using System.Windows.Forms;
 
 namespace PDIndexer

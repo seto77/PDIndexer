@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace PDIndexer;
 
-public partial class FormDataConverter : Form
+public partial class FormDataConverter : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
     public FormDataConverter()
     {
@@ -14,6 +14,7 @@ public partial class FormDataConverter : Form
         EDXDetectorNumber = 1;
 
         InitializeComponent();
+        HelpPage = "2-pattern-profiles"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
     }
 
     public HorizontalAxisProperty HorizontalAxisProperty

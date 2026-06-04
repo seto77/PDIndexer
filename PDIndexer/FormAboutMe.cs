@@ -9,13 +9,14 @@ namespace PDIndexer;
 /// <summary>
 /// FormAboutMe の概要の説明です。
 /// </summary>
-public partial class FormAboutMe : System.Windows.Forms.Form
+public partial class FormAboutMe : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
 
 
     public FormAboutMe()
     {
         InitializeComponent();
+        HelpPage = "appendix/runtime-and-installation"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
     }
 
     private void buttonOK_Click(object sender, System.EventArgs e)

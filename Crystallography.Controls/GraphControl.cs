@@ -236,7 +236,20 @@ public partial class GraphControl : UserControlBase
     [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
     [Category(" 垂直線")]
     [Description("垂直線の色")]
-    public Color VerticalLineColor { set; get; } = Color.Red;
+    public Color VerticalLineColor { set; get; } = Color.Red;//260603Cl レビューメモ: setterで Draw() を呼ばないため実行時の色変更が次回再描画まで反映されない(AxisLineColor / AxisTextColor / BackgroundColor も同様の不統一)。
+
+    /// <summary>垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか</summary> //260603Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 垂直線")]
+    [Description("垂直線と各プロファイルの交点にマーカー(丸)と値を表示するかどうか")]
+    public bool VerticalLineMarkerVisible { set { verticalLineMarkerVisible = value; Draw(); } get => verticalLineMarkerVisible; }
+    private bool verticalLineMarkerVisible = false;
+
+    /// <summary>交点マーカー(丸)の半径(ピクセル)</summary> //260603Cl 追加
+    [System.ComponentModel.DesignerSerializationVisibility(System.ComponentModel.DesignerSerializationVisibility.Visible)]
+    [Category(" 垂直線")]
+    [Description("交点マーカー(丸)の半径(ピクセル)")]
+    public float VerticalLineMarkerRadius { set; get; } = 3.5f;
 
     private int selectedVerticalLineIndex = -1;
 
@@ -665,6 +678,7 @@ public partial class GraphControl : UserControlBase
 
             if (!YLog)
             {
+                //260603Cl レビューメモ: 全データが負のとき MaximalY *= 1.1 は上方向でなく下方向に余白を広げてしまう(符号エッジケース)。max>=0/max<0 で場合分けが必要。
                 if (MinimalY > 0)
                     MinimalY = 0;
                 else
@@ -781,6 +795,7 @@ public partial class GraphControl : UserControlBase
 
         try
         {
+            //260603Cl レビューメモ: GDIリーク。旧 Bmp / G / pictureBox.Image を Dispose していない。高頻度再描画(縦線ドラッグ等)でハンドル/メモリが積み上がる。using化 or フィールド再利用+Dispose を検討。DrawDivision/DrawProfileLine 等の new Pen/SolidBrush/Font も都度生成・未Disposeで同様。
             Bmp = new Bitmap(PictureBoxSize.Width, PictureBoxSize.Height);
             G = Graphics.FromImage(Bmp);
             G.Clear(BackgroundColor);
@@ -805,7 +820,7 @@ public partial class GraphControl : UserControlBase
             }
             pictureBox.Image = Bmp;
         }
-        catch { }
+        catch { }//260603Cl レビューメモ: 全例外を握り潰しているため描画不具合が無言で「真っ白」になり追跡困難。最低限 Debug.WriteLine を出すべき。
     }
     #endregion
 
@@ -813,6 +828,10 @@ public partial class GraphControl : UserControlBase
     /// <summary>グラフ中にVerticalLineListで定義された垂直線を描く</summary>
     private void DrawLine()
     {
+        //260603Cl: 値表示の対象とする「活線」 (選択中の線。無ければ線が1本だけのときそれ)
+        int activeIndex = selectedVerticalLineIndex >= 0 && selectedVerticalLineIndex < verticalLineList.Count
+            ? selectedVerticalLineIndex : (verticalLineList.Count == 1 ? 0 : -1);
+
         for (int i = 0; i < verticalLineList.Count; i++)
         {
             double x = verticalLineList[i].X;
@@ -829,7 +848,64 @@ public partial class GraphControl : UserControlBase
             var ptEnd = new PointF((float)ptStart.X, (float)(pictureBox.Height - originPosition.Y));
             if (!double.IsNaN(ptStart.X) && !double.IsInfinity(ptStart.X))
                 G.DrawLine(new Pen(VerticalLineColor, selectedVerticalLineIndex == i ? 2f : 1f), ptStart, ptEnd);
+
+            //260603Cl 追加: 垂直線と各プロファイルの交点に丸マーカーを描画する (値はグラフに重ねず上部ラベルへ)
+            if (verticalLineMarkerVisible && !double.IsNaN(x) && !double.IsInfinity(x) && x >= LowerX && x <= UpperX)
+                DrawVerticalLineMarkers(x);
         }
+
+        //260603Cl 追加: 活線とプロファイルの交点座標を上部パネルのラベルに表示する
+        if (verticalLineMarkerVisible)
+            UpdateMarkerReadout(activeIndex);
+    }
+
+    /// <summary>垂直線と各プロファイルの交点に丸マーカーを描画する (260603Cl 追加)</summary>
+    /// <param name="transformedX">対数変換済みのX座標 (描画座標系。プロファイル点・ConvToPicBoxCoordと同じ系)</param>
+    private void DrawVerticalLineMarkers(double transformedX)
+    {
+        for (int j = 0; j < destProfileList.Count && j < srcProfileList.Count; j++)
+        {
+            var dp = destProfileList[j];
+            if (dp == null || dp.Pt == null || dp.Pt.Count < 2) continue;
+            if (transformedX < dp.Pt[0].X || transformedX > dp.Pt[^1].X) continue;//範囲外は外挿しない
+
+            double transformedY = dp.GetValue(transformedX, 2, 1);//隣接2点で線形補間 (描画される折れ線と一致)
+            if (double.IsNaN(transformedY) || double.IsInfinity(transformedY) || transformedY < LowerY || transformedY > UpperY) continue;
+
+            var color = srcProfileList[j] != null ? srcProfileList[j].Color : VerticalLineColor;
+            var p = ConvToPicBoxCoord(transformedX, transformedY);
+            float r = VerticalLineMarkerRadius;
+            //260604Cl 再描画ごとの GDI ハンドル蓄積を避ける: 白縁は共有 Pens.White、塗りは using で確実に解放
+            using (var brush = new SolidBrush(color))
+                G.FillEllipse(brush, p.X - r, p.Y - r, r * 2, r * 2);
+            G.DrawEllipse(Pens.White, p.X - r, p.Y - r, r * 2, r * 2);
+        }
+    }
+
+    /// <summary>活線(activeIndex)と先頭の有効プロファイルの交点座標を上部パネルの labelXValue / labelYValue に表示する (260603Cl 追加)</summary>
+    private void UpdateMarkerReadout(int activeIndex)
+    {
+        if (!UpperPanelVisible) return;
+        if (activeIndex < 0 || activeIndex >= verticalLineList.Count)
+        {
+            labelXValue.Text = labelYValue.Text = "-";
+            return;
+        }
+        double realX = verticalLineList[activeIndex].X;
+        double tx = xLog ? (realX > 0 ? Math.Log10(realX) : double.NaN) : realX;
+        for (int j = 0; j < destProfileList.Count && j < srcProfileList.Count; j++)
+        {
+            var dp = destProfileList[j];
+            if (dp == null || dp.Pt == null || dp.Pt.Count < 2) continue;
+            if (double.IsNaN(tx) || tx < dp.Pt[0].X || tx > dp.Pt[^1].X) continue;
+            double ty = dp.GetValue(tx, 2, 1);
+            if (double.IsNaN(ty) || double.IsInfinity(ty)) continue;
+            double realY = yLog ? Math.Pow(10, ty) : ty;//実座標に戻す
+            labelXValue.Text = realX.ToString((xLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            labelYValue.Text = realY.ToString((yLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString()));
+            return;//先頭の有効プロファイルのみ表示
+        }
+        labelXValue.Text = labelYValue.Text = "-";
     }
 
     /// <summary>グラフ中にpeaksで定義された釣鐘型曲線を描く</summary>
@@ -977,7 +1053,7 @@ public partial class GraphControl : UserControlBase
             //先ずは無条件で有効数字0桁の目盛りを設定
             for (int i = (int)min; i < max; i++)
                 if (i > min)
-                    results.Add(i, "1E" + i.ToString());
+                    results.Add(i, "1E" + i.ToString());//260603Cl レビューメモ: キー重複で ArgumentException → Draw の catch{} で握り潰され「目盛りが出ない」症状になりうる。TryAdd 化を検討(本メソッド内の他の Add 箇所も同様)。
 
             //有効数字1桁の目盛り(2E1,3E1,4E1など)を設定
             for (int i = (int)Math.Floor(min); i < max + 1; i++)
@@ -1040,7 +1116,8 @@ public partial class GraphControl : UserControlBase
             pen = new Pen(AxisLineColor, 1);
             G.DrawLine(pen, OriginPosition.X - 8, ConvToPicBoxCoord(0, divisions.Keys[i]).Y, OriginPosition.X, ConvToPicBoxCoord(0, divisions.Keys[i]).Y);
 
-            if (horizontalGradiationTextVisivle)
+            //if (horizontalGradiationTextVisivle)//260603Cl 修正: Y軸ラベルの表示可否は vertical 側フラグで判定すべき (AxisYTextVisible が効くように)
+            if (verticalGradiationTextVisivle)//260603Cl
                 G.DrawString(divisions.Values[i], strFont, brush, 0, ConvToPicBoxCoord(0, divisions.Keys[i]).Y - 6);
 
             pen = new Pen(DivisionLineColor, 1);
@@ -1079,7 +1156,7 @@ public partial class GraphControl : UserControlBase
     public PointD MouseMovingStartPt;
     public bool MouseRangingMode = false;
     public bool MouseMovingMode = false;
-    public bool LineSelectMode = false;
+    public bool LineSelectMode = false;//260603Cl レビューメモ: これら内部モード状態が public フィールドで外部から書き換え可能(カプセル化が緩い)。get-only かメソッド経由が望ましい。
 
     #region コンテキストメニュー
 
@@ -1145,6 +1222,7 @@ public partial class GraphControl : UserControlBase
     /// <param name="upperX"></param>
     /// <param name="lowerX"></param>
     /// <returns></returns>
+    //260603Cl レビューメモ: メソッド名タイポ serchLineIndex→searchLineIndex。他にも Gradiation→Graduation, Visivle→Visible 等のタイポが点在。log軸時の lowerX<0 分岐(-Math.Pow(10,lowerX))も挙動が怪しく要確認。
     private int serchLineIndex(double upperX, double lowerX)
     {
         double dev = double.PositiveInfinity;
@@ -1175,18 +1253,20 @@ public partial class GraphControl : UserControlBase
         //マウスが動いたとき
         PointD pt = ConvToRealCoord(e.X, e.Y);
 
-        if (UpperPanelVisible)
+        if (UpperPanelVisible && !verticalLineMarkerVisible)//260603Cl: マーカー表示中は上部ラベルを交点座標が使うのでマウス座標で上書きしない
         {
             double x = pt.X;
             x = XLog ? Math.Pow(10, x) : x;
             x = IsIntegerX ? (int)(Math.Round(x)) : x;
 
             double y = pt.Y;
-            y = XLog ? Math.Pow(10, y) : y;
+            //y = XLog ? Math.Pow(10, y) : y;//260603Cl 修正: Y値はY軸の対数フラグで変換すべき (XLog→YLog)
+            y = YLog ? Math.Pow(10, y) : y;//260603Cl
             y = IsIntegerY ? (int)(Math.Round(y)) : y;
 
             labelXValue.Text = x.ToString((XLog ? "E" : "g") + (MousePositionXDigit == -1 ? "" : MousePositionXDigit.ToString()));
-            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));
+            //labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionXDigit.ToString()));//260603Cl 修正: Y桁は MousePositionYDigit を使うべき
+            labelYValue.Text = y.ToString((YLog ? "E" : "g") + (MousePositionYDigit == -1 ? "" : MousePositionYDigit.ToString()));//260603Cl
         }
 
         if (MouseMovingMode)

@@ -11,7 +11,7 @@ using System.Diagnostics;
 
 namespace PDIndexer
 {
-    public partial class FormAtomicPositionFinder : Form
+    public partial class FormAtomicPositionFinder : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
         public int Step = 0;
 
@@ -23,6 +23,7 @@ namespace PDIndexer
         public FormAtomicPositionFinder()
         {
             InitializeComponent();
+            HelpPage = "6-fitting-diffraction-peaks"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
 
             #region 化学組成タブのコントロール類を配置する
             int startX = 0;

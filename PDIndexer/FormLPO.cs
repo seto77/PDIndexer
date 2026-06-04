@@ -10,12 +10,13 @@ using Crystallography.Controls;
 
 namespace PDIndexer
 {
-    public partial class FormLPO : Form
+    public partial class FormLPO : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
         public FormMain formMain;
         public FormLPO()
         {
             InitializeComponent();
+            HelpPage = "1-main-window"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         }
 
 
@@ -41,7 +42,7 @@ namespace PDIndexer
         private void buttonGetPeakIntensities_Click(object sender, EventArgs e)
         {
             /*
-            //�f�[�^�����W�ł����ԂɂȂ��Ă��邩���`�F�b�N
+            //データが収集できる状態になっているかをチェック
             if (formMain.checkedListBoxProfiles.Items.Count < 2 || !((DiffractionProfile)formMain.checkedListBoxProfiles.Items[0]).IsLPOmain)
                 return;
             if (formMain.checkedListBoxCrystals.SelectedIndex < 0 || !formMain.checkedListBoxCrystals.GetItemChecked(formMain.checkedListBoxCrystals.SelectedIndex))
@@ -49,11 +50,11 @@ namespace PDIndexer
             if (!formMain.toolStripButtonFittingParameter.Checked || formMain.formFitting.dataSet1.Tables[0].Rows.Count <= 0)
                 return;
 
-            //��������f�[�^���W�J�n
+            //ここからデータ収集開始
 
             Crystal cry = (Crystal)formMain.checkedListBoxCrystals.SelectedItem;
 
-            //���x���i�[����List��p�ӂ���
+            //強度を格納するListを用意する
             listStrHkl = new List<string>();
             listAngle = new List<double>();
             
@@ -68,11 +69,11 @@ namespace PDIndexer
                 if (cry.Plane[j].IsFittingChecked)
                     obsDividedIntensity.Add(new List<double>());
             
-            //���ׂĂ�checkedListBoxProfiles�̃`�F�b�N���͂���
+            //すべてのcheckedListBoxProfilesのチェックをはずす
             for (int i = 0; i < formMain.checkedListBoxProfiles.Items.Count; i++)
                 formMain.checkedListBoxProfiles.SetItemChecked(i, false);
 
-            for (int i = 1; i < formMain.checkedListBoxProfiles.Items.Count; i++)//whole�p�^�[�����͂����̂�i��1����͂��܂�
+            for (int i = 1; i < formMain.checkedListBoxProfiles.Items.Count; i++)//wholeパターンをはずすのでiは1からはじまる
             {
                 string s = ((DiffractionProfile)formMain.checkedListBoxProfiles.Items[i]).Name;
                 listAngle.Add(Convert.ToDouble(s.Remove(0, s.LastIndexOf('-') + 1)));
@@ -83,7 +84,7 @@ namespace PDIndexer
                 for (int j = 0; j < cry.Plane.Count; j++)
                     if (cry.Plane[j].IsFittingChecked)
                     {
-                        if (i == 1)//�ŏ��̂Ƃ���
+                        if (i == 1)//最初のときは
                         {
                             listStrHkl.Add(cry.Plane[j].strHKL);
                             listTwoTheta.Add(cry.Plane[j].ThetaCalc / 180 * Math.PI);
@@ -113,7 +114,7 @@ namespace PDIndexer
             }
 
 
-            //��ԏ���`�F�b�N���Č��̏�Ԃɖ߂�
+            //一番上をチェックして元の状態に戻す
             formMain.checkedListBoxProfiles.SetItemChecked(0, true);
             formMain.checkedListBoxProfiles.SelectedIndex = 0;
             Application.DoEvents();
@@ -136,7 +137,7 @@ namespace PDIndexer
         }
 
 
-        //�s�ԍ����������߂̕���
+        //行番号を書くための部分
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             if (listStrHkl != null && e.RowIndex < listStrHkl.Count)
@@ -146,15 +147,15 @@ namespace PDIndexer
         }
 
 
-        //analyze�{�^�����������Ƃ��̏���
+        //analyzeボタンを押したときの処理
         private void buttonAnalyze_Click(object sender, EventArgs e)
         {
             if (listAngle == null || listAngle.Count < 1 || listStrHkl == null || listStrHkl.Count < 1) return;
 
-            //crystal�z���������
+            //crystal配列を初期化
             setCrystalArray();
 
-            //���x���z���i�[����calcDividedIntensityRatio �� obsDividedIntensityRatio�̏�����
+            //強度分布を格納するcalcDividedIntensityRatio と obsDividedIntensityRatioの初期化
             calcDividedIntensity = new double[obsDividedIntensity.Count][];
             calcDividedIntensityRatio = new double[obsDividedIntensity.Count][];
             obsDividedIntensityRatio = new double[obsDividedIntensity.Count][];
@@ -164,7 +165,7 @@ namespace PDIndexer
                 calcDividedIntensityRatio[i] = new double[obsDividedIntensity[0].Count];
                 obsDividedIntensityRatio[i] = new double[obsDividedIntensity[0].Count];
             }
-            //obsDividedIntensityRatio�̐ݒ�
+            //obsDividedIntensityRatioの設定
             for (int i = 0; i < obsDividedIntensityRatio.GetLength(0); i++)
             {
                 double obsSum = 0;
@@ -178,10 +179,10 @@ namespace PDIndexer
                         obsDividedIntensityRatio[i][j] = double.NaN;
             }
 
-            //��������crystals��probability��ω������Ă����Ă��悢Residual��������Ƃ����T��
+            //ここからcrystalsのprobabilityを変化させていってよりよいResidualが見つかるところを探す
 
             
-            //i�Ԗڂ̃����O��m�Ԗڂ̊p�x�̉�܂Ɋ�^���錋����T��
+            //i番目のリングのm番目の角度の回折に寄与する結晶を探す
             List<List<List<int[]>>> list = []; //260317Cl new List<List<List<int[]>>>() → []
             for (int i = 0; i < obsDividedIntensity.Count; i++ )
             {
@@ -193,9 +194,9 @@ namespace PDIndexer
                 for(int j=0;j<crystals[i].Contribution.Count ; j++)
                     list[crystals[i].Contribution[j].i][crystals[i].Contribution[j].m].Add(new int[]{i,j});
 
-            //�����list[i][m][?]�Ƃ����i�Ԗڂ̃����O��m�Ԗڂ̊p�x�̉�܂Ɋ�^���錋���̔ԍ��Ƃ��̌����̒��ł�Contribution�̔ԍ����킩��
+            //これでlist[i][m][?]とすればi番目のリングのm番目の角度の回折に寄与する結晶の番号とその結晶の中でのContributionの番号がわかる
             int endCount = 40;
-            var tempCrystals = (crystal[])crystals.Clone();//�ύX�O��ێ�����tempCrystals
+            var tempCrystals = (crystal[])crystals.Clone();//変更前を保持するtempCrystals
             var countCrystal = new double[crystals.Length];
             var dlg = new Crystallography.Controls.CommonDialog();
             dlg.progressBar.Maximum = endCount;
@@ -203,11 +204,11 @@ namespace PDIndexer
             double residual;
 
 
-            //���������z��crystalsInitial[]��ݒ肷��
+            //初期結晶配列crystalsInitial[]を設定する
             crystal[][] crystalsInitial = new crystal[obsDividedIntensity.Count][];
             for (int i = 0; i < obsDividedIntensity.Count; i++)
             {
-                //�܂�i�Ԗڂ̃����O�Ɋւ��ăK�E�X�֐��I��Probability��ݒ肷��
+                //まずi番目のリングに関してガウス関数的にProbabilityを設定する
                 double[] sum = new double[obsDividedIntensity[0].Count];
                 double sumTotal = 0;
                 crystalsInitial[i] = (crystal[])crystals.Clone();
@@ -219,7 +220,7 @@ namespace PDIndexer
                 for (int m = 0; m < obsDividedIntensity[i].Count; m++)
                     if (!double.IsNaN(obsDividedIntensityRatio[i][m]))
                         for (int c = 0; c < list[i][m].Count; c++)
-                            countCrystal[list[i][m][c][0]]++; //list[i][m][c][0]�Ԗڂ̌���������o�Ă��邩���`�F�b�N
+                            countCrystal[list[i][m][c][0]]++; //list[i][m][c][0]番目の結晶が何回出てくるかをチェック
                 for (int m = 0; m < obsDividedIntensity[i].Count; m++)
                 {
                     sum[m]=0;
@@ -241,8 +242,8 @@ namespace PDIndexer
                     dlg.progressBar.Maximum = endCount/4;
                     dlg.progressBar.Value = n;
                     residual = 0;
-                    for (int j = 0; j < countCrystal.Length; j++) countCrystal[j] = 0;//countCrystal��������;
-                    //�܂��v�Z��̃����O�̊e�����̐ώZ�l�ƑS���̐ώZ�l�����߂�
+                    for (int j = 0; j < countCrystal.Length; j++) countCrystal[j] = 0;//countCrystalを初期化;
+                    //まず計算上のリングの各部分の積算値と全周の積算値を求める
                     sum = new double[obsDividedIntensity[i].Count];
                      sumTotal = 0;
                     for (int m = 0; m < obsDividedIntensity[i].Count; m++)
@@ -252,7 +253,7 @@ namespace PDIndexer
                             for (int c = 0; c < list[i][m].Count; c++)
                             {
                                 sum[m] += crystalsInitial[i][list[i][m][c][0]].probability * crystalsInitial[i][list[i][m][c][0]].Contribution[list[i][m][c][1]].ratio;
-                                countCrystal[list[i][m][c][0]]++;//list[i][m][c][0]�Ԗڂ̌���������o�Ă��邩���`�F�b�N
+                                countCrystal[list[i][m][c][0]]++;//list[i][m][c][0]番目の結晶が何回出てくるかをチェック
                             }
                         sumTotal += sum[m];
                     }
@@ -281,7 +282,7 @@ namespace PDIndexer
                     Application.DoEvents();
                 }
             }
-            //���������z����������킹��
+            //初期結晶配列を混ぜ合わせる
             for (int i = 0; i < crystalsInitial.Length; i++)
             {
                 for (int j = 0; j < crystalsInitial[i].Length; j++)
@@ -298,26 +299,26 @@ namespace PDIndexer
                 residual = 0;
                 dlg.progressBar.Value = n;
                 for (int i = 0; i < obsDividedIntensity.Count; i++)
-                {//i�Ԗڂ̃����O�ɑ΂���
+                {//i番目のリングに対して
 
-                    //countCrystal��������;
+                    //countCrystalを初期化;
                     for (int j = 0; j < countCrystal.Length; j++) countCrystal[j] = 0;
-                    //�܂��v�Z��̃����O�̊e�����̐ώZ�l�ƑS���̐ώZ�l�����߂�
+                    //まず計算上のリングの各部分の積算値と全周の積算値を求める
                     sum = new double[obsDividedIntensity[i].Count];
                      sumTotal = 0;
                     for (int m = 0; m < obsDividedIntensity[i].Count; m++)
-                    {//i�Ԗڂ̃����O��m�Ԗڂ̕���
+                    {//i番目のリングのm番目の部分
                         sum[m]=0;
                         if (!double.IsNaN(obsDividedIntensityRatio[i][m]))
                             for (int c = 0; c < list[i][m].Count; c++)
                             {
                                 sum[m] += crystals[list[i][m][c][0]].probability * crystals[list[i][m][c][0]].Contribution[list[i][m][c][1]].ratio;
-                                //list[i][m][c][0]�Ԗڂ̌���������o�Ă��邩���`�F�b�N
+                                //list[i][m][c][0]番目の結晶が何回出てくるかをチェック
                                 countCrystal[list[i][m][c][0]] ++;
                             }
                         sumTotal += sum[m];
                     }
-                    //sum[m]��sumTotal�ł���Ċ����ɂ��A���̌v�Z�l�̊����Ɗϑ��l�̊�������v����悤��probability��ݒ肷��B
+                    //sum[m]をsumTotalでわって割合にし、この計算値の割合と観測値の割合が一致するようにprobabilityを設定する。
                     tempCrystals = (crystal[])crystals.Clone();
                     for (int m = 0; m < obsDividedIntensity[i].Count; m++)
                         if (!double.IsNaN(obsDividedIntensityRatio[i][m]))
@@ -328,8 +329,8 @@ namespace PDIndexer
                                 {
                                     double a = (tempCrystals[list[i][m][c][0]].probability * (d - 1))
                                          * crystals[list[i][m][c][0]].Contribution[list[i][m][c][1]].ratio * Math.Sqrt(2)
-                                        //����m�Ԗڂ̉�܂�list[i][m].Count�̌������琬�藧���Ă���̂ŁA�ЂƂ�����̕��ς�sum[m]/list[i][m].Count�ł���
-                                        //���̒l�Ƃ̔䂪��^����\���Ƃ��񂪂���B
+                                        //このm番目の回折はlist[i][m].Count個の結晶から成り立っているので、ひとつあたりの平均はsum[m]/list[i][m].Countである
+                                        //この値との比が寄与率を表すとかんがえる。
                                         / countCrystal[list[i][m][c][0]] ;
 
                                     crystals[list[i][m][c][0]].probability += a;
@@ -339,7 +340,7 @@ namespace PDIndexer
                                 }
                         }
                 }
-                //�ɂ��܂���
+                //にじませる
                 tempCrystals = (crystal[])crystals.Clone();
                 int r = (int)numericUpDownResolution.Value;
                 for (int j = 0; j < crystals.Length; j++)
@@ -374,11 +375,11 @@ namespace PDIndexer
         }
 
         
-        //G��ԏ�̌�������^�����ܐ��̈ʒu���v�Z����B
+        //G空間上の結晶が寄与する回折線の位置を計算する。
         private void setCrystalArray()
         {
           /*  int r = (int)numericUpDownResolution.Value;
-            //indices �ɃZ�b�g����Ă��邷�ׂĂ̖ʂ̃x�N�g�����v�Z����
+            //indices にセットされているすべての面のベクトルを計算する
             Crystal cry = (Crystal)formMain.checkedListBoxCrystals.SelectedItem;
             cry.SetAxis();
             List<List<Vector3D>> vectors = new List<List<Vector3D>>();
@@ -392,9 +393,9 @@ namespace PDIndexer
                     vectors[i].Add(v);
                 }
             }
-            //���l�����Z�b�g
+            //半値幅をセット
             double hwhm = (double)numericUpDownHWHM.Value / 180.0 * Math.PI;
-            //crystal�z��ɁA�����O�Ɋ�^�����ܐ����Z�b�g����B
+            //crystal配列に、リングに寄与する回折線をセットする。
             crystals = new crystal[r * r * r];
             WaitDlg dlg = new WaitDlg();
             dlg.Show();
@@ -417,7 +418,7 @@ namespace PDIndexer
                         crystals[n].Contribution = new List<hkl>();
                         crystals[n].probability = 0;
 
-                        //�������炷�ׂĂ̎w���ɂ��Ĕ��˂Ɋ�^���邩�ǂ������`�F�b�N����
+                        //ここからすべての指数について反射に寄与するかどうかをチェックする
                         for (int i = 0; i < vectors.Count; i++)
                             for (int j = 0; j < vectors[i].Count; j++)
                             {
@@ -432,7 +433,7 @@ namespace PDIndexer
                                         * listIdealIntensity[i][j] * sa[alpha];
                                     double angle = Math.Atan2(v.Y, v.X) / Math.PI * 180;
 
-                                    //��������angle��T��
+                                    //所属するangleを探す
                                     double step = listAngle[1] - listAngle[0];
                                     if (angle < 0)
                                         angle += 360;
@@ -445,13 +446,13 @@ namespace PDIndexer
                                     double ratio1 = Math.Min(Math.Abs(m2 - angle / step), Math.Abs(m2 - (angle - 360) / step));
                                     double ratio2 = 1 - ratio1;
 
-                                    if (!double.IsNaN(obsDividedIntensity[i][m1]) && obsDividedIntensity[i][m1] != 0)//���x�������Ƌ��߂��Ă���Ƃ�����
+                                    if (!double.IsNaN(obsDividedIntensity[i][m1]) && obsDividedIntensity[i][m1] != 0)//強度がちゃんと求められているときだけ
                                         crystals[n].Contribution.Add(new hkl(i, m1, ratio * ratio1));
-                                    if (!double.IsNaN(obsDividedIntensity[i][m2]) && obsDividedIntensity[i][m2] != 0)//���x�������Ƌ��߂��Ă���Ƃ�����
+                                    if (!double.IsNaN(obsDividedIntensity[i][m2]) && obsDividedIntensity[i][m2] != 0)//強度がちゃんと求められているときだけ
                                         crystals[n].Contribution.Add(new hkl(i, m2, ratio * ratio2));
                                 }
                             }
-                        //�d�������邩�ǂ������`�F�b�N����
+                        //重複があるかどうかをチェックする
                         for (int i = 0; i < crystals[n].Contribution.Count; i++)
                             for (int j = i + 1; j < crystals[n].Contribution.Count; j++)
                                 if (crystals[n].Contribution[i].i == crystals[n].Contribution[j].i && crystals[n].Contribution[i].m == crystals[n].Contribution[j].m)
@@ -461,7 +462,7 @@ namespace PDIndexer
                                     j--;
                                 }
 
-                        //�Ō�ɉ�����ꂽ�����O�ԍ����v�Z����iList�Ɋi�[����
+                        //最後に加えられたリング番号を計算してiListに格納する
                         //List<int> listIndex = new List<int>();
                         //for (int i = 0; i < crystals[n].Contribution.Count; i++)
                         //    if (listIndex.Contains(crystals[n].Contribution[i].i))
@@ -476,7 +477,7 @@ namespace PDIndexer
         
         
         
-        //G���(phi,z,rho)�̃}�g���b�N�X���쐬���郁�\�b�h
+        //G空間(phi,z,rho)のマトリックスを作成するメソッド
         private Matrix3D getPhiRhoZ(double phi, double rho, double z)
         {
             Matrix3D a = new Matrix3D(Math.Cos(phi), Math.Sin(phi), 0, -Math.Sin(phi), Math.Cos(phi), 0, 0, 0, 1);
@@ -533,7 +534,7 @@ namespace PDIndexer
 
         private void setCalcDividedIntensity(int num, double oldValue, double newValue)
         {
-            //num<0�̂Ƃ��͂��ׂĂ̌����ɑ΂��Čv�Z���Ȃ���
+            //num<0のときはすべての結晶に対して計算しなおす
             if (num < 0)
             {
                 for (int i = 0; i < obsDividedIntensity.Count; i++)
@@ -545,7 +546,7 @@ namespace PDIndexer
                         calcDividedIntensity[crystals[i].Contribution[j].i][crystals[i].Contribution[j].m]
                             += crystals[i].Contribution[j].ratio * crystals[i].probability;
             }
-            //num�Ԗڂ̌����̑��݊m����ύX�����Ƃ�
+            //num番目の結晶の存在確率を変更したとき
             else
             {
                 for (int j = 0; j < crystals[num].Contribution.Count; j++)
@@ -555,13 +556,13 @@ namespace PDIndexer
 
         }
 
-        //���݂�crystal�z��Ɗϑ��l�Ƃ́u����v�����߂郁�\�b�h
+        //現在のcrystal配列と観測値との「ずれ」を求めるメソッド
         private double getResidual(int[] num)
         {
-            //num�͕ύX���ꂽ�����O�̔ԍ�
+            //numは変更されたリングの番号
             if (num.Length == 0)
             {
-                //obsIntensity, calcIntensity�̃����O�̋��x�̑��a���p�x�������Ɉ�v����悤�ɕϊ�
+                //obsIntensity, calcIntensityのリングの強度の総和が角度分割数に一致するように変換
                 for (int i = 0; i < calcDividedIntensityRatio.GetLength(0); i++)
                 {
                     double calcSum = 0;
@@ -596,7 +597,7 @@ namespace PDIndexer
             }
 
 
-            //�Ō�Ɏc���̓��a���Ƃ��ĕԂ�
+            //最後に残差の二乗和をとって返す
             double residual = 0;
             for (int i = 0; i < obsDividedIntensity.Count; i++)
                 for (int j = 0; j < obsDividedIntensity[0].Count; j++)
@@ -608,7 +609,7 @@ namespace PDIndexer
         private void DrawPictureBox()
         {
          /*   if (crystals == null || crystals.Length < 1) return;
-            //a���̕��z��T��
+            //a軸の分布を探す
             Crystal cry = (Crystal)formMain.checkedListBoxCrystals.SelectedItem;
             cry.SetAxis();
             Vector3D a = cry.A_Axis;
@@ -625,7 +626,7 @@ namespace PDIndexer
 
         private void DrawDensity(Vector3D v, PictureBox picturebox)
         {
-            //�܂��s�N�`���[�{�b�N�X�̑傫���ɉ����Ĕz������
+            //まずピクチャーボックスの大きさに応じて配列を作る
 
             int pixelSize = 3;
             int length = (picturebox.Width - 10) / pixelSize ;
@@ -639,7 +640,7 @@ namespace PDIndexer
                 for (int j = 0; j < length; j++)
                     density[i][j] = 0;
             }
-            //�������ǂ̃s�N�Z���ɑΉ����邩�����߂Ă��̃s�N�Z����probability�𑫂�
+            //結晶がどのピクセルに対応するかを決めてそのピクセルにprobabilityを足す
             int r = (int)numericUpDownResolution.Value;
             for (int alpha = 0; alpha < r; alpha++)
                 for (int phi = 0; phi < r; phi++)
@@ -653,12 +654,12 @@ namespace PDIndexer
                         //Matrix3D matrix = getPhiRhoZ((alpha + 0.7) / r * 2 * Math.PI, (phi + 0.3) / r * 2 * Math.PI, (double)(2 * eta + 1) / r - 1);
                         //Matrix3D matrix = getEuler(Alpha, Phi, Eta);
                         Vector3D vector = getEuler(alpha, phi, eta) * v;
-                        //���̃x�N�g��(X,Y,Z)���V���~�b�g�l�b�g�Ƀv���b�g�����Ƃ���(x,y) = ( X/��(2-2Z),Y/��(2-2Z) )
+                        //このベクトル(X,Y,Z)をシュミットネットにプロットしたときの(x,y) = ( X/√(2-2Z),Y/√(2-2Z) )
                         double x, y;
                         x = vector.X / Math.Sqrt(2 - 2 * vector.Z);
                         y = vector.Y / Math.Sqrt(2 - 2 * vector.Z);
 
-                        //x,y�̂����ɉ����ċ��x������U��
+                        //x,yのいちに応じて強度を割り振る
 
                         double X = (x + 1) / 2 * (length-1);
                         double Y = (y + 1) / 2 * (length-1);
@@ -688,7 +689,7 @@ namespace PDIndexer
                         }
                     }
 
-            //�ɂ��܂���
+            //にじませる
             double[][] density2 = new double[length][];
             for (int i = 0; i < length; i++)
             {
@@ -712,7 +713,7 @@ namespace PDIndexer
                                 density2[i][j] += 2.0 / h * Math.Sqrt(Math.Log(2) / Math.PI) * Math.Exp(-4 * Math.Log(2) * (k * k + l * l) / h / h) * density[i + k][j + l];
             }
 
-            //�k�����ɂ���_���폜����
+            //北半球にある点を削除する
             for (int i = 0; i < length; i++)
                 for (int j = h; j < length; j++)
                 {

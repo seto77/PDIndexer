@@ -8,9 +8,9 @@ using System.Reflection;
 
 namespace PDIndexer;
 
-public partial class FormProfileSetting : Form
+public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
-    #region �v���p�e�B�A�t�B�[���h
+    #region プロパティ、フィールド
     public double TwoThetaOffsetCoeff0 { set => numericBoxTwhoThetaOffsetCoeff0.Value = value; get => numericBoxTwhoThetaOffsetCoeff0.Value; }
     public double TwoThetaOffsetCoeff1 { set => numericBoxTwhoThetaOffsetCoeff1.Value = value; get => numericBoxTwhoThetaOffsetCoeff1.Value; }
     public double TwoThetaOffsetCoeff2 { set => numericBoxTwhoThetaOffsetCoeff2.Value = value; get => numericBoxTwhoThetaOffsetCoeff2.Value; }
@@ -31,6 +31,7 @@ public partial class FormProfileSetting : Form
     public FormProfileSetting()
     {
         InitializeComponent();
+        HelpPage = "4-profile-parameter"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         bindingSourceProfile.CurrentChanged += bindingSource_CurrentChanged; //260317Cl new EventHandler() → メソッドグループ
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewProfile, true, null);
 
@@ -42,7 +43,7 @@ public partial class FormProfileSetting : Form
     }
 
 
-    //�v���t�@�C���폜�{�^���������ꂽ�Ƃ�
+    //プロファイル削除ボタンが押されたとき
     private void buttonDeleteProfile_Click(object sender, EventArgs e)
     {
         if (bindingSourceProfile.Position >= 0)
@@ -94,8 +95,8 @@ public partial class FormProfileSetting : Form
             string unit = "";
             switch (dp.DstProperty.AxisMode)
             {
-                case HorizontalAxis.Angle: unit = "��"; break;
-                case HorizontalAxis.d: unit = "��"; break;
+                case HorizontalAxis.Angle: unit = "°"; break;
+                case HorizontalAxis.d: unit = "Å"; break;
                 case HorizontalAxis.EnergyXray: unit = "eV"; break;
                 case HorizontalAxis.NeutronTOF: unit = "ms"; break;
             }
@@ -174,7 +175,7 @@ public partial class FormProfileSetting : Form
         }
     }
 
-    //�R�����g�����ύX���ꂽ�Ƃ�
+    //コメント欄が変更されたとき
     private void textBoxComment_TextChanged(object sender, EventArgs e)
     {
         if (bindingSourceProfile.Position >= 0)
@@ -184,7 +185,7 @@ public partial class FormProfileSetting : Form
     }
 
     /// <summary>
-    /// ���ݑI�𒆂̃v���t�@�C���ɑ΂��āA�}�X�N�A�X���[�X�A�o���p�X�A�o�b�N�O���E���h�A�m�[�}���C�Y���̏������s���A�ĕ`�悷��B
+    /// 現在選択中のプロファイルに対して、マスク、スムース、バンパス、バックグラウンド、ノーマライズ等の処理を行い、再描画する。
     /// </summary>
     public void SetCurrentProfile()
     {
@@ -231,7 +232,7 @@ public partial class FormProfileSetting : Form
     }
     private void setNormarizeOption(DiffractionProfile2 dp)
     {
-        //�m�[�}���C�Y�֘A
+        //ノーマライズ関連
         dp.DoesNormarizeIntensity = checkBoxNormarizeIntensity.Checked;
         dp.NormarizeAsAverage = radioButtonNormarizeAverage.Checked;
         dp.NormarizeRangeStart = (double)numericUpDownNormarizeRangeLow.Value;
@@ -240,7 +241,7 @@ public partial class FormProfileSetting : Form
     }
     private void setSmoothingOption(DiffractionProfile2 dp)
     {
-        //smoothing�֘A
+        //smoothing関連
         dp.DoesSmoothing = checkBoxSmoothing.Checked;
         dp.SazitkyGorayM = (int)numericUpDownSmoothingSavitzkyAndGolayM.Value;
         dp.SazitkyGorayN = (int)numericUpDownSmoothingSavitzkyAndGolayN.Value;
@@ -258,7 +259,7 @@ public partial class FormProfileSetting : Form
     }
     private void setBandPassOption(DiffractionProfile2 dp){
 
-        //bandpass�֘A
+        //bandpass関連
         dp.DoesBandpassFilter = checkBoxBandPassFilter.Checked;
         dp.DoesHighPath = checkBoxHighPassFilter.Checked;
         dp.DoesLowPath = checkBoxLowPassFilter.Checked;
@@ -268,7 +269,7 @@ public partial class FormProfileSetting : Form
     private void setBackgroundOption(DiffractionProfile2 dp)
     {
 
-        //background�֘A
+        //background関連
         dp.SubtractBackground = checkBoxBackgroundSubtraction.Checked;
         dp.BgMode = radioButtonBagkgroundBSpline.Checked ? BackgroundMode.BSplineCurve : BackgroundMode.ReferrenceProfile;
         if (comboBoxBackgroundReferrence.SelectedIndex >= 0 && comboBoxBackgroundReferrence.SelectedIndex != bindingSourceProfile.Position)
@@ -280,7 +281,7 @@ public partial class FormProfileSetting : Form
     }
     private void setShiftOption(DiffractionProfile2 dp)
     {
-        //shift�֘A
+        //shift関連
         dp.IsShiftX = checkBoxShiftHorizontalAxis.Checked;
         dp.ShiftX = (double)numericUpDownShiftHorizontalAxis.Value;
 
@@ -291,12 +292,12 @@ public partial class FormProfileSetting : Form
 
     private void buttonSetDefaultProfile_Click(object sender, EventArgs e)
     {
-        //smoothing�����邩�ǂ���
+        //smoothingをするかどうか
         formMain.defaultDP.DoesSmoothing = checkBoxSmoothing.Checked;
-        //SavitkyGolay�����邩�ǂ���
+        //SavitkyGolayをするかどうか
         formMain.defaultDP.SazitkyGorayM = (int)numericUpDownSmoothingSavitzkyAndGolayM.Value;
         formMain.defaultDP.SazitkyGorayN = (int)numericUpDownSmoothingSavitzkyAndGolayN.Value;
-        //background���Z�����邩�ǂ���
+        //background減算をするかどうか
         formMain.defaultDP.SubtractBackground = checkBoxBackgroundSubtraction.Checked;
         formMain.defaultDP.BgPointsNumber = (int)numericUpDownBgPointsNumber.Value;
     }
@@ -335,7 +336,7 @@ public partial class FormProfileSetting : Form
 
     private void dataGridViewProfile_CellClick(object sender, DataGridViewCellEventArgs e)
     {
-        textBoxComment.Enabled = e.RowIndex >= 0;//�R�����g����L���ɂ��邩�ǂ���
+        textBoxComment.Enabled = e.RowIndex >= 0;//コメント欄を有効にするかどうか
         formMain.dataGridViewProfiles_CellClick(sender, e);
     }
 
@@ -349,20 +350,20 @@ public partial class FormProfileSetting : Form
             DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
            colorControlLineColor.Color = Color.FromArgb(dp.ColorARGB.Value);
 
-            //TwoThetaOffset�֘A
+            //TwoThetaOffset関連
             checkBoxTwoThetaOffset.Checked = panelTwoThetaOffset.Visible = dp.DoesTwoThetaOffset;
             numericBoxTwhoThetaOffsetCoeff0.Value = dp.TwoThetaOffsetCoeff0;
             numericBoxTwhoThetaOffsetCoeff1.Value = dp.TwoThetaOffsetCoeff1;
             numericBoxTwhoThetaOffsetCoeff2.Value = dp.TwoThetaOffsetCoeff2;
 
-            //MaskingRange�֘A
+            //MaskingRange関連
             checkBoxMaskingMode.Checked = panelMaskingMode.Visible = dp.DoesMaskAndInterpolate;
            listBoxMaskRanges.Items.Clear();
            listBoxMaskRanges.Items.AddRange(dp.maskingRanges.ToArray());
            numericUpDownInterpolationOrder.Value = (decimal)dp.InterpolationOrder;
            numericUpDownInterpolationPoints.Value = (decimal)dp.InterpolationPoints;
 
-            //Smoothing�֘A
+            //Smoothing関連
             checkBoxSmoothing.Checked = panelSmoothing.Visible = dp.DoesSmoothing;
             numericUpDownSmoothingSavitzkyAndGolayM.Value = dp.SazitkyGorayM;
             numericUpDownSmoothingSavitzkyAndGolayN.Value = dp.SazitkyGorayN;
@@ -370,16 +371,16 @@ public partial class FormProfileSetting : Form
 
             checkBoxRemoveKalpha2.Checked = dp.DoesRemoveKalpha2;
 
-            //ShiftX�֘A
+            //ShiftX関連
             checkBoxShiftHorizontalAxis.Checked = numericUpDownShiftHorizontalAxis.Enabled = dp.IsShiftX;
             numericUpDownShiftHorizontalAxis.Value = (decimal)dp.ShiftX;
 
-            //Background�֘A
+            //Background関連
             checkBoxBackgroundSubtraction.Checked = panelBackgroundSubtraction.Visible = dp.SubtractBackground;
             radioButtonBagkgroundBSpline.Checked = panelBackgroundBSpline.Enabled = dp.BgMode == BackgroundMode.BSplineCurve;
             radioButtonBackgroundReferrence.Checked = panelBackgroundReferrence.Enabled = dp.BgMode == BackgroundMode.ReferrenceProfile;
 
-            //FFT�֘A
+            //FFT関連
             checkBoxBandPassFilter.Checked = panelBandPassFilter.Visible = dp.DoesBandpassFilter;
             checkBoxHighPassFilter.Checked = dp.DoesHighPath;
             checkBoxLowPassFilter.Checked = dp.DoesLowPath;
@@ -408,9 +409,9 @@ public partial class FormProfileSetting : Form
                     numericUpDownLowPass.Value = (decimal)dp.LowPathLimit;
                 }
             }
-            //FFT�֘A�����܂�
+            //FFT関連ここまで
 
-            //Normarize�֘A
+            //Normarize関連
             checkBoxNormarizeIntensity.Checked = panelNormarizeIntensity.Visible = dp.DoesNormarizeIntensity;
             radioButtonNormarizeAverage.Checked = dp.NormarizeAsAverage;
             radioButtonNormarizeMaximum.Checked = !dp.NormarizeAsAverage;
@@ -418,10 +419,10 @@ public partial class FormProfileSetting : Form
             numericUpDownNormarizeRangeHigh.Value = (decimal)dp.NormarizeRangeEnd;
             numericUpDownNormarizeRangeLow.Value = (decimal)dp.NormarizeRangeStart;
 
-            //�I�o����
+            //露出時間
             numericalTextBoxExposureTime.Value = dp.ExposureTime;
 
-            //�����֘A
+            //横軸関連
             xAxisUserControl.AxisMode = dp.SrcProperty.AxisMode;
             xAxisUserControl.WaveSource = dp.SrcProperty.WaveSource;
             xAxisUserControl.WaveColor = dp.SrcProperty.WaveColor;
@@ -444,7 +445,7 @@ public partial class FormProfileSetting : Form
             if (formMain.formFitting.Visible)
                 formMain.formFitting.Fitting();
 
-            //�R�����g��
+            //コメント欄
             textBoxComment.Text = dp.Comment;
         }
 
@@ -570,12 +571,12 @@ public partial class FormProfileSetting : Form
                 p.Pt.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
                 p.Err.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
             }
-            //���x�̐ώZ
+            //強度の積算
             for (int i = 0; i < dp.Length; i++)
                 for (int j = 0; j < p.Pt.Count; j++)
                     //p.Pt[j].Y += dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length;
                     p.Pt[j] += new PointD(0, dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length);
-             //�덷�̌v�Z
+             //誤差の計算
                     for (int j = 0; j < p.Pt.Count; j++)
             {
                 int n = 0;
@@ -604,12 +605,12 @@ public partial class FormProfileSetting : Form
 
             for (int j = 0; j < dp[0].Profile.Pt.Count; j++)
             {
-                p.Pt.Add(new PointD(dp[0].Profile.Pt[j].X, dp[0].Profile.Pt[j].Y));//�Q�Ɠn��������邽��
+                p.Pt.Add(new PointD(dp[0].Profile.Pt[j].X, dp[0].Profile.Pt[j].Y));//参照渡しを避けるため
                 p.Err.Add(new PointD(dp[0].Profile.Pt[j].X, j < dp[0].Profile.Err.Count ? dp[0].Profile.Err[j].Y : 0));
             }
 
             for (int j = 0; j < p.Pt.Count; j++)
-                if (radioButtonAddition.Checked)//�����Z
+                if (radioButtonAddition.Checked)//足し算
                 {
                     //p.Pt[j].Y = p.Pt[j].Y + dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
                     p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y + dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
@@ -618,7 +619,7 @@ public partial class FormProfileSetting : Form
                     //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
                     p.Err[j] =new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
                 }
-                else if (radioButtonSubtraction.Checked)//�����Z
+                else if (radioButtonSubtraction.Checked)//引き算
                 {
                     //p.Pt[j].Y = p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
                     p.Pt[j] =new PointD(p.Pt[j].X, p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
@@ -626,7 +627,7 @@ public partial class FormProfileSetting : Form
                     //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
                     p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
                 }
-                else if (radioButtonMutiplication.Checked)//�|���Z
+                else if (radioButtonMutiplication.Checked)//掛け算
                 {
                     //p.Pt[j].Y = p.Pt[j].Y * dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
                     p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y * dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
@@ -658,7 +659,7 @@ public partial class FormProfileSetting : Form
             var dp = (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndex][1];
             for (int j = 0; j < dp.Profile.Pt.Count; j++)
             {
-                p.Pt.Add(new PointD(dp.Profile.Pt[j].X, dp.Profile.Pt[j].Y));//�Q�Ɠn��������邽��
+                p.Pt.Add(new PointD(dp.Profile.Pt[j].X, dp.Profile.Pt[j].Y));//参照渡しを避けるため
                 p.Err.Add(new PointD(dp.Profile.Pt[j].X, j < dp.Profile.Err.Count ? dp.Profile.Err[j].Y : 0));
             }
 
@@ -706,7 +707,7 @@ public partial class FormProfileSetting : Form
         catch { }
     }
 
-    #region �}�X�N�֘A
+    #region マスク関連
 
     public void AddMaskRange(DiffractionProfile2.MaskingRange range)
     {
@@ -853,8 +854,8 @@ public partial class FormProfileSetting : Form
 
     private void listBoxMaskRanges_DragDrop(object sender, DragEventArgs e)
     {
-        //�R���g���[�����Ƀh���b�v���ꂽ�Ƃ����s�����
-        //�h���b�v���ꂽ���ׂẴt�@�C�������擾����
+        //コントロール内にドロップされたとき実行される
+        //ドロップされたすべてのファイル名を取得する
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
         if (fileName.Length == 1)
         {
@@ -866,9 +867,9 @@ public partial class FormProfileSetting : Form
     private void listBoxMaskRanges_DragEnter(object sender, DragEventArgs e)
     {
         if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            e.Effect = DragDropEffects.Copy; //�h���b�O���ꂽ�f�[�^�`���𒲂ׁA�t�@�C���̂Ƃ��̓R�s�[�Ƃ���
+            e.Effect = DragDropEffects.Copy; //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
         else
-            e.Effect = DragDropEffects.None;//�t�@�C���ȊO�͎󂯕t���Ȃ�
+            e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
     }
     #endregion
     private void buttonTwoThetaCalibration_Click(object sender, EventArgs e) 

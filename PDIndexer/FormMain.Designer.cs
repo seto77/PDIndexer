@@ -11,7 +11,7 @@ namespace PDIndexer
     /// PDIndexer の概要の説明です。
     /// </summary>
     /// 
-    partial class FormMain : System.Windows.Forms.Form
+    partial class FormMain //260604Cl 基底クラスは FormMain.cs 側で FormBase に変更
     {
 
         /// <summary>

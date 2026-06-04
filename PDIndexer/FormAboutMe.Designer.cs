@@ -9,7 +9,7 @@ namespace PDIndexer
     /// <summary>
     /// FormAboutMe の概要の説明です。
     /// </summary>
-    partial class FormAboutMe : System.Windows.Forms.Form
+    partial class FormAboutMe //260604Cl 基底クラスは FormAboutMe.cs 側で FormBase に変更
     {
 
         /// <summary>

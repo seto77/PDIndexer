@@ -10,7 +10,7 @@ namespace PDIndexer;
 /// <summary>
 /// FormEOS の概要の説明です。
 /// </summary>
-public partial class FormEOS : Form
+public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
     #region プロパティ、フィールド、イベント
     public bool skipTextChangeEvent = false;
@@ -35,6 +35,7 @@ public partial class FormEOS : Form
     public FormEOS()
     {
         InitializeComponent();
+        HelpPage = "5-equation-of-states"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
     }
 
     private void FormEOS_Load(object sender, System.EventArgs e)

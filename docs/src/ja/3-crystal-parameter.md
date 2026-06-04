@@ -139,7 +139,18 @@
 
 ![状態方程式タブ](../assets/cap-ja-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageEOS.png)
 
-圧力・温度による格子定数の変化を扱う状態方程式（EOS）を設定します。詳細は [状態方程式](5-equation-of-states.md) を参照してください。
+圧力・温度による格子定数の変化を扱う、結晶ごとの状態方程式（EOS）を設定します。主な入力項目は次のとおりです。
+
+| 項目 | 説明 |
+| --- | --- |
+| `Use EOS` | この結晶で EOS による圧力計算を有効化。 |
+| `T0` / `Temperature` | 基準温度 / 測定温度。 |
+| `V0` | 基準状態の単位胞体積。 |
+| `K0`, `K'0` | 等温体積弾性率とその圧力微分。 |
+| 等温式 | `BM3`（3 次 Birch-Murnaghan, 既定）/ `BM4` / `Vinet` / `AP2` / `Keane`。 |
+| 熱圧力 | `Mie-Grüneisen`（既定。パラメータ \( \gamma_0, \theta_0, q \)）/ `T-dependence K0&V0`。 |
+
+各式の数式と記号の定義は [状態方程式](5-equation-of-states.md) を参照してください。
 
 ---
 

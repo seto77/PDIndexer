@@ -139,7 +139,18 @@ Holds reference information such as the paper title, journal name, and authors t
 
 ![The EOS tab](../assets/cap-en-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageEOS.png)
 
-Sets the equation of state (EOS), which governs how the lattice parameters change with pressure and temperature. See [Equation of state](5-equation-of-states.md) for details.
+Sets the per-crystal equation of state (EOS), which governs how the lattice parameters change with pressure and temperature. The main input fields are:
+
+| Field | Description |
+| --- | --- |
+| `Use EOS` | Enable EOS pressure calculation for this crystal. |
+| `T0` / `Temperature` | Reference / measured temperature. |
+| `V0` | Reference unit-cell volume. |
+| `K0`, `K'0` | Isothermal bulk modulus and its pressure derivative. |
+| Isothermal form | `BM3` (third-order Birch-Murnaghan, default) / `BM4` / `Vinet` / `AP2` / `Keane`. |
+| Thermal pressure | `Mie-Grüneisen` (default; parameters \( \gamma_0, \theta_0, q \)) / `T-dependence K0&V0`. |
+
+See [Equation of state](5-equation-of-states.md) for the formulas and symbol definitions.
 
 ---
 

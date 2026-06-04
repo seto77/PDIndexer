@@ -13,12 +13,12 @@ using Crystallography.Controls;
 namespace PDIndexer
 {
     /// <summary>
-    /// FormCrystal �̊T�v�̐����ł��B
+    /// FormCrystal の概要の説明です。
     /// </summary>
-    public partial class FormCrystal : System.Windows.Forms.Form
+    public partial class FormCrystal //260604Cl 基底クラスは FormCrystal.cs 側で FormBase に変更
     {
         /// <summary>
-        /// �g�p����Ă��郊�\�[�X�Ɍ㏈�������s���܂��B
+        /// 使用されているリソースに後処理を実行します。
         /// </summary>
         protected override void Dispose(bool disposing)
         {
@@ -32,10 +32,10 @@ namespace PDIndexer
             base.Dispose(disposing);
         }
 
-        #region Windows �t�H�[�� �f�U�C�i�Ő������ꂽ�R�[�h
+        #region Windows フォーム デザイナで生成されたコード
         /// <summary>
-        /// �f�U�C�i �T�|�[�g�ɕK�v�ȃ��\�b�h�ł��B���̃��\�b�h�̓��e��
-        /// �R�[�h �G�f�B�^�ŕύX���Ȃ��ł��������B
+        /// デザイナ サポートに必要なメソッドです。このメソッドの内容を
+        /// コード エディタで変更しないでください。
         /// </summary>
         private void InitializeComponent()
         {

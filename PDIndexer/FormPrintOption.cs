@@ -8,11 +8,12 @@ using System.Windows.Forms;
 
 namespace PDIndexer
 {
-    public partial class FormPrintOption : Form
+    public partial class FormPrintOption : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
         public FormPrintOption()
         {
             InitializeComponent();
+            HelpPage = "appendix/file-formats"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)

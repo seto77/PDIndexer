@@ -9,7 +9,7 @@ namespace PDIndexer
     /// <summary>
     /// FormEOS の概要の説明です。
     /// </summary>
-   partial class FormEOS : System.Windows.Forms.Form
+   partial class FormEOS //260604Cl 基底クラスは FormEOS.cs 側で FormBase に変更
     {		
         /// <summary>
         /// 使用されているリソースに後処理を実行します。

@@ -45,7 +45,7 @@ public partial record struct FileProperty
 }
 #endregion
 
-public partial class FormMain : Form
+public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
     #region enum
     public enum FileType
@@ -689,6 +689,16 @@ public partial class FormMain : Form
         }
 
         InitializeComponent();
+        HelpPage = "1-main-window"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
+
+        //260604Cl 追加: F1オンラインヘルプのURL解決ロジックを登録 (起動時に1回)。Controls側フォームはPDIndexer固有のURLを知らないため、ここで組み立てる (ReciProと同方針)。
+        FormBase.HelpUrlResolver = f =>
+        {
+            var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+            return string.IsNullOrEmpty(f.HelpPage)
+                ? (lang == "ja" ? "https://seto77.github.io/PDIndexer/ja/" : "https://seto77.github.io/PDIndexer/")
+                : $"https://seto77.github.io/PDIndexer/{lang}/{f.HelpPage}/";
+        };
 
         if (DesignMode) return;
 
@@ -785,6 +795,7 @@ public partial class FormMain : Form
         initialDialog.Text = "Now Loading... Initializing macro functions.";
         macro = new Macro(this);
         FormMacro = new FormMacro(Python.CreateEngine(), macro) { Visible = false };
+        FormMacro.HelpPage = "8-macro"; //260604Cl 追加: Controls側マクロフォームにヘルプを設定
 
         this.Text = "PDIndexer   " + Version.VersionAndDate;
 #if DEBUG

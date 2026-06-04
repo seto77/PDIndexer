@@ -10,11 +10,11 @@ using System.Reflection;
 namespace PDIndexer;
 
 /// <summary>
-/// FormCrystal �̊T�v�̐����ł��B
+/// FormCrystal の概要の説明です。
 /// </summary>
-public partial class FormCrystal : Form
+public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
-    #region �v���p�e�B�\�A�t�B�[���h
+    #region プロパティ―、フィールド
     public FormMain formMain;
     public int atomSeriesNum;
     public int SymmetrySeriesNumber;
@@ -22,10 +22,13 @@ public partial class FormCrystal : Form
     public bool SkipEvent = false;
     #endregion
 
-    #region �I�[�v���A�N���[�Y�A�R���X�g���N�^
+    #region オープン、クローズ、コンストラクタ
     public FormCrystal()
     {
         InitializeComponent();
+        HelpPage = "3-crystal-parameter"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
+        crystalControl.FormScatteringFactor.HelpPage = "3-crystal-parameter"; //260604Cl 追加: Controls側サブフォームにもヘルプを設定
+        crystalControl.FormSymmetryInformation.HelpPage = "3-crystal-parameter"; //260604Cl 追加
         crystalControl.CrystalChanged += crystalControl_CrystalChanged;
 
         typeof(DataGridView).GetProperty("DoubleBuffered", BindingFlags.Instance | BindingFlags.NonPublic).SetValue(dataGridViewCrystal, true, null);
@@ -52,7 +55,7 @@ public partial class FormCrystal : Form
 
 
 
-    #region �����̒ǉ��A�폜�A�ύX
+    #region 結晶の追加、削除、変更
     void crystalControl_CrystalChanged(object sender, EventArgs e)
     {
         formMain.InitializeCrystalPlane();
@@ -80,7 +83,7 @@ public partial class FormCrystal : Form
         if (crystalControl.Crystal != null)
             ChangeCrystal(crystalControl.Crystal);
     }
-    //�V�K�ǉ����Ăяo���ꂽ�Ƃ�
+    //新規追加が呼び出されたとき
     public void AddCrystal(Crystal cry)
     {
         if (cry != null)
@@ -106,7 +109,7 @@ public partial class FormCrystal : Form
         }
     }
 
-    //�ύX���Ăяo���ꂽ�Ƃ�
+    //変更が呼び出されたとき
     public void ChangeCrystal(Crystal cry)
     {
         if (cry != null && bindingSource.Position >= 0)
@@ -122,7 +125,7 @@ public partial class FormCrystal : Form
             formMain.SetFormEOS();
         }
     }
-    //�폜
+    //削除
     private void buttonDeleteCrystal_Click(object sender, System.EventArgs e)
     {
         if (((Crystal)dataSet.DataTableCrystal.Rows[bindingSource.Position][1]).Reserved && (ModifierKeys & Keys.Control) != Keys.Control)
@@ -134,7 +137,7 @@ public partial class FormCrystal : Form
         formMain.SetFormEOS();
 
     }
-    //���ׂč폜
+    //すべて削除
     private void buttonAllClear_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show("Do you want to clear all crystals?", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
@@ -146,7 +149,7 @@ public partial class FormCrystal : Form
     #endregion
 
 
-    //�ꏊ���ύX���ꂽ�Ƃ�
+    //場所が変更されたとき
     private void bindingSource_PositionChanged(object sender, EventArgs e)
     {
         formMain.SelectedCrystalIndex = bindingSource.Position;
@@ -206,7 +209,7 @@ public partial class FormCrystal : Form
         formMain.Draw();
     }
 
-    #region �����̏��ԕύX
+    #region 結晶の順番変更
     private void buttonUpper_Click(object sender, EventArgs e)
     {
         int n = bindingSource.Position;
@@ -227,7 +230,7 @@ public partial class FormCrystal : Form
 
     private void FormCrystal_VisibleChanged(object sender, EventArgs e)
     {
-        //dataGridView�̐F�̐ݒ�
+        //dataGridViewの色の設定
         for (int i = 0; i < dataGridViewCrystal.Rows.Count; i++)
             dataGridViewCrystal.Rows[i].DefaultCellStyle = formMain.dataGridViewCrystals.Rows[i].DefaultCellStyle;
     }
@@ -260,7 +263,7 @@ public partial class FormCrystal : Form
         toolStripStatusLabel1.Text = message;
         toolStripProgressBar1.Value = (int)(progress * 100);
 
-        //�ŏ��̃f�[�^�x�[�X�ǂݍ��ݎ��̌�ɁAcrystalDatabaseControl.CrystalChanged���Z�b�g
+        //最初のデータベース読み込み時の後に、crystalDatabaseControl.CrystalChangedをセット
         if (toolStripStatusLabel1.Text.Contains("Total") && flag)
         {
             crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;

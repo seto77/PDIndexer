@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PDIndexer
 {
-    public partial class FormCellFinder : Form
+    public partial class FormCellFinder : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
         public FormMain formMain;
         List<Candidate> Candidates = []; //260317Cl new List<Candidate>() → []
@@ -121,6 +121,7 @@ namespace PDIndexer
         public FormCellFinder()
         {
             InitializeComponent();
+            HelpPage = "6-fitting-diffraction-peaks"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
             comboBoxReliability.SelectedIndex = 0;
             comboBoxCrystalSystem.SelectedIndex = 0;
             comboBoxX.SelectedIndex = 0;

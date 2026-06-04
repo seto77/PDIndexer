@@ -15,7 +15,7 @@ using MathNet.Numerics.LinearAlgebra.Double;
 namespace PDIndexer
 {
 
-    public partial class FormTwoThetaCalibration : Form
+    public partial class FormTwoThetaCalibration : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
         public FormMain formMain = new FormMain();
 
@@ -24,6 +24,7 @@ namespace PDIndexer
         public FormTwoThetaCalibration()
         {
             InitializeComponent();
+            HelpPage = "4-profile-parameter"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         }
 
         private void FormTwoThetaCalibration_FormClosing(object sender, FormClosingEventArgs e)

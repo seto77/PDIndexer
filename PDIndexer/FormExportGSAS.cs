@@ -14,7 +14,7 @@ namespace PDIndexer
    
 
 
-    public partial class FormExportGSAS : Form
+    public partial class FormExportGSAS : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
         public FormMain formMain;
         //private  DiffractionProfile2 profile; //260317Cl 未使用フィールドをコメントアウト
@@ -25,6 +25,7 @@ namespace PDIndexer
         public FormExportGSAS()
         {
             InitializeComponent();
+            HelpPage = "appendix/file-formats"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         }
 
         private void setGsasFileContents()

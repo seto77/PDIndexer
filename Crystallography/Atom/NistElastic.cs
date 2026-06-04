@@ -4,15 +4,18 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.IO.Compression; // 260604Cl 追加: PCHIP 埋め込みリソースの Brotli 展開用
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks; // 260603Cl 追加: PCHIP生成の元素並列化(Parallel.For)用
 #endregion
 
 namespace Crystallography;
 
 internal static class NistElasticPchip // (260401Ch) 生成・最適化・runtime 評価で共有する PCHIP 基本処理
 {
-    public const int EnergyCount = 101;
+    // public const int EnergyCount = 101; // 260603Cl 変更前 (50eV-20keV 対数101点)
+    public const int EnergyCount = 111; // 260603Cl 50eV-36.4keV へ拡張 (20keV超を NIST DCS から継ぎ足し, blockIndex 101-110)。LogEnergyStep は不変=等間隔延長
     public const int SourcePhiCount = 2001;
     public const int KnotCount = 51;
     public const int EvaluationCount = 4097;
@@ -201,6 +204,125 @@ public sealed class NistElasticPchipElementData // (260401Ch) generated な圧�
     public float[][] XKnot { get; }
 }
 
+// 260604Cl 追加: PCHIP データを埋め込みリソース NistElasticPchip.bin から元素単位で展開する。
+// 旧: 96 個の生成 .cs (PCHIP01-96.cs/Registry.cs) が ushort[][]/float[][] のコレクション式を直接初期化していたため、
+//     内部配列ごとに <PrivateImplementationDetails> のハッシュ名フィールドが量産され #Strings/IL が肥大化していた。
+// 新: 1 個の Brotli 圧縮バイナリリソースに集約 (元素単位ブロック)。値は double/float/ushort の生バイトを可逆圧縮しているため
+//     展開結果は旧静的配列とビット完全一致。フォーマットは tools の抽出器 (nistextract) と一致。
+internal static class NistElasticPchipResource
+{
+    private const string ResourceName = "Crystallography.NistElasticPchip.bin"; // csproj の EmbeddedResource LogicalName と一致
+    private const int Magic = 0x3350454E; // "NEP3"
+
+    private static byte[] _blob;
+    private static Dictionary<int, (int Offset, int Length)> _index;
+    private static int _codec, _method, _energyCount, _knotCount, _payloadStart;
+    private static readonly object _sync = new();
+
+    private static void EnsureLoaded()
+    {
+        if (_blob != null)
+            return;
+        lock (_sync)
+        {
+            if (_blob != null)
+                return;
+            var asm = typeof(NistElasticPchipResource).Assembly;
+            using var stream = asm.GetManifestResourceStream(ResourceName)
+                ?? throw new InvalidOperationException($"Embedded resource not found: {ResourceName}");
+            using var copy = new MemoryStream();
+            stream.CopyTo(copy);
+            var blob = copy.ToArray();
+
+            using var reader = new BinaryReader(new MemoryStream(blob));
+            if (reader.ReadInt32() != Magic)
+                throw new InvalidDataException("NistElasticPchip resource: bad magic.");
+            reader.ReadInt32(); // version
+            _codec = reader.ReadInt32();       // 0 = gzip, 1 = brotli
+            _method = reader.ReadInt32();      // 0 = raw, 1 = xKnot byte-plane shuffle
+            _energyCount = reader.ReadInt32();
+            _knotCount = reader.ReadInt32();
+            int count = reader.ReadInt32();
+            var index = new Dictionary<int, (int, int)>(count);
+            for (int i = 0; i < count; i++)
+            {
+                int z = reader.ReadInt32();
+                int offset = reader.ReadInt32();
+                int length = reader.ReadInt32();
+                index[z] = (offset, length);
+            }
+            _payloadStart = (int)reader.BaseStream.Position;
+            _index = index;
+            _blob = blob;
+        }
+    }
+
+    /// <summary>原子番号 atomicNumber の PCHIP データを展開する。存在しない元素は null。</summary>
+    public static NistElasticPchipElementData TryDecode(int atomicNumber)
+    {
+        EnsureLoaded();
+        if (!_index.TryGetValue(atomicNumber, out var entry))
+            return null;
+
+        int ec = _energyCount, kc = _knotCount, nx = ec * kc;
+        byte[] raw;
+        using (var compressed = new MemoryStream(_blob, _payloadStart + entry.Offset, entry.Length, writable: false))
+        using (Stream decompressor = _codec == 1
+            ? new BrotliStream(compressed, CompressionMode.Decompress)
+            : new GZipStream(compressed, CompressionMode.Decompress))
+        using (var output = new MemoryStream(ec * 8 + nx * 2 + nx * 4))
+        {
+            decompressor.CopyTo(output);
+            raw = output.ToArray();
+        }
+
+        int pos = 0;
+        var sigma = new double[ec];
+        for (int j = 0; j < ec; j++) { sigma[j] = BitConverter.ToDouble(raw, pos); pos += 8; }
+
+        var phi = new ushort[ec][];
+        for (int r = 0; r < ec; r++)
+        {
+            var row = new ushort[kc];
+            for (int c = 0; c < kc; c++) { row[c] = BitConverter.ToUInt16(raw, pos); pos += 2; }
+            phi[r] = row;
+        }
+
+        var xKnot = new float[ec][];
+        if (_method == 1)
+        {
+            // byte-plane shuffle の逆変換: plane p のバイトは raw[basePos + p*nx + i] (i = 行優先のフラット添字)
+            int basePos = pos;
+            int i = 0;
+            for (int r = 0; r < ec; r++)
+            {
+                var row = new float[kc];
+                for (int c = 0; c < kc; c++)
+                {
+                    int bits = raw[basePos + i]
+                        | (raw[basePos + nx + i] << 8)
+                        | (raw[basePos + 2 * nx + i] << 16)
+                        | (raw[basePos + 3 * nx + i] << 24);
+                    row[c] = BitConverter.Int32BitsToSingle(bits);
+                    i++;
+                }
+                xKnot[r] = row;
+            }
+        }
+        else
+        {
+            for (int r = 0; r < ec; r++)
+            {
+                var row = new float[kc];
+                for (int c = 0; c < kc; c++) { row[c] = BitConverter.ToSingle(raw, pos); pos += 4; }
+                xKnot[r] = row;
+            }
+        }
+
+        return new NistElasticPchipElementData(atomicNumber, sigma, phi, xKnot);
+    }
+}
+
 internal sealed class NistElasticPchipRuntimeElement // (260401Ch) generated データから runtime 用に展開したキャッシュ
 {
     // public NistElasticPchipRuntimeElement(int atomicNumber, double[] sigmaA0Squared, double[][] phiKnot, double[][] xKnot, double[][] slope) // 260401Cl 旧シグネチャ
@@ -306,17 +428,34 @@ public static class NistElasticSamplerPchipGenerator
         Directory.CreateDirectory(diagnosticsDirectory);
 
         var outputs = new List<string>();
-        for (int fileIndex = 0; fileIndex < normalizedSources.Length; fileIndex++)
+        // 260603Cl 並列化: 元素ごとに完全独立 (CompressElement/CompressBlock は static でローカル状態のみ=スレッドセーフ、
+        //   出力ファイルも PCHIP{NN}.cs と Diagnostics/{NN}.csv で元素別=競合なし)。32コア環境で劇的に高速化。
+        // 変更前 (逐次 for):
+        //   for (int fileIndex = 0; fileIndex < normalizedSources.Length; fileIndex++) {
+        //       var sourcePath = normalizedSources[fileIndex];
+        //       var atomicNumber = ParseAtomicNumberFromPath(sourcePath);
+        //       var elementResult = CompressElement(sourcePath, atomicNumber, fileIndex, normalizedSources.Length, progress);
+        //       outputs.Add(WriteGeneratedElementSource(generatedDirectory, elementResult));
+        //       outputs.Add(WriteDiagnosticsCsv(diagnosticsDirectory, elementResult));
+        //   }
+        // 260604Cl 出力形式を変更: 旧 PCHIP{NN}.cs + Registry.cs (元素別の ushort[][]/float[][] コレクション式) を廃止し、
+        //   全元素を 1 個の Brotli 圧縮バイナリリソース NistElasticPchip.bin に集約する (実行時は NistElasticPchipResource が展開)。
+        //   これによりジャグ配列内部配列ごとの <PrivateImplementationDetails> フィールド (#Strings) と初期化 IL が消え DLL が大幅に縮む。
+        var compressedElements = new NistElasticPchipCompressedElement[normalizedSources.Length]; // 順序保持で並列結果を受ける
+        var diagnosticsPaths = new string[normalizedSources.Length];
+        // 260603Cl CPU集約タスク(BasinHop)を ThreadPool 任せにすると starvation 誤検出でスレッドが100超まで膨張し
+        //   物理コアを奪い合って逆に激遅化する。MaxDegreeOfParallelism を論理プロセッサ数に固定してオーバーサブスクリプションを防ぐ。
+        var parallelOptions = new ParallelOptions { MaxDegreeOfParallelism = Environment.ProcessorCount };
+        Parallel.For(0, normalizedSources.Length, parallelOptions, fileIndex =>
         {
             var sourcePath = normalizedSources[fileIndex];
             var atomicNumber = ParseAtomicNumberFromPath(sourcePath);
             var elementResult = CompressElement(sourcePath, atomicNumber, fileIndex, normalizedSources.Length, progress);
-
-            outputs.Add(WriteGeneratedElementSource(generatedDirectory, elementResult));
-            outputs.Add(WriteDiagnosticsCsv(diagnosticsDirectory, elementResult));
-        }
-
-        outputs.Add(WriteGeneratedRegistrySource(generatedDirectory));
+            compressedElements[fileIndex] = elementResult; // 260604Cl 圧縮結果を集約 (旧: 元素別 .cs を出力)
+            diagnosticsPaths[fileIndex] = WriteDiagnosticsCsv(diagnosticsDirectory, elementResult);
+        });
+        outputs.AddRange(diagnosticsPaths);
+        outputs.Add(WriteGeneratedResource(generatedDirectory, compressedElements)); // 260604Cl 全元素を 1 リソースへ (Parallel.For は barrier)
         return outputs;
     }
 
@@ -350,20 +489,6 @@ public static class NistElasticSamplerPchipGenerator
         var digits = new string(fileName[(markerIndex + 2)..].TakeWhile(char.IsDigit).ToArray());
         if (!int.TryParse(digits, NumberStyles.Integer, CultureInfo.InvariantCulture, out var atomicNumber))
             throw new InvalidDataException($"Atomic number could not be parsed from '{path}'.");
-
-        return atomicNumber;
-    }
-
-    private static int ParseAtomicNumberFromGeneratedCodePath(string path)
-    {
-        var fileName = Path.GetFileNameWithoutExtension(path);
-        const string prefix = "PCHIP";
-        if (!fileName.StartsWith(prefix, StringComparison.OrdinalIgnoreCase))
-            throw new InvalidDataException($"Atomic number could not be parsed from generated file '{path}'.");
-
-        var digits = new string(fileName[prefix.Length..].TakeWhile(char.IsDigit).ToArray());
-        if (!int.TryParse(digits, NumberStyles.Integer, CultureInfo.InvariantCulture, out var atomicNumber))
-            throw new InvalidDataException($"Atomic number could not be parsed from generated file '{path}'.");
 
         return atomicNumber;
     }
@@ -688,39 +813,79 @@ public static class NistElasticSamplerPchipGenerator
         => rootMeanSquareError < referenceRootMeanSquareError - 1.0E-15
             || (Math.Abs(rootMeanSquareError - referenceRootMeanSquareError) <= 1.0E-15 && maximumError < referenceMaximumError - 1.0E-15);
 
-    private static string WriteGeneratedElementSource(string generatedDirectory, NistElasticPchipCompressedElement element)
+    // 260604Cl 追加: 全元素を 1 個の Brotli 圧縮バイナリリソース NistElasticPchip.bin に書き出す。
+    // フォーマットは実行時デコーダ NistElasticPchipResource と一致 (magic "NEP3" / codec=1 brotli / method=1 xKnot byte-plane shuffle)。
+    // 値は double/float/ushort の生バイトを可逆圧縮するため、展開結果は元データとビット完全一致。
+    private static string WriteGeneratedResource(string generatedDirectory, NistElasticPchipCompressedElement[] elements)
     {
-        var atomicNumberText = element.AtomicNumber.ToString("D2", CultureInfo.InvariantCulture);
-        var path = Path.Combine(generatedDirectory, $"PCHIP{atomicNumberText}.cs"); // (260401Ch)
-        var builder = new StringBuilder();
-        builder.AppendLine("// <auto-generated />");
-        builder.AppendLine($"// (260401Ch) Generated from {Path.GetFileName(element.SourcePath)} by NistElasticSamplerPchipGenerator.");
-        builder.AppendLine("namespace Crystallography;");
-        builder.AppendLine();
-        builder.AppendLine("public static partial class AtomStatic");
-        builder.AppendLine("{");
-        builder.AppendLine($"    private static readonly double[] NistElasticPchipSigma{atomicNumberText} = [");
-        for (int i = 0; i < element.Blocks.Length; i++)
-            builder.AppendLine($"        {FormatDouble(element.Blocks[i].SigmaA0Squared)},");
-        builder.AppendLine("    ];");
-        builder.AppendLine();
-        builder.AppendLine($"    private static readonly ushort[][] NistElasticPchipPhiKnotIndex{atomicNumberText} = [");
-        for (int i = 0; i < element.Blocks.Length; i++)
-            builder.AppendLine($"        [{string.Join(", ", element.Blocks[i].PhiKnotIndices)}],");
-        builder.AppendLine("    ];");
-        builder.AppendLine();
-        builder.AppendLine($"    private static readonly float[][] NistElasticPchipXKnot{atomicNumberText} = [");
-        for (int i = 0; i < element.Blocks.Length; i++)
-            builder.AppendLine($"        [{string.Join(", ", element.Blocks[i].XKnot.Select(FormatFloat))}],");
-        builder.AppendLine("    ];");
-        builder.AppendLine();
-        builder.AppendLine($"    private static void RegisterGeneratedNistElasticPchipE{atomicNumberText}(global::System.Collections.Generic.Dictionary<int, NistElasticPchipElementData> registry)");
-        builder.AppendLine("    {");
-        builder.AppendLine($"        registry[{element.AtomicNumber}] = new NistElasticPchipElementData({element.AtomicNumber}, NistElasticPchipSigma{atomicNumberText}, NistElasticPchipPhiKnotIndex{atomicNumberText}, NistElasticPchipXKnot{atomicNumberText});");
-        builder.AppendLine("    }");
-        builder.AppendLine("}");
-        File.WriteAllText(path, builder.ToString(), new UTF8Encoding(false));
+        var ordered = elements.Where(e => e != null).OrderBy(e => e.AtomicNumber).ToArray();
+        int energyCount = NistElasticPchip.EnergyCount;
+        int knotCount = NistElasticPchip.KnotCount;
+        var path = Path.Combine(generatedDirectory, "NistElasticPchip.bin"); // (260604Cl) csproj で EmbeddedResource として埋め込む
+
+        var blobs = new byte[ordered.Length][];
+        for (int idx = 0; idx < ordered.Length; idx++)
+            blobs[idx] = CompressNistElement(ordered[idx], energyCount, knotCount);
+
+        using var ms = new MemoryStream();
+        using (var bw = new BinaryWriter(ms, Encoding.UTF8, true))
+        {
+            bw.Write(0x3350454E); // magic "NEP3"
+            bw.Write(3);          // version
+            bw.Write(1);          // codec: 1 = brotli
+            bw.Write(1);          // method: 1 = xKnot byte-plane shuffle
+            bw.Write(energyCount);
+            bw.Write(knotCount);
+            bw.Write(ordered.Length);
+            int off = 0;
+            for (int idx = 0; idx < ordered.Length; idx++)
+            {
+                bw.Write(ordered[idx].AtomicNumber);
+                bw.Write(off);
+                bw.Write(blobs[idx].Length);
+                off += blobs[idx].Length;
+            }
+            foreach (var b in blobs)
+                bw.Write(b);
+        }
+        File.WriteAllBytes(path, ms.ToArray());
         return path;
+    }
+
+    private static byte[] CompressNistElement(NistElasticPchipCompressedElement element, int energyCount, int knotCount) // 260604Cl 追加
+    {
+        int nx = energyCount * knotCount;
+        byte[] raw;
+        using (var rms = new MemoryStream())
+        using (var bw = new BinaryWriter(rms))
+        {
+            for (int e = 0; e < energyCount; e++)
+                bw.Write(element.Blocks[e].SigmaA0Squared);                       // double LE
+            for (int e = 0; e < energyCount; e++)
+            {
+                var phi = element.Blocks[e].PhiKnotIndices;
+                for (int c = 0; c < knotCount; c++) bw.Write(phi[c]);             // ushort LE (row-major)
+            }
+            var xbytes = new byte[nx * 4];                                        // xKnot を byte-plane shuffle (float の各バイトを面ごとに分離=圧縮率向上)
+            int i = 0;
+            for (int e = 0; e < energyCount; e++)
+            {
+                var x = element.Blocks[e].XKnot;
+                for (int c = 0; c < knotCount; c++)
+                {
+                    var fb = BitConverter.GetBytes(x[c]);
+                    xbytes[i] = fb[0]; xbytes[nx + i] = fb[1]; xbytes[2 * nx + i] = fb[2]; xbytes[3 * nx + i] = fb[3];
+                    i++;
+                }
+            }
+            bw.Write(xbytes);
+            bw.Flush();
+            raw = rms.ToArray();
+        }
+        using var cms = new MemoryStream();
+        using (var brotli = new BrotliStream(cms, CompressionLevel.SmallestSize, true))
+            brotli.Write(raw, 0, raw.Length);
+        return cms.ToArray();
     }
 
     private static string WriteDiagnosticsCsv(string diagnosticsDirectory, NistElasticPchipCompressedElement element)
@@ -744,35 +909,6 @@ public static class NistElasticSamplerPchipGenerator
                 QuoteCsv(string.Join(";", block.XKnot.Select(FormatCsvFloat)))));
         }
 
-        File.WriteAllText(path, builder.ToString(), new UTF8Encoding(false));
-        return path;
-    }
-
-    private static string WriteGeneratedRegistrySource(string generatedDirectory)
-    {
-        var elementPaths = Directory
-            .EnumerateFiles(generatedDirectory, "PCHIP*.cs", SearchOption.TopDirectoryOnly)
-            .Where(static path => !string.Equals(Path.GetFileName(path), "Registry.cs", StringComparison.OrdinalIgnoreCase))
-            .OrderBy(ParseAtomicNumberFromGeneratedCodePath)
-            .ToArray();
-
-        var path = Path.Combine(generatedDirectory, "Registry.cs"); // (260401Ch)
-        var builder = new StringBuilder();
-        builder.AppendLine("// <auto-generated />");
-        builder.AppendLine("// (260401Ch) Generated registry for compressed NIST elastic sampler data.");
-        builder.AppendLine("namespace Crystallography;");
-        builder.AppendLine();
-        builder.AppendLine("public static partial class AtomStatic");
-        builder.AppendLine("{");
-        builder.AppendLine("    static partial void RegisterGeneratedNistElasticPchip(global::System.Collections.Generic.Dictionary<int, NistElasticPchipElementData> registry)");
-        builder.AppendLine("    {");
-        foreach (var elementPath in elementPaths)
-        {
-            var atomicNumberText = ParseAtomicNumberFromGeneratedCodePath(elementPath).ToString("D2", CultureInfo.InvariantCulture);
-            builder.AppendLine($"        RegisterGeneratedNistElasticPchipE{atomicNumberText}(registry);");
-        }
-        builder.AppendLine("    }");
-        builder.AppendLine("}");
         File.WriteAllText(path, builder.ToString(), new UTF8Encoding(false));
         return path;
     }
@@ -825,11 +961,9 @@ public static class NistElasticSamplerPchipGenerator
     private static string QuoteCsv(string value)
         => $"\"{value.Replace("\"", "\"\"", StringComparison.Ordinal)}\"";
 
+    // private static string FormatDouble(double value) => value.ToString("G17", CultureInfo.InvariantCulture); // 260604Cl 変更前: G17 は常に17桁で …99999998 / …000001 のゴミ桁が出て可読性が悪い
     private static string FormatDouble(double value)
-        => value.ToString("G17", CultureInfo.InvariantCulture);
-
-    private static string FormatFloat(float value)
-        => value.ToString("G9", CultureInfo.InvariantCulture) + "f";
+        => value.ToString("R", CultureInfo.InvariantCulture); // 260604Cl G17→R: 最短往復表現。値は double にビット完全一致 (round-trip) のまま、NIST 本来の桁数まで短縮
 
     private static string FormatCsvFloat(float value)
         => value.ToString("G9", CultureInfo.InvariantCulture);
@@ -847,10 +981,26 @@ public static partial class AtomStatic
     private static readonly Dictionary<int, NistElasticPchipRuntimeElement> GeneratedNistElasticPchipRuntimeElements = []; // (260401Ch)
     private static readonly object GeneratedNistElasticPchipRuntimeSync = new(); // (260401Ch)
 
-    static partial void RegisterGeneratedNistElasticPchip(Dictionary<int, NistElasticPchipElementData> registry); // (260401Ch)
+    // 260604Cl: 旧 RegisterGeneratedNistElasticPchip(96 個の生成 .cs の静的配列を cctor で一括登録) を廃止。
+    //           PCHIP データは埋め込みリソース NistElasticPchip.bin から元素単位で lazy decode + キャッシュする。
+    //           GeneratedNistElasticPchipElements は decode 済み要素のキャッシュ (値 null = リソースに存在しない元素)。
+    private static NistElasticPchipElementData GetGeneratedNistElasticPchipElement(int atomicNumber) // 260604Cl 追加
+    {
+        lock (GeneratedNistElasticPchipRuntimeSync)
+        {
+            if (GeneratedNistElasticPchipElements.TryGetValue(atomicNumber, out var cached))
+                return cached;
+            var decoded = NistElasticPchipResource.TryDecode(atomicNumber); // 260604Cl リソースから展開
+            GeneratedNistElasticPchipElements[atomicNumber] = decoded;
+            return decoded;
+        }
+    }
 
     public static bool TryGetGeneratedNistElasticPchipElement(int atomicNumber, out NistElasticPchipElementData element)
-        => GeneratedNistElasticPchipElements.TryGetValue(atomicNumber, out element);
+    {
+        element = GetGeneratedNistElasticPchipElement(atomicNumber); // 260604Cl lazy decode
+        return element is not null;
+    }
 
     internal static bool TryGetGeneratedNistElasticPchipRuntimeElement(int atomicNumber, out NistElasticPchipRuntimeElement runtimeElement)
     {
@@ -860,7 +1010,8 @@ public static partial class AtomStatic
                 return true;
         }
 
-        if (!GeneratedNistElasticPchipElements.TryGetValue(atomicNumber, out var generatedElement))
+        var generatedElement = GetGeneratedNistElasticPchipElement(atomicNumber); // 260604Cl リソースから lazy decode
+        if (generatedElement is null)
         {
             runtimeElement = null;
             return false;

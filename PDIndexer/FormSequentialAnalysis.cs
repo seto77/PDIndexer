@@ -17,7 +17,7 @@ using static IronPython.Modules._ast;
 
 namespace PDIndexer;
 
-public partial class FormSequentialAnalysis : Form
+public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
     #region プロパティ、フィールド、イベント
     public FormMain formMain;
@@ -29,6 +29,7 @@ public partial class FormSequentialAnalysis : Form
     public FormSequentialAnalysis()
     {
         InitializeComponent();
+        HelpPage = "7-sequential-analysis"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         numericBoxStartNumber.ReadOnly = true;
         numericBoxToleranceFactor.ReadOnly = true;
     }

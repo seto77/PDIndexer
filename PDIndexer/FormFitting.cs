@@ -17,11 +17,11 @@ using System.Text;
 namespace PDIndexer;
 
 /// <summary>
-/// FormFitting �̊T�v�̐����ł��B
+/// FormFitting の概要の説明です。
 /// </summary>
-public partial class FormFitting : Form
+public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
 {
-    #region �t�B�[���h�A�v���p�e�B
+    #region フィールド、プロパティ
     public Crystal TargetCrystal
     {
         get
@@ -59,7 +59,7 @@ public partial class FormFitting : Form
     public string RemovedProfileName { set => textBoxRemovedProfileName.Text = value; get => textBoxRemovedProfileName.Text; }
 
     /// <summary>
-    /// Angle���[�h�AEnergy���[�h�Ad�l���[�h�̂Ƃ��ɂ��ꂼ��SearchRange�ɂ�����W�� (Angle:1, Energy:500, d:0.2)
+    /// Angleモード、Energyモード、d値モードのときにそれぞれSearchRangeにかける係数 (Angle:1, Energy:500, d:0.2)
     /// </summary>
     public double SerchRangeFactor = 1;
 
@@ -68,10 +68,11 @@ public partial class FormFitting : Form
 
     #endregion
 
-    #region �R���X�g���N�^�A���[�h�A�N���[�Y
+    #region コンストラクタ、ロード、クローズ
     public FormFitting()
     {
         InitializeComponent();
+        HelpPage = "6-fitting-diffraction-peaks"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
         temp_crystal = new Crystal();
         IsSkipChangeEvent = true;
     }
@@ -88,8 +89,8 @@ public partial class FormFitting : Form
 
     #endregion
 
-    #region formMain����A������i�q�萔���ύX���ꂽ�Ƃ��ɌĂ΂��
-    //���C���t�H�[����FormCrystal�Ō����̊i�q�萔�Ȃǂ��ύX���ꂽ�Ƃ��Ă΂��B�I����`�F�b�N��Ԃ��ύX���ꂽ�����ł͂�΂�Ȃ�
+    #region formMainから、結晶や格子定数が変更されたときに呼ばれる
+    //メインフォームやFormCrystalで結晶の格子定数などが変更されたとき呼ばれる。選択列やチェック状態が変更されただけではよばれない
     public void ChangeCrystalFromMainForm(bool IsTargetCrystalChanged = false)
     {
         if (TargetCrystal != null)
@@ -97,13 +98,13 @@ public partial class FormFitting : Form
 
         if (Visible)
         {
-            SetPlanes(IsTargetCrystalChanged); //���ݑI������Ă��錋���̖ʂ��`�F�b�N���X�g�{�b�N�X�ɉ�����
-            Fitting();//Fitting�������Ȃ�
+            SetPlanes(IsTargetCrystalChanged); //現在選択されている結晶の面をチェックリストボックスに加える
+            Fitting();//Fittingをおこなう
         }
     }
     #endregion
 
-    #region �����ʃ��X�g�̕ۑ��A�R�s�[
+    #region 結晶面リストの保存、コピー
     private string generateTableText(int index = -1)
     {
         if (TargetCrystal == null)
@@ -142,7 +143,7 @@ public partial class FormFitting : Form
     }
 
     /// <summary>
-    /// �{�^�� Clipboard�ɃR�s�[
+    /// ボタン Clipboardにコピー
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -153,7 +154,7 @@ public partial class FormFitting : Form
             Clipboard.SetDataObject(text);
     }
     /// <summary>
-    /// �{�^�� CSV�t�@�C���ɕۑ�
+    /// ボタン CSVファイルに保存
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -170,9 +171,9 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region Drag & Drop�C�x���g
+    #region Drag & Dropイベント
     /// <summary>
-    /// �R���g���[����CSV�t�@�C�����h���b�v���ꂽ�Ƃ�
+    /// コントロールにCSVファイルがドロップされたとき
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
@@ -219,13 +220,13 @@ public partial class FormFitting : Form
         }
     }
 
-    //�h���b�O���ꂽ�f�[�^�`���𒲂ׁA�t�@�C���̂Ƃ��̓R�s�[�Ƃ���
+    //ドラッグされたデータ形式を調べ、ファイルのときはコピーとする
     private void FormFitting_DragEnter(object sender, DragEventArgs e)
         => e.Effect = e.Data.GetDataPresent(DataFormats.FileDrop) ? DragDropEffects.Copy : DragDropEffects.None;
 
     #endregion
 
-    #region �s�[�N�t�B�b�e�B���O
+    #region ピークフィッティング
     public void Fitting()
     {
         if (TargetCrystal == null || TargetCrystal.Plane == null || formMain == null || SkipFitting) return;
@@ -241,7 +242,7 @@ public partial class FormFitting : Form
 
         int groupIndex = 0;
 
-        //������
+        //初期化
         foreach (var c in checkedCrystals)
             foreach (var p in c.Plane.Where(e => e.IsFittingChecked))
             {
@@ -260,7 +261,7 @@ public partial class FormFitting : Form
                     Color = Color.FromArgb(c.Argb)
                 };
 
-                if (p.SerchOption == PeakFunctionForm.Simple) //Simple���[�ǂ̂Ƃ��͂����ŏ���
+                if (p.SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
                 {
                     p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, TargetProfile.Pt.ToArray());
                     p.XObs = p.simpleParameter.X;
@@ -272,7 +273,7 @@ public partial class FormFitting : Form
 
         if (!checkBoxPatternDecomposition.Checked)
         {
-            #region �s�[�N�������[�h�ł͂Ȃ��Ƃ�
+            #region ピーク分離モードではないとき
 
             foreach (var c in checkedCrystals)
                 Parallel.ForEach(c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
@@ -280,25 +281,25 @@ public partial class FormFitting : Form
             );
             #endregion
         }
-        //�s�[�N�����t�B�b�e�B���O���[�h�̂Ƃ�
+        //ピーク分離フィッティングモードのとき
         else
         {
-            #region ���ׂĂ��܂Ƃ߂ăt�B�b�e�B���O
+            #region すべてをまとめてフィッティング
 
-            //�S�Ẵt�B�b�e�B���O�Ώۃs�[�N����������i�[
+            //全てのフィッティング対象ピークをいったん格納
             List<PeakFunction> pvpTemp2 = []; //260317Cl new List<PeakFunction>() → []
             for (int h = 0; h < checkedCrystals.Count; h++)
                 for (int i = 0; i < checkedCrystals[h].Plane.Count; i++)
                     if (checkedCrystals[h].Plane[i].IsFittingChecked && checkedCrystals[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
                         pvpTemp2.Add(checkedCrystals[h].Plane[i].peakFunction);
-            //���ёւ�
+            //並び替え
             pvpTemp2.Sort();
 
             //List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
             groupIndex = 0;
             for (int i = 0; i < pvpTemp2.Count; i++)
             {
-                if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//�����O��̃O���[�v�ɑ����Ă�����
+                if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
                     pvpTemp2[i].GroupIndex = groupIndex;
                 else
                     pvpTemp2[i].GroupIndex = ++groupIndex;
@@ -315,7 +316,7 @@ public partial class FormFitting : Form
 
             #endregion
 
-        }//�s�[�N�����t�B�b�e�B���O���[�h�I��
+        }//ピーク分離フィッティングモード終了
 
         foreach (var c in checkedCrystals)
             foreach (var p in c.Plane)
@@ -355,7 +356,7 @@ public partial class FormFitting : Form
 
         formMain.toolStripStatusLabelCalcTime.Text = $"Calculating Time (Peak Fitting) : {sw.ElapsedMilliseconds}ms"; //260317Cl 文字列連結 → 文字列補間
 
-        //�t�B�b�e�B���O���ʂ�
+        //フィッティング結果を
 
         try { FittingDiffraction(); }
         catch { }
@@ -366,7 +367,7 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region ���݂̃`�F�b�N�󋵂Ƌ�ԌQ����ŏ��Q��@�ɂ��i�q�萔�t�B�b�e�B���O
+    #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
     public void FittingDiffraction()
     {
         var p = TargetCrystal.Plane.Where(e => e.IsFittingChecked).Where(e => e.SerchOption == PeakFunctionForm.Simple || e.observedIntensity > 0).ToList();
@@ -380,17 +381,17 @@ public partial class FormFitting : Form
 
         Matrix<double> inv;
 
-        //���w�I�ȏؖ��͗ǂ��킩��񂪃T���v����N�Ō덷��i�ƕ΍���i�Ƃ̊֌W�́A
+        //数学的な証明は良くわからんがサンプル数Nで誤差σiと偏差δiとの関係は、
 
-        // N�|P = ��(��i/ ��i)^2  ����  S^2 Wi = 1 / ��i^2�@������
-        // S^2 = (N-P) / ��(��i^2 Wi) 
-        // ��i^2 = 1/Wi/ S^2 = ��(��i^2 Wi) / Wi / (N-P)
-        //S[�X�P�[�����q] 
-        //N[�f�[�^��]
-        //P[�p�����[�^��]
-        //��i [i�Ԗڂ̃f�[�^�̕΍�]
-        //��i [i�Ԗڂ̃f�[�^�̌덷]
-        //Wi [i�Ԗڂ̃f�[�^�̏d��]
+        // N－P = Σ(δi/ σi)^2  かつ  S^2 Wi = 1 / σi^2　だから
+        // S^2 = (N-P) / Σ(δi^2 Wi) 
+        // σi^2 = 1/Wi/ S^2 = Σ(δi^2 Wi) / Wi / (N-P)
+        //S[スケール因子] 
+        //N[データ数]
+        //P[パラメータ数]
+        //δi [i番目のデータの偏差]
+        //σi [i番目のデータの誤差]
+        //Wi [i番目のデータの重み]
         Matrix<double> AlphaInverse;
         switch (TargetCrystal.Symmetry.CrystalSystemStr)
         {
@@ -413,19 +414,19 @@ public partial class FormFitting : Form
                 a = b = c = Math.Sqrt(1 / C[0, 0]);
                 alfa = beta = gamma = Math.PI / 2;
                 V = a * a * a;
-                if (p.Count - 1 > 0)//�ȉ��͌덷���v�Z���镔��
+                if (p.Count - 1 > 0)//以下は誤差を計算する部分
                 {
-                    var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                    var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                     double sum = 0;
                     for (int i = 0; i < column; i++)
                         sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                    //�{���̏d�ݍs���
+                    //本当の重み行列は
                     for (int i = 0; i < column; i++)
                         W[i, i] = p[i].Weight * (p.Count - 1) / sum;
-                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                         break;
 
-                    //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                    //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
 
                     V_err = Math.Sqrt(3) * a * a_err;
@@ -455,19 +456,19 @@ public partial class FormFitting : Form
                 gamma = Math.PI / 2;
                 V = a * a * c;
 
-                if (p.Count - 2 > 0)//�ȉ��͌덷���v�Z���镔��
+                if (p.Count - 2 > 0)//以下は誤差を計算する部分
                 {
-                    var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                    var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                     double sum = 0;
                     for (int i = 0; i < column; i++)
                         sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                    //�{���̏d�ݍs���
+                    //本当の重み行列は
                     for (int i = 0; i < column; i++)
                         W[i, i] = p[i].Weight * (p.Count - 2) / sum;
-                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                         break;
 
-                    //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                    //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
@@ -499,19 +500,19 @@ public partial class FormFitting : Form
 
                 V = a * a * c * Math.Sqrt(3) / 2;
 
-                if (p.Count - 2 > 0)//�ȉ��͌덷���v�Z���镔��
+                if (p.Count - 2 > 0)//以下は誤差を計算する部分
                 {
-                    var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                    var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                     double sum = 0;
                     for (int i = 0; i < column; i++)
                         sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                    //�{���̏d�ݍs���
+                    //本当の重み行列は
                     for (int i = 0; i < column; i++)
                         W[i, i] = p[i].Weight * (p.Count - 2) / sum;
-                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                         break;
 
-                    //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                    //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
@@ -544,19 +545,19 @@ public partial class FormFitting : Form
 
                 V = a * a * c * Math.Sqrt(3) / 2;
 
-                if (p.Count - 2 > 0)//�ȉ��͌덷���v�Z���镔��
+                if (p.Count - 2 > 0)//以下は誤差を計算する部分
                 {
-                    var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                    var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                     double sum = 0;
                     for (int i = 0; i < column; i++)
                         sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                    //�{���̏d�ݍs���
+                    //本当の重み行列は
                     for (int i = 0; i < column; i++)
                         W[i, i] = p[i].Weight * (p.Count - 2) / sum;
-                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                         break;
 
-                    //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                    //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
@@ -590,19 +591,19 @@ public partial class FormFitting : Form
 
                 V = a * b * c;
 
-                if (p.Count - 3 > 0)//�ȉ��͌덷���v�Z���镔��
+                if (p.Count - 3 > 0)//以下は誤差を計算する部分
                 {
-                    var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                    var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                     double sum = 0;
                     for (int i = 0; i < column; i++)
                         sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                    //�{���̏d�ݍs���
+                    //本当の重み行列は
                     for (int i = 0; i < column; i++)
                         W[i, i] = p[i].Weight * (p.Count - 3) / sum;
-                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                    if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                         break;
 
-                    //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                    //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     b_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
                     c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
@@ -643,19 +644,19 @@ public partial class FormFitting : Form
                         beta = Math.PI / 2;
                         gamma = Math.PI / 2;
 
-                        if (p.Count - 4 > 0)//�ȉ��͌덷���v�Z���镔��
+                        if (p.Count - 4 > 0)//以下は誤差を計算する部分
                         {
-                            var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                            var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                             double sum = 0;
                             for (int i = 0; i < column; i++)
                                 sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                            //�{���̏d�ݍs���
+                            //本当の重み行列は
                             for (int i = 0; i < column; i++)
                                 W[i, i] = p[i].Weight * (p.Count - 4) / sum;
-                            if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                            if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                                 break;
 
-                            //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                            //最後にCの誤差を実格子の誤差に直す
                             alpha_err = Math.Sqrt(
                                 C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[1, 0] * C[1, 0] * C[2, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
                             + C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
@@ -701,19 +702,19 @@ public partial class FormFitting : Form
 
                         V = a * b * c * Math.Sin(beta);
 
-                        if (p.Count - 4 > 0)//�ȉ��͌덷���v�Z���镔��
+                        if (p.Count - 4 > 0)//以下は誤差を計算する部分
                         {
-                            var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                            var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                             double sum = 0;
                             for (int i = 0; i < column; i++)
                                 sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                            //�{���̏d�ݍs���
+                            //本当の重み行列は
                             for (int i = 0; i < column; i++)
                                 W[i, i] = p[i].Weight * (p.Count - 4) / sum;
-                            if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                            if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                                 break;
 
-                            //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                            //最後にCの誤差を実格子の誤差に直す
                             beta_err = Math.Sqrt(
                                 C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[2, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
                             + C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
@@ -758,19 +759,19 @@ public partial class FormFitting : Form
 
                         V = a * b * c * Math.Sin(gamma);
 
-                        if (p.Count - 4 > 0)//�ȉ��͌덷���v�Z���镔��
+                        if (p.Count - 4 > 0)//以下は誤差を計算する部分
                         {
-                            var Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                            var Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                             double sum = 0;
                             for (int i = 0; i < column; i++)
                                 sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                            //�{���̏d�ݍs���
+                            //本当の重み行列は
                             for (int i = 0; i < column; i++)
                                 W[i, i] = p[i].Weight * (p.Count - 4) / sum;
-                            if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                            if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse))//この行列の対角成分がパラメータCの誤差の２乗になる
                                 break;
 
-                            //�Ō��C�̌덷�����i�q�̌덷�ɒ���
+                            //最後にCの誤差を実格子の誤差に直す
                             gamma_err = Math.Sqrt(
                                 C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[1, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
                             + C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[1, 0] * C[1, 0] * C[1, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
@@ -870,21 +871,21 @@ public partial class FormFitting : Form
                 beta = Math.Asin(b_star / c / a / V_star);
                 gamma = Math.Asin(c_star / a / b / V_star);
 
-                if (p.Count - 6 > 0)//�ȉ��͌덷���v�Z���镔��
+                if (p.Count - 6 > 0)//以下は誤差を計算する部分
                 {
-                    Matrix Dev = A - Q * C;//�΍����c�����ɂƂ����x�N�g�� Dev�̐����̂Q��a�� �s�[�N�� - �p�����[�^���ɂȂ�͂�
+                    Matrix Dev = A - Q * C;//偏差を縦成分にとったベクトル Devの成分の２乗和が ピーク数 - パラメータ数になるはず
                     double sum = 0;
                     for (int i = 0; i < column; i++)
                         sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight;
-                    //�{���̏d�ݍs���
+                    //本当の重み行列は
                     for (int i = 0; i < column; i++)
                         W[i, i] = p[i].Weight * (p.Count - 6) / sum;
-                    Matrix AlphaInverse = (Q.Trans() * W * Q).Inv();//���̍s��̑Ίp�������p�����[�^C�̌덷�̂Q��ɂȂ�
+                    Matrix AlphaInverse = (Q.Trans() * W * Q).Inv();//この行列の対角成分がパラメータCの誤差の２乗になる
 
                     double _Av = AlphaInverse[0, 0], _Bv = AlphaInverse[1, 1], _Cv = AlphaInverse[2, 2], _Uv = AlphaInverse[3, 3], _Vv = AlphaInverse[4, 4], _Wv = AlphaInverse[5, 5];
 
-                    //�Ō��C�̌덷�����i�q�̌덷�ɒ���
-                    double a_star_err = Math.Sqrt(_Av / 4.0 / _A);// a* = _A^1/2   =>  �@��(a*)^2 =  ( ��(A)^2 /2/_A) 
+                    //最後にCの誤差を実格子の誤差に直す
+                    double a_star_err = Math.Sqrt(_Av / 4.0 / _A);// a* = _A^1/2   =>  　σ(a*)^2 =  ( σ(A)^2 /2/_A) 
                     double b_star_err = Math.Sqrt(_Bv / 4.0 / _B);
                     double c_star_err = Math.Sqrt(_Cv / 4.0 / _C );
 
@@ -937,7 +938,7 @@ public partial class FormFitting : Form
                     double SinBB = Math.Sin(Bet_star) * Math.Sin(Bet_star);
                     double SinGG = Math.Sin(Gam_star) * Math.Sin(Gam_star);
 
-                    //������艺�̎��͑����A�ԈႢ
+                    //ここより下の式は多分、間違い
                     a_err = Math.Sqrt(
                         cc * SinAA / VV * b_star_err * b_star_err
                        + bb * SinAA / VV * c_star_err * c_star_err
@@ -959,7 +960,7 @@ public partial class FormFitting : Form
                        + aa * cc * SinGG / VV / VV * V_star_err * V_star_err
                     );
 
-                    //������艺�̎��́A�ԈႢ
+                    //ここより下の式は、間違い
                     alpha_err = Math.Sqrt(
                         1 / (b * b * c * c * VV - aa) * a_star_err * a_star_err
                     + aa / (b * b * b * b * c * c * VV - b * b * aa) * b_err * b_err
@@ -1033,7 +1034,7 @@ public partial class FormFitting : Form
                 #endregion
         }
 
-        //�����Ȃ������ꍇ�́A�i�q�萔��萔�{�������̂����߂� 2020/10/16
+        //解けなかった場合は、格子定数を定数倍したものを求める 2020/10/16
         if (a == 0 && p.Count > 0)
         {
             double coeff = p.Sum(e => e.Weight * e.d * e.dObs) / p.Sum(e => e.Weight * e.d * e.d);
@@ -1051,7 +1052,7 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    # region Confirm���������Ƃ��̓���
+    # region Confirmを押したときの動作
     private void buttonConfirm_Click(object sender, EventArgs e) => Confirm(true);
 
     public void Confirm(bool copy = true)
@@ -1081,12 +1082,12 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region �œK�i�q�萔���N���b�v�{�[�h�R�s�[
+    #region 最適格子定数をクリップボードコピー
     private void buttonCopyClipboard_Click(object sender, EventArgs e) => CopyClipboard();
 
     public void CopyClipboard()
     {
-        //�N���b�v�{�[�h�ɓ]��
+        //クリップボードに転送
         var sb = new StringBuilder();
         if (textBoxA.Text != "0.000000")
         {
@@ -1103,13 +1104,13 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region dataGridViewPlanes�֘A�̃C�x���g
+    #region dataGridViewPlanes関連のイベント
 
     /// <summary>
-    /// ���ݑI������Ă��錋���̖ʂ�dataGridViewPlaneList�ɉ�����
+    /// 現在選択されている結晶の面をdataGridViewPlaneListに加える
     /// </summary>
     /// <param name="IsTargetCrystalChanged">
-    /// �^�[�Q�b�g���ύX���ꂽ�ꍇ��True�@���̂Ƃ���dataGridView��S�����������ƁA������
+    /// ターゲットが変更された場合はTrue　このときはdataGridViewを全消去したあと、加える
     /// </param>
     public void SetPlanes(bool IsTargetCrystalChanged)
     {
@@ -1128,7 +1129,7 @@ public partial class FormFitting : Form
         }
         else
         {
-            if (TargetCrystal.FlexibleMode) //flex���[�h�̎�
+            if (TargetCrystal.FlexibleMode) //flexモードの時
             {
                 for (int i = 0; i < TargetCrystal.Plane.Count; i++)
                 {
@@ -1141,9 +1142,9 @@ public partial class FormFitting : Form
                     dataSet.DataTablePeakFitting.RemoveAt(dataSet.DataTablePeakFitting.Rows.Count - 1);
 
             }
-            else//�ʏ팋�����[�h�̎�
+            else//通常結晶モードの時
             {
-                //�܂��A�`�F�b�N����Ă���ʎw�������X�g�A�b�v����
+                //まず、チェックされている面指数をリストアップする
                 List<string> checkedItems = []; //260317Cl new List<string>() → []
                 for (int i = 0; i < dataSet.DataTablePeakFitting.Rows.Count; i++)
                 {
@@ -1156,7 +1157,7 @@ public partial class FormFitting : Form
                 {
                     if (dataSet.DataTablePeakFitting.Rows.Count >= i + 1)
                     {
-                        //�`�F�b�N����Ă���ʎw�����ǂ����𔻒肵�āAIsFittingChecked�ɔ��f������
+                        //チェックされている面指数かどうかを判定して、IsFittingCheckedに反映させる
                         TargetCrystal.Plane[i].IsFittingChecked = checkedItems.Any(e => e == TargetCrystal.Plane[i].strHKL);
                         dataSet.DataTablePeakFitting.Replace(i, TargetCrystal.Plane[i]);
                     }
@@ -1230,12 +1231,12 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region dataGridViewCrystals�̃C�x���g (formMain�ɓ]��)
+    #region dataGridViewCrystalsのイベント (formMainに転送)
     private void dataGridViewCrystals_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) => formMain.dataGridViewCrystals_CellMouseClick(sender, e);
     private void dataGridViewCrystals_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewCrystals_KeyDown(sender, e);
     #endregion 
 
-    #region �œK�i�q�萔�̐ݒ�
+    #region 最適格子定数の設定
     private void SetTextBox(Crystal c)
     {
         OptimizedCellConstants = (c.A, c.B, c.C, c.Alpha, c.Beta, c.Gamma, c.Volume);
@@ -1267,7 +1268,7 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region �s�[�N�֐��A���l���A�����͈͂Ȃǂ̐ݒ�
+    #region ピーク関数、半値幅、検索範囲などの設定
     private void radioButton_CheckedChanged(object sender, EventArgs e)
     {
         if (IsRadioButtonChangeEventSkip) return;
@@ -1358,7 +1359,7 @@ public partial class FormFitting : Form
 
     #endregion
 
-    #region ���̑��C�x���g
+    #region その他イベント
     private void FormFitting_KeyDown(object sender, KeyEventArgs e) => formMain.FormMain_KeyDown(sender, e);
     private void FormFitting_VisibleChanged(object sender, EventArgs e)
     {
@@ -1367,7 +1368,7 @@ public partial class FormFitting : Form
 
         if (Visible)
         {
-            //dataGridView�̐F�̐ݒ�
+            //dataGridViewの色の設定
             for (int i = 0; i < dataGridViewCrystals.Rows.Count; i++)
                 dataGridViewCrystals.Rows[i].DefaultCellStyle = formMain.dataGridViewCrystals.Rows[i].DefaultCellStyle;
             SetPlanes(true);
@@ -1388,15 +1389,15 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region formMain���牡���P�ʂ��ύX���ꂽ�Ƃ�
+    #region formMainから横軸単位が変更されたとき
     internal void ChangeHorizontalAxis()
     {
-        //1.00 nm ~ 1.05 nm ����Ƃ��� 
+        //1.00 nm ~ 1.05 nm を基準とする 
 
         var val1 = HorizontalAxisConverter.ConvertFromD(1.00, formMain.HorizontalAxisProperty);
         var val2 = HorizontalAxisConverter.ConvertFromD(1.06, formMain.HorizontalAxisProperty);
 
-        // 1.0, 2.0, 5.0 * 10^n�@�̒��ŋ߂������ɂ���B
+        // 1.0, 2.0, 5.0 * 10^n　の中で近い数字にする。
 
         var dif = Math.Abs(val2 - val1) *8;
 
@@ -1421,7 +1422,7 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region CellFinder�ɏ���]��
+    #region CellFinderに情報を転送
     private void buttonSendToCellFinder_Click(object sender, EventArgs e)
     {
 
@@ -1439,7 +1440,7 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region RemovePeaks�@�\
+    #region RemovePeaks機能
 
     private void buttonRemovePeaks_Click(object sender, EventArgs e)
     {
@@ -1475,9 +1476,9 @@ public partial class FormFitting : Form
     }
     #endregion
 
-    #region Flexible���[�h�̎��ɁA�S�s�[�N���폜����
+    #region Flexibleモードの時に、全ピークを削除する
     /// <summary>
-    /// Flexible���[�h�̎��ɁA�S�s�[�N���폜����
+    /// Flexibleモードの時に、全ピークを削除する
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
