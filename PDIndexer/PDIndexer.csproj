@@ -50,6 +50,16 @@
     <Content Include="AMCSD.cdb3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <!-- 260606Cl 追加: xraylib (BSD, 4.2.1) ネイティブ DLL を同梱。X線異常分散 f'/f'' (Fi/Fii) ほかを Crystallography/Xraylib.cs から P/Invoke する。
+         ReciPro.csproj と同方針。self-contained publish では native DLL が自動で拾われないため CopyToPublishDirectory も明示。ライセンスは libxrl-11.LICENSE.txt を同梱。 -->
+    <Content Include="libxrl-11.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="libxrl-11.LICENSE.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

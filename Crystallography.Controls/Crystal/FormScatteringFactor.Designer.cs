@@ -27,9 +27,8 @@
             components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScatteringFactor));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -38,9 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            // dataGridView = new System.Windows.Forms.DataGridView(); // 260518Cl 旧実装: DPI変更時に列幅が追従しない
-            dataGridView = new DpiAwareDataGridView(); // 260518Cl
+            dataGridView = new DpiAwareDataGridView();
             dataGridViewTextBoxColumnH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumnK = new System.Windows.Forms.DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumnI = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,18 +54,12 @@
             dataGridViewTextBoxColumnIntCondition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             bindingSourceScatteringFactor = new System.Windows.Forms.BindingSource(components);
             dataSet = new DataSet();
-            label2 = new System.Windows.Forms.Label();
             checkBoxHideProhibitedPlanes = new System.Windows.Forms.CheckBox();
             checkBoxHideEquivalentPlane = new System.Windows.Forms.CheckBox();
             buttonCopyClipboard = new System.Windows.Forms.Button();
             checkBoxBragBrentano = new System.Windows.Forms.CheckBox();
             waveLengthControl1 = new WaveLengthControl();
             toolTip = new System.Windows.Forms.ToolTip(components);
-            toolTip.IsBalloon = true; // 260531Cl 追加: バルーン表示に統一
-            toolTip.AutoPopDelay = 10000; // 260601Cl 追加: 長文表示時間を延長(共通標準値)
-            toolTip.InitialDelay = 500; // 260601Cl 追加
-            toolTip.ReshowDelay = 100; // 260601Cl 追加
-            label8 = new System.Windows.Forms.Label();
             checkBoxTest = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -76,7 +67,6 @@
             label5 = new System.Windows.Forms.Label();
             label6 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
-            panel1 = new System.Windows.Forms.Panel();
             numericBoxL_step = new NumericBox();
             numericBoxK_step = new NumericBox();
             numericBoxH_step = new NumericBox();
@@ -86,17 +76,99 @@
             numericBoxK_min = new NumericBox();
             numericBoxH_max = new NumericBox();
             numericBoxH_min = new NumericBox();
-            panel2 = new System.Windows.Forms.Panel();
-            radioButtonNanoMeter = new System.Windows.Forms.RadioButton();
-            radioButtonAngstrom = new System.Windows.Forms.RadioButton();
-            panel3 = new System.Windows.Forms.Panel();
             numericBoxCutoffD = new NumericBox();
+            labelModel = new System.Windows.Forms.Label();
+            radioButtonXrayFs = new System.Windows.Forms.RadioButton();
+            radioButtonXrayFqSq = new System.Windows.Forms.RadioButton();
+            radioButtonElectronPeng = new System.Windows.Forms.RadioButton();
+            radioButtonElectronKirkland = new System.Windows.Forms.RadioButton();
+            radioButtonElectronEightGaussian = new System.Windows.Forms.RadioButton();
+            checkBoxDebyeWaller = new System.Windows.Forms.CheckBox();
+            panel1 = new System.Windows.Forms.Panel();
+            tabControl1 = new System.Windows.Forms.TabControl();
+            tabPageReflections = new System.Windows.Forms.TabPage();
+            splitContainer1 = new System.Windows.Forms.SplitContainer();
+            graphControl2 = new GraphControl();
+            flowLayoutPanel6 = new System.Windows.Forms.FlowLayoutPanel();
+            button1 = new System.Windows.Forms.Button();
+            flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
+            tabPageScatteringFactors = new System.Windows.Forms.TabPage();
+            miniTable1 = new MiniTable();
+            Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            flowLayoutPanelModel = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelModel_Xray = new System.Windows.Forms.FlowLayoutPanel();
+            flowLayoutPanelModel_Electron = new System.Windows.Forms.FlowLayoutPanel();
+            graphControlScatteringFactor = new GraphControl();
+            tabPageAttenuations = new System.Windows.Forms.TabPage();
+            tlpAtten = new System.Windows.Forms.TableLayoutPanel();
+            graphAtten = new GraphControl();
+            numAttenThickness = new NumericBox();
+            dgvAttenScalars = new MiniTable();
+            flowAttenDetail = new System.Windows.Forms.FlowLayoutPanel();
+            dgvAttenEdges = new MiniTable();
+            colEdgeElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeEdge = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeKeV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colEdgeJump = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dgvAttenElectron = new MiniTable();
+            colElecElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colElecZ = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colElecAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colElecA = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            dgvAttenNeutron = new MiniTable();
+            colNeutElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colNeutBcoh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colNeutScoh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colNeutAt = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            tabPageFluorescence = new System.Windows.Forms.TabPage();
+            tlpFluor = new System.Windows.Forms.TableLayoutPanel();
+            graphFluor = new GraphControl();
+            dgvFluorScalars = new MiniTable();
+            dgvFluorLines = new MiniTable();
+            colFlElem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlLine = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlRelI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            colFlOmega = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            labelFluorNA = new System.Windows.Forms.Label();
+            flowLayoutPanel5 = new System.Windows.Forms.FlowLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)dataGridView).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSourceScatteringFactor).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataSet).BeginInit();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
+            tabControl1.SuspendLayout();
+            tabPageReflections.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
+            splitContainer1.Panel1.SuspendLayout();
+            splitContainer1.Panel2.SuspendLayout();
+            splitContainer1.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            tabPageScatteringFactors.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)miniTable1).BeginInit();
+            flowLayoutPanelModel.SuspendLayout();
+            flowLayoutPanelModel_Xray.SuspendLayout();
+            flowLayoutPanelModel_Electron.SuspendLayout();
+            tabPageAttenuations.SuspendLayout();
+            tlpAtten.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenScalars).BeginInit();
+            flowAttenDetail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenEdges).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenElectron).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenNeutron).BeginInit();
+            tabPageFluorescence.SuspendLayout();
+            tlpFluor.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvFluorScalars).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFluorLines).BeginInit();
+            flowLayoutPanel5.SuspendLayout();
             SuspendLayout();
             // 
             // dataGridView
@@ -104,33 +176,18 @@
             dataGridView.AllowUserToAddRows = false;
             dataGridView.AllowUserToDeleteRows = false;
             dataGridView.AllowUserToResizeRows = false;
-            //260516Cl resx の dataGridView.Font を継承するため AlternatingRowsDefaultCellStyle (Font のみ設定) は廃止
-            //dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            //dataGridView.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.AutoGenerateColumns = false;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
-            //dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Variable Text", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { dataGridViewTextBoxColumnH, dataGridViewTextBoxColumnK, dataGridViewTextBoxColumnI, dataGridViewTextBoxColumnL, dataGridViewTextBoxColumnMulti, dataGridViewTextBoxColumnD, dataGridViewTextBoxColumnQ, dataGridViewTextBoxColumnTwoTheta, dataGridViewTextBoxColumnFreal, dataGridViewTextBoxColumnFinv, dataGridViewTextBoxColumnFabs, dataGridViewTextBoxColumnFsq, dataGridViewTextBoxColumnIntPercent, dataGridViewTextBoxColumnIntCondition });
             dataGridView.DataSource = bindingSourceScatteringFactor;
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Window;
-            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
-            //dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            dataGridView.DefaultCellStyle = dataGridViewCellStyle13;
             resources.ApplyResources(dataGridView, "dataGridView");
-            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip")); // 260531Cl
             dataGridView.MultiSelect = false;
             dataGridView.Name = "dataGridView";
             dataGridView.ReadOnly = true;
@@ -138,19 +195,18 @@
             dataGridView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dataGridView.RowTemplate.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridView.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.SystemColors.Control;
-            //260516Cl resx の dataGridView.Font を継承するため Font 設定を廃止
-            //dataGridView.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Variable Text", 9.75F);
             dataGridView.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.SystemColors.WindowText;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridView.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            toolTip.SetToolTip(dataGridView, resources.GetString("dataGridView.ToolTip"));
             dataGridView.CellFormatting += dataGridView_CellFormatting;
             // 
             // dataGridViewTextBoxColumnH
             // 
             dataGridViewTextBoxColumnH.DataPropertyName = "H";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewTextBoxColumnH.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewTextBoxColumnH.DefaultCellStyle = dataGridViewCellStyle2;
             resources.ApplyResources(dataGridViewTextBoxColumnH, "dataGridViewTextBoxColumnH");
             dataGridViewTextBoxColumnH.Name = "dataGridViewTextBoxColumnH";
             dataGridViewTextBoxColumnH.ReadOnly = true;
@@ -171,8 +227,8 @@
             // dataGridViewTextBoxColumnL
             // 
             dataGridViewTextBoxColumnL.DataPropertyName = "L";
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewTextBoxColumnL.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewTextBoxColumnL.DefaultCellStyle = dataGridViewCellStyle3;
             resources.ApplyResources(dataGridViewTextBoxColumnL, "dataGridViewTextBoxColumnL");
             dataGridViewTextBoxColumnL.Name = "dataGridViewTextBoxColumnL";
             dataGridViewTextBoxColumnL.ReadOnly = true;
@@ -187,9 +243,9 @@
             // dataGridViewTextBoxColumnD
             // 
             dataGridViewTextBoxColumnD.DataPropertyName = "D";
-            dataGridViewCellStyle5.Format = "G7";
-            dataGridViewCellStyle5.NullValue = null;
-            dataGridViewTextBoxColumnD.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Format = "G7";
+            dataGridViewCellStyle4.NullValue = null;
+            dataGridViewTextBoxColumnD.DefaultCellStyle = dataGridViewCellStyle4;
             resources.ApplyResources(dataGridViewTextBoxColumnD, "dataGridViewTextBoxColumnD");
             dataGridViewTextBoxColumnD.Name = "dataGridViewTextBoxColumnD";
             dataGridViewTextBoxColumnD.ReadOnly = true;
@@ -197,8 +253,8 @@
             // dataGridViewTextBoxColumnQ
             // 
             dataGridViewTextBoxColumnQ.DataPropertyName = "Q";
-            dataGridViewCellStyle6.Format = "G7";
-            dataGridViewTextBoxColumnQ.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Format = "G7";
+            dataGridViewTextBoxColumnQ.DefaultCellStyle = dataGridViewCellStyle5;
             resources.ApplyResources(dataGridViewTextBoxColumnQ, "dataGridViewTextBoxColumnQ");
             dataGridViewTextBoxColumnQ.Name = "dataGridViewTextBoxColumnQ";
             dataGridViewTextBoxColumnQ.ReadOnly = true;
@@ -206,8 +262,8 @@
             // dataGridViewTextBoxColumnTwoTheta
             // 
             dataGridViewTextBoxColumnTwoTheta.DataPropertyName = "TwoTheta";
-            dataGridViewCellStyle7.Format = "G7";
-            dataGridViewTextBoxColumnTwoTheta.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle6.Format = "G7";
+            dataGridViewTextBoxColumnTwoTheta.DefaultCellStyle = dataGridViewCellStyle6;
             resources.ApplyResources(dataGridViewTextBoxColumnTwoTheta, "dataGridViewTextBoxColumnTwoTheta");
             dataGridViewTextBoxColumnTwoTheta.Name = "dataGridViewTextBoxColumnTwoTheta";
             dataGridViewTextBoxColumnTwoTheta.ReadOnly = true;
@@ -215,8 +271,8 @@
             // dataGridViewTextBoxColumnFreal
             // 
             dataGridViewTextBoxColumnFreal.DataPropertyName = "F_real";
-            dataGridViewCellStyle8.Format = "G7";
-            dataGridViewTextBoxColumnFreal.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle7.Format = "G7";
+            dataGridViewTextBoxColumnFreal.DefaultCellStyle = dataGridViewCellStyle7;
             resources.ApplyResources(dataGridViewTextBoxColumnFreal, "dataGridViewTextBoxColumnFreal");
             dataGridViewTextBoxColumnFreal.Name = "dataGridViewTextBoxColumnFreal";
             dataGridViewTextBoxColumnFreal.ReadOnly = true;
@@ -224,8 +280,8 @@
             // dataGridViewTextBoxColumnFinv
             // 
             dataGridViewTextBoxColumnFinv.DataPropertyName = "F_inv";
-            dataGridViewCellStyle9.Format = "G7";
-            dataGridViewTextBoxColumnFinv.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle8.Format = "G7";
+            dataGridViewTextBoxColumnFinv.DefaultCellStyle = dataGridViewCellStyle8;
             resources.ApplyResources(dataGridViewTextBoxColumnFinv, "dataGridViewTextBoxColumnFinv");
             dataGridViewTextBoxColumnFinv.Name = "dataGridViewTextBoxColumnFinv";
             dataGridViewTextBoxColumnFinv.ReadOnly = true;
@@ -233,8 +289,8 @@
             // dataGridViewTextBoxColumnFabs
             // 
             dataGridViewTextBoxColumnFabs.DataPropertyName = "F";
-            dataGridViewCellStyle10.Format = "G7";
-            dataGridViewTextBoxColumnFabs.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle9.Format = "G7";
+            dataGridViewTextBoxColumnFabs.DefaultCellStyle = dataGridViewCellStyle9;
             resources.ApplyResources(dataGridViewTextBoxColumnFabs, "dataGridViewTextBoxColumnFabs");
             dataGridViewTextBoxColumnFabs.Name = "dataGridViewTextBoxColumnFabs";
             dataGridViewTextBoxColumnFabs.ReadOnly = true;
@@ -242,8 +298,8 @@
             // dataGridViewTextBoxColumnFsq
             // 
             dataGridViewTextBoxColumnFsq.DataPropertyName = "F2";
-            dataGridViewCellStyle11.Format = "G7";
-            dataGridViewTextBoxColumnFsq.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Format = "G7";
+            dataGridViewTextBoxColumnFsq.DefaultCellStyle = dataGridViewCellStyle10;
             resources.ApplyResources(dataGridViewTextBoxColumnFsq, "dataGridViewTextBoxColumnFsq");
             dataGridViewTextBoxColumnFsq.Name = "dataGridViewTextBoxColumnFsq";
             dataGridViewTextBoxColumnFsq.ReadOnly = true;
@@ -251,8 +307,8 @@
             // dataGridViewTextBoxColumnIntPercent
             // 
             dataGridViewTextBoxColumnIntPercent.DataPropertyName = "RelInt";
-            dataGridViewCellStyle12.Format = "G7";
-            dataGridViewTextBoxColumnIntPercent.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle11.Format = "G7";
+            dataGridViewTextBoxColumnIntPercent.DefaultCellStyle = dataGridViewCellStyle11;
             resources.ApplyResources(dataGridViewTextBoxColumnIntPercent, "dataGridViewTextBoxColumnIntPercent");
             dataGridViewTextBoxColumnIntPercent.Name = "dataGridViewTextBoxColumnIntPercent";
             dataGridViewTextBoxColumnIntPercent.ReadOnly = true;
@@ -275,109 +331,285 @@
             dataSet.Namespace = "http://tempuri.org/DataSet1.xsd";
             dataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
-            // label2
-            // 
-            resources.ApplyResources(label2, "label2");
-            label2.Name = "label2";
-            // 
             // checkBoxHideProhibitedPlanes
             // 
             resources.ApplyResources(checkBoxHideProhibitedPlanes, "checkBoxHideProhibitedPlanes");
-            toolTip.SetToolTip(checkBoxHideProhibitedPlanes, resources.GetString("checkBoxHideProhibitedPlanes.ToolTip")); // 260531Cl
             checkBoxHideProhibitedPlanes.Checked = true;
             checkBoxHideProhibitedPlanes.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideProhibitedPlanes.Name = "checkBoxHideProhibitedPlanes";
+            toolTip.SetToolTip(checkBoxHideProhibitedPlanes, resources.GetString("checkBoxHideProhibitedPlanes.ToolTip"));
             checkBoxHideProhibitedPlanes.CheckedChanged += numericBoxCutoffD_ValueChanged;
             // 
             // checkBoxHideEquivalentPlane
             // 
             resources.ApplyResources(checkBoxHideEquivalentPlane, "checkBoxHideEquivalentPlane");
-            toolTip.SetToolTip(checkBoxHideEquivalentPlane, resources.GetString("checkBoxHideEquivalentPlane.ToolTip")); // 260531Cl
             checkBoxHideEquivalentPlane.Checked = true;
             checkBoxHideEquivalentPlane.CheckState = System.Windows.Forms.CheckState.Checked;
             checkBoxHideEquivalentPlane.Name = "checkBoxHideEquivalentPlane";
+            toolTip.SetToolTip(checkBoxHideEquivalentPlane, resources.GetString("checkBoxHideEquivalentPlane.ToolTip"));
             checkBoxHideEquivalentPlane.CheckedChanged += numericBoxCutoffD_ValueChanged;
             // 
             // buttonCopyClipboard
             // 
             resources.ApplyResources(buttonCopyClipboard, "buttonCopyClipboard");
-            toolTip.SetToolTip(buttonCopyClipboard, resources.GetString("buttonCopyClipboard.ToolTip")); // 260531Cl
             buttonCopyClipboard.Name = "buttonCopyClipboard";
+            toolTip.SetToolTip(buttonCopyClipboard, resources.GetString("buttonCopyClipboard.ToolTip"));
             buttonCopyClipboard.UseVisualStyleBackColor = true;
             buttonCopyClipboard.Click += buttonCopyClipboard_Click;
             // 
             // checkBoxBragBrentano
             // 
             resources.ApplyResources(checkBoxBragBrentano, "checkBoxBragBrentano");
-            toolTip.SetToolTip(checkBoxBragBrentano, resources.GetString("checkBoxBragBrentano.ToolTip")); // 260531Cl
             checkBoxBragBrentano.Name = "checkBoxBragBrentano";
+            toolTip.SetToolTip(checkBoxBragBrentano, resources.GetString("checkBoxBragBrentano.ToolTip"));
             checkBoxBragBrentano.CheckedChanged += checkBoxBragBrentano_CheckedChanged;
             // 
             // waveLengthControl1
-            //
+            // 
             resources.ApplyResources(waveLengthControl1, "waveLengthControl1");
-            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip")); // 260531Cl
-            captureExtender.SetCapture(waveLengthControl1, true); // 260524Cl: 波長/エネルギー選択を auto キャプチャ対象にする (旧: 手動キャプチャのみ)
-            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            captureExtender.SetCapture(waveLengthControl1, true);
+            waveLengthControl1.DirectionWaveEnergy = System.Windows.Forms.FlowDirection.LeftToRight;
+            waveLengthControl1.DirectionWhole = System.Windows.Forms.FlowDirection.LeftToRight;
             waveLengthControl1.Energy = 8.04114721D;
             waveLengthControl1.Monochrome = true;
             waveLengthControl1.Name = "waveLengthControl1";
             waveLengthControl1.ShowWaveSource = true;
-            waveLengthControl1.WaveLength = 0.1541871066667D;
+            toolTip.SetToolTip(waveLengthControl1, resources.GetString("waveLengthControl1.ToolTip"));
+            waveLengthControl1.WaveLength = 0.154187106667D;
             waveLengthControl1.WaveSource = WaveSource.Xray;
             waveLengthControl1.XrayWaveSourceElementNumber = 29;
             waveLengthControl1.XrayWaveSourceLine = XrayLine.Ka;
             waveLengthControl1.WavelengthChanged += waveLengthControl1_WavelengthChanged;
+            waveLengthControl1.WavelengthUnitChanged += radioButtonNanoMeter_CheckedChanged;
             // 
-            // label8
+            // toolTip
             // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
-            toolTip.SetToolTip(label8, resources.GetString("label8.ToolTip"));
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
             // 
             // checkBoxTest
             // 
             resources.ApplyResources(checkBoxTest, "checkBoxTest");
-            toolTip.SetToolTip(checkBoxTest, resources.GetString("checkBoxTest.ToolTip")); // 260531Cl
             checkBoxTest.Name = "checkBoxTest";
+            toolTip.SetToolTip(checkBoxTest, resources.GetString("checkBoxTest.ToolTip"));
             checkBoxTest.UseVisualStyleBackColor = true;
             checkBoxTest.CheckedChanged += checkBoxTest_CheckedChanged;
             // 
             // label1
             // 
             resources.ApplyResources(label1, "label1");
-            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip")); // 260531Cl
             label1.Name = "label1";
+            toolTip.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label3
             // 
             resources.ApplyResources(label3, "label3");
-            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip")); // 260531Cl
             label3.Name = "label3";
+            toolTip.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // label4
             // 
             resources.ApplyResources(label4, "label4");
-            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip")); // 260531Cl
             label4.Name = "label4";
+            toolTip.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             // 
             // label5
             // 
             resources.ApplyResources(label5, "label5");
-            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip")); // 260531Cl
             label5.Name = "label5";
+            toolTip.SetToolTip(label5, resources.GetString("label5.ToolTip"));
             // 
             // label6
             // 
             resources.ApplyResources(label6, "label6");
-            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip")); // 260531Cl
             label6.Name = "label6";
+            toolTip.SetToolTip(label6, resources.GetString("label6.ToolTip"));
             // 
             // label7
             // 
             resources.ApplyResources(label7, "label7");
-            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip")); // 260531Cl
             label7.Name = "label7";
+            toolTip.SetToolTip(label7, resources.GetString("label7.ToolTip"));
+            // 
+            // numericBoxL_step
+            // 
+            numericBoxL_step.BackColor = System.Drawing.Color.Transparent;
+            numericBoxL_step.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
+            numericBoxL_step.Maximum = 1D;
+            numericBoxL_step.Minimum = 0.001D;
+            numericBoxL_step.Name = "numericBoxL_step";
+            numericBoxL_step.RadianValue = 0.00017453292519943296D;
+            numericBoxL_step.ShowUpDown = true;
+            numericBoxL_step.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxL_step, resources.GetString("numericBoxL_step.ToolTip1"));
+            numericBoxL_step.Value = 0.01D;
+            numericBoxL_step.ValueFontSize = 9F;
+            numericBoxL_step.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxK_step
+            // 
+            numericBoxK_step.BackColor = System.Drawing.Color.Transparent;
+            numericBoxK_step.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
+            numericBoxK_step.Maximum = 1D;
+            numericBoxK_step.Minimum = 0.001D;
+            numericBoxK_step.Name = "numericBoxK_step";
+            numericBoxK_step.RadianValue = 0.00017453292519943296D;
+            numericBoxK_step.ShowUpDown = true;
+            numericBoxK_step.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxK_step, resources.GetString("numericBoxK_step.ToolTip1"));
+            numericBoxK_step.Value = 0.01D;
+            numericBoxK_step.ValueFontSize = 9F;
+            numericBoxK_step.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxH_step
+            // 
+            numericBoxH_step.BackColor = System.Drawing.Color.Transparent;
+            numericBoxH_step.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
+            numericBoxH_step.Maximum = 1D;
+            numericBoxH_step.Minimum = 0.001D;
+            numericBoxH_step.Name = "numericBoxH_step";
+            numericBoxH_step.RadianValue = 0.00017453292519943296D;
+            numericBoxH_step.ShowUpDown = true;
+            numericBoxH_step.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxH_step, resources.GetString("numericBoxH_step.ToolTip1"));
+            numericBoxH_step.Value = 0.01D;
+            numericBoxH_step.ValueFontSize = 9F;
+            numericBoxH_step.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxL_max
+            // 
+            numericBoxL_max.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
+            numericBoxL_max.Name = "numericBoxL_max";
+            numericBoxL_max.RadianValue = 0.017453292519943295D;
+            numericBoxL_max.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxL_max, resources.GetString("numericBoxL_max.ToolTip1"));
+            numericBoxL_max.Value = 1D;
+            numericBoxL_max.ValueFontSize = 9F;
+            numericBoxL_max.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxK_max
+            // 
+            numericBoxK_max.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
+            numericBoxK_max.Name = "numericBoxK_max";
+            numericBoxK_max.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxK_max, resources.GetString("numericBoxK_max.ToolTip1"));
+            numericBoxK_max.ValueFontSize = 9F;
+            numericBoxK_max.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxL_min
+            // 
+            numericBoxL_min.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
+            numericBoxL_min.Name = "numericBoxL_min";
+            numericBoxL_min.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxL_min, resources.GetString("numericBoxL_min.ToolTip1"));
+            numericBoxL_min.ValueFontSize = 9F;
+            numericBoxL_min.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxK_min
+            // 
+            numericBoxK_min.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
+            numericBoxK_min.Name = "numericBoxK_min";
+            numericBoxK_min.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxK_min, resources.GetString("numericBoxK_min.ToolTip1"));
+            numericBoxK_min.ValueFontSize = 9F;
+            numericBoxK_min.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxH_max
+            // 
+            numericBoxH_max.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
+            numericBoxH_max.Name = "numericBoxH_max";
+            numericBoxH_max.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxH_max, resources.GetString("numericBoxH_max.ToolTip1"));
+            numericBoxH_max.ValueFontSize = 9F;
+            numericBoxH_max.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxH_min
+            // 
+            numericBoxH_min.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
+            numericBoxH_min.Name = "numericBoxH_min";
+            numericBoxH_min.ShowUpDown = true;
+            toolTip.SetToolTip(numericBoxH_min, resources.GetString("numericBoxH_min.ToolTip1"));
+            numericBoxH_min.ValueFontSize = 9F;
+            numericBoxH_min.ValueChanged += numericBoxH_min_ValueChanged;
+            // 
+            // numericBoxCutoffD
+            // 
+            numericBoxCutoffD.BackColor = System.Drawing.Color.Transparent;
+            numericBoxCutoffD.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxCutoffD, "numericBoxCutoffD");
+            numericBoxCutoffD.Maximum = 10D;
+            numericBoxCutoffD.Minimum = 0.001D;
+            numericBoxCutoffD.Name = "numericBoxCutoffD";
+            numericBoxCutoffD.RadianValue = 0.017453292519943295D;
+            numericBoxCutoffD.ShowUpDown = true;
+            numericBoxCutoffD.SmartIncrement = true;
+            toolTip.SetToolTip(numericBoxCutoffD, resources.GetString("numericBoxCutoffD.ToolTip1"));
+            numericBoxCutoffD.Value = 1D;
+            numericBoxCutoffD.ValueChanged += numericBoxCutoffD_ValueChanged;
+            // 
+            // labelModel
+            // 
+            resources.ApplyResources(labelModel, "labelModel");
+            labelModel.Name = "labelModel";
+            toolTip.SetToolTip(labelModel, resources.GetString("labelModel.ToolTip"));
+            // 
+            // radioButtonXrayFs
+            // 
+            resources.ApplyResources(radioButtonXrayFs, "radioButtonXrayFs");
+            radioButtonXrayFs.Name = "radioButtonXrayFs";
+            radioButtonXrayFs.TabStop = true;
+            toolTip.SetToolTip(radioButtonXrayFs, resources.GetString("radioButtonXrayFs.ToolTip"));
+            radioButtonXrayFs.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonXrayFqSq
+            // 
+            resources.ApplyResources(radioButtonXrayFqSq, "radioButtonXrayFqSq");
+            radioButtonXrayFqSq.Name = "radioButtonXrayFqSq";
+            radioButtonXrayFqSq.TabStop = true;
+            toolTip.SetToolTip(radioButtonXrayFqSq, resources.GetString("radioButtonXrayFqSq.ToolTip"));
+            radioButtonXrayFqSq.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElectronPeng
+            // 
+            resources.ApplyResources(radioButtonElectronPeng, "radioButtonElectronPeng");
+            radioButtonElectronPeng.Name = "radioButtonElectronPeng";
+            radioButtonElectronPeng.TabStop = true;
+            toolTip.SetToolTip(radioButtonElectronPeng, resources.GetString("radioButtonElectronPeng.ToolTip"));
+            radioButtonElectronPeng.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElectronKirkland
+            // 
+            resources.ApplyResources(radioButtonElectronKirkland, "radioButtonElectronKirkland");
+            radioButtonElectronKirkland.Name = "radioButtonElectronKirkland";
+            radioButtonElectronKirkland.TabStop = true;
+            toolTip.SetToolTip(radioButtonElectronKirkland, resources.GetString("radioButtonElectronKirkland.ToolTip"));
+            radioButtonElectronKirkland.UseVisualStyleBackColor = true;
+            // 
+            // radioButtonElectronEightGaussian
+            // 
+            resources.ApplyResources(radioButtonElectronEightGaussian, "radioButtonElectronEightGaussian");
+            radioButtonElectronEightGaussian.Name = "radioButtonElectronEightGaussian";
+            radioButtonElectronEightGaussian.TabStop = true;
+            toolTip.SetToolTip(radioButtonElectronEightGaussian, resources.GetString("radioButtonElectronEightGaussian.ToolTip"));
+            radioButtonElectronEightGaussian.UseVisualStyleBackColor = true;
+            // 
+            // checkBoxDebyeWaller
+            // 
+            resources.ApplyResources(checkBoxDebyeWaller, "checkBoxDebyeWaller");
+            checkBoxDebyeWaller.Name = "checkBoxDebyeWaller";
+            toolTip.SetToolTip(checkBoxDebyeWaller, resources.GetString("checkBoxDebyeWaller.ToolTip"));
+            checkBoxDebyeWaller.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -399,178 +631,545 @@
             resources.ApplyResources(panel1, "panel1");
             panel1.Name = "panel1";
             // 
-            // numericBoxL_step
+            // tabControl1
             // 
-            numericBoxL_step.BackColor = System.Drawing.Color.Transparent;
-            numericBoxL_step.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxL_step, "numericBoxL_step");
-            toolTip.SetToolTip(numericBoxL_step, resources.GetString("numericBoxL_step.ToolTip")); // 260531Cl
-            numericBoxL_step.Maximum = 1D;
-            numericBoxL_step.Minimum = 0.001D;
-            numericBoxL_step.Name = "numericBoxL_step";
-            numericBoxL_step.RadianValue = 0.00017453292519943296D;
-            numericBoxL_step.ShowUpDown = true;
-            numericBoxL_step.SmartIncrement = true;
-            numericBoxL_step.ValueFontSize = 9F;
-            numericBoxL_step.Value = 0.01D;
-            numericBoxL_step.ValueChanged += numericBoxH_min_ValueChanged;
+            tabControl1.Controls.Add(tabPageReflections);
+            tabControl1.Controls.Add(tabPageScatteringFactors);
+            tabControl1.Controls.Add(tabPageAttenuations);
+            tabControl1.Controls.Add(tabPageFluorescence);
+            resources.ApplyResources(tabControl1, "tabControl1");
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
             // 
-            // numericBoxK_step
+            // tabPageReflections
             // 
-            numericBoxK_step.BackColor = System.Drawing.Color.Transparent;
-            numericBoxK_step.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxK_step, "numericBoxK_step");
-            toolTip.SetToolTip(numericBoxK_step, resources.GetString("numericBoxK_step.ToolTip")); // 260531Cl
-            numericBoxK_step.Maximum = 1D;
-            numericBoxK_step.Minimum = 0.001D;
-            numericBoxK_step.Name = "numericBoxK_step";
-            numericBoxK_step.RadianValue = 0.00017453292519943296D;
-            numericBoxK_step.ShowUpDown = true;
-            numericBoxK_step.SmartIncrement = true;
-            numericBoxK_step.ValueFontSize = 9F;
-            numericBoxK_step.Value = 0.01D;
-            numericBoxK_step.ValueChanged += numericBoxH_min_ValueChanged;
+            tabPageReflections.Controls.Add(splitContainer1);
+            tabPageReflections.Controls.Add(flowLayoutPanel3);
+            tabPageReflections.Controls.Add(flowLayoutPanel2);
+            tabPageReflections.Controls.Add(flowLayoutPanel1);
+            tabPageReflections.Controls.Add(flowLayoutPanel4);
+            resources.ApplyResources(tabPageReflections, "tabPageReflections");
+            tabPageReflections.Name = "tabPageReflections";
+            tabPageReflections.UseVisualStyleBackColor = true;
             // 
-            // numericBoxH_step
+            // splitContainer1
             // 
-            numericBoxH_step.BackColor = System.Drawing.Color.Transparent;
-            numericBoxH_step.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxH_step, "numericBoxH_step");
-            toolTip.SetToolTip(numericBoxH_step, resources.GetString("numericBoxH_step.ToolTip")); // 260531Cl
-            numericBoxH_step.Maximum = 1D;
-            numericBoxH_step.Minimum = 0.001D;
-            numericBoxH_step.Name = "numericBoxH_step";
-            numericBoxH_step.RadianValue = 0.00017453292519943296D;
-            numericBoxH_step.ShowUpDown = true;
-            numericBoxH_step.SmartIncrement = true;
-            numericBoxH_step.ValueFontSize = 9F;
-            numericBoxH_step.Value = 0.01D;
-            numericBoxH_step.ValueChanged += numericBoxH_min_ValueChanged;
+            resources.ApplyResources(splitContainer1, "splitContainer1");
+            splitContainer1.Name = "splitContainer1";
             // 
-            // numericBoxL_max
+            // splitContainer1.Panel1
             // 
-            numericBoxL_max.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxL_max, "numericBoxL_max");
-            toolTip.SetToolTip(numericBoxL_max, resources.GetString("numericBoxL_max.ToolTip")); // 260531Cl
-            numericBoxL_max.Name = "numericBoxL_max";
-            numericBoxL_max.RadianValue = 0.017453292519943295D;
-            numericBoxL_max.ShowUpDown = true;
-            numericBoxL_max.ValueFontSize = 9F;
-            numericBoxL_max.Value = 1D;
-            numericBoxL_max.ValueChanged += numericBoxH_min_ValueChanged;
+            splitContainer1.Panel1.Controls.Add(dataGridView);
             // 
-            // numericBoxK_max
+            // splitContainer1.Panel2
             // 
-            numericBoxK_max.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxK_max, "numericBoxK_max");
-            toolTip.SetToolTip(numericBoxK_max, resources.GetString("numericBoxK_max.ToolTip")); // 260531Cl
-            numericBoxK_max.Name = "numericBoxK_max";
-            numericBoxK_max.ShowUpDown = true;
-            numericBoxK_max.ValueFontSize = 9F;
-            numericBoxK_max.ValueChanged += numericBoxH_min_ValueChanged;
+            splitContainer1.Panel2.Controls.Add(graphControl2);
+            splitContainer1.Panel2.Controls.Add(flowLayoutPanel6);
             // 
-            // numericBoxL_min
+            // graphControl2
             // 
-            numericBoxL_min.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxL_min, "numericBoxL_min");
-            toolTip.SetToolTip(numericBoxL_min, resources.GetString("numericBoxL_min.ToolTip")); // 260531Cl
-            numericBoxL_min.Name = "numericBoxL_min";
-            numericBoxL_min.ShowUpDown = true;
-            numericBoxL_min.ValueFontSize = 9F;
-            numericBoxL_min.ValueChanged += numericBoxH_min_ValueChanged;
+            graphControl2.AllowMouseOperation = true;
+            graphControl2.AxisLineColor = System.Drawing.Color.Gray;
+            graphControl2.AxisTextColor = System.Drawing.Color.Black;
+            graphControl2.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphControl2.AxisXTextVisible = true;
+            graphControl2.AxisYTextVisible = true;
+            graphControl2.BackgroundColor = System.Drawing.Color.White;
+            graphControl2.BottomMargin = 0D;
+            graphControl2.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphControl2.DivisionLineXVisible = true;
+            graphControl2.DivisionLineYVisible = true;
+            resources.ApplyResources(graphControl2, "graphControl2");
+            graphControl2.FixRangeHorizontal = false;
+            graphControl2.FixRangeVertical = false;
+            graphControl2.GraphTitle = "";
+            graphControl2.IsIntegerX = false;
+            graphControl2.IsIntegerY = false;
+            graphControl2.LabelX = "X:";
+            graphControl2.LabelY = "Y:";
+            graphControl2.LeftMargin = 0F;
+            graphControl2.LineWidth = 1F;
+            graphControl2.LowerX = 0D;
+            graphControl2.LowerY = 0D;
+            graphControl2.MaximalX = 1D;
+            graphControl2.MaximalY = 1D;
+            graphControl2.MinimalX = 0D;
+            graphControl2.MinimalY = 0D;
+            graphControl2.Mode = GraphControl.DrawingMode.Line;
+            graphControl2.MousePositionVisible = false;
+            graphControl2.MousePositionXDigit = -1;
+            graphControl2.MousePositionYDigit = -1;
+            graphControl2.Name = "graphControl2";
+            graphControl2.OriginPosition = new System.Drawing.Point(40, 20);
+            graphControl2.UnitX = "";
+            graphControl2.UnitY = "";
+            graphControl2.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphControl2.UpperPanelVisible = false;
+            graphControl2.UpperX = 1D;
+            graphControl2.UpperY = 1D;
+            graphControl2.UseLineWidth = true;
+            graphControl2.VerticalLineColor = System.Drawing.Color.Red;
+            graphControl2.VerticalLineMarkerRadius = 3.5F;
+            graphControl2.VerticalLineMarkerVisible = false;
+            graphControl2.XLog = false;
+            graphControl2.YLog = false;
             // 
-            // numericBoxK_min
+            // flowLayoutPanel6
             // 
-            numericBoxK_min.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxK_min, "numericBoxK_min");
-            toolTip.SetToolTip(numericBoxK_min, resources.GetString("numericBoxK_min.ToolTip")); // 260531Cl
-            numericBoxK_min.Name = "numericBoxK_min";
-            numericBoxK_min.ShowUpDown = true;
-            numericBoxK_min.ValueFontSize = 9F;
-            numericBoxK_min.ValueChanged += numericBoxH_min_ValueChanged;
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(button1);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
             // 
-            // numericBoxH_max
+            // button1
             // 
-            numericBoxH_max.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxH_max, "numericBoxH_max");
-            toolTip.SetToolTip(numericBoxH_max, resources.GetString("numericBoxH_max.ToolTip")); // 260531Cl
-            numericBoxH_max.Name = "numericBoxH_max";
-            numericBoxH_max.ShowUpDown = true;
-            numericBoxH_max.ValueFontSize = 9F;
-            numericBoxH_max.ValueChanged += numericBoxH_min_ValueChanged;
+            resources.ApplyResources(button1, "button1");
+            button1.Name = "button1";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // numericBoxH_min
+            // flowLayoutPanel3
             // 
-            numericBoxH_min.BackColor = System.Drawing.Color.Transparent;
-            resources.ApplyResources(numericBoxH_min, "numericBoxH_min");
-            toolTip.SetToolTip(numericBoxH_min, resources.GetString("numericBoxH_min.ToolTip")); // 260531Cl
-            numericBoxH_min.Name = "numericBoxH_min";
-            numericBoxH_min.ShowUpDown = true;
-            numericBoxH_min.ValueFontSize = 9F;
-            numericBoxH_min.ValueChanged += numericBoxH_min_ValueChanged;
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(checkBoxTest);
+            flowLayoutPanel3.Controls.Add(panel1);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
             // 
-            // panel2
+            // flowLayoutPanel2
             // 
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Controls.Add(radioButtonNanoMeter);
-            panel2.Controls.Add(radioButtonAngstrom);
-            panel2.Controls.Add(label8);
-            panel2.Name = "panel2";
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(numericBoxCutoffD);
+            flowLayoutPanel2.Controls.Add(buttonCopyClipboard);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
-            // radioButtonNanoMeter
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(radioButtonNanoMeter, "radioButtonNanoMeter");
-            toolTip.SetToolTip(radioButtonNanoMeter, resources.GetString("radioButtonNanoMeter.ToolTip")); // 260531Cl
-            radioButtonNanoMeter.Name = "radioButtonNanoMeter";
-            radioButtonNanoMeter.UseVisualStyleBackColor = true;
-            radioButtonNanoMeter.CheckedChanged += radioButtonNanoMeter_CheckedChanged;
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(checkBoxBragBrentano);
+            flowLayoutPanel1.Controls.Add(checkBoxHideProhibitedPlanes);
+            flowLayoutPanel1.Controls.Add(checkBoxHideEquivalentPlane);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
-            // radioButtonAngstrom
+            // flowLayoutPanel4
             // 
-            resources.ApplyResources(radioButtonAngstrom, "radioButtonAngstrom");
-            toolTip.SetToolTip(radioButtonAngstrom, resources.GetString("radioButtonAngstrom.ToolTip")); // 260531Cl
-            radioButtonAngstrom.Checked = true;
-            radioButtonAngstrom.Name = "radioButtonAngstrom";
-            radioButtonAngstrom.TabStop = true;
-            radioButtonAngstrom.UseVisualStyleBackColor = true;
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
-            // panel3
+            // tabPageScatteringFactors
             // 
-            panel3.Controls.Add(checkBoxTest);
-            panel3.Controls.Add(numericBoxCutoffD);
-            panel3.Controls.Add(waveLengthControl1);
-            panel3.Controls.Add(panel2);
-            panel3.Controls.Add(panel1);
-            panel3.Controls.Add(checkBoxHideEquivalentPlane);
-            panel3.Controls.Add(checkBoxBragBrentano);
-            panel3.Controls.Add(buttonCopyClipboard);
-            panel3.Controls.Add(checkBoxHideProhibitedPlanes);
-            panel3.Controls.Add(label2);
-            resources.ApplyResources(panel3, "panel3");
-            panel3.Name = "panel3";
+            tabPageScatteringFactors.Controls.Add(miniTable1);
+            tabPageScatteringFactors.Controls.Add(flowLayoutPanelModel);
+            tabPageScatteringFactors.Controls.Add(graphControlScatteringFactor);
+            resources.ApplyResources(tabPageScatteringFactors, "tabPageScatteringFactors");
+            tabPageScatteringFactors.Name = "tabPageScatteringFactors";
+            tabPageScatteringFactors.UseVisualStyleBackColor = true;
             // 
-            // numericBoxCutoffD
+            // miniTable1
             // 
-            numericBoxCutoffD.BackColor = System.Drawing.Color.Transparent;
-            numericBoxCutoffD.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxCutoffD, "numericBoxCutoffD");
-            toolTip.SetToolTip(numericBoxCutoffD, resources.GetString("numericBoxCutoffD.ToolTip")); // 260531Cl
-            numericBoxCutoffD.Maximum = 10D;
-            numericBoxCutoffD.Minimum = 0.001D;
-            numericBoxCutoffD.Name = "numericBoxCutoffD";
-            numericBoxCutoffD.RadianValue = 0.017453292519943295D;
-            numericBoxCutoffD.ShowUpDown = true;
-            numericBoxCutoffD.SmartIncrement = true;
-            numericBoxCutoffD.Value = 1D;
-            numericBoxCutoffD.ValueChanged += numericBoxCutoffD_ValueChanged;
+            miniTable1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            miniTable1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Column1, Column2, Column3 });
+            resources.ApplyResources(miniTable1, "miniTable1");
+            miniTable1.Name = "miniTable1";
+            miniTable1.TabStop = false;
+            // 
+            // Column1
+            // 
+            resources.ApplyResources(Column1, "Column1");
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            resources.ApplyResources(Column2, "Column2");
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            resources.ApplyResources(Column3, "Column3");
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // flowLayoutPanelModel
+            // 
+            resources.ApplyResources(flowLayoutPanelModel, "flowLayoutPanelModel");
+            flowLayoutPanelModel.Controls.Add(labelModel);
+            flowLayoutPanelModel.Controls.Add(flowLayoutPanelModel_Xray);
+            flowLayoutPanelModel.Controls.Add(flowLayoutPanelModel_Electron);
+            flowLayoutPanelModel.Controls.Add(checkBoxDebyeWaller);
+            flowLayoutPanelModel.Name = "flowLayoutPanelModel";
+            // 
+            // flowLayoutPanelModel_Xray
+            // 
+            resources.ApplyResources(flowLayoutPanelModel_Xray, "flowLayoutPanelModel_Xray");
+            flowLayoutPanelModel_Xray.Controls.Add(radioButtonXrayFs);
+            flowLayoutPanelModel_Xray.Controls.Add(radioButtonXrayFqSq);
+            flowLayoutPanelModel_Xray.Name = "flowLayoutPanelModel_Xray";
+            // 
+            // flowLayoutPanelModel_Electron
+            // 
+            resources.ApplyResources(flowLayoutPanelModel_Electron, "flowLayoutPanelModel_Electron");
+            flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronPeng);
+            flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronKirkland);
+            flowLayoutPanelModel_Electron.Controls.Add(radioButtonElectronEightGaussian);
+            flowLayoutPanelModel_Electron.Name = "flowLayoutPanelModel_Electron";
+            // 
+            // graphControlScatteringFactor
+            // 
+            graphControlScatteringFactor.AllowMouseOperation = true;
+            graphControlScatteringFactor.AxisLineColor = System.Drawing.Color.Gray;
+            graphControlScatteringFactor.AxisTextColor = System.Drawing.Color.Black;
+            graphControlScatteringFactor.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphControlScatteringFactor.AxisXTextVisible = true;
+            graphControlScatteringFactor.AxisYTextVisible = true;
+            graphControlScatteringFactor.BackgroundColor = System.Drawing.Color.White;
+            graphControlScatteringFactor.BottomMargin = 0D;
+            graphControlScatteringFactor.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphControlScatteringFactor.DivisionLineXVisible = true;
+            graphControlScatteringFactor.DivisionLineYVisible = true;
+            graphControlScatteringFactor.FixRangeHorizontal = false;
+            graphControlScatteringFactor.FixRangeVertical = false;
+            resources.ApplyResources(graphControlScatteringFactor, "graphControlScatteringFactor");
+            graphControlScatteringFactor.GraphTitle = "";
+            graphControlScatteringFactor.IsIntegerX = false;
+            graphControlScatteringFactor.IsIntegerY = false;
+            graphControlScatteringFactor.LabelX = "X:";
+            graphControlScatteringFactor.LabelY = "Y:";
+            graphControlScatteringFactor.LeftMargin = 0F;
+            graphControlScatteringFactor.LineWidth = 1F;
+            graphControlScatteringFactor.LowerX = 0D;
+            graphControlScatteringFactor.LowerY = 0D;
+            graphControlScatteringFactor.MaximalX = 1D;
+            graphControlScatteringFactor.MaximalY = 1D;
+            graphControlScatteringFactor.MinimalX = 0D;
+            graphControlScatteringFactor.MinimalY = 0D;
+            graphControlScatteringFactor.Mode = GraphControl.DrawingMode.Line;
+            graphControlScatteringFactor.MousePositionVisible = false;
+            graphControlScatteringFactor.MousePositionXDigit = -1;
+            graphControlScatteringFactor.MousePositionYDigit = -1;
+            graphControlScatteringFactor.Name = "graphControlScatteringFactor";
+            graphControlScatteringFactor.OriginPosition = new System.Drawing.Point(40, 20);
+            graphControlScatteringFactor.UnitX = "";
+            graphControlScatteringFactor.UnitY = "";
+            graphControlScatteringFactor.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphControlScatteringFactor.UpperPanelVisible = false;
+            graphControlScatteringFactor.UpperX = 1D;
+            graphControlScatteringFactor.UpperY = 1D;
+            graphControlScatteringFactor.UseLineWidth = true;
+            graphControlScatteringFactor.VerticalLineColor = System.Drawing.Color.Red;
+            graphControlScatteringFactor.VerticalLineMarkerRadius = 3.5F;
+            graphControlScatteringFactor.VerticalLineMarkerVisible = false;
+            graphControlScatteringFactor.XLog = false;
+            graphControlScatteringFactor.YLog = false;
+            // 
+            // tabPageAttenuations
+            // 
+            tabPageAttenuations.Controls.Add(tlpAtten);
+            resources.ApplyResources(tabPageAttenuations, "tabPageAttenuations");
+            tabPageAttenuations.Name = "tabPageAttenuations";
+            tabPageAttenuations.UseVisualStyleBackColor = true;
+            // 
+            // tlpAtten
+            // 
+            resources.ApplyResources(tlpAtten, "tlpAtten");
+            tlpAtten.Controls.Add(graphAtten, 0, 0);
+            tlpAtten.Controls.Add(numAttenThickness, 1, 0);
+            tlpAtten.Controls.Add(dgvAttenScalars, 1, 1);
+            tlpAtten.Controls.Add(flowAttenDetail, 1, 2);
+            tlpAtten.Name = "tlpAtten";
+            // 
+            // graphAtten
+            // 
+            graphAtten.AllowMouseOperation = true;
+            graphAtten.AxisLineColor = System.Drawing.Color.Gray;
+            graphAtten.AxisTextColor = System.Drawing.Color.Black;
+            graphAtten.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphAtten.AxisXTextVisible = true;
+            graphAtten.AxisYTextVisible = true;
+            graphAtten.BackgroundColor = System.Drawing.Color.White;
+            graphAtten.BottomMargin = 0D;
+            graphAtten.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphAtten.DivisionLineXVisible = true;
+            graphAtten.DivisionLineYVisible = true;
+            resources.ApplyResources(graphAtten, "graphAtten");
+            graphAtten.FixRangeHorizontal = false;
+            graphAtten.FixRangeVertical = false;
+            graphAtten.GraphTitle = "";
+            graphAtten.IsIntegerX = false;
+            graphAtten.IsIntegerY = false;
+            graphAtten.LabelX = "X:";
+            graphAtten.LabelY = "Y:";
+            graphAtten.LeftMargin = 0F;
+            graphAtten.LineWidth = 1F;
+            graphAtten.LowerX = 0D;
+            graphAtten.LowerY = 0D;
+            graphAtten.MaximalX = 1D;
+            graphAtten.MaximalY = 1D;
+            graphAtten.MinimalX = 0D;
+            graphAtten.MinimalY = 0D;
+            graphAtten.Mode = GraphControl.DrawingMode.Line;
+            graphAtten.MousePositionVisible = true;
+            graphAtten.MousePositionXDigit = -1;
+            graphAtten.MousePositionYDigit = -1;
+            graphAtten.Name = "graphAtten";
+            graphAtten.OriginPosition = new System.Drawing.Point(40, 20);
+            tlpAtten.SetRowSpan(graphAtten, 3);
+            graphAtten.UnitX = "";
+            graphAtten.UnitY = "";
+            graphAtten.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphAtten.UpperPanelVisible = true;
+            graphAtten.UpperX = 1D;
+            graphAtten.UpperY = 1D;
+            graphAtten.UseLineWidth = true;
+            graphAtten.VerticalLineColor = System.Drawing.Color.Red;
+            graphAtten.VerticalLineMarkerRadius = 3.5F;
+            graphAtten.VerticalLineMarkerVisible = false;
+            graphAtten.XLog = false;
+            graphAtten.YLog = false;
+            // 
+            // numAttenThickness
+            // 
+            numAttenThickness.BackColor = System.Drawing.Color.Transparent;
+            resources.ApplyResources(numAttenThickness, "numAttenThickness");
+            numAttenThickness.Maximum = 10000000D;
+            numAttenThickness.Minimum = 0D;
+            numAttenThickness.Name = "numAttenThickness";
+            numAttenThickness.RadianValue = 1.7453292519943295D;
+            numAttenThickness.Value = 100D;
+            toolTip.SetToolTip(numAttenThickness, resources.GetString("numAttenThickness.ToolTip1"));//260606Cl ツールチップ配線
+            // 
+            // dgvAttenScalars
+            // 
+            resources.ApplyResources(dgvAttenScalars, "dgvAttenScalars");
+            dgvAttenScalars.Name = "dgvAttenScalars";
+            dgvAttenScalars.TabStop = false;
+            //
+            // flowAttenDetail
+            //
+            flowAttenDetail.AutoScroll = true;
+            flowAttenDetail.Controls.Add(dgvAttenEdges);
+            flowAttenDetail.Controls.Add(dgvAttenElectron);
+            flowAttenDetail.Controls.Add(dgvAttenNeutron);
+            flowAttenDetail.Dock = System.Windows.Forms.DockStyle.Fill;
+            flowAttenDetail.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            flowAttenDetail.Location = new System.Drawing.Point(369, 205);
+            flowAttenDetail.Name = "flowAttenDetail";
+            flowAttenDetail.Size = new System.Drawing.Size(222, 192);
+            flowAttenDetail.TabIndex = 4;
+            flowAttenDetail.WrapContents = false;
+            //
+            // dgvAttenEdges
+            //
+            dgvAttenEdges.AllowVerticalScroll = true;
+            dgvAttenEdges.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colEdgeElem, colEdgeZ, colEdgeEdge, colEdgeKeV, colEdgeJump });
+            dgvAttenEdges.Location = new System.Drawing.Point(3, 3);
+            dgvAttenEdges.Name = "dgvAttenEdges";
+            dgvAttenEdges.Size = new System.Drawing.Size(210, 185);
+            dgvAttenEdges.TabStop = false;
+            //
+            // colEdgeElem
+            //
+            colEdgeElem.HeaderText = "Elem";
+            colEdgeElem.Name = "colEdgeElem";
+            //
+            // colEdgeZ
+            //
+            colEdgeZ.HeaderText = "Z";
+            colEdgeZ.Name = "colEdgeZ";
+            //
+            // colEdgeEdge
+            //
+            colEdgeEdge.HeaderText = "Edge";
+            colEdgeEdge.Name = "colEdgeEdge";
+            //
+            // colEdgeKeV
+            //
+            colEdgeKeV.HeaderText = "keV";
+            colEdgeKeV.Name = "colEdgeKeV";
+            //
+            // colEdgeJump
+            //
+            colEdgeJump.HeaderText = "Jump";
+            colEdgeJump.Name = "colEdgeJump";
+            //
+            // dgvAttenElectron
+            //
+            dgvAttenElectron.AllowVerticalScroll = true;
+            dgvAttenElectron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colElecElem, colElecZ, colElecAt, colElecA });
+            dgvAttenElectron.Location = new System.Drawing.Point(3, 194);
+            dgvAttenElectron.Name = "dgvAttenElectron";
+            dgvAttenElectron.Size = new System.Drawing.Size(210, 185);
+            dgvAttenElectron.TabStop = false;
+            //
+            // colElecElem
+            //
+            colElecElem.HeaderText = "Elem";
+            colElecElem.Name = "colElecElem";
+            //
+            // colElecZ
+            //
+            colElecZ.HeaderText = "Z";
+            colElecZ.Name = "colElecZ";
+            //
+            // colElecAt
+            //
+            colElecAt.HeaderText = "at%";
+            colElecAt.Name = "colElecAt";
+            //
+            // colElecA
+            //
+            colElecA.HeaderText = "A";
+            colElecA.Name = "colElecA";
+            //
+            // dgvAttenNeutron
+            //
+            dgvAttenNeutron.AllowVerticalScroll = true;
+            dgvAttenNeutron.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colNeutElem, colNeutBcoh, colNeutScoh, colNeutAt });
+            dgvAttenNeutron.Location = new System.Drawing.Point(3, 385);
+            dgvAttenNeutron.Name = "dgvAttenNeutron";
+            dgvAttenNeutron.Size = new System.Drawing.Size(210, 185);
+            dgvAttenNeutron.TabStop = false;
+            //
+            // colNeutElem
+            //
+            colNeutElem.HeaderText = "Elem";
+            colNeutElem.Name = "colNeutElem";
+            //
+            // colNeutBcoh
+            //
+            colNeutBcoh.HeaderText = "b_coh (fm)";
+            colNeutBcoh.Name = "colNeutBcoh";
+            //
+            // colNeutScoh
+            //
+            colNeutScoh.HeaderText = "σ_coh (barn)";
+            colNeutScoh.Name = "colNeutScoh";
+            //
+            // colNeutAt
+            //
+            colNeutAt.HeaderText = "at%";
+            colNeutAt.Name = "colNeutAt";
+            // 
+            // tabPageFluorescence
+            // 
+            tabPageFluorescence.Controls.Add(tlpFluor);
+            tabPageFluorescence.Controls.Add(labelFluorNA);
+            resources.ApplyResources(tabPageFluorescence, "tabPageFluorescence");
+            tabPageFluorescence.Name = "tabPageFluorescence";
+            tabPageFluorescence.UseVisualStyleBackColor = true;
+            // 
+            // tlpFluor
+            // 
+            resources.ApplyResources(tlpFluor, "tlpFluor");
+            tlpFluor.Controls.Add(graphFluor, 0, 0);
+            tlpFluor.Controls.Add(dgvFluorScalars, 1, 0);
+            tlpFluor.Controls.Add(dgvFluorLines, 1, 1);
+            tlpFluor.Name = "tlpFluor";
+            // 
+            // graphFluor
+            // 
+            graphFluor.AllowMouseOperation = true;
+            graphFluor.AxisLineColor = System.Drawing.Color.Gray;
+            graphFluor.AxisTextColor = System.Drawing.Color.Black;
+            graphFluor.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphFluor.AxisXTextVisible = true;
+            graphFluor.AxisYTextVisible = true;
+            graphFluor.BackgroundColor = System.Drawing.Color.White;
+            graphFluor.BottomMargin = 0D;
+            graphFluor.DivisionLineColor = System.Drawing.Color.LightGray;
+            graphFluor.DivisionLineXVisible = true;
+            graphFluor.DivisionLineYVisible = true;
+            resources.ApplyResources(graphFluor, "graphFluor");
+            graphFluor.FixRangeHorizontal = false;
+            graphFluor.FixRangeVertical = false;
+            graphFluor.GraphTitle = "";
+            graphFluor.IsIntegerX = false;
+            graphFluor.IsIntegerY = false;
+            graphFluor.LabelX = "X:";
+            graphFluor.LabelY = "Y:";
+            graphFluor.LeftMargin = 0F;
+            graphFluor.LineWidth = 1F;
+            graphFluor.LowerX = 0D;
+            graphFluor.LowerY = 0D;
+            graphFluor.MaximalX = 1D;
+            graphFluor.MaximalY = 1D;
+            graphFluor.MinimalX = 0D;
+            graphFluor.MinimalY = 0D;
+            graphFluor.Mode = GraphControl.DrawingMode.Line;
+            graphFluor.MousePositionVisible = false;
+            graphFluor.MousePositionXDigit = -1;
+            graphFluor.MousePositionYDigit = -1;
+            graphFluor.Name = "graphFluor";
+            graphFluor.OriginPosition = new System.Drawing.Point(40, 20);
+            tlpFluor.SetRowSpan(graphFluor, 2);
+            graphFluor.UnitX = "";
+            graphFluor.UnitY = "";
+            graphFluor.UpperPanelFont = new System.Drawing.Font("Segoe UI", 9F);
+            graphFluor.UpperPanelVisible = false;
+            graphFluor.UpperX = 1D;
+            graphFluor.UpperY = 1D;
+            graphFluor.UseLineWidth = true;
+            graphFluor.VerticalLineColor = System.Drawing.Color.Red;
+            graphFluor.VerticalLineMarkerRadius = 3.5F;
+            graphFluor.VerticalLineMarkerVisible = false;
+            graphFluor.XLog = false;
+            graphFluor.YLog = false;
+            // 
+            // dgvFluorScalars
+            // 
+            resources.ApplyResources(dgvFluorScalars, "dgvFluorScalars");
+            dgvFluorScalars.Name = "dgvFluorScalars";
+            dgvFluorScalars.TabStop = false;
+            //
+            // dgvFluorLines
+            //
+            dgvFluorLines.AllowVerticalScroll = true;
+            dgvFluorLines.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { colFlElem, colFlLine, colFlE, colFlRelI, colFlOmega });
+            resources.ApplyResources(dgvFluorLines, "dgvFluorLines");
+            dgvFluorLines.Name = "dgvFluorLines";
+            dgvFluorLines.TabStop = false;
+            //
+            // colFlElem
+            //
+            colFlElem.HeaderText = "Elem";
+            colFlElem.Name = "colFlElem";
+            //
+            // colFlLine
+            //
+            colFlLine.HeaderText = "Line";
+            colFlLine.Name = "colFlLine";
+            //
+            // colFlE
+            //
+            colFlE.HeaderText = "E keV";
+            colFlE.Name = "colFlE";
+            //
+            // colFlRelI
+            //
+            colFlRelI.HeaderText = "Rel.I";
+            colFlRelI.Name = "colFlRelI";
+            //
+            // colFlOmega
+            //
+            colFlOmega.HeaderText = "ω";
+            colFlOmega.Name = "colFlOmega";
+            // 
+            // labelFluorNA
+            // 
+            resources.ApplyResources(labelFluorNA, "labelFluorNA");
+            labelFluorNA.Name = "labelFluorNA";
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(waveLengthControl1);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
             // 
             // FormScatteringFactor
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             captureExtender.SetCapture(this, true);
-            Controls.Add(dataGridView);
-            Controls.Add(panel3);
+            Controls.Add(tabControl1);
+            Controls.Add(flowLayoutPanel5);
             Name = "FormScatteringFactor";
             ShowIcon = false;
             FormClosing += FormCrystallographicInformation_FormClosing;
@@ -581,11 +1180,44 @@
             ((System.ComponentModel.ISupportInitialize)dataSet).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            tabControl1.ResumeLayout(false);
+            tabPageReflections.ResumeLayout(false);
+            tabPageReflections.PerformLayout();
+            splitContainer1.Panel1.ResumeLayout(false);
+            splitContainer1.Panel2.ResumeLayout(false);
+            splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer1).EndInit();
+            splitContainer1.ResumeLayout(false);
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            tabPageScatteringFactors.ResumeLayout(false);
+            tabPageScatteringFactors.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)miniTable1).EndInit();
+            flowLayoutPanelModel.ResumeLayout(false);
+            flowLayoutPanelModel.PerformLayout();
+            flowLayoutPanelModel_Xray.ResumeLayout(false);
+            flowLayoutPanelModel_Xray.PerformLayout();
+            flowLayoutPanelModel_Electron.ResumeLayout(false);
+            flowLayoutPanelModel_Electron.PerformLayout();
+            tabPageAttenuations.ResumeLayout(false);
+            tlpAtten.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAttenScalars).EndInit();
+            flowAttenDetail.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvAttenEdges).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenElectron).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvAttenNeutron).EndInit();
+            tabPageFluorescence.ResumeLayout(false);
+            tlpFluor.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvFluorScalars).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFluorLines).EndInit();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -594,7 +1226,6 @@
         private System.Windows.Forms.CheckBox checkBoxHideProhibitedPlanes;
         // private System.Windows.Forms.DataGridView dataGridView; // 260518Cl 旧実装
         private DpiAwareDataGridView dataGridView; // 260518Cl
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonCopyClipboard;
         private System.Windows.Forms.CheckBox checkBoxBragBrentano;
         private System.Windows.Forms.BindingSource bindingSourceScatteringFactor;
@@ -618,12 +1249,13 @@
         private NumericBox numericBoxL_min;
         private NumericBox numericBoxK_min;
         private NumericBox numericBoxH_max;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.RadioButton radioButtonNanoMeter;
-        private System.Windows.Forms.RadioButton radioButtonAngstrom;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Panel panel3;
         private NumericBox numericBoxCutoffD;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPageReflections;
+        private System.Windows.Forms.TabPage tabPageScatteringFactors;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnH;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnK;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnI;
@@ -638,5 +1270,61 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnFsq;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnIntPercent;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumnIntCondition;
+        private GraphControl graphControlScatteringFactor;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel4;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel5;
+        private System.Windows.Forms.SplitContainer splitContainer1;
+        private GraphControl graphControl2;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel6;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TabPage tabPageAttenuations;
+        private System.Windows.Forms.TabPage tabPageFluorescence;
+        private System.Windows.Forms.TableLayoutPanel tlpAtten;     // 260606Cl
+        private GraphControl graphAtten;                            // 260606Cl
+        private NumericBox numAttenThickness;                       // 260606Cl
+        private MiniTable dgvAttenScalars;                          // 260606Cl
+        private System.Windows.Forms.FlowLayoutPanel flowAttenDetail; // 260606Cl
+        private MiniTable dgvAttenEdges;                            // 260606Cl
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeEdge;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeKeV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colEdgeJump;
+        private MiniTable dgvAttenElectron;                         // 260606Cl
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecZ;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecAt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colElecA;
+        private MiniTable dgvAttenNeutron;                          // 260606Cl
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutBcoh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutScoh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNeutAt;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlElem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlLine;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlRelI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colFlOmega;
+        private System.Windows.Forms.TableLayoutPanel tlpFluor;     // 260606Cl
+        private GraphControl graphFluor;                            // 260606Cl
+        private MiniTable dgvFluorScalars;                          // 260606Cl
+        private MiniTable dgvFluorLines;                            // 260606Cl
+        private System.Windows.Forms.Label labelFluorNA;            // 260606Cl
+        // private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel8; // 260606Cl 旧名(リネーム取りこぼし)
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelModel_Electron; // 260606Cl
+        private System.Windows.Forms.RadioButton radioButtonElectronPeng;
+        private System.Windows.Forms.RadioButton radioButtonElectronKirkland;
+        private System.Windows.Forms.RadioButton radioButtonElectronEightGaussian;
+        // private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel7; // 260606Cl 旧名(リネーム取りこぼし)
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelModel_Xray; // 260606Cl
+        private System.Windows.Forms.Label labelModel;
+        private System.Windows.Forms.RadioButton radioButtonXrayFqSq;
+        private System.Windows.Forms.RadioButton radioButtonXrayFs;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelModel;
+        private System.Windows.Forms.CheckBox checkBoxDebyeWaller;
+        private MiniTable miniTable1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
     }
 }

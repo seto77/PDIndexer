@@ -902,7 +902,7 @@
             // waveLengthControl1
             // 
             waveLengthControl1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            waveLengthControl1.Direction = System.Windows.Forms.FlowDirection.TopDown;
+            waveLengthControl1.DirectionWhole = System.Windows.Forms.FlowDirection.TopDown;//260606Cl Direction→DirectionWhole 改名に追随
             waveLengthControl1.Energy = double.PositiveInfinity;
             waveLengthControl1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             waveLengthControl1.Location = new System.Drawing.Point(3, 17);
