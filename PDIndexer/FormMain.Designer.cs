@@ -21,12 +21,16 @@ namespace PDIndexer
         {
             if (disposing)
             {
+                if (pictureBoxMain != null)
+                    pictureBoxMain.Image = null; // (260624Ch) 終了時に PictureBox が保持したままの Bitmap を先に切り離す
+                //BmpMain.Dispose(); // (260624Ch) 旧: PictureBox.Image に入ったまま破棄すると終了時に GDI+ ArgumentException が出ることがある
+                BmpMain?.Dispose(); // (260624Ch)
+                BmpMain = null; // (260624Ch)
                 if (components != null)
                 {
                     components.Dispose();
                 }
             }
-            BmpMain.Dispose();
             base.Dispose(disposing);
         }
         private IContainer components = null;

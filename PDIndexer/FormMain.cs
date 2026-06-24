@@ -934,6 +934,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
     {
+        SkipDrawing = true; // (260624Ch) 終了処理中の再描画で破棄済み画像を PictureBox に戻さない
+        foreach (var form in EnumerateCaptureDependentForms().Prepend(this)) // (260624Ch)
+            DetachPictureBoxImagesForClosing(form); // (260624Ch)
+
         timerBlinkDiffraction.Stop();
         //formFitting.Close();
         //formCrystal.Close();
@@ -952,6 +956,19 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
         }
     }
+
+    private static void DetachPictureBoxImagesForClosing(Control root) // (260624Ch)
+    {
+        if (root?.IsDisposed != false)
+            return;
+
+        if (root is PictureBox pictureBox)
+            pictureBox.Image = null;
+
+        foreach (Control child in root.Controls)
+            DetachPictureBoxImagesForClosing(child);
+    }
+
     //フォームクローズ時
     private void FormMain_FormClosed(object sender, FormClosedEventArgs e)
     {
@@ -1257,13 +1274,28 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (SkipDrawing)
             return;
         if (pictureBoxMain.Width <= 0 || pictureBoxMain.Height <= 0) return;
-        BmpMain = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height);
-        gMain = Graphics.FromImage(BmpMain);
-        gMain.Clear(colorControlBack.Color);
-        gMain.SmoothingMode = SmoothingMode.AntiAlias;
-        this.DoubleBuffered = true;
+        var previousBmpMain = BmpMain; // (260624Ch)
+        pictureBoxMain.Image = null; // (260624Ch) 旧 Bitmap を破棄する前に PictureBox から外す
+        //BmpMain = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height); // (260624Ch) 旧: 旧 Bitmap と Graphics を残したまま差し替えていた
+        BmpMain = new Bitmap(pictureBoxMain.Width, pictureBoxMain.Height); // (260624Ch)
+        using (var graphics = Graphics.FromImage(BmpMain)) // (260624Ch)
+        {
+            gMain = graphics;
+            try
+            {
+                gMain.Clear(colorControlBack.Color);
+                gMain.SmoothingMode = SmoothingMode.AntiAlias;
+                this.DoubleBuffered = true;
 
-        DrawPictureBoxes();
+                DrawPictureBoxes();
+            }
+            finally
+            {
+                gMain = null;
+            }
+        }
+        pictureBoxMain.Image = BmpMain; // (260624Ch) Graphics 解放後に PictureBox へ渡す
+        previousBmpMain?.Dispose(); // (260624Ch)
     }
 
     //プリント描画
@@ -1356,7 +1388,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         DrawProfile_diffraction();//各種ピーク位置描画
         DrawProfile_Fitting();//フィッティング
 
-        pictureBoxMain.Image = BmpMain;
+        //pictureBoxMain.Image = BmpMain; // (260624Ch) 旧: 描画中の Bitmap を PictureBox へ渡していた
     }
 
     private unsafe void DrawUnrolledImage()
