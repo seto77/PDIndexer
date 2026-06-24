@@ -1,0 +1,35 @@
+<!-- 260624Cl 追加: WiX v7 による MSI ビルド (vdproj 置換、計画書 .project-guidance/PDIndexer_WiX移行計画.md)。
+     ReciPro\ReciProSetup.Wix\ReciProSetup.wixproj を PDIndexer 用に移植。 -->
+<Project Sdk="WixToolset.Sdk/7.0.0">
+  <PropertyGroup>
+    <!-- OSMF EULA 受諾 (収益$10k未満の無償OSSは支払い免除、受諾操作のみ必須) -->
+    <AcceptEula>wix7</AcceptEula>
+    <InstallerPlatform Condition="'$(InstallerPlatform)'==''">x64</InstallerPlatform>
+    <!-- CI が -p:ProductVersion=0.X.YYY を注入する (Version.cs 由来) -->
+    <ProductVersion Condition="'$(ProductVersion)'==''">0.0.0</ProductVersion>
+    <DefineConstants>ProductVersion=$(ProductVersion)</DefineConstants>
+    <!-- 資産命名 (計画書 D-PDI-4): 主名称 PDIndexer-setup.msi。アーキ接尾辞は _arm64 (ピリオドより後・英字より前に
+         ソートされ、無印 x64 がペアの上に来る)。旧名 PDIndexerSetup.msi は release.yml が同一バイトコピーを併置 (旧クライアント自動更新互換)。 -->
+    <OutputName>PDIndexer-setup</OutputName>
+    <OutputName Condition="'$(InstallerPlatform)'=='arm64'">PDIndexer-setup_arm64</OutputName>
+    <!-- x64/arm64 連続ビルドの obj 混在防止 -->
+    <IntermediateOutputPath>obj\$(InstallerPlatform)\</IntermediateOutputPath>
+    <!-- per-user (LocalAppData) + Files 収集の既知 ICE。実ビルドのログで実測して最小集合に絞る (計画書 §4.3)。
+         初期値は ReciPro 実績 (ICE38/64/91 = per-user user-profile 配下の File KeyPath / RemoveFile 未登録 / ALLUSERS 不変ディレクトリ、
+         ICE61 = AllowSameVersionUpgrades 副作用、ICE69 = コンポーネント跨ぎ Shortcut Target)。PDI は Crystallography.Native 非同梱で
+         ファイル構成が異なるため、初回ビルド後に再測定すること。 -->
+    <SuppressIces>ICE38;ICE64;ICE91;ICE61;ICE69</SuppressIces>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="WixToolset.UI.wixext" Version="7.0.0" />
+    <PackageReference Include="WixToolset.Util.wixext" Version="7.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- ハーベスト元 = framework-dependent publish + 後処理済みの staging フォルダ (-p:StagingDir で注入) -->
+    <BindPath Include="$(StagingDir)" BindName="staging" />
+  </ItemGroup>
+  <Target Name="RequireStagingDir" BeforeTargets="PrepareForBuild">
+    <Error Condition="'$(StagingDir)'=='' OR !Exists('$(StagingDir)')"
+           Text="StagingDir must point to an existing publish staging folder (pass -p:StagingDir=...)." />
+  </Target>
+</Project>

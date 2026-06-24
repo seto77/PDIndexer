@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 260624Cl 追加: vdproj (PDIndexerSetup.vdproj) の WiX v7 等価再現。ReciPro\ReciProSetup.Wix\Package.wxs を移植。
+     仕様の根拠と設計判断は .project-guidance/PDIndexer_WiX移行計画.md を参照。
+     不可侵: UpgradeCode / per-user (LocalAppData) / framework-dependent / 出力名 PDIndexer-setup.msi (x64) -->
+<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs"
+     xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui">
+
+  <Package Name="PDIndexer" Manufacturer="Crystallography Software"
+           Version="$(var.ProductVersion)"
+           UpgradeCode="1E130AE2-0632-4EEB-A75A-AE358CEBF61A"
+           Scope="perUser" Language="1033" Compressed="yes">
+
+    <SummaryInformation Description="PDIndexerSetup" />
+
+    <!-- AllowSameVersionUpgrades: x64⇔arm64 の same-version cross-grade (同一 UpgradeCode・別 ProductCode) を許可。
+         IgnoreLanguage: 旧 vdproj MSI は ProductLanguage=0 (neutral, LanguageId=0) のため言語不問で検出。
+         旧 vdproj (DetectNewerInstalledVersion=FALSE) と異なりダウングレードはブロックする (仕様改善)。 -->
+    <MajorUpgrade AllowSameVersionUpgrades="yes" IgnoreLanguage="yes"
+                  Schedule="afterInstallInitialize"
+                  DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+
+    <!-- CompressionLevel high (ReciPro 実績: 既定 mszip より小さくなる) -->
+    <MediaTemplate EmbedCab="yes" CompressionLevel="high" />
+
+    <Icon Id="AppIcon.ico" SourceFile="..\PDIndexer\App.ico" />
+
+    <!-- per-user 固定: %LocalAppData%\Crystallography Software\PDIndexer (vdproj の DefaultLocation を踏襲) -->
+    <StandardDirectory Id="LocalAppDataFolder">
+      <Directory Id="ManufacturerFolder" Name="Crystallography Software">
+        <Directory Id="INSTALLFOLDER" Name="PDIndexer">
+          <!-- exe のみ明示 File (ショートカット/Launch CA の参照 Id を固定するため) -->
+          <Component Id="MainExe">
+            <File Id="PDIndexerExe" Source="!(bindpath.staging)\PDIndexer.exe" KeyPath="yes" />
+          </Component>
+          <!-- 残り全部をワイルドカード収集 (staging の内容が正。exe は重複登録になるため除外) -->
+          <Files Include="!(bindpath.staging)\**">
+            <Exclude Files="!(bindpath.staging)\PDIndexer.exe" />
+          </Files>
+        </Directory>
+      </Directory>
+    </StandardDirectory>
+
+    <!-- ショートカット: デスクトップ + スタートメニュー (vdproj と同一の2箇所、icon は App.ico) -->
+    <StandardDirectory Id="DesktopFolder">
+      <Component Id="DesktopShortcutComp">
+        <Shortcut Id="DesktopShortcut" Name="PDIndexer" Target="[#PDIndexerExe]"
+                  WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" />
+        <RegistryValue Root="HKCU" Key="Software\Crystallography Software\PDIndexer"
+                       Name="installed" Type="integer" Value="1" KeyPath="yes" />
+      </Component>
+    </StandardDirectory>
+    <StandardDirectory Id="ProgramMenuFolder">
+      <Directory Id="VendorMenuFolder" Name="Crystallography Software">
+        <Component Id="StartMenuShortcutComp">
+          <Shortcut Id="StartMenuShortcut" Name="PDIndexer" Target="[#PDIndexerExe]"
+                    WorkingDirectory="INSTALLFOLDER" Icon="AppIcon.ico" />
+          <RemoveFolder Id="RemoveVendorMenuFolder" On="uninstall" />
+          <RegistryValue Root="HKCU" Key="Software\Crystallography Software\PDIndexer"
+                         Name="startmenu" Type="integer" Value="1" KeyPath="yes" />
+        </Component>
+      </Directory>
+    </StandardDirectory>
+
+    <!-- UI: WixUI_InstallDir (Everyone/Just me ラジオは廃止し per-user 固定)。
+         REQUIREMENT.rtf は専用ダイアログを設けずファイル同梱のみ (staging 経由)。 -->
+    <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
+    <!-- 260624Cl Phase A: vdproj と並行運用のため rtf は移動せず ..\PDIndexerSetup\ を参照 (Phase B の vdproj 削除時に本フォルダへ移動) -->
+    <WixVariable Id="WixUILicenseRtf" Value="..\PDIndexerSetup\LICENSE.rtf" />
+
+    <!-- 完了画面「Launch PDIndexer」既定 ON (旧 EnableLaunchApplication.js が MSI に注入していた CA の等価再現) -->
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch PDIndexer" />
+    <Property Id="WixShellExecTarget" Value="[#PDIndexerExe]" />
+    <CustomAction Id="LaunchApp" DllEntry="WixShellExec" Impersonate="yes"
+                  Execute="immediate" Return="check"
+                  BinaryRef="Wix4UtilCA_$(sys.BUILDARCHSHORT)" />
+    <UI>
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApp"
+               Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
+    </UI>
+
+  </Package>
+</Wix>
