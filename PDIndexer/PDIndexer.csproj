@@ -18,6 +18,10 @@
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
     <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
     <Platforms>x64</Platforms>
+    <!-- 260624Cl: AllowUnsafeBlocks を構成非依存で有効化 (WiX計画: arm64 ビルドでも unsafe を許可)。
+         旧は下の Debug|x64 / Release|x64 条件付き PropertyGroup でのみ有効だったため、Release|ARM64 publish が
+         FormMain.cs の unsafe で CS0227 になった。ReciPro.csproj と同方針 (プロジェクト全体で許可)。 -->
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <!-- 260602Cl: 自動生成 typed DataSet (DataSet.Designer.cs) が formatter ベースのシリアライズ警告 SYSLIB0051 を多数出すため抑制 (Crystallography.Controls と同方針) -->
     <NoWarn>$(NoWarn);SYSLIB0051</NoWarn>
   </PropertyGroup>
@@ -84,10 +88,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Include="native\win-arm64\libxrl-11.LICENSE.txt" TargetPath="libxrl-11.LICENSE.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
+    <!-- libxrl-11.LICENSE.txt は arch 非依存。上の無条件 Content (x64 由来) が arm64 publish にも入るため、
+         ここで再 include すると NETSDK1152 (同一相対パス重複) になる → 再 include しない (ReciPro.csproj と同方針)。 -->
   </ItemGroup>
 
   <ItemGroup>
