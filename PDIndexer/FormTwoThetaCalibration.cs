@@ -17,7 +17,8 @@ namespace PDIndexer
 
     public partial class FormTwoThetaCalibration : FormBase //260604Cl Form→FormBase (F1ヘルプ対応)
     {
-        public FormMain formMain = new FormMain();
+        //public FormMain formMain = new FormMain(); // (260624Ch) 旧: 子フォーム生成時に不要な FormMain を生成していた
+        public FormMain formMain; // (260624Ch)
 
         double coeff0_old = double.NaN, coeff1_old = double.NaN, coeff2_old = double.NaN;
 

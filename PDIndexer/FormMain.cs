@@ -1307,7 +1307,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             return;
         }
 
-        var formPrintOption = new FormPrintOption();
+        //var formPrintOption = new FormPrintOption(); // (260624Ch) 旧: Dialog が未破棄
+        using var formPrintOption = new FormPrintOption(); // (260624Ch)
 
         if (formPrintOption.ShowDialog() == DialogResult.OK)
         {
@@ -1321,7 +1322,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 DrawProfile_Bg();
                 if (formPrintOption.checkBoxPrintProfileName.Checked)
                 {
-                    var font = new Font("Tahoma", 8);
+                    //var font = new Font("Tahoma", 8); // (260624Ch) 旧: Font が未破棄
+                    using var font = new Font("Tahoma", 8); // (260624Ch)
                     //まず字の最大長さ(pixel)を求める
                     var maxSizeF = new SizeF(0, 0);
                     for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
@@ -1343,8 +1345,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
                     for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
                     {
+                        using var brush = new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)); // (260624Ch)
                         gMain.DrawString(dataSet.DataTableProfile.CheckedItems[i].ToString(),
-                            font, new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)),
+                            //font, new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)), // (260624Ch) 旧: Brush が未破棄
+                            font, brush, // (260624Ch)
                             new PointF(startPosition.X, startPosition.Y + (dataSet.DataTableProfile.CheckedItems.Count - 1 - i) * maxSizeF.Height));
                     }
                 }
@@ -1366,14 +1370,23 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     public void DrawMetafile(Metafile mf)
     {
         if (pictureBoxMain.Width <= 0 || pictureBoxMain.Height <= 0) return;
-        gMain = Graphics.FromImage(mf);
-        //gMain.Clear(colorControlBack.Color);
-        //gMain.SmoothingMode = SmoothingMode.AntiAlias;
-        //this.DoubleBuffered = true;
-        gMain.FillRectangle(new SolidBrush(colorControlBack.Color), new Rectangle(0, 0, pictureBoxMain.Width, pictureBoxMain.Height));
-        //gMain.Clear(colorControlBack.Color);
-        DrawPictureBoxes();
-        gMain.Dispose();
+        //gMain = Graphics.FromImage(mf); // (260624Ch) 旧: 例外時に Graphics/Brush が未破棄
+        using var graphics = Graphics.FromImage(mf); // (260624Ch)
+        using var backBrush = new SolidBrush(colorControlBack.Color); // (260624Ch)
+        gMain = graphics; // (260624Ch)
+        try // (260624Ch)
+        {
+            //gMain.Clear(colorControlBack.Color);
+            //gMain.SmoothingMode = SmoothingMode.AntiAlias;
+            //this.DoubleBuffered = true;
+            gMain.FillRectangle(backBrush, new Rectangle(0, 0, pictureBoxMain.Width, pictureBoxMain.Height)); // (260624Ch)
+            //gMain.Clear(colorControlBack.Color);
+            DrawPictureBoxes();
+        }
+        finally // (260624Ch)
+        {
+            gMain = null;
+        }
     }
 
     //ピクチャーボックスの描画
@@ -1399,46 +1412,50 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 DiffractionProfile2 dif = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
                 if (dif.ImageArray != null)
                 {
-                    var bmp = new Bitmap(pictureBoxMain.Width - OriginPos.X, pictureBoxMain.Height - OriginPos.Y, PixelFormat.Format24bppRgb);
+                    //var bmp = new Bitmap(pictureBoxMain.Width - OriginPos.X, pictureBoxMain.Height - OriginPos.Y, PixelFormat.Format24bppRgb); // (260624Ch) 旧: 一時 Bitmap が未破棄
+                    using var bmp = new Bitmap(pictureBoxMain.Width - OriginPos.X, pictureBoxMain.Height - OriginPos.Y, PixelFormat.Format24bppRgb); // (260624Ch)
 
                     //bmpをロック
                     BitmapData bmpData;
                     try { bmpData = bmp.LockBits(new Rectangle(0, 0, bmp.Width, bmp.Height), ImageLockMode.ReadWrite, PixelFormat.Format24bppRgb); }
                     catch { return; }
-                    int width = bmp.Width;
-                    int height = bmp.Height;
-                    byte* p = (byte*)(void*)bmpData.Scan0;
-                    int nResidual = bmpData.Stride - bmp.Width * 3;
-
-                    double endX = dif.Profile.Pt[^1].X;
-                    double startX = dif.Profile.Pt[0].X;
-                    bool negative = comboBoxGradient.SelectedIndex == 1;
-                    double maxInt = (double)numericUpDownMaxInt.Value;
-                    double minInt = (double)numericUpDownMinInt.Value;
-
-                    for (int h = 0; h < height; h++)
+                    try // (260624Ch)
                     {
-                        int y = (int)((double)dif.ImageHeight * (double)h / (double)height);
-                        for (int w = 0; w < width; w++)
+                        int width = bmp.Width;
+                        int height = bmp.Height;
+                        byte* p = (byte*)(void*)bmpData.Scan0;
+                        int nResidual = bmpData.Stride - bmp.Width * 3;
+
+                        double endX = dif.Profile.Pt[^1].X;
+                        double startX = dif.Profile.Pt[0].X;
+                        bool negative = comboBoxGradient.SelectedIndex == 1;
+                        double maxInt = (double)numericUpDownMaxInt.Value;
+                        double minInt = (double)numericUpDownMinInt.Value;
+
+                        for (int h = 0; h < height; h++)
                         {
-
-                            double realX = LowerX + (double)w / (double)width * (UpperX - LowerX);
-                            int x = (int)(dif.ImageWidth * (realX - startX) / (endX - startX) + 0.5);
-                            if (x >= 0 && x < dif.ImageWidth)
+                            int y = (int)((double)dif.ImageHeight * (double)h / (double)height);
+                            for (int w = 0; w < width; w++)
                             {
-                                int index =
-                                (int)((dif.ImageArray[x + y * dif.ImageWidth] - minInt) / (maxInt - minInt) * 65535 + 0.5);
-                                if (index > 65535) index = 65535;
-                                if (index < 0) index = 0;
-                                if (negative) index = 65535 - index;
 
-                                (p[0], p[1], p[2]) = scale[index];
+                                double realX = LowerX + (double)w / (double)width * (UpperX - LowerX);
+                                int x = (int)(dif.ImageWidth * (realX - startX) / (endX - startX) + 0.5);
+                                if (x >= 0 && x < dif.ImageWidth)
+                                {
+                                    int index =
+                                    (int)((dif.ImageArray[x + y * dif.ImageWidth] - minInt) / (maxInt - minInt) * 65535 + 0.5);
+                                    if (index > 65535) index = 65535;
+                                    if (index < 0) index = 0;
+                                    if (negative) index = 65535 - index;
+
+                                    (p[0], p[1], p[2]) = scale[index];
+                                }
+                                p += 3;
                             }
-                            p += 3;
+                            p += nResidual;
                         }
-                        p += nResidual;
                     }
-                    bmp.UnlockBits(bmpData);
+                    finally { bmp.UnlockBits(bmpData); } // (260624Ch)
                     gMain.DrawImage(bmp, OriginPos.X, 0);
                 }
             }
@@ -1453,8 +1470,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             int startIndex = 0, endIndex = 0;
             for (int i = 0; i < ranges.Length; i++)
             {
-                Brush b = formProfile.SelectedMaskIndex == i ? new SolidBrush(Color.FromArgb(224, Color.Pink)) : new SolidBrush(Color.FromArgb(128, Color.Pink));
-                Pen pen = formProfile.SelectedMaskIndex == i ? new Pen(Color.Purple, 2) : pen = new Pen(Color.Purple, 1);
+                //Brush b = formProfile.SelectedMaskIndex == i ? new SolidBrush(Color.FromArgb(224, Color.Pink)) : new SolidBrush(Color.FromArgb(128, Color.Pink)); // (260624Ch) 旧: Brush が未破棄
+                using var b = formProfile.SelectedMaskIndex == i ? new SolidBrush(Color.FromArgb(224, Color.Pink)) : new SolidBrush(Color.FromArgb(128, Color.Pink)); // (260624Ch)
+                //Pen pen = formProfile.SelectedMaskIndex == i ? new Pen(Color.Purple, 2) : pen = new Pen(Color.Purple, 1); // (260624Ch) 旧: Pen が未破棄
+                using var pen = formProfile.SelectedMaskIndex == i ? new Pen(Color.Purple, 2) : new Pen(Color.Purple, 1); // (260624Ch)
                 pen.LineJoin = LineJoin.Round;
 
                 float zero;//描画範囲の最低強度位置のピクセル
@@ -1487,19 +1506,21 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         }
                 }
                 startIndex--; endIndex++;
-                b = formProfile.SelectedMaskIndex == i ? new SolidBrush(Color.FromArgb(128, Color.Pink)) : new SolidBrush(Color.FromArgb(64, Color.Pink));
+                //b = formProfile.SelectedMaskIndex == i ? new SolidBrush(Color.FromArgb(128, Color.Pink)) : new SolidBrush(Color.FromArgb(64, Color.Pink)); // (260624Ch) 旧: Brush 再代入で前の Brush も未破棄
+                using var edgeBrush = formProfile.SelectedMaskIndex == i ? new SolidBrush(Color.FromArgb(128, Color.Pink)) : new SolidBrush(Color.FromArgb(64, Color.Pink)); // (260624Ch)
                 startX = ConvToPicBoxCoord(dp.Profile.Pt[Math.Max(startIndex - dp.InterpolationPoints, 0)].X, 0).X;
                 endX = ConvToPicBoxCoord(dp.Profile.Pt[startIndex].X, 0).X;
-                gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
+                gMain.FillRectangle(edgeBrush, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top); // (260624Ch)
 
                 startX = ConvToPicBoxCoord(dp.Profile.Pt[endIndex].X, 0).X;
                 endX = ConvToPicBoxCoord(dp.Profile.Pt[Math.Min(endIndex + dp.InterpolationPoints, dp.Profile.Pt.Count - 1)].X, 0).X;
-                gMain.FillRectangle(b, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top);
+                gMain.FillRectangle(edgeBrush, Math.Max(startX, OriginPos.X), top, endX - Math.Max(startX, OriginPos.X), zero - top); // (260624Ch)
 
 
-                pen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1) { DashStyle = DashStyle.Dash };
+                //pen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1) { DashStyle = DashStyle.Dash }; // (260624Ch) 旧: Pen 再代入で前の Pen も未破棄
+                using var originalPen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1) { DashStyle = DashStyle.Dash }; // (260624Ch)
                 if (original.Count > 1)
-                    gMain.DrawLines(pen, original.ToArray());
+                    gMain.DrawLines(originalPen, original.ToArray()); // (260624Ch)
             }
         }
 
@@ -1511,48 +1532,59 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         var rect = new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY);
         List<(Pen pen, PointF[] points)> profiles = []; //260317Cl new List<T>() → []
+        List<Pen> profilePens = []; // (260624Ch)
 
-        Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
+        try // (260624Ch)
         {
-            var dp = dataSet.DataTableProfile.CheckedItems[j];
-            var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
-            if (srcPts.Length > 2)
+            Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
             {
-                var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
-
-                foreach (var trimmedPts in Geometry.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
+                var dp = dataSet.DataTableProfile.CheckedItems[j];
+                var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
+                if (srcPts.Length > 2)
                 {
-                    var finalPts = ConvToPicBoxCoord(trimmedPts);
-                    lock (lockObj)
-                        profiles.Add((pen, finalPts));
-                }
+                    var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
+                    lock (lockObj) profilePens.Add(pen); // (260624Ch)
 
-                //エラーバー描画
-                if (checkBoxErrorBar.Checked && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
-                {
-                    var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
-                    var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
-                    for (int i = 0; i < srcPts.Length; i++)
-                        if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i]))
-                        {
-                            var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y);
-                            var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
-                            lock (lockObj)
+                    foreach (var trimmedPts in Geometry.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
+                    {
+                        var finalPts = ConvToPicBoxCoord(trimmedPts);
+                        lock (lockObj)
+                            profiles.Add((pen, finalPts));
+                    }
+
+                    //エラーバー描画
+                    if (checkBoxErrorBar.Checked && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
+                    {
+                        var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
+                        lock (lockObj) profilePens.Add(penErr); // (260624Ch)
+                        var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
+                        for (int i = 0; i < srcPts.Length; i++)
+                            if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i]))
                             {
-                                profiles.Add((penErr, new[] { maxErr, minErr }));
-                                profiles.Add((penErr, new[] { new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y) }));
-                                profiles.Add((penErr, new[] { new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y) }));
+                                var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y);
+                                var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
+                                lock (lockObj)
+                                {
+                                    profiles.Add((penErr, new[] { maxErr, minErr }));
+                                    profiles.Add((penErr, new[] { new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y) }));
+                                    profiles.Add((penErr, new[] { new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y) }));
+                                }
                             }
-                        }
+                    }
                 }
-            }
-        });
+            });
 
-        profiles.ForEach(p =>
+            profiles.ForEach(p =>
+            {
+                if (p.points.Length > 1)
+                    gMain.DrawLines(p.pen, p.points);
+            });
+        }
+        finally // (260624Ch)
         {
-            if (p.points.Length > 1)
-                gMain.DrawLines(p.pen, p.points);
-        });
+            foreach (var pen in profilePens.Distinct())
+                pen.Dispose();
+        }
     }
 
 
@@ -1568,14 +1600,21 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         if (!ShowBackgroundProfile) return;
         if (BackGroundPointSelectMode)
-            gMain.DrawString("Background Control Points Select Mode", new Font("Tahoma", 8), new SolidBrush(Color.Black), new PointF(50, 0));
+        {
+            using var modeFont = new Font("Tahoma", 8); // (260624Ch)
+            using var modeBrush = new SolidBrush(Color.Black); // (260624Ch)
+            //gMain.DrawString("Background Control Points Select Mode", new Font("Tahoma", 8), new SolidBrush(Color.Black), new PointF(50, 0)); // (260624Ch) 旧: Font/Brush が未破棄
+            gMain.DrawString("Background Control Points Select Mode", modeFont, modeBrush, new PointF(50, 0)); // (260624Ch)
+        }
         if (bindingSourceProfile.Position >= 0 && dataSet.DataTableProfile.GetItemChecked(bindingSourceProfile.Position))
         {
             DiffractionProfile2 dp = (DiffractionProfile2)dataSet.DataTableProfile.Items[bindingSourceProfile.Position];
             if (dp.SubtractBackground && ShowBackgroundProfile)
             {
                 var color = Color.FromArgb(dp.ColorARGB.Value);
-                var pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1);
+                //var pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1); // (260624Ch) 旧: Pen が未破棄
+                using var pen = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.5)), (255 - (int)((255 - color.G) * 0.5)), (255 - (int)((255 - color.B) * 0.5))), 1); // (260624Ch)
+                using var pointBrush = new SolidBrush(color); // (260624Ch)
 
                 PointD[] pt;
                 if (BackGroundPointSelectMode)
@@ -1586,7 +1625,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     {
                         PointF p = ConvToPicBoxCoord(pt[i]);
                         if (p.X > minX - 0.1 && p.X < maxX + 0.1 && p.Y > minY - 0.1 && p.Y < maxY + 0.1)//範囲内であれば
-                            gMain.FillEllipse(new SolidBrush(color), p.X - 5, p.Y - 5, 10, 10);
+                            //gMain.FillEllipse(new SolidBrush(color), p.X - 5, p.Y - 5, 10, 10); // (260624Ch) 旧: Brush が未破棄
+                            gMain.FillEllipse(pointBrush, p.X - 5, p.Y - 5, 10, 10); // (260624Ch)
                     }
                 }
                 pt = [.. dp.BackgroundProfile.Pt];
@@ -1607,7 +1647,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     //結晶の計算上のピーク位置の描画
     private void DrawProfile_diffraction()
     {
-        Pen pen;
+        //Pen pen; // (260624Ch) 旧: ループ内生成 Pen が未破棄
 
         //チェックしている結晶の描画位置を計算
         foreach (int i in dataSet.DataTableCrystal.CheckedIndices)
@@ -1619,8 +1659,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     if (formCrystal.checkBoxVariableRatioOfIntensity.Checked && cry.DiffractionPeakIntensity == -1)//強度変化があって初期化されていないとき
                         cry.DiffractionPeakIntensity = UpperY;
 
-                    var font = new Font("Tahoma", 8);
-                    var br = new SolidBrush(Color.FromArgb(cry.Argb));
+                    //var font = new Font("Tahoma", 8); // (260624Ch) 旧: Font が未破棄
+                    using var font = new Font("Tahoma", 8); // (260624Ch)
+                    //var br = new SolidBrush(Color.FromArgb(cry.Argb)); // (260624Ch) 旧: Brush が未破棄
+                    using var br = new SolidBrush(Color.FromArgb(cry.Argb)); // (260624Ch)
+                    using var verticalFormat = new StringFormat(StringFormatFlags.DirectionVertical); // (260624Ch)
                     var JustBeforePt = new PointF(-10, -10);
                     int shiftY = 40;
                     for (int j = 0; j < cry.Plane.Count; j++)
@@ -1630,9 +1673,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         if (cry.Plane[j].XCalc > LowerX && cry.Plane[j].XCalc < UpperX)
                         {
                             //ここから線の部分
-                            pen = i == bindingSourceCrystal.Position ?
+                            //pen = i == bindingSourceCrystal.Position ? // (260624Ch) 旧: Pen が未破棄
+                            //     new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f) :
+                            //     new Pen(Color.FromArgb(cry.Argb), 1f);
+                            using var pen = i == bindingSourceCrystal.Position ?
                                  new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f) :
-                                 new Pen(Color.FromArgb(cry.Argb), 1f);
+                                 new Pen(Color.FromArgb(cry.Argb), 1f); // (260624Ch)
 
                             if (!double.IsNaN(cry.Plane[j].XCalc))
                             {
@@ -1682,7 +1728,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                                     if (pt.Y + cry.Plane[j].strHKL.Length * 5.5 > pictureBoxMain.Height - OriginPos.Y)
                                                         pt.Y = pictureBoxMain.Height - OriginPos.Y - cry.Plane[j].strHKL.Length * 5.5f;
 
-                                                    gMain.DrawString(cry.Plane[j].strHKL, font, br, pt, new StringFormat(StringFormatFlags.DirectionVertical));
+                                                    //gMain.DrawString(cry.Plane[j].strHKL, font, br, pt, new StringFormat(StringFormatFlags.DirectionVertical)); // (260624Ch) 旧: StringFormat が未破棄
+                                                    gMain.DrawString(cry.Plane[j].strHKL, font, br, pt, verticalFormat); // (260624Ch)
                                                 }
                                                 JustBeforePt = pt;
                                             }
@@ -1722,7 +1769,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         var dp = (DiffractionProfile2)dataSet.DataTableProfile.Rows[bindingSourceProfile.Position][1];
 
         var color = Color.FromArgb(dp.ColorARGB.Value);
-        var penSubtraction = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.3)), (255 - (int)((255 - color.G) * 0.3)), (255 - (int)((255 - color.B) * 0.3))), dp.LineWidth);
+        //var penSubtraction = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.3)), (255 - (int)((255 - color.G) * 0.3)), (255 - (int)((255 - color.B) * 0.3))), dp.LineWidth); // (260624Ch) 旧: Pen が未破棄
+        using var penSubtraction = new Pen(Color.FromArgb((255 - (int)((255 - color.R) * 0.3)), (255 - (int)((255 - color.G) * 0.3)), (255 - (int)((255 - color.B) * 0.3))), dp.LineWidth); // (260624Ch)
         penSubtraction.LineJoin = LineJoin.Round;
 
 
@@ -1736,7 +1784,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         foreach (Plane p in planeList.Where(p => p.SerchOption == PeakFunctionForm.Simple && !p.simpleParameter.IsNaN && !double.IsNaN(p.simpleParameter.X)))
         {
             PointF pt = ConvToPicBoxCoord(p.simpleParameter.X, p.simpleParameter.Y + basePosition);
-            gMain.FillEllipse(new SolidBrush(p.peakFunction.Color), pt.X - 4, pt.Y - 8, 8, 8);
+            using var brush = new SolidBrush(p.peakFunction.Color); // (260624Ch)
+            //gMain.FillEllipse(new SolidBrush(p.peakFunction.Color), pt.X - 4, pt.Y - 8, 8, 8); // (260624Ch) 旧: Brush が未破棄
+            gMain.FillEllipse(brush, pt.X - 4, pt.Y - 8, 8, 8); // (260624Ch)
         }
 
         //シンプルモードじゃないやつを抜き出す
@@ -1785,7 +1835,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     //個々のフィッティングカーブを描く
                     foreach (Plane p in planeList3)
                     {
-                        var penPeak = new Pen(p.peakFunction.Color, 2f);
+                        //var penPeak = new Pen(p.peakFunction.Color, 2f); // (260624Ch) 旧: Pen が未破棄
+                        using var penPeak = new Pen(p.peakFunction.Color, 2f); // (260624Ch)
                         List<PointF> peaks = []; //260317Cl new List<T>() → []
                         var startTheta = Math.Max(p.XCalc - p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(OriginPos.X, 0).X);
                         var endTheta = Math.Min(p.XCalc + p.SerchRange * formFitting.SerchRangeFactor, ConvToRealCoord(pictureBoxMain.Width, 0).X);
@@ -1826,21 +1877,23 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         int decimalPlaces = AngleGradiation >= 1 ? 0 : Math.Abs((int)Math.Floor((Math.Log10(AngleGradiation))));
         for (int i = 0; i < decimalPlaces; i++) format += "0";
 
-
-        var pen = new Pen(colorControlScaleLine.Color, 1);
+        //var pen = new Pen(colorControlScaleLine.Color, 1); // (260624Ch) 旧: Pen 再代入で未破棄
+        using var pen = new Pen(colorControlScaleLine.Color, 1); // (260624Ch)
+        using var textBrush = new SolidBrush(colorControlScaleText.Color); // (260624Ch)
 
         gMain.DrawLine(pen, OriginPos.X, pictureBoxMain.Height - OriginPos.Y, pictureBoxMain.Width, pictureBoxMain.Height - OriginPos.Y);
-        using Font strFont = new(new FontFamily("tahoma"), 8);
+        //using Font strFont = new(new FontFamily("tahoma"), 8); // (260624Ch) 旧: FontFamily が未破棄
+        using var fontFamily = new FontFamily("tahoma"); // (260624Ch)
+        using Font strFont = new(fontFamily, 8); // (260624Ch)
         for (int i = (int)(LowerX / AngleGradiation) + 1; i < UpperX / AngleGradiation; i++)
         {
-            pen = new Pen(colorControlScaleLine.Color, 1);
             float x = ConvToPicBoxCoord(i * AngleGradiation, 0).X;
             if (x > pictureBoxMain.Width || x < 0) break;
             gMain.DrawLine(pen, x, pictureBoxMain.Height - OriginPos.Y, x, pictureBoxMain.Height - OriginPos.Y + 5);
             if (i * AngleGradiation > 1000)
                 format = "#," + format;
-            gMain.DrawString(Math.Round(i * AngleGradiation, 5).ToString(format), strFont, new SolidBrush(colorControlScaleText.Color), x - 2, pictureBoxMain.Height - OriginPos.Y + 5);
-            pen = new Pen(colorControlScaleLine.Color, 1);
+            //gMain.DrawString(Math.Round(i * AngleGradiation, 5).ToString(format), strFont, new SolidBrush(colorControlScaleText.Color), x - 2, pictureBoxMain.Height - OriginPos.Y + 5); // (260624Ch) 旧: Brush が未破棄
+            gMain.DrawString(Math.Round(i * AngleGradiation, 5).ToString(format), strFont, textBrush, x - 2, pictureBoxMain.Height - OriginPos.Y + 5); // (260624Ch)
             if (checkBoxShowScaleLine.Checked)
                 gMain.DrawLine(pen, ConvToPicBoxCoord(i * AngleGradiation, 0).X, pictureBoxMain.Height - OriginPos.Y, x, 0);
         }
@@ -1863,19 +1916,17 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         format = "0.";
         for (int i = 0; i < decimalPlaces; i++) format += "0";
 
-        pen = new Pen(colorControlScaleLine.Color, 1);
         gMain.DrawLine(pen, OriginPos.X, 0, OriginPos.X, pictureBoxMain.Height - OriginPos.Y);
 
         for (int i = (int)(LowerY / IntensityGradiation) + 1; i < UpperY / IntensityGradiation; i++)
         {
-            pen = new Pen(colorControlScaleLine.Color, 1);
             float y = ConvToPicBoxCoord(0, i * IntensityGradiation).Y;
             if (y > pictureBoxMain.Height || y < 0) break;
             gMain.DrawLine(pen, OriginPos.X - 8, y, OriginPos.X, y);
             if (i * IntensityGradiation > 1000)
                 format = "#," + format;
-            gMain.DrawString((i * IntensityGradiation).ToString(format), strFont, new SolidBrush(colorControlScaleText.Color), 0, y - 6);
-            pen = new Pen(colorControlScaleLine.Color, 1);
+            //gMain.DrawString((i * IntensityGradiation).ToString(format), strFont, new SolidBrush(colorControlScaleText.Color), 0, y - 6); // (260624Ch) 旧: Brush が未破棄
+            gMain.DrawString((i * IntensityGradiation).ToString(format), strFont, textBrush, 0, y - 6); // (260624Ch)
             if (checkBoxShowScaleLine.Checked)
                 gMain.DrawLine(pen, OriginPos.X - 8, y, pictureBoxMain.Width, y);
         }
@@ -2762,7 +2813,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     public void menuItemFileRead_Click(object sender, System.EventArgs e)
     {
-        var dlg = new OpenFileDialog
+        //var dlg = new OpenFileDialog // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new OpenFileDialog // (260624Ch)
         {
             Filter = "Powder Pattern File (WinPIP[*.csv]; Fit2D[*.chi]; PDI[*.pdi,pdi2], EDX profile[*.rpt, *.npd, *.nxs])|*.csv;*.chi;*.pdi;*.pdi2;*.rpt;*.npd;*.nxs"
             + "|Any format(Auto[*.*])|*.*",
@@ -3491,11 +3543,13 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
             cry.Add(dataSet.DataTableCrystal.Items[i]);
 
-        var formCrystalSelection = new FormCrystalSelection { LoadMode = false };
+        //var formCrystalSelection = new FormCrystalSelection { LoadMode = false }; // (260624Ch) 旧: Form が未破棄
+        using var formCrystalSelection = new FormCrystalSelection { LoadMode = false }; // (260624Ch)
         formCrystalSelection.SetCrystalList(cry);
         if (formCrystalSelection.ShowDialog() == DialogResult.OK && formCrystalSelection.CheckedCrystalList.Length > 0)
         {
-            var Dlg = new SaveFileDialog() { Filter = "xml|*.Xml" };
+            //var Dlg = new SaveFileDialog() { Filter = "xml|*.Xml" }; // (260624Ch) 旧: Dialog が未破棄
+            using var Dlg = new SaveFileDialog() { Filter = "xml|*.Xml" }; // (260624Ch)
             if (Dlg.ShowDialog() == DialogResult.OK)
                 try
                 {
@@ -3534,13 +3588,15 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     //結晶データの読み込み
     public void menuItemReadCrystalData_Click(object sender, System.EventArgs e)
     {
-        var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" };
+        //var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" }; // (260624Ch) 旧: Dialog が未破棄
+        using var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" }; // (260624Ch)
         if (Dlg.ShowDialog() == DialogResult.OK)
             readCrystal(Dlg.FileName, true, true);
     }
     private void readAndAddToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" };
+        //var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" }; // (260624Ch) 旧: Dialog が未破棄
+        using var Dlg = new OpenFileDialog() { Filter = "xml|*.Xml" }; // (260624Ch)
         if (Dlg.ShowDialog() == DialogResult.OK)
             readCrystal(Dlg.FileName, true, false);
     }
@@ -3549,14 +3605,16 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
 
         var sb = new StringBuilder();
-        var sr = new StreamReader(fileName, Encoding.UTF8);
-        while (sr.Peek() > -1)
-            sb.AppendLine(sr.ReadLine());
-        sr.Close();
+        //var sr = new StreamReader(fileName, Encoding.UTF8); // (260624Ch) 旧: 例外時に Close されない
+        using (var sr = new StreamReader(fileName, Encoding.UTF8)) // (260624Ch)
+            while (sr.Peek() > -1)
+                sb.AppendLine(sr.ReadLine());
+        //sr.Close(); // (260624Ch) using に移行
 
-        var sw = new StreamWriter(fileName, false, Encoding.UTF8);
-        sw.WriteLine(sb);
-        sw.Close();
+        //var sw = new StreamWriter(fileName, false, Encoding.UTF8); // (260624Ch) 旧: 例外時に Close されない
+        using (var sw = new StreamWriter(fileName, false, Encoding.UTF8)) // (260624Ch)
+            sw.WriteLine(sb);
+        //sw.Close(); // (260624Ch) using に移行
 
 
         List<Crystal> crystalArray = []; //260317Cl new List<T>() → []
@@ -3569,7 +3627,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         if (showSelectionDialog)
         {
-            var formCrystalSelection = new FormCrystalSelection { LoadMode = true };
+            //var formCrystalSelection = new FormCrystalSelection { LoadMode = true }; // (260624Ch) 旧: Form が未破棄
+            using var formCrystalSelection = new FormCrystalSelection { LoadMode = true }; // (260624Ch)
             formCrystalSelection.SetCrystalList(crystalArray);
 
             if (formCrystalSelection.ShowDialog() == DialogResult.OK)//セレクションダイアログを表示
@@ -3624,8 +3683,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         foreach (Crystal c in crystalArray)
         {
             var bmp = new Bitmap(22, 22);
-            var g = Graphics.FromImage(bmp);
-            g.Clear(Color.FromArgb(c.Argb));
+            //var g = Graphics.FromImage(bmp); // (260624Ch) 旧: Graphics が未破棄
+            using (var g = Graphics.FromImage(bmp)) // (260624Ch)
+                g.Clear(Color.FromArgb(c.Argb));
             dataSet.DataTableCrystal.Rows.Add([false, c, bmp]);
         }
 
@@ -3647,7 +3707,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     //MenuItemから印刷処理
     private void menuItemPrint_Click(object sender, System.EventArgs e)
     {
-        var pdlg = new PrintDialog { Document = printDocument };
+        //var pdlg = new PrintDialog { Document = printDocument }; // (260624Ch) 旧: Dialog が未破棄
+        using var pdlg = new PrintDialog { Document = printDocument }; // (260624Ch)
         if (pdlg.ShowDialog() == DialogResult.OK)
             printDocument.Print();
     }
@@ -3760,7 +3821,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     private void setDirectoryToTheWatchToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        var dlg = new FolderBrowserDialog();
+        //var dlg = new FolderBrowserDialog(); // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new FolderBrowserDialog(); // (260624Ch)
         if (dlg.ShowDialog() == DialogResult.OK)
             toolStripTextBoxDirectoryToWatch.Text = dlg.SelectedPath;
     }
@@ -3776,7 +3838,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     //MenuItemから終了処理
     private void menuItemClose_Click(object sender, EventArgs e) => this.Close();
 
-    private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e) => new FormAboutMe().ShowDialog();
+    private void aboutMeToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        //new FormAboutMe().ShowDialog(); // (260624Ch) 旧: Form が未破棄
+        using var form = new FormAboutMe(); // (260624Ch)
+        form.ShowDialog(); // (260624Ch)
+    }
 
     //結晶データをリセットする
     private void resetInitialCrystalDataToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3787,7 +3854,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         if (dataSet.DataTableProfile.Items.Count > 0)
         {
-            var dialog = new SaveFileDialog { Filter = "*.pdi2|*.pdi2" };
+            //var dialog = new SaveFileDialog { Filter = "*.pdi2|*.pdi2" }; // (260624Ch) 旧: Dialog が未破棄
+            using var dialog = new SaveFileDialog { Filter = "*.pdi2|*.pdi2" }; // (260624Ch)
             if (dialog.ShowDialog() == DialogResult.OK)
                 SaveProfile(dialog.FileName);
         }
@@ -3827,7 +3895,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     private void toolStripMenuItemImport_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" };
+        //var dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" }; // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new OpenFileDialog { Filter = "cif, amc file | *.amc;*.cif" }; // (260624Ch)
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             var c = ConvertCrystalData.ConvertToCrystal(dlg.FileName);
@@ -3848,7 +3917,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     public void toolStripMenuItemSaveMetafile_Click(object sender, EventArgs e)
     {
-        var dlg = new SaveFileDialog { Filter = "*.emf|*.emf" };
+        //var dlg = new SaveFileDialog { Filter = "*.emf|*.emf" }; // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new SaveFileDialog { Filter = "*.emf|*.emf" }; // (260624Ch)
         if (dlg.ShowDialog() == DialogResult.OK)
             saveMetafile(dlg.FileName);
     }
@@ -3939,7 +4009,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (dataSet.DataTableProfile.Items.Count is 0) return; //260317Cl == 0 → is 0
 
         var s = ((ToolStripMenuItem)sender).Name.Contains("CSV") ? "," : "\t";
-        var dlg = new SaveFileDialog { Filter = s == "," ? "*.csv|*.csv" : "*.tsv|*.tsv" };
+        //var dlg = new SaveFileDialog { Filter = s == "," ? "*.csv|*.csv" : "*.tsv|*.tsv" }; // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new SaveFileDialog { Filter = s == "," ? "*.csv|*.csv" : "*.tsv|*.tsv" }; // (260624Ch)
 
         if (dlg.ShowDialog() == DialogResult.OK)
         {
@@ -3986,7 +4057,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         if (bindingSourceProfile.Position < 0) return;
 
-        var dlg = new SaveFileDialog { Filter = "*.gsa|*.gsa" };
+        //var dlg = new SaveFileDialog { Filter = "*.gsa|*.gsa" }; // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new SaveFileDialog { Filter = "*.gsa|*.gsa" }; // (260624Ch)
         var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1]; ;
         dlg.FileName = Path.GetFileNameWithoutExtension(dp.Name);
         if (dlg.ShowDialog() == DialogResult.OK)
@@ -4506,7 +4578,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         if (MouseRangingMode)
         {
-            var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash };
+            //var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash }; // (260624Ch) 旧: Pen が未破棄
+            using var pen = new Pen(Brushes.Gray) { DashStyle = DashStyle.Dash }; // (260624Ch)
             e.Graphics.DrawRectangle(pen, Math.Min(mouseRangeStart.X, mouseRangeEnd.X), Math.Min(mouseRangeStart.Y, mouseRangeEnd.Y),
                 Math.Abs(mouseRangeStart.X - mouseRangeEnd.X), Math.Abs(mouseRangeStart.Y - mouseRangeEnd.Y));
         }
@@ -4589,9 +4662,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 IDataObject data = Clipboard.GetDataObject();
                 string str = (string)data.GetData(typeof(string));
                 //StreamWriter
-                var sw = new StreamWriter("clipbord.txt");
-                sw.Write(str);
-                sw.Close();
+                //var sw = new StreamWriter("clipbord.txt"); // (260624Ch) 旧: 例外時に Close されない
+                using (var sw = new StreamWriter("clipbord.txt")) // (260624Ch)
+                    sw.Write(str);
+                //sw.Close(); // (260624Ch) using に移行
                 readProfile("clipbord.txt");
                 File.Delete("clipboard.txt");
             }

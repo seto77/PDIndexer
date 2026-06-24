@@ -90,8 +90,9 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
         {
 
             var bmp = new Bitmap(18, 18);
-            var g = Graphics.FromImage(bmp);
-            g.Clear(Color.FromArgb(cry.Argb));
+            //var g = Graphics.FromImage(bmp); // (260624Ch) 旧: Graphics が未破棄
+            using (var g = Graphics.FromImage(bmp)) // (260624Ch)
+                g.Clear(Color.FromArgb(cry.Argb));
             formMain.dataSet.DataTableCrystal.Rows.Add(new object[] { false, cry, bmp });
             formMain.bindingSourceCrystal.Position = formMain.bindingSourceCrystal.List.Count - 1;
             formMain.dataGridViewCrystals_CellMouseClick
@@ -115,8 +116,9 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
         if (cry != null && bindingSource.Position >= 0)
         {
             Bitmap bmp = new Bitmap(22, 22);
-            Graphics g = Graphics.FromImage(bmp);
-            g.Clear(Color.FromArgb(cry.Argb));
+            //Graphics g = Graphics.FromImage(bmp); // (260624Ch) 旧: Graphics が未破棄
+            using (var g = Graphics.FromImage(bmp)) // (260624Ch)
+                g.Clear(Color.FromArgb(cry.Argb));
             dataSet.DataTableCrystal.Rows[bindingSource.Position][1] = cry;
             dataSet.DataTableCrystal.Rows[bindingSource.Position][2] = bmp;
             formMain.InitializeCrystalPlane();

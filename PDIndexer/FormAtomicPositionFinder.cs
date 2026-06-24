@@ -581,21 +581,28 @@ namespace PDIndexer
             string txt = ((ListBox)sender).Items[e.Index].ToString();
 
             //下付き文字用フォント
-            Font sub = new Font("Times New Roman", 8f, FontStyle.Regular);
+            //Font sub = new Font("Times New Roman", 8f, FontStyle.Regular); // (260624Ch) 旧: Font が未破棄
+            using var sub = new Font("Times New Roman", 8f, FontStyle.Regular); // (260624Ch)
             //斜体
-            Font italic = new Font("Times New Roman", 11f, FontStyle.Italic);
+            //Font italic = new Font("Times New Roman", 11f, FontStyle.Italic); // (260624Ch) 旧: Font が未破棄
+            using var italic = new Font("Times New Roman", 11f, FontStyle.Italic); // (260624Ch)
             //普通
-            Font regular = new Font("Times New Roman", 11f, FontStyle.Regular);
+            //Font regular = new Font("Times New Roman", 11f, FontStyle.Regular); // (260624Ch) 旧: Font が未破棄
+            using var regular = new Font("Times New Roman", 11f, FontStyle.Regular); // (260624Ch)
 
-            Font bold = new Font("Times New Roman", 10f, FontStyle.Bold);
+            //Font bold = new Font("Times New Roman", 10f, FontStyle.Bold); // (260624Ch) 旧: Font が未破棄
+            using var bold = new Font("Times New Roman", 10f, FontStyle.Bold); // (260624Ch)
 
             float xPos = e.Bounds.Left;
-            Brush b = null;
+            //Brush b = null; // (260624Ch) 旧: 手動 Dispose
 
-            if ((e.State & DrawItemState.Selected) != DrawItemState.Selected)
-                b = new SolidBrush(Color.Black);
-            else
-                b = new SolidBrush(Color.White);
+            //if ((e.State & DrawItemState.Selected) != DrawItemState.Selected) // (260624Ch) 旧: 例外時に Brush が未破棄
+            //    b = new SolidBrush(Color.Black);
+            //else
+            //    b = new SolidBrush(Color.White);
+            using var b = (e.State & DrawItemState.Selected) != DrawItemState.Selected
+                ? new SolidBrush(Color.Black)
+                : new SolidBrush(Color.White); // (260624Ch)
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
 
@@ -620,7 +627,9 @@ namespace PDIndexer
                 else if (txt.StartsWith("-"))//-で始まる時は
                 {
                     float x = e.Graphics.MeasureString(txt[1].ToString(), regular).Width;
-                    e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1));
+                    //e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1)); // (260624Ch) 旧: Pen が未破棄
+                    using var linePen = new Pen(b, 1); // (260624Ch)
+                    e.Graphics.DrawLine(linePen, new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1)); // (260624Ch)
                 }
                 else if (txt[0] == '/')
                 {
@@ -641,7 +650,7 @@ namespace PDIndexer
                 txt = txt.Substring(1);
             }
 
-            b.Dispose();
+            //b.Dispose(); // (260624Ch) using var に移行
 
 
         }
@@ -1338,15 +1347,17 @@ namespace PDIndexer
 
         private void readFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
+            //OpenFileDialog dlg = new OpenFileDialog(); // (260624Ch) 旧: Dialog が未破棄
+            using var dlg = new OpenFileDialog(); // (260624Ch)
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(AtomicPositionFinderIO));
-                System.IO.FileStream fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Open);
                 try
                 {
+                    //System.IO.FileStream fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Open); // (260624Ch) 旧: 例外時に Close されない
+                    using var fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Open); // (260624Ch)
                     AtomicPositionFinderIO a = (AtomicPositionFinderIO)serializer.Deserialize(fs);
-                    fs.Close();
+                    //fs.Close(); // (260624Ch) using var に移行
 
                     //化学情報
                     textBoxInputFormula.Text = a.chemicalFormulae;
@@ -1466,13 +1477,15 @@ namespace PDIndexer
 
             //ここからシリアライズ
 
-            SaveFileDialog dlg = new SaveFileDialog();
+            //SaveFileDialog dlg = new SaveFileDialog(); // (260624Ch) 旧: Dialog が未破棄
+            using var dlg = new SaveFileDialog(); // (260624Ch)
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(AtomicPositionFinderIO));
-                System.IO.FileStream fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create);
+                //System.IO.FileStream fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create); // (260624Ch) 旧: 例外時に Close されない
+                using var fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create); // (260624Ch)
                 serializer.Serialize(fs, a);
-                fs.Close();
+                //fs.Close(); // (260624Ch) using var に移行
             }
         }
 

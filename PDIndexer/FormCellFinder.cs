@@ -829,18 +829,20 @@ namespace PDIndexer
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dlg = new OpenFileDialog();
+            //OpenFileDialog dlg = new OpenFileDialog(); // (260624Ch) 旧: Dialog が未破棄
+            using var dlg = new OpenFileDialog(); // (260624Ch)
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8"));
+                    //StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8")); // (260624Ch) 旧: 例外時に Close されない
+                    using var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8")); // (260624Ch)
                     List<string> strList = []; //260317Cl new List<string>() → []
                     string tempstr;
                     while ((tempstr = reader.ReadLine()) != null)
                         strList.Add(tempstr);
-                    reader.Close();
+                    //reader.Close(); // (260624Ch) using var に移行
 
                     dataSet1.Tables[0].Rows.Clear();
                     Candidates.Clear();

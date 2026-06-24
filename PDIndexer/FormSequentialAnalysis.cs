@@ -331,10 +331,11 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
 
         static void save(string filename, string contents)
         {
-            var sw = new StreamWriter(filename);
+            //var sw = new StreamWriter(filename); // (260624Ch) 旧: 例外時に Close されない
+            using var sw = new StreamWriter(filename); // (260624Ch)
             sw.Write(contents);
-            sw.Flush();
-            sw.Close();
+            //sw.Flush(); // (260624Ch) Dispose 時に flush される
+            //sw.Close(); // (260624Ch) using var に移行
         }
 
         if (checkBoxAutoSaveCell.Checked)
@@ -355,7 +356,8 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
 
     private void buttonSetDirectory_Click(object sender, EventArgs e)
     {
-        var dlg = new FolderBrowserDialog();
+        //var dlg = new FolderBrowserDialog(); // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new FolderBrowserDialog(); // (260624Ch)
         if(Path.Exists(textBoxDirectory.Text)) 
             dlg.SelectedPath = textBoxDirectory.Text;
         textBoxDirectory.Text = dlg.ShowDialog() == DialogResult.OK ? dlg.SelectedPath : "";
@@ -534,12 +536,14 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
 
     private void buttonSave_Click(object sender, EventArgs e)
     {
-        var dlg = new SaveFileDialog() { Filter = "*.csv|*.csv" };
+        //var dlg = new SaveFileDialog() { Filter = "*.csv|*.csv" }; // (260624Ch) 旧: Dialog が未破棄
+        using var dlg = new SaveFileDialog() { Filter = "*.csv|*.csv" }; // (260624Ch)
         if (dlg.ShowDialog() == DialogResult.OK)
         {
-            var sw = new StreamWriter(dlg.FileName);
+            //var sw = new StreamWriter(dlg.FileName); // (260624Ch) 旧: 例外時に Close されない
+            using var sw = new StreamWriter(dlg.FileName); // (260624Ch)
             sw.Write(GetText());
-            sw.Close();
+            //sw.Close(); // (260624Ch) using var に移行
         }
     }
 

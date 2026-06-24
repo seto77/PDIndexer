@@ -743,7 +743,10 @@ namespace PDIndexer
                          for (int l = 0; l < pixelSize; l++)
                             bmp.SetPixel(5 + pixelSize * i + k, 5 + pixelSize * j + l, Color.FromArgb(a, a, a));
                  }
-             picturebox.Image = bmp;
+             var oldImage = picturebox.Image; // (260624Ch)
+             //picturebox.Image = bmp; // (260624Ch) 旧: 差し替え前の Image が未破棄
+             picturebox.Image = bmp; // (260624Ch)
+             oldImage?.Dispose(); // (260624Ch)
         }
 
         private void DrawOutLine()
