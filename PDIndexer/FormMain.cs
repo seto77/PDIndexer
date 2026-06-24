@@ -4494,7 +4494,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     private async void programUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
     {
         var sw = new Stopwatch();
-        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
+        //260625Cl arm64 ビルドはアーキ専用インストーラ PDIndexer-setup_arm64.msi を取得する (WiX 移行 Phase C / D-PDI-4)。
+        //         x64 (エミュ実行含む) は PDIndexer-setup.msi。旧名 PDIndexerSetup.msi は旧クライアント (installerAsset
+        //         既定 = {software}Setup.msi) の自動更新互換のため release に同一バイトコピーを併置する (release.yml)。
+        //旧: (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate);
+        var installerAsset = RuntimeInformation.ProcessArchitecture == Architecture.Arm64 ? "PDIndexer-setup_arm64.msi" : "PDIndexer-setup.msi";
+        (var Title, var Message, var NeedUpdate, var URL, var Path) = ProgramUpdates.Check(Version.Software, Version.VersionAndDate, installerAsset);
 
         if (!NeedUpdate)
             MessageBox.Show(Message, Title, MessageBoxButtons.OK);

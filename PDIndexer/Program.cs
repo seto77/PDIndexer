@@ -8,6 +8,8 @@ namespace PDIndexer
     {
         // 260601Cl 追加: GitHub Pages マニュアル用スクショ一括取得モードの起動引数 (Main 内で 2 箇所判定するため定数化)。ReciPro と同じロジック。
         private const string CaptureArg = "--capture";
+        // 260625Cl 追加: 軽量 smoke テストの起動引数 (WiX 移行 Phase C / D-PDI-3)。arm64 の「ビルド緑・実行時死亡」型故障を CI で検出する。
+        private const string SmokeArg = "--smoke";
 
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
@@ -16,6 +18,15 @@ namespace PDIndexer
         [STAThread]
         private static void Main(string[] args)
         {
+            // 260625Cl 追加: --smoke (WiX 移行 Phase C / D-PDI-3)。GUI を作らず Xraylib.Enabled を参照するだけで
+            //   static ctor (libxrl-11.dll ロード + self-test) を起動し、実機で xraylib が本当にロードできるか検査する。
+            //   引数なしの通常起動には一切影響しない (--capture と同様、先頭引数判定のみ)。
+            if (args.Length >= 1 && args[0] == SmokeArg)
+            {
+                RunSmoke(args.Length >= 2 ? args[1] : "smoke-result.txt");
+                return; // RunSmoke は Environment.Exit するため通常ここには到達しない
+            }
+
             // 260601Cl 追加: --capture の言語指定を各フォームの resx ローカライズ (CurrentUICulture 参照) より前に確定させる。
             //   PDIndexer.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]   (出力先を明示)
             //   PDIndexer.exe --capture [カルチャ(en/ja)]                      (出力先省略=既定の docs/src/assets/cap-*-auto)
@@ -46,6 +57,22 @@ namespace PDIndexer
             }
 
             Application.Run(new FormMain());
+        }
+
+        // 260625Cl 追加: --smoke の本体 (WiX 移行 Phase C / D-PDI-3)。Crystallography.Xraylib.Enabled の参照が
+        //   static ctor (libxrl-11.dll ロード + self-test) を起動するので、これだけで「実機で xraylib が本当に
+        //   ロードできるか」の検査になる。PDIndexer は Crystallography.Native を同梱しないため native 検査はしない。
+        //   glfw3.dll は実行時未使用 (D-PDI-2) のため smoke では問わない (CI 側の PE 検査で arm64 混入を担保)。
+        private static void RunSmoke(string outPath)
+        {
+            System.IO.File.WriteAllLines(outPath,
+            [
+                $"arch={System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}",
+                $"baseDir={AppContext.BaseDirectory}",
+                $"xraylibEnabled={Crystallography.Xraylib.Enabled}",
+                $"xraylibError={Crystallography.Xraylib.LastLoadError}",
+            ]);
+            Environment.Exit(Crystallography.Xraylib.Enabled ? 0 : 2);
         }
     }
 }
