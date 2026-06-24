@@ -985,7 +985,6 @@ namespace PDIndexer
             graphControlFrequency.AxisXTextVisible = true;
             graphControlFrequency.AxisYTextVisible = true;
             graphControlFrequency.BackgroundColor = Color.White;
-            graphControlFrequency.BottomMargin = 0D;
             graphControlFrequency.DivisionLineColor = Color.Gray;
             graphControlFrequency.DivisionLineXVisible = true;
             graphControlFrequency.DivisionLineYVisible = true;
@@ -998,7 +997,6 @@ namespace PDIndexer
             graphControlFrequency.IsIntegerY = true;
             graphControlFrequency.LabelX = "X:";
             graphControlFrequency.LabelY = "Y:";
-            graphControlFrequency.LeftMargin = 0F;
             graphControlFrequency.LineWidth = 1F;
             graphControlFrequency.LowerX = 0D;
             graphControlFrequency.LowerY = 0D;
@@ -1017,7 +1015,6 @@ namespace PDIndexer
             graphControlFrequency.UnitX = "";
             graphControlFrequency.UnitY = "";
             graphControlFrequency.UpperPanelFont = new Font("Segoe UI Symbol", 9F);
-            graphControlFrequency.UpperPanelVisible = false;
             graphControlFrequency.UpperX = 1D;
             graphControlFrequency.UpperY = 1D;
             graphControlFrequency.UseLineWidth = true;

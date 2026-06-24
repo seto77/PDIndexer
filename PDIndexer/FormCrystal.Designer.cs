@@ -162,7 +162,7 @@ namespace PDIndexer
             crystalControl.DefaultTabNumber = 0;
             crystalControl.Gamma = 0D;
             crystalControl.Name = "crystalControl";
-            crystalControl.ScatteringFactorVisible = false;
+            crystalControl.BeamInteractionVisible = false;
             crystalControl.SkipEvent = false;
             crystalControl.SymmetryInformationVisible = false;
             crystalControl.SymmetrySeriesNumber = 0;

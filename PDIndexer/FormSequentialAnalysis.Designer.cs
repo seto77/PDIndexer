@@ -242,7 +242,6 @@ namespace PDIndexer
             // 
             graphControl1.AllowMouseOperation = true;
             graphControl1.BackgroundColor = System.Drawing.Color.White;
-            graphControl1.BottomMargin = 0D;
             graphControl1.DivisionLineColor = System.Drawing.Color.Gray;
             resources.ApplyResources(graphControl1, "graphControl1");
             graphControl1.FixRangeHorizontal = false;
@@ -252,7 +251,6 @@ namespace PDIndexer
             graphControl1.IsIntegerY = false;
             graphControl1.LabelX = "X:";
             graphControl1.LabelY = "Y:";
-            graphControl1.LeftMargin = 0F;
             graphControl1.LineWidth = 1F;
             graphControl1.LowerX = 0D;
             graphControl1.LowerY = 0D;

@@ -27,7 +27,7 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         InitializeComponent();
         HelpPage = "3-crystal-parameter"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
-        crystalControl.FormScatteringFactor.HelpPage = "3-crystal-parameter"; //260604Cl 追加: Controls側サブフォームにもヘルプを設定
+        crystalControl.FormBeamInteraction.HelpPage = "3-crystal-parameter"; //260604Cl 追加: Controls側サブフォームにもヘルプを設定
         crystalControl.FormSymmetryInformation.HelpPage = "3-crystal-parameter"; //260604Cl 追加
         crystalControl.CrystalChanged += crystalControl_CrystalChanged;
 
