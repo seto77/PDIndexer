@@ -1,0 +1,230 @@
+# 260625Cl 追加: win-arm64 の portable ZIP + MSI を Actions artifact として出力する reusable workflow (WiX 移行 Phase C)。
+#   release.yml の build-arm64 job から workflow_call で呼ばれ、同一 run で x64 と FileVersion を一致させる
+#   (cross-grade 要件、計画書 Phase A)。単独 workflow_dispatch でも arm64 ビルドの確認に使える。
+#   ReciPro\.github\workflows\build-arm64-portable.yml を PDIndexer 用に移植。PDIndexer 固有の簡素化:
+#     * Crystallography.Native を同梱しない (D-PDI-1) → devenv / native(vcxproj) ARM64 ビルド・dumpbin export 検査が不要
+#     * glfw3.dll は実行時未使用 (D-PDI-2) → OpenTK が arm64 glfw を供給しないので publish に元々入らない。混入検出のみ
+#     * portable は PublishSingleFile=false (x64 portable と統一) → single-file バンドル検査が不要
+#   release には一切触れない (artifact のみ・contents: read)。
+name: Build ARM64 portable ZIP and MSI (artifact only)
+
+on:
+  workflow_dispatch:
+  workflow_call:
+    inputs:
+      assembly_version:
+        description: "AssemblyVersion/FileVersion (yyyy.M.d.HHmm)。空なら tag commit 時刻 (無ければ UtcNow) を使う"
+        type: string
+        required: false
+        default: ""
+    outputs:
+      version:
+        description: "Version.cs の History 先頭から解析したバージョン (例: 4.463)"
+        value: ${{ jobs.build.outputs.version }}
+      artifact_name:
+        description: "portable folder の upload-artifact 名 (中身は PDIndexer フォルダ 1 個)"
+        value: ${{ jobs.build.outputs.artifact_name }}
+      msi_artifact_name:
+        description: "arm64 MSI (PDIndexer-setup_arm64.msi) の upload-artifact 名"
+        value: ${{ jobs.build.outputs.msi_artifact_name }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      artifact_name: PDIndexer-v.${{ steps.version.outputs.version }}-win-arm64-portable
+      msi_artifact_name: PDIndexer-setup_arm64-msi-v.${{ steps.version.outputs.version }}
+    # release.yml と同じイメージ (x64 ホストから arm64 クロスビルド可)。PDI は native vcxproj が無く devenv 不要だが、
+    # 当面ラベルは揃える (windows-2025 への簡素化は計画書 §8 リスク#5 で別途検証)。
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive # 260625Cl shared libs are git submodules
+
+      - name: Parse version
+        id: version
+        shell: pwsh
+        run: |
+          # release.yml と同じ規則で Version.cs の History 先頭からバージョンを得る (release の存在確認はしない: artifact のみ)
+          $content = Get-Content "PDIndexer\Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') { throw "Could not parse version from Version.cs History." }
+          $ver = $Matches[1]
+
+          # AssemblyVersion / FileVersion: x64⇔arm64 の same-version cross-grade には両 MSI の FileVersion 完全一致が必要
+          #   (計画書 Phase A 実測)。呼び出し元 (release.yml inline) が渡したらそれを優先。単独 dispatch は tag commit 時刻、
+          #   tag 未作成 (リリース前) は UtcNow フォールバック (artifact-only なので release に影響しない)。
+          $assemblyVer = '${{ inputs.assembly_version }}'
+          if ($assemblyVer) {
+            Write-Host "FileVersion provided by caller: $assemblyVer."
+          } else {
+            $tag = "v.$ver"
+            git fetch origin "refs/tags/${tag}:refs/tags/${tag}" --depth=1 2>$null
+            $global:LASTEXITCODE = 0
+            $iso = (git log -1 --format=%cI $tag 2>$null)
+            $global:LASTEXITCODE = 0
+            if ($iso) {
+              $now = ([System.DateTimeOffset]::Parse($iso)).UtcDateTime
+              Write-Host "FileVersion anchored to tag $tag commit time ($iso)."
+            } else {
+              $now = [System.DateTime]::UtcNow
+              Write-Warning "Tag $tag not found; using UtcNow (fine for artifact-only runs; do not attach this MSI to a release)."
+            }
+            $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
+          }
+
+          Write-Host "Version: $ver (assembly: $assemblyVer)"
+          "version=$ver"                  >> $env:GITHUB_OUTPUT
+          "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
+
+      - name: Setup .NET 10
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore managed dependencies
+        shell: pwsh
+        run: dotnet restore PDIndexer\PDIndexer.csproj
+
+      # PDIndexer は Crystallography.Native を同梱しないため、ReciPro の「Find devenv.com」「Build native ARM64」は不要 (D-PDI-1)。
+      # arm64 用 libxrl-11.dll は csproj の win-arm64 条件 Content が native\win-arm64\ から供給する。
+
+      - name: Publish win-arm64 self-contained (portable)
+        id: publish
+        shell: pwsh
+        run: |
+          # x64 portable (release.yml) と同形: self-contained / PublishSingleFile=false / pdb なし。
+          # csproj の win-arm64 条件が libxrl-11.dll(arm64) を平坦化し、x64 用 libxrl はRID排他条件で混入しない。
+          # glfw3.dll は OpenTK が arm64 redist を持たないため publish に元々入らない (D-PDI-2)。
+          $publishDir = Join-Path $env:RUNNER_TEMP "PDIndexer-arm64-portable\PDIndexer"
+          dotnet publish PDIndexer\PDIndexer.csproj `
+            -c Release `
+            -r win-arm64 `
+            -p:Platform=ARM64 `
+            --self-contained true `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:PublishSingleFile=false `
+            -p:PublishTrimmed=false `
+            -p:DebugType=None `
+            -p:DebugSymbols=false `
+            -o $publishDir
+          if ($LASTEXITCODE -ne 0) { throw "arm64 self-contained publish failed." }
+          "dir=$publishDir" >> $env:GITHUB_OUTPUT
+
+      - name: Verify publish output (required files, PE machine, no glfw, no x64 leakage)
+        shell: pwsh
+        run: |
+          $publishDir = "${{ steps.publish.outputs.dir }}"
+          # 必須ファイル (欠落は「ビルド緑・実行時死亡」型なのでここで止める)。self-contained なので coreclr 等も同梱される。
+          foreach ($f in @("PDIndexer.exe", "coreclr.dll", "libxrl-11.dll", "AMCSD.cdb3", "default.xml")) {
+            if (-not (Test-Path (Join-Path $publishDir $f))) { throw "Required file missing from arm64 publish output: $f" }
+          }
+          # glfw3.dll は arm64 で不在が正常 (D-PDI-2)。混入は供給経路の意図しない変化なので検出する。
+          if (Test-Path (Join-Path $publishDir "glfw3.dll")) { throw "glfw3.dll leaked into arm64 publish (PDIndexer does not use GLFW)." }
+          # PE machine が ARM64 (0xAA64) であること。PDIndexer は Crystallography.Native を持たないため検査は exe と libxrl のみ。
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            return [BitConverter]::ToUInt16($b, [BitConverter]::ToInt32($b, 0x3C) + 4)
+          }
+          foreach ($f in @("PDIndexer.exe", "libxrl-11.dll")) {
+            $m = Get-PEMachine (Join-Path $publishDir $f)
+            "{0}: machine=0x{1:X4}" -f $f, $m
+            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          }
+          # 全カルチャのサテライト DLL が揃っているか (新言語追加時はこの一覧も更新。Crystallography.SupportedCultures と同期)
+          $expectedCultures = @('ja','de','fr','es','pt','it','ru','zh-Hans','zh-Hant','ko')
+          $missingSat = $expectedCultures | Where-Object { -not (Get-ChildItem "$publishDir\$_" -Filter *.resources.dll -ErrorAction SilentlyContinue) }
+          if ($missingSat) { throw "satellite assemblies missing for culture(s): $($missingSat -join ', ')" }
+          Write-Host "arm64 publish verified: all PEs ARM64, no glfw, satellites present ($((Get-ChildItem $publishDir -Recurse -File).Count) files)."
+
+      - name: Prepare portable folder
+        id: portable
+        shell: pwsh
+        run: |
+          $publishDir = "${{ steps.publish.outputs.dir }}"
+          # x64 portable ZIP (release.yml) と同じ整形: 分離 pdb 除去 + LICENSE + README-PORTABLE マーカー。
+          # README-PORTABLE.txt の存在で portable 判定し更新メニューを隠す (x64 と同名・同挙動)。
+          Get-ChildItem $publishDir -Filter "*.pdb" | Remove-Item -Force -ErrorAction SilentlyContinue
+          Copy-Item "LICENSE.md" $publishDir -Force
+          Copy-Item "README-PORTABLE.txt" $publishDir -Force
+          # 自前 ZIP 化はしない: Actions artifact は GitHub が ZIP で包むため二重 ZIP になる。親フォルダを渡し
+          # artifact ZIP 直下に PDIndexer\ フォルダが入る構造にする (release job が正式名 PDIndexer-v.<ver>_arm64.zip で再 ZIP)。
+          "root=$(Split-Path $publishDir -Parent)" >> $env:GITHUB_OUTPUT
+
+      - name: Upload portable artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: PDIndexer-v.${{ steps.version.outputs.version }}-win-arm64-portable
+          path: ${{ steps.portable.outputs.root }}
+
+      # ---- arm64 MSI (WiX、framework-dependent。portable ZIP の self-contained と役割分担。検査は validate-wix-msi.yml の arm64 と同一) ----
+      - name: Stage arm64 MSI payload (framework-dependent publish)
+        shell: pwsh
+        run: |
+          $s = "artifacts\staging-msi-arm64"
+          dotnet publish PDIndexer\PDIndexer.csproj -c Release -r win-arm64 -p:Platform=ARM64 --self-contained false -o $s `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
+          if ($LASTEXITCODE -ne 0) { throw "arm64 framework-dependent publish failed." }
+          Copy-Item PDIndexerSetup.Wix\LICENSE.rtf, PDIndexerSetup.Wix\REQUIREMENT.rtf $s
+          Get-ChildItem $s -Filter *.pdb | Remove-Item
+          if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
+          if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
+          if (Test-Path "$s\glfw3.dll") { throw "arm64 staging unexpectedly contains glfw3.dll (D-PDI-2)" }
+          if (-not (Test-Path "$s\libxrl-11.dll")) { throw "arm64 native dep (libxrl) missing" }
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            return [BitConverter]::ToUInt16($b, [BitConverter]::ToInt32($b, 0x3C) + 4)
+          }
+          foreach ($f in 'PDIndexer.exe','libxrl-11.dll') {
+            $m = Get-PEMachine (Join-Path $PWD "$s\$f")
+            if ($m -ne 0xAA64) { throw ("{0}: PE machine 0x{1:X4} != 0xAA64" -f $f, $m) }
+          }
+          $expectedCultures = @('ja','de','fr','es','pt','it','ru','zh-Hans','zh-Hant','ko')
+          $missingSat = $expectedCultures | Where-Object { -not (Get-ChildItem "$s\$_" -Filter *.resources.dll -ErrorAction SilentlyContinue) }
+          if ($missingSat) { throw "satellite assemblies missing for culture(s): $($missingSat -join ', ')" }
+          Write-Host "arm64 MSI staging OK: $((Get-ChildItem $s -Recurse -File).Count) files"
+
+      - name: Build arm64 MSI with WiX
+        shell: pwsh
+        run: |
+          dotnet build PDIndexerSetup.Wix\PDIndexerSetup.wixproj -c Release -p:InstallerPlatform=arm64 `
+            -p:ProductVersion=0.${{ steps.version.outputs.version }} `
+            -p:StagingDir="$PWD\artifacts\staging-msi-arm64"
+          if ($LASTEXITCODE -ne 0) { throw "WiX arm64 build failed (exit $LASTEXITCODE)." }
+          $msi = Get-Item "PDIndexerSetup.Wix\bin\Release\PDIndexer-setup_arm64.msi" -ErrorAction SilentlyContinue
+          if (-not $msi) { throw "PDIndexer-setup_arm64.msi was not produced." }
+          Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
+
+          # MSI プロパティ検査はここ (x64 ランナー) で行う: windows-11-arm の COM 遅延バインディングは
+          # OpenDatabase が DISP_E_TYPEMISMATCH で失敗する (ReciPro 実測) ため smoke 側では COM を使わない。
+          $wi = New-Object -ComObject WindowsInstaller.Installer
+          $db = $wi.GetType().InvokeMember('OpenDatabase','InvokeMethod',$null,$wi,@($msi.FullName,0))
+          $si = $db.GetType().InvokeMember('SummaryInformation','GetProperty',$null,$db,@(0))
+          $template = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(7))
+          $schema = $si.GetType().InvokeMember('Property','GetProperty',$null,$si,@(14))
+          function Get-MsiProp($name) {
+            $view = $db.GetType().InvokeMember('OpenView','InvokeMethod',$null,$db,@("SELECT Value FROM Property WHERE Property='$name'"))
+            $view.GetType().InvokeMember('Execute','InvokeMethod',$null,$view,$null) | Out-Null
+            $rec = $view.GetType().InvokeMember('Fetch','InvokeMethod',$null,$view,$null)
+            if ($rec) { $rec.GetType().InvokeMember('StringData','GetProperty',$null,$rec,@(1)) } else { $null }
+          }
+          $uc = Get-MsiProp 'UpgradeCode'; $pv = Get-MsiProp 'ProductVersion'; $au = Get-MsiProp 'ALLUSERS'
+          Write-Host "Template=$template Schema=$schema UpgradeCode=$uc ProductVersion=$pv ALLUSERS=$au"
+          if ($template -notlike 'Arm64*') { throw "MSI Template is not Arm64: $template" }
+          if ([int]$schema -lt 500) { throw "Schema $schema < 500 (Arm64 requirement)" }
+          if ($uc -ne '{1E130AE2-0632-4EEB-A75A-AE358CEBF61A}') { throw "UpgradeCode mismatch: $uc" }
+          if ($pv -ne '0.${{ steps.version.outputs.version }}') { throw "ProductVersion mismatch: $pv" }
+          if ($au) { throw "ALLUSERS must be unset for per-user package (got $au)" }
+
+      - name: Upload arm64 MSI artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: PDIndexer-setup_arm64-msi-v.${{ steps.version.outputs.version }}
+          path: PDIndexerSetup.Wix/bin/Release/PDIndexer-setup_arm64.msi

@@ -1,13 +1,14 @@
 # 260406Cl PDIndexer 用に CSManager の release.yml を改修
 # 260601Ch portable ZIP も同じリリースに添付するため、MSI を主配布のまま workflow 名を更新
-# 260624Cl vdproj→WiX 移行 Phase B (計画書 .project-guidance/PDIndexer_WiX移行計画.md §5 Phase B):
-#   旧 vdproj ビルド経路 (Find devenv.com / Build managed→bin\Release / vdproj regex 書換 /
-#   DisableOutOfProcBuild レジストリハック / CI 専用 sln 動的生成 / devenv.com で MSI ビルド) を全廃し、
-#   「framework-dependent publish → 専用 staging → dotnet build WiX wixproj」に置換した。
-#   PDIndexer は Crystallography.Native を同梱しないため native(vcxproj)/devenv ステップは不要 (D-PDI-1)。
-#   x64 のみ。arm64 MSI/ZIP の同時公開 (5-job inline) は Phase C で別途。
-#   アセット名: 主名称 PDIndexer-setup.msi (WiX OutputName) + 旧名互換コピー PDIndexerSetup.msi (同一バイト、
-#   旧クライアント自動更新 {software}Setup.msi 固定参照を数年間維持) + portable PDIndexer-v.<ver>.zip。
+# 260624Cl vdproj→WiX 移行 Phase B: 旧 vdproj ビルド経路を全廃し staging publish + dotnet build WiX に置換 (x64 のみ)
+# 260625Cl WiX 移行 Phase C (計画書 §5 Phase C): 単一 job を 5 job (prepare/build-x64/build-arm64/smoke-arm64/release)
+#   に再編し、arm64 (portable ZIP + MSI) を同一 run でビルド・windows-11-arm 実機で smoke して x64 と一緒に 1 回の
+#   gh release create で原子的に公開する。ReciPro\.github\workflows\release.yml を移植。PDIndexer 固有の簡素化:
+#     * Crystallography.Native を同梱しない (D-PDI-1) → devenv / native(vcxproj) ビルドが全 job で不要
+#     * glfw3.dll は実行時未使用 (D-PDI-2) → arm64 publish に元々入らない。smoke の GL 起動回避ロジックも不要
+#   ★不変条件「x64 は arm64 の成否に連動しない」を維持: release job は build-x64 成功のみ必須とし、arm64 (build/smoke) が
+#   失敗したら x64 のみ公開して †脚注を残す (フォールバック)。FileVersion は prepare で 1 度算出し x64/arm64 双方へ渡して
+#   完全一致させる (same-version cross-grade 要件、計画書 Phase A)。
 name: Build And Release Installer And Portable ZIP
 
 on:
@@ -21,41 +22,51 @@ on:
         description: "既存リリースを削除してリビルドする"
         type: boolean
         default: false
+      dry_run:
+        description: "x64+arm64 をビルド・smoke するが release は作らない (資産は artifact のみ)"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
 
 jobs:
-  release:
-    # 260624Cl PDI は native vcxproj が無く devenv 不要 (D-PDI-1)。当面 release イメージは維持。
-    #   windows-2025 への簡素化は計画書 §8 リスク#5 で別途検証 (WiX は SDK スタイルで dotnet restore が取得)。
-    runs-on: windows-2025-vs2026
-    timeout-minutes: 30
-
+  # ---- 1. prepare: 版数解析・リリース要否判定・FileVersion 算出 (gh + git だけなので ubuntu) ----
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      needed: ${{ steps.version.outputs.needed }}
+      version: ${{ steps.version.outputs.version }}
+      tag: ${{ steps.version.outputs.tag }}
+      product_version: ${{ steps.version.outputs.product_version }}
+      assembly_version: ${{ steps.version.outputs.assembly_version }}
+      history_line: ${{ steps.version.outputs.history_line }}
     steps:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          submodules: recursive # 260624Cl shared libs are git submodules
+          fetch-depth: 0 # 260625Cl assembly_version 用に GITHUB_SHA の commit 時刻を git log で引くため全履歴が要る
 
       - name: Parse version and check if release needed
         id: version
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DRY_RUN: ${{ inputs.dry_run }}
         run: |
-          $content = Get-Content "PDIndexer\Version.cs" -Raw
-          if ($content -notmatch 'ver(\d+\.\d+)\(') {
-            throw "Could not parse version from Version.cs History."
-          }
+          $content = Get-Content "PDIndexer/Version.cs" -Raw
+          if ($content -notmatch 'ver(\d+\.\d+)\(') { throw "Could not parse version from Version.cs History." }
           $ver = $Matches[1]
           $tag = "v.$ver"
+          $dryRun = $env:DRY_RUN -eq 'true'
 
-          # 同じバージョンのリリースが既にあればスキップ (force 時は既存を削除して続行)
+          # 同じバージョンのリリースが既にあれば: dry_run は検証目的なので続行 (release job が create をスキップ)、
+          #   force は既存を削除して続行、いずれでもなければスキップ。
           gh release view $tag 2>&1 | Out-Null
           $releaseExists = ($LASTEXITCODE -eq 0)
           $global:LASTEXITCODE = 0
-          if ($releaseExists) {
+          if ($releaseExists -and -not $dryRun) {
             if ("${{ inputs.force }}" -eq "true") {
               Write-Host "Force mode: deleting existing release $tag..."
               gh release delete $tag --yes
@@ -68,16 +79,16 @@ jobs:
             }
           }
 
-          # History の先頭行をリリースノートに使う (notes は最終ステップで組む)
+          # History の先頭行をリリースノートに使う (release job が notes を組む)
           $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
 
-          # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
-          # 260624Cl Phase B は x64 のみ。arm64 との same-version cross-grade (FileVersion 完全一致) は Phase C で
-          #   commit 時刻アンカーに切替えるが、x64 単独の今は UtcNow で十分。
-          $now = [System.DateTime]::UtcNow
+          # AssemblyVersion / FileVersion 用タイムスタンプ。x64⇔arm64 の same-version cross-grade には両 MSI の
+          #   FileVersion 完全一致が必要 (計画書 Phase A 実測)。release commit (GITHUB_SHA) の commit 時刻にアンカーし
+          #   決定論化する (同一 run の x64/arm64 がこの 1 値を共有。arm64 へは build-arm64-portable.yml の入力で渡す)。
+          $now = ([System.DateTimeOffset]::Parse((git log -1 --format=%cI $env:GITHUB_SHA))).UtcDateTime
           $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
 
-          Write-Host "New version detected: $ver (tag: $tag, assembly: $assemblyVer)"
+          Write-Host "Version: $ver (tag: $tag, assembly: $assemblyVer, dryRun: $dryRun)"
           "needed=true"            >> $env:GITHUB_OUTPUT
           "version=$ver"           >> $env:GITHUB_OUTPUT
           "tag=$tag"               >> $env:GITHUB_OUTPUT
@@ -85,50 +96,44 @@ jobs:
           "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
           "history_line=$historyLine" >> $env:GITHUB_OUTPUT
 
-      # ---- 以降、新バージョンが検出されたときのみ実行 ----
+  # ---- 2. build-x64: x64 MSI (+旧名コピー) + portable ZIP ----
+  build-x64:
+    needs: prepare
+    if: needs.prepare.outputs.needed == 'true'
+    runs-on: windows-2025-vs2026
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive # 260625Cl shared libs are git submodules
 
       - name: Setup .NET 10
-        if: steps.version.outputs.needed == 'true'
         uses: actions/setup-dotnet@v5
         with:
           dotnet-version: "10.0.x"
 
       - name: Restore managed dependencies
-        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: dotnet restore PDIndexer\PDIndexer.csproj
 
-      # 260624Cl vdproj→WiX 移行 (Phase B) で以下を廃止 (本文は git 履歴 1bfef5a 以前を参照):
-      #   - Find devenv.com → PDI は native(vcxproj) ビルドが無いため不要 (D-PDI-1)
-      #   - Build managed application (dotnet build → bin\Release を vdproj が SourcePath 参照) → 下の Stage に置換
-      #   - Update installer version in vdproj (regex で ProductVersion/ProductCode/PackageCode 書換)
-      #     → WiX では -p:ProductVersion 注入 + ProductCode 自動生成で代替 (UpgradeCode は Package.wxs に固定)
-      #   - Disable out-of-proc setup project build (HKCU レジストリハック) → 不要
-      #   - Create installer-only solution (PDIndexerSetup.CI.sln 動的生成) → 不要
-      #   - Build installer with Visual Studio (devenv.com) → dotnet build (WixToolset.Sdk) に置換
-      #   vdproj 一式 (PDIndexerSetup\) は WiX 版リリース 1 回成功後に削除予定 (計画書 §6 Phase B-3)。
+      # PDIndexer は Crystallography.Native を同梱しないため devenv / native ビルドは無い (D-PDI-1)。
       - name: Stage MSI payload (framework-dependent publish)
-        if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
           $s = "artifacts\staging-msi-x64"
           dotnet publish PDIndexer\PDIndexer.csproj -c Release -p:Platform=x64 --self-contained false -o $s --no-restore `
-            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
+            -p:AssemblyVersion=${{ needs.prepare.outputs.assembly_version }} -p:FileVersion=${{ needs.prepare.outputs.assembly_version }}
           if ($LASTEXITCODE -ne 0) { throw "x64 publish failed." }
-          # 260624Cl glfw3.dll を除外 (D-PDI-2): PDI は GLFW/GLControl を生成せず実行時未使用。OpenTK が透過供給する死荷物。
+          # glfw3.dll を除外 (D-PDI-2)
           Get-ChildItem $s -Filter "glfw3*.dll" | Remove-Item -Force
-          # LICENSE.rtf / REQUIREMENT.rtf を同梱 (260625Cl vdproj 削除に伴い PDIndexerSetup.Wix\ へ移動済み)
           Copy-Item PDIndexerSetup.Wix\LICENSE.rtf, PDIndexerSetup.Wix\REQUIREMENT.rtf $s
-          # 参照プロジェクトの分離 pdb は同梱しない (portable ZIP と同方針)
           Get-ChildItem $s -Filter *.pdb | Remove-Item
-          # 出荷前検査 (計画書 §3 D3 / D-PDI-2)
           if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
           if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
           if (Test-Path "$s\glfw3.dll") { throw "glfw3.dll leaked (must be excluded per D-PDI-2)" }
           if (-not (Test-Path "$s\PDIndexer.exe")) { throw "PDIndexer.exe missing from staging" }
           if (-not (Test-Path "$s\libxrl-11.dll")) { throw "libxrl-11.dll (xraylib native) missing from staging" }
-          # 3-D packaging 検査: 全カルチャのサテライト DLL が staging に揃っているか (MSI は staging を <Files **> で丸ごと収集
-          #   するため、ここで欠ければ MSI からも無言で欠落する)。新言語を増やしたらこの一覧も更新 (Crystallography.SupportedCultures と同期)。
           $expectedCultures = @('ja','de','fr','es','pt','it','ru','zh-Hans','zh-Hant','ko')
           $missingSat = $expectedCultures | Where-Object { -not (Get-ChildItem "$s\$_" -Filter *.resources.dll -ErrorAction SilentlyContinue) }
           if ($missingSat) { throw "satellite assemblies missing for culture(s): $($missingSat -join ', ')" }
@@ -136,18 +141,14 @@ jobs:
 
       - name: Build installer with WiX
         id: build_installer
-        if: steps.version.outputs.needed == 'true'
         timeout-minutes: 10
         shell: pwsh
         run: |
           dotnet build PDIndexerSetup.Wix\PDIndexerSetup.wixproj -c Release -p:InstallerPlatform=x64 `
-            -p:ProductVersion=${{ steps.version.outputs.product_version }} `
+            -p:ProductVersion=${{ needs.prepare.outputs.product_version }} `
             -p:StagingDir="$PWD\artifacts\staging-msi-x64"
           if ($LASTEXITCODE -ne 0) { throw "WiX build failed (exit $LASTEXITCODE)." }
-
-          # 260624Cl 主名称は PDIndexer-setup.msi (wixproj OutputName)。旧クライアントの自動更新は ProgramUpdates 既定の
-          #   {software}Setup.msi = PDIndexerSetup.msi を固定参照するため、同一バイトのコピーを旧名でも添付して互換維持する
-          #   (case-insensitive DL のため過去の小文字公開資産 PDindexerSetup.msi とも整合。メモリ pdindexer-name-capitalization)。
+          # 主名称 PDIndexer-setup.msi + 旧名互換コピー PDIndexerSetup.msi (同一バイト、{software}Setup.msi 自動更新固定参照を維持)
           $msi = Get-Item "PDIndexerSetup.Wix\bin\Release\PDIndexer-setup.msi" -ErrorAction SilentlyContinue
           if (-not $msi) { throw "PDIndexer-setup.msi was not found." }
           Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
@@ -157,97 +158,374 @@ jobs:
           "legacy_msi_path=$legacy" >> $env:GITHUB_OUTPUT
 
       - name: Publish portable ZIP
-        if: steps.version.outputs.needed == 'true'
         id: portable
         shell: pwsh
         run: |
-          # 260601Ch 管理された Windows PC 向けの代替配布。MSI が第一候補、ZIP は管理者権限や .NET Runtime 導入が難しい環境用。
-          # 260602Cl このステップは installer (MSI) ビルドより後に置く。self-contained publish が obj\x64\Release を symbol 無しで
-          #          再生成し PDIndexer.pdb を消すため、旧 vdproj では MSI ビルドより前に走らせると Debug Symbols 出力グループが pdb を
-          #          見つけられず失敗した。260624Cl WiX 移行でこの順序制約は解消済み (MSI は専用 staging から作り bin\Release を参照しない)。
-          #          位置は当面維持 (変更を最小にするため)。
           $publishDir = Join-Path $env:RUNNER_TEMP "PDIndexer-portable\PDIndexer"
-          # 260624Cl 命名簡素化 (計画書 D-PDI-4、旧: PDIndexer-v.X-win-x64-portable.zip)。x64 が無印、arm64 のみ接尾辞 (_arm64) の対称形。
-          #          自動更新は MSI 固定 URL のみで ZIP 名に依存しない。
-          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ steps.version.outputs.version }}.zip"
-
+          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ needs.prepare.outputs.version }}.zip"
           if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
           if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
-
           dotnet publish PDIndexer\PDIndexer.csproj `
             -c Release `
             -r win-x64 `
             --self-contained true `
             -p:Platform=x64 `
-            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} `
-            -p:FileVersion=${{ steps.version.outputs.assembly_version }} `
+            -p:AssemblyVersion=${{ needs.prepare.outputs.assembly_version }} `
+            -p:FileVersion=${{ needs.prepare.outputs.assembly_version }} `
             -p:PublishSingleFile=false `
             -p:PublishTrimmed=false `
             -p:DebugType=None `
             -p:DebugSymbols=false `
             -o $publishDir
-
-          # 260624Cl glfw3.dll は portable ZIP からも除外 (D-PDI-2、MSI と同方針)
+          if ($LASTEXITCODE -ne 0) { throw "x64 self-contained publish failed." }
+          # glfw3.dll は portable ZIP からも除外 (D-PDI-2、MSI と同方針)
           Get-ChildItem $publishDir -Filter "glfw3*.dll" | Remove-Item -Force
-
           Copy-Item "LICENSE.md" $publishDir -Force
           Copy-Item "README-PORTABLE.txt" $publishDir -Force # portable 判定マーカー (MSI には入れない)
           Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "PDIndexer") -DestinationPath $zipPath -Force
-
           Write-Host "Portable ZIP built: $zipPath"
           "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
 
-      # 260624Cl 「Generate release checksums」(SHA256SUMS.txt) ステップを廃止 (計画書 §0 最終形は 3 資産)。
-      #   ReciPro 同方針: 同一チャネルに置く checksum は改竄対策にならず、真正性保証は SignPath 署名 (Phase D) で行う。
+      - name: Collect x64 release assets
+        shell: pwsh
+        run: |
+          $out = Join-Path $env:RUNNER_TEMP "x64-out"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          Copy-Item "${{ steps.build_installer.outputs.msi_path }}" $out
+          Copy-Item "${{ steps.build_installer.outputs.legacy_msi_path }}" $out
+          Copy-Item "${{ steps.portable.outputs.zip_path }}" $out
+          Get-ChildItem $out | ForEach-Object { Write-Host "x64 asset: $($_.Name) ($($_.Length) bytes)" }
 
-      - name: Upload workflow artifacts
-        if: steps.version.outputs.needed == 'true'
-        uses: actions/upload-artifact@v4
+      - name: Upload x64 release assets
+        uses: actions/upload-artifact@v6
         with:
-          name: PDIndexer-release-v.${{ steps.version.outputs.version }}
+          name: x64-release-assets
+          path: ${{ runner.temp }}/x64-out
+
+  # ---- 3. build-arm64: reusable build (二重保守なし)。prepare の FileVersion を渡して x64 と一致させる ----
+  build-arm64:
+    needs: prepare
+    if: needs.prepare.outputs.needed == 'true'
+    uses: ./.github/workflows/build-arm64-portable.yml
+    with:
+      assembly_version: ${{ needs.prepare.outputs.assembly_version }}
+    permissions:
+      contents: read
+
+  # ---- 4. smoke-arm64: windows-11-arm 実機で smoke → 検証済み ZIP+MSI を artifact 化 ----
+  # このジョブが失敗しても release job は走る (フォールバックで x64 のみ公開)。想定故障は全て「ビルド緑・実行時死亡」型なので
+  # PE 検査 + LoadLibrary + PDIndexer.exe --smoke (xraylib 明示アサート) + GUI 起動 + MSI install/smoke を実機で行う。
+  smoke-arm64:
+    needs: [prepare, build-arm64]
+    if: needs.prepare.outputs.needed == 'true'
+    runs-on: windows-11-arm # arm64 ネイティブランナー (public repo 無料)
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          submodules: recursive # native\win-arm64\ の LoadLibrary 検査用 (バンドル内 DLL と同一ソース)
+
+      - name: Resolve arm64 asset names
+        id: names
+        shell: pwsh
+        run: |
+          $ver = "${{ needs.prepare.outputs.version }}"
+          "zip_name=PDIndexer-v.${ver}_arm64.zip" >> $env:GITHUB_OUTPUT
+          "msi_name=PDIndexer-setup_arm64.msi"    >> $env:GITHUB_OUTPUT
+
+      - name: Verify version consistency between prepare and build
+        shell: pwsh
+        run: |
+          if ('${{ needs.prepare.outputs.version }}' -ne '${{ needs.build-arm64.outputs.version }}') {
+            throw "Version mismatch: prepare=${{ needs.prepare.outputs.version }} build=${{ needs.build-arm64.outputs.version }}"
+          }
+
+      - name: Download portable artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.build-arm64.outputs.artifact_name }}
+          path: ${{ runner.temp }}/arm64-artifact
+
+      - name: Download arm64 MSI artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: ${{ needs.build-arm64.outputs.msi_artifact_name }}
+          path: ${{ runner.temp }}/arm64-msi
+
+      - name: "Smoke 1: PE machine + native LoadLibrary (arm64-native pwsh)"
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/PDIndexer"
+          if (-not (Test-Path (Join-Path $dir "PDIndexer.exe"))) { throw "Artifact layout unexpected: PDIndexer.exe not found in $dir" }
+          function Get-PEMachine([string]$path) {
+            $b = [IO.File]::ReadAllBytes($path)
+            return [BitConverter]::ToUInt16($b, [BitConverter]::ToInt32($b, 0x3C) + 4)
+          }
+          # PDIndexer は Crystallography.Native を持たないため検査対象は exe と libxrl のみ。glfw は不在が正常 (D-PDI-2)。
+          if (Test-Path (Join-Path $dir "glfw3.dll")) { throw "glfw3.dll present in arm64 portable (must be excluded, D-PDI-2)" }
+          foreach ($f in @("PDIndexer.exe", "libxrl-11.dll")) {
+            $m = Get-PEMachine (Join-Path $dir $f)
+            "{0}: machine=0x{1:X4}" -f $f, $m
+            if ($m -ne 0xAA64) { throw "$f is not ARM64 (machine=0x$($m.ToString('X4')))" }
+          }
+          # arm64 ネイティブの pwsh で実 LoadLibrary (= AA64 PE がクリーン環境で本当にロードできるか)。
+          # 配布物内の実物は後続の --smoke (xraylib self-test) が検査するので、ここはリポ側 native\win-arm64\ を検査。
+          $abs = (Resolve-Path "PDIndexer\native\win-arm64\libxrl-11.dll").Path
+          $h = [System.Runtime.InteropServices.NativeLibrary]::Load($abs)
+          [System.Runtime.InteropServices.NativeLibrary]::Free($h)
+          Write-Host "LoadLibrary OK: $abs"
+
+      - name: "Smoke 2: PDIndexer.exe --smoke (Xraylib explicit assertion)"
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/PDIndexer"
+          $out = Join-Path $env:RUNNER_TEMP "smoke-result.txt"
+          $p = Start-Process -FilePath (Join-Path $dir "PDIndexer.exe") -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $dir -PassThru
+          if (-not $p.WaitForExit(600000)) { Stop-Process -Id $p.Id -Force; throw "--smoke did not finish within 10 minutes." }
+          if (-not (Test-Path $out)) { throw "--smoke produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode)). See output above." }
+          foreach ($expect in @("arch=Arm64", "xraylibEnabled=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
+          }
+
+      - name: "Smoke 3: GUI launch (main window appears and survives)"
+        shell: pwsh
+        run: |
+          # 起動即死の検出。PDIndexer は OpenGL を使わない (GuiCapture.cs) ため ReciPro の GL 無効化回避ロジックは不要。
+          # FormMain_Load は全子フォームを構築してから FormMain を表示するため、EnumWindows でプロセスの全トップレベル
+          # ウィンドウを定期確認し「unowned + visible + タイトル 'PDIndexer*'」(= Load 完了後の FormMain) を合格条件にする。
+          Add-Type -TypeDefinition @'
+          using System;
+          using System.Collections.Generic;
+          using System.Runtime.InteropServices;
+          using System.Text;
+          public static class WinEnum {
+            delegate bool EnumProc(IntPtr h, IntPtr lp);
+            [DllImport("user32.dll")] static extern bool EnumWindows(EnumProc cb, IntPtr lp);
+            [DllImport("user32.dll")] static extern uint GetWindowThreadProcessId(IntPtr h, out uint pid);
+            [DllImport("user32.dll")] static extern bool IsWindowVisible(IntPtr h);
+            [DllImport("user32.dll", CharSet = CharSet.Unicode)] static extern int GetWindowText(IntPtr h, StringBuilder sb, int n);
+            [DllImport("user32.dll")] static extern IntPtr GetWindow(IntPtr h, uint cmd);
+            public static List<string> List(int pid) {
+              var r = new List<string>();
+              EnumWindows((h, lp) => {
+                uint wpid; GetWindowThreadProcessId(h, out wpid);
+                if (wpid == pid) {
+                  var sb = new StringBuilder(512); GetWindowText(h, sb, 512);
+                  r.Add((IsWindowVisible(h) ? "visible" : "hidden") + "|" + (GetWindow(h, 4) != IntPtr.Zero ? "owned" : "unowned") + "|" + sb);
+                }
+                return true;
+              }, IntPtr.Zero);
+              return r;
+            }
+          }
+          '@
+          $dir = Join-Path $env:RUNNER_TEMP "arm64-artifact/PDIndexer"
+          $p = Start-Process -FilePath (Join-Path $dir "PDIndexer.exe") -WorkingDirectory $dir -PassThru
+          $deadline = (Get-Date).AddSeconds(480) # 初回起動は全子フォーム構築 + JIT で数分かかり得る
+          $shown = $false
+          $lastLog = [DateTime]::MinValue
+          while ((Get-Date) -lt $deadline) {
+            if ($p.HasExited) { throw "PDIndexer.exe exited prematurely (exit $($p.ExitCode))." }
+            $windows = [WinEnum]::List($p.Id)
+            if ($windows | Where-Object { $_ -like 'visible|unowned|PDIndexer*' }) { $shown = $true; break }
+            if (((Get-Date) - $lastLog).TotalSeconds -ge 30) {
+              $p.Refresh()
+              Write-Host ("t={0:f0}s cpu={1:f1}s windows: {2}" -f ((Get-Date) - $p.StartTime).TotalSeconds, $p.TotalProcessorTime.TotalSeconds, ($windows -join ' / '))
+              $lastLog = Get-Date
+            }
+            Start-Sleep -Seconds 3
+          }
+          if (-not $shown) {
+            Write-Host "Final window list: $(([WinEnum]::List($p.Id)) -join ' / ')"
+            Add-Type -AssemblyName System.Windows.Forms, System.Drawing
+            $bounds = [System.Windows.Forms.SystemInformation]::VirtualScreen
+            $bmp = New-Object System.Drawing.Bitmap $bounds.Width, $bounds.Height
+            [System.Drawing.Graphics]::FromImage($bmp).CopyFromScreen($bounds.X, $bounds.Y, 0, 0, $bmp.Size)
+            $bmp.Save((Join-Path $env:RUNNER_TEMP "smoke3-desktop.png"))
+            Stop-Process -Id $p.Id -Force
+            throw "PDIndexer main window did not appear within 480 s (see logged window lists and smoke3-desktop.png artifact)."
+          }
+          Write-Host "Main window appeared: $(([WinEnum]::List($p.Id) | Where-Object { $_ -like 'visible|*' }) -join ' / ')"
+          Start-Sleep -Seconds 10 # 表示直後のクラッシュ検出
+          if ($p.HasExited) { throw "PDIndexer.exe crashed shortly after showing the main window (exit $($p.ExitCode))." }
+          Stop-Process -Id $p.Id -Force
+          Write-Host "GUI launch smoke OK."
+
+      - name: "Smoke 4: arm64 MSI (per-user install, --smoke, uninstall)"
+        shell: pwsh
+        run: |
+          # MSI の Template/UpgradeCode/ProductVersion 検査はビルド側 (x64 ランナー、build-arm64-portable.yml) で実施済み:
+          #   windows-11-arm の COM 遅延バインディングは OpenDatabase が DISP_E_TYPEMISMATCH で失敗する (ReciPro 実測)。
+          #   ここでは COM を使わず install/uninstall とも MSI パス指定で行う。
+          $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ steps.names.outputs.msi_name }}"
+          if (-not (Test-Path $msi)) { throw "MSI artifact not found: $msi" }
+
+          # MSI 版は framework-dependent → smoke 実行に .NET 10 Desktop Runtime (arm64) が必要。ランナーに無ければ導入。
+          $hasDesktop = $false
+          try { $hasDesktop = ((dotnet --list-runtimes) | Select-String "Microsoft.WindowsDesktop.App 10\.") -ne $null } catch {}
+          if (-not $hasDesktop) {
+            Write-Host "Installing .NET 10 Desktop Runtime (arm64) for the smoke test..."
+            Invoke-WebRequest https://dot.net/v1/dotnet-install.ps1 -OutFile "$env:RUNNER_TEMP\dotnet-install.ps1"
+            & "$env:RUNNER_TEMP\dotnet-install.ps1" -Runtime windowsdesktop -Channel 10.0 -Architecture arm64 -InstallDir "$env:RUNNER_TEMP\dotnet"
+            $env:DOTNET_ROOT = "$env:RUNNER_TEMP\dotnet"
+          }
+
+          # per-user silent install (ALLUSERS/MSIINSTALLPERUSER は渡さない = per-user 固定パッケージの既定)
+          $p = Start-Process msiexec -ArgumentList '/i', "`"$msi`"", '/qn', '/l*v', "$env:RUNNER_TEMP\msi-install.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "MSI install failed (exit $($p.ExitCode)). See msi-install.log artifact." }
+          $appDir = "$env:LOCALAPPDATA\Crystallography Software\PDIndexer"
+          if (-not (Test-Path "$appDir\PDIndexer.exe")) { throw "installed PDIndexer.exe missing in $appDir" }
+
+          # インストール実体で --smoke (黙殺フォールバック型故障の検出。Smoke 2 と同一アサート)
+          $out = Join-Path $env:RUNNER_TEMP "msi-smoke-result.txt"
+          $p = Start-Process -FilePath "$appDir\PDIndexer.exe" -ArgumentList @("--smoke", "`"$out`"") -WorkingDirectory $appDir -PassThru
+          if (-not $p.WaitForExit(600000)) { Stop-Process -Id $p.Id -Force; throw "--smoke (MSI install) did not finish within 10 minutes." }
+          if (-not (Test-Path $out)) { throw "--smoke produced no output file (exit $($p.ExitCode))." }
+          $result = Get-Content $out -Raw
+          Write-Host $result
+          if ($p.ExitCode -ne 0) { throw "--smoke reported failure (exit $($p.ExitCode))." }
+          foreach ($expect in @("arch=Arm64", "xraylibEnabled=True")) {
+            if ($result -notmatch [regex]::Escape($expect)) { throw "--smoke output missing expected '$expect'." }
+          }
+
+          # アンインストールしてランナーを汚さない。ProductCode は不要 (MSI パス指定で /x できる)
+          $p = Start-Process msiexec -ArgumentList '/x', "`"$msi`"", '/qn', '/l*v', "$env:RUNNER_TEMP\msi-uninstall.log" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "MSI uninstall failed (exit $($p.ExitCode))." }
+          if (Test-Path "$appDir\PDIndexer.exe") { throw "uninstall left PDIndexer.exe behind" }
+          Write-Host "MSI smoke OK (install -> --smoke -> uninstall)."
+
+      - name: Upload smoke diagnostics on failure
+        if: failure()
+        uses: actions/upload-artifact@v6
+        with:
+          name: smoke-arm64-diagnostics
           path: |
-            ${{ steps.build_installer.outputs.msi_path }}
-            ${{ steps.build_installer.outputs.legacy_msi_path }}
-            ${{ steps.portable.outputs.zip_path }}
+            ${{ runner.temp }}/smoke3-desktop.png
+            ${{ runner.temp }}/smoke-result.txt
+            ${{ runner.temp }}/msi-smoke-result.txt
+            ${{ runner.temp }}/msi-install.log
+            ${{ runner.temp }}/msi-uninstall.log
+          if-no-files-found: ignore
+
+      - name: Create release ZIP and stage arm64 assets
+        shell: pwsh
+        run: |
+          # x64 portable ZIP (build-x64) と同じ構造 (ZIP 直下に PDIndexer\ フォルダ) に合わせる
+          $out = Join-Path $env:RUNNER_TEMP "arm64-out"
+          New-Item -ItemType Directory -Force -Path $out | Out-Null
+          $zip = Join-Path $out "${{ steps.names.outputs.zip_name }}"
+          Compress-Archive -Path (Join-Path $env:RUNNER_TEMP "arm64-artifact/PDIndexer") -DestinationPath $zip -Force
+          $msi = Join-Path $env:RUNNER_TEMP "arm64-msi/${{ steps.names.outputs.msi_name }}"
+          if (-not (Test-Path $msi)) { throw "MSI not found: $msi" }
+          Copy-Item $msi $out
+          Get-ChildItem $out | ForEach-Object { Write-Host "arm64 asset: $($_.Name) ($($_.Length) bytes)" }
+
+      - name: Upload arm64 release assets
+        uses: actions/upload-artifact@v6
+        with:
+          name: arm64-release-assets
+          path: ${{ runner.temp }}/arm64-out
+
+  # ---- 5. release: x64 必須・arm64 は揃っていれば一緒に、1 回の gh release create で原子的に公開 ----
+  release:
+    needs: [prepare, build-x64, build-arm64, smoke-arm64]
+    if: ${{ !cancelled() && needs.prepare.outputs.needed == 'true' && needs.build-x64.result == 'success' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download x64 release assets
+        uses: actions/download-artifact@v7
+        with:
+          name: x64-release-assets
+          path: ${{ runner.temp }}/x64
+
+      - name: Download arm64 release assets
+        if: ${{ needs.build-arm64.result == 'success' && needs.smoke-arm64.result == 'success' }}
+        uses: actions/download-artifact@v7
+        with:
+          name: arm64-release-assets
+          path: ${{ runner.temp }}/arm64
 
       - name: Create tag and GitHub Release
-        if: steps.version.outputs.needed == 'true'
+        id: create
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          HISTORY_LINE: ${{ steps.version.outputs.history_line }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          ARM64_BUILD: ${{ needs.build-arm64.result }}
+          ARM64_SMOKE: ${{ needs.smoke-arm64.result }}
+          HISTORY_LINE: ${{ needs.prepare.outputs.history_line }}
         run: |
-          $ver = "${{ steps.version.outputs.version }}"
-          $tag = "${{ steps.version.outputs.tag }}"
+          $ver = "${{ needs.prepare.outputs.version }}"
+          $tag = "${{ needs.prepare.outputs.tag }}"
           $historyLine = $env:HISTORY_LINE
+          $dryRun = $env:DRY_RUN -eq 'true'
+          $arm64Ok = ($env:ARM64_BUILD -eq 'success') -and ($env:ARM64_SMOKE -eq 'success')
 
-          # 260624Cl リリースノート (Download 表)。アセット名は計画書 D-PDI-4。
+          $x64 = Join-Path $env:RUNNER_TEMP "x64"
+          # 260625Cl 主名称 PDIndexer-setup.msi + 旧名コピー PDIndexerSetup.msi (旧クライアント自動更新互換) + portable ZIP
+          $assets = @(
+            (Join-Path $x64 "PDIndexer-setup.msi")
+            (Join-Path $x64 "PDIndexerSetup.msi")
+            (Join-Path $x64 "PDIndexer-v.$ver.zip")
+          )
+
+          # arm64 が揃っていれば 4 資産を atomic 公開し †脚注なし。揃わなければ x64 のみ公開し arm64 行は残して †脚注で説明。
+          if ($arm64Ok) {
+            $arm64 = Join-Path $env:RUNNER_TEMP "arm64"
+            $assets += (Join-Path $arm64 "PDIndexer-v.${ver}_arm64.zip")
+            $assets += (Join-Path $arm64 "PDIndexer-setup_arm64.msi")
+            $mark = ""
+            $footnote = @()
+          } else {
+            Write-Warning "ARM64 build/smoke did not succeed (build=$env:ARM64_BUILD smoke=$env:ARM64_SMOKE); publishing x64-only with footnote."
+            $mark = "&dagger;"
+            $footnote = @("", "&dagger; Arm64 files are attached after on-device verification and may appear slightly later than the x64 files.")
+          }
+
           $notes = @(
             $historyLine
             ""
             "| Download | Description |"
             "|---|---|"
             "| **[PDIndexer-setup.msi](https://github.com/seto77/PDIndexer/releases/download/v.$ver/PDIndexer-setup.msi)** | **Recommended.** Installer for ordinary (x64) Windows PCs. |"
+            "| [PDIndexer-setup_arm64.msi](https://github.com/seto77/PDIndexer/releases/download/v.$ver/PDIndexer-setup_arm64.msi) | Installer for Windows on Arm (Snapdragon PCs, or Apple Silicon Macs running Windows via virtualization, etc.).$mark |"
             "| [PDIndexer-v.$ver.zip](https://github.com/seto77/PDIndexer/releases/download/v.$ver/PDIndexer-v.$ver.zip) | Portable (x64): no installation, self-contained. Suitable for PCs where you have no administrator rights. |"
+            "| [PDIndexer-v.${ver}_arm64.zip](https://github.com/seto77/PDIndexer/releases/download/v.$ver/PDIndexer-v.${ver}_arm64.zip) | Portable for Windows on Arm: no installation, no administrator rights needed.$mark |"
             "| PDIndexerSetup.msi | Identical to PDIndexer-setup.msi (legacy name for auto-update from older versions). |"
-          )
+          ) + $footnote
           $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
           $notes | Set-Content -Path $notesPath -Encoding UTF8
 
-          $assets = @(
-            "${{ steps.build_installer.outputs.msi_path }}"
-            "${{ steps.build_installer.outputs.legacy_msi_path }}"
-            "${{ steps.portable.outputs.zip_path }}"
-          )
           foreach ($a in $assets) { if (-not (Test-Path $a)) { throw "Release asset missing: $a" } }
 
-          # 260624Cl タグとリリースを gh release create で原子的に作成 (--target で対象コミットを固定、計画書 §9 不可侵#5)。
-          #   旧実装は git tag -a + git push の2段階で、push 成功後に release 作成が失敗するとタグだけ remote に残った。
-          #   gh release create は tag 未存在時に --target のコミットへ lightweight tag を作成し release と一括で作るため
-          #   orphan tag が発生せず、失敗時も同一バージョンで再試行できる (ReciPro 実績)。
+          if ($dryRun) {
+            Write-Host "=== DRY RUN: would 'gh release create $tag' with assets: ==="
+            $assets | ForEach-Object { Write-Host "  $_" }
+            Write-Host "=== notes ==="; Get-Content $notesPath | ForEach-Object { Write-Host $_ }
+            $stage = Join-Path $env:RUNNER_TEMP "release-staged"
+            New-Item -ItemType Directory -Force -Path $stage | Out-Null
+            $assets | ForEach-Object { Copy-Item $_ $stage }
+            Copy-Item $notesPath $stage
+            "staged=$stage" >> $env:GITHUB_OUTPUT
+            return
+          }
+
+          # 原子的: tag 未存在時に --target のコミットへ lightweight tag を作成し release と一括で作る (orphan tag を防ぐ)
           gh release create $tag $assets `
             --target $env:GITHUB_SHA `
             --title "PDIndexer $tag" `
             --notes-file $notesPath
           if ($LASTEXITCODE -ne 0) { throw "gh release create failed (exit $LASTEXITCODE)." }
-          Write-Host "Released $tag with $($assets.Count) assets."
+          Write-Host "Released $tag with $($assets.Count) assets (arm64Ok=$arm64Ok)."
+
+      - name: Upload staged release assets (dry-run inspection)
+        if: ${{ inputs.dry_run }}
+        uses: actions/upload-artifact@v6
+        with:
+          name: release-staged-${{ needs.prepare.outputs.tag }}
+          path: ${{ steps.create.outputs.staged }}
