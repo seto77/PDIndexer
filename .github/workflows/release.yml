@@ -1,5 +1,13 @@
 # 260406Cl PDIndexer 用に CSManager の release.yml を改修
 # 260601Ch portable ZIP も同じリリースに添付するため、MSI を主配布のまま workflow 名を更新
+# 260624Cl vdproj→WiX 移行 Phase B (計画書 .project-guidance/PDIndexer_WiX移行計画.md §5 Phase B):
+#   旧 vdproj ビルド経路 (Find devenv.com / Build managed→bin\Release / vdproj regex 書換 /
+#   DisableOutOfProcBuild レジストリハック / CI 専用 sln 動的生成 / devenv.com で MSI ビルド) を全廃し、
+#   「framework-dependent publish → 専用 staging → dotnet build WiX wixproj」に置換した。
+#   PDIndexer は Crystallography.Native を同梱しないため native(vcxproj)/devenv ステップは不要 (D-PDI-1)。
+#   x64 のみ。arm64 MSI/ZIP の同時公開 (5-job inline) は Phase C で別途。
+#   アセット名: 主名称 PDIndexer-setup.msi (WiX OutputName) + 旧名互換コピー PDIndexerSetup.msi (同一バイト、
+#   旧クライアント自動更新 {software}Setup.msi 固定参照を数年間維持) + portable PDIndexer-v.<ver>.zip。
 name: Build And Release Installer And Portable ZIP
 
 on:
@@ -19,6 +27,8 @@ permissions:
 
 jobs:
   release:
+    # 260624Cl PDI は native vcxproj が無く devenv 不要 (D-PDI-1)。当面 release イメージは維持。
+    #   windows-2025 への簡素化は計画書 §8 リスク#5 で別途検証 (WiX は SDK スタイルで dotnet restore が取得)。
     runs-on: windows-2025-vs2026
     timeout-minutes: 30
 
@@ -58,30 +68,22 @@ jobs:
             }
           }
 
-          # History の先頭行をリリースノートに使う
+          # History の先頭行をリリースノートに使う (notes は最終ステップで組む)
           $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
-          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
-          # $historyLine | Set-Content -Path $notesPath -Encoding UTF8 # 260601Ch 旧: 変更履歴 1 行のみ
-          @( # 260601Ch MSI を第一候補、portable ZIP を管理PC向け代替として release notes に明記
-            $historyLine
-            ""
-            "Assets:"
-            "- PDIndexerSetup.msi: recommended installer."
-            "- PDIndexer-v.$ver-win-x64-portable.zip: no-install, self-contained alternative for managed Windows PCs."
-            "- SHA256SUMS.txt: SHA256 hashes for release files."
-          ) | Set-Content -Path $notesPath -Encoding UTF8
 
           # AssemblyVersion / FileVersion 用のタイムスタンプ (yyyy.M.d.HHmm UTC)
+          # 260624Cl Phase B は x64 のみ。arm64 との same-version cross-grade (FileVersion 完全一致) は Phase C で
+          #   commit 時刻アンカーに切替えるが、x64 単独の今は UtcNow で十分。
           $now = [System.DateTime]::UtcNow
           $assemblyVer = "$($now.Year).$($now.Month).$($now.Day).$($now.ToString('HHmm'))"
 
           Write-Host "New version detected: $ver (tag: $tag, assembly: $assemblyVer)"
-          "needed=true"           >> $env:GITHUB_OUTPUT
-          "version=$ver"          >> $env:GITHUB_OUTPUT
-          "tag=$tag"              >> $env:GITHUB_OUTPUT
+          "needed=true"            >> $env:GITHUB_OUTPUT
+          "version=$ver"           >> $env:GITHUB_OUTPUT
+          "tag=$tag"               >> $env:GITHUB_OUTPUT
           "product_version=0.$ver" >> $env:GITHUB_OUTPUT
-          "notes_path=$notesPath" >> $env:GITHUB_OUTPUT
           "assembly_version=$assemblyVer" >> $env:GITHUB_OUTPUT
+          "history_line=$historyLine" >> $env:GITHUB_OUTPUT
 
       # ---- 以降、新バージョンが検出されたときのみ実行 ----
 
@@ -96,108 +98,63 @@ jobs:
         shell: pwsh
         run: dotnet restore PDIndexer\PDIndexer.csproj
 
-      - name: Find devenv.com
-        if: steps.version.outputs.needed == 'true'
-        id: devenv
-        shell: pwsh
-        run: |
-          $devenvExe = (& "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -property productPath).Trim()
-          if (-not $devenvExe) { throw "Visual Studio was not found." }
-          $cli = [System.IO.Path]::ChangeExtension($devenvExe, ".com")
-          if (-not (Test-Path $cli)) { throw "devenv.com was not found." }
-          Write-Host "devenv.com: $cli"
-          "cli=$cli" >> $env:GITHUB_OUTPUT
-
-      - name: Build managed application
-        if: steps.version.outputs.needed == 'true'
-        shell: pwsh
-        run: dotnet build PDIndexer\PDIndexer.csproj -c Release -p:Platform=x64 -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }} --no-restore
-
-      - name: Update installer version in vdproj
+      # 260624Cl vdproj→WiX 移行 (Phase B) で以下を廃止 (本文は git 履歴 1bfef5a 以前を参照):
+      #   - Find devenv.com → PDI は native(vcxproj) ビルドが無いため不要 (D-PDI-1)
+      #   - Build managed application (dotnet build → bin\Release を vdproj が SourcePath 参照) → 下の Stage に置換
+      #   - Update installer version in vdproj (regex で ProductVersion/ProductCode/PackageCode 書換)
+      #     → WiX では -p:ProductVersion 注入 + ProductCode 自動生成で代替 (UpgradeCode は Package.wxs に固定)
+      #   - Disable out-of-proc setup project build (HKCU レジストリハック) → 不要
+      #   - Create installer-only solution (PDIndexerSetup.CI.sln 動的生成) → 不要
+      #   - Build installer with Visual Studio (devenv.com) → dotnet build (WixToolset.Sdk) に置換
+      #   vdproj 一式 (PDIndexerSetup\) は WiX 版リリース 1 回成功後に削除予定 (計画書 §6 Phase B-3)。
+      - name: Stage MSI payload (framework-dependent publish)
         if: steps.version.outputs.needed == 'true'
         shell: pwsh
         run: |
-          $vdproj = Get-Content "PDIndexerSetup\PDIndexerSetup.vdproj" -Raw
+          $s = "artifacts\staging-msi-x64"
+          dotnet publish PDIndexer\PDIndexer.csproj -c Release -p:Platform=x64 --self-contained false -o $s --no-restore `
+            -p:AssemblyVersion=${{ steps.version.outputs.assembly_version }} -p:FileVersion=${{ steps.version.outputs.assembly_version }}
+          if ($LASTEXITCODE -ne 0) { throw "x64 publish failed." }
+          # 260624Cl glfw3.dll を除外 (D-PDI-2): PDI は GLFW/GLControl を生成せず実行時未使用。OpenTK が透過供給する死荷物。
+          Get-ChildItem $s -Filter "glfw3*.dll" | Remove-Item -Force
+          # LICENSE.rtf / REQUIREMENT.rtf を同梱 (Phase A は PDIndexerSetup\ から。Phase B で vdproj 削除時に WiX フォルダへ移動)
+          Copy-Item PDIndexerSetup\LICENSE.rtf, PDIndexerSetup\REQUIREMENT.rtf $s
+          # 参照プロジェクトの分離 pdb は同梱しない (portable ZIP と同方針)
+          Get-ChildItem $s -Filter *.pdb | Remove-Item
+          # 出荷前検査 (計画書 §3 D3 / D-PDI-2)
+          if (Test-Path "$s\README-PORTABLE.txt") { throw "README-PORTABLE.txt leaked (portable marker must not be in MSI)" }
+          if (Test-Path "$s\coreclr.dll") { throw "self-contained runtime leaked into framework-dependent staging" }
+          if (Test-Path "$s\glfw3.dll") { throw "glfw3.dll leaked (must be excluded per D-PDI-2)" }
+          if (-not (Test-Path "$s\PDIndexer.exe")) { throw "PDIndexer.exe missing from staging" }
+          if (-not (Test-Path "$s\libxrl-11.dll")) { throw "libxrl-11.dll (xraylib native) missing from staging" }
+          # 3-D packaging 検査: 全カルチャのサテライト DLL が staging に揃っているか (MSI は staging を <Files **> で丸ごと収集
+          #   するため、ここで欠ければ MSI からも無言で欠落する)。新言語を増やしたらこの一覧も更新 (Crystallography.SupportedCultures と同期)。
+          $expectedCultures = @('ja','de','fr','es','pt','it','ru','zh-Hans','zh-Hant','ko')
+          $missingSat = $expectedCultures | Where-Object { -not (Get-ChildItem "$s\$_" -Filter *.resources.dll -ErrorAction SilentlyContinue) }
+          if ($missingSat) { throw "satellite assemblies missing for culture(s): $($missingSat -join ', ')" }
+          Write-Host "MSI staging OK: $((Get-ChildItem $s -Recurse -File).Count) files"
 
-          # ProductVersion を更新 (例: "8:0.4.459")
-          $vdproj = $vdproj -replace '"ProductVersion" = "8:[^"]*"', '"ProductVersion" = "8:${{ steps.version.outputs.product_version }}"'
-
-          # ProductCode と PackageCode を新しい GUID に更新 (UpgradeCode は変えない)
-          $newProductCode = ([guid]::NewGuid()).ToString("B").ToUpper()
-          $newPackageCode = ([guid]::NewGuid()).ToString("B").ToUpper()
-          $vdproj = $vdproj -replace '"ProductCode" = "8:\{[^}]+\}"', "`"ProductCode`" = `"8:$newProductCode`""
-          $vdproj = $vdproj -replace '"PackageCode" = "8:\{[^}]+\}"', "`"PackageCode`" = `"8:$newPackageCode`""
-
-          Set-Content "PDIndexerSetup\PDIndexerSetup.vdproj" $vdproj -NoNewline
-          Write-Host "ProductVersion = 0.${{ steps.version.outputs.version }}"
-          Write-Host "ProductCode    = $newProductCode"
-          Write-Host "PackageCode    = $newPackageCode"
-
-      - name: Disable out-of-proc setup project build
-        if: steps.version.outputs.needed == 'true'
-        shell: pwsh
-        run: |
-          $visualStudioRoot = "HKCU:\Software\Microsoft\VisualStudio"
-          Get-ChildItem $visualStudioRoot -ErrorAction SilentlyContinue |
-            Where-Object { $_.PSChildName -like '17.0*_Config' -or $_.PSChildName -like '18.0*_Config' } |
-            ForEach-Object {
-              $key = Join-Path $_.PSPath "MSBuild"
-              if (-not (Test-Path $key)) { New-Item -Path $key -Force | Out-Null }
-              New-ItemProperty -Path $key -Name DisableOutOfProcBuild -PropertyType DWord -Value 1 -Force | Out-Null
-              Write-Host "Set DisableOutOfProcBuild=1 at $key"
-            }
-
-      - name: Create installer-only solution
-        if: steps.version.outputs.needed == 'true'
-        id: pack_solution
-        shell: pwsh
-        run: |
-          $solutionPath = Join-Path (Get-Location) "PDIndexerSetup.CI.sln"
-          @'
-          Microsoft Visual Studio Solution File, Format Version 12.00
-          # Visual Studio Version 18
-          VisualStudioVersion = 18.1.11304.174
-          MinimumVisualStudioVersion = 10.0.40219.1
-          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PDIndexer", "PDIndexer\PDIndexer.csproj", "{D29BD053-810E-4797-9985-00CD41BC60FD}"
-          EndProject
-          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography", "Crystallography\Crystallography.csproj", "{86A34A41-32E0-4033-9C4E-4BFA8C621E90}"
-          EndProject
-          Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{B6074BFC-0860-42DE-9525-49D97029F595}"
-          EndProject
-          Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDIndexerSetup", "PDIndexerSetup\PDIndexerSetup.vdproj", "{80EF52B7-7757-4980-A47A-0772A37AB289}"
-          EndProject
-          Global
-          	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-          		Release|x64 = Release|x64
-          	EndGlobalSection
-          	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-          		{D29BD053-810E-4797-9985-00CD41BC60FD}.Release|x64.ActiveCfg = Release|x64
-          		{86A34A41-32E0-4033-9C4E-4BFA8C621E90}.Release|x64.ActiveCfg = Release|x64
-          		{B6074BFC-0860-42DE-9525-49D97029F595}.Release|x64.ActiveCfg = Release|x64
-          		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x64.ActiveCfg = Release
-          		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x64.Build.0 = Release
-          	EndGlobalSection
-          EndGlobal
-          '@ | Set-Content -Path $solutionPath -Encoding ASCII
-          "path=$solutionPath" >> $env:GITHUB_OUTPUT
-
-      - name: Build installer with Visual Studio
+      - name: Build installer with WiX
         id: build_installer
         if: steps.version.outputs.needed == 'true'
         timeout-minutes: 10
         shell: pwsh
         run: |
-          $log = Join-Path $env:RUNNER_TEMP "devenv-setup.log"
-          & "${{ steps.devenv.outputs.cli }}" "${{ steps.pack_solution.outputs.path }}" /Build "Release|x64" /Project "PDIndexerSetup" /Out $log
-          $exitCode = $LASTEXITCODE
-          if (Test-Path $log) { Get-Content $log }
-          if ($exitCode -ne 0) { throw "PDIndexerSetup build failed (exit $exitCode)." }
+          dotnet build PDIndexerSetup.Wix\PDIndexerSetup.wixproj -c Release -p:InstallerPlatform=x64 `
+            -p:ProductVersion=${{ steps.version.outputs.product_version }} `
+            -p:StagingDir="$PWD\artifacts\staging-msi-x64"
+          if ($LASTEXITCODE -ne 0) { throw "WiX build failed (exit $LASTEXITCODE)." }
 
-          # MSI の存在確認
-          $msi = Get-ChildItem -Path "PDIndexerSetup" -Filter "PDIndexerSetup.msi" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
-          if (-not $msi) { throw "PDIndexerSetup.msi was not found." }
-          Write-Host "MSI built: $($msi.FullName)"
+          # 260624Cl 主名称は PDIndexer-setup.msi (wixproj OutputName)。旧クライアントの自動更新は ProgramUpdates 既定の
+          #   {software}Setup.msi = PDIndexerSetup.msi を固定参照するため、同一バイトのコピーを旧名でも添付して互換維持する
+          #   (case-insensitive DL のため過去の小文字公開資産 PDindexerSetup.msi とも整合。メモリ pdindexer-name-capitalization)。
+          $msi = Get-Item "PDIndexerSetup.Wix\bin\Release\PDIndexer-setup.msi" -ErrorAction SilentlyContinue
+          if (-not $msi) { throw "PDIndexer-setup.msi was not found." }
+          Write-Host "MSI built: $($msi.FullName) ($($msi.Length) bytes)"
           "msi_path=$($msi.FullName)" >> $env:GITHUB_OUTPUT
+          $legacy = Join-Path (Split-Path $msi.FullName) "PDIndexerSetup.msi"
+          Copy-Item $msi.FullName $legacy -Force
+          "legacy_msi_path=$legacy" >> $env:GITHUB_OUTPUT
 
       - name: Publish portable ZIP
         if: steps.version.outputs.needed == 'true'
@@ -205,9 +162,14 @@ jobs:
         shell: pwsh
         run: |
           # 260601Ch 管理された Windows PC 向けの代替配布。MSI が第一候補、ZIP は管理者権限や .NET Runtime 導入が難しい環境用。
-          # 260602Cl このステップは installer (MSI) ビルドより後に置く。self-contained publish が obj\x64\Release を symbol 無しで再生成し PDIndexer.pdb を消すため、MSI ビルドより前に走らせると vdproj の Debug Symbols 出力グループが pdb を見つけられず MSI ビルドが失敗する。
+          # 260602Cl このステップは installer (MSI) ビルドより後に置く。self-contained publish が obj\x64\Release を symbol 無しで
+          #          再生成し PDIndexer.pdb を消すため、旧 vdproj では MSI ビルドより前に走らせると Debug Symbols 出力グループが pdb を
+          #          見つけられず失敗した。260624Cl WiX 移行でこの順序制約は解消済み (MSI は専用 staging から作り bin\Release を参照しない)。
+          #          位置は当面維持 (変更を最小にするため)。
           $publishDir = Join-Path $env:RUNNER_TEMP "PDIndexer-portable\PDIndexer"
-          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ steps.version.outputs.version }}-win-x64-portable.zip"
+          # 260624Cl 命名簡素化 (計画書 D-PDI-4、旧: PDIndexer-v.X-win-x64-portable.zip)。x64 が無印、arm64 のみ接尾辞 (_arm64) の対称形。
+          #          自動更新は MSI 固定 URL のみで ZIP 名に依存しない。
+          $zipPath = Join-Path (Get-Location) "PDIndexer-v.${{ steps.version.outputs.version }}.zip"
 
           if (Test-Path $publishDir) { Remove-Item -LiteralPath $publishDir -Recurse -Force }
           if (Test-Path $zipPath) { Remove-Item -LiteralPath $zipPath -Force }
@@ -225,31 +187,18 @@ jobs:
             -p:DebugSymbols=false `
             -o $publishDir
 
+          # 260624Cl glfw3.dll は portable ZIP からも除外 (D-PDI-2、MSI と同方針)
+          Get-ChildItem $publishDir -Filter "glfw3*.dll" | Remove-Item -Force
+
           Copy-Item "LICENSE.md" $publishDir -Force
-          Copy-Item "README-PORTABLE.txt" $publishDir -Force
+          Copy-Item "README-PORTABLE.txt" $publishDir -Force # portable 判定マーカー (MSI には入れない)
           Compress-Archive -Path (Join-Path (Split-Path $publishDir -Parent) "PDIndexer") -DestinationPath $zipPath -Force
 
           Write-Host "Portable ZIP built: $zipPath"
           "zip_path=$zipPath" >> $env:GITHUB_OUTPUT
 
-      - name: Generate release checksums
-        if: steps.version.outputs.needed == 'true'
-        id: checksums
-        shell: pwsh
-        run: |
-          # 260601Ch MSI と portable ZIP の検証用 SHA256 を同梱する。
-          $checksums = Join-Path (Get-Location) "SHA256SUMS.txt"
-          $files = @(
-            "${{ steps.build_installer.outputs.msi_path }}",
-            "${{ steps.portable.outputs.zip_path }}"
-          )
-          $lines = foreach ($file in $files) {
-            $hash = Get-FileHash $file -Algorithm SHA256
-            "$($hash.Hash)  $(Split-Path $file -Leaf)"
-          }
-          $lines | Set-Content -Path $checksums -Encoding ASCII
-          Get-Content $checksums
-          "checksums_path=$checksums" >> $env:GITHUB_OUTPUT
+      # 260624Cl 「Generate release checksums」(SHA256SUMS.txt) ステップを廃止 (計画書 §0 最終形は 3 資産)。
+      #   ReciPro 同方針: 同一チャネルに置く checksum は改竄対策にならず、真正性保証は SignPath 署名 (Phase D) で行う。
 
       - name: Upload workflow artifacts
         if: steps.version.outputs.needed == 'true'
@@ -258,27 +207,47 @@ jobs:
           name: PDIndexer-release-v.${{ steps.version.outputs.version }}
           path: |
             ${{ steps.build_installer.outputs.msi_path }}
+            ${{ steps.build_installer.outputs.legacy_msi_path }}
             ${{ steps.portable.outputs.zip_path }}
-            ${{ steps.checksums.outputs.checksums_path }}
 
       - name: Create tag and GitHub Release
         if: steps.version.outputs.needed == 'true'
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HISTORY_LINE: ${{ steps.version.outputs.history_line }}
         run: |
+          $ver = "${{ steps.version.outputs.version }}"
           $tag = "${{ steps.version.outputs.tag }}"
+          $historyLine = $env:HISTORY_LINE
 
-          # タグを作成してプッシュ
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git tag -a $tag -m "PDIndexer ${{ steps.version.outputs.version }}"
-          git push origin $tag
+          # 260624Cl リリースノート (Download 表)。アセット名は計画書 D-PDI-4。
+          $notes = @(
+            $historyLine
+            ""
+            "| Download | Description |"
+            "|---|---|"
+            "| **[PDIndexer-setup.msi](https://github.com/seto77/PDIndexer/releases/download/v.$ver/PDIndexer-setup.msi)** | **Recommended.** Installer for ordinary (x64) Windows PCs. |"
+            "| [PDIndexer-v.$ver.zip](https://github.com/seto77/PDIndexer/releases/download/v.$ver/PDIndexer-v.$ver.zip) | Portable (x64): no installation, self-contained. Suitable for PCs where you have no administrator rights. |"
+            "| PDIndexerSetup.msi | Identical to PDIndexer-setup.msi (legacy name for auto-update from older versions). |"
+          )
+          $notesPath = Join-Path $env:RUNNER_TEMP "release-notes.txt"
+          $notes | Set-Content -Path $notesPath -Encoding UTF8
 
-          # 260601Ch リリースを作成して、第一候補の MSI と第二候補の portable ZIP を添付
-          gh release create $tag `
-            "${{ steps.build_installer.outputs.msi_path }}" `
-            "${{ steps.portable.outputs.zip_path }}" `
-            "${{ steps.checksums.outputs.checksums_path }}" `
+          $assets = @(
+            "${{ steps.build_installer.outputs.msi_path }}"
+            "${{ steps.build_installer.outputs.legacy_msi_path }}"
+            "${{ steps.portable.outputs.zip_path }}"
+          )
+          foreach ($a in $assets) { if (-not (Test-Path $a)) { throw "Release asset missing: $a" } }
+
+          # 260624Cl タグとリリースを gh release create で原子的に作成 (--target で対象コミットを固定、計画書 §9 不可侵#5)。
+          #   旧実装は git tag -a + git push の2段階で、push 成功後に release 作成が失敗するとタグだけ remote に残った。
+          #   gh release create は tag 未存在時に --target のコミットへ lightweight tag を作成し release と一括で作るため
+          #   orphan tag が発生せず、失敗時も同一バージョンで再試行できる (ReciPro 実績)。
+          gh release create $tag $assets `
+            --target $env:GITHUB_SHA `
             --title "PDIndexer $tag" `
-            --notes-file "${{ steps.version.outputs.notes_path }}"
+            --notes-file $notesPath
+          if ($LASTEXITCODE -ne 0) { throw "gh release create failed (exit $LASTEXITCODE)." }
+          Write-Host "Released $tag with $($assets.Count) assets."
