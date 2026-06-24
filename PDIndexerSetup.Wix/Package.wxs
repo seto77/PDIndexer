@@ -64,8 +64,9 @@
     <!-- UI: WixUI_InstallDir (Everyone/Just me ラジオは廃止し per-user 固定)。
          REQUIREMENT.rtf は専用ダイアログを設けずファイル同梱のみ (staging 経由)。 -->
     <ui:WixUI Id="WixUI_InstallDir" InstallDirectory="INSTALLFOLDER" />
-    <!-- 260624Cl Phase A: vdproj と並行運用のため rtf は移動せず ..\PDIndexerSetup\ を参照 (Phase B の vdproj 削除時に本フォルダへ移動) -->
-    <WixVariable Id="WixUILicenseRtf" Value="..\PDIndexerSetup\LICENSE.rtf" />
+    <!-- 260625Cl Phase B 完了: vdproj 削除に伴い LICENSE.rtf / REQUIREMENT.rtf を本フォルダ (PDIndexerSetup.Wix\) へ移動済み。
+         WixUILicenseRtf は wixproj 基準の相対パスなので LICENSE.rtf で本フォルダ内を参照する。 -->
+    <WixVariable Id="WixUILicenseRtf" Value="LICENSE.rtf" />
 
     <!-- 完了画面「Launch PDIndexer」既定 ON (旧 EnableLaunchApplication.js が MSI に注入していた CA の等価再現) -->
     <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOX" Value="1" />

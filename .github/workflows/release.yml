@@ -117,8 +117,8 @@ jobs:
           if ($LASTEXITCODE -ne 0) { throw "x64 publish failed." }
           # 260624Cl glfw3.dll を除外 (D-PDI-2): PDI は GLFW/GLControl を生成せず実行時未使用。OpenTK が透過供給する死荷物。
           Get-ChildItem $s -Filter "glfw3*.dll" | Remove-Item -Force
-          # LICENSE.rtf / REQUIREMENT.rtf を同梱 (Phase A は PDIndexerSetup\ から。Phase B で vdproj 削除時に WiX フォルダへ移動)
-          Copy-Item PDIndexerSetup\LICENSE.rtf, PDIndexerSetup\REQUIREMENT.rtf $s
+          # LICENSE.rtf / REQUIREMENT.rtf を同梱 (260625Cl vdproj 削除に伴い PDIndexerSetup.Wix\ へ移動済み)
+          Copy-Item PDIndexerSetup.Wix\LICENSE.rtf, PDIndexerSetup.Wix\REQUIREMENT.rtf $s
           # 参照プロジェクトの分離 pdb は同梱しない (portable ZIP と同方針)
           Get-ChildItem $s -Filter *.pdb | Remove-Item
           # 出荷前検査 (計画書 §3 D3 / D-PDI-2)
