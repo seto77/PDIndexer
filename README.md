@@ -21,10 +21,10 @@
 ## Install
 
 * Access https://github.com/seto77/PDIndexer/releases/latest and download the latest release.
-* Recommended: download `PDIndexerSetup.msi` and run the installer.
-* Alternative for managed Windows PCs: download `PDIndexer-*-win-x64-portable.zip`, extract it to a user-writable folder, and run `PDIndexer.exe` from the extracted folder.
-* The MSI installer requires ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0).
-* The portable ZIP package is self-contained for Windows x64 and does not require a separate .NET Desktop Runtime installation. It is a no-install package, but it still stores user settings and copied default data under the current user's AppData folder. <!-- 260601Ch -->
+* Recommended: download `PDIndexer-setup.msi` (x64) and run the installer. For Windows on Arm (e.g. Snapdragon PCs), download `PDIndexer-setup_arm64.msi` instead. <!-- 260625Cl WiX asset names + arm64 -->
+* Alternative for managed Windows PCs: download the portable ZIP (`PDIndexer-v.<ver>.zip` for x64, or `PDIndexer-v.<ver>_arm64.zip` for Arm), extract it to a user-writable folder, and run `PDIndexer.exe` from the extracted folder.
+* The MSI installer requires ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0). On Windows on Arm, install the **Arm64** build of the Desktop Runtime.
+* The portable ZIP package is self-contained for the matching architecture (x64 or Arm64) and does not require a separate .NET Desktop Runtime installation. It is a no-install package, but it still stores user settings and copied default data under the current user's AppData folder. <!-- 260601Ch -->
 * *PDIndexer* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
 
 ### Note on Windows Security Warnings
@@ -34,8 +34,8 @@
 * If you would like to verify a downloaded file yourself, you can calculate its SHA256 hash in PowerShell:
 
 ```powershell
-Get-FileHash .\PDIndexerSetup.msi -Algorithm SHA256
-Get-FileHash .\PDIndexer-*-win-x64-portable.zip -Algorithm SHA256
+Get-FileHash .\PDIndexer-setup.msi -Algorithm SHA256
+Get-FileHash .\PDIndexer-v.*.zip -Algorithm SHA256
 ```
 
 * For an additional check, you may also scan the downloaded file with a multi-engine service such as VirusTotal.

@@ -9,9 +9,9 @@ Download the latest release from the GitHub releases page.
 
 - Download: <https://github.com/seto77/PDIndexer/releases/latest>
 
-The recommended method is the MSI installer. Download `PDIndexerSetup.msi` and double-click it to start installation.
+The recommended method is the MSI installer. Download `PDIndexer-setup.msi` (x64) and double-click it to start installation. On Windows on Arm (e.g. Snapdragon PCs), download `PDIndexer-setup_arm64.msi` instead. <!-- 260625Cl WiX asset names + arm64 -->
 
-If MSI installation is blocked on a managed Windows PC, use the no-install ZIP package as an alternative. Download `PDIndexer-*-win-x64-portable.zip`, extract the full folder to a user-writable location, and run `PDIndexer.exe` from the extracted folder. Do not run `PDIndexer.exe` directly from inside the ZIP viewer. <!-- 260601Ch -->
+If MSI installation is blocked on a managed Windows PC, use the no-install ZIP package as an alternative. Download the portable ZIP (`PDIndexer-v.<ver>.zip` for x64, or `PDIndexer-v.<ver>_arm64.zip` for Arm), extract the full folder to a user-writable location, and run `PDIndexer.exe` from the extracted folder. Do not run `PDIndexer.exe` directly from inside the ZIP viewer. <!-- 260601Ch / 260625Cl -->
 
 !!! note "About the Windows protection warning"
     When you run newly downloaded unsigned research software, Windows may display a SmartScreen warning ("Windows protected your PC"). If this happens, click **More info** and then choose **Run anyway** to continue.
@@ -25,15 +25,15 @@ The following runtime is required when PDIndexer is installed from the MSI insta
 
 | Item | Requirement |
 | --- | --- |
-| OS | Windows (64-bit) |
-| Runtime | `.NET Desktop Runtime 10.0` (the **Desktop Runtime**, not the plain **.NET Runtime**) |
+| OS | Windows (64-bit, x64 or Arm64) |
+| Runtime | `.NET Desktop Runtime 10.0` (the **Desktop Runtime**, not the plain **.NET Runtime**; on Windows on Arm, the **Arm64** build) |
 
 !!! warning "Choose the Desktop Runtime"
     The download page offers two products: the ".NET Runtime" and the ".NET Desktop Runtime". Because PDIndexer is a WinForms application, be sure to install the **.NET Desktop Runtime**. The plain ".NET Runtime" alone will not launch the program.
 
 - Download the runtime: <https://dotnet.microsoft.com/download/dotnet/10.0>
 
-The no-install ZIP package is self-contained for Windows x64 and does not require a separate .NET Desktop Runtime installation. <!-- 260601Ch -->
+The no-install ZIP package is self-contained for the matching architecture (x64 or Arm64) and does not require a separate .NET Desktop Runtime installation. <!-- 260601Ch / 260625Cl arm64 -->
 
 !!! note "About the version stated in older docs"
     The legacy manual (docx) mentions ".NET Desktop Runtime 6.0 or later", but the current PDIndexer requires **.NET 10.0**. Follow the requirement of the latest version.
