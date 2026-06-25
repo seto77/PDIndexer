@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxLowEnergyCutoff.Text" xml:space="preserve">
+    <value>Отсечка низких энергий</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>E  = a₀ + a₁ n + a₂ n²    E: энергия в eV,  n : номер канала</value>
+  </data>
+  <data name="groupBoxEDX.Text" xml:space="preserve">
+    <value>Для данных SSD (*.rpf, *.npd, *.xbm, *.nxs)</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>сек.</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Эта опция перенесена в форму «Параметры профиля».
+Чтобы удалить Kα2, выберите Kα1 как источник рентгеновского излучения.
+</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Деконволюция</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Время экспозиции (на шаг)</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Конвертер данных</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>Время экспозиции (измерения) на шаг данных,
+в секундах. Значения &lt;= 0 принимаются равными 1.</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>Включить отсечку низкоэнергетической стороны
+спектра EDX ниже порога справа.</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>Энергетический порог (eV), ниже которого спектр EDX
+отбрасывается; включается флажком слева.</value>
+  </data>
+  <data name="horizontalAxisUserControl.ToolTip" xml:space="preserve">
+    <value>Задать тип горизонтальной оси данных и
+связанные параметры источника (длина волны/энергия,
+2theta, длина/угол TOF и т. д.).</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>Применить настройки и преобразовать данные.</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>Отменить преобразование.</value>
+  </data>
+</root>

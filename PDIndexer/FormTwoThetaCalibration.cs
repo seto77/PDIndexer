@@ -26,6 +26,9 @@ namespace PDIndexer
         {
             InitializeComponent();
             HelpPage = "4-profile-parameter"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
+            //260625Cl 追加: 動的ラベルの初期表示を現 UI カルチャ訳で確定 (buttonCalibrate は実行中 NowCalibrating にトグル)。
+            buttonCalibrate.Text = PdiText.Calibrate;
+            numericUpDownOrder_ValueChanged(this, EventArgs.Empty); // labelEquation を現在の次数で初期化
         }
 
         private void FormTwoThetaCalibration_FormClosing(object sender, FormClosingEventArgs e)
@@ -47,11 +50,11 @@ namespace PDIndexer
         private void numericUpDownOrder_ValueChanged(object sender, EventArgs e)
         {
             if (numericUpDownOrder.Value == 3)
-                labelEquation.Text = "Shift function: Δ(2θ) = a1 + a2 tan(θ) + a3 tan^2(θ) ";
+                labelEquation.Text = string.Format(PdiText.ShiftFunction, "Δ(2θ) = a1 + a2 tan(θ) + a3 tan^2(θ) "); //260625Cl 多言語化(式は不変、"Shift function:" のみ訳)
             else if (numericUpDownOrder.Value == 2)
-                labelEquation.Text = "Shift function: Δ(2θ) = a1 + a2 tan(θ)";
+                labelEquation.Text = string.Format(PdiText.ShiftFunction, "Δ(2θ) = a1 + a2 tan(θ)"); //260625Cl 多言語化
             else
-                labelEquation.Text = "Shift function: Δ(2θ) = a1";
+                labelEquation.Text = string.Format(PdiText.ShiftFunction, "Δ(2θ) = a1"); //260625Cl 多言語化
         }
 
         private void buttonCalibrate_Click(object sender, EventArgs e)
@@ -62,7 +65,7 @@ namespace PDIndexer
             coeff1_old = dp.TwoThetaOffsetCoeff1;
             coeff2_old = dp.TwoThetaOffsetCoeff2;
 
-            buttonCalibrate.Text = "Now calibrationg...";
+            buttonCalibrate.Text = PdiText.NowCalibrating; //260625Cl 多言語化(旧 "Now calibrationg..." typo修正)
             this.Enabled = false;
 
             for (int n = 0; n < 8; n++)
@@ -112,7 +115,7 @@ namespace PDIndexer
                 }
             }
 
-            buttonCalibrate.Text = "Calibrate";
+            buttonCalibrate.Text = PdiText.Calibrate; //260625Cl 多言語化(旧 "Calibrate")
             this.Enabled = true;
         }
 

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>결정계(삼사정계~입방정계)를 선택합니다. 하나를
+선택하면 편집 가능한 격자 상수가 제한되고
+해당하는 공간군 목록이 표시됩니다.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 a (Å). 대칭성이 높은
+결정계에서는 b와 c가 a에 자동 연동됩니다.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 b (Å). 정방·삼방·
+육방·입방정계에서는 읽기 전용이 되고
+a와 같은 값으로 고정됩니다.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>단위 격자의 모서리 길이 c (Å). 입방정계에서는
+읽기 전용이 되고 a와 같은 값으로 고정됩니다.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>격자 각 α (도). 결정계에 따라
+(예: 90으로) 자동 고정됩니다.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>격자 각 β (도). 사방정계 및 더 높은
+대칭성의 결정계에서는 90으로 자동 고정됩니다.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>격자 각 γ (도). 삼방·육방정계에서는 120,
+그 외 고대칭 결정계에서는 90으로 자동 고정됩니다.</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>공간군 후보(번호.부번호:
+Hermann-Mauguin 기호). 하나 이상 선택하면 선택한
+각 공간군이 검색됩니다. 다중 선택을 지원합니다.</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>화학식(실험식/최간식, 예:
+'Ti O2'). 분석되어 원소별 원자 수와
+화학식 단위 수 Z를 채웁니다.</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>단위 격자당 화학식 단위 수 Z
+(최소 1). 화학식에 곱하여
+단위 격자당 전체 원자 수를 구합니다.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>읽기 전용: 단위 격자 내 전체 원자
+조성(화학식 × Z). 화학식이나 Z가
+변경되면 자동으로 갱신됩니다.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>면간 거리를 각도로 변환하고 회절 강도를
+계산하는 데 사용되는 X선 선원과
+파장입니다.</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Add Peak 버튼으로 표에 추가할
+피크의 면간 거리 d (Å).</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>추가할 피크의 상대 회절 강도(rel %).
+강도는 R 인자 계산을 위해 가장 강한
+피크로 규격화됩니다.</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>입력한 면간 거리와 강도를 회절 피크
+표에 새 행으로 추가합니다.</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>현재 격자와 공간군으로 모든 피크의
+hkl(밀러) 지수를 재계산합니다.</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>(디버그) 클립보드의 탭 구분 텍스트(0열 = d,
+4열 = 강도)에서 피크를 가져와
+피크 표를 교체합니다.</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>관측된 회절 피크. Check 열로 피크를 검색에
+포함하고 Delete 버튼으로 행을 삭제합니다.
+Index 열에는 할당된 hkl이 표시됩니다.</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>아래의 각도 임계값보다 회절 각도 차이가
+작은 반사를 병합합니다.</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>각도 임계값(도, 0-2). 2theta가 이 값보다
+가까운 반사들은 하나의 피크로 병합됩니다.</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>각도 임계값 대신 에너지 임계값으로
+반사를 병합합니다(참고: 현재 코드에서
+에너지 분기는 비활성일 수 있음).</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>피크 병합에 사용하는 에너지 임계값
+(eV, 0-10)(에너지 임계값 모드에서만
+유효).</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>각 몬테카를로 단계마다 완전히 새로운 무작위
+원자 배치를 생성할 확률(%). 세 확률은
+합계 100%가 되도록 자동 정규화됩니다.</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>기존 후보 두 개를 교배하는 유전 알고리즘
+교차의 확률(%). 다른 두 확률과 함께
+100%로 자동 정규화됩니다.</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>'shaking', 즉 기존 후보의 원자 위치를
+약간 교란할 확률(%). 합계 100%가 되도록
+자동 정규화됩니다.</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>겹치는 원자 위치를 배제하는 데 사용하는
+이온 반지름 합의 허용치(%).
+값이 작을수록 더 밀집한 배치를 배제합니다.</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 병렬 작업 스레드 수
+(1-16). 값이 클수록 더 많은 CPU 코어를 사용합니다.</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>새 구조 탐색을 처음부터 시작합니다
+(이전 후보를 지웁니다).
+실행 중 클릭하면 탐색을 중지합니다.</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>현재 후보 목록을 지우지 않고 시작 집단으로
+사용하여 검색을 재개합니다.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>R 인자순으로 정렬된 발견된 구조 후보.
+Residual = R; Info에는 공간군, 와이코프 자리,
+분율 좌표가 표시됩니다. 행을 클릭하면 Crystal
+폼으로 보내고 클립보드에 복사합니다.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>검색 중 R 인자 수렴을 나타낸 그래프.</value>
+  </data>
+</root>

@@ -277,7 +277,7 @@ namespace PDIndexer
                                 residual += Math.Log(d)*Math.Log(d);
                             }
                         }
-                    dlg.Text = "Calculating ....  " + residual.ToString();
+                    dlg.Text = string.Format(PdiText.CalculatingResidual, residual); //260625Cl 多言語化(旧 "Calculating ....  " + residual)
                     DrawPictureBox();
                     Application.DoEvents();
                 }

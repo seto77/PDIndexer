@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>勾選</value>
+  </data>
+  <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>線條顏色</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>線條寬度</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>註解</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>輪廓名稱</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>基本屬性</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>階數</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>點編號</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
+    <value>顯示背景輪廓</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
+    <value>自動偵測</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>點編號</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
+    <value>參考</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
+    <value>B-Spline 曲線</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>曝光時間</value>
+  </data>
+  <data name="checkBoxSmoothing.Text" xml:space="preserve">
+    <value>3. 平滑化</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Text" xml:space="preserve">
+    <value>6. 背景</value>
+  </data>
+  <data name="buttonDeleteProfile.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
+    <value>變更</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>橫軸單位</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
+    <value>平移</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>橫軸設定</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>(用於 CPS 模式)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>縱軸設定</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>強度範圍</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
+    <value>平均值</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>(橫軸單位)</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>全部刪除</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.Text" xml:space="preserve">
+    <value>1. 2θ 偏移 (用於角度色散繞射)</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.Text" xml:space="preserve">
+    <value>重設</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.Text" xml:space="preserve">
+    <value>使用內部標準校正</value>
+  </data>
+  <data name="checkBoxMaskingMode.Text" xml:space="preserve">
+    <value>2. 遮罩與內插</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
+    <value>設定遮罩範圍</value>
+  </data>
+  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+    <value>從遮罩範圍兩側各自取用以擬合內插的資料
+點數（與多項式階數搭配使用）。數值越大
+= 擬合視窗越寬。</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>(各側)</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>從遮罩範圍兩側各自取用
+以擬合內插的資料點數。</value>
+  </data>
+  <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
+    <value>儲存遮罩範圍</value>
+  </data>
+  <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
+    <value>讀取遮罩範圍</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>點數</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>從遮罩範圍兩側各取用於擬合
+內插的資料點數。</value>
+  </data>
+  <data name="buttonDeleteAllMask.Text" xml:space="preserve">
+    <value>全部刪除</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>多項式次數</value>
+  </data>
+  <data name="buttonDeleteMask.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Text" xml:space="preserve">
+    <value>4. 帶通濾波器</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Text" xml:space="preserve">
+    <value>截除高頻 (大於右值)</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Text" xml:space="preserve">
+    <value>截除低頻 (小於右值)</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.Text" xml:space="preserve">
+    <value>5. 移除 Kα2 (若使用 Kα1 作為 X射線源)</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
+    <value>7. 強度正規化</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>正規化至</value>
+  </data>
+  <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
+    <value>套用至所有圖譜 (不含背景設定)</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>圖譜處理</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>座標軸設定</value>
+  </data>
+  <data name="radioButtonAverage.Text" xml:space="preserve">
+    <value>平均化</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Text" xml:space="preserve">
+    <value>圖譜與數值</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Text" xml:space="preserve">
+    <value>兩圖譜間</value>
+  </data>
+  <data name="buttonCalculate.Text" xml:space="preserve">
+    <value>計算</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>輸出圖譜的名稱</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>圖譜運算</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>圖譜參數</value>
+  </data>
+  <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
+    <value>已載入圖譜的清單。選取一列即可
+在下方編輯；核取方塊切換其顯示，
+色塊顯示其線條顏色。</value>
+  </data>
+  <data name="textBoxProfileName.ToolTip" xml:space="preserve">
+    <value>所選圖譜的顯示名稱
+(顯示於清單與圖例中)。</value>
+  </data>
+  <data name="textBoxComment.ToolTip" xml:space="preserve">
+    <value>與所選圖譜一併儲存的自由文字
+註解；不影響處理。</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value>設定所選圖譜的線條 (繪圖) 顏色。</value>
+  </data>
+  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+    <value>設定所選圖譜的繪圖線條寬度，
+單位為點 (pt)。</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>刪除目前所選的圖譜。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>刪除所有已載入的圖譜 (會要求確認)。</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>將所選圖譜在清單中上移一個位置。</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>將所選圖譜在清單中下移一個位置。</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.ToolTip" xml:space="preserve">
+    <value>步驟 1：套用 2theta 角度偏移
+Delta(2theta) = c0 + c1*tan(theta) +
+c2*tan^2(theta) (僅限角度分散資料)。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
+    <value>2theta 偏移 Delta(2theta)
+= c0 + c1*tan(theta) + c2*tan^2(theta) 的常數項 c0，單位為度。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
+    <value>2theta 偏移中 tan(theta) 項的
+係數 c1，單位為度。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
+    <value>2theta 偏移中 tan^2(theta)
+項的係數 c2，單位為度。</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.ToolTip" xml:space="preserve">
+    <value>將三個 2theta 偏移係數
+(c0, c1, c2) 全部重設為零。</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.ToolTip" xml:space="preserve">
+    <value>開啟/關閉校正視窗，以從內部
+標準決定 2theta 偏移。</value>
+  </data>
+  <data name="checkBoxMaskingMode.ToolTip" xml:space="preserve">
+    <value>步驟 2：遮罩所選 x 範圍並以多項式
+內插取代 (例如用於移除假影)。</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.ToolTip" xml:space="preserve">
+    <value>啟用以滑鼠直接在圖形上
+設定/顯示遮罩範圍。</value>
+  </data>
+  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+    <value>用於內插遮罩範圍的多項式次數
+(0-5)。越高 = 曲線越靈活。</value>
+  </data>
+  <data name="listBoxMaskRanges.ToolTip" xml:space="preserve">
+    <value>遮罩範圍清單 (橫軸上的起點-終點)。
+選取一項以將其強調顯示；拖放 .mas
+檔案以載入範圍。</value>
+  </data>
+  <data name="buttonDeleteMask.ToolTip" xml:space="preserve">
+    <value>刪除清單中所選的遮罩範圍。</value>
+  </data>
+  <data name="buttonDeleteAllMask.ToolTip" xml:space="preserve">
+    <value>刪除此圖譜的所有遮罩範圍。</value>
+  </data>
+  <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
+    <value>步驟 3：使用 Savitzky-Golay 濾波器平滑圖譜。</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 視窗半寬（每側
+的點數）。越大＝平滑化越強。</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 多項式次數（0-5）。
+越高越能保留峰形，但平滑化較弱。</value>
+  </data>
+  <data name="checkBoxBandPassFilter.ToolTip" xml:space="preserve">
+    <value>步驟 4：套用 FFT 帶通濾波器以
+抑制不需要的頻率成分。</value>
+  </data>
+  <data name="checkBoxHighPassFilter.ToolTip" xml:space="preserve">
+    <value>啟用高通濾波器：移除低於閾值的低頻
+（長週期）成分。</value>
+  </data>
+  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+    <value>高通截止頻率（單位為
+1/[橫軸單位]）；低於此值的成分
+會被移除。範圍會依資料自動調整。</value>
+  </data>
+  <data name="checkBoxLowPassFilter.ToolTip" xml:space="preserve">
+    <value>啟用低通濾波器：移除高於閾值的高頻
+（短週期雜訊）成分。</value>
+  </data>
+  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+    <value>低通截止頻率（單位為
+1/[橫軸單位]）；高於此值的成分
+會被移除。範圍會依資料自動調整。</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.ToolTip" xml:space="preserve">
+    <value>步驟 5：從輪廓中去除 Kalpha2 成分
+（僅當輻射源為 X射線 Kalpha1 譜線
+時適用）。</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.ToolTip" xml:space="preserve">
+    <value>步驟 6：從輪廓中扣除背景曲線。</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.ToolTip" xml:space="preserve">
+    <value>將背景定義為通過手動／自動放置之
+點的 B-spline 曲線。</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>使用另一個輪廓作為要扣除的參考背景。</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
+    <value>沿著輪廓自動放置指定數量的
+背景點。</value>
+  </data>
+  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+    <value>自動偵測／B-spline 擬合所用的
+背景點數量（3-50）。</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>選擇要以哪一個已載入的輪廓
+作為參考背景。</value>
+  </data>
+  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+    <value>扣除前乘到參考背景上的
+比例因子。</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
+    <value>在圖上顯示／隱藏背景曲線
+（須啟用背景扣除）。</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>步驟 7：在所選 x 範圍內將強度
+正規化至目標值。</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.ToolTip" xml:space="preserve">
+    <value>進行正規化，使範圍內的平均強度
+等於目標值。</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
+    <value>進行正規化，使範圍內的最大強度
+等於目標值。</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+    <value>用於計算正規化之範圍的下限
+（橫軸單位）。</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+    <value>用於計算正規化之範圍的上限
+（橫軸單位）。</value>
+  </data>
+  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>範圍的平均／最大值要縮放至的
+目標強度值（1-100000）。</value>
+  </data>
+  <data name="buttonApplyAllProfiles.ToolTip" xml:space="preserve">
+    <value>將目前的處理設定套用至
+所有輪廓（不含背景設定）。</value>
+  </data>
+  <data name="xAxisUserControl.ToolTip" xml:space="preserve">
+    <value>編輯輻射源的橫軸設定（軸類型
+2theta/d/能量/TOF、輻射源、波長、取出角）。
+以「Change」套用。</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.ToolTip" xml:space="preserve">
+    <value>將編輯後的橫軸輻射源設定（及曝光時間）
+套用至所選輪廓。</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>將整個輪廓沿橫軸方向
+平移固定量。</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>輪廓沿橫軸方向的平移量
+（橫軸單位）。</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+    <value>曝光時間（秒），用於將強度換算為
+縱軸上的每秒計數（CPS）。</value>
+  </data>
+  <data name="radioButtonAverage.ToolTip" xml:space="preserve">
+    <value>運算模式：對多個所選輪廓
+取平均（含誤差傳播）。</value>
+  </data>
+  <data name="radioButtonProfileAndValue.ToolTip" xml:space="preserve">
+    <value>運算模式：將一個輪廓與
+常數值結合（加或乘）。</value>
+  </data>
+  <data name="radioButtonTwoProfiles.ToolTip" xml:space="preserve">
+    <value>運算模式：在兩個所選輪廓之間
+進行 +、-、* 或 /。</value>
+  </data>
+  <data name="radioButtonAddition.ToolTip" xml:space="preserve">
+    <value>選擇加法（+）作為運算。</value>
+  </data>
+  <data name="radioButtonSubtraction.ToolTip" xml:space="preserve">
+    <value>選擇減法（-）作為運算。</value>
+  </data>
+  <data name="radioButtonMutiplication.ToolTip" xml:space="preserve">
+    <value>選擇乘法作為運算（按鈕
+不顯示符號；這是乘法運算子）。</value>
+  </data>
+  <data name="radioButtonDivision.ToolTip" xml:space="preserve">
+    <value>選擇除法作為運算（按鈕
+不顯示符號；這是除法運算子）。</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
+    <value>在「Profile and value」模式下
+與輪廓結合的常數值。</value>
+  </data>
+  <data name="listBoxTwoProfiles1.ToolTip" xml:space="preserve">
+    <value>選擇運算的第一個（主要）輪廓；
+在平均模式下可多選。</value>
+  </data>
+  <data name="listBoxTwoProfiles2.ToolTip" xml:space="preserve">
+    <value>選擇雙輪廓運算的第二個輪廓。</value>
+  </data>
+  <data name="textBoxOutputFilename.ToolTip" xml:space="preserve">
+    <value>給予新建立之結果輪廓的名稱
+（每次計算後末尾的編號
+會自動遞增）。</value>
+  </data>
+  <data name="buttonCalculate.ToolTip" xml:space="preserve">
+    <value>執行所選運算並將結果
+新增為一個新輪廓。</value>
+  </data>
+</root>

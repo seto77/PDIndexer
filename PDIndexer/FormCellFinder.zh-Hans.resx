@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>要搜索的晶系。决定自由
+晶胞参数的数目（三斜=6 … 立方=1）；未知数
+越少，搜索越快且约束越强。</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>搜索的轴长 a (Å) 下限。
+a 超出此范围的候选将被舍弃。</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>搜索的轴长 a (Å) 上限。</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>搜索的轴长 b (Å) 下限。</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>搜索的轴长 b (Å) 上限。</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>搜索的轴长 c (Å) 下限。</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>搜索的轴长 c (Å) 上限。</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>搜索的轴间角
+alpha（度）下限。</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>轴间角 alpha 上限（度，最大 180）。</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>搜索的轴间角
+beta（度）下限。</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>轴间角 beta 上限（度，最大 180）。</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>搜索的轴间角
+gamma（度）下限。</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>轴间角 gamma 上限（度，最大 180）。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>用于换算所测晶面间距的辐射源与波长
+（默认 Cu Kalpha1，0.15418 nm）。</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>要添加到下方列表的峰的实测晶面间距 (Å)。</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>所添加峰的可靠度
+（High/Medium/Low）；用于加权最小二乘
+拟合（High=1, Medium=0.5, Low=0.1）。</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>将输入的晶面间距和可靠度
+作为新行添加到峰列表中。</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>可编辑的实测峰列表：勾选 'Use for Calc.
+'，设置可靠度和 d_obs；Delete 删除行。
+搜索后会显示已指标化的 h k l、d_calc 和 diff。</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>开始自动标定搜索。
+运行时再次点击可取消。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>保留当前候选继续搜索
+而非将其清除（共用 Find 处理程序）。</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>候选晶胞（最佳 300 个）按 R 排序；点击
+某行可将其 hkl 指标化应用到峰
+列表并在分布图上高亮显示。SigmadQ 和
+R 为评价指标（越小越好）。</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>在分布图 X 轴上绘制的晶胞参数
+（a/b/c/alpha/beta/gamma）。</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>在分布图 Y 轴上绘制的晶胞参数
+（a/b/c/alpha/beta/gamma）。</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>候选晶胞在所选 X-Y 参数空间中的
+散点图，按 R（评价指标）着色。</value>
+  </data>
+</root>

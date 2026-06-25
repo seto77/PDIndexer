@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>颜色</value>
+  </data>
+  <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>谱线</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>线条颜色</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>线条宽度</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>注释</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>谱线名称</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>基本信息</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>阶数</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>点编号</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
+    <value>显示背景谱线</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
+    <value>自动检测</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>点编号</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
+    <value>参考</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
+    <value>B样条曲线</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>曝光时间</value>
+  </data>
+  <data name="checkBoxSmoothing.Text" xml:space="preserve">
+    <value>3. 平滑</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Text" xml:space="preserve">
+    <value>6. 背景扣除</value>
+  </data>
+  <data name="buttonDeleteProfile.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
+    <value>更改</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>横轴单位</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
+    <value>平移</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>横轴设置</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>(用于CPS模式)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>纵轴设置</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>范围内强度</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
+    <value>最大值</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
+    <value>平均值</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>(横轴单位)</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>全部删除</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.Text" xml:space="preserve">
+    <value>1. 2θ 偏移 (用于角度色散衍射)</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.Text" xml:space="preserve">
+    <value>重置</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.Text" xml:space="preserve">
+    <value>使用内标进行校准</value>
+  </data>
+  <data name="checkBoxMaskingMode.Text" xml:space="preserve">
+    <value>2. 掩模与插值</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
+    <value>设置掩模范围</value>
+  </data>
+  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+    <value>用于拟合插值时从掩模范围每一侧分别选取的
+数据点数(与多项式阶数配合使用)。
+数值越大,拟合窗口越宽。</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>(每侧)</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>从掩模范围每一侧分别选取用于
+拟合插值的数据点数。</value>
+  </data>
+  <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
+    <value>保存掩模范围</value>
+  </data>
+  <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
+    <value>读取掩膜范围</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>数据点数</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>用于拟合插值时，从掩膜范围两侧
+各取的数据点数。</value>
+  </data>
+  <data name="buttonDeleteAllMask.Text" xml:space="preserve">
+    <value>全部删除</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>多项式次数</value>
+  </data>
+  <data name="buttonDeleteMask.Text" xml:space="preserve">
+    <value>删除</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Text" xml:space="preserve">
+    <value>4. 带通滤波</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Text" xml:space="preserve">
+    <value>切除高频 (高于右值)</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Text" xml:space="preserve">
+    <value>切除低频 (低于右值)</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.Text" xml:space="preserve">
+    <value>5. 去除 Kα2 (若以 Kα1 作为 X射线源)</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
+    <value>7. 强度归一化</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>归一化到</value>
+  </data>
+  <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
+    <value>应用于所有谱线 (不含背景设置)</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>谱线处理</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>轴设置</value>
+  </data>
+  <data name="radioButtonAverage.Text" xml:space="preserve">
+    <value>平均</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Text" xml:space="preserve">
+    <value>谱线与数值</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Text" xml:space="preserve">
+    <value>两条谱线</value>
+  </data>
+  <data name="buttonCalculate.Text" xml:space="preserve">
+    <value>计算</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>输出谱线的名称</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>谱线运算</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>谱线参数</value>
+  </data>
+  <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
+    <value>已加载谱线的列表。选择某行可在
+下方编辑；复选框切换其绘图显示，
+色块显示其线条颜色。</value>
+  </data>
+  <data name="textBoxProfileName.ToolTip" xml:space="preserve">
+    <value>所选谱线的显示名称
+(显示于列表和图例中)。</value>
+  </data>
+  <data name="textBoxComment.ToolTip" xml:space="preserve">
+    <value>随所选谱线一同保存的自由文本
+注释；不影响处理。</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value>设置所选谱线的线条 (绘图) 颜色。</value>
+  </data>
+  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+    <value>设置所选谱线的绘图线宽，
+以点 (pt) 为单位。</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>删除当前所选谱线。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>删除所有已加载的谱线 (会要求确认)。</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>将所选谱线在列表中上移一位。</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>将所选谱线在列表中下移一位。</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.ToolTip" xml:space="preserve">
+    <value>步骤 1: 应用 2theta 角偏移
+Delta(2theta) = c0 + c1*tan(theta) +
+c2*tan^2(theta) (仅限角色散数据)。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
+    <value>2theta 偏移 Delta(2theta)
+= c0 + c1*tan(theta) + c2*tan^2(theta) 的常数项 c0，单位为度。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
+    <value>2theta 偏移中 tan(theta) 项的
+系数 c1，单位为度。</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
+    <value>2theta 偏移中 tan^2(theta)
+项的系数 c2，单位为度。</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.ToolTip" xml:space="preserve">
+    <value>将全部三个 2theta 偏移系数
+(c0, c1, c2) 重置为零。</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.ToolTip" xml:space="preserve">
+    <value>打开/关闭校准窗口，以
+从内标确定 2theta 偏移。</value>
+  </data>
+  <data name="checkBoxMaskingMode.ToolTip" xml:space="preserve">
+    <value>步骤 2: 掩膜所选 x 范围并以
+多项式插值替换 (如用于去除伪影)。</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.ToolTip" xml:space="preserve">
+    <value>启用直接在图上用鼠标
+设置/显示掩膜范围。</value>
+  </data>
+  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+    <value>用于在掩膜范围内插值的多项式次数
+(0-5)。越高 = 曲线越灵活。</value>
+  </data>
+  <data name="listBoxMaskRanges.ToolTip" xml:space="preserve">
+    <value>掩膜范围列表 (横轴上的
+起始-终止)。选择其一可将其
+高亮；拖入 .mas 文件以加载范围。</value>
+  </data>
+  <data name="buttonDeleteMask.ToolTip" xml:space="preserve">
+    <value>删除列表中所选的掩膜范围。</value>
+  </data>
+  <data name="buttonDeleteAllMask.ToolTip" xml:space="preserve">
+    <value>删除此谱线的所有掩膜范围。</value>
+  </data>
+  <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
+    <value>步骤 3: 使用 Savitzky-Golay 滤波器平滑谱线。</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 窗口半宽（每侧的
+点数）。值越大平滑越强。</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 多项式阶数（0-5）。
+越高越能保留峰形，但平滑越弱。</value>
+  </data>
+  <data name="checkBoxBandPassFilter.ToolTip" xml:space="preserve">
+    <value>步骤4：应用 FFT 带通滤波器以
+抑制不需要的频率成分。</value>
+  </data>
+  <data name="checkBoxHighPassFilter.ToolTip" xml:space="preserve">
+    <value>启用高通滤波器：去除低于阈值的
+低频（长周期）成分。</value>
+  </data>
+  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+    <value>高通截止频率（单位为
+1/[横轴单位]）；低于该值的成分
+将被去除。范围随数据自动调整。</value>
+  </data>
+  <data name="checkBoxLowPassFilter.ToolTip" xml:space="preserve">
+    <value>启用低通滤波器：去除高于阈值的
+高频（短周期噪声）成分。</value>
+  </data>
+  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+    <value>低通截止频率（单位为
+1/[横轴单位]）；高于该值的成分
+将被去除。范围随数据自动调整。</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.ToolTip" xml:space="preserve">
+    <value>步骤5：从谱线中剥离 Kalpha2 成分
+（仅当光源为 X 射线 Kalpha1
+谱线时）。</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.ToolTip" xml:space="preserve">
+    <value>步骤6：从谱线中扣除背景曲线。</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.ToolTip" xml:space="preserve">
+    <value>将背景定义为通过手动/自动放置
+的点的 B 样条曲线。</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>使用另一条谱线作为参考背景进行扣除。</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
+    <value>沿谱线自动放置指定数量的
+背景点。</value>
+  </data>
+  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+    <value>用于自动检测 / B 样条拟合的
+背景点数量（3-50）。</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>选择以哪条已载入的谱线
+作为参考背景。</value>
+  </data>
+  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+    <value>扣除前与参考背景相乘的
+比例系数。</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
+    <value>在图上显示/隐藏背景曲线
+（须已启用背景扣除）。</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>步骤7：将所选 x 范围内的强度
+归一化到目标值。</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.ToolTip" xml:space="preserve">
+    <value>归一化使该范围内的平均强度
+等于目标值。</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
+    <value>归一化使该范围内的最大强度
+等于目标值。</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+    <value>用于计算归一化的范围的
+下限（横轴单位）。</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+    <value>用于计算归一化的范围的
+上限（横轴单位）。</value>
+  </data>
+  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>范围的平均/最大强度被缩放到的
+目标强度值（1-100000）。</value>
+  </data>
+  <data name="buttonApplyAllProfiles.ToolTip" xml:space="preserve">
+    <value>将当前处理设置应用到
+所有谱线（不含背景设置）。</value>
+  </data>
+  <data name="xAxisUserControl.ToolTip" xml:space="preserve">
+    <value>编辑光源横轴设置（横轴类型
+2theta/d/能量/TOF、光源、
+波长、出射角）。用“Change”应用。</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.ToolTip" xml:space="preserve">
+    <value>将编辑后的横轴光源设置
+（及曝光时间）应用到所选谱线。</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>将整条谱线沿横轴
+平移固定的量。</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>谱线沿横轴的平移量
+（横轴单位）。</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+    <value>曝光时间（秒），用于将强度换算为
+纵轴上的每秒计数（CPS）。</value>
+  </data>
+  <data name="radioButtonAverage.ToolTip" xml:space="preserve">
+    <value>运算模式：对所选的多条谱线
+求平均（含误差传播）。</value>
+  </data>
+  <data name="radioButtonProfileAndValue.ToolTip" xml:space="preserve">
+    <value>运算模式：将一条谱线与
+一个常数值组合（加或乘）。</value>
+  </data>
+  <data name="radioButtonTwoProfiles.ToolTip" xml:space="preserve">
+    <value>运算模式：在两条所选谱线之间
+执行 +、-、* 或 /。</value>
+  </data>
+  <data name="radioButtonAddition.ToolTip" xml:space="preserve">
+    <value>选择加法（+）作为运算。</value>
+  </data>
+  <data name="radioButtonSubtraction.ToolTip" xml:space="preserve">
+    <value>选择减法（-）作为运算。</value>
+  </data>
+  <data name="radioButtonMutiplication.ToolTip" xml:space="preserve">
+    <value>选择乘法作为运算（按钮上
+不显示符号；此为乘法运算符）。</value>
+  </data>
+  <data name="radioButtonDivision.ToolTip" xml:space="preserve">
+    <value>选择除法作为运算（按钮上
+不显示符号；此为除法运算符）。</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
+    <value>在“Profile and value”模式下与谱线
+进行运算的常数值。</value>
+  </data>
+  <data name="listBoxTwoProfiles1.ToolTip" xml:space="preserve">
+    <value>选择运算的第一（主）谱线；
+在平均模式下允许多选。</value>
+  </data>
+  <data name="listBoxTwoProfiles2.ToolTip" xml:space="preserve">
+    <value>选择双谱线运算中的第二条谱线。</value>
+  </data>
+  <data name="textBoxOutputFilename.ToolTip" xml:space="preserve">
+    <value>为新生成的结果谱线指定的名称
+（每次计算后末尾的编号
+自动递增）。</value>
+  </data>
+  <data name="buttonCalculate.ToolTip" xml:space="preserve">
+    <value>执行所选运算并将结果
+作为新谱线添加。</value>
+  </data>
+</root>

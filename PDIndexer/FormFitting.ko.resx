@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="buttonResetTakeoffAngle.Text" xml:space="preserve">
+    <value>테이크오프 각도 재설정</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
+    <value>클립보드에 복사</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
+    <value>정밀화한 격자 상수를 클립보드에
+복사합니다. Excel에 직접 붙여넣을 수 있습니다.</value>
+  </data>
+  <data name="buttonConfirm.Text" xml:space="preserve">
+    <value>선택한 결정에 적용</value>
+  </data>
+  <data name="buttonConfirm.ToolTip" xml:space="preserve">
+    <value>정밀화한 격자 상수를 선택한
+결정의 격자 상수로 적용합니다.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>최적화한 격자 상수</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
+    <value>클립보드에 복사</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
+    <value>아래 표 데이터를 클립보드에 복사합니다.
+Excel에 직접 붙여넣을 수 있습니다.</value>
+  </data>
+  <data name="radioButtonEachCrystal.Text" xml:space="preserve">
+    <value>각 결정에 대해</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Text" xml:space="preserve">
+    <value>결정 간</value>
+  </data>
+  <data name="radioButtonSymmetricPearson.Text" xml:space="preserve">
+    <value>대칭 Pearson VII</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.Text" xml:space="preserve">
+    <value>대칭 Pseudo Voigt</value>
+  </data>
+  <data name="radioButtonSimple.Text" xml:space="preserve">
+    <value>단순 검색</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
+    <value>전체에 적용</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
+    <value>위에서 선택한 피크 형상 함수를
+이 결정의 모든 피크에 적용합니다.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>피크 함수</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
+    <value>전체에 적용</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
+    <value>위의 초기 FWHM 값을 모든 피크의
+초기 피크 폭으로 적용합니다.</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>단위</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Text" xml:space="preserve">
+    <value>초기 FWHM</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.Text" xml:space="preserve">
+    <value>패턴 분해</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>검색 범위</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>단위</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Text" xml:space="preserve">
+    <value>전체에 적용</value>
+  </data>
+  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
+    <value>위의 검색 범위(피팅 창의
+반폭)를 모든 피크에 적용합니다.</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>피팅 옵션</value>
+  </data>
+  <data name="Check.HeaderText" xml:space="preserve">
+    <value>선택</value>
+  </data>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>피크 색</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>결정</value>
+  </data>
+  <data name="calcXDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>계산 X</value>
+  </data>
+  <data name="functionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>함수</value>
+  </data>
+  <data name="xErrDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>X 오차</value>
+  </data>
+  <data name="intensityDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>강도</value>
+  </data>
+  <data name="weightDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>가중치</value>
+  </data>
+  <data name="copyToClipboradToolStripMenuItem.Text" xml:space="preserve">
+    <value>클립보드에 복사</value>
+  </data>
+  <data name="buttonSendToCellFinder.Text" xml:space="preserve">
+    <value>d-값을 
+CellFinder 
+&amp;&amp; AtomicPositionFinder로 전송</value>
+  </data>
+  <data name="buttonRemovePeaks.Text" xml:space="preserve">
+    <value>피팅된 피크 제거</value>
+  </data>
+  <data name="buttonRemovePeaks.ToolTip" xml:space="preserve">
+    <value>선택한 결정의 피팅된 피크 프로파일을 현재
+프로파일에서 빼서 새 프로파일(아래에서
+명명)을 생성합니다. Simple 탐색 피크는
+제외됩니다.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>새 프로파일 이름</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>피크 제거</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>d-값 전송</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Text" xml:space="preserve">
+    <value>CSV로 저장</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.ToolTip" xml:space="preserve">
+    <value>아래 테이블 데이터를 CSV 파일로 저장합니다.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.HeaderText" xml:space="preserve">
+    <value>유효 자릿수</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>피크 테이블에 표시되는 유효 자릿수(1-16).
+표시 전용이며 피팅에는 영향을 주지 않습니다.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
+    <value>피크 테이블에 표시되는 유효 자릿수(1-16).
+표시 전용이며 피팅에는 영향을 주지 않습니다.</value>
+  </data>
+  <data name="buttonClearPeaks.Text" xml:space="preserve">
+    <value>피크 지우기</value>
+  </data>
+  <data name="buttonClearPeaks.ToolTip" xml:space="preserve">
+    <value>선택한 결정에 수동으로 추가한 모든 피크를
+지웁니다(Flexible 모드 전용).</value>
+  </data>
+</root>

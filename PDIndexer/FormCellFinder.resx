@@ -360,8 +360,8 @@ as a new row in the peak list.</value>
 Indexed h k l, d_calc and diff appear after a search.</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>Start the auto-indexing search; click again
-(the label changes to 'Stop!') to cancel it.</value>
+    <value>Start the auto-indexing search.
+While running, click again to cancel it.</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>Resume the search keeping the current candidates

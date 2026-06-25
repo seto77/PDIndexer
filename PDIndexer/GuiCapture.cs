@@ -17,7 +17,7 @@ namespace PDIndexer;
 /// 各フォームを画面内 (0,0) に最前面表示し、<see cref="Graphics.CopyFromScreen(Point, Point, Size)"/> で実描画をそのまま撮る。
 /// 通常起動 (引数なし) では一切実行されない。
 /// </summary>
-internal static class GuiCapture
+internal static partial class GuiCapture //260625Cl partial 化: --diagnose を GuiCapture.Diagnose.cs に分割 (多言語化 Phase 3)
 {
     /// <summary>
     /// 260601Cl: --capture で言語を強制指定 (en/ja) した場合のカルチャ。
@@ -43,7 +43,9 @@ internal static class GuiCapture
     private static string DefaultAutoCaptureDir()
     {
         var culture = ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture;
-        var langDir = culture.Name == "ja" ? "cap-ja-auto" : "cap-en-auto";
+        // 260625Cl 変更: en/ja 固定から SupportedCultures 駆動の cap-{culture}-auto へ (多言語化 Phase 0、ReciPro と同命名)。
+        //   旧: var langDir = culture.Name == "ja" ? "cap-ja-auto" : "cap-en-auto";
+        var langDir = $"cap-{Crystallography.SupportedCultures.Resolve(culture.Name).Name}-auto";
         var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
         while (dir != null && dir.Name != "bin")
             dir = dir.Parent;

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkBoxLowEnergyCutoff.Text" xml:space="preserve">
+    <value>低能量截止</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>E  = a₀ + a₁ n + a₂ n²    E：能量 (eV)，  n：通道編號</value>
+  </data>
+  <data name="groupBoxEDX.Text" xml:space="preserve">
+    <value>SSD 資料用 (*.rpf, *.npd, *.xbm, *.nxs)</value>
+  </data>
+  <data name="buttonOK.Text" xml:space="preserve">
+    <value>確定</value>
+  </data>
+  <data name="buttonCancel.Text" xml:space="preserve">
+    <value>取消</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>秒</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>此選項已移至「輪廓參數」表單。
+若需移除 Kα2，請選擇 Kα1 作為 X射線源。
+</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>解迴旋</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>曝光時間 (每步)</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>資料轉換器</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>每個資料步的曝光（測量）時間，
+單位為秒。&lt;= 0 的值視為 1。</value>
+  </data>
+  <data name="checkBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>啟用後將 EDX 能譜中低於右側閾值的
+低能量端截除。</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.ToolTip" xml:space="preserve">
+    <value>能量閾值 (eV)，低於此值的 EDX 能譜
+將被捨棄；由左側核取方塊啟用。</value>
+  </data>
+  <data name="horizontalAxisUserControl.ToolTip" xml:space="preserve">
+    <value>設定資料的橫軸類型及
+相關的源參數（波長/能量、
+2theta、TOF 距離/角度等）。</value>
+  </data>
+  <data name="buttonOK.ToolTip" xml:space="preserve">
+    <value>套用設定並轉換資料。</value>
+  </data>
+  <data name="buttonCancel.ToolTip" xml:space="preserve">
+    <value>取消轉換。</value>
+  </data>
+</root>

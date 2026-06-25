@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>結晶資訊</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>⇐
+新增
+⇐</value>
+  </data>
+  <data name="buttonChange.Text" xml:space="preserve">
+    <value>⇔
+取
+代
+⇔</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
+    <value>勾選</value>
+  </data>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="Crystal.HeaderText" xml:space="preserve">
+    <value>結晶</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>刪除</value>
+  </data>
+  <data name="buttonAllClear.Text" xml:space="preserve">
+    <value>全部刪除</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>結晶清單</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
+    <value>角度閾值</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
+    <value>增量 &amp;&amp; 小數位數</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
+    <value>能量閾值</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Text" xml:space="preserve">
+    <value>合併相鄰峰:</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>像素</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Text" xml:space="preserve">
+    <value>所有已勾選結晶</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
+    <value>僅選取的結晶</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Text" xml:space="preserve">
+    <value>在輪廓上方顯示峰</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Text" xml:space="preserve">
+    <value>顯示峰指數</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
+    <value>隱藏峰
+ 低於</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
+    <value>強度可縮放</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.ToolTip" xml:space="preserve">
+    <value>若要以滑鼠拖曳變更繞射峰高度，請勾選。
+（相對強度比例始終保留）</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
+    <value>計算強度比</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.ToolTip" xml:space="preserve">
+    <value>若要依據結晶結構計算繞射峰
+的強度比，請勾選</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
+    <value>在輪廓下方
+ 顯示峰</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>繞射峰選項</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>結晶資料庫</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>勾選</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>結晶</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>結晶</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>結晶</value>
+  </data>
+  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>結晶</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>繞射線/結晶資訊</value>
+  </data>
+</root>

@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonExecute.Text" xml:space="preserve">
+    <value>Выполнить</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="tabPageDspacing.Text" xml:space="preserve">
+    <value>Межплоскостное расстояние (Å)</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="tabPageIntensity.Text" xml:space="preserve">
+    <value>Интенсивность</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="tabPageCellConstants.Text" xml:space="preserve">
+    <value>Параметры ячейки (Å, °)</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="tabPagePressure.Text" xml:space="preserve">
+    <value>Давление (GPa)</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
+    <value>Автосохранение</value>
+  </data>
+  <data name="tabPageSingh.Text" xml:space="preserve">
+    <value>Уравнение Сингха</value>
+  </data>
+  <data name="buttonCopy.Text" xml:space="preserve">
+    <value>Копировать</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>Сохранить</value>
+  </data>
+  <data name="checkBoxLoop.Text" xml:space="preserve">
+    <value>Цикл</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Text" xml:space="preserve">
+    <value>Коэффициент допуска (выводить NaN, 
+если изменение объёма превышает 
+это значение при серийном анализе)</value>
+  </data>
+  <data name="checkBoxStartNumber.Text" xml:space="preserve">
+    <value>Выполнять анализ с 
+указанного номера 
+(прим.: первый — 0)</value>
+  </data>
+  <data name="buttonSetDirectory.Text" xml:space="preserve">
+    <value>Задать</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Каталог для сохранения</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Серийный анализ</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>Запуск серийного анализа: последовательно подгоняет
+каждый загруженный профиль и сводит в таблицу 2theta, межплоскостное
+расстояние, FWHM, интенсивность, параметры ячейки и давление.
+Требует открытого окна Fitting с отмеченными пиками.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>Копировать таблицу активной вкладки
+в буфер обмена (с разделением табуляцией).</value>
+  </data>
+  <data name="buttonSave.ToolTip" xml:space="preserve">
+    <value>Сохранить таблицу активной вкладки в файл CSV.</value>
+  </data>
+  <data name="checkBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>Начать анализ с профиля с номером,
+заданным справа, а не с первого
+(первый профиль имеет номер 0).</value>
+  </data>
+  <data name="numericBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>Индекс профиля для начала (целое число, минимум 1);
+доступно только при включённом «начать с номера».</value>
+  </data>
+  <data name="checkBoxLoop.ToolTip" xml:space="preserve">
+    <value>При старте с номера также обработать
+пропущенные ранние профили (0 ... начало-1)
+после достижения конца, с переходом по кругу.</value>
+  </data>
+  <data name="checkBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>Отбраковать подгонку (вывести NaN), если уточнённый
+объём ячейки изменяется от начального значения
+более чем на коэффициент допуска, заданный справа.</value>
+  </data>
+  <data name="numericBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>Допустимое изменение объёма ячейки в процентах
+(0-100%); подгонки сверх него отбрасываются.</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять результаты 2theta в
+'*_2theta.csv' в выбранном каталоге после анализа.</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять результаты межплоскостного
+расстояния в '*_d.csv' после анализа.</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять результаты FWHM (полная
+ширина на полувысоте) в '*_fwhm.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять результаты интегральной
+интенсивности в '*_intensity.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять результаты параметров
+ячейки (с погрешностями) в '*_cell.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять результаты давления в '*_pressure.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.ToolTip" xml:space="preserve">
+    <value>Автоматически сохранять параметры уравнения
+Сингха в '*_Singh.csv'.</value>
+  </data>
+  <data name="buttonSetDirectory.ToolTip" xml:space="preserve">
+    <value>Выбрать папку, в которую записываются автосохраняемые файлы CSV.</value>
+  </data>
+  <data name="textBoxDirectory.ToolTip" xml:space="preserve">
+    <value>Показывает папку назначения для автосохраняемых
+файлов; задаётся кнопкой «Задать».</value>
+  </data>
+  <data name="textBox2theta.ToolTip" xml:space="preserve">
+    <value>Положения пиков 2theta по профилям
+(в градусах), по одной строке на профиль.</value>
+  </data>
+  <data name="textBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Межплоскостные расстояния по профилям (Angstrom).</value>
+  </data>
+  <data name="textBoxFWHM.ToolTip" xml:space="preserve">
+    <value>FWHM пиков по профилям (полная ширина на полувысоте, в градусах).</value>
+  </data>
+  <data name="textBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Интегральные интенсивности пиков по профилям.</value>
+  </data>
+  <data name="textBoxCellConstants.ToolTip" xml:space="preserve">
+    <value>Уточнённый объём ячейки и параметры ячейки
+a-gamma с погрешностями по профилям (Angstrom, в градусах).</value>
+  </data>
+  <data name="textBoxPressure.ToolTip" xml:space="preserve">
+    <value>Давление по профилям (GPa), полученное из
+уравнения состояния выбранного стандартного материала.</value>
+  </data>
+  <data name="textBoxSingh.ToolTip" xml:space="preserve">
+    <value>Параметры уравнения Сингха (d0, Psi_max, t/6*G_hkl),
+уточнённые из профилей анализа напряжений.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>График подобранного уравнения Сингха:
+межплоскостное расстояние d от азимута Psi (0-360 градусов).</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value>Переключение между категориями результатов (2theta / d /
+FWHM / интенсивность / ячейка / давление / Singh);
+Копировать и Сохранить действуют на выбранную в данный момент вкладку.</value>
+  </data>
+</root>

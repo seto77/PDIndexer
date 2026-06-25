@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Informations sur le cristal</value>
+  </data>
+  <data name="buttonAdd.Text" xml:space="preserve">
+    <value>⇐
+Ajouter
+⇐</value>
+  </data>
+  <data name="buttonChange.Text" xml:space="preserve">
+    <value>⇔
+Rem-
+placer
+⇔</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Cocher</value>
+  </data>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>Couleur du pic</value>
+  </data>
+  <data name="Crystal.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="buttonDelete.Text" xml:space="preserve">
+    <value>Supprimer</value>
+  </data>
+  <data name="buttonAllClear.Text" xml:space="preserve">
+    <value>Tout supprimer</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Liste des cristaux</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
+    <value>Seuil d'angle</value>
+  </data>
+  <data name="incrementToolStripMenuItem.Text" xml:space="preserve">
+    <value>Incrément &amp;&amp; décimales</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
+    <value>Seuil d'énergie</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Text" xml:space="preserve">
+    <value>Fusionner les pics adjacents:</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Text" xml:space="preserve">
+    <value>tous les cristaux cochés</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
+    <value>cristal sélectionné uniquement</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Text" xml:space="preserve">
+    <value>Afficher les pics sur les profils</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Text" xml:space="preserve">
+    <value>Afficher les indices des pics</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
+    <value>Masquer les pics
+ en dessous de</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
+    <value>Intensité ajustable</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.ToolTip" xml:space="preserve">
+    <value>Cochez si vous souhaitez modifier la hauteur des pics de diffraction par glissement de souris.
+(le rapport d'intensité relative est toujours conservé)</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
+    <value>Calculer le rapport d'intensité</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.ToolTip" xml:space="preserve">
+    <value>Cochez si vous souhaitez calculer les rapports d'intensité
+des pics de diffraction à partir des structures cristallines</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
+    <value>Afficher les pics
+ sous le profil</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Options des pics de diffraction</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Base de données des cristaux</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Cocher</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>Couleur du pic</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn1.HeaderText" xml:space="preserve">
+    <value>Couleur du pic</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>Couleur du pic</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
+    <value>Couleur du pic</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Paramètres du cristal</value>
+  </data>
+</root>

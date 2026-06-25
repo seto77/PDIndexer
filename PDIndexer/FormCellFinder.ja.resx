@@ -180,8 +180,8 @@ Medium=0.5, Low=0.1）に反映します。</value>
 ます。探索後は h k l・d_calc・diff が表示されます。</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>自動指数付け探索を開始します。実行中はラベル
-が 'Stop!' に変わり、再クリックで中止します。</value>
+    <value>自動指数付け検索を開始します。
+実行中にもう一度クリックすると中止します。</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>Find と同じ処理で探索を再開します

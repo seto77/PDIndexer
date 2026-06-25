@@ -108,6 +108,7 @@ nav:
       - Appendix:
           - Runtime and installation: en/appendix/runtime-and-installation.md
           - File formats: en/appendix/file-formats.md
+          - Algorithms: en/appendix/algorithms.md
           - Troubleshooting: en/appendix/troubleshooting.md
   - 日本語:
       - ホーム: ja/index.md
@@ -123,4 +124,5 @@ nav:
       - 付録:
           - 動作環境とインストール: ja/appendix/runtime-and-installation.md
           - ファイル形式: ja/appendix/file-formats.md
+          - アルゴリズム解説: ja/appendix/algorithms.md
           - トラブルシューティング: ja/appendix/troubleshooting.md

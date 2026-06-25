@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>검색할 결정계입니다. 자유로운 격자 상수의
+개수를 결정하며(삼사정계=6 … 입방정계=1), 미지수가
+적을수록 더 빠르고 더 제약된 검색이 됩니다.</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축 길이 a (Å)의 하한입니다.
+이 범위를 벗어난 a를 가진 후보는 기각됩니다.</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축 길이 a (Å)의 상한입니다.</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축 길이 b (Å)의 하한입니다.</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축 길이 b (Å)의 상한입니다.</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축 길이 c (Å)의 하한입니다.</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축 길이 c (Å)의 상한입니다.</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축간각
+alpha (도)의 하한입니다.</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축간각 alpha (도, 최대 180)의 상한입니다.</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축간각
+beta (도)의 하한입니다.</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축간각 beta (도, 최대 180)의 상한입니다.</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축간각
+gamma (도)의 하한입니다.</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>검색에 사용할 축간각 gamma (도, 최대 180)의 상한입니다.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>관측된 면간 거리를 변환하는 데 사용하는
+방사선원과 파장입니다(기본값 Cu Kalpha1, 0.15418 nm).</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>아래 목록에 추가할 피크의 관측 면간 거리(Å)입니다.</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>추가할 피크의 신뢰도
+(High/Medium/Low)입니다. 최소제곱
+적합의 가중치에 반영됩니다(High=1, Medium=0.5, Low=0.1).</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>입력한 면간 거리와 신뢰도를
+피크 목록에 새 행으로 추가합니다.</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>관측된 피크의 편집 가능한 목록입니다. 'Use for Calc.
+'를 체크하고 신뢰도와 d_obs를 설정하며, Delete로 행을 삭제합니다.
+색인된 h k l, d_calc, diff는 검색 후 표시됩니다.</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>자동 지수화 검색을 시작합니다.
+실행 중 다시 클릭하면 취소됩니다.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>현재 후보를 지우지 않고 유지한 채
+검색을 재개합니다(Find 핸들러를 공유함).</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>R로 정렬된 후보 격자(상위 300개)입니다. 행을
+클릭하면 해당 hkl 색인을 피크 목록에
+적용하고 지도에서 강조합니다. SigmadQ와
+R은 적합도 지표입니다(작을수록 좋음).</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>분포도의 X축에 표시할
+격자 상수(a/b/c/alpha/beta/gamma)입니다.</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>분포도의 Y축에 표시할
+격자 상수(a/b/c/alpha/beta/gamma)입니다.</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>선택한 X-Y 파라미터 공간에서 후보 격자의
+산점도이며, R(적합도 지표)로 색을 입힙니다.</value>
+  </data>
+</root>

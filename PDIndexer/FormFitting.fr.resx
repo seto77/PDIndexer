@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="buttonResetTakeoffAngle.Text" xml:space="preserve">
+    <value>Réinitialiser l'angle de take-off</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
+    <value>Copier dans le presse-papiers</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
+    <value>Copier les paramètres de maille optimisés dans le
+presse-papiers. Collage direct possible dans Excel.</value>
+  </data>
+  <data name="buttonConfirm.Text" xml:space="preserve">
+    <value>Appliquer au cristal</value>
+  </data>
+  <data name="buttonConfirm.ToolTip" xml:space="preserve">
+    <value>Appliquer les paramètres de maille optimisés
+comme ceux du cristal sélectionné.</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Paramètres de maille optimisés</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
+    <value>Copier dans le presse-papiers</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
+    <value>Copier les données du tableau ci-dessous dans le presse-papiers.
+Collage direct possible dans Excel.</value>
+  </data>
+  <data name="radioButtonEachCrystal.Text" xml:space="preserve">
+    <value>pour chaque cristal</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Text" xml:space="preserve">
+    <value>entre les cristaux</value>
+  </data>
+  <data name="radioButtonSymmetricPearson.Text" xml:space="preserve">
+    <value>Pearson VII symétrique</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.Text" xml:space="preserve">
+    <value>Pseudo-Voigt symétrique</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.Text" xml:space="preserve">
+    <value>Pseudo-Voigt asymétrique</value>
+  </data>
+  <data name="radioButtonSimple.Text" xml:space="preserve">
+    <value>Recherche simple</value>
+  </data>
+  <data name="radioButtonSplitPearson.Text" xml:space="preserve">
+    <value>Pearson VII asymétrique</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
+    <value>Appliquer à tous</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
+    <value>Appliquer la fonction de forme de pic sélectionnée
+ci-dessus à tous les pics de ce cristal.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Fonction de pic</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
+    <value>Appliquer à tous</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
+    <value>Appliquer la valeur FWHM initiale ci-dessus à tous
+les pics comme largeur de pic de départ.</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>unité</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Text" xml:space="preserve">
+    <value>FWHM initiale</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.Text" xml:space="preserve">
+    <value>Décomposition du diagramme</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Plage de recherche</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>unité</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Text" xml:space="preserve">
+    <value>Appliquer à tous</value>
+  </data>
+  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
+    <value>Appliquer la plage de recherche (demi-largeur de
+la fenêtre d'ajustement) ci-dessus à tous les pics.</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Options d'ajustement</value>
+  </data>
+  <data name="Check.HeaderText" xml:space="preserve">
+    <value>Sélection</value>
+  </data>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>Couleur du pic</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="calcXDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>X calc.</value>
+  </data>
+  <data name="functionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Fonct.</value>
+  </data>
+  <data name="xErrDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Err. X</value>
+  </data>
+  <data name="intensityDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Intensité</value>
+  </data>
+  <data name="weightDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Poids</value>
+  </data>
+  <data name="copyToClipboradToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copier dans le presse-papiers</value>
+  </data>
+  <data name="buttonSendToCellFinder.Text" xml:space="preserve">
+    <value>Envoyer les valeurs d 
+vers CellFinder 
+&amp;&amp; AtomicPositionFinder</value>
+  </data>
+  <data name="buttonRemovePeaks.Text" xml:space="preserve">
+    <value>Supprimer les pics ajustés</value>
+  </data>
+  <data name="buttonRemovePeaks.ToolTip" xml:space="preserve">
+    <value>Soustrait les profils de pics ajustés du
+cristal sélectionné du profil actuel et
+crée un nouveau profil (nommé ci-dessous).
+Les pics Simple-search sont exclus.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Nom du nouveau profil</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Supprimer les pics</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Envoyer les valeurs d</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Text" xml:space="preserve">
+    <value>Enregistrer en CSV</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.ToolTip" xml:space="preserve">
+    <value>Enregistre les données du tableau ci-dessous dans un fichier CSV.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.HeaderText" xml:space="preserve">
+    <value>Chiffres signif.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>Nombre de chiffres significatifs affichés dans le
+tableau des pics (1-16). Affichage uniquement ; sans effet sur l'ajustement.</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
+    <value>Nombre de chiffres significatifs affichés dans le
+tableau des pics (1-16). Affichage uniquement ; sans effet sur l'ajustement.</value>
+  </data>
+  <data name="buttonClearPeaks.Text" xml:space="preserve">
+    <value>Effacer les pics</value>
+  </data>
+  <data name="buttonClearPeaks.ToolTip" xml:space="preserve">
+    <value>Efface tous les pics ajoutés manuellement du
+cristal sélectionné (mode Flexible uniquement).</value>
+  </data>
+</root>

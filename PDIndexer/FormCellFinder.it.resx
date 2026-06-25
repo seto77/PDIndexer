@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Sistema cristallino da cercare. Imposta il numero di
+parametri di cella liberi (triclino=6 ... cubico=1); meno
+incognite significa una ricerca più rapida e più vincolata.</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>Limite inferiore della lunghezza dell'asse a (Å) per la ricerca.
+I candidati con a fuori da questo intervallo vengono scartati.</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>Limite superiore della lunghezza dell'asse a (Å) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>Limite inferiore della lunghezza dell'asse b (Å) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>Limite superiore della lunghezza dell'asse b (Å) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>Limite inferiore della lunghezza dell'asse c (Å) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>Limite superiore della lunghezza dell'asse c (Å) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>Limite inferiore dell'angolo interassiale
+alpha (gradi) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>Limite superiore dell'angolo interassiale alpha (gradi, max 180).</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>Limite inferiore dell'angolo interassiale
+beta (gradi) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>Limite superiore dell'angolo interassiale beta (gradi, max 180).</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>Limite inferiore dell'angolo interassiale
+gamma (gradi) per la ricerca.</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>Limite superiore dell'angolo interassiale gamma (gradi, max 180).</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Sorgente di radiazione e lunghezza d'onda usate per convertire
+le distanze interplanari d osservate (predefinito Cu Kalpha1, 0.15418 nm).</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>Distanza interplanare d (Å) osservata del picco da aggiungere all'elenco sotto.</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>Affidabilità del picco da aggiungere
+(High/Medium/Low); pesa l'adattamento
+ai minimi quadrati (High=1, Medium=0.5, Low=0.1).</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Aggiunge la distanza interplanare d e l'affidabilità inserite
+come nuova riga nell'elenco dei picchi.</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>Elenco modificabile dei picchi osservati: seleziona 'Use for Calc.
+', imposta affidabilità e d_obs; Elimina rimuove una riga.
+h k l indicizzati, d_calc e diff compaiono dopo una ricerca.</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>Avvia la ricerca di indicizzazione automatica.
+Durante l'esecuzione, fai di nuovo clic per annullarla.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Riprende la ricerca mantenendo i candidati attuali
+anziché cancellarli (condivide il gestore di Find).</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>Celle candidate (le migliori 300) ordinate per R; fai clic
+su una riga per applicare la sua indicizzazione hkl all'elenco
+dei picchi ed evidenziarla sulla mappa. SigmadQ e
+R sono indici di merito (più piccolo è meglio).</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>Parametro di cella (a/b/c/alpha/beta/gamma)
+rappresentato sull'asse X della mappa di distribuzione.</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>Parametro di cella (a/b/c/alpha/beta/gamma)
+rappresentato sull'asse Y della mappa di distribuzione.</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>Mappa a dispersione delle celle candidate nello spazio dei
+parametri X-Y scelto, colorata per R (indice di merito).</value>
+  </data>
+</root>
