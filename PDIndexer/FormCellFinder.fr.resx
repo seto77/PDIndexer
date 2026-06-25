@@ -126,8 +126,8 @@ comme nouvelle ligne dans la liste des pics.</value>
 Les h k l indexés, d_calc et diff apparaissent après une recherche.</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>Lance la recherche d'indexation automatique ; cliquez à nouveau
-(le libellé devient 'Stop!') pour l'annuler.</value>
+    <value>Lancer la recherche d'indexation automatique.
+Pendant l'exécution, cliquez de nouveau pour l'annuler.</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>Reprend la recherche en conservant les candidats actuels

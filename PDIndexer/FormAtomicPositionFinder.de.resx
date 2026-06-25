@@ -184,9 +184,9 @@ Niedrigere Werte verwerfen dichtere Anordnungen stärker.</value>
 Suche (1-16). Höhere Werte nutzen mehr CPU-Kerne.</value>
   </data>
   <data name="buttonStart.ToolTip" xml:space="preserve">
-    <value>Startet eine neue Strukturensuche von Grund auf
-(löscht vorherige Kandidaten). Während des Laufs zeigt sie
-'Stop!' an und stoppt die Suche beim Anklicken.</value>
+    <value>Eine neue Struktursuche von Grund auf starten
+(löscht vorherige Kandidaten).
+Während des Laufs klicken, um die Suche zu stoppen.</value>
   </data>
   <data name="buttonResume.ToolTip" xml:space="preserve">
     <value>Setzt die Suche fort und verwendet die aktuelle Kandidatenliste

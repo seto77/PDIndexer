@@ -184,9 +184,9 @@ Index 열에는 할당된 hkl이 표시됩니다.</value>
 (1-16). 값이 클수록 더 많은 CPU 코어를 사용합니다.</value>
   </data>
   <data name="buttonStart.ToolTip" xml:space="preserve">
-    <value>구조 검색을 처음부터 새로 시작합니다
-(이전 후보를 지움). 실행 중에는 'Stop!'을
-표시하며 클릭하면 검색을 중단합니다.</value>
+    <value>새 구조 탐색을 처음부터 시작합니다
+(이전 후보를 지웁니다).
+실행 중 클릭하면 탐색을 중지합니다.</value>
   </data>
   <data name="buttonResume.ToolTip" xml:space="preserve">
     <value>현재 후보 목록을 지우지 않고 시작 집단으로

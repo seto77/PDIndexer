@@ -184,9 +184,9 @@ Valori più bassi rifiutano disposizioni più affollate.</value>
 ricerca (1-16). Valori più alti usano più core CPU.</value>
   </data>
   <data name="buttonStart.ToolTip" xml:space="preserve">
-    <value>Avvia una nuova ricerca strutturale da zero
-(cancella i candidati precedenti). Durante l'esecuzione
-mostra 'Stop!' e ferma la ricerca quando viene cliccato.</value>
+    <value>Avvia una nuova ricerca di struttura da zero
+(cancella i candidati precedenti).
+Durante l'esecuzione, fai clic per interrompere la ricerca.</value>
   </data>
   <data name="buttonResume.ToolTip" xml:space="preserve">
     <value>Riprende la ricerca usando l'elenco di candidati corrente

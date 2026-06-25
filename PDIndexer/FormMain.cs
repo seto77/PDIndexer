@@ -621,7 +621,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                     resetClipboardViewer();
                             }
                         }
-                        catch { MessageBox.Show("Failed to read clipboard information. Sorry."); }
+                        catch { MessageBox.Show(PdiText.ClipboardFail); } //260625Cl 多言語化: 旧 "Failed to read clipboard information. Sorry."
                         finally { mutex.ReleaseMutex(); }
 
                         if ((int)NextHandle != 0)
@@ -930,11 +930,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         comboBoxScale2.SelectedIndex = 0;
 
         initialDialog.Text = "Now Loading... Trying dummy mouse operation.";
-        initialDialog.Text = "Initializing has been finished successfully. You can close this window.";
+        initialDialog.Text = PdiText.InitFinished; //260625Cl 多言語化(永続表示する完了メッセージ)
         if (initialDialog.AutomaticallyClose)
             initialDialog.Visible = false;
 
-        toolStripStatusLabelCalcTime.Text = "Initial loading time: " + stopwatch.ElapsedMilliseconds + " ms.";
+        toolStripStatusLabelCalcTime.Text = string.Format(PdiText.InitLoadTime, stopwatch.ElapsedMilliseconds); //260625Cl 多言語化
 
     }
 
@@ -2849,7 +2849,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
             if (i % 10 == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
             {
-                if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following profiles?", "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(PdiText.MultiProfileSetting, PdiText.TitleOption, MessageBoxButtons.YesNo) == DialogResult.Yes) //260625Cl 多言語化
                 {
                     stopwatch.Restart();
                     showFormDataConverter = false;
@@ -3563,7 +3563,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 }
                 catch
                 {
-                    MessageBox.Show("ファイルが書き込みません");
+                    MessageBox.Show(PdiText.CannotWriteFile); //260625Cl 多言語化(旧 日本語only "ファイルが書き込みません" を英語 canonical 化)
                 }
         }
     }
@@ -3586,7 +3586,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         }
         catch
         {
-            MessageBox.Show("ファイルが書き込みません");
+            MessageBox.Show(PdiText.CannotWriteFile); //260625Cl 多言語化(旧 日本語only "ファイルが書き込みません" を英語 canonical 化)
         }
 
     }
@@ -4100,7 +4100,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             var merge = true;
-            var result = MessageBox.Show("Merge the profiles to one file? \r\n(if select No, each profiles will be saved separately \r\nwith the name of the input filename plus 'Profile Name'.)", "Export option", MessageBoxButtons.YesNoCancel);
+            var result = MessageBox.Show(PdiText.MergeProfiles, PdiText.TitleExportOption, MessageBoxButtons.YesNoCancel); //260625Cl 多言語化
             if (result == DialogResult.No)
                 merge = false;
             else if (result == DialogResult.Cancel)
@@ -4598,11 +4598,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 if (ProgramUpdates.Execute(Path))
                     Close();
                 else
-                    MessageBox.Show($"Failed to download {Path}. \r\nSorry!", "Error!");
+                    MessageBox.Show(string.Format(PdiText.DownloadFail, Path), PdiText.TitleErrorBang); //260625Cl 多言語化
             }
             catch
             {
-                MessageBox.Show($"Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/{Version.Software}/releases/latest", "Error");
+                MessageBox.Show(string.Format(PdiText.UpdateCheckFail, $"https://github.com/seto77/{Version.Software}/releases/latest"), PdiText.TitleError); //260625Cl 多言語化
             }
         }
     }

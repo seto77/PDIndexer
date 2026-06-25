@@ -184,9 +184,9 @@ Valores menores rechazan disposiciones más apiñadas.</value>
 búsqueda (1-16). Valores mayores usan más núcleos de CPU.</value>
   </data>
   <data name="buttonStart.ToolTip" xml:space="preserve">
-    <value>Inicia una nueva búsqueda de estructura desde cero
-(borra los candidatos anteriores). Durante la ejecución
-muestra 'Stop!' y detiene la búsqueda al hacer clic.</value>
+    <value>Iniciar una nueva búsqueda de estructura desde cero
+(borra los candidatos anteriores).
+Durante la ejecución, haga clic para detener la búsqueda.</value>
   </data>
   <data name="buttonResume.ToolTip" xml:space="preserve">
     <value>Reanuda la búsqueda usando la lista de candidatos actual

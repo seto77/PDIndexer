@@ -173,8 +173,9 @@ hkl 指数（ミラー指数）を再計算します。</value>
 値を大きくすると多くの CPU コアを使います。</value>
   </data>
   <data name="buttonStart.ToolTip" xml:space="preserve">
-    <value>構造探索を新規に開始します（既存候補をクリア）。
-実行中は 'Stop!' 表示になり、押すと探索を中断します。</value>
+    <value>新しい構造探索を最初から開始します
+（以前の候補をクリアします）。
+実行中にクリックすると探索を停止します。</value>
   </data>
   <data name="buttonResume.ToolTip" xml:space="preserve">
     <value>現在の候補一覧を初期集団として探索を

@@ -27,6 +27,11 @@ namespace PDIndexer
                 return; // RunSmoke は Environment.Exit するため通常ここには到達しない
             }
 
+            // 260625Cl 追加 (多言語化 Phase 2): Localizable=false フォーム (FormExportGSAS/FormLimitChanger/FormLPO 等) の
+            //   Designer 直書きラベルの 11 言語訳テーブルを、フォーム生成前に共有 Crystallography.Localization の中央
+            //   レジストリへ app-local provider として登録する。CodeLocalizer が FullName キーで引き OnLoad で差し替える。
+            PDIndexerLocalizationData.Register();
+
             // 260601Cl 追加: --capture の言語指定を各フォームの resx ローカライズ (CurrentUICulture 参照) より前に確定させる。
             //   PDIndexer.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]   (出力先を明示)
             //   PDIndexer.exe --capture [カルチャ(en/ja)]                      (出力先省略=既定の docs/src/assets/cap-*-auto)

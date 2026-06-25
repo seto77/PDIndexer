@@ -211,8 +211,8 @@ search (1-16). Higher values use more CPU cores.</value>
   </data>
   <data name="buttonStart.ToolTip" xml:space="preserve">
     <value>Start a new structure search from scratch
-(clears previous candidates). While running it
-shows 'Stop!' and stops the search when clicked.</value>
+(clears previous candidates).
+While running, click to stop the search.</value>
   </data>
   <data name="buttonResume.ToolTip" xml:space="preserve">
     <value>Resume the search using the current candidate list

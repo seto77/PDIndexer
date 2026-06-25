@@ -126,8 +126,8 @@ gamma（度）的下限。</value>
 搜尋後會顯示指標化的 h k l、d_calc 與 diff。</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>開始自動指標化搜尋；再按一次
-（標籤變為 'Stop!'）即可取消。</value>
+    <value>開始自動標定搜尋。
+執行時再次點擊可取消。</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>保留目前候選續行搜尋，

@@ -126,8 +126,8 @@ come nuova riga nell'elenco dei picchi.</value>
 h k l indicizzati, d_calc e diff compaiono dopo una ricerca.</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>Avvia la ricerca di indicizzazione automatica; fai clic di nuovo
-(l'etichetta diventa 'Stop!') per annullarla.</value>
+    <value>Avvia la ricerca di indicizzazione automatica.
+Durante l'esecuzione, fai di nuovo clic per annullarla.</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>Riprende la ricerca mantenendo i candidati attuali

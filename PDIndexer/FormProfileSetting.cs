@@ -71,7 +71,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     private void buttonDeleteAllProfiles_Click(object sender, EventArgs e) => DeleteAllProfiles();
     public void DeleteAllProfiles(bool alert = true)
     {
-        if (alert && MessageBox.Show("Do you want to delete all profiles?", "Warning", MessageBoxButtons.OKCancel) != DialogResult.OK) return;
+        if (alert && MessageBox.Show(PdiText.DeleteProfiles, PdiText.TitleWarning, MessageBoxButtons.OKCancel) != DialogResult.OK) return; //260625Cl 多言語化
         bindingSourceProfile.Position = 0;
         //for (int i = 0; i < dataSetProfile.DataTableProfile.Items.Count; i++)
         //    dataSetProfile.DataTableProfile.RemoveItem(i--);

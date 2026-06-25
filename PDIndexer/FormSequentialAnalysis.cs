@@ -46,7 +46,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
     {
         if (formMain == null || formMain.formFitting == null || formMain.formFitting.Visible == false)
         {
-            MessageBox.Show("Fitting Difraction Peak フォームを立ち上げ、解析したいピークをチェックした状態で実行してください.");
+            MessageBox.Show(PdiText.OpenFittingForm); //260625Cl 多言語化(旧 日英混在 + Difraction typo を英語 canonical 化)
             return;
         }
         if (formMain.dataSet.DataTableProfile.Items.Count < 4)

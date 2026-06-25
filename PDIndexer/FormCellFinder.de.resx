@@ -126,8 +126,8 @@ als neue Zeile in die Reflexliste ein.</value>
 Indizierte h k l, d_calc und diff erscheinen nach einer Suche.</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>Startet die automatische Indizierungssuche; erneut klicken
-(die Beschriftung wechselt zu 'Stop!'), um sie abzubrechen.</value>
+    <value>Automatische Indizierungssuche starten.
+Während des Laufs erneut klicken, um abzubrechen.</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>Setzt die Suche unter Beibehaltung der aktuellen Kandidaten fort,

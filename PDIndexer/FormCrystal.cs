@@ -142,7 +142,7 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     //すべて削除
     private void buttonAllClear_Click(object sender, EventArgs e)
     {
-        if (MessageBox.Show("Do you want to clear all crystals?", "Warning", MessageBoxButtons.OKCancel) == DialogResult.OK)
+        if (MessageBox.Show(PdiText.ClearCrystals, PdiText.TitleWarning, MessageBoxButtons.OKCancel) == DialogResult.OK) //260625Cl 多言語化
             for (int i = 0; i < dataSet.DataTableCrystal.Items.Count; i++)
                 if (((Crystal)dataSet.DataTableCrystal.Rows[i][1]).Reserved == false)
                     dataSet.DataTableCrystal.RemoveItem(i--);

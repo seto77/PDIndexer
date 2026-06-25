@@ -126,8 +126,8 @@ gamma (도)의 하한입니다.</value>
 색인된 h k l, d_calc, diff는 검색 후 표시됩니다.</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>자동 색인 검색을 시작합니다. 다시 클릭하면
-(레이블이 'Stop!'으로 바뀜) 취소합니다.</value>
+    <value>자동 지수화 검색을 시작합니다.
+실행 중 다시 클릭하면 취소됩니다.</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>현재 후보를 지우지 않고 유지한 채

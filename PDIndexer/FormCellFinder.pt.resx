@@ -126,8 +126,8 @@ como uma nova linha na lista de picos.</value>
 Os h k l indexados, d_calc e diff aparecem após uma pesquisa.</value>
   </data>
   <data name="buttonFind.ToolTip" xml:space="preserve">
-    <value>Inicia a pesquisa de indexação automática; clique novamente
-(o rótulo muda para 'Stop!') para cancelá-la.</value>
+    <value>Iniciar a busca de indexação automática.
+Durante a execução, clique novamente para cancelá-la.</value>
   </data>
   <data name="button1.ToolTip" xml:space="preserve">
     <value>Retoma a pesquisa mantendo os candidatos atuais
