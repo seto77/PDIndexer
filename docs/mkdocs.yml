@@ -1,4 +1,9 @@
 # 260531Ch: MkDocs Material configuration for the PDIndexer GitHub Pages manual.
+# 260625Cl: 多言語化のため mkdocs-static-i18n (folder mode) へ移行 (ReciPro と同方針)。
+#   - en を default locale としてサイトルート (/PDIndexer/) へ、ja を /PDIndexer/ja/ へ出力。
+#   - 未訳ページは fallback_to_default で英語本文をローカライズ URL に自動生成 (ページ単位の増分公開)。
+#   - 言語切替は reconfigure_material が Material のセレクタを現在ページ基準で自動構成 (旧 language_switch.js は廃止)。
+#   詳細・設計判断は .project-guidance/PDIndexer_Pages編集方針.md と ReciPro 側 ReciPro_Pages多言語化計画.md。
 site_name: PDIndexer Manual
 site_description: PDIndexer user manual
 site_url: https://seto77.github.io/PDIndexer/
@@ -13,10 +18,11 @@ use_directory_urls: true
 theme:
   name: material
   language: en
+  # 260625Cl: 未訳=英語フォールバックを知らせるバナー (overrides/main.html)。
+  custom_dir: overrides
   features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    # 260531Ch: Keep the ReciPro Pages behavior: nested side navigation, section indexes, and footer prev/next links.
+    # 260625Cl: navigation.tabs / navigation.tabs.sticky は EN/JA の言語タブ用途だったため撤去。
+    #   多言語化後は言語選択をヘッダーのセレクタ (static-i18n が構成) に一本化し、nav は 1 言語ぶん (章立て) を左サイドバーに出す。
     - navigation.indexes
     - navigation.footer
     - navigation.top
@@ -41,13 +47,51 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
 
+# 260625Cl: 旧英語 URL (/en/<slug>/) → 新ルート URL (/<slug>/) 互換の stub を post-build で生成。
+#   mkdocs-redirects は static-i18n 再ホーム後のルート URL を target にできない (ReciPro 実測) ため、英語の /en/ 互換は
+#   このフックが担当する。PDIndexer は JA リネーム履歴が無いので redirects プラグインは空 (将来用)。
+hooks:
+  - hooks/legacy_en_redirects.py
+
 plugins:
   - search:
       lang:
         - en
         - ja
   - glightbox
+  # 260625Cl: 多言語化プラグイン。languages は en (default=ルート出力) / ja。新言語はここに 1 行ずつ追加していく。
+  #   redirects より前に置く (ReciPro と同順)。
+  - i18n:
+      docs_structure: folder
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          name: English
+          default: true
+          build: true
+        - locale: ja
+          name: 日本語
+          build: true
+          nav_translations:
+            Home: ホーム
+            0. Overview: 0. 概要
+            1. Main window: 1. メインウィンドウ
+            2. Pattern profiles: 2. プロファイルデータ
+            3. Crystal parameter: 3. 回折線・結晶情報
+            4. Profile parameter: 4. プロファイル情報
+            5. Equation of states: 5. 状態方程式
+            6. Fitting diffraction peaks: 6. ピークフィッティング
+            7. Sequential analysis: 7. 連続分析
+            8. Macro: 8. マクロ
+            Appendix: 付録
+            Runtime and installation: 動作環境とインストール
+            File formats: ファイル形式
+            Algorithms: アルゴリズム解説
+            Troubleshooting: トラブルシューティング
   # 260531Ch: Add redirect maps here when a published manual page is renamed or moved.
+  #   260625Cl: PDIndexer は JA リネーム履歴が無いため現状は空。EN の /en/→ルートは上の hooks が担当。
   - redirects:
       redirect_maps: {}
 
@@ -58,6 +102,9 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
+      # 260625Cl: ReciPro は Unicode slugify を入れているが、PDIndexer の既存 JA ページは MkDocs 既定 slug
+      #   (非 ASCII 見出し→#_N、英語括弧付き見出し→ASCII slug) 前提で intra-page アンカーが書かれているため、
+      #   ここで Unicode slugify を入れると既存リンクが切れる。Phase 0 は挙動不変の配管移行に徹し既定 slug を維持する。
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.tabbed:
@@ -82,47 +129,26 @@ extra_css:
 extra_javascript:
   - assets/javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
-  - assets/javascripts/language_switch.js
+  # 260625Cl: 言語切替 JS (language_switch.js) は static-i18n の reconfigure_material が
+  #   現在ページ基準のセレクタを構成するため不要になり廃止。
 
-extra:
-  alternate:
-    - name: English
-      link: /PDIndexer/
-      lang: en
-    - name: 日本語
-      link: /PDIndexer/ja/
-      lang: ja
+# 260625Cl: extra.alternate は static-i18n が自動構成するため手書きしない。
 
+# 260625Cl: nav は locale 接頭辞なしの英語 1 本。static-i18n が各言語空間で en/<slug> ja/<slug> を解決し、
+#   nav 表示名は各 locale の nav_translations で与える (キーは下の英語ラベル文字列)。
 nav:
-  - English:
-      - Home: index.md
-      - 0. Overview: en/0-overview.md
-      - 1. Main window: en/1-main-window.md
-      - 2. Pattern profiles: en/2-pattern-profiles.md
-      - 3. Crystal parameter: en/3-crystal-parameter.md
-      - 4. Profile parameter: en/4-profile-parameter.md
-      - 5. Equation of states: en/5-equation-of-states.md
-      - 6. Fitting diffraction peaks: en/6-fitting-diffraction-peaks.md
-      - 7. Sequential analysis: en/7-sequential-analysis.md
-      - 8. Macro: en/8-macro.md
-      - Appendix:
-          - Runtime and installation: en/appendix/runtime-and-installation.md
-          - File formats: en/appendix/file-formats.md
-          - Algorithms: en/appendix/algorithms.md
-          - Troubleshooting: en/appendix/troubleshooting.md
-  - 日本語:
-      - ホーム: ja/index.md
-      - 0. 概要: ja/0-overview.md
-      - 1. メインウィンドウ: ja/1-main-window.md
-      - 2. プロファイルデータ: ja/2-pattern-profiles.md
-      - 3. Crystal Parameter: ja/3-crystal-parameter.md
-      - 4. Profile Parameter: ja/4-profile-parameter.md
-      - 5. Equation of States: ja/5-equation-of-states.md
-      - 6. Fitting diffraction peaks: ja/6-fitting-diffraction-peaks.md
-      - 7. Sequential Analysis: ja/7-sequential-analysis.md
-      - 8. Macro: ja/8-macro.md
-      - 付録:
-          - 動作環境とインストール: ja/appendix/runtime-and-installation.md
-          - ファイル形式: ja/appendix/file-formats.md
-          - アルゴリズム解説: ja/appendix/algorithms.md
-          - トラブルシューティング: ja/appendix/troubleshooting.md
+  - Home: index.md
+  - 0. Overview: 0-overview.md
+  - 1. Main window: 1-main-window.md
+  - 2. Pattern profiles: 2-pattern-profiles.md
+  - 3. Crystal parameter: 3-crystal-parameter.md
+  - 4. Profile parameter: 4-profile-parameter.md
+  - 5. Equation of states: 5-equation-of-states.md
+  - 6. Fitting diffraction peaks: 6-fitting-diffraction-peaks.md
+  - 7. Sequential analysis: 7-sequential-analysis.md
+  - 8. Macro: 8-macro.md
+  - Appendix:
+      - Runtime and installation: appendix/runtime-and-installation.md
+      - File formats: appendix/file-formats.md
+      - Algorithms: appendix/algorithms.md
+      - Troubleshooting: appendix/troubleshooting.md

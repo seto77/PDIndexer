@@ -695,13 +695,16 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         FormBase.HelpUrlResolver = f =>
         {
             // 260625Cl 変更: ja/en 二値から、マニュアル整備済み言語の gating (HelpCulture()) 経由の多言語対応へ (Phase 0)。
-            //   現状 manualReadyCultures={en,ja} なので en/ja の URL は従来と完全に同一。他言語は当面 en マニュアルへ落ちる
-            //   (Phase 4 で各言語 Pages を整備したら manualReadyCultures に追加するだけで点灯する)。
+            //   260625Cl: Pages を mkdocs-static-i18n 化し default locale (en) をサイトルートへ出したため、en だけ接頭辞なし。
+            //     旧 /en/<page>/ は docs/hooks/legacy_en_redirects.py の stub でルートへ転送される。ja は /ja/、将来言語は /<lang>/。
+            //   現状 manualReadyCultures={en,ja} なので他言語は当面 en マニュアル(ルート)へ落ちる
+            //   (各言語 Pages を整備したら manualReadyCultures に追加するだけで点灯する)。
             //   旧: var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
             var lang = HelpCulture();
+            var prefix = lang == "en" ? "" : lang + "/";   // en はルート出力なので接頭辞なし
             return string.IsNullOrEmpty(f.HelpPage)
-                ? (lang == "ja" ? "https://seto77.github.io/PDIndexer/ja/" : "https://seto77.github.io/PDIndexer/")
-                : $"https://seto77.github.io/PDIndexer/{lang}/{f.HelpPage}/";
+                ? $"https://seto77.github.io/PDIndexer/{prefix}"
+                : $"https://seto77.github.io/PDIndexer/{prefix}{f.HelpPage}/";
         };
 
         if (DesignMode) return;
@@ -3969,9 +3972,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         //     f.Show();
         try
         {
-            var url = HelpCulture() == "ja"
-                ? "https://seto77.github.io/PDIndexer/ja/"
-                : "https://seto77.github.io/PDIndexer/";
+            // 260625Cl: en はルート、ja は /ja/、将来言語は /<lang>/ (static-i18n と F1 解決ロジック HelpUrlResolver に合わせる)。
+            var lang = HelpCulture();
+            var prefix = lang == "en" ? "" : lang + "/";
+            var url = $"https://seto77.github.io/PDIndexer/{prefix}";
             Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
         catch { }
