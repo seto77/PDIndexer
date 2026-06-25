@@ -33,8 +33,11 @@ namespace PDIndexer
             string captureDir = null, captureCulture = null;
             if (args.Length >= 2 && args[0] == CaptureArg)
             {
-                // args[1] が en/ja なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
-                if (args[1] is "en" or "ja") captureCulture = args[1];
+                // args[1] が対応カルチャ名なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
+                // 260625Cl 変更: en/ja 固定判定から SupportedCultures 駆動へ (多言語化 Phase 0。--capture <dir> de 等が通る)。
+                //   旧: if (args[1] is "en" or "ja") captureCulture = args[1];
+                if (Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[1], StringComparison.OrdinalIgnoreCase)))
+                    captureCulture = args[1];
                 else { captureDir = args[1]; captureCulture = args.Length >= 3 ? args[2] : null; }
             }
             if (captureCulture != null)

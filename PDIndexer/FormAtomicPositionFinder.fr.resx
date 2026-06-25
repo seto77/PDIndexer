@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (fr) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Système cristallin (de triclinique à cubique). En
+sélectionner un contraint les paramètres de maille modifiables
+et liste les groupes d'espace correspondants.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Longueur d'arête a de la maille (Å). Pour les systèmes
+de haute symétrie, b et c sont liés automatiquement à a.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Longueur d'arête b de la maille (Å). Devient
+en lecture seule et égale à a pour les systèmes quadratique,
+trigonal, hexagonal et cubique.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Longueur d'arête c de la maille (Å). Devient
+en lecture seule et égale à a pour le système cubique.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Angle alpha de la maille (degrés). Fixé automatiquement
+(p. ex. à 90) selon le système cristallin.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Angle beta de la maille (degrés). Fixé automatiquement à
+90 pour les systèmes orthorhombique et de plus haute symétrie.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Angle gamma de la maille (degrés). Fixé automatiquement à 120 pour
+les systèmes trigonal/hexagonal, à 90 pour les autres systèmes de haute symétrie.</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>Groupes d'espace candidats (numéro.sous-numéro :
+symbole Hermann-Mauguin). En sélectionner un ou plusieurs ; chaque
+groupe sélectionné est exploré. Sélection multiple prise en charge.</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>Formule chimique (empirique/réduite, p. ex.
+'Ti O2'). Analysée pour renseigner le nombre d'atomes par élément
+et le nombre d'unités formulaires Z.</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>Nombre d'unités formulaires par maille, Z
+(minimum 1). Multiplie la formule pour
+donner le nombre total d'atomes par maille.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>Lecture seule : composition atomique totale dans la
+maille (formule fois Z). Mise à jour
+automatiquement quand la formule ou Z change.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Source de rayonnement X et longueur d'onde utilisées
+pour convertir les distances interréticulaires en angles et
+pour calculer les intensités de diffraction.</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Distance interréticulaire (Å) d'un pic à ajouter au
+tableau via le bouton Add Peak.</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Intensité de diffraction relative (rel %) du
+pic à ajouter. Les intensités sont normalisées
+sur le pic le plus intense pour le facteur R.</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Ajoute la distance interréticulaire et l'intensité saisies comme
+nouvelle ligne dans le tableau des pics de diffraction.</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>Recalcule les indices hkl (de Miller) pour tous
+les pics à partir de la maille et du groupe d'espace actuels.</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>(Débogage) Importe des pics depuis le texte du presse-papiers
+séparé par des tabulations (colonne 0 = d, colonne
+4 = intensité), en remplaçant le tableau des pics.</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Pics de diffraction observés. Utilisez la colonne Check pour
+inclure un pic dans la recherche et le bouton Delete pour
+supprimer une ligne ; la colonne Index affiche les hkl attribués.</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Fusionne les réflexions dont les angles de diffraction
+diffèrent de moins que le seuil d'angle ci-dessous.</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Seuil d'angle en degrés (0-2). Les réflexions plus proches
+que cette valeur en 2theta sont combinées en un seul pic.</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Fusionne les réflexions selon un seuil d'énergie
+au lieu d'un seuil d'angle (note : la branche
+énergie peut être inactive dans le code actuel).</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Seuil d'énergie en électronvolts
+(0-10) pour combiner les pics (effectif
+uniquement en mode seuil d'énergie).</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>Probabilité (%) de générer un arrangement atomique
+aléatoire entièrement nouveau à chaque pas de Monte-Carlo. Les trois
+probabilités sont normalisées automatiquement pour totaliser 100%.</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>Probabilité (%) du croisement de l'algorithme génétique
+qui hybride deux candidats existants.
+Normalisée automatiquement avec les deux autres à 100%.</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>Probabilité (%) du 'shaking', c.-à-d. perturber
+légèrement les positions atomiques d'un candidat
+existant. Normalisée automatiquement pour totaliser 100%.</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>Tolérance (%) sur la somme des rayons ioniques utilisée
+pour rejeter les positions atomiques qui se chevauchent.
+Des valeurs plus faibles rejettent les arrangements plus encombrés.</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>Nombre de threads de travail parallèles pour la
+recherche (1-16). Des valeurs plus élevées utilisent plus de cœurs CPU.</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Démarre une nouvelle recherche de structure à partir de zéro
+(efface les candidats précédents). Pendant l'exécution, il
+affiche 'Stop!' et arrête la recherche au clic.</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>Reprend la recherche en utilisant la liste de candidats actuelle
+comme population de départ, au lieu de l'effacer.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>Candidats de structure trouvés, triés par facteur R.
+Residual = R ; Info liste le groupe d'espace, les sites de Wyckoff
+et les coordonnées fractionnaires. Cliquez sur une ligne pour l'envoyer
+au formulaire Crystal et la copier dans le presse-papiers.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>Tracé de la convergence du facteur R pendant la recherche.</value>
+  </data>
+</root>

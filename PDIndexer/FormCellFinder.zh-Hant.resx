@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>要搜尋的晶系。決定自由
+晶胞參數的數目（三斜=6 … 立方=1）；未知數
+越少，搜尋越快且約束越強。</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>搜尋用軸長 a（Å）的下限。
+a 超出此範圍的候選晶胞將被剔除。</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>搜尋用軸長 a（Å）的上限。</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>搜尋用軸長 b（Å）的下限。</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>搜尋用軸長 b（Å）的上限。</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>搜尋用軸長 c（Å）的下限。</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>搜尋用軸長 c（Å）的上限。</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>搜尋用軸間角
+alpha（度）的下限。</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>軸間角 alpha 的上限（度，最大 180）。</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>搜尋用軸間角
+beta（度）的下限。</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>軸間角 beta 的上限（度，最大 180）。</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>搜尋用軸間角
+gamma（度）的下限。</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>軸間角 gamma 的上限（度，最大 180）。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>用於換算觀測晶面間距的輻射源與波長
+（預設 Cu Kalpha1, 0.15418 nm）。</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>要加入下方清單之繞射峰的觀測晶面間距（Å）。</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>所加入繞射峰的信賴度
+（High/Medium/Low）；用於加權最小平方
+擬合（High=1, Medium=0.5, Low=0.1）。</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>將輸入的晶面間距與信賴度
+作為新列加入繞射峰清單。</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>可編輯的觀測繞射峰清單：勾選「Use for Calc.
+」、設定信賴度與 d_obs；按 Delete 刪除一列。
+搜尋後會顯示指標化的 h k l、d_calc 與 diff。</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>開始自動指標化搜尋；再按一次
+（標籤變為 'Stop!'）即可取消。</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>保留目前候選續行搜尋，
+而非清除（共用 Find 處理常式）。</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>候選晶胞（最佳 300 個），依 R 排序；點選
+一列即可將其 hkl 指標化套用至繞射峰
+清單並於圖中標示。SigmadQ 與
+R 為品質指標（越小越佳）。</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>繪於分布圖 X 軸的晶格參數
+（a/b/c/alpha/beta/gamma）。</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>繪於分布圖 Y 軸的晶格參數
+（a/b/c/alpha/beta/gamma）。</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>候選晶胞於所選 X-Y 參數空間的
+散布圖，依 R（品質指標）著色。</value>
+  </data>
+</root>

@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Кристаллическая система (от триклинной до кубической). Выбор
+ограничивает редактируемые параметры ячейки
+и выводит список подходящих пространственных групп.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Длина ребра a элементарной ячейки (Å). Для
+высокосимметричных систем b и c автоматически связаны с a.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Длина ребра b элементарной ячейки (Å). Становится
+только для чтения и равной a для тетрагональной,
+тригональной, гексагональной и кубической систем.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Длина ребра c элементарной ячейки (Å). Становится
+только для чтения и равной a для кубической системы.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Угол ячейки α (градусы). Автоматически
+фиксируется (например, на 90) согласно кристаллической системе.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Угол ячейки β (градусы). Автоматически фиксируется на
+90 для ромбической и более высокосимметричных систем.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Угол ячейки γ (градусы). Автоматически фиксируется на 120 для
+тригональной/гексагональной, на 90 для прочих высокосимметричных систем.</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>Пространственные группы-кандидаты (номер.подномер:
+символ Германа–Могена). Выберите одну или несколько; по каждой
+выбранной группе выполняется поиск. Поддерживается множественный выбор.</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>Химическая формула (эмпирическая/приведённая, например
+'Ti O2'). Разбирается для заполнения числа атомов
+каждого элемента и числа формульных единиц Z.</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>Число формульных единиц на элементарную ячейку, Z
+(минимум 1). Умножается на формулу и даёт
+полное число атомов в элементарной ячейке.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>Только для чтения: полный атомный состав в
+элементарной ячейке (формула на Z). Обновляется
+автоматически при изменении формулы или Z.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Рентгеновский источник и длина волны, используемые
+для преобразования межплоскостных расстояний в углы и
+для расчёта интенсивностей дифракции.</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Межплоскостное расстояние (Å) рефлекса для добавления в
+таблицу кнопкой Add Peak.</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Относительная интенсивность дифракции (rel %)
+добавляемого рефлекса. Интенсивности нормируются
+на сильнейший рефлекс для R-фактора.</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Добавить введённые межплоскостное расстояние и интенсивность как
+новую строку в таблицу дифракционных рефлексов.</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>Пересчитать индексы hkl (Миллера) для всех
+рефлексов по текущей ячейке и пространственной группе.</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>(Отладка) Импорт рефлексов из буфера обмена в виде
+текста с табуляцией (столбец 0 = d, столбец
+4 = интенсивность) с заменой таблицы рефлексов.</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Наблюдаемые дифракционные рефлексы. Столбец Check включает
+рефлекс в поиск, а кнопка Delete удаляет
+строку; столбец Index показывает назначенные hkl.</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Объединять рефлексы, углы дифракции которых
+различаются менее чем на порог угла ниже.</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Порог угла в градусах (0-2). Рефлексы, расположенные ближе
+этого по 2theta, объединяются в один рефлекс.</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Объединять рефлексы по порогу энергии
+вместо порога угла (примечание: ветвь по энергии
+может быть неактивна в текущем коде).</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Порог энергии в электрон-вольтах
+(0-10) для объединения рефлексов (действует
+только в режиме порога энергии).</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>Вероятность (%) создания совершенно нового случайного
+расположения атомов на каждом шаге Монте-Карло. Три
+вероятности автоматически нормируются до 100%.</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>Вероятность (%) скрещивания (генетический алгоритм),
+объединяющего двух существующих кандидатов.
+Автоматически нормируется с двумя другими до 100%.</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>Вероятность (%) 'встряхивания', т. е. лёгкого
+возмущения позиций атомов существующего
+кандидата. Автоматически нормируется до 100%.</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>Допуск (%) на сумму ионных радиусов, используемый
+для отбраковки перекрывающихся позиций атомов.
+Меньшие значения отбраковывают более тесные расположения.</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>Число параллельных рабочих потоков для
+поиска (1-16). Большие значения используют больше ядер CPU.</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Начать новый поиск структуры с нуля
+(очищает прежних кандидатов). Во время работы
+показывает 'Stop!' и останавливает поиск при нажатии.</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>Продолжить поиск, используя текущий список кандидатов
+как стартовую популяцию, не очищая его.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>Найденные кандидаты структуры, отсортированные по R-фактору.
+Residual = R; Info перечисляет пространственную группу, позиции Вайкоффа
+и дробные координаты. Щёлкните строку, чтобы отправить её
+в форму Crystal и скопировать в буфер обмена.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>График сходимости R-фактора в ходе поиска.</value>
+  </data>
+</root>

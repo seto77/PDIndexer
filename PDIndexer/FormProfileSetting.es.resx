@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (es) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Marcar</value>
+  </data>
+  <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Color de línea</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Anchura de línea</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Comentario</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>Nombre del perfil</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Propiedades básicas</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Orden</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>N.º de punto</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
+    <value>Mostrar perfil de fondo</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
+    <value>Detección automática</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>N.º de punto</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
+    <value>Referencia</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
+    <value>Curva B-Spline</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Tiempo de exposición</value>
+  </data>
+  <data name="checkBoxSmoothing.Text" xml:space="preserve">
+    <value>3. Suavizado</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Text" xml:space="preserve">
+    <value>6. Fondo</value>
+  </data>
+  <data name="buttonDeleteProfile.Text" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
+    <value>Cambiar</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>unidad horizontal</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
+    <value>Desplazar</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Configuración del eje horizontal</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>(para modo CPS)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>seg.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Configuración del eje vertical</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>intensidad entre</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
+    <value>Máximo</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
+    <value>Media</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>(unidad horizontal)</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>Eliminar todo</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.Text" xml:space="preserve">
+    <value>1. Desfase de 2θ (para difractometría de dispersión angular)</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.Text" xml:space="preserve">
+    <value>Restablecer</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.Text" xml:space="preserve">
+    <value>Calibración con un patrón interno</value>
+  </data>
+  <data name="checkBoxMaskingMode.Text" xml:space="preserve">
+    <value>2. Máscara e interpolación</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
+    <value>Definir rango de enmascaramiento</value>
+  </data>
+  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+    <value>Número de puntos de datos tomados de CADA lado del
+rango enmascarado para ajustar la interpolación (usado con el
+orden polinómico). Mayor = ventana de ajuste más ancha.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>(cada lado)</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>Número de puntos de datos tomados de cada lado
+del rango enmascarado para ajustar la interpolación.</value>
+  </data>
+  <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
+    <value>Guardar rangos de enmascaramiento</value>
+  </data>
+  <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
+    <value>Leer rangos de enmascaramiento</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>N.º de puntos</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>Número de puntos de datos tomados de cada lado
+del rango enmascarado para ajustar la interpolación.</value>
+  </data>
+  <data name="buttonDeleteAllMask.Text" xml:space="preserve">
+    <value>Eliminar todo</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>Grado del polinomio</value>
+  </data>
+  <data name="buttonDeleteMask.Text" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Text" xml:space="preserve">
+    <value>4. Filtro paso banda</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Text" xml:space="preserve">
+    <value>Cortar alta frec. por encima de</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Text" xml:space="preserve">
+    <value>Cortar baja frec. por debajo de</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.Text" xml:space="preserve">
+    <value>5. Eliminar Kα2 (si se usa Kα1 como fuente de rayos X)</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
+    <value>7. Normalizar intensidad</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>a</value>
+  </data>
+  <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
+    <value>Aplicar a todos los perfiles (sin ajuste de fondo)</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Procesamiento de perfil</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Configuración de ejes</value>
+  </data>
+  <data name="radioButtonAverage.Text" xml:space="preserve">
+    <value>Promedio</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Text" xml:space="preserve">
+    <value>Perfil y valor</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Text" xml:space="preserve">
+    <value>Dos perfiles</value>
+  </data>
+  <data name="buttonCalculate.Text" xml:space="preserve">
+    <value>Calcular</value>
+  </data>
+  <data name="textBoxOutputFilename.Text" xml:space="preserve">
+    <value>Resultado #01</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Nombre de salida del perfil</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Operador de perfiles</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Parámetros del perfil</value>
+  </data>
+  <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
+    <value>Lista de perfiles cargados. Seleccione una fila para
+editarla abajo; la casilla activa o desactiva su
+trazado y la muestra indica el color de su línea.</value>
+  </data>
+  <data name="textBoxProfileName.ToolTip" xml:space="preserve">
+    <value>Nombre visible del perfil seleccionado
+(mostrado en listas y leyendas).</value>
+  </data>
+  <data name="textBoxComment.ToolTip" xml:space="preserve">
+    <value>Comentario de texto libre guardado con el perfil
+seleccionado; no afecta al procesamiento.</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value>Establece el color de línea (trazado) del perfil seleccionado.</value>
+  </data>
+  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+    <value>Establece la anchura de la línea de trazado
+del perfil seleccionado, en puntos (pt).</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>Elimina el perfil actualmente seleccionado.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Elimina TODOS los perfiles cargados (pide confirmación).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>Sube el perfil seleccionado una posición en la lista.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>Baja el perfil seleccionado una posición en la lista.</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.ToolTip" xml:space="preserve">
+    <value>Paso 1: Aplicar un offset al ángulo 2theta
+Delta(2theta) = c0 + c1*tan(theta) +
+c2*tan^2(theta) (solo datos de dispersión angular).</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
+    <value>Término constante c0 del offset 2theta Delta(2theta)
+= c0 + c1*tan(theta) + c2*tan^2(theta), en grados.</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
+    <value>Coeficiente c1 del término tan(theta)
+en el offset 2theta, en grados.</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
+    <value>Coeficiente c2 del término tan^2(theta)
+en el offset 2theta, en grados.</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.ToolTip" xml:space="preserve">
+    <value>Restablece a cero los tres coeficientes
+del offset 2theta (c0, c1, c2).</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.ToolTip" xml:space="preserve">
+    <value>Abre/cierra la ventana de calibración para determinar
+el offset 2theta a partir de un estándar interno.</value>
+  </data>
+  <data name="checkBoxMaskingMode.ToolTip" xml:space="preserve">
+    <value>Paso 2: Enmascarar rangos de x seleccionados y reemplazarlos por
+interpolación polinómica (p. ej. para eliminar artefactos).</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.ToolTip" xml:space="preserve">
+    <value>Activar el ajuste/visualización de rangos de enmascaramiento
+directamente en el gráfico con el ratón.</value>
+  </data>
+  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+    <value>Grado del polinomio usado para interpolar a través de
+los rangos enmascarados (0-5). Mayor = curva más flexible.</value>
+  </data>
+  <data name="listBoxMaskRanges.ToolTip" xml:space="preserve">
+    <value>Lista de rangos de enmascaramiento (inicio-fin en el
+eje horizontal). Seleccione uno para resaltarlo;
+arrastre un archivo .mas para cargar rangos.</value>
+  </data>
+  <data name="buttonDeleteMask.ToolTip" xml:space="preserve">
+    <value>Elimina el rango de enmascaramiento seleccionado en la lista.</value>
+  </data>
+  <data name="buttonDeleteAllMask.ToolTip" xml:space="preserve">
+    <value>Elimina todos los rangos de enmascaramiento de este perfil.</value>
+  </data>
+  <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
+    <value>Paso 3: Suavizar el perfil con un filtro de Savitzky-Golay.</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+    <value>Semianchura de la ventana de Savitzky-Golay (puntos
+a cada lado). Mayor = suavizado más fuerte.</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+    <value>Orden del polinomio de Savitzky-Golay (0-5).
+Mayor conserva los picos pero suaviza menos.</value>
+  </data>
+  <data name="checkBoxBandPassFilter.ToolTip" xml:space="preserve">
+    <value>Paso 4: Aplicar un filtro FFT de paso banda para
+suprimir componentes de frecuencia no deseados.</value>
+  </data>
+  <data name="checkBoxHighPassFilter.ToolTip" xml:space="preserve">
+    <value>Activar un filtro de paso alto: eliminar los componentes
+de baja frecuencia (periodo largo) por debajo del umbral.</value>
+  </data>
+  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+    <value>Frecuencia de corte de paso alto (en
+1/[unidad del eje horizontal]); los componentes por
+debajo se eliminan. El rango se adapta a los datos.</value>
+  </data>
+  <data name="checkBoxLowPassFilter.ToolTip" xml:space="preserve">
+    <value>Activar un filtro de paso bajo: eliminar los componentes
+de alta frecuencia (ruido de periodo corto) por encima del umbral.</value>
+  </data>
+  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+    <value>Frecuencia de corte de paso bajo (en
+1/[unidad del eje horizontal]); los componentes por
+encima se eliminan. El rango se adapta a los datos.</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.ToolTip" xml:space="preserve">
+    <value>Paso 5: Eliminar la contribución de Kalpha2
+del perfil (solo cuando la fuente
+es una línea Kalpha1 de rayos X).</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.ToolTip" xml:space="preserve">
+    <value>Paso 6: Restar una curva de fondo del perfil.</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.ToolTip" xml:space="preserve">
+    <value>Definir el fondo como una curva B-spline
+que pasa por puntos colocados manual o automáticamente.</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>Usar otro perfil como fondo de referencia a restar.</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
+    <value>Colocar automáticamente el número especificado
+de puntos de fondo a lo largo del perfil.</value>
+  </data>
+  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+    <value>Número de puntos de fondo (3-50) usados
+para la detección automática / el ajuste B-spline.</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>Seleccionar qué perfil cargado se
+usa como fondo de referencia.</value>
+  </data>
+  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+    <value>Factor de escala multiplicado por el
+fondo de referencia antes de la resta.</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
+    <value>Mostrar/ocultar la curva de fondo en el
+gráfico (la resta de fondo debe estar activa).</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>Paso 7: Normalizar la intensidad dentro
+de un rango x elegido a un valor objetivo.</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.ToolTip" xml:space="preserve">
+    <value>Normalizar de modo que la intensidad MEDIA
+en el rango sea igual al valor objetivo.</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
+    <value>Normalizar de modo que la intensidad MÁXIMA
+en el rango sea igual al valor objetivo.</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+    <value>Límite inferior (unidades del eje horizontal) del
+rango usado para calcular la normalización.</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+    <value>Límite superior (unidades del eje horizontal) del
+rango usado para calcular la normalización.</value>
+  </data>
+  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>Valor de intensidad objetivo (1-100000) al que se
+escala la media/el máximo del rango.</value>
+  </data>
+  <data name="buttonApplyAllProfiles.ToolTip" xml:space="preserve">
+    <value>Aplicar la configuración de procesamiento actual a
+TODOS los perfiles (excepto la configuración de fondo).</value>
+  </data>
+  <data name="xAxisUserControl.ToolTip" xml:space="preserve">
+    <value>Editar la configuración de la fuente del eje horizontal (tipo
+de eje 2theta/d/energía/TOF, fuente de radiación,
+longitud de onda, ángulo de salida). Aplicar con 'Change'.</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.ToolTip" xml:space="preserve">
+    <value>Aplicar la configuración editada de la fuente del eje horizontal
+(y el tiempo de exposición) al perfil seleccionado.</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>Desplazar todo el perfil a lo largo del
+eje horizontal en una cantidad fija.</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>Cantidad de desplazamiento del perfil a lo largo del
+eje horizontal (en unidades del eje horizontal).</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+    <value>Tiempo de exposición en segundos, usado para convertir la intensidad
+en cuentas por segundo (CPS) en el eje vertical.</value>
+  </data>
+  <data name="radioButtonAverage.ToolTip" xml:space="preserve">
+    <value>Modo operador: promediar varios perfiles
+seleccionados (con propagación de errores).</value>
+  </data>
+  <data name="radioButtonProfileAndValue.ToolTip" xml:space="preserve">
+    <value>Modo operador: combinar un perfil con
+un valor constante (sumar o multiplicar).</value>
+  </data>
+  <data name="radioButtonTwoProfiles.ToolTip" xml:space="preserve">
+    <value>Modo operador: realizar +, -, * o
+/ entre dos perfiles seleccionados.</value>
+  </data>
+  <data name="radioButtonAddition.ToolTip" xml:space="preserve">
+    <value>Seleccionar la suma (+) como operación.</value>
+  </data>
+  <data name="radioButtonSubtraction.ToolTip" xml:space="preserve">
+    <value>Seleccionar la resta (-) como operación.</value>
+  </data>
+  <data name="radioButtonMutiplication.ToolTip" xml:space="preserve">
+    <value>Seleccionar la multiplicación como operación (el botón
+no muestra símbolo; este es el operador de multiplicación).</value>
+  </data>
+  <data name="radioButtonDivision.ToolTip" xml:space="preserve">
+    <value>Seleccionar la división como operación (el botón
+no muestra símbolo; este es el operador de división).</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
+    <value>Valor constante combinado con el
+perfil en el modo 'Profile and value'.</value>
+  </data>
+  <data name="listBoxTwoProfiles1.ToolTip" xml:space="preserve">
+    <value>Seleccionar el primer perfil (principal) para la
+operación; permite selección múltiple en el modo Promedio.</value>
+  </data>
+  <data name="listBoxTwoProfiles2.ToolTip" xml:space="preserve">
+    <value>Seleccionar el segundo perfil para operaciones de dos perfiles.</value>
+  </data>
+  <data name="textBoxOutputFilename.ToolTip" xml:space="preserve">
+    <value>Nombre dado al perfil de resultado recién creado
+(el número final se
+incrementa automáticamente tras cada cálculo).</value>
+  </data>
+  <data name="buttonCalculate.ToolTip" xml:space="preserve">
+    <value>Realizar la operación seleccionada y
+añadir el resultado como un nuevo perfil.</value>
+  </data>
+</root>

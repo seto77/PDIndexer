@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hans) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="label29.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="buttonResetTakeoffAngle.Text" xml:space="preserve">
+    <value>重置出射角</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.Text" xml:space="preserve">
+    <value>复制到剪贴板</value>
+  </data>
+  <data name="buttonCopyCellConstantsToClipboard.ToolTip" xml:space="preserve">
+    <value>将优化后的晶胞参数复制到剪贴板。
+可直接粘贴到 Excel 中。</value>
+  </data>
+  <data name="buttonConfirm.Text" xml:space="preserve">
+    <value>应用到所选晶体</value>
+  </data>
+  <data name="buttonConfirm.ToolTip" xml:space="preserve">
+    <value>将优化后的晶胞参数应用为
+所选晶体的晶胞参数。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>优化后的晶胞参数</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.Text" xml:space="preserve">
+    <value>复制到剪贴板</value>
+  </data>
+  <data name="buttonCopyTableToClipboard.ToolTip" xml:space="preserve">
+    <value>将下方表格数据复制到剪贴板。
+可直接粘贴到 Excel 中。</value>
+  </data>
+  <data name="radioButtonEachCrystal.Text" xml:space="preserve">
+    <value>对每个晶体</value>
+  </data>
+  <data name="radioButtonBetweenCrystals.Text" xml:space="preserve">
+    <value>对所有晶体</value>
+  </data>
+  <data name="radioButtonSymmetricPearson.Text" xml:space="preserve">
+    <value>对称 Pearson VII</value>
+  </data>
+  <data name="radioButtonPseudoVoigt.Text" xml:space="preserve">
+    <value>对称 Pseudo Voigt</value>
+  </data>
+  <data name="radioButtonSplitPseudoVoigt.Text" xml:space="preserve">
+    <value>分裂 Pseudo Voigt</value>
+  </data>
+  <data name="radioButtonSimple.Text" xml:space="preserve">
+    <value>简单搜索</value>
+  </data>
+  <data name="radioButtonSplitPearson.Text" xml:space="preserve">
+    <value>分裂 Pearson VII</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.Text" xml:space="preserve">
+    <value>应用到全部</value>
+  </data>
+  <data name="buttonApplyFunctionToAll.ToolTip" xml:space="preserve">
+    <value>将上方所选峰形函数应用到
+本晶体的所有峰。</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>峰函数</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.Text" xml:space="preserve">
+    <value>应用到全部</value>
+  </data>
+  <data name="buttonApplyFWHMToAll.ToolTip" xml:space="preserve">
+    <value>将上方的初始 FWHM 值作为初始峰宽
+应用到所有峰。</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="checkBoxUseInitialFWHM.Text" xml:space="preserve">
+    <value>初始 FWHM</value>
+  </data>
+  <data name="checkBoxPatternDecomposition.Text" xml:space="preserve">
+    <value>图谱分解</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>搜索范围</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>单位</value>
+  </data>
+  <data name="buttonApplyRangeToAll.Text" xml:space="preserve">
+    <value>应用到全部</value>
+  </data>
+  <data name="buttonApplyRangeToAll.ToolTip" xml:space="preserve">
+    <value>将上方的搜索范围（拟合窗口
+半宽）应用到所有峰。</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>拟合选项</value>
+  </data>
+  <data name="Check.HeaderText" xml:space="preserve">
+    <value>选择</value>
+  </data>
+  <data name="PeakColor.HeaderText" xml:space="preserve">
+    <value>峰颜色</value>
+  </data>
+  <data name="crystalDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>晶体</value>
+  </data>
+  <data name="calcXDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>计算 X</value>
+  </data>
+  <data name="functionDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>函数</value>
+  </data>
+  <data name="xErrDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>X 误差</value>
+  </data>
+  <data name="intensityDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>强度</value>
+  </data>
+  <data name="weightDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>权重</value>
+  </data>
+  <data name="copyToClipboradToolStripMenuItem.Text" xml:space="preserve">
+    <value>复制到剪贴板</value>
+  </data>
+  <data name="buttonSendToCellFinder.Text" xml:space="preserve">
+    <value>将 d 值发送 
+到 CellFinder 
+&amp;&amp; AtomicPositionFinder</value>
+  </data>
+  <data name="buttonRemovePeaks.Text" xml:space="preserve">
+    <value>移除已拟合的峰</value>
+  </data>
+  <data name="buttonRemovePeaks.ToolTip" xml:space="preserve">
+    <value>从当前轮廓中减去所选晶体的
+已拟合峰形，并创建一个新轮
+廓（在下方命名）。Simple 搜索
+的峰将被排除。</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>新轮廓名称</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>移除峰</value>
+  </data>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>发送 d 值</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.Text" xml:space="preserve">
+    <value>保存为 CSV</value>
+  </data>
+  <data name="buttonSaveTableAsCSV.ToolTip" xml:space="preserve">
+    <value>将下方的表格数据保存为 CSV 文件。</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.HeaderText" xml:space="preserve">
+    <value>有效位数</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip" xml:space="preserve">
+    <value>峰表中显示的有效位数（1-16）。
+仅影响显示，不影响拟合结果。</value>
+  </data>
+  <data name="numericBoxEffectiveDigit.ToolTip1" xml:space="preserve">
+    <value>峰表中显示的有效位数（1-16）。
+仅影响显示，不影响拟合结果。</value>
+  </data>
+  <data name="buttonClearPeaks.Text" xml:space="preserve">
+    <value>清除峰</value>
+  </data>
+  <data name="buttonClearPeaks.ToolTip" xml:space="preserve">
+    <value>清除所选晶体手动添加的所有峰
+（仅限 Flexible 模式）。</value>
+  </data>
+</root>

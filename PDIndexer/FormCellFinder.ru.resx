@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Кристаллическая система для поиска. Задаёт число свободных
+параметров ячейки (триклинная=6 ... кубическая=1); меньше
+неизвестных — быстрее и более ограниченный поиск.</value>
+  </data>
+  <data name="numericUpDownMinA.ToolTip" xml:space="preserve">
+    <value>Нижняя граница длины оси a (Å) для поиска.
+Кандидаты с a вне этого диапазона отбрасываются.</value>
+  </data>
+  <data name="numericUpDownMaxA.ToolTip" xml:space="preserve">
+    <value>Верхняя граница длины оси a (Å) для поиска.</value>
+  </data>
+  <data name="numericUpDownMinB.ToolTip" xml:space="preserve">
+    <value>Нижняя граница длины оси b (Å) для поиска.</value>
+  </data>
+  <data name="numericUpDownMaxB.ToolTip" xml:space="preserve">
+    <value>Верхняя граница длины оси b (Å) для поиска.</value>
+  </data>
+  <data name="numericUpDownMinC.ToolTip" xml:space="preserve">
+    <value>Нижняя граница длины оси c (Å) для поиска.</value>
+  </data>
+  <data name="numericUpDownMaxC.ToolTip" xml:space="preserve">
+    <value>Верхняя граница длины оси c (Å) для поиска.</value>
+  </data>
+  <data name="numericUpDownMinAlpha.ToolTip" xml:space="preserve">
+    <value>Нижняя граница межосевого угла
+alpha (градусы) для поиска.</value>
+  </data>
+  <data name="numericUpDownMaxAlpha.ToolTip" xml:space="preserve">
+    <value>Верхняя граница межосевого угла alpha (градусы, макс. 180).</value>
+  </data>
+  <data name="numericUpDownMinBeta.ToolTip" xml:space="preserve">
+    <value>Нижняя граница межосевого угла
+beta (градусы) для поиска.</value>
+  </data>
+  <data name="numericUpDownMaxBeta.ToolTip" xml:space="preserve">
+    <value>Верхняя граница межосевого угла beta (градусы, макс. 180).</value>
+  </data>
+  <data name="numericUpDownMinGamma.ToolTip" xml:space="preserve">
+    <value>Нижняя граница межосевого угла
+gamma (градусы) для поиска.</value>
+  </data>
+  <data name="numericUpDownMaxGamma.ToolTip" xml:space="preserve">
+    <value>Верхняя граница межосевого угла gamma (градусы, макс. 180).</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Источник излучения и длина волны для пересчёта
+наблюдаемых межплоскостных расстояний (по умолчанию Cu Kalpha1, 0.15418 nm).</value>
+  </data>
+  <data name="numericalTextBox1.ToolTip" xml:space="preserve">
+    <value>Наблюдаемое межплоскостное расстояние (Å) пика для добавления в список ниже.</value>
+  </data>
+  <data name="comboBoxReliability.ToolTip" xml:space="preserve">
+    <value>Надёжность добавляемого пика
+(High/Medium/Low); задаёт вес в методе
+наименьших квадратов (High=1, Medium=0.5, Low=0.1).</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Добавить введённое межплоскостное расстояние и надёжность
+новой строкой в список пиков.</value>
+  </data>
+  <data name="dataGridView1.ToolTip" xml:space="preserve">
+    <value>Редактируемый список наблюдаемых пиков: отметьте 'Use for Calc.
+', задайте надёжность и d_obs; Delete удаляет строку.
+Индексы h k l, d_calc и diff появляются после поиска.</value>
+  </data>
+  <data name="buttonFind.ToolTip" xml:space="preserve">
+    <value>Запустить автоматическое индицирование; нажмите снова
+(надпись меняется на 'Stop!'), чтобы отменить.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>Возобновить поиск с сохранением текущих кандидатов
+вместо их очистки (использует обработчик Find).</value>
+  </data>
+  <data name="dataGridViewResult.ToolTip" xml:space="preserve">
+    <value>Ячейки-кандидаты (лучшие 300), отсортированные по R; щёлкните
+строку, чтобы применить её hkl-индицирование к списку
+пиков и выделить на карте. SigmadQ и
+R — показатели качества (меньше — лучше).</value>
+  </data>
+  <data name="comboBoxX.ToolTip" xml:space="preserve">
+    <value>Параметр ячейки (a/b/c/alpha/beta/gamma),
+откладываемый по оси X карты распределения.</value>
+  </data>
+  <data name="comboBoxY.ToolTip" xml:space="preserve">
+    <value>Параметр ячейки (a/b/c/alpha/beta/gamma),
+откладываемый по оси Y карты распределения.</value>
+  </data>
+  <data name="distributionGraphControl1.ToolTip" xml:space="preserve">
+    <value>Диаграмма рассеяния ячеек-кандидатов в выбранном X-Y
+пространстве параметров, окрашенная по R (показатель качества).</value>
+  </data>
+</root>

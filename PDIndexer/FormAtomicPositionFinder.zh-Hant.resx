@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>晶系（三斜至立方）。選擇某一
+晶系會限制可編輯的晶胞參數，
+並列出對應的空間群。</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>晶胞邊長 a（Å）。對於高對稱
+晶系，b 與 c 會自動連動至 a。</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>晶胞邊長 b（Å）。在四方、三方、
+六方與立方晶系中會變為唯讀
+並等於 a。</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>晶胞邊長 c（Å）。在立方晶系中
+會變為唯讀並等於 a。</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>晶胞角 alpha（度）。會依晶系
+自動固定（例如固定為 90）。</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>晶胞角 beta（度）。在斜方及更高對稱
+晶系中會自動固定為 90。</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>晶胞角 gamma（度）。三方/六方晶系自動固定為 120，
+其他高對稱晶系固定為 90。</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>候選空間群（編號.副編號：
+Hermann-Mauguin 符號）。可選一個或多個；每個
+選取的空間群都會進行搜尋。支援多選。</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>化學式（最簡組成式，例如
+'Ti O2'）。解析後填入各元素的原子數
+與式單位數 Z。</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>每晶胞的式單位數 Z
+（最小 1）。將化學式乘以此值
+即得每晶胞的總原子數。</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>唯讀：晶胞內的總原子組成
+（化學式乘以 Z）。當化學式或 Z
+變更時會自動更新。</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>用於將晶面間距轉換為角度
+以及計算繞射強度的
+X射線波源與波長。</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>要透過 Add Peak 按鈕加入表中之
+繞射峰的晶面間距 d（Å）。</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>要加入之繞射峰的相對繞射強度（rel %）。
+計算 R 因子時強度會以最強峰
+正規化。</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>將輸入的晶面間距與強度
+以新列加入繞射峰表中。</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>依目前晶胞與空間群為所有繞射峰
+重新計算 hkl（米勒）指數。</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>（除錯用）從剪貼簿的定位字元分隔
+文字（第 0 欄=d，第 4 欄=強度）匯入
+繞射峰，並取代繞射峰表。</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>觀測到的繞射峰。以 Check 欄將繞射峰
+納入搜尋，以 Delete 按鈕移除一列；
+Index 欄顯示指派的 hkl。</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>將繞射角差異小於下方角度閾值的
+反射併合為一。</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>角度閾值，單位為度（0-2）。2theta 差異
+小於此值的反射會併合為一個繞射峰。</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>以能量閾值取代角度閾值來併合
+反射（注意：能量分支在目前程式碼中
+可能未啟用）。</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>用於併合繞射峰的能量閾值，
+單位為電子伏特（0-10）（僅在
+能量閾值模式中有效）。</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>每個蒙地卡羅步驟產生全新隨機
+原子排列的機率（%）。三個機率
+會自動正規化使總和為 100%。</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>基因演算法交叉的機率（%），
+用以雜交兩個現有候選。
+會與其他兩者自動正規化為 100%。</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>'shaking' 的機率（%），即略微
+擾動現有候選的原子位置。
+會自動正規化使總和為 100%。</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>用於排除重疊原子位置之離子半徑和
+的容許係數（%）。
+數值越小，越會排除過於密集的排列。</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>搜尋使用的平行工作執行緒數
+（1-16）。數值越大使用越多 CPU 核心。</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>從頭開始新的結構搜尋
+（清除先前的候選）。執行中時會
+顯示 'Stop!'，按下即停止搜尋。</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>以目前的候選清單作為起始族群
+繼續搜尋，而非清除它。</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>依 R 因子排序的已找到結構候選。
+Residual = R；Info 列出空間群、維科夫位置
+與分率座標。點選某列即可將其送至
+Crystal 表單並複製到剪貼簿。</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>搜尋過程中 R 因子收斂的圖表。</value>
+  </data>
+</root>

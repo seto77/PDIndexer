@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (pt) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericalTextBoxPtA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxPtA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="groupBoxPlatinum.Text" xml:space="preserve">
+    <value>Platina</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxNaClB1A0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericalTextBoxGoldA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxGoldA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="groupBoxGold.Text" xml:space="preserve">
+    <value>Ouro</value>
+  </data>
+  <data name="numericalTextBoxMgOA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxMgOA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="groupBoxPericlase.Text" xml:space="preserve">
+    <value>Periclásio</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericalTextBoxColundumV.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxColundumV0.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="groupBoxCorundum.Text" xml:space="preserve">
+    <value>Coríndon</value>
+  </data>
+  <data name="numericalTextBoxArA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxArA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxReV.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numerictBoxReV0.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxMoV.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxMoV0.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxPbA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxPbA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="checkBoxPlatinum.Text" xml:space="preserve">
+    <value>Pt (Platina)</value>
+  </data>
+  <data name="checkBoxGold.Text" xml:space="preserve">
+    <value>Au (Ouro)</value>
+  </data>
+  <data name="checkBoxPericlase.Text" xml:space="preserve">
+    <value>MgO (Periclásio)</value>
+  </data>
+  <data name="checkBoxCorundum.Text" xml:space="preserve">
+    <value>Al2O3 (Coríndon)</value>
+  </data>
+  <data name="numericBoxTemperature.HeaderText" xml:space="preserve">
+    <value>Temperatura</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Equações de estado</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>Temperatura da amostra T (K) em que a célula foi
+medida. Compartilhada por todos os padrões; aumentar T
+adiciona pressão térmica e reduz o P calculado.</value>
+  </data>
+  <data name="numericBoxTemperature0.ToolTip" xml:space="preserve">
+    <value>Temperatura de referência T0 (K) dos valores de referência
+a0/V0; usada pelos modelos Pt (Matsui) e Pb. Normalmente
+300 K. Distinta da temperatura de medição T.</value>
+  </data>
+  <data name="numericalTextBoxGoldA.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido do
+marcador de ouro (Au); V = a³ é fornecido a
+todas as equações de estado do Au para calcular P.</value>
+  </data>
+  <data name="numericalTextBoxPtA.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido do marcador
+de platina (Pt); V = a³ para a equação de estado do Pt.</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido da
+fase B1 (sal-gema) do NaCl.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido da fase B2 (tipo CsCl) de
+alta pressão do NaCl (uma fase distinta da B1).</value>
+  </data>
+  <data name="numericalTextBoxMgOA.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido do
+marcador de MgO (periclásio) (padrão 4.2112);
+V = a³ para a equação de estado do MgO.</value>
+  </data>
+  <data name="numericalTextBoxColundumV.ToolTip" xml:space="preserve">
+    <value>Volume da célula unitária V (Å³) medido de Al2O3 (coríndon).
+Este padrão usa o volume diretamente, não a.</value>
+  </data>
+  <data name="numericalTextBoxArA.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido do argônio sólido
+(Ar). Os modelos de Ar usam a diretamente (sem a0).</value>
+  </data>
+  <data name="numericBoxReV.ToolTip" xml:space="preserve">
+    <value>Volume da célula unitária V (Å³) medido do rênio (Re).</value>
+  </data>
+  <data name="numericBoxMoV.ToolTip" xml:space="preserve">
+    <value>Volume da célula unitária V (Å³) medido
+do molibdênio (Mo) (padrão 31.14).</value>
+  </data>
+  <data name="numericBoxPbA.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede a (Å) medido do chumbo (Pb);
+o modelo Strässle usa a/a0(T) numa forma de Vinet.</value>
+  </data>
+  <data name="numericBoxGoldA0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência à pressão zero a0 (Å) do
+Au (padrão 4.07825); P depende da razão V/V0.</value>
+  </data>
+  <data name="numericBoxPtA0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência
+à pressão zero a0 (Å) do Pt (padrão 3.9231).</value>
+  </data>
+  <data name="numericBoxNaClB1A0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência à pressão zero
+a0 (Å) da fase B1 do NaCl (padrão 5.639).</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência a0 (Å)
+para o NaCl B2 (referência somente leitura; os
+modelos B2 calculam P diretamente a partir de a).</value>
+  </data>
+  <data name="numericBoxMgOA0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência a0 (Å)
+à pressão zero do MgO (padrão 4.2112).</value>
+  </data>
+  <data name="numericBoxColundumV0.ToolTip" xml:space="preserve">
+    <value>Volume de célula unitária de referência
+V0 (Å³) à pressão zero do Al2O3 (padrão 255.89472).</value>
+  </data>
+  <data name="numericBoxArA0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência a0 (Å) do Ar (apenas
+exibição; os modelos Ross/Jephcoat não o utilizam).</value>
+  </data>
+  <data name="numerictBoxReV0.ToolTip" xml:space="preserve">
+    <value>Volume de referência V0 (Å³) à pressão zero
+do Re (padrão 29.42795); usado pelo
+modelo Zha (os outros usam um V0 interno).</value>
+  </data>
+  <data name="numericBoxMoV0.ToolTip" xml:space="preserve">
+    <value>Volume de referência V0 (Å³) à pressão zero do Mo (padrão
+31.14); usado pelos modelos Huang (MGD) e Zhao.</value>
+  </data>
+  <data name="numericBoxPbA0.ToolTip" xml:space="preserve">
+    <value>Parâmetro de rede de referência a0 (Å)
+à pressão zero do Pb (padrão 4.95059); ajusta a
+tabela interna a0(T) à sua amostra em T0.</value>
+  </data>
+  <data name="checkBoxGold.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do padrão de pressão de ouro (Au).</value>
+  </data>
+  <data name="checkBoxPlatinum.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do padrão de pressão de platina (Pt).</value>
+  </data>
+  <data name="checkBoxNaClB1.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do NaCl B1 (fase tipo sal-gema).</value>
+  </data>
+  <data name="checkBoxNaClB2.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do NaCl B2 (fase de
+alta pressão tipo CsCl).</value>
+  </data>
+  <data name="checkBoxPericlase.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do MgO (periclásio).</value>
+  </data>
+  <data name="checkBoxCorundum.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do Al2O3 (coríndon).</value>
+  </data>
+  <data name="checkBoxAr.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do argônio sólido (Ar).</value>
+  </data>
+  <data name="checkBoxRe.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do rênio (Re).</value>
+  </data>
+  <data name="checkBoxMo.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do molibdênio (Mo).</value>
+  </data>
+  <data name="checkBoxPb.ToolTip" xml:space="preserve">
+    <value>Mostrar ou ocultar o painel do chumbo (Pb).</value>
+  </data>
+  <data name="numericalTextBoxGoldJamieson.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o ouro
+segundo Jamieson (1982). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxGoldAnderson.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o ouro
+segundo Anderson (1989). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o ouro segundo Sim
+(2002), BM3 + Mie-Grüneisen. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o ouro
+segundo Tsuchiya (2003). Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxAuYokoo.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o ouro
+segundo Yokoo (2009). Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxAuFratanduono.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o ouro segundo
+Fratanduono (2021), Vinet. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxPtJamieson.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para a platina
+segundo Jamieson (1982). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxPtHolmes.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para a platina
+segundo Holmes (1989). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxPtMatsui.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para a platina
+segundo Matsui (2009); usa a temperatura
+de referência T0. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxPtYokoo.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para a platina
+segundo Yokoo (2009). Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxPtFratanduono.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para a platina segundo
+Fratanduono (2021), Vinet. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxNaClB1Brown.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B1
+segundo Brown (1999). Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B1
+segundo Matsui (2012). Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxNaClB1Skelton.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B1
+segundo Skelton (1984). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataPt.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B2
+segundo Sata (2002), calibrado de forma cruzada
+à escala Pt. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataMgO.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B2
+segundo Sata (2002), calibrado de forma cruzada
+à escala MgO. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2Ueda.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B2
+segundo Ueda (2008). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiBM.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B2 segundo
+Sakai (2011), Birch-Murnaghan. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiVinet.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o NaCl B2 segundo
+Sakai (2011), Vinet. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxMgOJacson.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o MgO segundo Jackson
+(1998), BM3 + Mie-Grüneisen. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxMgODewaele.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o MgO segundo Dewaele
+(2000), BM3 + Mie-Grüneisen. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxMgOAizawa.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o MgO segundo Aizawa
+(2006), BM3 + Mie-Grüneisen. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxMgOTangeVinet.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o MgO segundo
+Tange (2009), Vinet. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxMgOTangeBM.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o MgO segundo Tange
+(2009), Birch-Murnaghan. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxCorundumDubrovinsky.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o Al2O3 (coríndon)
+segundo Dubrovinsky (1998). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxArRoss.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o
+Ar sólido segundo Ross (1986). Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxArJephcoat.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o Ar sólido segundo Jephcoat
+(1998), dependente da temperatura. Resultado somente leitura.</value>
+  </data>
+  <data name="numericalTextBoxReZha.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o rênio segundo Zha (2004);
+usa o volume de referência V0. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxReAnz.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o rênio segundo
+Anzellini, Vinet com K0/K0' fixos. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxReSakai.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o rênio segundo
+Sakai, Vinet com K0/K0' fixos. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxReDub.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o
+rênio segundo Dubrovinsky, Birch-Murnaghan
+de 4ª ordem. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxMoHuang.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o molibdênio segundo Huang
+(2016), BM3 + Mie-Grüneisen-Debye. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxMoZhao.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o molibdênio
+segundo Zhao (2000), BM4 + correção de
+pressão térmica. Resultado somente leitura.</value>
+  </data>
+  <data name="numericBoxPbStrassle.ToolTip" xml:space="preserve">
+    <value>Pressão P (GPa) calculada para o chumbo segundo
+Strassle (2014), forma Vinet com B(T), B'(T),
+a0(T) de uma tabela interna. Resultado somente leitura.</value>
+  </data>
+</root>
