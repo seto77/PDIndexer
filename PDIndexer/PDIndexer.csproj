@@ -128,12 +128,16 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="doc\PDIndexerAlgorithm.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="doc\PDIndexerManual%28ja%29.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    <!-- 260625Cl 削除: doc\ 同梱解説 PDF (Algorithm/Manual) を出力に含めるのをやめた。内容は docs\ (MkDocs オンラインマニュアル) へ移行済みで、
+         PDIndexerAlgorithm.pdf はアルゴリズム解説ページへ、PDIndexerManual(ja).pdf はオンラインマニュアル本体へ統合。doc\ は git 追跡からも除去。
+         旧:
+         <None Update="doc\PDIndexerAlgorithm.pdf">
+           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+         </None>
+         <None Update="doc\PDIndexerManual%28ja%29.pdf">
+           <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+         </None>
+    -->
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
