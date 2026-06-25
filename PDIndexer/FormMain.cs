@@ -371,24 +371,48 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     // ---- 260601Cl 追加: GUI 一括キャプチャ (GuiCapture / --capture) 用ヘルパー ----
     /// <summary>
     /// 260601Cl 追加: --capture (GuiCapture) 用。Main window をマニュアル代表状態にする。
-    /// 起動直後の初期ダイアログを閉じ、標準物質を 2,3 個チェックして回折線を描き、代表結晶を選択する。
-    /// サンプルプロファイルは同梱していないためグラフは空 (軸のみ) になるが、回折線と結晶選択で典型的な見た目になる。
+    /// 起動直後の初期ダイアログを閉じ、代表プロファイル (references/FE01-03.pdi) があれば読み込み、
+    /// 結晶リストから Fe2SiO4 (fayalite) を選んで回折線を描く (FE01-03 は fayalite 試料なので線がパターンと一致する)。
+    /// 260626Cl 変更: 旧は「サンプルプロファイル同梱なしでグラフは空 (軸のみ)・標準物質 Au/MgO/Si をチェック」だったが、
+    /// 作者指定で代表プロファイルを読み込み実測パターンで撮り、重ねる結晶も fayalite 一つだけにした。
+    /// <paramref name="representativeProfilePath"/> が null/不在 (references/ は git 管理外) のときはプロファイルなし
+    /// (軸のみ) で fayalite の回折線だけを描く。
     /// </summary>
-    internal bool PrepareCaptureRepresentativeState()
+    // 旧シグネチャ: internal bool PrepareCaptureRepresentativeState()  // 260626Cl: 代表プロファイルパスを default 引数で追加
+    internal bool PrepareCaptureRepresentativeState(string representativeProfilePath = null)
     {
         // 起動直後の初期ダイアログ (CommonDialog) は (0,0) に出るため、--capture で (0,0) へ置いた FormMain の
         // メニュー/ツールバー左上を覆う。閉じて破棄したうえで、その下の領域を確実に再描画する (Invalidate+Update)。
         try { initialDialog?.Close(); initialDialog?.Dispose(); initialDialog = null; } catch { /* 初期ダイアログのクローズ失敗は無視 */ }
         Application.DoEvents();
 
-        // 標準物質をいくつかチェックして回折線を表示する (index 0 は Flexible Crystal なので 1 以降から選ぶ)。
+        // 260626Cl 追加: 作者指定の代表プロファイル (references/FE01-03.pdi) があれば読み込み、空グラフでなく実測パターンで撮る。
+        //   references/ は git 管理外のため、存在しない環境 (CI・他マシン) では path=null でプロファイルなし (軸のみ)。
+        //   .pdi はプロファイルのみ復元する (結晶は含まない) ので、回折線は下の fayalite 選択で重ねる。
+        if (!string.IsNullOrEmpty(representativeProfilePath))
+        {
+            try { readProfile(representativeProfilePath, showFormDataConverter: false); }
+            catch { /* 代表プロファイル読み込み失敗は無視 (撮影は最善努力、回折線のみで撮る) */ }
+        }
+
+        // 260626Cl 変更: 作者指定で「Fe2SiO4 (fayalite) ひとつだけ」を選ぶ (FE01-03.pdi が fayalite 試料のため線がパターンと一致)。
+        //   既定リストに含まれる結晶名で探すのでインデックス固定に依存しない。見つからなければ何も選ばない (撮影は最善努力)。
+        //   旧 (Au/MgO/Si を複数チェック):
+        //     var representative = -1;
+        //     foreach (var i in new[] { 1, 5, 11 }) // 既定リストの Au, MgO, Si 付近
+        //         if (i < CrystalCount) { SetCrystalChecked(i, true); if (representative < 0) representative = i; }
+        //     if (representative >= 0) CrystalListPosition = representative;
         var representative = -1;
-        foreach (var i in new[] { 1, 5, 11 }) // 既定リストの Au, MgO, Si 付近
-            if (i < CrystalCount)
+        for (int i = 0; i < CrystalCount; i++)
+        {
+            var name = (((DataRowView)bindingSourceCrystal[i]).Row[1] as Crystal)?.Name ?? "";
+            if (name.Contains("fayalite", StringComparison.OrdinalIgnoreCase))
             {
                 SetCrystalChecked(i, true);
-                if (representative < 0) representative = i;
+                representative = i;
+                break;
             }
+        }
         if (representative >= 0)
             CrystalListPosition = representative;
 

@@ -38,7 +38,27 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
     private const int PrepareSettleMs = 450;    // 代表状態 (結晶チェック→再描画) の反映待ち
     private const int TabSwitchSettleMs = 180;  // クロップ時にタブを切り替えた後の再描画待ち
 
-    /// <summary>260601Cl: --capture の出力先を省略したときの既定ディレクトリ (docs/src/assets/cap-{en|ja}-auto)。
+    /// <summary>260626Cl 追加: 実行ファイル (bin/...) からリポルート (...\PDIndexer、docs/ や references/ を持つ) を辿る。辿れなければ null。</summary>
+    private static DirectoryInfo RepoRoot()
+    {
+        var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+        while (dir != null && dir.Name != "bin")
+            dir = dir.Parent;
+        return dir?.Parent?.Parent;  // bin → ...\PDIndexer\PDIndexer → ...\PDIndexer (リポルート)
+    }
+
+    /// <summary>260626Cl 追加: --capture 時に読み込む代表プロファイル (references/FE01-03.pdi、作者指定の見栄えの良い fayalite 実測データ)。
+    /// references/ は git 管理外なので、存在しなければ null を返し、呼び出し側 (FormMain.PrepareCaptureRepresentativeState) は
+    /// プロファイルなし (軸のみ＋fayalite 回折線) で撮る。</summary>
+    private static string RepresentativeProfilePath()
+    {
+        var root = RepoRoot();
+        if (root == null) return null;
+        var path = Path.Combine(root.FullName, "references", "FE01-03.pdi");
+        return File.Exists(path) ? path : null;
+    }
+
+    /// <summary>260601Cl: --capture の出力先を省略したときの既定ディレクトリ (docs/src/assets/cap-{culture}-auto)。
     /// 実行ファイル (bin/...) からリポルート (...\PDIndexer) を辿れなければ temp にフォールバックする。</summary>
     private static string DefaultAutoCaptureDir()
     {
@@ -46,10 +66,7 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
         // 260625Cl 変更: en/ja 固定から SupportedCultures 駆動の cap-{culture}-auto へ (多言語化 Phase 0、ReciPro と同命名)。
         //   旧: var langDir = culture.Name == "ja" ? "cap-ja-auto" : "cap-en-auto";
         var langDir = $"cap-{Crystallography.SupportedCultures.Resolve(culture.Name).Name}-auto";
-        var dir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
-        while (dir != null && dir.Name != "bin")
-            dir = dir.Parent;
-        var repoRoot = dir?.Parent?.Parent;  // bin → ...\PDIndexer\PDIndexer → ...\PDIndexer (docs/ を持つリポルート)
+        var repoRoot = RepoRoot();  // 260626Cl: bin→リポルート探索を RepoRoot() に集約
         return repoRoot != null
             ? Path.Combine(repoRoot.FullName, "docs", "src", "assets", langDir)
             : Path.Combine(Path.GetTempPath(), "pdindexer-capture-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + "-" + langDir);
@@ -671,7 +688,8 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
             switch (form)
             {
                 case FormMain mainForm:
-                    var selected = mainForm.PrepareCaptureRepresentativeState();
+                    // 260626Cl: 代表プロファイル (references/FE01-03.pdi) を読み込み、fayalite の回折線を重ねた状態で撮る。
+                    var selected = mainForm.PrepareCaptureRepresentativeState(RepresentativeProfilePath());
                     trace($"FormMain\tINFO\tcapture crystal={(selected ? mainForm.CurrentCrystal?.Name : "not set")}");
                     break;
                 case Crystallography.Controls.FormMacro macroForm:
