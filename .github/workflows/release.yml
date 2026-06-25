@@ -46,7 +46,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
         with:
-          fetch-depth: 0 # 260625Cl assembly_version 用に GITHUB_SHA の commit 時刻を git log で引くため全履歴が要る
+          fetch-depth: 2 # 260625Cl GITHUB_SHA(=HEAD) の commit 時刻取得には浅い clone で足りる (CSManager 横展開: 重い履歴で fetch-depth:0 が prepare 5min timeout した教訓。旧: fetch-depth:0)
 
       - name: Parse version and check if release needed
         id: version
@@ -516,7 +516,9 @@ jobs:
           }
 
           # 原子的: tag 未存在時に --target のコミットへ lightweight tag を作成し release と一括で作る (orphan tag を防ぐ)
+          # 260625Cl -R 必須: release job は checkout しない (artifact DL のみ) ため、-R が無いと gh が repo を特定できず "fatal: not a git repository" で失敗する (CSManager 本番で実証)
           gh release create $tag $assets `
+            -R $env:GITHUB_REPOSITORY `
             --target $env:GITHUB_SHA `
             --title "PDIndexer $tag" `
             --notes-file $notesPath
