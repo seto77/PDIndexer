@@ -911,6 +911,7 @@ namespace PDIndexer
                     candidates.Add((Crystal)dataSet.DataTableCrystalCandidates.Rows[i][0]);
                 isFinding = true; //260625Cl 追加
                 buttonStart.Text = PdiText.Stop; //260625Cl 旧: buttonStart.Text = "Stop!";
+                buttonResume.Enabled = false; //260626Cl 追加: 二度押しで backgroundWorker が二重起動するのを防ぐ (buttonStart_Click と対称。完了時 line ~1210 / 停止時 ~874 で再有効化)
                 fc.Candidates = candidates.ToArray();
                 sw.Reset();
                 sw.Start();
