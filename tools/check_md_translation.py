@@ -93,12 +93,17 @@ def analyze(text):
     return {
         "frontmatter_keys": keys,
         "fence_count": len(FENCE_RE.findall(body)),
+        # 260627Cl (codex 助言): コードフェンス本文の「中身」も multiset 比較する。個数だけだと
+        #   コメント/API名/列挙子の改竄 (CellA→CellB 等、特に 8-macro.md) を見逃すため。
+        "fence_bodies": Counter(FENCE_BLOCK_RE.findall(body)),
         "inline_code_count": len(INLINE_CODE_RE.findall(body)),
         "math": extract_math(nocode),
         "images": [m for m in IMAGE_RE.findall(nocode)],
         "links": set(LINK_RE.findall(nocode)),
         "autolinks": set(AUTOLINK_RE.findall(body)),
         "anchors": set(ANCHOR_RE.findall(body)),
+        # 260627Cl (codex 助言): 同一ページ内 #link (cross-page でない [..](#id)) は明示 {#id} に解決すべき。
+        "inpage_links": set(re.findall(r"\]\(#([A-Za-z0-9_\-:.]+)\)", nocode)),
         "heading_count": len(HEADING_RE.findall(body)),
         "cap_cultures": {c for c, _ in CAP_RE.findall(body)},
     }
@@ -119,6 +124,15 @@ def check_pair(src_path, dst_path, lang):
     eq("heading_count", "見出し本数")
     eq("anchors", "明示アンカー {#...} 集合")
 
+    # 260627Cl (codex 助言): コードフェンス本文の内容一致 (コメント含め凍結)。8-macro.md の API/関数名改竄を捕まえる。
+    if a["fence_bodies"] != b["fence_bodies"]:
+        only_en = a["fence_bodies"] - b["fence_bodies"]
+        only_x = b["fence_bodies"] - a["fence_bodies"]
+        if only_en:
+            fails.append(f"コードフェンス本文 (en のみ, {sum(only_en.values())} 件): 内容が訳文と不一致 (コードは凍結)")
+        if only_x:
+            fails.append(f"コードフェンス本文 ({lang} のみ, {sum(only_x.values())} 件): EN に無い内容 (コード改竄?)")
+
     # 数式: 中身 (LaTeX) の multiset 一致。訳で文が組み替わっても数式は凍結なので不変であるべき。
     if a["math"] != b["math"]:
         only_en = a["math"] - b["math"]
@@ -134,6 +148,13 @@ def check_pair(src_path, dst_path, lang):
                      f"{lang}={sorted(normalize_cap(set(b['images'])))}")
     if len(a["images"]) != len(b["images"]):
         fails.append(f"画像参照の総数: en={len(a['images'])} != {lang}={len(b['images'])}")
+
+    # 260627Cl (codex 助言): ページ内 #link は明示 {#anchor} に解決すべき (翻訳で見出し slug が変わり auto-slug 依存は壊れるため)。
+    #   en/訳の両方を自己整合チェック。未解決リンクはリンク先見出しに {#stable-anchor} を付けて修正する。
+    for who, d in [("en", a), (lang, b)]:
+        unresolved = d["inpage_links"] - d["anchors"]
+        if unresolved:
+            fails.append(f"ページ内リンク未解決 ({who}): {sorted(unresolved)} に対応する明示 {{#...}} が見出しに無い")
 
     # リンク先・自動リンク: 完全一致 (訳してはいけない)
     if a["links"] != b["links"]:

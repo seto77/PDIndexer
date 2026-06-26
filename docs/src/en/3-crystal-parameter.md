@@ -24,7 +24,7 @@ Configures the display of diffraction lines.
 
 Selects whether diffraction lines are drawn overlaid on the profile data.
 
-### Calculate intensity ratio
+### Calculate intensity ratio {#calculate-intensity-ratio}
 
 Selects whether diffraction intensities (their ratios) are computed from the structural data.
 
@@ -103,7 +103,7 @@ Removes every crystal from the list.
 
 ---
 
-## Crystal Information
+## Crystal Information {#crystal-information}
 
 ![The Crystal Information control](../assets/cap-en-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageBasicInfo.png)
 
@@ -123,7 +123,7 @@ Sets basic information such as the lattice parameters (a, b, c, α, β, γ), cry
 !!! tip
     Right-clicking a lattice-parameter field shows a menu that restores the lattice parameters to their values at application startup (or at the time the structure was imported from the database). This is handy when you want to return to the original reference values after changing them through fitting.
 
-### Atom Info. tab
+### Atom Info. tab {#atom-info-tab}
 
 ![The Atom Info. tab](../assets/cap-en-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
 
