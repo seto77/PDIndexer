@@ -920,7 +920,8 @@
             buttonAddPeak.Location = new System.Drawing.Point(217, 15);
             buttonAddPeak.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             buttonAddPeak.Name = "buttonAddPeak";
-            buttonAddPeak.Size = new System.Drawing.Size(97, 33);
+            //buttonAddPeak.Size = new System.Drawing.Size(97, 33); // 260626Cl i18n overflow: 旧幅
+            buttonAddPeak.Size = new System.Drawing.Size(137, 33); // 260626Cl i18n overflow: de等の長い訳に合わせ拡幅
             buttonAddPeak.TabIndex = 1;
             buttonAddPeak.Text = "↓ Add Peak ↓";
             buttonAddPeak.UseVisualStyleBackColor = false;
@@ -1114,7 +1115,8 @@
             button1.Location = new System.Drawing.Point(259, 610);
             button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             button1.Name = "button1";
-            button1.Size = new System.Drawing.Size(77, 29);
+            //button1.Size = new System.Drawing.Size(77, 29); // 260626Cl i18n overflow: 旧幅
+            button1.Size = new System.Drawing.Size(104, 29); // 260626Cl i18n overflow: ru「Возобновить!」に合わせ拡幅
             button1.TabIndex = 1;
             button1.Text = "Resume!";
             button1.UseVisualStyleBackColor = true;

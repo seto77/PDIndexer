@@ -815,13 +815,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonCopy.Location" type="System.Drawing.Point, System.Drawing">
-    <value>4, 30</value>
+    <value>4, 2</value>
   </data>
   <data name="buttonCopy.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonCopy.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 27</value>
+    <value>92, 27</value>
   </data>
   <data name="buttonCopy.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -845,13 +845,13 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="buttonSave.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 30</value>
+    <value>4, 31</value>
   </data>
   <data name="buttonSave.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>0, 0, 0, 0</value>
   </data>
   <data name="buttonSave.Size" type="System.Drawing.Size, System.Drawing">
-    <value>48, 27</value>
+    <value>86, 27</value>
   </data>
   <data name="buttonSave.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>

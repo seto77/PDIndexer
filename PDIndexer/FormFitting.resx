@@ -976,7 +976,7 @@
     <value>NoControl</value>
   </data>
   <data name="buttonCopyCellConstantsToClipboard.Location" type="System.Drawing.Point, System.Drawing">
-    <value>137, 161</value>
+    <value>30, 161</value>
   </data>
   <data name="buttonCopyCellConstantsToClipboard.Size" type="System.Drawing.Size, System.Drawing">
     <value>114, 25</value>
@@ -1263,7 +1263,7 @@ as those of the selected crystal.</value>
     <value>Arial, 9pt</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>514, 299</value>
+    <value>668, 299</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
     <value>255, 212</value>
@@ -1451,7 +1451,7 @@ You can paste it directly into Excel.</value>
     <value>36, 184</value>
   </data>
   <data name="flowLayoutPanelPatternDecomposition.Size" type="System.Drawing.Size, System.Drawing">
-    <value>224, 25</value>
+    <value>290, 25</value>
   </data>
   <data name="flowLayoutPanelPatternDecomposition.TabIndex" type="System.Int32, mscorlib">
     <value>62</value>
@@ -1535,7 +1535,7 @@ You can paste it directly into Excel.</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonSplitPseudoVoigt.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 40</value>
+    <value>232, 40</value>
   </data>
   <data name="radioButtonSplitPseudoVoigt.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 19</value>
@@ -1595,7 +1595,7 @@ You can paste it directly into Excel.</value>
     <value>NoControl</value>
   </data>
   <data name="radioButtonSplitPearson.Location" type="System.Drawing.Point, System.Drawing">
-    <value>169, 65</value>
+    <value>232, 65</value>
   </data>
   <data name="radioButtonSplitPearson.Size" type="System.Drawing.Size, System.Drawing">
     <value>109, 19</value>
@@ -1662,7 +1662,7 @@ above to all peaks of this crystal.</value>
     <value>4, 68</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>298, 92</value>
+    <value>448, 92</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>61</value>
@@ -1795,7 +1795,7 @@ all peaks as their starting peak width.</value>
     <value>110, 40</value>
   </data>
   <data name="panelFWHM.Size" type="System.Drawing.Size, System.Drawing">
-    <value>188, 26</value>
+    <value>250, 26</value>
   </data>
   <data name="panelFWHM.TabIndex" type="System.Int32, mscorlib">
     <value>60</value>
@@ -1909,7 +1909,7 @@ all peaks as their starting peak width.</value>
     <value>9, 19</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>93, 16</value>
+    <value>93, 32</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -2000,7 +2000,7 @@ window half-width) above to all peaks.</value>
     <value>0, 299</value>
   </data>
   <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>306, 212</value>
+    <value>456, 212</value>
   </data>
   <data name="groupBox3.TabIndex" type="System.Int32, mscorlib">
     <value>52</value>
@@ -2198,7 +2198,7 @@ window half-width) above to all peaks.</value>
     <value>6, 20</value>
   </data>
   <data name="buttonSendToCellFinder.Size" type="System.Drawing.Size, System.Drawing">
-    <value>143, 57</value>
+    <value>188, 57</value>
   </data>
   <data name="buttonSendToCellFinder.TabIndex" type="System.Int32, mscorlib">
     <value>54</value>
@@ -2230,10 +2230,10 @@ to CellFinder
     <value>NoControl</value>
   </data>
   <data name="buttonRemovePeaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>43, 68</value>
+    <value>6, 68</value>
   </data>
   <data name="buttonRemovePeaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>138, 23</value>
+    <value>187, 23</value>
   </data>
   <data name="buttonRemovePeaks.TabIndex" type="System.Int32, mscorlib">
     <value>56</value>
@@ -2314,10 +2314,10 @@ below). Simple-search peaks are excluded.</value>
     <value>2</value>
   </data>
   <data name="groupBox4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 299</value>
+    <value>462, 299</value>
   </data>
   <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 105</value>
+    <value>200, 105</value>
   </data>
   <data name="groupBox4.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -2341,10 +2341,10 @@ below). Simple-search peaks are excluded.</value>
     <value>Bottom, Left</value>
   </data>
   <data name="groupBox5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>312, 415</value>
+    <value>462, 415</value>
   </data>
   <data name="groupBox5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>187, 87</value>
+    <value>200, 87</value>
   </data>
   <data name="groupBox5.TabIndex" type="System.Int32, mscorlib">
     <value>57</value>
@@ -2515,7 +2515,7 @@ selected crystal (Flexible mode only).</value>
     <value>96, 96</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>795, 514</value>
+    <value>949, 514</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9pt</value>

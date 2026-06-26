@@ -212,7 +212,7 @@
     <value>2, 27</value>
   </data>
   <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 61</value>
+    <value>90, 61</value>
   </data>
   <data name="buttonAdd.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -247,7 +247,7 @@ Add
     <value>2, 88</value>
   </data>
   <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>47, 77</value>
+    <value>72, 77</value>
   </data>
   <data name="buttonChange.TabIndex" type="System.Int32, mscorlib">
     <value>59</value>
@@ -277,7 +277,7 @@ place
     <value>406, 0</value>
   </data>
   <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>52, 365</value>
+    <value>92, 365</value>
   </data>
   <data name="panel2.TabIndex" type="System.Int32, mscorlib">
     <value>80</value>
@@ -1298,7 +1298,7 @@ of  diffraction peaks based on crystal structures</value>
     <value>0, 0</value>
   </data>
   <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 365</value>
+    <value>350, 365</value>
   </data>
   <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
     <value>76</value>
@@ -1463,7 +1463,7 @@ of  diffraction peaks based on crystal structures</value>
     <value>100</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>946, 637</value>
+    <value>1141, 637</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>365</value>
@@ -1583,7 +1583,7 @@ of  diffraction peaks based on crystal structures</value>
     <value>None</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>952, 665</value>
+    <value>1147, 665</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Symbol, 9.75pt</value>

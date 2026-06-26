@@ -1130,10 +1130,10 @@
     <value>NoControl</value>
   </data>
   <data name="buttonDeleteProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>205, 3</value>
+    <value>159, 3</value>
   </data>
   <data name="buttonDeleteProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>70, 25</value>
+    <value>81, 25</value>
   </data>
   <data name="buttonDeleteProfile.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
@@ -1824,10 +1824,10 @@
     <value>NoControl</value>
   </data>
   <data name="button1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>275, 3</value>
+    <value>242, 3</value>
   </data>
   <data name="button1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>77, 25</value>
+    <value>110, 25</value>
   </data>
   <data name="button1.TabIndex" type="System.Int32, mscorlib">
     <value>74</value>
