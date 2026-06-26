@@ -190,7 +190,4 @@ Residual は R、Info は空間群・各原子のワイコフ位置と
   <data name="graphControl1.ToolTip" xml:space="preserve">
     <value>探索中の R 因子の収束を表示するグラフです。</value>
   </data>
-  <data name="numericTexBox.SharedToolTip" xml:space="preserve">
-    <value>この元素の単位格子内の原子数を入力します（周期表配置）。値を変えると組成式と式単位数 Z が再計算されます。</value>
-  </data>
 </root>
