@@ -29,7 +29,7 @@
 選擇是否依據結構資料計算繞射強度（比率）。
 
 !!! note
-    若尚未輸入原子位置，無論勾選狀態為何，都不會計算強度。輸入原子資料的方式請參閱 [Atom Info. tab](#atom-info-tab)。
+    若尚未輸入原子位置，無論勾選狀態為何，都不會計算強度。輸入原子資料的方式請參閱 [原子資訊分頁](#atom-info-tab)。
 
 ### Scalable intensity
 
@@ -111,21 +111,21 @@
 
 | Tab | Contents |
 | --- | --- |
-| `Basic Info.` | 晶格常數、晶系、空間群等基本資訊 |
-| `Atom Info.` | 原子種類、佔有率、座標與溫度因子 |
+| `基本資訊` | 晶格常數、晶系、空間群等基本資訊 |
+| `原子資訊` | 原子種類、佔有率、座標與溫度因子 |
 | `Ref.` | 出處論文、作者等參考文獻資訊 |
 | `EOS` | 壓縮與熱膨脹的狀態方程設定 |
 
-### Basic Info. tab
+### 基本資訊分頁
 
 設定晶格常數（a, b, c, α, β, γ）、晶系、空間群等基本資訊。選擇空間群後，可編輯的晶格常數與原子座標的自由度會自動受到限制。
 
 !!! tip
     在晶格常數欄位按滑鼠右鍵，會顯示可將晶格常數還原至應用程式啟動時（或從資料庫匯入結構時）數值的選單。在透過精修變更數值後，想要恢復為原始參考值時相當方便。
 
-### Atom Info. tab {#atom-info-tab}
+### 原子資訊分頁 {#atom-info-tab}
 
-![Atom Info. 分頁](../assets/cap-zh-Hant-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
+![原子資訊分頁](../assets/cap-zh-Hant-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
 
 設定每個原子的元素、佔有率、分率座標，以及等向性／非等向性溫度因子。在此輸入原子位置後，即可透過 [Calculate intensity ratio](#calculate-intensity-ratio) 計算繞射強度。
 

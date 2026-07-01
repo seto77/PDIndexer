@@ -29,7 +29,7 @@
 选择是否根据结构数据计算衍射强度（的比值）。
 
 !!! note
-    如果尚未输入原子位置，无论该复选框的状态如何，都不会计算强度。有关输入原子数据的方法，请参阅 [Atom Info. tab](#atom-info-tab)。
+    如果尚未输入原子位置，无论该复选框的状态如何，都不会计算强度。有关输入原子数据的方法，请参阅 [原子信息标签页](#atom-info-tab)。
 
 ### Scalable intensity
 
@@ -111,21 +111,21 @@
 
 | 标签页 | 内容 |
 | --- | --- |
-| `Basic Info.` | 晶格常数、晶系、空间群等基本信息 |
-| `Atom Info.` | 原子种类、占有率、坐标及温度因子 |
+| `基本信息` | 晶格常数、晶系、空间群等基本信息 |
+| `原子信息` | 原子种类、占有率、坐标及温度因子 |
 | `Ref.` | 出处论文、作者等参考文献信息 |
 | `EOS` | 用于压缩和热膨胀的状态方程设置 |
 
-### Basic Info. tab
+### 基本信息标签页
 
 设置晶格常数（a, b, c, α, β, γ）、晶系、空间群等基本信息。选择空间群后，可编辑的晶格常数以及原子坐标的自由度会自动受到约束。
 
 !!! tip
     在晶格常数输入框上单击鼠标右键，会显示一个菜单，可将晶格常数恢复为应用程序启动时（或从数据库导入时）的数值。当通过精修更改数值后想要恢复到原始参考值时，这个功能很方便。
 
-### Atom Info. tab {#atom-info-tab}
+### 原子信息标签页 {#atom-info-tab}
 
-![Atom Info. 标签页](../assets/cap-zh-Hans-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
+![原子信息标签页](../assets/cap-zh-Hans-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
 
 设置每个原子的元素种类、占有率、分数坐标以及各向同性/各向异性温度因子。在此处输入原子位置后，即可通过 [Calculate intensity ratio](#calculate-intensity-ratio) 计算衍射强度。
 

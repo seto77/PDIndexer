@@ -43,9 +43,9 @@ Cada aba é uma tabela para uma quantidade de saída. Cada linha corresponde a u
 
 A posição de pico ajustada, em 2θ (graus), para cada perfil e cada linha de difração.
 
-### Espaçamento d (Å)
+### Distância interplanar (Å)
 
-![Aba de espaçamento d](../assets/cap-pt-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
+![Aba de distância interplanar](../assets/cap-pt-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
 O espaçamento interplanar d, em Å, calculado a partir de cada posição de pico. Ele é obtido a partir do comprimento de onda e de 2θ por \( d = \dfrac{\lambda}{2\sin\theta} \).
 
@@ -111,7 +111,7 @@ Toda saída da análise sequencial também está disponível a partir de uma mac
 | `PDI.Sequential.Open()` / `Close()` | Abrir / fechar a janela |
 | `PDI.Sequential.Execute()` | Executar a análise sequencial |
 | `PDI.Sequential.GetCSV_2theta()` | 2θ |
-| `PDI.Sequential.GetCSV_D()` | Espaçamento d |
+| `PDI.Sequential.GetCSV_D()` | Distância interplanar |
 | `PDI.Sequential.GetCSV_FWHM()` | FWHM |
 | `PDI.Sequential.GetCSV_Intensity()` | Intensidade |
 | `PDI.Sequential.GetCSV_CellConstants()` | Constantes de célula |

@@ -29,7 +29,7 @@ Seleziona se le linee di diffrazione vengono disegnate sovrapposte ai dati del p
 Seleziona se le intensità di diffrazione (i loro rapporti) vengono calcolate a partire dai dati strutturali.
 
 !!! note
-    Se le posizioni atomiche non sono state inserite, le intensità non vengono calcolate indipendentemente dallo stato della casella. Vedi la [scheda Atom Info.](#atom-info-tab) per l'inserimento dei dati atomici.
+    Se le posizioni atomiche non sono state inserite, le intensità non vengono calcolate indipendentemente dallo stato della casella. Vedi la [scheda Info atomi](#atom-info-tab) per l'inserimento dei dati atomici.
 
 ### Scalable intensity
 
@@ -111,21 +111,21 @@ Modifica e visualizza le informazioni dettagliate del cristallo selezionato su d
 
 | Scheda | Contenuto |
 | --- | --- |
-| `Basic Info.` | Parametri reticolari, sistema cristallino, gruppo spaziale e altre informazioni di base |
-| `Atom Info.` | Tipi di atomo, occupazioni, coordinate e fattori di temperatura |
+| `Info base` | Parametri reticolari, sistema cristallino, gruppo spaziale e altre informazioni di base |
+| `Info atomi` | Tipi di atomo, occupazioni, coordinate e fattori di temperatura |
 | `Ref.` | Informazioni di riferimento sull'articolo di origine, sugli autori e così via |
 | `EOS` | Impostazioni dell'equazione di stato per la compressione e l'espansione termica |
 
-### Scheda Basic Info.
+### Scheda Info base
 
 Imposta informazioni di base come i parametri reticolari (a, b, c, α, β, γ), il sistema cristallino e il gruppo spaziale. La scelta di un gruppo spaziale vincola automaticamente i parametri reticolari modificabili e i gradi di libertà delle coordinate atomiche.
 
 !!! tip
     Facendo clic con il tasto destro su un campo di parametro reticolare si apre un menu che ripristina i parametri reticolari ai valori all'avvio dell'applicazione (o al momento in cui la struttura è stata importata dal database). Ciò è utile quando si desidera tornare ai valori di riferimento originali dopo averli modificati tramite il fitting.
 
-### Scheda Atom Info. {#atom-info-tab}
+### Scheda Info atomi {#atom-info-tab}
 
-![La scheda Atom Info.](../assets/cap-it-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
+![La scheda Info atomi](../assets/cap-it-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.tabControl.tabPageAtom.png)
 
 Imposta per ciascun atomo l'elemento, l'occupazione, le coordinate frazionarie e i fattori di temperatura isotropi/anisotropi. Quando qui vengono inserite le posizioni atomiche, le intensità di diffrazione possono essere calcolate tramite [Calculate intensity ratio](#calculate-intensity-ratio).
 
