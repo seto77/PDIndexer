@@ -157,25 +157,11 @@
 데이터 점 수(다항식 차수와 함께 사용). 클수록
 적합 윈도우가 넓어집니다.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(각 측)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>마스크 범위의 양쪽 각각에서 보간 적합에
-사용하는 데이터 점 수입니다.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>마스크 범위 저장</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>마스킹 범위 읽기</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>점 번호</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>보간 피팅에 사용할, 마스크 범위의 양쪽
-각 변에서 가져올 데이터 점의 개수입니다.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>모두 삭제</value>

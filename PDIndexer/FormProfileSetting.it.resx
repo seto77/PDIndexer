@@ -154,25 +154,11 @@
 intervallo mascherato per adattare l'interpolazione (usato con
 l'ordine del polinomio). Maggiore = finestra di adattamento più ampia.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(per lato)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Numero di punti dati presi da ciascun lato
-dell'intervallo mascherato per adattare l'interpolazione.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Salva intervalli maschera</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Leggi intervalli di mascheratura</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>N. punti</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Numero di punti dati presi da ciascun lato
-dell'intervallo mascherato per adattare l'interpolazione.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Elimina tutto</value>

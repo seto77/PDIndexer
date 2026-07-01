@@ -436,8 +436,7 @@
 点を通る B-スプライン曲線として定義します。</value>
   </data>
   <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
-    <value>別のプロファイルを参照バックグラウンド
-として差し引くモードにします。</value>
+    <value>別のプロファイルを参照バックグラウンドとして差し引くモードにします。</value>
   </data>
   <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
     <value>指定した点数でバックグラウンド点を

@@ -154,25 +154,11 @@
 plage masquée pour ajuster l'interpolation (utilisé avec
 l'ordre du polynôme). Plus grand = fenêtre d'ajustement plus large.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(de chaque côté)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Nombre de points de données pris de chaque côté
-de la plage masquée pour ajuster l'interpolation.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Enregistrer les plages de masque</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Lire les plages de masquage</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>N° de point</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Nombre de points de données pris de chaque côté
-de la plage masquée pour ajuster l'interpolation.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Tout supprimer</value>

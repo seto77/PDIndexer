@@ -154,25 +154,11 @@
 rango enmascarado para ajustar la interpolación (usado con el
 orden polinómico). Mayor = ventana de ajuste más ancha.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(cada lado)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Número de puntos de datos tomados de cada lado
-del rango enmascarado para ajustar la interpolación.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Guardar rangos de enmascaramiento</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Leer rangos de enmascaramiento</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>N.º de puntos</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Número de puntos de datos tomados de cada lado
-del rango enmascarado para ajustar la interpolación.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Eliminar todo</value>

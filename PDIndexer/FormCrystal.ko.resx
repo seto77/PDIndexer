@@ -116,8 +116,7 @@
     <value>피크 지수 표시</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>피크 숨기기
- 이하</value>
+    <value>피크 숨기기 이하</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>강도 조정 가능</value>
@@ -134,8 +133,7 @@
 강도 비율을 계산하려면 체크하십시오</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>프로파일 아래에
- 피크 표시</value>
+    <value>프로파일 아래에 피크 표시</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>회절 피크 옵션</value>

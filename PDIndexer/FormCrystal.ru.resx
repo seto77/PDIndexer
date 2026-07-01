@@ -116,8 +116,7 @@
     <value>Показывать индексы пиков</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Скрывать пики
- ниже</value>
+    <value>Скрывать пики ниже</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>Масштабируемая интенсивность</value>
@@ -134,8 +133,7 @@
 дифракционных пиков на основе кристаллических структур</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Показывать пики
- под профилем</value>
+    <value>Показывать пики под профилем</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Параметры дифракционных пиков</value>

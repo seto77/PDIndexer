@@ -119,8 +119,7 @@
     <value>顯示峰指數</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>隱藏峰
- 低於</value>
+    <value>隱藏峰低於</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>強度可縮放</value>
@@ -137,8 +136,7 @@
 的強度比，請勾選</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>在輪廓下方
- 顯示峰</value>
+    <value>在輪廓下方顯示峰</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>繞射峰選項</value>

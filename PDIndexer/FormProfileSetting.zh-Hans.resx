@@ -157,25 +157,11 @@
 数据点数(与多项式阶数配合使用)。
 数值越大,拟合窗口越宽。</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(每侧)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>从掩模范围每一侧分别选取用于
-拟合插值的数据点数。</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>保存掩模范围</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>读取掩膜范围</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>数据点数</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>用于拟合插值时，从掩膜范围两侧
-各取的数据点数。</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>全部删除</value>

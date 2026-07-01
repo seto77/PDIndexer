@@ -113,7 +113,6 @@
     <value>クリックすると表示中のアドレス宛にメールソフトを開きます。</value>
   </data>
   <data name="linkLabelHomePage.ToolTip" xml:space="preserve">
-    <value>クリックするとプロジェクトの
-ホームページをブラウザで開きます。</value>
+    <value>クリックするとプロジェクトのホームページをブラウザで開きます。</value>
   </data>
 </root>

@@ -116,8 +116,7 @@ placer
     <value>Afficher les indices des pics</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Masquer les pics
- en dessous de</value>
+    <value>Masquer les pics en dessous de</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>Intensité ajustable</value>
@@ -134,8 +133,7 @@ placer
 des pics de diffraction à partir des structures cristallines</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Afficher les pics
- sous le profil</value>
+    <value>Afficher les pics sous le profil</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Options des pics de diffraction</value>

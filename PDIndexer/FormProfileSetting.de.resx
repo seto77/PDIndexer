@@ -154,25 +154,11 @@
 maskierten Bereichs zur Anpassung der Interpolation
 verwendet werden (zusammen mit dem Polynomgrad). Größer = breiteres Anpassungsfenster.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(je Seite)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Anzahl der Datenpunkte, die von jeder Seite
-des maskierten Bereichs zur Interpolation verwendet werden.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Maskenbereiche speichern</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Maskierungsbereiche einlesen</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Punkt-Nr.</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Anzahl der Datenpunkte, die von jeder Seite des
-maskierten Bereichs für die Interpolationsanpassung verwendet werden.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Alle löschen</value>

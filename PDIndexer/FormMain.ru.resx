@@ -99,8 +99,7 @@
     <value>Отсчёты на шаг (CPS)</value>
   </data>
   <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
-    <value>Показывать отсчёты, нормированные на шаг (CPS = отсчёты
-/ ширина шага).</value>
+    <value>Показывать отсчёты, нормированные на шаг (CPS = отсчёты / ширина шага).</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>Вертикальная ось</value>

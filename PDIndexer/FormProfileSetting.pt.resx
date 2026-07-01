@@ -157,25 +157,11 @@
 intervalo mascarado para ajustar a interpolação (usado com a
 ordem polinomial). Maior = janela de ajuste mais larga.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(cada lado)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Número de pontos de dados retirados de cada lado
-do intervalo mascarado para ajustar a interpolação.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Salvar intervalos de mascaramento</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Ler intervalos de máscara</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>N.º de pontos</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Número de pontos de dados usados de cada lado
-do intervalo mascarado para ajustar a interpolação.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Excluir tudo</value>

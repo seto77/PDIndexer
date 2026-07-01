@@ -627,8 +627,7 @@
     <value>各点の生のカウント値（ステップ幅で割らない）を表示します。</value>
   </data>
   <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
-    <value>1 ステップあたりのカウント（CPS = カウント
-/ ステップ幅）に正規化して表示します。</value>
+    <value>1 ステップあたりのカウント（CPS = カウント / ステップ幅）に正規化して表示します。</value>
   </data>
   <data name="groupBox4.ToolTip" xml:space="preserve">
     <value>縦軸（強度軸）の表示モードを選びます。</value>
@@ -645,8 +644,7 @@
     <value>プロファイル表示領域に目盛り（グリッド）線を表示します。</value>
   </data>
   <data name="checkBoxAll.ToolTip" xml:space="preserve">
-    <value>全プロファイルのチェックを一括でオン
-/ オフします（全表示 / 全非表示）。</value>
+    <value>全プロファイルのチェックを一括でオン / オフします（全表示 / 全非表示）。</value>
   </data>
   <data name="numericBoxUpperX.ToolTip" xml:space="preserve">
     <value>横軸（2θ／d／エネルギー等）の表示範囲の上限値で

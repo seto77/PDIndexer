@@ -157,25 +157,11 @@
 點數（與多項式階數搭配使用）。數值越大
 = 擬合視窗越寬。</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(各側)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>從遮罩範圍兩側各自取用
-以擬合內插的資料點數。</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>儲存遮罩範圍</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>讀取遮罩範圍</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>點數</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>從遮罩範圍兩側各取用於擬合
-內插的資料點數。</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>全部刪除</value>

@@ -157,25 +157,11 @@
 маскированного диапазона для подгонки интерполяции (используется с
 порядком полинома). Больше = шире окно подгонки.</value>
   </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(с каждой стороны)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Число точек данных, берущихся с каждой стороны
-маскированного диапазона для подгонки интерполяции.</value>
-  </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Сохранить диапазоны маскирования</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Загрузить диапазоны маскирования</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>Номер точки</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Число точек данных, взятых с каждой стороны
-маскируемого диапазона для подгонки интерполяции.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Удалить все</value>
