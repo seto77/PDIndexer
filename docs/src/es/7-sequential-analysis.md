@@ -43,9 +43,9 @@ Cada pestaña es una tabla para una magnitud de salida. Cada fila corresponde a 
 
 La posición ajustada del pico, en 2θ (grados), para cada perfil y cada línea de difracción.
 
-### Espaciado d (Å)
+### Distancia interplanar (Å)
 
-![Pestaña de espaciado d](../assets/cap-es-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
+![Pestaña de distancia interplanar](../assets/cap-es-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
 El espaciado interplanar d, en Å, calculado a partir de cada posición de pico. Se obtiene de la longitud de onda y de 2θ mediante \( d = \dfrac{\lambda}{2\sin\theta} \).
 
@@ -111,7 +111,7 @@ Cada salida del análisis secuencial también está disponible desde una macro (
 | `PDI.Sequential.Open()` / `Close()` | Abrir / cerrar la ventana |
 | `PDI.Sequential.Execute()` | Ejecutar el análisis secuencial |
 | `PDI.Sequential.GetCSV_2theta()` | 2θ |
-| `PDI.Sequential.GetCSV_D()` | Espaciado d |
+| `PDI.Sequential.GetCSV_D()` | Distancia interplanar |
 | `PDI.Sequential.GetCSV_FWHM()` | FWHM |
 | `PDI.Sequential.GetCSV_Intensity()` | Intensidad |
 | `PDI.Sequential.GetCSV_CellConstants()` | Constantes de celda |

@@ -111,8 +111,8 @@ Edita y muestra información detallada del cristal seleccionado a través de var
 
 | Pestaña | Contenido |
 | --- | --- |
-| `Basic Info.` | Parámetros de red, sistema cristalino, grupo espacial y otra información básica |
-| `Atom Info.` | Tipos de átomos, ocupaciones, coordenadas y factores de temperatura |
+| `Info. básica` | Parámetros de red, sistema cristalino, grupo espacial y otra información básica |
+| `Info. átomos` | Tipos de átomos, ocupaciones, coordenadas y factores de temperatura |
 | `Ref.` | Información de referencia del artículo fuente, autores, etc. |
 | `EOS` | Ajustes de la ecuación de estado para compresión y expansión térmica |
 
@@ -185,7 +185,7 @@ Introduzca el nombre del cristal.
 
 ![Búsqueda por elemento y parámetros de celda](../assets/cap-es-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Al pulsar el botón `Periodic Table` se abre una ventana aparte donde se eligen los elementos a buscar. Cada botón de elemento alterna su estado cada vez que se pulsa.
+Al pulsar el botón `Tabla periódica` se abre una ventana aparte donde se eligen los elementos a buscar. Cada botón de elemento alterna su estado cada vez que se pulsa.
 
 Los botones de la parte superior de la ventana cambian el estado de todos los elementos a la vez.
 
@@ -196,7 +196,7 @@ Los botones de la parte superior de la ventana cambian el estado de todos los el
 | `must exclude` | Debe excluir (se eliminan los cristales que contienen alguno de los elementos especificados). |
 
 !!! tip
-    Al marcar `Ignore scattering factor` se puede buscar sin tener en cuenta los factores de dispersión.
+    Al marcar `Ignorar factor de dispersión` se puede buscar sin tener en cuenta los factores de dispersión.
 
 #### Referencia
 
