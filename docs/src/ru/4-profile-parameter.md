@@ -39,7 +39,7 @@
 
 ### 1. Смещение 2θ {#two-theta-offset}
 
-![Панель смещения 2θ](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![Панель смещения 2θ](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` корректирует угол для данных угло-дисперсионной дифрактометрии. Формула коррекции — квадратичная функция от \( \tan\theta \).
 
@@ -56,7 +56,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 2. Маскирование и интерполяция {#mask}
 
-![Панель маскирования и интерполяции](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![Панель маскирования и интерполяции](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` маскирует заданный угловой диапазон (или диапазон энергий) и интерполирует профиль, используя интенсивности вне маскированного диапазона.
 
@@ -70,7 +70,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 3. Сглаживание {#smoothing}
 
-![Панель сглаживания](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![Панель сглаживания](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` применяет сглаживание к выбранному профилю. Алгоритм сглаживания — метод `Savitzky-Golay`.
 
@@ -81,7 +81,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 4. Полосовой фильтр {#bandpass}
 
-![Панель полосового фильтра](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![Панель полосового фильтра](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` использует преобразование Фурье (FFT), чтобы отсечь составляющие выше или ниже заданных частот.
 
@@ -99,7 +99,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 6. Фон {#background}
 
-![Панель вычитания фона](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![Панель вычитания фона](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` вычитает фон из профиля. Есть два метода.
 
@@ -118,7 +118,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 7. Нормировка интенсивности {#normalize}
 
-![Панель нормировки интенсивности](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![Панель нормировки интенсивности](../assets/cap-ru-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` нормирует профиль так, чтобы `Average` (среднее) или `Maximum` (максимум) в заданном диапазоне горизонтальной оси стало заданной интенсивностью.
 

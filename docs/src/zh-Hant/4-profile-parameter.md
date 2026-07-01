@@ -39,7 +39,7 @@
 
 ### 1. 2θ offset {#two-theta-offset}
 
-![2θ offset 面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![2θ offset 面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` 用於修正角度分散型繞射資料的角度。修正式是關於 \( \tan\theta \) 的二次函數。
 
@@ -56,7 +56,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 2. Mask and Interpolation {#mask}
 
-![遮罩與內插面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![遮罩與內插面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` 會遮罩指定的角度範圍（或能量範圍），並使用遮罩範圍外側的強度對圖譜進行內插。
 
@@ -70,7 +70,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 3. Smoothing {#smoothing}
 
-![平滑化面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![平滑化面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` 會對選取的圖譜套用平滑化處理。平滑化演算法採用 `Savitzky-Golay` 方法。
 
@@ -81,7 +81,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 4. Bandpass filter {#bandpass}
 
-![帶通濾波器面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![帶通濾波器面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` 使用傅立葉變換（FFT）截除高於或低於指定頻率的成分。
 
@@ -99,7 +99,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 6. Background {#background}
 
-![背景減除面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![背景減除面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` 會從圖譜中減除背景，有兩種方法。
 
@@ -118,7 +118,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 7. Normalize intensity {#normalize}
 
-![強度正規化面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![強度正規化面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` 會將圖譜正規化，使指定橫軸範圍內的 `Average` 或 `Maximum` 成為指定的強度值。
 
