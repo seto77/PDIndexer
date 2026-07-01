@@ -181,8 +181,8 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
 
     private void checkBoxShowPeakUnderProfile_CheckedChanged(object sender, EventArgs e)
     {
-        numericUpDownHeightOfBottomPeak.Enabled = checkBoxShowPeakUnderProfile.Checked;
-        formMain.HeightOfBottomPeaks = (float)numericUpDownHeightOfBottomPeak.Value;
+        numericBoxHeightOfBottomPeak.Enabled = checkBoxShowPeakUnderProfile.Checked;
+        formMain.HeightOfBottomPeaks = (float)numericBoxHeightOfBottomPeak.Value;
         if (checkBoxShowPeakUnderProfile.Checked)
             formMain.BottomMargin = (formMain.HeightOfBottomPeaks + 4) * dataSet.DataTableCrystal.CheckedItems.Count;
         else
@@ -206,7 +206,7 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
 
     private void checkBoxInvisibleWeakPeak_CheckedChanged(object sender, EventArgs e)
     {
-        numericUpDownThresholdIntesity.Enabled = checkBoxInvisibleWeakPeak.Checked;
+        numericBoxThresholdIntesity.Enabled = checkBoxInvisibleWeakPeak.Checked;
         formMain.InitializeCrystalPlane();
         formMain.Draw();
     }

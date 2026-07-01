@@ -39,7 +39,7 @@ Auf der Registerkarte `Profile processing` wenden Sie verschiedene numerische Ve
 
 ### 1. 2θ offset {#two-theta-offset}
 
-![2θ-Offset-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![2θ-Offset-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` korrigiert den Winkel winkeldispersiver Daten. Der Korrekturausdruck ist eine quadratische Funktion von \( \tan\theta \).
 
@@ -56,7 +56,7 @@ Die Schaltfläche `Reset` setzt die von Ihnen festgelegten Offset-Koeffizienten 
 
 ### 2. Mask and Interpolation {#mask}
 
-![Masken- und Interpolationsbereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![Masken- und Interpolationsbereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` maskiert einen angegebenen Winkelbereich (oder Energiebereich) und interpoliert das Profil unter Verwendung der Intensitäten außerhalb des maskierten Bereichs.
 
@@ -70,7 +70,7 @@ Die Schaltfläche `Reset` setzt die von Ihnen festgelegten Offset-Koeffizienten 
 
 ### 3. Smoothing {#smoothing}
 
-![Glättungsbereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![Glättungsbereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` wendet eine Glättung auf das ausgewählte Profil an. Der Glättungsalgorithmus ist die `Savitzky-Golay`-Methode.
 
@@ -81,7 +81,7 @@ Bei dieser Methode wird für jede betrachtete \(x\)-Position eine Anpassung nach
 
 ### 4. Bandpass filter {#bandpass}
 
-![Bandpassfilter-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![Bandpassfilter-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` verwendet eine Fourier-Transformation (FFT), um Komponenten oberhalb oder unterhalb angegebener Frequenzen abzuschneiden.
 
@@ -99,7 +99,7 @@ Bei dieser Methode wird für jede betrachtete \(x\)-Position eine Anpassung nach
 
 ### 6. Background {#background}
 
-![Untergrundsubtraktions-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![Untergrundsubtraktions-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` subtrahiert den Untergrund vom Profil. Es gibt zwei Methoden.
 
@@ -118,7 +118,7 @@ Sie können ein anderes Profil als Untergrund für das ausgewählte Profil angeb
 
 ### 7. Normalize intensity {#normalize}
 
-![Intensitätsnormierungs-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![Intensitätsnormierungs-Bereich](../assets/cap-de-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` normiert das Profil so, dass der `Average` (Mittelwert) oder das `Maximum` (Maximum) über einen angegebenen Bereich der horizontalen Achse zu einer angegebenen Intensität wird.
 

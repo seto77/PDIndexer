@@ -83,20 +83,11 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>기본 정보</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>차수</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>점 수</value>
-  </data>
   <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
     <value>배경 프로파일 표시</value>
   </data>
   <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
     <value>자동 검출</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>점 수</value>
   </data>
   <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
     <value>참조</value>
@@ -137,17 +128,11 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>세로축 설정</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>강도 범위</value>
-  </data>
   <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
     <value>최대값</value>
   </data>
   <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
     <value>평균값</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>(가로축 단위)</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>모두 삭제</value>
@@ -167,30 +152,16 @@
   <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
     <value>마스크 범위 설정</value>
   </data>
-  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationPoints.ToolTip" xml:space="preserve">
     <value>마스크 범위의 양쪽 각각에서 보간 적합에 사용하는
 데이터 점 수(다항식 차수와 함께 사용). 클수록
 적합 윈도우가 넓어집니다.</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(각 측)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>마스크 범위의 양쪽 각각에서 보간 적합에
-사용하는 데이터 점 수입니다.</value>
   </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>마스크 범위 저장</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>마스킹 범위 읽기</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>점 번호</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>보간 피팅에 사용할, 마스크 범위의 양쪽
-각 변에서 가져올 데이터 점의 개수입니다.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>모두 삭제</value>
@@ -215,9 +186,6 @@
   </data>
   <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
     <value>7. 강도 정규화</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>(으)로 정규화</value>
   </data>
   <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
     <value>모든 프로파일에 적용 (배경 설정 제외)</value>
@@ -265,7 +233,7 @@
   <data name="colorControlLineColor.ToolTip" xml:space="preserve">
     <value>선택한 프로파일의 선(플롯) 색을 설정합니다.</value>
   </data>
-  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+  <data name="numericBoxLineWidth.ToolTip" xml:space="preserve">
     <value>선택한 프로파일의 플롯 선 너비를
 포인트(pt) 단위로 설정합니다.</value>
   </data>
@@ -314,7 +282,7 @@ c2*tan^2(theta) (각도 분산 데이터 전용).</value>
     <value>그래프 위에서 마우스로 직접 마스킹 범위를
 설정/표시하는 기능을 활성화합니다.</value>
   </data>
-  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationOrder.ToolTip" xml:space="preserve">
     <value>마스킹 범위를 보간하는 데 사용하는 다항식
 차수(0-5). 클수록 더 유연한 곡선.</value>
   </data>
@@ -332,11 +300,11 @@ c2*tan^2(theta) (각도 분산 데이터 전용).</value>
   <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
     <value>3단계: Savitzky-Golay 필터로 프로파일을 평활화합니다.</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
     <value>Savitzky-Golay 창 반폭(한쪽의
 점 개수). 클수록 평활화가 강해집니다.</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
     <value>Savitzky-Golay 다항식 차수(0-5).
 높을수록 피크는 보존되나 평활화는 약해집니다.</value>
   </data>
@@ -348,7 +316,7 @@ c2*tan^2(theta) (각도 분산 데이터 전용).</value>
     <value>고역 통과 필터 활성화: 임계값 아래의 저주파
 (장주기) 성분을 제거합니다.</value>
   </data>
-  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxHighPass.ToolTip" xml:space="preserve">
     <value>고역 통과 차단 주파수(단위:
 1/[가로축 단위]); 이보다 낮은 성분이
 제거됩니다. 범위는 데이터에 맞춰 조정됩니다.</value>
@@ -357,7 +325,7 @@ c2*tan^2(theta) (각도 분산 데이터 전용).</value>
     <value>저역 통과 필터 활성화: 임계값 위의 고주파
 (단주기 잡음) 성분을 제거합니다.</value>
   </data>
-  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxLowPass.ToolTip" xml:space="preserve">
     <value>저역 통과 차단 주파수(단위:
 1/[가로축 단위]); 이보다 높은 성분이
 제거됩니다. 범위는 데이터에 맞춰 조정됩니다.</value>
@@ -381,7 +349,7 @@ B-스플라인 곡선으로 백그라운드를 정의합니다.</value>
     <value>지정한 개수의 백그라운드 점을
 프로파일을 따라 자동으로 배치합니다.</value>
   </data>
-  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+  <data name="numericBoxBgPointsNumber.ToolTip" xml:space="preserve">
     <value>자동 검출 / B-스플라인 피팅에 사용하는
 백그라운드 점 개수(3-50).</value>
   </data>
@@ -389,7 +357,7 @@ B-스플라인 곡선으로 백그라운드를 정의합니다.</value>
     <value>참조 백그라운드로 사용할 불러온
 프로파일을 선택합니다.</value>
   </data>
-  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+  <data name="numericBoxBackgroundReferrenceScale.ToolTip" xml:space="preserve">
     <value>빼기 전에 참조 백그라운드에
 곱하는 배율입니다.</value>
   </data>
@@ -409,15 +377,15 @@ B-스플라인 곡선으로 백그라운드를 정의합니다.</value>
     <value>범위 내 최대 강도가 목표값과 같아지도록
 규격화합니다.</value>
   </data>
-  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeLow.ToolTip" xml:space="preserve">
     <value>규격화 계산에 사용하는 범위의
 하한(가로축 단위)입니다.</value>
   </data>
-  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeHigh.ToolTip" xml:space="preserve">
     <value>규격화 계산에 사용하는 범위의
 상한(가로축 단위)입니다.</value>
   </data>
-  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeIntensity.ToolTip" xml:space="preserve">
     <value>범위의 평균/최대값을 맞출
 목표 강도값(1-100000)입니다.</value>
   </data>
@@ -438,11 +406,11 @@ B-스플라인 곡선으로 백그라운드를 정의합니다.</value>
     <value>프로파일 전체를 가로축을 따라
 일정량만큼 이동합니다.</value>
   </data>
-  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+  <data name="numericBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
     <value>프로파일을 가로축을 따라 이동할
 양(가로축 단위)입니다.</value>
   </data>
-  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+  <data name="numericBoxExposureTime.ToolTip" xml:space="preserve">
     <value>세로축에서 강도를 초당 카운트(CPS)로 변환할 때
 사용하는 노출 시간(초)입니다.</value>
   </data>

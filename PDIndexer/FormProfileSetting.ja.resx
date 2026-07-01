@@ -194,16 +194,10 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>縦軸</value>
   </data>
-  <data name="numericalTextBoxExposureTime.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="numericBoxExposureTime.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt, style=Bold</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label13.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>の</value>
-  </data>
   <data name="radioButtonNormarizeMaximum.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -215,12 +209,6 @@
   </data>
   <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
     <value>平均値</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>横軸範囲</value>
   </data>
   <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt, style=Bold</value>
@@ -276,19 +264,7 @@
   <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
     <value>7. 強度のノーマライズ</value>
   </data>
-  <data name="label14.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>にノーマライズ</value>
-  </data>
-  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="label23.Text" xml:space="preserve">
-    <value>を</value>
-  </data>
   <data name="buttonApplyAllProfiles.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
@@ -334,18 +310,10 @@
   <data name="$this.Text" xml:space="preserve">
     <value>プロファイル情報</value>
   </data>
-  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationPoints.ToolTip" xml:space="preserve">
     <value>マスク範囲の左右それぞれから補間に使うデータ
 点数を設定します。多項式次数と組み合わせ、
 点数を増やすほど広い範囲を参照します。</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>マスク範囲の左右それぞれから補間に
-使うデータ点数を設定します。</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>マスク範囲の左右それぞれから補間に
-使うデータ点数を設定します。</value>
   </data>
   <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
     <value>読み込み済みプロファイルの一覧です。行を
@@ -363,7 +331,7 @@
   <data name="colorControlLineColor.ToolTip" xml:space="preserve">
     <value>選択中プロファイルの線（プロット）の色を設定します。</value>
   </data>
-  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+  <data name="numericBoxLineWidth.ToolTip" xml:space="preserve">
     <value>選択中プロファイルのプロット線の太さを pt 単位で設定します。</value>
   </data>
   <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
@@ -408,7 +376,7 @@
     <value>グラフ上でマウス操作によりマスク範囲を
 設定・表示するモードを有効にします。</value>
   </data>
-  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationOrder.ToolTip" xml:space="preserve">
     <value>マスク範囲を補間する多項式の次数（0〜5）を
 設定します。大きいほど曲線が柔軟になります。</value>
   </data>
@@ -426,11 +394,11 @@
   <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
     <value>手順3: Savitzky-Golay フィルタでプロファイルを平滑化します。</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
     <value>Savitzky-Golay 平滑化の窓幅（片側の点数）を
 設定します。大きいほど強く平滑化します。</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
     <value>Savitzky-Golay 平滑化の多項式次数（0〜5）を設定します。
 大きいほどピーク形状を保ちますが平滑化は弱まります。</value>
   </data>
@@ -442,7 +410,7 @@
     <value>ハイパスフィルタを有効にし、しきい値より
 低い周波数（長周期）成分を除去します。</value>
   </data>
-  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxHighPass.ToolTip" xml:space="preserve">
     <value>ハイパスのしきい値（横軸単位の逆数＝周波数）
 を設定します。これより低周波の成分を除去しま
 す（範囲はデータに応じて自動）。</value>
@@ -451,7 +419,7 @@
     <value>ローパスフィルタを有効にし、しきい値より高い
 周波数（短周期ノイズ）成分を除去します。</value>
   </data>
-  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxLowPass.ToolTip" xml:space="preserve">
     <value>ローパスのしきい値（横軸単位の逆数＝周波数）
 を設定します。これより高周波の成分を除去しま
 す（範囲はデータに応じて自動）。</value>
@@ -468,21 +436,20 @@
 点を通る B-スプライン曲線として定義します。</value>
   </data>
   <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
-    <value>別のプロファイルを参照バックグラウンド
-として差し引くモードにします。</value>
+    <value>別のプロファイルを参照バックグラウンドとして差し引くモードにします。</value>
   </data>
   <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
     <value>指定した点数でバックグラウンド点を
 プロファイル上に自動配置します。</value>
   </data>
-  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+  <data name="numericBoxBgPointsNumber.ToolTip" xml:space="preserve">
     <value>自動検出・B-スプライン用のバックグラウンド
 点の数（3〜50）を設定します。</value>
   </data>
   <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
     <value>参照バックグラウンドとして差し引くプロファイルを選択します。</value>
   </data>
-  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+  <data name="numericBoxBackgroundReferrenceScale.ToolTip" xml:space="preserve">
     <value>参照バックグラウンドに掛ける倍率を設定します。</value>
   </data>
   <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
@@ -498,13 +465,13 @@
   <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
     <value>範囲内の最大強度が目標値になるように規格化します。</value>
   </data>
-  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeLow.ToolTip" xml:space="preserve">
     <value>規格化の基準とする横軸範囲の下端（横軸単位）を設定します。</value>
   </data>
-  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeHigh.ToolTip" xml:space="preserve">
     <value>規格化の基準とする横軸範囲の上端（横軸単位）を設定します。</value>
   </data>
-  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeIntensity.ToolTip" xml:space="preserve">
     <value>範囲の平均/最大強度を合わせる
 目標強度値（1〜100000）を設定します。</value>
   </data>
@@ -524,10 +491,10 @@
   <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
     <value>プロファイル全体を横軸方向に一定量だけ平行移動します。</value>
   </data>
-  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+  <data name="numericBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
     <value>横軸方向の平行移動量（横軸単位）を設定します。</value>
   </data>
-  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+  <data name="numericBoxExposureTime.ToolTip" xml:space="preserve">
     <value>縦軸を CPS（毎秒カウント）表示に換算す
 る際に使う露光時間（秒）を設定します。</value>
   </data>

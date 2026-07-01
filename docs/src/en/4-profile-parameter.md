@@ -39,7 +39,7 @@ On the `Profile processing` tab you apply various numerical processing to the se
 
 ### 1. 2θ offset {#two-theta-offset}
 
-![2θ offset panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![2θ offset panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` corrects the angle of angle-dispersive data. The correction expression is a quadratic function of \( \tan\theta \).
 
@@ -56,7 +56,7 @@ The `Reset` button resets the offset coefficients you have set.
 
 ### 2. Mask and Interpolation {#mask}
 
-![Mask and interpolation panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![Mask and interpolation panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` masks a specified angular range (or energy range) and interpolates the profile using the intensities outside the masked range.
 
@@ -70,7 +70,7 @@ The `Reset` button resets the offset coefficients you have set.
 
 ### 3. Smoothing {#smoothing}
 
-![Smoothing panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![Smoothing panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` applies smoothing to the selected profile. The smoothing algorithm is the `Savitzky-Golay` method.
 
@@ -81,7 +81,7 @@ In this method, for each \(x\) position of interest, a least-squares fit with a 
 
 ### 4. Bandpass filter {#bandpass}
 
-![Bandpass filter panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![Bandpass filter panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` uses a Fourier transform (FFT) to cut components above or below specified frequencies.
 
@@ -99,7 +99,7 @@ In this method, for each \(x\) position of interest, a least-squares fit with a 
 
 ### 6. Background {#background}
 
-![Background subtraction panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![Background subtraction panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` subtracts the background from the profile. There are two methods.
 
@@ -118,7 +118,7 @@ You can specify another profile as the background for the selected profile. Chec
 
 ### 7. Normalize intensity {#normalize}
 
-![Normalize intensity panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![Normalize intensity panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` normalizes the profile so that the `Average` or `Maximum` over a specified horizontal-axis range becomes a specified intensity.
 

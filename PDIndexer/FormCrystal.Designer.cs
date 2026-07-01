@@ -48,8 +48,8 @@ namespace PDIndexer
             groupBox3 = new GroupBox();
             crystalControl = new CrystalControl();
             panel2 = new Panel();
-            buttonAdd = new Button();
             buttonChange = new Button();
+            buttonAdd = new Button();
             groupBox1 = new GroupBox();
             dataGridViewCrystal = new DataGridView();
             checkDataGridViewCheckBoxColumn1 = new DataGridViewCheckBoxColumn();
@@ -63,32 +63,32 @@ namespace PDIndexer
             buttonAllClear = new Button();
             panel3 = new Panel();
             groupBox2 = new GroupBox();
-            flowLayoutPanel1 = new FlowLayoutPanel();
-            radioButtonAngleThreshold = new RadioButton();
-            numericUpDownAngleThreshold = new NumericUpDown();
-            contextMenuStrip1 = new ContextMenuStrip(components);
-            incrementToolStripMenuItem = new ToolStripMenuItem();
-            label5 = new Label();
-            radioButtonEnergyThreshold = new RadioButton();
-            numericUpDownEnergyThreshold = new NumericUpDown();
-            label1 = new Label();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            checkBoxShowPeakOverProfiles = new CheckBox();
+            checkBoxCalculateIntensity = new CheckBox();
+            checkBoxVariableRatioOfIntensity = new CheckBox();
+            checkBoxShowPeakUnderProfile = new CheckBox();
+            numericBoxHeightOfBottomPeak = new NumericBox();
+            checkBoxInvisibleWeakPeak = new CheckBox();
+            numericBoxThresholdIntesity = new NumericBox();
             checkBoxCombineSameDspacingPeaks = new CheckBox();
-            label3 = new Label();
+            flowLayoutPanel1 = new FlowLayoutPanel();
+            flowLayoutPanel5 = new FlowLayoutPanel();
+            radioButtonAngleThreshold = new RadioButton();
+            numericBoxAngleThreshold = new NumericBox();
+            flowLayoutPanel6 = new FlowLayoutPanel();
+            radioButtonEnergyThreshold = new RadioButton();
+            numericBoxEnergyThreshold = new NumericBox();
+            checkBoxShowPeakIndices = new CheckBox();
+            flowLayoutPanel2 = new FlowLayoutPanel();
             radioButtonAllCheckedCrystals = new RadioButton();
             radioButtonOnlySelectedCrystal = new RadioButton();
-            numericUpDownThresholdIntesity = new NumericUpDown();
-            numericUpDownHeightOfBottomPeak = new NumericUpDown();
-            checkBoxShowPeakOverProfiles = new CheckBox();
-            checkBoxShowPeakIndices = new CheckBox();
-            checkBoxInvisibleWeakPeak = new CheckBox();
-            checkBoxVariableRatioOfIntensity = new CheckBox();
-            checkBoxCalculateIntensity = new CheckBox();
-            label6 = new Label();
-            checkBoxShowPeakUnderProfile = new CheckBox();
             groupBox4 = new GroupBox();
             crystalDatabaseControl = new CrystalDatabaseControl();
             panel1 = new Panel();
             searchCrystalControl = new SearchCrystalControl();
+            contextMenuStrip1 = new ContextMenuStrip(components);
+            incrementToolStripMenuItem = new ToolStripMenuItem();
             checkDataGridViewCheckBoxColumn = new DataGridViewCheckBoxColumn();
             crystalDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             toolTip = new ToolTip(components);
@@ -113,14 +113,14 @@ namespace PDIndexer
             ((ISupportInitialize)bindingSource).BeginInit();
             flowLayoutPanel3.SuspendLayout();
             groupBox2.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
             flowLayoutPanel1.SuspendLayout();
-            ((ISupportInitialize)numericUpDownAngleThreshold).BeginInit();
-            contextMenuStrip1.SuspendLayout();
-            ((ISupportInitialize)numericUpDownEnergyThreshold).BeginInit();
-            ((ISupportInitialize)numericUpDownThresholdIntesity).BeginInit();
-            ((ISupportInitialize)numericUpDownHeightOfBottomPeak).BeginInit();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             groupBox4.SuspendLayout();
             panel1.SuspendLayout();
+            contextMenuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -151,47 +151,18 @@ namespace PDIndexer
             // 
             // crystalControl
             // 
-            crystalControl.A = 0D;
             crystalControl.AllowDrop = true;
-            crystalControl.Alpha = 0D;
             resources.ApplyResources(crystalControl, "crystalControl");
-            crystalControl.B = 0D;
-            crystalControl.Beta = 0D;
-            crystalControl.C = 0D;
-            crystalControl.ColorControlVisible = true;
-            crystalControl.DefaultTabNumber = 0;
-            crystalControl.Gamma = 0D;
             crystalControl.Name = "crystalControl";
-            crystalControl.BeamInteractionVisible = false;
-            crystalControl.SkipEvent = false;
-            crystalControl.SymmetryInformationVisible = false;
-            crystalControl.SymmetrySeriesNumber = 0;
-            crystalControl.VisibleAtomTab = true;
-            crystalControl.VisibleBasicInfoTab = true;
             crystalControl.VisibleBondsPolyhedraTab = false;
-            crystalControl.VisibleBoundTab = false;
             crystalControl.VisibleElasticityTab = false;
-            crystalControl.VisibleEOSTab = true;
-            crystalControl.VisibleLatticePlaneTab = false;
-            crystalControl.VisiblePolycrystallineTab = false;
-            crystalControl.VisibleReferenceTab = true;
-            crystalControl.VisibleStressStrainTab = false;
             // 
             // panel2
             // 
-            resources.ApplyResources(panel2, "panel2");
-            panel2.Controls.Add(buttonAdd);
             panel2.Controls.Add(buttonChange);
+            panel2.Controls.Add(buttonAdd);
+            resources.ApplyResources(panel2, "panel2");
             panel2.Name = "panel2";
-            // 
-            // buttonAdd
-            // 
-            resources.ApplyResources(buttonAdd, "buttonAdd");
-            buttonAdd.BackColor = Color.SteelBlue;
-            buttonAdd.ForeColor = SystemColors.ControlLightLight;
-            buttonAdd.Name = "buttonAdd";
-            buttonAdd.UseVisualStyleBackColor = false;
-            buttonAdd.Click += buttonAddCrystal_Click;
             // 
             // buttonChange
             // 
@@ -201,6 +172,15 @@ namespace PDIndexer
             buttonChange.Name = "buttonChange";
             buttonChange.UseVisualStyleBackColor = false;
             buttonChange.Click += buttonChangeCrystal_Click;
+            // 
+            // buttonAdd
+            // 
+            resources.ApplyResources(buttonAdd, "buttonAdd");
+            buttonAdd.BackColor = Color.SteelBlue;
+            buttonAdd.ForeColor = SystemColors.ControlLightLight;
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.UseVisualStyleBackColor = false;
+            buttonAdd.Click += buttonAddCrystal_Click;
             // 
             // groupBox1
             // 
@@ -339,93 +319,95 @@ namespace PDIndexer
             // groupBox2
             // 
             groupBox2.BackColor = SystemColors.Control;
-            groupBox2.Controls.Add(flowLayoutPanel1);
-            groupBox2.Controls.Add(checkBoxCombineSameDspacingPeaks);
-            groupBox2.Controls.Add(label3);
-            groupBox2.Controls.Add(radioButtonAllCheckedCrystals);
-            groupBox2.Controls.Add(radioButtonOnlySelectedCrystal);
-            groupBox2.Controls.Add(numericUpDownThresholdIntesity);
-            groupBox2.Controls.Add(numericUpDownHeightOfBottomPeak);
-            groupBox2.Controls.Add(checkBoxShowPeakOverProfiles);
-            groupBox2.Controls.Add(checkBoxShowPeakIndices);
-            groupBox2.Controls.Add(checkBoxInvisibleWeakPeak);
-            groupBox2.Controls.Add(checkBoxVariableRatioOfIntensity);
-            groupBox2.Controls.Add(checkBoxCalculateIntensity);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(checkBoxShowPeakUnderProfile);
+            groupBox2.Controls.Add(flowLayoutPanel4);
             resources.ApplyResources(groupBox2, "groupBox2");
             groupBox2.Name = "groupBox2";
             groupBox2.TabStop = false;
             // 
-            // flowLayoutPanel1
+            // flowLayoutPanel4
             // 
-            flowLayoutPanel1.Controls.Add(radioButtonAngleThreshold);
-            flowLayoutPanel1.Controls.Add(numericUpDownAngleThreshold);
-            flowLayoutPanel1.Controls.Add(label5);
-            flowLayoutPanel1.Controls.Add(radioButtonEnergyThreshold);
-            flowLayoutPanel1.Controls.Add(numericUpDownEnergyThreshold);
-            flowLayoutPanel1.Controls.Add(label1);
-            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(checkBoxShowPeakOverProfiles);
+            flowLayoutPanel4.Controls.Add(checkBoxCalculateIntensity);
+            flowLayoutPanel4.Controls.Add(checkBoxVariableRatioOfIntensity);
+            flowLayoutPanel4.Controls.Add(checkBoxShowPeakUnderProfile);
+            flowLayoutPanel4.Controls.Add(numericBoxHeightOfBottomPeak);
+            flowLayoutPanel4.Controls.Add(checkBoxInvisibleWeakPeak);
+            flowLayoutPanel4.Controls.Add(numericBoxThresholdIntesity);
+            flowLayoutPanel4.Controls.Add(checkBoxCombineSameDspacingPeaks);
+            flowLayoutPanel4.Controls.Add(flowLayoutPanel1);
+            flowLayoutPanel4.Controls.Add(checkBoxShowPeakIndices);
+            flowLayoutPanel4.Controls.Add(flowLayoutPanel2);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
             // 
-            // radioButtonAngleThreshold
+            // checkBoxShowPeakOverProfiles
             // 
-            resources.ApplyResources(radioButtonAngleThreshold, "radioButtonAngleThreshold");
-            radioButtonAngleThreshold.Checked = true;
-            radioButtonAngleThreshold.Name = "radioButtonAngleThreshold";
-            radioButtonAngleThreshold.TabStop = true;
-            radioButtonAngleThreshold.UseVisualStyleBackColor = true;
+            resources.ApplyResources(checkBoxShowPeakOverProfiles, "checkBoxShowPeakOverProfiles");
+            checkBoxShowPeakOverProfiles.Checked = true;
+            checkBoxShowPeakOverProfiles.CheckState = CheckState.Checked;
+            checkBoxShowPeakOverProfiles.Name = "checkBoxShowPeakOverProfiles";
+            checkBoxShowPeakOverProfiles.UseVisualStyleBackColor = true;
+            checkBoxShowPeakOverProfiles.CheckedChanged += checkBoxShowPeakOverProfiles_CheckedChanged;
             // 
-            // numericUpDownAngleThreshold
+            // checkBoxCalculateIntensity
             // 
-            numericUpDownAngleThreshold.ContextMenuStrip = contextMenuStrip1;
-            numericUpDownAngleThreshold.DecimalPlaces = 3;
-            resources.ApplyResources(numericUpDownAngleThreshold, "numericUpDownAngleThreshold");
-            numericUpDownAngleThreshold.Increment = new decimal(new int[] { 1, 0, 0, 196608 });
-            numericUpDownAngleThreshold.Maximum = new decimal(new int[] { 2, 0, 0, 0 });
-            numericUpDownAngleThreshold.Name = "numericUpDownAngleThreshold";
-            numericUpDownAngleThreshold.Value = new decimal(new int[] { 1, 0, 0, 131072 });
-            numericUpDownAngleThreshold.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
-            numericUpDownAngleThreshold.MouseDown += numericUpDownThreshold_MouseDown;
+            resources.ApplyResources(checkBoxCalculateIntensity, "checkBoxCalculateIntensity");
+            checkBoxCalculateIntensity.Checked = true;
+            checkBoxCalculateIntensity.CheckState = CheckState.Checked;
+            checkBoxCalculateIntensity.Name = "checkBoxCalculateIntensity";
+            toolTip.SetToolTip(checkBoxCalculateIntensity, resources.GetString("checkBoxCalculateIntensity.ToolTip"));
+            checkBoxCalculateIntensity.UseVisualStyleBackColor = true;
+            checkBoxCalculateIntensity.CheckedChanged += checkBoxCalculateIntensity_CheckedChanged;
             // 
-            // contextMenuStrip1
+            // checkBoxVariableRatioOfIntensity
             // 
-            contextMenuStrip1.ImageScalingSize = new Size(32, 32);
-            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { incrementToolStripMenuItem });
-            contextMenuStrip1.Name = "contextMenuStrip1";
-            contextMenuStrip1.ShowImageMargin = false;
-            resources.ApplyResources(contextMenuStrip1, "contextMenuStrip1");
+            resources.ApplyResources(checkBoxVariableRatioOfIntensity, "checkBoxVariableRatioOfIntensity");
+            checkBoxVariableRatioOfIntensity.Name = "checkBoxVariableRatioOfIntensity";
+            toolTip.SetToolTip(checkBoxVariableRatioOfIntensity, resources.GetString("checkBoxVariableRatioOfIntensity.ToolTip"));
+            checkBoxVariableRatioOfIntensity.UseVisualStyleBackColor = true;
             // 
-            // incrementToolStripMenuItem
+            // checkBoxShowPeakUnderProfile
             // 
-            incrementToolStripMenuItem.Name = "incrementToolStripMenuItem";
-            resources.ApplyResources(incrementToolStripMenuItem, "incrementToolStripMenuItem");
+            resources.ApplyResources(checkBoxShowPeakUnderProfile, "checkBoxShowPeakUnderProfile");
+            checkBoxShowPeakUnderProfile.Name = "checkBoxShowPeakUnderProfile";
+            checkBoxShowPeakUnderProfile.UseVisualStyleBackColor = true;
+            checkBoxShowPeakUnderProfile.CheckedChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             // 
-            // label5
+            // numericBoxHeightOfBottomPeak
             // 
-            resources.ApplyResources(label5, "label5");
-            label5.Name = "label5";
+            numericBoxHeightOfBottomPeak.BackColor = Color.Transparent;
+            resources.ApplyResources(numericBoxHeightOfBottomPeak, "numericBoxHeightOfBottomPeak");
+            numericBoxHeightOfBottomPeak.Maximum = 100D;
+            numericBoxHeightOfBottomPeak.Minimum = 0D;
+            numericBoxHeightOfBottomPeak.Name = "numericBoxHeightOfBottomPeak";
+            numericBoxHeightOfBottomPeak.RadianValue = 0.087266462599716474D;
+            numericBoxHeightOfBottomPeak.ShowUpDown = true;
+            numericBoxHeightOfBottomPeak.SmartIncrement = true;
+            numericBoxHeightOfBottomPeak.Value = 5D;
+            numericBoxHeightOfBottomPeak.ValueBoxWidth = 30;
+            numericBoxHeightOfBottomPeak.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
             // 
-            // radioButtonEnergyThreshold
+            // checkBoxInvisibleWeakPeak
             // 
-            resources.ApplyResources(radioButtonEnergyThreshold, "radioButtonEnergyThreshold");
-            radioButtonEnergyThreshold.Name = "radioButtonEnergyThreshold";
-            radioButtonEnergyThreshold.UseVisualStyleBackColor = true;
+            resources.ApplyResources(checkBoxInvisibleWeakPeak, "checkBoxInvisibleWeakPeak");
+            checkBoxInvisibleWeakPeak.Name = "checkBoxInvisibleWeakPeak";
+            checkBoxInvisibleWeakPeak.UseVisualStyleBackColor = true;
+            checkBoxInvisibleWeakPeak.CheckedChanged += checkBoxInvisibleWeakPeak_CheckedChanged;
             // 
-            // numericUpDownEnergyThreshold
+            // numericBoxThresholdIntesity
             // 
-            numericUpDownEnergyThreshold.DecimalPlaces = 1;
-            resources.ApplyResources(numericUpDownEnergyThreshold, "numericUpDownEnergyThreshold");
-            numericUpDownEnergyThreshold.Maximum = new decimal(new int[] { 1000, 0, 0, 0 });
-            numericUpDownEnergyThreshold.Name = "numericUpDownEnergyThreshold";
-            numericUpDownEnergyThreshold.Value = new decimal(new int[] { 5, 0, 0, 0 });
-            numericUpDownEnergyThreshold.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
-            numericUpDownEnergyThreshold.MouseDown += numericUpDownThreshold_MouseDown;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
+            numericBoxThresholdIntesity.BackColor = Color.Transparent;
+            numericBoxThresholdIntesity.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxThresholdIntesity, "numericBoxThresholdIntesity");
+            numericBoxThresholdIntesity.Maximum = 100D;
+            numericBoxThresholdIntesity.Minimum = 0D;
+            numericBoxThresholdIntesity.Name = "numericBoxThresholdIntesity";
+            numericBoxThresholdIntesity.RadianValue = 0.017453292519943295D;
+            numericBoxThresholdIntesity.ShowUpDown = true;
+            numericBoxThresholdIntesity.SmartIncrement = true;
+            numericBoxThresholdIntesity.Value = 1D;
+            numericBoxThresholdIntesity.ValueBoxWidth = 30;
+            numericBoxThresholdIntesity.ValueChanged += checkBoxInvisibleWeakPeak_CheckedChanged;
             // 
             // checkBoxCombineSameDspacingPeaks
             // 
@@ -434,10 +416,87 @@ namespace PDIndexer
             checkBoxCombineSameDspacingPeaks.UseVisualStyleBackColor = true;
             checkBoxCombineSameDspacingPeaks.CheckedChanged += checkBoxCombineSameDspacingPeaks_CheckedChanged;
             // 
-            // label3
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(radioButtonAngleThreshold);
+            flowLayoutPanel5.Controls.Add(numericBoxAngleThreshold);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // radioButtonAngleThreshold
+            // 
+            resources.ApplyResources(radioButtonAngleThreshold, "radioButtonAngleThreshold");
+            radioButtonAngleThreshold.Checked = true;
+            radioButtonAngleThreshold.Name = "radioButtonAngleThreshold";
+            radioButtonAngleThreshold.TabStop = true;
+            radioButtonAngleThreshold.UseVisualStyleBackColor = true;
+            radioButtonAngleThreshold.CheckedChanged += checkBoxCombineSameDspacingPeaks_CheckedChanged;
+            // 
+            // numericBoxAngleThreshold
+            // 
+            numericBoxAngleThreshold.BackColor = Color.Transparent;
+            numericBoxAngleThreshold.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxAngleThreshold, "numericBoxAngleThreshold");
+            numericBoxAngleThreshold.Maximum = 2D; // 260701Cl 旧numericUpDownAngleThreshold.Maximum(=2)を復元 (NumericBox移行時のコピー漏れ)
+            numericBoxAngleThreshold.Minimum = 0D;
+            numericBoxAngleThreshold.Name = "numericBoxAngleThreshold";
+            numericBoxAngleThreshold.RadianValue = 0.00017453292519943296D;
+            numericBoxAngleThreshold.ShowUpDown = true;
+            numericBoxAngleThreshold.SmartIncrement = true;
+            numericBoxAngleThreshold.Value = 0.01D;
+            numericBoxAngleThreshold.ValueBoxWidth = 50;
+            numericBoxAngleThreshold.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
+            // 
+            // flowLayoutPanel6
+            // 
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(radioButtonEnergyThreshold);
+            flowLayoutPanel6.Controls.Add(numericBoxEnergyThreshold);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
+            // 
+            // radioButtonEnergyThreshold
+            // 
+            resources.ApplyResources(radioButtonEnergyThreshold, "radioButtonEnergyThreshold");
+            radioButtonEnergyThreshold.Name = "radioButtonEnergyThreshold";
+            radioButtonEnergyThreshold.UseVisualStyleBackColor = true;
+            // 
+            // numericBoxEnergyThreshold
+            // 
+            numericBoxEnergyThreshold.BackColor = Color.Transparent;
+            numericBoxEnergyThreshold.DecimalPlaces = 1;
+            resources.ApplyResources(numericBoxEnergyThreshold, "numericBoxEnergyThreshold");
+            numericBoxEnergyThreshold.Maximum = 1000D;
+            numericBoxEnergyThreshold.Minimum = 0D; // 260701Cl 旧numericUpDownEnergyThreshold(Minimum未指定=既定値0)を復元 (NumericBox移行時のコピー漏れ)
+            numericBoxEnergyThreshold.Name = "numericBoxEnergyThreshold";
+            numericBoxEnergyThreshold.RadianValue = 0.087266462599716474D;
+            numericBoxEnergyThreshold.ShowUpDown = true;
+            numericBoxEnergyThreshold.SmartIncrement = true;
+            numericBoxEnergyThreshold.Value = 5D;
+            numericBoxEnergyThreshold.ValueBoxWidth = 50;
+            numericBoxEnergyThreshold.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
+            // 
+            // checkBoxShowPeakIndices
+            // 
+            resources.ApplyResources(checkBoxShowPeakIndices, "checkBoxShowPeakIndices");
+            checkBoxShowPeakIndices.Checked = true;
+            checkBoxShowPeakIndices.CheckState = CheckState.Checked;
+            checkBoxShowPeakIndices.Name = "checkBoxShowPeakIndices";
+            checkBoxShowPeakIndices.UseVisualStyleBackColor = true;
+            checkBoxShowPeakIndices.CheckedChanged += checkBoxCombineSameDspacingPeaks_CheckedChanged;
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(radioButtonAllCheckedCrystals);
+            flowLayoutPanel2.Controls.Add(radioButtonOnlySelectedCrystal);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
             // 
             // radioButtonAllCheckedCrystals
             // 
@@ -454,77 +513,6 @@ namespace PDIndexer
             radioButtonOnlySelectedCrystal.UseVisualStyleBackColor = true;
             radioButtonOnlySelectedCrystal.CheckedChanged += radioButtonOnlySelectedCrystal_CheckedChanged;
             // 
-            // numericUpDownThresholdIntesity
-            // 
-            numericUpDownThresholdIntesity.DecimalPlaces = 1;
-            resources.ApplyResources(numericUpDownThresholdIntesity, "numericUpDownThresholdIntesity");
-            numericUpDownThresholdIntesity.Name = "numericUpDownThresholdIntesity";
-            numericUpDownThresholdIntesity.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            numericUpDownThresholdIntesity.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
-            numericUpDownThresholdIntesity.MouseDown += numericUpDownThreshold_MouseDown;
-            // 
-            // numericUpDownHeightOfBottomPeak
-            // 
-            resources.ApplyResources(numericUpDownHeightOfBottomPeak, "numericUpDownHeightOfBottomPeak");
-            numericUpDownHeightOfBottomPeak.Name = "numericUpDownHeightOfBottomPeak";
-            numericUpDownHeightOfBottomPeak.Value = new decimal(new int[] { 5, 0, 0, 0 });
-            numericUpDownHeightOfBottomPeak.ValueChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
-            numericUpDownHeightOfBottomPeak.MouseDown += numericUpDownThreshold_MouseDown;
-            // 
-            // checkBoxShowPeakOverProfiles
-            // 
-            resources.ApplyResources(checkBoxShowPeakOverProfiles, "checkBoxShowPeakOverProfiles");
-            checkBoxShowPeakOverProfiles.Checked = true;
-            checkBoxShowPeakOverProfiles.CheckState = CheckState.Checked;
-            checkBoxShowPeakOverProfiles.Name = "checkBoxShowPeakOverProfiles";
-            checkBoxShowPeakOverProfiles.UseVisualStyleBackColor = true;
-            checkBoxShowPeakOverProfiles.CheckedChanged += checkBoxShowPeakOverProfiles_CheckedChanged;
-            // 
-            // checkBoxShowPeakIndices
-            // 
-            resources.ApplyResources(checkBoxShowPeakIndices, "checkBoxShowPeakIndices");
-            checkBoxShowPeakIndices.Checked = true;
-            checkBoxShowPeakIndices.CheckState = CheckState.Checked;
-            checkBoxShowPeakIndices.Name = "checkBoxShowPeakIndices";
-            checkBoxShowPeakIndices.UseVisualStyleBackColor = true;
-            checkBoxShowPeakIndices.CheckedChanged += checkBoxCombineSameDspacingPeaks_CheckedChanged;
-            // 
-            // checkBoxInvisibleWeakPeak
-            // 
-            resources.ApplyResources(checkBoxInvisibleWeakPeak, "checkBoxInvisibleWeakPeak");
-            checkBoxInvisibleWeakPeak.Name = "checkBoxInvisibleWeakPeak";
-            checkBoxInvisibleWeakPeak.UseVisualStyleBackColor = true;
-            checkBoxInvisibleWeakPeak.CheckedChanged += checkBoxInvisibleWeakPeak_CheckedChanged;
-            // 
-            // checkBoxVariableRatioOfIntensity
-            // 
-            resources.ApplyResources(checkBoxVariableRatioOfIntensity, "checkBoxVariableRatioOfIntensity");
-            checkBoxVariableRatioOfIntensity.Name = "checkBoxVariableRatioOfIntensity";
-            toolTip.SetToolTip(checkBoxVariableRatioOfIntensity, resources.GetString("checkBoxVariableRatioOfIntensity.ToolTip"));
-            checkBoxVariableRatioOfIntensity.UseVisualStyleBackColor = true;
-            // 
-            // checkBoxCalculateIntensity
-            // 
-            resources.ApplyResources(checkBoxCalculateIntensity, "checkBoxCalculateIntensity");
-            checkBoxCalculateIntensity.Checked = true;
-            checkBoxCalculateIntensity.CheckState = CheckState.Checked;
-            checkBoxCalculateIntensity.Name = "checkBoxCalculateIntensity";
-            toolTip.SetToolTip(checkBoxCalculateIntensity, resources.GetString("checkBoxCalculateIntensity.ToolTip"));
-            checkBoxCalculateIntensity.UseVisualStyleBackColor = true;
-            checkBoxCalculateIntensity.CheckedChanged += checkBoxCalculateIntensity_CheckedChanged;
-            // 
-            // label6
-            // 
-            resources.ApplyResources(label6, "label6");
-            label6.Name = "label6";
-            // 
-            // checkBoxShowPeakUnderProfile
-            // 
-            resources.ApplyResources(checkBoxShowPeakUnderProfile, "checkBoxShowPeakUnderProfile");
-            checkBoxShowPeakUnderProfile.Name = "checkBoxShowPeakUnderProfile";
-            checkBoxShowPeakUnderProfile.UseVisualStyleBackColor = true;
-            checkBoxShowPeakUnderProfile.CheckedChanged += checkBoxShowPeakUnderProfile_CheckedChanged;
-            // 
             // groupBox4
             // 
             groupBox4.Controls.Add(crystalDatabaseControl);
@@ -535,15 +523,9 @@ namespace PDIndexer
             // 
             // crystalDatabaseControl
             // 
-            crystalDatabaseControl.AMCSD_Checked = false;
-            crystalDatabaseControl.AMCSD_Has_Read = false;
-            crystalDatabaseControl.COD_Checked = false;
-            crystalDatabaseControl.COD_Has_Read = false;
             crystalDatabaseControl.DatabaseSelection = true;
             resources.ApplyResources(crystalDatabaseControl, "crystalDatabaseControl");
-            crystalDatabaseControl.FontSize = 9.75F;
             crystalDatabaseControl.Name = "crystalDatabaseControl";
-            crystalDatabaseControl.SearchFilter = null;
             crystalDatabaseControl.ProgressChanged += crystalDatabaseControl_ProgressChanged;
             // 
             // panel1
@@ -555,9 +537,21 @@ namespace PDIndexer
             // searchCrystalControl
             // 
             resources.ApplyResources(searchCrystalControl, "searchCrystalControl");
-            searchCrystalControl.CrystalDatabaseControl = null;
             searchCrystalControl.Name = "searchCrystalControl";
             searchCrystalControl.ProgressChanged += searchCrystalControl_ProgressChanged;
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new Size(32, 32);
+            contextMenuStrip1.Items.AddRange(new ToolStripItem[] { incrementToolStripMenuItem });
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.ShowImageMargin = false;
+            resources.ApplyResources(contextMenuStrip1, "contextMenuStrip1");
+            // 
+            // incrementToolStripMenuItem
+            // 
+            incrementToolStripMenuItem.Name = "incrementToolStripMenuItem";
+            resources.ApplyResources(incrementToolStripMenuItem, "incrementToolStripMenuItem");
             // 
             // checkDataGridViewCheckBoxColumn
             // 
@@ -576,6 +570,7 @@ namespace PDIndexer
             // 
             // toolTip
             // 
+            toolTip.AutoPopDelay = 10000; // 260701Cl 追加: 長文ツールチップ表示のため他フォームと統一 (260531Ch決定)
             toolTip.IsBalloon = true;
             // 
             // dataGridViewImageColumn1
@@ -669,7 +664,6 @@ namespace PDIndexer
             VisibleChanged += FormCrystal_VisibleChanged;
             KeyDown += FormCrystal_KeyDown;
             splitContainer1.Panel1.ResumeLayout(false);
-            splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
             ((ISupportInitialize)splitContainer1).EndInit();
             splitContainer1.ResumeLayout(false);
@@ -683,16 +677,20 @@ namespace PDIndexer
             flowLayoutPanel3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel1.PerformLayout();
-            ((ISupportInitialize)numericUpDownAngleThreshold).EndInit();
-            contextMenuStrip1.ResumeLayout(false);
-            ((ISupportInitialize)numericUpDownEnergyThreshold).EndInit();
-            ((ISupportInitialize)numericUpDownThresholdIntesity).EndInit();
-            ((ISupportInitialize)numericUpDownHeightOfBottomPeak).EndInit();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             groupBox4.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            contextMenuStrip1.ResumeLayout(false);
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             ResumeLayout(false);
@@ -709,10 +707,6 @@ namespace PDIndexer
         public CheckBox checkBoxShowPeakUnderProfile;
         public CheckBox checkBoxCalculateIntensity;
         public CheckBox checkBoxShowPeakIndices;
-        public NumericUpDown numericUpDownHeightOfBottomPeak;
-        public NumericUpDown numericUpDownAngleThreshold;
-        public NumericUpDown numericUpDownEnergyThreshold;
-        public NumericUpDown numericUpDownThresholdIntesity;
         public RadioButton radioButtonOnlySelectedCrystal;
         public RadioButton radioButtonAllCheckedCrystals;
         public RadioButton radioButtonEnergyThreshold;
@@ -720,10 +714,6 @@ namespace PDIndexer
         public CheckBox checkBoxVariableRatioOfIntensity;
         public CheckBox checkBoxCombineSameDspacingPeaks;
         public CheckBox checkBoxInvisibleWeakPeak;
-        public Label label1;
-        public Label label3;
-        public Label label5;
-        public Label label6;
         private Button buttonUpper;
         private Button buttonLower;
         public Button buttonAllClear;
@@ -760,6 +750,14 @@ namespace PDIndexer
         private DataGridViewCheckBoxColumn checkDataGridViewCheckBoxColumn1;
         private DataGridViewImageColumn PeakColor;
         private DataGridViewTextBoxColumn Crystal;
+        private FlowLayoutPanel flowLayoutPanel4;
+        public NumericBox numericBoxHeightOfBottomPeak;
+        public NumericBox numericBoxThresholdIntesity;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel5;
+        public NumericBox numericBoxAngleThreshold;
+        public NumericBox numericBoxEnergyThreshold;
+        private FlowLayoutPanel flowLayoutPanel6;
     }
 
 

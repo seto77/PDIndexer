@@ -119,8 +119,7 @@ setzen
     <value>Peakindizes anzeigen</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Peaks ausblenden
- unterhalb</value>
+    <value>Peaks ausblenden unterhalb</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>Skalierbare Intensität</value>
@@ -137,8 +136,7 @@ setzen
 der Beugungspeaks anhand der Kristallstrukturen berechnen möchten</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Peaks
- unter Profil anzeigen</value>
+    <value>Peaks unter Profil anzeigen</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Beugungspeak-Optionen</value>

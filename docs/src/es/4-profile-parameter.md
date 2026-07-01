@@ -39,7 +39,7 @@ En la pestaña `Profile processing` se aplican diversos procesamientos numérico
 
 ### 1. Desplazamiento de 2θ {#two-theta-offset}
 
-![Panel de desplazamiento de 2θ](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![Panel de desplazamiento de 2θ](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` corrige el ángulo de los datos dispersivos en ángulo. La expresión de corrección es una función cuadrática de \( \tan\theta \).
 
@@ -56,7 +56,7 @@ El botón `Reset` restablece los coeficientes de desplazamiento que haya configu
 
 ### 2. Máscara e interpolación {#mask}
 
-![Panel de máscara e interpolación](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![Panel de máscara e interpolación](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` enmascara un rango angular especificado (o un rango de energía) e interpola el perfil utilizando las intensidades fuera del rango enmascarado.
 
@@ -70,7 +70,7 @@ El botón `Reset` restablece los coeficientes de desplazamiento que haya configu
 
 ### 3. Suavizado {#smoothing}
 
-![Panel de suavizado](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![Panel de suavizado](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` aplica suavizado al perfil seleccionado. El algoritmo de suavizado es el método `Savitzky-Golay`.
 
@@ -81,7 +81,7 @@ En este método, para cada posición \(x\) de interés, se realiza un ajuste por
 
 ### 4. Filtro de paso de banda {#bandpass}
 
-![Panel del filtro de paso de banda](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![Panel del filtro de paso de banda](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` utiliza una transformada de Fourier (FFT) para cortar las componentes por encima o por debajo de frecuencias especificadas.
 
@@ -99,7 +99,7 @@ En este método, para cada posición \(x\) de interés, se realiza un ajuste por
 
 ### 6. Fondo {#background}
 
-![Panel de sustracción de fondo](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![Panel de sustracción de fondo](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` sustrae el fondo del perfil. Hay dos métodos.
 
@@ -118,7 +118,7 @@ Puede especificar otro perfil como fondo del perfil seleccionado. Al marcar `Sho
 
 ### 7. Normalizar intensidad {#normalize}
 
-![Panel de normalización de intensidad](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![Panel de normalización de intensidad](../assets/cap-es-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` normaliza el perfil de modo que el `Average` (promedio) o el `Maximum` (máximo) sobre un rango especificado del eje horizontal alcance una intensidad especificada.
 

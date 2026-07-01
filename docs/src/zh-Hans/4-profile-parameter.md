@@ -39,7 +39,7 @@
 
 ### 1. 2θ 偏移 {#two-theta-offset}
 
-![2θ 偏移面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![2θ 偏移面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` 用于校正角度色散数据的角度。校正公式是关于 \( \tan\theta \) 的二次函数。
 
@@ -56,7 +56,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 2. 掩模与插值（Mask and Interpolation） {#mask}
 
-![掩模与插值面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![掩模与插值面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` 会对指定的角度范围（或能量范围）进行掩模处理，并利用掩模范围之外的强度对谱图进行插值。
 
@@ -70,7 +70,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 3. 平滑（Smoothing） {#smoothing}
 
-![平滑面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![平滑面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` 会对所选谱图进行平滑处理。平滑算法采用 `Savitzky-Golay` 方法。
 
@@ -81,7 +81,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 4. 带通滤波（Bandpass filter） {#bandpass}
 
-![带通滤波面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![带通滤波面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` 利用傅里叶变换（FFT）切除高于或低于指定频率的成分。
 
@@ -99,7 +99,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 6. 背景扣除（Background） {#background}
 
-![背景扣除面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![背景扣除面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` 从谱图中扣除背景。共有两种方法。
 
@@ -118,7 +118,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 7. 强度归一化（Normalize intensity） {#normalize}
 
-![强度归一化面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![强度归一化面板](../assets/cap-zh-Hans-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` 会对谱图进行归一化，使指定横轴范围内的 `Average`（平均值）或 `Maximum`（最大值）达到指定的强度。
 

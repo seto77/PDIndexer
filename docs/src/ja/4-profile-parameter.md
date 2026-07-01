@@ -39,7 +39,7 @@
 
 ### 1. 2θ オフセット {#two-theta-offset}
 
-![2θ オフセットのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![2θ オフセットのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)` は、角度分散型のデータに対して角度の補正をおこないます。補正式は \( \tan\theta \) に関する二次関数です。
 
@@ -56,7 +56,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 2. マスクと補間（Mask and Interpolation） {#mask}
 
-![マスクと補間のパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![マスクと補間のパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation` は、指定した角度範囲（あるいはエネルギー範囲）をマスクし、マスク範囲の外側の強度を用いてプロファイルを補間します。
 
@@ -70,7 +70,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 3. スムージング（Smoothing） {#smoothing}
 
-![スムージングのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![スムージングのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing` は、選択しているプロファイルに平滑化を施します。平滑化アルゴリズムには `Savitzky-Golay` 法を用います。
 
@@ -81,7 +81,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 4. バンドパスフィルター（Bandpass filter） {#bandpass}
 
-![バンドパスフィルターのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![バンドパスフィルターのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter` は、フーリエ変換（FFT）を用いて、指定した周波数より大きい、あるいは小さい成分をカットします。
 
@@ -99,7 +99,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 6. バックグラウンド減算（Background） {#background}
 
-![バックグラウンド減算のパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![バックグラウンド減算のパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background` は、プロファイルからバックグラウンドを減算します。減算方法は 2 通りあります。
 
@@ -118,7 +118,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 7. 強度のノーマライズ（Normalize intensity） {#normalize}
 
-![強度のノーマライズのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![強度のノーマライズのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity` は、指定した横軸範囲における `Average`（平均値）あるいは `Maximum`（最大値）が、指定した強度になるようにプロファイルをノーマライズします。
 

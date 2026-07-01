@@ -83,20 +83,11 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>基本信息</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>阶数</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>点编号</value>
-  </data>
   <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
     <value>显示背景谱线</value>
   </data>
   <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
     <value>自动检测</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>点编号</value>
   </data>
   <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
     <value>参考</value>
@@ -137,17 +128,11 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>纵轴设置</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>范围内强度</value>
-  </data>
   <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
     <value>最大值</value>
   </data>
   <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
     <value>平均值</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>(横轴单位)</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>全部删除</value>
@@ -167,30 +152,16 @@
   <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
     <value>设置掩模范围</value>
   </data>
-  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationPoints.ToolTip" xml:space="preserve">
     <value>用于拟合插值时从掩模范围每一侧分别选取的
 数据点数(与多项式阶数配合使用)。
 数值越大,拟合窗口越宽。</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(每侧)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>从掩模范围每一侧分别选取用于
-拟合插值的数据点数。</value>
   </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>保存掩模范围</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>读取掩膜范围</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>数据点数</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>用于拟合插值时，从掩膜范围两侧
-各取的数据点数。</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>全部删除</value>
@@ -215,9 +186,6 @@
   </data>
   <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
     <value>7. 强度归一化</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>归一化到</value>
   </data>
   <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
     <value>应用于所有谱线 (不含背景设置)</value>
@@ -265,7 +233,7 @@
   <data name="colorControlLineColor.ToolTip" xml:space="preserve">
     <value>设置所选谱线的线条 (绘图) 颜色。</value>
   </data>
-  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+  <data name="numericBoxLineWidth.ToolTip" xml:space="preserve">
     <value>设置所选谱线的绘图线宽，
 以点 (pt) 为单位。</value>
   </data>
@@ -314,7 +282,7 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>启用直接在图上用鼠标
 设置/显示掩膜范围。</value>
   </data>
-  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationOrder.ToolTip" xml:space="preserve">
     <value>用于在掩膜范围内插值的多项式次数
 (0-5)。越高 = 曲线越灵活。</value>
   </data>
@@ -332,11 +300,11 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
   <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
     <value>步骤 3: 使用 Savitzky-Golay 滤波器平滑谱线。</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
     <value>Savitzky-Golay 窗口半宽（每侧的
 点数）。值越大平滑越强。</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
     <value>Savitzky-Golay 多项式阶数（0-5）。
 越高越能保留峰形，但平滑越弱。</value>
   </data>
@@ -348,7 +316,7 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>启用高通滤波器：去除低于阈值的
 低频（长周期）成分。</value>
   </data>
-  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxHighPass.ToolTip" xml:space="preserve">
     <value>高通截止频率（单位为
 1/[横轴单位]）；低于该值的成分
 将被去除。范围随数据自动调整。</value>
@@ -357,7 +325,7 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>启用低通滤波器：去除高于阈值的
 高频（短周期噪声）成分。</value>
   </data>
-  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxLowPass.ToolTip" xml:space="preserve">
     <value>低通截止频率（单位为
 1/[横轴单位]）；高于该值的成分
 将被去除。范围随数据自动调整。</value>
@@ -381,7 +349,7 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>沿谱线自动放置指定数量的
 背景点。</value>
   </data>
-  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+  <data name="numericBoxBgPointsNumber.ToolTip" xml:space="preserve">
     <value>用于自动检测 / B 样条拟合的
 背景点数量（3-50）。</value>
   </data>
@@ -389,7 +357,7 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>选择以哪条已载入的谱线
 作为参考背景。</value>
   </data>
-  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+  <data name="numericBoxBackgroundReferrenceScale.ToolTip" xml:space="preserve">
     <value>扣除前与参考背景相乘的
 比例系数。</value>
   </data>
@@ -409,15 +377,15 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>归一化使该范围内的最大强度
 等于目标值。</value>
   </data>
-  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeLow.ToolTip" xml:space="preserve">
     <value>用于计算归一化的范围的
 下限（横轴单位）。</value>
   </data>
-  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeHigh.ToolTip" xml:space="preserve">
     <value>用于计算归一化的范围的
 上限（横轴单位）。</value>
   </data>
-  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeIntensity.ToolTip" xml:space="preserve">
     <value>范围的平均/最大强度被缩放到的
 目标强度值（1-100000）。</value>
   </data>
@@ -438,11 +406,11 @@ c2*tan^2(theta) (仅限角色散数据)。</value>
     <value>将整条谱线沿横轴
 平移固定的量。</value>
   </data>
-  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+  <data name="numericBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
     <value>谱线沿横轴的平移量
 （横轴单位）。</value>
   </data>
-  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+  <data name="numericBoxExposureTime.ToolTip" xml:space="preserve">
     <value>曝光时间（秒），用于将强度换算为
 纵轴上的每秒计数（CPS）。</value>
   </data>

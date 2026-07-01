@@ -9,8 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography", "Crystall
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crystallography.Controls", "Crystallography.Controls\Crystallography.Controls.csproj", "{B6074BFC-0860-42DE-9525-49D97029F595}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PDIndexerSetup", "PDIndexerSetup\PDIndexerSetup.vdproj", "{80EF52B7-7757-4980-A47A-0772A37AB289}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{965242BA-7668-45BD-AB8B-C1F8CD894B2D}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
@@ -58,14 +56,6 @@ Global
 		{B6074BFC-0860-42DE-9525-49D97029F595}.Release|x64.Build.0 = Release|x64
 		{B6074BFC-0860-42DE-9525-49D97029F595}.Release|x86.ActiveCfg = Release|Any CPU
 		{B6074BFC-0860-42DE-9525-49D97029F595}.Release|x86.Build.0 = Release|Any CPU
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Debug|Any CPU.ActiveCfg = Debug
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Debug|x64.ActiveCfg = Debug
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Debug|x86.ActiveCfg = Debug
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Debug|x86.Build.0 = Debug
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|Any CPU.ActiveCfg = Release
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x64.ActiveCfg = Release
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x86.ActiveCfg = Release
-		{80EF52B7-7757-4980-A47A-0772A37AB289}.Release|x86.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

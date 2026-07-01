@@ -83,20 +83,11 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Proprietà di base</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Ordine</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>N. punto</value>
-  </data>
   <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
     <value>Mostra profilo di fondo</value>
   </data>
   <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
     <value>Rilevamento auto.</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>N. punto</value>
   </data>
   <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
     <value>Riferimento</value>
@@ -134,17 +125,11 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Impostazione asse verticale</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>intensità tra</value>
-  </data>
   <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
     <value>Massimo</value>
   </data>
   <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
     <value>Media</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>(unità orizzontale)</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Elimina tutto</value>
@@ -164,30 +149,16 @@
   <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
     <value>Imposta intervallo maschera</value>
   </data>
-  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationPoints.ToolTip" xml:space="preserve">
     <value>Numero di punti dati presi da CIASCUN lato dell'
 intervallo mascherato per adattare l'interpolazione (usato con
 l'ordine del polinomio). Maggiore = finestra di adattamento più ampia.</value>
-  </data>
-  <data name="label20.Text" xml:space="preserve">
-    <value>(per lato)</value>
-  </data>
-  <data name="label20.ToolTip" xml:space="preserve">
-    <value>Numero di punti dati presi da ciascun lato
-dell'intervallo mascherato per adattare l'interpolazione.</value>
   </data>
   <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
     <value>Salva intervalli maschera</value>
   </data>
   <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
     <value>Leggi intervalli di mascheratura</value>
-  </data>
-  <data name="label21.Text" xml:space="preserve">
-    <value>N. punti</value>
-  </data>
-  <data name="label21.ToolTip" xml:space="preserve">
-    <value>Numero di punti dati presi da ciascun lato
-dell'intervallo mascherato per adattare l'interpolazione.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Elimina tutto</value>
@@ -212,9 +183,6 @@ dell'intervallo mascherato per adattare l'interpolazione.</value>
   </data>
   <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
     <value>7. Normalizza intensità</value>
-  </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>a</value>
   </data>
   <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
     <value>Applica a tutti i profili (senza impostazione del fondo)</value>
@@ -262,7 +230,7 @@ selezionato; non influisce sull'elaborazione.</value>
   <data name="colorControlLineColor.ToolTip" xml:space="preserve">
     <value>Imposta il colore della linea (plot) del profilo selezionato.</value>
   </data>
-  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+  <data name="numericBoxLineWidth.ToolTip" xml:space="preserve">
     <value>Imposta la larghezza della linea del plot del
 profilo selezionato, in punti (pt).</value>
   </data>
@@ -311,7 +279,7 @@ interpolazione polinomiale (ad es. per rimuovere artefatti).</value>
     <value>Abilita l'impostazione/visualizzazione degli intervalli di mascheratura
 direttamente sul grafico con il mouse.</value>
   </data>
-  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationOrder.ToolTip" xml:space="preserve">
     <value>Grado del polinomio usato per interpolare attraverso
 gli intervalli mascherati (0-5). Più alto = curva più flessibile.</value>
   </data>
@@ -329,11 +297,11 @@ trascina un file .mas per caricare gli intervalli.</value>
   <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
     <value>Passo 3: Liscia il profilo usando un filtro Savitzky-Golay.</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
     <value>Semi-larghezza della finestra Savitzky-Golay (punti
 per lato). Maggiore = lisciamento più forte.</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
     <value>Ordine del polinomio di Savitzky-Golay (0-5).
 Più alto conserva i picchi ma liscia meno.</value>
   </data>
@@ -345,7 +313,7 @@ sopprimere le componenti di frequenza indesiderate.</value>
     <value>Abilita un filtro passa-alto: rimuove le componenti a bassa
 frequenza (lungo periodo) sotto la soglia.</value>
   </data>
-  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxHighPass.ToolTip" xml:space="preserve">
     <value>Frequenza di taglio passa-alto (in
 1/[unità dell'asse orizzontale]); le componenti al di sotto
 vengono rimosse. L'intervallo si adatta ai dati.</value>
@@ -354,7 +322,7 @@ vengono rimosse. L'intervallo si adatta ai dati.</value>
     <value>Abilita un filtro passa-basso: rimuove le componenti ad alta
 frequenza (rumore a breve periodo) sopra la soglia.</value>
   </data>
-  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxLowPass.ToolTip" xml:space="preserve">
     <value>Frequenza di taglio passa-basso (in
 1/[unità dell'asse orizzontale]); le componenti al di sopra
 vengono rimosse. L'intervallo si adatta ai dati.</value>
@@ -378,7 +346,7 @@ attraverso punti collocati manualmente/automaticamente.</value>
     <value>Colloca automaticamente il numero specificato
 di punti di fondo lungo il profilo.</value>
   </data>
-  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+  <data name="numericBoxBgPointsNumber.ToolTip" xml:space="preserve">
     <value>Numero di punti di fondo (3-50) usati
 per il rilevamento automatico / fitting B-spline.</value>
   </data>
@@ -386,7 +354,7 @@ per il rilevamento automatico / fitting B-spline.</value>
     <value>Seleziona quale profilo caricato viene
 usato come fondo di riferimento.</value>
   </data>
-  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+  <data name="numericBoxBackgroundReferrenceScale.ToolTip" xml:space="preserve">
     <value>Fattore di scala moltiplicato per il
 fondo di riferimento prima della sottrazione.</value>
   </data>
@@ -406,15 +374,15 @@ nell'intervallo sia uguale al valore obiettivo.</value>
     <value>Normalizza in modo che l'intensità MASSIMA
 nell'intervallo sia uguale al valore obiettivo.</value>
   </data>
-  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeLow.ToolTip" xml:space="preserve">
     <value>Limite inferiore (unità dell'asse orizzontale) dell'
 intervallo usato per calcolare la normalizzazione.</value>
   </data>
-  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeHigh.ToolTip" xml:space="preserve">
     <value>Limite superiore (unità dell'asse orizzontale) dell'
 intervallo usato per calcolare la normalizzazione.</value>
   </data>
-  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeIntensity.ToolTip" xml:space="preserve">
     <value>Valore di intensità obiettivo (1-100000) a cui
 viene scalata la media/il massimo dell'intervallo.</value>
   </data>
@@ -435,11 +403,11 @@ lunghezza d'onda, angolo di emissione). Applica con 'Change'.</value>
     <value>Trasla l'intero profilo lungo l'asse
 orizzontale di una quantità fissa.</value>
   </data>
-  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+  <data name="numericBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
     <value>Quantità di traslazione del profilo lungo l'asse
 orizzontale (in unità dell'asse orizzontale).</value>
   </data>
-  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+  <data name="numericBoxExposureTime.ToolTip" xml:space="preserve">
     <value>Tempo di esposizione in secondi, usato per convertire l'intensità
 in conteggi al secondo (CPS) sull'asse verticale.</value>
   </data>

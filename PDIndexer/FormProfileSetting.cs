@@ -82,13 +82,13 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     private void checkBoxSmoothing_CheckedChanged(object sender, EventArgs e)
     {
-        panelSmoothing.Visible = checkBoxSmoothing.Checked;
+        flowLayoutPanelSmoothing.Visible = checkBoxSmoothing.Checked;
         SetCurrentProfile();
         formMain.SetDrawRangeLimit();
     }
     private void checkBoxBandPassFilter_CheckedChanged(object sender, EventArgs e)
     {
-        panelBandPassFilter.Visible = checkBoxBandPassFilter.Checked;
+        flowLayoutPanelBandPassFilter.Visible = checkBoxBandPassFilter.Checked;
         if (bindingSourceProfile.Position >= 0)
         {
             var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
@@ -101,8 +101,8 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
                 case HorizontalAxis.NeutronTOF: unit = "ms"; break;
             }
 
-            labelLowPath.Text = "= " + (1 / (double)numericUpDownLowPass.Value).ToString("f4") +" " + unit;
-            labelHighPass.Text = "= " + (1 / (double)numericUpDownHighPass.Value).ToString("f4") + " " + unit;
+            labelLowPath.Text = "= " + (1 / (double)numericBoxLowPass.Value).ToString("f4") + " " + unit;
+            labelHighPass.Text = "= " + (1 / (double)numericBoxHighPass.Value).ToString("f4") + " " + unit;
         }
 
         SetCurrentProfile();
@@ -111,7 +111,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     private void checkBoxMaskingMode_CheckedChanged(object sender, EventArgs e)
     {
-        panelMaskingMode.Visible = checkBoxMaskingMode.Checked;
+        flowLayoutPanelMaskingMode.Visible = checkBoxMaskingMode.Checked;
 
         if (checkBoxMaskingMode.Checked && checkBoxShowBackgroundProfile.Checked)
             checkBoxShowBackgroundProfile.Checked = false;
@@ -124,7 +124,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     private void checkBoxTwoThetaOffset_CheckedChanged(object sender, EventArgs e)
     {
-        panelTwoThetaOffset.Visible = checkBoxTwoThetaOffset.Checked;
+        flowLayoutPanelTwoThetaOffset.Visible = checkBoxTwoThetaOffset.Checked;
         if (!checkBoxTwoThetaOffset.Checked)
             formMain.formTwoThetaCalibration.Visible = false;
 
@@ -134,9 +134,9 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     private void checkBoxBackgroundSubtraction_CheckedChanged(object sender, EventArgs e)
     {
-        panelBackgroundSubtraction.Visible = checkBoxBackgroundSubtraction.Checked;
-        panelBackgroundBSpline.Enabled = radioButtonBagkgroundBSpline.Checked;
-        panelBackgroundReferrence.Enabled = radioButtonBackgroundReferrence.Checked;
+        flowLayoutPanelBackgroundSubtraction.Visible = checkBoxBackgroundSubtraction.Checked;
+        flowLayoutPanelBackgroundBSpline.Enabled = radioButtonBagkgroundBSpline.Checked;
+        flowLayoutPanelBackgroundReferrence.Enabled = radioButtonBackgroundReferrence.Checked;
         formMain.ShowBackgroundProfile = (checkBoxShowBackgroundProfile.Checked && checkBoxBackgroundSubtraction.Checked);
         formMain.BackGroundPointSelectMode = radioButtonBagkgroundBSpline.Checked;
 
@@ -145,7 +145,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     }
     private void checkBoxShiftHorizontalAxis_CheckedChanged(object sender, EventArgs e)
     {
-        numericUpDownShiftHorizontalAxis.Enabled = checkBoxShiftHorizontalAxis.Checked;
+        numericBoxShiftHorizontalAxis.Enabled = checkBoxShiftHorizontalAxis.Checked;
         SetCurrentProfile();
         formMain.SetDrawRangeLimit();
     }
@@ -158,7 +158,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     private void checkBoxNormarizeIntensity_CheckStateChanged(object sender, EventArgs e)
     {
-        panelNormarizeIntensity.Visible = checkBoxNormarizeIntensity.Checked;
+        flowLayoutPanelNormarizeIntensity.Visible = checkBoxNormarizeIntensity.Checked;
         SetCurrentProfile();
         formMain.SetDrawRangeLimit();
     }
@@ -168,7 +168,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         if (bindingSourceProfile.Position >= 0)
         {
             DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
-            dp.BgPointsNumber = (int)numericUpDownBgPointsNumber.Value;
+            dp.BgPointsNumber = numericBoxBgPointsNumber.ValueInteger;
             dp.getBgPointsAuto();
             dp.SetSmoothingProfile();
             formMain.Draw();
@@ -202,7 +202,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             setBackgroundOption(dp);
             setShiftOption(dp);
             setCommentOption(dp);
-            
+
             dp.SetConvertedProfile(formMain.HorizontalAxisProperty);
 
             formMain.SetDrawRangeLimit();
@@ -227,24 +227,24 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     private void setMaskingOption(DiffractionProfile2 dp)
     {
         dp.DoesMaskAndInterpolate = checkBoxMaskingMode.Checked;
-        dp.InterpolationOrder = (int)numericUpDownInterpolationOrder.Value;
-        dp.InterpolationPoints = (int)numericUpDownInterpolationPoints.Value;
+        dp.InterpolationOrder = numericBoxInterpolationOrder.ValueInteger;
+        dp.InterpolationPoints = numericBoxInterpolationPoints.ValueInteger;
     }
     private void setNormarizeOption(DiffractionProfile2 dp)
     {
         //ノーマライズ関連
         dp.DoesNormarizeIntensity = checkBoxNormarizeIntensity.Checked;
         dp.NormarizeAsAverage = radioButtonNormarizeAverage.Checked;
-        dp.NormarizeRangeStart = (double)numericUpDownNormarizeRangeLow.Value;
-        dp.NormarizeRangeEnd = (double)numericUpDownNormarizeRangeHigh.Value;
-        dp.NormarizeIntensity = (double)numericUpDownNormarizeIntensity.Value;
+        dp.NormarizeRangeStart = numericBoxNormarizeRangeLow.Value;
+        dp.NormarizeRangeEnd = numericBoxNormarizeRangeHigh.Value;
+        dp.NormarizeIntensity = numericBoxNormarizeIntensity.Value;
     }
     private void setSmoothingOption(DiffractionProfile2 dp)
     {
         //smoothing関連
         dp.DoesSmoothing = checkBoxSmoothing.Checked;
-        dp.SazitkyGorayM = (int)numericUpDownSmoothingSavitzkyAndGolayM.Value;
-        dp.SazitkyGorayN = (int)numericUpDownSmoothingSavitzkyAndGolayN.Value;
+        dp.SazitkyGorayM = numericBoxSmoothingSavitzkyAndGolayM.ValueInteger;
+        dp.SazitkyGorayN = numericBoxSmoothingSavitzkyAndGolayN.ValueInteger;
     }
     private void setTwoThetaOffsetOption(DiffractionProfile2 dp)
     {
@@ -257,14 +257,15 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     {
         dp.DoesRemoveKalpha2 = checkBoxRemoveKalpha2.Checked;
     }
-    private void setBandPassOption(DiffractionProfile2 dp){
+    private void setBandPassOption(DiffractionProfile2 dp)
+    {
 
         //bandpass関連
         dp.DoesBandpassFilter = checkBoxBandPassFilter.Checked;
         dp.DoesHighPath = checkBoxHighPassFilter.Checked;
         dp.DoesLowPath = checkBoxLowPassFilter.Checked;
-        dp.HighPathLimit = (double)numericUpDownHighPass.Value;
-        dp.LowPathLimit = (double)numericUpDownLowPass.Value;
+        dp.HighPathLimit = numericBoxHighPass.Value;
+        dp.LowPathLimit = numericBoxLowPass.Value;
     }
     private void setBackgroundOption(DiffractionProfile2 dp)
     {
@@ -276,14 +277,14 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             dp.BackgroundReferrenceProfile = ((DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[comboBoxBackgroundReferrence.SelectedIndex][1]).Profile;
         else
             dp.BackgroundReferrenceProfile = null;
-        dp.BackgroundReferrenceScale = (double)numericUpDownBackgroundReferrenceScale.Value;
+        dp.BackgroundReferrenceScale = numericBoxBackgroundReferrenceScale.Value;
 
     }
     private void setShiftOption(DiffractionProfile2 dp)
     {
         //shift関連
         dp.IsShiftX = checkBoxShiftHorizontalAxis.Checked;
-        dp.ShiftX = (double)numericUpDownShiftHorizontalAxis.Value;
+        dp.ShiftX = numericBoxShiftHorizontalAxis.Value;
 
         dp.SetConvertedProfile(formMain.HorizontalAxisProperty);
     }
@@ -295,18 +296,18 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         //smoothingをするかどうか
         formMain.defaultDP.DoesSmoothing = checkBoxSmoothing.Checked;
         //SavitkyGolayをするかどうか
-        formMain.defaultDP.SazitkyGorayM = (int)numericUpDownSmoothingSavitzkyAndGolayM.Value;
-        formMain.defaultDP.SazitkyGorayN = (int)numericUpDownSmoothingSavitzkyAndGolayN.Value;
+        formMain.defaultDP.SazitkyGorayM = numericBoxSmoothingSavitzkyAndGolayM.ValueInteger;
+        formMain.defaultDP.SazitkyGorayN = numericBoxSmoothingSavitzkyAndGolayN.ValueInteger;
         //background減算をするかどうか
         formMain.defaultDP.SubtractBackground = checkBoxBackgroundSubtraction.Checked;
-        formMain.defaultDP.BgPointsNumber = (int)numericUpDownBgPointsNumber.Value;
+        formMain.defaultDP.BgPointsNumber = numericBoxBgPointsNumber.ValueInteger;
     }
 
 
     private void buttonUpper_Click(object sender, EventArgs e)
     {
         int n = bindingSourceProfile.Position;
-        if (n < 1 ) return;
+        if (n < 1) return;
         dataSetProfile.DataTableProfile.MoveItem(n, n - 1);
         bindingSourceProfile.Position = n - 1;
     }
@@ -314,7 +315,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     private void buttonLower_Click(object sender, EventArgs e)
     {
         int n = bindingSourceProfile.Position;
-        if (n < 0  || n >= dataSetProfile.DataTableProfile.Items.Count - 1) return;
+        if (n < 0 || n >= dataSetProfile.DataTableProfile.Items.Count - 1) return;
         dataSetProfile.DataTableProfile.MoveItem(n, n + 1);
         bindingSourceProfile.Position = n + 1;
 
@@ -328,7 +329,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             dp.SrcProperty.AxisMode = xAxisUserControl.AxisMode;
             dp.SrcProperty.EnergyTakeoffAngle = xAxisUserControl.TakeoffAngle;
             dp.SrcProperty.WaveLength = xAxisUserControl.WaveLength;
-            dp.ExposureTime = numericalTextBoxExposureTime.Value;
+            dp.ExposureTime = numericBoxExposureTime.Value;
 
             formMain.horizontalAxisUserControl_AxisPropertyChanged();
         }
@@ -348,40 +349,40 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         {
             skipEvent = true;
             DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
-           colorControlLineColor.Color = Color.FromArgb(dp.ColorARGB.Value);
+            colorControlLineColor.Color = Color.FromArgb(dp.ColorARGB.Value);
 
             //TwoThetaOffset関連
-            checkBoxTwoThetaOffset.Checked = panelTwoThetaOffset.Visible = dp.DoesTwoThetaOffset;
+            checkBoxTwoThetaOffset.Checked = flowLayoutPanelTwoThetaOffset.Visible = dp.DoesTwoThetaOffset;
             numericBoxTwhoThetaOffsetCoeff0.Value = dp.TwoThetaOffsetCoeff0;
             numericBoxTwhoThetaOffsetCoeff1.Value = dp.TwoThetaOffsetCoeff1;
             numericBoxTwhoThetaOffsetCoeff2.Value = dp.TwoThetaOffsetCoeff2;
 
             //MaskingRange関連
-            checkBoxMaskingMode.Checked = panelMaskingMode.Visible = dp.DoesMaskAndInterpolate;
-           listBoxMaskRanges.Items.Clear();
-           listBoxMaskRanges.Items.AddRange(dp.maskingRanges.ToArray());
-           numericUpDownInterpolationOrder.Value = (decimal)dp.InterpolationOrder;
-           numericUpDownInterpolationPoints.Value = (decimal)dp.InterpolationPoints;
+            checkBoxMaskingMode.Checked = flowLayoutPanelMaskingMode.Visible = dp.DoesMaskAndInterpolate;
+            listBoxMaskRanges.Items.Clear();
+            listBoxMaskRanges.Items.AddRange(dp.maskingRanges.ToArray());
+            numericBoxInterpolationOrder.Value = dp.InterpolationOrder;
+            numericBoxInterpolationPoints.Value = dp.InterpolationPoints;
 
             //Smoothing関連
-            checkBoxSmoothing.Checked = panelSmoothing.Visible = dp.DoesSmoothing;
-            numericUpDownSmoothingSavitzkyAndGolayM.Value = dp.SazitkyGorayM;
-            numericUpDownSmoothingSavitzkyAndGolayN.Value = dp.SazitkyGorayN;
-            checkBoxSmoothing.Checked = panelSmoothing.Visible = dp.DoesSmoothing;
+            checkBoxSmoothing.Checked = flowLayoutPanelSmoothing.Visible = dp.DoesSmoothing;
+            numericBoxSmoothingSavitzkyAndGolayM.Value = dp.SazitkyGorayM;
+            numericBoxSmoothingSavitzkyAndGolayN.Value = dp.SazitkyGorayN;
+            checkBoxSmoothing.Checked = flowLayoutPanelSmoothing.Visible = dp.DoesSmoothing;
 
             checkBoxRemoveKalpha2.Checked = dp.DoesRemoveKalpha2;
 
             //ShiftX関連
-            checkBoxShiftHorizontalAxis.Checked = numericUpDownShiftHorizontalAxis.Enabled = dp.IsShiftX;
-            numericUpDownShiftHorizontalAxis.Value = (decimal)dp.ShiftX;
+            checkBoxShiftHorizontalAxis.Checked = numericBoxShiftHorizontalAxis.Enabled = dp.IsShiftX;
+            numericBoxShiftHorizontalAxis.Value = dp.ShiftX;
 
             //Background関連
-            checkBoxBackgroundSubtraction.Checked = panelBackgroundSubtraction.Visible = dp.SubtractBackground;
-            radioButtonBagkgroundBSpline.Checked = panelBackgroundBSpline.Enabled = dp.BgMode == BackgroundMode.BSplineCurve;
-            radioButtonBackgroundReferrence.Checked = panelBackgroundReferrence.Enabled = dp.BgMode == BackgroundMode.ReferrenceProfile;
+            checkBoxBackgroundSubtraction.Checked = flowLayoutPanelBackgroundSubtraction.Visible = dp.SubtractBackground;
+            radioButtonBagkgroundBSpline.Checked = flowLayoutPanelBackgroundBSpline.Enabled = dp.BgMode == BackgroundMode.BSplineCurve;
+            radioButtonBackgroundReferrence.Checked = flowLayoutPanelBackgroundReferrence.Enabled = dp.BgMode == BackgroundMode.ReferrenceProfile;
 
             //FFT関連
-            checkBoxBandPassFilter.Checked = panelBandPassFilter.Visible = dp.DoesBandpassFilter;
+            checkBoxBandPassFilter.Checked = flowLayoutPanelBandPassFilter.Visible = dp.DoesBandpassFilter;
             checkBoxHighPassFilter.Checked = dp.DoesHighPath;
             checkBoxLowPassFilter.Checked = dp.DoesLowPath;
             if (dp.Profile.Pt.Count > 2)
@@ -392,35 +393,35 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
                 if (!double.IsInfinity(max) && !double.IsInfinity(min))
                 {
-                    numericUpDownHighPass.Maximum = !double.IsInfinity(max) ? (decimal)max : numericUpDownHighPass.Maximum;
-                    numericUpDownHighPass.Minimum = !double.IsInfinity(min) ? (decimal)min : numericUpDownHighPass.Minimum;
-                    numericUpDownHighPass.DecimalPlaces = decimalPlaces;
-                    numericUpDownHighPass.Increment = !double.IsInfinity(min) ? (decimal)min : numericUpDownHighPass.Increment;
+                    numericBoxHighPass.Maximum = !double.IsInfinity(max) ? max : numericBoxHighPass.Maximum;
+                    numericBoxHighPass.Minimum = !double.IsInfinity(min) ? min : numericBoxHighPass.Minimum;
+                    numericBoxHighPass.DecimalPlaces = decimalPlaces;
+                    numericBoxHighPass.UpDown_Increment = !double.IsInfinity(min) ? min : numericBoxHighPass.UpDown_Increment;
                     if (double.IsNaN(dp.HighPathLimit) || dp.HighPathLimit > max || dp.HighPathLimit < min)
                         dp.HighPathLimit = min;
-                    numericUpDownHighPass.Value = (decimal)dp.HighPathLimit;
+                    numericBoxHighPass.Value = dp.HighPathLimit;
 
-                    numericUpDownLowPass.Maximum = !double.IsInfinity(max) ? (decimal)max : numericUpDownHighPass.Maximum;
-                    numericUpDownLowPass.Minimum = (decimal)min;
-                    numericUpDownLowPass.DecimalPlaces = decimalPlaces;
-                    numericUpDownLowPass.Increment = !double.IsInfinity(max) ? (decimal)(max / 100) : (decimal)(numericUpDownHighPass.Maximum / 100);
+                    numericBoxLowPass.Maximum = !double.IsInfinity(max) ? max : numericBoxHighPass.Maximum;
+                    numericBoxLowPass.Minimum = min;
+                    numericBoxLowPass.DecimalPlaces = decimalPlaces;
+                    numericBoxLowPass.UpDown_Increment = !double.IsInfinity(max) ? (max / 100) : (numericBoxHighPass.Maximum / 100);
                     if (double.IsNaN(dp.LowPathLimit) || dp.LowPathLimit > max || dp.LowPathLimit < min)
                         dp.LowPathLimit = max;
-                    numericUpDownLowPass.Value = (decimal)dp.LowPathLimit;
+                    numericBoxLowPass.Value = dp.LowPathLimit;
                 }
             }
             //FFT関連ここまで
 
             //Normarize関連
-            checkBoxNormarizeIntensity.Checked = panelNormarizeIntensity.Visible = dp.DoesNormarizeIntensity;
+            checkBoxNormarizeIntensity.Checked = flowLayoutPanelNormarizeIntensity.Visible = dp.DoesNormarizeIntensity;
             radioButtonNormarizeAverage.Checked = dp.NormarizeAsAverage;
             radioButtonNormarizeMaximum.Checked = !dp.NormarizeAsAverage;
-            numericUpDownNormarizeIntensity.Value = Math.Max(Math.Min(numericUpDownNormarizeIntensity.Maximum, (decimal)dp.NormarizeIntensity), numericUpDownNormarizeIntensity.Minimum);
-            numericUpDownNormarizeRangeHigh.Value = (decimal)dp.NormarizeRangeEnd;
-            numericUpDownNormarizeRangeLow.Value = (decimal)dp.NormarizeRangeStart;
+            numericBoxNormarizeIntensity.Value = Math.Max(Math.Min(numericBoxNormarizeIntensity.Maximum, dp.NormarizeIntensity), numericBoxNormarizeIntensity.Minimum);
+            numericBoxNormarizeRangeHigh.Value = dp.NormarizeRangeEnd;
+            numericBoxNormarizeRangeLow.Value = dp.NormarizeRangeStart;
 
             //露出時間
-            numericalTextBoxExposureTime.Value = dp.ExposureTime;
+            numericBoxExposureTime.Value = dp.ExposureTime;
 
             //横軸関連
             xAxisUserControl.AxisMode = dp.SrcProperty.AxisMode;
@@ -428,15 +429,15 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             xAxisUserControl.WaveColor = dp.SrcProperty.WaveColor;
             xAxisUserControl.XrayNumber = dp.SrcProperty.XrayElementNumber;
             xAxisUserControl.XrayLine = dp.SrcProperty.XrayLine;
-            if (dp.SrcProperty.XrayElementNumber ==0)
+            if (dp.SrcProperty.XrayElementNumber == 0)
                 xAxisUserControl.WaveLength = dp.SrcProperty.WaveLength;
             xAxisUserControl.TakeoffAngle = dp.SrcProperty.EnergyTakeoffAngle;
 
-         //   if(xAxisUserControl.WaveSource== WaveSource.Xray && xAxisUserControl.XrayWaveSourceElementNumber!=0 && xAxisUserControl.XrayWaveSourceLine == XrayLine.Ka)
-         //       numericBoxKalpha1.Value = 
+            //   if(xAxisUserControl.WaveSource== WaveSource.Xray && xAxisUserControl.XrayWaveSourceElementNumber!=0 && xAxisUserControl.XrayWaveSourceLine == XrayLine.Ka)
+            //       numericBoxKalpha1.Value = 
 
             textBoxProfileName.Text = dp.Name;
-            numericUpDownLineWidth.Value = (decimal)dp.LineWidth;
+            numericBoxLineWidth.Value = dp.LineWidth;
             skipEvent = false;
 
             formMain.setFrequencyProfile();
@@ -449,8 +450,8 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             textBoxComment.Text = dp.Comment;
         }
 
-       textBoxComment.Enabled =  bindingSourceProfile.Position >= 0;
-       formMain.checkBoxAll.Enabled = bindingSourceProfile.Position >= 0;
+        textBoxComment.Enabled = bindingSourceProfile.Position >= 0;
+        formMain.checkBoxAll.Enabled = bindingSourceProfile.Position >= 0;
         //formMain.Draw();
 
     }
@@ -458,23 +459,23 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     private void colorControlLineColor_ColorChanged(object sender, EventArgs e)
     {
         if (skipEvent) return;
-        
+
         if (bindingSourceProfile.Position >= 0)
         {
             var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.ColorARGB = colorControlLineColor.Color.ToArgb();
 
-           var g = Graphics.FromImage((Bitmap)dataSetProfile.DataTableProfile.Rows[bindingSourceProfile.Position][2]);
-           g.Clear(colorControlLineColor.Color);
-           dataGridViewProfile.Refresh();
-           formMain.dataGridViewProfiles.Refresh();
-           formMain.Draw();
+            var g = Graphics.FromImage((Bitmap)dataSetProfile.DataTableProfile.Rows[bindingSourceProfile.Position][2]);
+            g.Clear(colorControlLineColor.Color);
+            dataGridViewProfile.Refresh();
+            formMain.dataGridViewProfiles.Refresh();
+            formMain.Draw();
         }
     }
     private void textBoxProfileName_TextChanged(object sender, EventArgs e)
     {
         if (skipEvent) return;
-        bindingSource_ListChanged(new object(), new ListChangedEventArgs( ListChangedType.ItemChanged,0));
+        bindingSource_ListChanged(new object(), new ListChangedEventArgs(ListChangedType.ItemChanged, 0));
         if (bindingSourceProfile.Position >= 0)
         {
             var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
@@ -489,13 +490,13 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         if (skipEvent) return;
         if (bindingSourceProfile.Position >= 0)
         {
-           var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
-            dp.LineWidth = (float)numericUpDownLineWidth.Value;
+            var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
+            dp.LineWidth = (float)numericBoxLineWidth.Value;
         }
         formMain.Draw();
     }
 
- 
+
 
     private void radioButtonAverage_CheckedChanged(object sender, EventArgs e)
     {
@@ -576,8 +577,8 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
                 for (int j = 0; j < p.Pt.Count; j++)
                     //p.Pt[j].Y += dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length;
                     p.Pt[j] += new PointD(0, dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length);
-             //誤差の計算
-                    for (int j = 0; j < p.Pt.Count; j++)
+            //誤差の計算
+            for (int j = 0; j < p.Pt.Count; j++)
             {
                 int n = 0;
                 for (int i = 0; i < dp.Length; i++)
@@ -617,12 +618,12 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
                     double err1 = p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X);
                     //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
-                    p.Err[j] =new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
+                    p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
                 }
                 else if (radioButtonSubtraction.Checked)//引き算
                 {
                     //p.Pt[j].Y = p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
-                    p.Pt[j] =new PointD(p.Pt[j].X, p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
+                    p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
                     double err1 = p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X);
                     //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
                     p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
@@ -650,7 +651,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
                         double err1 = p.Err[j].Y / p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X) / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
                         if (Math.Abs(err1) > 10E-10 && Math.Abs(err2) > 10E-10)
                             //p.Err[j].Y = p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2);
-                            p.Err[j] =new PointD(p.Err[j].X,  p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2));
+                            p.Err[j] = new PointD(p.Err[j].X, p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2));
                     }
                 }
         }
@@ -683,7 +684,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             SourceProfile = p,
             Name = textBoxOutputFilename.Text,
             ColorARGB = c.ToArgb(),
-            
+
         };
 
         //output.SrcProperty.WaveSource = formMain.WaveSource;
@@ -812,7 +813,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         //            for (int i = 0; i < dp.maskingRanges.Count; i++)
         //                serializer.Serialize(stream, dp.maskingRanges[i]);
         //        }
-              
+
         //    }
         //    catch {  }
         //}
@@ -872,11 +873,12 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             e.Effect = DragDropEffects.None;//ファイル以外は受け付けない
     }
     #endregion
-    private void buttonTwoThetaCalibration_Click(object sender, EventArgs e) 
+    private void buttonTwoThetaCalibration_Click(object sender, EventArgs e)
         => formMain.formTwoThetaCalibration.Visible = !formMain.formTwoThetaCalibration.Visible;
 
     private void buttonTwoThetaOffsetReset_Click(object sender, EventArgs e)
         => TwoThetaOffsetCoeff0 = TwoThetaOffsetCoeff1 = TwoThetaOffsetCoeff2 = 0;
 
     private void dataGridViewProfile_KeyDown(object sender, KeyEventArgs e) => formMain.dataGridViewProfiles_KeyDown(sender, e);
+
 }

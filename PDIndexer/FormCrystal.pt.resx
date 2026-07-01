@@ -116,8 +116,7 @@ tituir
     <value>Mostrar índices dos peaks</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Ocultar peaks
- abaixo de</value>
+    <value>Ocultar peaks abaixo de</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>Intensidade escalável</value>
@@ -134,8 +133,7 @@ tituir
 dos peaks de difração com base nas estruturas cristalinas</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Mostrar peaks
- sob o perfil</value>
+    <value>Mostrar peaks sob o perfil</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Opções de peak de difração</value>

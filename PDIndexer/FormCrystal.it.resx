@@ -116,8 +116,7 @@ tuisci
     <value>Mostra gli indici dei picchi</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Nascondi i picchi
- sotto</value>
+    <value>Nascondi i picchi sotto</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>Intensità scalabile</value>
@@ -134,8 +133,7 @@ tuisci
 dei picchi di diffrazione in base alle strutture cristalline</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Mostra i picchi
- sotto il profilo</value>
+    <value>Mostra i picchi sotto il profilo</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Opzioni dei picchi di diffrazione</value>

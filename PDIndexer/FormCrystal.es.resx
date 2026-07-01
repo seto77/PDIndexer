@@ -119,8 +119,7 @@ plazar
     <value>Mostrar índices de pico</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
-    <value>Ocultar picos
- por debajo de</value>
+    <value>Ocultar picos por debajo de</value>
   </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>Intensidad escalable</value>
@@ -137,8 +136,7 @@ plazar
 de los picos de difracción a partir de las estructuras cristalinas</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
-    <value>Mostrar picos
- bajo el perfil</value>
+    <value>Mostrar picos bajo el perfil</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Opciones de pico de difracción</value>

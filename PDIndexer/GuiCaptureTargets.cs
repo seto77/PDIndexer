@@ -18,8 +18,8 @@ partial class FormProfileSetting
         //260605Cl: FormBase 継承で得た共通 captureExtender (protected) を使う (旧: フォーム毎に private 宣言+new していたが CS0108 衝突のため廃止)
         foreach (var c in new Control[]
                  {
-                     panelTwoThetaOffset, panelMaskingMode, panelSmoothing, panelBandPassFilter,
-                     panelBackgroundSubtraction, panelNormarizeIntensity,
+                     flowLayoutPanelTwoThetaOffset, flowLayoutPanelMaskingMode, flowLayoutPanelSmoothing, flowLayoutPanelBandPassFilter,
+                     flowLayoutPanelBackgroundSubtraction, flowLayoutPanelNormarizeIntensity,
                  })
             if (c != null) captureExtender.SetCapture(c, true);
     }

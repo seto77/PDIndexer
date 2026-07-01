@@ -39,7 +39,7 @@
 
 ### 1. 2θ 오프셋 {#two-theta-offset}
 
-![2θ 오프셋 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelTwoThetaOffset.png)
+![2θ 오프셋 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
 `1. 2θ offeset (for angle-dispersive diffractmetry)`는 각도 분산형 데이터의 각도를 보정합니다. 보정식은 \( \tan\theta \)에 관한 2차 함수입니다.
 
@@ -56,7 +56,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 2. 마스크와 보간（Mask and Interpolation） {#mask}
 
-![마스크와 보간 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelMaskingMode.png)
+![마스크와 보간 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
 `2. Mask and Interpolation`은 지정한 각도 범위（또는 에너지 범위）를 마스크하고, 마스크 범위 밖의 강도를 이용하여 프로파일을 보간합니다.
 
@@ -70,7 +70,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 3. 평활화（Smoothing） {#smoothing}
 
-![평활화 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelSmoothing.png)
+![평활화 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
 `3. Smoothing`은 선택한 프로파일에 평활화를 적용합니다. 평활화 알고리즘은 `Savitzky-Golay` 법입니다.
 
@@ -81,7 +81,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 4. 대역 통과 필터（Bandpass filter） {#bandpass}
 
-![대역 통과 필터 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBandPassFilter.png)
+![대역 통과 필터 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
 `4. Bandpass filter`는 푸리에 변환（FFT）을 이용하여 지정한 주파수보다 크거나 작은 성분을 제거합니다.
 
@@ -99,7 +99,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 6. 배경（Background） {#background}
 
-![배경 감산 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelBackgroundSubtraction.png)
+![배경 감산 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
 `6. Background`는 프로파일에서 배경을 감산합니다. 방법은 두 가지가 있습니다.
 
@@ -118,7 +118,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 7. 강도 정규화（Normalize intensity） {#normalize}
 
-![강도 정규화 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.panelNormarizeIntensity.png)
+![강도 정규화 패널](../assets/cap-ko-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
 `7. Normarize intensity`는 지정한 가로축 범위에서의 `Average`（평균값） 또는 `Maximum`（최대값）이 지정한 강도가 되도록 프로파일을 정규화합니다.
 
