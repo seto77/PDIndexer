@@ -24,6 +24,10 @@ namespace PDIndexer
         {
             InitializeComponent();
             HelpPage = "6-fitting-diffraction-peaks"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
+            //260625Cl 追加: 操作状態ボタンの idle ラベルを現 UI カルチャ訳で初期化 (実行中は Stop! にトグル)。
+            //  buttonStart の Designer 既定 "Find" もここで "Start" に統一 (停止後リセット表記と揃える)。
+            buttonStart.Text = PdiText.Start;
+            buttonResume.Text = PdiText.Resume;
 
             #region 化学組成タブのコントロール類を配置する
             int startX = 0;
@@ -859,11 +863,14 @@ namespace PDIndexer
             return new FindCondition(crystalTemplates.ToArray(), observedIntensity);
         }
 
+        private bool isFinding = false; //260625Cl 追加: ボタンラベル文字列での状態判定を bool へ分離 (多言語化でラベルを訳すと "Stop!" 比較が壊れるため)
+
         private void buttonStart_Click(object sender, EventArgs e)
         {
-            if (buttonStart.Text == "Stop!")
+            if (isFinding) //260625Cl 旧: if (buttonStart.Text == "Stop!")
             {
-                buttonStart.Text = "Start";
+                isFinding = false; //260625Cl 追加
+                buttonStart.Text = PdiText.Start; //260625Cl 旧: buttonStart.Text = "Start";
                 buttonResume.Enabled = true;
                 backgroundWorker.CancelAsync();
                 return;
@@ -880,7 +887,8 @@ namespace PDIndexer
               fc.Candidates =null;
                 
 
-                buttonStart.Text = "Stop!";
+                isFinding = true; //260625Cl 追加
+                buttonStart.Text = PdiText.Stop; //260625Cl 旧: buttonStart.Text = "Stop!";
                 buttonResume.Enabled = false;
 
                 Step = 0;
@@ -901,7 +909,9 @@ namespace PDIndexer
                 List<Crystal> candidates = []; //260317Cl new List<Crystal>() → []
                 for (int i = 0; i < dataSet.DataTableCrystalCandidates.Rows.Count; i++)
                     candidates.Add((Crystal)dataSet.DataTableCrystalCandidates.Rows[i][0]);
-                buttonStart.Text = "Stop!";
+                isFinding = true; //260625Cl 追加
+                buttonStart.Text = PdiText.Stop; //260625Cl 旧: buttonStart.Text = "Stop!";
+                buttonResume.Enabled = false; //260626Cl 追加: 二度押しで backgroundWorker が二重起動するのを防ぐ (buttonStart_Click と対称。完了時 line ~1210 / 停止時 ~874 で再有効化)
                 fc.Candidates = candidates.ToArray();
                 sw.Reset();
                 sw.Start();
@@ -1184,7 +1194,7 @@ namespace PDIndexer
 
             graphControl1.Draw(true);
 
-            toolStripStatusLabelCounter.Text = "total:" + (e.ProgressPercentage).ToString("g6") + " step" + ",  " + (e.ProgressPercentage / (double)sw.ElapsedMilliseconds).ToString("f3") + " step/ms";
+            toolStripStatusLabelCounter.Text = string.Format(PdiText.StepStat, (e.ProgressPercentage).ToString("g6"), (e.ProgressPercentage / (double)sw.ElapsedMilliseconds).ToString("f3")); //260625Cl 旧: "total:"+...+" step/ms" の連結
 
             randomizeProb = (double)numericUpDownRandomization.Value * 0.01;
             hybridizeProb = (double)numericUpDownHybridization.Value * 0.01;
@@ -1196,7 +1206,8 @@ namespace PDIndexer
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            buttonStart.Text = "Start";
+            isFinding = false; //260625Cl 追加
+            buttonStart.Text = PdiText.Start; //260625Cl 旧: buttonStart.Text = "Start";
             buttonResume.Enabled = true;
         }
 

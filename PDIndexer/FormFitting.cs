@@ -354,7 +354,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             }
 
 
-        formMain.toolStripStatusLabelCalcTime.Text = $"Calculating Time (Peak Fitting) : {sw.ElapsedMilliseconds}ms"; //260317Cl 文字列連結 → 文字列補間
+        formMain.toolStripStatusLabelCalcTime.Text = string.Format(PdiText.CalcTimePeakFitting, sw.ElapsedMilliseconds); //260625Cl 多言語化(旧 $"Calculating Time (Peak Fitting) : {..}ms")
 
         //フィッティング結果を
 

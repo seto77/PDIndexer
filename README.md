@@ -88,7 +88,7 @@ Get-FileHash .\PDIndexer-v.*.zip -Algorithm SHA256
 * Python-syntax ([IronPython](https://ironpython.net/)) macro scripting for task automation.
   * Example: batch-load a folder of profiles, run sequential analysis, and export the results to CSV.
   * PDIndexer-specific functions are available through the `PDI` object.
-  * The full function reference is available in the [manual](https://seto77.github.io/PDIndexer/en/8-macro/).
+  * The full function reference is available in the [manual](https://seto77.github.io/PDIndexer/8-macro/).
 
 ### Import / Export
 

@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="numericalTextBoxPtA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxPtA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="groupBoxPlatinum.Text" xml:space="preserve">
+    <value>鉑</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxNaClB1A0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericalTextBoxGoldA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxGoldA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="groupBoxGold.Text" xml:space="preserve">
+    <value>金</value>
+  </data>
+  <data name="numericalTextBoxMgOA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxMgOA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="groupBoxPericlase.Text" xml:space="preserve">
+    <value>方鎂石</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericalTextBoxColundumV.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxColundumV0.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="groupBoxCorundum.Text" xml:space="preserve">
+    <value>剛玉</value>
+  </data>
+  <data name="numericalTextBoxArA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxArA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxReV.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numerictBoxReV0.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxMoV.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxMoV0.FooterText" xml:space="preserve">
+    <value>Å³</value>
+  </data>
+  <data name="numericBoxPbA.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="numericBoxPbA0.FooterText" xml:space="preserve">
+    <value>Å</value>
+  </data>
+  <data name="checkBoxPlatinum.Text" xml:space="preserve">
+    <value>Pt（鉑）</value>
+  </data>
+  <data name="checkBoxGold.Text" xml:space="preserve">
+    <value>Au（金）</value>
+  </data>
+  <data name="checkBoxPericlase.Text" xml:space="preserve">
+    <value>MgO（方鎂石）</value>
+  </data>
+  <data name="checkBoxCorundum.Text" xml:space="preserve">
+    <value>Al2O3（剛玉）</value>
+  </data>
+  <data name="numericBoxTemperature.HeaderText" xml:space="preserve">
+    <value>溫度</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>狀態方程</value>
+  </data>
+  <data name="numericBoxTemperature.ToolTip" xml:space="preserve">
+    <value>量測晶胞時的試料溫度 T（K）。所有標準
+物質共用；提高 T 會加入熱壓力，
+並降低算出的壓力 P。</value>
+  </data>
+  <data name="numericBoxTemperature0.ToolTip" xml:space="preserve">
+    <value>a0/V0 參考值的基準溫度 T0（K）；供 Pt
+（Matsui）與 Pb 模型使用。通常為 300 K。
+與量測溫度 T 不同。</value>
+  </data>
+  <data name="numericalTextBoxGoldA.ToolTip" xml:space="preserve">
+    <value>金（Au）標準的量測晶格參數 a（Å）；
+以 V = a³ 代入所有 Au 狀態方程
+以計算 P。</value>
+  </data>
+  <data name="numericalTextBoxPtA.ToolTip" xml:space="preserve">
+    <value>鉑（Pt）標準的量測晶格參數 a（Å）；
+以 V = a³ 用於 Pt 狀態方程。</value>
+  </data>
+  <data name="numericalTextBoxNaClB1A.ToolTip" xml:space="preserve">
+    <value>NaCl B1（岩鹽型）相的量測晶格
+參數 a（Å）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A.ToolTip" xml:space="preserve">
+    <value>NaCl 高壓 B2（CsCl 型）相的量測晶格參數
+a（Å）（與 B1 為不同相）。</value>
+  </data>
+  <data name="numericalTextBoxMgOA.ToolTip" xml:space="preserve">
+    <value>MgO（方鎂石）標準的量測晶格參數 a（Å）
+（預設 4.2112）；以 V = a³ 用於
+MgO 狀態方程。</value>
+  </data>
+  <data name="numericalTextBoxColundumV.ToolTip" xml:space="preserve">
+    <value>Al2O3（剛玉）的量測晶胞體積 V（Å³）。
+此標準直接輸入體積，而非 a。</value>
+  </data>
+  <data name="numericalTextBoxArA.ToolTip" xml:space="preserve">
+    <value>固態氬（Ar）的量測晶格參數 a（Å）。
+Ar 模型直接使用 a（不需 a0）。</value>
+  </data>
+  <data name="numericBoxReV.ToolTip" xml:space="preserve">
+    <value>錸（Re）的量測晶胞體積 V（Å³）。</value>
+  </data>
+  <data name="numericBoxMoV.ToolTip" xml:space="preserve">
+    <value>鉬（Mo）的量測晶胞體積 V（Å³）
+（預設 31.14）。</value>
+  </data>
+  <data name="numericBoxPbA.ToolTip" xml:space="preserve">
+    <value>鉛（Pb）標準的量測晶格參數 a（Å）；
+Strässle 模型以 Vinet 形式使用 a/a0(T)。</value>
+  </data>
+  <data name="numericBoxGoldA0.ToolTip" xml:space="preserve">
+    <value>Au 的零壓力參考晶格參數 a0（Å）（預設
+4.07825）；P 取決於 V/V0 比值。</value>
+  </data>
+  <data name="numericBoxPtA0.ToolTip" xml:space="preserve">
+    <value>Pt 的零壓力參考晶格
+參數 a0（Å）（預設 3.9231）。</value>
+  </data>
+  <data name="numericBoxNaClB1A0.ToolTip" xml:space="preserve">
+    <value>NaCl B1 相的零壓力參考晶格參數
+a0（Å）（預設 5.639）。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2A0.ToolTip" xml:space="preserve">
+    <value>NaCl B2 的參考晶格參數 a0（Å）
+（唯讀參考值；B2 模型直接
+由 a 計算 P）。</value>
+  </data>
+  <data name="numericBoxMgOA0.ToolTip" xml:space="preserve">
+    <value>MgO 的零壓基準晶格參數
+a0 (Å)（預設 4.2112）。</value>
+  </data>
+  <data name="numericBoxColundumV0.ToolTip" xml:space="preserve">
+    <value>Al2O3 的零壓基準晶胞體積
+V0 (Å³)（預設 255.89472）。</value>
+  </data>
+  <data name="numericBoxArA0.ToolTip" xml:space="preserve">
+    <value>Ar 的基準晶格參數 a0 (Å)（僅供
+參考顯示；Ross/Jephcoat 模型不使用）。</value>
+  </data>
+  <data name="numerictBoxReV0.ToolTip" xml:space="preserve">
+    <value>Re 的零壓基準體積 V0 (Å³)
+（預設 29.42795）；供 Zha
+模型使用（其餘使用內建 V0）。</value>
+  </data>
+  <data name="numericBoxMoV0.ToolTip" xml:space="preserve">
+    <value>Mo 的零壓基準體積 V0 (Å³)（預設
+31.14）；供 Huang (MGD) 與 Zhao 模型使用。</value>
+  </data>
+  <data name="numericBoxPbA0.ToolTip" xml:space="preserve">
+    <value>Pb 的零壓基準晶格參數
+a0 (Å)（預設 4.95059）；將內部
+a0(T) 表於 T0 縮放至您的試樣。</value>
+  </data>
+  <data name="checkBoxGold.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏金 (Au) 壓力標準面板。</value>
+  </data>
+  <data name="checkBoxPlatinum.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏白金 (Pt) 壓力標準面板。</value>
+  </data>
+  <data name="checkBoxNaClB1.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏 NaCl B1（岩鹽相）面板。</value>
+  </data>
+  <data name="checkBoxNaClB2.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏 NaCl B2（CsCl 型
+高壓相）面板。</value>
+  </data>
+  <data name="checkBoxPericlase.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏 MgO（方鎂石）面板。</value>
+  </data>
+  <data name="checkBoxCorundum.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏 Al2O3（剛玉）面板。</value>
+  </data>
+  <data name="checkBoxAr.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏固態氬 (Ar) 面板。</value>
+  </data>
+  <data name="checkBoxRe.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏錸 (Re) 面板。</value>
+  </data>
+  <data name="checkBoxMo.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏鉬 (Mo) 面板。</value>
+  </data>
+  <data name="checkBoxPb.ToolTip" xml:space="preserve">
+    <value>顯示或隱藏鉛 (Pb) 面板。</value>
+  </data>
+  <data name="numericalTextBoxGoldJamieson.ToolTip" xml:space="preserve">
+    <value>依 Jamieson (1982) 計算金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxGoldAnderson.ToolTip" xml:space="preserve">
+    <value>依 Anderson (1989) 計算金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
+    <value>依 Sim (2002)（BM3 + Mie-Grüneisen）
+計算金的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">
+    <value>依 Tsuchiya (2003) 計算金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxAuYokoo.ToolTip" xml:space="preserve">
+    <value>依 Yokoo (2009) 計算金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxAuFratanduono.ToolTip" xml:space="preserve">
+    <value>依 Fratanduono (2021)（Vinet）計算
+金的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxPtJamieson.ToolTip" xml:space="preserve">
+    <value>依 Jamieson (1982) 計算白金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxPtHolmes.ToolTip" xml:space="preserve">
+    <value>依 Holmes (1989) 計算白金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxPtMatsui.ToolTip" xml:space="preserve">
+    <value>依 Matsui (2009) 計算白金的
+壓力 P (GPa)；使用基準
+溫度 T0。唯讀結果。</value>
+  </data>
+  <data name="numericBoxPtYokoo.ToolTip" xml:space="preserve">
+    <value>依 Yokoo (2009) 計算白金的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxPtFratanduono.ToolTip" xml:space="preserve">
+    <value>依 Fratanduono (2021)（Vinet）計算
+白金的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxNaClB1Brown.ToolTip" xml:space="preserve">
+    <value>依 Brown (1999) 計算 NaCl B1 的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxNaClB1Matsui.ToolTip" xml:space="preserve">
+    <value>依 Matsui (2012) 計算 NaCl B1 的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxNaClB1Skelton.ToolTip" xml:space="preserve">
+    <value>依 Skelton (1984) 計算 NaCl B1 的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataPt.ToolTip" xml:space="preserve">
+    <value>依 Sata (2002)（交叉校正至
+Pt 標度）計算 NaCl B2 的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SataMgO.ToolTip" xml:space="preserve">
+    <value>依 Sata (2002)（交叉校正至
+MgO 標度）計算 NaCl B2 的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2Ueda.ToolTip" xml:space="preserve">
+    <value>依 Ueda (2008) 計算 NaCl B2 的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiBM.ToolTip" xml:space="preserve">
+    <value>依 Sakai (2011)（Birch-Murnaghan）計算
+NaCl B2 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxNaClB2SakaiVinet.ToolTip" xml:space="preserve">
+    <value>依 Sakai (2011)（Vinet）計算
+NaCl B2 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxMgOJacson.ToolTip" xml:space="preserve">
+    <value>依 Jackson (1998)（BM3 + Mie-Grüneisen）
+計算 MgO 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxMgODewaele.ToolTip" xml:space="preserve">
+    <value>依 Dewaele (2000)（BM3 + Mie-Grüneisen）
+計算 MgO 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxMgOAizawa.ToolTip" xml:space="preserve">
+    <value>依 Aizawa (2006)（BM3 + Mie-Grüneisen）
+計算 MgO 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxMgOTangeVinet.ToolTip" xml:space="preserve">
+    <value>依 Tange (2009)（Vinet）計算
+MgO 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxMgOTangeBM.ToolTip" xml:space="preserve">
+    <value>依 Tange (2009)（Birch-Murnaghan）計算
+MgO 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxCorundumDubrovinsky.ToolTip" xml:space="preserve">
+    <value>依 Dubrovinsky (1998) 計算 Al2O3（剛玉）的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxArRoss.ToolTip" xml:space="preserve">
+    <value>依 Ross (1986) 計算固態
+Ar 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxArJephcoat.ToolTip" xml:space="preserve">
+    <value>依 Jephcoat (1998)（與溫度相關）計算固態
+Ar 的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericalTextBoxReZha.ToolTip" xml:space="preserve">
+    <value>依 Zha (2004) 計算錸的壓力 P (GPa)；
+使用基準體積 V0。唯讀結果。</value>
+  </data>
+  <data name="numericBoxReAnz.ToolTip" xml:space="preserve">
+    <value>依 Anzellini（固定 K0/K0' 的 Vinet）計算
+錸的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxReSakai.ToolTip" xml:space="preserve">
+    <value>依 Sakai（固定 K0/K0' 的 Vinet）計算
+錸的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxReDub.ToolTip" xml:space="preserve">
+    <value>依 Dubrovinsky（4 階
+Birch-Murnaghan）計算錸的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxMoHuang.ToolTip" xml:space="preserve">
+    <value>依 Huang (2016)（BM3 + Mie-Grüneisen-Debye）
+計算鉬的壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxMoZhao.ToolTip" xml:space="preserve">
+    <value>依 Zhao (2000)（BM4 + 熱壓力
+修正）計算鉬的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+  <data name="numericBoxPbStrassle.ToolTip" xml:space="preserve">
+    <value>依 Strassle (2014)（Vinet 形式，B(T)、B'(T)、
+a0(T) 取自內建表）計算鉛的
+壓力 P (GPa)。唯讀結果。</value>
+  </data>
+</root>

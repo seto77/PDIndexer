@@ -10,6 +10,8 @@ namespace PDIndexer
         private const string CaptureArg = "--capture";
         // 260625Cl 追加: 軽量 smoke テストの起動引数 (WiX 移行 Phase C / D-PDI-3)。arm64 の「ビルド緑・実行時死亡」型故障を CI で検出する。
         private const string SmokeArg = "--smoke";
+        // 260625Cl 追加 (多言語化 Phase 3): UI オーバーフロー/重なり診断モードの起動引数 (GuiCapture.Diagnose)。
+        private const string DiagnoseArg = "--diagnose";
 
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
@@ -27,14 +29,22 @@ namespace PDIndexer
                 return; // RunSmoke は Environment.Exit するため通常ここには到達しない
             }
 
+            // 260625Cl 追加 (多言語化 Phase 2): Localizable=false フォーム (FormExportGSAS/FormLimitChanger/FormLPO 等) の
+            //   Designer 直書きラベルの 11 言語訳テーブルを、フォーム生成前に共有 Crystallography.Localization の中央
+            //   レジストリへ app-local provider として登録する。CodeLocalizer が FullName キーで引き OnLoad で差し替える。
+            PDIndexerLocalizationData.Register();
+
             // 260601Cl 追加: --capture の言語指定を各フォームの resx ローカライズ (CurrentUICulture 参照) より前に確定させる。
             //   PDIndexer.exe --capture [出力ディレクトリ] [カルチャ(en/ja)]   (出力先を明示)
             //   PDIndexer.exe --capture [カルチャ(en/ja)]                      (出力先省略=既定の docs/src/assets/cap-*-auto)
             string captureDir = null, captureCulture = null;
             if (args.Length >= 2 && args[0] == CaptureArg)
             {
-                // args[1] が en/ja なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
-                if (args[1] is "en" or "ja") captureCulture = args[1];
+                // args[1] が対応カルチャ名なら「カルチャのみ指定 (出力先は既定)」、それ以外なら出力先ディレクトリとみなす。
+                // 260625Cl 変更: en/ja 固定判定から SupportedCultures 駆動へ (多言語化 Phase 0。--capture <dir> de 等が通る)。
+                //   旧: if (args[1] is "en" or "ja") captureCulture = args[1];
+                if (Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[1], StringComparison.OrdinalIgnoreCase)))
+                    captureCulture = args[1];
                 else { captureDir = args[1]; captureCulture = args.Length >= 3 ? args[2] : null; }
             }
             if (captureCulture != null)
@@ -45,9 +55,38 @@ namespace PDIndexer
                 GuiCapture.ForcedUICulture = ci;
             }
 
+            // 260625Cl 追加 (多言語化 Phase 3): オーバーフロー診断モードの言語/水増し% を確定する (フォーム生成前)。
+            //   PDIndexer.exe --diagnose [カルチャ] [水増し%]   (水増し%例 140 = 文字が 40% 伸びたら切れるかを実翻訳無しで先出し)
+            bool doDiagnose = false; double diagnoseInflate = 1.0;
+            if (args.Length >= 1 && args[0] == DiagnoseArg)
+            {
+                doDiagnose = true;
+                string diagnoseCulture = null;
+                if (args.Length >= 2 && Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[1], StringComparison.OrdinalIgnoreCase)))
+                    diagnoseCulture = args[1];
+                var pctArg = diagnoseCulture != null ? (args.Length >= 3 ? args[2] : null) : (args.Length >= 2 ? args[1] : null);
+                if (int.TryParse(pctArg, out var pct) && pct > 0) diagnoseInflate = pct / 100.0;
+                if (diagnoseCulture != null)
+                {
+                    var ci = new System.Globalization.CultureInfo(diagnoseCulture);
+                    System.Threading.Thread.CurrentThread.CurrentUICulture = ci;
+                    System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = ci;
+                    GuiCapture.ForcedUICulture = ci;
+                }
+            }
+
             Application.SetHighDpiMode(HighDpiMode.DpiUnawareGdiScaled);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
+
+            // 260625Cl 追加 (多言語化 Phase 3): オーバーフロー診断モード本体。通常起動には一切影響しない。
+            if (doDiagnose)
+            {
+                var cult = (GuiCapture.ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture).Name;
+                var outFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"pdindexer-diagnose-{cult}-x{(int)(diagnoseInflate * 100)}.tsv");
+                GuiCapture.Diagnose(outFile, diagnoseInflate);
+                Environment.Exit(0);
+            }
 
             // 260601Cl 追加: GUI 監査/マニュアル用スクショ一括取得モード。通常起動 (引数なし) には一切影響しない。
             if (args.Length >= 1 && args[0] == CaptureArg)

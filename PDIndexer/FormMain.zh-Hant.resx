@@ -1,0 +1,1176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripStatusLabelCalcTime.Text" xml:space="preserve">
+    <value>計算時間：</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>Ctrl+Shift+E: 狀態方程; Ctrl+Shift+F: 擬合參數;  Ctrl+Shift+C: 晶體參數;  Ctrl+Shift+D:  變更峰模式</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
+    <value>讀取圖譜後，變更水平軸</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
+    <value>讀取圖譜時，自動將水平軸設定
+（輻射源、波長、軸模式）切換為
+與所讀取檔案相符的設定。</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>水平軸</value>
+  </data>
+  <data name="radioButtonLinearity.Text" xml:space="preserve">
+    <value>線性</value>
+  </data>
+  <data name="radioButtonLinearity.ToolTip" xml:space="preserve">
+    <value>以線性垂直比例尺繪製強度。</value>
+  </data>
+  <data name="radioButtonLogarithm.Text" xml:space="preserve">
+    <value>對數</value>
+  </data>
+  <data name="radioButtonLogarithm.ToolTip" xml:space="preserve">
+    <value>以對數垂直比例尺繪製強度
+（凸顯微弱的繞射峰）。</value>
+  </data>
+  <data name="radioButtonRawCounts.Text" xml:space="preserve">
+    <value>原始計數</value>
+  </data>
+  <data name="radioButtonRawCounts.ToolTip" xml:space="preserve">
+    <value>顯示原始積分計數（不除以步寬）。</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Text" xml:space="preserve">
+    <value>每步計數 (CPS)</value>
+  </data>
+  <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
+    <value>顯示每步正規化後的計數（CPS = 計數 / 步寬）。</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>垂直軸</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>選擇垂直軸（強度）的顯示模式。</value>
+  </data>
+  <data name="radioButtonMultiProfileMode.Text" xml:space="preserve">
+    <value>多重圖譜</value>
+  </data>
+  <data name="checkBoxChangeColor.Text" xml:space="preserve">
+    <value>自動變更顏色</value>
+  </data>
+  <data name="checkBoxChangeColor.ToolTip" xml:space="preserve">
+    <value>在多重圖譜模式中，為每個新增的
+圖譜指定隨機顏色。</value>
+  </data>
+  <data name="radioButtonSingleProfileMode.Text" xml:space="preserve">
+    <value>單一圖譜</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>計數</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>各圖譜間的強度位移</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>單一/多重圖譜</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip" xml:space="preserve">
+    <value>刻度（軸刻度線）標籤的顏色。</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip1" xml:space="preserve">
+    <value>刻度（軸刻度線）標籤的顏色。</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip" xml:space="preserve">
+    <value>刻度／格線的顏色。</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip1" xml:space="preserve">
+    <value>刻度／格線的顏色。</value>
+  </data>
+  <data name="colorControlBack.ToolTip" xml:space="preserve">
+    <value>圖譜檢視器的背景顏色。</value>
+  </data>
+  <data name="colorControlBack.ToolTip1" xml:space="preserve">
+    <value>圖譜檢視器的背景顏色。</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>刻度文字</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>刻度（軸刻度線）標籤的顏色。</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>刻度線</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>刻度／格線的顏色。</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>背景顏色</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>圖譜檢視器的背景顏色。</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="checkBoxErrorBar.Text" xml:space="preserve">
+    <value>誤差棒</value>
+  </data>
+  <data name="checkBoxErrorBar.ToolTip" xml:space="preserve">
+    <value>當圖譜含有誤差值時，
+於各資料點顯示誤差棒。</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Text" xml:space="preserve">
+    <value>刻度線</value>
+  </data>
+  <data name="checkBoxShowScaleLine.ToolTip" xml:space="preserve">
+    <value>在圖譜檢視器上顯示格（刻度）線。</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>外觀 &amp; 單一/多重圖譜</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>最小強度</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>最大強度</value>
+  </data>
+  <data name="checkBoxShowUnrolledImage.Text" xml:space="preserve">
+    <value>顯示展開影像</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>漸層</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>比例尺 1</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>比例尺 2</value>
+  </data>
+  <data name="comboBoxGradient.Items" xml:space="preserve">
+    <value>正片</value>
+  </data>
+  <data name="comboBoxGradient.Items1" xml:space="preserve">
+    <value>負片</value>
+  </data>
+  <data name="comboBoxScale2.Items" xml:space="preserve">
+    <value>灰階</value>
+  </data>
+  <data name="comboBoxScale2.Items1" xml:space="preserve">
+    <value>冷暖色階</value>
+  </data>
+  <data name="comboBoxScale1.Items" xml:space="preserve">
+    <value>對數比例</value>
+  </data>
+  <data name="comboBoxScale1.Items1" xml:space="preserve">
+    <value>線性比例</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>展開影像</value>
+  </data>
+  <data name="pictureBoxMain.ToolTip" xml:space="preserve">
+    <value>主剖面檢視器
+  左鍵拖曳：移動已勾選並選取結晶的繞射峰位置
+  右鍵點擊：縮小 
+  右鍵拖曳：放大
+  中鍵拖曳：平移</value>
+  </data>
+  <data name="numericBoxUpperX.ToolTip" xml:space="preserve">
+    <value>顯示的橫軸範圍上限
+（2theta / d / energy 等）。可透過
+右鍵選單設定軸的上限值。</value>
+  </data>
+  <data name="numericBoxUpperY.ToolTip" xml:space="preserve">
+    <value>顯示的強度（縱軸）上限。</value>
+  </data>
+  <data name="numericBoxLowerX.ToolTip" xml:space="preserve">
+    <value>顯示的橫軸範圍下限。
+可透過右鍵選單設定軸的下限值。</value>
+  </data>
+  <data name="numericBoxLowerY.ToolTip" xml:space="preserve">
+    <value>顯示的強度（縱軸）下限。</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>強度</value>
+  </data>
+  <data name="dataGridViewProfiles.ToolTip" xml:space="preserve">
+    <value>剖面清單。
+ 勾選的剖面會顯示於主剖面檢視器。
+ 若要顯示多個剖面，請於「Appearance &amp; Single/Multi Profiles」中勾選「Multiple Profiles」選項按鈕</value>
+  </data>
+  <data name="checkBoxProfileParameter.Text" xml:space="preserve">
+    <value>剖面參數</value>
+  </data>
+  <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
+    <value>開啟剖面參數視窗以進行
+所選剖面的詳細設定。</value>
+  </data>
+  <data name="checkBoxAll.Text" xml:space="preserve">
+    <value>全部勾選/取消</value>
+  </data>
+  <data name="checkBoxAll.ToolTip" xml:space="preserve">
+    <value>一次勾選或取消所有剖面（全部顯示／隱藏）。</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>剖面</value>
+  </data>
+  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
+    <value>結晶清單。
+  勾選結晶的繞射峰會顯示於主剖面檢視器。
+  右鍵雙擊可啟用/停用閃爍模式。
+  詳細的結晶資訊可透過「Crystal Parameter」檢視。</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Text" xml:space="preserve">
+    <value>結晶參數 (C)</value>
+  </data>
+  <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
+    <value>開啟結晶參數視窗以進行
+所選結晶的詳細設定。</value>
+  </data>
+  <data name="groupBoxCrystalData.Text" xml:space="preserve">
+    <value>結晶</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
+    <value>結晶
+ 參數 (C)</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
+    <value>切換結晶參數視窗。</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
+    <value>剖面
+ 參數 (P)</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
+    <value>切換剖面參數視窗。</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
+    <value>狀態
+ 方程 (E)</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
+    <value>切換狀態方程視窗，以根據標準物質的
+晶胞體積估算壓力。</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
+    <value>繞射峰
+ 擬合 (F)</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
+    <value>切換峰擬合視窗以擬合
+繞射峰（位置、FWHM、強度）。</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Text" xml:space="preserve">
+    <value>晶胞搜尋器</value>
+  </data>
+  <data name="toolStripButtonCellFinder.ToolTipText" xml:space="preserve">
+    <value>切換晶胞搜尋器視窗，以從峰
+位置搜尋晶格常數。</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.Text" xml:space="preserve">
+    <value>連續分析</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.ToolTipText" xml:space="preserve">
+    <value>切換連續分析視窗，
+以批次處理檔案系列。</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Text" xml:space="preserve">
+    <value>原子位置搜尋器</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.ToolTipText" xml:space="preserve">
+    <value>切換原子位置搜尋器視窗，以從
+繞射強度搜尋原子位置。</value>
+  </data>
+  <data name="toolStripButtonLPO.Text" xml:space="preserve">
+    <value>LPO 分析</value>
+  </data>
+  <data name="toolStripButtonLPO.ToolTipText" xml:space="preserve">
+    <value>開關 LPO（晶格優選
+取向）分析視窗。</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>讀取輪廓檔</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>開啟並以新清單讀取繞射輪廓檔。</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>儲存輪廓檔</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將所有已載入的輪廓儲存為 .pdi2 檔。</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>以 CSV（逗號分隔值）檔</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將輪廓匯出為逗號分隔（CSV）檔。</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>以 TSV（定位點分隔值）檔</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將輪廓匯出為定位點分隔（TSV）檔。</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>以 GSAS 檔</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將輪廓匯出為 GSAS（Rietveld）資料檔。</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
+    <value>匯出選取的輪廓</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.ToolTipText" xml:space="preserve">
+    <value>將選取的輪廓匯出為文字檔或 GSAS 檔。</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>載入晶體（做為新清單）</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>從 XML 檔載入晶體做為新清單。</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>載入晶體（並加入目前清單）</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>從 XML 檔載入晶體
+並加入目前清單。</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>儲存晶體</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將目前的晶體清單儲存至檔案。</value>
+  </data>
+  <data name="toolStripMenuItemImport.Text" xml:space="preserve">
+    <value>匯入 CIF、AMC...</value>
+  </data>
+  <data name="toolStripMenuItemImport.ToolTipText" xml:space="preserve">
+    <value>從 CIF 或 AMC 檔匯入晶體結構。</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>將選取的晶體匯出為 CIF</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.ToolTipText" xml:space="preserve">
+    <value>將選取的晶體匯出為 CIF 檔。</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>將晶體還原為初始狀態</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將晶體清單還原為初始（預設）狀態。</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.Text" xml:space="preserve">
+    <value>版面設定</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.ToolTipText" xml:space="preserve">
+    <value>開啟列印的版面設定對話方塊。</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.Text" xml:space="preserve">
+    <value>預覽列印</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.ToolTipText" xml:space="preserve">
+    <value>顯示輪廓檢視器的預覽列印。</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>列印</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>列印輪廓檢視器。</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>以點陣圖資料</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將檢視器以點陣圖複製到剪貼簿。</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>以中繼檔資料</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將檢視器以中繼檔（向量）複製到剪貼簿。</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
+    <value>複製到剪貼簿</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>另存為中繼檔</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.ToolTipText" xml:space="preserve">
+    <value>將檢視器儲存為 EMF 中繼檔。</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>關閉</value>
+  </data>
+  <data name="closeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>關閉 PDIndexer。</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>檔案</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>  工具提示</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>啟用或停用主視窗上的工具提示。</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>  監視剪貼簿</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>監視剪貼簿並自動讀取從其他應用程式
+（例如 IPAnalyzer）複製的輪廓／晶體。</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.Text" xml:space="preserve">
+    <value>設定要監視的目錄</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>選擇要監視新輪廓檔的資料夾。</value>
+  </data>
+  <data name="toolStripTextBoxDirectoryToWatch.ToolTipText" xml:space="preserve">
+    <value>受監視資料夾的路徑（可編輯）。</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>  監視檔案</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>監視資料夾並自動讀取
+新建立的 .pdi 設定檔。</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>  清除登錄檔 (勾選後重新啟動)</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>勾選後，於結束時清除登錄檔中
+所有已儲存的設定 (重新啟動即可重設)。</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.Text" xml:space="preserve">
+    <value>  關閉時儲存晶體清單</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>勾選後，於結束時自動儲存晶體
+清單，並於啟動時重新載入。</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>選項</value>
+  </data>
+  <data name="editorToolStripMenuItem.Text" xml:space="preserve">
+    <value>編輯器</value>
+  </data>
+  <data name="editorToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>開啟巨集編輯器視窗。</value>
+  </data>
+  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
+    <value>巨集</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
+    <value>關於</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>顯示版本與作者資訊。</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>程式更新</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>線上檢查是否有較新版本並下載/安裝。</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>提示</value>
+  </data>
+  <data name="hintToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>顯示使用提示。</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>說明 (web)</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>開啟 PDIndexer 手冊 (PDF)。</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>說明</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>英文 (需重新啟動)</value>
+  </data>
+  <data name="englishToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將 UI 語言切換為英文 (需重新啟動)。</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>日文 (需重新啟動)</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>將 UI 語言切換為日文 (需重新啟動)。</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>語言</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>勾選</value>
+  </data>
+  <data name="Check.HeaderText" xml:space="preserve">
+    <value>勾選</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn7.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn8.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn9.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn10.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn11.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn12.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn13.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn14.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn15.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn16.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn17.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn18.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn19.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn20.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn21.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn22.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn23.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn25.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn24.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn26.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn27.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn30.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn4.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn28.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn5.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn29.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewImageColumn6.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn31.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn7.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn32.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn8.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn33.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn9.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn34.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn10.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn35.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn11.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn36.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn12.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn37.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn13.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn38.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn15.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn40.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn14.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn39.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn16.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn41.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn17.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn42.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn19.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn44.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn18.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn43.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn20.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn45.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn21.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn46.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn22.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn47.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn23.HeaderText" xml:space="preserve">
+    <value>峰色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn48.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn24.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn49.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn25.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn50.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn26.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn51.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn27.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn52.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn29.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn54.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn28.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn53.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn30.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn55.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn31.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn56.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn32.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn57.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn33.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn58.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn34.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn59.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn35.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn60.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn36.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn61.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn37.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn62.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn38.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn63.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn39.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn64.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn40.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn65.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn41.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn66.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn42.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn67.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn43.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn68.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn44.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn69.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn45.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn70.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn46.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn71.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn47.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn72.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn48.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn73.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn49.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn74.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn51.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn76.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn52.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn77.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn50.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn75.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn53.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn78.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn54.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn79.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn55.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn80.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn56.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn81.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn57.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn82.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn58.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn83.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn59.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn84.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn60.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn85.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn61.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn86.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn62.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn87.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn63.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn88.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn64.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn89.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn65.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn90.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn66.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn91.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn67.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn92.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn68.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn93.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn69.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn94.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn70.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn95.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn71.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn96.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn72.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn97.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn73.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn98.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn74.HeaderText" xml:space="preserve">
+    <value>繞射峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn99.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn75.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn100.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn76.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn101.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn77.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn102.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn78.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn103.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn79.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn104.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn80.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn105.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn82.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn107.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn81.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn106.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn83.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn108.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn84.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn109.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn85.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn110.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn86.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn111.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn87.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn112.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+  <data name="dataGridViewImageColumn88.HeaderText" xml:space="preserve">
+    <value>顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn113.HeaderText" xml:space="preserve">
+    <value>輪廓</value>
+  </data>
+  <data name="dataGridViewImageColumn89.HeaderText" xml:space="preserve">
+    <value>峰顏色</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn114.HeaderText" xml:space="preserve">
+    <value>晶體</value>
+  </data>
+</root>

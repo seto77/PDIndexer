@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (de) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Kristallsystem (triklin bis kubisch). Die Auswahl
+schränkt die editierbaren Gitterparameter ein
+und listet die passenden Raumgruppen auf.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Kantenlänge a der Elementarzelle (Å). Bei hochsymmetrischen
+Systemen sind b und c automatisch an a gekoppelt.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Kantenlänge b der Elementarzelle (Å). Wird bei
+tetragonalen, trigonalen, hexagonalen und kubischen
+Systemen schreibgeschützt und gleich a gesetzt.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Kantenlänge c der Elementarzelle (Å). Wird beim
+kubischen System schreibgeschützt und gleich a gesetzt.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Gitterwinkel alpha (Grad). Wird je nach
+Kristallsystem automatisch fixiert (z. B. auf 90).</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Gitterwinkel beta (Grad). Wird bei orthorhombischen und
+höhersymmetrischen Systemen automatisch auf 90 fixiert.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Gitterwinkel gamma (Grad). Automatisch auf 120 fixiert bei
+trigonal/hexagonal, auf 90 bei anderen hochsymmetrischen Systemen.</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>Raumgruppen-Kandidaten (Nummer.Unternr.:
+Hermann-Mauguin-Symbol). Eine oder mehrere auswählen; jede
+ausgewählte Gruppe wird durchsucht. Mehrfachauswahl möglich.</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>Summenformel (empirisch/reduziert, z. B.
+'Ti O2'). Wird ausgewertet, um die Atomzahlen je Element
+und die Formeleinheitenzahl Z zu füllen.</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>Anzahl der Formeleinheiten je Elementarzelle, Z
+(mindestens 1). Multipliziert die Formel und ergibt
+so die Gesamtatomzahl je Elementarzelle.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>Schreibgeschützt: gesamte atomare Zusammensetzung in der
+Elementarzelle (Formel mal Z). Aktualisiert sich
+automatisch, wenn sich die Formel oder Z ändert.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Röntgenquelle und Wellenlänge zur
+Umrechnung von d-Werten in Winkel und zur
+Berechnung der Beugungsintensitäten.</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>d-Wert (Å) eines Reflexes, der über die
+Schaltfläche Add Peak zur Tabelle hinzugefügt wird.</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Relative Beugungsintensität (rel %) des
+hinzuzufügenden Reflexes. Die Intensitäten werden für den
+R-Faktor auf den stärksten Reflex normiert.</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Fügt den eingegebenen d-Wert und die Intensität als
+neue Zeile in die Beugungsreflex-Tabelle ein.</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>Berechnet die hkl-Indizes (Miller-Indizes) für alle
+Reflexe aus der aktuellen Zelle und Raumgruppe neu.</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>(Debug) Importiert Reflexe aus tabulatorgetrenntem
+Text der Zwischenablage (Spalte 0 = d, Spalte
+4 = Intensität) und ersetzt die Reflextabelle.</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Beobachtete Beugungsreflexe. Mit der Spalte Check einen Reflex
+in die Suche einbeziehen und mit der Schaltfläche Delete eine Zeile
+entfernen; die Spalte Index zeigt die zugewiesenen hkl.</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Reflexe zusammenfassen, deren Beugungswinkel sich
+um weniger als den unten stehenden Winkel-Schwellenwert unterscheiden.</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Winkel-Schwellenwert in Grad (0-2). Reflexe, die in
+2theta enger beieinander liegen, werden zu einem Reflex zusammengefasst.</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Reflexe über einen Energie-Schwellenwert statt
+eines Winkel-Schwellenwerts zusammenfassen (Hinweis: der Energie-
+Zweig ist im aktuellen Code möglicherweise inaktiv).</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Energie-Schwellenwert in Elektronenvolt
+(0-10) zum Zusammenfassen von Reflexen (nur im
+Energie-Schwellenwert-Modus wirksam).</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>Wahrscheinlichkeit (%), in jedem Monte-Carlo-Schritt eine
+völlig neue zufällige Atomanordnung zu erzeugen. Die drei
+Wahrscheinlichkeiten werden automatisch auf 100% normiert.</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>Wahrscheinlichkeit (%) der Kreuzung des genetischen Algorithmus,
+die zwei vorhandene Kandidaten hybridisiert.
+Mit den anderen beiden automatisch auf 100% normiert.</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>Wahrscheinlichkeit (%) des 'Shaking', d. h. die
+Atompositionen eines vorhandenen Kandidaten leicht zu
+stören. Automatisch auf 100% normiert.</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>Toleranz (%) auf die Summe der Ionenradien, um
+überlappende Atompositionen zu verwerfen.
+Niedrigere Werte verwerfen dichtere Anordnungen stärker.</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>Anzahl paralleler Worker-Threads für die
+Suche (1-16). Höhere Werte nutzen mehr CPU-Kerne.</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Eine neue Struktursuche von Grund auf starten
+(löscht vorherige Kandidaten).
+Während des Laufs klicken, um die Suche zu stoppen.</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>Setzt die Suche fort und verwendet die aktuelle Kandidatenliste
+als Startpopulation, statt sie zu löschen.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>Gefundene Strukturkandidaten, sortiert nach R-Faktor.
+Residual = R; Info listet Raumgruppe, Wyckoff-Lagen
+und fraktionelle Koordinaten auf. Eine Zeile anklicken, um sie
+an die Crystal-Form zu senden und in die Zwischenablage zu kopieren.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>Diagramm der R-Faktor-Konvergenz während der Suche.</value>
+  </data>
+</root>

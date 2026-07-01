@@ -122,6 +122,7 @@ namespace PDIndexer
         {
             InitializeComponent();
             HelpPage = "6-fitting-diffraction-peaks"; //260604Cl 追加: F1で該当オンラインマニュアルを開く
+            buttonFind.Text = PdiText.Find; //260625Cl 追加: 探索ボタンの idle ラベルを現 UI カルチャ訳で初期化 (Designer 既定 "Find!" を上書き。実行中は Stop! にトグル)
             comboBoxReliability.SelectedIndex = 0;
             comboBoxCrystalSystem.SelectedIndex = 0;
             comboBoxX.SelectedIndex = 0;
@@ -155,9 +156,11 @@ namespace PDIndexer
                 dgv.Rows.RemoveAt(e.RowIndex);
         }
 
+        private bool isFinding = false; //260625Cl 追加: ボタンラベル文字列での状態判定を bool へ分離 (多言語化でラベルを訳すと "Find!"/"Stop!" 比較が壊れるため)
+
         private void buttonFind_Click(object sender, EventArgs e)
         {
-            if (buttonFind.Text == "Find!")
+            if (!isFinding) //260625Cl 旧: if (buttonFind.Text == "Find!")
             {
                 //まずクリアする
                 dataSet1.Tables[1].Clear();
@@ -194,7 +197,8 @@ namespace PDIndexer
                 }
                 if (unk > high.Count + medium.Count + low.Count)
                     return;
-                buttonFind.Text = "Stop!";
+                isFinding = true; //260625Cl 追加
+                buttonFind.Text = PdiText.Stop; //260625Cl 旧: buttonFind.Text = "Stop!";
 
 
                 backgroundWorker.RunWorkerAsync(new FindCondition(
@@ -207,7 +211,8 @@ namespace PDIndexer
             }
             else
             {
-                buttonFind.Text = "Find!";
+                isFinding = false; //260625Cl 追加
+                buttonFind.Text = PdiText.Find; //260625Cl 旧: buttonFind.Text = "Find!";
                 backgroundWorker.CancelAsync();
             }
         }
@@ -816,7 +821,7 @@ namespace PDIndexer
             for (int i = 0; i < candidates.Length; i++)
                 dataSet1.Tables[1].Rows.Add(candidates[i].GenerateRow());
 
-            toolStripStatusLabelTryNumber.Text = "Try Number: " + e.ProgressPercentage.ToString();
+            toolStripStatusLabelTryNumber.Text = string.Format(PdiText.TryNumber, e.ProgressPercentage); //260625Cl 旧: "Try Number: " + e.ProgressPercentage.ToString()
             DrawDistributionMap();
             this.Refresh();
             Application.DoEvents();

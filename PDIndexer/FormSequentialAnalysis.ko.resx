@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonExecute.Text" xml:space="preserve">
+    <value>실행</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="tabPageDspacing.Text" xml:space="preserve">
+    <value>면간 거리 (Å)</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="tabPageIntensity.Text" xml:space="preserve">
+    <value>적분 강도</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="tabPageCellConstants.Text" xml:space="preserve">
+    <value>격자 상수 (Å, °)</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="tabPagePressure.Text" xml:space="preserve">
+    <value>압력 (GPa)</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
+    <value>자동 저장</value>
+  </data>
+  <data name="tabPageSingh.Text" xml:space="preserve">
+    <value>Singh의 식</value>
+  </data>
+  <data name="buttonCopy.Text" xml:space="preserve">
+    <value>복사</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>저장</value>
+  </data>
+  <data name="checkBoxLoop.Text" xml:space="preserve">
+    <value>루프</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Text" xml:space="preserve">
+    <value>허용 계수 (연속 해석 중 부피
+변화가 이 값을 초과하면
+NaN을 출력)</value>
+  </data>
+  <data name="checkBoxStartNumber.Text" xml:space="preserve">
+    <value>지정한 번호의 프로파일
+부터 해석 실행
+(주의: 첫 번째는 0)</value>
+  </data>
+  <data name="buttonSetDirectory.Text" xml:space="preserve">
+    <value>설정</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>저장할 디렉터리</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>연속 해석</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>연속 해석을 실행합니다. 읽어들인 모든 프로파일을
+순서대로 피팅하고 2theta, 면간 거리, FWHM, 강도,
+격자 상수, 압력을 표로 출력합니다.
+Fitting 창을 열고 피크를 체크해 두어야 합니다.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>활성 탭의 표를 클립보드에
+복사합니다(탭 구분).</value>
+  </data>
+  <data name="buttonSave.ToolTip" xml:space="preserve">
+    <value>활성 탭의 표를 CSV 파일로 저장합니다.</value>
+  </data>
+  <data name="checkBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>첫 번째가 아니라 오른쪽에서 지정한 프로파일
+번호부터 해석을 시작합니다
+(첫 번째 프로파일은 0번).</value>
+  </data>
+  <data name="numericBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>시작할 프로파일 인덱스(정수, 최소 1);
+'번호부터 시작'이 체크된 경우에만 활성화됩니다.</value>
+  </data>
+  <data name="checkBoxLoop.ToolTip" xml:space="preserve">
+    <value>번호부터 시작할 때 끝에 도달한 후
+건너뛴 앞쪽 프로파일(0 ... 시작-1)도
+순환하며 처리합니다.</value>
+  </data>
+  <data name="checkBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>정밀화한 격자 부피가 초기값에서 오른쪽
+허용 계수보다 크게 변화하면 그 피팅을
+기각합니다(NaN 출력).</value>
+  </data>
+  <data name="numericBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>허용하는 격자 부피 변화율(%, 0-100);
+이를 초과한 피팅은 폐기됩니다.</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ToolTip" xml:space="preserve">
+    <value>해석 후 2theta 결과를 선택한 디렉터리에
+'*_2theta.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ToolTip" xml:space="preserve">
+    <value>해석 후 면간 거리 결과를
+'*_d.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ToolTip" xml:space="preserve">
+    <value>FWHM(반치전폭) 결과를
+'*_fwhm.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ToolTip" xml:space="preserve">
+    <value>적분 강도 결과를
+'*_intensity.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ToolTip" xml:space="preserve">
+    <value>격자 상수 결과(오차 포함)를
+'*_cell.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ToolTip" xml:space="preserve">
+    <value>압력 결과를 '*_pressure.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.ToolTip" xml:space="preserve">
+    <value>Singh의 식 파라미터를
+'*_Singh.csv'로 자동 저장합니다.</value>
+  </data>
+  <data name="buttonSetDirectory.ToolTip" xml:space="preserve">
+    <value>자동 저장된 CSV 파일이 기록될 폴더를 선택합니다.</value>
+  </data>
+  <data name="textBoxDirectory.ToolTip" xml:space="preserve">
+    <value>자동 저장 파일의 대상 폴더를 표시합니다;
+'설정' 버튼으로 지정합니다.</value>
+  </data>
+  <data name="textBox2theta.ToolTip" xml:space="preserve">
+    <value>프로파일별 피크 위치 2theta
+(도), 프로파일당 한 행.</value>
+  </data>
+  <data name="textBoxDspacing.ToolTip" xml:space="preserve">
+    <value>프로파일별 면간 거리(Angstrom).</value>
+  </data>
+  <data name="textBoxFWHM.ToolTip" xml:space="preserve">
+    <value>프로파일별 피크 FWHM(반치전폭, 도).</value>
+  </data>
+  <data name="textBoxIntensity.ToolTip" xml:space="preserve">
+    <value>프로파일별 적분 피크 강도.</value>
+  </data>
+  <data name="textBoxCellConstants.ToolTip" xml:space="preserve">
+    <value>프로파일별 정밀화한 격자 부피와 격자 상수
+a-gamma 및 그 오차(Angstrom, 도).</value>
+  </data>
+  <data name="textBoxPressure.ToolTip" xml:space="preserve">
+    <value>선택한 표준 물질의 상태 방정식에서 유도한
+프로파일별 압력(GPa).</value>
+  </data>
+  <data name="textBoxSingh.ToolTip" xml:space="preserve">
+    <value>응력 해석 프로파일에서 정밀화한 Singh의
+식 파라미터(d0, Psi_max, t/6*G_hkl).</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>피팅된 Singh 식의
+면간 거리 vs. 방위각 Psi (0-360도) 곡선을 표시합니다.</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value>결과 종류(2theta / d /
+FWHM / 강도 / 격자 / 압력 / Singh)를 전환합니다.
+복사 및 저장은 현재 선택된 탭에 적용됩니다.</value>
+  </data>
+</root>

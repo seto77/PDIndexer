@@ -1,0 +1,49 @@
+{# 260625Cl: mkdocs-static-i18n のフォールバックバナー (ReciPro と同方針)。
+   未訳ページ (fallback_to_default で英語本文がローカライズ URL に出ているページ) では
+   i18n_page_locale (閲覧中の言語) と i18n_file_locale (実ファイルの言語) が食い違う。
+   その場合に「このページはまだ翻訳されておらず英語版を表示しています」と知らせる。
+   各言語の文面はここに 1 分岐ずつ足す (未対応言語は英語の文面にフォールバック)。
+   全 11 言語ぶん用意済 (build:true でない言語の分岐は無害)。 #}
+{% extends "base.html" %}
+
+{% block content %}
+  {% if i18n_page_locale and i18n_file_locale and i18n_page_locale != i18n_file_locale %}
+    <div class="admonition warning" markdown="0">
+      {% if i18n_page_locale == "ja" %}
+      <p class="admonition-title">翻訳準備中</p>
+      <p>このページはまだ翻訳されていないため、英語版を表示しています。</p>
+      {% elif i18n_page_locale == "de" %}
+      <p class="admonition-title">Übersetzung ausstehend</p>
+      <p>Diese Seite wurde noch nicht übersetzt und wird auf Englisch angezeigt.</p>
+      {% elif i18n_page_locale == "fr" %}
+      <p class="admonition-title">Traduction en attente</p>
+      <p>Cette page n'a pas encore été traduite et est affichée en anglais.</p>
+      {% elif i18n_page_locale == "es" %}
+      <p class="admonition-title">Traducción pendiente</p>
+      <p>Esta página aún no se ha traducido y se muestra en inglés.</p>
+      {% elif i18n_page_locale == "it" %}
+      <p class="admonition-title">Traduzione in sospeso</p>
+      <p>Questa pagina non è ancora stata tradotta ed è mostrata in inglese.</p>
+      {% elif i18n_page_locale == "ru" %}
+      <p class="admonition-title">Перевод ожидается</p>
+      <p>Эта страница ещё не переведена и отображается на английском языке.</p>
+      {% elif i18n_page_locale == "zh-Hans" %}
+      <p class="admonition-title">翻译待定</p>
+      <p>此页面尚未翻译，显示为英文版本。</p>
+      {% elif i18n_page_locale == "zh-Hant" %}
+      <p class="admonition-title">翻譯待定</p>
+      <p>此頁面尚未翻譯，顯示為英文版本。</p>
+      {% elif i18n_page_locale == "ko" %}
+      <p class="admonition-title">번역 준비 중</p>
+      <p>이 페이지는 아직 번역되지 않아 영어로 표시됩니다.</p>
+      {% elif i18n_page_locale == "pt" %}
+      <p class="admonition-title">Tradução pendente</p>
+      <p>Esta página ainda não foi traduzida e é exibida em inglês.</p>
+      {% else %}
+      <p class="admonition-title">Translation pending</p>
+      <p>This page has not been translated yet and is shown in English.</p>
+      {% endif %}
+    </div>
+  {% endif %}
+  {{ super() }}
+{% endblock %}

@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (es) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripStatusLabelCalcTime.Text" xml:space="preserve">
+    <value>Tiempo de cálculo:</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>Ctrl+Shift+E: Ecuación de estado; Ctrl+Shift+F: Parámetro de ajuste;  Ctrl+Shift+C: Parámetro de cristal;  Ctrl+Shift+D:  cambiar modo de pico</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
+    <value>Tras leer el perfil, cambiar el eje horizontal</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
+    <value>Al cargar un perfil, cambiar automáticamente la
+configuración del eje horizontal (fuente de radiación,
+longitud de onda, modo de eje) según el archivo cargado.</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Eje horizontal</value>
+  </data>
+  <data name="radioButtonLinearity.Text" xml:space="preserve">
+    <value>Lineal</value>
+  </data>
+  <data name="radioButtonLinearity.ToolTip" xml:space="preserve">
+    <value>Representar la intensidad en escala vertical lineal.</value>
+  </data>
+  <data name="radioButtonLogarithm.Text" xml:space="preserve">
+    <value>Logarítmica</value>
+  </data>
+  <data name="radioButtonLogarithm.ToolTip" xml:space="preserve">
+    <value>Representar la intensidad en escala vertical
+logarítmica (resalta los picos débiles).</value>
+  </data>
+  <data name="radioButtonRawCounts.Text" xml:space="preserve">
+    <value>Cuentas brutas</value>
+  </data>
+  <data name="radioButtonRawCounts.ToolTip" xml:space="preserve">
+    <value>Mostrar las cuentas integradas brutas (sin dividir por el ancho de paso).</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Text" xml:space="preserve">
+    <value>Cuentas por paso (CPS)</value>
+  </data>
+  <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
+    <value>Mostrar las cuentas normalizadas por paso (CPS = cuentas / ancho de paso).</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Eje vertical</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>Elegir el modo de visualización del eje vertical (intensidad).</value>
+  </data>
+  <data name="radioButtonMultiProfileMode.Text" xml:space="preserve">
+    <value>Múltiples perfiles</value>
+  </data>
+  <data name="checkBoxChangeColor.Text" xml:space="preserve">
+    <value>Cambiar color automáticamente</value>
+  </data>
+  <data name="checkBoxChangeColor.ToolTip" xml:space="preserve">
+    <value>En modo multiperfil, asignar un color aleatorio
+a cada perfil recién añadido.</value>
+  </data>
+  <data name="radioButtonSingleProfileMode.Text" xml:space="preserve">
+    <value>Perfil único</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>cuentas</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Incremento de intensidad por perfil</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Perfil único/múltiple</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip" xml:space="preserve">
+    <value>Color de las etiquetas de escala (marcas de eje).</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip1" xml:space="preserve">
+    <value>Color de las etiquetas de escala (marcas de eje).</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip" xml:space="preserve">
+    <value>Color de las líneas de escala / cuadrícula.</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip1" xml:space="preserve">
+    <value>Color de las líneas de escala / cuadrícula.</value>
+  </data>
+  <data name="colorControlBack.ToolTip" xml:space="preserve">
+    <value>Color de fondo del visor de perfiles.</value>
+  </data>
+  <data name="colorControlBack.ToolTip1" xml:space="preserve">
+    <value>Color de fondo del visor de perfiles.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Texto de escala</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Color de las etiquetas de escala (marcas de eje).</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Línea de escala</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Color de las líneas de escala / cuadrícula.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Color de fondo</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Color de fondo del visor de perfiles.</value>
+  </data>
+  <data name="checkBoxErrorBar.Text" xml:space="preserve">
+    <value>Barra de error</value>
+  </data>
+  <data name="checkBoxErrorBar.ToolTip" xml:space="preserve">
+    <value>Mostrar barras de error en los puntos de datos cuando
+el perfil contiene valores de error.</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Text" xml:space="preserve">
+    <value>Línea de escala</value>
+  </data>
+  <data name="checkBoxShowScaleLine.ToolTip" xml:space="preserve">
+    <value>Mostrar las líneas de cuadrícula (escala) en el visor de perfiles.</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Apariencia &amp;&amp; perfil único/múltiple</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Int. mín.</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Int. máx.</value>
+  </data>
+  <data name="checkBoxShowUnrolledImage.Text" xml:space="preserve">
+    <value>Mostrar imagen desenrollada</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Gradiente</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Escala 1</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Escala 2</value>
+  </data>
+  <data name="comboBoxGradient.Items" xml:space="preserve">
+    <value>Película positiva</value>
+  </data>
+  <data name="comboBoxGradient.Items1" xml:space="preserve">
+    <value>Película negativa</value>
+  </data>
+  <data name="comboBoxScale2.Items" xml:space="preserve">
+    <value>Escala de grises</value>
+  </data>
+  <data name="comboBoxScale2.Items1" xml:space="preserve">
+    <value>Escala frío-cálido</value>
+  </data>
+  <data name="comboBoxScale1.Items" xml:space="preserve">
+    <value>Escala logarítmica</value>
+  </data>
+  <data name="comboBoxScale1.Items1" xml:space="preserve">
+    <value>Escala lineal</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Imagen desenrollada</value>
+  </data>
+  <data name="pictureBoxMain.ToolTip" xml:space="preserve">
+    <value>Visor de perfil principal
+  Arrastrar botón izquierdo: mover la posición de un pico de difracción de un cristal activado  &amp; seleccionado
+  Clic botón derecho: Reducir 
+  Arrastrar botón derecho: Ampliar
+  Arrastrar botón central: Trasladar</value>
+  </data>
+  <data name="numericBoxUpperX.ToolTip" xml:space="preserve">
+    <value>Límite superior del rango del eje horizontal
+mostrado (2theta / d / energía, etc.). Establezca el
+límite del eje mediante el menú del clic derecho.</value>
+  </data>
+  <data name="numericBoxUpperY.ToolTip" xml:space="preserve">
+    <value>Límite superior del eje de intensidad (vertical) mostrado.</value>
+  </data>
+  <data name="numericBoxLowerX.ToolTip" xml:space="preserve">
+    <value>Límite inferior del rango del eje horizontal
+mostrado. Establezca el límite del eje mediante el menú del clic derecho.</value>
+  </data>
+  <data name="numericBoxLowerY.ToolTip" xml:space="preserve">
+    <value>Límite inferior del eje de intensidad (vertical) mostrado.</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Intensidad</value>
+  </data>
+  <data name="dataGridViewProfiles.ToolTip" xml:space="preserve">
+    <value>Lista de perfiles.
+ Los perfiles activados son visibles en el visor de perfil principal.
+ Para mostrar varios perfiles, active el botón de opción "Multiple Profiles" en "Appearance &amp; Single/Multi Profiles"</value>
+  </data>
+  <data name="checkBoxProfileParameter.Text" xml:space="preserve">
+    <value>Parámetro de perfil</value>
+  </data>
+  <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
+    <value>Abre la ventana Parámetro de perfil para
+ajustes detallados del perfil seleccionado.</value>
+  </data>
+  <data name="checkBoxAll.Text" xml:space="preserve">
+    <value>Activar/desactivar todo</value>
+  </data>
+  <data name="checkBoxAll.ToolTip" xml:space="preserve">
+    <value>Activa o desactiva todos los perfiles a la vez (mostrar / ocultar todo).</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
+    <value>Lista de cristales.
+  Los picos de difracción de los cristales activados son visibles en el visor de perfil principal.
+  El doble clic derecho activa/desactiva el modo parpadeo.
+  La información detallada del cristal puede consultarse mediante "Crystal Parameter".</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Text" xml:space="preserve">
+    <value>Parámetro de cristal (C)</value>
+  </data>
+  <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
+    <value>Abre la ventana Parámetro de cristal para
+ajustes detallados del cristal seleccionado.</value>
+  </data>
+  <data name="groupBoxCrystalData.Text" xml:space="preserve">
+    <value>Cristales</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
+    <value>Parámetro
+ de cristal (C)</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Parámetro de cristal.</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
+    <value>Parámetro
+ de perfil (P)</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Parámetro de perfil.</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
+    <value>Ecuación de
+ estado (E)</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Ecuación de estado para estimar
+la presión a partir del volumen de celda de un material estándar.</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
+    <value>Ajustar picos de
+ difracción (F)</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Ajuste de picos para ajustar
+picos de difracción (posición, FWHM, intensidad).</value>
+  </data>
+  <data name="toolStripButtonCellFinder.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Cell Finder para buscar
+constantes de red a partir de posiciones de picos.</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.Text" xml:space="preserve">
+    <value>Análisis secuencial</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Análisis secuencial
+para el procesamiento por lotes de una serie de archivos.</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.ToolTipText" xml:space="preserve">
+    <value>Alterna la ventana Atomic Position Finder para buscar
+posiciones atómicas a partir de intensidades de difracción.</value>
+  </data>
+  <data name="toolStripButtonLPO.Text" xml:space="preserve">
+    <value>Análisis LPO</value>
+  </data>
+  <data name="toolStripButtonLPO.ToolTipText" xml:space="preserve">
+    <value>Abrir/cerrar la ventana de análisis LPO (orientación
+preferente de la red).</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Leer perfil(es)</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Abrir y leer archivo(s) de perfil de difracción como una nueva lista.</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Guardar perfil(es)</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Guardar todos los perfiles cargados en un archivo .pdi2.</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>como archivo CSV (valores separados por comas)</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Exportar el/los perfil(es) como archivo separado por comas (CSV).</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>como archivo TSV (valores separados por tabuladores)</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Exportar el/los perfil(es) como archivo separado por tabuladores (TSV).</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>como archivo GSAS</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Exportar el/los perfil(es) como archivo de datos GSAS (Rietveld).</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
+    <value>Exportar el/los perfil(es) seleccionado(s)</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.ToolTipText" xml:space="preserve">
+    <value>Exportar el/los perfil(es) seleccionado(s) a un archivo de texto o GSAS.</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cargar cristales (como nueva lista)</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Cargar cristales desde un archivo XML como una nueva lista.</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cargar cristales (y añadir a la lista actual)</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Cargar cristales desde un archivo XML
+y añadirlos a la lista actual.</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Guardar cristales</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Guardar la lista de cristales actual en un archivo.</value>
+  </data>
+  <data name="toolStripMenuItemImport.Text" xml:space="preserve">
+    <value>Importar CIF, AMC...</value>
+  </data>
+  <data name="toolStripMenuItemImport.ToolTipText" xml:space="preserve">
+    <value>Importar una estructura cristalina desde un archivo CIF o AMC.</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>Exportar el cristal seleccionado a CIF</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.ToolTipText" xml:space="preserve">
+    <value>Exportar el cristal seleccionado como archivo CIF.</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Restaurar los cristales al estado inicial</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Restaurar la lista de cristales al estado inicial (predeterminado).</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.Text" xml:space="preserve">
+    <value>Configurar página</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.ToolTipText" xml:space="preserve">
+    <value>Abrir el cuadro de diálogo de configuración de página para imprimir.</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.Text" xml:space="preserve">
+    <value>Vista previa de impresión</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.ToolTipText" xml:space="preserve">
+    <value>Mostrar una vista previa de impresión del visor de perfiles.</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Imprimir</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Imprimir el visor de perfiles.</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>como datos de mapa de bits</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Copiar el visor al portapapeles como mapa de bits.</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>como datos de metarchivo</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Copiar el visor al portapapeles como metarchivo (vectorial).</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
+    <value>Copiar al portapapeles</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>Guardar como metarchivo</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.ToolTipText" xml:space="preserve">
+    <value>Guardar el visor como metarchivo EMF.</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Cerrar</value>
+  </data>
+  <data name="closeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Cerrar PDIndexer.</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Archivo</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Información sobre herramientas</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Activar o desactivar la información sobre herramientas en la ventana principal.</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Vigilar portapapeles</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Vigilar el portapapeles y leer automáticamente perfiles/cristales
+copiados desde otras aplicaciones (p. ej. IPAnalyzer).</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.Text" xml:space="preserve">
+    <value>Establecer directorio a vigilar</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Elegir la carpeta a vigilar en busca de nuevos archivos de perfil.</value>
+  </data>
+  <data name="toolStripTextBoxDirectoryToWatch.ToolTipText" xml:space="preserve">
+    <value>Ruta de la carpeta que se está vigilando (editable).</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Vigilar archivo</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Vigilar una carpeta y leer automáticamente
+los archivos de perfil .pdi recién creados.</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Borrar el registro (marcar y reiniciar)</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Si está marcado, borrar al salir toda la configuración
+guardada del registro (reiniciar para restablecer).</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Guardar la lista de cristales al cerrar</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Si está marcado, guardar automáticamente la lista de
+cristales al salir y recargarla al iniciar.</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Opciones</value>
+  </data>
+  <data name="editorToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Abrir la ventana del editor de macros.</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Acerca de PDIndexer</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Mostrar información de versión y autor.</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Buscar actualizaciones</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Buscar en línea una versión más reciente y descargarla/instalarla.</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>Sugerencia</value>
+  </data>
+  <data name="hintToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Mostrar sugerencias de uso.</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ayuda (web)</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Abrir el manual de PDIndexer (PDF).</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>Inglés (requiere reinicio)</value>
+  </data>
+  <data name="englishToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Cambiar el idioma de la interfaz a inglés (requiere reinicio).</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Japonés (requiere reinicio)</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Cambiar el idioma de la interfaz a japonés (requiere reinicio).</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Idioma</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Marcar</value>
+  </data>
+  <data name="Check.HeaderText" xml:space="preserve">
+    <value>Marcar</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn7.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn8.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn9.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn10.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn11.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn12.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn13.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn14.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn15.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn16.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn17.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn18.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn19.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn20.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn21.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn22.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn23.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn25.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn24.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn26.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn27.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn30.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn4.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn28.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn5.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn31.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn7.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn32.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn33.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn9.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn34.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn35.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn11.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn36.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn37.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn13.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn38.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn15.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn40.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn39.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn41.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn17.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn42.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn19.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn44.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn43.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn45.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn21.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn46.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn47.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn23.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn48.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn49.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn25.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn50.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn51.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn27.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn52.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn29.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn54.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn53.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn55.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn31.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn56.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn57.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn33.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn58.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn59.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn35.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn60.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn61.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn37.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn62.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn63.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn39.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn64.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn65.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn41.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn66.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn67.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn43.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn68.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn69.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn45.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn70.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn71.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn47.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn72.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn73.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn49.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn74.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn51.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn76.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn52.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn77.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn75.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn78.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn54.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn79.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn80.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn56.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn81.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn82.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn58.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn83.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn84.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn60.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn85.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn86.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn62.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn87.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn88.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn64.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn89.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn90.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn66.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn91.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn92.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn68.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn93.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn94.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn70.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn95.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn96.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn72.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn97.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn98.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn74.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn99.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn100.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn76.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn101.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn102.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn78.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn103.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn104.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn80.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn105.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewImageColumn82.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn107.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn106.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn83.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn108.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn109.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn85.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn110.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn111.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn87.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn112.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn113.HeaderText" xml:space="preserve">
+    <value>Perfil</value>
+  </data>
+  <data name="dataGridViewImageColumn89.HeaderText" xml:space="preserve">
+    <value>Color de pico</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn114.HeaderText" xml:space="preserve">
+    <value>Cristal</value>
+  </data>
+</root>

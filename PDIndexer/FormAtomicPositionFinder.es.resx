@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (es) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="comboBoxCrystalSystem.ToolTip" xml:space="preserve">
+    <value>Sistema cristalino (de triclínico a cúbico). Seleccionar
+uno restringe los parámetros de celda editables
+y lista los grupos espaciales coincidentes.</value>
+  </data>
+  <data name="numericBoxA.ToolTip" xml:space="preserve">
+    <value>Longitud de la arista a de la celda unidad (Å). En sistemas
+de alta simetría, b y c se vinculan automáticamente a a.</value>
+  </data>
+  <data name="numericBoxB.ToolTip" xml:space="preserve">
+    <value>Longitud de la arista b de la celda unidad (Å). Pasa a
+ser de solo lectura e igual a a en los sistemas
+tetragonal, trigonal, hexagonal y cúbico.</value>
+  </data>
+  <data name="numericBoxC.ToolTip" xml:space="preserve">
+    <value>Longitud de la arista c de la celda unidad (Å). Pasa a ser
+de solo lectura e igual a a en el sistema cúbico.</value>
+  </data>
+  <data name="numericBoxAlpha.ToolTip" xml:space="preserve">
+    <value>Ángulo alfa de la celda unidad (grados). Se fija
+automáticamente (p. ej. a 90) según el sistema cristalino.</value>
+  </data>
+  <data name="numericBoxBeta.ToolTip" xml:space="preserve">
+    <value>Ángulo beta de la celda unidad (grados). Se fija automáticamente a
+90 en los sistemas ortorrómbico y de mayor simetría.</value>
+  </data>
+  <data name="numericBoxGamma.ToolTip" xml:space="preserve">
+    <value>Ángulo gamma de la celda unidad (grados). Se fija automáticamente a 120 en
+trigonal/hexagonal y a 90 en los demás sistemas de alta simetría.</value>
+  </data>
+  <data name="listBoxSpaceGroupCandidate.ToolTip" xml:space="preserve">
+    <value>Grupos espaciales candidatos (número.sub:
+símbolo de Hermann-Mauguin). Seleccione uno o más; cada
+grupo seleccionado se explora. Admite selección múltiple.</value>
+  </data>
+  <data name="textBoxInputFormula.ToolTip" xml:space="preserve">
+    <value>Fórmula química (empírica/reducida, p. ej.
+'Ti O2'). Se analiza para rellenar los recuentos de átomos
+por elemento y el número de unidades fórmula Z.</value>
+  </data>
+  <data name="numericUpDownZ.ToolTip" xml:space="preserve">
+    <value>Número de unidades fórmula por celda unidad, Z
+(mínimo 1). Multiplica la fórmula para
+dar el recuento total de átomos por celda unidad.</value>
+  </data>
+  <data name="textBoxFormula.ToolTip" xml:space="preserve">
+    <value>Solo lectura: composición atómica total en la
+celda unidad (fórmula por Z). Se actualiza
+automáticamente al cambiar la fórmula o Z.</value>
+  </data>
+  <data name="waveLengthControl1.ToolTip" xml:space="preserve">
+    <value>Fuente y longitud de onda de rayos X usadas
+para convertir distancias interplanares en ángulos y
+para calcular las intensidades de difracción.</value>
+  </data>
+  <data name="numericalTextBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Distancia interplanar (Å) de un pico a añadir a
+la tabla mediante el botón Add Peak.</value>
+  </data>
+  <data name="numericalTextBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Intensidad de difracción relativa (rel %) del
+pico a añadir. Las intensidades se normalizan
+al pico más intenso para el factor R.</value>
+  </data>
+  <data name="buttonAddPeak.ToolTip" xml:space="preserve">
+    <value>Añade la distancia interplanar y la intensidad introducidas como
+una nueva fila en la tabla de picos de difracción.</value>
+  </data>
+  <data name="buttonReindexPeaks.ToolTip" xml:space="preserve">
+    <value>Recalcula los índices hkl (de Miller) de todos
+los picos a partir de la celda y el grupo espacial actuales.</value>
+  </data>
+  <data name="buttonTest.ToolTip" xml:space="preserve">
+    <value>(Depuración) Importa picos desde texto del portapapeles
+separado por tabulaciones (columna 0 = d, columna
+4 = intensidad), reemplazando la tabla de picos.</value>
+  </data>
+  <data name="dataGridViewDiffractionPeaks.ToolTip" xml:space="preserve">
+    <value>Picos de difracción observados. Use la columna Check para
+incluir un pico en la búsqueda y el botón Delete para
+eliminar una fila; la columna Index muestra los hkl asignados.</value>
+  </data>
+  <data name="radioButtonAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Combina las reflexiones cuyos ángulos de difracción
+difieren en menos del umbral de ángulo de abajo.</value>
+  </data>
+  <data name="numericUpDownAngleThreshold.ToolTip" xml:space="preserve">
+    <value>Umbral de ángulo en grados (0-2). Las reflexiones más próximas
+que este valor en 2theta se combinan en un solo pico.</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Combina las reflexiones mediante un umbral de energía
+en lugar de un umbral de ángulo (nota: la rama de
+energía puede estar inactiva en el código actual).</value>
+  </data>
+  <data name="numericUpDownEnergyThreshold.ToolTip" xml:space="preserve">
+    <value>Umbral de energía en electronvoltios
+(0-10) para combinar picos (efectivo
+solo en el modo de umbral de energía).</value>
+  </data>
+  <data name="numericUpDownRandomization.ToolTip" xml:space="preserve">
+    <value>Probabilidad (%) de generar una disposición atómica aleatoria
+nueva en cada paso de Monte Carlo. Las tres
+probabilidades se normalizan automáticamente para sumar 100%.</value>
+  </data>
+  <data name="numericUpDownHybridization.ToolTip" xml:space="preserve">
+    <value>Probabilidad (%) del cruce del algoritmo genético
+que hibrida dos candidatos existentes.
+Normalizada automáticamente con las otras dos a 100%.</value>
+  </data>
+  <data name="numericUpDownShaking.ToolTip" xml:space="preserve">
+    <value>Probabilidad (%) de 'sacudida', es decir, perturbar
+ligeramente las posiciones atómicas de un candidato
+existente. Normalizada automáticamente para sumar 100%.</value>
+  </data>
+  <data name="numericUpDownIonRadiusThreshold.ToolTip" xml:space="preserve">
+    <value>Tolerancia (%) sobre la suma de radios iónicos usada
+para rechazar posiciones atómicas que se solapan.
+Valores menores rechazan disposiciones más apiñadas.</value>
+  </data>
+  <data name="numericUpDownThreadTotal.ToolTip" xml:space="preserve">
+    <value>Número de subprocesos de trabajo paralelos para la
+búsqueda (1-16). Valores mayores usan más núcleos de CPU.</value>
+  </data>
+  <data name="buttonStart.ToolTip" xml:space="preserve">
+    <value>Iniciar una nueva búsqueda de estructura desde cero
+(borra los candidatos anteriores).
+Durante la ejecución, haga clic para detener la búsqueda.</value>
+  </data>
+  <data name="buttonResume.ToolTip" xml:space="preserve">
+    <value>Reanuda la búsqueda usando la lista de candidatos actual
+como población inicial, en lugar de borrarla.</value>
+  </data>
+  <data name="dataGridView2.ToolTip" xml:space="preserve">
+    <value>Candidatos de estructura hallados, ordenados por factor R.
+Residual = R; Info lista el grupo espacial, las posiciones de Wyckoff
+y las coordenadas fraccionarias. Haga clic en una fila para enviarla
+al formulario Crystal y copiarla al portapapeles.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>Gráfica de la convergencia del factor R durante la búsqueda.</value>
+  </data>
+</root>

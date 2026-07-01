@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ko) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>선택</value>
+  </data>
+  <data name="colorDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>색</value>
+  </data>
+  <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
+    <value>프로파일</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>선 색</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>선 너비</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>주석</value>
+  </data>
+  <data name="label8.Text" xml:space="preserve">
+    <value>프로파일 이름</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>기본 정보</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>차수</value>
+  </data>
+  <data name="label10.Text" xml:space="preserve">
+    <value>점 수</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
+    <value>배경 프로파일 표시</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
+    <value>자동 검출</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>점 수</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
+    <value>참조</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
+    <value>B-스플라인 곡선</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>노출 시간</value>
+  </data>
+  <data name="checkBoxSmoothing.Text" xml:space="preserve">
+    <value>3. 평활화</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Text" xml:space="preserve">
+    <value>6. 배경</value>
+  </data>
+  <data name="buttonDeleteProfile.Text" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
+    <value>변경</value>
+  </data>
+  <data name="label12.Text" xml:space="preserve">
+    <value>가로축 단위</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
+    <value>이동</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>가로축 설정</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>(CPS 모드용)</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>초</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>세로축 설정</value>
+  </data>
+  <data name="label13.Text" xml:space="preserve">
+    <value>강도 범위</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
+    <value>최대값</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
+    <value>평균값</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>(가로축 단위)</value>
+  </data>
+  <data name="button1.Text" xml:space="preserve">
+    <value>모두 삭제</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.Text" xml:space="preserve">
+    <value>1. 2θ 오프셋 (각도 분산형 회절법용)</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.Text" xml:space="preserve">
+    <value>초기화</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.Text" xml:space="preserve">
+    <value>내부 표준을 이용한 보정</value>
+  </data>
+  <data name="checkBoxMaskingMode.Text" xml:space="preserve">
+    <value>2. 마스크 및 보간</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
+    <value>마스크 범위 설정</value>
+  </data>
+  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+    <value>마스크 범위의 양쪽 각각에서 보간 적합에 사용하는
+데이터 점 수(다항식 차수와 함께 사용). 클수록
+적합 윈도우가 넓어집니다.</value>
+  </data>
+  <data name="label20.Text" xml:space="preserve">
+    <value>(각 측)</value>
+  </data>
+  <data name="label20.ToolTip" xml:space="preserve">
+    <value>마스크 범위의 양쪽 각각에서 보간 적합에
+사용하는 데이터 점 수입니다.</value>
+  </data>
+  <data name="toolStripMenuItemSaveMaskingRange.Text" xml:space="preserve">
+    <value>마스크 범위 저장</value>
+  </data>
+  <data name="toolStripMenuItemReadMaskingRange.Text" xml:space="preserve">
+    <value>마스킹 범위 읽기</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>점 번호</value>
+  </data>
+  <data name="label21.ToolTip" xml:space="preserve">
+    <value>보간 피팅에 사용할, 마스크 범위의 양쪽
+각 변에서 가져올 데이터 점의 개수입니다.</value>
+  </data>
+  <data name="buttonDeleteAllMask.Text" xml:space="preserve">
+    <value>모두 삭제</value>
+  </data>
+  <data name="label19.Text" xml:space="preserve">
+    <value>다항식 차수</value>
+  </data>
+  <data name="buttonDeleteMask.Text" xml:space="preserve">
+    <value>삭제</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Text" xml:space="preserve">
+    <value>4. 대역 통과 필터</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Text" xml:space="preserve">
+    <value>고주파 차단 (우측 값 이상)</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Text" xml:space="preserve">
+    <value>저주파 차단 (우측 값 이하)</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.Text" xml:space="preserve">
+    <value>5. Kα2 제거 (Kα1 을 X선원으로 사용하는 경우)</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
+    <value>7. 강도 정규화</value>
+  </data>
+  <data name="label14.Text" xml:space="preserve">
+    <value>(으)로 정규화</value>
+  </data>
+  <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
+    <value>모든 프로파일에 적용 (배경 설정 제외)</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>프로파일 처리</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>축 설정</value>
+  </data>
+  <data name="radioButtonAverage.Text" xml:space="preserve">
+    <value>평균화</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Text" xml:space="preserve">
+    <value>프로파일과 값</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Text" xml:space="preserve">
+    <value>두 프로파일 간</value>
+  </data>
+  <data name="buttonCalculate.Text" xml:space="preserve">
+    <value>계산</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>출력 프로파일의 이름</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>프로파일 연산</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>프로파일 매개변수</value>
+  </data>
+  <data name="dataGridViewProfile.ToolTip" xml:space="preserve">
+    <value>로드된 프로파일 목록입니다. 행을 선택하면
+아래에서 편집할 수 있고, 체크박스로 표시를
+전환하며 색 견본으로 선 색을 나타냅니다.</value>
+  </data>
+  <data name="textBoxProfileName.ToolTip" xml:space="preserve">
+    <value>선택한 프로파일의 표시 이름
+(목록과 범례에 표시됨).</value>
+  </data>
+  <data name="textBoxComment.ToolTip" xml:space="preserve">
+    <value>선택한 프로파일에 저장되는 자유 텍스트
+주석으로, 처리에는 영향을 주지 않습니다.</value>
+  </data>
+  <data name="colorControlLineColor.ToolTip" xml:space="preserve">
+    <value>선택한 프로파일의 선(플롯) 색을 설정합니다.</value>
+  </data>
+  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+    <value>선택한 프로파일의 플롯 선 너비를
+포인트(pt) 단위로 설정합니다.</value>
+  </data>
+  <data name="buttonDeleteProfile.ToolTip" xml:space="preserve">
+    <value>현재 선택한 프로파일을 삭제합니다.</value>
+  </data>
+  <data name="button1.ToolTip" xml:space="preserve">
+    <value>로드된 모든 프로파일을 삭제합니다 (확인 요청).</value>
+  </data>
+  <data name="buttonUpper.ToolTip" xml:space="preserve">
+    <value>선택한 프로파일을 목록에서 한 칸 위로 이동합니다.</value>
+  </data>
+  <data name="buttonLower.ToolTip" xml:space="preserve">
+    <value>선택한 프로파일을 목록에서 한 칸 아래로 이동합니다.</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.ToolTip" xml:space="preserve">
+    <value>1단계: 2theta 각도 오프셋 적용
+Delta(2theta) = c0 + c1*tan(theta) +
+c2*tan^2(theta) (각도 분산 데이터 전용).</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff0.ToolTip" xml:space="preserve">
+    <value>2theta 오프셋 Delta(2theta)
+= c0 + c1*tan(theta) + c2*tan^2(theta) 의 상수항 c0, 도 단위.</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff1.ToolTip" xml:space="preserve">
+    <value>2theta 오프셋에서 tan(theta) 항의
+계수 c1, 도 단위.</value>
+  </data>
+  <data name="numericBoxTwhoThetaOffsetCoeff2.ToolTip" xml:space="preserve">
+    <value>2theta 오프셋에서 tan^2(theta)
+항의 계수 c2, 도 단위.</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.ToolTip" xml:space="preserve">
+    <value>세 개의 2theta 오프셋 계수
+(c0, c1, c2)를 모두 0으로 재설정합니다.</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.ToolTip" xml:space="preserve">
+    <value>내부 표준으로부터 2theta 오프셋을 구하는
+교정 창을 열거나 닫습니다.</value>
+  </data>
+  <data name="checkBoxMaskingMode.ToolTip" xml:space="preserve">
+    <value>2단계: 선택한 x-범위를 마스킹하고 다항식 보간으로
+대체합니다 (예: 아티팩트 제거).</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.ToolTip" xml:space="preserve">
+    <value>그래프 위에서 마우스로 직접 마스킹 범위를
+설정/표시하는 기능을 활성화합니다.</value>
+  </data>
+  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+    <value>마스킹 범위를 보간하는 데 사용하는 다항식
+차수(0-5). 클수록 더 유연한 곡선.</value>
+  </data>
+  <data name="listBoxMaskRanges.ToolTip" xml:space="preserve">
+    <value>마스킹 범위 목록(가로축의 시작-끝)입니다.
+하나를 선택하면 강조 표시되며, .mas
+파일을 드롭하여 범위를 로드합니다.</value>
+  </data>
+  <data name="buttonDeleteMask.ToolTip" xml:space="preserve">
+    <value>목록에서 선택한 마스킹 범위를 삭제합니다.</value>
+  </data>
+  <data name="buttonDeleteAllMask.ToolTip" xml:space="preserve">
+    <value>이 프로파일의 모든 마스킹 범위를 삭제합니다.</value>
+  </data>
+  <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
+    <value>3단계: Savitzky-Golay 필터로 프로파일을 평활화합니다.</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 창 반폭(한쪽의
+점 개수). 클수록 평활화가 강해집니다.</value>
+  </data>
+  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+    <value>Savitzky-Golay 다항식 차수(0-5).
+높을수록 피크는 보존되나 평활화는 약해집니다.</value>
+  </data>
+  <data name="checkBoxBandPassFilter.ToolTip" xml:space="preserve">
+    <value>단계 4: FFT 대역 통과 필터를 적용하여
+불필요한 주파수 성분을 억제합니다.</value>
+  </data>
+  <data name="checkBoxHighPassFilter.ToolTip" xml:space="preserve">
+    <value>고역 통과 필터 활성화: 임계값 아래의 저주파
+(장주기) 성분을 제거합니다.</value>
+  </data>
+  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+    <value>고역 통과 차단 주파수(단위:
+1/[가로축 단위]); 이보다 낮은 성분이
+제거됩니다. 범위는 데이터에 맞춰 조정됩니다.</value>
+  </data>
+  <data name="checkBoxLowPassFilter.ToolTip" xml:space="preserve">
+    <value>저역 통과 필터 활성화: 임계값 위의 고주파
+(단주기 잡음) 성분을 제거합니다.</value>
+  </data>
+  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+    <value>저역 통과 차단 주파수(단위:
+1/[가로축 단위]); 이보다 높은 성분이
+제거됩니다. 범위는 데이터에 맞춰 조정됩니다.</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.ToolTip" xml:space="preserve">
+    <value>단계 5: 프로파일에서 Kalpha2 성분을
+제거합니다(선원이 X선 Kalpha1
+선일 때만).</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.ToolTip" xml:space="preserve">
+    <value>단계 6: 프로파일에서 백그라운드 곡선을 뺍니다.</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.ToolTip" xml:space="preserve">
+    <value>수동/자동으로 배치한 점들을 지나는
+B-스플라인 곡선으로 백그라운드를 정의합니다.</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>다른 프로파일을 뺄 참조 백그라운드로 사용합니다.</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.ToolTip" xml:space="preserve">
+    <value>지정한 개수의 백그라운드 점을
+프로파일을 따라 자동으로 배치합니다.</value>
+  </data>
+  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+    <value>자동 검출 / B-스플라인 피팅에 사용하는
+백그라운드 점 개수(3-50).</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.ToolTip" xml:space="preserve">
+    <value>참조 백그라운드로 사용할 불러온
+프로파일을 선택합니다.</value>
+  </data>
+  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+    <value>빼기 전에 참조 백그라운드에
+곱하는 배율입니다.</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.ToolTip" xml:space="preserve">
+    <value>그래프에 백그라운드 곡선을 표시/숨김합니다
+(백그라운드 빼기가 켜져 있어야 함).</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>단계 7: 선택한 x 범위 내의 강도를
+목표값으로 규격화합니다.</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.ToolTip" xml:space="preserve">
+    <value>범위 내 평균 강도가 목표값과 같아지도록
+규격화합니다.</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.ToolTip" xml:space="preserve">
+    <value>범위 내 최대 강도가 목표값과 같아지도록
+규격화합니다.</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+    <value>규격화 계산에 사용하는 범위의
+하한(가로축 단위)입니다.</value>
+  </data>
+  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+    <value>규격화 계산에 사용하는 범위의
+상한(가로축 단위)입니다.</value>
+  </data>
+  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+    <value>범위의 평균/최대값을 맞출
+목표 강도값(1-100000)입니다.</value>
+  </data>
+  <data name="buttonApplyAllProfiles.ToolTip" xml:space="preserve">
+    <value>현재 처리 설정을 모든 프로파일에 적용합니다
+(백그라운드 설정은 제외).</value>
+  </data>
+  <data name="xAxisUserControl.ToolTip" xml:space="preserve">
+    <value>선원 가로축 설정(축 종류 2theta/d/에너지/TOF,
+선원, 파장, 취출각)을 편집합니다.
+'Change'로 적용합니다.</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.ToolTip" xml:space="preserve">
+    <value>편집한 가로축 선원 설정(과 노출 시간)을
+선택한 프로파일에 적용합니다.</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>프로파일 전체를 가로축을 따라
+일정량만큼 이동합니다.</value>
+  </data>
+  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+    <value>프로파일을 가로축을 따라 이동할
+양(가로축 단위)입니다.</value>
+  </data>
+  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+    <value>세로축에서 강도를 초당 카운트(CPS)로 변환할 때
+사용하는 노출 시간(초)입니다.</value>
+  </data>
+  <data name="radioButtonAverage.ToolTip" xml:space="preserve">
+    <value>연산 모드: 선택한 여러 프로파일을
+평균합니다(오차 전파 포함).</value>
+  </data>
+  <data name="radioButtonProfileAndValue.ToolTip" xml:space="preserve">
+    <value>연산 모드: 하나의 프로파일을 상수값과
+결합합니다(덧셈 또는 곱셈).</value>
+  </data>
+  <data name="radioButtonTwoProfiles.ToolTip" xml:space="preserve">
+    <value>연산 모드: 선택한 두 프로파일 간에
++, -, * 또는 / 를 수행합니다.</value>
+  </data>
+  <data name="radioButtonAddition.ToolTip" xml:space="preserve">
+    <value>연산으로 덧셈(+)을 선택합니다.</value>
+  </data>
+  <data name="radioButtonSubtraction.ToolTip" xml:space="preserve">
+    <value>연산으로 뺄셈(-)을 선택합니다.</value>
+  </data>
+  <data name="radioButtonMutiplication.ToolTip" xml:space="preserve">
+    <value>연산으로 곱셈을 선택합니다(버튼에는
+기호가 표시되지 않으며, 곱셈 연산자입니다).</value>
+  </data>
+  <data name="radioButtonDivision.ToolTip" xml:space="preserve">
+    <value>연산으로 나눗셈을 선택합니다(버튼에는
+기호가 표시되지 않으며, 나눗셈 연산자입니다).</value>
+  </data>
+  <data name="numericalTextBoxTargetValue.ToolTip" xml:space="preserve">
+    <value>'Profile and value' 모드에서 프로파일과
+결합하는 상수값입니다.</value>
+  </data>
+  <data name="listBoxTwoProfiles1.ToolTip" xml:space="preserve">
+    <value>연산의 첫 번째(주) 프로파일을 선택합니다.
+평균 모드에서는 다중 선택이 가능합니다.</value>
+  </data>
+  <data name="listBoxTwoProfiles2.ToolTip" xml:space="preserve">
+    <value>두 프로파일 연산에서 두 번째 프로파일을 선택합니다.</value>
+  </data>
+  <data name="textBoxOutputFilename.ToolTip" xml:space="preserve">
+    <value>새로 생성되는 결과 프로파일에 부여하는
+이름(끝의 번호는 계산할 때마다
+자동으로 증가합니다).</value>
+  </data>
+  <data name="buttonCalculate.ToolTip" xml:space="preserve">
+    <value>선택한 연산을 수행하고
+결과를 새 프로파일로 추가합니다.</value>
+  </data>
+</root>

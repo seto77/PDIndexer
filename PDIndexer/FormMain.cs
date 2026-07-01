@@ -371,24 +371,48 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     // ---- 260601Cl 追加: GUI 一括キャプチャ (GuiCapture / --capture) 用ヘルパー ----
     /// <summary>
     /// 260601Cl 追加: --capture (GuiCapture) 用。Main window をマニュアル代表状態にする。
-    /// 起動直後の初期ダイアログを閉じ、標準物質を 2,3 個チェックして回折線を描き、代表結晶を選択する。
-    /// サンプルプロファイルは同梱していないためグラフは空 (軸のみ) になるが、回折線と結晶選択で典型的な見た目になる。
+    /// 起動直後の初期ダイアログを閉じ、代表プロファイル (references/FE01-03.pdi) があれば読み込み、
+    /// 結晶リストから Fe2SiO4 (fayalite) を選んで回折線を描く (FE01-03 は fayalite 試料なので線がパターンと一致する)。
+    /// 260626Cl 変更: 旧は「サンプルプロファイル同梱なしでグラフは空 (軸のみ)・標準物質 Au/MgO/Si をチェック」だったが、
+    /// 作者指定で代表プロファイルを読み込み実測パターンで撮り、重ねる結晶も fayalite 一つだけにした。
+    /// <paramref name="representativeProfilePath"/> が null/不在 (references/ は git 管理外) のときはプロファイルなし
+    /// (軸のみ) で fayalite の回折線だけを描く。
     /// </summary>
-    internal bool PrepareCaptureRepresentativeState()
+    // 旧シグネチャ: internal bool PrepareCaptureRepresentativeState()  // 260626Cl: 代表プロファイルパスを default 引数で追加
+    internal bool PrepareCaptureRepresentativeState(string representativeProfilePath = null)
     {
         // 起動直後の初期ダイアログ (CommonDialog) は (0,0) に出るため、--capture で (0,0) へ置いた FormMain の
         // メニュー/ツールバー左上を覆う。閉じて破棄したうえで、その下の領域を確実に再描画する (Invalidate+Update)。
         try { initialDialog?.Close(); initialDialog?.Dispose(); initialDialog = null; } catch { /* 初期ダイアログのクローズ失敗は無視 */ }
         Application.DoEvents();
 
-        // 標準物質をいくつかチェックして回折線を表示する (index 0 は Flexible Crystal なので 1 以降から選ぶ)。
+        // 260626Cl 追加: 作者指定の代表プロファイル (references/FE01-03.pdi) があれば読み込み、空グラフでなく実測パターンで撮る。
+        //   references/ は git 管理外のため、存在しない環境 (CI・他マシン) では path=null でプロファイルなし (軸のみ)。
+        //   .pdi はプロファイルのみ復元する (結晶は含まない) ので、回折線は下の fayalite 選択で重ねる。
+        if (!string.IsNullOrEmpty(representativeProfilePath))
+        {
+            try { readProfile(representativeProfilePath, showFormDataConverter: false); }
+            catch { /* 代表プロファイル読み込み失敗は無視 (撮影は最善努力、回折線のみで撮る) */ }
+        }
+
+        // 260626Cl 変更: 作者指定で「Fe2SiO4 (fayalite) ひとつだけ」を選ぶ (FE01-03.pdi が fayalite 試料のため線がパターンと一致)。
+        //   既定リストに含まれる結晶名で探すのでインデックス固定に依存しない。見つからなければ何も選ばない (撮影は最善努力)。
+        //   旧 (Au/MgO/Si を複数チェック):
+        //     var representative = -1;
+        //     foreach (var i in new[] { 1, 5, 11 }) // 既定リストの Au, MgO, Si 付近
+        //         if (i < CrystalCount) { SetCrystalChecked(i, true); if (representative < 0) representative = i; }
+        //     if (representative >= 0) CrystalListPosition = representative;
         var representative = -1;
-        foreach (var i in new[] { 1, 5, 11 }) // 既定リストの Au, MgO, Si 付近
-            if (i < CrystalCount)
+        for (int i = 0; i < CrystalCount; i++)
+        {
+            var name = (((DataRowView)bindingSourceCrystal[i]).Row[1] as Crystal)?.Name ?? "";
+            if (name.Contains("fayalite", StringComparison.OrdinalIgnoreCase))
             {
                 SetCrystalChecked(i, true);
-                if (representative < 0) representative = i;
+                representative = i;
+                break;
             }
+        }
         if (representative >= 0)
             CrystalListPosition = representative;
 
@@ -621,7 +645,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                     resetClipboardViewer();
                             }
                         }
-                        catch { MessageBox.Show("Failed to read clipboard information. Sorry."); }
+                        catch { MessageBox.Show(PdiText.ClipboardFail); } //260625Cl 多言語化: 旧 "Failed to read clipboard information. Sorry."
                         finally { mutex.ReleaseMutex(); }
 
                         if ((int)NextHandle != 0)
@@ -694,10 +718,17 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         //260604Cl 追加: F1オンラインヘルプのURL解決ロジックを登録 (起動時に1回)。Controls側フォームはPDIndexer固有のURLを知らないため、ここで組み立てる (ReciProと同方針)。
         FormBase.HelpUrlResolver = f =>
         {
-            var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+            // 260625Cl 変更: ja/en 二値から、マニュアル整備済み言語の gating (HelpCulture()) 経由の多言語対応へ (Phase 0)。
+            //   260625Cl: Pages を mkdocs-static-i18n 化し default locale (en) をサイトルートへ出したため、en だけ接頭辞なし。
+            //     旧 /en/<page>/ は docs/hooks/legacy_en_redirects.py の stub でルートへ転送される。ja は /ja/、将来言語は /<lang>/。
+            //   現状 manualReadyCultures={en,ja} なので他言語は当面 en マニュアル(ルート)へ落ちる
+            //   (各言語 Pages を整備したら manualReadyCultures に追加するだけで点灯する)。
+            //   旧: var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
+            var lang = HelpCulture();
+            var prefix = lang == "en" ? "" : lang + "/";   // en はルート出力なので接頭辞なし
             return string.IsNullOrEmpty(f.HelpPage)
-                ? (lang == "ja" ? "https://seto77.github.io/PDIndexer/ja/" : "https://seto77.github.io/PDIndexer/")
-                : $"https://seto77.github.io/PDIndexer/{lang}/{f.HelpPage}/";
+                ? $"https://seto77.github.io/PDIndexer/{prefix}"
+                : $"https://seto77.github.io/PDIndexer/{prefix}{f.HelpPage}/";
         };
 
         if (DesignMode) return;
@@ -720,8 +751,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         if (DesignMode) return;
 
-        englishToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name != "ja";
-        japaneseToolStripMenuItem.Checked = Thread.CurrentThread.CurrentUICulture.Name == "ja";
+        // 260625Cl 変更: en/ja 二択固定のチェックから、SupportedCultures.All 駆動の動的メニュー生成へ (多言語化 Phase 0、ReciPro と同方式)。
+        //   旧: englishToolStripMenuItem.Checked = ...!= "ja"; japaneseToolStripMenuItem.Checked = ...== "ja";
+        PopulateLanguageMenu();
+        UpdateLanguageMenuChecks(Crystallography.SupportedCultures.Current.Name);
 
         //260602Cl 追加 Portable-Zip版は実行フォルダに README-PORTABLE.txt を同梱する (MSI版には無い)。
         //この場合インストーラ(MSI)による更新が成立しないため、Updateメニューを非表示にする。
@@ -924,11 +957,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         comboBoxScale2.SelectedIndex = 0;
 
         initialDialog.Text = "Now Loading... Trying dummy mouse operation.";
-        initialDialog.Text = "Initializing has been finished successfully. You can close this window.";
+        initialDialog.Text = PdiText.InitFinished; //260625Cl 多言語化(永続表示する完了メッセージ)
         if (initialDialog.AutomaticallyClose)
             initialDialog.Visible = false;
 
-        toolStripStatusLabelCalcTime.Text = "Initial loading time: " + stopwatch.ElapsedMilliseconds + " ms.";
+        toolStripStatusLabelCalcTime.Text = string.Format(PdiText.InitLoadTime, stopwatch.ElapsedMilliseconds); //260625Cl 多言語化
 
     }
 
@@ -2843,7 +2876,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
             if (i % 10 == 0 && fileNames.Length > 1 && !fileNames[i].EndsWith(".pdi"))
             {
-                if (MessageBox.Show("Now loading multiple profiles. Do you use this setting for the following profiles?", "Option", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show(PdiText.MultiProfileSetting, PdiText.TitleOption, MessageBoxButtons.YesNo) == DialogResult.Yes) //260625Cl 多言語化
                 {
                     stopwatch.Restart();
                     showFormDataConverter = false;
@@ -3557,7 +3590,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 }
                 catch
                 {
-                    MessageBox.Show("ファイルが書き込みません");
+                    MessageBox.Show(PdiText.CannotWriteFile); //260625Cl 多言語化(旧 日本語only "ファイルが書き込みません" を英語 canonical 化)
                 }
         }
     }
@@ -3580,7 +3613,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         }
         catch
         {
-            MessageBox.Show("ファイルが書き込みません");
+            MessageBox.Show(PdiText.CannotWriteFile); //260625Cl 多言語化(旧 日本語only "ファイルが書き込みません" を英語 canonical 化)
         }
 
     }
@@ -3773,13 +3806,72 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+    // 260625Cl 変更: en/japanese 二択固定 + Language.Change のライブ再ローカライズから、項目 Tag(CultureInfo 名) 駆動 +
+    //   自動再起動方式へ (多言語化 Phase 0、ReciPro FormMain と同方式・方針 §4-E)。構築済みフォームの live re-localize は
+    //   ApplyResources/コード側 Loc/フォント/AutoScale の全再適用が要り投資対効果が悪いため採らない。選択カルチャを
+    //   CurrentUICulture へ入れてから Application.Restart() で再起動し、既存の保存/復元経路 (FormClosing→Registry(Write) が
+    //   CurrentUICulture.Name を永続化 → 再起動後 Registry(Read) が SupportedCultures.Resolve で復元) にそのまま乗せる。
+    //   旧:
+    //     englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
+    //     japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
+    //     Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new CultureInfo("en") : new CultureInfo("ja");
+    //     Language.Change(this);
     private void languageToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        englishToolStripMenuItem.Checked = ((ToolStripMenuItem)sender).Name.Contains("english");
-        japaneseToolStripMenuItem.Checked = !englishToolStripMenuItem.Checked;
-        Thread.CurrentThread.CurrentUICulture = englishToolStripMenuItem.Checked ? new System.Globalization.CultureInfo("en") : new System.Globalization.CultureInfo("ja");
-        Language.Change(this);
+        var culture = Crystallography.SupportedCultures.Resolve(LanguageMenuItemCulture((ToolStripMenuItem)sender));
+
+        // 既に現在の言語を選んだだけなら何もしない (再クリックでの無用な再起動を防ぐ)。
+        if (culture.Name == Crystallography.SupportedCultures.Current.Name)
+        {
+            UpdateLanguageMenuChecks(culture.Name);
+            return;
+        }
+
+        // 切替には再起動が要る (作業中の状態は失われる) ことを、まだ切り替わっていない現在の言語で確認する。
+        var msg = Crystallography.Localization.Loc(
+            en: $"Switching the display language to \"{culture.NativeName}\" requires restarting PDIndexer.\nUnsaved work will be lost. Restart now?",
+            ja: $"表示言語を「{culture.NativeName}」に切り替えるには PDIndexer の再起動が必要です。\n保存していない作業は失われます。今すぐ再起動しますか？");
+        if (MessageBox.Show(this, msg, Crystallography.Localization.Loc(en: "Change language", ja: "言語の変更"),
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) != DialogResult.Yes)
+        {
+            // キャンセル: メニューのチェックを現在の言語へ戻す。
+            UpdateLanguageMenuChecks(Crystallography.SupportedCultures.Current.Name);
+            return;
+        }
+
+        Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(culture.Name);
+        UpdateLanguageMenuChecks(culture.Name);
+        Application.Restart(); // FormClosing→Registry(Write) で新カルチャが保存され、再起動後に復元される
     }
+
+    // 260625Cl 追加: 言語メニュー各項目のチェックを現在カルチャに合わせて更新する (Load 時と切替時で共用)。
+    private void UpdateLanguageMenuChecks(string currentName)
+    {
+        foreach (ToolStripItem it in languageToolStripMenuItem.DropDownItems)
+            if (it is ToolStripMenuItem mi)
+                mi.Checked = LanguageMenuItemCulture(mi) == currentName;
+    }
+
+    // 260625Cl 追加: 言語メニュー項目を中央 allow-list (SupportedCultures) から動的生成する。Released=true の言語だけを
+    //   自言語表記 (NativeName) で並べ、Tag に CultureInfo 名を入れて Tag 駆動の切替/チェック更新に乗せる。
+    //   → 言語を増やすときは SupportedCultures.cs で Released=true にするだけでメニューに出る (Designer 編集不要)。
+    private void PopulateLanguageMenu()
+    {
+        languageToolStripMenuItem.DropDownItems.Clear();
+        foreach (var c in Crystallography.SupportedCultures.All)
+        {
+            if (!c.Released)
+                continue;
+            var item = new ToolStripMenuItem(c.NativeName) { Tag = c.Name, Name = c.Name + "ToolStripMenuItem" };
+            item.Click += languageToolStripMenuItem_Click;
+            languageToolStripMenuItem.DropDownItems.Add(item);
+        }
+    }
+
+    // 260625Cl 追加: 言語メニュー項目が表すカルチャ名。PopulateLanguageMenu が生成する項目は Tag(CultureInfo 名) を必ず持つ。
+    //   Name からの english/japanese 解決は旧 Designer 固定項目向けの後方互換 (PopulateLanguageMenu 適用後は通らない)。
+    private static string LanguageMenuItemCulture(ToolStripMenuItem item)
+        => (item.Tag as string) ?? (item.Name.Contains("english") ? "en" : item.Name.Contains("japanese") ? "ja" : null);
 
     /// <summary>
     /// クリップボード監視
@@ -3880,14 +3972,35 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+    // 260625Cl 追加: PDIndexer のオンラインマニュアル(GitHub Pages)が現状整備済みの言語。これ以外の UI 言語では
+    //   英語マニュアルへ落とす (404 回避)。Phase 4 で各言語マニュアルが揃ったらここに言語コードを追加するだけで点灯する。
+    private static readonly string[] manualReadyCultures = { "en", "ja" };
+
+    // 260625Cl 追加: 現在の UI 言語に対応する、PDIndexer マニュアルが実在する言語コード (未整備言語は "en")。
+    //   共有 SupportedCultures.HelpCulture は各言語コードを返すが、PDIndexer のマニュアルはまだ en/ja のみのため gating する。
+    private static string HelpCulture()
+    {
+        var help = Crystallography.SupportedCultures.Current.HelpCulture;
+        return Array.IndexOf(manualReadyCultures, help) >= 0 ? help : "en";
+    }
+
     private void helpwebToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        // 260625Cl 変更: 同梱 PDF を FormPDF で開く方式を廃止し、オンラインマニュアル (GitHub Pages) を既定ブラウザで開く。
+        //   旧 doc\PDIndexerManual(ja).pdf は docs\ (MkDocs) のオンラインマニュアルへ移行済みのため。F1 ヘルプ (FormBase.HelpUrlResolver) と
+        //   同じ URL 規則・同じ起動方法 (Process.Start + UseShellExecute) に揃える。ページ指定なしの規則は FormMain ctor の HelpUrlResolver と同一。
+        //   旧:
+        //     var fn = "\\doc\\PDIndexerManual(" + (HelpCulture() == "ja" ? "ja" : "en") + ").pdf";
+        //     var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        //     var f = new FormPDF(appPath + fn) { Text = "PDIndexer manual" };
+        //     f.Show();
         try
         {
-            var fn = "\\doc\\PDIndexerManual(" + (japaneseToolStripMenuItem.Checked ? "ja" : "en") + ").pdf";
-            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var f = new FormPDF(appPath + fn) { Text = "PDIndexer manual" };
-            f.Show();
+            // 260625Cl: en はルート、ja は /ja/、将来言語は /<lang>/ (static-i18n と F1 解決ロジック HelpUrlResolver に合わせる)。
+            var lang = HelpCulture();
+            var prefix = lang == "en" ? "" : lang + "/";
+            var url = $"https://seto77.github.io/PDIndexer/{prefix}";
+            Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
         }
         catch { }
     }
@@ -4015,7 +4128,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (dlg.ShowDialog() == DialogResult.OK)
         {
             var merge = true;
-            var result = MessageBox.Show("Merge the profiles to one file? \r\n(if select No, each profiles will be saved separately \r\nwith the name of the input filename plus 'Profile Name'.)", "Export option", MessageBoxButtons.YesNoCancel);
+            var result = MessageBox.Show(PdiText.MergeProfiles, PdiText.TitleExportOption, MessageBoxButtons.YesNoCancel); //260625Cl 多言語化
             if (result == DialogResult.No)
                 merge = false;
             else if (result == DialogResult.Cancel)
@@ -4513,11 +4626,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 if (ProgramUpdates.Execute(Path))
                     Close();
                 else
-                    MessageBox.Show($"Failed to download {Path}. \r\nSorry!", "Error!");
+                    MessageBox.Show(string.Format(PdiText.DownloadFail, Path), PdiText.TitleErrorBang); //260625Cl 多言語化
             }
             catch
             {
-                MessageBox.Show($"Failed update check. \r\nServer may be down. \r\nAccess https://github.com/seto77/{Version.Software}/releases/latest", "Error");
+                MessageBox.Show(string.Format(PdiText.UpdateCheckFail, $"https://github.com/seto77/{Version.Software}/releases/latest"), PdiText.TitleError); //260625Cl 多言語化
             }
         }
     }

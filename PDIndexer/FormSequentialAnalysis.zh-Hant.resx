@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (zh-Hant) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonExecute.Text" xml:space="preserve">
+    <value>執行</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
+    <value>自動儲存</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
+    <value>自動儲存</value>
+  </data>
+  <data name="tabPageDspacing.Text" xml:space="preserve">
+    <value>晶面間距 (Å)</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
+    <value>自動儲存</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
+    <value>強度</value>
+  </data>
+  <data name="tabPageIntensity.Text" xml:space="preserve">
+    <value>強度</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
+    <value>自動儲存</value>
+  </data>
+  <data name="tabPageCellConstants.Text" xml:space="preserve">
+    <value>晶胞參數 (Å, °)</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
+    <value>自動儲存</value>
+  </data>
+  <data name="tabPagePressure.Text" xml:space="preserve">
+    <value>壓力 (GPa)</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
+    <value>自動儲存</value>
+  </data>
+  <data name="tabPageSingh.Text" xml:space="preserve">
+    <value>Singh 方程式</value>
+  </data>
+  <data name="buttonCopy.Text" xml:space="preserve">
+    <value>複製</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>儲存</value>
+  </data>
+  <data name="checkBoxLoop.Text" xml:space="preserve">
+    <value>迴圈</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Text" xml:space="preserve">
+    <value>容許係數 (連續解析時若
+體積變化超過此值則
+輸出 NaN)</value>
+  </data>
+  <data name="checkBoxStartNumber.Text" xml:space="preserve">
+    <value>從指定編號的
+剖面開始執行解析
+(注意: 第一個為 0)</value>
+  </data>
+  <data name="buttonSetDirectory.Text" xml:space="preserve">
+    <value>設定</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>儲存目錄</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>連續解析</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>執行連續解析: 依序擬合所有已載入的剖面
+並列表輸出 2θ、晶面間距、FWHM、強度、晶胞參數
+與壓力。需開啟 Fitting 視窗
+並已勾選峰。</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>將目前分頁的表格複製到
+剪貼簿 (以 Tab 分隔)。</value>
+  </data>
+  <data name="buttonSave.ToolTip" xml:space="preserve">
+    <value>將目前分頁的表格儲存為 CSV 檔。</value>
+  </data>
+  <data name="checkBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>從右側設定的剖面編號開始解析，
+而非從第一個開始 (第一個剖面為
+編號 0)。</value>
+  </data>
+  <data name="numericBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>起始的剖面索引 (整數，最小 1)；
+僅在勾選「從編號開始」時啟用。</value>
+  </data>
+  <data name="checkBoxLoop.ToolTip" xml:space="preserve">
+    <value>從某編號開始時，到達結尾後
+會接續處理先前略過的剖面
+(0 ... 起始-1)，循環回繞。</value>
+  </data>
+  <data name="checkBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>當精修後的晶胞體積相對於初始值
+變化超過右側的容許係數時，
+捨棄該擬合 (輸出 NaN)。</value>
+  </data>
+  <data name="numericBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>允許的晶胞體積變化百分比
+(0-100%)；超過者將被捨棄。</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ToolTip" xml:space="preserve">
+    <value>解析後將 2θ 結果自動儲存為
+所選目錄中的 '*_2theta.csv'。</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ToolTip" xml:space="preserve">
+    <value>解析後將晶面間距結果
+自動儲存為 '*_d.csv'。</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ToolTip" xml:space="preserve">
+    <value>解析後將 FWHM (半高全寬)
+結果自動儲存為 '*_fwhm.csv'。</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ToolTip" xml:space="preserve">
+    <value>解析後將積分強度結果
+自動儲存為 '*_intensity.csv'。</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ToolTip" xml:space="preserve">
+    <value>解析後將晶胞參數結果
+(含誤差) 自動儲存為 '*_cell.csv'。</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ToolTip" xml:space="preserve">
+    <value>解析後將壓力結果自動儲存為 '*_pressure.csv'。</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.ToolTip" xml:space="preserve">
+    <value>解析後將 Singh 方程式參數
+自動儲存為 '*_Singh.csv'。</value>
+  </data>
+  <data name="buttonSetDirectory.ToolTip" xml:space="preserve">
+    <value>選擇寫入自動儲存 CSV 檔的資料夾。</value>
+  </data>
+  <data name="textBoxDirectory.ToolTip" xml:space="preserve">
+    <value>顯示自動儲存檔案的目的資料夾；
+以「設定」按鈕設定。</value>
+  </data>
+  <data name="textBox2theta.ToolTip" xml:space="preserve">
+    <value>各剖面的峰位置 2θ
+(度)，每個剖面一列。</value>
+  </data>
+  <data name="textBoxDspacing.ToolTip" xml:space="preserve">
+    <value>各剖面的晶面間距 (Å)。</value>
+  </data>
+  <data name="textBoxFWHM.ToolTip" xml:space="preserve">
+    <value>各剖面的峰 FWHM (半高全寬，度)。</value>
+  </data>
+  <data name="textBoxIntensity.ToolTip" xml:space="preserve">
+    <value>各剖面的積分峰強度。</value>
+  </data>
+  <data name="textBoxCellConstants.ToolTip" xml:space="preserve">
+    <value>各剖面精修後的晶胞體積與晶胞參數
+a-gamma 及其誤差 (Å，度)。</value>
+  </data>
+  <data name="textBoxPressure.ToolTip" xml:space="preserve">
+    <value>各剖面的壓力 (GPa)，由所選
+標準物質的狀態方程推導而得。</value>
+  </data>
+  <data name="textBoxSingh.ToolTip" xml:space="preserve">
+    <value>Singh 方程式參數 (d0, Psi_max, t/6*G_hkl)，
+由應力解析剖面精修而得。</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>顯示擬合的 Singh 方程式曲線：
+晶面間距 vs. 方位角 Psi（0-360 度）。</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value>切換結果類別（2theta / d /
+FWHM / 強度 / 晶胞 / 壓力 / Singh）；
+複製與儲存作用於目前選取的分頁。</value>
+  </data>
+</root>

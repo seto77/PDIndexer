@@ -17,15 +17,6 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
                 
     There are any number of "resheader" rows that contain simple 
     name/value pairs.
@@ -118,28 +109,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        AAABAAIAICAQAAAABADoAgAAJgAAABAQEAAAAAQAKAEAAA4DAAAoAAAAIAAAAEAAAAABAAQAAAAAAAAC
-        AAAAAAAAAAAAABAAAAAQAAAA7gQLAO7uUwAAAAAA////AIAAAAAzOP8AP/pNAICAgADAwMAAAAD/AAD/
-        AAAA//8A/wAAAP8A/wD//wAA////ACIiUiIiIiIiImIiIiIiKyIiIlIiIiIiIiJiIiIiIisiIiJSIiIA
-        IiIiYiIiIAIrIgIiUiIgIgIiImIiIgIgKyACIlIiICICIiJiIiICICsgAiJSIgIiAiIiYiIiAiArICAi
-        UiICIiAiImIiICIiCwIgIlIiAiIgIiJiIiAiIgsCICJSIgIiICIiYiIgIiILAiAiUiAiIiAiImIiICIi
-        CwIgIlIgIiIgIiJiIiAiIgsCIgJSICIiICIiYiIgIiIrIiICUiAiIiICImIiAiIiKyIiAlICIiIiAiJi
-        IgIiIisiIgJSAiIiIgIiYiICIiIiIiIgUgIiIiICImIiAiIiIiIiIFAiIiIiAiJiIgIiIiIiIiJSIiIi
-        IgIiYiICIiIiIiIiIiIiIiIgImIgIiIiIiIiIiIiIiIiICJiICIiIiIiIiIiIiIiIiAiYiAiIiIiIiIi
-        IiIiIiIgImIgIiIiIiIiIiIiIiIiICJiICIiIiIiIiIiIiIiIiICYgIiIiIiIiIiIiIiIiIiAmICIiIi
-        IiIiIiIiIiIiIgJiAiIiIiIiIiIiIiIiIiICYgIiIiIiIiIiIiIiIiIiIGAiIiIiIiIiIiIiIiIiIiBg
-        IiIiIiIiIiIiIiIiIiIiYiIiIiIiIiIiIiIiIiIiImIiIiIiIiIiIiIiIiIiIiJiIiIiIiIi9//f+/f/
-        3/v3z9+bd7ffane332p3d99qt3ve8bd73vG3e97xtvve8bb73vHW+9771v3d+9X93fvV/d3/5f3d/+P9
-        3f/3/d3///7b///+2////tv///7b///+2////1f///9X////V////1f///+P////j////9/////f////
-        3/8oAAAAEAAAACAAAAABAAQAAAAAAIAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAAAAgAAAgAAAAICAAIAA
-        AACAAIAAgIAAAICAgADAwMAAAAD/AAD/AAAA//8A/wAAAP8A/wD//wAA////AAAJAAwACwAMwAkAwMAL
-        AMDACQDAwAsAwAwJDADACwDADAkMAAwLDAAMCQwADAsMAADJwAAMCwwAAMnAAAwLDAAACQAADAsMAAAJ
-        AAAMCwwAAAAAAADLwAAAAAAAAMvAAAAAAAAAy8AAAAAAAADLwAAAAAAAAAsAAAAAAAAACwAA7u4AAG1t
-        AABtbQAAq20AAKurAACrqwAAx6sAAMerAADvqwAA76sAAP/HAAD/xwAA/8cAAP/HAAD/7wAA/+8AAA==
-</value>
-  </data>
   <data name="linkLabelMail.ToolTip" xml:space="preserve">
     <value>クリックすると表示中のアドレス宛にメールソフトを開きます。</value>
   </data>

@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (it) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="buttonExecute.Text" xml:space="preserve">
+    <value>Esegui</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="checkBoxAutoSaveD.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="tabPageDspacing.Text" xml:space="preserve">
+    <value>Distanza interpl. (Å)</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="tabPageFWHM.Text" xml:space="preserve">
+    <value>FWHM (gradi)</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="tabPageIntensity.Text" xml:space="preserve">
+    <value>Intensità</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="tabPageCellConstants.Text" xml:space="preserve">
+    <value>Parametri di cella (Å, °)</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="tabPagePressure.Text" xml:space="preserve">
+    <value>Pressione (GPa)</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.Text" xml:space="preserve">
+    <value>Salvataggio autom.</value>
+  </data>
+  <data name="tabPageSingh.Text" xml:space="preserve">
+    <value>Equazione di Singh</value>
+  </data>
+  <data name="buttonCopy.Text" xml:space="preserve">
+    <value>Copia</value>
+  </data>
+  <data name="buttonSave.Text" xml:space="preserve">
+    <value>Salva</value>
+  </data>
+  <data name="checkBoxLoop.Text" xml:space="preserve">
+    <value>Ciclo</value>
+  </data>
+  <data name="checkBoxToleranceFactor.Text" xml:space="preserve">
+    <value>Fattore di tolleranza (restituisce NaN 
+se la variazione di volume supera il 
+valore durante l'analisi sequenziale)</value>
+  </data>
+  <data name="checkBoxStartNumber.Text" xml:space="preserve">
+    <value>Esegui l'analisi dal 
+numero specificato 
+(nota: il primo è 0)</value>
+  </data>
+  <data name="buttonSetDirectory.Text" xml:space="preserve">
+    <value>Imposta</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Directory di salvataggio</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Analisi sequenziale</value>
+  </data>
+  <data name="buttonExecute.ToolTip" xml:space="preserve">
+    <value>Esegue l'analisi sequenziale: adatta in sequenza ogni
+profilo caricato e tabula 2theta, distanza interplanare,
+FWHM, intensità, parametri di cella e pressione.
+Richiede la finestra Fitting aperta con i picchi selezionati.</value>
+  </data>
+  <data name="buttonCopy.ToolTip" xml:space="preserve">
+    <value>Copia la tabella della scheda attiva negli
+appunti (separata da tabulazioni).</value>
+  </data>
+  <data name="buttonSave.ToolTip" xml:space="preserve">
+    <value>Salva la tabella della scheda attiva in un file CSV.</value>
+  </data>
+  <data name="checkBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>Avvia l'analisi dal numero di profilo
+impostato a destra anziché dal primo
+(il primo profilo è il numero 0).</value>
+  </data>
+  <data name="numericBoxStartNumber.ToolTip" xml:space="preserve">
+    <value>Indice del profilo da cui iniziare (intero, minimo 1);
+abilitato solo quando 'avvia dal numero' è selezionato.</value>
+  </data>
+  <data name="checkBoxLoop.ToolTip" xml:space="preserve">
+    <value>Avviando da un numero, elabora anche
+i profili precedenti saltati (0 ... inizio-1)
+dopo aver raggiunto la fine, con ripartenza ciclica.</value>
+  </data>
+  <data name="checkBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>Rifiuta un fit (restituisce NaN) quando il volume
+di cella raffinato varia rispetto al valore iniziale
+oltre il fattore di tolleranza indicato a destra.</value>
+  </data>
+  <data name="numericBoxToleranceFactor.ToolTip" xml:space="preserve">
+    <value>Variazione del volume di cella consentita in percentuale
+(0-100%); i fit che la superano vengono scartati.</value>
+  </data>
+  <data name="checkBoxAutoSaveTwoTheta.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i risultati 2theta in
+'*_2theta.csv' nella directory scelta dopo l'analisi.</value>
+  </data>
+  <data name="checkBoxAutoSaveD.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i risultati della distanza
+interplanare in '*_d.csv' dopo l'analisi.</value>
+  </data>
+  <data name="checkBoxAutoSaveFWHM.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i risultati FWHM (larghezza
+a metà altezza) in '*_fwhm.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveInt.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i risultati dell'intensità
+integrata in '*_intensity.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveCell.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i risultati dei parametri
+di cella (con errori) in '*_cell.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSavePressure.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i risultati della pressione in '*_pressure.csv'.</value>
+  </data>
+  <data name="checkBoxAutoSaveSingh.ToolTip" xml:space="preserve">
+    <value>Salva automaticamente i parametri dell'equazione
+di Singh in '*_Singh.csv'.</value>
+  </data>
+  <data name="buttonSetDirectory.ToolTip" xml:space="preserve">
+    <value>Scegli la cartella in cui scrivere i file CSV salvati automaticamente.</value>
+  </data>
+  <data name="textBoxDirectory.ToolTip" xml:space="preserve">
+    <value>Mostra la cartella di destinazione dei file salvati
+automaticamente; impostala con il pulsante 'Imposta'.</value>
+  </data>
+  <data name="textBox2theta.ToolTip" xml:space="preserve">
+    <value>Posizioni dei picchi 2theta per profilo
+(gradi), una riga per profilo.</value>
+  </data>
+  <data name="textBoxDspacing.ToolTip" xml:space="preserve">
+    <value>Distanze interplanari per profilo (Angstrom).</value>
+  </data>
+  <data name="textBoxFWHM.ToolTip" xml:space="preserve">
+    <value>FWHM dei picchi per profilo (larghezza a metà altezza, gradi).</value>
+  </data>
+  <data name="textBoxIntensity.ToolTip" xml:space="preserve">
+    <value>Intensità integrate dei picchi per profilo.</value>
+  </data>
+  <data name="textBoxCellConstants.ToolTip" xml:space="preserve">
+    <value>Volume di cella raffinato e parametri di cella per profilo
+a-gamma con i loro errori (Angstrom, gradi).</value>
+  </data>
+  <data name="textBoxPressure.ToolTip" xml:space="preserve">
+    <value>Pressione per profilo (GPa) derivata dall'
+equazione di stato del materiale standard selezionato.</value>
+  </data>
+  <data name="textBoxSingh.ToolTip" xml:space="preserve">
+    <value>Parametri dell'equazione di Singh (d0, Psi_max, t/6*G_hkl)
+raffinati dai profili di analisi degli sforzi.</value>
+  </data>
+  <data name="graphControl1.ToolTip" xml:space="preserve">
+    <value>Grafico dell'equazione di Singh adattata
+distanza interplanare vs. azimut Psi (0-360 gradi).</value>
+  </data>
+  <data name="tabControl.ToolTip" xml:space="preserve">
+    <value>Passa da una categoria di risultati all'altra (2theta / d /
+FWHM / intensità / cella / pressione / Singh);
+Copia e Salva agiscono sulla scheda attualmente selezionata.</value>
+  </data>
+</root>

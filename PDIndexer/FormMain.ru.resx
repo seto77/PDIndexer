@@ -1,0 +1,1180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 260625Cl: 多言語化 Phase1/3 (ru) text-only リソース。レイアウト(Size/Location/Font)は neutral へフォールバック。結晶学/回折用語は IUCr Online Dictionary 準拠。 -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="toolStripStatusLabelCalcTime.Text" xml:space="preserve">
+    <value>Время расчёта:</value>
+  </data>
+  <data name="toolStripStatusLabel2.Text" xml:space="preserve">
+    <value>Ctrl+Shift+E: уравнение состояния; Ctrl+Shift+F: параметры подгонки;  Ctrl+Shift+C: параметры кристалла;  Ctrl+Shift+D:  изменить режим отображения пиков</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
+    <value>После загрузки профиля изменять горизонтальную ось</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
+    <value>При загрузке профиля автоматически переключать
+настройки горизонтальной оси (источник излучения,
+длину волны, режим оси) в соответствии с файлом.</value>
+  </data>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Горизонтальная ось</value>
+  </data>
+  <data name="radioButtonLinearity.Text" xml:space="preserve">
+    <value>Линейная</value>
+  </data>
+  <data name="radioButtonLinearity.ToolTip" xml:space="preserve">
+    <value>Отображать интенсивность по линейной вертикальной шкале.</value>
+  </data>
+  <data name="radioButtonLogarithm.Text" xml:space="preserve">
+    <value>Логарифмическая</value>
+  </data>
+  <data name="radioButtonLogarithm.ToolTip" xml:space="preserve">
+    <value>Отображать интенсивность по логарифмической
+вертикальной шкале (выделяет слабые рефлексы).</value>
+  </data>
+  <data name="radioButtonRawCounts.Text" xml:space="preserve">
+    <value>Исходные отсчёты</value>
+  </data>
+  <data name="radioButtonRawCounts.ToolTip" xml:space="preserve">
+    <value>Показывать исходные интегральные отсчёты (без деления на ширину шага).</value>
+  </data>
+  <data name="radioButtonCountsPerStep.Text" xml:space="preserve">
+    <value>Отсчёты на шаг (CPS)</value>
+  </data>
+  <data name="radioButtonCountsPerStep.ToolTip" xml:space="preserve">
+    <value>Показывать отсчёты, нормированные на шаг (CPS = отсчёты
+/ ширина шага).</value>
+  </data>
+  <data name="groupBox4.Text" xml:space="preserve">
+    <value>Вертикальная ось</value>
+  </data>
+  <data name="groupBox4.ToolTip" xml:space="preserve">
+    <value>Выбрать режим отображения вертикальной оси (интенсивности).</value>
+  </data>
+  <data name="radioButtonMultiProfileMode.Text" xml:space="preserve">
+    <value>Несколько профилей</value>
+  </data>
+  <data name="checkBoxChangeColor.Text" xml:space="preserve">
+    <value>Автоматически менять цвет</value>
+  </data>
+  <data name="checkBoxChangeColor.ToolTip" xml:space="preserve">
+    <value>В режиме нескольких профилей назначать случайный
+цвет каждому вновь добавленному профилю.</value>
+  </data>
+  <data name="radioButtonSingleProfileMode.Text" xml:space="preserve">
+    <value>Один профиль</value>
+  </data>
+  <data name="label6.Text" xml:space="preserve">
+    <value>отсчёты</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Прирост интенсивности на профиль</value>
+  </data>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Один/несколько профилей</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip" xml:space="preserve">
+    <value>Цвет подписей шкалы (делений оси).</value>
+  </data>
+  <data name="colorControlScaleText.ToolTip1" xml:space="preserve">
+    <value>Цвет подписей шкалы (делений оси).</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip" xml:space="preserve">
+    <value>Цвет линий шкалы / сетки.</value>
+  </data>
+  <data name="colorControlScaleLine.ToolTip1" xml:space="preserve">
+    <value>Цвет линий шкалы / сетки.</value>
+  </data>
+  <data name="colorControlBack.ToolTip" xml:space="preserve">
+    <value>Цвет фона области просмотра профиля.</value>
+  </data>
+  <data name="colorControlBack.ToolTip1" xml:space="preserve">
+    <value>Цвет фона области просмотра профиля.</value>
+  </data>
+  <data name="label5.Text" xml:space="preserve">
+    <value>Текст шкалы</value>
+  </data>
+  <data name="label5.ToolTip" xml:space="preserve">
+    <value>Цвет подписей шкалы (делений оси).</value>
+  </data>
+  <data name="label2.Text" xml:space="preserve">
+    <value>Линия шкалы</value>
+  </data>
+  <data name="label2.ToolTip" xml:space="preserve">
+    <value>Цвет линий шкалы / сетки.</value>
+  </data>
+  <data name="label4.Text" xml:space="preserve">
+    <value>Цвет фона</value>
+  </data>
+  <data name="label4.ToolTip" xml:space="preserve">
+    <value>Цвет фона области просмотра профиля.</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="checkBoxErrorBar.Text" xml:space="preserve">
+    <value>Планки погрешностей</value>
+  </data>
+  <data name="checkBoxErrorBar.ToolTip" xml:space="preserve">
+    <value>Показывать планки погрешностей на точках данных,
+когда профиль содержит значения погрешностей.</value>
+  </data>
+  <data name="checkBoxShowScaleLine.Text" xml:space="preserve">
+    <value>Линия шкалы</value>
+  </data>
+  <data name="checkBoxShowScaleLine.ToolTip" xml:space="preserve">
+    <value>Показывать линии сетки (шкалы) в области просмотра профиля.</value>
+  </data>
+  <data name="tabPage2.Text" xml:space="preserve">
+    <value>Оформление &amp;&amp; один/несколько профилей</value>
+  </data>
+  <data name="label7.Text" xml:space="preserve">
+    <value>Мин.инт.</value>
+  </data>
+  <data name="label21.Text" xml:space="preserve">
+    <value>Макс.инт.</value>
+  </data>
+  <data name="checkBoxShowUnrolledImage.Text" xml:space="preserve">
+    <value>Показать развёрнутое изображение</value>
+  </data>
+  <data name="label24.Text" xml:space="preserve">
+    <value>Градиент</value>
+  </data>
+  <data name="label23.Text" xml:space="preserve">
+    <value>Шкала 1</value>
+  </data>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Шкала 2</value>
+  </data>
+  <data name="comboBoxGradient.Items" xml:space="preserve">
+    <value>Позитивная плёнка</value>
+  </data>
+  <data name="comboBoxGradient.Items1" xml:space="preserve">
+    <value>Негативная плёнка</value>
+  </data>
+  <data name="comboBoxScale2.Items" xml:space="preserve">
+    <value>Оттенки серого</value>
+  </data>
+  <data name="comboBoxScale2.Items1" xml:space="preserve">
+    <value>Шкала холодный-тёплый</value>
+  </data>
+  <data name="comboBoxScale1.Items" xml:space="preserve">
+    <value>Логарифмическая шкала</value>
+  </data>
+  <data name="comboBoxScale1.Items1" xml:space="preserve">
+    <value>Линейная шкала</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Развёрнутое изображение</value>
+  </data>
+  <data name="pictureBoxMain.ToolTip" xml:space="preserve">
+    <value>Главное окно просмотра профиля
+  Перетаскивание левой кнопкой: перемещение положения дифракционного пика отмеченного и выбранного кристалла
+  Щелчок правой кнопкой: уменьшение 
+  Перетаскивание правой кнопкой: масштабирование
+  Перетаскивание средней кнопкой: перемещение</value>
+  </data>
+  <data name="numericBoxUpperX.ToolTip" xml:space="preserve">
+    <value>Верхняя граница отображаемого диапазона горизонтальной
+оси (2theta / d / энергия и т.д.). Задайте предел
+оси через контекстное меню.</value>
+  </data>
+  <data name="numericBoxUpperY.ToolTip" xml:space="preserve">
+    <value>Верхняя граница отображаемой оси интенсивности (вертикальной).</value>
+  </data>
+  <data name="numericBoxLowerX.ToolTip" xml:space="preserve">
+    <value>Нижняя граница отображаемого диапазона горизонтальной
+оси. Задайте предел оси через контекстное меню.</value>
+  </data>
+  <data name="numericBoxLowerY.ToolTip" xml:space="preserve">
+    <value>Нижняя граница отображаемой оси интенсивности (вертикальной).</value>
+  </data>
+  <data name="label9.Text" xml:space="preserve">
+    <value>Интенсивность</value>
+  </data>
+  <data name="labelIntensity.Text" xml:space="preserve">
+    <value>Инт.:</value>
+  </data>
+  <data name="dataGridViewProfiles.ToolTip" xml:space="preserve">
+    <value>Список профилей.
+ Отмеченные профили отображаются в главном окне просмотра профиля.
+ Чтобы отобразить несколько профилей, установите переключатель "Multiple Profiles" в "Appearance &amp; Single/Multi Profiles"</value>
+  </data>
+  <data name="checkBoxProfileParameter.Text" xml:space="preserve">
+    <value>Параметры профиля</value>
+  </data>
+  <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
+    <value>Открыть окно параметров профиля для
+детальной настройки выбранного профиля.</value>
+  </data>
+  <data name="checkBoxAll.Text" xml:space="preserve">
+    <value>Отметить/снять все</value>
+  </data>
+  <data name="checkBoxAll.ToolTip" xml:space="preserve">
+    <value>Отметить или снять все профили сразу (показать / скрыть все).</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewCrystals.ToolTip" xml:space="preserve">
+    <value>Список кристаллов.
+  Дифракционные пики отмеченных кристаллов отображаются в главном окне просмотра профиля.
+  Двойной щелчок правой кнопкой включает/выключает режим мигания.
+  Подробную информацию о кристалле можно посмотреть через "Crystal Parameter".</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Text" xml:space="preserve">
+    <value>Параметры кристалла (C)</value>
+  </data>
+  <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
+    <value>Открыть окно параметров кристалла для
+детальной настройки выбранного кристалла.</value>
+  </data>
+  <data name="groupBoxCrystalData.Text" xml:space="preserve">
+    <value>Кристаллы</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
+    <value>Параметры
+ кристалла (C)</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
+    <value>Переключить окно параметров кристалла.</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
+    <value>Параметры
+ профиля (P)</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
+    <value>Переключить окно параметров профиля.</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
+    <value>Уравнение
+ состояния (E)</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.ToolTipText" xml:space="preserve">
+    <value>Переключить окно уравнения состояния для оценки
+давления по объёму ячейки эталонного материала.</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
+    <value>Аппроксимация
+ пиков (F)</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.ToolTipText" xml:space="preserve">
+    <value>Переключить окно аппроксимации пиков для подгонки
+дифракционных пиков (положение, FWHM, интенсивность).</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Text" xml:space="preserve">
+    <value>Поиск ячейки</value>
+  </data>
+  <data name="toolStripButtonCellFinder.ToolTipText" xml:space="preserve">
+    <value>Переключить окно поиска ячейки для поиска
+параметров решётки по положениям пиков.</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.Text" xml:space="preserve">
+    <value>Последовательный анализ</value>
+  </data>
+  <data name="toolStripButtonSequentialAnalysis.ToolTipText" xml:space="preserve">
+    <value>Переключить окно последовательного анализа
+для пакетной обработки серии файлов.</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Text" xml:space="preserve">
+    <value>Поиск атомных позиций</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.ToolTipText" xml:space="preserve">
+    <value>Переключить окно поиска атомных позиций для поиска
+атомных позиций по дифракционным интенсивностям.</value>
+  </data>
+  <data name="toolStripButtonLPO.Text" xml:space="preserve">
+    <value>LPO-анализ</value>
+  </data>
+  <data name="toolStripButtonLPO.ToolTipText" xml:space="preserve">
+    <value>Открыть/закрыть окно анализа LPO (преимущественная
+ориентация решётки).</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Прочитать профиль(и)</value>
+  </data>
+  <data name="readPatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Открыть и прочитать файл(ы) дифракционных профилей как новый список.</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить профиль(и)</value>
+  </data>
+  <data name="savePatternProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохранить все загруженные профили в файл .pdi2.</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>как файл CSV (значения, разделённые запятыми)</value>
+  </data>
+  <data name="asCSVcommaSeperatedFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Экспортировать профиль(и) в файл с разделителями-запятыми (CSV).</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>как файл TSV (значения, разделённые табуляцией)</value>
+  </data>
+  <data name="asTSVtabSeparatedValuesFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Экспортировать профиль(и) в файл с разделителями-табуляцией (TSV).</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.Text" xml:space="preserve">
+    <value>как файл GSAS</value>
+  </data>
+  <data name="asGSASFileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Экспортировать профиль(и) в файл данных GSAS (Ритвельд).</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.Text" xml:space="preserve">
+    <value>Экспортировать выбранный(е) профиль(и)</value>
+  </data>
+  <data name="toolStripMenuItemExportExcelFile.ToolTipText" xml:space="preserve">
+    <value>Экспортировать выбранный(е) профиль(и) в текстовый файл или файл GSAS.</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить кристаллы (как новый список)</value>
+  </data>
+  <data name="readCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Загрузить кристаллы из XML-файла как новый список.</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.Text" xml:space="preserve">
+    <value>Загрузить кристаллы (и добавить к текущему списку)</value>
+  </data>
+  <data name="readAndAddToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Загрузить кристаллы из XML-файла
+и добавить их к текущему списку.</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Сохранить кристаллы</value>
+  </data>
+  <data name="saveCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Сохранить текущий список кристаллов в файл.</value>
+  </data>
+  <data name="toolStripMenuItemImport.Text" xml:space="preserve">
+    <value>Импорт CIF, AMC...</value>
+  </data>
+  <data name="toolStripMenuItemImport.ToolTipText" xml:space="preserve">
+    <value>Импортировать кристаллическую структуру из файла CIF или AMC.</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.Text" xml:space="preserve">
+    <value>Экспортировать выбранный кристалл в CIF</value>
+  </data>
+  <data name="toolStripMenuItemExportCIF.ToolTipText" xml:space="preserve">
+    <value>Экспортировать выбранный кристалл как файл CIF.</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.Text" xml:space="preserve">
+    <value>Вернуть кристаллы в исходное состояние</value>
+  </data>
+  <data name="resetInitialCrystalDataToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Вернуть список кристаллов в исходное (по умолчанию) состояние.</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.Text" xml:space="preserve">
+    <value>Параметры страницы</value>
+  </data>
+  <data name="toolStripMenuItemPageSetup.ToolTipText" xml:space="preserve">
+    <value>Открыть диалог параметров страницы для печати.</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.Text" xml:space="preserve">
+    <value>Предварительный просмотр</value>
+  </data>
+  <data name="toolStripMenuItemPrintPreview.ToolTipText" xml:space="preserve">
+    <value>Показать предварительный просмотр печати окна профилей.</value>
+  </data>
+  <data name="printToolStripMenuItem.Text" xml:space="preserve">
+    <value>Печать</value>
+  </data>
+  <data name="printToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Распечатать окно профилей.</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.Text" xml:space="preserve">
+    <value>как данные Bitmap</value>
+  </data>
+  <data name="BitmapToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Скопировать содержимое окна в буфер обмена как растровое изображение.</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.Text" xml:space="preserve">
+    <value>как данные Metafile</value>
+  </data>
+  <data name="copyAsMetafileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Скопировать содержимое окна в буфер обмена как метафайл (вектор).</value>
+  </data>
+  <data name="コピーToolStripMenuItem.Text" xml:space="preserve">
+    <value>Копировать в буфер обмена</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.Text" xml:space="preserve">
+    <value>Сохранить как Metafile</value>
+  </data>
+  <data name="toolStripMenuItemSaveMetafile.ToolTipText" xml:space="preserve">
+    <value>Сохранить содержимое окна как метафайл EMF.</value>
+  </data>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Закрыть</value>
+  </data>
+  <data name="closeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Закрыть PDIndexer.</value>
+  </data>
+  <data name="fileToolStripMenuItem.Text" xml:space="preserve">
+    <value>Файл</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Подсказка</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Включить или отключить подсказки в главном окне.</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Следить за буфером обмена</value>
+  </data>
+  <data name="watchReadClipboardToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Следить за буфером обмена и автоматически считывать профили/кристаллы,
+скопированные из других приложений (например, IPAnalyzer).</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.Text" xml:space="preserve">
+    <value>Задать отслеживаемый каталог</value>
+  </data>
+  <data name="setDirectoryToTheWatchToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Выбрать папку для отслеживания новых файлов профилей.</value>
+  </data>
+  <data name="toolStripTextBoxDirectoryToWatch.ToolTipText" xml:space="preserve">
+    <value>Путь к отслеживаемой папке (редактируемый).</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Следить за файлом</value>
+  </data>
+  <data name="watchReadANewProfileToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Отслеживать папку и автоматически считывать
+вновь созданные файлы профилей .pdi.</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Очистить реестр (отметьте и перезапустите)</value>
+  </data>
+  <data name="clearRegistryToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>При установке флажка очищать все сохранённые
+настройки из реестра при выходе (перезапуск для сброса).</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.Text" xml:space="preserve">
+    <value>  Сохранять список кристаллов при закрытии</value>
+  </data>
+  <data name="automaticallySaveTheCrystalListToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>При установке флажка автоматически сохранять список
+кристаллов при выходе и загружать его при запуске.</value>
+  </data>
+  <data name="optionToolStripMenuItem.Text" xml:space="preserve">
+    <value>Параметры</value>
+  </data>
+  <data name="editorToolStripMenuItem.Text" xml:space="preserve">
+    <value>Редактор</value>
+  </data>
+  <data name="editorToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Открыть окно редактора макросов.</value>
+  </data>
+  <data name="macroToolStripMenuItem.Text" xml:space="preserve">
+    <value>Макрос</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.Text" xml:space="preserve">
+    <value>О программе</value>
+  </data>
+  <data name="aboutMeToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Показать сведения о версии и авторе.</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.Text" xml:space="preserve">
+    <value>Проверить обновления</value>
+  </data>
+  <data name="programUpdatesToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Проверить наличие новой версии онлайн и загрузить/установить её.</value>
+  </data>
+  <data name="hintToolStripMenuItem.Text" xml:space="preserve">
+    <value>Подсказка</value>
+  </data>
+  <data name="hintToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Показать подсказки по использованию.</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
+    <value>Справка (веб)</value>
+  </data>
+  <data name="helpwebToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Открыть руководство PDIndexer (PDF).</value>
+  </data>
+  <data name="helpToolStripMenuItem.Text" xml:space="preserve">
+    <value>Справка</value>
+  </data>
+  <data name="englishToolStripMenuItem.Text" xml:space="preserve">
+    <value>Английский (требуется перезапуск)</value>
+  </data>
+  <data name="englishToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Переключить язык интерфейса на английский (требуется перезапуск).</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.Text" xml:space="preserve">
+    <value>Японский (требуется перезапуск)</value>
+  </data>
+  <data name="japaneseToolStripMenuItem.ToolTipText" xml:space="preserve">
+    <value>Переключить язык интерфейса на японский (требуется перезапуск).</value>
+  </data>
+  <data name="languageToolStripMenuItem.Text" xml:space="preserve">
+    <value>Язык</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn2.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="checkDataGridViewCheckBoxColumn.HeaderText" xml:space="preserve">
+    <value>Отметка</value>
+  </data>
+  <data name="Check.HeaderText" xml:space="preserve">
+    <value>Отметка</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn3.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn4.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn5.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn6.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn7.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn8.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn9.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn10.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn11.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn12.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn13.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn14.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn15.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn16.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn17.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn18.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn19.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn20.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn21.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn22.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn23.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn25.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewImageColumn1.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn24.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn2.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn26.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn3.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn27.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn30.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn4.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn28.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn5.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn29.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewImageColumn6.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn31.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn7.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn32.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn8.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn33.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn9.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn34.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn10.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn35.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn11.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn36.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn12.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn37.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn13.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn38.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn15.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn40.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn14.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn39.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn16.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn41.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn17.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn42.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn19.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn44.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn18.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn43.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn20.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn45.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn21.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn46.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn22.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn47.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn23.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn48.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn24.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn49.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn25.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn50.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn26.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn51.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn27.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn52.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn29.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn54.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn28.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn53.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn30.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn55.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn31.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn56.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn32.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn57.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn33.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn58.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn34.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn59.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn35.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn60.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn36.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn61.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn37.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn62.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn38.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn63.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn39.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn64.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn40.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn65.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn41.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn66.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn42.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn67.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn43.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn68.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn44.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn69.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn45.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn70.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn46.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn71.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn47.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn72.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn48.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn73.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn49.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn74.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn51.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn76.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn52.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn77.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn50.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn75.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn53.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn78.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn54.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn79.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn55.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn80.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn56.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn81.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn57.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn82.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn58.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn83.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn59.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn84.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn60.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn85.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn61.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn86.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn62.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn87.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn63.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn88.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn64.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn89.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn65.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn90.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn66.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn91.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn67.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn92.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn68.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn93.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn69.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn94.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn70.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn95.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn71.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn96.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn72.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn97.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn73.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn98.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn74.HeaderText" xml:space="preserve">
+    <value>Цвет рефлекса</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn99.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn75.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn100.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn76.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn101.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn77.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn102.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn78.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn103.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn79.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn104.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn80.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn105.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn82.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn107.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn81.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn106.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn83.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn108.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn84.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn109.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn85.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn110.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn86.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn111.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn87.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn112.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+  <data name="dataGridViewImageColumn88.HeaderText" xml:space="preserve">
+    <value>Цвет</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn113.HeaderText" xml:space="preserve">
+    <value>Профиль</value>
+  </data>
+  <data name="dataGridViewImageColumn89.HeaderText" xml:space="preserve">
+    <value>Цвет пика</value>
+  </data>
+  <data name="dataGridViewTextBoxColumn114.HeaderText" xml:space="preserve">
+    <value>Кристалл</value>
+  </data>
+</root>
