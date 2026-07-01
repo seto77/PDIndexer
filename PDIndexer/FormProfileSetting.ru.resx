@@ -83,20 +83,11 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>Основные сведения</value>
   </data>
-  <data name="label5.Text" xml:space="preserve">
-    <value>Порядок</value>
-  </data>
-  <data name="label10.Text" xml:space="preserve">
-    <value>№ точки</value>
-  </data>
   <data name="checkBoxShowBackgroundProfile.Text" xml:space="preserve">
     <value>Показать профиль фона</value>
   </data>
   <data name="buttonBackgroundAutoDetectBG.Text" xml:space="preserve">
     <value>Автоопределение</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>№ точки</value>
   </data>
   <data name="radioButtonBackgroundReferrence.Text" xml:space="preserve">
     <value>Эталон</value>
@@ -137,17 +128,11 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Настройка вертикальной оси</value>
   </data>
-  <data name="label13.Text" xml:space="preserve">
-    <value>интенсивность между</value>
-  </data>
   <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
     <value>Максимум</value>
   </data>
   <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
     <value>Среднее</value>
-  </data>
-  <data name="label3.Text" xml:space="preserve">
-    <value>(единица по горизонтали)</value>
   </data>
   <data name="button1.Text" xml:space="preserve">
     <value>Удалить все</value>
@@ -167,7 +152,7 @@
   <data name="checkBoxShowMaskedRange.Text" xml:space="preserve">
     <value>Задать диапазон маскирования</value>
   </data>
-  <data name="numericUpDownInterpolationPoints.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationPoints.ToolTip" xml:space="preserve">
     <value>Число точек данных, берущихся с КАЖДОЙ стороны
 маскированного диапазона для подгонки интерполяции (используется с
 порядком полинома). Больше = шире окно подгонки.</value>
@@ -216,9 +201,6 @@
   <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
     <value>7. Нормировать интенсивность</value>
   </data>
-  <data name="label14.Text" xml:space="preserve">
-    <value>до</value>
-  </data>
   <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
     <value>Применить ко всем профилям (без настройки фона)</value>
   </data>
@@ -265,7 +247,7 @@
   <data name="colorControlLineColor.ToolTip" xml:space="preserve">
     <value>Задать цвет линии (графика) выбранного профиля.</value>
   </data>
-  <data name="numericUpDownLineWidth.ToolTip" xml:space="preserve">
+  <data name="numericBoxLineWidth.ToolTip" xml:space="preserve">
     <value>Задать ширину линии графика
 выбранного профиля, в пунктах (pt).</value>
   </data>
@@ -314,7 +296,7 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Включить задание/отображение диапазонов маскирования
 непосредственно на графике с помощью мыши.</value>
   </data>
-  <data name="numericUpDownInterpolationOrder.ToolTip" xml:space="preserve">
+  <data name="numericBoxInterpolationOrder.ToolTip" xml:space="preserve">
     <value>Степень полинома для интерполяции по
 маскируемым диапазонам (0-5). Выше = гибче кривая.</value>
   </data>
@@ -332,11 +314,11 @@ c2*tan^2(theta) (только для данных с угловой диспер
   <data name="checkBoxSmoothing.ToolTip" xml:space="preserve">
     <value>Шаг 3: Сгладить профиль с помощью фильтра Савицкого-Голея.</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayM.ToolTip" xml:space="preserve">
     <value>Полуширина окна Савицкого-Голея (точек
 с каждой стороны). Больше = сильнее сглаживание.</value>
   </data>
-  <data name="numericUpDownSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
+  <data name="numericBoxSmoothingSavitzkyAndGolayN.ToolTip" xml:space="preserve">
     <value>Порядок полинома Савицкого-Голея (0-5).
 Выше — лучше сохраняет пики, но меньше сглаживает.</value>
   </data>
@@ -348,7 +330,7 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Включить фильтр верхних частот: удалить низкочастотные
 (длиннопериодные) составляющие ниже порога.</value>
   </data>
-  <data name="numericUpDownHighPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxHighPass.ToolTip" xml:space="preserve">
     <value>Частота среза фильтра верхних частот (в
 1/[единица горизонтальной оси]); составляющие ниже
 неё удаляются. Диапазон подстраивается под данные.</value>
@@ -357,7 +339,7 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Включить фильтр нижних частот: удалить высокочастотные
 (короткопериодный шум) составляющие выше порога.</value>
   </data>
-  <data name="numericUpDownLowPass.ToolTip" xml:space="preserve">
+  <data name="numericBoxLowPass.ToolTip" xml:space="preserve">
     <value>Частота среза фильтра нижних частот (в
 1/[единица горизонтальной оси]); составляющие выше
 неё удаляются. Диапазон подстраивается под данные.</value>
@@ -381,7 +363,7 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Автоматически расставить заданное число
 фоновых точек вдоль профиля.</value>
   </data>
-  <data name="numericUpDownBgPointsNumber.ToolTip" xml:space="preserve">
+  <data name="numericBoxBgPointsNumber.ToolTip" xml:space="preserve">
     <value>Число фоновых точек (3-50), используемых
 для автообнаружения / аппроксимации B-сплайном.</value>
   </data>
@@ -389,7 +371,7 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Выбрать, какой загруженный профиль
 используется как опорный фон.</value>
   </data>
-  <data name="numericUpDownBackgroundReferrenceScale.ToolTip" xml:space="preserve">
+  <data name="numericBoxBackgroundReferrenceScale.ToolTip" xml:space="preserve">
     <value>Масштабный коэффициент, на который умножается
 опорный фон перед вычитанием.</value>
   </data>
@@ -409,15 +391,15 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Нормировать так, чтобы МАКСИМАЛЬНАЯ интенсивность
 в диапазоне равнялась целевому значению.</value>
   </data>
-  <data name="numericUpDownNormarizeRangeLow.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeLow.ToolTip" xml:space="preserve">
     <value>Нижняя граница (единицы горизонтальной оси)
 диапазона для вычисления нормировки.</value>
   </data>
-  <data name="numericUpDownNormarizeRangeHigh.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeRangeHigh.ToolTip" xml:space="preserve">
     <value>Верхняя граница (единицы горизонтальной оси)
 диапазона для вычисления нормировки.</value>
   </data>
-  <data name="numericUpDownNormarizeIntensity.ToolTip" xml:space="preserve">
+  <data name="numericBoxNormarizeIntensity.ToolTip" xml:space="preserve">
     <value>Целевое значение интенсивности (1-100000), к которому
 масштабируется среднее/максимум диапазона.</value>
   </data>
@@ -438,11 +420,11 @@ c2*tan^2(theta) (только для данных с угловой диспер
     <value>Сдвинуть весь профиль вдоль
 горизонтальной оси на фиксированную величину.</value>
   </data>
-  <data name="numericUpDownShiftHorizontalAxis.ToolTip" xml:space="preserve">
+  <data name="numericBoxShiftHorizontalAxis.ToolTip" xml:space="preserve">
     <value>Величина сдвига профиля вдоль
 горизонтальной оси (в единицах горизонтальной оси).</value>
   </data>
-  <data name="numericalTextBoxExposureTime.ToolTip" xml:space="preserve">
+  <data name="numericBoxExposureTime.ToolTip" xml:space="preserve">
     <value>Время экспозиции в секундах, для пересчёта интенсивности
 в отсчёты в секунду (CPS) на вертикальной оси.</value>
   </data>

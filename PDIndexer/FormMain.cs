@@ -1066,7 +1066,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         Reg.RW(key, mode, () => formCrystal.checkBoxVariableRatioOfIntensity.Checked);
         Reg.RW(key, mode, () => formCrystal.checkBoxShowPeakUnderProfile.Checked);
         Reg.RW(key, mode, () => formCrystal.radioButtonAllCheckedCrystals.Checked);
-        Reg.RW(key, mode, () => formCrystal.numericUpDownHeightOfBottomPeak.Value);
+        Reg.RW(key, mode, () => formCrystal.numericBoxHeightOfBottomPeak.Value);
         #endregion
 
         #region マクロ
@@ -1628,7 +1628,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         float minX = OriginPos.X;
         float maxY = pictureBoxMain.Height - OriginPos.Y;
         if (formCrystal != null && formCrystal.checkBoxShowPeakUnderProfile.Checked)
-            maxY -= ((int)(formCrystal.numericUpDownHeightOfBottomPeak.Value) + 4) * dataSet.DataTableCrystal.CheckedItems.Count;
+            maxY -= ((int)(formCrystal.numericBoxHeightOfBottomPeak.Value) + 4) * dataSet.DataTableCrystal.CheckedItems.Count;
         float minY = 0;
 
         if (!ShowBackgroundProfile) return;
@@ -1715,7 +1715,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
                             if (!double.IsNaN(cry.Plane[j].XCalc))
                             {
-                                if (!formCrystal.checkBoxInvisibleWeakPeak.Checked || (double)formCrystal.numericUpDownThresholdIntesity.Value * 0.01 < cry.Plane[j].Intensity)
+                                if (!formCrystal.checkBoxInvisibleWeakPeak.Checked || (double)formCrystal.numericBoxThresholdIntesity.Value * 0.01 < cry.Plane[j].Intensity)
                                 {
                                     if (formCrystal.checkBoxShowPeakOverProfiles.Checked)
                                     {
@@ -1744,7 +1744,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                         //字の部分
                                         if (bindingSourceCrystal.Position != 0 && formCrystal.checkBoxShowPeakIndices.Checked && (formCrystal.radioButtonAllCheckedCrystals.Checked || i == bindingSourceCrystal.Position))
                                         {
-                                            if (!formCrystal.checkBoxInvisibleWeakPeak.Checked || (double)formCrystal.numericUpDownThresholdIntesity.Value * 0.01 < cry.Plane[j].Intensity)
+                                            if (!formCrystal.checkBoxInvisibleWeakPeak.Checked || (double)formCrystal.numericBoxThresholdIntesity.Value * 0.01 < cry.Plane[j].Intensity)
                                             {
                                                 var pt = new PointF(xPos, top);
                                                 if (pt.Y < 0)
@@ -1992,10 +1992,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
                 if (formCrystal.radioButtonAngleThreshold.Checked)
                     cry.SetPlanes(dMax, dMin, true, true, false, formCrystal.checkBoxCombineSameDspacingPeaks.Checked, HorizontalAxis.Angle,
-                        (double)formCrystal.numericUpDownAngleThreshold.Value / 180 * Math.PI, horizontalAxisUserControl.WaveLength);
+                        (double)formCrystal.numericBoxAngleThreshold.Value / 180 * Math.PI, horizontalAxisUserControl.WaveLength);
                 else if (formCrystal.radioButtonEnergyThreshold.Checked)
                     cry.SetPlanes(dMax, dMin, true, true, false, formCrystal.checkBoxCombineSameDspacingPeaks.Checked, HorizontalAxis.EnergyXray,
-                       (double)formCrystal.numericUpDownEnergyThreshold.Value, horizontalAxisUserControl.TakeoffAngle);
+                       (double)formCrystal.numericBoxEnergyThreshold.Value, horizontalAxisUserControl.TakeoffAngle);
 
                 if (formCrystal.checkBoxVariableRatioOfIntensity.Checked == false)
                     cry.DiffractionPeakIntensity = UpperY;

@@ -338,9 +338,6 @@
   <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
     <value>角度閾値</value>
   </data>
-  <data name="numericUpDownAngleThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 0</value>
-  </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>130, 0</value>
   </data>
@@ -358,9 +355,6 @@
   </data>
   <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
     <value>エネルギー閾値</value>
-  </data>
-  <data name="numericUpDownEnergyThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>110, 23</value>
   </data>
   <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
     <value>154, 23</value>
@@ -424,30 +418,6 @@
   </data>
   <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
     <value>選択した結晶のみ</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 178</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericUpDownThresholdIntesity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 25</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>114, 124</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="numericUpDownHeightOfBottomPeak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>46, 25</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
