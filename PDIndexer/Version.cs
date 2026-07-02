@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History =
         "History" +
+        "\r\n ver4.464(2026/07/03) Added an arm64 distribution package. Various bug fixes." +
         "\r\n ver4.463(2026/06/25) Migrated the installer to WiX, improved resource disposal around startup and image handling, and fixed a WinForms designer issue." +
         "\r\n ver4.462(2026/06/01) Updated tooltips and added a portable ZIP package as an alternative distribution format." +
         "\r\n ver4.461(2026/04/14) Refactored the macro API to access FormMain via public properties instead of raw WinForms controls, and fixed typos in Help attributes." +
