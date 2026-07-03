@@ -985,7 +985,6 @@ namespace PDIndexer
             resources.ApplyResources(graphControlFrequency, "graphControlFrequency");
             graphControlFrequency.AxisLineColor = Color.Gray;
             graphControlFrequency.AxisTextColor = Color.Black;
-            graphControlFrequency.AxisTextFont = new Font("Segoe UI", 9F);
             graphControlFrequency.AxisXTextVisible = true;
             graphControlFrequency.AxisYTextVisible = true;
             graphControlFrequency.BackgroundColor = Color.White;
