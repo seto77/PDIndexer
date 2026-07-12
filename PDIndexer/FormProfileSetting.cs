@@ -369,7 +369,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             checkBoxSmoothing.Checked = flowLayoutPanelSmoothing.Visible = dp.DoesSmoothing;
             numericBoxSmoothingSavitzkyAndGolayM.Value = dp.SazitkyGorayM;
             numericBoxSmoothingSavitzkyAndGolayN.Value = dp.SazitkyGorayN;
-            checkBoxSmoothing.Checked = flowLayoutPanelSmoothing.Visible = dp.DoesSmoothing;
+            //260712Cl 重複行削除: 上の checkBoxSmoothing.Checked = flowLayoutPanelSmoothing.Visible = dp.DoesSmoothing; と同一文の重複だった
 
             checkBoxRemoveKalpha2.Checked = dp.DoesRemoveKalpha2;
 
@@ -734,9 +734,10 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
     }
     public void SetMaskRange(int[] index, double x)
     {
-        skipEvent = true;
+        //260712Cl バグ修正: 旧は先頭で skipEvent=true にしていたため、下の2ガードで早期returnすると skipEvent=true のまま残り、以後すべてのプロファイル更新イベントが恒久無効化されていた。ガードの後で立てる。
         if (index == null || index.Length != 2) return;
         if (bindingSourceProfile.Position < 0) return;
+        skipEvent = true;
         DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
         if (index[0] >= 0 && index[0] < dp.maskingRanges.Count && index[1] >= 0 && index[1] < 2)
         {

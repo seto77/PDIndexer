@@ -118,6 +118,9 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
             //Graphics g = Graphics.FromImage(bmp); // (260624Ch) 旧: Graphics が未破棄
             using (var g = Graphics.FromImage(bmp)) // (260624Ch)
                 g.Clear(Color.FromArgb(cry.Argb));
+            //260712Cl バグ修正(GDIリーク): 旧Bitmapを破棄せず列[2]を上書きしていたため、結晶色変更のたびに22x22 Bitmapハンドルがリークしていた。差し替え前に旧Bitmapを破棄 (is パターンで null/DBNull は素通り)。
+            if (dataSet.DataTableCrystal.Rows[bindingSource.Position][2] is Bitmap oldBmp)
+                oldBmp.Dispose();
             dataSet.DataTableCrystal.Rows[bindingSource.Position][1] = cry;
             dataSet.DataTableCrystal.Rows[bindingSource.Position][2] = bmp;
             formMain.InitializeCrystalPlane();

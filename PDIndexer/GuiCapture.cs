@@ -282,12 +282,12 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
     private static void Settle(Form form, int ms)
     {
         try { form.Refresh(); } catch { /* Refresh 時例外は無視 */ }
-        var until = Environment.TickCount + Math.Max(ms, 0);
+        var until = Environment.TickCount64 + Math.Max(ms, 0); //260712Cl バグ修正: 旧 TickCount(Int32) は約24.9日周期のラップ境界で until が負に折り返し待機が即終了する。TickCount64 で安全に
         do
         {
             Application.DoEvents();
             System.Threading.Thread.Sleep(15);
-        } while (Environment.TickCount < until);
+        } while (Environment.TickCount64 < until);
     }
 
     private const int CaptureMaxAttempts = 5; // CopyFromScreen 失敗時の最大試行回数

@@ -208,7 +208,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 "Sym PV" => PeakFunctionForm.PseudoVoigt,
                                 "Sym Pea" => PeakFunctionForm.Peason,
                                 "Spl PV" => PeakFunctionForm.SplitPseudoVoigt,
-                                "Spl Pea" => PeakFunctionForm.SplitPseudoVoigt,
+                                "Spl Pea" => PeakFunctionForm.SplitPearson, //260712Cl バグ修正: 旧 SplitPseudoVoigt (書込側 _=>"Spl Pea" は SplitPearson。保存→再読込で別関数に化けていた)
                                 _ => PeakFunctionForm.PseudoVoigt
                             };
 

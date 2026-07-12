@@ -160,6 +160,10 @@ namespace PDIndexer
         {
             if (!isFinding) //260625Cl 旧: if (buttonFind.Text == "Find!")
             {
+                //260712Cl バグ修正: 直前のStop(CancelAsyncは非同期)でワーカーがまだ動作中(IsBusy)のうちに再Findすると、
+                //  下の Candidates.Clear() / Tables[1].Clear() がワーカーの AddRange/Sort とレースしてListが壊れる。動作中は開始しない。
+                if (backgroundWorker.IsBusy)
+                    return;
                 //まずクリアする
                 dataSet1.Tables[1].Clear();
                 Candidates.Clear();
@@ -831,7 +835,9 @@ namespace PDIndexer
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            //260712Cl バグ修正: 旧は空実装で、DoWork 内の例外 (Parallel.For の AggregateException 含む) が e.Error に入ったまま黙殺されていた。最低限ユーザーへ通知する。
+            if (e.Error != null)
+                MessageBox.Show(e.Error.Message, "Cell finder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)

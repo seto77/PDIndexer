@@ -845,7 +845,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length < 200)
             File.Copy(appPath + "default.xml", UserAppDataPath + "default.xml", true);
 
-        if (!File.Exists(UserAppDataPath + "PDIndexerSetup.msi"))
+        if (File.Exists(UserAppDataPath + "PDIndexerSetup.msi")) //260712Cl バグ修正: 旧 !File.Exists (条件反転で「存在しない時だけ削除」=デッドコード。残留インストーラが削除されなかった)
             File.Delete(UserAppDataPath + "PDIndexerSetup.msi");
 
         //StdDbをコピー
@@ -1456,8 +1456,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     {
                         int width = bmp.Width;
                         int height = bmp.Height;
-                        byte* p = (byte*)(void*)bmpData.Scan0;
-                        int nResidual = bmpData.Stride - bmp.Width * 3;
+                        int stride = bmpData.Stride; //260712Cl 並列化: 行ごとに base ポインタを再計算するため stride を保持 (旧 nResidual は各行 base 復元で不要)
+                        IntPtr scan0 = bmpData.Scan0; //260712Cl ポインタ変数はラムダにキャプチャ不可のため IntPtr で受け、各行内で byte* に復元
 
                         double endX = dif.Profile.Pt[^1].X;
                         double startX = dif.Profile.Pt[0].X;
@@ -1465,18 +1465,31 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         double maxInt = (double)numericUpDownMaxInt.Value;
                         double minInt = (double)numericUpDownMinInt.Value;
 
-                        for (int h = 0; h < height; h++)
+                        // 260712Cl 安全な並列化: ピクセル二重ループは行 h ごとに出力メモリ領域(bitmap の1行)が完全に独立。
+                        //   x は列 w のみに依存するので列マップを1回だけ事前計算し、UI 値(LowerX/UpperX)を並列前にスナップショットして、
+                        //   行ループを Parallel.For 化する。ラムダ内に共有可変状態への書き込みも UI コントロールアクセスも無い。数値演算(除算/キャスト順)は原式のまま。
+                        double lowerX = LowerX, upperX = UpperX; //UI(NumericBox)値を並列前にスナップショット
+                        int imageWidth = dif.ImageWidth, imageHeight = dif.ImageHeight;
+                        double[] imageArray = dif.ImageArray;
+                        var xMap = new int[width];
+                        for (int w = 0; w < width; w++)
                         {
-                            int y = (int)((double)dif.ImageHeight * (double)h / (double)height);
+                            double realX = lowerX + (double)w / (double)width * (upperX - lowerX);
+                            xMap[w] = (int)(imageWidth * (realX - startX) / (endX - startX) + 0.5);
+                        }
+
+                        Parallel.For(0, height, h =>
+                        {
+                            int y = (int)((double)imageHeight * (double)h / (double)height);
+                            int yOffset = y * imageWidth;
+                            byte* p = (byte*)(void*)scan0 + (long)h * stride;
                             for (int w = 0; w < width; w++)
                             {
-
-                                double realX = LowerX + (double)w / (double)width * (UpperX - LowerX);
-                                int x = (int)(dif.ImageWidth * (realX - startX) / (endX - startX) + 0.5);
-                                if (x >= 0 && x < dif.ImageWidth)
+                                int x = xMap[w];
+                                if (x >= 0 && x < imageWidth)
                                 {
                                     int index =
-                                    (int)((dif.ImageArray[x + y * dif.ImageWidth] - minInt) / (maxInt - minInt) * 65535 + 0.5);
+                                    (int)((imageArray[x + yOffset] - minInt) / (maxInt - minInt) * 65535 + 0.5);
                                     if (index > 65535) index = 65535;
                                     if (index < 0) index = 0;
                                     if (negative) index = 65535 - index;
@@ -1485,8 +1498,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                 }
                                 p += 3;
                             }
-                            p += nResidual;
-                        }
+                        });
                     }
                     finally { bmp.UnlockBits(bmpData); } // (260624Ch)
                     gMain.DrawImage(bmp, OriginPos.X, 0);
@@ -4280,7 +4292,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         radioButtonSingleProfileMode.Checked = !radioButtonMultiProfileMode.Checked;
 
         if (numeriBoxIncreasingPixels.Value > float.MaxValue)
-            numeriBoxIncreasingPixels.Value = numeriBoxIncreasingPixels.Value;
+            numeriBoxIncreasingPixels.Value = float.MaxValue; //260712Cl バグ修正: 旧 =自分自身(no-op)。(float)キャスト(下)でInfinityになるのを防ぐ意図のクランプ
 
         IntervalOfProfiles = (float)numeriBoxIncreasingPixels.Value;
         //checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
@@ -4304,7 +4316,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         };
 
         if (numeriBoxIncreasingPixels.Value > float.MaxValue)
-            numeriBoxIncreasingPixels.Value = numeriBoxIncreasingPixels.Value;
+            numeriBoxIncreasingPixels.Value = float.MaxValue; //260712Cl バグ修正: 旧 =自分自身(no-op)。(float)キャスト(下)でInfinityになるのを防ぐ意図のクランプ
         radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
     }
 
@@ -4787,7 +4799,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     sw.Write(str);
                 //sw.Close(); // (260624Ch) using に移行
                 readProfile("clipbord.txt");
-                File.Delete("clipboard.txt");
+                File.Delete("clipbord.txt"); //260712Cl バグ修正: 旧 "clipboard.txt" (綴り不一致で実ファイル clipbord.txt が削除されず残留)
             }
         }
     }

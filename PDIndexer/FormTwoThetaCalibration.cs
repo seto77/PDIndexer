@@ -82,7 +82,7 @@ namespace PDIndexer
                         twoThetaCalc.Add(p.XCalc);
                     }
                 int count = twoThetaCalc.Count;
-                if (count == 0) return;
+                if (count == 0) break; //260712Cl バグ修正: 旧 return はループ末尾の Enabled=true/ボタン文言復元(下)を飛ばしフォームが操作不能のまま残った。break で復元経路へ抜ける
 
                 int order = Math.Min((int)numericUpDownOrder.Value, count);
 

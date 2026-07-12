@@ -28,7 +28,7 @@ public partial class FormAboutMe : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         try
         {
-            System.Diagnostics.Process.Start("mailto:" + linkLabelMail.Text);
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("mailto:" + linkLabelMail.Text) { UseShellExecute = true }); //260712Cl バグ修正: 旧 Process.Start(string)。.NET Core以降は UseShellExecute=false 既定でmailtoを開けず空catchで握り潰されていた (FormMain:4008と同方針)
         }
         catch { }
     }
@@ -47,7 +47,7 @@ public partial class FormAboutMe : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         try
         {
-            System.Diagnostics.Process.Start(linkLabelHomePage.Text);
+            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(linkLabelHomePage.Text) { UseShellExecute = true }); //260712Cl バグ修正: 旧 Process.Start(string) はURLを開けず無反応 (FormMain:4008と同方針)
         }
         catch { }
     }
