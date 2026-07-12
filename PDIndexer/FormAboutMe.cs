@@ -37,17 +37,10 @@ public partial class FormAboutMe : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         labelVersion.Text = "PDIndexer   " + Version.VersionAndDate;
 
-        string str = "";
-
-        str += Version.Introduction + "\r\n\r\n";//はじめに
-        str += Version.CopyRight + "\r\n\r\n";//著作権
-        str += Version.Condition + "\r\n\r\n";//実行条件
-        str += Version.Exemption + "\r\n\r\n";//免責
-        str += Version.Adress + "\r\n\r\n";//連絡先
-        str += Version.Acknowledge + "\r\n\r\n";//謝辞
-        str += Version.History;//履歴
-
-        textBoxReadMe.Text += str;
+        // 260712Cl 記法近代化: 7回の str += 連結を string.Join 1式に集約
+        textBoxReadMe.Text += string.Join("\r\n\r\n",
+            Version.Introduction, Version.CopyRight, Version.Condition,
+            Version.Exemption, Version.Adress, Version.Acknowledge, Version.History);//はじめに/著作権/実行条件/免責/連絡先/謝辞/履歴
     }
 
     private void linkLabelHomePage_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

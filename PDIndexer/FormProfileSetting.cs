@@ -62,7 +62,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             else if (n - 1 >= 0 && n - 1 < dataSetProfile.DataTableProfile.Rows.Count)
                 bindingSourceProfile.Position = n - 1;
             skipEvent = false;
-            bindingSource_CurrentChanged(new object(), new EventArgs());
+            bindingSource_CurrentChanged(this, EventArgs.Empty); //260712Cl new object()/new EventArgs() → this/EventArgs.Empty
             formMain.SetDrawRangeLimit();
             formMain.Draw();
         }
@@ -92,17 +92,18 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         if (bindingSourceProfile.Position >= 0)
         {
             var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
-            string unit = "";
-            switch (dp.DstProperty.AxisMode)
+            // 260712Cl 記法近代化: switch文 → switch式
+            var unit = dp.DstProperty.AxisMode switch
             {
-                case HorizontalAxis.Angle: unit = "°"; break;
-                case HorizontalAxis.d: unit = "Å"; break;
-                case HorizontalAxis.EnergyXray: unit = "eV"; break;
-                case HorizontalAxis.NeutronTOF: unit = "ms"; break;
-            }
+                HorizontalAxis.Angle => "°",
+                HorizontalAxis.d => "Å",
+                HorizontalAxis.EnergyXray => "eV",
+                HorizontalAxis.NeutronTOF => "ms",
+                _ => ""
+            };
 
-            labelLowPath.Text = "= " + (1 / (double)numericBoxLowPass.Value).ToString("f4") + " " + unit;
-            labelHighPass.Text = "= " + (1 / (double)numericBoxHighPass.Value).ToString("f4") + " " + unit;
+            labelLowPath.Text = $"= {1 / numericBoxLowPass.Value:f4} {unit}"; //260712Cl 文字列連結+冗長(double)キャスト → 補間
+            labelHighPass.Text = $"= {1 / numericBoxHighPass.Value:f4} {unit}"; //260712Cl 同上
         }
 
         SetCurrentProfile();
@@ -465,7 +466,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             var dp = (DiffractionProfile2)((DataRowView)bindingSourceProfile.Current).Row[1];
             dp.ColorARGB = colorControlLineColor.Color.ToArgb();
 
-            var g = Graphics.FromImage((Bitmap)dataSetProfile.DataTableProfile.Rows[bindingSourceProfile.Position][2]);
+            using var g = Graphics.FromImage((Bitmap)dataSetProfile.DataTableProfile.Rows[bindingSourceProfile.Position][2]); //260712Cl using宣言化 (Graphicsリーク修正)
             g.Clear(colorControlLineColor.Color);
             dataGridViewProfile.Refresh();
             formMain.dataGridViewProfiles.Refresh();
@@ -546,10 +547,8 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     public void buttonCalculate_Click(object sender, EventArgs e)
     {
-        var bmp = new Bitmap(18, 18);
-        var g = Graphics.FromImage(bmp);
+        //260712Cl 未使用のGDIオブジェクト生成(bmp/g)を削除: 以降未参照かつ未Disposeでリークしていた (行アイコンはFormMain.AddProfileToCheckedListBoxが別途生成)
         var c = formMain.generateRandomColor();
-        g.Clear(c);
 
         var p = new Profile();
 
@@ -567,6 +566,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
                     baseIndex = i;
                 }
             }
+            p.Pt.Capacity = p.Err.Capacity = dp[baseIndex].Profile.Pt.Count; //260712Cl 初期容量指定 (数万点のList再割当てを抑制)
             for (int j = 0; j < dp[baseIndex].Profile.Pt.Count; j++)
             {
                 p.Pt.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
@@ -600,9 +600,10 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             && listBoxTwoProfiles1.SelectedIndex >= 0 && listBoxTwoProfiles2.SelectedIndex >= 0
             && listBoxTwoProfiles1.SelectedIndex != listBoxTwoProfiles2.SelectedIndex)
         {
-            var dp = new DiffractionProfile2[]{
+            // 260712Cl 記法近代化: 配列初期化子 → コレクション式
+            DiffractionProfile2[] dp = [
                 (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndex][1],
-                (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles2.SelectedIndex][1]};
+                (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles2.SelectedIndex][1]];
 
             for (int j = 0; j < dp[0].Profile.Pt.Count; j++)
             {
@@ -700,12 +701,9 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
         formMain.AddProfileToCheckedListBox(output, true, true);
 
-        try
-        {
-            int n = Convert.ToInt32(textBoxOutputFilename.Text[^2..]);
-            textBoxOutputFilename.Text = $"{textBoxOutputFilename.Text[..^2]}{n + 1:00}";
-        }
-        catch { }
+        // 260712Cl 記法近代化: try/catch+Convert.ToInt32 → int.TryParse (例外を制御フローに使わない)
+        if (textBoxOutputFilename.Text.Length >= 2 && int.TryParse(textBoxOutputFilename.Text[^2..], out var seqNo)) //260712Cl 旧: out var n (同メソッド内の誤差計算ループの n と衝突するため改名)
+            textBoxOutputFilename.Text = $"{textBoxOutputFilename.Text[..^2]}{seqNo + 1:00}";
     }
 
     #region マスク関連
@@ -821,7 +819,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
     private void toolStripMenuItemReadMaskingRange_Click(object sender, EventArgs e)
     {
-        var dlg = new OpenFileDialog { Filter = "*.mas|*.mas" };
+        using var dlg = new OpenFileDialog { Filter = "*.mas|*.mas" }; //260712Cl using宣言化 (OpenFileDialog解放)
         if (dlg.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             readMaskingRanges(dlg.FileName);
     }
@@ -860,7 +858,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
         if (fileName.Length == 1)
         {
-            if (fileName[0].ToLower().EndsWith(".mas"))
+            if (fileName[0].EndsWith(".mas", StringComparison.OrdinalIgnoreCase)) //260712Cl ToLower().EndsWith → OrdinalIgnoreCase比較
                 readMaskingRanges(fileName[0]);
         }
     }

@@ -41,6 +41,8 @@ namespace PDIndexer
             var elemTipRm = new System.ComponentModel.ComponentResourceManager(typeof(FormAtomicPositionFinder));
             string elemTip = elemTipRm.GetString("numericTexBox.SharedToolTip");
 
+            //260712Cl 224個の同一Fontを共有1インスタンスに集約
+            var arialFont = new Font("Arial", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             for (int i = 0; i < 112; i++)
             {
                 numericTexBox.Add(new NumericBox());
@@ -48,15 +50,15 @@ namespace PDIndexer
                 numericTexBox[i].Size = new Size(29, 20);
                 label[i].Size = new Size(22, 20);
                 label[i].ForeColor = Color.Blue; ;
-                numericTexBox[i].Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                label[i].Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                numericTexBox[i].Font = arialFont; //260712Cl 共有Fontインスタンス
+                label[i].Font = arialFont;
                 label[i].TextAlign = ContentAlignment.MiddleRight;
 
                 if (i != 0)
                 {
                     this.tabPage2.Controls.Add(numericTexBox[i]);
                     this.tabPage2.Controls.Add(label[i]);
-                    numericTexBox[i].ValueChanged += new NumericBox.MyEventHandler(numerictextBoxElement_ValueChanged);
+                    numericTexBox[i].ValueChanged += numerictextBoxElement_ValueChanged; //260712Cl メソッドグループ変換
                     toolTip.SetToolTip(numericTexBox[i], elemTip); // 260531Cl 追加: 元素入力箱の共通ツールチップ
                 }
             }
@@ -86,117 +88,20 @@ namespace PDIndexer
                 numericTexBox[i].Location = new Point(label[i].Location.X + label[i].Width + 2, label[i].Location.Y);
 
             #region テキストの設定
-            label[1].Text = "H";
-            label[2].Text = "He";
-            label[3].Text = "Li";
-            label[4].Text = "Be";
-            label[5].Text = "B";
-            label[6].Text = "C";
-            label[7].Text = "N";
-            label[8].Text = "O";
-            label[9].Text = "F";
-            label[10].Text = "Ne";
-            label[11].Text = "Na";
-            label[12].Text = "Mg";
-            label[13].Text = "Al";
-            label[14].Text = "Si";
-            label[15].Text = "P";
-            label[16].Text = "S";
-            label[17].Text = "Cl";
-            label[18].Text = "Ar";
-            label[19].Text = "K";
-            label[20].Text = "Ca";
-            label[21].Text = "Sc";
-            label[22].Text = "Ti";
-            label[23].Text = "V";
-            label[24].Text = "Cr";
-            label[25].Text = "Mn";
-            label[26].Text = "Fe";
-            label[27].Text = "Co";
-            label[28].Text = "Ni";
-            label[29].Text = "Cu";
-            label[30].Text = "Zn";
-            label[31].Text = "Ga";
-            label[32].Text = "Ge";
-            label[33].Text = "As";
-            label[34].Text = "Se";
-            label[35].Text = "Br";
-            label[36].Text = "Kr";
-            label[37].Text = "Rb";
-            label[38].Text = "Sr";
-            label[39].Text = "Y";
-            label[40].Text = "Zr";
-            label[41].Text = "Nb";
-            label[42].Text = "Mo";
-            label[43].Text = "Tc";
-            label[44].Text = "Ru";
-            label[45].Text = "Rh";
-            label[46].Text = "Pd";
-            label[47].Text = "Ag";
-            label[48].Text = "Cd";
-            label[49].Text = "In";
-            label[50].Text = "Sn";
-            label[51].Text = "Sb";
-            label[52].Text = "Te";
-            label[53].Text = "I";
-            label[54].Text = "Xe";
-            label[55].Text = "Cs";
-            label[56].Text = "Ba";
-            label[57].Text = "La";
-            label[58].Text = "Ce";
-            label[59].Text = "Pr";
-            label[60].Text = "Nd";
-            label[61].Text = "Pm";
-            label[62].Text = "Sm";
-            label[63].Text = "Eu";
-            label[64].Text = "Gd";
-            label[65].Text = "Tb";
-            label[66].Text = "Dy";
-            label[67].Text = "Ho";
-            label[68].Text = "Er";
-            label[69].Text = "Tm";
-            label[70].Text = "Yb";
-            label[71].Text = "Lu";
-            label[72].Text = "Hf";
-            label[73].Text = "Ta";
-            label[74].Text = "W";
-            label[75].Text = "Re";
-            label[76].Text = "Os";
-            label[77].Text = "Ir";
-            label[78].Text = "Pt";
-            label[79].Text = "Au";
-            label[80].Text = "Hg";
-            label[81].Text = "Tl";
-            label[82].Text = "Pb";
-            label[83].Text = "Bi";
-            label[84].Text = "Po";
-            label[85].Text = "At";
-            label[86].Text = "Rn";
-            label[87].Text = "Fr";
-            label[88].Text = "Ra";
-            label[89].Text = "Ac";
-            label[90].Text = "Th";
-            label[91].Text = "Pa";
-            label[92].Text = "U";
-            label[93].Text = "Np";
-            label[94].Text = "Pu";
-            label[95].Text = "Am";
-            label[96].Text = "Cm";
-            label[97].Text = "Bk";
-            label[98].Text = "Cf";
-            label[99].Text = "Es";
-            label[100].Text = "Fm";
-            label[101].Text = "Md";
-            label[102].Text = "No";
-            label[103].Text = "Lr";
-            label[104].Text = "Rf";
-            label[105].Text = "Db";
-            label[106].Text = "Sg";
-            label[107].Text = "Bh";
-            label[108].Text = "Hs";
-            label[109].Text = "Mt";
-            label[110].Text = "Ds";
-            label[111].Text = "Rg";
+            // 260712Cl 記法近代化: 元素記号の代入111行を collection expression 配列 + ループに集約
+            string[] symbols = ["", "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne",
+                "Na", "Mg", "Al", "Si", "P", "S", "Cl", "Ar", "K", "Ca",
+                "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn",
+                "Ga", "Ge", "As", "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr",
+                "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In", "Sn",
+                "Sb", "Te", "I", "Xe", "Cs", "Ba", "La", "Ce", "Pr", "Nd",
+                "Pm", "Sm", "Eu", "Gd", "Tb", "Dy", "Ho", "Er", "Tm", "Yb",
+                "Lu", "Hf", "Ta", "W", "Re", "Os", "Ir", "Pt", "Au", "Hg",
+                "Tl", "Pb", "Bi", "Po", "At", "Rn", "Fr", "Ra", "Ac", "Th",
+                "Pa", "U", "Np", "Pu", "Am", "Cm", "Bk", "Cf", "Es", "Fm",
+                "Md", "No", "Lr", "Rf", "Db", "Sg", "Bh", "Hs", "Mt", "Ds", "Rg"];
+            for (int i = 1; i <= 111; i++)
+                label[i].Text = symbols[i];
 
             #endregion
 
@@ -280,7 +185,7 @@ namespace PDIndexer
             //まず数字と原子の間にスペースをいれる
             string inputFormula = textBoxInputFormula.Text;
             for (int i = 0; i < inputFormula.Length - 1; i++)
-                if ('0' <= inputFormula[i] && '9' >= inputFormula[i] && 'A' <= inputFormula[i + 1] && 'z' >= inputFormula[i + 1])
+                if (inputFormula[i] is >= '0' and <= '9' && inputFormula[i + 1] is >= 'A' and <= 'z') //260712Cl 関係パターン
                     inputFormula = inputFormula.Insert(i + 1, " ");//数字とアルファベットが並んでいたらスペースを挿入
 
             //スペース区切りで分割
@@ -291,7 +196,7 @@ namespace PDIndexer
             //文字列が2つ以上の元素名で構成されていたら分割
             for (int i = 0; i < dividedFormula.Count; i++)
             {
-                if ('A' <= dividedFormula[i][0] && 'z' >= dividedFormula[i][0])//最初がアルファベットで始まっていたら
+                if (dividedFormula[i][0] is >= 'A' and <= 'z')//最初がアルファベットで始まっていたら //260712Cl 関係パターン
                 {
                     bool flag = false;
                     for (int j = dividedFormula[i].Length; j > 0 && flag == false; j--)
@@ -302,8 +207,8 @@ namespace PDIndexer
                                 flag = true;
                                 if (j != dividedFormula[i].Length)
                                 {
-                                    dividedFormula.Insert(i, dividedFormula[i].Substring(0, j));
-                                    dividedFormula[i + 1] = dividedFormula[i + 1].Substring(j);
+                                    dividedFormula.Insert(i, dividedFormula[i][..j]); //260712Cl Substring → 範囲演算子
+                                    dividedFormula[i + 1] = dividedFormula[i + 1][j..];
                                 }
                                 break;
                             }
@@ -312,12 +217,9 @@ namespace PDIndexer
                 }
                 else
                 {
-                    try
-                    {
-                        double d = Convert.ToDouble(dividedFormula[i]);
+                    //260712Cl try/catch+Convert.ToDouble → double.TryParse
+                    if (double.TryParse(dividedFormula[i], out var d))
                         temp2.Add(d);
-                    }
-                    catch { }
                 }
             }
 
@@ -327,10 +229,10 @@ namespace PDIndexer
             string formulaInUnitCell = "";
             for (int i = 0; i < temp2.Count; i++)
             {
-                while (i < temp2.Count && temp2[i].GetType() != typeof(int))
+                while (i < temp2.Count && temp2[i] is not int) //260712Cl is パターン
                     temp2.RemoveAt(i);
 
-                if (i < temp2.Count - 1 && temp2[i + 1].GetType() == typeof(double))//次が数字のときは
+                if (i < temp2.Count - 1 && temp2[i + 1] is double)//次が数字のときは //260712Cl is パターン
                 {
                     numericTexBox[(int)temp2[i]].Value += (double)temp2[i + 1] * (double)numericUpDownZ.Value;
 
@@ -341,7 +243,7 @@ namespace PDIndexer
                         formulaInUnitCell += label[(int)temp2[i]].Text + (numericTexBox[(int)temp2[i]].Value).ToString();
                     i++;
                 }
-                else if ((i < temp2.Count - 1 && temp2[i + 1].GetType() == typeof(int)) || i == temp2.Count - 1)//次が元素のとき、あるいは次がないとき
+                else if ((i < temp2.Count - 1 && temp2[i + 1] is int) || i == temp2.Count - 1)//次が元素のとき、あるいは次がないとき //260712Cl is パターン
                 {
                     numericTexBox[(int)temp2[i]].Value += 1.0 * (double)numericUpDownZ.Value;
 
@@ -561,16 +463,14 @@ namespace PDIndexer
                 Symmetry s = SymmetryStatic.Symmetries[i];
                 if (s.CrystalSystemNumber == comboBoxCrystalSystem.SelectedIndex + 1)
                 {
-                    string str = "";
-                    str += $"{s.SpaceGroupNumber}.{s.SpaceGroupSubNumber}"; //260317Cl 文字列連結 → 文字列補間
-                    str += ": ";
-                    str += s.SpaceGroupHMStr;
-                    if (str.IndexOf("=") > 0)
-                        str = str.Substring(0, str.IndexOf("="));
-                    if (str.IndexOf("(") > 0)
-                        str = str.Substring(0, str.IndexOf("("));
-                    if (str.IndexOf("Hex") > 0)
-                        str = str.Substring(0, str.IndexOf("Hex"));
+                    string str = $"{s.SpaceGroupNumber}.{s.SpaceGroupSubNumber}: {s.SpaceGroupHMStr}"; //260712Cl 4行の連結 → 補間1式
+                    //260712Cl char版IndexOf(ordinal) + 範囲演算子
+                    if (str.IndexOf('=') > 0)
+                        str = str[..str.IndexOf('=')];
+                    if (str.IndexOf('(') > 0)
+                        str = str[..str.IndexOf('(')];
+                    if (str.IndexOf("Hex", StringComparison.Ordinal) > 0)
+                        str = str[..str.IndexOf("Hex", StringComparison.Ordinal)];
                     str = str.TrimEnd(' '); //260317Cl new char[] → char
                     listBoxSpaceGroupCandidate.Items.Add(str);
                 }
@@ -579,6 +479,11 @@ namespace PDIndexer
         }
 
         #region 空間群選択のlistBoxのオーナードロー
+        // 260712Cl メモリ: DrawItem 毎回生成の4フォントを static フィールドへ巻き上げ (アプリ寿命、Dispose不要)
+        private static readonly Font sub = new("Times New Roman", 8f, FontStyle.Regular);
+        private static readonly Font italic = new("Times New Roman", 11f, FontStyle.Italic);
+        private static readonly Font regular = new("Times New Roman", 11f, FontStyle.Regular);
+        private static readonly Font bold = new("Times New Roman", 10f, FontStyle.Bold);
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
         {
             e.DrawBackground();
@@ -586,17 +491,11 @@ namespace PDIndexer
 
             //下付き文字用フォント
             //Font sub = new Font("Times New Roman", 8f, FontStyle.Regular); // (260624Ch) 旧: Font が未破棄
-            using var sub = new Font("Times New Roman", 8f, FontStyle.Regular); // (260624Ch)
             //斜体
             //Font italic = new Font("Times New Roman", 11f, FontStyle.Italic); // (260624Ch) 旧: Font が未破棄
-            using var italic = new Font("Times New Roman", 11f, FontStyle.Italic); // (260624Ch)
             //普通
             //Font regular = new Font("Times New Roman", 11f, FontStyle.Regular); // (260624Ch) 旧: Font が未破棄
-            using var regular = new Font("Times New Roman", 11f, FontStyle.Regular); // (260624Ch)
-
             //Font bold = new Font("Times New Roman", 10f, FontStyle.Bold); // (260624Ch) 旧: Font が未破棄
-            using var bold = new Font("Times New Roman", 10f, FontStyle.Bold); // (260624Ch)
-
             float xPos = e.Bounds.Left;
             //Brush b = null; // (260624Ch) 旧: 手動 Dispose
 
@@ -604,36 +503,40 @@ namespace PDIndexer
             //    b = new SolidBrush(Color.Black);
             //else
             //    b = new SolidBrush(Color.White);
-            using var b = (e.State & DrawItemState.Selected) != DrawItemState.Selected
-                ? new SolidBrush(Color.Black)
-                : new SolidBrush(Color.White); // (260624Ch)
+            var b = (e.State & DrawItemState.Selected) != DrawItemState.Selected
+                ? Brushes.Black
+                : Brushes.White; //260712Cl キャッシュ済み静的ブラシに置換 (Dispose不要)
             e.Graphics.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
 
             //最初に数値を書く
-            e.Graphics.DrawString(txt.Substring(0, txt.IndexOf(':')), bold, b, xPos, e.Bounds.Y + 1);
-            xPos += e.Graphics.MeasureString(txt.Substring(0, txt.IndexOf(':')), bold).Width - 3;
+            //260712Cl IndexOf 3回→1回, 部分文字列を範囲演算子で
+            int colon = txt.IndexOf(':');
+            string head = txt[..colon];
+            e.Graphics.DrawString(head, bold, b, xPos, e.Bounds.Y + 1);
+            xPos += e.Graphics.MeasureString(head, bold).Width - 3;
 
-            txt = txt.Substring(txt.IndexOf(':'));
+            txt = txt[colon..];
 
             while (txt.Length > 0)
             {
-                if (txt.StartsWith(" "))
+                if (txt.StartsWith(' ')) //260712Cl StartsWith(char)
                     xPos += 0;
                 else if (txt.StartsWith("sub"))//subで始まる時は
                 {
                     xPos -= 1;
-                    txt = txt.Substring(3, txt.Length - 3);
+                    txt = txt[3..]; //260712Cl Substring → 範囲演算子
                     e.Graphics.DrawString(txt[0].ToString(), sub, b, xPos, e.Bounds.Y + 3);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), sub).Width - 2;
                 }
 
-                else if (txt.StartsWith("-"))//-で始まる時は
+                else if (txt.StartsWith('-'))//-で始まる時は //260712Cl StartsWith(char)
                 {
                     float x = e.Graphics.MeasureString(txt[1].ToString(), regular).Width;
                     //e.Graphics.DrawLine(new Pen(b, 1), new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1)); // (260624Ch) 旧: Pen が未破棄
-                    using var linePen = new Pen(b, 1); // (260624Ch)
-                    e.Graphics.DrawLine(linePen, new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1)); // (260624Ch)
+                    //260712Cl 幅1の静的ペンに置換 (Dispose不要)
+                    var linePen = (e.State & DrawItemState.Selected) != DrawItemState.Selected ? Pens.Black : Pens.White;
+                    e.Graphics.DrawLine(linePen, new PointF(xPos + 2f, e.Bounds.Y + 1), new PointF(x + xPos - 3f, e.Bounds.Y + 1));
                 }
                 else if (txt[0] == '/')
                 {
@@ -641,7 +544,7 @@ namespace PDIndexer
                     e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 5;
                 }
-                else if (('0' <= txt[0] && '9' >= txt[0]) || txt[0] == ':')
+                else if (txt[0] is (>= '0' and <= '9') or ':') //260712Cl 関係パターン+orパターン
                 {
                     e.Graphics.DrawString(txt[0].ToString(), regular, b, xPos, e.Bounds.Y);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), regular).Width - 2;
@@ -651,7 +554,7 @@ namespace PDIndexer
                     e.Graphics.DrawString(txt[0].ToString(), italic, b, xPos, e.Bounds.Y);
                     xPos += e.Graphics.MeasureString(txt[0].ToString(), italic).Width - 2;
                 }
-                txt = txt.Substring(1);
+                txt = txt[1..]; //260712Cl Substring → 範囲演算子
             }
 
             //b.Dispose(); // (260624Ch) using var に移行
@@ -833,12 +736,13 @@ namespace PDIndexer
 
             //ワイコフ位置だけが決まっている（原子位置は決まっていない)結晶候補リストを作成
             List<Crystal[]> crystalTemplates = []; //260317Cl new List<Crystal[]>() → []
+            var atomSpeciesArray = atomSpecies.ToArray(); //260712Cl 二重ループ外へ巻き上げ
             for (int i = 0; i < candidate.Count; i++)
             {
                 crystalTemplates.Add(new Crystal[candidate[i].Length]);
                 for (int j = 0; j < candidate[i].Length; j++)
                 {
-                    crystalTemplates[i][j] = generateCrystalTemplates((Crystal)crystal[i].Clone(), candidate[i][j], atomSpecies.ToArray());
+                    crystalTemplates[i][j] = generateCrystalTemplates((Crystal)crystal[i].Clone(), candidate[i][j], atomSpeciesArray); //260712Cl 巻き上げた配列を再利用
                     ConvertCrystalData.SetOpenGL_property(crystalTemplates[i][j]);//描画用のプロパティをセット
 
                     for (int k = 0; k < crystalTemplates[i][j].Atoms.Length; k++)
@@ -973,7 +877,7 @@ namespace PDIndexer
                             if (checkAtomicPosition(tempCrystal))
                             {
                                 tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength,null);
-                                tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                tempCrystal.Residual = GetResidualValue(observedIntensity, tempCrystal.Plane); //260712Cl 中間 double[] を排除
                                 candidates.Add(tempCrystal);
                             }
                         }
@@ -982,7 +886,7 @@ namespace PDIndexer
                             int i = r.Next(r.Next(r.Next(candidates.Count)));
                             if (rnd < randomizeProb + hybridizeProb)//遺伝アルゴリズム リスト中の掛け合わせ
                             {
-                                Crystal tempCrystal = hybridizeCrystals(new Crystal[] { candidates[i], candidates[r.Next(i)] });
+                                Crystal tempCrystal = hybridizeCrystals([candidates[i], candidates[r.Next(i)]]); //260712Cl collection expression
                                 if (checkAtomicPosition(tempCrystal))//原子位置に重なりがなければ
                                 {
                                     tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
@@ -1050,6 +954,7 @@ namespace PDIndexer
                 allCandidate.Sort();
                 if (allCandidate.Count > maxCandidate)
                     allCandidate.RemoveRange(maxCandidate, allCandidate.Count - maxCandidate);
+                var noteSb = new StringBuilder(); //260712Cl Note構築をStringBuilder再利用に (iループ外で1個確保)
                 for (int i = 0; i < allCandidate.Count; i++)
                 {
                     while (i < allCandidate.Count && double.IsNaN(allCandidate[i].Residual))
@@ -1057,13 +962,12 @@ namespace PDIndexer
 
                     allCandidate[i].ReCoordinateAtom();
 
-                    allCandidate[i].Note = allCandidate[i].Symmetry.SpaceGroupHMStr + ", ";
-                    for (int j = 0; j < allCandidate[i].Atoms.Length; j++)
-                    {
-                        allCandidate[i].Note +=
-                            allCandidate[i].Atoms[j].Label + "  " + allCandidate[i].Atoms[j].WyckoffLeter + ": " +
-                            allCandidate[i].Atoms[j].X.ToString("f3") + "," + allCandidate[i].Atoms[j].Y.ToString("f3") + "," + allCandidate[i].Atoms[j].Z.ToString("f3") + "; ";
-                    }
+                    //260712Cl 記法近代化+メモリ: Note構築を StringBuilder 再利用に
+                    noteSb.Clear().Append(allCandidate[i].Symmetry.SpaceGroupHMStr).Append(", ");
+                    foreach (var atom in allCandidate[i].Atoms)
+                        noteSb.Append(atom.Label).Append("  ").Append(atom.WyckoffLeter).Append(": ")
+                              .Append(atom.X.ToString("f3")).Append(',').Append(atom.Y.ToString("f3")).Append(',').Append(atom.Z.ToString("f3")).Append("; ");
+                    allCandidate[i].Note = noteSb.ToString();
 
                     if (i > 0 && allCandidate[i - 1].Note == allCandidate[i].Note)
                         allCandidate.RemoveAt(i--);
@@ -1084,7 +988,7 @@ namespace PDIndexer
             if (crystals[0].SymmetrySeriesNumber != crystals[1].SymmetrySeriesNumber) return null;
 
             //まずcrystal2から原子を一つ選ぶ
-            Random r = new Random();
+            var r = Random.Shared; //260712Cl new Random()→Random.Shared (ワーカーループから呼ばれるたびに生成していた; スレッドセーフ)
             List<int> elementList = []; //260317Cl new List<int>() → []
             for (int i = 0; i < crystals[0].Atoms.Length; i++)
                 if (!elementList.Contains(crystals[0].Atoms[i].AtomicNumber))
@@ -1107,8 +1011,8 @@ namespace PDIndexer
         {
             if (c == null || c.Atoms == null || c.Atoms.Length < 1) return false;
 
-            List<Vector3DBase> v = []; //260317Cl new List<Vector3DBase>() → []
-            List<double> r = []; //260317Cl new List<double>() → []
+            List<Vector3DBase> v = new(c.Atoms.Length); //260712Cl 初期容量指定 (ホットパス: 試行結晶ごとに呼ばれる)
+            List<double> r = new(c.Atoms.Length); //260712Cl
             for (int i = 0; i < c.Atoms.Length; i++)
             {
                 Vector3DBase temp = (c.Atoms[i].Atom[0].X * c.A_Axis + c.Atoms[i].Atom[0].Y * c.B_Axis + c.Atoms[i].Atom[0].Z * c.C_Axis);
@@ -1140,9 +1044,9 @@ namespace PDIndexer
 
         int maxCandidate = 1000;
         int aggregateStep = 10000;
-        Profile top1 = new Profile();
-        Profile top10 = new Profile();
-        Profile top100 = new Profile();
+        Profile top1 = new(); //260712Cl target-typed new
+        Profile top10 = new();
+        Profile top100 = new();
 
         private void backgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
@@ -1226,6 +1130,26 @@ namespace PDIndexer
             return residual / observedIntensity.Length*1000;
         }
 
+        //260712Cl 追加: List<Plane> を直接読み中間 double[] を排除するオーバーロード
+        public double GetResidualValue(double[] observedIntensity, List<Plane> plane)
+        {
+            double sum1 = 0, sum2 = 0;
+            for (int i = 0; i < observedIntensity.Length; i++)
+            {
+                double calc = plane[i].Intensity;
+                sum1 += calc * calc;
+                sum2 += observedIntensity[i] * calc;
+            }
+            double A = sum2 / sum1;
+            double residual = 0;
+            for (int i = 0; i < observedIntensity.Length; i++)
+            {
+                double d = A * plane[i].Intensity - observedIntensity[i];
+                residual += d * d;
+            }
+            return residual / observedIntensity.Length * 1000;
+        }
+
 
         public Crystal generateCrystalTemplates(Crystal crystal, int[][] wykcoffCandidate, int[] atomSpecies)
         {
@@ -1273,9 +1197,7 @@ namespace PDIndexer
             int[][] housingAtom = new int[atom.Length][];
             for (int i = 0; i < atom.Length; i++)
             {
-                housingAtom[i] = new int[multiplicity.Length];
-                for (int j = 0; j < housingAtom[i].Length; j++)
-                    housingAtom[i][j] = 0;
+                housingAtom[i] = new int[multiplicity.Length]; //260712Cl 冗長な0初期化ループを削除 (配列は生成時に0初期化保証)
             }
             return GenerateWyckoff(atom, multiplicity, housingAtom, freedom);
         }
@@ -1321,14 +1243,11 @@ namespace PDIndexer
                     int[][] tempHousingAtom = new int[residualAtom.Length][];
                     for (int j = 0; j < tempHousingAtom.Length; j++)
                     {
-                        tempHousingAtom[j] = new int[multiplicity.Length];
-                        for (int k = 0; k < tempHousingAtom[j].Length; k++)
-                            tempHousingAtom[j][k] = housingAtom[j][k];
+                        tempHousingAtom[j] = [.. housingAtom[j]]; //260712Cl 要素コピーループ → スプレッド
                     }
                     tempHousingAtom[targetAtom][i] += 1;
 
-                    int[] tempResidualAtom = new int[residualAtom.Length];
-                    residualAtom.CopyTo(tempResidualAtom, 0);
+                    int[] tempResidualAtom = [.. residualAtom]; //260712Cl new+CopyTo → スプレッド
                     tempResidualAtom[targetAtom] -= multiplicity[i];
 
                     if (targetAtom == tempResidualAtom.Length - 1 && tempResidualAtom[targetAtom] == 0)
@@ -1337,7 +1256,7 @@ namespace PDIndexer
                     {
                         List<int[][]> answerList = GenerateWyckoff(tempResidualAtom, multiplicity, tempHousingAtom, freedom);
                         if (answerList.Count > 0)
-                            answer.AddRange(answerList.ToArray());
+                            answer.AddRange(answerList); //260712Cl 不要な ToArray コピーを削除
                     }
                 }
             }
@@ -1362,7 +1281,7 @@ namespace PDIndexer
             using var dlg = new OpenFileDialog(); // (260624Ch)
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(AtomicPositionFinderIO));
+                System.Xml.Serialization.XmlSerializer serializer = new(typeof(AtomicPositionFinderIO)); //260712Cl target-typed new
                 try
                 {
                     //System.IO.FileStream fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Open); // (260624Ch) 旧: 例外時に Close されない
@@ -1492,7 +1411,7 @@ namespace PDIndexer
             using var dlg = new SaveFileDialog(); // (260624Ch)
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(typeof(AtomicPositionFinderIO));
+                System.Xml.Serialization.XmlSerializer serializer = new(typeof(AtomicPositionFinderIO)); //260712Cl target-typed new
                 //System.IO.FileStream fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create); // (260624Ch) 旧: 例外時に Close されない
                 using var fs = new System.IO.FileStream(dlg.FileName, System.IO.FileMode.Create); // (260624Ch)
                 serializer.Serialize(fs, a);
@@ -1596,13 +1515,13 @@ namespace PDIndexer
             {
                 IDataObject data = Clipboard.GetDataObject();
                 String str = (String)data.GetData(typeof(String));
-                String[] strList = str.Split(new string[] { "\r\n" },  StringSplitOptions.RemoveEmptyEntries);
+                string[] strList = str.Split("\r\n", StringSplitOptions.RemoveEmptyEntries); //260712Cl string オーバーロード
                 dataSet.DataTableDiffractionData.Rows.Clear();
                 if (strList != null)
                 {
                     for (int i = 0; i < strList.Length; i++)
                     {
-                        String[] temp = strList[i].Split(new string[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] temp = strList[i].Split('\t', StringSplitOptions.RemoveEmptyEntries); //260712Cl char オーバーロード
 
                         dataSet.DataTableDiffractionData.Rows.Add(true, Convert.ToDouble(temp[0]), Convert.ToDouble(temp[4]));
                     }

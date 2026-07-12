@@ -36,7 +36,7 @@ public partial class DataSet
 
             r.PlaneObject = p;
 
-            r.HKL = p.strHKL == null ? "" : p.strHKL;
+            r.HKL = p.strHKL ?? ""; //260712Cl null合体演算子
             r.Check = p.IsFittingChecked;
             r.CalcX = p.XCalc;
             r.X = p.peakFunction.X;
@@ -159,18 +159,10 @@ public partial class DataSet
         {
             if (srcIndex < this.Rows.Count && destIndex < this.Rows.Count)
             {
-                bool check = (bool)this.Rows[srcIndex][0];
-                this.Rows[srcIndex][0] = this.Rows[destIndex][0];
-                this.Rows[destIndex][0] = check;
-
-
-                DiffractionProfile2 c = (DiffractionProfile2)this.Rows[srcIndex][1];
-                this.Rows[srcIndex][1] = this.Rows[destIndex][1];
-                this.Rows[destIndex][1] = c;
-
-                Bitmap bmp = (Bitmap)this.Rows[srcIndex][2];
-                this.Rows[srcIndex][2] = this.Rows[destIndex][2];
-                this.Rows[destIndex][2] = bmp;
+                // 260712Cl 記法近代化: 一時変数3連スワップ → タプル分解スワップ (右辺先行評価で意味論同一)
+                (this.Rows[srcIndex][0], this.Rows[destIndex][0]) = (this.Rows[destIndex][0], this.Rows[srcIndex][0]);
+                (this.Rows[srcIndex][1], this.Rows[destIndex][1]) = (this.Rows[destIndex][1], this.Rows[srcIndex][1]);
+                (this.Rows[srcIndex][2], this.Rows[destIndex][2]) = (this.Rows[destIndex][2], this.Rows[srcIndex][2]);
 
             }
         }
@@ -251,7 +243,8 @@ public partial class DataSet
         {
             if (checkedIndex >= CheckedItems.Count || checkedIndex < 0) return -1;
             int n = -1;
-            for (int i = 0; i < Items.Count; i++)
+            int count = Items.Count; //260712Cl Items.Count を1回だけ評価 (旧: ループ条件で毎回 List 全生成→O(n²))。Items 依存の挙動 (不正行での空リストfallback) は維持
+            for (int i = 0; i < count; i++)
                 if (GetItemChecked(i))
                 {
                     n++;
@@ -316,18 +309,10 @@ public partial class DataSet
         {
             if (srcIndex < this.Rows.Count && destIndex < this.Rows.Count)
             {
-                bool check = (bool)this.Rows[srcIndex][0];
-                this.Rows[srcIndex][0] = this.Rows[destIndex][0];
-                this.Rows[destIndex][0] = check;
-
-
-                Crystal c = (Crystal)this.Rows[srcIndex][1];
-                this.Rows[srcIndex][1] = this.Rows[destIndex][1];
-                this.Rows[destIndex][1] = c;
-
-                Bitmap bmp = (Bitmap)this.Rows[srcIndex][2];
-                this.Rows[srcIndex][2] = this.Rows[destIndex][2];
-                this.Rows[destIndex][2] = bmp;
+                // 260712Cl 記法近代化: 一時変数3連スワップ → タプル分解スワップ (右辺先行評価で意味論同一)
+                (this.Rows[srcIndex][0], this.Rows[destIndex][0]) = (this.Rows[destIndex][0], this.Rows[srcIndex][0]);
+                (this.Rows[srcIndex][1], this.Rows[destIndex][1]) = (this.Rows[destIndex][1], this.Rows[srcIndex][1]);
+                (this.Rows[srcIndex][2], this.Rows[destIndex][2]) = (this.Rows[destIndex][2], this.Rows[srcIndex][2]);
 
             }
         }
@@ -392,7 +377,8 @@ public partial class DataSet
         {
             if (checkedIndex >= CheckedItems.Count || checkedIndex < 0) return -1;
             int n = -1;
-            for (int i = 0; i < Items.Count; i++)
+            int count = Items.Count; //260712Cl Items.Count を1回だけ評価 (旧: ループ条件で毎回 List 全生成→O(n²))。Items 依存の挙動 (不正行での空リストfallback) は維持
+            for (int i = 0; i < count; i++)
                 if (GetItemChecked(i))
                 {
                     n++;

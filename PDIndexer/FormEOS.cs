@@ -159,11 +159,12 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         //Ross
         numericalTextBoxArRoss.Value = EOS.Ar_Ross(a / 10);
 
-        return new (string Reseacher, double Pressure)[]
-            {
+        // 260712Cl 記法近代化: collection expression
+        return
+            [
         ("Ross86",numericalTextBoxArRoss.Value),
         ("Jephcoat98",numericalTextBoxArJephcoat.Value),
-            };
+            ];
     }
     #endregion
 
@@ -255,10 +256,11 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         //Dubrovinsky
         numericBoxCorundumDubrovinsky.Value = EOS.Corundum_Dubrovinsky(v0, v, t);
 
-        return new (string Reseacher, double Pressure)[]
-            {
+        // 260712Cl 記法近代化: collection expression
+        return
+            [
                  ("Dubrovinsky98",numericBoxCorundumDubrovinsky.Value),
-            };
+            ];
     }
     #endregion
 
@@ -277,13 +279,14 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         //Dub
         numericBoxReDub.Value = EOS.BirchMurnaghan4th(342, 6.15, -0.029, 29.46 / v);
 
-        return new (string Reseacher, double Pressure)[]
-         {
+        // 260712Cl 記法近代化: collection expression
+        return
+         [
                  ("Zha04",numericalTextBoxReZha.Value),
                  ("Anz",numericBoxReAnz.Value),
                  ("Sakai",numericBoxReSakai.Value),
                  ("Dub",numericBoxReDub.Value),
-         };
+         ];
     }
     #endregion
 
@@ -323,7 +326,7 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
     #endregion
 
     #region Pb
-    (double T, double B, double Bp)[] PbVinet = new (double T, double B, double Bprime)[] {
+    (double T, double B, double Bp)[] PbVinet = [ //260712Cl collection expression
         #region
         (0,     48.3298,    5.4511),
         (20,    48.2387,    5.4542),
@@ -342,10 +345,10 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         (280,   41.7317 ,   5.7021),
         (300,   41.2000 ,   5.7245),
         #endregion
-    };
+    ];
 
-    (double T, double A0)[] PbA0 = new (double T, double A0)[]
-    {
+    (double T, double A0)[] PbA0 = //260712Cl collection expression
+    [
         #region
         (   0   ,   4.91366 ),
 (   5   ,   4.91370 ),
@@ -411,7 +414,7 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
 (   305 ,   4.95040 ),
 (   310 ,   4.95110 ),
         #endregion
-    };
+    ];
 
     MathNet.Numerics.Interpolation.IInterpolation PbInterA0, PbInterB, PbInterBp;
     public (string Reseacher, double Pressure)[] Pb()
@@ -437,10 +440,11 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
 
         numericBoxPbStrassle.Value = 3 * B * (1 - x) / x / x * Math.Exp(1.5 * (Bp - 1) * (1 - x));
 
-        return new (string Reseacher, double Pressure)[]
-           {
+        // 260712Cl 記法近代化: collection expression
+        return
+           [
                  ("Strassle14",numericBoxPbStrassle.Value),
-           };
+           ];
     }
     #endregion
 

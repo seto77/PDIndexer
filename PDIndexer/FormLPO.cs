@@ -141,9 +141,11 @@ namespace PDIndexer
         private void dataGridView1_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
             if (listStrHkl != null && e.RowIndex < listStrHkl.Count)
-                e.Graphics.DrawString(listStrHkl[e.RowIndex], dataGridView1.DefaultCellStyle.Font, 
-                    new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor), 
+            {
+                using var brush = new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor); //260712Cl GDIブラシをusing宣言で破棄
+                e.Graphics.DrawString(listStrHkl[e.RowIndex], dataGridView1.DefaultCellStyle.Font, brush,
                     e.RowBounds.Location.X + 15, e.RowBounds.Location.Y + 4);
+            }
         }
 
 
@@ -192,7 +194,7 @@ namespace PDIndexer
             }
             for(int i = 0 ; i < crystals.Length ; i++)
                 for(int j=0;j<crystals[i].Contribution.Count ; j++)
-                    list[crystals[i].Contribution[j].i][crystals[i].Contribution[j].m].Add(new int[]{i,j});
+                    list[crystals[i].Contribution[j].i][crystals[i].Contribution[j].m].Add([i, j]); //260712Cl new int[]{i,j} → collection expression
 
             //これでlist[i][m][?]とすればi番目のリングのm番目の角度の回折に寄与する結晶の番号とその結晶の中でのContributionの番号がわかる
             int endCount = 40;
@@ -365,7 +367,7 @@ namespace PDIndexer
 
                 }
 
-                dlg.Text = "Calculating ....  " + residual.ToString();
+                dlg.Text = string.Format(PdiText.CalculatingResidual, residual); //260712Cl 多言語化 (旧: "Calculating ....  " + residual.ToString())
                 DrawPictureBox();
                 Application.DoEvents();
             }
@@ -480,9 +482,9 @@ namespace PDIndexer
         //G空間(phi,z,rho)のマトリックスを作成するメソッド
         private Matrix3D getPhiRhoZ(double phi, double rho, double z)
         {
-            Matrix3D a = new Matrix3D(Math.Cos(phi), Math.Sin(phi), 0, -Math.Sin(phi), Math.Cos(phi), 0, 0, 0, 1);
-            Matrix3D b = new Matrix3D(z, 0, Math.Sqrt(1 - z * z), 0, 1, 0, -Math.Sqrt(1 - z * z), 0, z);
-            Matrix3D c = new Matrix3D(Math.Cos(rho), Math.Sin(rho), 0, -Math.Sin(rho), Math.Cos(rho), 0, 0, 0, 1);
+            Matrix3D a = new(Math.Cos(phi), Math.Sin(phi), 0, -Math.Sin(phi), Math.Cos(phi), 0, 0, 0, 1); //260712Cl target-typed new
+            Matrix3D b = new(z, 0, Math.Sqrt(1 - z * z), 0, 1, 0, -Math.Sqrt(1 - z * z), 0, z);
+            Matrix3D c = new(Math.Cos(rho), Math.Sin(rho), 0, -Math.Sin(rho), Math.Cos(rho), 0, 0, 0, 1);
             return a * b * c;
         }
         private Matrix3D getEuler(double alpha, double phi, double eta)
@@ -729,7 +731,7 @@ namespace PDIndexer
                      if (max < density2[i][j])
                          max = density2[i][j];
 
-             Bitmap bmp = new Bitmap(picturebox.Width, picturebox.Height);
+             Bitmap bmp = new(picturebox.Width, picturebox.Height); //260712Cl target-typed new
 
              double sum = 0;
              for (int i = 0; i < length; i++)

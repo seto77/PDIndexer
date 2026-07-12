@@ -34,8 +34,8 @@ namespace PDIndexer
             if (formMain.AxisMode == HorizontalAxis.NeutronTOF)
                 div = 1;
 
-            StringBuilder sb = new StringBuilder();
-            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]; ;
+            DiffractionProfile2 dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1];
+            StringBuilder sb = new(dp.Profile.Pt.Count * 38 + 128); //260712Cl 初期容量指定 (1点=38文字×点数): 内部バッファの倍々再確保を回避
 
             //一行目
             string str = dp.Name;
@@ -56,9 +56,9 @@ namespace PDIndexer
                         validErr = true;
                         break;
                     }
+            var value = new string[3]; //260712Cl ループ外へ巻き上げ (毎周の配列割り当てを削減)
             for (int i = 0; i < ptCount; i++)
             {
-                string[] value = new string[3];
                 value[0] = (dp.Profile.Pt[i].X * div).ToString("g12");
                 value[1] = dp.Profile.Pt[i].Y.ToString("g12");
                 if (validErr)
@@ -71,13 +71,12 @@ namespace PDIndexer
                 for (int j = 0; j < value.Length; j++)
                 {
                     if (value[j].Length > 11)
-                        value[j] = value[j].Substring(0, 11);
-                    if (value[j].EndsWith("."))
-                        value[j] = " " + y.Substring(0, 10);
-                    while (value[j].Length < 11)
-                        value[j] = " " + value[j];
+                        value[j] = value[j][..11]; //260712Cl 範囲演算子
+                    if (value[j].EndsWith('.'))
+                        value[j] = " " + y[..10]; //260712Cl
+                    value[j] = value[j].PadLeft(11); //260712Cl while の逐次連結 (最大10回のstring生成) を一括パディングに
                 }
-                sb.Append(" " + value[0] + " " + value[1] + " " + value[2] + "\r\n");
+                sb.Append(' ').Append(value[0]).Append(' ').Append(value[1]).Append(' ').Append(value[2]).Append("\r\n"); //260712Cl 中間文字列の生成を回避
                 
             }
             richTextBoxGsa.Text = sb.ToString();
@@ -152,7 +151,7 @@ namespace PDIndexer
         {
             if(File.Exists(textBoxExpFilePath.Text))
             {
-                StreamReader sr = new StreamReader(textBoxExpFilePath.Text);
+                using var sr = new StreamReader(textBoxExpFilePath.Text); //260712Cl ファイルハンドルリーク対策 (using 宣言)
                 string str;
                 while ((str = sr.ReadLine()) != null)
                 {

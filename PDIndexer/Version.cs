@@ -311,7 +311,7 @@ static class Version
         "\r\n ver1.00 (2005/06/??) とりあえず動くものをつくる"
         ;
 
-    static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
+    static public string VersionAndDate => History[10..30];    //260712Cl Remove(0,10).Remove(20) → range slice [10..30]
     //バージョンの値 (20241206 doubleから整数に変換)
     static public int VersionValue { get => Convert.ToInt32(VersionAndDate[3..^12].Replace(".",""), System.Globalization.CultureInfo.InvariantCulture); }
 
@@ -391,7 +391,7 @@ static class Version
         + "\r\nできるだけご要望にお応えしたいと思います。"
         ;
 
-    static public string[] HintJa = new string[]{
+    static public string[] HintJa = [    //260712Cl new string[]{} → []
 
         "キーボードショートカット\r\n    Ctrl + Shift + C : Crystal Parameter\r\n    Ctrl + Shift + P : Profile Setting\r\n    Ctrl + Shift + E : Equation of State\r\n    Ctrl + Shift + F : Fitting Diffraction",
         "Ctrl+Shift+Dキーを押すと回折線の描画モードを以下のように切り替えることができます。\r\n 非表示 -> 表示(強度計算なし) -> 表示(強度計算あり)",
@@ -405,9 +405,9 @@ static class Version
         "複数のプロファイルの保存・読み込みが可能です。(pdi形式のみ)",
         "英語のマニュアルを作成していただける方募集中です。",
 
-    };
+    ];
 
-    static public string[] HintEn = new string[]{
+    static public string[] HintEn = [    //260712Cl new string[]{} → []
 
         "Keyboard shortcut\r\n    Ctrl + Shift + C : Crystal Parameter\r\n    Ctrl + Shift + P : Profile Setting\r\n    Ctrl + Shift + E : Equation of State\r\n    Ctrl + Shift + F : Fitting Diffraction",
       //  "Ctrl+Shift+Dキーを押すと回折線の描画モードを以下のように切り替えることができます。\r\n 非表示 -> 表示(強度計算なし) -> 表示(強度計算あり)",
@@ -421,7 +421,7 @@ static class Version
       //  "複数のプロファイルの保存・読み込みが可能です。(pdi形式のみ)",
       //  "英語のマニュアルを作成していただける方募集中です。",
 
-    };
+    ];
 
 
 }
