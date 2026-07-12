@@ -12,7 +12,7 @@ using System.Windows.Forms;
 using Crystallography;
 using IronPython.Runtime.Operations;
 using MathNet.Numerics.LinearAlgebra.Double;
-using static IronPython.Modules._ast;
+//using static IronPython.Modules._ast; //260712Cl 未使用のため削除
 #endregion
 
 namespace PDIndexer;
@@ -111,7 +111,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
         else
         {
             textBoxPressure.Text = stressMode ? "Degree" : "Profile Name";
-            foreach (var researcher in eos().Select(e => e.Researcher))
+            foreach (var (researcher, _) in eos()) //260712Cl Select→タプル分解
                 textBoxPressure.AppendText("\t" + researcher);
             textBoxPressure.AppendText("\r\n");
 
@@ -185,7 +185,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
             var angle = 0.0;
             if (stressMode)
             {
-                profileName = profileName.Split('-')[^1];
+                profileName = profileName[(profileName.LastIndexOf('-') + 1)..]; //260712Cl Split('-')[^1]→範囲演算子
                 if (!double.TryParse(profileName, out angle))
                     return;
                 angle = angle / 180 * Math.PI;
@@ -213,10 +213,10 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
                         results[m].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
                     m++;
                 }
-                textBox2theta.AppendText($"{sb2theta}\r\n");
-                textBoxDspacing.AppendText($"{sbDspacing}\r\n");
-                textBoxIntensity.AppendText($"{sbIntensity}\r\n");
-                textBoxFWHM.AppendText($"{sbFWHM}\r\n");
+                textBox2theta.AppendText(sb2theta.Append("\r\n").ToString()); //260712Cl ToString+連結の二重確保を1回に
+                textBoxDspacing.AppendText(sbDspacing.Append("\r\n").ToString());
+                textBoxIntensity.AppendText(sbIntensity.Append("\r\n").ToString());
+                textBoxFWHM.AppendText(sbFWHM.Append("\r\n").ToString());
 
                 textBoxCellConstants.AppendText($"\t{crystal.Volume * 1000:f8}\t{crystal.Volume_err * 1000:f8}" +
                     $"\t{crystal.A * 10:f10}\t{crystal.A_err * 10:f10}" +
@@ -229,7 +229,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
 
                 if (eos != null)
                 {
-                    foreach (var pressure in eos().Select(e => e.Pressure))
+                    foreach (var (_, pressure) in eos()) //260712Cl Select→タプル分解
                         textBoxPressure.AppendText($"\t{pressure:f8}");
                     textBoxPressure.AppendText("\r\n");
                 }
@@ -242,10 +242,11 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
                 var nan = double.NaN.ToString();
                 foreach (var p in crystal.Plane.Where(e => e.IsFittingChecked))
                     sb.Append($"\t{nan}");
-                textBox2theta.AppendText($"{sb}\r\n");
-                textBoxDspacing.AppendText($"{sb}\r\n");
-                textBoxIntensity.AppendText($"{sb}\r\n");
-                textBoxFWHM.AppendText($"{sb}\r\n");
+                var row = sb.Append("\r\n").ToString(); //260712Cl 共有sbのToString×4を1回に
+                textBox2theta.AppendText(row);
+                textBoxDspacing.AppendText(row);
+                textBoxIntensity.AppendText(row);
+                textBoxFWHM.AppendText(row);
                 textBoxCellConstants.AppendText($"\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\t{nan}\r\n");
                 textBoxPressure.AppendText($"\t{nan}\r\n");
             }
@@ -309,7 +310,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
 
         if (!Path.Exists(textBoxDirectory.Text))
         {
-            buttonSetDirectory_Click(new object(), new EventArgs());
+            buttonSetDirectory_Click(this, EventArgs.Empty); //260712Cl new object()/new EventArgs()→this/Empty
             if (!Path.Exists(textBoxDirectory.Text))
                 return;
         }
@@ -319,14 +320,15 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
         for (int i = 0; i < names.Length; i++)
             names[i] = formMain.dataSet.DataTableProfile.Rows[i][1].ToString().Replace(" ", "");
         var name = "";
-        for (int i = 0; i < names.Min(n => n.Length); i++)
+        var minLength = names.Min(n => n.Length); //260712Cl ループ不変のためホイスト
+        for (int i = 0; i < minLength; i++)
         {
             name += names[0][i];
-            if (names.Any(n => !n.startswith(name)))
+            if (names.Any(n => !n.StartsWith(name, StringComparison.Ordinal))) //260712Cl IronPython拡張→BCL
                 break;
         }
         name = name[..^1];
-        if (name.endswith("-") || name.endswith("#"))
+        if (name.EndsWith('-') || name.EndsWith('#')) //260712Cl IronPython拡張→BCL
             name = name[..^1];
 
         static void save(string filename, string contents)
@@ -339,19 +341,19 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
         }
 
         if (checkBoxAutoSaveCell.Checked)
-            save(path + name + "_cell.csv", textBoxCellConstants.Text.Replace("\t", ","));
+            save(path + name + "_cell.csv", textBoxCellConstants.Text.Replace('\t', ',')); //260712Cl "\t"→'\t' char置換 (7箇所)
         if (checkBoxAutoSaveD.Checked)
-            save(path + name + "_d.csv", textBoxDspacing.Text.Replace("\t", ","));
+            save(path + name + "_d.csv", textBoxDspacing.Text.Replace('\t', ','));
         if (checkBoxAutoSaveFWHM.Checked)
-            save(path + name + "_fwhm.csv", textBoxFWHM.Text.Replace("\t", ","));
+            save(path + name + "_fwhm.csv", textBoxFWHM.Text.Replace('\t', ','));
         if (checkBoxAutoSaveInt.Checked)
-            save(path + name + "_intensity.csv", textBoxIntensity.Text.Replace("\t", ","));
+            save(path + name + "_intensity.csv", textBoxIntensity.Text.Replace('\t', ','));
         if (checkBoxAutoSavePressure.Checked)
-            save(path + name + "_pressure.csv", textBoxPressure.Text.Replace("\t", ","));
+            save(path + name + "_pressure.csv", textBoxPressure.Text.Replace('\t', ','));
         if (checkBoxAutoSaveSingh.Checked)
-            save(path + name + "_Singh.csv", textBoxSingh.Text.Replace("\t", ","));
+            save(path + name + "_Singh.csv", textBoxSingh.Text.Replace('\t', ','));
         if (checkBoxAutoSaveTwoTheta.Checked)
-            save(path + name + "_2theta.csv", textBox2theta.Text.Replace("\t", ","));
+            save(path + name + "_2theta.csv", textBox2theta.Text.Replace('\t', ','));
     }
 
     private void buttonSetDirectory_Click(object sender, EventArgs e)

@@ -1174,7 +1174,6 @@
             graphControl1.AllowMouseOperation = true;
             graphControl1.AxisLineColor = System.Drawing.Color.Gray;
             graphControl1.AxisTextColor = System.Drawing.Color.Black;
-            graphControl1.AxisTextFont = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             graphControl1.AxisXTextVisible = true;
             graphControl1.AxisYTextVisible = true;
             graphControl1.BackgroundColor = System.Drawing.Color.White;

@@ -49,12 +49,12 @@ namespace PDIndexer
 
         private void numericUpDownOrder_ValueChanged(object sender, EventArgs e)
         {
-            if (numericUpDownOrder.Value == 3)
-                labelEquation.Text = string.Format(PdiText.ShiftFunction, "Δ(2θ) = a1 + a2 tan(θ) + a3 tan^2(θ) "); //260625Cl 多言語化(式は不変、"Shift function:" のみ訳)
-            else if (numericUpDownOrder.Value == 2)
-                labelEquation.Text = string.Format(PdiText.ShiftFunction, "Δ(2θ) = a1 + a2 tan(θ)"); //260625Cl 多言語化
-            else
-                labelEquation.Text = string.Format(PdiText.ShiftFunction, "Δ(2θ) = a1"); //260625Cl 多言語化
+            labelEquation.Text = string.Format(PdiText.ShiftFunction, numericUpDownOrder.Value switch //260712Cl switch式に集約 (式は不変、"Shift function:" のみ訳)
+            {
+                3 => "Δ(2θ) = a1 + a2 tan(θ) + a3 tan^2(θ) ",
+                2 => "Δ(2θ) = a1 + a2 tan(θ)",
+                _ => "Δ(2θ) = a1",
+            });
         }
 
         private void buttonCalibrate_Click(object sender, EventArgs e)
@@ -82,7 +82,7 @@ namespace PDIndexer
                         twoThetaCalc.Add(p.XCalc);
                     }
                 int count = twoThetaCalc.Count;
-                if (count == 0) return;
+                if (count == 0) break; //260712Cl バグ修正: 旧 return はループ末尾の Enabled=true/ボタン文言復元(下)を飛ばしフォームが操作不能のまま残った。break で復元経路へ抜ける
 
                 int order = Math.Min((int)numericUpDownOrder.Value, count);
 
@@ -91,8 +91,9 @@ namespace PDIndexer
                 for (int i = 0; i < count; i++)
                 {
                     double tan = Math.Tan(twoThetaCalc[i] / 360.0 * Math.PI);
-                    for (int j = 0; j < order; j++)
-                        X[i, j] = Math.Pow(tan, j);
+                    double pow = 1; //260712Cl Math.Pow(tan, j) を逐次乗算に (Pow は指数を double 扱いで低速)
+                    for (int j = 0; j < order; j++, pow *= tan)
+                        X[i, j] = pow;
                     Y[i, 0] = Math.Tan(twoThetaCalc[i] - twoThetaObs[i]);
                 }
                 var inv = (X.Transpose() * X).TryInverse();

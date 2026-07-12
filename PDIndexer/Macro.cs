@@ -372,7 +372,7 @@ public class Macro : MacroBase
         public void ReadProfiles(string fileName = "") => Execute(() =>
         {
             if (!System.IO.File.Exists(fileName))
-                main.menuItemFileRead_Click(new object(), new EventArgs());
+                main.menuItemFileRead_Click(new object(), EventArgs.Empty); //260712Cl new EventArgs() → EventArgs.Empty
             else
                 main.readProfile(fileName);
         });
@@ -381,7 +381,7 @@ public class Macro : MacroBase
         public void SaveProfiles(string filename = "") => Execute(() =>
         {
             if (filename == "")
-                main.savePatternProfileToolStripMenuItem_Click(new object(), new EventArgs());
+                main.savePatternProfileToolStripMenuItem_Click(new object(), EventArgs.Empty); //260712Cl new EventArgs() → EventArgs.Empty
             else
                 main.SaveProfile(filename);
         });
@@ -390,7 +390,7 @@ public class Macro : MacroBase
         public void ReadCrystals(string filename = "") => Execute(() =>
         {
             if (!System.IO.File.Exists(filename))
-                main.menuItemReadCrystalData_Click(new object(), new EventArgs());
+                main.menuItemReadCrystalData_Click(new object(), EventArgs.Empty); //260712Cl new EventArgs() → EventArgs.Empty
             else
                 main.readCrystal(filename, false, true);
         });
@@ -399,7 +399,7 @@ public class Macro : MacroBase
         public void SaveCrystals(string filename = "") => Execute(() =>
         {
             if (filename == "")
-                main.menuItemSaveCrystalData_Click(new object(), new EventArgs());
+                main.menuItemSaveCrystalData_Click(new object(), EventArgs.Empty); //260712Cl new EventArgs() → EventArgs.Empty
             else
                 main.saveCrystal(filename);
         });
@@ -408,7 +408,7 @@ public class Macro : MacroBase
         public void SaveMetafile(string filename = "") => Execute(() =>
         {
             if (filename == "")
-                main.toolStripMenuItemSaveMetafile_Click(new object(), new EventArgs());
+                main.toolStripMenuItemSaveMetafile_Click(new object(), EventArgs.Empty); //260712Cl new EventArgs() → EventArgs.Empty
             else
                 main.saveMetafile(filename);
         });
@@ -529,12 +529,16 @@ public class Macro : MacroBase
         {
             var c = main.CurrentCrystal;
             if (c == null) return;
-            if (index == 0) c.A = val / 10;
-            if (index == 1) c.B = val / 10;
-            if (index == 2) c.C = val / 10;
-            if (index == 3) c.Alpha = val / 180.0 * Math.PI;
-            if (index == 4) c.Beta = val / 180.0 * Math.PI;
-            if (index == 5) c.Gamma = val / 180.0 * Math.PI;
+            // 260712Cl 記法近代化: 排他的な if チェーンを switch 文に置換
+            switch (index)
+            {
+                case 0: c.A = val / 10; break;
+                case 1: c.B = val / 10; break;
+                case 2: c.C = val / 10; break;
+                case 3: c.Alpha = val / 180.0 * Math.PI; break;
+                case 4: c.Beta = val / 180.0 * Math.PI; break;
+                case 5: c.Gamma = val / 180.0 * Math.PI; break;
+            }
 
             c.SetAxis();
             c.SetPlanes();

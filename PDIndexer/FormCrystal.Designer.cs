@@ -652,7 +652,7 @@ namespace PDIndexer
             // FormCrystal
             // 
             resources.ApplyResources(this, "$this");
-            AutoScaleMode = AutoScaleMode.Font;
+            AutoScaleMode = AutoScaleMode.Dpi;
             Controls.Add(splitContainer1);
             Controls.Add(statusStrip1);
             KeyPreview = true;

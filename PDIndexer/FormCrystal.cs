@@ -42,8 +42,7 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     }
     private void FormCrystal_Closed(object sender, System.EventArgs e)
     {
-        if (formMain != null)
-            formMain.checkBoxCrystalParameter.Checked = false;
+        formMain?.checkBoxCrystalParameter.Checked = false; //260712Cl C#14 null条件代入
     }
 
     private void FormCrystal_FormClosing(object sender, FormClosingEventArgs e)
@@ -115,10 +114,13 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         if (cry != null && bindingSource.Position >= 0)
         {
-            Bitmap bmp = new Bitmap(22, 22);
+            Bitmap bmp = new(22, 22); //260712Cl target-typed new
             //Graphics g = Graphics.FromImage(bmp); // (260624Ch) 旧: Graphics が未破棄
             using (var g = Graphics.FromImage(bmp)) // (260624Ch)
                 g.Clear(Color.FromArgb(cry.Argb));
+            //260712Cl バグ修正(GDIリーク): 旧Bitmapを破棄せず列[2]を上書きしていたため、結晶色変更のたびに22x22 Bitmapハンドルがリークしていた。差し替え前に旧Bitmapを破棄 (is パターンで null/DBNull は素通り)。
+            if (dataSet.DataTableCrystal.Rows[bindingSource.Position][2] is Bitmap oldBmp)
+                oldBmp.Dispose();
             dataSet.DataTableCrystal.Rows[bindingSource.Position][1] = cry;
             dataSet.DataTableCrystal.Rows[bindingSource.Position][2] = bmp;
             formMain.InitializeCrystalPlane();
@@ -143,7 +145,7 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     private void buttonAllClear_Click(object sender, EventArgs e)
     {
         if (MessageBox.Show(PdiText.ClearCrystals, PdiText.TitleWarning, MessageBoxButtons.OKCancel) == DialogResult.OK) //260625Cl 多言語化
-            for (int i = 0; i < dataSet.DataTableCrystal.Items.Count; i++)
+            for (int i = 0; i < dataSet.DataTableCrystal.Rows.Count; i++) //260712Cl Items.Count は毎回 List 全生成のため Rows.Count に
                 if (((Crystal)dataSet.DataTableCrystal.Rows[i][1]).Reserved == false)
                     dataSet.DataTableCrystal.RemoveItem(i--);
     }
@@ -243,7 +245,7 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         if (e.Button == MouseButtons.Right)
         {
-            FormNumericUpdownControl formNumericUpdownControl = new FormNumericUpdownControl((NumericUpDown)sender);
+            using var formNumericUpdownControl = new FormNumericUpdownControl((NumericUpDown)sender); //260712Cl ShowDialog は自動 Dispose されないため using 宣言化
             formNumericUpdownControl.ShowDialog();
         }
     }

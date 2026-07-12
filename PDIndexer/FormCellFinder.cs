@@ -48,17 +48,15 @@ namespace PDIndexer
                 Low = low;
 
                 //配列dに信頼が高い順番にd値を格納する
-                D = new double[high.Length + medium.Length + low.Length];
-                for (int i = 0; i < high.Length; i++) D[i] = high[i];
-                for (int i = 0; i < medium.Length; i++) D[i + high.Length] = medium[i];
-                for (int i = 0; i < low.Length; i++) D[i + high.Length + medium.Length] = low[i];
+                D = [.. high, .. medium, .. low]; //260712Cl 3配列連結→スプレッド
 
                 WaveLength = wavelength;
 
                 SortedD = new Plane[D.Length];
-                for (int i = 0; i < high.Length; i++) SortedD[i] = new Plane(high[i], 0, 0, 0, 1, 1 / Math.Pow((Math.Asin(wavelength / 2 / high[i]) * 2), 2));
-                for (int i = 0; i < medium.Length; i++) SortedD[i + high.Length] = new Plane(medium[i], 0, 0, 0, 0.5, 1 / Math.Pow((Math.Asin(wavelength / 2 / medium[i]) * 2), 2));
-                for (int i = 0; i < low.Length; i++) SortedD[i + high.Length + medium.Length] = new Plane(low[i], 0, 0, 0, 0.1, 1 / Math.Pow((Math.Asin(wavelength / 2 / low[i]) * 2), 2));
+                // 260712Cl 記法近代化: Math.Pow(x,2)→乗算 (2θを一時変数tに)
+                for (int i = 0; i < high.Length; i++) { var t = 2 * Math.Asin(wavelength / 2 / high[i]); SortedD[i] = new Plane(high[i], 0, 0, 0, 1, 1 / (t * t)); }
+                for (int i = 0; i < medium.Length; i++) { var t = 2 * Math.Asin(wavelength / 2 / medium[i]); SortedD[i + high.Length] = new Plane(medium[i], 0, 0, 0, 0.5, 1 / (t * t)); }
+                for (int i = 0; i < low.Length; i++) { var t = 2 * Math.Asin(wavelength / 2 / low[i]); SortedD[i + high.Length + medium.Length] = new Plane(low[i], 0, 0, 0, 0.1, 1 / (t * t)); }
                 Array.Sort(SortedD);
                 Array.Reverse(SortedD);
 
@@ -87,7 +85,7 @@ namespace PDIndexer
             }
             public object[] GenerateRow()
             {
-                return new object[] { A * 10, B * 10, C * 10, Alpha / Math.PI * 180, Beta / Math.PI * 180, Gamma / Math.PI * 180, Volume * 1000, SigmaDQ, R, Planes };
+                return [A * 10, B * 10, C * 10, Alpha / Math.PI * 180, Beta / Math.PI * 180, Gamma / Math.PI * 180, Volume * 1000, SigmaDQ, R, Planes]; //260712Cl new object[]→[]
             }
 
             #region IComparable メンバ
@@ -131,7 +129,7 @@ namespace PDIndexer
             distributionGraphControl1.BackgroundColor = Color.Gray;
             distributionGraphControl1.DivisionLineColor = Color.Black;
 
-            int[][] c = new int[][] { new int[] { 0, 0, 0, 0 }, new int[] { 5376, 0, 0, 255 }, new int[] { 16256, 0, 191, 191 }, new int[] { 27136, 0, 255, 0 }, new int[] { 38016, 255, 255, 0 }, new int[] { 48896, 255, 0, 0 }, new int[] { 59904, 255, 0, 255 }, new int[] { 65535, 255, 255, 255 } };
+            int[][] c = [[0, 0, 0, 0], [5376, 0, 0, 255], [16256, 0, 191, 191], [27136, 0, 255, 0], [38016, 255, 255, 0], [48896, 255, 0, 0], [59904, 255, 0, 255], [65535, 255, 255, 255]]; //260712Cl ジャグ配列→[]
 
             for (int i = 0; i < 65536; i++)
             {
@@ -146,7 +144,7 @@ namespace PDIndexer
 
         private void buttonAddPeak_Click(object sender, EventArgs e)
         {
-            dataSet1.Tables[0].Rows.Add(new object[] { numericalTextBox1.Value, comboBoxReliability.Text, true });
+            dataSet1.Tables[0].Rows.Add(numericalTextBox1.Value, comboBoxReliability.Text, true); //260712Cl new object[]→params
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -162,6 +160,10 @@ namespace PDIndexer
         {
             if (!isFinding) //260625Cl 旧: if (buttonFind.Text == "Find!")
             {
+                //260712Cl バグ修正: 直前のStop(CancelAsyncは非同期)でワーカーがまだ動作中(IsBusy)のうちに再Findすると、
+                //  下の Candidates.Clear() / Tables[1].Clear() がワーカーの AddRange/Sort とレースしてListが壊れる。動作中は開始しない。
+                if (backgroundWorker.IsBusy)
+                    return;
                 //まずクリアする
                 dataSet1.Tables[1].Clear();
                 Candidates.Clear();
@@ -184,17 +186,16 @@ namespace PDIndexer
                 high.Sort(); medium.Sort(); low.Sort();
                 high.Reverse(); medium.Reverse(); low.Reverse();
 
-                int unk = 0;
-                switch (comboBoxCrystalSystem.SelectedIndex)
+                // 260712Cl 記法近代化: switch文→switch式
+                int unk = comboBoxCrystalSystem.SelectedIndex switch
                 {
-                    case 0: unk = 6; break; //triclinic
-                    case 1: unk = 4; break;//monoclinic
-                    case 2: unk = 3; break; //orthorhombic
-                    case 3: unk = 2; break; //tetragonal
-                    case 4: unk = 2; break; //trigonal
-                    case 5: unk = 2; break; //hexagonal
-                    case 6: unk = 1; break; //cubic
-                }
+                    0 => 6, //triclinic
+                    1 => 4, //monoclinic
+                    2 => 3, //orthorhombic
+                    3 or 4 or 5 => 2, //tetragonal, trigonal, hexagonal
+                    6 => 1, //cubic
+                    _ => 0
+                };
                 if (unk > high.Count + medium.Count + low.Count)
                     return;
                 isFinding = true; //260625Cl 追加
@@ -222,11 +223,11 @@ namespace PDIndexer
         {
             FindCondition condition = (FindCondition)e.Argument;
 
-            Candidate[][] c = new Candidate[threadTotal][];
+            var c = new List<Candidate>[threadTotal]; //260712Cl 旧: Candidate[][] c = new Candidate[threadTotal][];
 
             int counter = 0;
             int lastCounter = 0;
-            Random r = new Random();
+            Random r = new(); //260712Cl target-typed new
             int tryNumber = 10000;
             while (!backgroundWorker.CancellationPending)
             {
@@ -264,7 +265,8 @@ namespace PDIndexer
             }
         }
 
-        private Candidate[] GetCandidates(FindCondition condition, int seed, int tryNumber)
+        //260712Cl 旧シグネチャ: private Candidate[] GetCandidates(FindCondition condition, int seed, int tryNumber)
+        private List<Candidate> GetCandidates(FindCondition condition, int seed, int tryNumber)
         {
             var r = new Random(seed);
             List<Candidate> c = []; //260317Cl new List<Candidate>() → []
@@ -274,44 +276,43 @@ namespace PDIndexer
                 if (temp.R < 1000)
                     c.Add(temp);
             }
-            return c.ToArray();
+            return c; //260712Cl 旧: return c.ToArray();
         }
 
-        private Candidate FindCellParameter(FindCondition condition, int seed)
+        private Candidate FindCellParameter(in FindCondition condition, int seed) //260712Cl in 参照渡し (旧: 値渡し)
         {
-            Random r = new Random(seed);
-            int unk = 0;
-            switch (condition.CrystalSystem)
+            Random r = new(seed); //260712Cl target-typed new
+            // 260712Cl 記法近代化: switch文→switch式
+            int unk = condition.CrystalSystem switch
             {
-                case 0: unk = 6; break; //triclinic
-                case 1: unk = 4; break;//monoclinic
-                case 2: unk = 3; break; //orthorhombic
-                case 3: unk = 2; break; //tetragonal
-                case 4: unk = 2; break; //trigonal
-                case 5: unk = 2; break; //hexagonal
-                case 6: unk = 1; break; //cubic
-            }
+                0 => 6, //triclinic
+                1 => 4, //monoclinic
+                2 => 3, //orthorhombic
+                3 or 4 or 5 => 2, //tetragonal, trigonal, hexagonal
+                6 => 1, //cubic
+                _ => 0
+            };
             if (unk > condition.DtoSortedD.Length)
                 return new Candidate();
 
             Plane[] planes = new Plane[unk];
 
             //まず対象となるピークをunk本選ぶ 
-            List<int> targetPeak = []; //260317Cl new List<int>() → []
+            Span<int> targetPeak = stackalloc int[unk]; //260712Cl 旧: List<int> targetPeak = []; (ホットパスの毎回アロケーション除去)
             for (int j = 0; j < unk; j++)
             {
-                targetPeak.Sort();
+                targetPeak[..j].Sort();
                 int tempTarget = r.Next(r.Next(condition.DtoSortedD.Length / 2));
-                for (int n = 0; n < targetPeak.Count; n++) //0からtempTargetの間で既に選ばれている指数を検索し、tempTargetから外す
+                for (int n = 0; n < j; n++) //0からtempTargetの間で既に選ばれている指数を検索し、tempTargetから外す
                     if (tempTarget >= targetPeak[n])
                         tempTarget++;
-                targetPeak.Add(tempTarget);
+                targetPeak[j] = tempTarget;
             }
             targetPeak.Sort();
             //ピーク選定おわり
 
             //次にピークに指数を与える
-            for (int j = 0; j < targetPeak.Count; j++)
+            for (int j = 0; j < targetPeak.Length; j++) //260712Cl .Count→.Length (Span化)
             {
                 //指数を生成する  orthoは h,k,lすべて >= 0 指数の上限は　ピークの順番(何番目の要素か)の値に6を足したもの
                 int h = 0, k = 0, l = 0;
@@ -350,9 +351,10 @@ namespace PDIndexer
             //軸を組み替える
             if (condition.CrystalSystem == 2)//orthoのとき
             {
-                if (c.A < c.B) { double temp = c.A; c.A = c.B; c.B = temp; }
-                if (c.B < c.C) { double temp = c.B; c.B = c.C; c.C = temp; }
-                if (c.A < c.B) { double temp = c.A; c.A = c.B; c.B = temp; }
+                // 260712Cl 記法近代化: タプルスワップ
+                if (c.A < c.B) (c.A, c.B) = (c.B, c.A);
+                if (c.B < c.C) (c.B, c.C) = (c.C, c.B);
+                if (c.A < c.B) (c.A, c.B) = (c.B, c.A);
             }
             if (condition.CrystalSystem == 1)//monoclinicのとき
             {//βがもっとも90°に近くなるように
@@ -360,15 +362,16 @@ namespace PDIndexer
              // c.C = 0.5242;
              // c.Beta = 105.7 / 180.0 * Math.PI;
 
-                PointD u = new PointD(c.A, 0);
-                PointD v = new PointD(c.C * Math.Cos(c.Beta), c.C * Math.Sin(c.Beta));
+                // 260712Cl 記法近代化: target-typed new
+                PointD u = new(c.A, 0);
+                PointD v = new(c.C * Math.Cos(c.Beta), c.C * Math.Sin(c.Beta));
                 double area = c.A * c.C * Math.Sin(c.Beta);
                 List<PointD> p = []; //260317Cl new List<PointD>() → []
                 for (int i = -2; i <= 2; i++)
                     for (int j = -2; j <= 2; j++)
                         if (!(i == 0 && j == 0))
                             p.Add(i * u + j * v);
-                PointD temp1 = new PointD(0, 0), temp2 = new PointD(0, 0);
+                PointD temp1 = new(0, 0), temp2 = new(0, 0); //260712Cl target-typed new
                 double tempBeta = double.MaxValue;
                 for (int i = 0; i < p.Count; i++)
                     for (int j = i + 1; j < p.Count; j++)
@@ -386,7 +389,7 @@ namespace PDIndexer
                 c.C = temp2.Length;
                 c.Beta = tempBeta;
 
-                if (c.A < c.C) { double temp = c.A; c.A = c.C; c.C = temp; }
+                if (c.A < c.C) (c.A, c.C) = (c.C, c.A); //260712Cl タプルスワップ
             }
             if (condition.MaxA >= c.A && condition.MinA <= c.A && condition.MaxB >= c.B && condition.MinB <= c.B && condition.MaxC >= c.C && condition.MinC <= c.C
              && condition.MaxAlpha >= c.Alpha && condition.MinAlpha <= c.Alpha && condition.MaxBeta >= c.Beta && condition.MinBeta <= c.Beta && condition.MaxGamma >= c.Gamma && condition.MinGamma <= c.Gamma)
@@ -397,7 +400,7 @@ namespace PDIndexer
 
         private Candidate GetResidualValue(Candidate c, FindCondition condition, int seed)
         {
-            Random r = new Random(seed);
+            Random r = new(seed); //260712Cl target-typed new
             double SinAlpha = Math.Sin(c.Alpha); double SinBeta = Math.Sin(c.Beta); double SinGamma = Math.Sin(c.Gamma);
             double CosAlpha = Math.Cos(c.Alpha); double CosBeta = Math.Cos(c.Beta); double CosGamma = Math.Cos(c.Gamma);
             double a2 = c.A * c.A; double b2 = c.B * c.B; double c2 = c.C * c.C;
@@ -414,9 +417,7 @@ namespace PDIndexer
             int kMax = Math.Min((int)(c.B / (condition.SortedD[^1].D * 0.9)), 30);
             int lMax = Math.Min((int)(c.C / (condition.SortedD[^1].D * 0.9)), 30);
 
-            Plane[] obs = new Plane[condition.SortedD.Length];
-            for (int i = 0; i < obs.Length; i++)
-                obs[i] = condition.SortedD[i];
+            Plane[] obs = [.. condition.SortedD]; //260712Cl 要素コピーループ→スプレッド
 
             //計算上のd値を格納するリストを定義
             List<Plane> calcPlanes = []; //260317Cl new List<Plane>() → []
@@ -494,10 +495,7 @@ namespace PDIndexer
                         diff[i] = temp;
                         obsToCalcIndex[i] = j;
                     }
-            double diffMax = double.NegativeInfinity;
-            for (int i = 0; i < obs.Length; i++)
-                if (diffMax < diff[i])
-                    diffMax = diff[i];
+            double diffMax = diff.Max(); //260712Cl 手動max→diff.Max() (SimdLinq)
             if (diffMax > 0.0004) return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
 
             //obsToCalcに重複がないかどうかチェック
@@ -563,21 +561,21 @@ namespace PDIndexer
             int column = p.Length;
             Matrix<double> inv;
 
-            int unk = 0;
-            switch (system)
+            // 260712Cl 記法近代化: switch文→switch式
+            int unk = system switch
             {
-                case 0: unk = 6; break; //triclinic
-                case 1: unk = 4; break;//monoclinic
-                case 2: unk = 3; break; //orthorhombic
-                case 3: unk = 2; break; //tetragonal
-                case 4: unk = 2; break; //trigonal
-                case 5: unk = 2; break; //hexagonal
-                case 6: unk = 1; break; //cubic
-            }
+                0 => 6, //triclinic
+                1 => 4, //monoclinic
+                2 => 3, //orthorhombic
+                3 or 4 or 5 => 2, //tetragonal, trigonal, hexagonal
+                6 => 1, //cubic
+                _ => 0
+            };
             var Q = new DenseMatrix(column, unk);
             var A = new DenseMatrix(column, 1);
             var W = new DenseMatrix(column, column);
             Matrix<double> C = new DenseMatrix(column, 1);
+            Matrix<double> Qt = null; //260712Cl 追加: 下の switch 各 case で Q.Transpose() を1回に集約 (case 群はスコープを共有するため式の外で宣言)
 
             switch (system)
             {
@@ -595,10 +593,11 @@ namespace PDIndexer
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
 
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
 
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     double a_star = Math.Sqrt(C[0, 0]);
                     double b_star = Math.Sqrt(C[1, 0]);
@@ -685,10 +684,11 @@ namespace PDIndexer
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
 
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
 
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     beta = Math.Acos(-C[3, 0] / 2 / Math.Sqrt(C[0, 0] * C[2, 0]));
                     a = Math.Sqrt(1 / C[0, 0]) / Math.Sin(beta);
@@ -709,9 +709,10 @@ namespace PDIndexer
                         A[i, 0] = 1 / p[i].D / p[i].D;
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     a = Math.Sqrt(1 / C[0, 0]);
                     b = Math.Sqrt(1 / C[1, 0]);
@@ -731,9 +732,10 @@ namespace PDIndexer
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
 
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     a = b = Math.Sqrt(1 / C[0, 0]);
                     c = Math.Sqrt(1 / C[1, 0]);
@@ -751,9 +753,10 @@ namespace PDIndexer
                         A[i, 0] = 1 / p[i].D / p[i].D;
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     a = b = Math.Sqrt(1 / C[0, 0]);
                     c = Math.Sqrt(1 / C[1, 0]);
@@ -772,9 +775,10 @@ namespace PDIndexer
                         A[i, 0] = 1 / p[i].D / p[i].D;
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     a = b = Math.Sqrt(1 / C[0, 0]);
                     c = Math.Sqrt(1 / C[1, 0]);
@@ -792,9 +796,10 @@ namespace PDIndexer
                         A[i, 0] = 1 / p[i].D / p[i].D;
                         W[i, i] = p[i].Weight * p[i].Reliability;
                     }
-                    if (!(Q.Transpose() * W * Q).TryInverse(out inv))
+                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+                    if (!(Qt * W * Q).TryInverse(out inv))
                         return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Q.Transpose() * W * A;
+                    C = inv * Qt * W * A;
 
                     a = b = c = Math.Sqrt(1 / C[0, 0]);
                     alpha = beta = gamma = Math.PI / 2;
@@ -806,7 +811,8 @@ namespace PDIndexer
                 return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
             else
             {
-                sigmaDQ = ((C.Transpose() * Q.Transpose() - A.Transpose()) * W * (Q * C - A))[0, 0];
+                var res = Q * C - A; //260712Cl 残差ベクトルを再利用 (旧: (C.Transpose() * Q.Transpose() - A.Transpose()) * W * (Q * C - A))
+                sigmaDQ = (res.Transpose() * W * res)[0, 0];
                 return new Candidate(a, b, c, alpha, beta, gamma, V, sigmaDQ, 0, p);
             }
         }
@@ -829,7 +835,9 @@ namespace PDIndexer
 
         private void backgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-
+            //260712Cl バグ修正: 旧は空実装で、DoWork 内の例外 (Parallel.For の AggregateException 含む) が e.Error に入ったまま黙殺されていた。最低限ユーザーへ通知する。
+            if (e.Error != null)
+                MessageBox.Show(e.Error.Message, "Cell finder", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
@@ -842,17 +850,12 @@ namespace PDIndexer
                 try
                 {
                     //StreamReader reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8")); // (260624Ch) 旧: 例外時に Close されない
-                    using var reader = new StreamReader(dlg.FileName, Encoding.GetEncoding("UTF-8")); // (260624Ch)
-                    List<string> strList = []; //260317Cl new List<string>() → []
-                    string tempstr;
-                    while ((tempstr = reader.ReadLine()) != null)
-                        strList.Add(tempstr);
-                    //reader.Close(); // (260624Ch) using var に移行
+                    var strList = File.ReadAllLines(dlg.FileName, Encoding.UTF8); //260712Cl StreamReaderループ→File.ReadAllLines
 
                     dataSet1.Tables[0].Rows.Clear();
                     Candidates.Clear();
-                    for (int i = 3; i < strList.Count; i++)
-                        dataSet1.Tables[0].Rows.Add(new object[] { Convert.ToDouble(strList[i]), "High", true });
+                    for (int i = 3; i < strList.Length; i++)
+                        dataSet1.Tables[0].Rows.Add(Convert.ToDouble(strList[i]), "High", true); //260712Cl new object[]→params
                 }
                 catch { }
             }
@@ -903,35 +906,35 @@ namespace PDIndexer
             if (dataSet1.Tables[1].Rows.Count < 1) return;
             double minR = (double)dataSet1.Tables[1].Rows[0][8];
 
-            double maxR = (double)dataSet1.Tables[1].Rows[dataSet1.Tables[1].Rows.Count - 1][8];
+            double maxR = (double)dataSet1.Tables[1].Rows[^1][8]; //260712Cl Count-1→^1
 
             //pictureBoxに分布を描く
             distributionGraphControl1.ClearData();
             for (int i = dataSet1.Tables[1].Rows.Count - 1; i >= 0; i--)
             {
-                double x = 0, y = 0;
-                switch (comboBoxX.Text)
+                // 260712Cl 記法近代化: switch文→switch式 (x, y)
+                double x = comboBoxX.Text switch
                 {
-                    case "a": x = (double)dataSet1.Tables[1].Rows[i][0]; break;
-                    case "b": x = (double)dataSet1.Tables[1].Rows[i][1]; break;
-                    case "c": x = (double)dataSet1.Tables[1].Rows[i][2]; break;
-                    case "α": x = (double)dataSet1.Tables[1].Rows[i][3]; break;
-                    case "β": x = (double)dataSet1.Tables[1].Rows[i][4]; break;
-                    case "γ": x = (double)dataSet1.Tables[1].Rows[i][5]; break;
-                }
-                switch (comboBoxY.Text)
+                    "a" => (double)dataSet1.Tables[1].Rows[i][0],
+                    "b" => (double)dataSet1.Tables[1].Rows[i][1],
+                    "c" => (double)dataSet1.Tables[1].Rows[i][2],
+                    "α" => (double)dataSet1.Tables[1].Rows[i][3],
+                    "β" => (double)dataSet1.Tables[1].Rows[i][4],
+                    "γ" => (double)dataSet1.Tables[1].Rows[i][5],
+                    _ => 0
+                };
+                double y = comboBoxY.Text switch
                 {
-                    case "a": y = (double)dataSet1.Tables[1].Rows[i][0]; break;
-                    case "b": y = (double)dataSet1.Tables[1].Rows[i][1]; break;
-                    case "c": y = (double)dataSet1.Tables[1].Rows[i][2]; break;
-                    case "α": y = (double)dataSet1.Tables[1].Rows[i][3]; break;
-                    case "β": y = (double)dataSet1.Tables[1].Rows[i][4]; break;
-                    case "γ": y = (double)dataSet1.Tables[1].Rows[i][5]; break;
-                }
+                    "a" => (double)dataSet1.Tables[1].Rows[i][0],
+                    "b" => (double)dataSet1.Tables[1].Rows[i][1],
+                    "c" => (double)dataSet1.Tables[1].Rows[i][2],
+                    "α" => (double)dataSet1.Tables[1].Rows[i][3],
+                    "β" => (double)dataSet1.Tables[1].Rows[i][4],
+                    "γ" => (double)dataSet1.Tables[1].Rows[i][5],
+                    _ => 0
+                };
                 double r = (double)dataSet1.Tables[1].Rows[i][8];
-                int index = (int)(65535 * ((maxR - r) / (maxR - minR)));
-                if (index < 1) index = 0;
-                if (index > 65535) index = 65535;
+                int index = Math.Clamp((int)(65535 * ((maxR - r) / (maxR - minR))), 0, 65535); //260712Cl 手動範囲制限→Math.Clamp
 
                 distributionGraphControl1.AddData(new PointD(x, y), 5, 5, color[index], color[index], 0, false);
 

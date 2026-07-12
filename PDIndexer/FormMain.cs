@@ -120,11 +120,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             if (UpperX <= LowerX)
                 UpperX++;
         }
-        get { return numericBoxLowerX.Value; }
+        get => numericBoxLowerX.Value; //260712Cl 式本体化
     }
     public double UpperX { set { numericBoxUpperX.Value = value; if (UpperX <= LowerX) LowerX++; } get => numericBoxUpperX.Value; }
     public double LowerY { set { numericBoxLowerY.Value = value; if (UpperY <= LowerY) UpperY++; } get => numericBoxLowerY.Value; }
-    public double UpperY { set { numericBoxUpperY.Value = value; if (UpperY <= LowerY) LowerY--; } get { return numericBoxUpperY.Value; } }
+    public double UpperY { set { numericBoxUpperY.Value = value; if (UpperY <= LowerY) LowerY--; } get => numericBoxUpperY.Value; } //260712Cl 式本体化
 
     public double MaximalX
     {
@@ -297,7 +297,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     }
 
 
-    private Stopwatch stopwatch { get; set; } = new Stopwatch();
+    private Stopwatch stopwatch { get; set; } = new(); //260712Cl target-typed new
 
 
     #endregion
@@ -648,7 +648,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         catch { MessageBox.Show(PdiText.ClipboardFail); } //260625Cl 多言語化: 旧 "Failed to read clipboard information. Sorry."
                         finally { mutex.ReleaseMutex(); }
 
-                        if ((int)NextHandle != 0)
+                        if (NextHandle != IntPtr.Zero) //260712Cl IntPtr.Zero 比較
                             SendMessage(NextHandle, msg.Msg, msg.WParam, msg.LParam);
                     }
                     else//mutexを取るのに失敗していたら
@@ -662,7 +662,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             case WM_CHANGECBCHAIN:
                 if (msg.WParam == NextHandle)
                     NextHandle = (IntPtr)msg.LParam;
-                else if ((int)NextHandle != 0)
+                else if (NextHandle != IntPtr.Zero) //260712Cl IntPtr.Zero 比較
                     SendMessage(NextHandle, msg.Msg, msg.WParam, msg.LParam);
                 break;
         }
@@ -705,7 +705,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             var key = Microsoft.Win32.Registry.CurrentUser.CreateSubKey("Software\\Crystallography\\PDIndexer");
             try
             {
-                if (4440 > Convert.ToInt32(key.GetValue("Version".Replace(".", ""), "0")))
+                if (4440 > Convert.ToInt32(key.GetValue("Version", "0"))) //260712Cl no-op Replace 除去
                     ClearRegistry();
             }
             catch { ClearRegistry(); }
@@ -830,7 +830,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         FormMacro = new FormMacro(Python.CreateEngine(), macro) { Visible = false };
         FormMacro.HelpPage = "8-macro"; //260604Cl 追加: Controls側マクロフォームにヘルプを設定
 
-        this.Text = "PDIndexer   " + Version.VersionAndDate;
+        this.Text = $"PDIndexer   {Version.VersionAndDate}"; //260712Cl 文字列補間
 #if DEBUG
         this.Text += "(debug)";
 #endif
@@ -845,7 +845,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (!File.Exists(UserAppDataPath + "default.xml") || new FileInfo(UserAppDataPath + "default.xml").Length < 200)
             File.Copy(appPath + "default.xml", UserAppDataPath + "default.xml", true);
 
-        if (!File.Exists(UserAppDataPath + "PDIndexerSetup.msi"))
+        if (File.Exists(UserAppDataPath + "PDIndexerSetup.msi")) //260712Cl バグ修正: 旧 !File.Exists (条件反転で「存在しない時だけ削除」=デッドコード。残留インストーラが削除されなかった)
             File.Delete(UserAppDataPath + "PDIndexerSetup.msi");
 
         //StdDbをコピー
@@ -913,7 +913,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         initialDialog.Text = "Now Loading... Initializing file system watcher.";
         //ファイル更新監視
         watcher = new FileSystemWatcher { IncludeSubdirectories = true };
-        watcher.Created += new System.IO.FileSystemEventHandler(watcher_Created);
+        watcher.Created += watcher_Created; //260712Cl メソッドグループ
         watcher.Path = "";
         watcher.EnableRaisingEvents = false;
 
@@ -925,8 +925,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         initialDialog.Text = "Now Loading... Initializing print function.";
         //プリント関係  
-        printDocument = new System.Drawing.Printing.PrintDocument();
-        printDocument.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(pd_PrintPage);
+        printDocument = new PrintDocument(); //260712Cl フル修飾除去
+        printDocument.PrintPage += pd_PrintPage; //260712Cl メソッドグループ
 
         // PrintPreviewDialogオブジェクトの生成
         printPreviewDialog = new PrintPreviewDialog { Document = printDocument };
@@ -1456,8 +1456,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     {
                         int width = bmp.Width;
                         int height = bmp.Height;
-                        byte* p = (byte*)(void*)bmpData.Scan0;
-                        int nResidual = bmpData.Stride - bmp.Width * 3;
+                        int stride = bmpData.Stride; //260712Cl 並列化: 行ごとに base ポインタを再計算するため stride を保持 (旧 nResidual は各行 base 復元で不要)
+                        IntPtr scan0 = bmpData.Scan0; //260712Cl ポインタ変数はラムダにキャプチャ不可のため IntPtr で受け、各行内で byte* に復元
 
                         double endX = dif.Profile.Pt[^1].X;
                         double startX = dif.Profile.Pt[0].X;
@@ -1465,18 +1465,31 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         double maxInt = (double)numericUpDownMaxInt.Value;
                         double minInt = (double)numericUpDownMinInt.Value;
 
-                        for (int h = 0; h < height; h++)
+                        // 260712Cl 安全な並列化: ピクセル二重ループは行 h ごとに出力メモリ領域(bitmap の1行)が完全に独立。
+                        //   x は列 w のみに依存するので列マップを1回だけ事前計算し、UI 値(LowerX/UpperX)を並列前にスナップショットして、
+                        //   行ループを Parallel.For 化する。ラムダ内に共有可変状態への書き込みも UI コントロールアクセスも無い。数値演算(除算/キャスト順)は原式のまま。
+                        double lowerX = LowerX, upperX = UpperX; //UI(NumericBox)値を並列前にスナップショット
+                        int imageWidth = dif.ImageWidth, imageHeight = dif.ImageHeight;
+                        double[] imageArray = dif.ImageArray;
+                        var xMap = new int[width];
+                        for (int w = 0; w < width; w++)
                         {
-                            int y = (int)((double)dif.ImageHeight * (double)h / (double)height);
+                            double realX = lowerX + (double)w / (double)width * (upperX - lowerX);
+                            xMap[w] = (int)(imageWidth * (realX - startX) / (endX - startX) + 0.5);
+                        }
+
+                        Parallel.For(0, height, h =>
+                        {
+                            int y = (int)((double)imageHeight * (double)h / (double)height);
+                            int yOffset = y * imageWidth;
+                            byte* p = (byte*)(void*)scan0 + (long)h * stride;
                             for (int w = 0; w < width; w++)
                             {
-
-                                double realX = LowerX + (double)w / (double)width * (UpperX - LowerX);
-                                int x = (int)(dif.ImageWidth * (realX - startX) / (endX - startX) + 0.5);
-                                if (x >= 0 && x < dif.ImageWidth)
+                                int x = xMap[w];
+                                if (x >= 0 && x < imageWidth)
                                 {
                                     int index =
-                                    (int)((dif.ImageArray[x + y * dif.ImageWidth] - minInt) / (maxInt - minInt) * 65535 + 0.5);
+                                    (int)((imageArray[x + yOffset] - minInt) / (maxInt - minInt) * 65535 + 0.5);
                                     if (index > 65535) index = 65535;
                                     if (index < 0) index = 0;
                                     if (negative) index = 65535 - index;
@@ -1485,8 +1498,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                 }
                                 p += 3;
                             }
-                            p += nResidual;
-                        }
+                        });
                     }
                     finally { bmp.UnlockBits(bmpData); } // (260624Ch)
                     gMain.DrawImage(bmp, OriginPos.X, 0);
@@ -1553,7 +1565,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 //pen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1) { DashStyle = DashStyle.Dash }; // (260624Ch) 旧: Pen 再代入で前の Pen も未破棄
                 using var originalPen = new Pen(Color.FromArgb(128, Color.FromArgb((int)dp.ColorARGB)), 1) { DashStyle = DashStyle.Dash }; // (260624Ch)
                 if (original.Count > 1)
-                    gMain.DrawLines(originalPen, original.ToArray()); // (260624Ch)
+                    gMain.DrawLines(originalPen, CollectionsMarshal.AsSpan(original)); //260712Cl コピー除去
             }
         }
 
@@ -1569,9 +1581,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         try // (260624Ch)
         {
-            Parallel.For(0, dataSet.DataTableProfile.CheckedItems.Count, j =>
+            var checkedItems = dataSet.DataTableProfile.CheckedItems; //260712Cl CheckedItems を1回だけスナップショット
+            var showErrorBar = checkBoxErrorBar.Checked;              //260712Cl UI 状態もループ外で読む
+            Parallel.For(0, checkedItems.Count, j =>
             {
-                var dp = dataSet.DataTableProfile.CheckedItems[j];
+                var dp = checkedItems[j];
                 var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
                 if (srcPts.Length > 2)
                 {
@@ -1586,7 +1600,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     }
 
                     //エラーバー描画
-                    if (checkBoxErrorBar.Checked && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
+                    if (showErrorBar && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
                     {
                         var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
                         lock (lockObj) profilePens.Add(penErr); // (260624Ch)
@@ -1598,9 +1612,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                 var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
                                 lock (lockObj)
                                 {
-                                    profiles.Add((penErr, new[] { maxErr, minErr }));
-                                    profiles.Add((penErr, new[] { new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y) }));
-                                    profiles.Add((penErr, new[] { new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y) }));
+                                    profiles.Add((penErr, [maxErr, minErr])); //260712Cl コレクション式
+                                    profiles.Add((penErr, [new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y)]));
+                                    profiles.Add((penErr, [new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y)]));
                                 }
                             }
                     }
@@ -1615,7 +1629,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         }
         finally // (260624Ch)
         {
-            foreach (var pen in profilePens.Distinct())
+            foreach (var pen in profilePens) //260712Cl Distinct 不要 (pen/penErr とも生成時に1回だけ Add)
                 pen.Dispose();
         }
     }
@@ -1662,12 +1676,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                             gMain.FillEllipse(pointBrush, p.X - 5, p.Y - 5, 10, 10); // (260624Ch)
                     }
                 }
-                pt = [.. dp.BackgroundProfile.Pt];
-                if (pt.Length > 2)
-                    for (int i = 0; i < pt.Length - 1; i++)
-                    {
-                        gMain.DrawLine(pen, ConvToPicBoxCoord(pt[i]), ConvToPicBoxCoord(pt[i + 1]));
-                    }
+                var bgPt = dp.BackgroundProfile.Pt; //260712Cl コピーせず List を直接参照
+                if (bgPt.Count > 2)
+                    for (int i = 0; i < bgPt.Count - 1; i++)
+                        gMain.DrawLine(pen, ConvToPicBoxCoord(bgPt[i]), ConvToPicBoxCoord(bgPt[i + 1]));
                 for (int i = 0; i < dp.BackgroundProfile.Pt.Count - 1; i++)
                 {
                     gMain.DrawLine(pen, ConvToPicBoxCoord(dp.BackgroundProfile.Pt[i].X, dp.BackgroundProfile.Pt[i].Y + dp.Profile.Pt[i].Y),
@@ -1682,6 +1694,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         //Pen pen; // (260624Ch) 旧: ループ内生成 Pen が未破棄
 
+        int checkedCrystalCount = dataSet.DataTableCrystal.CheckedItems.Count; //260712Cl メモリ: 面ループ内の CheckedItems 再構築を回避
         //チェックしている結晶の描画位置を計算
         foreach (int i in dataSet.DataTableCrystal.CheckedIndices)
         {
@@ -1697,6 +1710,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     //var br = new SolidBrush(Color.FromArgb(cry.Argb)); // (260624Ch) 旧: Brush が未破棄
                     using var br = new SolidBrush(Color.FromArgb(cry.Argb)); // (260624Ch)
                     using var verticalFormat = new StringFormat(StringFormatFlags.DirectionVertical); // (260624Ch)
+                    // 260712Cl メモリ: Pen を結晶ごとに最大2本へ巻き上げ (面ごとの生成を廃止)
+                    using var basePen = new Pen(Color.FromArgb(cry.Argb), i == bindingSourceCrystal.Position ? 3f : 1f);
+                    using var selectedPen = new Pen(Color.FromArgb(cry.Argb), 5f);
                     var JustBeforePt = new PointF(-10, -10);
                     int shiftY = 40;
                     for (int j = 0; j < cry.Plane.Count; j++)
@@ -1709,9 +1725,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                             //pen = i == bindingSourceCrystal.Position ? // (260624Ch) 旧: Pen が未破棄
                             //     new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f) :
                             //     new Pen(Color.FromArgb(cry.Argb), 1f);
-                            using var pen = i == bindingSourceCrystal.Position ?
-                                 new Pen(Color.FromArgb(cry.Argb), j == SelectedPlaneIndex ? 5f : 3f) :
-                                 new Pen(Color.FromArgb(cry.Argb), 1f); // (260624Ch)
+                            var pen = (i == bindingSourceCrystal.Position && j == SelectedPlaneIndex) ? selectedPen : basePen; //260712Cl 巻き上げた basePen/selectedPen を選択
 
                             if (!double.IsNaN(cry.Plane[j].XCalc))
                             {
@@ -1720,7 +1734,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                     if (formCrystal.checkBoxShowPeakOverProfiles.Checked)
                                     {
                                         float zero = formCrystal.checkBoxShowPeakUnderProfile.Checked ?//描画範囲の最低強度位置のピクセル
-                                            pictureBoxMain.Height - OriginPos.Y - dataSet.DataTableCrystal.CheckedItems.Count * (HeightOfBottomPeaks + 4) :
+                                            pictureBoxMain.Height - OriginPos.Y - checkedCrystalCount * (HeightOfBottomPeaks + 4) : //260712Cl 巻き上げた checkedCrystalCount を使用
                                             pictureBoxMain.Height - OriginPos.Y;
 
                                         float top = 0;
@@ -1810,8 +1824,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         List<Plane> planeList = []; //260317Cl new List<T>() → []
 
         //先ず、fittigチェックの結晶面を探す。
-        for (int c = 0; c < dataSet.DataTableCrystal.CheckedItems.Count; c++)
-            planeList.AddRange(dataSet.DataTableCrystal.CheckedItems[c].Plane.Where(p => p.IsFittingChecked).ToArray());
+        foreach (var cry in dataSet.DataTableCrystal.CheckedItems) //260712Cl getter 1回化 + 中間 ToArray 削除
+            planeList.AddRange(cry.Plane.Where(p => p.IsFittingChecked));
 
         //simpleモードのものだけ抜き出して、描画
         foreach (Plane p in planeList.Where(p => p.SerchOption == PeakFunctionForm.Simple && !p.simpleParameter.IsNaN && !double.IsNaN(p.simpleParameter.X)))
@@ -1833,7 +1847,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         try
         {
             //グループごとに描画
-            for (int i = planeList2.Min(p => p.peakFunction.GroupIndex); i < planeList2.Max(p => p.peakFunction.GroupIndex) + 1; i++)
+            int minGroup = planeList2.Min(p => p.peakFunction.GroupIndex); //260712Cl ループ外へ巻き上げ
+            int maxGroup = planeList2.Max(p => p.peakFunction.GroupIndex);
+            for (int i = minGroup; i <= maxGroup; i++)
             {
                 //i番目のグループを抜き出す。
                 Plane[] planeList3 = planeList.Where(p => p.peakFunction.GroupIndex == i).ToArray();
@@ -1860,10 +1876,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         }
 
                     if (subtraction.Count > 1)
-                        gMain.DrawLines(penSubtraction, subtraction.ToArray());
+                        gMain.DrawLines(penSubtraction, CollectionsMarshal.AsSpan(subtraction)); //260712Cl コピー除去 (ReadOnlySpan オーバーロード)
 
                     if (background.Count > 1)
-                        gMain.DrawLines(penSubtraction, background.ToArray());
+                        gMain.DrawLines(penSubtraction, CollectionsMarshal.AsSpan(background));
 
                     //個々のフィッティングカーブを描く
                     foreach (Plane p in planeList3)
@@ -1880,7 +1896,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                 for (double k = startTheta; k < endTheta; k += step)
                                     peaks.Add(ConvToPicBoxCoord(k, p.peakFunction.GetValue(k, false) + p.peakFunction.B1 + p.peakFunction.B2 * (k - p.peakFunction.X) + basePosition));
                                 if (peaks.Count > 1)
-                                    gMain.DrawLines(penPeak, peaks.ToArray());
+                                    gMain.DrawLines(penPeak, CollectionsMarshal.AsSpan(peaks)); //260712Cl コピー除去
                             }
                         }
                     }
@@ -1889,6 +1905,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         }
         catch { }
     }
+
+    // 260712Cl メモリ: 描画ホットパスで共有する不変 Font (アプリ寿命保持のため Dispose 不要)
+    private static readonly Font tahoma8 = new("Tahoma", 8);
 
     //目盛りを描画する部分
     private void DrawGradiation()
@@ -1916,8 +1935,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         gMain.DrawLine(pen, OriginPos.X, pictureBoxMain.Height - OriginPos.Y, pictureBoxMain.Width, pictureBoxMain.Height - OriginPos.Y);
         //using Font strFont = new(new FontFamily("tahoma"), 8); // (260624Ch) 旧: FontFamily が未破棄
-        using var fontFamily = new FontFamily("tahoma"); // (260624Ch)
-        using Font strFont = new(fontFamily, 8); // (260624Ch)
+        var strFont = tahoma8; //260712Cl 生成/破棄を廃し static キャッシュを参照
         for (int i = (int)(LowerX / AngleGradiation) + 1; i < UpperX / AngleGradiation; i++)
         {
             float x = ConvToPicBoxCoord(i * AngleGradiation, 0).X;
@@ -2347,7 +2365,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         PointD pt = ConvToRealCoord(e.X, e.Y);
 
         #region 横軸と縦軸の単位の設定
-        labelTwoTheta.Text = AxisMode switch
+        var prefix = AxisMode switch
         {
             HorizontalAxis.Angle => "2θ: ",
             HorizontalAxis.d => "d: ",
@@ -2356,10 +2374,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             HorizontalAxis.WaveNumber => "q: ",
             _ => ""
         };
-        labelTwoTheta.Text += pt.X < 10000 ? pt.X.ToString("g6") : pt.X.ToString("#,0");
-
-
-        labelTwoTheta.Text += AxisMode switch
+        var unit = AxisMode switch
         {
             HorizontalAxis.Angle => " " + AxisProperty.TwoThetaUnitText,
             HorizontalAxis.d => " " + AxisProperty.DspacingUnitText,
@@ -2368,6 +2383,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             HorizontalAxis.WaveNumber => " " + AxisProperty.WaveNumberUnitText,
             _ => ""
         };
+        labelTwoTheta.Text = prefix + (pt.X < 10000 ? pt.X.ToString("g6") : pt.X.ToString("#,0")) + unit; //260712Cl 1回代入に集約
         #endregion
 
         var d = HorizontalAxisConverter.ConvertToD(pt.X, HorizontalAxisProperty) * 10;
@@ -2908,7 +2924,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         }
 
         formDataConverter.textBox.Text = "";
-        var ext = Path.GetExtension(fileName).ToLower().Remove(0, 1);
+        var ext = Path.GetExtension(fileName).ToLower()[1..]; //260712Cl 範囲演算子
 
         var fileTypeNum = ext switch
         {
@@ -2961,7 +2977,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 {
                     var nxs = new HDF(fileName);
 
-                    detectorNum = nxs.Datasets.Where(e => e.Path.Contains("/histogram")).Count();
+                    detectorNum = nxs.Datasets.Count(e => e.Path.Contains("/histogram")); //260712Cl Where().Count() → Count(述語)
                     //   nxs.Move("/entry/instrument/xspress3");
                     //  detectorNum = nxs.GetGroups().Length;
                 }
@@ -3091,42 +3107,44 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 formDataConverter.SetProperty(FileProperties[(int)FileType.XBM]);
 
                 using var br = new BinaryReader(new FileStream(fileName, FileMode.Open, FileAccess.Read));
-                var getString = new Func<int, int, string>((position, count) =>
+                // 260712Cl 記法近代化: new Func<...>(ラムダ) → 自然型ラムダ (getString/getDouble/getInt16)
+                var getString = (int position, int count) =>
                 {
                     char[] temp = new char[count];
                     br.BaseStream.Position = position;
                     br.Read(temp, 0, temp.Length);
                     return new string(temp).TrimEnd();
-                });
+                };
 
-                var getDouble = new Func<int, double>((position) =>
+                var getDouble = (int position) =>
                 {
                     br.BaseStream.Position = position;
                     return br.ReadDouble();
-                });
+                };
 
-                var getInt16 = new Func<int, short>((position) =>
+                var getInt16 = (int position) =>
                 {
                     br.BaseStream.Position = position;
                     return br.ReadInt16();
-                });
+                };
 
-                diffProf.Comment = "Sample name: " + getString(0x4, 64);
-                diffProf.Comment += "\r\nProfile number: " + getString(0x44, 64);
-                diffProf.Comment += "\r\nDate,Time,Span: " + getString(0x84, 8) + ", " + getString(0x8c, 6) + ", " + getString(0x92, 6);
-                diffProf.Comment += "\r\nOperator name: " + getString(0x98, 30);
-                diffProf.Comment += "\r\nComment: " + getString(0xB6, 100);
-                diffProf.Comment += "\r\nEGC1,2,3: " + getDouble(0x59A) + ", " + getDouble(0x5A2) + ", " + getDouble(0x5AA);
-                diffProf.Comment += "\r\n2Theta(deg): " + getDouble(0x05B2);
-                diffProf.Comment += "\r\nLive/Real time (sec): " + getDouble(0x05F4) + "/" + getDouble(0x05EC);
-                diffProf.Comment += "\r\nDead time (%): " + getDouble(0x0686);
-                diffProf.Comment += "\r\nTemperature (degC): " + getDouble(0x05D2);
-                diffProf.Comment += "\r\nRing current (mA): " + getDouble(0x05C2) * 10;
-                diffProf.Comment += "\r\nCounting rate: " + getDouble(0x05E2);
-                diffProf.Comment += "\r\nPress conditions X:NA, Y:NA, Z:NA, Phi(deg): " + getDouble(0x0616);
-                diffProf.Comment += "\r\nIncident slit conditions (mm) V: " + getDouble(0x068E) + ", H: " + getDouble(0x0696);
-                diffProf.Comment += "\r\nReceiving slit conditions (mm) V: " + getDouble(0x06B6) + ", H: " + getDouble(0x06BE) + ", Collimator:NA";
-                diffProf.Comment += "\r\nHeating conditions  V(V): " + getDouble(0x05BA) + ", C(A): " + getDouble(0x06E6) + ", P(W): " + getDouble(0x066E) + ", R(OHM): " + getDouble(0x0676);
+                // 260712Cl 記法近代化: '+' 連結チェーン → 文字列補間
+                diffProf.Comment = $"Sample name: {getString(0x4, 64)}";
+                diffProf.Comment += $"\r\nProfile number: {getString(0x44, 64)}";
+                diffProf.Comment += $"\r\nDate,Time,Span: {getString(0x84, 8)}, {getString(0x8c, 6)}, {getString(0x92, 6)}";
+                diffProf.Comment += $"\r\nOperator name: {getString(0x98, 30)}";
+                diffProf.Comment += $"\r\nComment: {getString(0xB6, 100)}";
+                diffProf.Comment += $"\r\nEGC1,2,3: {getDouble(0x59A)}, {getDouble(0x5A2)}, {getDouble(0x5AA)}";
+                diffProf.Comment += $"\r\n2Theta(deg): {getDouble(0x05B2)}";
+                diffProf.Comment += $"\r\nLive/Real time (sec): {getDouble(0x05F4)}/{getDouble(0x05EC)}";
+                diffProf.Comment += $"\r\nDead time (%): {getDouble(0x0686)}";
+                diffProf.Comment += $"\r\nTemperature (degC): {getDouble(0x05D2)}";
+                diffProf.Comment += $"\r\nRing current (mA): {getDouble(0x05C2) * 10}";
+                diffProf.Comment += $"\r\nCounting rate: {getDouble(0x05E2)}";
+                diffProf.Comment += $"\r\nPress conditions X:NA, Y:NA, Z:NA, Phi(deg): {getDouble(0x0616)}";
+                diffProf.Comment += $"\r\nIncident slit conditions (mm) V: {getDouble(0x068E)}, H: {getDouble(0x0696)}";
+                diffProf.Comment += $"\r\nReceiving slit conditions (mm) V: {getDouble(0x06B6)}, H: {getDouble(0x06BE)}, Collimator:NA";
+                diffProf.Comment += $"\r\nHeating conditions  V(V): {getDouble(0x05BA)}, C(A): {getDouble(0x06E6)}, P(W): {getDouble(0x066E)}, R(OHM): {getDouble(0x0676)}";
 
                 formDataConverter.TakeoffAngleText = getDouble(0x05B2).ToString();
                 formDataConverter.ExposureTime = getDouble(0x05F4);
@@ -3394,7 +3412,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
             diffProf.ExposureTime =  formDataConverter.ExposureTime;
 
-            diffProf.Name = fileName.Remove(0, fileName.LastIndexOf('\\') + 1);
+            diffProf.Name = Path.GetFileName(fileName); //260712Cl 手書き抽出 → Path.GetFileName
 
             //線源が白色X線で、単位がkevの場合、eVに変換
             if (formDataConverter.WaveSource == Crystallography.WaveSource.Xray
@@ -3542,10 +3560,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     public Color generateRandomColor()
     {
-        var r = new Random();
-        var max = 192 + r.Next(64);
-        var mid1 = r.Next(128);
-        var mid2 = r.Next(128);
+        var max = 192 + Random.Shared.Next(64); //260712Cl new Random() → Random.Shared
+        var mid1 = Random.Shared.Next(128);
+        var mid2 = Random.Shared.Next(128);
         if (dataSet.DataTableProfile.Items.Count is 0) //260317Cl == 0 → is 0 //直前のプロファイルがない時はR>G>Bの色を返す
             return Color.FromArgb(max, mid1, mid2);
         else//直前のプロファイルがある時はその色となるべく違う色を返す  
@@ -4217,8 +4234,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         value[j] = value[j][..11];
                     if (value[j].EndsWith("."))
                         value[j] = string.Concat(" ", y.AsSpan(0, 10));
-                    while (value[j].Length < 11)
-                        value[j] = " " + value[j];
+                    value[j] = value[j].PadLeft(11); //260712Cl while 前置 → PadLeft
                 }
                 writer.WriteLine($" {value[0]} {value[1]} {value[2]}");
             }
@@ -4234,16 +4250,16 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     /// </summary>
     public void horizontalAxisUserControl_AxisPropertyChanged()
     {
-        if (AxisMode == HorizontalAxis.Angle)
-            labelX.Text = "2θ ("+ AxisProperty.TwoThetaUnitText + "): ";
-        else if (AxisMode == HorizontalAxis.d)
-            labelX.Text = "d (" +AxisProperty.DspacingUnitText +  "): ";
-        else if (AxisMode == HorizontalAxis.WaveNumber)
-            labelX.Text = "q (" + AxisProperty.WaveNumberUnitText +  "):";
-        else if (AxisMode == HorizontalAxis.EnergyXray || AxisMode == HorizontalAxis.EnergyElectron || AxisMode == HorizontalAxis.EnergyNeutron)
-            labelX.Text = "Energy (" + AxisProperty.EnegyUnitText +  "): ";
-        else if (AxisMode == HorizontalAxis.NeutronTOF)
-            labelX.Text = "TOF (" +AxisProperty.TofTimeUnitText + "): ";
+        // 260712Cl 記法近代化: if/else チェーン → switch 式 + 文字列補間 (該当なしは Text 不変)
+        labelX.Text = AxisMode switch
+        {
+            HorizontalAxis.Angle => $"2θ ({AxisProperty.TwoThetaUnitText}): ",
+            HorizontalAxis.d => $"d ({AxisProperty.DspacingUnitText}): ",
+            HorizontalAxis.WaveNumber => $"q ({AxisProperty.WaveNumberUnitText}):",
+            HorizontalAxis.EnergyXray or HorizontalAxis.EnergyElectron or HorizontalAxis.EnergyNeutron => $"Energy ({AxisProperty.EnegyUnitText}): ",
+            HorizontalAxis.NeutronTOF => $"TOF ({AxisProperty.TofTimeUnitText}): ",
+            _ => labelX.Text
+        };
 
         if (skipAxisPropertyChangedEvent) return;
 
@@ -4276,7 +4292,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         radioButtonSingleProfileMode.Checked = !radioButtonMultiProfileMode.Checked;
 
         if (numeriBoxIncreasingPixels.Value > float.MaxValue)
-            numeriBoxIncreasingPixels.Value = numeriBoxIncreasingPixels.Value;
+            numeriBoxIncreasingPixels.Value = float.MaxValue; //260712Cl バグ修正: 旧 =自分自身(no-op)。(float)キャスト(下)でInfinityになるのを防ぐ意図のクランプ
 
         IntervalOfProfiles = (float)numeriBoxIncreasingPixels.Value;
         //checkedListBoxProfiles.Enabled = radioButtonMultiProfileMode.Checked;
@@ -4288,21 +4304,19 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     }
     private void numericUpDownIncreasingPixels_ValueChanged(object sender, EventArgs e)
     {
-        if (numericUpDownIncreasingPixels.Value == -1)
-            numeriBoxIncreasingPixels.Value = 0.5;
-        else if (numericUpDownIncreasingPixels.Value == -2)
-            numeriBoxIncreasingPixels.Value = 0.1;
-        else if (numericUpDownIncreasingPixels.Value == -3)
-            numeriBoxIncreasingPixels.Value = 0.05;
-        else if (numericUpDownIncreasingPixels.Value == -4)
-            numeriBoxIncreasingPixels.Value = 0.01;
-        else if (numericUpDownIncreasingPixels.Value == -5)
-            numeriBoxIncreasingPixels.Value = 0;
-        else
-            numeriBoxIncreasingPixels.Value = Math.Pow(2, (double)numericUpDownIncreasingPixels.Value);
+        // 260712Cl 記法近代化: if/else チェーン → switch 式
+        numeriBoxIncreasingPixels.Value = numericUpDownIncreasingPixels.Value switch
+        {
+            -1m => 0.5,
+            -2m => 0.1,
+            -3m => 0.05,
+            -4m => 0.01,
+            -5m => 0,
+            _ => Math.Pow(2, (double)numericUpDownIncreasingPixels.Value)
+        };
 
         if (numeriBoxIncreasingPixels.Value > float.MaxValue)
-            numeriBoxIncreasingPixels.Value = numeriBoxIncreasingPixels.Value;
+            numeriBoxIncreasingPixels.Value = float.MaxValue; //260712Cl バグ修正: 旧 =自分自身(no-op)。(float)キャスト(下)でInfinityになるのを防ぐ意図のクランプ
         radioButtonMultiProfileMode_CheckChanged(new object(), new EventArgs());
     }
 
@@ -4348,8 +4362,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 graphControlFrequency.VerticalLines = [new PointD(0, double.NaN), new PointD((double)frequencyProfile.Pt[^1].X, double.NaN)];
                 graphControlFrequency.Draw();
                 uint max = uint.MinValue;
-                foreach (uint u in dif.ImageArray.Select(v => (uint)v))
-                    max = Math.Max(u, max);
+                foreach (double v in dif.ImageArray) //260712Cl Select デリゲート除去 ((uint)v 変換は不変)
+                    max = Math.Max((uint)v, max);
                 numericUpDownMaxInt.Maximum = (decimal)max;
                 numericUpDownMinInt.Maximum = (decimal)max - 1;
                 numericUpDownMaxInt.Minimum = 0;
@@ -4785,7 +4799,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     sw.Write(str);
                 //sw.Close(); // (260624Ch) using に移行
                 readProfile("clipbord.txt");
-                File.Delete("clipboard.txt");
+                File.Delete("clipbord.txt"); //260712Cl バグ修正: 旧 "clipboard.txt" (綴り不一致で実ファイル clipbord.txt が削除されず残留)
             }
         }
     }

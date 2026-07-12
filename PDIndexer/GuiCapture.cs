@@ -69,7 +69,7 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
         var repoRoot = RepoRoot();  // 260626Cl: bin→リポルート探索を RepoRoot() に集約
         return repoRoot != null
             ? Path.Combine(repoRoot.FullName, "docs", "src", "assets", langDir)
-            : Path.Combine(Path.GetTempPath(), "pdindexer-capture-" + DateTime.Now.ToString("yyyyMMdd-HHmmss") + "-" + langDir);
+            : Path.Combine(Path.GetTempPath(), $"pdindexer-capture-{DateTime.Now:yyyyMMdd-HHmmss}-{langDir}"); //260712Cl 補間文字列化
     }
 
     /// <summary>
@@ -282,12 +282,12 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
     private static void Settle(Form form, int ms)
     {
         try { form.Refresh(); } catch { /* Refresh 時例外は無視 */ }
-        var until = Environment.TickCount + Math.Max(ms, 0);
+        var until = Environment.TickCount64 + Math.Max(ms, 0); //260712Cl バグ修正: 旧 TickCount(Int32) は約24.9日周期のラップ境界で until が負に折り返し待機が即終了する。TickCount64 で安全に
         do
         {
             Application.DoEvents();
             System.Threading.Thread.Sleep(15);
-        } while (Environment.TickCount < until);
+        } while (Environment.TickCount64 < until);
     }
 
     private const int CaptureMaxAttempts = 5; // CopyFromScreen 失敗時の最大試行回数
@@ -394,7 +394,7 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
                 }
                 else
                 {
-                    var region = control is TabPage tabPage && tabPage.Parent is TabControl tabControl ? (Control)tabControl : control;
+                    var region = control is TabPage { Parent: TabControl tabControl } ? (Control)tabControl : control; //260712Cl プロパティパターン化
                     region.Refresh();
                     Settle(form, TabSwitchSettleMs);
                     crop = CaptureScreen(new Rectangle(GetScreenLocation(region), region.Size), form, trace, $"{name}.{control.Name}", retryIfSolid: true);
@@ -467,9 +467,8 @@ internal static partial class GuiCapture //260625Cl partial 化: --diagnose を 
     /// <summary>260601Cl: フォーム内の全 ToolStripItem を列挙する (Controls 配下の ToolStrip + designer field の ContextMenuStrip 等。ドロップダウン項目も再帰)。</summary>
     private static IEnumerable<ToolStripItem> EnumerateToolStripItems(Form form)
     {
-        var toolStrips = new HashSet<ToolStrip>();
-        foreach (var toolStrip in EnumerateControls(form).OfType<ToolStrip>())
-            toolStrips.Add(toolStrip);
+        // 260712Cl 記法近代化: new + foreach + Add を ToHashSet() へ集約
+        var toolStrips = EnumerateControls(form).OfType<ToolStrip>().ToHashSet();
         for (var type = form.GetType(); type != null; type = type.BaseType)
             foreach (var field in type.GetFields(System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.DeclaredOnly))
                 if (typeof(ToolStrip).IsAssignableFrom(field.FieldType) && field.GetValue(form) is ToolStrip ownedToolStrip)

@@ -25,11 +25,12 @@ internal static partial class GuiCapture
     public static void Diagnose(string outFile, double inflate = 1.0)
     {
         var culture = (ForcedUICulture ?? Thread.CurrentThread.CurrentUICulture).Name;
-        var rows = new List<string>
-        {
+        // 260712Cl 記法近代化: new List<string>{...} → collection expression
+        List<string> rows =
+        [
             // Actual/Needed は幅判定では px 幅、Label の折り返し判定では px 高さ (Reason に明記)。
             string.Join("\t", "Culture", "Form", "Control", "Type", "Text", "Font", "Actual", "Needed", "Deficit", "Severity", "Reason")
-        };
+        ];
         void Trace(string s) => Console.WriteLine($"{DateTime.Now:HH:mm:ss.fff}\t{s}");
 
         // フォーム Load/Show で投げられる例外を握りつぶす (未処理例外のモーダルダイアログでハングしないため)。
@@ -129,7 +130,7 @@ internal static partial class GuiCapture
         // 擬似ローカライズ (inflate>1) の伸長予測は「翻訳される語」にのみ意味がある。記号/単位/短いインデックスは対象外。
         if (inflate > 1.0 && !IsLikelyTranslatable(c.Text)) return;
 
-        int glyph = c is CheckBox or RadioButton ? 18 : c is ButtonBase ? 12 : c is GroupBox ? 8 : 4; // グリフ/枠の余白概算
+        int glyph = c switch { CheckBox or RadioButton => 18, ButtonBase => 12, GroupBox => 8, _ => 4 }; // グリフ/枠の余白概算 //260712Cl switch式化
 
         if (c.AutoSize)
         {

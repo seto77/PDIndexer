@@ -32,7 +32,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         }
     }
 
-    public Profile TargetProfile = new Profile();
+    public Profile TargetProfile = new(); //260712Cl new Profile() → new()
 
     public Crystal temp_crystal;
     public bool IsSkipChangeEvent;
@@ -127,7 +127,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     _ => "Spl Pea",
                 };
 
-                sb.Append($"{p.IsFittingChecked.ToString()}\t{p.strHKL}\t{p.XCalc}\t");
+                sb.Append($"{p.IsFittingChecked}\t{p.strHKL}\t{p.XCalc}\t"); //260712Cl 冗長な.ToString()削除
                 if (!double.IsNaN(p.XObs))
                     sb.Append($"{func}\t{p.XObs}\t{p.peakFunction.Xerr}\t{p.peakFunction.Hk}\t{p.observedIntensity}\t{p.peakFunction.Residual * 100}\r\n");
             }
@@ -163,7 +163,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         var text = generateTableText();
         if (text != "")
         {
-            var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" };
+            using var dlg = new SaveFileDialog { Filter = "*.csv|*.csv" }; //260712Cl using 宣言化
             if (dlg.ShowDialog() == DialogResult.OK)
                 using (StreamWriter sw = new(dlg.FileName, false))
                     sw.Write(text.Replace("\t", ","));
@@ -180,7 +180,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     private void FormFitting_DragDrop(object sender, DragEventArgs e)
     {
         string[] fileName = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-        if (fileName.Length == 1 && fileName[0].ToLower().EndsWith("csv"))
+        if (fileName.Length == 1 && fileName[0].EndsWith("csv", StringComparison.OrdinalIgnoreCase)) //260712Cl ToLower().EndsWith → OrdinalIgnoreCase
         {
             using var sr = new StreamReader(fileName[0]);
             if (sr.ReadLine().StartsWith("Checked,hkl"))
@@ -188,7 +188,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                 int n = 0;
                 while (sr.Peek() > -1)
                 {
-                    var line = sr.ReadLine().Split(new[] { ',' }, StringSplitOptions.None);
+                    var line = sr.ReadLine().Split(','); //260712Cl Split簡素化
                     if (line.Length > 2 && n < dataSet.DataTablePeakFitting.Rows.Count)
                     {
                         var dr = dataSet.DataTablePeakFitting.Rows[n] as DataSet.DataTablePeakFittingRow;
@@ -208,7 +208,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 "Sym PV" => PeakFunctionForm.PseudoVoigt,
                                 "Sym Pea" => PeakFunctionForm.Peason,
                                 "Spl PV" => PeakFunctionForm.SplitPseudoVoigt,
-                                "Spl Pea" => PeakFunctionForm.SplitPseudoVoigt,
+                                "Spl Pea" => PeakFunctionForm.SplitPearson, //260712Cl バグ修正: 旧 SplitPseudoVoigt (書込側 _=>"Spl Pea" は SplitPearson。保存→再読込で別関数に化けていた)
                                 _ => PeakFunctionForm.PseudoVoigt
                             };
 
@@ -235,13 +235,13 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         if (!(formMain.bindingSourceProfile.Position >= 0 && (dp = (DiffractionProfile2)((DataRowView)formMain.bindingSourceProfile.Current).Row[1]) != null)) return;
 
         TargetProfile = dp.Profile;
-        var sw = new Stopwatch();
-        sw.Start();
+        var sw = Stopwatch.StartNew(); //260712Cl new Stopwatch()+Start() → StartNew()
 
         var checkedCrystals = formMain.dataSet.DataTableCrystal.CheckedItems;
 
         int groupIndex = 0;
 
+        PointD[] ptArray = null; //260712Cl 追加: Simpleモード用プロファイル配列をループ外で1回だけ生成
         //初期化
         foreach (var c in checkedCrystals)
             foreach (var p in c.Plane.Where(e => e.IsFittingChecked))
@@ -263,7 +263,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
                 if (p.SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
                 {
-                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, TargetProfile.Pt.ToArray());
+                    ptArray ??= TargetProfile.Pt.ToArray(); //260712Cl ループ外で1回だけ生成した配列を使い回し
+                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, ptArray);
                     p.XObs = p.simpleParameter.X;
                     p.peakFunction.Xerr = TargetProfile.Pt[1].X - TargetProfile.Pt[0].X;
                 }
@@ -287,11 +288,10 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             #region すべてをまとめてフィッティング
 
             //全てのフィッティング対象ピークをいったん格納
-            List<PeakFunction> pvpTemp2 = []; //260317Cl new List<PeakFunction>() → []
-            for (int h = 0; h < checkedCrystals.Count; h++)
-                for (int i = 0; i < checkedCrystals[h].Plane.Count; i++)
-                    if (checkedCrystals[h].Plane[i].IsFittingChecked && checkedCrystals[h].Plane[i].SerchOption != PeakFunctionForm.Simple)
-                        pvpTemp2.Add(checkedCrystals[h].Plane[i].peakFunction);
+            // 260712Cl 記法近代化: 二重for+インデクサ → SelectMany/Where/Select
+            List<PeakFunction> pvpTemp2 = [.. checkedCrystals.SelectMany(c => c.Plane)
+                .Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple)
+                .Select(p => p.peakFunction)];
             //並び替え
             pvpTemp2.Sort();
 
@@ -1091,13 +1091,14 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         var sb = new StringBuilder();
         if (textBoxA.Text != "0.000000")
         {
-            sb.Append(textBoxA.Text + "\t" + textBoxA_err.Text + "\t");
-            sb.Append(textBoxB.Text + "\t" + textBoxB_err.Text + "\t");
-            sb.Append(textBoxC.Text + "\t" + textBoxC_err.Text + "\t");
-            sb.Append(textBoxAlpha.Text + "\t" + textBoxAlpha_err.Text + "\t");
-            sb.Append(textBoxBeta.Text + "\t" + textBoxBeta_err.Text + "\t");
-            sb.Append(textBoxGamma.Text + "\t" + textBoxGamma_err.Text + "\t");
-            sb.Append(textBoxV.Text + "\t" + textBoxV_err.Text + "\t");
+            // 260712Cl 記法近代化: + 連結 → 文字列補間
+            sb.Append($"{textBoxA.Text}\t{textBoxA_err.Text}\t");
+            sb.Append($"{textBoxB.Text}\t{textBoxB_err.Text}\t");
+            sb.Append($"{textBoxC.Text}\t{textBoxC_err.Text}\t");
+            sb.Append($"{textBoxAlpha.Text}\t{textBoxAlpha_err.Text}\t");
+            sb.Append($"{textBoxBeta.Text}\t{textBoxBeta_err.Text}\t");
+            sb.Append($"{textBoxGamma.Text}\t{textBoxGamma_err.Text}\t");
+            sb.Append($"{textBoxV.Text}\t{textBoxV_err.Text}\t");
             try { Clipboard.SetDataObject(sb.ToString(), true); }
             catch { }
         }
@@ -1158,7 +1159,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     if (dataSet.DataTablePeakFitting.Rows.Count >= i + 1)
                     {
                         //チェックされている面指数かどうかを判定して、IsFittingCheckedに反映させる
-                        TargetCrystal.Plane[i].IsFittingChecked = checkedItems.Any(e => e == TargetCrystal.Plane[i].strHKL);
+                        TargetCrystal.Plane[i].IsFittingChecked = checkedItems.Contains(TargetCrystal.Plane[i].strHKL); //260712Cl Any(ラムダ) → Contains
                         dataSet.DataTablePeakFitting.Replace(i, TargetCrystal.Plane[i]);
                     }
                     else
@@ -1189,14 +1190,14 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                 if (e.ColumnIndex < view.ColumnCount && e.RowIndex < view.RowCount)
                 {
                     var editedFormattedValue = view[e.ColumnIndex, e.RowIndex].EditedFormattedValue;
-                    if (editedFormattedValue != null && editedFormattedValue is bool flag)
+                    if (editedFormattedValue is bool flag) //260712Cl 冗長なnullチェック削除
                     {
                         TargetCrystal.Plane[e.RowIndex].IsFittingChecked = flag;
                         Fitting();
                     }
                 }
             }
-                dataGridViewPlaneList_SelectionChanged(new object(), new EventArgs());
+                dataGridViewPlaneList_SelectionChanged(sender, EventArgs.Empty); //260712Cl new object()/new EventArgs() → sender/EventArgs.Empty
         }
 
         catch { }
@@ -1314,7 +1315,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     private void buttonApplyRangeToAll_Click(object sender, EventArgs e)
     {
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
-            TargetCrystal.Plane[i].SerchRange = (double)numericBoxSearchRange.Value / SerchRangeFactor;
+            TargetCrystal.Plane[i].SerchRange = numericBoxSearchRange.Value / SerchRangeFactor; //260712Cl 冗長な(double)キャスト削除
         Fitting();
     }
 
@@ -1376,7 +1377,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     }
 
     private void NumericBoxEffectiveDigit_ValueChanged(object sender, EventArgs e)
-        => dataGridViewPlaneList.DefaultCellStyle.Format = $"g{numericBoxEffectiveDigit.ValueInteger.ToString()}";
+        => dataGridViewPlaneList.DefaultCellStyle.Format = $"g{numericBoxEffectiveDigit.ValueInteger}"; //260712Cl 冗長な.ToString()削除
 
     private void buttonResetTakeoffAngle_Click(object sender, EventArgs e)
     {
@@ -1447,7 +1448,7 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         if (TargetCrystal == null || TargetProfile == null) return;
 
         var p = new Profile();
-        p.Pt.AddRange([.. TargetProfile.Pt]);
+        p.Pt.AddRange(TargetProfile.Pt); //260712Cl [.. TargetProfile.Pt] の中間コピーを削除
         if (TargetCrystal.Plane != null)
             foreach (Plane plane in TargetCrystal.Plane)
                 if (plane.IsFittingChecked && plane.SerchOption != PeakFunctionForm.Simple)

@@ -23,7 +23,7 @@ namespace PDIndexer
             // 260625Cl 追加: --smoke (WiX 移行 Phase C / D-PDI-3)。GUI を作らず Xraylib.Enabled を参照するだけで
             //   static ctor (libxrl-11.dll ロード + self-test) を起動し、実機で xraylib が本当にロードできるか検査する。
             //   引数なしの通常起動には一切影響しない (--capture と同様、先頭引数判定のみ)。
-            if (args.Length >= 1 && args[0] == SmokeArg)
+            if (args is [SmokeArg, ..]) //260712Cl 記法近代化: list pattern
             {
                 RunSmoke(args.Length >= 2 ? args[1] : "smoke-result.txt");
                 return; // RunSmoke は Environment.Exit するため通常ここには到達しない
