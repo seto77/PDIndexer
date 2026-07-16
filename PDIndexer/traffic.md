@@ -7,6 +7,7 @@ Last updated: 2026-07-16
 ### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-07-15 | 5 | 4 |
 | 2026-07-14 | 11 | 10 |
 | 2026-07-13 | 10 | 8 |
 | 2026-07-12 | 7 | 4 |
@@ -23,7 +24,7 @@ Last updated: 2026-07-16
 ### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-W29 | 21 | 18 |
+| 2026-W29 | 26 | 22 |
 | 2026-W28 | 107 | 39 |
 | 2026-W27 | 33 | 17 |
 | 2026-W26 | 33 | 14 |
@@ -41,7 +42,7 @@ Last updated: 2026-07-16
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-07 | 161 | 74 |
+| 2026-07 | 166 | 78 |
 | 2026-06 | 315 | 143 |
 | 2026-05 | 335 | 151 |
 | 2026-04 | 440 | 194 |
@@ -49,13 +50,14 @@ Last updated: 2026-07-16
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 1251 | 562 |
+| 2026 | 1256 | 566 |
 
 ## Clones
 
 ### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-07-15 | 5 | 4 |
 | 2026-07-14 | 5 | 5 |
 | 2026-07-13 | 7 | 6 |
 | 2026-07-12 | 6 | 6 |
@@ -72,7 +74,7 @@ Last updated: 2026-07-16
 ### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-W29 | 12 | 11 |
+| 2026-W29 | 17 | 15 |
 | 2026-W28 | 61 | 28 |
 | 2026-W27 | 24 | 18 |
 | 2026-W26 | 22 | 11 |
@@ -90,7 +92,7 @@ Last updated: 2026-07-16
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-07 | 97 | 57 |
+| 2026-07 | 102 | 61 |
 | 2026-06 | 771 | 276 |
 | 2026-05 | 414 | 238 |
 | 2026-04 | 501 | 209 |
@@ -98,7 +100,7 @@ Last updated: 2026-07-16
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 1783 | 780 |
+| 2026 | 1788 | 784 |
 
 ## Referrers
 
@@ -291,11 +293,11 @@ Last updated: 2026-07-16
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.464 | 2026-07-02 | PDIndexer-setup.msi | 121 |
+| v.4.464 | 2026-07-02 | PDIndexer-setup.msi | 125 |
 | v.4.464 | 2026-07-02 | PDIndexer-setup_arm64.msi | 16 |
 | v.4.464 | 2026-07-02 | PDIndexer-v.4.464.zip | 23 |
 | v.4.464 | 2026-07-02 | PDIndexer-v.4.464_arm64.zip | 5 |
-| v.4.464 | 2026-07-02 | PDIndexerSetup.msi | 18 |
+| v.4.464 | 2026-07-02 | PDIndexerSetup.msi | 19 |
 | v.4.463 | 2026-06-24 | PDIndexer-setup.msi | 126 |
 | v.4.463 | 2026-06-24 | PDIndexer-v.4.463.zip | 37 |
 | v.4.463 | 2026-06-24 | PDIndexerSetup.msi | 8 |
@@ -330,7 +332,7 @@ Last updated: 2026-07-16
 | v.4.434 | 2023-02-13 | PDindexerSetup.msi | 107 |
 | v.4.433 | 2023-02-10 | PDindexerSetup.msi | 18 |
 
-**TOTAL: 7875**
+**TOTAL: 7880**
 
 ## Stats
 
