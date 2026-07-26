@@ -416,6 +416,19 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (representative >= 0)
             CrystalListPosition = representative;
 
+        // 260726Cl 追加 (作者指定): 複数プロファイルを撮るときの見え方をキャプチャの基底として固定する。
+        //   ・プロファイル間に下駄を履かせて重なりを解く。numericUpDownIncreasingPixels は指数指定
+        //     (既定 10 = 2^10 = 1024) なので 9 = 2^9 = 512 にする。ValueChanged が
+        //     numeriBoxIncreasingPixels → IntervalOfProfiles まで伝播させる。
+        //   ・目盛線を表示して、強度・2θ が読み取れる図にする。
+        try
+        {
+            if (numericUpDownIncreasingPixels.Value != 9m)
+                numericUpDownIncreasingPixels.Value = 9m;   // 2^9 = 512
+            checkBoxShowScaleLine.Checked = true;
+        }
+        catch { /* 撮影用の見た目調整なので失敗は無視 (撮影は最善努力) */ }
+
         Invalidate(true); // メニュー・ツールバーを含む全子コントロールを再描画対象にする
         Update();
         try { Draw(); } catch { /* 代表描画の失敗は無視 (撮影は最善努力) */ }
