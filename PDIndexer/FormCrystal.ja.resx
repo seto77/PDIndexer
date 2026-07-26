@@ -17,15 +17,6 @@
     <resheader name="version">2.0</resheader>
     <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
     <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
-    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
-    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
-    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
-        <value>[base64 mime encoded serialized .NET Framework object]</value>
-    </data>
-    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
-        <comment>This is a comment</comment>
-    </data>
 
     There are any number of "resheader" rows that contain simple
     name/value pairs.
@@ -118,78 +109,21 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="splitContainer1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 4</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
   <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt, style=Bold</value>
-  </data>
-  <data name="groupBox3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>495, 0</value>
-  </data>
-  <data name="groupBox3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>11, 12, 11, 12</value>
-  </data>
-  <data name="groupBox3.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>587, 424</value>
   </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>結晶情報</value>
   </data>
-  <data name="panel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>437, 0</value>
-  </data>
-  <data name="panel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="panel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>58, 424</value>
-  </data>
   <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt, style=Bold</value>
-  </data>
-  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>211, 0</value>
-  </data>
-  <data name="groupBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>226, 424</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>結晶リスト</value>
   </data>
-  <data name="panel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 0</value>
-  </data>
-  <data name="panel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="panel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>3, 424</value>
-  </data>
   <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt, style=Bold</value>
-  </data>
-  <data name="groupBox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>208, 424</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>回折線オプション</value>
@@ -197,45 +131,12 @@
   <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 10pt, style=Bold</value>
   </data>
-  <data name="groupBox4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="groupBox4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1082, 345</value>
-  </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>結晶データベース</value>
   </data>
-  <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1082, 774</value>
-  </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>424</value>
-  </data>
-  <data name="splitContainer1.SplitterWidth" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="crystalControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 24</value>
-  </data>
-  <data name="crystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>581, 396</value>
-  </data>
   <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="buttonAdd.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 32</value>
-  </data>
-  <data name="buttonAdd.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="buttonAdd.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 80</value>
   </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>← 
@@ -245,68 +146,20 @@
   <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
   </data>
-  <data name="buttonChange.Location" type="System.Drawing.Point, System.Drawing">
-    <value>2, 113</value>
-  </data>
-  <data name="buttonChange.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="buttonChange.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 80</value>
-  </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>← 
 更新
 ←</value>
   </data>
-  <data name="dataGridViewCrystal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 52</value>
-  </data>
-  <data name="dataGridViewCrystal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="dataGridViewCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 368</value>
-  </data>
-  <data name="flowLayoutPanel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 24</value>
-  </data>
-  <data name="flowLayoutPanel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="flowLayoutPanel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>220, 28</value>
-  </data>
   <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonUpper.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 28</value>
   </data>
   <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="buttonLower.Location" type="System.Drawing.Point, System.Drawing">
-    <value>30, 0</value>
-  </data>
-  <data name="buttonLower.Size" type="System.Drawing.Size, System.Drawing">
-    <value>30, 28</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonDelete.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Right</value>
-  </data>
   <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonDelete.Location" type="System.Drawing.Point, System.Drawing">
-    <value>71, 0</value>
-  </data>
-  <data name="buttonDelete.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>11, 0, 0, 0</value>
-  </data>
-  <data name="buttonDelete.Size" type="System.Drawing.Size, System.Drawing">
-    <value>42, 28</value>
   </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>削除</value>
@@ -314,68 +167,26 @@
   <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="buttonAllClear.Size" type="System.Drawing.Size, System.Drawing">
-    <value>54, 28</value>
-  </data>
   <data name="buttonAllClear.Text" xml:space="preserve">
     <value>全削除</value>
   </data>
   <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 233</value>
-  </data>
-  <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>178, 49</value>
-  </data>
   <data name="radioButtonAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonAngleThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>74, 22</value>
   </data>
   <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
     <value>角度閾値</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>130, 0</value>
-  </data>
-  <data name="label5.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>11, 17</value>
-  </data>
   <data name="radioButtonEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 22</value>
   </data>
   <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
     <value>エネルギー閾値</value>
   </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>154, 23</value>
-  </data>
-  <data name="label1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 4, 0, 0</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>20, 17</value>
-  </data>
   <data name="checkBoxCombineSameDspacingPeaks.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 211</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Size" type="System.Drawing.Size, System.Drawing">
-    <value>152, 22</value>
   </data>
   <data name="checkBoxCombineSameDspacingPeaks.Text" xml:space="preserve">
     <value>近接するピークを結合:</value>
@@ -383,23 +194,8 @@
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>165, 127</value>
-  </data>
-  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 18</value>
-  </data>
   <data name="radioButtonAllCheckedCrystals.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 310</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 22</value>
   </data>
   <data name="radioButtonAllCheckedCrystals.Text" xml:space="preserve">
     <value>チェックした全ての結晶</value>
@@ -407,29 +203,11 @@
   <data name="radioButtonOnlySelectedCrystal.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="radioButtonOnlySelectedCrystal.Location" type="System.Drawing.Point, System.Drawing">
-    <value>27, 336</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="radioButtonOnlySelectedCrystal.Size" type="System.Drawing.Size, System.Drawing">
-    <value>122, 22</value>
-  </data>
   <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
     <value>選択した結晶のみ</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 28</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Text" xml:space="preserve">
     <value>回折線を重ねて表示</value>
@@ -437,29 +215,11 @@
   <data name="checkBoxShowPeakIndices.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="checkBoxShowPeakIndices.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 287</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxShowPeakIndices.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
-  </data>
   <data name="checkBoxShowPeakIndices.Text" xml:space="preserve">
     <value>ピーク指数を表示</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 157</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 22</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
     <value>弱いピークを非表示</value>
@@ -467,29 +227,11 @@
   <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="checkBoxVariableRatioOfIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>58, 70</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxVariableRatioOfIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
-  </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>強度を変更可</value>
   </data>
   <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 49</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 22</value>
   </data>
   <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
     <value>強度比を計算</value>
@@ -497,136 +239,14 @@
   <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>166, 180</value>
-  </data>
-  <data name="label6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 18</value>
-  </data>
   <data name="checkBoxShowPeakUnderProfile.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 105</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 22</value>
   </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
     <value>回折線を下に表示</value>
   </data>
-  <data name="crystalDatabaseControl.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 24</value>
-  </data>
-  <data name="crystalDatabaseControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>855, 317</value>
-  </data>
-  <data name="panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>858, 24</value>
-  </data>
-  <data name="panel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
-  </data>
-  <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 317</value>
-  </data>
-  <data name="searchCrystalControl.Size" type="System.Drawing.Size, System.Drawing">
-    <value>221, 317</value>
-  </data>
-  <data name="dataGridViewTextBoxColumn3.MinimumWidth" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>96, 96</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>1088, 782</value>
-  </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
     <value>メイリオ, 9.75pt</value>
-  </data>
-  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        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
-        AAD+HwAA//8AAA==
-</value>
-  </data>
-  <data name="$this.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>1104, 821</value>
-  </data>
-  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>3, 4, 3, 4</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>回折線/結晶情報</value>
