@@ -56,7 +56,7 @@ jobs:
           DRY_RUN: ${{ inputs.dry_run }}
         run: |
           $content = Get-Content "PDIndexer/Version.cs" -Raw
-          if ($content -notmatch 'ver(\d+\.\d+)\(') { throw "Could not parse version from Version.cs History." }
+          if ($content -notmatch 'ver(\d+\.\d+) ?\(') { throw "Could not parse version from Version.cs History." } # 260805Cl 版番と '(' の間のスペースを許容 (旧: 'ver(\d+\.\d+)\(')
           $ver = $Matches[1]
           $tag = "v.$ver"
           $dryRun = $env:DRY_RUN -eq 'true'

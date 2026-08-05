@@ -9,176 +9,177 @@ static class Version
     /// <summary>
     /// 更新履歴
     /// </summary>
+    //260805Cl 表記統一: 版番と日付括弧の間にスペースを1つ入れる。⚠この行より上の行(このコメント含む)に半角スペース直後の『ver』を書かない (CI と旧版の更新チェックが History 先頭行より先に拾う)
     public const string History =
         "History" +
-        "\r\n ver4.464(2026/07/03) Added an arm64 distribution package. Various bug fixes." +
-        "\r\n ver4.463(2026/06/25) Migrated the installer to WiX, improved resource disposal around startup and image handling, and fixed a WinForms designer issue." +
-        "\r\n ver4.462(2026/06/01) Updated tooltips and added a portable ZIP package as an alternative distribution format." +
-        "\r\n ver4.461(2026/04/14) Refactored the macro API to access FormMain via public properties instead of raw WinForms controls, and fixed typos in Help attributes." +
-        "\r\n ver4.460(2026/04/06) Reduced the size of the installer package." +
-        "\r\n ver4.459(2026/03/17) Overall code optimization and removal of deprecated syntax." +
-        "\r\n ver4.458(2025/12/12) Fixed bugs on program update and crystal database functions." +
-        "\r\n ver4.457(2025/12/03) Added new horizontal axis units (centi-degree and milli-radian)." +
-        "\r\n ver4.456(2025/11/26) Fixed a minor bug." +
-        "\r\n ver4.455(2025/11/20) Fixed a minor bug." +
-        "\r\n ver4.453(2025/11/19) Added a new EOS for NaCl B1 (Skelton et al. 1984). The framework has been changed to .Net Desktop Runtime 10.0." +
-        "\r\n ver4.452(2025/09/26) Fixed bugs on loading crystal database." +
-        "\r\n ver4.451(2025/06/04) Fixed a minor bug on the 'Fitting Diffraction Peaks'. Crystal Database has been updated." +
-        "\r\n ver4.450(2024/12/07) Fixed a minor bug on the clipboard operation." +
-        "\r\n ver4.449(2024/12/06) Fixed a minor bug when loading/saving the version number. (thx to Loïc Toraille-san)" +
-        "\r\n ver4.448(2024/12/03) Further bug fixes have been made regarding the decimal separator issue. (thx to Loïc Toraille-san)" +
-        "\r\n ver4.447(2024/12/02) The framework has been changed to .Net Desktop Runtime 9.0. Fixed bugs on decimal separator symbols (thx to Loïc Toraille-san, see github.com/seto77/PDIndexer/issues/2)." +
-        "\r\n ver4.446(2024/06/30) Fixed a bug where the app icon was not displayed. Updated the crystal database." +
-        "\r\n ver4.445(2023/12/06) Fixed bugs when loading *.npd files (thx to Shibasaki-san)." +
-        "\r\n ver4.443(2023/11/27) The target framework has been changed to .Net Desktop Runtime 8.0. Fixed a minor bug (thx to Okazaki-san)." +
-        "\r\n ver4.442(2023/10/07) Update crystal database. Fixed minor bugs." +
-        "\r\n ver4.441(2023/07/01) Fixed a bug on loading *.pdi2 format files." +
-        "\r\n ver4.440(2023/05/24) Improved registry read/write.The registry is cleared the first time this version is launched." +
-        "\r\n ver4.439(2023/05/23) Fixed bugs on loading txt-format profiles." +
-        "\r\n ver4.438(2023/05/18) Fixed a minor bug on loading edx profiles." +
-        "\r\n ver4.437(2023/04/22) Fixed a problem where changes in horizontal axis units were not working. Changed the profile format to '*.pdi2'." +
-        "\r\n ver4.436(2023/03/18) Fixed minor bugs." +
-        "\r\n ver4.435(2023/03/07) Fixed bugs on the 'Macro function'." +
-        "\r\n ver4.434(2023/02/13) Improved 'Sequential Analysis'." +
-        "\r\n ver4.433(2023/02/10) Improved 'Sequential Analysis'." +
-        "\r\n ver4.432(2023/02/06) Fixed minor bugs on 'Sequential Analysis'." +
-        "\r\n ver4.431(2023/01/31) Fixed minor bugs on 'Sequential Analysis'." +
-        "\r\n ver4.430(2023/01/30) Fixed minor bugs on 'Sequential Analysis'." +
-        "\r\n ver4.428(2023/01/27) Fixed minor bugs on 'Sequential Analysis'." +
-        "\r\n ver4.427(2023/01/26) Fixed minor bugs on 'Sequential Analysis'." +
-        "\r\n ver4.426(2023/01/25) Improved peak fitting accuracy." +
-        "\r\n ver4.425(2023/01/24) Fixed bugs on 'Fitting peaks'." +
-        "\r\n ver4.424(2023/01/20) Improved 'Fitting peaks'. Fixed design bugs on Japanese mode." +
-        "\r\n ver4.423(2023/01/19) Improved macro functions. Improved 'Sequential Analysis'" +
-        "\r\n ver4.421(2023/01/18) Fixed a minor bug on 'Fitting Diffraction Peaks'. " +
-        "\r\n ver4.420(2023/01/07) Improved 'Sequential Analysis'. " +
-        "\r\n ver4.418(2023/01/06) Improved 'Sequential Analysis' (former 'Stress Analysis')." +
-        "\r\n ver4.416(2022/12/08) Fixed a minor bug in loading CIF files." +
-        "\r\n ver4.415(2022/11/30) Fixed a minor bug in 'Crystal Database' function." +
-        "\r\n ver4.414(2022/11/28) Fixed a minor bug. " +
-        "\r\n ver4.413(2022/11/16) Target framework has been changed to .Net Desktop Runtime 7.0." +
-        "\r\n ver4.412(2022/06/30) Added a new EOS for Pb (Strässle et al., 2014)." +
-        "\r\n ver4.411(2022/06/22) Fixed a bug related to multiplicity calculations for point group -3 (hexagonal setting)." +
-        "\r\n ver4.410(2022/06/21) Improved: Support for *.xy file." +
-        "\r\n ver4.409(2022/06/17) Improved decoding of CIF files." +
-        "\r\n ver4.408(2022/06/16) Fixed an issue where Wykoff positions were incorrectly displayed in some space groups. Support for CIF containing \"D\" (deuterium)" +
-        "\r\n ver4.407(2022/04/19) Fixed a minor bug on loading *.npd, *.rpt, and *.xbm files." +
-        "\r\n ver4.406(2021/12/15) Renewed the crystal database." + 
-        "\r\n ver4.405(2021/11/12) Target framework is changed to .Net 6.0." +
-        "\r\n ver4.404(2021/10/15) Fixed minor bugs on the Macro function." +
-        "\r\n ver4.403(2021/07/28) Fixed a minor bug when loading CSV file. Renewed AMCSD database." +
-        "\r\n ver4.402(2021/07/09) Fixed a minor bug when fitting peaks." +
-        "\r\n ver4.401(2021/07/06) Fixed a minor bug when loading MPLOT FILE files." +
-        "\r\n ver4.400(2021/07/05) Fixed a minor bug when loading gsa files." +
-        "\r\n ver4.399(2021/07/02) Target framework is changed to .Net 5.0. Added new EOSs (Fratanduono+ 2021)." +
-        "\r\n ver4.398(2021/05/13) Fixed a bug on loading 'NPD' format files." +
-        "\r\n ver4.397(2021/05/01) Fixed minor bugs and improved computation speed on 'Stress Analysis'." +
-        "\r\n ver4.396(2021/04/04) Fixed a minor bug on the recent update." +
-        "\r\n ver4.395(2021/04/04) Improved loading of multiple-EDX.  Added EOSs of molybdenum." +
-        "\r\n ver4.394(2020/12/02) Fixed a GUI bug. Added the option: 'Save the crystal list when closing'" +
-        "\r\n ver4.393(2020/12/01) Fixed a minor bug when loading crystal list." +
-        "\r\n ver4.392(2020/10/22) Added: 3rd order Vinet equation to the EOS function." +
-        "\r\n ver4.391(2020/10/17) Improved: Macro functions." +
-        "\r\n ver4.390(2020/10/16) Improved: Speed up drawing profiles. Added: New macro functions." +
-        "\r\n ver4.388(2020/10/15) Added new EOS formulae (4th BM, AP2, Keane)." +
-        "\r\n ver4.387(2020/10/14) Added three EOS for Re (Thank you, Dr. Sakai), and fixed minor bugs." +
-        "\r\n ver4.386(2020/09/04) Fixed minor bugs. Thank you, Dr. Farla!" +
-        "\r\n ver4.385(2020/09/03) Fixed minor bugs." +
-        "\r\n ver4.384(2020/07/30) Added the AMCSD crystal database to 'Crystal Parameter' window." +
-        "\r\n ver4.383(2020/05/01) Fixed GUIs." +
-        "\r\n ver4.382(2020/04/26) Fixed a problem on loading Neutron TOF data." +
-        "\r\n ver4.381(2020/03/27) Refixed a bug on loading multiple profiles." +
-        "\r\n ver4.380(2020/03/22) Fixed a bug on loading multiple profiles." +
-        "\r\n ver4.379(2020/03/03) Fixed a minor bug on distribution problem." +
-        "\r\n ver4.378(2020/03/01) Changed: Download site is changed to GitHub." +
-        "\r\n ver4.377(2019/11/08) Fixed a minor bug on 'Fitting Diffraction Peaks'." +
-        "\r\n ver4.376(2019/11/07) Minor improvements when loading nxs format." +
-        "\r\n ver4.375(2019/10/06) Improved. nxs format is available." +
-        "\r\n ver4.367(2019/06/11) Minor improvements." +
-        "\r\n ver4.365(2019/06/10) Minor improvements." +
-        "\r\n ver4.364(2019/05/21) Fixed minor bugs." +
-        "\r\n ver4.362(2019/04/10) Changed the installer. ClickOnce version will be not maintained in the future." +
-        "\r\n ver4.351(2019/03/21) Minor improvement." +
-        "\r\n ver4.350(2019/03/19) Fixed a bug on loading irregular space groups." +
-        "\r\n ver4.349(2019/03/18) Added an option when exporting profiles." +
-        "\r\n ver4.348(2019/02/20) Changed .Net framework version to 4.7.2." +
-        "\r\n ver4.347(2018/12/20) Fixed minor bugs." +
-        "\r\n ver4.346(2018/11/20) Modified some inconsistencies." +
-        "\r\n ver4.345(2018/10/29) Fixed a minor bug." +
-        "\r\n ver4.344(2018/10/21) Renewed libraries." +
-        "\r\n ver4.343(2018/02/21) Fixed a minor bug." +
-        "\r\n ver4.342(2018/01/26) Improved a compatibility of CSV file format." +
-        "\r\n ver4.341(2017/11/27) Fixed a minor bug." +
+        "\r\n ver4.464 (2026/07/03) Added an arm64 distribution package. Various bug fixes." +
+        "\r\n ver4.463 (2026/06/25) Migrated the installer to WiX, improved resource disposal around startup and image handling, and fixed a WinForms designer issue." +
+        "\r\n ver4.462 (2026/06/01) Updated tooltips and added a portable ZIP package as an alternative distribution format." +
+        "\r\n ver4.461 (2026/04/14) Refactored the macro API to access FormMain via public properties instead of raw WinForms controls, and fixed typos in Help attributes." +
+        "\r\n ver4.460 (2026/04/06) Reduced the size of the installer package." +
+        "\r\n ver4.459 (2026/03/17) Overall code optimization and removal of deprecated syntax." +
+        "\r\n ver4.458 (2025/12/12) Fixed bugs on program update and crystal database functions." +
+        "\r\n ver4.457 (2025/12/03) Added new horizontal axis units (centi-degree and milli-radian)." +
+        "\r\n ver4.456 (2025/11/26) Fixed a minor bug." +
+        "\r\n ver4.455 (2025/11/20) Fixed a minor bug." +
+        "\r\n ver4.453 (2025/11/19) Added a new EOS for NaCl B1 (Skelton et al. 1984). The framework has been changed to .Net Desktop Runtime 10.0." +
+        "\r\n ver4.452 (2025/09/26) Fixed bugs on loading crystal database." +
+        "\r\n ver4.451 (2025/06/04) Fixed a minor bug on the 'Fitting Diffraction Peaks'. Crystal Database has been updated." +
+        "\r\n ver4.450 (2024/12/07) Fixed a minor bug on the clipboard operation." +
+        "\r\n ver4.449 (2024/12/06) Fixed a minor bug when loading/saving the version number. (thx to Loïc Toraille-san)" +
+        "\r\n ver4.448 (2024/12/03) Further bug fixes have been made regarding the decimal separator issue. (thx to Loïc Toraille-san)" +
+        "\r\n ver4.447 (2024/12/02) The framework has been changed to .Net Desktop Runtime 9.0. Fixed bugs on decimal separator symbols (thx to Loïc Toraille-san, see github.com/seto77/PDIndexer/issues/2)." +
+        "\r\n ver4.446 (2024/06/30) Fixed a bug where the app icon was not displayed. Updated the crystal database." +
+        "\r\n ver4.445 (2023/12/06) Fixed bugs when loading *.npd files (thx to Shibasaki-san)." +
+        "\r\n ver4.443 (2023/11/27) The target framework has been changed to .Net Desktop Runtime 8.0. Fixed a minor bug (thx to Okazaki-san)." +
+        "\r\n ver4.442 (2023/10/07) Update crystal database. Fixed minor bugs." +
+        "\r\n ver4.441 (2023/07/01) Fixed a bug on loading *.pdi2 format files." +
+        "\r\n ver4.440 (2023/05/24) Improved registry read/write.The registry is cleared the first time this version is launched." +
+        "\r\n ver4.439 (2023/05/23) Fixed bugs on loading txt-format profiles." +
+        "\r\n ver4.438 (2023/05/18) Fixed a minor bug on loading edx profiles." +
+        "\r\n ver4.437 (2023/04/22) Fixed a problem where changes in horizontal axis units were not working. Changed the profile format to '*.pdi2'." +
+        "\r\n ver4.436 (2023/03/18) Fixed minor bugs." +
+        "\r\n ver4.435 (2023/03/07) Fixed bugs on the 'Macro function'." +
+        "\r\n ver4.434 (2023/02/13) Improved 'Sequential Analysis'." +
+        "\r\n ver4.433 (2023/02/10) Improved 'Sequential Analysis'." +
+        "\r\n ver4.432 (2023/02/06) Fixed minor bugs on 'Sequential Analysis'." +
+        "\r\n ver4.431 (2023/01/31) Fixed minor bugs on 'Sequential Analysis'." +
+        "\r\n ver4.430 (2023/01/30) Fixed minor bugs on 'Sequential Analysis'." +
+        "\r\n ver4.428 (2023/01/27) Fixed minor bugs on 'Sequential Analysis'." +
+        "\r\n ver4.427 (2023/01/26) Fixed minor bugs on 'Sequential Analysis'." +
+        "\r\n ver4.426 (2023/01/25) Improved peak fitting accuracy." +
+        "\r\n ver4.425 (2023/01/24) Fixed bugs on 'Fitting peaks'." +
+        "\r\n ver4.424 (2023/01/20) Improved 'Fitting peaks'. Fixed design bugs on Japanese mode." +
+        "\r\n ver4.423 (2023/01/19) Improved macro functions. Improved 'Sequential Analysis'" +
+        "\r\n ver4.421 (2023/01/18) Fixed a minor bug on 'Fitting Diffraction Peaks'. " +
+        "\r\n ver4.420 (2023/01/07) Improved 'Sequential Analysis'. " +
+        "\r\n ver4.418 (2023/01/06) Improved 'Sequential Analysis' (former 'Stress Analysis')." +
+        "\r\n ver4.416 (2022/12/08) Fixed a minor bug in loading CIF files." +
+        "\r\n ver4.415 (2022/11/30) Fixed a minor bug in 'Crystal Database' function." +
+        "\r\n ver4.414 (2022/11/28) Fixed a minor bug. " +
+        "\r\n ver4.413 (2022/11/16) Target framework has been changed to .Net Desktop Runtime 7.0." +
+        "\r\n ver4.412 (2022/06/30) Added a new EOS for Pb (Strässle et al., 2014)." +
+        "\r\n ver4.411 (2022/06/22) Fixed a bug related to multiplicity calculations for point group -3 (hexagonal setting)." +
+        "\r\n ver4.410 (2022/06/21) Improved: Support for *.xy file." +
+        "\r\n ver4.409 (2022/06/17) Improved decoding of CIF files." +
+        "\r\n ver4.408 (2022/06/16) Fixed an issue where Wykoff positions were incorrectly displayed in some space groups. Support for CIF containing \"D\" (deuterium)" +
+        "\r\n ver4.407 (2022/04/19) Fixed a minor bug on loading *.npd, *.rpt, and *.xbm files." +
+        "\r\n ver4.406 (2021/12/15) Renewed the crystal database." + 
+        "\r\n ver4.405 (2021/11/12) Target framework is changed to .Net 6.0." +
+        "\r\n ver4.404 (2021/10/15) Fixed minor bugs on the Macro function." +
+        "\r\n ver4.403 (2021/07/28) Fixed a minor bug when loading CSV file. Renewed AMCSD database." +
+        "\r\n ver4.402 (2021/07/09) Fixed a minor bug when fitting peaks." +
+        "\r\n ver4.401 (2021/07/06) Fixed a minor bug when loading MPLOT FILE files." +
+        "\r\n ver4.400 (2021/07/05) Fixed a minor bug when loading gsa files." +
+        "\r\n ver4.399 (2021/07/02) Target framework is changed to .Net 5.0. Added new EOSs (Fratanduono+ 2021)." +
+        "\r\n ver4.398 (2021/05/13) Fixed a bug on loading 'NPD' format files." +
+        "\r\n ver4.397 (2021/05/01) Fixed minor bugs and improved computation speed on 'Stress Analysis'." +
+        "\r\n ver4.396 (2021/04/04) Fixed a minor bug on the recent update." +
+        "\r\n ver4.395 (2021/04/04) Improved loading of multiple-EDX.  Added EOSs of molybdenum." +
+        "\r\n ver4.394 (2020/12/02) Fixed a GUI bug. Added the option: 'Save the crystal list when closing'" +
+        "\r\n ver4.393 (2020/12/01) Fixed a minor bug when loading crystal list." +
+        "\r\n ver4.392 (2020/10/22) Added: 3rd order Vinet equation to the EOS function." +
+        "\r\n ver4.391 (2020/10/17) Improved: Macro functions." +
+        "\r\n ver4.390 (2020/10/16) Improved: Speed up drawing profiles. Added: New macro functions." +
+        "\r\n ver4.388 (2020/10/15) Added new EOS formulae (4th BM, AP2, Keane)." +
+        "\r\n ver4.387 (2020/10/14) Added three EOS for Re (Thank you, Dr. Sakai), and fixed minor bugs." +
+        "\r\n ver4.386 (2020/09/04) Fixed minor bugs. Thank you, Dr. Farla!" +
+        "\r\n ver4.385 (2020/09/03) Fixed minor bugs." +
+        "\r\n ver4.384 (2020/07/30) Added the AMCSD crystal database to 'Crystal Parameter' window." +
+        "\r\n ver4.383 (2020/05/01) Fixed GUIs." +
+        "\r\n ver4.382 (2020/04/26) Fixed a problem on loading Neutron TOF data." +
+        "\r\n ver4.381 (2020/03/27) Refixed a bug on loading multiple profiles." +
+        "\r\n ver4.380 (2020/03/22) Fixed a bug on loading multiple profiles." +
+        "\r\n ver4.379 (2020/03/03) Fixed a minor bug on distribution problem." +
+        "\r\n ver4.378 (2020/03/01) Changed: Download site is changed to GitHub." +
+        "\r\n ver4.377 (2019/11/08) Fixed a minor bug on 'Fitting Diffraction Peaks'." +
+        "\r\n ver4.376 (2019/11/07) Minor improvements when loading nxs format." +
+        "\r\n ver4.375 (2019/10/06) Improved. nxs format is available." +
+        "\r\n ver4.367 (2019/06/11) Minor improvements." +
+        "\r\n ver4.365 (2019/06/10) Minor improvements." +
+        "\r\n ver4.364 (2019/05/21) Fixed minor bugs." +
+        "\r\n ver4.362 (2019/04/10) Changed the installer. ClickOnce version will be not maintained in the future." +
+        "\r\n ver4.351 (2019/03/21) Minor improvement." +
+        "\r\n ver4.350 (2019/03/19) Fixed a bug on loading irregular space groups." +
+        "\r\n ver4.349 (2019/03/18) Added an option when exporting profiles." +
+        "\r\n ver4.348 (2019/02/20) Changed .Net framework version to 4.7.2." +
+        "\r\n ver4.347 (2018/12/20) Fixed minor bugs." +
+        "\r\n ver4.346 (2018/11/20) Modified some inconsistencies." +
+        "\r\n ver4.345 (2018/10/29) Fixed a minor bug." +
+        "\r\n ver4.344 (2018/10/21) Renewed libraries." +
+        "\r\n ver4.343 (2018/02/21) Fixed a minor bug." +
+        "\r\n ver4.342 (2018/01/26) Improved a compatibility of CSV file format." +
+        "\r\n ver4.341 (2017/11/27) Fixed a minor bug." +
         "\r\n ver4.34 (2017/11/18) Added a new function '2 theta offset' in 'Profile parameter' form. It is designed for Bragg-Brentano diffractmetry, and possible to calibrate the offset parameters using internal standard. " +
-        "\r\n ver4.329(2017/11/17) Moved 'Remove K_Alpha2' option to the 'Profile parameter' form." +
-        "\r\n ver4.328(2016/12/04) Fixed a minor bug." +
-        "\r\n ver4.327(2016/12/02) Fixed a digit separator (, or .) problem." +
-        "\r\n ver4.326(2016/11/29) Fixed a digit separator (, or .) problem." +
-        "\r\n ver4.325(2016/11/28) Minor improvements." +
-        "\r\n ver4.324(2016/11/25) Minor improvements." +
-        "\r\n ver4.323(2016/11/17) Minor improvements." +
-        "\r\n ver4.322(2016/11/11) Added a shortcut key of Ctrl + Alt + Space, which changes a checked state of a selected plane in 'FormFitting'." +
-        "\r\n ver4.321(2016/11/07) Added a shortcut key of Ctrl + Shift + Space, which changes a checked state of a selected crystal." +
+        "\r\n ver4.329 (2017/11/17) Moved 'Remove K_Alpha2' option to the 'Profile parameter' form." +
+        "\r\n ver4.328 (2016/12/04) Fixed a minor bug." +
+        "\r\n ver4.327 (2016/12/02) Fixed a digit separator (, or .) problem." +
+        "\r\n ver4.326 (2016/11/29) Fixed a digit separator (, or .) problem." +
+        "\r\n ver4.325 (2016/11/28) Minor improvements." +
+        "\r\n ver4.324 (2016/11/25) Minor improvements." +
+        "\r\n ver4.323 (2016/11/17) Minor improvements." +
+        "\r\n ver4.322 (2016/11/11) Added a shortcut key of Ctrl + Alt + Space, which changes a checked state of a selected plane in 'FormFitting'." +
+        "\r\n ver4.321 (2016/11/07) Added a shortcut key of Ctrl + Shift + Space, which changes a checked state of a selected crystal." +
         "\r\n ver4.32 (2016/06/15) Improved to read a '*.xbm' (XRayBinFile) files. Fixed minor bugs." +
-        "\r\n ver4.316(2016/06/13) Fixed minor bugs." +
-        "\r\n ver4.315(2015/12/23) Fixed a bugs on initial loading." +
-        "\r\n ver4.314(2015/12/21) Added: Initializing steps are displayed." +
-        "\r\n ver4.313(2015/12/18) Fixed a minor bug on input form for rhombohedral settings." +
-        "\r\n ver4.312(2015/12/11) Fixed a minor bug on Wyckoff position." +
-        "\r\n ver4.312(2015/12/09) Fixed minor bugs." +
-        "\r\n ver4.311(2015/11/30) Fixed minor bugs." +
+        "\r\n ver4.316 (2016/06/13) Fixed minor bugs." +
+        "\r\n ver4.315 (2015/12/23) Fixed a bugs on initial loading." +
+        "\r\n ver4.314 (2015/12/21) Added: Initializing steps are displayed." +
+        "\r\n ver4.313 (2015/12/18) Fixed a minor bug on input form for rhombohedral settings." +
+        "\r\n ver4.312 (2015/12/11) Fixed a minor bug on Wyckoff position." +
+        "\r\n ver4.312 (2015/12/09) Fixed minor bugs." +
+        "\r\n ver4.311 (2015/11/30) Fixed minor bugs." +
         "\r\n ver4.31 (2015/10/31) Added: EOS of MgO (Tange+ 2009) and Pt, Au (Yokoo+ 2009)." +
-        "\r\n ver4.306(2015/08/28) Fixed a minor bug." +
-        "\r\n ver4.305(2015/03/18) Fixed a bug about the calculation of Debye-Waller factor" +
-        "\r\n ver4.304(2015/03/06) Fixed: a bug on editing monoclinic crystal. (thx Niwa-san)" +
-        "\r\n ver4.303(2015/03/04) Improved macro functions." +
-        "\r\n ver4.302(2015/03/02) Improved macro functions." +
-        "\r\n ver4.301(2015/01/25) Fixed: a minor bug on an initial loading for ZIP version." +
+        "\r\n ver4.306 (2015/08/28) Fixed a minor bug." +
+        "\r\n ver4.305 (2015/03/18) Fixed a bug about the calculation of Debye-Waller factor" +
+        "\r\n ver4.304 (2015/03/06) Fixed: a bug on editing monoclinic crystal. (thx Niwa-san)" +
+        "\r\n ver4.303 (2015/03/04) Improved macro functions." +
+        "\r\n ver4.302 (2015/03/02) Improved macro functions." +
+        "\r\n ver4.301 (2015/01/25) Fixed: a minor bug on an initial loading for ZIP version." +
         "\r\n ver4.30 (2014/12/26) Added macro functions." +
-        "\r\n ver4.297(2014/12/03) Fixed a minor bugs on the clipboard operation." +
-        "\r\n ver4.296(2014/11/20) Fixed bugs on the refinements of cell constants for triclinic symmetry." +
-        "\r\n ver4.295(2014/11/14) Fixed minor bugs." +
-        "\r\n ver4.294(2014/11/10) Fixed minor bugs." +
-        "\r\n ver4.293(2014/11/08) Fixed a minor bug on UI. Added blinking mode, by right double clicks on crystal list" +
-        "\r\n ver4.292(2014/10/28) Added: EOS of NaCl B1 (Matsui et al 2012) and NaCl B2 (Ueda et al. 2008)." +
-        "\r\n ver4.291(2014/10/08) Fixed minor bugs." +
+        "\r\n ver4.297 (2014/12/03) Fixed a minor bugs on the clipboard operation." +
+        "\r\n ver4.296 (2014/11/20) Fixed bugs on the refinements of cell constants for triclinic symmetry." +
+        "\r\n ver4.295 (2014/11/14) Fixed minor bugs." +
+        "\r\n ver4.294 (2014/11/10) Fixed minor bugs." +
+        "\r\n ver4.293 (2014/11/08) Fixed a minor bug on UI. Added blinking mode, by right double clicks on crystal list" +
+        "\r\n ver4.292 (2014/10/28) Added: EOS of NaCl B1 (Matsui et al 2012) and NaCl B2 (Ueda et al. 2008)." +
+        "\r\n ver4.291 (2014/10/08) Fixed minor bugs." +
         "\r\n ver4.29 (2014/10/06) Improved: possible to receive multi profiles from IPAnalyzer" +
         "\r\n ver4.28 (2014/05/15) Improved: 'Fitting parameter' design. Fixed: load error on neutron TOF data format." +
-        "\r\n ver4.273(2014/02/13) Fixed minor bugs." +
-        "\r\n ver4.272(2014/02/12) Fixed minor bugs." +
-        "\r\n ver4.271(2014/01/31) Fixed minor bugs." +
+        "\r\n ver4.273 (2014/02/13) Fixed minor bugs." +
+        "\r\n ver4.272 (2014/02/12) Fixed minor bugs." +
+        "\r\n ver4.271 (2014/01/31) Fixed minor bugs." +
         "\r\n ver4.27 (2014/01/30) Added: Unit q (wavenumber) has been available as horizontal axis units." +
-        "\r\n ver4.264(2013/12/26) Fixed minor bugs." +
-        "\r\n ver4.263(2013/12/25) Fixed minor bugs." +
-        "\r\n ver4.262(2013/12/17) Improved: Language option." +
-        "\r\n ver4.261(2013/11/10) Fixed a minor bug when profile reading" +
+        "\r\n ver4.264 (2013/12/26) Fixed minor bugs." +
+        "\r\n ver4.263 (2013/12/25) Fixed minor bugs." +
+        "\r\n ver4.262 (2013/12/17) Improved: Language option." +
+        "\r\n ver4.261 (2013/11/10) Fixed a minor bug when profile reading" +
         "\r\n ver4.26 (2013/11/10) Added: Comment option for profiles. A button which checks/unchecks all profiles " +
-        "\r\n ver4.255(2013/11/10) Fixed a bug on design." +
-        "\r\n ver4.254(2013/11/06) Fixed minor bug on a clipboard operation." +
-        "\r\n ver4.253(2013/10/01) Fixed minor bug on an FFT calculation." +
-        "\r\n ver4.252(2013/09/30) Fixed minor bug on form designs." +
-        "\r\n ver4.251(2013/07/15) Fixed minor bug on CIF file conversion." +
+        "\r\n ver4.255 (2013/11/10) Fixed a bug on design." +
+        "\r\n ver4.254 (2013/11/06) Fixed minor bug on a clipboard operation." +
+        "\r\n ver4.253 (2013/10/01) Fixed minor bug on an FFT calculation." +
+        "\r\n ver4.252 (2013/09/30) Fixed minor bug on form designs." +
+        "\r\n ver4.251 (2013/07/15) Fixed minor bug on CIF file conversion." +
         "\r\n ver4.25 (2013/06/14) Added: EOS of NaCl (B2) (Sakai et al. 2011) and Pt (Matsui et al., 2009) into 'EOS form'." +
-        "\r\n ver4.242(2013/03/11) Fixed small bug." +
-        "\r\n ver4.241(2013/02/26) Changed address of help page." +
+        "\r\n ver4.242 (2013/03/11) Fixed small bug." +
+        "\r\n ver4.241 (2013/02/26) Changed address of help page." +
         "\r\n ver4.24 (2013/02/25) Added: Update check function." +
         "\r\n ver4.23 (2013/02/21) Added: CIF file export function" +
         "\r\n ver4.22 (2013/02/09) Improved: GSAS export function" +
         "\r\n ver4.21 (2013/01/25) Improved: speed of bandpass function" +
         "\r\n ver4.20 (2013/01/23) Added: Remove Kalpha2 function" +
         "\r\n ver4.19 (2013/01/07) Added 'Mask and Interpolation' function, and 'Remove diffraction peaks' function." +
-        "\r\n ver4.184(2012/12/27) Fixed minor bugs." +
-        "\r\n ver4.183(2012/12/05) Fixed minor bugs." +
-        "\r\n ver4.182(2012/11/29) Fixed bugs about 'Profile Operation'." +
-        "\r\n ver4.181(2012/11/28) Fixed: many minor bugs." +
+        "\r\n ver4.184 (2012/12/27) Fixed minor bugs." +
+        "\r\n ver4.183 (2012/12/05) Fixed minor bugs." +
+        "\r\n ver4.182 (2012/11/29) Fixed bugs about 'Profile Operation'." +
+        "\r\n ver4.181 (2012/11/28) Fixed: many minor bugs." +
         "\r\n ver4.18 (2012/11/26) Added: Algebraic operation of profile(s). Fixed many bugs." +
         "\r\n ver4.17 (2012/11/25) Improved: Appearance of profile list box, bug fixed: zoom out behabiour." +
-        "\r\n ver4.161(2012/11/12) Improved: Appearance of vertical and horizontal unit." +
+        "\r\n ver4.161 (2012/11/12) Improved: Appearance of vertical and horizontal unit." +
         "\r\n ver4.16 (2012/07/18) Added: A function to shift x-axis." +
         "\r\n ver4.15 (2012/06/29) Added: Error bar option." +
-        "\r\n ver4.141(2012/06/29) Fixed A tiny bug ." +
+        "\r\n ver4.141 (2012/06/29) Fixed A tiny bug ." +
         "\r\n ver4.14 (2012/06/28) Added: Export GSAS-ESD format function." +
-        "\r\n ver4.131(2012/06/28) Fixed: problems when reading CIF files." +
+        "\r\n ver4.131 (2012/06/28) Fixed: problems when reading CIF files." +
         "\r\n ver4.13 (2012/05/23) Added: Logarithm intensity mode." +
         "\r\n ver4.12 (2012/05/22) Added: Conunts per second mode for vertical axis." +
         "\r\n ver4.11 (2011/12/25) Fixed: a multiplicity calculation for trigonal symmetry was corrected." +
@@ -189,20 +190,20 @@ static class Version
         "\r\n ver3.91 (2011/08/21) 横軸を角度にすると回折線の位置が表示できなかったバグを修正 (大藤さんに感謝)" +
         "\r\n ver3.90 (2011/07/22) 中性子回折強度の計算を導入。横軸の設定が大きく変わっていますので、バグがありましたらご連絡ください。" +
         "\r\n ver3.82 (2011/07/04) 「Crystal information」中の「Detailed Information」の機能が充実しました。" +
-        "\r\n ver3.815(2011/03/23) FormFittingで初期半値幅が反映されないバグを修正" +
-        "\r\n ver3.814(2011/03/22) 一部のCIFファイルなどで「.66667」などと記載されている場合に「2/3」と読み替えるように内部仕様を変更" +
-        "\r\n ver3.813(2011/03/16) 点群6/mに属する結晶の多重度の計算ミスを修正" +
-        "\r\n ver3.812(2011/01/19) 日本語名を含んだファイルを読み込んだとき、不具合で強制終了することがあったのを修正。文字化け自体は直ってません。" +
-        "\r\n ver3.811(2010/12/08) FormEOS周りの動作を改良。MainForm側でチェックした結晶のみ表示するようにしました。" +
+        "\r\n ver3.815 (2011/03/23) FormFittingで初期半値幅が反映されないバグを修正" +
+        "\r\n ver3.814 (2011/03/22) 一部のCIFファイルなどで「.66667」などと記載されている場合に「2/3」と読み替えるように内部仕様を変更" +
+        "\r\n ver3.813 (2011/03/16) 点群6/mに属する結晶の多重度の計算ミスを修正" +
+        "\r\n ver3.812 (2011/01/19) 日本語名を含んだファイルを読み込んだとき、不具合で強制終了することがあったのを修正。文字化け自体は直ってません。" +
+        "\r\n ver3.811 (2010/12/08) FormEOS周りの動作を改良。MainForm側でチェックした結晶のみ表示するようにしました。" +
         "\r\n ver3.81 (2010/12/06) IPAnalyzerからUnrolled Imageを受け取って表示することができるようになりました。。" +
         "\r\n ver3.80 (2010/11/08) 初回起動時にバックグラウンドでネイティブコードを生成するように変更。二回目以降の起動が早くなります。" +
-        "\r\n ver3.701(2010/11/08) 三斜晶系の対称性をうまく設定できない問題を修正" +
+        "\r\n ver3.701 (2010/11/08) 三斜晶系の対称性をうまく設定できない問題を修正" +
         "\r\n ver3.7  (2010/11/07) 起動を高速化" +
         "\r\n ver3.68 (2010/05/09) IPAnalyzerからのRadialPatternデータ受信にとりあえず対応。今後もう少し必要な機能を実装する予定" +
-        "\r\n ver3.674(2010/04/18) IPAnalyzerからLPO(セクター)データを受信時、最後に一括して受け取るように仕様を変更。たぶん遅いPCでも安定して受け取れるはずです。" +
-        "\r\n ver3.673(2010/04/05) Stress解析の機能を改良. Nishihara et al. (2009)を参考にSinghの公式をフィッティング. 細かい解説は後日" +
-        "\r\n ver3.672(2010/04/01) Stress解析の機能を改良. フィッティングの都度、格子定数を最適化して、ピークを逃さない(?)ようにした。" +
-        "\r\n ver3.671(2010/03/31) Stress解析の機能を改良. FWHMや強度も出力するようにしました。" +
+        "\r\n ver3.674 (2010/04/18) IPAnalyzerからLPO(セクター)データを受信時、最後に一括して受け取るように仕様を変更。たぶん遅いPCでも安定して受け取れるはずです。" +
+        "\r\n ver3.673 (2010/04/05) Stress解析の機能を改良. Nishihara et al. (2009)を参考にSinghの公式をフィッティング. 細かい解説は後日" +
+        "\r\n ver3.672 (2010/04/01) Stress解析の機能を改良. フィッティングの都度、格子定数を最適化して、ピークを逃さない(?)ようにした。" +
+        "\r\n ver3.671 (2010/03/31) Stress解析の機能を改良. FWHMや強度も出力するようにしました。" +
         "\r\n ver3.67 (2010/03/31) Stress解析の機能を付けてみました。CTRL+SHIFT+Sで起動できますが、まだテスト中です。" +
         "\r\n ver3.66 (2010/03/28) レジストリの削除機能を追加(Optionの中です). && LPOのデータがうまく受け取れなかった問題を修正" +
         "\r\n ver3.65 (2010/03/03) AtomicPositionFinderなる機能を実装しつつあります。まだまだ不完全ですが取りあえず。" +
@@ -311,9 +312,11 @@ static class Version
         "\r\n ver1.00 (2005/06/??) とりあえず動くものをつくる"
         ;
 
-    static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); }
+    //static public string VersionAndDate { get => History.Remove(0, 10).Remove(20); } //260805Cl 変更前: 括弧前スペース無し前提の20文字固定長
+    static public string VersionAndDate { get => History[10..(History.IndexOf(')') + 1)]; } //260805Cl 版番と日付括弧の間のスペース挿入に伴い ')' までを取り出す (長さ非依存)
     //バージョンの値 (20241206 doubleから整数に変換)
-    static public int VersionValue { get => Convert.ToInt32(VersionAndDate[3..^12].Replace(".",""), System.Globalization.CultureInfo.InvariantCulture); }
+    //static public int VersionValue { get => Convert.ToInt32(VersionAndDate[3..^12].Replace(".",""), System.Globalization.CultureInfo.InvariantCulture); } //260805Cl 変更前: 末尾からの固定オフセットがスペース挿入で1ずれる
+    static public int VersionValue { get => Convert.ToInt32(VersionAndDate[3..VersionAndDate.IndexOf('(')].Trim().Replace(".", ""), System.Globalization.CultureInfo.InvariantCulture); } //260805Cl 「ver」直後から '(' 手前までを解析
 
     /// <summary>
     /// はじめに

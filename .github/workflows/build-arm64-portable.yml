@@ -54,7 +54,7 @@ jobs:
         run: |
           # release.yml と同じ規則で Version.cs の History 先頭からバージョンを得る (release の存在確認はしない: artifact のみ)
           $content = Get-Content "PDIndexer\Version.cs" -Raw
-          if ($content -notmatch 'ver(\d+\.\d+)\(') { throw "Could not parse version from Version.cs History." }
+          if ($content -notmatch 'ver(\d+\.\d+) ?\(') { throw "Could not parse version from Version.cs History." } # 260805Cl 版番と '(' の間のスペースを許容 (旧: 'ver(\d+\.\d+)\(')
           $ver = $Matches[1]
 
           # AssemblyVersion / FileVersion: x64⇔arm64 の same-version cross-grade には両 MSI の FileVersion 完全一致が必要
