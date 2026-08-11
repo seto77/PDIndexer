@@ -1,7 +1,12 @@
 # 260531Ch: Documentation build dependencies for GitHub Pages.
 mkdocs>=1.6,<2
 mkdocs-material>=9.5,<10
-pymdown-extensions>=10.8,<11
+# 260811Cl: GHSA-gm37-52c6-37mw (CVE-2026-67422) 対策で下限を 11.0.1 へ。
+#   caret/tilde/betterem/magiclink の正規表現が指数的バックトラック (ReDoS) を起こす。
+#   ここは信頼済み著者の md をビルド時に描画するだけなので実害は無いが、下限を上げて塞ぐ。
+#   11.0 の破壊的変更は pymdownx.b64 のみで未使用。--strict ビルド出力が
+#   10.21.3 とバイト一致することを実測済 (ReciPro と同方針)。
+pymdown-extensions>=11.0.1,<12
 mkdocs-glightbox>=0.4,<1
 mkdocs-redirects>=1.2,<2
 # 260625Cl 追加: マニュアル多言語化 (folder mode・default en をルート出力・未訳は英語フォールバック)。
