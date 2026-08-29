@@ -1,12 +1,13 @@
 # Traffic Data: PDIndexer
 
-Last updated: 2026-08-28
+Last updated: 2026-08-29
 
 ## Views
 
 ### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-08-27 | 3 | 3 |
 | 2026-08-26 | 18 | 13 |
 | 2026-08-25 | 6 | 4 |
 | 2026-08-24 | 5 | 4 |
@@ -18,12 +19,11 @@ Last updated: 2026-08-28
 | 2026-08-18 | 6 | 4 |
 | 2026-08-17 | 3 | 2 |
 | 2026-08-16 | 0 | 0 |
-| 2026-08-15 | 0 | 0 |
 
 ### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-W35 | 29 | 21 |
+| 2026-W35 | 32 | 24 |
 | 2026-W34 | 51 | 26 |
 | 2026-W33 | 57 | 13 |
 | 2026-W32 | 121 | 51 |
@@ -41,7 +41,7 @@ Last updated: 2026-08-28
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-08 | 266 | 117 |
+| 2026-08 | 269 | 120 |
 | 2026-07 | 336 | 159 |
 | 2026-06 | 315 | 143 |
 | 2026-05 | 335 | 151 |
@@ -50,13 +50,14 @@ Last updated: 2026-08-28
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 1692 | 764 |
+| 2026 | 1695 | 767 |
 
 ## Clones
 
 ### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-08-27 | 7 | 4 |
 | 2026-08-26 | 13 | 13 |
 | 2026-08-25 | 15 | 9 |
 | 2026-08-24 | 4 | 3 |
@@ -68,12 +69,11 @@ Last updated: 2026-08-28
 | 2026-08-18 | 7 | 4 |
 | 2026-08-17 | 4 | 3 |
 | 2026-08-16 | 3 | 2 |
-| 2026-08-15 | 38 | 12 |
 
 ### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-W35 | 32 | 25 |
+| 2026-W35 | 39 | 29 |
 | 2026-W34 | 78 | 35 |
 | 2026-W33 | 82 | 41 |
 | 2026-W32 | 48 | 32 |
@@ -91,7 +91,7 @@ Last updated: 2026-08-28
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-08 | 253 | 142 |
+| 2026-08 | 260 | 146 |
 | 2026-07 | 326 | 169 |
 | 2026-06 | 771 | 276 |
 | 2026-05 | 414 | 238 |
@@ -100,22 +100,22 @@ Last updated: 2026-08-28
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 2265 | 1034 |
+| 2026 | 2272 | 1038 |
 
 ## Referrers
 
 ### Weekly (最大2週保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026-W35 | yseto.net | 103 | 66 |
-| 2026-W35 | Google | 33 | 16 |
-| 2026-W35 | Bing | 19 | 7 |
-| 2026-W35 | Yahoo | 16 | 4 |
-| 2026-W35 | seto77.github.io | 11 | 11 |
-| 2026-W35 | github.com | 9 | 9 |
-| 2026-W35 | DuckDuckGo | 4 | 4 |
-| 2026-W35 | kyoiku-kenkyudb.omu.ac.jp | 4 | 4 |
-| 2026-W35 | teams.public.onecdn.static.microsoft | 4 | 4 |
+| 2026-W35 | yseto.net | 138 | 90 |
+| 2026-W35 | Google | 41 | 21 |
+| 2026-W35 | Bing | 20 | 8 |
+| 2026-W35 | Yahoo | 20 | 5 |
+| 2026-W35 | seto77.github.io | 14 | 14 |
+| 2026-W35 | github.com | 12 | 12 |
+| 2026-W35 | DuckDuckGo | 5 | 5 |
+| 2026-W35 | kyoiku-kenkyudb.omu.ac.jp | 5 | 5 |
+| 2026-W35 | teams.public.onecdn.static.microsoft | 5 | 5 |
 | 2026-W34 | yseto.net | 254 | 145 |
 | 2026-W34 | Google | 112 | 47 |
 | 2026-W34 | Bing | 78 | 26 |
@@ -128,15 +128,15 @@ Last updated: 2026-08-28
 ### Monthly (最大3か月保持)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026-08 | yseto.net | 1455 | 843 |
-| 2026-08 | Google | 625 | 293 |
-| 2026-08 | github.com | 272 | 104 |
-| 2026-08 | seto77.github.io | 220 | 102 |
-| 2026-08 | Bing | 213 | 88 |
-| 2026-08 | Yahoo | 28 | 7 |
-| 2026-08 | kyoiku-kenkyudb.omu.ac.jp | 20 | 20 |
-| 2026-08 | teams.public.onecdn.static.microsoft | 8 | 8 |
-| 2026-08 | DuckDuckGo | 4 | 4 |
+| 2026-08 | yseto.net | 1490 | 867 |
+| 2026-08 | Google | 633 | 298 |
+| 2026-08 | github.com | 275 | 107 |
+| 2026-08 | seto77.github.io | 223 | 105 |
+| 2026-08 | Bing | 214 | 89 |
+| 2026-08 | Yahoo | 32 | 8 |
+| 2026-08 | kyoiku-kenkyudb.omu.ac.jp | 21 | 21 |
+| 2026-08 | teams.public.onecdn.static.microsoft | 9 | 9 |
+| 2026-08 | DuckDuckGo | 5 | 5 |
 | 2026-07 | yseto.net | 1038 | 621 |
 | 2026-07 | Google | 383 | 238 |
 | 2026-07 | Bing | 239 | 74 |
@@ -155,18 +155,18 @@ Last updated: 2026-08-28
 ### Yearly (無制限)
 | Period | Referrer | Total Count | Unique |
 | ---- | ---- | ---- | ---- |
-| 2026 | yseto.net | 6592 | 3565 |
-| 2026 | Google | 2176 | 1223 |
-| 2026 | Bing | 1259 | 537 |
-| 2026 | github.com | 997 | 462 |
-| 2026 | seto77.github.io | 423 | 213 |
-| 2026 | kyoiku-kenkyudb.omu.ac.jp | 140 | 63 |
+| 2026 | yseto.net | 6627 | 3589 |
+| 2026 | Google | 2184 | 1228 |
+| 2026 | Bing | 1260 | 538 |
+| 2026 | github.com | 1000 | 465 |
+| 2026 | seto77.github.io | 426 | 216 |
+| 2026 | kyoiku-kenkyudb.omu.ac.jp | 141 | 64 |
 | 2026 | researchmap.jp | 42 | 14 |
-| 2026 | Yahoo | 28 | 7 |
+| 2026 | Yahoo | 32 | 8 |
 | 2026 | yandex.ru | 27 | 27 |
 | 2026 | chatgpt.com | 14 | 14 |
-| 2026 | teams.public.onecdn.static.microsoft | 8 | 8 |
-| 2026 | DuckDuckGo | 4 | 4 |
+| 2026 | teams.public.onecdn.static.microsoft | 9 | 9 |
+| 2026 | DuckDuckGo | 5 | 5 |
 | 2026 | copilot.microsoft.com | 2 | 1 |
 | 2026 | runtime-app.powerplatform.com | 1 | 1 |
 
@@ -175,19 +175,19 @@ Last updated: 2026-08-28
 ### Weekly (最大2週保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-W35 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 171 | 105 |
-| 2026-W35 | /seto77/PDIndexer | Overview | 115 | 74 |
+| 2026-W35 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 221 | 139 |
+| 2026-W35 | /seto77/PDIndexer | Overview | 138 | 92 |
 | 2026-W35 | /seto77/PDIndexer/issues | /issues | 25 | 7 |
-| 2026-W35 | /seto77/PDIndexer/releases | /releases | 17 | 7 |
-| 2026-W35 | /seto77/PDindexer/releases | /releases | 14 | 9 |
-| 2026-W35 | /seto77/PDIndexer/tree/master/PDIndexer | /tree/master/PDIndexer | 12 | 10 |
+| 2026-W35 | /seto77/PDIndexer/releases | /releases | 20 | 9 |
+| 2026-W35 | /seto77/PDindexer/releases | /releases | 16 | 11 |
+| 2026-W35 | /seto77/PDIndexer/tree/master/PDIndexer | /tree/master/PDIndexer | 14 | 12 |
 | 2026-W35 | /seto77/PDIndexer/tree/master | /tree/master | 4 | 2 |
 | 2026-W35 | /seto77/PDIndexer/blob/master/LICENSE.md | /blob/master/LICENSE.md | 3 | 3 |
 | 2026-W35 | /seto77/PDIndexer/issues/views | /issues/views | 3 | 3 |
 | 2026-W35 | /seto77/PDIndexer/projects | /projects | 3 | 3 |
-| 2026-W35 | /seto77/PDIndexer/releases/tag/v.4.445 | /releases/tag/v.4.445 | 2 | 2 |
-| 2026-W35 | /seto77/PDIndexer/releases/tag/v.4.452 | /releases/tag/v.4.452 | 1 | 1 |
-| 2026-W35 | /seto77/PDIndexer/tags | /tags | 1 | 1 |
+| 2026-W35 | /seto77/PDIndexer/releases/tag/v.4.445 | /releases/tag/v.4.445 | 3 | 3 |
+| 2026-W35 | /seto77/PDIndexer/releases/tag/v.4.452 | /releases/tag/v.4.452 | 2 | 2 |
+| 2026-W35 | /seto77/PDIndexer/tags | /tags | 2 | 2 |
 | 2026-W34 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 376 | 207 |
 | 2026-W34 | /seto77/PDIndexer | Overview | 261 | 133 |
 | 2026-W34 | /seto77/PDIndexer/issues | /issues | 81 | 36 |
@@ -204,12 +204,12 @@ Last updated: 2026-08-28
 ### Monthly (最大3か月保持)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026-08 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 1921 | 1137 |
-| 2026-08 | /seto77/PDIndexer | Overview | 986 | 571 |
-| 2026-08 | /seto77/PDindexer/releases | /releases | 241 | 67 |
+| 2026-08 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 1971 | 1171 |
+| 2026-08 | /seto77/PDIndexer | Overview | 1009 | 589 |
+| 2026-08 | /seto77/PDindexer/releases | /releases | 243 | 69 |
 | 2026-08 | /seto77/PDIndexer/issues | /issues | 232 | 128 |
-| 2026-08 | /seto77/PDIndexer/tree/master/PDIndexer | /tree/master/PDIndexer | 109 | 67 |
-| 2026-08 | /seto77/PDIndexer/releases | /releases | 108 | 47 |
+| 2026-08 | /seto77/PDIndexer/tree/master/PDIndexer | /tree/master/PDIndexer | 111 | 69 |
+| 2026-08 | /seto77/PDIndexer/releases | /releases | 111 | 49 |
 | 2026-08 | /seto77/PDIndexer/tree/v.4.464 | /tree/v.4.464 | 28 | 22 |
 | 2026-08 | /seto77/PDIndexer/tree/master/PDIndexer/DataConverter | /tree/master/PDIndexer/DataConverter | 28 | 14 |
 | 2026-08 | /seto77/PDIndexer/tree/master | /tree/master | 28 | 14 |
@@ -222,9 +222,9 @@ Last updated: 2026-08-28
 | 2026-08 | /seto77/PDIndexer/projects | /projects | 6 | 6 |
 | 2026-08 | /seto77/PDIndexer/releases/tag/v.4.455 | /releases/tag/v.4.455 | 5 | 5 |
 | 2026-08 | /seto77/PDIndexer/releases/tag/v.4.427 | /releases/tag/v.4.427 | 5 | 5 |
-| 2026-08 | /seto77/PDIndexer/releases/tag/v.4.445 | /releases/tag/v.4.445 | 2 | 2 |
-| 2026-08 | /seto77/PDIndexer/releases/tag/v.4.452 | /releases/tag/v.4.452 | 1 | 1 |
-| 2026-08 | /seto77/PDIndexer/tags | /tags | 1 | 1 |
+| 2026-08 | /seto77/PDIndexer/releases/tag/v.4.445 | /releases/tag/v.4.445 | 3 | 3 |
+| 2026-08 | /seto77/PDIndexer/releases/tag/v.4.452 | /releases/tag/v.4.452 | 2 | 2 |
+| 2026-08 | /seto77/PDIndexer/tags | /tags | 2 | 2 |
 | 2026-07 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 1176 | 737 |
 | 2026-07 | /seto77/PDIndexer | Overview | 626 | 389 |
 | 2026-07 | /seto77/PDIndexer/issues | /issues | 117 | 77 |
@@ -270,14 +270,14 @@ Last updated: 2026-08-28
 ### Yearly (無制限)
 | Period | Path | Title | Total Count | Unique |
 | ---- | ---- | ---- | ---- | ---- |
-| 2026 | /seto77/PDIndexer | Overview | 4032 | 2599 |
+| 2026 | /seto77/PDIndexer | Overview | 4055 | 2617 |
 | 2026 | /seto77/PDIndexer/releases/tag/v.4.461 | /releases/tag/v.4.461 | 3366 | 1791 |
-| 2026 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 3097 | 1874 |
+| 2026 | /seto77/PDIndexer/releases/tag/v.4.464 | /releases/tag/v.4.464 | 3147 | 1908 |
 | 2026 | /seto77/PDIndexer/releases/tag/v.4.462 | /releases/tag/v.4.462 | 1548 | 935 |
 | 2026 | /seto77/PDIndexer/issues | /issues | 562 | 336 |
-| 2026 | /seto77/PDIndexer/releases | /releases | 450 | 324 |
-| 2026 | /seto77/PDIndexer/tree/master/PDIndexer | /tree/master/PDIndexer | 379 | 227 |
-| 2026 | /seto77/PDindexer/releases | /releases | 312 | 131 |
+| 2026 | /seto77/PDIndexer/releases | /releases | 453 | 326 |
+| 2026 | /seto77/PDIndexer/tree/master/PDIndexer | /tree/master/PDIndexer | 381 | 229 |
+| 2026 | /seto77/PDindexer/releases | /releases | 314 | 133 |
 | 2026 | /seto77/PDIndexer/releases/tag/v.4.460 | /releases/tag/v.4.460 | 281 | 151 |
 | 2026 | /seto77/PDIndexer/tree/master/PDindexerSetup | /tree/master/PDindexerSetup | 128 | 97 |
 | 2026 | /seto77/PDIndexer/actions | /actions | 92 | 52 |
@@ -322,20 +322,20 @@ Last updated: 2026-08-28
 | 2026 | /seto77/PDIndexer/blob/master/PDIndexer/FormSequentialAnalysis.cs | /blob/master/PDIndexer/FormSequentialAnalysis.cs | 3 | 3 |
 | 2026 | /seto77/PDIndexer/blob/master/PDIndexer/FormSequentialAnalysis.resx | /blob/master/PDIndexer/FormSequentialAnalysis.resx | 3 | 3 |
 | 2026 | /seto77/PDIndexer/blob/v.4.462/PDIndexer/FormSequentialAnalysis.cs | /blob/v.4.462/PDIndexer/FormSequentialAnalysis.cs | 3 | 3 |
+| 2026 | /seto77/PDIndexer/releases/tag/v.4.445 | /releases/tag/v.4.445 | 3 | 3 |
 | 2026 | /seto77/PDIndexer/commit/c1afb630847352f3fa78804970b450532eee6af4 | /commit/c1afb630847352f3fa78804970b450532eee6af4 | 2 | 2 |
-| 2026 | /seto77/PDIndexer/releases/tag/v.4.445 | /releases/tag/v.4.445 | 2 | 2 |
+| 2026 | /seto77/PDIndexer/releases/tag/v.4.452 | /releases/tag/v.4.452 | 2 | 2 |
+| 2026 | /seto77/PDIndexer/tags | /tags | 2 | 2 |
 | 2026 | /seto77/PDIndexer/commits/master | /commits/master | 1 | 1 |
-| 2026 | /seto77/PDIndexer/releases/tag/v.4.452 | /releases/tag/v.4.452 | 1 | 1 |
-| 2026 | /seto77/PDIndexer/tags | /tags | 1 | 1 |
 
 ## Downloads
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
 | v.4.464 | 2026-07-02 | PDIndexer-setup.msi | 466 |
-| v.4.464 | 2026-07-02 | PDIndexer-setup_arm64.msi | 43 |
-| v.4.464 | 2026-07-02 | PDIndexer-v.4.464.zip | 74 |
-| v.4.464 | 2026-07-02 | PDIndexer-v.4.464_arm64.zip | 20 |
+| v.4.464 | 2026-07-02 | PDIndexer-setup_arm64.msi | 44 |
+| v.4.464 | 2026-07-02 | PDIndexer-v.4.464.zip | 76 |
+| v.4.464 | 2026-07-02 | PDIndexer-v.4.464_arm64.zip | 22 |
 | v.4.464 | 2026-07-02 | PDIndexerSetup.msi | 43 |
 | v.4.463 | 2026-06-24 | PDIndexer-setup.msi | 126 |
 | v.4.463 | 2026-06-24 | PDIndexer-v.4.463.zip | 38 |
@@ -371,13 +371,14 @@ Last updated: 2026-08-28
 | v.4.434 | 2023-02-13 | PDindexerSetup.msi | 107 |
 | v.4.433 | 2023-02-10 | PDindexerSetup.msi | 19 |
 
-**TOTAL: 8359**
+**TOTAL: 8364**
 
 ## Stats
 
 ### Daily (最大14日保持)
 | Date | Stars | Forks | Open Issues | Watchers |
 | ---- | ---- | ---- | ---- | ---- |
+| 2026-08-29 | 15 | 3 | 1 | 2 |
 | 2026-08-28 | 15 | 3 | 1 | 2 |
 | 2026-08-26 | 15 | 3 | 1 | 2 |
 | 2026-08-25 | 15 | 3 | 1 | 2 |
@@ -390,7 +391,6 @@ Last updated: 2026-08-28
 | 2026-08-18 | 15 | 3 | 1 | 2 |
 | 2026-08-17 | 15 | 3 | 1 | 2 |
 | 2026-08-16 | 15 | 3 | 1 | 2 |
-| 2026-08-15 | 15 | 3 | 1 | 2 |
 
 ### Weekly (最大14週保持)
 | Period | Stars | Forks | Open Issues | Watchers |
@@ -422,4 +422,4 @@ Last updated: 2026-08-28
 | ---- | ---- | ---- | ---- | ---- |
 | 2026 | 15 | 3 | 1 | 2 |
 
-<!-- meta: last_collected_paths=2026-08-28 last_collected_referrers=2026-08-28 -->
+<!-- meta: last_collected_paths=2026-08-29 last_collected_referrers=2026-08-29 -->
