@@ -11,6 +11,7 @@ static class Version
     /// </summary>
     public const string History =
         "History" +
+        "\r\n ver4.465(2026/10/26) Added a chemical composition window (oxide/halide/sulfide conversion with valences) to the crystal right-click menu, and updated atomic weights to CIAAW 2024." + // 261026Cl 追加
         "\r\n ver4.464(2026/07/03) Added an arm64 distribution package. Various bug fixes." +
         "\r\n ver4.463(2026/06/25) Migrated the installer to WiX, improved resource disposal around startup and image handling, and fixed a WinForms designer issue." +
         "\r\n ver4.462(2026/06/01) Updated tooltips and added a portable ZIP package as an alternative distribution format." +

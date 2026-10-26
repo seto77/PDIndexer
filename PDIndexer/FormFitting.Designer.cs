@@ -44,48 +44,56 @@ namespace PDIndexer
             DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
             groupBox1 = new GroupBox();
-            textBoxGamma_err = new TextBox();
-            textBoxAlpha_err = new TextBox();
-            textBoxBeta_err = new TextBox();
-            textBoxC_err = new TextBox();
-            textBoxB_err = new TextBox();
-            textBoxV = new TextBox();
-            textBoxV_err = new TextBox();
-            textBoxC = new TextBox();
-            textBoxGamma = new TextBox();
-            textBoxA_err = new TextBox();
-            textBoxA = new TextBox();
-            label26 = new Label();
-            label25 = new Label();
-            label24 = new Label();
-            label3 = new Label();
-            label29 = new Label();
-            label23 = new Label();
-            label22 = new Label();
-            label21 = new Label();
-            label10 = new Label();
-            label20 = new Label();
-            label19 = new Label();
-            label17 = new Label();
-            label27 = new Label();
-            label11 = new Label();
-            label9 = new Label();
-            textBoxB = new TextBox();
-            textBoxAlpha = new TextBox();
-            textBoxBeta = new TextBox();
+            flowLayoutPanel9 = new FlowLayoutPanel();
             buttonResetTakeoffAngle = new Button();
-            buttonCopyCellConstantsToClipboard = new Button();
+            flowLayoutPanel1 = new FlowLayoutPanel();
             buttonConfirm = new Button();
-            label8 = new Label();
-            label12 = new Label();
+            buttonCopyCellConstantsToClipboard = new Button();
+            flowLayoutPanel8 = new FlowLayoutPanel();
             label28 = new Label();
-            label13 = new Label();
-            label14 = new Label();
-            label15 = new Label();
+            textBoxV = new TextBox();
+            label27 = new Label();
+            textBoxV_err = new TextBox();
+            label29 = new Label();
+            flowLayoutPanel7 = new FlowLayoutPanel();
             label16 = new Label();
+            textBoxGamma = new TextBox();
+            label20 = new Label();
+            textBoxGamma_err = new TextBox();
+            label26 = new Label();
+            flowLayoutPanel6 = new FlowLayoutPanel();
+            label15 = new Label();
+            textBoxBeta = new TextBox();
+            label19 = new Label();
+            textBoxBeta_err = new TextBox();
+            label25 = new Label();
+            flowLayoutPanel5 = new FlowLayoutPanel();
+            label14 = new Label();
+            textBoxAlpha = new TextBox();
+            label17 = new Label();
+            textBoxAlpha_err = new TextBox();
+            label24 = new Label();
+            flowLayoutPanel4 = new FlowLayoutPanel();
+            label13 = new Label();
+            textBoxC = new TextBox();
+            label11 = new Label();
+            textBoxC_err = new TextBox();
+            label23 = new Label();
+            flowLayoutPanel3 = new FlowLayoutPanel();
+            label12 = new Label();
+            textBoxB = new TextBox();
+            label9 = new Label();
+            textBoxB_err = new TextBox();
+            label22 = new Label();
+            flowLayoutPanel2 = new FlowLayoutPanel();
+            label8 = new Label();
+            textBoxA = new TextBox();
+            label10 = new Label();
+            textBoxA_err = new TextBox();
+            label21 = new Label();
             buttonCopyTableToClipboard = new Button();
             groupBox3 = new GroupBox();
-            numericBoxSearchRange = new Crystallography.Controls.NumericBox();
+            numericBoxSearchRange = new NumericBox();
             flowLayoutPanelPatternDecomposition = new FlowLayoutPanel();
             radioButtonEachCrystal = new RadioButton();
             radioButtonBetweenCrystals = new RadioButton();
@@ -97,6 +105,7 @@ namespace PDIndexer
             radioButtonSplitPearson = new RadioButton();
             buttonApplyFunctionToAll = new Button();
             panelFWHM = new Panel();
+            numericBoxInitialFWHM = new NumericBox();
             buttonApplyFWHMToAll = new Button();
             label1 = new Label();
             checkBoxUseInitialFWHM = new CheckBox();
@@ -134,10 +143,19 @@ namespace PDIndexer
             groupBox5 = new GroupBox();
             toolTip = new ToolTip(components);
             buttonSaveTableAsCSV = new Button();
-            numericBoxEffectiveDigit = new Crystallography.Controls.NumericBox();
+            numericBoxEffectiveDigit = new NumericBox();
             buttonClearPeaks = new Button();
-            numericBoxInitialFWHM = new Crystallography.Controls.NumericBox();
+            flowLayoutPanel10 = new FlowLayoutPanel();
             groupBox1.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
+            flowLayoutPanel1.SuspendLayout();
+            flowLayoutPanel8.SuspendLayout();
+            flowLayoutPanel7.SuspendLayout();
+            flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel5.SuspendLayout();
+            flowLayoutPanel4.SuspendLayout();
+            flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel2.SuspendLayout();
             groupBox3.SuspendLayout();
             flowLayoutPanelPatternDecomposition.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -150,215 +168,29 @@ namespace PDIndexer
             ((ISupportInitialize)bindingSourcePlanes).BeginInit();
             groupBox4.SuspendLayout();
             groupBox5.SuspendLayout();
+            flowLayoutPanel10.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
             resources.ApplyResources(groupBox1, "groupBox1");
-            groupBox1.Controls.Add(textBoxGamma_err);
-            groupBox1.Controls.Add(textBoxAlpha_err);
-            groupBox1.Controls.Add(textBoxBeta_err);
-            groupBox1.Controls.Add(textBoxC_err);
-            groupBox1.Controls.Add(textBoxB_err);
-            groupBox1.Controls.Add(textBoxV);
-            groupBox1.Controls.Add(textBoxV_err);
-            groupBox1.Controls.Add(textBoxC);
-            groupBox1.Controls.Add(textBoxGamma);
-            groupBox1.Controls.Add(textBoxA_err);
-            groupBox1.Controls.Add(textBoxA);
-            groupBox1.Controls.Add(label26);
-            groupBox1.Controls.Add(label25);
-            groupBox1.Controls.Add(label24);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label29);
-            groupBox1.Controls.Add(label23);
-            groupBox1.Controls.Add(label22);
-            groupBox1.Controls.Add(label21);
-            groupBox1.Controls.Add(label10);
-            groupBox1.Controls.Add(label20);
-            groupBox1.Controls.Add(label19);
-            groupBox1.Controls.Add(label17);
-            groupBox1.Controls.Add(label27);
-            groupBox1.Controls.Add(label11);
-            groupBox1.Controls.Add(label9);
-            groupBox1.Controls.Add(textBoxB);
-            groupBox1.Controls.Add(textBoxAlpha);
-            groupBox1.Controls.Add(textBoxBeta);
-            groupBox1.Controls.Add(buttonResetTakeoffAngle);
-            groupBox1.Controls.Add(buttonCopyCellConstantsToClipboard);
-            groupBox1.Controls.Add(buttonConfirm);
-            groupBox1.Controls.Add(label8);
-            groupBox1.Controls.Add(label12);
-            groupBox1.Controls.Add(label28);
-            groupBox1.Controls.Add(label13);
-            groupBox1.Controls.Add(label14);
-            groupBox1.Controls.Add(label15);
-            groupBox1.Controls.Add(label16);
+            groupBox1.Controls.Add(flowLayoutPanel9);
+            groupBox1.Controls.Add(flowLayoutPanel1);
+            groupBox1.Controls.Add(flowLayoutPanel8);
+            groupBox1.Controls.Add(flowLayoutPanel7);
+            groupBox1.Controls.Add(flowLayoutPanel6);
+            groupBox1.Controls.Add(flowLayoutPanel5);
+            groupBox1.Controls.Add(flowLayoutPanel4);
+            groupBox1.Controls.Add(flowLayoutPanel3);
+            groupBox1.Controls.Add(flowLayoutPanel2);
             groupBox1.Name = "groupBox1";
             groupBox1.TabStop = false;
             // 
-            // textBoxGamma_err
+            // flowLayoutPanel9
             // 
-            resources.ApplyResources(textBoxGamma_err, "textBoxGamma_err");
-            textBoxGamma_err.Name = "textBoxGamma_err";
-            textBoxGamma_err.ReadOnly = true;
-            // 
-            // textBoxAlpha_err
-            // 
-            resources.ApplyResources(textBoxAlpha_err, "textBoxAlpha_err");
-            textBoxAlpha_err.ForeColor = System.Drawing.SystemColors.WindowText;
-            textBoxAlpha_err.Name = "textBoxAlpha_err";
-            textBoxAlpha_err.ReadOnly = true;
-            // 
-            // textBoxBeta_err
-            // 
-            resources.ApplyResources(textBoxBeta_err, "textBoxBeta_err");
-            textBoxBeta_err.Name = "textBoxBeta_err";
-            textBoxBeta_err.ReadOnly = true;
-            // 
-            // textBoxC_err
-            // 
-            resources.ApplyResources(textBoxC_err, "textBoxC_err");
-            textBoxC_err.Name = "textBoxC_err";
-            textBoxC_err.ReadOnly = true;
-            // 
-            // textBoxB_err
-            // 
-            resources.ApplyResources(textBoxB_err, "textBoxB_err");
-            textBoxB_err.Name = "textBoxB_err";
-            textBoxB_err.ReadOnly = true;
-            // 
-            // textBoxV
-            // 
-            resources.ApplyResources(textBoxV, "textBoxV");
-            textBoxV.Name = "textBoxV";
-            textBoxV.ReadOnly = true;
-            // 
-            // textBoxV_err
-            // 
-            resources.ApplyResources(textBoxV_err, "textBoxV_err");
-            textBoxV_err.Name = "textBoxV_err";
-            textBoxV_err.ReadOnly = true;
-            // 
-            // textBoxC
-            // 
-            resources.ApplyResources(textBoxC, "textBoxC");
-            textBoxC.Name = "textBoxC";
-            textBoxC.ReadOnly = true;
-            // 
-            // textBoxGamma
-            // 
-            resources.ApplyResources(textBoxGamma, "textBoxGamma");
-            textBoxGamma.Name = "textBoxGamma";
-            textBoxGamma.ReadOnly = true;
-            // 
-            // textBoxA_err
-            // 
-            resources.ApplyResources(textBoxA_err, "textBoxA_err");
-            textBoxA_err.Name = "textBoxA_err";
-            textBoxA_err.ReadOnly = true;
-            textBoxA_err.TextChanged += textBoxA_TextChanged;
-            // 
-            // textBoxA
-            // 
-            resources.ApplyResources(textBoxA, "textBoxA");
-            textBoxA.Name = "textBoxA";
-            textBoxA.ReadOnly = true;
-            textBoxA.TextChanged += textBoxA_TextChanged;
-            // 
-            // label26
-            // 
-            resources.ApplyResources(label26, "label26");
-            label26.Name = "label26";
-            // 
-            // label25
-            // 
-            resources.ApplyResources(label25, "label25");
-            label25.Name = "label25";
-            // 
-            // label24
-            // 
-            resources.ApplyResources(label24, "label24");
-            label24.Name = "label24";
-            // 
-            // label3
-            // 
-            resources.ApplyResources(label3, "label3");
-            label3.Name = "label3";
-            // 
-            // label29
-            // 
-            resources.ApplyResources(label29, "label29");
-            label29.Name = "label29";
-            // 
-            // label23
-            // 
-            resources.ApplyResources(label23, "label23");
-            label23.Name = "label23";
-            // 
-            // label22
-            // 
-            resources.ApplyResources(label22, "label22");
-            label22.Name = "label22";
-            // 
-            // label21
-            // 
-            resources.ApplyResources(label21, "label21");
-            label21.Name = "label21";
-            // 
-            // label10
-            // 
-            resources.ApplyResources(label10, "label10");
-            label10.Name = "label10";
-            // 
-            // label20
-            // 
-            resources.ApplyResources(label20, "label20");
-            label20.Name = "label20";
-            // 
-            // label19
-            // 
-            resources.ApplyResources(label19, "label19");
-            label19.Name = "label19";
-            // 
-            // label17
-            // 
-            resources.ApplyResources(label17, "label17");
-            label17.Name = "label17";
-            // 
-            // label27
-            // 
-            resources.ApplyResources(label27, "label27");
-            label27.Name = "label27";
-            // 
-            // label11
-            // 
-            resources.ApplyResources(label11, "label11");
-            label11.Name = "label11";
-            // 
-            // label9
-            // 
-            resources.ApplyResources(label9, "label9");
-            label9.Name = "label9";
-            // 
-            // textBoxB
-            // 
-            resources.ApplyResources(textBoxB, "textBoxB");
-            textBoxB.Name = "textBoxB";
-            textBoxB.ReadOnly = true;
-            // 
-            // textBoxAlpha
-            // 
-            resources.ApplyResources(textBoxAlpha, "textBoxAlpha");
-            textBoxAlpha.ForeColor = System.Drawing.SystemColors.WindowText;
-            textBoxAlpha.Name = "textBoxAlpha";
-            textBoxAlpha.ReadOnly = true;
-            // 
-            // textBoxBeta
-            // 
-            resources.ApplyResources(textBoxBeta, "textBoxBeta");
-            textBoxBeta.Name = "textBoxBeta";
-            textBoxBeta.ReadOnly = true;
+            resources.ApplyResources(flowLayoutPanel9, "flowLayoutPanel9");
+            flowLayoutPanel9.Controls.Add(buttonResetTakeoffAngle);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
             // 
             // buttonResetTakeoffAngle
             // 
@@ -366,17 +198,12 @@ namespace PDIndexer
             buttonResetTakeoffAngle.Name = "buttonResetTakeoffAngle";
             buttonResetTakeoffAngle.Click += buttonResetTakeoffAngle_Click;
             // 
-            // buttonCopyCellConstantsToClipboard
+            // flowLayoutPanel1
             // 
-            resources.ApplyResources(buttonCopyCellConstantsToClipboard, "buttonCopyCellConstantsToClipboard");
-            buttonCopyCellConstantsToClipboard.Name = "buttonCopyCellConstantsToClipboard";
-            // 260531Cl 追加: バルーン表示・表示遅延を統一(長文ツールチップ対応)。AutomaticDelay は設定しない(他遅延値を上書きするため。5000ちょうどは Win11 既知バグにつき禁止)
-            toolTip.IsBalloon = true;
-            toolTip.AutoPopDelay = 10000;
-            toolTip.InitialDelay = 500;
-            toolTip.ReshowDelay = 100;
-            toolTip.SetToolTip(buttonCopyCellConstantsToClipboard, resources.GetString("buttonCopyCellConstantsToClipboard.ToolTip"));
-            buttonCopyCellConstantsToClipboard.Click += buttonCopyClipboard_Click;
+            resources.ApplyResources(flowLayoutPanel1, "flowLayoutPanel1");
+            flowLayoutPanel1.Controls.Add(buttonConfirm);
+            flowLayoutPanel1.Controls.Add(buttonCopyCellConstantsToClipboard);
+            flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
             // buttonConfirm
             // 
@@ -385,40 +212,275 @@ namespace PDIndexer
             toolTip.SetToolTip(buttonConfirm, resources.GetString("buttonConfirm.ToolTip"));
             buttonConfirm.Click += buttonConfirm_Click;
             // 
-            // label8
+            // buttonCopyCellConstantsToClipboard
             // 
-            resources.ApplyResources(label8, "label8");
-            label8.Name = "label8";
+            resources.ApplyResources(buttonCopyCellConstantsToClipboard, "buttonCopyCellConstantsToClipboard");
+            buttonCopyCellConstantsToClipboard.Name = "buttonCopyCellConstantsToClipboard";
+            toolTip.SetToolTip(buttonCopyCellConstantsToClipboard, resources.GetString("buttonCopyCellConstantsToClipboard.ToolTip"));
+            buttonCopyCellConstantsToClipboard.Click += buttonCopyClipboard_Click;
             // 
-            // label12
+            // flowLayoutPanel8
             // 
-            resources.ApplyResources(label12, "label12");
-            label12.Name = "label12";
+            resources.ApplyResources(flowLayoutPanel8, "flowLayoutPanel8");
+            flowLayoutPanel8.Controls.Add(label28);
+            flowLayoutPanel8.Controls.Add(textBoxV);
+            flowLayoutPanel8.Controls.Add(label27);
+            flowLayoutPanel8.Controls.Add(textBoxV_err);
+            flowLayoutPanel8.Controls.Add(label29);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
             // 
             // label28
             // 
             resources.ApplyResources(label28, "label28");
             label28.Name = "label28";
             // 
-            // label13
+            // textBoxV
             // 
-            resources.ApplyResources(label13, "label13");
-            label13.Name = "label13";
+            resources.ApplyResources(textBoxV, "textBoxV");
+            textBoxV.Name = "textBoxV";
+            textBoxV.ReadOnly = true;
             // 
-            // label14
+            // label27
             // 
-            resources.ApplyResources(label14, "label14");
-            label14.Name = "label14";
+            resources.ApplyResources(label27, "label27");
+            label27.Name = "label27";
+            // 
+            // textBoxV_err
+            // 
+            resources.ApplyResources(textBoxV_err, "textBoxV_err");
+            textBoxV_err.Name = "textBoxV_err";
+            textBoxV_err.ReadOnly = true;
+            // 
+            // label29
+            // 
+            resources.ApplyResources(label29, "label29");
+            label29.Name = "label29";
+            // 
+            // flowLayoutPanel7
+            // 
+            resources.ApplyResources(flowLayoutPanel7, "flowLayoutPanel7");
+            flowLayoutPanel7.Controls.Add(label16);
+            flowLayoutPanel7.Controls.Add(textBoxGamma);
+            flowLayoutPanel7.Controls.Add(label20);
+            flowLayoutPanel7.Controls.Add(textBoxGamma_err);
+            flowLayoutPanel7.Controls.Add(label26);
+            flowLayoutPanel7.Name = "flowLayoutPanel7";
+            // 
+            // label16
+            // 
+            resources.ApplyResources(label16, "label16");
+            label16.Name = "label16";
+            // 
+            // textBoxGamma
+            // 
+            resources.ApplyResources(textBoxGamma, "textBoxGamma");
+            textBoxGamma.Name = "textBoxGamma";
+            textBoxGamma.ReadOnly = true;
+            // 
+            // label20
+            // 
+            resources.ApplyResources(label20, "label20");
+            label20.Name = "label20";
+            // 
+            // textBoxGamma_err
+            // 
+            resources.ApplyResources(textBoxGamma_err, "textBoxGamma_err");
+            textBoxGamma_err.Name = "textBoxGamma_err";
+            textBoxGamma_err.ReadOnly = true;
+            // 
+            // label26
+            // 
+            resources.ApplyResources(label26, "label26");
+            label26.Name = "label26";
+            // 
+            // flowLayoutPanel6
+            // 
+            resources.ApplyResources(flowLayoutPanel6, "flowLayoutPanel6");
+            flowLayoutPanel6.Controls.Add(label15);
+            flowLayoutPanel6.Controls.Add(textBoxBeta);
+            flowLayoutPanel6.Controls.Add(label19);
+            flowLayoutPanel6.Controls.Add(textBoxBeta_err);
+            flowLayoutPanel6.Controls.Add(label25);
+            flowLayoutPanel6.Name = "flowLayoutPanel6";
             // 
             // label15
             // 
             resources.ApplyResources(label15, "label15");
             label15.Name = "label15";
             // 
-            // label16
+            // textBoxBeta
             // 
-            resources.ApplyResources(label16, "label16");
-            label16.Name = "label16";
+            resources.ApplyResources(textBoxBeta, "textBoxBeta");
+            textBoxBeta.Name = "textBoxBeta";
+            textBoxBeta.ReadOnly = true;
+            // 
+            // label19
+            // 
+            resources.ApplyResources(label19, "label19");
+            label19.Name = "label19";
+            // 
+            // textBoxBeta_err
+            // 
+            resources.ApplyResources(textBoxBeta_err, "textBoxBeta_err");
+            textBoxBeta_err.Name = "textBoxBeta_err";
+            textBoxBeta_err.ReadOnly = true;
+            // 
+            // label25
+            // 
+            resources.ApplyResources(label25, "label25");
+            label25.Name = "label25";
+            // 
+            // flowLayoutPanel5
+            // 
+            resources.ApplyResources(flowLayoutPanel5, "flowLayoutPanel5");
+            flowLayoutPanel5.Controls.Add(label14);
+            flowLayoutPanel5.Controls.Add(textBoxAlpha);
+            flowLayoutPanel5.Controls.Add(label17);
+            flowLayoutPanel5.Controls.Add(textBoxAlpha_err);
+            flowLayoutPanel5.Controls.Add(label24);
+            flowLayoutPanel5.Name = "flowLayoutPanel5";
+            // 
+            // label14
+            // 
+            resources.ApplyResources(label14, "label14");
+            label14.Name = "label14";
+            // 
+            // textBoxAlpha
+            // 
+            resources.ApplyResources(textBoxAlpha, "textBoxAlpha");
+            textBoxAlpha.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxAlpha.Name = "textBoxAlpha";
+            textBoxAlpha.ReadOnly = true;
+            // 
+            // label17
+            // 
+            resources.ApplyResources(label17, "label17");
+            label17.Name = "label17";
+            // 
+            // textBoxAlpha_err
+            // 
+            resources.ApplyResources(textBoxAlpha_err, "textBoxAlpha_err");
+            textBoxAlpha_err.ForeColor = System.Drawing.SystemColors.WindowText;
+            textBoxAlpha_err.Name = "textBoxAlpha_err";
+            textBoxAlpha_err.ReadOnly = true;
+            // 
+            // label24
+            // 
+            resources.ApplyResources(label24, "label24");
+            label24.Name = "label24";
+            // 
+            // flowLayoutPanel4
+            // 
+            resources.ApplyResources(flowLayoutPanel4, "flowLayoutPanel4");
+            flowLayoutPanel4.Controls.Add(label13);
+            flowLayoutPanel4.Controls.Add(textBoxC);
+            flowLayoutPanel4.Controls.Add(label11);
+            flowLayoutPanel4.Controls.Add(textBoxC_err);
+            flowLayoutPanel4.Controls.Add(label23);
+            flowLayoutPanel4.Name = "flowLayoutPanel4";
+            // 
+            // label13
+            // 
+            resources.ApplyResources(label13, "label13");
+            label13.Name = "label13";
+            // 
+            // textBoxC
+            // 
+            resources.ApplyResources(textBoxC, "textBoxC");
+            textBoxC.Name = "textBoxC";
+            textBoxC.ReadOnly = true;
+            // 
+            // label11
+            // 
+            resources.ApplyResources(label11, "label11");
+            label11.Name = "label11";
+            // 
+            // textBoxC_err
+            // 
+            resources.ApplyResources(textBoxC_err, "textBoxC_err");
+            textBoxC_err.Name = "textBoxC_err";
+            textBoxC_err.ReadOnly = true;
+            // 
+            // label23
+            // 
+            resources.ApplyResources(label23, "label23");
+            label23.Name = "label23";
+            // 
+            // flowLayoutPanel3
+            // 
+            resources.ApplyResources(flowLayoutPanel3, "flowLayoutPanel3");
+            flowLayoutPanel3.Controls.Add(label12);
+            flowLayoutPanel3.Controls.Add(textBoxB);
+            flowLayoutPanel3.Controls.Add(label9);
+            flowLayoutPanel3.Controls.Add(textBoxB_err);
+            flowLayoutPanel3.Controls.Add(label22);
+            flowLayoutPanel3.Name = "flowLayoutPanel3";
+            // 
+            // label12
+            // 
+            resources.ApplyResources(label12, "label12");
+            label12.Name = "label12";
+            // 
+            // textBoxB
+            // 
+            resources.ApplyResources(textBoxB, "textBoxB");
+            textBoxB.Name = "textBoxB";
+            textBoxB.ReadOnly = true;
+            // 
+            // label9
+            // 
+            resources.ApplyResources(label9, "label9");
+            label9.Name = "label9";
+            // 
+            // textBoxB_err
+            // 
+            resources.ApplyResources(textBoxB_err, "textBoxB_err");
+            textBoxB_err.Name = "textBoxB_err";
+            textBoxB_err.ReadOnly = true;
+            // 
+            // label22
+            // 
+            resources.ApplyResources(label22, "label22");
+            label22.Name = "label22";
+            // 
+            // flowLayoutPanel2
+            // 
+            resources.ApplyResources(flowLayoutPanel2, "flowLayoutPanel2");
+            flowLayoutPanel2.Controls.Add(label8);
+            flowLayoutPanel2.Controls.Add(textBoxA);
+            flowLayoutPanel2.Controls.Add(label10);
+            flowLayoutPanel2.Controls.Add(textBoxA_err);
+            flowLayoutPanel2.Controls.Add(label21);
+            flowLayoutPanel2.Name = "flowLayoutPanel2";
+            // 
+            // label8
+            // 
+            resources.ApplyResources(label8, "label8");
+            label8.Name = "label8";
+            // 
+            // textBoxA
+            // 
+            resources.ApplyResources(textBoxA, "textBoxA");
+            textBoxA.Name = "textBoxA";
+            textBoxA.ReadOnly = true;
+            textBoxA.TextChanged += textBoxA_TextChanged;
+            // 
+            // label10
+            // 
+            resources.ApplyResources(label10, "label10");
+            label10.Name = "label10";
+            // 
+            // textBoxA_err
+            // 
+            resources.ApplyResources(textBoxA_err, "textBoxA_err");
+            textBoxA_err.Name = "textBoxA_err";
+            textBoxA_err.ReadOnly = true;
+            textBoxA_err.TextChanged += textBoxA_TextChanged;
+            // 
+            // label21
+            // 
+            resources.ApplyResources(label21, "label21");
+            label21.Name = "label21";
             // 
             // buttonCopyTableToClipboard
             // 
@@ -451,11 +513,10 @@ namespace PDIndexer
             resources.ApplyResources(numericBoxSearchRange, "numericBoxSearchRange");
             numericBoxSearchRange.Minimum = 0D;
             numericBoxSearchRange.Name = "numericBoxSearchRange";
-            numericBoxSearchRange.RadianValue = 0.0010471975511965976D;
-            numericBoxSearchRange.RoundErrorAccuracy = -1;
             numericBoxSearchRange.ShowUpDown = true;
             numericBoxSearchRange.SmartIncrement = true;
             numericBoxSearchRange.Value = 0.06D;
+            numericBoxSearchRange.ValueFontSize = 9F;
             numericBoxSearchRange.ValueChanged += numericUpDownSearchRange_ValueChanged;
             // 
             // flowLayoutPanelPatternDecomposition
@@ -539,6 +600,19 @@ namespace PDIndexer
             resources.ApplyResources(panelFWHM, "panelFWHM");
             panelFWHM.Name = "panelFWHM";
             // 
+            // numericBoxInitialFWHM
+            // 
+            numericBoxInitialFWHM.BackColor = System.Drawing.Color.Transparent;
+            numericBoxInitialFWHM.DecimalPlaces = 3;
+            resources.ApplyResources(numericBoxInitialFWHM, "numericBoxInitialFWHM");
+            numericBoxInitialFWHM.Minimum = 0D;
+            numericBoxInitialFWHM.Name = "numericBoxInitialFWHM";
+            numericBoxInitialFWHM.ShowUpDown = true;
+            numericBoxInitialFWHM.SmartIncrement = true;
+            numericBoxInitialFWHM.Value = 0.06D;
+            numericBoxInitialFWHM.ValueFontSize = 9F;
+            numericBoxInitialFWHM.ValueChanged += numericUpDownSearchRange_ValueChanged;
+            // 
             // buttonApplyFWHMToAll
             // 
             resources.ApplyResources(buttonApplyFWHMToAll, "buttonApplyFWHMToAll");
@@ -601,7 +675,7 @@ namespace PDIndexer
             dataGridViewCrystals.DataSource = bindingSourceCrystals;
             dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(192, 255, 192);
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -666,7 +740,7 @@ namespace PDIndexer
             dataGridViewPlaneList.DataSource = bindingSourcePlanes;
             dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI Symbol", 9F);
             dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle9.Format = "G5";
             dataGridViewCellStyle9.NullValue = null;
@@ -808,8 +882,8 @@ namespace PDIndexer
             // groupBox4
             // 
             resources.ApplyResources(groupBox4, "groupBox4");
-            groupBox4.Controls.Add(textBoxRemovedProfileName);
             groupBox4.Controls.Add(buttonRemovePeaks);
+            groupBox4.Controls.Add(textBoxRemovedProfileName);
             groupBox4.Controls.Add(label4);
             groupBox4.Name = "groupBox4";
             groupBox4.TabStop = false;
@@ -831,6 +905,13 @@ namespace PDIndexer
             groupBox5.Name = "groupBox5";
             groupBox5.TabStop = false;
             // 
+            // toolTip
+            // 
+            toolTip.AutoPopDelay = 10000;
+            toolTip.InitialDelay = 500;
+            toolTip.IsBalloon = true;
+            toolTip.ReshowDelay = 100;
+            // 
             // buttonSaveTableAsCSV
             // 
             resources.ApplyResources(buttonSaveTableAsCSV, "buttonSaveTableAsCSV");
@@ -843,18 +924,14 @@ namespace PDIndexer
             // 
             resources.ApplyResources(numericBoxEffectiveDigit, "numericBoxEffectiveDigit");
             numericBoxEffectiveDigit.BackColor = System.Drawing.SystemColors.Control;
-            numericBoxEffectiveDigit.FooterBackColor = System.Drawing.SystemColors.Control;
-            numericBoxEffectiveDigit.HeaderBackColor = System.Drawing.SystemColors.Control;
             numericBoxEffectiveDigit.Maximum = 16D;
             numericBoxEffectiveDigit.Minimum = 1D;
             numericBoxEffectiveDigit.Name = "numericBoxEffectiveDigit";
-            numericBoxEffectiveDigit.RadianValue = 0.087266462599716474D;
-            numericBoxEffectiveDigit.RoundErrorAccuracy = -1;
             numericBoxEffectiveDigit.ShowUpDown = true;
             numericBoxEffectiveDigit.SkipEventDuringInput = false;
-            numericBoxEffectiveDigit.ThousandsSeparator = true;
             toolTip.SetToolTip(numericBoxEffectiveDigit, resources.GetString("numericBoxEffectiveDigit.ToolTip"));
             numericBoxEffectiveDigit.Value = 5D;
+            numericBoxEffectiveDigit.ValueFontSize = 9F;
             numericBoxEffectiveDigit.ValueChanged += NumericBoxEffectiveDigit_ValueChanged;
             // 
             // buttonClearPeaks
@@ -865,31 +942,23 @@ namespace PDIndexer
             buttonClearPeaks.UseVisualStyleBackColor = true;
             buttonClearPeaks.Click += buttonClearPeaks_Click;
             // 
-            // numericBoxInitialFWHM
+            // flowLayoutPanel10
             // 
-            numericBoxInitialFWHM.BackColor = System.Drawing.Color.Transparent;
-            numericBoxInitialFWHM.DecimalPlaces = 3;
-            resources.ApplyResources(numericBoxInitialFWHM, "numericBoxInitialFWHM");
-            numericBoxInitialFWHM.Minimum = 0D;
-            numericBoxInitialFWHM.Name = "numericBoxInitialFWHM";
-            numericBoxInitialFWHM.RadianValue = 0.0010471975511965976D;
-            numericBoxInitialFWHM.RoundErrorAccuracy = -1;
-            numericBoxInitialFWHM.ShowUpDown = true;
-            numericBoxInitialFWHM.SmartIncrement = true;
-            numericBoxInitialFWHM.Value = 0.06D;
-            numericBoxInitialFWHM.ValueChanged += numericUpDownSearchRange_ValueChanged;
+            resources.ApplyResources(flowLayoutPanel10, "flowLayoutPanel10");
+            flowLayoutPanel10.Controls.Add(buttonClearPeaks);
+            flowLayoutPanel10.Controls.Add(numericBoxEffectiveDigit);
+            flowLayoutPanel10.Controls.Add(buttonSaveTableAsCSV);
+            flowLayoutPanel10.Controls.Add(buttonCopyTableToClipboard);
+            flowLayoutPanel10.Name = "flowLayoutPanel10";
             // 
             // FormFitting
             // 
             AllowDrop = true;
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Dpi;
-            Controls.Add(numericBoxEffectiveDigit);
+            Controls.Add(flowLayoutPanel10);
             Controls.Add(groupBox5);
             Controls.Add(groupBox4);
-            Controls.Add(buttonClearPeaks);
-            Controls.Add(buttonSaveTableAsCSV);
-            Controls.Add(buttonCopyTableToClipboard);
             Controls.Add(groupBox3);
             Controls.Add(dataGridViewPlaneList);
             Controls.Add(groupBox1);
@@ -905,6 +974,24 @@ namespace PDIndexer
             KeyDown += FormFitting_KeyDown;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
+            flowLayoutPanel1.ResumeLayout(false);
+            flowLayoutPanel1.PerformLayout();
+            flowLayoutPanel8.ResumeLayout(false);
+            flowLayoutPanel8.PerformLayout();
+            flowLayoutPanel7.ResumeLayout(false);
+            flowLayoutPanel7.PerformLayout();
+            flowLayoutPanel6.ResumeLayout(false);
+            flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel5.ResumeLayout(false);
+            flowLayoutPanel5.PerformLayout();
+            flowLayoutPanel4.ResumeLayout(false);
+            flowLayoutPanel4.PerformLayout();
+            flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel3.PerformLayout();
+            flowLayoutPanel2.ResumeLayout(false);
+            flowLayoutPanel2.PerformLayout();
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             flowLayoutPanelPatternDecomposition.ResumeLayout(false);
@@ -922,6 +1009,8 @@ namespace PDIndexer
             groupBox4.ResumeLayout(false);
             groupBox4.PerformLayout();
             groupBox5.ResumeLayout(false);
+            flowLayoutPanel10.ResumeLayout(false);
+            flowLayoutPanel10.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -989,7 +1078,6 @@ namespace PDIndexer
         private Label label1;
         private DataGridViewCheckBoxColumn useForCalcDataGridViewCheckBoxColumn;
         private Button buttonRemovePeaks;
-        private Label label3;
         private GroupBox groupBox2;
         private GroupBox groupBox4;
         private TextBox textBoxRemovedProfileName;
@@ -1022,6 +1110,16 @@ namespace PDIndexer
         private Button buttonClearPeaks;
         internal Crystallography.Controls.NumericBox numericBoxSearchRange; // 260414Cl public→internal
         public Crystallography.Controls.NumericBox numericBoxInitialFWHM;
+        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel flowLayoutPanel2;
+        private FlowLayoutPanel flowLayoutPanel3;
+        private FlowLayoutPanel flowLayoutPanel4;
+        private FlowLayoutPanel flowLayoutPanel8;
+        private FlowLayoutPanel flowLayoutPanel7;
+        private FlowLayoutPanel flowLayoutPanel6;
+        private FlowLayoutPanel flowLayoutPanel5;
+        private FlowLayoutPanel flowLayoutPanel9;
+        private FlowLayoutPanel flowLayoutPanel10;
     }
 
 
