@@ -80,7 +80,12 @@ jobs:
           }
 
           # History の先頭行をリリースノートに使う (release job が notes を組む)
-          $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
+          # 261026Cl 変更: 旧 'ver[^\r\n"]+' はファイル中で最初に現れる "ver" を拾うため、History より上のコメント
+          #   (260805Cl の表記統一コメント) の『ver』以降がリリースノートになった (PDIndexer v.4.465 で発生し、手で直した)。
+          #   ReciPro (260820Cl) と同じく、版番の数字まで含めて History の行頭 (ver4.465 (2026/10/26) …) に固定する。
+          # 旧: $historyLine = ([regex]::Match($content, 'ver[^\r\n"]+').Value).Trim()
+          $historyLine = ([regex]::Match($content, 'ver\d+\.\d+ ?\([^\r\n"]+').Value).Trim()
+          if (-not $historyLine) { throw "Could not extract the History line from Version.cs." } # 261026Cl 追加
 
           # AssemblyVersion / FileVersion 用タイムスタンプ。x64⇔arm64 の same-version cross-grade には両 MSI の
           #   FileVersion 完全一致が必要 (計画書 Phase A 実測)。release commit (GITHUB_SHA) の commit 時刻にアンカーし
