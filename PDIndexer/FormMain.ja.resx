@@ -115,9 +115,6 @@
   <data name="toolStripContainer1.BottomToolStripPanel.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="tabControl.ToolTip" xml:space="preserve">
     <value />
   </data>
@@ -138,9 +135,6 @@
   <data name="splitContainer1.Panel1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>プロファイルリスト</value>
   </data>
@@ -149,9 +143,6 @@
   </data>
   <data name="splitContainer2.Panel1.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="groupBoxCrystalData.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="groupBoxCrystalData.Text" xml:space="preserve">
     <value>結晶リスト</value>
@@ -184,23 +175,14 @@
   <data name="toolStripContainer1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="menuStrip.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="toolStrip2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="toolStrip2.ToolTip" xml:space="preserve">
     <value />
   </data>
   <data name="toolStripContainer1.TopToolStripPanel.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8.25pt</value>
   </data>
   <data name="toolStripStatusLabel2.Text" xml:space="preserve">
     <value>Ctrl+Shift+E: 状態方程式; Ctrl+Shift+F: ピークフィッティング;  Ctrl+Shift+C: 回折線/結晶詳細情報;  Ctrl+Shift+D:  ピーク描画モードを変更</value>
@@ -217,9 +199,6 @@
   </data>
   <data name="flowLayoutPanel4.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="checkBoxChangeHorizontalAppearance.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
     <value>横軸を最後に読み込んだプロファイルのものにそろえる</value>
@@ -257,17 +236,11 @@
   <data name="radioButtonCountsPerStep.Text" xml:space="preserve">
     <value>カウント/秒 (CPS)</value>
   </data>
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>単/複数プロファイル設定</value>
   </data>
   <data name="groupBox3.ToolTip" xml:space="preserve">
     <value />
-  </data>
-  <data name="numeriBoxIncreasingPixels.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Arial, 9pt</value>
   </data>
   <data name="numeriBoxIncreasingPixels.ToolTip" xml:space="preserve">
     <value />
@@ -302,38 +275,23 @@
   <data name="label1.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>色設定</value>
   </data>
   <data name="groupBox2.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>目盛文字色</value>
   </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="label2.Text" xml:space="preserve">
     <value>目盛り線</value>
-  </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>背景色</value>
   </data>
   <data name="checkBoxErrorBar.Text" xml:space="preserve">
     <value>エラーバーを表示</value>
-  </data>
-  <data name="checkBoxShowScaleLine.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowScaleLine.Text" xml:space="preserve">
     <value>目盛り線を表示</value>
@@ -398,9 +356,6 @@
   <data name="labelX.ToolTip" xml:space="preserve">
     <value />
   </data>
-  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
   <data name="label9.Text" xml:space="preserve">
     <value>強度</value>
   </data>
@@ -419,17 +374,11 @@
 複数のプロファイルを読み込むにはメニューの｢Multi Profile」モードをONにします。
 プロファイルの詳しい情報は下の「Profile Parameter」で設定します。 </value>
   </data>
-  <data name="checkBoxProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxProfileParameter.Text" xml:space="preserve">
     <value>プロファイル情報</value>
   </data>
   <data name="checkBoxProfileParameter.ToolTip" xml:space="preserve">
     <value>選択中プロファイルの詳細設定ウィンドウを開きます。</value>
-  </data>
-  <data name="checkBoxAll.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxAll.Text" xml:space="preserve">
     <value>すべてチェック/解除</value>
@@ -440,17 +389,11 @@
 結晶の詳しい情報は下の「Crystal Parameter」で設定します。
  </value>
   </data>
-  <data name="checkBoxCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxCrystalParameter.Text" xml:space="preserve">
     <value>回折線/結晶情報 (C)</value>
   </data>
   <data name="checkBoxCrystalParameter.ToolTip" xml:space="preserve">
     <value>選択中の結晶の詳細設定ウィンドウを開きます。</value>
-  </data>
-  <data name="toolStripButtonCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
   </data>
   <data name="toolStripButtonCrystalParameter.Text" xml:space="preserve">
     <value>回折線
@@ -459,18 +402,12 @@
   <data name="toolStripButtonCrystalParameter.ToolTipText" xml:space="preserve">
     <value>結晶の詳細設定ウィンドウを開閉します。</value>
   </data>
-  <data name="toolStripButtonProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
   <data name="toolStripButtonProfileParameter.Text" xml:space="preserve">
     <value>プロファイル
 情報 (P)</value>
   </data>
   <data name="toolStripButtonProfileParameter.ToolTipText" xml:space="preserve">
     <value>プロファイルの詳細設定ウィンドウを開閉します。</value>
-  </data>
-  <data name="toolStripButtonEquationOfState.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
   </data>
   <data name="toolStripButtonEquationOfState.Text" xml:space="preserve">
     <value>状態
@@ -480,21 +417,12 @@
     <value>状態方程式ウィンドウを開閉し、標準物質の
 格子体積から圧力を算出します。</value>
   </data>
-  <data name="toolStripButtonFittingParameter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
   <data name="toolStripButtonFittingParameter.Text" xml:space="preserve">
     <value>ピーク
 フィッティング (F)</value>
   </data>
-  <data name="toolStripButtonSequentialAnalysis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
   <data name="toolStripButtonSequentialAnalysis.Text" xml:space="preserve">
     <value>連続分析</value>
-  </data>
-  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
   </data>
   <data name="fileToolStripMenuItem.Text" xml:space="preserve">
     <value>ファイル</value>
@@ -547,14 +475,8 @@
   <data name="closeToolStripMenuItem.Text" xml:space="preserve">
     <value>閉じる</value>
   </data>
-  <data name="optionToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
   <data name="optionToolStripMenuItem.Text" xml:space="preserve">
     <value>オプション</value>
-  </data>
-  <data name="toolTipToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
   </data>
   <data name="toolTipToolStripMenuItem.Text" xml:space="preserve">
     <value>ツールチップ</value>
@@ -571,17 +493,11 @@
   <data name="automaticallySaveTheCrystalListToolStripMenuItem.Text" xml:space="preserve">
     <value>終了時に結晶リストを自動保存する</value>
   </data>
-  <data name="macroToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
   <data name="macroToolStripMenuItem.Text" xml:space="preserve">
     <value>マクロ</value>
   </data>
   <data name="editorToolStripMenuItem.Text" xml:space="preserve">
     <value>編集</value>
-  </data>
-  <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
   </data>
   <data name="helpToolStripMenuItem.Text" xml:space="preserve">
     <value>ヘルプ</value>
@@ -597,12 +513,6 @@
   </data>
   <data name="helpwebToolStripMenuItem.Text" xml:space="preserve">
     <value>ヘルプ (web)</value>
-  </data>
-  <data name="languageToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
-  </data>
-  <data name="japaneseToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt</value>
   </data>
   <data name="button2.ToolTip" xml:space="preserve">
     <value />
@@ -825,5 +735,149 @@
   </data>
   <data name="numericBoxLowerY.ToolTip1" xml:space="preserve">
     <value>縦軸（強度）の表示範囲の下限値です。</value>
+  </data>
+  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="toolStripStatusLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt</value>
+  </data>
+  <data name="tabControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelD.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="labelTwoTheta.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="label11.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="label10.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="labelX.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label9.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="labelIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="labelQ.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBoxCrystalData.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStrip2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
+  </data>
+  <data name="menuStrip.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripContainer1.TopToolStripPanel.Font" type="System.Drawing.Font, System.Drawing">
+    <value>メイリオ, 10pt</value>
+  </data>
+  <data name="horizontalAxisUserControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxChangeHorizontalAppearance.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 8.25pt</value>
+  </data>
+  <data name="colorControlScaleText.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlScaleLine.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlBack.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericUpDownMaxInt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label21.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="numericUpDownMinInt.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowUnrolledImage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label24.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label23.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxGradient.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxScale2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxScale1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="graphControlFrequency.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="checkBoxProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxAll.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonCrystalParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonProfileParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonEquationOfState.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonFittingParameter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonCellFinder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolStripButtonAtomicPositonFinder.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="fileToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="optionToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="toolTipToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="helpToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="englishToolStripMenuItem.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9pt</value>
   </data>
 </root>

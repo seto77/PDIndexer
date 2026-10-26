@@ -7,7 +7,7 @@ namespace PDIndexer;
 // Designer (.Designer.cs) を改変せず partial クラスの SetupCaptureTargets() で指定する。
 // CaptureExtender.IsCaptureEnabled は、対象コントロールの所有コンテナ (= このフォーム) の CaptureExtender フィールドを
 // 反射で探して Capture フラグを判定する。260605Cl: FormBase が protected captureExtender を持つようになったため、各フォームはそれに登録する (旧: フォーム毎に private フィールドを宣言していた)。
-// GuiCapture は各フォームを Show した後・クロップ撮影の前に SetupCaptureTargets() を反射で呼ぶ (GuiCapture.PrepareSpecialCaptureState)。
+// GuiCapture (GuiCaptureHarness 派生) は各フォームを Show した後・クロップ撮影の前に SetupCaptureTargets() を反射で呼ぶ (GuiCapture.PrepareCaptureState)。
 // 粒度は ReciPro の docs と同程度 (groupBox / panel / tabPage 単位) を狙う。
 
 partial class FormProfileSetting

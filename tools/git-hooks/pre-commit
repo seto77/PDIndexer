@@ -1,0 +1,40 @@
+#!/bin/sh
+# 260618Cl 追加: i18n resx 正規化を commit 時に自動適用する pre-commit フック。
+#   (1) neutral resx の Font サイズを 5 段階ティアへスナップ (デザイナ=実行時サイズ一致 / ja ミラーの基準)。
+#   (2) ja.resx の .Font を neutral から同期 (family→Yu Gothic UI・size=neutral ティア)。
+#       = neutral にあって ja に無い穴を埋める → 日本語デザイナ表示 == 実行時描画を恒常保証。
+#   (3) culture resx を規約形へ正規化 (allowlist strip)。他言語=完全 text-only、ja=text+正規化 Font。
+#   汚染 (デザイナで Language≠Default 保存) や off-tier・未同期フォントを、コミットの瞬間に自動修復して再 stage。
+# 有効化: git config core.hooksPath tools/git-hooks  (このリポで 1 回)。
+# 260618Cl: ReciPro 本体・Crystallography.Controls とも対象 (両ルート)。de/fr/es/pt/zh-Hans=text-only、
+#   ja=text+(neutral ミラー)Font。ステージした neutral resx に対応する ja.resx も同じコミットへ再 stage。
+#   (作者要望: 日本語ネイティブがデザイナ表示と実行時を一致させたいので ja のみ Font を残す。)
+# 詳細メモ: project_i18n_font_resx_architecture。
+
+root=$(git rev-parse --show-toplevel) || exit 0
+cd "$root" || exit 0
+
+# このコミットでステージ済みの resx (= 再 stage 対象)。無ければ正規化はスキップ。
+staged_resx=$(git diff --cached --name-only -- '*.resx')
+[ -z "$staged_resx" ] && exit 0
+
+# 正規化 (working tree を --fix)。parse 不能等で失敗したらコミットを止める (汚染を通さない)。順序が重要:
+#   neutral をティア化 → その値で ja を同期 → text-only 検査。
+python tools/snap_neutral_font_tiers.py --fix || exit 1  # (1) neutral font → 5 段階ティア (ReciPro + Controls)
+python tools/restore_ja_fonts.py --fix || exit 1         # (2) ja .Font = neutral ミラー (穴塞ぎ)
+python tools/check_resx_textonly.py --fix || exit 1      # (3) 他言語=text-only / ja=Font 正規化バックストップ
+
+# 再 stage 対象: 元々ステージされた resx + ステージ済 neutral に対応する(同期された)ja.resx。
+restaged=""
+restage() {  # $1=path : --fix で変わっていれば add
+    if [ -f "$1" ] && ! git diff --quiet -- "$1"; then
+        git add -- "$1" && restaged="$restaged $1"
+    fi
+}
+for f in $staged_resx; do
+    restage "$f"
+    ja="${f%.resx}.ja.resx"   # neutral をステージしたなら、同期された ja も同じコミットへ含める
+    [ "$ja" != "$f" ] && restage "$ja"
+done
+[ -n "$restaged" ] && printf '[pre-commit] re-staged normalized resx:%s\n' "$restaged"
+exit 0

@@ -12,6 +12,8 @@ namespace PDIndexer
         private const string SmokeArg = "--smoke";
         // 260625Cl 追加 (多言語化 Phase 3): UI オーバーフロー/重なり診断モードの起動引数 (GuiCapture.Diagnose)。
         private const string DiagnoseArg = "--diagnose";
+        //260820Cl 追加: 単一フォームを画面なしで撮る開発者向けモードの引数 (GuiCaptureHarness.CaptureSingleForm)
+        private const string CaptureFormArg = "--capture-form";
 
         /// <summary>
         /// アプリケーションのメイン エントリ ポイントです。
@@ -47,6 +49,10 @@ namespace PDIndexer
                     captureCulture = args[1];
                 else { captureDir = args[1]; captureCulture = args.Length >= 3 ? args[2] : null; }
             }
+            //260820Cl 追加: --capture-form <TypeName> <out.png> [カルチャ] のカルチャ指定。--capture と同じくフォント確定前に決める
+            if (args.Length >= 4 && args[0] == CaptureFormArg
+                && Array.Exists(Crystallography.SupportedCultures.All, c => string.Equals(c.Name, args[3], StringComparison.OrdinalIgnoreCase)))
+                captureCulture = args[3];
             if (captureCulture != null)
             {
                 var ci = new System.Globalization.CultureInfo(captureCulture);
@@ -84,15 +90,25 @@ namespace PDIndexer
             {
                 var cult = (GuiCapture.ForcedUICulture ?? System.Threading.Thread.CurrentThread.CurrentUICulture).Name;
                 var outFile = System.IO.Path.Combine(System.IO.Path.GetTempPath(), $"pdindexer-diagnose-{cult}-x{(int)(diagnoseInflate * 100)}.tsv");
-                GuiCapture.Diagnose(outFile, diagnoseInflate);
+                // GuiCapture.Diagnose(outFile, diagnoseInflate); // 260820Cl 旧 (static)
+                new GuiCapture().Diagnose(outFile, diagnoseInflate); // 260820Cl: GuiCaptureHarness 派生のインスタンスへ
                 Environment.Exit(0);
             }
 
             // 260601Cl 追加: GUI 監査/マニュアル用スクショ一括取得モード。通常起動 (引数なし) には一切影響しない。
             if (args.Length >= 1 && args[0] == CaptureArg)
             {
-                GuiCapture.Run(captureDir);  // captureDir が null なら docs/src/assets/cap-{en|ja}-auto が既定
+                // GuiCapture.Run(captureDir); // 260820Cl 旧 (static)
+                new GuiCapture().Run(captureDir);  // captureDir が null なら docs/src/assets/cap-{en|ja}-auto が既定。260820Cl: インスタンス化
                 Environment.Exit(0); // --capture 完了後は開発者ツールとしてプロセスを確実に終了させる
+            }
+
+            //260820Cl 追加: 1 フォームだけを DrawToBitmap で撮る headless モード (GuiCaptureHarness.CaptureSingleForm)。
+            //  PDIndexer.exe --capture-form <FormTypeName> <出力png> [カルチャ]
+            if (args.Length >= 3 && args[0] == CaptureFormArg)
+            {
+                new GuiCapture().CaptureSingleForm(args[1], args[2]);
+                Environment.Exit(0);
             }
 
             Application.Run(new FormMain());

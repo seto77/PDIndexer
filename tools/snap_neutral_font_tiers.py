@@ -1,12 +1,25 @@
 #!/usr/bin/env python3
-# 260618Cl 追加 (ReciPro tools より PDIndexer へ移植 260625Cl): neutral resx の Font サイズを 5 段階ティアへスナップ。
-#   check_resx_textonly.py が import する依存 (tier_of/fmt_pt/UI_BODY_FAMILIES)。
-#   UiFont (Crystallography.Controls/UiFont.cs) と一致させること。
+# 260618Cl 追加: neutral(言語サフィックス無し) resx の Font サイズを 5 段階ティアへスナップする。
+#
+# 背景: UiFont (Crystallography.Controls/UiFont.cs) は実行時に各コントロールの font pt を
+#   TierOf(pt) → PtOf(tier) で 5 段階(SS=7/S=8.25/M=9/L=9.75/LL=13)へ離散化して描画する。
+#   ところが VS デザイナはソース(resx)の生の pt を表示するため、例えば 10pt を設定しても
+#   デザイナ上は 10pt のまま(実行時は L=9.75 に潰れる)で「実際の大きさ」が設計時に見えない。
+#   そこで neutral resx の Font pt を「コミット時に」ティア値へ書き換えれば、デザイナ表示が
+#   実行時サイズ(英語ティア)に一致する。family は触らず size のみ。
+#
+# 方針:
+#   - 対象は neutral resx のみ (*.{culture}.resx は除外。culture resx は別途 text-only)。
+#   - .Font / $this.Font 等「.Font」で終わる data の <value> 内 pt をティアへスナップ。
+#   - family と style(=...,style=Bold 等) は保持。既にティア値なら無変更 (idempotent)。
+#   - BOM(utf-8) + CRLF を保持 (check_resx_textonly.py / gen_de_resx.py と同じイディオム)。
+#   - compile 時でなく commit 時(pre-commit)に走らせる想定 (ビルドでソースを書き換えない)。
 #
 # 使い方:
 #   python tools/snap_neutral_font_tiers.py                # --check: 変更プレビュー (既定)
-#   python tools/snap_neutral_font_tiers.py --root <dir>   # 走査ルート指定
+#   python tools/snap_neutral_font_tiers.py --root ReciPro # 走査ルート指定
 #   python tools/snap_neutral_font_tiers.py --fix          # 実際に書き換える
+# 終了コード(check): 0=off-tier 無し / 1=off-tier あり (CI 用)。fix: 0=成功。
 
 import argparse
 import codecs
@@ -21,16 +34,19 @@ except Exception:
     pass
 
 _THIS = os.path.dirname(os.path.abspath(__file__))
-_REPO_ROOT = os.path.dirname(_THIS)
-DEFAULT_ROOTS = [
-    os.path.join(_REPO_ROOT, "PDIndexer"),
-    os.path.join(_REPO_ROOT, "Crystallography.Controls"),
-]
+_RECIPRO_ROOT = os.path.dirname(_THIS)
+# 260726Cl: Crystallography.Controls は submodule (ReciPro/Crystallography.Controls) なので再帰 glob が拾う。
+#   junction 時代の名残だった ../Crystallography.Controls/Crystallography.Controls は HEAD が別物の
+#   無関係な作業ツリーで、--fix がそこを黙って書き換えてしまうため外す (check_resx_textonly.py と同じ理由)。
+# 旧: os.path.normpath(os.path.join(_RECIPRO_ROOT, "..", "Crystallography.Controls", "Crystallography.Controls"))
+DEFAULT_ROOTS = [_RECIPRO_ROOT]
 
 # UiFont.cs と一致させること。ティア代表 pt。
 TIERS = [("SS", 7.0), ("S", 8.25), ("M", 9.0), ("L", 9.75), ("LL", 13.0)]
 
 # UiFont.IsUiBodyFont と一致させること (SupportedCultures.All の FontFamily)。
+# ★これ以外の family (Segoe UI Symbol/Times New Roman/Courier New/Tahoma 等の役割フォント) は
+#   実行時にティア化されないので、ここでもスナップしない (snap すると実行時と不一致=記号縮小等)。
 UI_BODY_FAMILIES = {
     "Segoe UI", "Yu Gothic UI", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic",
 }
@@ -50,12 +66,15 @@ def tier_of(pt: float):
 
 
 def fmt_pt(pt: float) -> str:
+    # 9.0→"9", 9.75→"9.75", 8.25→"8.25", 13.0→"13" (resx の表記に合わせ末尾0を落とす)
     s = f"{pt:.2f}".rstrip("0").rstrip(".")
     return s
 
 
+# culture resx (*.ja.resx / *.de.resx / *.zh-Hans.resx 等) を除外するための判定。
 _CULTURE_RE = re.compile(r"\.[a-z]{2}(-[A-Za-z]+)?\.resx$")
 
+# .Font data の <value> 内 "Family, Npt..." の N を捕捉。group: 1=prefix(name含む) 2=family 3=pt
 _FONT_RE = re.compile(
     r'(<data name="([^"]*)\.Font"[^>]*>\s*<value[^>]*>)([^,<]+),\s*([0-9.]+)pt',
     re.DOTALL,
@@ -63,15 +82,16 @@ _FONT_RE = re.compile(
 
 
 def process_text(text: str):
+    """(new_text, changes[(name, family, old_pt, tier, new_pt)]) を返す。"""
     changes = []
 
     def repl(m):
         name, family, pt = m.group(2), m.group(3), float(m.group(4))
         if family.strip() not in UI_BODY_FAMILIES:
-            return m.group(0)
+            return m.group(0)  # 役割フォント (Symbol/Times/Courier/Tahoma 等) はティア化しない
         tier_name, tier_pt = tier_of(pt)
         if abs(tier_pt - pt) < 0.001:
-            return m.group(0)
+            return m.group(0)  # 既にティア値
         changes.append((name, family.strip(), pt, tier_name, tier_pt))
         return f"{m.group(1)}{family}, {fmt_pt(tier_pt)}pt"
 
@@ -89,13 +109,14 @@ def iter_neutral_resx(roots):
 
 def main() -> int:
     ap = argparse.ArgumentParser(description="neutral resx の Font サイズを 5 段階ティアへスナップ。")
-    ap.add_argument("--root", action="append", help="走査ルート (複数可)。")
+    ap.add_argument("--root", action="append", help="走査ルート (複数可)。既定: ReciPro + Crystallography.Controls")
     ap.add_argument("--fix", action="store_true", help="実際に書き換える (既定は --check=プレビューのみ)")
     args = ap.parse_args()
     roots = args.root or DEFAULT_ROOTS
 
     total_changes = 0
     files_touched = 0
+    # ティア別・どの pt が何に化けるかの集計 (ティア表チューニング用)。
     bucket = {}
 
     for path in sorted(iter_neutral_resx(roots)):
@@ -121,6 +142,7 @@ def main() -> int:
     verb = "snapped" if args.fix else "off-tier"
     print(f"\n{verb}: {total_changes} font entr(ies) in {files_touched} neutral resx.")
     if not args.fix and total_changes:
+        print("--fix で書き換え。ティア表(TIERS)は UiFont.cs と一致させること。")
         return 1
     return 0
 
