@@ -1146,14 +1146,16 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 FileProperties[(int)FileType.XBM] = new FileProperty
                 {
                     Valid = true,
-                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    //HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5.0 / 180 * Math.PI, EnergyUnitEnum.KeV), // 261105Cl 5 / 180 が整数除算で 0 になり、既定の取り出し角が 0 rad だった
                 };
             //RPT
             if (!FileProperties[(int)FileType.RPT].Valid)
                 FileProperties[(int)FileType.RPT] = new FileProperty
                 {
                     Valid = true,
-                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    //HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5.0 / 180 * Math.PI, EnergyUnitEnum.KeV), // 261105Cl 5 / 180 が整数除算で 0 になり、既定の取り出し角が 0 rad だった
                 };
 
             //NPD
@@ -1161,7 +1163,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 FileProperties[(int)FileType.NPD] = new FileProperty
                 {
                     Valid = true,
-                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    //HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5 / 180 * Math.PI, EnergyUnitEnum.KeV),
+                    HorizontalAxisProperty = new HorizontalAxisProperty(WaveSource.Xray, 5.0 / 180 * Math.PI, EnergyUnitEnum.KeV), // 261105Cl 5 / 180 が整数除算で 0 になり、既定の取り出し角が 0 rad だった
                 };
 
             //TOF

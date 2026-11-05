@@ -393,6 +393,15 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         //σi [i番目のデータの誤差]
         //Wi [i番目のデータの重み]
         Matrix<double> AlphaInverse;
+
+        // 261105Cl 追加: 1 次の誤差伝播 σ_f = √(gᵀ·Σ·g)。g = ∂f/∂C (精密化パラメータ C の各成分での偏微分)、Σ = AlphaInverse (C の分散共分散行列)。
+        //   非対角成分 (C どうしの共分散) も含める。旧コードは対角成分だけを使い、さらに V_err では偏微分係数を 2 乗しておらず次元が合わなかった。
+        static double propagate(Matrix<double> cov, params double[] g)
+        {
+            var vec = DenseVector.OfArray(g);
+            return Math.Sqrt(vec.DotProduct(cov * vec));
+        }
+
         switch (TargetCrystal.Symmetry.CrystalSystemStr)
         {
             case "cubic":
@@ -429,7 +438,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
 
-                    V_err = Math.Sqrt(3) * a * a_err;
+                    //V_err = Math.Sqrt(3) * a * a_err;
+                    V_err = 3 * a * a * a_err; // 261105Cl V = a³ なので σ_V = 3a²·σ_a
                 }
                 break;
             #endregion
@@ -472,7 +482,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err);
+                    //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err);
+                    V_err = propagate(AlphaInverse, -V / C[0, 0], -V / 2 / C[1, 0]); // 261105Cl V = a²c = C0^(-1)·C1^(-1/2)
                 }
                 break;
             #endregion
@@ -516,7 +527,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2; ;
+                    //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2; ;
+                    V_err = propagate(AlphaInverse, -V / C[0, 0], -V / 2 / C[1, 0]); // 261105Cl V = (√3/2)·a²c = (√3/2)·C0^(-1)·C1^(-1/2)
                 }
 
                 break;
@@ -561,7 +573,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2;
+                    //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2;
+                    V_err = propagate(AlphaInverse, -V / C[0, 0], -V / 2 / C[1, 0]); // 261105Cl V = (√3/2)·a²c = (√3/2)·C0^(-1)·C1^(-1/2)
                 }
 
                 break;
@@ -608,7 +621,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     b_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
                     c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
 
-                    V_err = Math.Sqrt(b * c * a_err * a_err + c * a * b_err * b_err + a * b * c_err * c_err);
+                    //V_err = Math.Sqrt(b * c * a_err * a_err + c * a * b_err * b_err + a * b * c_err * c_err);
+                    V_err = propagate(AlphaInverse, -V / 2 / C[0, 0], -V / 2 / C[1, 0], -V / 2 / C[2, 0]); // 261105Cl V = abc = (C0·C1·C2)^(-1/2)
                 }
                 break;
             #endregion
@@ -657,30 +671,38 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 break;
 
                             //最後にCの誤差を実格子の誤差に直す
-                            alpha_err = Math.Sqrt(
-                                C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[1, 0] * C[1, 0] * C[2, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
-                            + C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
-                            + 1 / (4 * C[1, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
-                                );
+                            // 261105Cl 1 次の誤差伝播を C の分散共分散行列 (AlphaInverse、非対角も含む) で行うように変更。D = 4·C1·C2 − C3²: b = 2√C2/√D, c = 2√C1/√D, cosα = −C3/(2√(C1·C2)), V = 2/√(C0·D)。
+                            //   旧式は (1) 1 / Math.Sin(alfa) * Math.Sin(alfa) が 1 と評価されて sin² と 1/4 が抜け、(2) unique axis b, c の分岐でも alfa (= π/2) を使って角度の寄与が 0 になり、
+                            //   (3) 角度と C の成分を独立として扱い、(4) V_err の係数を 2 乗しておらず次元が合わなかった。
+                            double D = 4 * C[1, 0] * C[2, 0] - C[3, 0] * C[3, 0]; // 261105Cl 追加
+                            //alpha_err = Math.Sqrt(
+                                //C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[1, 0] * C[1, 0] * C[2, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
+                            //+ C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
+                            //+ 1 / (4 * C[1, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
+                                //);
+                            alpha_err = propagate(AlphaInverse, 0, -C[3, 0] / 2 / C[1, 0] / Math.Sqrt(D), -C[3, 0] / 2 / C[2, 0] / Math.Sqrt(D), 1 / Math.Sqrt(D)); // 261105Cl
 
                             a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
 
-                            b_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * alpha_err * alpha_err
-                                );
+                            //b_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * alpha_err * alpha_err
+                                //);
+                            b_err = propagate(AlphaInverse, 0, -b * 2 * C[2, 0] / D, -b * C[3, 0] * C[3, 0] / 2 / C[2, 0] / D, b * C[3, 0] / D); // 261105Cl
 
-                            c_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * alpha_err * alpha_err
-                                );
+                            //c_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * alpha_err * alpha_err
+                                //);
+                            c_err = propagate(AlphaInverse, 0, -c * C[3, 0] * C[3, 0] / 2 / C[1, 0] / D, -c * 2 * C[1, 0] / D, c * C[3, 0] / D); // 261105Cl
 
-                            V_err = Math.Sqrt(
-                                  b * c * Math.Sin(alfa) * a_err * a_err
-                                + c * a * Math.Sin(alfa) * b_err * b_err
-                                + a * b * Math.Sin(alfa) * c_err * c_err
-                                + a * b * c * Math.Cos(alfa) * alpha_err * alpha_err
-                                );
+                            //V_err = Math.Sqrt(
+                                  //b * c * Math.Sin(alfa) * a_err * a_err
+                                //+ c * a * Math.Sin(alfa) * b_err * b_err
+                                //+ a * b * Math.Sin(alfa) * c_err * c_err
+                                //+ a * b * c * Math.Cos(alfa) * alpha_err * alpha_err
+                                //);
+                            V_err = propagate(AlphaInverse, -V / 2 / C[0, 0], -2 * V * C[2, 0] / D, -2 * V * C[1, 0] / D, V * C[3, 0] / D); // 261105Cl
                         }
 
 
@@ -715,30 +737,38 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 break;
 
                             //最後にCの誤差を実格子の誤差に直す
-                            beta_err = Math.Sqrt(
-                                C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[2, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
-                            + C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
-                            + 1 / (4 * C[0, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
-                                );
+                            // 261105Cl 1 次の誤差伝播を C の分散共分散行列 (AlphaInverse、非対角も含む) で行うように変更。D = 4·C0·C2 − C3²: a = 2√C2/√D, c = 2√C0/√D, cosβ = −C3/(2√(C0·C2)), V = 2/√(C1·D)。
+                            //   旧式は (1) 1 / Math.Sin(alfa) * Math.Sin(alfa) が 1 と評価されて sin² と 1/4 が抜け、(2) unique axis b, c の分岐でも alfa (= π/2) を使って角度の寄与が 0 になり、
+                            //   (3) 角度と C の成分を独立として扱い、(4) V_err の係数を 2 乗しておらず次元が合わなかった。
+                            double D = 4 * C[0, 0] * C[2, 0] - C[3, 0] * C[3, 0]; // 261105Cl 追加
+                            //beta_err = Math.Sqrt(
+                                //C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[2, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
+                            //+ C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
+                            //+ 1 / (4 * C[0, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
+                                //);
+                            beta_err = propagate(AlphaInverse, -C[3, 0] / 2 / C[0, 0] / Math.Sqrt(D), 0, -C[3, 0] / 2 / C[2, 0] / Math.Sqrt(D), 1 / Math.Sqrt(D)); // 261105Cl
 
-                            a_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * beta_err * beta_err
-                                );
+                            //a_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * beta_err * beta_err
+                                //);
+                            a_err = propagate(AlphaInverse, -a * 2 * C[2, 0] / D, 0, -a * C[3, 0] * C[3, 0] / 2 / C[2, 0] / D, a * C[3, 0] / D); // 261105Cl
 
                             b_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                            c_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * beta_err * beta_err
-                                );
+                            //c_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * beta_err * beta_err
+                                //);
+                            c_err = propagate(AlphaInverse, -c * C[3, 0] * C[3, 0] / 2 / C[0, 0] / D, 0, -c * 2 * C[0, 0] / D, c * C[3, 0] / D); // 261105Cl
 
-                            V_err = Math.Sqrt(
-                                  b * c * Math.Sin(beta) * a_err * a_err
-                                + c * a * Math.Sin(beta) * b_err * b_err
-                                + a * b * Math.Sin(beta) * c_err * c_err
-                                + a * b * c * Math.Cos(beta) * beta_err * beta_err
-                                );
+                            //V_err = Math.Sqrt(
+                                  //b * c * Math.Sin(beta) * a_err * a_err
+                                //+ c * a * Math.Sin(beta) * b_err * b_err
+                                //+ a * b * Math.Sin(beta) * c_err * c_err
+                                //+ a * b * c * Math.Cos(beta) * beta_err * beta_err
+                                //);
+                            V_err = propagate(AlphaInverse, -2 * V * C[2, 0] / D, -V / 2 / C[1, 0], -2 * V * C[0, 0] / D, V * C[3, 0] / D); // 261105Cl
                         }
 
                         break;
@@ -772,30 +802,38 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 break;
 
                             //最後にCの誤差を実格子の誤差に直す
-                            gamma_err = Math.Sqrt(
-                                C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[1, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
-                            + C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[1, 0] * C[1, 0] * C[1, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
-                            + 1 / (4 * C[0, 0] * C[1, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
-                                );
+                            // 261105Cl 1 次の誤差伝播を C の分散共分散行列 (AlphaInverse、非対角も含む) で行うように変更。D = 4·C0·C1 − C3²: a = 2√C1/√D, b = 2√C0/√D, cosγ = −C3/(2√(C0·C1)), V = 2/√(C2·D)。
+                            //   旧式は (1) 1 / Math.Sin(alfa) * Math.Sin(alfa) が 1 と評価されて sin² と 1/4 が抜け、(2) unique axis b, c の分岐でも alfa (= π/2) を使って角度の寄与が 0 になり、
+                            //   (3) 角度と C の成分を独立として扱い、(4) V_err の係数を 2 乗しておらず次元が合わなかった。
+                            double D = 4 * C[0, 0] * C[1, 0] - C[3, 0] * C[3, 0]; // 261105Cl 追加
+                            //gamma_err = Math.Sqrt(
+                                //C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[1, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
+                            //+ C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[1, 0] * C[1, 0] * C[1, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
+                            //+ 1 / (4 * C[0, 0] * C[1, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
+                                //);
+                            gamma_err = propagate(AlphaInverse, -C[3, 0] / 2 / C[0, 0] / Math.Sqrt(D), -C[3, 0] / 2 / C[1, 0] / Math.Sqrt(D), 0, 1 / Math.Sqrt(D)); // 261105Cl
 
-                            a_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * gamma_err * gamma_err
-                                );
+                            //a_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * gamma_err * gamma_err
+                                //);
+                            a_err = propagate(AlphaInverse, -a * 2 * C[1, 0] / D, -a * C[3, 0] * C[3, 0] / 2 / C[1, 0] / D, 0, a * C[3, 0] / D); // 261105Cl
 
-                            b_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * gamma_err * gamma_err
-                                );
+                            //b_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * gamma_err * gamma_err
+                                //);
+                            b_err = propagate(AlphaInverse, -b * C[3, 0] * C[3, 0] / 2 / C[0, 0] / D, -b * 2 * C[0, 0] / D, 0, b * C[3, 0] / D); // 261105Cl
 
                             c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
 
-                            V_err = Math.Sqrt(
-                                  b * c * Math.Sin(gamma) * a_err * a_err
-                                + c * a * Math.Sin(gamma) * b_err * b_err
-                                + a * b * Math.Sin(gamma) * c_err * c_err
-                                + a * b * c * Math.Cos(gamma) * gamma_err * gamma_err
-                                );
+                            //V_err = Math.Sqrt(
+                                  //b * c * Math.Sin(gamma) * a_err * a_err
+                                //+ c * a * Math.Sin(gamma) * b_err * b_err
+                                //+ a * b * Math.Sin(gamma) * c_err * c_err
+                                //+ a * b * c * Math.Cos(gamma) * gamma_err * gamma_err
+                                //);
+                            V_err = propagate(AlphaInverse, -2 * V * C[1, 0] / D, -2 * V * C[0, 0] / D, -V / 2 / C[2, 0], V * C[3, 0] / D); // 261105Cl
                         }
 
                         break;
