@@ -147,7 +147,7 @@ Le fonti che FormEOS visualizza per ciascun materiale sono elencate di seguito (
 | --- | --- | --- |
 | Jamieson82 | spline di una tabella P-V-T | compressione x=1−V/V0, T=200–1500 K |
 | Anderson89 | BM3 + termine termico lineare | K0=166.65, K0'=5.4823, ∂K/∂T=−0.0115 |
-| Sim02 | BM3 + Mie-Grüneisen-Debye | K0=167, K0'=5.0; θ0=170, γ0=2.97, q=1.0, n=1 |
+| Shim02 | BM3 + Mie-Grüneisen-Debye | K0=167, K0'=5.0; θ0=170, γ0=2.97, q=1.0, n=1 |
 | Tsuchiya03 | spline di una tabella P-V-T | T=300–2500 K |
 | Yokoo09 | spline di una tabella P-V-T | T=0–3000 K |
 | Fratanduono21 | Vinet (isoterma) | K0=170.09, K0'=5.880 |

@@ -283,7 +283,7 @@ a0 (Å)입니다 (기본값 4.95059). 내장된 a0(T)
 압력 P (GPa)입니다. 읽기 전용 결과.</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>Sim (2002), BM3 + Mie-Grüneisen으로 계산한
+    <value>Shim (2002), BM3 + Mie-Grüneisen으로 계산한
 금의 압력 P (GPa)입니다. 읽기 전용 결과.</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

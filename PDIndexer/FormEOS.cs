@@ -95,7 +95,7 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         numericalTextBoxGoldJamieson.Value = EOS.Au_Jamieson(a / 10, a0 / 10, t);
         //Anderson
         numericalTextBoxGoldAnderson.Value = EOS.Au_Anderson(t, a / 10, a0 / 10);
-        //Sim
+        //Shim (Shim, Duffy & Takemura 2002, EPSL 203, 729) 261105Cl 綴りの訂正 (旧コメント "//Sim")。コントロール名 numericalTextBoxGoldSim は resx のキーなので据え置き
         numericalTextBoxGoldSim.Value = EOS.BirchMurnaghan3rd(167, 5.0, v0, v) + EOS.MieGruneisen(4, 1, 170, 2.97, 1.0, 300, v0, t, v);
         //Tsuchiya
         numericalTextBoxGoldTsuchiya.Value = EOS.Au_Tsuchiya(a / 10, a0 / 10, t);
@@ -108,7 +108,8 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         [
         ("Jamieson82",numericalTextBoxGoldJamieson.Value ),
         ("Anderson89",numericalTextBoxGoldAnderson.Value ),
-        ("Sim02",numericalTextBoxGoldSim.Value ),
+        //("Sim02",numericalTextBoxGoldSim.Value ),
+        ("Shim02",numericalTextBoxGoldSim.Value ), // 261105Cl Sim02 → Shim02 (連続分析の圧力表の列見出しにだけ使われ、レジストリ・ファイル・マクロのキーではない)
         ("Tsuchiya03",numericalTextBoxGoldTsuchiya.Value ),
         ("Yokoo09",numericBoxAuYokoo.Value ),
         ("Fratanduono21",numericBoxAuFratanduono.Value ),

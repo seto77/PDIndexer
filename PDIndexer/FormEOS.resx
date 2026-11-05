@@ -1631,16 +1631,16 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>34, 107</value>
+    <value>27, 107</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
-    <value>50, 15</value>
+    <value>57, 15</value>
   </data>
   <data name="label15.TabIndex" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="label15.Text" xml:space="preserve">
-    <value>Sim (02)</value>
+    <value>Shim (02)</value>
   </data>
   <data name="&gt;&gt;label15.Name" xml:space="preserve">
     <value>label15</value>
@@ -4982,7 +4982,7 @@ from Jamieson (1982). Read-only result.</value>
 from Anderson (1989). Read-only result.</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>Computed pressure P (GPa) for gold from Sim
+    <value>Computed pressure P (GPa) for gold from Shim
 (2002), BM3 + Mie-Grüneisen. Read-only result.</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">
