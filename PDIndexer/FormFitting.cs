@@ -535,6 +535,47 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             #endregion
             case "trigonal":
                 #region trigonal
+                // 261105Cl 追加: 菱面体軸の設定 (空間群名に "Rho"。a = b = c, α = β = γ。Crystal.SetAxis と同じ判定) は、六方晶の式ではなく菱面体の観測方程式で精密化する。
+                //   旧コードは菱面体指数のまま六方晶の式 4/3(h²+hk+k²), l² に入れていたため、まったく違う格子定数 (c, V は NaN になることも) を返していた。
+                //   1/d² = A(h²+k²+l²) + 2B(hk+kl+lh) (A = g*11 = g*22 = g*33, B = g*12 = g*23 = g*31) を C0 = A, C1 = 2B として解き、G = (G*)⁻¹ から
+                //   a² = (A+B)/((A−B)(A+2B)), cosα = −B/(A+B), V = 1/((A−B)√(A+2B))。誤差は C の分散共分散行列 (非対角も含む) で 1 次伝播 (∂/∂C1 = ½·∂/∂B)。
+                if (TargetCrystal.Symmetry.SpaceGroupHMStr.Contains("Rho", StringComparison.Ordinal)) // 261105Cl 追加
+                {
+                    Q = new DenseMatrix(column, 2); // 261105Cl
+                    A = new DenseMatrix(column, 1); // 261105Cl
+                    W = new DenseMatrix(column, column); // 261105Cl
+                    for (int i = 0; i < column; i++) // 261105Cl
+                    {
+                        Q[i, 0] = p[i].h * p[i].h + p[i].k * p[i].k + p[i].l * p[i].l; // 261105Cl
+                        Q[i, 1] = p[i].h * p[i].k + p[i].k * p[i].l + p[i].l * p[i].h; // 261105Cl
+                        A[i, 0] = 1 / p[i].dObs / p[i].dObs; // 261105Cl
+                        W[i, i] = p[i].Weight; // 261105Cl
+                    }
+                    if (!(Q.Transpose() * W * Q).TryInverse(out inv)) // 261105Cl
+                        break; // 261105Cl
+                    C = inv * Q.Transpose() * W * A; // 261105Cl
+                    double gA = C[0, 0], gB = C[1, 0] / 2; // 261105Cl
+                    a = b = c = Math.Sqrt((gA + gB) / (gA - gB) / (gA + 2 * gB)); // 261105Cl
+                    alfa = beta = gamma = Math.Acos(-gB / (gA + gB)); // 261105Cl
+                    V = 1 / (gA - gB) / Math.Sqrt(gA + 2 * gB); // 261105Cl
+
+                    if (p.Count - 2 > 0)//以下は誤差を計算する部分 261105Cl
+                    {
+                        var Dev = A - Q * C; // 261105Cl
+                        double sum = 0; // 261105Cl
+                        for (int i = 0; i < column; i++) // 261105Cl
+                            sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight; // 261105Cl
+                        for (int i = 0; i < column; i++) // 261105Cl
+                            W[i, i] = p[i].Weight * (p.Count - 2) / sum; // 261105Cl
+                        if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse)) // 261105Cl
+                            break; // 261105Cl
+                        a_err = b_err = c_err = propagate(AlphaInverse, a / 2 * (1 / (gA + gB) - 1 / (gA - gB) - 1 / (gA + 2 * gB)), a / 4 * (1 / (gA + gB) + 1 / (gA - gB) - 2 / (gA + 2 * gB))); // 261105Cl
+                        alpha_err = beta_err = gamma_err = propagate(AlphaInverse, -gB / (gA + gB) / (gA + gB) / Math.Sin(alfa), gA / 2 / (gA + gB) / (gA + gB) / Math.Sin(alfa)); // 261105Cl
+                        V_err = propagate(AlphaInverse, -V * (1 / (gA - gB) + 0.5 / (gA + 2 * gB)), V / 2 * (1 / (gA - gB) - 1 / (gA + 2 * gB))); // 261105Cl
+                    }
+                    break; // 261105Cl
+                }
+                // 261105Cl ここから下は従来どおり (六方晶軸の設定)
                 Q = new DenseMatrix(column, 2);
                 A = new DenseMatrix(column, 1);
                 W = new DenseMatrix(column, column);
