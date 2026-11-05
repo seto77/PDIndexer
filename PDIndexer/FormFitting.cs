@@ -348,7 +348,10 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 AngleUnitEnum.MilliRadian => p.XObs / 2000, // 261105Cl
                                 _ => p.XObs / 2, // 261105Cl Radian
                             };
-                            p.Weight = 1 / Math.Sin(theta) / Math.Sin(theta); // 261105Cl
+                            // 261105Cl 変更 (作者判断 T-1、マニュアル「付録 アルゴリズム解説 › 重みの取り方」に合わせる): 重みを 1/sin²θ から 1/sin²2θ にする。
+                            //   2θ の誤差 σ_2θ が一定なら、G = 1/d² = 4sin²θ/λ² の誤差は σ_G = |∂G/∂θ|·σ_θ = (4sin2θ/λ²)·σ_2θ/2 ∝ sin2θ なので、重み (誤差の 2 乗の逆数) は 1/sin²2θ。
+                            //   旧式 1/sin²θ (上のコメントアウトした行と同じ) は σ_G ∝ sinθ を仮定したことになり、相対的な重みが正しい値の cos²θ 倍 (高角の反射ほど過小) だった。
+                            p.Weight = 1 / Math.Sin(2 * theta) / Math.Sin(2 * theta); // 261105Cl
                         }
                         else
                             p.Weight = 1;
