@@ -264,7 +264,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                 if (p.SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
                 {
                     ptArray ??= TargetProfile.Pt.ToArray(); //260712Cl ループ外で1回だけ生成した配列を使い回し
-                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, ptArray);
+                    //p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, ptArray);
+                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange * SerchRangeFactor, ptArray); // 261105Cl 探索窓 ±SerchRange·SerchRangeFactor (画面の Search Range の値、他の関数の range、Remove peaks、マクロ Fitting.Range の説明と同じ)。旧コードは内部値 SerchRange をそのまま使っていた
                     p.XObs = p.simpleParameter.X;
                     p.peakFunction.Xerr = TargetProfile.Pt[1].X - TargetProfile.Pt[0].X;
                 }
