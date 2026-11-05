@@ -335,10 +335,19 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
                         if (formMain.HorizontalAxisProperty.AxisMode == HorizontalAxis.Angle)
                         {
-                            if (formMain.HorizontalAxisProperty.TwoThetaUnit == AngleUnitEnum.Degree)
-                                p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
-                            else
-                                p.Weight = 1 / Math.Sin(p.XObs / 2) / Math.Sin(p.XObs / 2);
+                            //if (formMain.HorizontalAxisProperty.TwoThetaUnit == AngleUnitEnum.Degree)
+                            //    p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
+                            //else
+                            //    p.Weight = 1 / Math.Sin(p.XObs / 2) / Math.Sin(p.XObs / 2);
+                            // 261105Cl 変更: θ (rad) を横軸の単位に応じて求める。旧コードは Degree 以外をすべてラジアンとみなしたため、CentiDegree / MilliRadian では重みが sin² の振動する無意味な値になっていた
+                            var theta = formMain.HorizontalAxisProperty.TwoThetaUnit switch // 261105Cl 追加
+                            {
+                                AngleUnitEnum.Degree => p.XObs / 360 * Math.PI, // 261105Cl
+                                AngleUnitEnum.CentiDegree => p.XObs / 36000 * Math.PI, // 261105Cl
+                                AngleUnitEnum.MilliRadian => p.XObs / 2000, // 261105Cl
+                                _ => p.XObs / 2, // 261105Cl Radian
+                            };
+                            p.Weight = 1 / Math.Sin(theta) / Math.Sin(theta); // 261105Cl
                         }
                         else
                             p.Weight = 1;
