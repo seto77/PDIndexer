@@ -7,6 +7,7 @@ Last updated: 2026-11-10
 ### Daily (最大14日保持)
 | Date | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-11-09 | 7 | 5 |
 | 2026-11-08 | 2 | 2 |
 | 2026-11-07 | 1 | 1 |
 | 2026-11-06 | 6 | 3 |
@@ -23,6 +24,7 @@ Last updated: 2026-11-10
 ### Weekly (最大14週保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
+| 2026-W46 | 7 | 5 |
 | 2026-W45 | 56 | 33 |
 | 2026-W44 | 69 | 46 |
 | 2026-W43 | 84 | 53 |
@@ -40,7 +42,7 @@ Last updated: 2026-11-10
 ### Monthly (最大12か月保持)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026-11 | 63 | 39 |
+| 2026-11 | 70 | 44 |
 | 2026-10 | 295 | 180 |
 | 2026-09 | 206 | 107 |
 | 2026-08 | 294 | 133 |
@@ -52,13 +54,14 @@ Last updated: 2026-11-10
 ### Yearly (無制限)
 | Period | Total Views | Unique Visitors |
 | ---- | ---- | ---- |
-| 2026 | 2284 | 1106 |
+| 2026 | 2291 | 1111 |
 
 ## Clones
 
 ### Daily (最大14日保持)
 | Date | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-11-09 | 6 | 5 |
 | 2026-11-08 | 14 | 6 |
 | 2026-11-07 | 17 | 10 |
 | 2026-11-06 | 33 | 9 |
@@ -75,6 +78,7 @@ Last updated: 2026-11-10
 ### Weekly (最大14週保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
+| 2026-W46 | 6 | 5 |
 | 2026-W45 | 138 | 62 |
 | 2026-W44 | 259 | 90 |
 | 2026-W43 | 96 | 55 |
@@ -92,7 +96,7 @@ Last updated: 2026-11-10
 ### Monthly (最大12か月保持)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026-11 | 147 | 69 |
+| 2026-11 | 153 | 74 |
 | 2026-10 | 605 | 300 |
 | 2026-09 | 392 | 328 |
 | 2026-08 | 286 | 164 |
@@ -104,7 +108,7 @@ Last updated: 2026-11-10
 ### Yearly (無制限)
 | Period | Total Clones | Unique Cloners |
 | ---- | ---- | ---- |
-| 2026 | 3442 | 1753 |
+| 2026 | 3448 | 1758 |
 
 ## Referrers
 
@@ -352,9 +356,9 @@ Last updated: 2026-11-10
 
 | Release Tag | Release Date | Asset Name | Download Count |
 | ---- | ---- | ---- | ---- |
-| v.4.465 | 2026-10-26 | PDIndexer-setup.msi | 115 |
+| v.4.465 | 2026-10-26 | PDIndexer-setup.msi | 123 |
 | v.4.465 | 2026-10-26 | PDIndexer-setup_arm64.msi | 13 |
-| v.4.465 | 2026-10-26 | PDIndexer-v.4.465.zip | 17 |
+| v.4.465 | 2026-10-26 | PDIndexer-v.4.465.zip | 19 |
 | v.4.465 | 2026-10-26 | PDIndexer-v.4.465_arm64.zip | 7 |
 | v.4.465 | 2026-10-26 | PDIndexerSetup.msi | 5 |
 | v.4.464 | 2026-07-02 | PDIndexer-setup.msi | 893 |
@@ -395,7 +399,7 @@ Last updated: 2026-11-10
 | v.4.435 | 2023-03-07 | PDindexerSetup.msi | 103 |
 | v.4.434 | 2023-02-13 | PDindexerSetup.msi | 108 |
 
-**TOTAL: 9089**
+**TOTAL: 9099**
 
 ## Stats
 
