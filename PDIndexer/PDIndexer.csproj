@@ -24,7 +24,7 @@
     <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ApplicationUseCompatibleTextRendering>true</ApplicationUseCompatibleTextRendering>
     <ApplicationVisualStyles>true</ApplicationVisualStyles>
-    <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+    <!-- <EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization> --><!-- 261111Cl 削除: BinaryFormatter を使わなくなった (保存形式・クリップボードは使用なし。resx の埋め込み値は System.Resources.Extensions の NRBF 読み取りで読む) -->
     <Platforms>x64</Platforms>
     <!-- 260624Cl: AllowUnsafeBlocks を構成非依存で有効化 (WiX計画: arm64 ビルドでも unsafe を許可)。
          旧は下の Debug|x64 / Release|x64 条件付き PropertyGroup でのみ有効だったため、Release|ARM64 publish が
@@ -104,7 +104,8 @@
     <PackageReference Include="SimdLinq" Version="1.3.2" />
     <!-- 261106Ch: Preserve legacy BinaryFormatter compatibility with the .NET 11 package. -->
     <!-- <PackageReference Include="System.Runtime.Serialization.Formatters" Version="10.0.13" /> -->
-    <PackageReference Include="System.Runtime.Serialization.Formatters" Version="11.0.0" /><!-- 261111Cl: .NET 11 GA (was 11.0.0-rc.3.26522.148) -->
+    <!-- <PackageReference Include="System.Runtime.Serialization.Formatters" Version="11.0.0" /> --><!-- 261111Cl: .NET 11 GA (was 11.0.0-rc.3.26522.148) -->
+    <!-- 261111Cl 削除: 上の互換パッケージ (脆弱性あり・Microsoft は非推奨) は不要になった。EnableUnsafeBinaryFormatterSerialization と同じ理由 -->
   </ItemGroup>
 
   <ItemGroup>
