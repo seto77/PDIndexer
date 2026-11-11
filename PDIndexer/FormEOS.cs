@@ -43,7 +43,8 @@ public partial class FormEOS : FormBase //260604Cl Form→FormBase (F1ヘルプ�
         //formMain.formCrystal.crystalControl.CrystalChanged += new EventHandler(crystalControl_CrystalChanged);
     }
 
-    private void FormEOS_Closed(object sender, System.EventArgs e)
+    //private void FormEOS_Closed(object sender, System.EventArgs e)
+    private void FormEOS_Closed(object sender, FormClosedEventArgs e) // 261111Cl 変更: Closed → FormClosed (WFDEV004) に合わせて引数型を変更
     {
         formMain.toolStripButtonEquationOfState.Checked = false;
     }

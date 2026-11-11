@@ -611,48 +611,92 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
                 p.Err.Add(new PointD(dp[0].Profile.Pt[j].X, j < dp[0].Profile.Err.Count ? dp[0].Profile.Err[j].Y : 0));
             }
 
+            #region 261111Cl 変更前
+            //for (int j = 0; j < p.Pt.Count; j++)
+            //    if (radioButtonAddition.Checked)//足し算
+            //    {
+            //        //p.Pt[j].Y = p.Pt[j].Y + dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+            //        p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y + dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
+            //
+            //        double err1 = p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X);
+            //        //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
+            //        p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
+            //    }
+            //    else if (radioButtonSubtraction.Checked)//引き算
+            //    {
+            //        //p.Pt[j].Y = p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+            //        p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
+            //        double err1 = p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X);
+            //        //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
+            //        p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
+            //    }
+            //    else if (radioButtonMutiplication.Checked)//掛け算
+            //    {
+            //        //p.Pt[j].Y = p.Pt[j].Y * dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+            //        p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y * dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
+            //        double err1 = p.Err[j].Y / p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X) / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+            //        if (Math.Abs(err1) > 10E-10 && Math.Abs(err2) > 10E-10)
+            //            //p.Err[j].Y = p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2);
+            //            p.Err[j] = new PointD(p.Err[j].X, p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2));
+            //    }
+            //    else if (radioButtonDivision.Checked)
+            //    {
+            //        if (Math.Abs(dp[1].Profile.GetValue(p.Pt[j].X, 1, 0)) < 10E-10)
+            //        {
+            //            p.Pt.RemoveAt(j);
+            //            p.Err.RemoveAt(j);
+            //        }
+            //        else
+            //        {
+            //            //p.Pt[j].Y = p.Pt[j].Y / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+            //            p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
+            //            double err1 = p.Err[j].Y / p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X) / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+            //            if (Math.Abs(err1) > 10E-10 && Math.Abs(err2) > 10E-10)
+            //                //p.Err[j].Y = p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2);
+            //                p.Err[j] = new PointD(p.Err[j].X, p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2));
+            //        }
+            //    }
+            #endregion
+            // 261111Cl 変更: (1) 掛け算・割り算の誤差が Err/Err (常に 1) を相対誤差に使っていた → 誤差伝播の式 (掛け算 σz² = (y·σx)² + (x·σy)²、割り算 σz² = (σx² + (z·σy)²) / y²) に。
+            //   x の値は書き換え前に取る。σx か σy の一方が 0 でも正しく伝播する (旧: 一方が ~0 だと σx のまま残していた)。誤差は非負
+            // (2) 割り算で RemoveAt した後に j-- が無く、次の点を飛ばしていた (3) ラジオボタンの状態をループの外で読む
+            bool isAddition = radioButtonAddition.Checked, isSubtraction = radioButtonSubtraction.Checked,
+                isMultiplication = radioButtonMutiplication.Checked, isDivision = radioButtonDivision.Checked;
             for (int j = 0; j < p.Pt.Count; j++)
-                if (radioButtonAddition.Checked)//足し算
+                if (isAddition)//足し算
                 {
-                    //p.Pt[j].Y = p.Pt[j].Y + dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
                     p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y + dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
-
                     double err1 = p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X);
-                    //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
                     p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
                 }
-                else if (radioButtonSubtraction.Checked)//引き算
+                else if (isSubtraction)//引き算
                 {
-                    //p.Pt[j].Y = p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
                     p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y - dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
                     double err1 = p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X);
-                    //p.Err[j].Y = Math.Sqrt(err1 * err1 + err2 * err2);
                     p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(err1 * err1 + err2 * err2));
                 }
-                else if (radioButtonMutiplication.Checked)//掛け算
+                else if (isMultiplication)//掛け算
                 {
-                    //p.Pt[j].Y = p.Pt[j].Y * dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
-                    p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y * dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
-                    double err1 = p.Err[j].Y / p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X) / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
-                    if (Math.Abs(err1) > 10E-10 && Math.Abs(err2) > 10E-10)
-                        //p.Err[j].Y = p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2);
-                        p.Err[j] = new PointD(p.Err[j].X, p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2));
+                    double x = p.Pt[j].Y, y = dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+                    double sx = p.Err[j].Y, sy = dp[1].Profile.GetErr(p.Pt[j].X);
+                    p.Pt[j] = new PointD(p.Pt[j].X, x * y);
+                    p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(y * sx * (y * sx) + x * sy * (x * sy)));
                 }
-                else if (radioButtonDivision.Checked)
+                else if (isDivision)//割り算
                 {
-                    if (Math.Abs(dp[1].Profile.GetValue(p.Pt[j].X, 1, 0)) < 10E-10)
+                    double y = dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
+                    if (Math.Abs(y) < 10E-10)
                     {
                         p.Pt.RemoveAt(j);
                         p.Err.RemoveAt(j);
+                        j--;
                     }
                     else
                     {
-                        //p.Pt[j].Y = p.Pt[j].Y / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
-                        p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0));
-                        double err1 = p.Err[j].Y / p.Err[j].Y, err2 = dp[1].Profile.GetErr(p.Pt[j].X) / dp[1].Profile.GetValue(p.Pt[j].X, 1, 0);
-                        if (Math.Abs(err1) > 10E-10 && Math.Abs(err2) > 10E-10)
-                            //p.Err[j].Y = p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2);
-                            p.Err[j] = new PointD(p.Err[j].X, p.Pt[j].Y * Math.Sqrt(err1 * err1 + err2 * err2));
+                        double z = p.Pt[j].Y / y;
+                        double sx = p.Err[j].Y, sy = dp[1].Profile.GetErr(p.Pt[j].X);
+                        p.Pt[j] = new PointD(p.Pt[j].X, z);
+                        p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(sx * sx + z * sy * (z * sy)) / Math.Abs(y));
                     }
                 }
         }
@@ -665,16 +709,27 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
                 p.Err.Add(new PointD(dp.Profile.Pt[j].X, j < dp.Profile.Err.Count ? dp.Profile.Err[j].Y : 0));
             }
 
+            //for (int j = 0; j < p.Pt.Count; j++)
+            //    if (radioButtonAddition.Checked)
+            //        //p.Pt[j].Y = p.Pt[j].Y + numericalTextBoxTargetValue.Value;
+            //        p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y + numericalTextBoxTargetValue.Value);
+            //    else if (radioButtonMutiplication.Checked)
+            //    {
+            //        //p.Pt[j].Y = p.Pt[j].Y * numericalTextBoxTargetValue.Value;
+            //        p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y * numericalTextBoxTargetValue.Value);
+            //        // p.Err[j].Y = p.Err[j].Y * numericalTextBoxTargetValue.Value;
+            //        p.Err[j] = new PointD(p.Err[j].X, p.Err[j].Y * numericalTextBoxTargetValue.Value);
+            //    }
+            // 261111Cl 変更: UI の値 (ラジオボタン・数値欄) をループの外で 1 回だけ読む。計算は同じ
+            bool isAddition = radioButtonAddition.Checked, isMultiplication = radioButtonMutiplication.Checked;
+            double targetValue = numericalTextBoxTargetValue.Value;
             for (int j = 0; j < p.Pt.Count; j++)
-                if (radioButtonAddition.Checked)
-                    //p.Pt[j].Y = p.Pt[j].Y + numericalTextBoxTargetValue.Value;
-                    p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y + numericalTextBoxTargetValue.Value);
-                else if (radioButtonMutiplication.Checked)
+                if (isAddition)
+                    p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y + targetValue);
+                else if (isMultiplication)
                 {
-                    //p.Pt[j].Y = p.Pt[j].Y * numericalTextBoxTargetValue.Value;
-                    p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y * numericalTextBoxTargetValue.Value);
-                    // p.Err[j].Y = p.Err[j].Y * numericalTextBoxTargetValue.Value;
-                    p.Err[j] = new PointD(p.Err[j].X, p.Err[j].Y * numericalTextBoxTargetValue.Value);
+                    p.Pt[j] = new PointD(p.Pt[j].X, p.Pt[j].Y * targetValue);
+                    p.Err[j] = new PointD(p.Err[j].X, p.Err[j].Y * targetValue);
                 }
         }
         else

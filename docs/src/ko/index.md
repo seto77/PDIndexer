@@ -45,9 +45,11 @@
 
 ## 시스템 요구 사항
 
+아래 요구 사항은 이 소스 코드에서 빌드한 .NET 11 버전에 적용됩니다. 이미 배포된 릴리스는 해당 릴리스에 명시된 런타임 요구 사항을 따르세요.
+
 | 항목 | 요구 사항 |
 |------|-------------|
-| OS | [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0)(.NET Runtime이 **아님**)이 동작하는 Windows |
+| OS | [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0)(.NET Runtime이 **아님**)이 동작하는 Windows |
 | 권장 | 64비트 Windows 10/11, 메모리 16 GB 이상, 8코어 이상 CPU |
 
 자세한 내용은 [실행 환경 및 설치](appendix/runtime-and-installation.md)를 참조하세요.

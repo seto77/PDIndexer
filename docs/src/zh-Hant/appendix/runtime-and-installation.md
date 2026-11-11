@@ -23,20 +23,22 @@
 
 從 MSI 安裝程式安裝 PDIndexer 時，需要以下執行環境。
 
+以下要求適用於由此原始碼建置的 .NET 11 版本。對於已發布的版本，請遵循該版本註明的執行階段要求。
+
 | 項目 | 需求 |
 | --- | --- |
 | OS | Windows（64 位元版，x64 或 Arm64） |
-| 執行環境 | `.NET Desktop Runtime 10.0`（是 **Desktop Runtime**，而非單純的 **.NET Runtime**；在 Windows on Arm 上則為 **Arm64** 版本） |
+| 執行環境 | `.NET Desktop Runtime 11.0`（是 **Desktop Runtime**，而非單純的 **.NET Runtime**；在 Windows on Arm 上則為 **Arm64** 版本） |
 
 !!! warning "請選擇 Desktop Runtime"
     下載頁面提供兩種產品：「.NET Runtime」與「.NET Desktop Runtime」。由於 PDIndexer 是 WinForms 應用程式，請務必安裝 **.NET Desktop Runtime**。僅安裝「.NET Runtime」將無法啟動程式。
 
-- 下載執行環境: <https://dotnet.microsoft.com/download/dotnet/10.0>
+- 下載執行環境: <https://dotnet.microsoft.com/download/dotnet/11.0>
 
 免安裝 ZIP 版本對於對應的架構（x64 或 Arm64）為自我完備（self-contained）套件，不需要另外安裝 .NET Desktop Runtime。 <!-- 260601Ch / 260625Cl arm64 -->
 
 !!! note "關於舊文件所載版本"
-    舊版手冊（docx）中記載為「.NET Desktop Runtime 6.0 以上」，但目前的 PDIndexer 需要 **.NET 10.0**。請依照最新版本的需求為準。
+    舊版手冊（docx）中記載為「.NET Desktop Runtime 6.0 以上」，但目前的 PDIndexer 需要 **.NET 11.0**。請依照最新版本的需求為準。
 
 ## 建議環境
 

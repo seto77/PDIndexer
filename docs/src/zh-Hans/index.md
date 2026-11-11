@@ -45,9 +45,11 @@
 
 ## 系统要求
 
+以下要求适用于由此源代码构建的 .NET 11 版本。对于已发布的版本，请遵循该版本注明的运行时要求。
+
 | 项目 | 要求 |
 |------|-------------|
-| OS | 支持 [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) 的 Windows（**不是** .NET Runtime） |
+| OS | 支持 [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) 的 Windows（**不是** .NET Runtime） |
 | 推荐配置 | 64 位 Windows 10/11、16 GB 及以上内存、8 核及以上 CPU |
 
 详情参见[运行环境与安装](appendix/runtime-and-installation.md)。

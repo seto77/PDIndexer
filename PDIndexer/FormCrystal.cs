@@ -40,7 +40,8 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         crystalDatabaseControl.AMCSD_Checked = true;
     }
-    private void FormCrystal_Closed(object sender, System.EventArgs e)
+    //private void FormCrystal_Closed(object sender, System.EventArgs e)
+    private void FormCrystal_Closed(object sender, FormClosedEventArgs e) // 261111Cl 変更: Closed → FormClosed (WFDEV004) に合わせて引数型を変更
     {
         formMain?.checkBoxCrystalParameter.Checked = false; //260712Cl C#14 null条件代入
     }

@@ -622,7 +622,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
                                 }
                                 //Crystal2クラスの時
-                                else if (bytes[0] == Crystal2.ID && formCrystal.Visible)
+                                //else if (bytes[0] == Crystal2.ID && formCrystal.Visible)
+                                // 261111Cl 変更: 自分 (CrystalControl の「他のソフトへ送る」/原子位置検索) が送った結晶を受け取って置き換えない (ReciPro の 261105Cl 監査 #23 と同じ)
+                                else if (bytes[0] == Crystal2.ID && formCrystal.Visible
+                                    && !(CrystalControl.LastSentToClipboard is { } sentByControl && bytes.AsSpan().SequenceEqual(sentByControl))
+                                    && !(FormAtomicPositionFinder.LastSentToClipboard is { } sentByFinder && bytes.AsSpan().SequenceEqual(sentByFinder)))
                                 {
                                     var c2 = Crystal2.Deserialize(bytes[1..]);
                                     formCrystal.crystalControl.Crystal = Crystal2.GetCrystal(c2);
@@ -686,22 +690,38 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     FileSystemWatcher watcher;
     void watcher_Created(object sender, System.IO.FileSystemEventArgs e)
     {
-        if (e.FullPath.EndsWith("pdi"))
+        //if (e.FullPath.EndsWith("pdi"))
+        // 261111Cl 変更: IPAnalyzer の現行の出力 .pdi2 を無視していた → .pdi と .pdi2 の両方 (大文字小文字は区別しない)
+        if (e.FullPath.EndsWith(".pdi", StringComparison.OrdinalIgnoreCase) || e.FullPath.EndsWith(".pdi2", StringComparison.OrdinalIgnoreCase))
         {
             watcher.EnableRaisingEvents = false;
-            do
+            //do
+            //{
+            //    try
+            //    {
+            //        var fs = File.Open(e.FullPath, FileMode.Open);
+            //        fs.Close();
+            //        break;
+            //    }
+            //    catch { Thread.Sleep(100); }
+            //}
+            //while (true);
+            // 261111Cl 変更: 書き込み側のロック解除待ちが無限ポーリングだった → 上限 30 秒。開けなければ読み込まずに監視へ戻る
+            var unlocked = false;
+            var waitWatch = Stopwatch.StartNew();
+            while (!unlocked && waitWatch.ElapsedMilliseconds < 30000)
             {
                 try
                 {
-                    var fs = File.Open(e.FullPath, FileMode.Open);
-                    fs.Close();
-                    break;
+                    using (File.Open(e.FullPath, FileMode.Open)) { }
+                    unlocked = true;
                 }
                 catch { Thread.Sleep(100); }
             }
-            while (true);
 
-            readProfile(e.FullPath);
+            //readProfile(e.FullPath);
+            if (unlocked) // 261111Cl
+                readProfile(e.FullPath);
             watcher.EnableRaisingEvents = true;
         }
     }
@@ -710,7 +730,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     #region コンストラクタ、ロード、クローズ
     public FormMain()
     {
-        var x = "10,25/5,5/9".ToDouble();
+        //var x = "10,25/5,5/9".ToDouble(); // 261111Cl コメントアウト: デバッグの残骸 (結果は未使用)
 
         //カルチャーを決めるため、レジストリ読込
         if (!DesignMode)
@@ -995,10 +1015,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
         {
-            List<Crystal> cry = []; //260317Cl new List<T>() → []
-            for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
+            //List<Crystal> cry = []; //260317Cl new List<T>() → []
+            //for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
 
-                cry.Add(dataSet.DataTableCrystal.Items[i]);
+            //    cry.Add(dataSet.DataTableCrystal.Items[i]);
+            List<Crystal> cry = dataSet.DataTableCrystal.Items; // 261111Cl 変更: Items は呼ぶたびに全行から List を作るので、ループで Items[i] を呼ぶと O(n²)。Items 自体が新しい List
             ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
         }
     }
@@ -1217,14 +1238,18 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     /// </summary>
     public void SetDrawRangeLimit()
     {
-        if (dataSet.DataTableProfile.Items.Count is 0) return; //260317Cl == 0 → is 0
+        //if (dataSet.DataTableProfile.Items.Count is 0) return; //260317Cl == 0 → is 0
+        var profiles = dataSet.DataTableProfile.Items; // 261111Cl 変更: Items (毎回全行から List を作る) をループ前に 1 回だけ取得
+        if (profiles.Count is 0) return; // 261111Cl
         double minimalX = double.PositiveInfinity;
         double maximalX = double.NegativeInfinity;
         double minimalY = double.PositiveInfinity;
         double maximalY = double.NegativeInfinity;
-        for (int n = 0; n < dataSet.DataTableProfile.Items.Count; n++)
+        //for (int n = 0; n < dataSet.DataTableProfile.Items.Count; n++)
+        for (int n = 0; n < profiles.Count; n++) // 261111Cl
         {
-            var diffProf = (DiffractionProfile2)dataSet.DataTableProfile.Items[n];
+            //var diffProf = (DiffractionProfile2)dataSet.DataTableProfile.Items[n];
+            var diffProf = profiles[n]; // 261111Cl
             if (diffProf.Profile.Pt.Count > 2)
             {
                 if (minimalX > diffProf.Profile.Pt[0].X)
@@ -1372,16 +1397,24 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     using var font = new Font("Tahoma", 8); // (260624Ch)
                     //まず字の最大長さ(pixel)を求める
                     var maxSizeF = new SizeF(0, 0);
-                    for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
+                    var checkedProfiles = dataSet.DataTableProfile.CheckedItems; // 261111Cl 追加: CheckedItems (毎回全行から List を作る) をループ前に 1 回だけ取得
+                    //for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
+                    //{
+                    //    maxSizeF.Width = Math.Max(maxSizeF.Width, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Width);
+                    //    maxSizeF.Height = Math.Max(maxSizeF.Height, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Height);
+                    //}
+                    for (int i = checkedProfiles.Count - 1; i >= 0; i--) // 261111Cl 変更
                     {
-                        maxSizeF.Width = Math.Max(maxSizeF.Width, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Width);
-                        maxSizeF.Height = Math.Max(maxSizeF.Height, gMain.MeasureString(dataSet.DataTableProfile.CheckedItems[i].ToString(), font).Height);
+                        maxSizeF.Width = Math.Max(maxSizeF.Width, gMain.MeasureString(checkedProfiles[i].ToString(), font).Width);
+                        maxSizeF.Height = Math.Max(maxSizeF.Height, gMain.MeasureString(checkedProfiles[i].ToString(), font).Height);
                     }
                     var startPosition = new PointF(0, 0);
                     if (formPrintOption.radioButtonLowerLeft.Checked)
-                        startPosition = new PointF(5 + OriginPos.X, BmpMain.Height - OriginPos.Y - maxSizeF.Height * dataSet.DataTableProfile.CheckedItems.Count);
+                        //startPosition = new PointF(5 + OriginPos.X, BmpMain.Height - OriginPos.Y - maxSizeF.Height * dataSet.DataTableProfile.CheckedItems.Count);
+                        startPosition = new PointF(5 + OriginPos.X, BmpMain.Height - OriginPos.Y - maxSizeF.Height * checkedProfiles.Count); // 261111Cl
                     else if (formPrintOption.radioButtonLowerRight.Checked)
-                        startPosition = new PointF(BmpMain.Width - maxSizeF.Width - 1, BmpMain.Height - OriginPos.Y - maxSizeF.Height * dataSet.DataTableProfile.CheckedItems.Count);
+                        //startPosition = new PointF(BmpMain.Width - maxSizeF.Width - 1, BmpMain.Height - OriginPos.Y - maxSizeF.Height * dataSet.DataTableProfile.CheckedItems.Count);
+                        startPosition = new PointF(BmpMain.Width - maxSizeF.Width - 1, BmpMain.Height - OriginPos.Y - maxSizeF.Height * checkedProfiles.Count); // 261111Cl
 
                     else if (formPrintOption.radioButtonUpperLeft.Checked)
                         startPosition = new PointF(5 + OriginPos.X, 5);
@@ -1389,13 +1422,19 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     else if (formPrintOption.radioButtonUpperRight.Checked)
                         startPosition = new PointF(BmpMain.Width - maxSizeF.Width - 1, 5);
 
-                    for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
+                    //for (int i = dataSet.DataTableProfile.CheckedItems.Count - 1; i >= 0; i--)
+                    //{
+                    //    using var brush = new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)); // (260624Ch)
+                    //    gMain.DrawString(dataSet.DataTableProfile.CheckedItems[i].ToString(),
+                    //        //font, new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)), // (260624Ch) 旧: Brush が未破棄
+                    //        font, brush, // (260624Ch)
+                    //        new PointF(startPosition.X, startPosition.Y + (dataSet.DataTableProfile.CheckedItems.Count - 1 - i) * maxSizeF.Height));
+                    //}
+                    for (int i = checkedProfiles.Count - 1; i >= 0; i--) // 261111Cl 変更: 上で取得した checkedProfiles を使い回す
                     {
-                        using var brush = new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)); // (260624Ch)
-                        gMain.DrawString(dataSet.DataTableProfile.CheckedItems[i].ToString(),
-                            //font, new SolidBrush(Color.FromArgb(((DiffractionProfile2)dataSet.DataTableProfile.CheckedItems[i]).ColorARGB.Value)), // (260624Ch) 旧: Brush が未破棄
-                            font, brush, // (260624Ch)
-                            new PointF(startPosition.X, startPosition.Y + (dataSet.DataTableProfile.CheckedItems.Count - 1 - i) * maxSizeF.Height));
+                        using var brush = new SolidBrush(Color.FromArgb(checkedProfiles[i].ColorARGB.Value));
+                        gMain.DrawString(checkedProfiles[i].ToString(), font, brush,
+                            new PointF(startPosition.X, startPosition.Y + (checkedProfiles.Count - 1 - i) * maxSizeF.Height));
                     }
                 }
             }
@@ -1584,66 +1623,116 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     }
 
-    readonly object lockObj = new();
+    // readonly object lockObj = new(); // (261106Ch) Previous Monitor-backed drawing lock.
+    private readonly System.Threading.Lock lockObj = new(); // (261106Ch) Dedicated C# 13 lock; all four critical sections retain the same scope.
+    // 261111Cl 注: DrawProfile の lock は j ごとのスロット方式にして撤廃したので、lockObj は現在どこからも使われていない
     //プロファイルの描画
     private void DrawProfile()
     {
         var rect = new RectangleD(LowerX, LowerY, UpperX - LowerX, UpperY - LowerY);
-        List<(Pen pen, PointF[] points)> profiles = []; //260317Cl new List<T>() → []
-        List<Pen> profilePens = []; // (260624Ch)
+        //List<(Pen pen, PointF[] points)> profiles = []; //260317Cl new List<T>() → []
+        //List<Pen> profilePens = []; // (260624Ch)
+        // 261111Cl 変更: 共有 List に lock して足していたため、描画の重なり順が再描画ごとに変わっていた → j (プロファイル) ごとのスロットに書き、lock をやめて j 順に描画
+        List<(Pen pen, PointF[] points)>[] profileSlots = []; // 261111Cl 追加
+        List<Pen>[] penSlots = []; // 261111Cl 追加: 後始末用 (finally から見えるよう try の外で宣言)
 
         try // (260624Ch)
         {
             var checkedItems = dataSet.DataTableProfile.CheckedItems; //260712Cl CheckedItems を1回だけスナップショット
             var showErrorBar = checkBoxErrorBar.Checked;              //260712Cl UI 状態もループ外で読む
+            #region 261111Cl 変更前
+            //Parallel.For(0, checkedItems.Count, j =>
+            //{
+            //    var dp = checkedItems[j];
+            //    var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
+            //    if (srcPts.Length > 2)
+            //    {
+            //        var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
+            //        lock (lockObj) profilePens.Add(pen); // (260624Ch)
+            //
+            //        foreach (var trimmedPts in Geometry.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
+            //        {
+            //            var finalPts = ConvToPicBoxCoord(trimmedPts);
+            //            lock (lockObj)
+            //                profiles.Add((pen, finalPts));
+            //        }
+            //
+            //        //エラーバー描画
+            //        if (showErrorBar && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
+            //        {
+            //            var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
+            //            lock (lockObj) profilePens.Add(penErr); // (260624Ch)
+            //            var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
+            //            for (int i = 0; i < srcPts.Length; i++)
+            //                if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i]))
+            //                {
+            //                    var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y);
+            //                    var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
+            //                    lock (lockObj)
+            //                    {
+            //                        profiles.Add((penErr, [maxErr, minErr])); //260712Cl コレクション式
+            //                        profiles.Add((penErr, [new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y)]));
+            //                        profiles.Add((penErr, [new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y)]));
+            //                    }
+            //                }
+            //        }
+            //    }
+            //});
+            //
+            //profiles.ForEach(p =>
+            //{
+            //    if (p.points.Length > 1)
+            //        gMain.DrawLines(p.pen, p.points);
+            //});
+            #endregion
+            profileSlots = new List<(Pen pen, PointF[] points)>[checkedItems.Count]; // 261111Cl 追加
+            penSlots = new List<Pen>[checkedItems.Count]; // 261111Cl 追加
             Parallel.For(0, checkedItems.Count, j =>
             {
+                List<(Pen pen, PointF[] points)> lines = profileSlots[j] = []; // 261111Cl このプロファイル専用 (lock 不要)
+                List<Pen> pens = penSlots[j] = []; // 261111Cl
                 var dp = checkedItems[j];
                 var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
                 if (srcPts.Length > 2)
                 {
                     var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
-                    lock (lockObj) profilePens.Add(pen); // (260624Ch)
+                    pens.Add(pen);
 
                     foreach (var trimmedPts in Geometry.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
-                    {
-                        var finalPts = ConvToPicBoxCoord(trimmedPts);
-                        lock (lockObj)
-                            profiles.Add((pen, finalPts));
-                    }
+                        lines.Add((pen, ConvToPicBoxCoord(trimmedPts)));
 
                     //エラーバー描画
                     if (showErrorBar && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
                     {
                         var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
-                        lock (lockObj) profilePens.Add(penErr); // (260624Ch)
+                        pens.Add(penErr);
                         var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
                         for (int i = 0; i < srcPts.Length; i++)
                             if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i]))
                             {
                                 var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y);
                                 var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
-                                lock (lockObj)
-                                {
-                                    profiles.Add((penErr, [maxErr, minErr])); //260712Cl コレクション式
-                                    profiles.Add((penErr, [new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y)]));
-                                    profiles.Add((penErr, [new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y)]));
-                                }
+                                lines.Add((penErr, [maxErr, minErr]));
+                                lines.Add((penErr, [new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y)]));
+                                lines.Add((penErr, [new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y)]));
                             }
                     }
                 }
             });
 
-            profiles.ForEach(p =>
-            {
-                if (p.points.Length > 1)
-                    gMain.DrawLines(p.pen, p.points);
-            });
+            foreach (var lines in profileSlots) // 261111Cl j 順 (チェック一覧の順) に描画
+                foreach (var p in lines)
+                    if (p.points.Length > 1)
+                        gMain.DrawLines(p.pen, p.points);
         }
         finally // (260624Ch)
         {
-            foreach (var pen in profilePens) //260712Cl Distinct 不要 (pen/penErr とも生成時に1回だけ Add)
-                pen.Dispose();
+            //foreach (var pen in profilePens) //260712Cl Distinct 不要 (pen/penErr とも生成時に1回だけ Add)
+            //    pen.Dispose();
+            foreach (var pens in penSlots) // 261111Cl 変更: 例外で途中まででも、作った Pen は全部破棄
+                if (pens != null)
+                    foreach (var pen in pens)
+                        pen.Dispose();
         }
     }
 
@@ -1690,13 +1779,28 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     }
                 }
                 var bgPt = dp.BackgroundProfile.Pt; //260712Cl コピーせず List を直接参照
+                //if (bgPt.Count > 2)
+                //    for (int i = 0; i < bgPt.Count - 1; i++)
+                //        gMain.DrawLine(pen, ConvToPicBoxCoord(bgPt[i]), ConvToPicBoxCoord(bgPt[i + 1]));
+                //for (int i = 0; i < dp.BackgroundProfile.Pt.Count - 1; i++)
+                //{
+                //    gMain.DrawLine(pen, ConvToPicBoxCoord(dp.BackgroundProfile.Pt[i].X, dp.BackgroundProfile.Pt[i].Y + dp.Profile.Pt[i].Y),
+                //        ConvToPicBoxCoord(dp.BackgroundProfile.Pt[i + 1].X, dp.BackgroundProfile.Pt[i + 1].Y + dp.Profile.Pt[i + 1].Y));
+                //}
+                // 261111Cl 変更: 点ごとの DrawLine を、点列を 1 回変換しての DrawLines に (継ぎ目は Pen の LineJoin で結ばれる)
                 if (bgPt.Count > 2)
-                    for (int i = 0; i < bgPt.Count - 1; i++)
-                        gMain.DrawLine(pen, ConvToPicBoxCoord(bgPt[i]), ConvToPicBoxCoord(bgPt[i + 1]));
-                for (int i = 0; i < dp.BackgroundProfile.Pt.Count - 1; i++)
                 {
-                    gMain.DrawLine(pen, ConvToPicBoxCoord(dp.BackgroundProfile.Pt[i].X, dp.BackgroundProfile.Pt[i].Y + dp.Profile.Pt[i].Y),
-                        ConvToPicBoxCoord(dp.BackgroundProfile.Pt[i + 1].X, dp.BackgroundProfile.Pt[i + 1].Y + dp.Profile.Pt[i + 1].Y));
+                    var bgPoints = new PointF[bgPt.Count];
+                    for (int i = 0; i < bgPoints.Length; i++)
+                        bgPoints[i] = ConvToPicBoxCoord(bgPt[i]);
+                    gMain.DrawLines(pen, bgPoints);
+                }
+                if (bgPt.Count > 1)
+                {
+                    var sumPoints = new PointF[bgPt.Count];
+                    for (int i = 0; i < sumPoints.Length; i++)
+                        sumPoints[i] = ConvToPicBoxCoord(bgPt[i].X, bgPt[i].Y + dp.Profile.Pt[i].Y);
+                    gMain.DrawLines(pen, sumPoints);
                 }
             }
         }
@@ -1709,9 +1813,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         int checkedCrystalCount = dataSet.DataTableCrystal.CheckedItems.Count; //260712Cl メモリ: 面ループ内の CheckedItems 再構築を回避
         //チェックしている結晶の描画位置を計算
+        var crystals = dataSet.DataTableCrystal.Items; // 261111Cl 追加: Items (毎回全行から List を作る) をループ前に 1 回だけ取得
         foreach (int i in dataSet.DataTableCrystal.CheckedIndices)
         {
-            var cry = dataSet.DataTableCrystal.Items[i];
+            //var cry = dataSet.DataTableCrystal.Items[i];
+            var cry = crystals[i]; // 261111Cl
             if (!blinkFlag || !blinkingCrystals.Contains(i))
                 if (cry.Plane != null)
                 {
@@ -2015,11 +2121,14 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         if (dMax < 0)
             dMax = 1000;
 
-        for (int i = 1; i < dataSet.DataTableCrystal.Items.Count; i++)
+        var crystals = dataSet.DataTableCrystal.Items; // 261111Cl 追加: Items (毎回全行から List を作る) をループ前に 1 回だけ取得
+        //for (int i = 1; i < dataSet.DataTableCrystal.Items.Count; i++)
+        for (int i = 1; i < crystals.Count; i++) // 261111Cl
         {
             if (dataSet.DataTableCrystal.GetItemChecked(i))
             {
-                Crystal cry = dataSet.DataTableCrystal.Items[i];
+                //Crystal cry = dataSet.DataTableCrystal.Items[i];
+                Crystal cry = crystals[i]; // 261111Cl
 
                 if (formCrystal.radioButtonAngleThreshold.Checked)
                     cry.SetPlanes(dMax, dMin, true, true, false, formCrystal.checkBoxCombineSameDspacingPeaks.Checked, HorizontalAxis.Angle,
@@ -2932,12 +3041,14 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         if (InvokeRequired)//別スレッド(ファイル更新監視スレッド)から呼び出されたとき Invokeして呼びなおす
         {
-            Invoke(new Action(() => readProfile(fileName, showFormDataConverter, isChecked, isDrawn)));
+            //Invoke(new Action(() => readProfile(fileName, showFormDataConverter, isChecked, isDrawn)));
+            Invoke(new Action(() => readProfile(fileName, showFormDataConverter, isChecked, isDrawn, changePos))); // 261111Cl 変更: changePos が落ちていた
             return;
         }
 
         formDataConverter.textBox.Text = "";
-        var ext = Path.GetExtension(fileName).ToLower()[1..]; //260712Cl 範囲演算子
+        //var ext = Path.GetExtension(fileName).ToLower()[1..]; //260712Cl 範囲演算子
+        var ext = Path.GetExtension(fileName).ToLower().TrimStart('.'); // 261111Cl 変更: 拡張子なしのファイルで [1..] が ArgumentOutOfRangeException になっていた
 
         var fileTypeNum = ext switch
         {
@@ -2968,15 +3079,25 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     if (dp[i].SrcProperty.WaveSource == WaveSource.Xray && dp[i].SrcProperty.WaveLength > 1)
                         dp[i].SrcProperty.WaveLength = UniversalConstants.Convert.EnergyToXrayWaveLength(dp[i].SrcProperty.WaveLength * 10000);
                     dp[i].SubtractBackground = false;
-                    for (int j = 0; j < dp[i].SourceProfile.Pt.Count; j++)
-                        if (dp[i].SourceProfile.Pt[j].Y == 0)
-                            dp[i].SourceProfile.Pt.RemoveAt(j--);
-                        else break;
+                    //for (int j = 0; j < dp[i].SourceProfile.Pt.Count; j++)
+                    //    if (dp[i].SourceProfile.Pt[j].Y == 0)
+                    //        dp[i].SourceProfile.Pt.RemoveAt(j--);
+                    //    else break;
 
-                    for (int j = dp[i].SourceProfile.Pt.Count - 1; j >= 0; j--)
-                        if (dp[i].SourceProfile.Pt[j].Y == 0)
-                            dp[i].SourceProfile.Pt.RemoveAt(j);
-                        else break;
+                    //for (int j = dp[i].SourceProfile.Pt.Count - 1; j >= 0; j--)
+                    //    if (dp[i].SourceProfile.Pt[j].Y == 0)
+                    //        dp[i].SourceProfile.Pt.RemoveAt(j);
+                    //    else break;
+                    // 261111Cl 変更: 先頭と末尾の強度 0 の点を RemoveAt (先頭側は 1 点ごとに全体をずらす O(n²)) → 数えてから RemoveRange
+                    var srcPt = dp[i].SourceProfile.Pt;
+                    int head = 0;
+                    while (head < srcPt.Count && srcPt[head].Y == 0)
+                        head++;
+                    srcPt.RemoveRange(0, head);
+                    int tail = srcPt.Count;
+                    while (tail > 0 && srcPt[tail - 1].Y == 0)
+                        tail--;
+                    srcPt.RemoveRange(tail, srcPt.Count - tail);
                 }
             }
             #endregion
@@ -3238,7 +3359,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 formDataConverter.EnergyUnit = EnergyUnitEnum.eV;
 
                 double[][] egc = [[0.0, 0.0, 0.0]];
-                for (int i = 0; i < strList.Count || i < 25; i++)
+                //for (int i = 0; i < strList.Count || i < 25; i++)
+                for (int i = 0; i < strList.Count; i++) // 261111Cl 変更: 25 行未満のファイルで範囲外例外になっていた。25 行以上では従来どおり全行を見る (|| のため実際は全行走査だった)
                 {
                     if (strList[i].StartsWith("EGC0"))
                         egc[0][0] = strList[i].Split(',', true)[1].ToDouble();
@@ -3602,9 +3724,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     //結晶データのセーブ
     public void menuItemSaveCrystalData_Click(object sender, System.EventArgs e)
     {
-        List<Crystal> cry = []; //260317Cl new List<T>() → []
-        for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
-            cry.Add(dataSet.DataTableCrystal.Items[i]);
+        //List<Crystal> cry = []; //260317Cl new List<T>() → []
+        //for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
+        //    cry.Add(dataSet.DataTableCrystal.Items[i]);
+        List<Crystal> cry = dataSet.DataTableCrystal.Items; // 261111Cl 変更: ループで Items[i] を呼ぶと O(n²)。Items 自体が新しい List
 
         //var formCrystalSelection = new FormCrystalSelection { LoadMode = false }; // (260624Ch) 旧: Form が未破棄
         using var formCrystalSelection = new FormCrystalSelection { LoadMode = false }; // (260624Ch)
@@ -3631,10 +3754,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         {
             if (crystals == null)
             {
-                List<Crystal> cry = []; //260317Cl new List<T>() → []
-                for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
-                    cry.Add(dataSet.DataTableCrystal.Items[i]);
-                crystals = [.. cry];
+                //List<Crystal> cry = []; //260317Cl new List<T>() → []
+                //for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
+                //    cry.Add(dataSet.DataTableCrystal.Items[i]);
+                //crystals = [.. cry];
+                crystals = [.. dataSet.DataTableCrystal.Items]; // 261111Cl 変更: ループで Items[i] を呼ぶと O(n²)
             }
             if (!filename.ToLower().EndsWith(".xml"))
                 filename += ".xml";
@@ -3987,9 +4111,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
         if (dataSet.DataTableProfile.Items.Count > 0)
         {
-            List<DiffractionProfile2> dp = []; //260317Cl new List<T>() → []
-            for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
-                dp.Add(dataSet.DataTableProfile.Items[i]);
+            //List<DiffractionProfile2> dp = []; //260317Cl new List<T>() → []
+            //for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
+            //    dp.Add(dataSet.DataTableProfile.Items[i]);
+            List<DiffractionProfile2> dp = dataSet.DataTableProfile.Items; // 261111Cl 変更: ループで Items[i] を呼ぶと O(n²)。Items 自体が新しい List
             if (!filename.ToLower().EndsWith(".pdi2"))
                 filename += ".pdi2";
 
@@ -4105,45 +4230,47 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         grfx.ReleaseHdc(ipHdc);
         grfx.Dispose();
         DrawMetafile(mf);
-        ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+        //ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf);
+        Crystallography.ClipboardMetafileHelper.PutEnhMetafileOnClipboard(this.Handle, mf); // 261111Cl 変更: 入れ子の古い複製 → 共有ライブラリ版 (同じシグネチャ)
     }
 
     /* http://classicalprogrammer.wikidot.com/copy-gdi-drawing-to-clipboard */
-    public class ClipboardMetafileHelper
-    {
-        [DllImport("user32.dll")]
-        static extern bool OpenClipboard(IntPtr hWndNewOwner);
-        [DllImport("user32.dll")]
-        static extern bool EmptyClipboard();
-        [DllImport("user32.dll")]
-        static extern IntPtr SetClipboardData(uint uFormat, IntPtr hMem);
-        [DllImport("user32.dll")]
-        static extern bool CloseClipboard();
-        [DllImport("gdi32.dll")]
-        static extern IntPtr CopyEnhMetaFile(IntPtr hemfSrc, IntPtr hNULL);
-        [DllImport("gdi32.dll")]
-        static extern bool DeleteEnhMetaFile(IntPtr hemf);
-
-        // Metafile mf is set to an invalid state inside this function
-        static public bool PutEnhMetafileOnClipboard(IntPtr hWnd, Metafile mf)
-        {
-            bool bResult = false;
-            IntPtr hEMF, hEMF2;
-            hEMF = mf.GetHenhmetafile(); // invalidates mf
-            if (!hEMF.Equals(IntPtr.Zero))
-            {
-                hEMF2 = CopyEnhMetaFile(hEMF, new IntPtr(0));
-                if (!hEMF2.Equals(IntPtr.Zero) && OpenClipboard(hWnd) && EmptyClipboard())
-                {
-                    IntPtr hRes = SetClipboardData(14 /*CF_ENHMETAFILE*/, hEMF2);
-                    bResult = hRes.Equals(hEMF2);
-                    CloseClipboard();
-                }
-                DeleteEnhMetaFile(hEMF);
-            }
-            return bResult;
-        }
-    }
+    // 261111Cl 変更: 共有ライブラリの Crystallography.ClipboardMetafileHelper の古い複製 (失敗時にハンドルとクリップボードを解放しない) だったのでコメントアウトし、共有版を使う
+    //public class ClipboardMetafileHelper
+    //{
+    //    [DllImport("user32.dll")]
+    //    static extern bool OpenClipboard(IntPtr hWndNewOwner);
+    //    [DllImport("user32.dll")]
+    //    static extern bool EmptyClipboard();
+    //    [DllImport("user32.dll")]
+    //    static extern IntPtr SetClipboardData(uint uFormat, IntPtr hMem);
+    //    [DllImport("user32.dll")]
+    //    static extern bool CloseClipboard();
+    //    [DllImport("gdi32.dll")]
+    //    static extern IntPtr CopyEnhMetaFile(IntPtr hemfSrc, IntPtr hNULL);
+    //    [DllImport("gdi32.dll")]
+    //    static extern bool DeleteEnhMetaFile(IntPtr hemf);
+    //
+    //    // Metafile mf is set to an invalid state inside this function
+    //    static public bool PutEnhMetafileOnClipboard(IntPtr hWnd, Metafile mf)
+    //    {
+    //        bool bResult = false;
+    //        IntPtr hEMF, hEMF2;
+    //        hEMF = mf.GetHenhmetafile(); // invalidates mf
+    //        if (!hEMF.Equals(IntPtr.Zero))
+    //        {
+    //            hEMF2 = CopyEnhMetaFile(hEMF, new IntPtr(0));
+    //            if (!hEMF2.Equals(IntPtr.Zero) && OpenClipboard(hWnd) && EmptyClipboard())
+    //            {
+    //                IntPtr hRes = SetClipboardData(14 /*CF_ENHMETAFILE*/, hEMF2);
+    //                bResult = hRes.Equals(hEMF2);
+    //                CloseClipboard();
+    //            }
+    //            DeleteEnhMetaFile(hEMF);
+    //        }
+    //        return bResult;
+    //    }
+    //}
     #endregion
 
     #region export関連
@@ -4276,11 +4403,13 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         if (skipAxisPropertyChangedEvent) return;
 
-        for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
-        {
-            var d = dataSet.DataTableProfile.Items[i];
+        //for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
+        //{
+        //    var d = dataSet.DataTableProfile.Items[i];
+        //    d.SetConvertedProfile(HorizontalAxisProperty);
+        //}
+        foreach (var d in dataSet.DataTableProfile.Items) // 261111Cl 変更: Items (毎回全行から List を作る) を 1 回だけ取得
             d.SetConvertedProfile(HorizontalAxisProperty);
-        }
         SetDrawRangeLimit();
         ResetDrawRange();
         InitializeCrystalPlane();
@@ -4337,9 +4466,11 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     {
 
         InitializeCrystalPlane();
-        for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
+        //for (int i = 0; i < dataSet.DataTableProfile.Items.Count; i++)
+        //{
+        //    var d = dataSet.DataTableProfile.Items[i];
+        foreach (var d in dataSet.DataTableProfile.Items) // 261111Cl 変更: Items (毎回全行から List を作る) を 1 回だけ取得
         {
-            var d = dataSet.DataTableProfile.Items[i];
             d.IsCPS = radioButtonCountsPerStep.Checked;
             d.IsLogIntensity = radioButtonLogarithm.Checked;
             d.SetConvertedProfile(HorizontalAxisProperty);
@@ -4697,7 +4828,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
             //toolStripStatusLabel.Text = message;
 
-            Application.DoEvents();
+            //Application.DoEvents(); // 261111Cl コメントアウト: reportProgress は ip (Progress<T>、UI スレッドで生成) 経由でしか呼ばれず、UI スレッドへ非同期に Post 済み。再入の原因になるだけなので不要
 
             if (sleep != 0) Thread.Sleep(sleep);
         }

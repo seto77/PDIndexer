@@ -966,7 +966,7 @@ namespace PDIndexer
             KeyPreview = true;
             MaximizeBox = false;
             Name = "FormFitting";
-            Closed += FormFitting_Closed;
+            FormClosed += FormFitting_Closed; // 261111Cl 変更: 旧 Closed += FormFitting_Closed; (Closed は廃止 API WFDEV004)
             FormClosing += FormFitting_FormClosing;
             VisibleChanged += FormFitting_VisibleChanged;
             DragDrop += FormFitting_DragDrop;

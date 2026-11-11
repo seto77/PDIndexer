@@ -23,20 +23,22 @@ GitHub 릴리스 페이지에서 최신 버전을 다운로드하십시오.
 
 MSI 인스톨러로 설치한 PDIndexer를 실행하려면 다음 런타임이 필요합니다.
 
+아래 요구 사항은 이 소스 코드에서 빌드한 .NET 11 버전에 적용됩니다. 이미 배포된 릴리스는 해당 릴리스에 명시된 런타임 요구 사항을 따르세요.
+
 | 항목 | 요구 사항 |
 | --- | --- |
 | OS | Windows(64비트, x64 또는 Arm64) |
-| 런타임 | `.NET Desktop Runtime 10.0`(일반 **.NET Runtime**이 아닌 **Desktop Runtime**. Windows on Arm에서는 **Arm64** 빌드) |
+| 런타임 | `.NET Desktop Runtime 11.0`(일반 **.NET Runtime**이 아닌 **Desktop Runtime**. Windows on Arm에서는 **Arm64** 빌드) |
 
 !!! warning "Desktop Runtime을 선택하십시오"
     다운로드 페이지에는 ".NET Runtime"과 ".NET Desktop Runtime" 두 가지 제품이 있습니다. PDIndexer는 WinForms 애플리케이션이므로 반드시 **.NET Desktop Runtime**을 설치하십시오. 일반 ".NET Runtime"만으로는 프로그램이 실행되지 않습니다.
 
-- 런타임 다운로드: <https://dotnet.microsoft.com/download/dotnet/10.0>
+- 런타임 다운로드: <https://dotnet.microsoft.com/download/dotnet/11.0>
 
 no-install ZIP 패키지는 해당 아키텍처(x64 또는 Arm64)용 self-contained 패키지이며, 별도의 .NET Desktop Runtime 설치가 필요하지 않습니다. <!-- 260601Ch / 260625Cl arm64 -->
 
 !!! note "이전 문서에 기재된 버전에 대하여"
-    이전 매뉴얼(docx)에는 ".NET Desktop Runtime 6.0 이상"이라고 기재되어 있지만, 현재 PDIndexer는 **.NET 10.0**을 필요로 합니다. 최신 버전의 요구 사항을 따르십시오.
+    이전 매뉴얼(docx)에는 ".NET Desktop Runtime 6.0 이상"이라고 기재되어 있지만, 현재 PDIndexer는 **.NET 11.0**을 필요로 합니다. 최신 버전의 요구 사항을 따르십시오.
 
 ## 권장 환경
 

@@ -1417,7 +1417,7 @@ namespace PDIndexer
             KeyPreview = true;
             MaximizeBox = false;
             Name = "FormEOS";
-            Closed += FormEOS_Closed;
+            FormClosed += FormEOS_Closed; // 261111Cl 変更: 旧 Closed += FormEOS_Closed; (Closed は廃止 API WFDEV004)
             FormClosing += FormEOS_FormClosing;
             Load += FormEOS_Load;
             VisibleChanged += FormEOS_VisibleChanged;

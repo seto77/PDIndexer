@@ -5,10 +5,12 @@ Si vous rencontrez un problème lors de l'utilisation de PDIndexer, vérifiez d'
 
 ## L'application ne démarre pas
 
-PDIndexer nécessite le **.NET Desktop Runtime 10.0**. Si le runtime n'est pas installé, une erreur peut s'afficher au démarrage, ou le programme peut se fermer sans rien faire.
+Ces exigences concernent les builds .NET 11 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
+
+PDIndexer nécessite le **.NET Desktop Runtime 11.0**. Si le runtime n'est pas installé, une erreur peut s'afficher au démarrage, ou le programme peut se fermer sans rien faire.
 
 !!! warning "Solution"
-    Suivez [Runtime et installation](runtime-and-installation.md) pour installer le dernier **.NET Desktop Runtime 10.0** (x64), puis redémarrez PDIndexer.
+    Suivez [Runtime et installation](runtime-and-installation.md) pour installer le dernier **.NET Desktop Runtime 11.0** (x64), puis redémarrez PDIndexer.
 
 ## La langue de l'interface ne change pas
 

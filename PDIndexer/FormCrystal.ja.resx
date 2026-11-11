@@ -110,143 +110,68 @@
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt, style=Bold</value>
-  </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>結晶情報</value>
-  </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt, style=Bold</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>結晶リスト</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt, style=Bold</value>
-  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>回折線オプション</value>
-  </data>
-  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 10pt, style=Bold</value>
   </data>
   <data name="groupBox4.Text" xml:space="preserve">
     <value>結晶データベース</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
   <data name="buttonAdd.Text" xml:space="preserve">
     <value>← 
 追加
 ←</value>
-  </data>
-  <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="buttonChange.Text" xml:space="preserve">
     <value>← 
 更新
 ←</value>
   </data>
-  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="buttonDelete.Text" xml:space="preserve">
     <value>削除</value>
-  </data>
-  <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonAllClear.Text" xml:space="preserve">
     <value>全削除</value>
   </data>
-  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonAngleThreshold.Text" xml:space="preserve">
     <value>角度閾値</value>
-  </data>
-  <data name="radioButtonEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="radioButtonEnergyThreshold.Text" xml:space="preserve">
     <value>エネルギー閾値</value>
   </data>
-  <data name="checkBoxCombineSameDspacingPeaks.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxCombineSameDspacingPeaks.Text" xml:space="preserve">
     <value>近接するピークを結合:</value>
-  </data>
-  <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="radioButtonAllCheckedCrystals.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="radioButtonAllCheckedCrystals.Text" xml:space="preserve">
     <value>チェックした全ての結晶</value>
   </data>
-  <data name="radioButtonOnlySelectedCrystal.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonOnlySelectedCrystal.Text" xml:space="preserve">
     <value>選択した結晶のみ</value>
-  </data>
-  <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShowPeakOverProfiles.Text" xml:space="preserve">
     <value>回折線を重ねて表示</value>
   </data>
-  <data name="checkBoxShowPeakIndices.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxShowPeakIndices.Text" xml:space="preserve">
     <value>ピーク指数を表示</value>
-  </data>
-  <data name="checkBoxInvisibleWeakPeak.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxInvisibleWeakPeak.Text" xml:space="preserve">
     <value>弱いピークを非表示</value>
   </data>
-  <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxVariableRatioOfIntensity.Text" xml:space="preserve">
     <value>強度を変更可</value>
-  </data>
-  <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxCalculateIntensity.Text" xml:space="preserve">
     <value>強度比を計算</value>
   </data>
-  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="checkBoxShowPeakUnderProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxShowPeakUnderProfile.Text" xml:space="preserve">
     <value>回折線を下に表示</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>回折線/結晶情報</value>
@@ -257,5 +182,80 @@
   </data>
   <data name="checkBoxCalculateIntensity.ToolTip" xml:space="preserve">
     <value>回折強度比を計算したい場合にチェックします。</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="buttonChange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonAdd.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 9.75pt</value>
+  </data>
+  <data name="buttonDelete.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonAllClear.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="checkBoxShowPeakOverProfiles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxCalculateIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxVariableRatioOfIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowPeakUnderProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxInvisibleWeakPeak.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxCombineSameDspacingPeaks.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAngleThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonEnergyThreshold.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowPeakIndices.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAllCheckedCrystals.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonOnlySelectedCrystal.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="crystalDatabaseControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 8.25pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
 </root>

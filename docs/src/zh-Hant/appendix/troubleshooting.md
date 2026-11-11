@@ -5,10 +5,12 @@
 
 ## 應用程式無法啟動
 
-PDIndexer 需要 **.NET Desktop Runtime 10.0**。若未安裝執行階段，啟動時可能出現錯誤訊息，或程式可能不做任何動作就結束。
+以下要求適用於由此原始碼建置的 .NET 11 版本。對於已發布的版本，請遵循該版本註明的執行階段要求。
+
+PDIndexer 需要 **.NET Desktop Runtime 11.0**。若未安裝執行階段，啟動時可能出現錯誤訊息，或程式可能不做任何動作就結束。
 
 !!! warning "解決方法"
-    請依照 [執行環境與安裝](runtime-and-installation.md) 的步驟，安裝最新的 **.NET Desktop Runtime 10.0**（x64），然後重新啟動 PDIndexer。
+    請依照 [執行環境與安裝](runtime-and-installation.md) 的步驟，安裝最新的 **.NET Desktop Runtime 11.0**（x64），然後重新啟動 PDIndexer。
 
 ## UI 語言無法切換
 

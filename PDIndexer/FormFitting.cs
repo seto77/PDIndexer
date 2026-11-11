@@ -44,6 +44,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
     public bool SkipFitting { get; set; } = false;
 
+    #region (261106Ch) 変更前: selectedPlaneIndex
+    /*
     private int selectedPlaneIndex = -1;
     public int SelectedPlaneIndex
     {
@@ -55,6 +57,20 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         }
         get => selectedPlaneIndex;
     }
+    */
+    #endregion
+
+    // (261106Ch) C# 14 field-backed property; retain the original initialization and setter behavior.
+    public int SelectedPlaneIndex
+    {
+        set
+        {
+            field = value;
+            if (field >= 0 && field != bindingSourcePlanes.Position)
+                bindingSourcePlanes.Position = field;
+        }
+        get;
+    } = -1; // (261106Ch) Preserve the pre-constructor default and setter update order.
 
     public string RemovedProfileName { set => textBoxRemovedProfileName.Text = value; get => textBoxRemovedProfileName.Text; }
 
@@ -77,7 +93,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         IsSkipChangeEvent = true;
     }
 
-    private void FormFitting_Closed(object sender, System.EventArgs e)
+    //private void FormFitting_Closed(object sender, System.EventArgs e)
+    private void FormFitting_Closed(object sender, FormClosedEventArgs e) // 261111Cl 変更: Closed → FormClosed (WFDEV004) に合わせて引数型を変更
     {
         formMain.toolStripButtonFittingParameter.Checked = false;
     }
@@ -139,7 +156,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         var text = generateTableText(bindingSourcePlanes.Position);
         if (text != "")
-            Clipboard.SetDataObject(text);
+            //Clipboard.SetDataObject(text);
+            Clipboard.SetText(text); // 261111Cl 変更: SetDataObject(text) (copy=false) はアプリ終了でクリップボードから消える → SetText (空文字は上で除外済み)
     }
 
     /// <summary>
@@ -151,7 +169,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         var text = generateTableText();
         if (text != "")
-            Clipboard.SetDataObject(text);
+            //Clipboard.SetDataObject(text);
+            Clipboard.SetText(text); // 261111Cl 変更: SetDataObject(text) (copy=false) はアプリ終了でクリップボードから消える → SetText (空文字は上で除外済み)
     }
     /// <summary>
     /// ボタン CSVファイルに保存
@@ -276,10 +295,13 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         {
             #region ピーク分離モードではないとき
 
-            foreach (var c in checkedCrystals)
-                Parallel.ForEach(c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
-                FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
-            );
+            //foreach (var c in checkedCrystals)
+            //    Parallel.ForEach(c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
+            //    FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
+            //);
+            // 261111Cl 変更: 結晶ごとの Parallel.ForEach (結晶ごとに待ち合わせ) を、全結晶のピークを 1 本の並列ループにまとめる。各ピークのフィットは独立 (共有状態・乱数なし) なので結果は同じ
+            Parallel.ForEach(checkedCrystals.SelectMany(c => c.Plane).Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
+                FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction));
             #endregion
         }
         //ピーク分離フィッティングモードのとき
@@ -306,8 +328,17 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             }
 
             PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
-            for (int i = 0; i < groupIndex + 1; i++)
-                pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
+            //for (int i = 0; i < groupIndex + 1; i++)
+            //    pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
+            // 261111Cl 変更: グループごとに全体を Where で走査していた (O(G·N)) → GroupIndex は並び替え済みの pvpTemp2 の上で 0,1,2,… と連続区間なので、区間で切り出す (中身と順序は同じ)
+            for (int i = 0, start = 0; i < groupIndex + 1; i++)
+            {
+                int end = start;
+                while (end < pvpTemp2.Count && pvpTemp2[end].GroupIndex == i)
+                    end++;
+                pvpTemp[i] = pvpTemp2.GetRange(start, end - start).ToArray();
+                start = end;
+            }
 
             Parallel.For(0, pvpTemp.Length, i =>
             {
@@ -1146,7 +1177,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             else//通常結晶モードの時
             {
                 //まず、チェックされている面指数をリストアップする
-                List<string> checkedItems = []; //260317Cl new List<string>() → []
+                //List<string> checkedItems = []; //260317Cl new List<string>() → []
+                HashSet<string> checkedItems = []; // 261111Cl 変更: 面ごとの Contains を O(1) に (List.Contains と同じく序数比較・null 可)
                 for (int i = 0; i < dataSet.DataTablePeakFitting.Rows.Count; i++)
                 {
                     var r = dataSet.DataTablePeakFitting.GetRow(i);

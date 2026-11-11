@@ -45,9 +45,11 @@
 
 ## Configuration requise
 
+Ces exigences concernent les builds .NET 11 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
+
 | Élément | Exigence |
 |------|-------------|
-| OS | Windows avec le [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (**et non** le .NET Runtime) |
+| OS | Windows avec le [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (**et non** le .NET Runtime) |
 | Recommandé | Windows 10/11 64 bits, 16 Go de mémoire ou plus, processeur 8 cœurs ou plus |
 
 Voir [Environnement d'exécution et installation](appendix/runtime-and-installation.md) pour plus de détails.

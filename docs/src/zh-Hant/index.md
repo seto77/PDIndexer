@@ -45,9 +45,11 @@
 
 ## 系統需求
 
+以下要求適用於由此原始碼建置的 .NET 11 版本。對於已發布的版本，請遵循該版本註明的執行階段要求。
+
 | 項目 | 需求 |
 |------|-------------|
-| 作業系統 | 需搭配 [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0)（**非** .NET Runtime）的 Windows |
+| 作業系統 | 需搭配 [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0)（**非** .NET Runtime）的 Windows |
 | 建議規格 | 64 位元 Windows 10/11、16 GB 以上記憶體、8 核心以上 CPU |
 
 詳情請參閱[執行環境與安裝](appendix/runtime-and-installation.md)。

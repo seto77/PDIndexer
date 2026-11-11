@@ -45,9 +45,11 @@
 
 ## Requisitos del sistema
 
+Estos requisitos se aplican a las compilaciones .NET 11 de este código fuente. Para las versiones publicadas, siga los requisitos de runtime indicados para esa versión.
+
 | Elemento | Requisito |
 |------|-------------|
-| SO | Windows con [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (**no** el .NET Runtime) |
+| SO | Windows con [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (**no** el .NET Runtime) |
 | Recomendado | Windows 10/11 de 64 bits, 16 GB o más de memoria, CPU de 8 núcleos o superior |
 
 Consulte [Entorno de ejecución e instalación](appendix/runtime-and-installation.md) para más detalles.

@@ -45,9 +45,11 @@
 
 ## Systemanforderungen
 
+Diese Anforderungen gelten für .NET-11-Builds aus diesem Quellstand. Beachten Sie bei veröffentlichten Versionen die jeweils angegebene Laufzeitanforderung.
+
 | Element | Anforderung |
 |------|-------------|
-| Betriebssystem | Windows mit [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (**nicht** die .NET Runtime) |
+| Betriebssystem | Windows mit [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (**nicht** die .NET Runtime) |
 | Empfohlen | 64-Bit-Windows 10/11, 16 GB oder mehr Arbeitsspeicher, CPU mit 8 oder mehr Kernen |
 
 Siehe [Laufzeit und Installation](appendix/runtime-and-installation.md) für Details.

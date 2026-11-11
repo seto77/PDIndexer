@@ -73,7 +73,8 @@ namespace PDIndexer
             }
         }
 
-        public struct Candidate : IComparable
+        //public struct Candidate : IComparable
+        public struct Candidate : IComparable, IComparable<Candidate> // 261111Cl 変更: IComparable<T> を追加 (Sort でのボックス化を避ける)
         {
             public double A, B, C, Alpha, Beta, Gamma;
             public double Volume, R, SigmaDQ;
@@ -94,11 +95,13 @@ namespace PDIndexer
             {
                 return R.CompareTo(((Candidate)obj).R);
             }
+            public int CompareTo(Candidate other) => R.CompareTo(other.R); // 261111Cl 追加
 
             #endregion
         }
 
-        public struct Plane : IComparable
+        //public struct Plane : IComparable
+        public struct Plane : IComparable, IComparable<Plane> // 261111Cl 変更: IComparable<T> を追加 (Sort でのボックス化を避ける)
         {
             public double D;
             public int H, K, L;
@@ -113,6 +116,7 @@ namespace PDIndexer
             {
                 return D.CompareTo(((Plane)obj).D);
             }
+            public int CompareTo(Plane other) => D.CompareTo(other.D); // 261111Cl 追加
             #endregion
         }
         public Color[] color = new Color[65536];
@@ -227,7 +231,8 @@ namespace PDIndexer
 
             int counter = 0;
             int lastCounter = 0;
-            Random r = new(); //260712Cl target-typed new
+            //Random r = new(); //260712Cl target-typed new
+            // 261111Cl 変更: 共有の Random を 32 並列から呼んでいた (スレッド安全でない) → 並列の中は Random.Shared。種の固定はもともと無い (new() は時刻由来)
             int tryNumber = 10000;
             while (!backgroundWorker.CancellationPending)
             {
@@ -244,7 +249,8 @@ namespace PDIndexer
 
                 Parallel.For(0, threadTotal, i =>
                 {
-                    c[i] = GetCandidates(condition, r.Next(), tryNumber);
+                    //c[i] = GetCandidates(condition, r.Next(), tryNumber);
+                    c[i] = GetCandidates(condition, Random.Shared.Next(), tryNumber); // 261111Cl 変更
 
                 });
                 for (int i = 0; i < threadTotal; i++)
