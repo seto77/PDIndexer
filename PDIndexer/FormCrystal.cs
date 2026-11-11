@@ -269,7 +269,9 @@ public partial class FormCrystal : FormBase //260604Cl Form→FormBase (F1ヘル
         toolStripProgressBar1.Value = (int)(progress * 100);
 
         //最初のデータベース読み込み時の後に、crystalDatabaseControl.CrystalChangedをセット
-        if (toolStripStatusLabel1.Text.Contains("Total") && flag)
+        //if (toolStripStatusLabel1.Text.Contains("Total") && flag)// 261112Cl 変更前: "Total" を含む文なら何でも (保存の "Total saving time" なども) 完了とみなしていた
+        // 261112Cl 変更: 読み込みの完了の文 (CrystalDatabaseControl が最後に progress = 1 で出す "Total loading time: …") に限る
+        if (flag && progress >= 1 && message.StartsWith("Total loading time", StringComparison.Ordinal))
         {
             crystalDatabaseControl.CrystalChanged += crystalDatabaseControl_CrystalChanged;
             flag = false;
