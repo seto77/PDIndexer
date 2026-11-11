@@ -101,7 +101,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SimdLinq" Version="1.3.2" />
+    <!--<PackageReference Include="SimdLinq" Version="1.3.2" />--><!-- 261111Cl 削除 (作者判断): 標準 LINQ に戻す -->
     <!-- 261106Ch: Preserve legacy BinaryFormatter compatibility with the .NET 11 package. -->
     <!-- <PackageReference Include="System.Runtime.Serialization.Formatters" Version="10.0.13" /> -->
     <!-- <PackageReference Include="System.Runtime.Serialization.Formatters" Version="11.0.0" /> --><!-- 261111Cl: .NET 11 GA (was 11.0.0-rc.3.26522.148) -->
@@ -152,7 +152,7 @@
 
 
   <ItemGroup>
-    <Using Include="SimdLinq" />
+    <!--<Using Include="SimdLinq" />--><!-- 261111Cl 削除: SimdLinq を外したため -->
   </ItemGroup>
 
 </Project>
