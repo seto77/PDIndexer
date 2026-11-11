@@ -3090,13 +3090,19 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     //    else break;
                     // 261111Cl 変更: 先頭と末尾の強度 0 の点を RemoveAt (先頭側は 1 点ごとに全体をずらす O(n²)) → 数えてから RemoveRange
                     var srcPt = dp[i].SourceProfile.Pt;
+                    // 261111Cl 追加: 誤差 Err が Pt と 1 対 1 に対応しているときは、Pt と同じ範囲を Err からも除く
+                    //   (旧は Pt だけから除いていたため Err.Count ≠ Pt.Count となり、GetErr やエラーバー表示で誤差が無効になっていた)
+                    var srcErr = dp[i].SourceProfile.Err;
+                    bool trimErr = srcErr != null && srcErr.Count == srcPt.Count;
                     int head = 0;
                     while (head < srcPt.Count && srcPt[head].Y == 0)
                         head++;
                     srcPt.RemoveRange(0, head);
+                    if (trimErr) srcErr.RemoveRange(0, head); // 261111Cl 追加
                     int tail = srcPt.Count;
                     while (tail > 0 && srcPt[tail - 1].Y == 0)
                         tail--;
+                    if (trimErr) srcErr.RemoveRange(tail, srcPt.Count - tail); // 261111Cl 追加 (Pt を切る前に、同じ個数で)
                     srcPt.RemoveRange(tail, srcPt.Count - tail);
                 }
             }

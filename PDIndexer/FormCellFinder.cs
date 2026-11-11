@@ -10,6 +10,7 @@ using System.IO;
 using MathNet.Numerics.LinearAlgebra;
 using MathNet.Numerics.LinearAlgebra.Double;
 using System.Threading.Tasks;
+using System.Runtime.InteropServices; // 261111Cl 追加: CollectionsMarshal.AsSpan
 
 namespace PDIndexer
 {
@@ -276,16 +277,20 @@ namespace PDIndexer
         {
             var r = new Random(seed);
             List<Candidate> c = []; //260317Cl new List<Candidate>() → []
+            List<Plane> calcBuffer = []; // 261111Cl 追加: 計算 d 値のリスト。旧は試行ごとに新規確保していた (三斜晶で MB 級・LOH) ので、この呼び出しの中で使い回す
             for (int i = 0; i < tryNumber && !backgroundWorker.CancellationPending; i++)
             {
-                Candidate temp = FindCellParameter(condition, r.Next());
+                //Candidate temp = FindCellParameter(condition, r.Next());
+                Candidate temp = FindCellParameter(condition, r.Next(), calcBuffer); // 261111Cl 変更
                 if (temp.R < 1000)
                     c.Add(temp);
             }
             return c; //260712Cl 旧: return c.ToArray();
         }
 
-        private Candidate FindCellParameter(in FindCondition condition, int seed) //260712Cl in 参照渡し (旧: 値渡し)
+        //private Candidate FindCellParameter(in FindCondition condition, int seed) //260712Cl in 参照渡し (旧: 値渡し)
+        /// <param name="calcBuffer">261111Cl 追加: GetResidualValue で使い回す計算 d 値のリスト。null なら毎回確保する</param>
+        private Candidate FindCellParameter(in FindCondition condition, int seed, List<Plane> calcBuffer = null) // 261111Cl 変更: calcBuffer を追加
         {
             Random r = new(seed); //260712Cl target-typed new
             // 260712Cl 記法近代化: switch文→switch式
@@ -399,12 +404,15 @@ namespace PDIndexer
             }
             if (condition.MaxA >= c.A && condition.MinA <= c.A && condition.MaxB >= c.B && condition.MinB <= c.B && condition.MaxC >= c.C && condition.MinC <= c.C
              && condition.MaxAlpha >= c.Alpha && condition.MinAlpha <= c.Alpha && condition.MaxBeta >= c.Beta && condition.MinBeta <= c.Beta && condition.MaxGamma >= c.Gamma && condition.MinGamma <= c.Gamma)
-                return GetResidualValue(c, condition, r.Next());
+                //return GetResidualValue(c, condition, r.Next());
+                return GetResidualValue(c, condition, r.Next(), calcBuffer); // 261111Cl 変更
             else
                 return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
         }
 
-        private Candidate GetResidualValue(Candidate c, FindCondition condition, int seed)
+        //private Candidate GetResidualValue(Candidate c, FindCondition condition, int seed)
+        /// <param name="calcBuffer">261111Cl 追加: 計算 d 値を入れるリスト (中身は呼び出しのたびに消す)。null なら新規に確保する</param>
+        private Candidate GetResidualValue(Candidate c, FindCondition condition, int seed, List<Plane> calcBuffer = null) // 261111Cl 変更: calcBuffer を追加
         {
             Random r = new(seed); //260712Cl target-typed new
             double SinAlpha = Math.Sin(c.Alpha); double SinBeta = Math.Sin(c.Beta); double SinGamma = Math.Sin(c.Gamma);
@@ -426,7 +434,9 @@ namespace PDIndexer
             Plane[] obs = [.. condition.SortedD]; //260712Cl 要素コピーループ→スプレッド
 
             //計算上のd値を格納するリストを定義
-            List<Plane> calcPlanes = []; //260317Cl new List<Plane>() → []
+            //List<Plane> calcPlanes = []; //260317Cl new List<Plane>() → []
+            List<Plane> calcPlanes = calcBuffer ?? []; // 261111Cl 変更: 呼び出し側のリストを使い回す (Candidate には入らず、この関数の中だけで使う)
+            calcPlanes.Clear(); // 261111Cl 追加
 
             //観測値が計算値のどの配列位置か対応付ける整数配列を定義
             int[] obsToCalcIndex = new int[condition.SortedD.Length];
@@ -484,9 +494,28 @@ namespace PDIndexer
                     break;
             }
             calcPlanes.Sort();
-            for (int i = 0; i < calcPlanes.Count - 1; i++)
-                if (Math.Abs(calcPlanes[i].D - calcPlanes[i + 1].D) < 10E-9)
-                    calcPlanes.RemoveAt(i-- + r.Next(2));
+            //for (int i = 0; i < calcPlanes.Count - 1; i++)
+            //    if (Math.Abs(calcPlanes[i].D - calcPlanes[i + 1].D) < 10E-9)
+            //        calcPlanes.RemoveAt(i-- + r.Next(2));
+            // 261111Cl 変更: RemoveAt の繰り返し (O(n²)) → 1 パスで詰め直す。旧と同じく、残っている面 (w) と次の面 (j) が近接していたら乱択でどちらかを残し、
+            //   残った方を次の面と比べる。旧の r.Next(2)==0 は i 側 (残っている面) を、==1 は i+1 側 (次の面) を消していたので、その対応のまま。
+            //   乱数を呼ぶ順番と回数も旧と同じ (同じ種なら結果も同じ)
+            if (calcPlanes.Count > 1)
+            {
+                var planesSpan = CollectionsMarshal.AsSpan(calcPlanes);
+                int w = 0;
+                for (int j = 1; j < planesSpan.Length; j++)
+                {
+                    if (Math.Abs(planesSpan[w].D - planesSpan[j].D) < 10E-9)
+                    {
+                        if (r.Next(2) == 0)
+                            planesSpan[w] = planesSpan[j];
+                    }
+                    else
+                        planesSpan[++w] = planesSpan[j];
+                }
+                calcPlanes.RemoveRange(w + 1, planesSpan.Length - w - 1);
+            }
 
             //planes と d とを関連付ける
             double[] diff = new double[obs.Length];
@@ -494,13 +523,47 @@ namespace PDIndexer
 
             for (int i = 0; i < obs.Length; i++)
                 diff[i] = double.MaxValue;
+            //for (int i = 0; i < obs.Length; i++)
+            //    for (int j = 0; j < calcPlanes.Count; j++)
+            //        if ((temp = (obs[i].D - calcPlanes[j].D) * (obs[i].D - calcPlanes[j].D)) < diff[i])
+            //        {
+            //            diff[i] = temp;
+            //            obsToCalcIndex[i] = j;
+            //        }
+            // 261111Cl 変更: 全探索 O(n_obs×n_calc) → calcPlanes は D の昇順なので二分探索。両隣だけを見る。
+            //   距離 (の二乗) が等しいときは旧と同じく小さい添字を選ぶ。NaN は Sort で先頭に集まり、旧でも比較が常に偽で選ばれないので、探索範囲から外す
+            var calcSpan = CollectionsMarshal.AsSpan(calcPlanes);
+            int nanCount = 0;
+            while (nanCount < calcSpan.Length && double.IsNaN(calcSpan[nanCount].D))
+                nanCount++;
             for (int i = 0; i < obs.Length; i++)
-                for (int j = 0; j < calcPlanes.Count; j++)
-                    if ((temp = (obs[i].D - calcPlanes[j].D) * (obs[i].D - calcPlanes[j].D)) < diff[i])
+            {
+                double x = obs[i].D;
+                int lo = nanCount, hi = calcSpan.Length; // D >= x となる最初の添字
+                while (lo < hi)
+                {
+                    int mid = (lo + hi) >>> 1;
+                    if (calcSpan[mid].D < x) lo = mid + 1;
+                    else hi = mid;
+                }
+                if (lo - 1 >= nanCount) // 左隣 (D < x)。丸めで二乗が同じ値になる面がさらに左にあれば、旧と同じく小さい添字へ寄せる
+                {
+                    int j = lo - 1;
+                    temp = (x - calcSpan[j].D) * (x - calcSpan[j].D);
+                    while (j - 1 >= nanCount && (x - calcSpan[j - 1].D) * (x - calcSpan[j - 1].D) == temp)
+                        j--;
+                    if (temp < diff[i])
                     {
                         diff[i] = temp;
                         obsToCalcIndex[i] = j;
                     }
+                }
+                if (lo < calcSpan.Length && (temp = (x - calcSpan[lo].D) * (x - calcSpan[lo].D)) < diff[i]) // 右隣 (D >= x)。等しければ左隣を優先
+                {
+                    diff[i] = temp;
+                    obsToCalcIndex[i] = lo;
+                }
+            }
             double diffMax = diff.Max(); //260712Cl 手動max→diff.Max() (SimdLinq)
             if (diffMax > 0.0004) return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
 
@@ -559,15 +622,282 @@ namespace PDIndexer
             return c;
         }
 
+        #region 261111Cl 変更前 RefineCellParameter (MathNet で n×n の対角行列 W を作り Qt*W*Q を計算)
+        //private Candidate RefineCellParameter(int system, Plane[] p)
+        //{
+
+        //    double a = 0, b = 0, c = 0, alpha = 0, beta = 0, gamma = 0, V = 0;
+        //    double sigmaDQ = double.PositiveInfinity;
+        //    int column = p.Length;
+        //    Matrix<double> inv;
+
+        //    // 260712Cl 記法近代化: switch文→switch式
+        //    int unk = system switch
+        //    {
+        //        0 => 6, //triclinic
+        //        1 => 4, //monoclinic
+        //        2 => 3, //orthorhombic
+        //        3 or 4 or 5 => 2, //tetragonal, trigonal, hexagonal
+        //        6 => 1, //cubic
+        //        _ => 0
+        //    };
+        //    var Q = new DenseMatrix(column, unk);
+        //    var A = new DenseMatrix(column, 1);
+        //    var W = new DenseMatrix(column, column);
+        //    Matrix<double> C = new DenseMatrix(column, 1);
+        //    Matrix<double> Qt = null; //260712Cl 追加: 下の switch 各 case で Q.Transpose() を1回に集約 (case 群はスコープを共有するため式の外で宣言)
+
+        //    switch (system)
+        //    {
+        //        case 0://
+        //            #region triclinic
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = p[i].H * p[i].H;
+        //                Q[i, 1] = p[i].K * p[i].K;
+        //                Q[i, 2] = p[i].L * p[i].L;
+        //                Q[i, 3] = p[i].K * p[i].L;
+        //                Q[i, 4] = p[i].L * p[i].H;
+        //                Q[i, 5] = p[i].H * p[i].K;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+
+        //            C = inv * Qt * W * A;
+
+        //            double a_star = Math.Sqrt(C[0, 0]);
+        //            double b_star = Math.Sqrt(C[1, 0]);
+        //            double c_star = Math.Sqrt(C[2, 0]);
+        //            double CosAlf_star = C[3, 0] / (2 * b_star * c_star);
+        //            double CosBet_star = C[4, 0] / (2 * c_star * a_star);
+        //            double CosGam_star = C[5, 0] / (2 * a_star * b_star);
+        //            double Alf_star = Math.Acos(CosAlf_star);
+        //            double Bet_star = Math.Acos(CosBet_star);
+        //            double Gam_star = Math.Acos(CosGam_star);
+        //            double V_star = a_star * b_star * c_star
+        //                * Math.Sqrt(1 - CosAlf_star * CosAlf_star - CosBet_star * CosBet_star - CosGam_star * CosGam_star + 2 * CosAlf_star * CosBet_star * CosGam_star);
+
+        //            V = 1 / V_star;
+
+        //            a = b_star * c_star * Math.Sin(Alf_star) / V_star;
+        //            b = c_star * a_star * Math.Sin(Bet_star) / V_star;
+        //            c = a_star * b_star * Math.Sin(Gam_star) / V_star;
+        //            alpha = Math.Asin(a_star / b / c / V_star);
+        //            beta = Math.Asin(b_star / c / a / V_star);
+        //            gamma = Math.Asin(c_star / a / b / V_star);
+
+
+        //            if (Math.Abs(CosAlf_star - (Math.Cos(beta) * Math.Cos(gamma) - Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //              && Math.Abs(CosBet_star - (Math.Cos(gamma) * Math.Cos(alpha) - Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //              && Math.Abs(CosGam_star - (Math.Cos(alpha) * Math.Cos(beta) - Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (Math.Cos(beta) * Math.Cos(gamma) + Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //              && Math.Abs(CosBet_star - (-Math.Cos(gamma) * Math.Cos(alpha) - Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //              && Math.Abs(CosGam_star - (-Math.Cos(alpha) * Math.Cos(beta) - Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                alpha = Math.PI - alpha;
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (-Math.Cos(beta) * Math.Cos(gamma) - Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //                && Math.Abs(CosBet_star - (Math.Cos(gamma) * Math.Cos(alpha) + Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //                && Math.Abs(CosGam_star - (-Math.Cos(alpha) * Math.Cos(beta) - Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                beta = Math.PI - beta;
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (-Math.Cos(beta) * Math.Cos(gamma) - Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //                && Math.Abs(CosBet_star - (-Math.Cos(gamma) * Math.Cos(alpha) - Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //                && Math.Abs(CosGam_star - (Math.Cos(alpha) * Math.Cos(beta) + Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                gamma = Math.PI - gamma;
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (Math.Cos(beta) * Math.Cos(gamma) - Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //                && Math.Abs(CosBet_star - (-Math.Cos(gamma) * Math.Cos(alpha) + Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //                && Math.Abs(CosGam_star - (-Math.Cos(alpha) * Math.Cos(beta) + Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                beta = Math.PI - beta; gamma = Math.PI - gamma;
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (-Math.Cos(beta) * Math.Cos(gamma) + Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //                && Math.Abs(CosBet_star - (Math.Cos(gamma) * Math.Cos(alpha) - Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //                && Math.Abs(CosGam_star - (-Math.Cos(alpha) * Math.Cos(beta) + Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                alpha = Math.PI - alpha; gamma = Math.PI - gamma;
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (-Math.Cos(beta) * Math.Cos(gamma) + Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //                && Math.Abs(CosBet_star - (-Math.Cos(gamma) * Math.Cos(alpha) + Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //                && Math.Abs(CosGam_star - (Math.Cos(alpha) * Math.Cos(beta) - Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                alpha = Math.PI - alpha; beta = Math.PI - beta;
+        //            }
+        //            else if (Math.Abs(CosAlf_star - (Math.Cos(beta) * Math.Cos(gamma) + Math.Cos(alpha)) / (Math.Sin(beta) * Math.Sin(gamma))) < 0.0000000001
+        //                && Math.Abs(CosBet_star - (Math.Cos(gamma) * Math.Cos(alpha) + Math.Cos(beta)) / (Math.Sin(gamma) * Math.Sin(alpha))) < 0.0000000001
+        //                && Math.Abs(CosGam_star - (Math.Cos(alpha) * Math.Cos(beta) + Math.Cos(gamma)) / (Math.Sin(alpha) * Math.Sin(beta))) < 0.0000000001)
+        //            {
+        //                alpha = Math.PI - alpha; beta = Math.PI - beta; gamma = Math.PI - gamma;
+        //            }
+        //            break;
+        //        #endregion
+
+        //        case 1: //
+        //            #region monoclinic
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = p[i].H * p[i].H;
+        //                Q[i, 1] = p[i].K * p[i].K;
+        //                Q[i, 2] = p[i].L * p[i].L;
+        //                Q[i, 3] = p[i].L * p[i].H;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+
+        //            C = inv * Qt * W * A;
+
+        //            beta = Math.Acos(-C[3, 0] / 2 / Math.Sqrt(C[0, 0] * C[2, 0]));
+        //            a = Math.Sqrt(1 / C[0, 0]) / Math.Sin(beta);
+        //            b = Math.Sqrt(1 / C[1, 0]);
+        //            c = Math.Sqrt(1 / C[2, 0]) / Math.Sin(beta);
+        //            alpha = gamma = Math.PI / 2;
+        //            V = a * b * c * Math.Sin(beta);
+        //            break;
+        //        #endregion
+
+        //        case 2: //
+        //            #region orthorhombic
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = p[i].H * p[i].H;
+        //                Q[i, 1] = p[i].K * p[i].K;
+        //                Q[i, 2] = p[i].L * p[i].L;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+        //            C = inv * Qt * W * A;
+
+        //            a = Math.Sqrt(1 / C[0, 0]);
+        //            b = Math.Sqrt(1 / C[1, 0]);
+        //            c = Math.Sqrt(1 / C[2, 0]);
+        //            alpha = beta = gamma = Math.PI / 2;
+        //            V = a * b * c;
+        //            break;
+        //        #endregion
+
+        //        case 3:
+        //            #region tetragonal
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = p[i].H * p[i].H + p[i].K * p[i].K;
+        //                Q[i, 1] = p[i].L * p[i].L;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+        //            C = inv * Qt * W * A;
+
+        //            a = b = Math.Sqrt(1 / C[0, 0]);
+        //            c = Math.Sqrt(1 / C[1, 0]);
+        //            alpha = beta = gamma = Math.PI / 2;
+        //            V = a * a * c;
+        //            break;
+        //        #endregion
+
+        //        case 4://trigonal
+        //            #region trigonal
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = 4.0 / 3.0 * (p[i].H * p[i].H + p[i].K * p[i].K + p[i].H * p[i].K);
+        //                Q[i, 1] = p[i].L * p[i].L;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+        //            C = inv * Qt * W * A;
+
+        //            a = b = Math.Sqrt(1 / C[0, 0]);
+        //            c = Math.Sqrt(1 / C[1, 0]);
+        //            alpha = beta = Math.PI / 2;
+        //            gamma = Math.PI / 1.5;
+        //            V = a * a * c * Math.Sqrt(3) / 2;
+        //            break;
+        //        #endregion
+
+        //        case 5://hexagonal
+        //            #region hexagonal
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = 4.0 / 3.0 * (p[i].H * p[i].H + p[i].K * p[i].K + p[i].H * p[i].K);
+        //                Q[i, 1] = p[i].L * p[i].L;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+        //            C = inv * Qt * W * A;
+
+        //            a = b = Math.Sqrt(1 / C[0, 0]);
+        //            c = Math.Sqrt(1 / C[1, 0]);
+        //            alpha = beta = Math.PI / 2;
+        //            gamma = Math.PI / 1.5;
+        //            V = a * a * c * Math.Sqrt(3) / 2;
+        //            break;
+        //        #endregion
+
+        //        case 6://cubic
+        //            #region cubic
+        //            for (int i = 0; i < column; i++)
+        //            {
+        //                Q[i, 0] = p[i].H * p[i].H + p[i].K * p[i].K + p[i].L * p[i].L;
+        //                A[i, 0] = 1 / p[i].D / p[i].D;
+        //                W[i, i] = p[i].Weight * p[i].Reliability;
+        //            }
+        //            Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
+        //            if (!(Qt * W * Q).TryInverse(out inv))
+        //                return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+        //            C = inv * Qt * W * A;
+
+        //            a = b = c = Math.Sqrt(1 / C[0, 0]);
+        //            alpha = beta = gamma = Math.PI / 2;
+        //            V = a * a * a;
+        //            break;
+        //            #endregion
+        //    }
+        //    if (double.IsNaN(a) || double.IsNaN(b) || double.IsNaN(c) || double.IsNaN(alpha) || double.IsNaN(beta) || double.IsNaN(gamma) || double.IsNaN(V))
+        //        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+        //    else
+        //    {
+        //        var res = Q * C - A; //260712Cl 残差ベクトルを再利用 (旧: (C.Transpose() * Q.Transpose() - A.Transpose()) * W * (Q * C - A))
+        //        sigmaDQ = (res.Transpose() * W * res)[0, 0];
+        //        return new Candidate(a, b, c, alpha, beta, gamma, V, sigmaDQ, 0, p);
+        //    }
+        //}
+        #endregion
+
+        // 261111Cl 変更: 旧は MathNet で n×n の対角行列 W を作って (Qt*W*Q)⁻¹ * Qt*W*A を計算していた (n = 観測ピーク数)。
+        //   正規方程式 N = Σ w·q·qᵀ (unk×unk, ≤ 6×6) と rhs = Σ w·q·a を直接累積し、部分ピボット付きの消去で N·C = rhs を解く形に変更。
+        //   旧の TryInverse は行列式が厳密に 0 のときだけ失敗していたので、ピボットが厳密に 0 のときだけ失敗とする。
+        //   残差 sigmaDQ = Σ w·(q·C − a)² (旧: resᵀ W res)。結果は丸め誤差の範囲で旧と一致 (比較ハーネスで確認)
         private Candidate RefineCellParameter(int system, Plane[] p)
         {
-
             double a = 0, b = 0, c = 0, alpha = 0, beta = 0, gamma = 0, V = 0;
             double sigmaDQ = double.PositiveInfinity;
             int column = p.Length;
-            Matrix<double> inv;
 
-            // 260712Cl 記法近代化: switch文→switch式
             int unk = system switch
             {
                 0 => 6, //triclinic
@@ -577,40 +907,82 @@ namespace PDIndexer
                 6 => 1, //cubic
                 _ => 0
             };
-            var Q = new DenseMatrix(column, unk);
-            var A = new DenseMatrix(column, 1);
-            var W = new DenseMatrix(column, column);
-            Matrix<double> C = new DenseMatrix(column, 1);
-            Matrix<double> Qt = null; //260712Cl 追加: 下の switch 各 case で Q.Transpose() を1回に集約 (case 群はスコープを共有するため式の外で宣言)
+
+            // 計画行列の 1 行 (旧の Q[i, *]) を作る。式は旧の各 case と同じ (整数の積・和をとってから double にする)
+            static void fillQ(int system, in Plane pl, Span<double> q) // 261111Cl 追加
+            {
+                switch (system)
+                {
+                    case 0: q[0] = pl.H * pl.H; q[1] = pl.K * pl.K; q[2] = pl.L * pl.L; q[3] = pl.K * pl.L; q[4] = pl.L * pl.H; q[5] = pl.H * pl.K; break; //triclinic
+                    case 1: q[0] = pl.H * pl.H; q[1] = pl.K * pl.K; q[2] = pl.L * pl.L; q[3] = pl.L * pl.H; break; //monoclinic
+                    case 2: q[0] = pl.H * pl.H; q[1] = pl.K * pl.K; q[2] = pl.L * pl.L; break; //orthorhombic
+                    case 3: q[0] = pl.H * pl.H + pl.K * pl.K; q[1] = pl.L * pl.L; break; //tetragonal
+                    case 4: case 5: q[0] = 4.0 / 3.0 * (pl.H * pl.H + pl.K * pl.K + pl.H * pl.K); q[1] = pl.L * pl.L; break; //trigonal, hexagonal
+                    case 6: q[0] = pl.H * pl.H + pl.K * pl.K + pl.L * pl.L; break; //cubic
+                }
+            }
+
+            Span<double> N = stackalloc double[36]; // 行の幅は 6 で固定 (N[k * 6 + l])
+            Span<double> rhs = stackalloc double[6];
+            Span<double> q = stackalloc double[6];
+            Span<double> C = stackalloc double[6];
+            N.Clear(); rhs.Clear(); q.Clear(); C.Clear();
+
+            for (int i = 0; i < column; i++)
+            {
+                fillQ(system, p[i], q);
+                double w = p[i].Weight * p[i].Reliability, ai = 1 / p[i].D / p[i].D;
+                for (int k = 0; k < unk; k++)
+                {
+                    double wq = q[k] * w;
+                    rhs[k] += wq * ai;
+                    for (int l = 0; l < unk; l++)
+                        N[k * 6 + l] += wq * q[l];
+                }
+            }
+
+            // 前進消去 (部分ピボット)
+            for (int k = 0; k < unk; k++)
+            {
+                int piv = k;
+                double max = Math.Abs(N[k * 6 + k]);
+                for (int r = k + 1; r < unk; r++)
+                    if (Math.Abs(N[r * 6 + k]) > max) { max = Math.Abs(N[r * 6 + k]); piv = r; }
+                if (max == 0) // 旧の TryInverse と同じく、行列式が厳密に 0 のときだけ失敗
+                    return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
+                if (piv != k)
+                {
+                    for (int l = k; l < unk; l++)
+                        (N[k * 6 + l], N[piv * 6 + l]) = (N[piv * 6 + l], N[k * 6 + l]);
+                    (rhs[k], rhs[piv]) = (rhs[piv], rhs[k]);
+                }
+                for (int r = k + 1; r < unk; r++)
+                {
+                    double f = N[r * 6 + k] / N[k * 6 + k];
+                    for (int l = k; l < unk; l++)
+                        N[r * 6 + l] -= f * N[k * 6 + l];
+                    rhs[r] -= f * rhs[k];
+                }
+            }
+            // 後退代入
+            for (int k = unk - 1; k >= 0; k--)
+            {
+                double s = rhs[k];
+                for (int l = k + 1; l < unk; l++)
+                    s -= N[k * 6 + l] * C[l];
+                C[k] = s / N[k * 6 + k];
+            }
 
             switch (system)
             {
                 case 0://
                     #region triclinic
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = p[i].H * p[i].H;
-                        Q[i, 1] = p[i].K * p[i].K;
-                        Q[i, 2] = p[i].L * p[i].L;
-                        Q[i, 3] = p[i].K * p[i].L;
-                        Q[i, 4] = p[i].L * p[i].H;
-                        Q[i, 5] = p[i].H * p[i].K;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-
-                    C = inv * Qt * W * A;
-
-                    double a_star = Math.Sqrt(C[0, 0]);
-                    double b_star = Math.Sqrt(C[1, 0]);
-                    double c_star = Math.Sqrt(C[2, 0]);
-                    double CosAlf_star = C[3, 0] / (2 * b_star * c_star);
-                    double CosBet_star = C[4, 0] / (2 * c_star * a_star);
-                    double CosGam_star = C[5, 0] / (2 * a_star * b_star);
+                    double a_star = Math.Sqrt(C[0]);
+                    double b_star = Math.Sqrt(C[1]);
+                    double c_star = Math.Sqrt(C[2]);
+                    double CosAlf_star = C[3] / (2 * b_star * c_star);
+                    double CosBet_star = C[4] / (2 * c_star * a_star);
+                    double CosGam_star = C[5] / (2 * a_star * b_star);
                     double Alf_star = Math.Acos(CosAlf_star);
                     double Bet_star = Math.Acos(CosBet_star);
                     double Gam_star = Math.Acos(CosGam_star);
@@ -678,147 +1050,59 @@ namespace PDIndexer
                     break;
                 #endregion
 
-                case 1: //
-                    #region monoclinic
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = p[i].H * p[i].H;
-                        Q[i, 1] = p[i].K * p[i].K;
-                        Q[i, 2] = p[i].L * p[i].L;
-                        Q[i, 3] = p[i].L * p[i].H;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-
-                    C = inv * Qt * W * A;
-
-                    beta = Math.Acos(-C[3, 0] / 2 / Math.Sqrt(C[0, 0] * C[2, 0]));
-                    a = Math.Sqrt(1 / C[0, 0]) / Math.Sin(beta);
-                    b = Math.Sqrt(1 / C[1, 0]);
-                    c = Math.Sqrt(1 / C[2, 0]) / Math.Sin(beta);
+                case 1: //monoclinic
+                    beta = Math.Acos(-C[3] / 2 / Math.Sqrt(C[0] * C[2]));
+                    a = Math.Sqrt(1 / C[0]) / Math.Sin(beta);
+                    b = Math.Sqrt(1 / C[1]);
+                    c = Math.Sqrt(1 / C[2]) / Math.Sin(beta);
                     alpha = gamma = Math.PI / 2;
                     V = a * b * c * Math.Sin(beta);
                     break;
-                #endregion
 
-                case 2: //
-                    #region orthorhombic
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = p[i].H * p[i].H;
-                        Q[i, 1] = p[i].K * p[i].K;
-                        Q[i, 2] = p[i].L * p[i].L;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Qt * W * A;
-
-                    a = Math.Sqrt(1 / C[0, 0]);
-                    b = Math.Sqrt(1 / C[1, 0]);
-                    c = Math.Sqrt(1 / C[2, 0]);
+                case 2: //orthorhombic
+                    a = Math.Sqrt(1 / C[0]);
+                    b = Math.Sqrt(1 / C[1]);
+                    c = Math.Sqrt(1 / C[2]);
                     alpha = beta = gamma = Math.PI / 2;
                     V = a * b * c;
                     break;
-                #endregion
 
-                case 3:
-                    #region tetragonal
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = p[i].H * p[i].H + p[i].K * p[i].K;
-                        Q[i, 1] = p[i].L * p[i].L;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Qt * W * A;
-
-                    a = b = Math.Sqrt(1 / C[0, 0]);
-                    c = Math.Sqrt(1 / C[1, 0]);
+                case 3: //tetragonal
+                    a = b = Math.Sqrt(1 / C[0]);
+                    c = Math.Sqrt(1 / C[1]);
                     alpha = beta = gamma = Math.PI / 2;
                     V = a * a * c;
                     break;
-                #endregion
 
-                case 4://trigonal
-                    #region trigonal
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = 4.0 / 3.0 * (p[i].H * p[i].H + p[i].K * p[i].K + p[i].H * p[i].K);
-                        Q[i, 1] = p[i].L * p[i].L;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Qt * W * A;
-
-                    a = b = Math.Sqrt(1 / C[0, 0]);
-                    c = Math.Sqrt(1 / C[1, 0]);
+                case 4: //trigonal
+                case 5: //hexagonal (旧も trigonal と同じ式)
+                    a = b = Math.Sqrt(1 / C[0]);
+                    c = Math.Sqrt(1 / C[1]);
                     alpha = beta = Math.PI / 2;
                     gamma = Math.PI / 1.5;
                     V = a * a * c * Math.Sqrt(3) / 2;
                     break;
-                #endregion
 
-                case 5://hexagonal
-                    #region hexagonal
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = 4.0 / 3.0 * (p[i].H * p[i].H + p[i].K * p[i].K + p[i].H * p[i].K);
-                        Q[i, 1] = p[i].L * p[i].L;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Qt * W * A;
-
-                    a = b = Math.Sqrt(1 / C[0, 0]);
-                    c = Math.Sqrt(1 / C[1, 0]);
-                    alpha = beta = Math.PI / 2;
-                    gamma = Math.PI / 1.5;
-                    V = a * a * c * Math.Sqrt(3) / 2;
-                    break;
-                #endregion
-
-                case 6://cubic
-                    #region cubic
-                    for (int i = 0; i < column; i++)
-                    {
-                        Q[i, 0] = p[i].H * p[i].H + p[i].K * p[i].K + p[i].L * p[i].L;
-                        A[i, 0] = 1 / p[i].D / p[i].D;
-                        W[i, i] = p[i].Weight * p[i].Reliability;
-                    }
-                    Qt = Q.Transpose(); //260712Cl 変更: switch 手前で宣言した Qt へ代入 (Transpose を case 内で1回に集約)
-                    if (!(Qt * W * Q).TryInverse(out inv))
-                        return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
-                    C = inv * Qt * W * A;
-
-                    a = b = c = Math.Sqrt(1 / C[0, 0]);
+                case 6: //cubic
+                    a = b = c = Math.Sqrt(1 / C[0]);
                     alpha = beta = gamma = Math.PI / 2;
                     V = a * a * a;
                     break;
-                    #endregion
             }
             if (double.IsNaN(a) || double.IsNaN(b) || double.IsNaN(c) || double.IsNaN(alpha) || double.IsNaN(beta) || double.IsNaN(gamma) || double.IsNaN(V))
                 return new Candidate(0, 0, 0, 0, 0, 0, 0, double.PositiveInfinity, double.PositiveInfinity, null);
             else
             {
-                var res = Q * C - A; //260712Cl 残差ベクトルを再利用 (旧: (C.Transpose() * Q.Transpose() - A.Transpose()) * W * (Q * C - A))
-                sigmaDQ = (res.Transpose() * W * res)[0, 0];
+                sigmaDQ = 0;
+                for (int i = 0; i < column; i++)
+                {
+                    fillQ(system, p[i], q);
+                    double qc = 0;
+                    for (int k = 0; k < unk; k++)
+                        qc += q[k] * C[k];
+                    double res = qc - 1 / p[i].D / p[i].D;
+                    sigmaDQ += res * (p[i].Weight * p[i].Reliability) * res;
+                }
                 return new Candidate(a, b, c, alpha, beta, gamma, V, sigmaDQ, 0, p);
             }
         }
