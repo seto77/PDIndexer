@@ -266,32 +266,36 @@ public class Macro : MacroBase
             PDI.Fitting.Apply()
             """
         ),
+        // 261124Cl 変更: サンプル 09 — CheckAll() を外して Fitting.Open() に (連続分析はチェックに関係なく全プロファイルを処理し、フィッティング画面が開いていないと何もしない)。
+        //   フォルダー選択をキャンセルしたときにドライブ直下へ保存しようとしていたのを止めた
         (
             "09. Sequential analysis and export",
             """
-            # Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing / cell-constant /
-            # pressure results as CSV strings and save each to a file. SaveText with no filename opens a dialog.
-            PDI.ProfileList.CheckAll()
+            # Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+            # then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+            PDI.Fitting.Open()
             PDI.Sequential.Open()
             PDI.Sequential.Execute()
             dir_path = PDI.File.GetDirectoryPath()
-            PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-            PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-            PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-            PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+            if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+                PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+                PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+                PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+                PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
             """,
             "09. 逐次解析と結果の保存",
             """
-            # 全プロファイルにチェックを入れて逐次解析を実行し、2θ / 面間隔 / 格子定数 / 圧力の結果を
-            # CSV 文字列として取得してそれぞれファイルに保存します。SaveText にファイル名なしで呼ぶとダイアログが開きます。
-            PDI.ProfileList.CheckAll()
+            # フィッティング画面で選んだ結晶と反射を使い、読み込んだ全プロファイル (4 本以上) を連続分析して、
+            # 2θ / 面間隔 / 格子定数 / 圧力の結果を CSV 文字列として取得し、それぞれファイルに保存します。
+            PDI.Fitting.Open()
             PDI.Sequential.Open()
             PDI.Sequential.Execute()
             dir_path = PDI.File.GetDirectoryPath()
-            PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-            PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-            PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-            PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+            if dir_path != "\\":  # フォルダー選択をキャンセルすると GetDirectoryPath は "\\" を返す
+                PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+                PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+                PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+                PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
             """
         ),
         (

@@ -202,46 +202,47 @@ PDIndexer 固有の機能は、すべてルートオブジェクト `PDI` 以下
 | `SelectedIndex` | `SelectedIndex (get/set)` | 現在選択中の格子面のインデックスを取得／設定します。 |
 | `Range` | `Range(double range)` | 現在選択中の格子面に対するピーク探索範囲を設定します（X 軸と同じ単位）。 |
 
-### PDI.Sequential — 逐次解析
+### PDI.Sequential — 連続分析
 
-[逐次解析](7-sequential-analysis.md)ウィンドウを操作します。CSV 取得系メソッドは、最後に実行した逐次解析の結果を CSV 文字列として返します。
+[連続分析](7-sequential-analysis.md)ウィンドウを操作します。CSV 取得系メソッドは、最後に実行した連続分析の結果を CSV 文字列として返します。
 
 | メンバー | シグネチャ | 説明 |
 | --- | --- | --- |
-| `Directory` | `Directory (get/set)` | 逐次解析の結果を保存するディレクトリのフルパスを取得／設定します。 |
-| `Open` | `Open()` | 「逐次解析」ウィンドウを開きます。 |
-| `Close` | `Close()` | 「逐次解析」ウィンドウを閉じます。 |
-| `Execute` | `Execute()` | チェックされた全プロファイルに対して逐次解析を実行します。 |
-| `GetCSV_2theta` | `GetCSV_2theta()` | 最後の逐次解析の 2θ 結果を CSV 文字列として取得します。 |
-| `GetCSV_D` | `GetCSV_D()` | 最後の逐次解析の面間隔（d）結果を CSV 文字列として取得します。 |
-| `GetCSV_FWHM` | `GetCSV_FWHM()` | 最後の逐次解析の半値全幅（FWHM）結果を CSV 文字列として取得します。 |
-| `GetCSV_Intensity` | `GetCSV_Intensity()` | 最後の逐次解析のピーク強度結果を CSV 文字列として取得します。 |
-| `GetCSV_CellConstants` | `GetCSV_CellConstants()` | 最後の逐次解析の格子定数結果を CSV 文字列として取得します。 |
-| `GetCSV_Pressure` | `GetCSV_Pressure()` | 最後の逐次解析の圧力結果を CSV 文字列として取得します。 |
-| `GetCSV_Singh` | `GetCSV_Singh()` | 最後の逐次解析の Singh 式の結果を CSV 文字列として取得します。 |
-| `AutoSave2theta` | `AutoSave2theta (get/set)` | 逐次解析の実行ごとに 2θ 結果を自動保存するかどうかを取得／設定します。 |
-| `AutoSaveDspacing` | `AutoSaveDspacing (get/set)` | 逐次解析の実行ごとに面間隔（d）結果を自動保存するかどうかを取得／設定します。 |
-| `AutoSaveFWHM` | `AutoSaveFWHM (get/set)` | 逐次解析の実行ごとに FWHM 結果を自動保存するかどうかを取得／設定します。 |
-| `AutoSaveIntensity` | `AutoSaveIntensity (get/set)` | 逐次解析の実行ごとにピーク強度結果を自動保存するかどうかを取得／設定します。 |
-| `AutoSaveCellConstants` | `AutoSaveCellConstants (get/set)` | 逐次解析の実行ごとに格子定数結果を自動保存するかどうかを取得／設定します。 |
-| `AutoSavePressure` | `AutoSavePressure (get/set)` | 逐次解析の実行ごとに圧力結果を自動保存するかどうかを取得／設定します。 |
-| `AutoSaveSingh` | `AutoSaveSingh (get/set)` | 逐次解析の実行ごとに Singh 式の結果を自動保存するかどうかを取得／設定します。 |
+| `Directory` | `Directory (get/set)` | 連続分析の結果を保存するディレクトリのフルパスを取得／設定します。 |
+| `Open` | `Open()` | 「連続分析」ウィンドウを開きます。 |
+| `Close` | `Close()` | 「連続分析」ウィンドウを閉じます。 |
+| `Execute` | `Execute()` | フィッティング画面で選んだ結晶と反射を使い、読み込んだ全プロファイル（開始番号・ループの設定による範囲）を連続分析します。フィッティング画面を開いておき、プロファイルを 4 本以上読み込んでおく必要があります。プロファイルのチェックは対象を絞りません。 |
+| `GetCSV_2theta` | `GetCSV_2theta()` | 最後の連続分析の 2θ 結果を CSV 文字列として取得します。 |
+| `GetCSV_D` | `GetCSV_D()` | 最後の連続分析の面間隔（d）結果を CSV 文字列として取得します。 |
+| `GetCSV_FWHM` | `GetCSV_FWHM()` | 最後の連続分析の半値全幅（FWHM）結果を CSV 文字列として取得します。 |
+| `GetCSV_Intensity` | `GetCSV_Intensity()` | 最後の連続分析のピーク強度結果を CSV 文字列として取得します。 |
+| `GetCSV_CellConstants` | `GetCSV_CellConstants()` | 最後の連続分析の格子定数結果を CSV 文字列として取得します。 |
+| `GetCSV_Pressure` | `GetCSV_Pressure()` | 最後の連続分析の圧力結果を CSV 文字列として取得します。 |
+| `GetCSV_Singh` | `GetCSV_Singh()` | 最後の連続分析の Singh 式の結果を CSV 文字列として取得します。 |
+| `AutoSave2theta` | `AutoSave2theta (get/set)` | 連続分析の実行ごとに 2θ 結果を自動保存するかどうかを取得／設定します。 |
+| `AutoSaveDspacing` | `AutoSaveDspacing (get/set)` | 連続分析の実行ごとに面間隔（d）結果を自動保存するかどうかを取得／設定します。 |
+| `AutoSaveFWHM` | `AutoSaveFWHM (get/set)` | 連続分析の実行ごとに FWHM 結果を自動保存するかどうかを取得／設定します。 |
+| `AutoSaveIntensity` | `AutoSaveIntensity (get/set)` | 連続分析の実行ごとにピーク強度結果を自動保存するかどうかを取得／設定します。 |
+| `AutoSaveCellConstants` | `AutoSaveCellConstants (get/set)` | 連続分析の実行ごとに格子定数結果を自動保存するかどうかを取得／設定します。 |
+| `AutoSavePressure` | `AutoSavePressure (get/set)` | 連続分析の実行ごとに圧力結果を自動保存するかどうかを取得／設定します。 |
+| `AutoSaveSingh` | `AutoSaveSingh (get/set)` | 連続分析の実行ごとに Singh 式の結果を自動保存するかどうかを取得／設定します。 |
 
 ## マクロの例
 
-組み込みサンプルの一例として、逐次解析を実行して結果を CSV へ保存するマクロを示します。
+組み込みサンプルの一例として、連続分析を実行して結果を CSV へ保存するマクロを示します。
 
 ```python
-# 全プロファイルにチェックを入れて逐次解析を実行し、
-# 2θ / 面間隔 / 格子定数 / 圧力の結果を CSV 文字列として取得してファイルに保存します。
-PDI.ProfileList.CheckAll()
+# フィッティング画面で選んだ結晶と反射を使い、読み込んだ全プロファイル (4 本以上) を連続分析して、
+# 2θ / 面間隔 / 格子定数 / 圧力の結果を CSV 文字列として取得し、それぞれファイルに保存します。
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # フォルダー選択をキャンセルすると GetDirectoryPath は "\\" を返す
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 そのほかのサンプルは、エディタの `Samples` ボタンから一覧で確認できます。

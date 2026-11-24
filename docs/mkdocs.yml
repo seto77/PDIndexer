@@ -328,3 +328,5 @@ nav:
       - File formats: appendix/file-formats.md
       - Algorithms: appendix/algorithms.md
       - Troubleshooting: appendix/troubleshooting.md
+      # 261124Cl 追加: Q&A (GitHub issue とサポートメールから抽出)。ラベルは各言語とも "Q&A" のまま (nav_translations 不要)
+      - Q&A: appendix/faq.md

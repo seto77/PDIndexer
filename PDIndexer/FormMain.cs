@@ -364,8 +364,18 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     // ---- Crystal 表示名 (formCrystal.crystalControl.Name ラッパ) ----
     public string SelectedCrystalDisplayName
     {
-        get => formCrystal.crystalControl.Name;
-        set => formCrystal.crystalControl.Name = value;
+        // 261124Cl 変更前: WinForms コントロールの識別子 Control.Name を読み書きしていた (マクロの PDI.Crystal.Name = "x" が結晶名を変えず、
+        //   コントロール名だけが変わっていた)
+        //get => formCrystal.crystalControl.Name;
+        //set => formCrystal.crystalControl.Name = value;
+        get => CurrentCrystal?.Name ?? ""; // 261124Cl 変更
+        set // 261124Cl 変更: 選択中の結晶の名前を変え、編集欄と一覧に反映する
+        {
+            if (CurrentCrystal is not { } c) return;
+            c.Name = value;
+            SetFormCrystal();
+            dataGridViewCrystals.Invalidate();
+        }
     }
 
     // ---- 260601Cl 追加: GUI 一括キャプチャ (GuiCapture / --capture) 用ヘルパー ----
@@ -754,7 +764,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             // 260625Cl 変更: ja/en 二値から、マニュアル整備済み言語の gating (HelpCulture()) 経由の多言語対応へ (Phase 0)。
             //   260625Cl: Pages を mkdocs-static-i18n 化し default locale (en) をサイトルートへ出したため、en だけ接頭辞なし。
             //     旧 /en/<page>/ は docs/hooks/legacy_en_redirects.py の stub でルートへ転送される。ja は /ja/、将来言語は /<lang>/。
-            //   現状 manualReadyCultures={en,ja} なので他言語は当面 en マニュアル(ルート)へ落ちる
+            //   現状 manualReadyCultures={en,ja} なので他言語は当面 en マニュアル(ルート)へ落ちる (261124Cl 注: 11 言語すべてに更新済み)
             //   (各言語 Pages を整備したら manualReadyCultures に追加するだけで点灯する)。
             //   旧: var lang = Thread.CurrentThread.CurrentUICulture.Name == "ja" ? "ja" : "en";
             var lang = HelpCulture();
@@ -3567,10 +3577,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
             if (diffProf.SourceProfile.Pt.Count > 0)
             {
-                if (diffProf.SrcProperty.AxisMode == HorizontalAxis.NeutronTOF)
-                    if (diffProf.SrcProperty.TofTimeUnit == TimeUnitEnum.NanoSecond)//単位を変換する必要がある場合は
-                        for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
-                            diffProf.SourceProfile.Pt[i] = new PointD(diffProf.SourceProfile.Pt[i].X / 1000, diffProf.SourceProfile.Pt[i].Y);
+                // 261124Cl 削除: ここで X だけを 1/1000 しても SrcProperty.TofTimeUnit は ns のままなので、共有の HorizontalAxisConverter が
+                //   もう一度 ns→µs (1/1000) に換算し、1000 ns が 0.001 µs と表示されていた (Err.X も別の位置になっていた)。換算は共有側の 1 回に任せる
+                //if (diffProf.SrcProperty.AxisMode == HorizontalAxis.NeutronTOF)
+                //    if (diffProf.SrcProperty.TofTimeUnit == TimeUnitEnum.NanoSecond)//単位を変換する必要がある場合は
+                //        for (int i = 0; i < diffProf.SourceProfile.Pt.Count; i++)
+                //            diffProf.SourceProfile.Pt[i] = new PointD(diffProf.SourceProfile.Pt[i].X / 1000, diffProf.SourceProfile.Pt[i].Y);
 
                 AddProfileToCheckedListBox(diffProf, isChecked, isDrawn, changePos);
             }
@@ -3745,7 +3757,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             if (Dlg.ShowDialog() == DialogResult.OK)
                 try
                 {
-                    ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName);
+                    //ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName); // 261124Cl 変更前: 失敗 (false) を無視していた
+                    if (!ConvertCrystalData.SaveCrystalListXml(formCrystalSelection.CheckedCrystalList, Dlg.FileName)) // 261124Cl 変更
+                        MessageBox.Show(PdiText.CannotWriteFile);
                 }
                 catch
                 {
@@ -3769,7 +3783,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             if (!filename.ToLower().EndsWith(".xml"))
                 filename += ".xml";
 
-            ConvertCrystalData.SaveCrystalListXml(crystals, filename);
+            //ConvertCrystalData.SaveCrystalListXml(crystals, filename); // 261124Cl 変更前: 失敗 (false) を無視していた
+            if (!ConvertCrystalData.SaveCrystalListXml(crystals, filename)) // 261124Cl 変更
+                MessageBox.Show(PdiText.CannotWriteFile);
         }
         catch
         {
@@ -3796,24 +3812,21 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     public void readCrystal(string fileName, bool showSelectionDialog, bool clearPresentData)
     {
-
-        var sb = new StringBuilder();
-        //var sr = new StreamReader(fileName, Encoding.UTF8); // (260624Ch) 旧: 例外時に Close されない
-        using (var sr = new StreamReader(fileName, Encoding.UTF8)) // (260624Ch)
-            while (sr.Peek() > -1)
-                sb.AppendLine(sr.ReadLine());
-        //sr.Close(); // (260624Ch) using に移行
-
-        //var sw = new StreamWriter(fileName, false, Encoding.UTF8); // (260624Ch) 旧: 例外時に Close されない
-        using (var sw = new StreamWriter(fileName, false, Encoding.UTF8)) // (260624Ch)
-            sw.WriteLine(sb);
-        //sw.Close(); // (260624Ch) using に移行
+        // 261124Cl 削除: 開くだけで原本を全行読み直して同じファイルへ上書きしていた (読み取り専用なら失敗し、途中で失敗すると原本が壊れる)。
+        //   旧書式の置換は共有の ConvertCrystalData.ConvertToCrystalList がメモリ上で行う (261105Cl) ので、書き戻しは不要。
+        //var sb = new StringBuilder();
+        //using (var sr = new StreamReader(fileName, Encoding.UTF8)) // (260624Ch)
+        //    while (sr.Peek() > -1)
+        //        sb.AppendLine(sr.ReadLine());
+        //using (var sw = new StreamWriter(fileName, false, Encoding.UTF8)) // (260624Ch)
+        //    sw.WriteLine(sb);
 
 
         List<Crystal> crystalArray = []; //260317Cl new List<T>() → []
 
 
-        crystalArray.AddRange(ConvertCrystalData.ConvertToCrystalList(fileName));
+        //crystalArray.AddRange(ConvertCrystalData.ConvertToCrystalList(fileName)); // 261124Cl 変更前: 読み込み失敗で null が返ると AddRange が例外
+        crystalArray.AddRange(ConvertCrystalData.ConvertToCrystalList(fileName) ?? []); // 261124Cl 変更
 
 
         if (crystalArray.Count is 0) return; //260317Cl == 0 → is 0
@@ -3830,6 +3843,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 crystalArray.AddRange(formCrystalSelection.CheckedCrystalList);
             }
             else return;
+            if (crystalArray.Count is 0) return; // 261124Cl 追加: 全部のチェックを外して OK すると、現在の一覧を消した後に crystalArray[0] で例外になっていた
         }
 
         if (clearPresentData)
@@ -4124,7 +4138,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             if (!filename.ToLower().EndsWith(".pdi2"))
                 filename += ".pdi2";
 
-            XYFile.SavePdi2File([.. dp], filename);
+            //XYFile.SavePdi2File([.. dp], filename); // 261124Cl 変更前: 失敗 (false) を無視していた
+            if (!XYFile.SavePdi2File([.. dp], filename)) // 261124Cl 変更: SaveCrystal と同じく利用者に知らせる
+                MessageBox.Show(PdiText.CannotWriteFile);
         }
     }
 
@@ -4135,10 +4151,14 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     /// <param name="e"></param>
     // 260625Cl 追加: PDIndexer のオンラインマニュアル(GitHub Pages)が現状整備済みの言語。これ以外の UI 言語では
     //   英語マニュアルへ落とす (404 回避)。Phase 4 で各言語マニュアルが揃ったらここに言語コードを追加するだけで点灯する。
-    private static readonly string[] manualReadyCultures = { "en", "ja" };
+    //private static readonly string[] manualReadyCultures = { "en", "ja" }; // 261124Cl 変更前
+    // 261124Cl 変更: docs/src に 9 言語 (de/fr/es/it/pt/ru/zh-Hans/zh-Hant/ko) の全ページが揃い、Pages にも公開済み (各 /<lang>/ が 200)。
+    //   en/ja のままだと、それらの言語の利用者が F1・ヘルプで英語版に飛ばされていた
+    private static readonly string[] manualReadyCultures = { "en", "ja", "de", "fr", "es", "it", "pt", "ru", "zh-Hans", "zh-Hant", "ko" };
 
     // 260625Cl 追加: 現在の UI 言語に対応する、PDIndexer マニュアルが実在する言語コード (未整備言語は "en")。
     //   共有 SupportedCultures.HelpCulture は各言語コードを返すが、PDIndexer のマニュアルはまだ en/ja のみのため gating する。
+    //   (261124Cl 注: 11 言語のマニュアルが揃ったので、下の一覧は全言語。今後言語を足すときもここで gating する)
     private static string HelpCulture()
     {
         var help = Crystallography.SupportedCultures.Current.HelpCulture;
@@ -4298,6 +4318,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 return;
 
             var dp = dataSet.DataTableProfile.CheckedItems;
+            if (dp.Count is 0) return; // 261124Cl 追加: チェックされたプロファイルが無いと下の dp.Max が例外
 
             if (merge)//ひとつのファイルにマージする場合
                 using (var writer = new StreamWriter(dlg.FileName))
@@ -4310,9 +4331,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     for (int j = 0, max = dp.Max(d => d.Profile.Pt.Count); j < max; j++)//三行目以降
                     {
                         for (int i = 0; i < dp.Count; i++)
+                            //writer.Write(j < dp[i].Profile.Pt.Count ?
+                            //     $"{dp[i].Profile.Pt[j].X}{s}{dp[i].Profile.Pt[j].Y}{s}{s}" :
+                            //     $"{s}{s}{s}"); // 261124Cl 変更前: 現在のカルチャで書いていた (小数点が ',' の環境で CSV の列が壊れる)
                             writer.Write(j < dp[i].Profile.Pt.Count ?
-                                 $"{dp[i].Profile.Pt[j].X}{s}{dp[i].Profile.Pt[j].Y}{s}{s}" :
-                                 $"{s}{s}{s}");
+                                 string.Create(System.Globalization.CultureInfo.InvariantCulture, $"{dp[i].Profile.Pt[j].X}{s}{dp[i].Profile.Pt[j].Y}{s}{s}") :
+                                 $"{s}{s}{s}"); // 261124Cl 変更: 数値は不変カルチャ
                         writer.Write("\r\n");
                     }
                 }
@@ -4323,7 +4347,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     using var writer = new StreamWriter(filename);
                     writer.WriteLine($"X{s}Y");//一行目
                     for (int i = 0; i < d.Profile.Pt.Count; i++)
-                        writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}");
+                        //writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}"); // 261124Cl 変更前: 現在のカルチャで書いていた
+                        writer.WriteLine(string.Create(System.Globalization.CultureInfo.InvariantCulture, $"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}")); // 261124Cl 変更
                 });
         }
     }
@@ -4339,8 +4364,31 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         dlg.FileName = Path.GetFileNameWithoutExtension(dp.Name);
         if (dlg.ShowDialog() == DialogResult.OK)
         {
+            if (dp.Profile.Pt.Count < 2) return; // 261124Cl 追加: 下で Pt[1] を使う (1 点以下だと例外)
+            //double div = AxisMode == HorizontalAxis.NeutronTOF ? 1 : 100; // 261124Cl 変更前: 表示単位に関係なく 100 倍していた (3000 センチ度の表示なら 300000、ラジアンや d 表示でも 100 倍)
+            // 261124Cl 変更: 定波長の FXYE は 2θ をセンチ度で書く。表示中の 2θ の単位からセンチ度へ換算する。2θ・TOF 以外の横軸では書き出さない
+            double div;
+            if (AxisMode == HorizontalAxis.NeutronTOF)
+                div = 1;
+            else if (AxisMode == HorizontalAxis.Angle)
+                div = AxisProperty.TwoThetaUnit switch
+                {
+                    AngleUnitEnum.Degree => 100,
+                    AngleUnitEnum.CentiDegree => 1,
+                    AngleUnitEnum.Radian => 180 / Math.PI * 100,
+                    AngleUnitEnum.MilliRadian => 180 / Math.PI / 10,
+                    _ => double.NaN
+                };
+            else
+                div = double.NaN;
+            if (double.IsNaN(div))
+            {
+                MessageBox.Show(Crystallography.Localization.Loc(
+                    en: "GSAS export requires the horizontal axis to be 2θ or neutron TOF.",
+                    ja: "GSAS 形式で書き出すには、横軸を 2θ か中性子 TOF にしてください。"));
+                return;
+            }
             using var writer = new StreamWriter(dlg.FileName);
-            double div = AxisMode == HorizontalAxis.NeutronTOF ? 1 : 100;
 
             //一行目
             writer.WriteLine(dp.Name);
@@ -4349,7 +4397,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             var ptCount = dp.Profile.Pt.Count;
             var startAngle = dp.Profile.Pt[0].X * div;
             var stepAngle = (dp.Profile.Pt[1].X - dp.Profile.Pt[0].X) * div;
-            writer.WriteLine($"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE"); //260317Cl 文字列連結 → 文字列補間
+            //writer.WriteLine($"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE"); //260317Cl 文字列連結 → 文字列補間 // 261124Cl 変更前: 現在のカルチャで書いていた (小数点が ',' の環境で壊れる)
+            writer.WriteLine(string.Create(System.Globalization.CultureInfo.InvariantCulture, $"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE")); // 261124Cl 変更
 
             //errが有効なデータかどうかを判定
             bool validErr = true;
@@ -4362,27 +4411,42 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             else
                 validErr = false;
 
+            // 261124Cl 変更前: g12 の文字列を先頭 11 文字で切っていたため、指数表記 (例 1.23456789123e-05 → 1.234567891) で桁が変わり、
+            //   末尾が '.' になった列には Y の値を入れていた。また現在のカルチャで書いていた
+            //for (int i = 0; i < ptCount; i++)
+            //{
+            //    var value = new string[3];
+            //    value[0] = (dp.Profile.Pt[i].X * div).ToString("g12");
+            //    value[1] = dp.Profile.Pt[i].Y.ToString("g12");
+            //    if (validErr)
+            //        value[2] = dp.Profile.Err[i].Y.ToString("g12");
+            //    else
+            //        value[2] = Math.Sqrt(dp.Profile.Pt[i].Y).ToString("g12");
+            //    var y = dp.Profile.Pt[i].Y.ToString("g7");
+            //    for (int j = 0; j < value.Length; j++)
+            //    {
+            //        if (value[j].Length > 11)
+            //            value[j] = value[j][..11];
+            //        if (value[j].EndsWith("."))
+            //            value[j] = string.Concat(" ", y.AsSpan(0, 10));
+            //        value[j] = value[j].PadLeft(11); //260712Cl while 前置 → PadLeft
+            //    }
+            //    writer.WriteLine($" {value[0]} {value[1]} {value[2]}");
+            //}
+            // 261124Cl 追加: 11 文字に収まるまで有効桁を下げ (指数と符号は保つ)、不変カルチャで書く。旧来 11 文字に収まっていた値はそのまま収まるよう 15 桁から試す
+            static string field(double v)
+            {
+                for (int digits = 15; digits > 1; digits--)
+                {
+                    var s = v.ToString("G" + digits, System.Globalization.CultureInfo.InvariantCulture);
+                    if (s.Length <= 11) return s.PadLeft(11);
+                }
+                return v.ToString("0E+0", System.Globalization.CultureInfo.InvariantCulture).PadLeft(11);
+            }
             for (int i = 0; i < ptCount; i++)
             {
-                var value = new string[3];
-                value[0] = (dp.Profile.Pt[i].X * div).ToString("g12");
-                value[1] = dp.Profile.Pt[i].Y.ToString("g12");
-                if (validErr)
-                    value[2] = dp.Profile.Err[i].Y.ToString("g12");
-                else
-                    value[2] = Math.Sqrt(dp.Profile.Pt[i].Y).ToString("g12");
-
-                var y = dp.Profile.Pt[i].Y.ToString("g7");
-
-                for (int j = 0; j < value.Length; j++)
-                {
-                    if (value[j].Length > 11)
-                        value[j] = value[j][..11];
-                    if (value[j].EndsWith("."))
-                        value[j] = string.Concat(" ", y.AsSpan(0, 10));
-                    value[j] = value[j].PadLeft(11); //260712Cl while 前置 → PadLeft
-                }
-                writer.WriteLine($" {value[0]} {value[1]} {value[2]}");
+                var err = validErr ? dp.Profile.Err[i].Y : Math.Sqrt(dp.Profile.Pt[i].Y);
+                writer.WriteLine($" {field(dp.Profile.Pt[i].X * div)} {field(dp.Profile.Pt[i].Y)} {field(err)}");
             }
             writer.Close();
         }
@@ -4945,11 +5009,21 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 string str = (string)data.GetData(typeof(string));
                 //StreamWriter
                 //var sw = new StreamWriter("clipbord.txt"); // (260624Ch) 旧: 例外時に Close されない
-                using (var sw = new StreamWriter("clipbord.txt")) // (260624Ch)
-                    sw.Write(str);
-                //sw.Close(); // (260624Ch) using に移行
-                readProfile("clipbord.txt");
-                File.Delete("clipbord.txt"); //260712Cl バグ修正: 旧 "clipboard.txt" (綴り不一致で実ファイル clipbord.txt が削除されず残留)
+                //using (var sw = new StreamWriter("clipbord.txt")) // (260624Ch)
+                //    sw.Write(str);
+                //readProfile("clipbord.txt");
+                //File.Delete("clipbord.txt"); //260712Cl バグ修正: 旧 "clipboard.txt" (綴り不一致で実ファイル clipbord.txt が削除されず残留)
+                // 261124Cl 変更: 作業フォルダー (Program Files などの書き込めない場所のこともある) ではなく一時フォルダーに書き、例外でも消す
+                var tmp = Path.Combine(Path.GetTempPath(), "PDIndexer_clipboard.txt");
+                try
+                {
+                    File.WriteAllText(tmp, str);
+                    readProfile(tmp);
+                }
+                finally
+                {
+                    try { File.Delete(tmp); } catch { }
+                }
             }
         }
     }

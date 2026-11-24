@@ -161,6 +161,8 @@ namespace PDIndexer
 
         private bool isFinding = false; //260625Cl 追加: ボタンラベル文字列での状態判定を bool へ分離 (多言語化でラベルを訳すと "Find!"/"Stop!" 比較が壊れるため)
 
+        private (int Row, double D)[] searchedRows = []; // 261124Cl 追加: 直前の探索に使った入力行 (d の降順)
+
         private void buttonFind_Click(object sender, EventArgs e)
         {
             if (!isFinding) //260625Cl 旧: if (buttonFind.Text == "Find!")
@@ -203,6 +205,13 @@ namespace PDIndexer
                 };
                 if (unk > high.Count + medium.Count + low.Count)
                     return;
+                // 261124Cl 追加: 探索に使った行 (元の行番号と d) を、探索側の SortedD と同じ d の降順で覚えておく。候補クリック時にこの対応で hkl を書き戻す
+                var rowsForSearch = new List<(int Row, double D)>();
+                for (int i = 0; i < dataSet1.Tables[0].Rows.Count; i++)
+                    if (dataSet1.Tables[0].Rows[i][2] is true && dataSet1.Tables[0].Rows[i][0] is double d && dataSet1.Tables[0].Rows[i][1] is "High" or "Medium" or "Low")
+                        rowsForSearch.Add((i, d));
+                rowsForSearch.Sort((x, y) => y.D.CompareTo(x.D));
+                searchedRows = [.. rowsForSearch];
                 isFinding = true; //260625Cl 追加
                 buttonFind.Text = PdiText.Stop; //260625Cl 旧: buttonFind.Text = "Stop!";
 
@@ -313,7 +322,10 @@ namespace PDIndexer
             for (int j = 0; j < unk; j++)
             {
                 targetPeak[..j].Sort();
-                int tempTarget = r.Next(r.Next(condition.DtoSortedD.Length / 2));
+                //int tempTarget = r.Next(r.Next(condition.DtoSortedD.Length / 2)); // 261124Cl 変更前
+                // 261124Cl 変更: 未選択のピークは残り Length - j 本なので、順位はその範囲に収める。収めないと、三斜晶で入力がちょうど 6 本のとき
+                //   下の繰り上げで添字が 6 になり condition.D[6] で範囲外例外になっていた (それ以外の本数では従来と同じ値)
+                int tempTarget = Math.Min(r.Next(r.Next(condition.DtoSortedD.Length / 2)), condition.DtoSortedD.Length - 1 - j);
                 for (int n = 0; n < j; n++) //0からtempTargetの間で既に選ばれている指数を検索し、tempTargetから外す
                     if (tempTarget >= targetPeak[n])
                         tempTarget++;
@@ -1163,14 +1175,38 @@ namespace PDIndexer
         {
             if (e.RowIndex >= 0)
             {
-                Plane[] p = (Plane[])(dataSet1.Tables[1].Rows[e.RowIndex][9]);
-                for (int i = 0; i < dataSet1.Tables[0].Rows.Count; i++)
+                //Plane[] p = (Plane[])(dataSet1.Tables[1].Rows[e.RowIndex][9]); // 261124Cl 変更前: 結果表を列見出しで並べ替えると別の候補を取っていた
+                if (dataGridViewResult.Rows[e.RowIndex].DataBoundItem is not DataRowView view) return; // 261124Cl 変更
+                Plane[] p = (Plane[])view.Row[9];
+                // 261124Cl 変更前: 表の全行に p[i] を順に書いていた。p は探索に使った「チェック済みの d を降順」に並ぶので、
+                //   未チェック行があると末尾で範囲外例外になり、入力順が違えば hkl と残差が別の行に付いていた
+                //for (int i = 0; i < dataSet1.Tables[0].Rows.Count; i++)
+                //{
+                //    dataSet1.Tables[0].Rows[i][3] = p[i].H;
+                //    dataSet1.Tables[0].Rows[i][4] = p[i].K;
+                //    dataSet1.Tables[0].Rows[i][5] = p[i].L;
+                //    dataSet1.Tables[0].Rows[i][6] = p[i].D * 10;
+                //    dataSet1.Tables[0].Rows[i][7] = (double)dataSet1.Tables[0].Rows[i][0] - p[i].D * 10;
+                //}
+                // 261124Cl 変更: 探索開始時に覚えた行 (searchedRows) と p を対応させる。使わなかった行は空にする。
+                //   探索後に入力の行・d・チェックが変わっていたら、古い候補を別の行に書かないよう何もしない
+                if (p == null) return;
+                var rows = dataSet1.Tables[0].Rows;
+                for (int i = 0; i < rows.Count; i++)
+                    for (int col = 3; col <= 7; col++)
+                        rows[i][col] = DBNull.Value;
+                if (searchedRows.Length != p.Length) return;
+                foreach (var (row, d) in searchedRows)
+                    if (row >= rows.Count || rows[row][2] is not true || rows[row][0] is not double v || v != d)
+                        return;
+                for (int n = 0; n < searchedRows.Length; n++)
                 {
-                    dataSet1.Tables[0].Rows[i][3] = p[i].H;
-                    dataSet1.Tables[0].Rows[i][4] = p[i].K;
-                    dataSet1.Tables[0].Rows[i][5] = p[i].L;
-                    dataSet1.Tables[0].Rows[i][6] = p[i].D * 10;
-                    dataSet1.Tables[0].Rows[i][7] = (double)dataSet1.Tables[0].Rows[i][0] - p[i].D * 10;
+                    var row = rows[searchedRows[n].Row];
+                    row[3] = p[n].H;
+                    row[4] = p[n].K;
+                    row[5] = p[n].L;
+                    row[6] = p[n].D * 10;
+                    row[7] = (double)row[0] - p[n].D * 10;
                 }
                 Application.DoEvents();
             }

@@ -45,9 +45,9 @@
 
 リスト下部のボタンで結果を書き出せます。
 
-- `Copy to clipborad`: 表の内容をクリップボードにコピーします。Excel などに直接貼り付けできます。
-- `Save as CSV`: 表の内容を `.csv` ファイルとして保存します。`Effective digit`（小数点以下桁数）で有効桁数を指定できます。
-- `Clear peaks`: フィッティング結果をクリアします。
+- `クリップボードにコピー`: 表の内容をクリップボードにコピーします。Excel などに直接貼り付けできます。
+- `Save as CSV`: 表の内容を `.csv` ファイルとして保存します。`Effective digit` で、表に表示する有効桁数を指定できます。
+- `Clear peaks`: Flexible Crystal に手動で追加したピークをすべて削除します。
 
 ## Fitting option（フィッティング条件）
 
@@ -121,7 +121,7 @@ $$
 
 ![Cell Finder](../assets/cap-ja-auto/FormCellFinder.png)
 
-`Cell Finder` は、測定されたピーク位置（d 値の一覧）から、それを説明する単位格子（格子定数）を逆算して探索するツールです。未知試料の指数付けに利用します。
+`Cell Finder` は、測定されたピーク位置（d 値の一覧）から、それを説明する格子定数の候補を探索するツールです。未知試料の指数付けに利用します。
 
 ### Atomic Position Finder（原子位置の探索）
 

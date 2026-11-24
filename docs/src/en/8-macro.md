@@ -211,7 +211,7 @@ Operates the [Sequential Analysis](7-sequential-analysis.md) window. The CSV get
 | `Directory` | `Directory (get/set)` | Get/Set the full directory path where sequential analysis results are saved. |
 | `Open` | `Open()` | Open the 'Sequential Analysis' window. |
 | `Close` | `Close()` | Close the 'Sequential Analysis' window. |
-| `Execute` | `Execute()` | Run the sequential analysis on all checked profiles. |
+| `Execute` | `Execute()` | Run the sequential analysis on all loaded profiles (from the start number, with the loop setting), using the crystal and reflections selected in the fitting window. The fitting window must be open and at least four profiles must be loaded; profile check boxes do not limit the run. |
 | `GetCSV_2theta` | `GetCSV_2theta()` | Get the 2-theta results of the latest sequential analysis as a CSV string. |
 | `GetCSV_D` | `GetCSV_D()` | Get the d-spacing results of the latest sequential analysis as a CSV string. |
 | `GetCSV_FWHM` | `GetCSV_FWHM()` | Get the FWHM results of the latest sequential analysis as a CSV string. |
@@ -232,16 +232,17 @@ Operates the [Sequential Analysis](7-sequential-analysis.md) window. The CSV get
 As one of the built-in samples, here is a macro that runs the sequential analysis and saves the results to CSV.
 
 ```python
-# Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing /
-# cell-constant / pressure results as CSV strings and save each to a file.
-PDI.ProfileList.CheckAll()
+# Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+# then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 You can browse the other samples from the `Show samples` button in the editor.

@@ -3,7 +3,7 @@
 
 This page describes the "profile data" itself (the measured dataset) that PDIndexer handles, and how to load, display, and export it. Processing applied after loading — smoothing, background subtraction, and so on — is done in the [Profile Parameter](4-profile-parameter.md) window. For the full list of supported file extensions, see [File formats](appendix/file-formats.md).
 
-![PDIndexer main window with a profile in the center and the profile and crystal lists on the left.](../assets/cap-en-auto/FormMain.png)
+![PDIndexer main window with a profile in the center and the profile and crystal lists on the right.](../assets/cap-en-auto/FormMain.png)
 
 ## What a profile is
 
@@ -14,7 +14,7 @@ A profile is a one-dimensional "horizontal axis vs. intensity" dataset obtained 
 - Flight time for the neutron time-of-flight (TOF) method
 - In every case, the data can also be handled internally after conversion to the lattice spacing \( d \) or the scattering vector \( q \)
 
-The vertical axis is the diffraction intensity, which can be shown as `Raw Counts` or `Count per Step (CPS)`, on either a linear or logarithmic scale (see `Vertical Axis` on the [Main window](1-main-window.md) page).
+The vertical axis is the diffraction intensity, which can be shown as `Raw Counts` or as counts divided by the exposure time in seconds (`Count per Step (CPS)`), on either a linear or logarithmic scale (see `Vertical Axis` on the [Main window](1-main-window.md) page).
 
 ## Supported input formats
 
@@ -57,7 +57,7 @@ Switch the display mode with `Single/Multi Profile` on the right side of the mai
 
 ## Profile checklist
 
-The `Profile` list on the left side of the main window shows all loaded profiles.
+The `Profile` list on the right side of the main window shows all loaded profiles.
 
 - Only checked profiles are drawn in the central viewer. Use `Check/Uncheck all` to toggle them all at once.
 - Click the `Color` column to change the drawing color of each profile.

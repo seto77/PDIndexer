@@ -2588,7 +2588,7 @@ window half-width) above to all peaks.</value>
     <value>168, 22</value>
   </data>
   <data name="copyToClipboradToolStripMenuItem.Text" xml:space="preserve">
-    <value>Copy to clipborad</value>
+    <value>Copy to Clipboard</value>
   </data>
   <data name="contextMenuStrip1.Size" type="System.Drawing.Size, System.Drawing">
     <value>169, 26</value>

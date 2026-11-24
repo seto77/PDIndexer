@@ -89,6 +89,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
         }
 
         textBox2theta.Text = textBoxDspacing.Text = textBoxFWHM.Text = textBoxIntensity.Text = $"{text}\r\n";
+        if (!stressMode) { textBoxSingh.Text = ""; graphControl1.ClearProfile(); } // 261124Cl 追加: 前回の応力解析の Singh 結果が残り、今回の試料名で自動保存されていた
         textBoxCellConstants.Text = $"{(stressMode ? "Degree" : "Profile Name")}\tV\tV_err\tA\tA_err\tB\tB_err\tC\tC_err\tAlpha\tAlpha_err\tBeta\tBeta_err\tGamma\tGamma_err\r\n";
 
         Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
@@ -350,7 +351,8 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
             save(path + name + "_intensity.csv", textBoxIntensity.Text.Replace('\t', ','));
         if (checkBoxAutoSavePressure.Checked)
             save(path + name + "_pressure.csv", textBoxPressure.Text.Replace('\t', ','));
-        if (checkBoxAutoSaveSingh.Checked)
+        //if (checkBoxAutoSaveSingh.Checked) // 261124Cl 変更前
+        if (checkBoxAutoSaveSingh.Checked && textBoxSingh.Text.Length > 0) // 261124Cl 変更: 今回 Singh の結果を作ったときだけ保存
             save(path + name + "_Singh.csv", textBoxSingh.Text.Replace('\t', ','));
         if (checkBoxAutoSaveTwoTheta.Checked)
             save(path + name + "_2theta.csv", textBox2theta.Text.Replace('\t', ','));

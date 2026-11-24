@@ -45,9 +45,9 @@ The diffraction lines of the selected crystal are listed here. Turning on the ch
 
 The buttons below the list export the results.
 
-- `Copy to clipborad`: Copies the table to the clipboard. It can be pasted directly into Excel and similar applications.
-- `Save as CSV`: Saves the table as a `.csv` file. `Effective digit` sets the number of decimal places.
-- `Clear peaks`: Clears the fitting results.
+- `Copy to Clipboard`: Copies the table to the clipboard. It can be pasted directly into Excel and similar applications.
+- `Save as CSV`: Saves the table as a `.csv` file. `Effective digit` sets the number of significant digits shown in the table.
+- `Clear peaks`: Deletes all peaks added manually to the Flexible Crystal.
 
 ## Fitting option
 

@@ -14,10 +14,11 @@ PDIndexer requires the **.NET Desktop Runtime 11.0**. If the runtime is not inst
 
 ## The UI language does not switch
 
-You can change the UI language from the menu under **Option** ▸ **Language**, choosing **English (need restart)** or **Japanese (need restart)**. However, a language change takes effect only **after a restart**.
+<!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
+Choose the display language (11 languages, each shown by its own name) from **Language** at the right end of the menu bar. Switching the language requires a restart: choose **Yes** in the confirmation dialog, and PDIndexer restarts automatically in the selected language.
 
 !!! note
-    It is normal that the display does not change immediately after you pick a language. Close PDIndexer and start it again.
+    The restart discards unsaved work (loaded profiles and edits in progress), so save what you need before switching. If you choose **No**, the language does not change.
 
 ## Reset corrupted settings
 

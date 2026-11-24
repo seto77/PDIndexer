@@ -145,7 +145,7 @@ $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l
 
 $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l-1/2)}{\Gamma(R_l)\sqrt{2^{1/R_l}-1}}+\frac{\Gamma(R_h-1/2)}{\Gamma(R_h)\sqrt{2^{1/R_h}-1}}\right)^{-1}\left(1+(1+e^{A})^2(2^{1/R_h}-1)\left(\frac{x}{H_k}\right)^2\right)^{-R_h}\quad(x>0)$$
 
-前半の 2 つは \( x=0 \) を中心に対称ですが、Split 型は \( x \) の符号で形を変え、非対称性（低角側に引く裾など）を表現します。一般に、フィッティングの良さ（残差の小ささ）は Pearson VII が優れ、収束の安定度は Pseudo Voigt が優れる傾向があります。
+Symmetric Pseudo Voigt と Symmetric Pearson VII は \( x=0 \) を中心に対称ですが、Split 型は \( x \) の符号で形を変え、非対称性（低角側に引く裾など）を表現します。一般に、フィッティングの良さ（残差の小ささ）は Pearson VII が優れ、収束の安定度は Pseudo Voigt が優れる傾向があります。
 
 #### 記号
 

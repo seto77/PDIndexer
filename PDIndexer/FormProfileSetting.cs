@@ -221,6 +221,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             setTwoThetaOffsetOption(dp);
             setBandPassOption(dp);
             setShiftOption(dp);
+            dp.SetConvertedProfile(formMain.HorizontalAxisProperty); // 261124Cl 追加: setShiftOption から移した変換 (従来と同じく各プロファイル 1 回)
         }
         formMain.SetDrawRangeLimit();
         formMain.Draw();
@@ -287,7 +288,7 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
         dp.IsShiftX = checkBoxShiftHorizontalAxis.Checked;
         dp.ShiftX = numericBoxShiftHorizontalAxis.Value;
 
-        dp.SetConvertedProfile(formMain.HorizontalAxisProperty);
+        //dp.SetConvertedProfile(formMain.HorizontalAxisProperty); // 261124Cl 削除: 呼び出し元 (SetCurrentProfile) がこの直後にもう一度変換しており、全点の変換が 2 回走っていた。変換は呼び出し元で 1 回行う
     }
 
     private void setCommentOption(DiffractionProfile2 dp) => dp.Comment = textBoxComment.Text;

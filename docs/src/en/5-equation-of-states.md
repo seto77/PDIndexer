@@ -241,7 +241,7 @@ Zhao00 evaluates BM4 with $K_{T0}=K_0+(\partial K/\partial T)(T-T_0)$ and a ther
 
 ## Related pages
 
-- For registering crystals and the crystal list display, see related pages such as [Profile information](4-profile-parameter.md).
+- For registering crystals and the crystal list display, see related pages such as [Crystal parameter](3-crystal-parameter.md).
 
 <!-- 260605Cl: P-V-T tables for spline-interpolated EOS sources (not on yseto.net) -->
 

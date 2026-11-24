@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # プロファイル情報
 
-メイン画面の `Profile parameter`（プロファイル情報）アイコンをクリックすると、このサブウィンドウが開きます。ここでは、読み込んだプロファイルに対する詳細な設定と、各種の数値処理をおこないます。
+メイン画面の `Profile parameter`（プロファイル情報）アイコンをクリックすると、このサブウィンドウが開きます。ここでは、読み込んだプロファイルに対する詳細な設定と、各種の数値処理を行います。
 
 ![プロファイル情報ウィンドウ全体](../assets/cap-ja-auto/FormProfileSetting.png)
 

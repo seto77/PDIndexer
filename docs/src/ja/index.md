@@ -34,6 +34,8 @@
 - [動作環境とインストール](appendix/runtime-and-installation.md)
 - [ファイル形式](appendix/file-formats.md)
 - [トラブルシューティング](appendix/troubleshooting.md)
+- [アルゴリズム解説](appendix/algorithms.md)  <!-- 261124Cl 追加: nav にはあるのに目次から漏れていた -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl 追加 -->
 
 ## クイックスタート
 

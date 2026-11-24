@@ -1463,10 +1463,18 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Clear();
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
         {
-            if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption == PeakFunctionForm.Simple || TargetCrystal.Plane[i].observedIntensity > 0)
+            // 261124Cl 変更前: 理論値 d を送っていた (実測のずれが指数付けに現れない)。また前回の正の強度が残ったチェック解除行も送られていた
+            //if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption == PeakFunctionForm.Simple || TargetCrystal.Plane[i].observedIntensity > 0)
+            //{
+            //    formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(TargetCrystal.Plane[i].d * 10, "High", true, null, null, null, null, null, TargetCrystal.Plane[i].observedIntensity);
+            //    formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, TargetCrystal.Plane[i].d * 10, TargetCrystal.Plane[i].observedIntensity);
+            //}
+            // 261124Cl 変更: 今回チェックされ、フィットで実測 d (nm) が得られた面だけを、実測 d (Å) で送る
+            var plane = TargetCrystal.Plane[i];
+            if (plane.IsFittingChecked && double.IsFinite(plane.dObs) && plane.dObs > 0)
             {
-                formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(TargetCrystal.Plane[i].d * 10, "High", true, null, null, null, null, null, TargetCrystal.Plane[i].observedIntensity);
-                formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, TargetCrystal.Plane[i].d * 10, TargetCrystal.Plane[i].observedIntensity);
+                formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(plane.dObs * 10, "High", true, null, null, null, null, null, plane.observedIntensity);
+                formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, plane.dObs * 10, plane.observedIntensity);
             }
         }
         // dataSet1.Tables[0].Rows.Add(new object[] { numericalTextBox1.Value,comboBoxReliability.Text,true });
