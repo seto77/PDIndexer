@@ -337,6 +337,8 @@ namespace PDIndexer
             //次にピークに指数を与える
             for (int j = 0; j < targetPeak.Length; j++) //260712Cl .Count→.Length (Span化)
             {
+                // 261124Cl 変更: 指数の上限を「抽選したピークの順位」で決める。旧は DtoSortedD[j] (ループの添字 j 番目の入力ピーク) を使っていた
+                var rank = condition.DtoSortedD[targetPeak[j]];
                 //指数を生成する  orthoは h,k,lすべて >= 0 指数の上限は　ピークの順番(何番目の要素か)の値に6を足したもの
                 int h = 0, k = 0, l = 0;
                 while (h == 0 && l == 0 && k == 0)
@@ -344,24 +346,24 @@ namespace PDIndexer
                     switch (condition.CrystalSystem)
                     {
                         case 0://triclinic
-                            h = r.Next(r.Next(0, condition.DtoSortedD[j] + 3) + 1);
-                            k = r.Next(-(k = r.Next(0, condition.DtoSortedD[j] + 3)), k + 1);
-                            l = r.Next(-(l = r.Next(0, condition.DtoSortedD[j] + 3)), l + 1);
+                            h = r.Next(r.Next(0, rank + 3) + 1);
+                            k = r.Next(-(k = r.Next(0, rank + 3)), k + 1);
+                            l = r.Next(-(l = r.Next(0, rank + 3)), l + 1);
                             break;
                         case 1://monoclinic
-                            h = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
-                            k = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
-                            l = r.Next(-(l = r.Next(0, condition.DtoSortedD[j] + 4)), l + 1);
+                            h = r.Next(r.Next(0, rank + 4) + 1);
+                            k = r.Next(r.Next(0, rank + 4) + 1);
+                            l = r.Next(-(l = r.Next(0, rank + 4)), l + 1);
                             break;
                         case 2://ortho
-                            h = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
-                            k = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
-                            l = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
+                            h = r.Next(r.Next(0, rank + 4) + 1);
+                            k = r.Next(r.Next(0, rank + 4) + 1);
+                            l = r.Next(r.Next(0, rank + 4) + 1);
                             break;
                         default://tetra
-                            h = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
-                            k = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
-                            l = r.Next(r.Next(0, condition.DtoSortedD[j] + 4) + 1);
+                            h = r.Next(r.Next(0, rank + 4) + 1);
+                            k = r.Next(r.Next(0, rank + 4) + 1);
+                            l = r.Next(r.Next(0, rank + 4) + 1);
                             break;
                     }
                 }

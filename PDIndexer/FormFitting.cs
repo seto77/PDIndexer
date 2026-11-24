@@ -128,7 +128,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             return "";
 
         var sb = new StringBuilder();
-        sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tRwp (%)\r\n");
+        //sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tRwp (%)\r\n"); // 261124Cl 変更前
+        // 261124Cl 変更: 最後の列は Rwp ではなく相対残差の 2 乗平均 100 × mean(((Icalc - Iobs) / Icalc)²) (共有の PeakFunction.Residual)。値は変えず、列名を中身に合わせた
+        sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tMean squared relative residual (%)\r\n");
 
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
         {
@@ -309,36 +311,60 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         {
             #region すべてをまとめてフィッティング
 
-            //全てのフィッティング対象ピークをいったん格納
-            // 260712Cl 記法近代化: 二重for+インデクサ → SelectMany/Where/Select
-            List<PeakFunction> pvpTemp2 = [.. checkedCrystals.SelectMany(c => c.Plane)
-                .Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple)
-                .Select(p => p.peakFunction)];
-            //並び替え
-            pvpTemp2.Sort();
+            // 261124Cl 変更前: 「個々の結晶に対して」(radioButtonEachCrystal) を選んでも、常にチェックした全結晶のピークを 1 つにまとめて
+            //   グループ分けしていた (「全ての結晶に対して」と同じ計算)。旧コードは下にコメントで残す
+            ////全てのフィッティング対象ピークをいったん格納
+            //// 260712Cl 記法近代化: 二重for+インデクサ → SelectMany/Where/Select
+            //List<PeakFunction> pvpTemp2 = [.. checkedCrystals.SelectMany(c => c.Plane)
+            //    .Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple)
+            //    .Select(p => p.peakFunction)];
+            ////並び替え
+            //pvpTemp2.Sort();
 
-            //List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
+            ////List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
+            //groupIndex = 0;
+            //for (int i = 0; i < pvpTemp2.Count; i++)
+            //{
+            //    if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
+            //        pvpTemp2[i].GroupIndex = groupIndex;
+            //    else
+            //        pvpTemp2[i].GroupIndex = ++groupIndex;
+            //}
+
+            //PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
+            ////for (int i = 0; i < groupIndex + 1; i++)
+            ////    pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
+            //// 261111Cl 変更: グループごとに全体を Where で走査していた (O(G·N)) → GroupIndex は並び替え済みの pvpTemp2 の上で 0,1,2,… と連続区間なので、区間で切り出す (中身と順序は同じ)
+            //for (int i = 0, start = 0; i < groupIndex + 1; i++)
+            //{
+            //    int end = start;
+            //    while (end < pvpTemp2.Count && pvpTemp2[end].GroupIndex == i)
+            //        end++;
+            //    pvpTemp[i] = pvpTemp2.GetRange(start, end - start).ToArray();
+            //    start = end;
+            //}
+            // 261124Cl 変更: 「個々の結晶に対して」なら結晶ごとに、「全ての結晶に対して」ならまとめて、重なるピークをグループにする
+            var pools = radioButtonEachCrystal.Checked
+                ? checkedCrystals.Select(c => c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple).Select(p => p.peakFunction).ToList()).ToList()
+                : [checkedCrystals.SelectMany(c => c.Plane).Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple).Select(p => p.peakFunction).ToList()];
+            var groups = new List<PeakFunction[]>();
             groupIndex = 0;
-            for (int i = 0; i < pvpTemp2.Count; i++)
+            foreach (var pool in pools)
             {
-                if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
-                    pvpTemp2[i].GroupIndex = groupIndex;
-                else
-                    pvpTemp2[i].GroupIndex = ++groupIndex;
+                pool.Sort();
+                for (int i = 0, start = 0; i < pool.Count; i++)
+                {
+                    pool[i].GroupIndex = groupIndex;
+                    bool last = i == pool.Count - 1 || pool[i].X + pool[i].range <= pool[i + 1].X - pool[i + 1].range; //次のピークと探索範囲が重ならなければ、ここでグループを閉じる
+                    if (last)
+                    {
+                        groups.Add([.. pool.GetRange(start, i - start + 1)]);
+                        start = i + 1;
+                        groupIndex++;
+                    }
+                }
             }
-
-            PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
-            //for (int i = 0; i < groupIndex + 1; i++)
-            //    pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
-            // 261111Cl 変更: グループごとに全体を Where で走査していた (O(G·N)) → GroupIndex は並び替え済みの pvpTemp2 の上で 0,1,2,… と連続区間なので、区間で切り出す (中身と順序は同じ)
-            for (int i = 0, start = 0; i < groupIndex + 1; i++)
-            {
-                int end = start;
-                while (end < pvpTemp2.Count && pvpTemp2[end].GroupIndex == i)
-                    end++;
-                pvpTemp[i] = pvpTemp2.GetRange(start, end - start).ToArray();
-                start = end;
-            }
+            PeakFunction[][] pvpTemp = [.. groups];
 
             Parallel.For(0, pvpTemp.Length, i =>
             {
@@ -366,10 +392,20 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
                         if (formMain.HorizontalAxisProperty.AxisMode == HorizontalAxis.Angle)
                         {
-                            if (formMain.HorizontalAxisProperty.TwoThetaUnit == AngleUnitEnum.Degree)
-                                p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
-                            else
-                                p.Weight = 1 / Math.Sin(p.XObs / 2) / Math.Sin(p.XObs / 2);
+                            // 261124Cl 変更前: 度以外をすべてラジアンとみなしていた (センチ度・ミリラジアン表示で重みが狂い、精密化の結果が表示単位で変わった)
+                            //if (formMain.HorizontalAxisProperty.TwoThetaUnit == AngleUnitEnum.Degree)
+                            //    p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
+                            //else
+                            //    p.Weight = 1 / Math.Sin(p.XObs / 2) / Math.Sin(p.XObs / 2);
+                            // 261124Cl 変更: 4 種の角度単位をラジアンにしてから同じ式 1/sin²θ に入れる (度・ラジアンでは従来と同じ値)
+                            var twoThetaRad = formMain.HorizontalAxisProperty.TwoThetaUnit switch
+                            {
+                                AngleUnitEnum.Degree => p.XObs / 180 * Math.PI,
+                                AngleUnitEnum.CentiDegree => p.XObs / 18000 * Math.PI,
+                                AngleUnitEnum.MilliRadian => p.XObs / 1000,
+                                _ => p.XObs,
+                            };
+                            p.Weight = 1 / Math.Sin(twoThetaRad / 2) / Math.Sin(twoThetaRad / 2);
                         }
                         else
                             p.Weight = 1;
@@ -397,6 +433,35 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         formMain.Draw();
     }
     #endregion
+
+    /// <summary>
+    /// 261124Cl 追加: 格子定数の最小二乗の係数 C (1/d² = Σ Q_j C_j) とその共分散 cov から、単位胞体積 V の標準誤差を求める。
+    /// map[j] は C_j が逆格子計量テンソル g = (G11, G22, G33, G23, G13, G12) の各成分に与える係数
+    /// (1/d² = G11 h² + G22 k² + G33 l² + 2 G23 kl + 2 G13 lh + 2 G12 hk)。V = 1/√det G* なので
+    /// ∂V/∂G_ii = -V (G*⁻¹)_ii / 2、∂V/∂G_ij = -V (G*⁻¹)_ij (i≠j、対称な 2 成分の和)。σV² = J cov Jᵀ (J = ∂V/∂C)。
+    /// </summary>
+    private static double VolumeErrorFromCovariance(Matrix<double> C, Matrix<double> cov, double[][] map)
+    {
+        var g = new double[6];
+        for (int j = 0; j < map.Length; j++)
+            for (int n = 0; n < 6; n++)
+                g[n] += map[j][n] * C[j, 0];
+        var G = DenseMatrix.OfArray(new[,] { { g[0], g[5], g[4] }, { g[5], g[1], g[3] }, { g[4], g[3], g[2] } });
+        var det = G.Determinant();
+        if (!(det > 0)) return double.NaN;
+        var V = 1 / Math.Sqrt(det);
+        var Gi = G.Inverse();
+        var dVdg = new[] { -V * Gi[0, 0] / 2, -V * Gi[1, 1] / 2, -V * Gi[2, 2] / 2, -V * Gi[1, 2], -V * Gi[0, 2], -V * Gi[0, 1] };
+        var J = new double[map.Length];
+        for (int j = 0; j < map.Length; j++)
+            for (int n = 0; n < 6; n++)
+                J[j] += dVdg[n] * map[j][n];
+        double var2 = 0;
+        for (int j = 0; j < map.Length; j++)
+            for (int m = 0; m < map.Length; m++)
+                var2 += J[j] * cov[j, m] * J[m];
+        return var2 >= 0 ? Math.Sqrt(var2) : double.NaN;
+    }
 
     #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
     public void FittingDiffraction()
@@ -460,7 +525,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
 
-                    V_err = Math.Sqrt(3) * a * a_err;
+                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                    //V_err = Math.Sqrt(3) * a * a_err;
+                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 1, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                 }
                 break;
             #endregion
@@ -503,7 +570,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err);
+                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                    //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err);
+                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                 }
                 break;
             #endregion
@@ -547,7 +616,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2; ;
+                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                    //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2; ;
+                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[4.0 / 3, 4.0 / 3, 0, 0, 0, 2.0 / 3], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                 }
 
                 break;
@@ -592,7 +663,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2;
+                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                    //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2;
+                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[4.0 / 3, 4.0 / 3, 0, 0, 0, 2.0 / 3], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                 }
 
                 break;
@@ -639,7 +712,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     b_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
                     c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
 
-                    V_err = Math.Sqrt(b * c * a_err * a_err + c * a * b_err * b_err + a * b * c_err * c_err);
+                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                    //V_err = Math.Sqrt(b * c * a_err * a_err + c * a * b_err * b_err + a * b * c_err * c_err);
+                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                 }
                 break;
             #endregion
@@ -706,12 +781,14 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * alpha_err * alpha_err
                                 );
 
-                            V_err = Math.Sqrt(
-                                  b * c * Math.Sin(alfa) * a_err * a_err
-                                + c * a * Math.Sin(alfa) * b_err * b_err
-                                + a * b * Math.Sin(alfa) * c_err * c_err
-                                + a * b * c * Math.Cos(alfa) * alpha_err * alpha_err
-                                );
+                            // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                            //V_err = Math.Sqrt(
+                            //      b * c * Math.Sin(alfa) * a_err * a_err
+                            //    + c * a * Math.Sin(alfa) * b_err * b_err
+                            //    + a * b * Math.Sin(alfa) * c_err * c_err
+                            //    + a * b * c * Math.Cos(alfa) * alpha_err * alpha_err
+                            //    );
+                            V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0.5, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                         }
 
 
@@ -764,12 +841,14 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * beta_err * beta_err
                                 );
 
-                            V_err = Math.Sqrt(
-                                  b * c * Math.Sin(beta) * a_err * a_err
-                                + c * a * Math.Sin(beta) * b_err * b_err
-                                + a * b * Math.Sin(beta) * c_err * c_err
-                                + a * b * c * Math.Cos(beta) * beta_err * beta_err
-                                );
+                            // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                            //V_err = Math.Sqrt(
+                            //      b * c * Math.Sin(beta) * a_err * a_err
+                            //    + c * a * Math.Sin(beta) * b_err * b_err
+                            //    + a * b * Math.Sin(beta) * c_err * c_err
+                            //    + a * b * c * Math.Cos(beta) * beta_err * beta_err
+                            //    );
+                            V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0.5, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                         }
 
                         break;
@@ -821,12 +900,14 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
                             c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
 
-                            V_err = Math.Sqrt(
-                                  b * c * Math.Sin(gamma) * a_err * a_err
-                                + c * a * Math.Sin(gamma) * b_err * b_err
-                                + a * b * Math.Sin(gamma) * c_err * c_err
-                                + a * b * c * Math.Cos(gamma) * gamma_err * gamma_err
-                                );
+                            // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
+                            //V_err = Math.Sqrt(
+                            //      b * c * Math.Sin(gamma) * a_err * a_err
+                            //    + c * a * Math.Sin(gamma) * b_err * b_err
+                            //    + a * b * Math.Sin(gamma) * c_err * c_err
+                            //    + a * b * c * Math.Cos(gamma) * gamma_err * gamma_err
+                            //    );
+                            V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0.5]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
                         }
 
                         break;
@@ -1458,6 +1539,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     #region CellFinderに情報を転送
     private void buttonSendToCellFinder_Click(object sender, EventArgs e)
     {
+        // 261124Cl 追加: フィットはチェックした結晶だけを計算するので、チェックを外した結晶の (古い) 実測値は送らない
+        if (TargetCrystal == null || !formMain.dataSet.DataTableCrystal.CheckedItems.Contains(TargetCrystal))
+            return;
 
         formMain.formCellFinder.dataSet1.Tables[0].Rows.Clear();
         formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Clear();
@@ -1474,7 +1558,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             if (plane.IsFittingChecked && double.IsFinite(plane.dObs) && plane.dObs > 0)
             {
                 formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(plane.dObs * 10, "High", true, null, null, null, null, null, plane.observedIntensity);
-                formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, plane.dObs * 10, plane.observedIntensity);
+                //formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, plane.dObs * 10, plane.observedIntensity); // 261124Cl 変更前
+                if (double.IsFinite(plane.observedIntensity) && plane.observedIntensity > 0) // 261124Cl 変更: 原子位置探索には強度が測れた面だけ (Simple モードは強度 0、負の積分強度も除く)
+                    formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, plane.dObs * 10, plane.observedIntensity);
             }
         }
         // dataSet1.Tables[0].Rows.Add(new object[] { numericalTextBox1.Value,comboBoxReliability.Text,true });

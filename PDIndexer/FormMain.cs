@@ -372,6 +372,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         set // 261124Cl 変更: 選択中の結晶の名前を変え、編集欄と一覧に反映する
         {
             if (CurrentCrystal is not { } c) return;
+            if (c.Reserved) return; // 261124Cl 追加: 予約結晶 (Flexible Crystal・圧力標準) は GUI と同じく改名させない (名前で予約結晶を照合しているため)
             c.Name = value;
             SetFormCrystal();
             dataGridViewCrystals.Invalidate();
@@ -698,41 +699,95 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     //ファイル更新監視ウォッチャー
     FileSystemWatcher watcher;
+    // 261124Cl 変更前: 1 つ目のファイルを読む間 (ロック解除待ち最大 30 秒 + 読み込み) 監視を止めていたので、その間に届いたファイルを取りこぼしていた。
+    //   また、イベントはスレッドプールで発火するのに、そのまま readProfile (UI 操作) を呼んでいた。監視を OFF にしても最後に true へ戻していた
+    //void watcher_Created(object sender, System.IO.FileSystemEventArgs e)
+    //{
+    //    //if (e.FullPath.EndsWith("pdi"))
+    //    // 261111Cl 変更: IPAnalyzer の現行の出力 .pdi2 を無視していた → .pdi と .pdi2 の両方 (大文字小文字は区別しない)
+    //    if (e.FullPath.EndsWith(".pdi", StringComparison.OrdinalIgnoreCase) || e.FullPath.EndsWith(".pdi2", StringComparison.OrdinalIgnoreCase))
+    //    {
+    //        watcher.EnableRaisingEvents = false;
+    //        //do
+    //        //{
+    //        //    try
+    //        //    {
+    //        //        var fs = File.Open(e.FullPath, FileMode.Open);
+    //        //        fs.Close();
+    //        //        break;
+    //        //    }
+    //        //    catch { Thread.Sleep(100); }
+    //        //}
+    //        //while (true);
+    //        // 261111Cl 変更: 書き込み側のロック解除待ちが無限ポーリングだった → 上限 30 秒。開けなければ読み込まずに監視へ戻る
+    //        var unlocked = false;
+    //        var waitWatch = Stopwatch.StartNew();
+    //        while (!unlocked && waitWatch.ElapsedMilliseconds < 30000)
+    //        {
+    //            try
+    //            {
+    //                using (File.Open(e.FullPath, FileMode.Open)) { }
+    //                unlocked = true;
+    //            }
+    //            catch { Thread.Sleep(100); }
+    //        }
+
+    //        //readProfile(e.FullPath);
+    //        if (unlocked) // 261111Cl
+    //            readProfile(e.FullPath);
+    //        watcher.EnableRaisingEvents = true;
+    //    }
+    //}
+
+    // 261124Cl 変更: 監視は止めずに、新しいファイルのパスを重複なしのキューに積み、UI スレッドで 1 つずつ読む
+    readonly Queue<string> watchQueue = new();
+    readonly HashSet<string> watchPending = new(StringComparer.OrdinalIgnoreCase);
+    bool watchProcessing;
+
     void watcher_Created(object sender, System.IO.FileSystemEventArgs e)
     {
-        //if (e.FullPath.EndsWith("pdi"))
-        // 261111Cl 変更: IPAnalyzer の現行の出力 .pdi2 を無視していた → .pdi と .pdi2 の両方 (大文字小文字は区別しない)
-        if (e.FullPath.EndsWith(".pdi", StringComparison.OrdinalIgnoreCase) || e.FullPath.EndsWith(".pdi2", StringComparison.OrdinalIgnoreCase))
+        if (!e.FullPath.EndsWith(".pdi", StringComparison.OrdinalIgnoreCase) && !e.FullPath.EndsWith(".pdi2", StringComparison.OrdinalIgnoreCase))
+            return;
+        lock (watchQueue)
         {
-            watcher.EnableRaisingEvents = false;
-            //do
-            //{
-            //    try
-            //    {
-            //        var fs = File.Open(e.FullPath, FileMode.Open);
-            //        fs.Close();
-            //        break;
-            //    }
-            //    catch { Thread.Sleep(100); }
-            //}
-            //while (true);
-            // 261111Cl 変更: 書き込み側のロック解除待ちが無限ポーリングだった → 上限 30 秒。開けなければ読み込まずに監視へ戻る
+            if (!watchPending.Add(e.FullPath)) return;
+            watchQueue.Enqueue(e.FullPath);
+            if (watchProcessing) return;
+            watchProcessing = true;
+        }
+        BeginInvoke(new Action(ProcessWatchQueue));
+    }
+
+    // 261124Cl 追加: キューのファイルを順に読む (UI スレッド)。書き込み側のロックが外れるのを最大 30 秒待つ (待つ間も UI は止めない)
+    async void ProcessWatchQueue()
+    {
+        while (true)
+        {
+            string path;
+            lock (watchQueue)
+            {
+                if (watchQueue.Count == 0) { watchProcessing = false; return; }
+                path = watchQueue.Dequeue();
+            }
             var unlocked = false;
             var waitWatch = Stopwatch.StartNew();
             while (!unlocked && waitWatch.ElapsedMilliseconds < 30000)
             {
                 try
                 {
-                    using (File.Open(e.FullPath, FileMode.Open)) { }
+                    using (File.Open(path, FileMode.Open, FileAccess.Read, FileShare.Read)) { } // 読み取りで開く (読み取り専用のファイルでも待たない)
                     unlocked = true;
                 }
-                catch { Thread.Sleep(100); }
+                catch (FileNotFoundException) { break; }
+                catch (DirectoryNotFoundException) { break; }
+                catch { await Task.Delay(100); }
             }
-
-            //readProfile(e.FullPath);
-            if (unlocked) // 261111Cl
-                readProfile(e.FullPath);
-            watcher.EnableRaisingEvents = true;
+            lock (watchQueue) watchPending.Remove(path);
+            if (unlocked && watchReadANewProfileToolStripMenuItem.Checked)
+            {
+                try { readProfile(path); }
+                catch { }
+            }
         }
     }
     #endregion
@@ -1010,6 +1065,31 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
     private void FormMain_FormClosing(object sender, FormClosingEventArgs e)
     {
+        // 261124Cl 追加: 結晶リストの自動保存を先頭に移し、失敗したら利用者に選ばせる (従来は失敗しても黙って終了し、編集した結晶リストを失った)。
+        //   プロファイルを消す前でないと終了を取り消せないので、ここで行う
+        if (automaticallySaveTheCrystalListToolStripMenuItem.Checked
+            && !ConvertCrystalData.SaveCrystalListXml([.. dataSet.DataTableCrystal.Items], UserAppDataPath + "default.xml"))
+        {
+            var answer = MessageBox.Show(this, Crystallography.Localization.Loc(
+                    en: "The crystal list could not be saved automatically.\nYes: save it to another file.  No: quit without saving.  Cancel: do not quit.",
+                    ja: "結晶リストを自動保存できませんでした。\nはい: 別のファイルに保存する  いいえ: 保存せずに終了する  キャンセル: 終了しない"),
+                "PDIndexer", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning);
+            if (answer == DialogResult.Cancel)
+            {
+                e.Cancel = true;
+                return;
+            }
+            if (answer == DialogResult.Yes)
+            {
+                using var dlg = new SaveFileDialog { Filter = "xml|*.xml" };
+                if (dlg.ShowDialog(this) != DialogResult.OK || !ConvertCrystalData.SaveCrystalListXml([.. dataSet.DataTableCrystal.Items], dlg.FileName))
+                {
+                    e.Cancel = true;
+                    return;
+                }
+            }
+        }
+
         SkipDrawing = true; // (260624Ch) 終了処理中の再描画で破棄済み画像を PictureBox に戻さない
         foreach (var form in EnumerateCaptureDependentForms().Prepend(this)) // (260624Ch)
             DetachPictureBoxImagesForClosing(form); // (260624Ch)
@@ -1023,15 +1103,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
         e.Cancel = false;
 
-        if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
-        {
-            //List<Crystal> cry = []; //260317Cl new List<T>() → []
-            //for (int i = 0; i < dataSet.DataTableCrystal.Count; i++)
-
-            //    cry.Add(dataSet.DataTableCrystal.Items[i]);
-            List<Crystal> cry = dataSet.DataTableCrystal.Items; // 261111Cl 変更: Items は呼ぶたびに全行から List を作るので、ループで Items[i] を呼ぶと O(n²)。Items 自体が新しい List
-            ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
-        }
+        // 261124Cl 変更: 自動保存は上 (メソッドの先頭) へ移した。旧コード:
+        //if (automaticallySaveTheCrystalListToolStripMenuItem.Checked)
+        //{
+        //    List<Crystal> cry = dataSet.DataTableCrystal.Items; // 261111Cl 変更: Items は呼ぶたびに全行から List を作るので、ループで Items[i] を呼ぶと O(n²)。Items 自体が新しい List
+        //    ConvertCrystalData.SaveCrystalListXml([.. cry], UserAppDataPath + "default.xml");
+        //}
     }
 
     private static void DetachPictureBoxImagesForClosing(Control root) // (260624Ch)
@@ -2473,6 +2550,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
     }
 
     PointD justBeforePt = new(0, 0);
+    private readonly Stopwatch eosDragThrottle = new(); // 261124Cl 追加: 回折線のドラッグ中に EOS の計算を間引くための時計
+
     private void pictureBoxMain_MouseMove(object sender, MouseEventArgs e)
     {
         //タブコントロールの表示/非表示設定
@@ -2606,7 +2685,12 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
                 cry.SetAxis();
                 cry.SetPlanes();
-                SetFormEOS();
+                //SetFormEOS(); // 261124Cl 変更前: マウスが動くたびに EOS を全部計算していた (MgO などは 1 回で約 100 万回の指数関数)
+                if (!eosDragThrottle.IsRunning || eosDragThrottle.ElapsedMilliseconds > 150) // 261124Cl 変更: ドラッグ中は 150 ms ごとに間引く。離したとき (MouseUp) に SetFormEOS で確定する
+                {
+                    SetFormEOS();
+                    eosDragThrottle.Restart();
+                }
                 SetFormCrystal(true);
                 Draw();
                 justBeforePt = pt;
@@ -3165,10 +3249,13 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
                                     var pts = sumData.Select((y, x) => new PointD(a0 + a1 * x + a2 * x * x, y)).Where(p => p.X > 0).ToList();
 
-                                    if (formDataConverter.LowEnergyCutoff)
-                                        pts = pts.Where(p => p.X < formDataConverter.LowEnergyCutoffValue).ToList();
+                                    //if (formDataConverter.LowEnergyCutoff) // 261124Cl 変更前: 閾値「未満」を残していた (他の形式と逆)。全点が落ちると RemoveAt(-1) で例外
+                                    //    pts = pts.Where(p => p.X < formDataConverter.LowEnergyCutoffValue).ToList();
+                                    //pts.RemoveAt(pts.Count - 1);
+                                    if (formDataConverter.LowEnergyCutoff) // 261124Cl 変更: 他の形式と同じく、閾値 (eV) より上を残す
+                                        pts = pts.Where(p => p.X > formDataConverter.LowEnergyCutoffValue).ToList();
 
-                                    pts.RemoveAt(pts.Count - 1);
+                                    if (pts.Count > 0) pts.RemoveAt(pts.Count - 1); // 261124Cl 変更: 末尾の 1 チャンネルを捨てるのは従来どおり (点が無いときは何もしない)
                                     diffProf.SourceProfile.Pt = pts;
                                     dp.Add(diffProf);
                                 }
@@ -3317,7 +3404,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     {
                         double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n + formDataConverter.EGC[0][2] * n * n) * 1000;
                         double y = br.ReadUInt32();
-                        if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
+                        //if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000) // 261124Cl 変更前: x (eV) を閾値 (eV) の 1/1000 と比べていた (既定 10000 eV でも 10 eV で切っていた)
+                        if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue) // 261124Cl 変更: eV どうしで比べる
                             diffProf.SourceProfile.Pt.Add(new PointD(x, y));
                     }
                 }
@@ -3355,7 +3443,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         {
                             double x = (formDataConverter.EGC[0][0] + formDataConverter.EGC[0][1] * n) * 1000;
                             n++;
-                            if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
+                            //if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000) // 261124Cl 変更前: x (eV) を閾値 (eV) の 1/1000 と比べていた (既定 10000 eV でも 10 eV で切っていた)
+                            if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue) // 261124Cl 変更: eV どうしで比べる
                                 //diffProf.SourceProfile.Pt.Add(new PointD(x, Convert.ToDouble(str[j])));
                                 diffProf.SourceProfile.Pt.Add(new PointD(x, str[j].ToDouble()));
                         }
@@ -3407,7 +3496,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                                 //var y = Convert.ToDouble(strList[j].Split(',', true)[2]);
                                 var x = strList[j].Split(',', true)[1].ToDouble() * 1000;
                                 var y = strList[j].Split(',', true)[2].ToDouble();
-                                if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000)
+                                //if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue / 1000) // 261124Cl 変更前: x (eV) を閾値 (eV) の 1/1000 と比べていた (既定 10000 eV でも 10 eV で切っていた)
+                                if (!formDataConverter.LowEnergyCutoff || x > formDataConverter.LowEnergyCutoffValue) // 261124Cl 変更: eV どうしで比べる
                                     diffProf.SourceProfile.Pt.Add(new PointD(x, y));
                             }
                             break;
@@ -3870,7 +3960,10 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
 
 
         //もし読み込んだ結晶リストにReservedされたCrystalがあれば入れ替える
-        crystalArray[0].FlexibleMode = true;
+        //crystalArray[0].FlexibleMode = true; // 261124Cl 変更前: 選択ダイアログで通常の結晶だけを選んでも、その先頭を Flexible にしていた
+        // 261124Cl 変更: 選択ダイアログを出さない読み込み (リスト全体。先頭は Flexible Crystal) か、選んだ先頭が Flexible Crystal のときだけ
+        if (!showSelectionDialog || crystalArray[0].Name == "Flexible Crystal")
+            crystalArray[0].FlexibleMode = true;
         for (int j = 0; j < dataSet.DataTableCrystal.Rows.Count; j++)
         {
             var c = (Crystal)dataSet.DataTableCrystal.Rows[j][1];
