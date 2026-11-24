@@ -7,17 +7,18 @@ Se si verifica un problema durante l'uso di PDIndexer, controllare prima gli ele
 
 Questi requisiti si applicano alle build .NET 11 di questo codice sorgente. Per le versioni pubblicate, seguire i requisiti del runtime indicati per quella versione.
 
-PDIndexer richiede il **.NET Desktop Runtime 11.0**. Se il runtime non è installato, all'avvio potrebbe comparire un errore, oppure il programma potrebbe terminare senza fare nulla.
+L'installazione MSI di PDIndexer richiede il **.NET Desktop Runtime** indicato da quella versione (le build di questo codice sorgente usano .NET 11). Lo ZIP senza installazione include il proprio runtime. Se il runtime non è installato per un'installazione MSI, all'avvio potrebbe comparire un errore, oppure il programma potrebbe terminare senza fare nulla.
 
 !!! warning "Soluzione"
-    Seguire [Runtime e installazione](runtime-and-installation.md) per installare l'ultimo **.NET Desktop Runtime 11.0** (x64), quindi riavviare PDIndexer.
+    Seguire [Runtime e installazione](runtime-and-installation.md) per installare il **.NET Desktop Runtime** richiesto dalla versione in uso, corrispondente all'architettura dell'applicazione (x64 o Arm64), quindi riavviare PDIndexer.
 
 ## La lingua dell'interfaccia non cambia
 
-È possibile cambiare la lingua dell'interfaccia dal menu **Opzioni** ▸ **Lingua**, scegliendo **English (need restart)** o **Japanese (need restart)**. Tuttavia, il cambio di lingua ha effetto solo **dopo un riavvio**.
+<!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
+Scegliere la lingua di visualizzazione (11 lingue, ciascuna indicata con il proprio nome) da **Lingua** all'estremità destra della barra dei menu. Il cambio di lingua richiede un riavvio: scegliendo **Sì** nella finestra di conferma, PDIndexer si riavvia automaticamente nella lingua selezionata.
 
 !!! note
-    È normale che la visualizzazione non cambi immediatamente dopo aver scelto una lingua. Chiudere PDIndexer e avviarlo di nuovo.
+    Il riavvio elimina il lavoro non salvato (profili caricati e modifiche in corso), quindi salvare ciò che serve prima del cambio. Scegliendo **No**, la lingua non cambia.
 
 ## Reimpostare le impostazioni corrotte
 
@@ -49,7 +50,7 @@ Per calcolare le intensità di diffrazione teoriche, la struttura del cristallo 
 
 ## Il fitting riporta parametri reticolari NA (non disponibili)
 
-Quando si raffinano i parametri reticolari con il fitting dei picchi, un numero insufficiente di riflessi indipendenti può lasciare i parametri reticolari indeterminati, e il risultato può essere riportato come NA (non disponibile).
+Quando si raffinano i parametri reticolari con il fitting dei picchi, un numero insufficiente di riflessi indipendenti lascia i parametri reticolari indeterminati. In tal caso il programma mantiene la forma originale della cella e ne modifica solo la scala complessiva, e i campi dell'errore mostrano NA (non disponibile). Quando il numero di riflessi è uguale al numero di parametri reticolari indipendenti, i residui non consentono di ricavare gli errori standard, quindi anche i campi dell'errore mostrano NA.
 
 - A seconda del sistema cristallino, è necessario fornire riflessi sufficienti affinché sia determinabile il numero di parametri reticolari indipendenti (ad esempio solo \(a\) per il cubico, ma sei valori \(a, b, c, \alpha, \beta, \gamma\) per il triclino).
 - Se i riflessi sono linearmente dipendenti (concentrati in una sola direzione), alcuni parametri reticolari non possono essere determinati. Includere riflessi di orientazioni diverse.

@@ -76,14 +76,14 @@ Indique pour quels cristaux les indices des raies de diffraction (indices de Mil
 
 ![La liste des cristaux](../assets/cap-fr-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Affiche les mêmes informations que la liste de profils à cocher de la fenêtre principale. Les cristaux cochés ont leurs raies de diffraction tracées dans la fenêtre principale. Chaque ligne affiche une case à cocher (`Cocher`), une couleur de tracé (`Couleur du pic`) et le nom du cristal (`Cristal`).
+Affiche les mêmes informations que la liste des cristaux de la fenêtre principale. Les cristaux cochés ont leurs raies de diffraction tracées dans la fenêtre principale. Chaque ligne affiche une case à cocher (`Cocher`), une couleur de tracé (`Couleur du pic`) et le nom du cristal (`Cristal`).
 
 ### Boutons fléchés Haut/Bas (↑ / ↓)
 
 Modifient l'ordre des cristaux.
 
 !!! note
-    Les lignes 1 à 6 sont réservées à l'équation d'état (EOS) et ne peuvent pas être réordonnées. Voir [Équation d'état](5-equation-of-states.md) pour plus de détails.
+    La liste initiale des cristaux réserve le Flexible Crystal en tête et les dix étalons de pression qui le suivent (pour l'équation d'état, EOS) ; ces lignes ne peuvent pas être réordonnées. Voir [Équation d'état](5-equation-of-states.md) pour plus de détails.
 
 ### Ajouter
 
@@ -99,7 +99,7 @@ Retire de la liste le cristal actuellement sélectionné.
 
 ### Tout supprimer
 
-Retire tous les cristaux de la liste.
+Retire de la liste tous les cristaux non réservés (après confirmation).
 
 ---
 

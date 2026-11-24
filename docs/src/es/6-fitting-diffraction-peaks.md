@@ -45,9 +45,9 @@ Aquí se enumeran las líneas de difracción del cristal seleccionado. Al activa
 
 Los botones debajo de la lista exportan los resultados.
 
-- `Copy to clipborad`: Copia la tabla al portapapeles. Puede pegarse directamente en Excel y aplicaciones similares.
-- `Save as CSV`: Guarda la tabla como un archivo `.csv`. `Effective digit` establece el número de decimales.
-- `Clear peaks`: Borra los resultados del ajuste.
+- `Copy to Clipboard`: Copia la tabla al portapapeles. Puede pegarse directamente en Excel y aplicaciones similares.
+- `Save as CSV`: Guarda la tabla como un archivo `.csv`. `Effective digit` establece el número de cifras significativas mostradas en la tabla.
+- `Clear peaks`: Elimina todos los picos añadidos manualmente al Flexible Crystal.
 
 ## Fitting option (Opciones de ajuste)
 
@@ -103,7 +103,7 @@ Cuando los Search Range de dos o más líneas de difracción seleccionadas se so
 Una vez elegidos suficientes índices independientes para que el cálculo de mínimos cuadrados sea resoluble, este panel muestra los parámetros de red más probables \(a, b, c, \alpha, \beta, \gamma\) y el volumen \(V\), cada uno con su error (`±`).
 
 !!! note "Acerca de la indicación NA"
-    Cuando los grados de libertad son insuficientes —es decir, cuando los grados de libertad igualan el número de picos ajustados, o cuando un parámetro de red dado no tiene grados de libertad— se muestra `NA` en lugar de un error. Elegir suficientes reflexiones independientes permite calcular los errores.
+    Cuando el número de reflexiones ajustadas es igual al número de parámetros de red independientes, los residuos no permiten obtener errores estándar, por lo que se muestra `NA` en los campos de error. Cuando hay demasiado pocas reflexiones independientes para resolver los parámetros de red, el programa conserva la forma original de la celda y solo cambia su escala global, y los errores se muestran como `NA`. Elegir suficientes reflexiones independientes permite calcular los errores.
 
 - `Apply to the crystal` (Aplicar al cristal): Envía los parámetros de red refinados de vuelta al cristal seleccionado en el programa principal.
 - `Copy to Clipboard` (Copiar al portapapeles): Copia los parámetros de red optimizados al portapapeles.

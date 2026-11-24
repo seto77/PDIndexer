@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Parámetros del perfil
 
-Al hacer clic en el icono `Profile parameter` de la ventana principal se abre esta subventana. Aquí se realizan los ajustes detallados de los perfiles cargados y se aplican diversos procesamientos numéricos.
+Al hacer clic en el icono `Parámetro de perfil (P)` de la ventana principal se abre esta subventana. Aquí se realizan los ajustes detallados de los perfiles cargados y se aplican diversos procesamientos numéricos.
 
 ![Vista completa de la ventana de parámetros del perfil](../assets/cap-es-auto/FormProfileSetting.png)
 
 El lado izquierdo de la ventana contiene la [lista de comprobación de perfiles](#profile), y el lado derecho se divide en tres páginas con pestañas — [Procesamiento del perfil](#profile-processing), [Configuración de ejes](#axis-setting) y [Operador de perfiles](#profile-operator). Cada paso de procesamiento se puede activar/desactivar con una casilla de verificación y se aplica en orden de arriba abajo.
 
 !!! note
-    Los ajustes realizados en esta ventana se reflejan en tiempo real sobre los perfiles de la [ventana principal](1-main-window.md). Para los ajustes del lado del cristal, como la unidad del eje horizontal y las etiquetas de índices de las líneas de difracción, consulte [Parámetros del cristal](3-crystal-parameter.md).
+    Los ajustes realizados en esta ventana se reflejan en tiempo real sobre los perfiles de la [ventana principal](1-main-window.md). Elija la unidad de visualización del eje horizontal en la pestaña `Eje horizontal` de la ventana principal. Para los ajustes del lado del cristal, como las etiquetas de índices de las líneas de difracción, consulte [Parámetros del cristal](3-crystal-parameter.md).
 
 ---
 
@@ -136,16 +136,16 @@ El botón `Apply for all profiles (without background setting)` aplica los ajust
 
 ## Configuración de ejes {#axis-setting}
 
-En la pestaña `Axis setting` se cambian la unidad del eje horizontal, el tipo de radiación (haz incidente) y la energía del haz incidente del perfil seleccionado.
+En la pestaña `Axis setting` se restablecen el tipo de eje horizontal de origen, la longitud de onda, el ángulo de salida y el tiempo de exposición del perfil seleccionado. La unidad de visualización del eje horizontal no se elige aquí, sino en la pestaña `Eje horizontal` de la ventana principal.
 
 | Elemento | Descripción |
 | --- | --- |
-| `Horizontal axis setting` | Cambia la unidad actual del eje horizontal (`horizontal unit`). Con `Shift` también puede desplazar todo el eje horizontal. |
+| `Horizontal axis setting` | Establece el tipo de eje horizontal de origen, la longitud de onda y el ángulo de salida; `Cambiar` los escribe de vuelta en el perfil seleccionado. Con `Shift` también puede desplazar todo el eje horizontal. |
 | `Exposure Time` | Establece el tiempo de exposición (`sec.`) usado en el modo CPS (`(for CPS mode)`). |
 | `Vertical axis setting` | Ajustes relacionados con el eje vertical. |
 
 !!! note
-    El ajuste de ejes que se hace aquí cambia la información física que el propio perfil contiene (unidad, tipo de radiación, energía). A diferencia de la transformación de ejes de solo visualización de la ventana principal, afecta a cómo se interpretan los datos en sí. Dado que el tipo de radiación y la energía influyen directamente en el cálculo de las posiciones de las líneas de difracción, establezca los valores correctos.
+    Al hacer clic en `Cambiar` se escriben de vuelta en el perfil el tipo de eje de origen, el ángulo de salida, la longitud de onda y el tiempo de exposición. A diferencia del cambio de ejes de solo visualización de la ventana principal, afecta a cómo se interpretan los datos en sí. Dado que la longitud de onda y el ángulo de salida influyen directamente en el cálculo de las posiciones de las líneas de difracción, establezca los valores correctos. Una unidad de entrada incorrecta elegida al importar no se puede corregir aquí; vuelva a abrir el archivo de origen.
 
 ---
 

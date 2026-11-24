@@ -28,14 +28,14 @@ Questi requisiti si applicano alle build .NET 11 di questo codice sorgente. Per 
 | Voce | Requisito |
 | --- | --- |
 | OS | Windows (64 bit, x64 o Arm64) |
-| Runtime | `.NET Desktop Runtime 11.0` (il **Desktop Runtime**, non il semplice **.NET Runtime**; su Windows on Arm, la build **Arm64**) |
+| Runtime | Il `.NET Desktop Runtime` richiesto dalla versione che usi (11.0 per le build di questo codice sorgente). Installa il **Desktop Runtime**, non il semplice **.NET Runtime**, corrispondente all'architettura dell'applicazione (x64 o Arm64). |
 
 !!! warning "Scegli il Desktop Runtime"
     La pagina di download offre due prodotti: il ".NET Runtime" e il ".NET Desktop Runtime". Poiché PDIndexer è un'applicazione WinForms, assicurati di installare il **.NET Desktop Runtime**. Il semplice ".NET Runtime" da solo non avvierà il programma.
 
 - Download del runtime: <https://dotnet.microsoft.com/download/dotnet/11.0>
 
-Il pacchetto ZIP senza installazione è autonomo per l'architettura corrispondente (x64 o Arm64) e non richiede un'installazione separata del .NET Desktop Runtime. <!-- 260601Ch / 260625Cl arm64 -->
+Il pacchetto ZIP senza installazione è autonomo per l'architettura corrispondente (x64 o Arm64); include il proprio runtime e non richiede un'installazione separata del .NET Desktop Runtime. <!-- 260601Ch / 260625Cl arm64 -->
 
 !!! note "Informazioni sulla versione indicata nella documentazione più vecchia"
     Il manuale legacy (docx) menziona ".NET Desktop Runtime 6.0 o successivo", ma l'attuale PDIndexer richiede **.NET 11.0**. Segui il requisito della versione più recente.

@@ -76,14 +76,14 @@ Seleciona quais cristais têm os índices de suas linhas de difração (índices
 
 ![A lista de cristais](../assets/cap-pt-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Isto mostra as mesmas informações que a lista de verificação de perfis na janela principal. Os cristais marcados têm suas linhas de difração desenhadas na janela principal. Cada linha mostra uma caixa de seleção (`Marcar`), uma cor de desenho (`Cor do peak`) e o nome do cristal (`Cristal`).
+Isto mostra as mesmas informações que a lista de cristais na janela principal. Os cristais marcados têm suas linhas de difração desenhadas na janela principal. Cada linha mostra uma caixa de seleção (`Marcar`), uma cor de desenho (`Cor do peak`) e o nome do cristal (`Cristal`).
 
 ### Botões de seta para cima/baixo (↑ / ↓)
 
 Alteram a ordem dos cristais.
 
 !!! note
-    As linhas de 1 a 6 são reservadas para a equação de estado (EOS) e não podem ser reordenadas. Consulte [Equação de estado](5-equation-of-states.md) para mais detalhes.
+    A lista inicial de cristais reserva o Flexible Crystal no topo e os dez padrões de pressão seguintes (para a equação de estado, EOS); essas linhas não podem ser reordenadas. Consulte [Equação de estado](5-equation-of-states.md) para mais detalhes.
 
 ### Adicionar
 
@@ -99,7 +99,7 @@ Remove o cristal atualmente selecionado da lista.
 
 ### Excluir tudo
 
-Remove todos os cristais da lista.
+Remove da lista todos os cristais não reservados (após uma confirmação).
 
 ---
 

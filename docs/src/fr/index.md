@@ -35,6 +35,8 @@
 - [Environnement d'exécution et installation](appendix/runtime-and-installation.md)
 - [Formats de fichier](appendix/file-formats.md)
 - [Dépannage](appendix/troubleshooting.md)
+- [Algorithmes](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## Démarrage rapide
 

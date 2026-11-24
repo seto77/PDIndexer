@@ -35,6 +35,8 @@
 - [Среда выполнения и установка](appendix/runtime-and-installation.md)
 - [Форматы файлов](appendix/file-formats.md)
 - [Устранение неполадок](appendix/troubleshooting.md)
+- [Алгоритмы](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## Быстрый старт
 

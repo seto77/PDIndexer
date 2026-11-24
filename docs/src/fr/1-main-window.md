@@ -39,7 +39,7 @@ Chaque bouton de la barre d'outils ouvre ou ferme une fenêtre d'analyse dédié
 | `Analyse LPO` | Ouvrir/fermer la fenêtre d'analyse LPO (orientation préférentielle du réseau). | — |
 
 !!! note
-    Les fenêtres principales peuvent aussi être ouvertes/fermées par des raccourcis clavier : `Ctrl+Shift+C` (Paramètre de cristal), `Ctrl+Shift+E` (Équation d'état), `Ctrl+Shift+F` (Paramètre d'ajustement) et `Ctrl+Shift+D` (changer le mode des pics).
+    Les fenêtres principales peuvent aussi être ouvertes/fermées par des raccourcis clavier : `Ctrl+Shift+C` (Paramètre de cristal), `Ctrl+Shift+E` (Équation d'état), `Ctrl+Shift+F` (Paramètre d'ajustement), `Ctrl+Shift+D` (changer le mode des pics) et `Ctrl+Shift+S` (Analyse séquentielle). En outre, `Ctrl+Shift+Space` bascule la coche du cristal sélectionné, `Ctrl+Alt+Space` bascule la coche de la réflexion sélectionnée dans la liste des réflexions de la fenêtre d'ajustement des pics, et `Ctrl+Shift+V` lit comme profil le texte présent dans le presse-papiers. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Barre de menus
 
@@ -88,11 +88,11 @@ Chaque bouton de la barre d'outils ouvre ou ferme une fenêtre d'analyse dédié
 
 ### Langue
 
-Changer la langue de l'interface. Actuellement, l'anglais (`English (need restart)`) et le japonais (`Japanese (need restart)`) sont pris en charge. Un redémarrage est nécessaire après le changement.
+Changez la langue d'affichage depuis `Langue` à l'extrémité droite de la barre de menus (11 langues, chacune affichée sous son propre nom). Le changement nécessite un redémarrage : choisissez Oui dans la boîte de dialogue de confirmation et PDIndexer redémarre automatiquement. Le travail non enregistré est perdu ; enregistrez-le d'abord. <!-- 261124Cl changed: the old text described only English/Japanese -->
 
 ## Onglet Axe horizontal {#horizontal-axis-tab}
 
-L'onglet `Axe horizontal` définit le mode d'affichage de l'axe. Les réglages effectués ici sont purement d'affichage et sont sans rapport avec les données réelles de l'axe horizontal (les informations réelles de l'axe horizontal peuvent être modifiées depuis les [Paramètres du profil](4-profile-parameter.md)). Grâce à cela, vous pouvez aligner l'axe horizontal pour comparer même lorsque des sources de rayons X différentes ont été utilisées. Par exemple, même si le profil chargé a été acquis avec la raie Cu Kα, il peut être affiché comme s'il avait été acquis à la longueur d'onde de la raie Mo Kα.
+L'onglet `Axe horizontal` définit le mode d'affichage de l'axe. Les réglages effectués ici sont purement d'affichage et sont sans rapport avec les données réelles de l'axe horizontal (les informations réelles de l'axe horizontal peuvent être modifiées dans la fenêtre [Paramètres du profil](4-profile-parameter.md)). Grâce à cela, vous pouvez aligner l'axe horizontal pour comparer même lorsque des sources de rayons X différentes ont été utilisées. Par exemple, même si le profil chargé a été acquis avec la raie Cu Kα, il peut être affiché comme s'il avait été acquis à la longueur d'onde de la raie Mo Kα.
 
 | Élément | Description |
 | --- | --- |
@@ -131,7 +131,7 @@ Le mode coché est le mode actuel.
 
 ### Axe vertical
 
-Indiquez si l'axe vertical (intensité) doit être affiché en coups bruts (`Coups bruts`) ou en coups par pas (`Coups par pas (CPS)`). Vous pouvez aussi indiquer si l'axe vertical doit être affiché sur une échelle linéaire (`Linéaire`) ou logarithmique (`Logarithmique`).
+Indiquez si l'axe vertical (intensité) doit être affiché en coups bruts (`Coups bruts`) ou en coups divisés par le temps d'exposition en secondes (`Coups par pas (CPS)`). Vous pouvez aussi indiquer si l'axe vertical doit être affiché sur une échelle linéaire (`Linéaire`) ou logarithmique (`Logarithmique`).
 
 ## Liste des profils
 
@@ -141,7 +141,7 @@ En mode multi-profils, les profils chargés sont présentés sous forme de liste
 
 ## Liste des cristaux
 
-Affiche et configure la liste des cristaux. Cocher une entrée trace des raies de diffraction aux positions des pics de diffraction. Par défaut, environ 80 cristaux sont préenregistrés.
+Affiche et configure la liste des cristaux. Cocher une entrée trace des raies de diffraction aux positions des pics de diffraction. La liste initiale comprend des étalons de pression et d'autres cristaux.
 
 !!! note "Lignes spéciales"
     - La première ligne (ligne 0) est le **Flexible Crystal** (fond cyan), utilisé pour tracer des raies de diffraction arbitraires.

@@ -21,7 +21,7 @@ Diese Seite fasst die unterstützten Erweiterungen, die Ein-/Ausgaberichtung und
 | `chi` | Fit2D-Ausgabe | Die führenden Kopfzeilen werden übersprungen; die Spalten 2 und 4 der vierspaltigen Daten werden als Winkel und Intensität übernommen. |
 | `ras` | Rigaku-Format | Textformat, das auch Geräteinformationen enthält. |
 | `nxs` | NeXus / HDF5 (SSD, mehrere Detektoren) | Kann mehrere Kanäle (Histogramme) enthalten; jeder wird einzeln energiekalibriert und importiert. |
-| `npd` | EDX-Profil (SSD) | Liest `EGC0/1/2`, `2Theta`, `Live time` usw. aus dem Header und wandelt die Kanalnummer in Energie um. |
+| `npd` | EDX-Profil (SSD) | Liest `2Theta` und `Live time` aus dem Header als Take-off-Winkel und Belichtungszeit. Die Datenpunkte verwenden die Energiespalte der Datei (die Kanalnummer wird nicht mit den `EGC0/1/2`-Koeffizienten umgerechnet). |
 | `xbm` | EDX-Binärformat (z. B. SP-8 BL04B2) | Metadaten wie Probenname, Messbedingungen und EGC-Kalibrierkoeffizienten werden als Kommentar importiert. |
 | `rpt` | Genie-Format (SSD) | Liest Abnahmewinkel, Belichtungszeit und EGC aus dem Header. |
 | `xy` | pyFAI-kalibrierter zweispaltiger Text | Liest die Wellenlänge aus dem Header und importiert Winkel gegen Intensität. |
@@ -44,7 +44,7 @@ Der Dialog bietet die folgenden Einstellungen.
 | Horizontale Achse (Horizontal Axis) | Die physikalische Größe (2θ, Energie, Netzebenenabstand (d-Wert), Wellenzahl, TOF usw.) und Einheit, die die erste importierte Spalte darstellt. |
 | Strahlungsquelle / Wellenlänge | Röntgen / Neutron / Elektron sowie die charakteristische Röntgenlinie (Kα usw.) oder die Wellenlänge. Dies bestimmt die Umrechnung in Netzebenenabstand (d-Wert) und 2θ. |
 | Belichtungszeit (pro Schritt) | Die Belichtungszeit pro Schritt in Sekunden. Wird für die CPS-Anzeige und die Intensitätsnormierung verwendet. |
-| Für SSD-Daten | Für SSD-(EDX-)Daten wie `rpt` / `npd` / `xbm` / `nxs` legen Sie die Koeffizienten \(a_0, a_1, a_2\) fest, die die Kanalnummer \(n\) in Energie \(E\) umrechnen. Bei mehreren Detektoren können Sie jeden einzeln aktivieren/deaktivieren und seine Koeffizienten separat einstellen. |
+| Für SSD-Daten | Für SSD-(EDX-)Daten wie `rpt` / `npd` / `xbm` / `nxs` legen Sie die Koeffizienten \(a_0, a_1, a_2\) fest, die die Kanalnummer \(n\) in Energie \(E\) umrechnen. Bei mehreren Detektoren können Sie jeden einzeln aktivieren/deaktivieren und seine Koeffizienten separat einstellen. `npd` verwendet die Energiespalte der Datei, daher werden diese Koeffizienten darauf nicht angewendet. |
 | Niederenergie-Grenzwert | Wenn aktiviert, werden Datenpunkte unterhalb der angegebenen Energie beim Import ausgeschlossen. |
 
 Für SSD-Daten wird die Kanalnummer \(n\) durch eine quadratische Kalibrierung in Energie \(E\) (in eV) umgerechnet:
@@ -62,23 +62,21 @@ Beim Lesen von generischem Text (einem "sonstigen" Format) zeigt der Dialog den 
 
 **Datei → Profil(e) speichern (Save profile(s))** speichert alle geladenen Profile im nativen PDIndexer-Format `pdi2`.
 
-**Datei → Ausgewählte Profil(e) exportieren (Export the selected profile(s))** schreibt das ausgewählte Profil in einem der folgenden Formate.
+**Datei → Ausgewählte Profil(e) exportieren (Export the selected profile(s))** schreibt Profile in einem der folgenden Formate.
 
 | Erweiterung / Format | Richtung | Hinweise |
 | --- | --- | --- |
 | `pdi2` | Aus | Natives PDIndexer-Format. Speichert alle Profile auf einmal. |
-| `csv` | Aus | Kommagetrennt (Winkel, Intensität). |
-| `tsv` | Aus | Tabulatorgetrennt (Winkel und Intensität durch einen Tabulator getrennt). |
-| `gsa` (GSAS) | Aus | GSAS-Format für die Rietveld-Analyse. Den Inhalt können Sie im Exportbildschirm unten prüfen. |
+| `csv` | Aus | Kommagetrennt (X, Y). Speichert die angehakten Profile gemeinsam in einer Datei oder als eine Datei pro Profil. X ist die Koordinate der angezeigten horizontalen Achse, und das Dezimaltrennzeichen ist unabhängig von den Regionseinstellungen immer `.`. |
+| `tsv` | Aus | Tabulatorgetrennt. Gleicher Inhalt wie `csv`. |
+| `gsa` (GSAS) | Aus | GSAS-Format für die Rietveld-Analyse. Schreibt das ausgewählte Profil. |
 
 #### Export im GSAS-Format
 
-Wenn Sie das GSAS-Format wählen, erscheint ein Exportbildschirm, damit Sie überprüfen können, was geschrieben wird. Zeile 1 ist der Profilname, Zeile 2 ein `BANK 1 … CONST … FXYE`-Header, und die folgenden Zeilen enthalten drei Spalten: Winkel, Intensität und Fehler. Der Fehler wird aus den eigenen Fehlerdaten des Profils übernommen, sofern vorhanden; andernfalls wird \(\sqrt{\text{intensity}}\) verwendet.
-
-![GSAS-Exportbildschirm](../../assets/cap-de-auto/FormExportGSAS.png)
+Wenn Sie das GSAS-Format und anschließend den Speicherort wählen, wird das ausgewählte Profil direkt in die Datei geschrieben. Zeile 1 ist der Profilname, Zeile 2 ein `BANK 1 … CONST … FXYE`-Header, und die folgenden Zeilen enthalten drei Spalten: Winkel, Intensität und Fehler. Der Fehler wird aus den eigenen Fehlerdaten des Profils übernommen, sofern vorhanden; andernfalls wird \(\sqrt{\text{intensity}}\) verwendet.
 
 !!! note "Winkelskalierung"
-    Für gewöhnliche winkeldispersive Daten werden die Winkelwerte mit 100 multipliziert geschrieben (die GSAS-`CONST`-Konvention). Für Neutronen-TOF-Daten werden die Werte unverändert, ohne Skalierung, geschrieben.
+    Ist die horizontale Achse 2θ, werden die Werte aus der angezeigten 2θ-Einheit (Grad, Zenti-Grad, Radiant oder Milliradiant) in Zenti-Grad umgerechnet (die GSAS-`CONST`-Konvention). Für Neutronen-TOF-Daten werden die Werte unverändert, ohne Umrechnung, geschrieben. Für jede andere horizontale Achse (etwa d oder Energie) wird nichts exportiert.
 
 ---
 

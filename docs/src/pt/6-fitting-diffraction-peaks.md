@@ -45,9 +45,9 @@ As linhas de difração do cristal selecionado são listadas aqui. Ativar a caix
 
 Os botões abaixo da lista exportam os resultados.
 
-- `Copy to clipborad`: Copia a tabela para a área de transferência. Ela pode ser colada diretamente no Excel e aplicativos semelhantes.
-- `Save as CSV`: Salva a tabela como um arquivo `.csv`. `Effective digit` (casas significativas) define o número de casas decimais.
-- `Clear peaks`: Limpa os resultados do ajuste.
+- `Copy to Clipboard`: Copia a tabela para a área de transferência. Ela pode ser colada diretamente no Excel e aplicativos semelhantes.
+- `Save as CSV`: Salva a tabela como um arquivo `.csv`. `Effective digit` (casas significativas) define o número de algarismos significativos mostrados na tabela.
+- `Clear peaks`: Exclui todos os picos adicionados manualmente ao Flexible Crystal.
 
 ## Fitting option (Opções de ajuste)
 
@@ -103,7 +103,7 @@ Quando os Search Ranges de duas ou mais linhas de difração selecionadas se sob
 Assim que índices independentes suficientes forem escolhidos para que o cálculo por mínimos quadrados se torne solúvel, este painel exibe os parâmetros de rede mais prováveis \(a, b, c, \alpha, \beta, \gamma\) e o volume \(V\), cada um com seu erro (`±`).
 
 !!! note "Sobre a exibição de NA"
-    Quando não há graus de liberdade suficientes—isto é, quando os graus de liberdade são iguais ao número de picos ajustados, ou quando um dado parâmetro de rede não tem graus de liberdade—`NA` é exibido em vez de um erro. Escolher reflexões independentes suficientes permite que os erros sejam calculados.
+    Quando o número de reflexões ajustadas é igual ao número de parâmetros de rede independentes, os resíduos não permitem obter erros-padrão, e por isso `NA` é exibido nos campos de erro. Quando há reflexões independentes de menos para resolver os parâmetros de rede, o programa mantém a forma original da célula e altera apenas sua escala global, e os erros são mostrados como `NA`. Escolher reflexões independentes suficientes permite que os erros sejam calculados.
 
 - `Apply to the crystal` (aplicar ao cristal): Envia os parâmetros de rede refinados de volta ao cristal selecionado no programa principal.
 - `Copy to Clipboard` (copiar para a área de transferência): Copia os parâmetros de rede otimizados para a área de transferência.

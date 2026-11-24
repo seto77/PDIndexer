@@ -39,7 +39,7 @@ Cada botão da barra de ferramentas alterna uma janela de análise dedicada.
 | `LPO Analysis` | Alterna a janela de análise LPO (orientação preferencial de rede). | — |
 
 !!! note
-    As janelas principais também podem ser alternadas com atalhos de teclado: `Ctrl+Shift+C` (Parâmetro de cristal), `Ctrl+Shift+E` (Equação de estado), `Ctrl+Shift+F` (Parâmetro de ajuste) e `Ctrl+Shift+D` (alterar o modo de pico).
+    As janelas principais também podem ser alternadas com atalhos de teclado: `Ctrl+Shift+C` (Parâmetro de cristal), `Ctrl+Shift+E` (Equação de estado), `Ctrl+Shift+F` (Parâmetro de ajuste), `Ctrl+Shift+D` (alterar o modo de pico) e `Ctrl+Shift+S` (Análise sequencial). Além disso, `Ctrl+Shift+Space` alterna a marcação do cristal selecionado, `Ctrl+Alt+Space` alterna a marcação da reflexão selecionada na lista de reflexões da janela de ajuste de picos, e `Ctrl+Shift+V` lê o texto da área de transferência como um perfil. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Barra de menus
 
@@ -88,11 +88,11 @@ Cada botão da barra de ferramentas alterna uma janela de análise dedicada.
 
 ### Language
 
-Alterna o idioma da interface. Atualmente há suporte para inglês (`English (need restart)`) e japonês (`Japanese (need restart)`). É necessário reiniciar após a troca.
+Alterne o idioma de exibição em `Idioma`, na extremidade direita da barra de menus (11 idiomas, cada um mostrado pelo próprio nome). A troca exige reiniciar: escolha Sim na caixa de diálogo de confirmação e o PDIndexer reinicia automaticamente. O trabalho não salvo é perdido, portanto salve-o antes. <!-- 261124Cl changed: the old text described only English/Japanese -->
 
 ## Aba Eixo horizontal {#horizontal-axis-tab}
 
-A aba `Eixo horizontal` define o modo de exibição do eixo. As configurações aqui são apenas de exibição e não têm relação com os dados reais do eixo horizontal (as informações reais do eixo horizontal podem ser alteradas em [Parâmetros do perfil](4-profile-parameter.md)). Por isso, é possível alinhar o eixo horizontal para comparação mesmo quando fontes de raios X diferentes foram usadas. Por exemplo, mesmo que o perfil carregado tenha sido adquirido com a linha Cu Kα, ele pode ser exibido como se tivesse sido adquirido no comprimento de onda da linha Mo Kα.
+A aba `Eixo horizontal` define o modo de exibição do eixo. As configurações aqui são apenas de exibição e não têm relação com os dados reais do eixo horizontal (as informações reais do eixo horizontal podem ser alteradas na janela [Parâmetros do perfil](4-profile-parameter.md)). Por isso, é possível alinhar o eixo horizontal para comparação mesmo quando fontes de raios X diferentes foram usadas. Por exemplo, mesmo que o perfil carregado tenha sido adquirido com a linha Cu Kα, ele pode ser exibido como se tivesse sido adquirido no comprimento de onda da linha Mo Kα.
 
 | Item | Descrição |
 | --- | --- |
@@ -131,7 +131,7 @@ O modo que está marcado é o modo atual.
 
 ### Eixo vertical
 
-Especifica se o eixo vertical (intensidade) deve ser exibido como contagens brutas (`Contagens brutas`) ou como contagens por passo (`Contagens por passo (CPS)`). Também é possível especificar se o eixo vertical deve ser exibido em escala linear (`Linear`) ou logarítmica (`Logarítmico`).
+Especifica se o eixo vertical (intensidade) deve ser exibido como contagens brutas (`Contagens brutas`) ou como contagens divididas pelo tempo de exposição em segundos (`Contagens por passo (CPS)`). Também é possível especificar se o eixo vertical deve ser exibido em escala linear (`Linear`) ou logarítmica (`Logarítmico`).
 
 ## Lista de perfis
 
@@ -141,7 +141,7 @@ No modo de múltiplos perfis, os perfis carregados são mostrados como uma lista
 
 ## Lista de cristais
 
-Exibe e configura a lista de cristais. Marcar uma entrada desenha linhas de difração nas posições dos picos de difração. Por padrão, cerca de 80 cristais vêm pré-registrados.
+Exibe e configura a lista de cristais. Marcar uma entrada desenha linhas de difração nas posições dos picos de difração. A lista inicial inclui padrões de pressão e outros cristais.
 
 !!! note "Linhas especiais"
     - A primeira linha (linha 0) é o **Flexible Crystal** (fundo ciano), usado para desenhar linhas de difração arbitrárias.

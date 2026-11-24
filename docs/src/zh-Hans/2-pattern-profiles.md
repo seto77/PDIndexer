@@ -3,7 +3,7 @@
 
 本页介绍 PDIndexer 处理的“谱图数据”本身（测量数据集），以及如何加载、显示和导出它。加载后的处理——平滑、背景扣除等——在 [谱图参数](4-profile-parameter.md) 窗口中进行。支持的文件扩展名完整列表请参见 [文件格式](appendix/file-formats.md)。
 
-![PDIndexer 主窗口，中央显示谱图，左侧显示谱图列表和晶体列表。](../assets/cap-zh-Hans-auto/FormMain.png)
+![PDIndexer 主窗口，中央显示谱图，右侧显示谱图列表和晶体列表。](../assets/cap-zh-Hans-auto/FormMain.png)
 
 ## 谱图是什么
 
@@ -14,7 +14,7 @@
 - 中子飞行时间（TOF）法中为飞行时间
 - 无论哪种情况，内部都可以转换为晶面间距 \( d \) 或散射矢量 \( q \) 处理
 
-纵轴为衍射强度，可以显示为原始计数（`Raw Counts`）或每步计数（`Count per Step (CPS)`），并以线性或对数比例呈现（参见 [主窗口](1-main-window.md) 页面中的 `Vertical Axis`）。
+纵轴为衍射强度，可以显示为原始计数（`Raw Counts`）或除以曝光时间（秒）后的计数（`Count per Step (CPS)`），并以线性或对数比例呈现（参见 [主窗口](1-main-window.md) 页面中的 `Vertical Axis`）。
 
 ## 支持的输入格式
 
@@ -57,7 +57,7 @@
 
 ## 谱图列表
 
-主窗口左侧的 `Profile` 列表显示所有已加载的谱图。
+主窗口右侧的 `Profile` 列表显示所有已加载的谱图。
 
 - 只有勾选的谱图才会在中央查看区绘制。使用 `Check/Uncheck all` 可一次性切换全部勾选状态。
 - 点击 `Color` 列可更改各谱图的绘制颜色。
@@ -86,10 +86,10 @@
 ## 导出谱图
 
 - **`File ▸ Save profile(s)`** — 将所有已加载的谱图保存为 PDIndexer 本身的 `pdi2` 格式。轴设置和处理信息会被保留。
-- **`File ▸ Export the selected profile(s)`** — 将所选谱图以下列格式之一导出：
-  - `as CSV (comma separated values) file` — 逗号分隔（角度、强度）
-  - `as TSV (tab separated values) file` — 制表符分隔
-  - `as GSAS file` — GSAS（Rietveld 精修）数据格式
+- **`File ▸ Export the selected profile(s)`** — 将谱图以下列格式之一导出：
+  - `as CSV (comma separated values) file` — 将已勾选的谱图以逗号分隔值（X, Y）保存，可合并为一个文件，也可每个谱图各保存为一个文件。选择保存位置后，回答 `是` 则合并，回答 `否` 则分别保存。X 为当前显示的横轴坐标。无论区域设置如何，小数点始终使用 `.`。
+  - `as TSV (tab separated values) file` — 以制表符分隔保存相同的内容。
+  - `as GSAS file` — 将所选谱图以 GSAS（Rietveld 精修）数据格式写出。仅当横轴为 2θ 或中子 TOF 时才能导出。
 
 !!! note "保存图形"
     若要保存绘制的图形而非谱图数据本身，请使用 `File ▸ Copy to Clipboard` 或 `File ▸ Save as Metafile`（EMF）。EMF 是矢量格式，可导入 PowerPoint 和 Word。

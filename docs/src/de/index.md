@@ -35,6 +35,8 @@
 - [Laufzeit und Installation](appendix/runtime-and-installation.md)
 - [Dateiformate](appendix/file-formats.md)
 - [Fehlerbehebung](appendix/troubleshooting.md)
+- [Algorithmen](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## Schnellstart
 

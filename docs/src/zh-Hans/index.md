@@ -35,6 +35,8 @@
 - [运行环境与安装](appendix/runtime-and-installation.md)
 - [文件格式](appendix/file-formats.md)
 - [故障排除](appendix/troubleshooting.md)
+- [算法](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## 快速入门
 

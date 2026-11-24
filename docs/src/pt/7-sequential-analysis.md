@@ -35,19 +35,19 @@ Os controles em torno do botão `Executar` governam o intervalo de análise e o 
 
 ## Abas de saída
 
-Cada aba é uma tabela para uma quantidade de saída. Cada linha corresponde a um perfil (o nome do perfil), e cada coluna corresponde a uma linha de difração selecionada (índice hkl, ou `Peak No.` para um flexible crystal). As tabelas são mantidas como texto separado por tabulações e são convertidas em valores separados por vírgulas (CSV) quando você as usa com `Copiar` ou `Salvar`.
+Cada aba é uma tabela para uma quantidade de saída. Cada linha corresponde a um perfil (o nome do perfil), e cada coluna corresponde a uma linha de difração selecionada (índice hkl, ou `Peak No.` para um flexible crystal). As tabelas são mantidas como texto separado por tabulações. `Copiar` coloca a tabela na área de transferência como texto separado por tabulações, e `Salvar` grava um arquivo separado por vírgulas (CSV).
 
 ### 2θ (°)
 
 ![Aba 2θ](../assets/cap-pt-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-A posição de pico ajustada, em 2θ (graus), para cada perfil e cada linha de difração.
+A posição de pico ajustada, em 2θ (graus), para cada perfil e cada linha de difração. Quando o eixo horizontal é 2θ, o valor é convertido em graus, qualquer que seja a unidade de exibição (graus, centigraus, radianos ou miliradianos). Para outros eixos, como energia ou TOF, a coluna mostra `NaN`. Para reflexões no modo `Simple`, é gravado o máximo observado dentro do intervalo de pesquisa. <!-- 261124Cl changed -->
 
 ### Distância interplanar (Å)
 
 ![Aba de distância interplanar](../assets/cap-pt-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
-O espaçamento interplanar d, em Å, calculado a partir de cada posição de pico. Ele é obtido a partir do comprimento de onda e de 2θ por \( d = \dfrac{\lambda}{2\sin\theta} \).
+O espaçamento interplanar d, em Å, calculado a partir de cada posição de pico com as configurações atuais do eixo horizontal (radiação, comprimento de onda, energia ou condições de TOF). Para dados de dispersão angular, é \( d = \dfrac{\lambda}{2\sin\theta} \). <!-- 261124Cl changed -->
 
 ### FWHM (deg.)
 
@@ -80,7 +80,7 @@ A pressão derivada das constantes de célula de cada perfil usando uma [equaç�
 Os resultados da análise de tensão uniaxial / deformação da rede de Singh. O número final de cada nome de perfil é interpretado como o ângulo azimutal \( \psi \) (graus), e, para cada reflexão, a relação entre azimute e d é ajustada por mínimos quadrados (Levenberg–Marquardt). Para cada reflexão, ela fornece o espaçamento de rede livre de tensão `d0`, o azimute de deformação máxima `Ψmax` e uma quantidade proporcional à tensão `t/6Ghkl` (a razão entre a tensão diferencial \( t \) e o módulo de cisalhamento \( G_{hkl} \)). As curvas ajustadas também são desenhadas no gráfico da aba.
 
 !!! note "Quando a equação de Singh se aplica"
-    Esta aba opera sobre uma série em "modo de análise de tensão" cujos nomes de perfil terminam em `...-whole`. Cada nome de perfil deve conter um ângulo azimutal como seu token final (por exemplo `...-30`). Para uma série comum, esta aba não é atualizada.
+    Se o nome do primeiro perfil terminar em `whole`, a execução entra no "modo de análise de tensão". Nesse modo, o primeiro perfil é ignorado, e o texto após o último hífen do nome de cada um dos perfis restantes (por exemplo `30` em `...-30`) é lido como o azimute em graus. Uma execução comum, fora do modo de análise de tensão, limpa esta aba.
 
 O espaçamento de rede dependente do azimute expresso pela equação de Singh é aproximadamente
 
@@ -92,7 +92,7 @@ onde \( \alpha \) corresponde a `t/6Ghkl` e \( \psi_{\max} \) é o azimute de de
 
 | Ação | Descrição |
 | --- | --- |
-| `Copiar` | Copia a aba exibida no momento para a área de transferência como CSV (separado por vírgulas). |
+| `Copiar` | Copia a aba exibida no momento para a área de transferência como texto separado por tabulações. |
 | `Salvar` | Salva a aba exibida no momento como um arquivo CSV (nome do arquivo escolhido em uma caixa de diálogo). |
 
 ### Salvar automaticamente

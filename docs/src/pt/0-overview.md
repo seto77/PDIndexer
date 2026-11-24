@@ -5,7 +5,7 @@
 
 O PDIndexer é um aplicativo de software para analisar padrões unidimensionais de difração de raios X de pó. Ele pode exibir e analisar perfis de difração obtidos de instrumentos de difração de raios X de pó, de raios X de síncrotron medidos com óptica de transmissão de Debye-Scherrer e de medições de tempo de voo (TOF) de nêutrons.
 
-Ele fornece um conjunto completo de ferramentas para a análise de difração de pó, incluindo exibição sobreposta de múltiplos perfis, comparação com as linhas de difração de cristais conhecidos, calibração de temperatura e pressão em relação a materiais padrão, ajuste de perfis e refinamento por mínimos quadrados dos parâmetros de rede.
+Ele fornece um conjunto completo de ferramentas para a análise de difração de pó, incluindo exibição sobreposta de múltiplos perfis, comparação com as linhas de difração de cristais conhecidos, estimativa da pressão a partir das equações de estado de materiais padrão, ajuste de perfis e refinamento por mínimos quadrados dos parâmetros de rede.
 
 !!! note "Sobre este manual"
     Esta página é apenas uma visão geral. Para instruções detalhadas sobre cada recurso, consulte as páginas dedicadas.
@@ -18,7 +18,7 @@ O PDIndexer oferece os seguintes recursos.
 | --- | --- |
 | Exibição e comparação de perfis | Sobreponha e compare múltiplos perfis de difração. As escalas do eixo horizontal (\(2\theta\) / \(d\) / \(q\)) e do eixo vertical podem ser alternadas de forma flexível. |
 | Comparação com cristais conhecidos | Calcule as linhas de difração de cristais conhecidos e sobreponha-as ao perfil observado para identificação. Consulte [Parâmetros do cristal](3-crystal-parameter.md) para detalhes. |
-| Calibração com padrões | Usando equações de estado (EOS) como NaCl EOS e Pt EOS, estime a temperatura e a pressão a partir do volume da célula de um material padrão. Consulte [Equação de estado (EOS)](5-equation-of-states.md) para detalhes. |
+| Calibração com padrões | Usando equações de estado (EOS) como NaCl EOS e Pt EOS, estime a pressão a partir do volume de célula medido de um material padrão na temperatura especificada. Consulte [Equação de estado (EOS)](5-equation-of-states.md) para detalhes. |
 | Ajuste de picos | Ajuste a posição, a largura total a meia altura (FWHM) e a intensidade dos picos de difração. Consulte [Ajuste de picos de difração](6-fitting-diffraction-peaks.md) para detalhes. |
 | Refinamento de parâmetros de rede | Refine os parâmetros de rede a partir das posições dos picos por mínimos quadrados. O **Cell Finder** também pode pesquisar parâmetros de rede a partir das posições dos picos. |
 | Análise sequencial | Processe em lote uma série de arquivos com o recurso **Análise sequencial**. Consulte [Análise sequencial](7-sequential-analysis.md) para detalhes. |

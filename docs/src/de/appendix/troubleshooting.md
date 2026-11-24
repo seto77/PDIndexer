@@ -7,17 +7,18 @@ Wenn bei der Verwendung von PDIndexer ein Problem auftritt, prüfen Sie zuerst d
 
 Diese Anforderungen gelten für .NET-11-Builds aus diesem Quellstand. Beachten Sie bei veröffentlichten Versionen die jeweils angegebene Laufzeitanforderung.
 
-PDIndexer benötigt die **.NET Desktop Runtime 11.0**. Wenn die Runtime nicht installiert ist, wird beim Start möglicherweise ein Fehler angezeigt, oder das Programm wird beendet, ohne etwas zu tun.
+Die MSI-Installation von PDIndexer benötigt die von der jeweiligen Version angegebene **.NET Desktop Runtime** (Builds aus diesem Quellbaum zielen auf .NET 11). Das installationsfreie ZIP enthält seine Laufzeitumgebung. Wenn die Runtime bei einer MSI-Installation nicht installiert ist, wird beim Start möglicherweise ein Fehler angezeigt, oder das Programm wird beendet, ohne etwas zu tun.
 
 !!! warning "Lösung"
-    Folgen Sie [Runtime und Installation](runtime-and-installation.md), um die neueste **.NET Desktop Runtime 11.0** (x64) zu installieren, und starten Sie PDIndexer anschließend neu.
+    Folgen Sie [Runtime und Installation](runtime-and-installation.md), um die von der verwendeten Version benötigte **.NET Desktop Runtime** passend zur Architektur der Anwendung (x64 oder Arm64) zu installieren, und starten Sie PDIndexer anschließend neu.
 
 ## Die UI-Sprache wechselt nicht
 
-Sie können die UI-Sprache im Menü unter **Optionen** ▸ **Sprache** ändern, indem Sie **English (need restart)** oder **Japanese (need restart)** wählen. Eine Sprachänderung wird jedoch erst **nach einem Neustart** wirksam.
+<!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
+Wählen Sie die Anzeigesprache (11 Sprachen, jeweils mit ihrem eigenen Namen angezeigt) über **Sprache** am rechten Ende der Menüleiste. Der Sprachwechsel erfordert einen Neustart: Wählen Sie im Bestätigungsdialog **Ja**, und PDIndexer startet automatisch in der gewählten Sprache neu.
 
 !!! note
-    Es ist normal, dass sich die Anzeige nach der Auswahl einer Sprache nicht sofort ändert. Schließen Sie PDIndexer und starten Sie es erneut.
+    Der Neustart verwirft nicht gespeicherte Arbeit (geladene Profile und laufende Bearbeitungen); speichern Sie daher vor dem Wechsel, was Sie benötigen. Wenn Sie **Nein** wählen, ändert sich die Sprache nicht.
 
 ## Beschädigte Einstellungen zurücksetzen
 
@@ -49,7 +50,7 @@ Um theoretische Beugungsintensitäten zu berechnen, muss die Kristallstruktur **
 
 ## Anpassung meldet NA (nicht verfügbare) Gitterkonstanten
 
-Beim Verfeinern von Gitterkonstanten mit Peak-Anpassung kann eine unzureichende Anzahl unabhängiger Reflexe die Gitterkonstanten unbestimmt lassen, und das Ergebnis wird möglicherweise als NA (nicht verfügbar) gemeldet.
+Beim Verfeinern von Gitterkonstanten mit Peak-Anpassung lässt eine unzureichende Anzahl unabhängiger Reflexe die Gitterkonstanten unbestimmt. In diesem Fall behält das Programm die ursprüngliche Zellform bei und ändert nur ihren Gesamtmaßstab, und die Fehlerfelder zeigen NA (nicht verfügbar). Wenn die Anzahl der Reflexe gleich der Anzahl der unabhängigen Gitterkonstanten ist, lassen sich aus den Residuen keine Standardfehler gewinnen, sodass die Fehlerfelder ebenfalls NA zeigen.
 
 - Je nach Kristallsystem müssen Sie genügend Reflexe bereitstellen, damit die Anzahl der unabhängigen Gitterkonstanten bestimmt werden kann (z. B. nur \(a\) für kubisch, aber sechs Werte \(a, b, c, \alpha, \beta, \gamma\) für triklin).
 - Wenn die Reflexe linear abhängig sind (in eine Richtung verzerrt), können bestimmte Gitterkonstanten nicht bestimmt werden. Schließen Sie Reflexe unterschiedlicher Orientierung ein.

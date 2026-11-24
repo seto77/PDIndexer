@@ -35,19 +35,19 @@ Los controles que rodean el botón `Ejecutar` rigen el rango de análisis y el t
 
 ## Pestañas de salida
 
-Cada pestaña es una tabla para una magnitud de salida. Cada fila corresponde a un perfil (el nombre del perfil) y cada columna corresponde a una línea de difracción seleccionada (índice hkl, o `Peak No.` para un cristal flexible). Las tablas se mantienen como texto separado por tabuladores y se convierten en valores separados por comas (CSV) cuando las `Copiar` o las `Guardar`.
+Cada pestaña es una tabla para una magnitud de salida. Cada fila corresponde a un perfil (el nombre del perfil) y cada columna corresponde a una línea de difracción seleccionada (índice hkl, o `Peak No.` para un cristal flexible). Las tablas se mantienen como texto separado por tabuladores. `Copiar` las coloca en el portapapeles como texto separado por tabuladores, y `Guardar` escribe un archivo separado por comas (CSV).
 
 ### 2θ (°)
 
 ![Pestaña 2θ](../assets/cap-es-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-La posición ajustada del pico, en 2θ (grados), para cada perfil y cada línea de difracción.
+La posición ajustada del pico, en 2θ (grados), para cada perfil y cada línea de difracción. Cuando el eje horizontal es 2θ, el valor se convierte a grados sea cual sea la unidad de visualización (grados, centésimas de grado, radianes o milirradianes). Para otros ejes, como la energía o el TOF, la columna muestra `NaN`. Para las reflexiones en modo `Búsqueda simple`, se escribe el máximo observado dentro del rango de búsqueda. <!-- 261124Cl changed -->
 
 ### Distancia interplanar (Å)
 
 ![Pestaña de distancia interplanar](../assets/cap-es-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
-El espaciado interplanar d, en Å, calculado a partir de cada posición de pico. Se obtiene de la longitud de onda y de 2θ mediante \( d = \dfrac{\lambda}{2\sin\theta} \).
+El espaciado interplanar d, en Å, calculado a partir de cada posición de pico con la configuración actual del eje horizontal (radiación, longitud de onda, energía o condiciones de TOF). Para datos dispersivos en ángulo es \( d = \dfrac{\lambda}{2\sin\theta} \). <!-- 261124Cl changed -->
 
 ### FWHM (grados)
 
@@ -80,7 +80,7 @@ La presión derivada de las constantes de celda de cada perfil mediante una [ecu
 Los resultados del análisis de esfuerzo uniaxial / deformación de la red de Singh. El número final de cada nombre de perfil se interpreta como el ángulo azimutal \( \psi \) (grados), y para cada reflexión la relación azimut-versus-d se ajusta por mínimos cuadrados (Levenberg–Marquardt). Para cada reflexión proporciona el espaciado de red libre de esfuerzo `d0`, el azimut de deformación máxima `Ψmax` y una magnitud proporcional al esfuerzo `t/6Ghkl` (la razón entre el esfuerzo diferencial \( t \) y el módulo de corte \( G_{hkl} \)). Las curvas ajustadas también se dibujan en el gráfico de la pestaña.
 
 !!! note "Cuándo se aplica la ecuación de Singh"
-    Esta pestaña opera sobre una serie en "modo de análisis de esfuerzo" cuyos nombres de perfil terminan en `...-whole`. Cada nombre de perfil debe llevar un ángulo azimutal como su token final (por ejemplo `...-30`). Para una serie ordinaria, esta pestaña no se actualiza.
+    Si el nombre del primer perfil termina en `whole`, la ejecución entra en "modo de análisis de esfuerzo". En este modo se omite el primer perfil, y el texto que sigue al último guion del nombre de cada perfil restante (por ejemplo `30` en `...-30`) se lee como el azimut en grados. Una ejecución ordinaria que no está en modo de análisis de esfuerzo vacía esta pestaña.
 
 El espaciado de red dependiente del azimut expresado por la ecuación de Singh es aproximadamente
 
@@ -92,7 +92,7 @@ donde \( \alpha \) corresponde a `t/6Ghkl` y \( \psi_{\max} \) es el azimut de m
 
 | Acción | Descripción |
 | --- | --- |
-| `Copiar` | Copia la pestaña mostrada actualmente al portapapeles como CSV (separado por comas). |
+| `Copiar` | Copia la pestaña mostrada actualmente al portapapeles como texto separado por tabuladores. |
 | `Guardar` | Guarda la pestaña mostrada actualmente como un archivo CSV (el nombre de archivo se elige en un cuadro de diálogo). |
 
 ### Guardado automático

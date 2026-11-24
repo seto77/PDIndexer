@@ -35,6 +35,8 @@
 - [실행 환경 및 설치](appendix/runtime-and-installation.md)
 - [파일 형식](appendix/file-formats.md)
 - [문제 해결](appendix/troubleshooting.md)
+- [알고리즘](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## 빠른 시작
 

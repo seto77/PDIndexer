@@ -44,10 +44,10 @@
 | `a` / `V` | 量測所得的晶格常數或體積。在主視窗拖曳繞射線時會自動更新。 |
 | `a0` / `V0` | 常壓（基準狀態）下的晶格常數或體積。 |
 | `Temperature` | 試料溫度。用於包含熱壓力的狀態方程（高溫 EOS）。 |
-| `T0` | 基準溫度。與 `Temperature` 搭配使用，以套用熱壓力修正。 |
+| `T0` | 基準溫度。輸入的 `T0` 是否會被使用取決於出處（許多公式在內部使用原始研究的基準溫度）。 |
 
 !!! tip "考慮溫度的狀態方程"
-    部分出處支援包含熱壓力（thermal pressure）的高溫狀態方程。將 `Temperature` 與 `T0` 依實驗條件輸入後，即可得到含溫度修正的壓力。以 Mie-Grüneisen(-Debye) 模型為基礎的公式，例如 `Sakai+(11)` 的 Vinet/BM 形式，即屬此類。
+    部分出處支援包含熱壓力（thermal pressure）的高溫狀態方程；在 `Temperature` 中輸入樣品溫度，即可得到含溫度修正的壓力。例如，MgO 的 `Tange (09) Vinet` 與 `Tange (09) BM` 會使用輸入的溫度。相反地，NaCl (B2) 的 `Sakai+(11) Vinet` 與 `Sakai+(11) BM` 為等溫方程，不使用溫度。基準溫度 `T0` 能否變更則取決於出處。
 
 ## 各物質的出處（參考文獻）
 
@@ -57,22 +57,22 @@
 
 ![金的狀態方程出處清單](../assets/cap-zh-Hant-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-對於金（`Au (Gold)`），可使用 `Yokoo (09)`、`Matsui (09)`、`Holmes (89)`、`Jamieson (82)`、`Fratanduono (21)` 等狀態方程。
+對於金（`Au (Gold)`），可使用 `Jamieson (82)`、`Anderson (89)`、`Sim (02)`、`Tsuchiya (03)`、`Yokoo (09)`、`Fratanduono (21)` 這些狀態方程。
 
 ### NaCl（B1 結構）
 
 ![NaCl-B1 的狀態方程出處清單](../assets/cap-zh-Hant-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
 
-對於 `NaCl (B1)`，可使用 `Brown (99)`、`Sakai+`、`Matsui (12)` 等狀態方程。
+對於 `NaCl (B1)`，可使用 `Brown (99)`、`Matsui (12)`、`Skelton (84)` 這些狀態方程。
 
 ### 方鎂石（MgO）
 
 ![方鎂石 MgO 的狀態方程出處清單](../assets/cap-zh-Hant-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
 
-對於 `MgO (Periclase)`，可使用 `Tange (09) BM`、`Tange (09) Vinet`、`Aizawa (06)`、`Dewaele (00)`、`Jackson (98)` 等狀態方程。
+對於 `MgO (Periclase)`，可使用 `Tange (09) BM`、`Tange (09) Vinet`、`Aizawa (06)`、`Dewaele (00)`、`Jackson (98)` 這些狀態方程。
 
 !!! note "其他物質"
-    鉑（`Pt (Platinum)`：`Fratanduono (21)`、`Holmes (89)` 等）、`NaCl (B2)`（`Sakai (02)`、`Ueda+(08)` 等）、剛玉（`Al2O3 (Corundum)`：`Sata (02)` 等）、`Ar`（`Dubrovinsky (98)`、`Ross et al. (86)`、`Jephcoat (98)` 等）、`Re`（`Zha et al. (04)` 等）、`Mo`（`Zhao+(00)`、`Huang+(16) MGD` 等）、`Pb`（`Strässle+(14)` 等），同樣也提供多種出處可供選擇。
+    鉑（`Pt (Platinum)`：`Jamieson (82)`、`Holmes (89)`、`Matsui (09)`、`Yokoo (09)`、`Fratanduono (21)`）、`NaCl (B2)`（`Sata (02) (Pt)`、`Sata (02) (Mg)`、`Ueda+(08)`、`Sakai+(11) BM`、`Sakai+(11) Vinet`）、`Ar`（`Ross et al. (86)`、`Jephcoat (98)`）、`Re`（`Zha et al. (04)` 等）、`Mo`（`Zhao+(00)`、`Huang+(16)MGD`），同樣也提供多種出處可供選擇。剛玉（`Al2O3 (Corundum)`）只有 `Dubrovinsky (98)` 一個出處，`Pb` 只有 `Strässle+(14)` 一個出處。
 
 ## 狀態方程的理論
 
@@ -185,7 +185,7 @@ Jephcoat98 使 γ 對體積呈線性相依：$\gamma = \gamma_0 + \gamma_1 (V/V_
 | Tange09 Vinet | Vinet + Tange 熱項 | K0=160.63, K0'=4.367；θ0=761, γ0=1.442, a=0.138, b=5.4 |
 | Tange09 BM | BM3 + Tange 熱項 | K0=160.64, K0'=4.221；θ0=761, γ0=1.431, a=0.29, b=3.5 |
 
-Tange 熱項採用體積相依性 $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$，並以 θ/T 的多項式近似 Debye 內能。
+Tange 熱項採用體積相依性 $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$，並以數值積分計算 Debye 內能。
 
 ### 氯化鈉 NaCl（B2 結構）
 
@@ -241,7 +241,7 @@ Zhao00 以 $K_{T0}=K_0+(\partial K/\partial T)(T-T_0)$ 及經熱膨脹修正的 
 
 ## 相關頁面
 
-- 關於晶體的登錄與晶體列表顯示，請參閱 [圖譜參數](4-profile-parameter.md) 等相關頁面。
+- 關於晶體的登錄與晶體列表顯示，請參閱 [晶體參數](3-crystal-parameter.md) 等相關頁面。
 
 <!-- 260605Cl: P-V-T tables for spline-interpolated EOS sources (not on yseto.net) -->
 

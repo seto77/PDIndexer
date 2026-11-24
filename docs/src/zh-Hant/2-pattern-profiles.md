@@ -3,7 +3,7 @@
 
 本頁說明 PDIndexer 所處理的「圖譜資料」本身（測量資料集），以及如何載入、顯示與匯出。載入後的處理──平滑化、背景扣除等──則在 [圖譜參數](4-profile-parameter.md) 視窗中進行。支援的副檔名完整清單請參閱 [檔案格式](appendix/file-formats.md)。
 
-![PDIndexer 主視窗，中央顯示圖譜，左側為圖譜清單與晶體清單。](../assets/cap-zh-Hant-auto/FormMain.png)
+![PDIndexer 主視窗，中央顯示圖譜，右側為圖譜清單與晶體清單。](../assets/cap-zh-Hant-auto/FormMain.png)
 
 ## 何謂圖譜
 
@@ -14,7 +14,7 @@
 - 中子飛行時間（TOF）法為飛行時間
 - 無論何種情形，資料在內部皆可轉換為晶面間距(d值) \( d \) 或散射向量 \( q \) 來處理
 
-縱軸為繞射強度，可顯示為 `Raw Counts`（原始計數）或 `Count per Step (CPS)`（每步計數），並可選擇線性或對數尺度（詳見 [主視窗](1-main-window.md) 頁面中的 `Vertical Axis`）。
+縱軸為繞射強度，可顯示為 `Raw Counts`（原始計數）或 `Count per Step (CPS)`（每步計數，即計數除以曝光時間（秒）），並可選擇線性或對數尺度（詳見 [主視窗](1-main-window.md) 頁面中的 `Vertical Axis`）。
 
 ## 支援的輸入格式
 
@@ -57,7 +57,7 @@
 
 ## 圖譜清單
 
-主視窗左側的 `Profile` 清單會顯示所有已載入的圖譜。
+主視窗右側的 `Profile` 清單會顯示所有已載入的圖譜。
 
 - 只有勾選的圖譜才會繪製於中央檢視區。使用 `Check/Uncheck all` 可一次切換全部勾選狀態。
 - 點按 `Color` 欄可變更各圖譜的繪圖顏色。
@@ -86,10 +86,10 @@
 ## 匯出圖譜
 
 - **`File ▸ Save profile(s)`** — 以 PDIndexer 原生的 `pdi2` 格式儲存所有已載入的圖譜，並保留軸設定與處理資訊。
-- **`File ▸ Export the selected profile(s)`** — 以下列其中一種格式匯出所選取的圖譜：
-  - `as CSV (comma separated values) file` — 以逗號分隔（角度、強度）
-  - `as TSV (tab separated values) file` — 以定位點分隔
-  - `as GSAS file` — GSAS（Rietveld）資料格式
+- **`File ▸ Export the selected profile(s)`** — 以下列其中一種格式匯出圖譜：
+  - `as CSV (comma separated values) file` — 將已勾選的圖譜以逗號分隔值（X, Y）儲存，可合併為一個檔案，也可每個圖譜各存成一個檔案。選擇儲存位置後，回答 `是` 即合併，回答 `否` 則分別儲存。X 為目前顯示的水平軸座標。無論地區設定為何，小數點一律使用 `.`。
+  - `as TSV (tab separated values) file` — 以定位點分隔儲存相同的內容。
+  - `as GSAS file` — 將所選取的圖譜以 GSAS（Rietveld）資料格式寫出。僅當水平軸為 2θ 或中子 TOF 時才能匯出。
 
 !!! note "儲存圖形"
     若要儲存繪製出的圖形而非圖譜資料，請使用 `File ▸ Copy to Clipboard` 或 `File ▸ Save as Metafile`（EMF）。EMF 是一種可匯入 PowerPoint 與 Word 的向量格式。

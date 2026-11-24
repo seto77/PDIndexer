@@ -35,6 +35,8 @@
 - [Entorno de ejecución e instalación](appendix/runtime-and-installation.md)
 - [Formatos de archivo](appendix/file-formats.md)
 - [Resolución de problemas](appendix/troubleshooting.md)
+- [Algoritmos](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## Inicio rápido
 

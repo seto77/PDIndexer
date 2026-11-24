@@ -100,12 +100,12 @@ PDIndexer 고유의 기능은 모두 루트 객체 `PDI` 아래의 클래스를 
 | `GetDirectoryPath` | `GetDirectoryPath(string filename = "")` | 디렉터리 경로(끝에 백슬래시 포함)를 가져옵니다. `filename`을 생략하면 폴더 선택 대화 상자가 열립니다. 지정한 경우 `filename`의 디렉터리 부분을 반환합니다. |
 | `GetFileName` | `GetFileName()` | 파일 선택 대화 상자를 열고 선택한 파일의 전체 경로를 반환합니다. 사용자가 취소하면 빈 문자열을 반환합니다. |
 | `GetFileNames` | `GetFileNames()` | 다중 선택 파일 대화 상자를 열고 선택한 파일들의 전체 경로를 반환합니다. 사용자가 취소하면 빈 배열을 반환합니다. |
-| `ReadProfiles` | `ReadProfiles(string filename)` | 지정한 파일에서 프로파일 데이터를 읽어옵니다. `filename`을 생략(또는 존재하지 않을 경우)하면 파일 선택 대화 상자가 열립니다. |
-| `SaveProfiles` | `SaveProfiles(string filename)` | 프로파일 데이터를 지정한 파일에 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
-| `ReadCrystals` | `ReadCrystals(string filename)` | 지정한 파일에서 결정 데이터를 읽어옵니다. `filename`을 생략(또는 존재하지 않을 경우)하면 파일 선택 대화 상자가 열립니다. |
-| `SaveCrystals` | `SaveCrystals(string filename)` | 결정 데이터를 지정한 파일에 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
-| `SaveMetafile` | `SaveMetafile(string filename)` | 현재 패턴을 Windows 메타파일(`.emf`)로 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
-| `SaveText` | `SaveText(string text, string filename)` | 지정한 텍스트 내용을 `.txt` 파일로 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
+| `ReadProfiles` | `ReadProfiles(string fileName = "")` | 지정한 파일에서 프로파일 데이터를 읽어옵니다. `fileName`을 생략(또는 존재하지 않을 경우)하면 파일 선택 대화 상자가 열립니다. |
+| `SaveProfiles` | `SaveProfiles(string filename = "")` | 프로파일 데이터를 지정한 파일에 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
+| `ReadCrystals` | `ReadCrystals(string filename = "")` | 지정한 파일에서 결정 데이터를 읽어옵니다. `filename`을 생략(또는 존재하지 않을 경우)하면 파일 선택 대화 상자가 열립니다. |
+| `SaveCrystals` | `SaveCrystals(string filename = "")` | 결정 데이터를 지정한 파일에 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
+| `SaveMetafile` | `SaveMetafile(string filename = "")` | 현재 패턴을 Windows 메타파일(`.emf`)로 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
+| `SaveText` | `SaveText(string text, string filename = "")` | 지정한 텍스트 내용을 `.txt` 파일로 저장합니다. `filename`을 생략하면 저장 대화 상자가 열립니다. |
 
 ### PDI.Drawing — 그리기 뷰
 
@@ -160,15 +160,15 @@ PDIndexer 고유의 기능은 모두 루트 객체 `PDI` 아래의 클래스를 
 
 ### PDI.ProfileOperator — 프로파일 연산
 
-각 프로파일은 목록 내 인덱스로 지정합니다. `output`은 결과 프로파일에 부여할 이름입니다.
+각 프로파일은 목록 내 인덱스로 지정합니다. `outputName`은 결과 프로파일에 부여할 이름입니다.
 
 | Member | Signature | Description |
 | --- | --- | --- |
-| `Average` | `Average(int[] indices, string output)` | `indices`에 나열한 인덱스(예: `[1,3,5,9]`)에 해당하는 프로파일들의 평균을 계산합니다. `output`은 결과 프로파일에 부여할 이름입니다. |
-| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string output)` | profile1 + profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `output`은 결과 프로파일에 부여할 이름입니다. |
-| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string output)` | profile1 − profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `output`은 결과 프로파일에 부여할 이름입니다. |
-| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string output)` | profile1 × profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `output`은 결과 프로파일에 부여할 이름입니다. |
-| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string output)` | profile1 ÷ profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `output`은 결과 프로파일에 부여할 이름입니다. |
+| `Average` | `Average(int[] intArray, string outputName = "")` | `intArray`에 나열한 인덱스(예: `[1,3,5,9]`)에 해당하는 프로파일들의 평균을 계산합니다. `outputName`은 결과 프로파일에 부여할 이름입니다. |
+| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string outputName = "")` | profile1 + profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `outputName`은 결과 프로파일에 부여할 이름입니다. |
+| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string outputName = "")` | profile1 − profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `outputName`은 결과 프로파일에 부여할 이름입니다. |
+| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string outputName = "")` | profile1 × profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `outputName`은 결과 프로파일에 부여할 이름입니다. |
+| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string outputName = "")` | profile1 ÷ profile2를 계산합니다. 각 프로파일은 인덱스로 지정합니다. `outputName`은 결과 프로파일에 부여할 이름입니다. |
 
 ### PDI.ProfileList — 프로파일 목록
 
@@ -195,7 +195,7 @@ PDIndexer 고유의 기능은 모두 루트 객체 `PDI` 아래의 클래스를 
 | --- | --- | --- |
 | `Open` | `Open()` | '회절 피크 피팅' 창을 엽니다. |
 | `Close` | `Close()` | '회절 피크 피팅' 창을 닫습니다. |
-| `Apply` | `Apply()` | 최적화된 격자 상수를 선택된 결정에 적용합니다(피팅 창의 `Confirm` 버튼을 클릭하는 것과 동일합니다). |
+| `Apply` | `Apply()` | 최적화된 격자 상수를 선택된 결정에 적용합니다(피팅 창의 `Apply to the crystal` 버튼을 클릭하는 것과 동일합니다). |
 | `Check` | `Check(int index = -1, bool state = true)` | 지정한 인덱스의 격자면을 체크하거나 체크 해제합니다. `index`가 -1이면 현재 선택된 면이 대상이 됩니다. |
 | `Uncheck` | `Uncheck(int index = -1)` | 지정한 인덱스의 격자면 체크를 해제합니다. `index`가 -1이면 현재 선택된 면의 체크가 해제됩니다. |
 | `Select` | `Select(int index)` | 지정한 인덱스의 격자면을 선택합니다. |
@@ -211,7 +211,7 @@ PDIndexer 고유의 기능은 모두 루트 객체 `PDI` 아래의 클래스를 
 | `Directory` | `Directory (get/set)` | 연속 분석 결과를 저장하는 디렉터리의 전체 경로를 가져오거나 설정합니다. |
 | `Open` | `Open()` | '연속 분석' 창을 엽니다. |
 | `Close` | `Close()` | '연속 분석' 창을 닫습니다. |
-| `Execute` | `Execute()` | 체크된 모든 프로파일에 대해 연속 분석을 실행합니다. |
+| `Execute` | `Execute()` | 피팅 창에서 선택한 결정과 반사를 사용하여, 읽어들인 모든 프로파일(시작 번호부터, 루프 설정에 따라)에 대해 연속 분석을 실행합니다. 피팅 창이 열려 있어야 하며 프로파일이 4개 이상 읽어들여져 있어야 합니다. 프로파일의 체크박스는 실행 범위를 제한하지 않습니다. |
 | `GetCSV_2theta` | `GetCSV_2theta()` | 가장 최근 연속 분석의 2-theta 결과를 CSV 문자열로 가져옵니다. |
 | `GetCSV_D` | `GetCSV_D()` | 가장 최근 연속 분석의 d-spacing 결과를 CSV 문자열로 가져옵니다. |
 | `GetCSV_FWHM` | `GetCSV_FWHM()` | 가장 최근 연속 분석의 FWHM 결과를 CSV 문자열로 가져옵니다. |
@@ -232,16 +232,17 @@ PDIndexer 고유의 기능은 모두 루트 객체 `PDI` 아래의 클래스를 
 내장 샘플 중 하나로, 연속 분석을 실행하고 결과를 CSV로 저장하는 매크로입니다.
 
 ```python
-# Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing /
-# cell-constant / pressure results as CSV strings and save each to a file.
-PDI.ProfileList.CheckAll()
+# Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+# then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 그 밖의 샘플은 편집기의 `예제 표시` 버튼에서 목록으로 확인할 수 있습니다.

@@ -21,7 +21,7 @@ Esta página resume en forma de tabla las extensiones admitidas, la dirección d
 | `chi` | Salida de Fit2D | Las líneas de encabezado iniciales se omiten; las columnas 2 y 4 de los datos de cuatro columnas se toman como ángulo e intensidad. |
 | `ras` | Formato de Rigaku | Formato de texto que también contiene información del instrumento. |
 | `nxs` | NeXus / HDF5 (SSD, varios detectores) | Puede contener varios canales (histogramas); cada uno se calibra en energía y se importa por separado. |
-| `npd` | Perfil EDX (SSD) | Lee `EGC0/1/2`, `2Theta`, `Live time`, etc. del encabezado y convierte el número de canal en energía. |
+| `npd` | Perfil EDX (SSD) | Lee `2Theta` y `Live time` del encabezado como ángulo de salida y tiempo de exposición. Los puntos de datos usan la columna de energía del archivo (el número de canal no se convierte con los coeficientes `EGC0/1/2`). |
 | `xbm` | Formato binario EDX (p. ej. SP-8 BL04B2) | Los metadatos como el nombre de la muestra, las condiciones de medición y los coeficientes de calibración EGC se importan como comentario. |
 | `rpt` | Formato Genie (SSD) | Lee el ángulo de salida (take-off), el tiempo de exposición y el EGC del encabezado. |
 | `xy` | Texto de dos columnas calibrado con pyFAI | Lee la longitud de onda del encabezado e importa ángulo frente a intensidad. |
@@ -44,7 +44,7 @@ El cuadro de diálogo ofrece la siguiente configuración.
 | Eje horizontal (Horizontal Axis) | La magnitud física (2θ, energía, espaciado d, número de onda, TOF, etc.) y la unidad representadas por la primera columna importada. |
 | Fuente de radiación / longitud de onda | Rayos X / neutrones / electrones, y la línea característica de rayos X (Kα, etc.) o la longitud de onda. Esto determina la conversión a espaciado d y 2θ. |
 | Tiempo de exposición (por paso) | El tiempo de exposición por paso en segundos. Se usa para la visualización en CPS y la normalización de intensidad. |
-| Para datos SSD | Para datos SSD (EDX) como `rpt` / `npd` / `xbm` / `nxs`, defina los coeficientes \(a_0, a_1, a_2\) que convierten el número de canal \(n\) en energía \(E\). Cuando hay varios detectores, puede activar/desactivar cada uno y definir sus coeficientes de forma individual. |
+| Para datos SSD | Para datos SSD (EDX) como `rpt` / `npd` / `xbm` / `nxs`, defina los coeficientes \(a_0, a_1, a_2\) que convierten el número de canal \(n\) en energía \(E\). Cuando hay varios detectores, puede activar/desactivar cada uno y definir sus coeficientes de forma individual. `npd` usa la columna de energía del archivo, por lo que estos coeficientes no se le aplican. |
 | Corte de baja energía | Cuando está marcado, los puntos de datos por debajo de la energía especificada se excluyen al importar. |
 
 Para los datos SSD, el número de canal \(n\) se convierte en energía \(E\) (en eV) mediante una calibración cuadrática:
@@ -62,23 +62,21 @@ Al leer texto genérico (un formato "otro"), el cuadro de diálogo muestra el co
 
 **Archivo → Guardar perfil(es) (Save profile(s))** guarda todos los perfiles cargados en el formato nativo `pdi2` de PDIndexer.
 
-**Archivo → Exportar el/los perfil(es) seleccionado(s) (Export the selected profile(s))** escribe el perfil seleccionado en uno de los siguientes formatos.
+**Archivo → Exportar el/los perfil(es) seleccionado(s) (Export the selected profile(s))** escribe perfiles en uno de los siguientes formatos.
 
 | Extensión / formato | Dirección | Notas |
 | --- | --- | --- |
 | `pdi2` | Salida | Formato nativo de PDIndexer. Guarda todos los perfiles a la vez. |
-| `csv` | Salida | Separado por comas (ángulo, intensidad). |
-| `tsv` | Salida | Separado por tabuladores (ángulo e intensidad separados por un tabulador). |
-| `gsa` (GSAS) | Salida | Formato GSAS para análisis Rietveld. Puede revisar el contenido en la pantalla de exportación que se muestra a continuación. |
+| `csv` | Salida | Separado por comas (X, Y). Guarda los perfiles marcados juntos en un archivo o un archivo por perfil. X es la coordenada del eje horizontal mostrado, y el separador decimal es siempre `.` independientemente de la configuración regional. |
+| `tsv` | Salida | Separado por tabuladores. Mismo contenido que `csv`. |
+| `gsa` (GSAS) | Salida | Formato GSAS para análisis Rietveld. Escribe el perfil seleccionado. |
 
 #### Exportación en formato GSAS
 
-Al elegir el formato GSAS, aparece una pantalla de exportación para que pueda revisar lo que se escribirá. La línea 1 es el nombre del perfil, la línea 2 es un encabezado `BANK 1 … CONST … FXYE` y las líneas siguientes contienen tres columnas: ángulo, intensidad y error. El error se toma de los propios datos de error del perfil cuando están presentes; de lo contrario, se usa \(\sqrt{\text{intensity}}\).
-
-![Pantalla de exportación GSAS](../../assets/cap-es-auto/FormExportGSAS.png)
+Al elegir el formato GSAS y después el destino, el perfil seleccionado se escribe directamente en el archivo. La línea 1 es el nombre del perfil, la línea 2 es un encabezado `BANK 1 … CONST … FXYE` y las líneas siguientes contienen tres columnas: ángulo, intensidad y error. El error se toma de los propios datos de error del perfil cuando están presentes; de lo contrario, se usa \(\sqrt{\text{intensity}}\).
 
 !!! note "Escalado del ángulo"
-    Para datos ordinarios dispersivos en ángulo, los valores de ángulo se escriben multiplicados por 100 (la convención `CONST` de GSAS). Para datos de neutrones TOF, los valores se escriben tal cual, sin escalado.
+    Cuando el eje horizontal es 2θ, los valores se convierten desde la unidad de 2θ mostrada (grados, centésimas de grado, radianes o milirradianes) a centésimas de grado (la convención `CONST` de GSAS). Para datos de neutrones TOF, los valores se escriben tal cual, sin conversión. Para cualquier otro eje horizontal (como d o la energía), no se exporta nada.
 
 ---
 

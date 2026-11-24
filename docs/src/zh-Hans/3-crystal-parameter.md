@@ -76,14 +76,14 @@
 
 ![晶体列表](../assets/cap-zh-Hans-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-此处显示的信息与主窗口的谱图检查列表相同。已勾选的晶体，其衍射线会在主窗口中绘制。每一行显示一个复选框（`Check`）、绘制颜色（`PeakColor`）以及晶体名称（`Crystal`）。
+此处显示的信息与主窗口中的晶体列表相同。已勾选的晶体，其衍射线会在主窗口中绘制。每一行显示一个复选框（`Check`）、绘制颜色（`PeakColor`）以及晶体名称（`Crystal`）。
 
 ### Up/Down arrow buttons (↑ / ↓)
 
 更改晶体的排列顺序。
 
 !!! note
-    第 1 至第 6 行为状态方程（EOS）保留，无法重新排序。详见 [Equation of state](5-equation-of-states.md)。
+    初始晶体列表中，最上方的 Flexible Crystal 及其后的 10 种压力标准物质（用于状态方程 EOS）为保留行，无法重新排序。详见 [Equation of state](5-equation-of-states.md)。
 
 ### Add
 
@@ -99,7 +99,7 @@
 
 ### Delete all
 
-从列表中删除全部晶体。
+从列表中删除所有非保留的晶体（删除前会进行确认）。
 
 ---
 

@@ -76,14 +76,14 @@ Legt fest, für welche Kristalle die Indizes der Beugungslinien (Miller-Indizes)
 
 ![Die Kristallliste](../assets/cap-de-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Zeigt dieselben Informationen wie die Profil-Prüfliste im Hauptfenster. Für angehakte Kristalle werden die Beugungslinien im Hauptfenster gezeichnet. Jede Zeile zeigt ein Kontrollkästchen (`Häkchen`), eine Zeichenfarbe (`Peakfarbe`) und den Kristallnamen (`Kristall`).
+Zeigt dieselben Informationen wie die Kristallliste im Hauptfenster. Für angehakte Kristalle werden die Beugungslinien im Hauptfenster gezeichnet. Jede Zeile zeigt ein Kontrollkästchen (`Häkchen`), eine Zeichenfarbe (`Peakfarbe`) und den Kristallnamen (`Kristall`).
 
 ### Pfeil-nach-oben/-unten-Schaltflächen (↑ / ↓)
 
 Ändern die Reihenfolge der Kristalle.
 
 !!! note
-    Die Zeilen 1 bis 6 sind für die Zustandsgleichung (EOS) reserviert und können nicht umsortiert werden. Einzelheiten siehe [Zustandsgleichung](5-equation-of-states.md).
+    In der anfänglichen Kristallliste sind oben der Flexible Crystal und die folgenden zehn Druckstandards (für die Zustandsgleichung, EOS) reserviert; diese Zeilen können nicht umsortiert werden. Einzelheiten siehe [Zustandsgleichung](5-equation-of-states.md).
 
 ### Hinzufügen
 
@@ -99,7 +99,7 @@ Entfernt den aktuell ausgewählten Kristall aus der Liste.
 
 ### Alle löschen
 
-Entfernt jeden Kristall aus der Liste.
+Entfernt alle nicht reservierten Kristalle aus der Liste (nach einer Bestätigung).
 
 ---
 

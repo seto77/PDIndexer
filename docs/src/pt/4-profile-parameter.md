@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Parâmetros do perfil
 
-Ao clicar no ícone `Profile parameter` na janela principal, esta subjanela é aberta. Aqui você faz ajustes detalhados nos perfis carregados e aplica diversos processamentos numéricos.
+Ao clicar no ícone `Profile Parameter (P)` na janela principal, esta subjanela é aberta. Aqui você faz ajustes detalhados nos perfis carregados e aplica diversos processamentos numéricos.
 
 ![Janela inteira de Parâmetros do perfil](../assets/cap-pt-auto/FormProfileSetting.png)
 
 O lado esquerdo da janela contém a [Lista de verificação de perfis](#profile), e o lado direito é dividido em três páginas em abas — [Processamento de perfil](#profile-processing), [Configuração de eixo](#axis-setting) e [Operador de perfil](#profile-operator). Cada etapa de processamento pode ser ativada/desativada com uma caixa de seleção e é aplicada em ordem, de cima para baixo.
 
 !!! note
-    As configurações feitas nesta janela são refletidas nos perfis da [janela principal](1-main-window.md) em tempo real. Para configurações do lado do cristal, como a unidade do eixo horizontal e os rótulos de índice das linhas de difração, consulte [Crystal Parameter](3-crystal-parameter.md).
+    As configurações feitas nesta janela são refletidas nos perfis da [janela principal](1-main-window.md) em tempo real. Escolha a unidade de exibição do eixo horizontal na aba `Horizontal Axis` da janela principal. Para configurações do lado do cristal, como os rótulos de índice das linhas de difração, consulte [Crystal Parameter](3-crystal-parameter.md).
 
 ---
 
@@ -136,16 +136,16 @@ O botão `Apply for all profiles (without background setting)` aplica as configu
 
 ## Configuração de eixo {#axis-setting}
 
-Na aba `Axis setting` você altera a unidade do eixo horizontal, o tipo de radiação (feixe incidente) e a energia do feixe incidente do perfil selecionado.
+Na aba `Axis setting` você redefine o tipo de eixo horizontal de origem, o comprimento de onda, o ângulo de saída (take-off) e o tempo de exposição do perfil selecionado. A unidade de exibição do eixo horizontal não é escolhida aqui, mas na aba `Horizontal Axis` da janela principal.
 
 | Item | Descrição |
 | --- | --- |
-| `Horizontal axis setting` | Altera a unidade atual do eixo horizontal (`horizontal unit`). Com `Shift` você também pode deslocar todo o eixo horizontal. |
+| `Horizontal axis setting` | Define o tipo de eixo horizontal de origem, o comprimento de onda e o ângulo de saída; `Change` os grava de volta no perfil selecionado. Com `Shift` você também pode deslocar todo o eixo horizontal. |
 | `Exposure Time` | Define o tempo de exposição (`sec.`) usado no modo CPS (`(for CPS mode)`). |
 | `Vertical axis setting` | Configurações relacionadas ao eixo vertical. |
 
 !!! note
-    A configuração de eixo aqui altera as informações físicas que o próprio perfil mantém (unidade, tipo de radiação, energia). Diferentemente da transformação de eixo apenas para exibição na janela principal, ela afeta como os próprios dados são interpretados. Como o tipo de radiação e a energia influenciam diretamente o cálculo das posições das linhas de difração, defina os valores corretos.
+    Clicar em `Change` grava de volta no perfil o tipo de eixo de origem, o ângulo de saída, o comprimento de onda e o tempo de exposição. Diferentemente da troca de eixo apenas para exibição na janela principal, isso afeta como os próprios dados são interpretados. Como o comprimento de onda e o ângulo de saída influenciam diretamente o cálculo das posições das linhas de difração, defina os valores corretos. Uma unidade de entrada errada escolhida na importação não pode ser corrigida aqui; abra novamente o arquivo de origem.
 
 ---
 

@@ -3,7 +3,7 @@
 
 Diese Seite beschreibt die „Profildaten“ selbst (den gemessenen Datensatz), die PDIndexer verarbeitet, sowie das Laden, Anzeigen und Exportieren. Die nach dem Laden angewandte Verarbeitung — Glättung, Untergrundsubtraktion und so weiter — erfolgt im Fenster [Profilparameter](4-profile-parameter.md). Eine vollständige Liste der unterstützten Dateierweiterungen finden Sie unter [Dateiformate](appendix/file-formats.md).
 
-![PDIndexer-Hauptfenster mit einem Profil in der Mitte und der Profil- und Kristallliste auf der linken Seite.](../assets/cap-de-auto/FormMain.png)
+![PDIndexer-Hauptfenster mit einem Profil in der Mitte und der Profil- und Kristallliste auf der rechten Seite.](../assets/cap-de-auto/FormMain.png)
 
 ## Was ein Profil ist
 
@@ -14,7 +14,7 @@ Ein Profil ist ein eindimensionaler Datensatz vom Typ „horizontale Achse vs. I
 - Flugzeit für die Neutronen-Flugzeitmethode (TOF)
 - In jedem Fall können die Daten intern auch nach Umrechnung in den Netzebenenabstand (d-Wert) \( d \) oder den Streuvektor \( q \) verarbeitet werden
 
-Die vertikale Achse ist die Beugungsintensität, die als `Raw Counts` oder `Count per Step (CPS)` auf einer linearen oder logarithmischen Skala dargestellt werden kann (siehe `Vertical Axis` auf der Seite [Hauptfenster](1-main-window.md)).
+Die vertikale Achse ist die Beugungsintensität, die als `Raw Counts` oder als durch die Belichtungszeit in Sekunden geteilte Counts (`Count per Step (CPS)`) auf einer linearen oder logarithmischen Skala dargestellt werden kann (siehe `Vertical Axis` auf der Seite [Hauptfenster](1-main-window.md)).
 
 ## Unterstützte Eingabeformate
 
@@ -57,7 +57,7 @@ Schalten Sie den Anzeigemodus mit `Single/Multi Profile` auf der rechten Seite d
 
 ## Profil-Checkliste
 
-Die Liste `Profile` auf der linken Seite des Hauptfensters zeigt alle geladenen Profile.
+Die Liste `Profile` auf der rechten Seite des Hauptfensters zeigt alle geladenen Profile.
 
 - Nur angehakte Profile werden im zentralen Anzeigebereich gezeichnet. Verwenden Sie `Check/Uncheck all`, um sie alle auf einmal umzuschalten.
 - Klicken Sie auf die Spalte `Color`, um die Zeichenfarbe jedes Profils zu ändern.
@@ -86,10 +86,10 @@ Wenn der Typ der horizontalen Achse energiedispersiv ist (weiße Röntgenstrahlu
 ## Profile exportieren
 
 - **`File ▸ Save profile(s)`** — Speichert alle geladenen Profile im nativen `pdi2`-Format von PDIndexer. Achseneinstellungen und Verarbeitungsinformationen bleiben erhalten.
-- **`File ▸ Export the selected profile(s)`** — Exportiert die ausgewählten Profile in einem der folgenden Formate:
-  - `as CSV (comma separated values) file` — kommagetrennt (Winkel, Intensität)
-  - `as TSV (tab separated values) file` — tabulatorgetrennt
-  - `as GSAS file` — GSAS-Datenformat (Rietveld)
+- **`File ▸ Export the selected profile(s)`** — Exportiert Profile in einem der folgenden Formate:
+  - `as CSV (comma separated values) file` — Speichert die angehakten Profile als kommagetrennte Werte (X, Y), entweder gemeinsam in einer Datei oder als eine Datei pro Profil. Nachdem Sie den Speicherort gewählt haben, antworten Sie mit `Ja`, um sie zusammenzuführen, oder mit `Nein`, um sie getrennt zu speichern. X ist die Koordinate der angezeigten horizontalen Achse. Als Dezimaltrennzeichen wird unabhängig von den Regionseinstellungen immer `.` verwendet.
+  - `as TSV (tab separated values) file` — Speichert denselben Inhalt tabulatorgetrennt.
+  - `as GSAS file` — Schreibt das ausgewählte Profil im GSAS-Datenformat (Rietveld). Der Export ist nur möglich, wenn die horizontale Achse 2θ oder Neutronen-TOF ist.
 
 !!! note "Die Abbildung speichern"
     Um die gerenderte Abbildung statt der Profildaten zu speichern, verwenden Sie `File ▸ Copy to Clipboard` oder `File ▸ Save as Metafile` (EMF). EMF ist ein Vektorformat, das in PowerPoint und Word importiert werden kann.

@@ -7,17 +7,18 @@ Si vous rencontrez un problème lors de l'utilisation de PDIndexer, vérifiez d'
 
 Ces exigences concernent les builds .NET 11 issus de ces sources. Pour les versions publiées, suivez les exigences de runtime indiquées pour la version concernée.
 
-PDIndexer nécessite le **.NET Desktop Runtime 11.0**. Si le runtime n'est pas installé, une erreur peut s'afficher au démarrage, ou le programme peut se fermer sans rien faire.
+L'installation MSI de PDIndexer nécessite le **.NET Desktop Runtime** indiqué pour cette version (les builds issus de ces sources ciblent .NET 11). Le ZIP sans installation inclut son runtime. Si le runtime n'est pas installé pour une installation MSI, une erreur peut s'afficher au démarrage, ou le programme peut se fermer sans rien faire.
 
 !!! warning "Solution"
-    Suivez [Runtime et installation](runtime-and-installation.md) pour installer le dernier **.NET Desktop Runtime 11.0** (x64), puis redémarrez PDIndexer.
+    Suivez [Runtime et installation](runtime-and-installation.md) pour installer le **.NET Desktop Runtime** requis par la version que vous utilisez, correspondant à l'architecture de l'application (x64 ou Arm64), puis redémarrez PDIndexer.
 
 ## La langue de l'interface ne change pas
 
-Vous pouvez changer la langue de l'interface depuis le menu **Options** ▸ **Langue**, en choisissant **English (need restart)** ou **Japanese (need restart)**. Cependant, un changement de langue ne prend effet qu'**après un redémarrage**.
+<!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
+Choisissez la langue d'affichage (11 langues, chacune affichée sous son propre nom) depuis **Langue** à l'extrémité droite de la barre de menus. Le changement de langue nécessite un redémarrage : choisissez **Oui** dans la boîte de dialogue de confirmation, et PDIndexer redémarre automatiquement dans la langue sélectionnée.
 
 !!! note
-    Il est normal que l'affichage ne change pas immédiatement après avoir choisi une langue. Fermez PDIndexer et relancez-le.
+    Le redémarrage abandonne le travail non enregistré (profils chargés et modifications en cours) ; enregistrez donc ce dont vous avez besoin avant de changer. Si vous choisissez **Non**, la langue ne change pas.
 
 ## Réinitialiser des paramètres corrompus
 
@@ -49,7 +50,7 @@ Pour calculer les intensités théoriques de diffraction, la structure cristalli
 
 ## L'ajustement renvoie des paramètres de maille NA (non disponibles)
 
-Lors de l'affinement des paramètres de maille par ajustement des pics, un nombre insuffisant de réflexions indépendantes peut laisser les paramètres de maille indéterminés, et le résultat peut être indiqué comme NA (non disponible).
+Lors de l'affinement des paramètres de maille par ajustement des pics, un nombre insuffisant de réflexions indépendantes laisse les paramètres de maille indéterminés. Dans ce cas, le programme conserve la forme initiale de la maille et ne modifie que son échelle globale, et les champs d'erreur affichent NA (non disponible). Lorsque le nombre de réflexions est égal au nombre de paramètres de maille indépendants, les résidus ne permettent pas d'obtenir les erreurs types ; les champs d'erreur affichent donc aussi NA.
 
 - Selon le système cristallin, vous devez fournir suffisamment de réflexions pour que le nombre de paramètres de maille indépendants puisse être déterminé (par exemple, seulement \(a\) pour le cubique, mais six valeurs \(a, b, c, \alpha, \beta, \gamma\) pour le triclinique).
 - Si les réflexions sont linéairement dépendantes (biaisées vers une seule direction), certains paramètres de maille ne peuvent pas être déterminés. Incluez des réflexions d'orientations différentes.

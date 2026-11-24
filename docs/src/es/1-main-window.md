@@ -39,7 +39,7 @@ Cada botón de la barra de herramientas alterna una ventana de análisis especí
 | `Análisis LPO` | Alterna la ventana de análisis LPO (orientación preferente de la red). | — |
 
 !!! note
-    Las ventanas principales también pueden alternarse con atajos de teclado: `Ctrl+Shift+C` (Parámetro de cristal), `Ctrl+Shift+E` (Ecuaciones de estado), `Ctrl+Shift+F` (Parámetro de ajuste) y `Ctrl+Shift+D` (cambiar modo de pico).
+    Las ventanas principales también pueden alternarse con atajos de teclado: `Ctrl+Shift+C` (Parámetro de cristal), `Ctrl+Shift+E` (Ecuaciones de estado), `Ctrl+Shift+F` (Parámetro de ajuste), `Ctrl+Shift+D` (cambiar modo de pico) y `Ctrl+Shift+S` (Análisis secuencial). Además, `Ctrl+Shift+Space` alterna la marca del cristal seleccionado, `Ctrl+Alt+Space` alterna la marca de la reflexión seleccionada en la lista de reflexiones de la ventana de ajuste de picos, y `Ctrl+Shift+V` lee el texto del portapapeles como un perfil. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Barra de menús
 
@@ -88,11 +88,11 @@ Cada botón de la barra de herramientas alterna una ventana de análisis especí
 
 ### Idioma
 
-Cambia el idioma de la interfaz. Actualmente se admiten inglés (`Inglés (requiere reinicio)`) y japonés (`Japonés (requiere reinicio)`). Es necesario reiniciar tras el cambio.
+Cambie el idioma de visualización desde `Idioma`, en el extremo derecho de la barra de menús (11 idiomas, cada uno mostrado con su propio nombre). El cambio requiere un reinicio: elija Sí en el cuadro de diálogo de confirmación y PDIndexer se reiniciará automáticamente. El trabajo no guardado se pierde, así que guárdelo antes. <!-- 261124Cl changed: the old text described only English/Japanese -->
 
 ## Pestaña Eje horizontal {#horizontal-axis-tab}
 
-La pestaña `Eje horizontal` establece el modo de visualización del eje. Los ajustes aquí son solo de visualización y no están relacionados con los datos reales del eje horizontal (la información real del eje horizontal puede cambiarse desde los [Parámetros del perfil](4-profile-parameter.md)). Gracias a esto, puede alinear el eje horizontal para comparar incluso cuando se utilizaron distintas fuentes de rayos X. Por ejemplo, aunque el perfil cargado se haya adquirido con la línea Kα de Cu, puede mostrarse como si se hubiera adquirido a la longitud de onda de la línea Kα de Mo.
+La pestaña `Eje horizontal` establece el modo de visualización del eje. Los ajustes aquí son solo de visualización y no están relacionados con los datos reales del eje horizontal (la información real del eje horizontal puede cambiarse en la ventana [Parámetros del perfil](4-profile-parameter.md)). Gracias a esto, puede alinear el eje horizontal para comparar incluso cuando se utilizaron distintas fuentes de rayos X. Por ejemplo, aunque el perfil cargado se haya adquirido con la línea Kα de Cu, puede mostrarse como si se hubiera adquirido a la longitud de onda de la línea Kα de Mo.
 
 | Elemento | Descripción |
 | --- | --- |
@@ -131,7 +131,7 @@ El modo que está marcado es el modo actual.
 
 ### Eje vertical
 
-Especifica si se muestra el eje vertical (intensidad) como cuentas brutas (`Cuentas brutas`) o como cuentas por paso (`Cuentas por paso (CPS)`). También puede especificar si se muestra el eje vertical en escala lineal (`Lineal`) o logarítmica (`Logarítmica`).
+Especifica si se muestra el eje vertical (intensidad) como cuentas brutas (`Cuentas brutas`) o como cuentas divididas por el tiempo de exposición en segundos (`Cuentas por paso (CPS)`). También puede especificar si se muestra el eje vertical en escala lineal (`Lineal`) o logarítmica (`Logarítmica`).
 
 ## Lista de perfiles
 
@@ -141,7 +141,7 @@ En el modo de múltiples perfiles, los perfiles cargados se muestran como una li
 
 ## Lista de cristales
 
-Muestra y configura la lista de cristales. Al marcar una entrada se dibujan líneas de difracción en las posiciones de los picos de difracción. De forma predeterminada, hay unos 80 cristales preregistrados.
+Muestra y configura la lista de cristales. Al marcar una entrada se dibujan líneas de difracción en las posiciones de los picos de difracción. La lista inicial incluye estándares de presión y otros cristales.
 
 !!! note "Filas especiales"
     - La primera fila (fila 0) es el **Flexible Crystal** (fondo cian), utilizado para dibujar líneas de difracción arbitrarias.

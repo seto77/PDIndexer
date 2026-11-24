@@ -5,7 +5,7 @@
 
 PDIndexer è un'applicazione software per l'analisi di pattern di diffrazione da polveri di raggi X monodimensionali. Consente di visualizzare e analizzare profili di diffrazione ottenuti da strumenti di diffrazione da polveri di raggi X, da raggi X di sincrotrone misurati con ottica in trasmissione Debye-Scherrer e da misure di tempo di volo (TOF) di neutroni.
 
-Fornisce un insieme completo di strumenti per l'analisi della diffrazione da polveri, tra cui la visualizzazione sovrapposta di più profili, il confronto con le linee di diffrazione di cristalli noti, la calibrazione di temperatura e pressione rispetto a materiali standard, il fitting dei profili e il raffinamento ai minimi quadrati dei parametri reticolari.
+Fornisce un insieme completo di strumenti per l'analisi della diffrazione da polveri, tra cui la visualizzazione sovrapposta di più profili, il confronto con le linee di diffrazione di cristalli noti, la stima della pressione dalle equazioni di stato di materiali standard, il fitting dei profili e il raffinamento ai minimi quadrati dei parametri reticolari.
 
 !!! note "Informazioni su questo manuale"
     Questa pagina è solo una panoramica. Per istruzioni dettagliate su ciascuna funzione, consultare le pagine dedicate.
@@ -18,7 +18,7 @@ PDIndexer offre le seguenti funzioni.
 | --- | --- |
 | Visualizzazione e confronto dei profili | Sovrapponi e confronta più profili di diffrazione. L'asse orizzontale (\(2\theta\) / \(d\) / \(q\)) e le scale dell'asse verticale possono essere commutati in modo flessibile. |
 | Confronto con cristalli noti | Calcola le linee di diffrazione di cristalli noti e le sovrappone al profilo osservato per l'identificazione. Per i dettagli, vedi [Parametri del cristallo](3-crystal-parameter.md). |
-| Calibrazione con materiali standard | Utilizzando equazioni di stato (EOS) come NaCl EOS e Pt EOS, stima temperatura e pressione dal volume di cella di un materiale standard. Per i dettagli, vedi [Equazione di stato (EOS)](5-equation-of-states.md). |
+| Calibrazione con materiali standard | Utilizzando equazioni di stato (EOS) come NaCl EOS e Pt EOS, stima la pressione dal volume di cella misurato di un materiale standard alla temperatura specificata. Per i dettagli, vedi [Equazione di stato (EOS)](5-equation-of-states.md). |
 | Fitting dei picchi | Fitta la posizione, la larghezza a metà altezza (FWHM) e l'intensità dei picchi di diffrazione. Per i dettagli, vedi [Fitting](6-fitting-diffraction-peaks.md). |
 | Raffinamento dei parametri reticolari | Raffina i parametri reticolari dalle posizioni dei picchi con i minimi quadrati. Il **Cell Finder** può anche cercare i parametri reticolari a partire dalle posizioni dei picchi. |
 | Analisi sequenziale | Elabora in blocco una serie di file con la funzione **Analisi sequenziale**. Per i dettagli, vedi [Analisi sequenziale](7-sequential-analysis.md). |

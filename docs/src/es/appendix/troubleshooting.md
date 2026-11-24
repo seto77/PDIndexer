@@ -7,17 +7,18 @@ Si encuentra un problema al usar PDIndexer, revise primero los puntos siguientes
 
 Estos requisitos se aplican a las compilaciones .NET 11 de este código fuente. Para las versiones publicadas, siga los requisitos de runtime indicados para esa versión.
 
-PDIndexer requiere el **.NET Desktop Runtime 11.0**. Si el runtime no está instalado, es posible que vea un error al iniciar, o que el programa se cierre sin hacer nada.
+La instalación MSI de PDIndexer requiere el **.NET Desktop Runtime** especificado por esa versión (las compilaciones de este código fuente usan .NET 11). El ZIP sin instalación incluye su runtime. Si el runtime no está instalado en una instalación MSI, es posible que vea un error al iniciar, o que el programa se cierre sin hacer nada.
 
 !!! warning "Solución"
-    Siga [Runtime e instalación](runtime-and-installation.md) para instalar el último **.NET Desktop Runtime 11.0** (x64) y, a continuación, reinicie PDIndexer.
+    Siga [Runtime e instalación](runtime-and-installation.md) para instalar el **.NET Desktop Runtime** requerido por la versión que utilice, correspondiente a la arquitectura de la aplicación (x64 o Arm64), y, a continuación, reinicie PDIndexer.
 
 ## El idioma de la interfaz no cambia
 
-Puede cambiar el idioma de la interfaz desde el menú en **Opciones** ▸ **Idioma**, eligiendo **English (need restart)** o **Japanese (need restart)**. Sin embargo, un cambio de idioma solo surte efecto **tras un reinicio**.
+<!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
+Elija el idioma de visualización (11 idiomas, cada uno mostrado con su propio nombre) en **Idioma**, en el extremo derecho de la barra de menús. Cambiar el idioma requiere un reinicio: elija **Sí** en el cuadro de diálogo de confirmación y PDIndexer se reiniciará automáticamente en el idioma seleccionado.
 
 !!! note
-    Es normal que la pantalla no cambie inmediatamente después de elegir un idioma. Cierre PDIndexer e inícielo de nuevo.
+    El reinicio descarta el trabajo no guardado (perfiles cargados y ediciones en curso), así que guarde lo que necesite antes de cambiar. Si elige **No**, el idioma no cambia.
 
 ## Restablecer una configuración dañada
 
@@ -49,7 +50,7 @@ Para calcular las intensidades de difracción teóricas, la estructura del crist
 
 ## El ajuste informa de parámetros de red NA (no disponibles)
 
-Al refinar los parámetros de red mediante el ajuste de picos, un número insuficiente de reflexiones independientes puede dejar los parámetros de red sin determinar, y el resultado puede informarse como NA (no disponible).
+Al refinar los parámetros de red mediante el ajuste de picos, un número insuficiente de reflexiones independientes deja los parámetros de red sin determinar. En ese caso, el programa conserva la forma original de la celda y solo cambia su escala global, y los campos de error muestran NA (no disponible). Cuando el número de reflexiones es igual al número de parámetros de red independientes, los residuos no permiten obtener errores estándar, por lo que los campos de error también muestran NA.
 
 - Según el sistema cristalino, debe proporcionar suficientes reflexiones para que se pueda determinar el número de parámetros de red independientes (p. ej., solo \(a\) para el cúbico, pero seis valores \(a, b, c, \alpha, \beta, \gamma\) para el triclínico).
 - Si las reflexiones son linealmente dependientes (sesgadas hacia una dirección), ciertos parámetros de red no pueden determinarse. Incluya reflexiones de orientaciones diferentes.

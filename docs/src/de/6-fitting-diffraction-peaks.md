@@ -45,9 +45,9 @@ Hier werden die Beugungslinien des ausgewählten Kristalls aufgelistet. Das Akti
 
 Mit den Schaltflächen unterhalb der Liste werden die Ergebnisse exportiert.
 
-- `Copy to clipborad`: Kopiert die Tabelle in die Zwischenablage. Sie kann direkt in Excel und ähnliche Anwendungen eingefügt werden.
-- `Save as CSV`: Speichert die Tabelle als `.csv`-Datei. `Effective digit` (signifikante Stellen) legt die Anzahl der Dezimalstellen fest.
-- `Clear peaks`: Löscht die Anpassungsergebnisse.
+- `Copy to Clipboard`: Kopiert die Tabelle in die Zwischenablage. Sie kann direkt in Excel und ähnliche Anwendungen eingefügt werden.
+- `Save as CSV`: Speichert die Tabelle als `.csv`-Datei. `Effective digit` (signifikante Stellen) legt die Anzahl der in der Tabelle angezeigten signifikanten Stellen fest.
+- `Clear peaks`: Löscht alle manuell zum Flexible Crystal hinzugefügten Peaks.
 
 ## Fitting option (Fitting-Optionen)
 
@@ -103,7 +103,7 @@ Wenn sich die Search Ranges von zwei oder mehr ausgewählten Beugungslinien übe
 Sobald genügend unabhängige Indizes gewählt sind, damit die Berechnung der kleinsten Quadrate lösbar wird, zeigt dieser Bereich die wahrscheinlichsten Gitterkonstanten \(a, b, c, \alpha, \beta, \gamma\) und das Volumen \(V\) an, jeweils mit ihrem Fehler (`±`).
 
 !!! note "Zur NA-Anzeige"
-    Wenn die Freiheitsgrade unzureichend sind – das heißt, wenn die Freiheitsgrade der Anzahl der angepassten Peaks entsprechen oder wenn eine bestimmte Gitterkonstante keine Freiheitsgrade hat – wird `NA` anstelle eines Fehlers angezeigt. Die Wahl ausreichend vieler unabhängiger Reflexe ermöglicht die Berechnung der Fehler.
+    Wenn die Anzahl der angepassten Reflexe gleich der Anzahl der unabhängigen Gitterkonstanten ist, lassen sich aus den Residuen keine Standardfehler gewinnen, daher wird in den Fehlerfeldern `NA` angezeigt. Wenn es zu wenige unabhängige Reflexe gibt, um die Gitterkonstanten zu bestimmen, behält das Programm die ursprüngliche Zellform bei und ändert nur ihren Gesamtmaßstab, und die Fehler werden als `NA` angezeigt. Die Wahl ausreichend vieler unabhängiger Reflexe ermöglicht die Berechnung der Fehler.
 
 - `Apply to the crystal` (Auf den Kristall anwenden): Schreibt die verfeinerten Gitterkonstanten in den ausgewählten Kristall des Hauptprogramms zurück.
 - `Copy to Clipboard` (In Zwischenablage kopieren): Kopiert die optimierten Gitterkonstanten in die Zwischenablage.

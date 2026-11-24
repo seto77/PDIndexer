@@ -35,19 +35,19 @@ Les commandes autour du bouton `Exécuter` régissent la plage d'analyse et le t
 
 ## Onglets de sortie
 
-Chaque onglet est une table pour une grandeur de sortie. Chaque ligne correspond à un profil (le nom du profil), et chaque colonne correspond à une raie de diffraction sélectionnée (indice hkl, ou `Peak No.` pour un flexible crystal). Les tables sont conservées sous forme de texte séparé par des tabulations et sont converties en valeurs séparées par des virgules (CSV) lorsque vous les `Copier` ou les `Enregistrer`.
+Chaque onglet est une table pour une grandeur de sortie. Chaque ligne correspond à un profil (le nom du profil), et chaque colonne correspond à une raie de diffraction sélectionnée (indice hkl, ou `Peak No.` pour un flexible crystal). Les tables sont conservées sous forme de texte séparé par des tabulations. `Copier` les place dans le presse-papiers sous forme de texte séparé par des tabulations, et `Enregistrer` écrit un fichier séparé par des virgules (CSV).
 
 ### 2θ (°)
 
 ![Onglet 2θ](../assets/cap-fr-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-La position de pic ajustée, en 2θ (degrés), pour chaque profil et chaque raie de diffraction.
+La position de pic ajustée, en 2θ (degrés), pour chaque profil et chaque raie de diffraction. Lorsque l'axe horizontal est 2θ, la valeur est convertie en degrés quelle que soit l'unité d'affichage (degrés, centidegrés, radians ou milliradians). Pour d'autres axes, comme l'énergie ou le TOF, la colonne affiche `NaN`. Pour les réflexions en mode `Recherche simple`, c'est le maximum observé dans la plage de recherche qui est écrit. <!-- 261124Cl changed -->
 
 ### distance interréticulaire (Å)
 
 ![Onglet distance interréticulaire](../assets/cap-fr-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
-La distance interréticulaire d, en Å, calculée à partir de chaque position de pic. Elle est obtenue à partir de la longueur d'onde et de 2θ par \( d = \dfrac{\lambda}{2\sin\theta} \).
+La distance interréticulaire d, en Å, calculée à partir de chaque position de pic avec les réglages actuels de l'axe horizontal (rayonnement, longueur d'onde, conditions d'énergie ou de TOF). Pour les données à dispersion angulaire, elle vaut \( d = \dfrac{\lambda}{2\sin\theta} \). <!-- 261124Cl changed -->
 
 ### FWHM (°)
 
@@ -80,7 +80,7 @@ La pression dérivée des paramètres de maille de chaque profil à l'aide d'une
 Les résultats de l'analyse de contrainte uniaxiale / de déformation du réseau de Singh. Le nombre final de chaque nom de profil est interprété comme l'angle d'azimut \( \psi \) (degrés), et pour chaque réflexion la relation azimut-d est ajustée par moindres carrés (Levenberg–Marquardt). Pour chaque réflexion, elle fournit la distance interréticulaire sans contrainte `d0`, l'azimut de déformation maximale `Ψmax` et une grandeur proportionnelle à la contrainte `t/6Ghkl` (le rapport de la contrainte différentielle \( t \) au module de cisaillement \( G_{hkl} \)). Les courbes ajustées sont également tracées dans le graphique de l'onglet.
 
 !!! note "Quand l'équation de Singh s'applique"
-    Cet onglet fonctionne sur une série en « mode analyse de contrainte » dont les noms de profil se terminent par `...-whole`. Chaque nom de profil doit porter un angle d'azimut comme jeton final (par exemple `...-30`). Pour une série ordinaire, cet onglet n'est pas mis à jour.
+    Si le nom du premier profil se termine par `whole`, l'exécution passe en « mode analyse de contrainte ». Dans ce mode, le premier profil est ignoré, et le texte situé après le dernier trait d'union de chaque nom de profil restant (par exemple `30` dans `...-30`) est lu comme l'azimut en degrés. Une exécution ordinaire, hors mode analyse de contrainte, vide cet onglet.
 
 La distance interréticulaire dépendante de l'azimut exprimée par l'équation de Singh est approximativement
 
@@ -92,7 +92,7 @@ où \( \alpha \) correspond à `t/6Ghkl` et \( \psi_{\max} \) est l'azimut de d�
 
 | Action | Description |
 | --- | --- |
-| `Copier` | Copie l'onglet actuellement affiché dans le presse-papiers au format CSV (séparé par des virgules). |
+| `Copier` | Copie l'onglet actuellement affiché dans le presse-papiers sous forme de texte séparé par des tabulations. |
 | `Enregistrer` | Enregistre l'onglet actuellement affiché sous forme de fichier CSV (nom de fichier choisi dans une boîte de dialogue). |
 
 ### Enregistrement automatique

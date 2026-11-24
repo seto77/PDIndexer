@@ -76,14 +76,14 @@ Seleziona per quali cristalli etichettare gli indici delle linee di diffrazione 
 
 ![L'elenco dei cristalli](../assets/cap-it-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Mostra le stesse informazioni della checklist Profile nella finestra principale. I cristalli selezionati hanno le loro linee di diffrazione disegnate nella finestra principale. Ogni riga mostra una casella di controllo (`Check`), un colore di disegno (`PeakColor`) e il nome del cristallo (`Crystal`).
+Mostra le stesse informazioni dell'elenco dei cristalli nella finestra principale. I cristalli selezionati hanno le loro linee di diffrazione disegnate nella finestra principale. Ogni riga mostra una casella di controllo (`Check`), un colore di disegno (`PeakColor`) e il nome del cristallo (`Crystal`).
 
 ### Pulsanti freccia su/giù (↑ / ↓)
 
 Cambiano l'ordine dei cristalli.
 
 !!! note
-    Le righe da 1 a 6 sono riservate all'equazione di stato (EOS) e non possono essere riordinate. Vedi [Equazione di stato](5-equation-of-states.md) per i dettagli.
+    L'elenco iniziale dei cristalli riserva il Flexible Crystal in cima e i dieci standard di pressione successivi (per l'equazione di stato, EOS); queste righe non possono essere riordinate. Vedi [Equazione di stato](5-equation-of-states.md) per i dettagli.
 
 ### Add
 
@@ -99,7 +99,7 @@ Rimuove dall'elenco il cristallo attualmente selezionato.
 
 ### Delete all
 
-Rimuove dall'elenco tutti i cristalli.
+Rimuove dall'elenco tutti i cristalli non riservati (dopo una conferma).
 
 ---
 
