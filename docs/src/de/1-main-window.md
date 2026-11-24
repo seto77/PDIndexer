@@ -39,7 +39,7 @@ Jede Schaltfläche der Symbolleiste blendet ein eigenes Analysefenster ein oder 
 | `LPO-Analyse` | Das Fenster LPO-Analyse (gitterbezogene Vorzugsorientierung) ein-/ausblenden. | — |
 
 !!! note
-    Die Hauptfenster können auch mit Tastenkürzeln ein-/ausgeblendet werden: `Ctrl+Shift+C` (Kristallparameter), `Ctrl+Shift+E` (Zustandsgleichungen), `Ctrl+Shift+F` (Anpassungsparameter) und `Ctrl+Shift+D` (Peakmodus ändern).
+    Die Hauptfenster können auch mit Tastenkürzeln ein-/ausgeblendet werden: `Ctrl+Shift+C` (Kristallparameter), `Ctrl+Shift+E` (Zustandsgleichungen), `Ctrl+Shift+F` (Anpassungsparameter), `Ctrl+Shift+D` (Peakmodus ändern) und `Ctrl+Shift+S` (Sequentielle Analyse). Außerdem schaltet `Ctrl+Shift+Space` das Häkchen des ausgewählten Kristalls um, `Ctrl+Alt+Space` das Häkchen des ausgewählten Reflexes in der Reflexliste des Peak-Anpassungsfensters, und `Ctrl+Shift+V` liest Text aus der Zwischenablage als Profil ein. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Menüleiste
 
@@ -88,11 +88,11 @@ Jede Schaltfläche der Symbolleiste blendet ein eigenes Analysefenster ein oder 
 
 ### Sprache
 
-Die UI-Sprache umschalten. Derzeit werden Englisch (`English (need restart)`) und Japanisch (`Japanese (need restart)`) unterstützt. Nach dem Umschalten ist ein Neustart erforderlich.
+Wechseln Sie die Anzeigesprache über `Sprache` am rechten Ende der Menüleiste (11 Sprachen, jeweils mit ihrem eigenen Namen angezeigt). Der Wechsel erfordert einen Neustart: Wählen Sie im Bestätigungsdialog „Ja“, und PDIndexer startet automatisch neu. Nicht gespeicherte Arbeit geht dabei verloren, speichern Sie sie also vorher. <!-- 261124Cl changed: the old text described only English/Japanese -->
 
 ## Reiter Horizontale Achse {#horizontal-axis-tab}
 
-Der Reiter `Horizontale Achse` legt den Anzeigemodus der Achse fest. Die Einstellungen hier sind reine Anzeigeeinstellungen und stehen in keinem Zusammenhang mit den tatsächlichen Daten der horizontalen Achse (die tatsächlichen Informationen der horizontalen Achse können über die [Profilparameter](4-profile-parameter.md) geändert werden). Dadurch können Sie die horizontale Achse zum Vergleich angleichen, selbst wenn unterschiedliche Röntgenquellen verwendet wurden. Beispielsweise kann ein geladenes Profil, das mit der Cu-Kα-Linie aufgenommen wurde, so dargestellt werden, als wäre es mit der Wellenlänge der Mo-Kα-Linie aufgenommen worden.
+Der Reiter `Horizontale Achse` legt den Anzeigemodus der Achse fest. Die Einstellungen hier sind reine Anzeigeeinstellungen und stehen in keinem Zusammenhang mit den tatsächlichen Daten der horizontalen Achse (die tatsächlichen Informationen der horizontalen Achse können im Fenster [Profilparameter](4-profile-parameter.md) geändert werden). Dadurch können Sie die horizontale Achse zum Vergleich angleichen, selbst wenn unterschiedliche Röntgenquellen verwendet wurden. Beispielsweise kann ein geladenes Profil, das mit der Cu-Kα-Linie aufgenommen wurde, so dargestellt werden, als wäre es mit der Wellenlänge der Mo-Kα-Linie aufgenommen worden.
 
 | Eintrag | Beschreibung |
 | --- | --- |
@@ -131,7 +131,7 @@ Der angehakte Modus ist der aktuelle Modus.
 
 ### Vertikale Achse
 
-Geben Sie an, ob die vertikale Achse (Intensität) als rohe Counts (`Rohe Counts`) oder als Counts pro Schritt (`Counts pro Schritt (CPS)`) angezeigt wird. Sie können außerdem angeben, ob die vertikale Achse auf einer linearen (`Linear`) oder logarithmischen (`Logarithmisch`) Skala angezeigt wird.
+Geben Sie an, ob die vertikale Achse (Intensität) als rohe Counts (`Rohe Counts`) oder als durch die Belichtungszeit in Sekunden geteilte Counts (`Counts pro Schritt (CPS)`) angezeigt wird. Sie können außerdem angeben, ob die vertikale Achse auf einer linearen (`Linear`) oder logarithmischen (`Logarithmisch`) Skala angezeigt wird.
 
 ## Profilliste
 
@@ -141,7 +141,7 @@ Im Mehrprofilmodus werden die geladenen Profile als Liste angezeigt, und nur die
 
 ## Kristallliste
 
-Zeigt die Liste der Kristalle an und konfiguriert sie. Das Anhaken eines Eintrags zeichnet Beugungslinien an den Positionen der Beugungspeaks. Standardmäßig sind etwa 80 Kristalle vorregistriert.
+Zeigt die Liste der Kristalle an und konfiguriert sie. Das Anhaken eines Eintrags zeichnet Beugungslinien an den Positionen der Beugungspeaks. Die Anfangsliste enthält Druckstandards und weitere Kristalle.
 
 !!! note "Besondere Zeilen"
     - Die erste Zeile (Zeile 0) ist der **Flexible Crystal** (cyanfarbener Hintergrund), der zum Zeichnen beliebiger Beugungslinien dient.

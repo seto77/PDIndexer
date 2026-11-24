@@ -35,19 +35,19 @@ I controlli attorno al pulsante `Esegui` governano l'intervallo di analisi e la 
 
 ## Schede di output
 
-Ogni scheda è una tabella per una grandezza di output. Ogni riga corrisponde a un profilo (il nome del profilo) e ogni colonna corrisponde a una linea di diffrazione selezionata (indice hkl, oppure `Peak No.` per un flexible crystal). Le tabelle sono conservate come testo separato da tabulazioni e vengono convertite in valori separati da virgole (CSV) quando esegui `Copia` o `Salva`.
+Ogni scheda è una tabella per una grandezza di output. Ogni riga corrisponde a un profilo (il nome del profilo) e ogni colonna corrisponde a una linea di diffrazione selezionata (indice hkl, oppure `Peak No.` per un flexible crystal). Le tabelle sono conservate come testo separato da tabulazioni. `Copia` le copia negli appunti come testo separato da tabulazioni, mentre `Salva` scrive un file separato da virgole (CSV).
 
 ### 2θ (°)
 
 ![Scheda 2θ](../assets/cap-it-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-La posizione del picco adattata, in 2θ (gradi), per ogni profilo e ogni linea di diffrazione.
+La posizione del picco adattata, in 2θ (gradi), per ogni profilo e ogni linea di diffrazione. Quando l'asse orizzontale è 2θ, il valore viene convertito in gradi qualunque sia l'unità di visualizzazione (gradi, centesimi di grado, radianti o milliradianti). Per altri assi, come energia o TOF, la colonna mostra `NaN`. Per le riflessioni in modalità `Simple Search`, viene scritto il massimo osservato entro l'intervallo di ricerca. <!-- 261124Cl changed -->
 
 ### Distanza interplanare (Å)
 
 ![Scheda distanza interplanare](../assets/cap-it-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
-La distanza interplanare d, in Å, calcolata da ciascuna posizione del picco. Si ottiene dalla lunghezza d'onda e da 2θ tramite \( d = \dfrac{\lambda}{2\sin\theta} \).
+La distanza interplanare d, in Å, calcolata da ciascuna posizione del picco con le impostazioni correnti dell'asse orizzontale (radiazione, lunghezza d'onda, energia o condizioni TOF). Per i dati a dispersione angolare vale \( d = \dfrac{\lambda}{2\sin\theta} \). <!-- 261124Cl changed -->
 
 ### FWHM (gradi)
 
@@ -80,7 +80,7 @@ La pressione ricavata dai parametri di cella di ciascun profilo tramite un'[equa
 I risultati dell'analisi dello sforzo uniassiale / della deformazione reticolare di Singh. Il numero finale di ciascun nome di profilo è interpretato come l'angolo di azimut \( \psi \) (gradi) e, per ogni riflessione, la relazione azimut-d viene adattata ai minimi quadrati (Levenberg–Marquardt). Per ogni riflessione fornisce la distanza reticolare priva di sforzo `d0`, l'azimut di massima deformazione `Ψmax` e una grandezza proporzionale allo sforzo `t/6Ghkl` (il rapporto tra lo sforzo differenziale \( t \) e il modulo di taglio \( G_{hkl} \)). Le curve adattate sono inoltre disegnate nel grafico della scheda.
 
 !!! note "Quando si applica l'equazione di Singh"
-    Questa scheda opera su una serie in "modalità analisi degli sforzi" i cui nomi di profilo terminano con `...-whole`. Ogni nome di profilo deve riportare un angolo di azimut come token finale (ad esempio `...-30`). Per una serie ordinaria questa scheda non viene aggiornata.
+    Se il nome del primo profilo termina con `whole`, l'esecuzione entra in "modalità analisi degli sforzi". In questa modalità il primo profilo viene saltato e il testo dopo l'ultimo trattino nel nome di ciascuno dei profili rimanenti (ad esempio `30` in `...-30`) viene letto come azimut in gradi. Un'esecuzione ordinaria, non in modalità analisi degli sforzi, svuota questa scheda.
 
 La distanza reticolare dipendente dall'azimut espressa dall'equazione di Singh è approssimativamente
 
@@ -92,7 +92,7 @@ dove \( \alpha \) corrisponde a `t/6Ghkl` e \( \psi_{\max} \) è l'azimut di mas
 
 | Azione | Descrizione |
 | --- | --- |
-| `Copia` | Copia la scheda attualmente visualizzata negli appunti come CSV (separato da virgole). |
+| `Copia` | Copia la scheda attualmente visualizzata negli appunti come testo separato da tabulazioni. |
 | `Salva` | Salva la scheda attualmente visualizzata come file CSV (nome del file scelto in una finestra di dialogo). |
 
 ### Salvataggio automatico

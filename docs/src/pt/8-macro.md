@@ -100,12 +100,12 @@ Cada tabela abaixo é transcrita dos atributos `[Help]` no código-fonte. A mesm
 | `GetDirectoryPath` | `GetDirectoryPath(string filename = "")` | Obtém um caminho de diretório (com barra invertida final). Se `filename` for omitido, uma caixa de diálogo de seleção de pasta é aberta. Caso contrário, a parte do diretório de `filename` é retornada. |
 | `GetFileName` | `GetFileName()` | Abre uma caixa de diálogo de seleção de arquivo e retorna o caminho completo do arquivo escolhido. Retorna uma string vazia se o usuário cancelar. |
 | `GetFileNames` | `GetFileNames()` | Abre uma caixa de diálogo de arquivo com seleção múltipla e retorna os caminhos completos dos arquivos escolhidos. Retorna um array vazio se o usuário cancelar. |
-| `ReadProfiles` | `ReadProfiles(string filename)` | Lê os dados de perfil a partir do arquivo indicado. Se `filename` for omitido (ou não existir), uma caixa de diálogo de seleção de arquivo será aberta. |
-| `SaveProfiles` | `SaveProfiles(string filename)` | Salva os dados de perfil no arquivo indicado. Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
-| `ReadCrystals` | `ReadCrystals(string filename)` | Lê os dados de cristal a partir do arquivo indicado. Se `filename` for omitido (ou não existir), uma caixa de diálogo de seleção de arquivo será aberta. |
-| `SaveCrystals` | `SaveCrystals(string filename)` | Salva os dados de cristal no arquivo indicado. Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
-| `SaveMetafile` | `SaveMetafile(string filename)` | Salva o padrão atual como um Windows Metafile (`.emf`). Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
-| `SaveText` | `SaveText(string text, string filename)` | Salva o conteúdo de texto indicado em um arquivo `.txt`. Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
+| `ReadProfiles` | `ReadProfiles(string fileName = "")` | Lê os dados de perfil a partir do arquivo indicado. Se `fileName` for omitido (ou não existir), uma caixa de diálogo de seleção de arquivo será aberta. |
+| `SaveProfiles` | `SaveProfiles(string filename = "")` | Salva os dados de perfil no arquivo indicado. Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
+| `ReadCrystals` | `ReadCrystals(string filename = "")` | Lê os dados de cristal a partir do arquivo indicado. Se `filename` for omitido (ou não existir), uma caixa de diálogo de seleção de arquivo será aberta. |
+| `SaveCrystals` | `SaveCrystals(string filename = "")` | Salva os dados de cristal no arquivo indicado. Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
+| `SaveMetafile` | `SaveMetafile(string filename = "")` | Salva o padrão atual como um Windows Metafile (`.emf`). Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
+| `SaveText` | `SaveText(string text, string filename = "")` | Salva o conteúdo de texto indicado em um arquivo `.txt`. Se `filename` for omitido, uma caixa de diálogo de salvamento será aberta. |
 
 ### PDI.Drawing — Visualização de desenho
 
@@ -160,15 +160,15 @@ Os parâmetros de rede `CellA`–`CellC` estão em \( \mathrm{\AA} \), e `CellAl
 
 ### PDI.ProfileOperator — Aritmética de perfis
 
-Cada perfil é especificado pelo seu índice na lista. `output` é o nome dado ao perfil resultante.
+Cada perfil é especificado pelo seu índice na lista. `outputName` é o nome dado ao perfil resultante.
 
 | Membro | Assinatura | Descrição |
 | --- | --- | --- |
-| `Average` | `Average(int[] indices, string output)` | Calcula a média dos perfis cujos índices estão listados em `indices` (por exemplo, `[1,3,5,9]`). `output` é o nome dado ao perfil resultante. |
-| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string output)` | Calcula profile1 + profile2. Cada perfil é especificado pelo seu índice. `output` é o nome dado ao perfil resultante. |
-| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string output)` | Calcula profile1 − profile2. Cada perfil é especificado pelo seu índice. `output` é o nome dado ao perfil resultante. |
-| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string output)` | Calcula profile1 × profile2. Cada perfil é especificado pelo seu índice. `output` é o nome dado ao perfil resultante. |
-| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string output)` | Calcula profile1 ÷ profile2. Cada perfil é especificado pelo seu índice. `output` é o nome dado ao perfil resultante. |
+| `Average` | `Average(int[] intArray, string outputName = "")` | Calcula a média dos perfis cujos índices estão listados em `intArray` (por exemplo, `[1,3,5,9]`). `outputName` é o nome dado ao perfil resultante. |
+| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string outputName = "")` | Calcula profile1 + profile2. Cada perfil é especificado pelo seu índice. `outputName` é o nome dado ao perfil resultante. |
+| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string outputName = "")` | Calcula profile1 − profile2. Cada perfil é especificado pelo seu índice. `outputName` é o nome dado ao perfil resultante. |
+| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string outputName = "")` | Calcula profile1 × profile2. Cada perfil é especificado pelo seu índice. `outputName` é o nome dado ao perfil resultante. |
+| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string outputName = "")` | Calcula profile1 ÷ profile2. Cada perfil é especificado pelo seu índice. `outputName` é o nome dado ao perfil resultante. |
 
 ### PDI.ProfileList — Lista de perfis
 
@@ -195,7 +195,7 @@ Opera a janela [Ajuste de picos de difração](6-fitting-diffraction-peaks.md).
 | --- | --- | --- |
 | `Open` | `Open()` | Abre a janela 'Fitting peaks'. |
 | `Close` | `Close()` | Fecha a janela 'Fitting peaks'. |
-| `Apply` | `Apply()` | Aplica os parâmetros de rede otimizados ao cristal selecionado (equivalente a clicar no botão `Confirm` na janela de ajuste). |
+| `Apply` | `Apply()` | Aplica os parâmetros de rede otimizados ao cristal selecionado (equivalente a clicar no botão `Apply to the crystal` na janela de ajuste). |
 | `Check` | `Check(int index = -1, bool state = true)` | Marca ou desmarca o plano de rede no índice indicado. Se `index` for -1, o plano atualmente selecionado é o alvo. |
 | `Uncheck` | `Uncheck(int index = -1)` | Desmarca o plano de rede no índice indicado. Se `index` for -1, o plano atualmente selecionado será desmarcado. |
 | `Select` | `Select(int index)` | Seleciona o plano de rede no índice indicado. |
@@ -211,7 +211,7 @@ Opera a janela [Análise sequencial](7-sequential-analysis.md). Os getters de CS
 | `Directory` | `Directory (get/set)` | Obtém/Define o caminho completo do diretório onde os resultados da análise sequencial são salvos. |
 | `Open` | `Open()` | Abre a janela 'Sequential Analysis'. |
 | `Close` | `Close()` | Fecha a janela 'Sequential Analysis'. |
-| `Execute` | `Execute()` | Executa a análise sequencial em todos os perfis marcados. |
+| `Execute` | `Execute()` | Executa a análise sequencial em todos os perfis carregados (a partir do número inicial, com a configuração de loop), usando o cristal e as reflexões selecionados na janela de ajuste. A janela de ajuste deve estar aberta e pelo menos quatro perfis devem estar carregados; as caixas de seleção dos perfis não limitam a execução. |
 | `GetCSV_2theta` | `GetCSV_2theta()` | Obtém os resultados de 2-teta da análise sequencial mais recente como uma string CSV. |
 | `GetCSV_D` | `GetCSV_D()` | Obtém os resultados de espaçamento d da análise sequencial mais recente como uma string CSV. |
 | `GetCSV_FWHM` | `GetCSV_FWHM()` | Obtém os resultados de FWHM da análise sequencial mais recente como uma string CSV. |
@@ -232,16 +232,17 @@ Opera a janela [Análise sequencial](7-sequential-analysis.md). Os getters de CS
 Como um dos exemplos incorporados, aqui está uma macro que executa a análise sequencial e salva os resultados em CSV.
 
 ```python
-# Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing /
-# cell-constant / pressure results as CSV strings and save each to a file.
-PDI.ProfileList.CheckAll()
+# Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+# then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 Você pode navegar pelos outros exemplos usando o botão `Show samples` no editor.

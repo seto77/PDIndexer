@@ -3,7 +3,7 @@
 
 이 페이지에서는 PDIndexer가 다루는 "프로파일 데이터" 자체(측정 데이터)와, 그 읽기·표시·내보내기 방법을 설명합니다. 읽어들인 후의 평활화·배경 제거 등의 처리는 [프로파일 파라미터](4-profile-parameter.md) 창에서 수행합니다. 지원하는 확장자 목록은 [파일 형식](appendix/file-formats.md)을 참조하십시오.
 
-![중앙에 프로파일, 왼쪽에 프로파일 리스트와 결정 리스트가 있는 PDIndexer 메인 창.](../assets/cap-ko-auto/FormMain.png)
+![중앙에 프로파일, 오른쪽에 프로파일 리스트와 결정 리스트가 있는 PDIndexer 메인 창.](../assets/cap-ko-auto/FormMain.png)
 
 ## 프로파일이란
 
@@ -14,7 +14,7 @@
 - 중성자 비행시간(TOF)법에서는 비행시간
 - 어느 경우든, 내부적으로는 격자면 간격 \( d \) 또는 산란 벡터 \( q \)로 변환하여 다룰 수 있습니다
 
-세로축은 회절 강도이며, `Raw Counts`(원시 카운트) 또는 `Count per Step (CPS)`(스텝당 카운트)로, 선형 또는 로그 스케일로 표시할 수 있습니다([메인 창](1-main-window.md) 페이지의 `Vertical Axis` 항목 참조).
+세로축은 회절 강도이며, `Raw Counts`(원시 카운트) 또는 카운트를 노출 시간(초)으로 나눈 값인 `Count per Step (CPS)`(스텝당 카운트)로, 선형 또는 로그 스케일로 표시할 수 있습니다([메인 창](1-main-window.md) 페이지의 `Vertical Axis` 항목 참조).
 
 ## 지원하는 입력 형식
 
@@ -57,7 +57,7 @@
 
 ## Profile 체크리스트
 
-메인 창 왼쪽의 `Profile` 리스트에는 읽어들인 모든 프로파일이 표시됩니다.
+메인 창 오른쪽의 `Profile` 리스트에는 읽어들인 모든 프로파일이 표시됩니다.
 
 - 체크된 프로파일만 중앙 뷰어에 그려집니다. `Check/Uncheck all`(모두 체크/해제)로 한 번에 전환할 수 있습니다.
 - `Color` 열을 클릭하면 각 프로파일의 그리기 색을 변경할 수 있습니다.
@@ -86,10 +86,10 @@
 ## 프로파일 내보내기
 
 - **`File ▸ Save profile(s)`(프로파일 저장)** — 읽어들인 모든 프로파일을 PDIndexer 고유의 `pdi2` 형식으로 저장합니다. 축 설정과 처리 정보도 유지됩니다.
-- **`File ▸ Export the selected profile(s)`(선택한 프로파일 내보내기)** — 선택한 프로파일을 다음 형식 중 하나로 내보냅니다.
-  - `as CSV (comma separated values) file` — 쉼표 구분(각도, 강도)
-  - `as TSV (tab separated values) file` — 탭 구분
-  - `as GSAS file` — GSAS(리트벨트 해석) 데이터 형식
+- **`File ▸ Export the selected profile(s)`(선택한 프로파일 내보내기)** — 프로파일을 다음 형식 중 하나로 내보냅니다.
+  - `as CSV (comma separated values) file` — 체크한 프로파일을 쉼표 구분 값(X, Y)으로, 하나의 파일에 모아서 또는 프로파일마다 하나의 파일로 저장합니다. 저장 위치를 선택한 뒤 `예`라고 답하면 하나로 합치고, `아니요`라고 답하면 따로 저장합니다. X는 표시 중인 가로축의 좌표입니다. 숫자의 소수점은 지역 설정과 관계없이 항상 `.`을 사용합니다.
+  - `as TSV (tab separated values) file` — 같은 내용을 탭 구분으로 저장합니다.
+  - `as GSAS file` — 선택한 프로파일을 GSAS(리트벨트 해석) 데이터 형식으로 기록합니다. 가로축이 2θ 또는 중성자 TOF인 경우에만 내보낼 수 있습니다.
 
 !!! note "그림 저장"
     프로파일 "데이터"가 아니라 렌더링된 "그림"을 저장하려면 `File ▸ Copy to Clipboard` 또는 `File ▸ Save as Metafile`(EMF)을 사용합니다. EMF는 PowerPoint나 Word로 가져올 수 있는 벡터 형식입니다.

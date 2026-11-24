@@ -89,6 +89,7 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
         }
 
         textBox2theta.Text = textBoxDspacing.Text = textBoxFWHM.Text = textBoxIntensity.Text = $"{text}\r\n";
+        if (!stressMode) { textBoxSingh.Text = ""; graphControl1.ClearProfile(); } // 261124Cl 追加: 前回の応力解析の Singh 結果が残り、今回の試料名で自動保存されていた
         textBoxCellConstants.Text = $"{(stressMode ? "Degree" : "Profile Name")}\tV\tV_err\tA\tA_err\tB\tB_err\tC\tC_err\tAlpha\tAlpha_err\tBeta\tBeta_err\tGamma\tGamma_err\r\n";
 
         Func<(string Researcher, double Pressure)[]> eos = formMain.bindingSourceCrystal.Position switch
@@ -186,7 +187,11 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
             if (stressMode)
             {
                 profileName = profileName[(profileName.LastIndexOf('-') + 1)..]; //260712Cl Split('-')[^1]→範囲演算子
-                if (!double.TryParse(profileName, out angle))
+                //if (!double.TryParse(profileName, out angle)) // 261124Cl 変更前: 現在のカルチャだけで読んでいた (小数点がカンマの環境で "30.5" が読めず、解析が黙って止まった)
+                //    return;
+                // 261124Cl 変更: 不変カルチャ ("30.5") と現在のカルチャ ("30,5") の両方で試す
+                if (!double.TryParse(profileName, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out angle)
+                    && !double.TryParse(profileName, out angle))
                     return;
                 angle = angle / 180 * Math.PI;
             }
@@ -204,13 +209,29 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
                 StringBuilder sb2theta = new(), sbDspacing = new(), sbIntensity = new(), sbFWHM = new();
                 foreach (var p in crystal.Plane.Where(e => e.IsFittingChecked))
                 {
-                    sb2theta.Append($"\t{p.peakFunction.X:f10}");
-                    sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
+                    // 261124Cl 変更前: 表示中の X を常に 2θ(度) とみなしていた (d・ラジアン・センチ度表示では 2θ の列と d が誤り)。Simple モードでは実測の最大位置 (XObs) ではなく初期中心を書いていた
+                    //sb2theta.Append($"\t{p.peakFunction.X:f10}");
+                    //sbDspacing.Append($"\t{(formMain.WaveLength * 10 / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)):f10}");
+                    // 261124Cl 変更: 観測位置 x (表示単位) から d を横軸の換算で求め、2θ の列は度に換算して書く。2θ 以外の横軸 (エネルギー・TOF など) では 2θ の列は NaN
+                    var x = p.SerchOption == PeakFunctionForm.Simple ? p.XObs : p.peakFunction.X;
+                    var dNm = double.IsNaN(x) ? double.NaN : HorizontalAxisConverter.ConvertToD(x, formMain.HorizontalAxisProperty);
+                    var twoThetaDeg = formMain.HorizontalAxisProperty.AxisMode != HorizontalAxis.Angle ? double.NaN : formMain.HorizontalAxisProperty.TwoThetaUnit switch
+                    {
+                        AngleUnitEnum.Degree => x,
+                        AngleUnitEnum.CentiDegree => x / 100,
+                        AngleUnitEnum.Radian => x / Math.PI * 180,
+                        AngleUnitEnum.MilliRadian => x / 1000 / Math.PI * 180,
+                        _ => double.NaN
+                    };
+                    sb2theta.Append($"\t{twoThetaDeg:f10}");
+                    sbDspacing.Append($"\t{dNm * 10:f10}");
                     sbIntensity.Append($"\t{p.peakFunction.GetIntegral():g10}");
                     sbFWHM.Append($"\t{p.peakFunction.Hk:f8}");
 
-                    if (stressMode && !double.IsNaN(p.peakFunction.X))
-                        results[m].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
+                    //if (stressMode && !double.IsNaN(p.peakFunction.X)) // 261124Cl 変更前
+                    //    results[m].Add(new PointD(angle, formMain.WaveLength / 2 / Math.Sin(p.peakFunction.X / 180 * Math.PI / 2)));
+                    if (stressMode && double.IsFinite(dNm)) // 261124Cl 変更: 上と同じ d (nm) を使う
+                        results[m].Add(new PointD(angle, dNm));
                     m++;
                 }
                 textBox2theta.AppendText(sb2theta.Append("\r\n").ToString()); //260712Cl ToString+連結の二重確保を1回に
@@ -341,19 +362,20 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
         }
 
         if (checkBoxAutoSaveCell.Checked)
-            save(path + name + "_cell.csv", textBoxCellConstants.Text.Replace('\t', ',')); //260712Cl "\t"→'\t' char置換 (7箇所)
+            save(path + name + "_cell.csv", ToInvariantCsv(textBoxCellConstants.Text)); // 261124Cl 変更: 旧 textBoxCellConstants.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
         if (checkBoxAutoSaveD.Checked)
-            save(path + name + "_d.csv", textBoxDspacing.Text.Replace('\t', ','));
+            save(path + name + "_d.csv", ToInvariantCsv(textBoxDspacing.Text)); // 261124Cl 変更: 旧 textBoxDspacing.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
         if (checkBoxAutoSaveFWHM.Checked)
-            save(path + name + "_fwhm.csv", textBoxFWHM.Text.Replace('\t', ','));
+            save(path + name + "_fwhm.csv", ToInvariantCsv(textBoxFWHM.Text)); // 261124Cl 変更: 旧 textBoxFWHM.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
         if (checkBoxAutoSaveInt.Checked)
-            save(path + name + "_intensity.csv", textBoxIntensity.Text.Replace('\t', ','));
+            save(path + name + "_intensity.csv", ToInvariantCsv(textBoxIntensity.Text)); // 261124Cl 変更: 旧 textBoxIntensity.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
         if (checkBoxAutoSavePressure.Checked)
-            save(path + name + "_pressure.csv", textBoxPressure.Text.Replace('\t', ','));
-        if (checkBoxAutoSaveSingh.Checked)
-            save(path + name + "_Singh.csv", textBoxSingh.Text.Replace('\t', ','));
+            save(path + name + "_pressure.csv", ToInvariantCsv(textBoxPressure.Text)); // 261124Cl 変更: 旧 textBoxPressure.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
+        //if (checkBoxAutoSaveSingh.Checked) // 261124Cl 変更前
+        if (checkBoxAutoSaveSingh.Checked && textBoxSingh.Text.Length > 0) // 261124Cl 変更: 今回 Singh の結果を作ったときだけ保存
+            save(path + name + "_Singh.csv", ToInvariantCsv(textBoxSingh.Text)); // 261124Cl 変更: 旧 textBoxSingh.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
         if (checkBoxAutoSaveTwoTheta.Checked)
-            save(path + name + "_2theta.csv", textBox2theta.Text.Replace('\t', ','));
+            save(path + name + "_2theta.csv", ToInvariantCsv(textBox2theta.Text)); // 261124Cl 変更: 旧 textBox2theta.Text.Replace('\t', ',') (小数点が ',' の環境で列が壊れた)
     }
 
     private void buttonSetDirectory_Click(object sender, EventArgs e)
@@ -572,7 +594,36 @@ public partial class FormSequentialAnalysis : FormBase //260604Cl Form→FormBas
             6 => textBoxSingh.Text,
             _ => ""
         };
-        return CSV ? txt.Replace('\t', ',') : txt;
+        //return CSV ? txt.Replace('\t', ',') : txt; // 261124Cl 変更前: 表示文字列のタブを ',' に置換するだけ (小数点が ',' の環境で列が壊れた)
+        return CSV ? ToInvariantCsv(txt) : txt; // 261124Cl 変更
+    }
+
+    /// <summary>
+    /// 261124Cl 追加: タブ区切りの表示テキストを CSV にする。小数点が '.' でないカルチャでは、現在のカルチャの数値として読めるセルを
+    /// 不変カルチャ ('.' の小数点) で書き直す。',' や '"' を含むセル (試料名など) は引用符で囲む。画面の表示はそのまま保つ。
+    /// </summary>
+    public static string ToInvariantCsv(string tabText)
+    {
+        var culture = System.Globalization.CultureInfo.CurrentCulture;
+        var convert = culture.NumberFormat.NumberDecimalSeparator != ".";
+        var sb = new StringBuilder(tabText.Length);
+        var lines = tabText.Split('\n');
+        for (int l = 0; l < lines.Length; l++)
+        {
+            var cells = lines[l].TrimEnd('\r').Split('\t');
+            for (int c = 0; c < cells.Length; c++)
+            {
+                var cell = cells[c];
+                if (convert && double.TryParse(cell, System.Globalization.NumberStyles.Float, culture, out var v))
+                    cell = v.ToString("R", System.Globalization.CultureInfo.InvariantCulture);
+                else if (cell.Contains(',') || cell.Contains('"'))
+                    cell = "\"" + cell.Replace("\"", "\"\"") + "\"";
+                if (c > 0) sb.Append(',');
+                sb.Append(cell);
+            }
+            if (l < lines.Length - 1) sb.Append("\r\n");
+        }
+        return sb.ToString();
     }
     #endregion
 

@@ -39,7 +39,7 @@ Ogni pulsante della barra degli strumenti apre e chiude una finestra di analisi 
 | `Analisi LPO` | Apre e chiude la finestra Analisi LPO (orientazione preferenziale del reticolo). | — |
 
 !!! note
-    Le finestre principali possono essere aperte e chiuse anche con le scorciatoie da tastiera: `Ctrl+Shift+C` (Parametri cristallo), `Ctrl+Shift+E` (Equazioni di stato), `Ctrl+Shift+F` (Parametri adattamento) e `Ctrl+Shift+D` (cambia modalità picco).
+    Le finestre principali possono essere aperte e chiuse anche con le scorciatoie da tastiera: `Ctrl+Shift+C` (Parametri cristallo), `Ctrl+Shift+E` (Equazioni di stato), `Ctrl+Shift+F` (Parametri adattamento), `Ctrl+Shift+D` (cambia modalità picco) e `Ctrl+Shift+S` (Analisi sequenziale). Inoltre, `Ctrl+Shift+Space` attiva/disattiva la spunta del cristallo selezionato, `Ctrl+Alt+Space` attiva/disattiva la spunta della riflessione selezionata nell'elenco delle riflessioni della finestra di adattamento dei picchi, e `Ctrl+Shift+V` legge come profilo il testo presente negli appunti. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Barra dei menu
 
@@ -88,11 +88,11 @@ Ogni pulsante della barra degli strumenti apre e chiude una finestra di analisi 
 
 ### Lingua
 
-Cambia la lingua dell'interfaccia. Attualmente sono supportati l'inglese (`English (need restart)`) e il giapponese (`Japanese (need restart)`). Dopo il cambio è necessario un riavvio.
+Cambia la lingua di visualizzazione da `Lingua` all'estremità destra della barra dei menu (11 lingue, ciascuna indicata con il proprio nome). Il cambio richiede un riavvio: scegliendo Sì nella finestra di conferma, PDIndexer si riavvia automaticamente. Il lavoro non salvato va perso, quindi salvalo prima. <!-- 261124Cl changed: the old text described only English/Japanese -->
 
 ## Scheda Asse orizzontale {#horizontal-axis-tab}
 
-La scheda `Asse orizzontale` imposta la modalità di visualizzazione dell'asse. Le impostazioni qui presenti sono di sola visualizzazione e non hanno relazione con i dati effettivi dell'asse orizzontale (le informazioni effettive dell'asse orizzontale possono essere modificate dai [Parametri del profilo](4-profile-parameter.md)). Per questo motivo è possibile allineare l'asse orizzontale per il confronto anche quando sono state usate sorgenti di raggi X diverse. Ad esempio, anche se il profilo caricato è stato acquisito con la linea Cu Kα, può essere visualizzato come se fosse stato acquisito alla lunghezza d'onda della linea Mo Kα.
+La scheda `Asse orizzontale` imposta la modalità di visualizzazione dell'asse. Le impostazioni qui presenti sono di sola visualizzazione e non hanno relazione con i dati effettivi dell'asse orizzontale (le informazioni effettive dell'asse orizzontale possono essere modificate nella finestra [Parametri del profilo](4-profile-parameter.md)). Per questo motivo è possibile allineare l'asse orizzontale per il confronto anche quando sono state usate sorgenti di raggi X diverse. Ad esempio, anche se il profilo caricato è stato acquisito con la linea Cu Kα, può essere visualizzato come se fosse stato acquisito alla lunghezza d'onda della linea Mo Kα.
 
 | Voce | Descrizione |
 | --- | --- |
@@ -131,7 +131,7 @@ La modalità spuntata è la modalità corrente.
 
 ### Asse verticale
 
-Specifica se visualizzare l'asse verticale (intensità) come conteggi grezzi (`Conteggi grezzi`) o come conteggi per passo (`Conteggi per passo (CPS)`). Puoi anche specificare se visualizzare l'asse verticale su scala lineare (`Lineare`) o logaritmica (`Logaritmica`).
+Specifica se visualizzare l'asse verticale (intensità) come conteggi grezzi (`Conteggi grezzi`) o come conteggi divisi per il tempo di esposizione in secondi (`Conteggi per passo (CPS)`). Puoi anche specificare se visualizzare l'asse verticale su scala lineare (`Lineare`) o logaritmica (`Logaritmica`).
 
 ## Elenco dei profili
 
@@ -141,7 +141,7 @@ Nella modalità a profili multipli, i profili caricati sono mostrati come elenco
 
 ## Elenco dei cristalli
 
-Visualizza e configura l'elenco dei cristalli. Spuntando una voce si tracciano le linee di diffrazione in corrispondenza delle posizioni dei picchi di diffrazione. Per impostazione predefinita sono preregistrati circa 80 cristalli.
+Visualizza e configura l'elenco dei cristalli. Spuntando una voce si tracciano le linee di diffrazione in corrispondenza delle posizioni dei picchi di diffrazione. L'elenco iniziale comprende gli standard di pressione e altri cristalli.
 
 !!! note "Righe speciali"
     - La prima riga (riga 0) è il **Flexible Crystal** (sfondo ciano), usato per tracciare linee di diffrazione arbitrarie.

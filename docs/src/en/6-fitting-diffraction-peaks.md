@@ -45,9 +45,9 @@ The diffraction lines of the selected crystal are listed here. Turning on the ch
 
 The buttons below the list export the results.
 
-- `Copy to clipborad`: Copies the table to the clipboard. It can be pasted directly into Excel and similar applications.
-- `Save as CSV`: Saves the table as a `.csv` file. `Effective digit` sets the number of decimal places.
-- `Clear peaks`: Clears the fitting results.
+- `Copy to Clipboard`: Copies the table to the clipboard. It can be pasted directly into Excel and similar applications.
+- `Save as CSV`: Saves the table as a `.csv` file. `Effective digit` sets the number of significant digits shown in the table.
+- `Clear peaks`: Deletes all peaks added manually to the Flexible Crystal.
 
 ## Fitting option
 
@@ -103,7 +103,7 @@ When the Search Ranges of two or more selected diffraction lines overlap, this o
 Once enough independent indices are chosen for the least-squares calculation to become solvable, this panel displays the most-probable lattice constants \(a, b, c, \alpha, \beta, \gamma\) and the volume \(V\), each with its error (`±`).
 
 !!! note "About the NA display"
-    When there are insufficient degrees of freedom—that is, when the degrees of freedom equal the number of fitted peaks, or when a given lattice constant has no degrees of freedom—`NA` is displayed instead of an error. Choosing enough independent reflections allows the errors to be computed.
+    When the number of fitted reflections equals the number of independent lattice constants, the residuals cannot provide standard errors, so `NA` is displayed in the error fields. When there are too few independent reflections to solve for the lattice constants, the program keeps the original cell shape and changes only its overall scale, and the errors are shown as `NA`. Choosing enough independent reflections allows the errors to be computed.
 
 - `Apply to the crystal`: Pushes the refined lattice constants back to the selected crystal in the main program.
 - `Copy to Clipboard`: Copies the optimized lattice constants to the clipboard.

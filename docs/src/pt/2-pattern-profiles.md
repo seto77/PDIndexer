@@ -3,7 +3,7 @@
 
 Esta página descreve os próprios "dados de perfil" (o conjunto de dados medido) que o PDIndexer manipula, e como carregá-los, exibi-los e exportá-los. O processamento aplicado após o carregamento — suavização, subtração de fundo e assim por diante — é feito na janela [Parâmetros do perfil](4-profile-parameter.md). Para a lista completa de extensões de arquivo suportadas, consulte [Formatos de arquivo](appendix/file-formats.md).
 
-![Janela principal do PDIndexer com um perfil no centro e as listas de perfis e de cristais à esquerda.](../assets/cap-pt-auto/FormMain.png)
+![Janela principal do PDIndexer com um perfil no centro e as listas de perfis e de cristais à direita.](../assets/cap-pt-auto/FormMain.png)
 
 ## O que é um perfil
 
@@ -14,7 +14,7 @@ Um perfil é um conjunto de dados unidimensional de "eixo horizontal vs. intensi
 - Tempo de voo para o método de tempo de voo de nêutrons (TOF)
 - Em todos os casos, os dados também podem ser tratados internamente após a conversão para o espaçamento de rede \( d \) ou o vetor de espalhamento \( q \)
 
-O eixo vertical é a intensidade de difração, que pode ser mostrada como `Raw Counts` ou `Count per Step (CPS)`, em escala linear ou logarítmica (consulte `Vertical Axis` na página [Janela principal](1-main-window.md)).
+O eixo vertical é a intensidade de difração, que pode ser mostrada como `Raw Counts` ou como contagens divididas pelo tempo de exposição em segundos (`Count per Step (CPS)`), em escala linear ou logarítmica (consulte `Vertical Axis` na página [Janela principal](1-main-window.md)).
 
 ## Formatos de entrada suportados
 
@@ -57,7 +57,7 @@ Alterne o modo de exibição com `Single/Multi Profile` no lado direito da janel
 
 ## Lista de verificação de perfis
 
-A lista `Profile` no lado esquerdo da janela principal mostra todos os perfis carregados.
+A lista `Profile` no lado direito da janela principal mostra todos os perfis carregados.
 
 - Apenas os perfis marcados são desenhados no visualizador central. Use `Check/Uncheck all` para alterná-los todos de uma vez.
 - Clique na coluna `Color` para alterar a cor de desenho de cada perfil.
@@ -86,10 +86,10 @@ Quando o tipo de eixo horizontal é de dispersão de energia (raios X brancos, E
 ## Exportação de perfis
 
 - **`File ▸ Save profile(s)`** — Salva todos os perfis carregados no formato nativo `pdi2` do PDIndexer. As configurações de eixo e as informações de processamento são preservadas.
-- **`File ▸ Export the selected profile(s)`** — Exporta o(s) perfil(is) selecionado(s) em um dos seguintes formatos:
-  - `as CSV (comma separated values) file` — separado por vírgula (ângulo, intensidade)
-  - `as TSV (tab separated values) file` — separado por tabulação
-  - `as GSAS file` — formato de dados GSAS (Rietveld)
+- **`File ▸ Export the selected profile(s)`** — Exporta perfis em um dos seguintes formatos:
+  - `as CSV (comma separated values) file` — Salva os perfis marcados como valores separados por vírgula (X, Y), todos juntos em um único arquivo ou um arquivo por perfil. Depois de escolher o destino, responda `Yes` para juntá-los ou `No` para salvá-los separadamente. X é a coordenada do eixo horizontal exibido. Os números sempre usam `.` como separador decimal, independentemente das configurações regionais.
+  - `as TSV (tab separated values) file` — Salva o mesmo conteúdo com separação por tabulação.
+  - `as GSAS file` — Grava o perfil selecionado no formato de dados GSAS (Rietveld). A exportação só é possível quando o eixo horizontal é 2θ ou TOF de nêutrons.
 
 !!! note "Salvar a figura"
     Para salvar a figura renderizada em vez dos dados de perfil, use `File ▸ Copy to Clipboard` ou `File ▸ Save as Metafile` (EMF). EMF é um formato vetorial que pode ser importado no PowerPoint e no Word.

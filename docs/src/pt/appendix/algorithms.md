@@ -143,7 +143,7 @@ $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l
 
 $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l-1/2)}{\Gamma(R_l)\sqrt{2^{1/R_l}-1}}+\frac{\Gamma(R_h-1/2)}{\Gamma(R_h)\sqrt{2^{1/R_h}-1}}\right)^{-1}\left(1+(1+e^{A})^2(2^{1/R_h}-1)\left(\frac{x}{H_k}\right)^2\right)^{-R_h}\quad(x>0)$$
 
-As duas primeiras são simétricas em torno de \( x=0 \), enquanto as formas split mudam de forma dependendo do sinal de \( x \) para expressar a assimetria (como uma cauda no lado de baixo ângulo). Em geral, a Pearson VII tende a dar o melhor ajuste (resíduo menor), enquanto a Pseudo Voigt tende a convergir de forma mais estável.
+A Symmetric Pseudo Voigt e a Symmetric Pearson VII são simétricas em torno de \( x=0 \), enquanto as formas split mudam de forma dependendo do sinal de \( x \) para expressar a assimetria (como uma cauda no lado de baixo ângulo). Em geral, a Pearson VII tende a dar o melhor ajuste (resíduo menor), enquanto a Pseudo Voigt tende a convergir de forma mais estável.
 
 #### Símbolos
 

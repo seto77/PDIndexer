@@ -39,7 +39,7 @@ Each button on the toolbar toggles a dedicated analysis window.
 | `LPO Analysis` | Toggle the LPO (lattice-preferred orientation) Analysis window. | — |
 
 !!! note
-    The main windows can also be toggled with keyboard shortcuts: `Ctrl+Shift+C` (Crystal Parameter), `Ctrl+Shift+E` (Equation of States), `Ctrl+Shift+F` (Fitting Parameter), and `Ctrl+Shift+D` (change peak mode).
+    The main windows can also be toggled with keyboard shortcuts: `Ctrl+Shift+C` (Crystal Parameter), `Ctrl+Shift+E` (Equation of States), `Ctrl+Shift+F` (Fitting Parameter), `Ctrl+Shift+D` (change peak mode), and `Ctrl+Shift+S` (Sequential Analysis). In addition, `Ctrl+Shift+Space` toggles the check of the selected crystal, `Ctrl+Alt+Space` toggles the check of the selected reflection in the reflection list of the peak-fitting window, and `Ctrl+Shift+V` reads text on the clipboard as a profile. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Menu bar
 
@@ -88,11 +88,11 @@ Each button on the toolbar toggles a dedicated analysis window.
 
 ### Language
 
-Switch the UI language. Currently English (`English (need restart)`) and Japanese (`Japanese (need restart)`) are supported. A restart is required after switching.
+Switch the display language from `Language` at the right end of the menu bar (11 languages, each shown by its own name). Switching requires a restart: choose Yes in the confirmation dialog and PDIndexer restarts automatically. Unsaved work is lost, so save it first. <!-- 261124Cl changed: the old text described only English/Japanese -->
 
 ## Horizontal Axis tab {#horizontal-axis-tab}
 
-The `Horizontal Axis` tab sets the display mode of the axis. The settings here are display-only and are unrelated to the actual horizontal-axis data (the actual horizontal-axis information can be changed from the [Profile parameter](4-profile-parameter.md)). Because of this, you can align the horizontal axis for comparison even when different X-ray sources were used. For example, even if the loaded profile was acquired with the Cu Kα line, it can be displayed as if it had been acquired at the wavelength of the Mo Kα line.
+The `Horizontal Axis` tab sets the display mode of the axis. The settings here are display-only and are unrelated to the actual horizontal-axis data (the actual horizontal-axis information can be changed in the [Profile Parameter](4-profile-parameter.md) window). Because of this, you can align the horizontal axis for comparison even when different X-ray sources were used. For example, even if the loaded profile was acquired with the Cu Kα line, it can be displayed as if it had been acquired at the wavelength of the Mo Kα line.
 
 | Item | Description |
 | --- | --- |
@@ -131,7 +131,7 @@ The mode that is checked is the current mode.
 
 ### Vertical Axis
 
-Specify whether to display the vertical axis (intensity) as raw counts (`Raw Counts`) or as counts per step (`Count per Step (CPS)`). You can also specify whether to display the vertical axis on a linear (`Linearity`) or logarithmic (`Logarithm`) scale.
+Specify whether to display the vertical axis (intensity) as raw counts (`Raw Counts`) or as counts divided by the exposure time in seconds (`Count per Step (CPS)`). You can also specify whether to display the vertical axis on a linear (`Linearity`) or logarithmic (`Logarithm`) scale.
 
 ## Profile list
 
@@ -141,7 +141,7 @@ In multi-profile mode, the loaded profiles are shown as a list, and only the che
 
 ## Crystal list
 
-Displays and configures the list of crystals. Checking an entry draws diffraction lines at the positions of the diffraction peaks. By default, about 80 crystals are pre-registered.
+Displays and configures the list of crystals. Checking an entry draws diffraction lines at the positions of the diffraction peaks. The initial list includes pressure standards and other crystals.
 
 !!! note "Special rows"
     - The first row (row 0) is the **Flexible Crystal** (cyan background), used for drawing arbitrary diffraction lines.

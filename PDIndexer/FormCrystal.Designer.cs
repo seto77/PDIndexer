@@ -658,7 +658,7 @@ namespace PDIndexer
             KeyPreview = true;
             MaximizeBox = false;
             Name = "FormCrystal";
-            Closed += FormCrystal_Closed;
+            FormClosed += FormCrystal_Closed; // 261111Cl 変更: 旧 Closed += FormCrystal_Closed; (Closed は廃止 API WFDEV004)
             FormClosing += FormCrystal_FormClosing;
             Load += FormCrystal_Load;
             VisibleChanged += FormCrystal_VisibleChanged;

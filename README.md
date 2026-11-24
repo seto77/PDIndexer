@@ -23,7 +23,7 @@
 * Access https://github.com/seto77/PDIndexer/releases/latest and download the latest release.
 * Recommended: download `PDIndexer-setup.msi` (x64) and run the installer. For Windows on Arm (e.g. Snapdragon PCs), download `PDIndexer-setup_arm64.msi` instead. <!-- 260625Cl WiX asset names + arm64 -->
 * Alternative for managed Windows PCs: download the portable ZIP (`PDIndexer-v.<ver>.zip` for x64, or `PDIndexer-v.<ver>_arm64.zip` for Arm), extract it to a user-writable folder, and run `PDIndexer.exe` from the extracted folder.
-* The MSI installer requires ***.Net Desktop Runtime 10.0*** (NOT ***.Net Runtime 10.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/10.0). On Windows on Arm, install the **Arm64** build of the Desktop Runtime.
+* For builds from this source tree, the MSI installer requires ***.Net Desktop Runtime 11.0*** (NOT ***.Net Runtime 11.0***), which can be installed from [here](https://dotnet.microsoft.com/download/dotnet/11.0). On Windows on Arm, install the **Arm64** build of the Desktop Runtime. For published releases, follow the runtime requirement stated for that release.
 * The portable ZIP package is self-contained for the matching architecture (x64 or Arm64) and does not require a separate .NET Desktop Runtime installation. It is a no-install package, but it still stores user settings and copied default data under the current user's AppData folder. <!-- 260601Ch -->
 * *PDIndexer* is distributed under the **MIT license** (free for anyone to use, modify, and redistribute).
 

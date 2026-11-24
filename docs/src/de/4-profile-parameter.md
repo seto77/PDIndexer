@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Profilparameter
 
-Ein Klick auf das Symbol `Profile parameter` (Profilparameter) im Hauptfenster öffnet dieses Unterfenster. Hier nehmen Sie detaillierte Einstellungen für die geladenen Profile vor und wenden verschiedene numerische Verarbeitungen an.
+Ein Klick auf das Symbol `Profilparameter (P)` im Hauptfenster öffnet dieses Unterfenster. Hier nehmen Sie detaillierte Einstellungen für die geladenen Profile vor und wenden verschiedene numerische Verarbeitungen an.
 
 ![Das gesamte Profilparameter-Fenster](../assets/cap-de-auto/FormProfileSetting.png)
 
 Die linke Seite des Fensters enthält die [Profil-Prüfliste](#profile), und die rechte Seite ist in drei Registerkartenseiten unterteilt — [Profilverarbeitung](#profile-processing), [Achseneinstellung](#axis-setting) und [Profiloperator](#profile-operator). Jeder Verarbeitungsschritt kann mit einem Kontrollkästchen ein-/ausgeschaltet werden und wird von oben nach unten in Reihenfolge angewendet.
 
 !!! note
-    Die in diesem Fenster vorgenommenen Einstellungen werden in Echtzeit auf die Profile im [Hauptfenster](1-main-window.md) übertragen. Für Einstellungen auf der Kristallseite, wie die Einheit der horizontalen Achse und die Indexbeschriftungen der Beugungslinien, siehe [Kristallparameter](3-crystal-parameter.md).
+    Die in diesem Fenster vorgenommenen Einstellungen werden in Echtzeit auf die Profile im [Hauptfenster](1-main-window.md) übertragen. Die Anzeigeeinheit der horizontalen Achse wählen Sie auf der Registerkarte `Horizontale Achse` des Hauptfensters. Für Einstellungen auf der Kristallseite, wie die Indexbeschriftungen der Beugungslinien, siehe [Kristallparameter](3-crystal-parameter.md).
 
 ---
 
@@ -136,16 +136,16 @@ Die Schaltfläche `Apply for all profiles (without background setting)` wendet d
 
 ## Achseneinstellung {#axis-setting}
 
-Auf der Registerkarte `Axis setting` ändern Sie die Einheit der horizontalen Achse, den Strahlungstyp (einfallender Strahl) und die Energie des einfallenden Strahls des ausgewählten Profils.
+Auf der Registerkarte `Axis setting` setzen Sie den ursprünglichen Typ der horizontalen Achse, die Wellenlänge, den Take-off-Winkel und die Belichtungszeit des ausgewählten Profils neu. Die Anzeigeeinheit der horizontalen Achse wird nicht hier, sondern auf der Registerkarte `Horizontale Achse` des Hauptfensters gewählt.
 
 | Element | Beschreibung |
 | --- | --- |
-| `Horizontal axis setting` (Horizontale Achse) | Ändert die aktuelle Einheit der horizontalen Achse (`horizontal unit`). Mit `Shift` können Sie auch die gesamte horizontale Achse verschieben. |
+| `Horizontal axis setting` (Horizontale Achse) | Legt den ursprünglichen Typ der horizontalen Achse, die Wellenlänge und den Take-off-Winkel fest; `Change` (Ändern) schreibt sie in das ausgewählte Profil zurück. Mit `Shift` können Sie auch die gesamte horizontale Achse verschieben. |
 | `Exposure Time` (Belichtungszeit) | Legt die im CPS-Modus (`(for CPS mode)`) verwendete Belichtungszeit (`sec.`) fest. |
 | `Vertical axis setting` (Vertikale Achse) | Einstellungen zur vertikalen Achse. |
 
 !!! note
-    Die Achseneinstellung hier ändert die physikalische Information, die das Profil selbst enthält (Einheit, Strahlungstyp, Energie). Anders als die rein anzeigebezogene Achsentransformation im Hauptfenster beeinflusst sie, wie die Daten selbst interpretiert werden. Da Strahlungstyp und Energie die Berechnung der Beugungslinienpositionen direkt beeinflussen, stellen Sie die korrekten Werte ein.
+    Ein Klick auf `Change` (Ändern) schreibt den ursprünglichen Achsentyp, den Take-off-Winkel, die Wellenlänge und die Belichtungszeit in das Profil zurück. Anders als die rein anzeigebezogene Achsenumschaltung im Hauptfenster beeinflusst dies, wie die Daten selbst interpretiert werden. Da Wellenlänge und Take-off-Winkel die Berechnung der Beugungslinienpositionen direkt beeinflussen, stellen Sie die korrekten Werte ein. Eine beim Import falsch gewählte Eingabeeinheit lässt sich hier nicht korrigieren; öffnen Sie die Quelldatei erneut.
 
 ---
 

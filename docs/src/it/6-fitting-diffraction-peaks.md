@@ -45,9 +45,9 @@ Qui vengono elencate le linee di diffrazione del cristallo selezionato. Attivand
 
 I pulsanti sotto l'elenco esportano i risultati.
 
-- `Copy to clipborad`: Copia la tabella negli appunti. Può essere incollata direttamente in Excel e applicazioni simili.
-- `Save as CSV`: Salva la tabella come file `.csv`. `Effective digit` (Cifre significative) imposta il numero di cifre decimali.
-- `Clear peaks`: Cancella i risultati del fitting.
+- `Copy to Clipboard`: Copia la tabella negli appunti. Può essere incollata direttamente in Excel e applicazioni simili.
+- `Save as CSV`: Salva la tabella come file `.csv`. `Effective digit` (Cifre significative) imposta il numero di cifre significative mostrate nella tabella.
+- `Clear peaks`: Elimina tutti i picchi aggiunti manualmente al Flexible Crystal.
 
 ## Fitting option
 
@@ -103,7 +103,7 @@ Quando i Search Range di due o più linee di diffrazione selezionate si sovrappo
 Una volta scelti indici indipendenti in numero sufficiente affinché il calcolo dei minimi quadrati diventi risolvibile, questo pannello visualizza i parametri reticolari più probabili \(a, b, c, \alpha, \beta, \gamma\) e il volume \(V\), ciascuno con il proprio errore (`±`).
 
 !!! note "Informazioni sulla visualizzazione NA"
-    Quando i gradi di libertà sono insufficienti — cioè quando i gradi di libertà sono uguali al numero di picchi fittati, oppure quando un dato parametro reticolare non ha gradi di libertà — viene visualizzato `NA` al posto dell'errore. Scegliere un numero sufficiente di riflessioni indipendenti consente di calcolare gli errori.
+    Quando il numero di riflessioni fittate è uguale al numero di parametri reticolari indipendenti, i residui non consentono di ricavare gli errori standard, quindi nei campi dell'errore viene visualizzato `NA`. Quando le riflessioni indipendenti sono troppo poche per risolvere i parametri reticolari, il programma mantiene la forma originale della cella e ne modifica solo la scala complessiva, e gli errori vengono mostrati come `NA`. Scegliere un numero sufficiente di riflessioni indipendenti consente di calcolare gli errori.
 
 - `Apply to the crystal` (Applica al cristallo): Riporta i parametri reticolari raffinati sul cristallo selezionato nel programma principale.
 - `Copy to Clipboard` (Copia negli appunti): Copia i parametri reticolari ottimizzati negli appunti.

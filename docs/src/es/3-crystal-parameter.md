@@ -76,14 +76,14 @@ Selecciona qué cristales tienen etiquetados los índices (índices de Miller) d
 
 ![La lista de cristales](../assets/cap-es-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Muestra la misma información que la lista de comprobación de perfiles de la ventana principal. Los cristales marcados tienen sus líneas de difracción dibujadas en la ventana principal. Cada fila muestra una casilla de verificación (`Check`), un color de dibujo (`PeakColor`) y el nombre del cristal (`Crystal`).
+Muestra la misma información que la lista de cristales de la ventana principal. Los cristales marcados tienen sus líneas de difracción dibujadas en la ventana principal. Cada fila muestra una casilla de verificación (`Check`), un color de dibujo (`PeakColor`) y el nombre del cristal (`Crystal`).
 
 ### Botones de flecha arriba/abajo (↑ / ↓)
 
 Cambian el orden de los cristales.
 
 !!! note
-    Las filas 1 a 6 están reservadas para la ecuación de estado (EOS) y no se pueden reordenar. Consulte [Ecuación de estado](5-equation-of-states.md) para más detalles.
+    La lista inicial de cristales reserva el Flexible Crystal de la parte superior y los diez estándares de presión siguientes (para la ecuación de estado, EOS); estas filas no se pueden reordenar. Consulte [Ecuación de estado](5-equation-of-states.md) para más detalles.
 
 ### Añadir
 
@@ -99,7 +99,7 @@ Quita de la lista el cristal actualmente seleccionado.
 
 ### Eliminar todo
 
-Quita todos los cristales de la lista.
+Quita de la lista todos los cristales no reservados (tras una confirmación).
 
 ---
 

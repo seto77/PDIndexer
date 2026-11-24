@@ -35,19 +35,19 @@ Die Steuerelemente rund um die Schaltfläche `Ausführen` regeln den Analysebere
 
 ## Ausgabe-Registerkarten
 
-Jede Registerkarte ist eine Tabelle für eine Ausgabegröße. Jede Zeile entspricht einem Profil (dem Profilnamen), und jede Spalte entspricht einer ausgewählten Beugungslinie (hkl-Index oder `Peak No.` bei einem flexiblen Kristall). Die Tabellen werden als tabulatorgetrennter Text gehalten und beim `Kopieren` oder `Speichern` in kommagetrennte Werte (CSV) umgewandelt.
+Jede Registerkarte ist eine Tabelle für eine Ausgabegröße. Jede Zeile entspricht einem Profil (dem Profilnamen), und jede Spalte entspricht einer ausgewählten Beugungslinie (hkl-Index oder `Peak No.` bei einem flexiblen Kristall). Die Tabellen werden als tabulatorgetrennter Text gehalten. `Kopieren` legt sie als tabulatorgetrennten Text in die Zwischenablage, und `Speichern` schreibt eine kommagetrennte Datei (CSV).
 
 ### 2θ (°)
 
 ![Registerkarte 2θ](../assets/cap-de-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-Die angepasste Peak-Position in 2θ (Grad) für jedes Profil und jede Beugungslinie.
+Die angepasste Peak-Position in 2θ (Grad) für jedes Profil und jede Beugungslinie. Ist die horizontale Achse 2θ, wird der Wert unabhängig von der Anzeigeeinheit (Grad, Zenti-Grad, Radiant oder Milliradiant) in Grad umgerechnet. Bei anderen Achsen wie Energie oder TOF zeigt die Spalte `NaN`. Für Reflexe im Modus `Einfache Suche` wird das beobachtete Maximum innerhalb des Suchbereichs eingetragen. <!-- 261124Cl changed -->
 
 ### d-Wert (Å)
 
 ![Registerkarte d-Wert](../assets/cap-de-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
-Der Netzebenenabstand d in Å, berechnet aus jeder Peak-Position. Er wird aus der Wellenlänge und 2θ durch \( d = \dfrac{\lambda}{2\sin\theta} \) ermittelt.
+Der Netzebenenabstand d in Å, berechnet aus jeder Peak-Position mit den aktuellen Einstellungen der horizontalen Achse (Strahlung, Wellenlänge, Energie- oder TOF-Bedingungen). Für winkeldispersive Daten gilt \( d = \dfrac{\lambda}{2\sin\theta} \). <!-- 261124Cl changed -->
 
 ### FWHM (Grad)
 
@@ -80,7 +80,7 @@ Der aus den Gitterkonstanten jedes Profils mithilfe einer [Zustandsgleichung](5-
 Die Ergebnisse von Singhs Analyse von einachsiger Spannung / Gitterverzerrung. Die abschließende Zahl jedes Profilnamens wird als Azimutwinkel \( \psi \) (Grad) interpretiert, und für jeden Reflex wird die Beziehung zwischen Azimut und d-Wert nach der Methode der kleinsten Quadrate (Levenberg–Marquardt) angepasst. Für jeden Reflex ergeben sich der spannungsfreie Netzebenenabstand `d0`, der Azimut der maximalen Verzerrung `Ψmax` und eine zur Spannung proportionale Größe `t/6Ghkl` (das Verhältnis der Differenzspannung \( t \) zum Schubmodul \( G_{hkl} \)). Die angepassten Kurven werden außerdem im Diagramm auf der Registerkarte gezeichnet.
 
 !!! note "Wann die Singh-Gleichung gilt"
-    Diese Registerkarte arbeitet mit einer Serie im „Spannungsanalyse-Modus", deren Profilnamen auf `...-whole` enden. Jeder Profilname muss einen Azimutwinkel als abschließenden Bestandteil tragen (zum Beispiel `...-30`). Bei einer gewöhnlichen Serie wird diese Registerkarte nicht aktualisiert.
+    Endet der Name des ersten Profils auf `whole`, wechselt der Lauf in den „Spannungsanalyse-Modus". In diesem Modus wird das erste Profil übersprungen, und der Text nach dem letzten Bindestrich jedes übrigen Profilnamens (zum Beispiel `30` in `...-30`) wird als Azimut in Grad gelesen. Ein gewöhnlicher Lauf, der nicht im Spannungsanalyse-Modus ist, leert diese Registerkarte.
 
 Der durch die Singh-Gleichung ausgedrückte azimutabhängige Netzebenenabstand lautet näherungsweise
 
@@ -92,7 +92,7 @@ wobei \( \alpha \) `t/6Ghkl` entspricht und \( \psi_{\max} \) der Azimut der max
 
 | Aktion | Beschreibung |
 | --- | --- |
-| `Kopieren` | Kopiert die aktuell angezeigte Registerkarte als CSV (kommagetrennt) in die Zwischenablage. |
+| `Kopieren` | Kopiert die aktuell angezeigte Registerkarte als tabulatorgetrennten Text in die Zwischenablage. |
 | `Speichern` | Speichert die aktuell angezeigte Registerkarte als CSV-Datei (Dateiname in einem Dialog gewählt). |
 
 ### Automatisches Speichern

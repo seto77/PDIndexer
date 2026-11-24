@@ -143,7 +143,7 @@ $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l
 
 $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l-1/2)}{\Gamma(R_l)\sqrt{2^{1/R_l}-1}}+\frac{\Gamma(R_h-1/2)}{\Gamma(R_h)\sqrt{2^{1/R_h}-1}}\right)^{-1}\left(1+(1+e^{A})^2(2^{1/R_h}-1)\left(\frac{x}{H_k}\right)^2\right)^{-R_h}\quad(x>0)$$
 
-前兩者以 \( x=0 \) 為中心對稱，而 split 形式則依 \( x \) 的正負改變形狀，用以表現非對稱性（例如低角側的拖尾）。一般而言，Pearson VII 較能給出較佳的擬合結果（殘差較小），而 Pseudo Voigt 的收斂則較為穩定。
+Symmetric Pseudo Voigt 與 Symmetric Pearson VII 以 \( x=0 \) 為中心對稱，而 split 形式則依 \( x \) 的正負改變形狀，用以表現非對稱性（例如低角側的拖尾）。一般而言，Pearson VII 較能給出較佳的擬合結果（殘差較小），而 Pseudo Voigt 的收斂則較為穩定。
 
 #### 符號
 

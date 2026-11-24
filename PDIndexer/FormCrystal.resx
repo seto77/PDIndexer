@@ -1632,7 +1632,7 @@ of  diffraction peaks based on crystal structures</value>
     <value>248, 17</value>
   </metadata>
   <data name="statusStrip1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Yu Gothic UI, 8pt</value>
+    <value>Yu Gothic UI, 8.25pt</value>
   </data>
   <data name="toolStripProgressBar1.Size" type="System.Drawing.Size, System.Drawing">
     <value>100, 16</value>

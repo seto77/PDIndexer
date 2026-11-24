@@ -34,6 +34,8 @@
 - [動作環境とインストール](appendix/runtime-and-installation.md)
 - [ファイル形式](appendix/file-formats.md)
 - [トラブルシューティング](appendix/troubleshooting.md)
+- [アルゴリズム解説](appendix/algorithms.md)  <!-- 261124Cl 追加: nav にはあるのに目次から漏れていた -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl 追加 -->
 
 ## クイックスタート
 
@@ -44,9 +46,11 @@
 
 ## 動作環境
 
+以下は、このソースツリーから作成する .NET 11 ビルドの要件です。公開済みリリースについては、そのリリースに記載されたランタイム要件に従ってください。
+
 | 項目 | 必要条件 |
 |------|------|
-| OS | [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/ja-jp/download/dotnet/10.0)（**.NET Runtime ではない**）が動作する Windows |
+| OS | [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/ja-jp/download/dotnet/11.0)（**.NET Runtime ではない**）が動作する Windows |
 | 推奨 | 64bit Windows 10/11、メモリ 16 GB 以上、8 コア以上の CPU |
 
 詳細は [動作環境とインストール](appendix/runtime-and-installation.md) を参照してください。

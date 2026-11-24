@@ -194,26 +194,29 @@ namespace PDIndexer
             List<object> temp2 = []; //260317Cl new List<object>() → []
 
             //文字列が2つ以上の元素名で構成されていたら分割
-            for (int i = 0; i < dividedFormula.Count; i++)
+            // for (int i = 0; i < dividedFormula.Count; i++) // (261106Ch) Previous unlabeled token loop.
+            tokens: for (int i = 0; i < dividedFormula.Count; i++) // (261106Ch) A match advances this loop directly.
             {
                 if (dividedFormula[i][0] is >= 'A' and <= 'z')//最初がアルファベットで始まっていたら //260712Cl 関係パターン
                 {
-                    bool flag = false;
-                    for (int j = dividedFormula[i].Length; j > 0 && flag == false; j--)
+                    // bool flag = false; // (261106Ch) Matching now continues the labeled outer loop.
+                    // for (int j = dividedFormula[i].Length; j > 0 && flag == false; j--) // (261106Ch) Previous flag condition.
+                    for (int j = dividedFormula[i].Length; j > 0; j--)
                         for (int k = 0; k < label.Count; k++)
                             if (dividedFormula[i].Substring(0, j).ToLower() == label[k].Text.ToLower())
                             {
                                 temp2.Add(k);
-                                flag = true;
+                                // flag = true; // (261106Ch) Replaced by continue tokens after the optional split.
                                 if (j != dividedFormula[i].Length)
                                 {
                                     dividedFormula.Insert(i, dividedFormula[i][..j]); //260712Cl Substring → 範囲演算子
                                     dividedFormula[i + 1] = dividedFormula[i + 1][j..];
                                 }
-                                break;
+                                // break; // (261106Ch) Previously exited only the innermost search.
+                                continue tokens; // (261106Ch) Preserve the token loop increment after a successful match.
                             }
-                    if (flag == false)
-                        dividedFormula.RemoveAt(i--);
+                    // if (flag == false) // (261106Ch) Only an unsuccessful search reaches this point.
+                    dividedFormula.RemoveAt(i--);
                 }
                 else
                 {
@@ -876,8 +879,14 @@ namespace PDIndexer
                             tempCrystal.RandomizeAllAtomicPositionKeepingWykoff(r);
                             if (checkAtomicPosition(tempCrystal))
                             {
-                                tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength,null);
-                                tempCrystal.Residual = GetResidualValue(observedIntensity, tempCrystal.Plane); //260712Cl 中間 double[] を排除
+                                //tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength,null);
+                                //tempCrystal.Residual = GetResidualValue(observedIntensity, tempCrystal.Plane); //260712Cl 中間 double[] を排除
+                                // 261111Cl 変更: Crystal.Clone は Plane のリストを共有するので、強度の書き込みと残差の読み出しを同じ Plane を持つ結晶どうしで直列化 (並列スレッド間の競合防止)
+                                lock (tempCrystal.Plane)
+                                {
+                                    tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
+                                    tempCrystal.Residual = GetResidualValue(observedIntensity, tempCrystal.Plane);
+                                }
                                 candidates.Add(tempCrystal);
                             }
                         }
@@ -889,9 +898,14 @@ namespace PDIndexer
                                 Crystal tempCrystal = hybridizeCrystals([candidates[i], candidates[r.Next(i)]]); //260712Cl collection expression
                                 if (checkAtomicPosition(tempCrystal))//原子位置に重なりがなければ
                                 {
-                                    tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
+                                    //tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
 
-                                    tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                    //tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                    lock (tempCrystal.Plane) // 261111Cl 変更: 共有 Plane の競合防止 (上と同じ)
+                                    {
+                                        tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
+                                        tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                    }
                                     if (tempCrystal.Residual < candidates[i].Residual)
                                     {
                                         bool flag = candidates[i].Atoms.Length == tempCrystal.Atoms.Length;
@@ -913,9 +927,14 @@ namespace PDIndexer
                                 tempCrystal.Atoms[r.Next(tempCrystal.Atoms.Length)].ShakeKeepingWykoff(0.3, r);
                                 if (checkAtomicPosition(tempCrystal))
                                 {
-                                    tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
+                                    //tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
 
-                                    tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                    //tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                    lock (tempCrystal.Plane) // 261111Cl 変更: 共有 Plane の競合防止 (上と同じ)
+                                    {
+                                        tempCrystal.SetPeakIntensity(WaveSource.Xray, WaveColor.Monochrome, waveLengthControl1.WaveLength, null);
+                                        tempCrystal.Residual = GetResidualValue(observedIntensity, getIntensityArray(tempCrystal));
+                                    }
                                     if (tempCrystal.Residual < candidates[i].Residual)
                                         candidates[i] = tempCrystal;
                                 }
@@ -943,12 +962,18 @@ namespace PDIndexer
                 for (int i = 0; i < allCandidate.Count; i++)
                     candidates[r.Next(threadTotal)].Add((Crystal)allCandidate[i].Clone());
 
-                IAsyncResult[] ar = new IAsyncResult[threadTotal];
-                for (int thread = 0; thread < threadTotal; thread++)
-                    ar[thread] = generateCrystal[thread].BeginInvoke(aggregateStep / threadTotal, candidates[thread], null, null);
+                //IAsyncResult[] ar = new IAsyncResult[threadTotal];
+                //for (int thread = 0; thread < threadTotal; thread++)
+                //    ar[thread] = generateCrystal[thread].BeginInvoke(aggregateStep / threadTotal, candidates[thread], null, null);
+                //allCandidate.Clear();
+                //for (int thread = 0; thread < threadTotal; thread++)
+                //    allCandidate.AddRange(generateCrystal[thread].EndInvoke(ar[thread]));
+                // 261111Cl 変更: Delegate.BeginInvoke/EndInvoke は .NET Core で PlatformNotSupportedException になり、検索が即終了していた → Parallel.For。結果は thread 順に連結 (従来の EndInvoke 順と同じ)
+                var results = new Crystal[threadTotal][];
+                System.Threading.Tasks.Parallel.For(0, threadTotal, thread => results[thread] = generateCrystal[thread](aggregateStep / threadTotal, candidates[thread]));
                 allCandidate.Clear();
                 for (int thread = 0; thread < threadTotal; thread++)
-                    allCandidate.AddRange(generateCrystal[thread].EndInvoke(ar[thread]));
+                    allCandidate.AddRange(results[thread]);
 
 
                 allCandidate.Sort();
@@ -973,7 +998,8 @@ namespace PDIndexer
                         allCandidate.RemoveAt(i--);
                 }
 
-                List<Crystal> candidatesTemp = []; //260317Cl new List<Crystal>() → []
+                // List<Crystal> candidatesTemp = []; //260317Cl new List<Crystal>() → [] // (261106Ch) Previous growable empty list.
+                List<Crystal> candidatesTemp = [with(capacity: allCandidate.Count)]; // (261106Ch) Exactly one cloned item is added per candidate.
                 for (int i = 0; i < allCandidate.Count; i++)
                     candidatesTemp.Add((Crystal)allCandidate[i].Clone());
 
@@ -1113,6 +1139,8 @@ namespace PDIndexer
             isFinding = false; //260625Cl 追加
             buttonStart.Text = PdiText.Start; //260625Cl 旧: buttonStart.Text = "Start";
             buttonResume.Enabled = true;
+            if (e.Error != null) // 261111Cl 追加: DoWork の例外を黙って捨てていた (検索が即終了しても理由が見えなかった)
+                MessageBox.Show(this, e.Error.ToString(), Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         public double GetResidualValue(double[] observedIntensity, double[] calculatedIntensity)
@@ -1484,8 +1512,15 @@ namespace PDIndexer
         {
             formMain.formCrystal.crystalControl.Crystal = (Crystal)((DataRowView)bindingSourceCrysatalCandidates.Current).Row[0];
             formMain.formCrystal.crystalControl.GenerateFromInterface();
-            Clipboard.SetDataObject(formMain.formCrystal.crystalControl.Crystal);
+            //Clipboard.SetDataObject(formMain.formCrystal.crystalControl.Crystal);
+            // 261111Cl 変更: 生の Crystal を置くと .NET 9+ では他プロセスへ渡らず黙って失敗する → CrystalControl の「他のソフトへ送る」と同じ形式 (先頭 1 バイト = Crystal2.ID + MemoryPack)
+            var bytes = MemoryPackEx.Serialize(Crystal2.ID, Crystal2.FromCrystal(formMain.formCrystal.crystalControl.Crystal));
+            LastSentToClipboard = bytes;
+            Clipboard.SetDataObject(bytes, true, 3, 10);
         }
+
+        /// <summary>261111Cl 追加: この画面が最後にクリップボードに置いた結晶 (FormMain.WndProc が自分の送信を受け取って結晶を置き換えないようにする)</summary>
+        internal static byte[] LastSentToClipboard { get; private set; }
 
         private void buttonAddPeak_Click(object sender, EventArgs e)
         {

@@ -100,12 +100,12 @@ Each table below is transcribed from the `[Help]` attributes in the source code.
 | `GetDirectoryPath` | `GetDirectoryPath(string filename = "")` | Get a directory path (with trailing backslash). If `filename` is omitted, a folder selection dialog opens. Otherwise the directory part of `filename` is returned. |
 | `GetFileName` | `GetFileName()` | Open a file selection dialog and return the full path of the chosen file. Returns an empty string if the user cancels. |
 | `GetFileNames` | `GetFileNames()` | Open a multi-select file dialog and return the full paths of the chosen files. Returns an empty array if the user cancels. |
-| `ReadProfiles` | `ReadProfiles(string filename)` | Read profile data from the given file. If `filename` is omitted (or does not exist), a file selection dialog will open. |
-| `SaveProfiles` | `SaveProfiles(string filename)` | Save profile data to the given file. If `filename` is omitted, a save dialog will open. |
-| `ReadCrystals` | `ReadCrystals(string filename)` | Read crystal data from the given file. If `filename` is omitted (or does not exist), a file selection dialog will open. |
-| `SaveCrystals` | `SaveCrystals(string filename)` | Save crystal data to the given file. If `filename` is omitted, a save dialog will open. |
-| `SaveMetafile` | `SaveMetafile(string filename)` | Save the current pattern as a Windows Metafile (`.emf`). If `filename` is omitted, a save dialog will open. |
-| `SaveText` | `SaveText(string text, string filename)` | Save the given text content to a `.txt` file. If `filename` is omitted, a save dialog will open. |
+| `ReadProfiles` | `ReadProfiles(string fileName = "")` | Read profile data from the given file. If `fileName` is omitted (or does not exist), a file selection dialog will open. |
+| `SaveProfiles` | `SaveProfiles(string filename = "")` | Save profile data to the given file. If `filename` is omitted, a save dialog will open. |
+| `ReadCrystals` | `ReadCrystals(string filename = "")` | Read crystal data from the given file. If `filename` is omitted (or does not exist), a file selection dialog will open. |
+| `SaveCrystals` | `SaveCrystals(string filename = "")` | Save crystal data to the given file. If `filename` is omitted, a save dialog will open. |
+| `SaveMetafile` | `SaveMetafile(string filename = "")` | Save the current pattern as a Windows Metafile (`.emf`). If `filename` is omitted, a save dialog will open. |
+| `SaveText` | `SaveText(string text, string filename = "")` | Save the given text content to a `.txt` file. If `filename` is omitted, a save dialog will open. |
 
 ### PDI.Drawing — Drawing view
 
@@ -160,15 +160,15 @@ Cell constants `CellA`–`CellC` are in \( \mathrm{\AA} \), and `CellAlpha`–`C
 
 ### PDI.ProfileOperator — Profile arithmetic
 
-Each profile is specified by its index in the list. `output` is the name given to the resulting profile.
+Each profile is specified by its index in the list. `outputName` is the name given to the resulting profile.
 
 | Member | Signature | Description |
 | --- | --- | --- |
-| `Average` | `Average(int[] indices, string output)` | Calculate the average of the profiles whose indices are listed in `indices` (e.g. `[1,3,5,9]`). `output` is the name given to the resulting profile. |
-| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string output)` | Calculate profile1 + profile2. Each profile is specified by its index. `output` is the name given to the resulting profile. |
-| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string output)` | Calculate profile1 − profile2. Each profile is specified by its index. `output` is the name given to the resulting profile. |
-| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string output)` | Calculate profile1 × profile2. Each profile is specified by its index. `output` is the name given to the resulting profile. |
-| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string output)` | Calculate profile1 ÷ profile2. Each profile is specified by its index. `output` is the name given to the resulting profile. |
+| `Average` | `Average(int[] intArray, string outputName = "")` | Calculate the average of the profiles whose indices are listed in `intArray` (e.g. `[1,3,5,9]`). `outputName` is the name given to the resulting profile. |
+| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string outputName = "")` | Calculate profile1 + profile2. Each profile is specified by its index. `outputName` is the name given to the resulting profile. |
+| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string outputName = "")` | Calculate profile1 − profile2. Each profile is specified by its index. `outputName` is the name given to the resulting profile. |
+| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string outputName = "")` | Calculate profile1 × profile2. Each profile is specified by its index. `outputName` is the name given to the resulting profile. |
+| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string outputName = "")` | Calculate profile1 ÷ profile2. Each profile is specified by its index. `outputName` is the name given to the resulting profile. |
 
 ### PDI.ProfileList — Profile list
 
@@ -195,7 +195,7 @@ Operates the [Peak fitting](6-fitting-diffraction-peaks.md) window.
 | --- | --- | --- |
 | `Open` | `Open()` | Open the 'Fitting peaks' window. |
 | `Close` | `Close()` | Close the 'Fitting peaks' window. |
-| `Apply` | `Apply()` | Apply the optimized cell constants to the selected crystal (equivalent to clicking the `Confirm` button on the fitting window). |
+| `Apply` | `Apply()` | Apply the optimized cell constants to the selected crystal (equivalent to clicking the `Apply to the crystal` button on the fitting window). |
 | `Check` | `Check(int index = -1, bool state = true)` | Check or uncheck the lattice plane at the given index. If `index` is -1, the currently selected plane is targeted. |
 | `Uncheck` | `Uncheck(int index = -1)` | Uncheck the lattice plane at the given index. If `index` is -1, the currently selected plane will be unchecked. |
 | `Select` | `Select(int index)` | Select the lattice plane at the given index. |
@@ -211,7 +211,7 @@ Operates the [Sequential Analysis](7-sequential-analysis.md) window. The CSV get
 | `Directory` | `Directory (get/set)` | Get/Set the full directory path where sequential analysis results are saved. |
 | `Open` | `Open()` | Open the 'Sequential Analysis' window. |
 | `Close` | `Close()` | Close the 'Sequential Analysis' window. |
-| `Execute` | `Execute()` | Run the sequential analysis on all checked profiles. |
+| `Execute` | `Execute()` | Run the sequential analysis on all loaded profiles (from the start number, with the loop setting), using the crystal and reflections selected in the fitting window. The fitting window must be open and at least four profiles must be loaded; profile check boxes do not limit the run. |
 | `GetCSV_2theta` | `GetCSV_2theta()` | Get the 2-theta results of the latest sequential analysis as a CSV string. |
 | `GetCSV_D` | `GetCSV_D()` | Get the d-spacing results of the latest sequential analysis as a CSV string. |
 | `GetCSV_FWHM` | `GetCSV_FWHM()` | Get the FWHM results of the latest sequential analysis as a CSV string. |
@@ -232,16 +232,17 @@ Operates the [Sequential Analysis](7-sequential-analysis.md) window. The CSV get
 As one of the built-in samples, here is a macro that runs the sequential analysis and saves the results to CSV.
 
 ```python
-# Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing /
-# cell-constant / pressure results as CSV strings and save each to a file.
-PDI.ProfileList.CheckAll()
+# Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+# then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 You can browse the other samples from the `Show samples` button in the editor.

@@ -100,12 +100,12 @@ PDIndexer 的大多數操作都可以使用**巨集**功能自動化。巨集是
 | `GetDirectoryPath` | `GetDirectoryPath(string filename = "")` | 取得目錄路徑（結尾附反斜線）。若省略 `filename`，會開啟資料夾選擇對話方塊；否則傳回 `filename` 的目錄部分。 |
 | `GetFileName` | `GetFileName()` | 開啟檔案選擇對話方塊，傳回所選檔案的完整路徑。若使用者取消，則傳回空字串。 |
 | `GetFileNames` | `GetFileNames()` | 開啟可多選的檔案對話方塊，傳回所選檔案的完整路徑。若使用者取消，則傳回空陣列。 |
-| `ReadProfiles` | `ReadProfiles(string filename)` | 從指定檔案讀取圖譜資料。若省略 `filename`（或該檔案不存在），會開啟檔案選擇對話方塊。 |
-| `SaveProfiles` | `SaveProfiles(string filename)` | 將圖譜資料儲存至指定檔案。若省略 `filename`，會開啟儲存對話方塊。 |
-| `ReadCrystals` | `ReadCrystals(string filename)` | 從指定檔案讀取晶體資料。若省略 `filename`（或該檔案不存在），會開啟檔案選擇對話方塊。 |
-| `SaveCrystals` | `SaveCrystals(string filename)` | 將晶體資料儲存至指定檔案。若省略 `filename`，會開啟儲存對話方塊。 |
-| `SaveMetafile` | `SaveMetafile(string filename)` | 將目前的圖譜另存為 Windows 中繼檔（`.emf`）。若省略 `filename`，會開啟儲存對話方塊。 |
-| `SaveText` | `SaveText(string text, string filename)` | 將指定的文字內容儲存為 `.txt` 檔案。若省略 `filename`，會開啟儲存對話方塊。 |
+| `ReadProfiles` | `ReadProfiles(string fileName = "")` | 從指定檔案讀取圖譜資料。若省略 `fileName`（或該檔案不存在），會開啟檔案選擇對話方塊。 |
+| `SaveProfiles` | `SaveProfiles(string filename = "")` | 將圖譜資料儲存至指定檔案。若省略 `filename`，會開啟儲存對話方塊。 |
+| `ReadCrystals` | `ReadCrystals(string filename = "")` | 從指定檔案讀取晶體資料。若省略 `filename`（或該檔案不存在），會開啟檔案選擇對話方塊。 |
+| `SaveCrystals` | `SaveCrystals(string filename = "")` | 將晶體資料儲存至指定檔案。若省略 `filename`，會開啟儲存對話方塊。 |
+| `SaveMetafile` | `SaveMetafile(string filename = "")` | 將目前的圖譜另存為 Windows 中繼檔（`.emf`）。若省略 `filename`，會開啟儲存對話方塊。 |
+| `SaveText` | `SaveText(string text, string filename = "")` | 將指定的文字內容儲存為 `.txt` 檔案。若省略 `filename`，會開啟儲存對話方塊。 |
 
 ### PDI.Drawing — 繪圖顯示範圍
 
@@ -160,15 +160,15 @@ PDIndexer 的大多數操作都可以使用**巨集**功能自動化。巨集是
 
 ### PDI.ProfileOperator — 圖譜運算
 
-各圖譜以其在清單中的索引指定。`output` 為指定給運算結果圖譜的名稱。
+各圖譜以其在清單中的索引指定。`outputName` 為指定給運算結果圖譜的名稱。
 
 | 成員 | 簽章 | 說明 |
 | --- | --- | --- |
-| `Average` | `Average(int[] indices, string output)` | 計算 `indices` 中列出索引（例如 `[1,3,5,9]`）的圖譜之平均值。`output` 為指定給結果圖譜的名稱。 |
-| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string output)` | 計算 profile1 + profile2。各圖譜以索引指定。`output` 為指定給結果圖譜的名稱。 |
-| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string output)` | 計算 profile1 − profile2。各圖譜以索引指定。`output` 為指定給結果圖譜的名稱。 |
-| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string output)` | 計算 profile1 × profile2。各圖譜以索引指定。`output` 為指定給結果圖譜的名稱。 |
-| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string output)` | 計算 profile1 ÷ profile2。各圖譜以索引指定。`output` 為指定給結果圖譜的名稱。 |
+| `Average` | `Average(int[] intArray, string outputName = "")` | 計算 `intArray` 中列出索引（例如 `[1,3,5,9]`）的圖譜之平均值。`outputName` 為指定給結果圖譜的名稱。 |
+| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string outputName = "")` | 計算 profile1 + profile2。各圖譜以索引指定。`outputName` 為指定給結果圖譜的名稱。 |
+| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string outputName = "")` | 計算 profile1 − profile2。各圖譜以索引指定。`outputName` 為指定給結果圖譜的名稱。 |
+| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string outputName = "")` | 計算 profile1 × profile2。各圖譜以索引指定。`outputName` 為指定給結果圖譜的名稱。 |
+| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string outputName = "")` | 計算 profile1 ÷ profile2。各圖譜以索引指定。`outputName` 為指定給結果圖譜的名稱。 |
 
 ### PDI.ProfileList — 圖譜清單
 
@@ -195,7 +195,7 @@ PDIndexer 的大多數操作都可以使用**巨集**功能自動化。巨集是
 | --- | --- | --- |
 | `Open` | `Open()` | 開啟「峰擬合」視窗。 |
 | `Close` | `Close()` | 關閉「峰擬合」視窗。 |
-| `Apply` | `Apply()` | 將最佳化後的晶格常數套用至選取的晶體（等同於在擬合視窗按下 `Confirm` 按鈕）。 |
+| `Apply` | `Apply()` | 將最佳化後的晶格常數套用至選取的晶體（等同於在擬合視窗按下 `Apply to the crystal` 按鈕）。 |
 | `Check` | `Check(int index = -1, bool state = true)` | 勾選或取消勾選指定索引的晶面。若 `index` 為 -1，則以目前選取的晶面為對象。 |
 | `Uncheck` | `Uncheck(int index = -1)` | 取消勾選指定索引的晶面。若 `index` 為 -1，則取消勾選目前選取的晶面。 |
 | `Select` | `Select(int index)` | 選取指定索引的晶面。 |
@@ -211,7 +211,7 @@ PDIndexer 的大多數操作都可以使用**巨集**功能自動化。巨集是
 | `Directory` | `Directory (get/set)` | 取得／設定儲存連續分析結果的目錄完整路徑。 |
 | `Open` | `Open()` | 開啟「連續分析」視窗。 |
 | `Close` | `Close()` | 關閉「連續分析」視窗。 |
-| `Execute` | `Execute()` | 對所有已勾選的圖譜執行連續分析。 |
+| `Execute` | `Execute()` | 使用擬合視窗中所選的晶體與反射，對所有已載入的圖譜（從起始編號開始，依迴圈設定）執行連續分析。擬合視窗必須為開啟狀態，且至少需載入四個圖譜；圖譜的勾選方塊不會限制分析範圍。 |
 | `GetCSV_2theta` | `GetCSV_2theta()` | 以 CSV 字串取得最近一次連續分析的 2theta 結果。 |
 | `GetCSV_D` | `GetCSV_D()` | 以 CSV 字串取得最近一次連續分析的晶面間距(d值)結果。 |
 | `GetCSV_FWHM` | `GetCSV_FWHM()` | 以 CSV 字串取得最近一次連續分析的半高寬（FWHM）結果。 |
@@ -232,16 +232,17 @@ PDIndexer 的大多數操作都可以使用**巨集**功能自動化。巨集是
 作為內建範例之一，以下巨集會執行連續分析並將結果儲存為 CSV。
 
 ```python
-# Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing /
-# cell-constant / pressure results as CSV strings and save each to a file.
-PDI.ProfileList.CheckAll()
+# Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+# then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 其他範例可從編輯器的 `顯示範例` 按鈕中瀏覽。

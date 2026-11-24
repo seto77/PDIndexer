@@ -44,6 +44,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
     public bool SkipFitting { get; set; } = false;
 
+    #region (261106Ch) 変更前: selectedPlaneIndex
+    /*
     private int selectedPlaneIndex = -1;
     public int SelectedPlaneIndex
     {
@@ -55,6 +57,20 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         }
         get => selectedPlaneIndex;
     }
+    */
+    #endregion
+
+    // (261106Ch) C# 14 field-backed property; retain the original initialization and setter behavior.
+    public int SelectedPlaneIndex
+    {
+        set
+        {
+            field = value;
+            if (field >= 0 && field != bindingSourcePlanes.Position)
+                bindingSourcePlanes.Position = field;
+        }
+        get;
+    } = -1; // (261106Ch) Preserve the pre-constructor default and setter update order.
 
     public string RemovedProfileName { set => textBoxRemovedProfileName.Text = value; get => textBoxRemovedProfileName.Text; }
 
@@ -77,7 +93,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         IsSkipChangeEvent = true;
     }
 
-    private void FormFitting_Closed(object sender, System.EventArgs e)
+    //private void FormFitting_Closed(object sender, System.EventArgs e)
+    private void FormFitting_Closed(object sender, FormClosedEventArgs e) // 261111Cl 変更: Closed → FormClosed (WFDEV004) に合わせて引数型を変更
     {
         formMain.toolStripButtonFittingParameter.Checked = false;
     }
@@ -111,7 +128,9 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             return "";
 
         var sb = new StringBuilder();
-        sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tRwp (%)\r\n");
+        //sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tRwp (%)\r\n"); // 261124Cl 変更前
+        // 261124Cl 変更: 最後の列は Rwp ではなく相対残差の 2 乗平均 100 × mean(((Icalc - Iobs) / Icalc)²) (共有の PeakFunction.Residual)。値は変えず、列名を中身に合わせた
+        sb.Append("Checked\thkl\tCalculated X\tFunction\tObserved X\tObserved X err (1sigma)\tObserved FWHM\tObserved Intensity\tMean squared relative residual (%)\r\n");
 
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
         {
@@ -139,7 +158,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         var text = generateTableText(bindingSourcePlanes.Position);
         if (text != "")
-            Clipboard.SetDataObject(text);
+            //Clipboard.SetDataObject(text);
+            Clipboard.SetText(text); // 261111Cl 変更: SetDataObject(text) (copy=false) はアプリ終了でクリップボードから消える → SetText (空文字は上で除外済み)
     }
 
     /// <summary>
@@ -151,7 +171,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     {
         var text = generateTableText();
         if (text != "")
-            Clipboard.SetDataObject(text);
+            //Clipboard.SetDataObject(text);
+            Clipboard.SetText(text); // 261111Cl 変更: SetDataObject(text) (copy=false) はアプリ終了でクリップボードから消える → SetText (空文字は上で除外済み)
     }
     /// <summary>
     /// ボタン CSVファイルに保存
@@ -277,10 +298,13 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         {
             #region ピーク分離モードではないとき
 
-            foreach (var c in checkedCrystals)
-                Parallel.ForEach(c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
-                FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
-            );
+            //foreach (var c in checkedCrystals)
+            //    Parallel.ForEach(c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
+            //    FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction)
+            //);
+            // 261111Cl 変更: 結晶ごとの Parallel.ForEach (結晶ごとに待ち合わせ) を、全結晶のピークを 1 本の並列ループにまとめる。各ピークのフィットは独立 (共有状態・乱数なし) なので結果は同じ
+            Parallel.ForEach(checkedCrystals.SelectMany(c => c.Plane).Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple), p =>
+                FittingPeak.FitPeakThread(TargetProfile.Pt, true, 0, ref p.peakFunction));
             #endregion
         }
         //ピーク分離フィッティングモードのとき
@@ -288,27 +312,60 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         {
             #region すべてをまとめてフィッティング
 
-            //全てのフィッティング対象ピークをいったん格納
-            // 260712Cl 記法近代化: 二重for+インデクサ → SelectMany/Where/Select
-            List<PeakFunction> pvpTemp2 = [.. checkedCrystals.SelectMany(c => c.Plane)
-                .Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple)
-                .Select(p => p.peakFunction)];
-            //並び替え
-            pvpTemp2.Sort();
+            // 261124Cl 変更前: 「個々の結晶に対して」(radioButtonEachCrystal) を選んでも、常にチェックした全結晶のピークを 1 つにまとめて
+            //   グループ分けしていた (「全ての結晶に対して」と同じ計算)。旧コードは下にコメントで残す
+            ////全てのフィッティング対象ピークをいったん格納
+            //// 260712Cl 記法近代化: 二重for+インデクサ → SelectMany/Where/Select
+            //List<PeakFunction> pvpTemp2 = [.. checkedCrystals.SelectMany(c => c.Plane)
+            //    .Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple)
+            //    .Select(p => p.peakFunction)];
+            ////並び替え
+            //pvpTemp2.Sort();
 
-            //List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
+            ////List<List<PeakFunction>> pvp = new List<List<PeakFunction>>();
+            //groupIndex = 0;
+            //for (int i = 0; i < pvpTemp2.Count; i++)
+            //{
+            //    if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
+            //        pvpTemp2[i].GroupIndex = groupIndex;
+            //    else
+            //        pvpTemp2[i].GroupIndex = ++groupIndex;
+            //}
+
+            //PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
+            ////for (int i = 0; i < groupIndex + 1; i++)
+            ////    pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
+            //// 261111Cl 変更: グループごとに全体を Where で走査していた (O(G·N)) → GroupIndex は並び替え済みの pvpTemp2 の上で 0,1,2,… と連続区間なので、区間で切り出す (中身と順序は同じ)
+            //for (int i = 0, start = 0; i < groupIndex + 1; i++)
+            //{
+            //    int end = start;
+            //    while (end < pvpTemp2.Count && pvpTemp2[end].GroupIndex == i)
+            //        end++;
+            //    pvpTemp[i] = pvpTemp2.GetRange(start, end - start).ToArray();
+            //    start = end;
+            //}
+            // 261124Cl 変更: 「個々の結晶に対して」なら結晶ごとに、「全ての結晶に対して」ならまとめて、重なるピークをグループにする
+            var pools = radioButtonEachCrystal.Checked
+                ? checkedCrystals.Select(c => c.Plane.Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple).Select(p => p.peakFunction).ToList()).ToList()
+                : [checkedCrystals.SelectMany(c => c.Plane).Where(p => p.IsFittingChecked && p.SerchOption != PeakFunctionForm.Simple).Select(p => p.peakFunction).ToList()];
+            var groups = new List<PeakFunction[]>();
             groupIndex = 0;
-            for (int i = 0; i < pvpTemp2.Count; i++)
+            foreach (var pool in pools)
             {
-                if (i == 0 || (pvpTemp2[i - 1].X + pvpTemp2[i - 1].range > pvpTemp2[i].X - pvpTemp2[i].range))//もし前回のグループに属していたら
-                    pvpTemp2[i].GroupIndex = groupIndex;
-                else
-                    pvpTemp2[i].GroupIndex = ++groupIndex;
+                pool.Sort();
+                for (int i = 0, start = 0; i < pool.Count; i++)
+                {
+                    pool[i].GroupIndex = groupIndex;
+                    bool last = i == pool.Count - 1 || pool[i].X + pool[i].range <= pool[i + 1].X - pool[i + 1].range; //次のピークと探索範囲が重ならなければ、ここでグループを閉じる
+                    if (last)
+                    {
+                        groups.Add([.. pool.GetRange(start, i - start + 1)]);
+                        start = i + 1;
+                        groupIndex++;
+                    }
+                }
             }
-
-            PeakFunction[][] pvpTemp = new PeakFunction[groupIndex + 1][];
-            for (int i = 0; i < groupIndex + 1; i++)
-                pvpTemp[i] = pvpTemp2.Where(pvp => pvp.GroupIndex == i).ToArray();
+            PeakFunction[][] pvpTemp = [.. groups];
 
             Parallel.For(0, pvpTemp.Length, i =>
             {
@@ -1238,7 +1295,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
             else//通常結晶モードの時
             {
                 //まず、チェックされている面指数をリストアップする
-                List<string> checkedItems = []; //260317Cl new List<string>() → []
+                //List<string> checkedItems = []; //260317Cl new List<string>() → []
+                HashSet<string> checkedItems = []; // 261111Cl 変更: 面ごとの Contains を O(1) に (List.Contains と同じく序数比較・null 可)
                 for (int i = 0; i < dataSet.DataTablePeakFitting.Rows.Count; i++)
                 {
                     var r = dataSet.DataTablePeakFitting.GetRow(i);
@@ -1518,15 +1576,28 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     #region CellFinderに情報を転送
     private void buttonSendToCellFinder_Click(object sender, EventArgs e)
     {
+        // 261124Cl 追加: フィットはチェックした結晶だけを計算するので、チェックを外した結晶の (古い) 実測値は送らない
+        if (TargetCrystal == null || !formMain.dataSet.DataTableCrystal.CheckedItems.Contains(TargetCrystal))
+            return;
 
         formMain.formCellFinder.dataSet1.Tables[0].Rows.Clear();
         formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Clear();
         for (int i = 0; i < TargetCrystal.Plane.Count; i++)
         {
-            if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption == PeakFunctionForm.Simple || TargetCrystal.Plane[i].observedIntensity > 0)
+            // 261124Cl 変更前: 理論値 d を送っていた (実測のずれが指数付けに現れない)。また前回の正の強度が残ったチェック解除行も送られていた
+            //if (TargetCrystal.Plane[i].IsFittingChecked && TargetCrystal.Plane[i].SerchOption == PeakFunctionForm.Simple || TargetCrystal.Plane[i].observedIntensity > 0)
+            //{
+            //    formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(TargetCrystal.Plane[i].d * 10, "High", true, null, null, null, null, null, TargetCrystal.Plane[i].observedIntensity);
+            //    formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, TargetCrystal.Plane[i].d * 10, TargetCrystal.Plane[i].observedIntensity);
+            //}
+            // 261124Cl 変更: 今回チェックされ、フィットで実測 d (nm) が得られた面だけを、実測 d (Å) で送る
+            var plane = TargetCrystal.Plane[i];
+            if (plane.IsFittingChecked && double.IsFinite(plane.dObs) && plane.dObs > 0)
             {
-                formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(TargetCrystal.Plane[i].d * 10, "High", true, null, null, null, null, null, TargetCrystal.Plane[i].observedIntensity);
-                formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, TargetCrystal.Plane[i].d * 10, TargetCrystal.Plane[i].observedIntensity);
+                formMain.formCellFinder.dataSet1.Tables[0].Rows.Add(plane.dObs * 10, "High", true, null, null, null, null, null, plane.observedIntensity);
+                //formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, plane.dObs * 10, plane.observedIntensity); // 261124Cl 変更前
+                if (double.IsFinite(plane.observedIntensity) && plane.observedIntensity > 0) // 261124Cl 変更: 原子位置探索には強度が測れた面だけ (Simple モードは強度 0、負の積分強度も除く)
+                    formMain.formAtomicPositionFinder.dataSet.DataTableDiffractionData.Rows.Add(true, plane.dObs * 10, plane.observedIntensity);
             }
         }
         // dataSet1.Tables[0].Rows.Add(new object[] { numericalTextBox1.Value,comboBoxReliability.Text,true });

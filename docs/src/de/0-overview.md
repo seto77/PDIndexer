@@ -5,7 +5,7 @@
 
 PDIndexer ist eine Software zur Analyse eindimensionaler Pulver-Röntgenbeugungsmuster. Sie kann Beugungsprofile anzeigen und analysieren, die mit Pulver-Röntgenbeugungsgeräten, mit Synchrotron-Röntgenstrahlung in Debye-Scherrer-Transmissionsoptik sowie mit Neutronen-Flugzeitmessungen (TOF) gewonnen wurden.
 
-Sie stellt einen vollständigen Satz von Werkzeugen für die Pulverdiffraktions-Analyse bereit, darunter die überlagerte Darstellung mehrerer Profile, den Vergleich mit den Beugungslinien bekannter Kristalle, die Temperatur- und Druckkalibrierung gegen Standardmaterialien, die Profilanpassung und die Verfeinerung der Gitterparameter nach der Methode der kleinsten Quadrate.
+Sie stellt einen vollständigen Satz von Werkzeugen für die Pulverdiffraktions-Analyse bereit, darunter die überlagerte Darstellung mehrerer Profile, den Vergleich mit den Beugungslinien bekannter Kristalle, die Druckbestimmung anhand der Zustandsgleichungen von Standardmaterialien, die Profilanpassung und die Verfeinerung der Gitterparameter nach der Methode der kleinsten Quadrate.
 
 !!! note "Über dieses Handbuch"
     Diese Seite bietet nur einen Überblick. Ausführliche Anleitungen zu den einzelnen Funktionen finden Sie auf den jeweiligen eigenen Seiten.
@@ -18,7 +18,7 @@ PDIndexer bietet die folgenden Funktionen.
 | --- | --- |
 | Anzeige und Vergleich von Profilen | Mehrere Beugungsprofile überlagern und vergleichen. Die Skalen der horizontalen Achse (\(2\theta\) / \(d\) / \(q\)) und der vertikalen Achse lassen sich flexibel umschalten. |
 | Vergleich mit bekannten Kristallen | Berechnen Sie die Beugungslinien bekannter Kristalle und überlagern Sie sie zur Identifizierung mit dem beobachteten Profil. Siehe [Kristallparameter](3-crystal-parameter.md) für Details. |
-| Kalibrierung mit Standards | Schätzen Sie mithilfe von Zustandsgleichungen (EOS) wie NaCl EOS und Pt EOS Temperatur und Druck aus dem Zellvolumen eines Standardmaterials. Siehe [Zustandsgleichung (EOS)](5-equation-of-states.md) für Details. |
+| Kalibrierung mit Standards | Schätzen Sie mithilfe von Zustandsgleichungen (EOS) wie NaCl EOS und Pt EOS den Druck aus dem gemessenen Zellvolumen eines Standardmaterials bei der angegebenen Temperatur. Siehe [Zustandsgleichung (EOS)](5-equation-of-states.md) für Details. |
 | Peak-Anpassung | Passen Sie Position, Halbwertsbreite (FWHM) und Intensität von Beugungspeaks an. Siehe [Beugungspeak-Anpassung](6-fitting-diffraction-peaks.md) für Details. |
 | Verfeinerung der Gitterparameter | Verfeinern Sie Gitterkonstanten aus Peak-Positionen nach der Methode der kleinsten Quadrate. Der **Cell Finder** kann zudem aus Peak-Positionen nach Gitterkonstanten suchen. |
 | Sequentielle Analyse | Verarbeiten Sie eine Reihe von Dateien stapelweise mit der Funktion **Sequentielle Analyse**. Siehe [Sequentielle Analyse](7-sequential-analysis.md) für Details. |

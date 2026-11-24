@@ -45,9 +45,9 @@ Les raies de diffraction du cristal sélectionné sont listées ici. Cocher la c
 
 Les boutons situés sous la liste exportent les résultats.
 
-- `Copy to clipborad`: Copie le tableau dans le presse-papiers. Il peut être collé directement dans Excel et les applications similaires.
-- `Save as CSV`: Enregistre le tableau sous forme de fichier `.csv`. `Effective digit` règle le nombre de décimales.
-- `Clear peaks`: Efface les résultats de l'ajustement.
+- `Copy to Clipboard`: Copie le tableau dans le presse-papiers. Il peut être collé directement dans Excel et les applications similaires.
+- `Save as CSV`: Enregistre le tableau sous forme de fichier `.csv`. `Effective digit` règle le nombre de chiffres significatifs affichés dans le tableau.
+- `Clear peaks`: Supprime tous les pics ajoutés manuellement au Flexible Crystal.
 
 ## Fitting option (options d'ajustement)
 
@@ -103,7 +103,7 @@ Lorsque les Search Range de deux raies de diffraction sélectionnées ou plus se
 Dès qu'un nombre suffisant d'indices indépendants est choisi pour que le calcul par moindres carrés devienne résoluble, ce panneau affiche les paramètres de maille les plus probables \(a, b, c, \alpha, \beta, \gamma\) et le volume \(V\), chacun avec son erreur (`±`).
 
 !!! note "À propos de l'affichage NA"
-    Lorsque les degrés de liberté sont insuffisants — c'est-à-dire lorsque les degrés de liberté sont égaux au nombre de pics ajustés, ou lorsqu'un paramètre de maille donné n'a aucun degré de liberté — `NA` est affiché à la place d'une erreur. Choisir suffisamment de réflexions indépendantes permet de calculer les erreurs.
+    Lorsque le nombre de réflexions ajustées est égal au nombre de paramètres de maille indépendants, les résidus ne permettent pas d'obtenir les erreurs types, et `NA` est affiché dans les champs d'erreur. Lorsqu'il y a trop peu de réflexions indépendantes pour déterminer les paramètres de maille, le programme conserve la forme initiale de la maille et ne modifie que son échelle globale, et les erreurs sont affichées comme `NA`. Choisir suffisamment de réflexions indépendantes permet de calculer les erreurs.
 
 - `Apply to the crystal` (appliquer au cristal): Répercute les paramètres de maille affinés sur le cristal sélectionné dans le programme principal.
 - `Copy to Clipboard` (copier dans le presse-papiers): Copie les paramètres de maille optimisés dans le presse-papiers.

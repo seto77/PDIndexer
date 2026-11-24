@@ -44,10 +44,10 @@ In der `groupBox` jedes Materials können Sie die folgenden Werte eingeben oder 
 | `a` / `V` | Gemessene Gitterkonstante oder Volumen. Wird automatisch aktualisiert, wenn Sie eine Beugungslinie im Hauptfenster ziehen. |
 | `a0` / `V0` | Gitterkonstante oder Volumen unter Umgebungsbedingungen (Referenzbedingungen). |
 | `Temperature` | Probentemperatur. Wird von Zustandsgleichungen verwendet, die den thermischen Druck einbeziehen (Hochtemperatur-EOS). |
-| `T0` | Referenztemperatur. Wird zusammen mit `Temperature` verwendet, um die Korrektur des thermischen Drucks anzuwenden. |
+| `T0` | Referenztemperatur. Ob das eingegebene `T0` verwendet wird, hängt von der Quelle ab (viele Gleichungen verwenden intern die Referenztemperatur der Originalarbeit). |
 
 !!! tip "Temperaturabhängige Zustandsgleichungen"
-    Einige Quellen unterstützen Hochtemperatur-Zustandsgleichungen, die den thermischen Druck einbeziehen. Indem Sie `Temperature` und `T0` passend zu Ihren Versuchsbedingungen eingeben, erhalten Sie einen Druck, der die Temperaturkorrektur enthält. Formulierungen auf Basis des Mie-Grüneisen(-Debye)-Modells, etwa die Vinet/BM-Formen von `Sakai+(11)`, fallen in diese Kategorie.
+    Einige Quellen unterstützen Hochtemperatur-Zustandsgleichungen, die den thermischen Druck einbeziehen; wenn Sie die Probentemperatur in `Temperature` eingeben, erhalten Sie einen Druck, der die Temperaturkorrektur enthält. Beispielsweise verwenden `Tange (09) Vinet` und `Tange (09) BM` für MgO die eingegebene Temperatur. Dagegen sind `Sakai+(11) Vinet` und `Sakai+(11) BM` für NaCl (B2) isotherme Gleichungen und verwenden die Temperatur nicht. Ob die Referenztemperatur `T0` geändert werden kann, hängt von der Quelle ab.
 
 ## Quellen je Material
 
@@ -57,22 +57,22 @@ In der `groupBox` jedes Materials sind mehrere Zustandsgleichungen aus verschied
 
 ![Liste der Zustandsgleichungs-Quellen für Gold](../assets/cap-de-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-Für Gold (`Au (Gold)`) stehen Zustandsgleichungen wie `Yokoo (09)`, `Matsui (09)`, `Holmes (89)`, `Jamieson (82)` und `Fratanduono (21)` zur Verfügung.
+Für Gold (`Au (Gold)`) stehen die Zustandsgleichungen `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)` und `Fratanduono (21)` zur Verfügung.
 
 ### NaCl (B1-Struktur)
 
 ![Liste der Zustandsgleichungs-Quellen für NaCl-B1](../assets/cap-de-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
 
-Für `NaCl (B1)` stehen Zustandsgleichungen wie `Brown (99)`, `Sakai+` und `Matsui (12)` zur Verfügung.
+Für `NaCl (B1)` stehen die Zustandsgleichungen `Brown (99)`, `Matsui (12)` und `Skelton (84)` zur Verfügung.
 
 ### Periklas (MgO)
 
 ![Liste der Zustandsgleichungs-Quellen für Periklas MgO](../assets/cap-de-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
 
-Für `MgO (Periclase)` stehen Zustandsgleichungen wie `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` und `Jackson (98)` zur Verfügung.
+Für `MgO (Periclase)` stehen die Zustandsgleichungen `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` und `Jackson (98)` zur Verfügung.
 
 !!! note "Weitere Materialien"
-    Platin (`Pt (Platinum)`: `Fratanduono (21)`, `Holmes (89)` usw.), `NaCl (B2)` (`Sakai (02)`, `Ueda+(08)` usw.), Korund (`Al2O3 (Corundum)`: `Sata (02)` usw.), `Ar` (`Dubrovinsky (98)`, `Ross et al. (86)`, `Jephcoat (98)` usw.), `Re` (`Zha et al. (04)` usw.), `Mo` (`Zhao+(00)`, `Huang+(16) MGD` usw.) und `Pb` (`Strässle+(14)` usw.) bieten ebenfalls eine Auswahl mehrerer Quellen.
+    Platin (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), `Re` (`Zha et al. (04)` usw.) und `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) bieten ebenfalls eine Auswahl mehrerer Quellen. Für Korund (`Al2O3 (Corundum)`) gibt es eine Quelle, `Dubrovinsky (98)`, und für `Pb` eine, `Strässle+(14)`.
 
 ## Theorie der Zustandsgleichungen
 
@@ -185,7 +185,7 @@ Jephcoat98 macht γ linear im Volumen: $\gamma = \gamma_0 + \gamma_1 (V/V_0)$ (�
 | Tange09 Vinet | Vinet + Tange thermisch | K0=160.63, K0'=4.367; θ0=761, γ0=1.442, a=0.138, b=5.4 |
 | Tange09 BM | BM3 + Tange thermisch | K0=160.64, K0'=4.221; θ0=761, γ0=1.431, a=0.29, b=3.5 |
 
-Der thermische Tange-Term verwendet eine Volumenabhängigkeit $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ und nähert die innere Debye-Energie durch ein Polynom in θ/T an.
+Der thermische Tange-Term verwendet eine Volumenabhängigkeit $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ und wertet die innere Debye-Energie durch numerische Integration aus.
 
 ### Natriumchlorid NaCl (B2-Struktur)
 
@@ -241,7 +241,7 @@ Zhao00 wertet BM4 mit $K_{T0}=K_0+(\partial K/\partial T)(T-T_0)$ und einem ther
 
 ## Verwandte Seiten
 
-- Zum Registrieren von Kristallen und zur Anzeige der Kristallliste siehe verwandte Seiten wie [Profilinformationen](4-profile-parameter.md).
+- Zum Registrieren von Kristallen und zur Anzeige der Kristallliste siehe verwandte Seiten wie [Kristallparameter](3-crystal-parameter.md).
 
 <!-- 260605Cl: P-V-T tables for spline-interpolated EOS sources (not on yseto.net) -->
 

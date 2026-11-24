@@ -5,17 +5,20 @@ If you run into a problem while using PDIndexer, check the items below first. Mo
 
 ## The application will not start
 
-PDIndexer requires the **.NET Desktop Runtime 10.0**. If the runtime is not installed, you may see an error at startup, or the program may exit without doing anything.
+These requirements apply to .NET 11 builds from this source tree. For published releases, follow the runtime requirement stated for that release.
+
+The MSI installation of PDIndexer requires the **.NET Desktop Runtime** specified by that release (builds from this source tree target .NET 11). The no-install ZIP includes its runtime. If the runtime is not installed for an MSI installation, you may see an error at startup, or the program may exit without doing anything.
 
 !!! warning "Fix"
-    Follow [Runtime and Installation](runtime-and-installation.md) to install the latest **.NET Desktop Runtime 10.0** (x64), then restart PDIndexer.
+    Follow [Runtime and Installation](runtime-and-installation.md) to install the **.NET Desktop Runtime** required by the release you use, matching the application architecture (x64 or Arm64), then restart PDIndexer.
 
 ## The UI language does not switch
 
-You can change the UI language from the menu under **Option** ▸ **Language**, choosing **English (need restart)** or **Japanese (need restart)**. However, a language change takes effect only **after a restart**.
+<!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
+Choose the display language (11 languages, each shown by its own name) from **Language** at the right end of the menu bar. Switching the language requires a restart: choose **Yes** in the confirmation dialog, and PDIndexer restarts automatically in the selected language.
 
 !!! note
-    It is normal that the display does not change immediately after you pick a language. Close PDIndexer and start it again.
+    The restart discards unsaved work (loaded profiles and edits in progress), so save what you need before switching. If you choose **No**, the language does not change.
 
 ## Reset corrupted settings
 
@@ -47,7 +50,7 @@ To calculate theoretical diffraction intensities, the crystal structure must con
 
 ## Fitting reports NA (not available) lattice constants
 
-When refining lattice constants with peak fitting, an insufficient number of independent reflections can leave the lattice constants undetermined, and the result may be reported as NA (not available).
+When refining lattice constants with peak fitting, an insufficient number of independent reflections leaves the lattice constants undetermined. In that case the program keeps the original cell shape and changes only its overall scale, and the error fields show NA (not available). When the number of reflections equals the number of independent lattice constants, the residuals cannot provide standard errors, so the error fields also show NA.
 
 - Depending on the crystal system, you must supply enough reflections for the number of independent lattice constants to be determined (e.g. only \(a\) for cubic, but six values \(a, b, c, \alpha, \beta, \gamma\) for triclinic).
 - If the reflections are linearly dependent (biased toward one direction), certain lattice constants cannot be determined. Include reflections of different orientations.

@@ -44,10 +44,10 @@ O `groupBox` de cada material permite inserir ou ler os seguintes valores.
 | `a` / `V` | Parâmetro de rede ou volume medido. Atualizado automaticamente ao arrastar uma linha de difração na janela principal. |
 | `a0` / `V0` | Parâmetro de rede ou volume em condições ambientes (de referência). |
 | `Temperature` | Temperatura da amostra. Usada por equações de estado que incluem pressão térmica (EOS de alta temperatura). |
-| `T0` | Temperatura de referência. Usada junto com `Temperature` para aplicar a correção de pressão térmica. |
+| `T0` | Temperatura de referência. Se o `T0` inserido é usado depende da referência (muitas equações usam internamente a temperatura de referência do estudo original). |
 
 !!! tip "Equações de estado dependentes da temperatura"
-    Algumas referências suportam equações de estado de alta temperatura que incluem pressão térmica. Ao inserir `Temperature` e `T0` de acordo com suas condições experimentais, você obtém uma pressão que inclui a correção de temperatura. Formulações baseadas no modelo Mie-Grüneisen(-Debye), como as formas Vinet/BM de `Sakai+(11)`, enquadram-se nessa categoria.
+    Algumas referências suportam equações de estado de alta temperatura que incluem pressão térmica; inserir a temperatura da amostra em `Temperature` fornece uma pressão que inclui a correção de temperatura. Por exemplo, `Tange (09) Vinet` e `Tange (09) BM` para o MgO usam a temperatura inserida. Por outro lado, `Sakai+(11) Vinet` e `Sakai+(11) BM` para o NaCl (B2) são equações isotérmicas e não usam a temperatura. Se a temperatura de referência `T0` pode ser alterada depende da referência.
 
 ## Referências por material
 
@@ -57,22 +57,22 @@ O `groupBox` de cada material lista várias equações de estado de diferentes r
 
 ![Lista de referências de equações de estado para o ouro](../assets/cap-pt-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-Para o ouro (`Au (Gold)`), estão disponíveis equações de estado como `Yokoo (09)`, `Matsui (09)`, `Holmes (89)`, `Jamieson (82)` e `Fratanduono (21)`.
+Para o ouro (`Au (Gold)`), estão disponíveis as equações de estado `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)` e `Fratanduono (21)`.
 
 ### NaCl (estrutura B1)
 
 ![Lista de referências de equações de estado para NaCl-B1](../assets/cap-pt-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
 
-Para `NaCl (B1)`, estão disponíveis equações de estado como `Brown (99)`, `Sakai+` e `Matsui (12)`.
+Para `NaCl (B1)`, estão disponíveis as equações de estado `Brown (99)`, `Matsui (12)` e `Skelton (84)`.
 
 ### Periclásio (MgO)
 
 ![Lista de referências de equações de estado para o periclásio MgO](../assets/cap-pt-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
 
-Para `MgO (Periclase)`, estão disponíveis equações de estado como `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` e `Jackson (98)`.
+Para `MgO (Periclase)`, estão disponíveis as equações de estado `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` e `Jackson (98)`.
 
 !!! note "Outros materiais"
-    A platina (`Pt (Platinum)`: `Fratanduono (21)`, `Holmes (89)` etc.), o `NaCl (B2)` (`Sakai (02)`, `Ueda+(08)` etc.), o corindo (`Al2O3 (Corundum)`: `Sata (02)` etc.), o `Ar` (`Dubrovinsky (98)`, `Ross et al. (86)`, `Jephcoat (98)` etc.), o `Re` (`Zha et al. (04)` etc.), o `Mo` (`Zhao+(00)`, `Huang+(16) MGD` etc.) e o `Pb` (`Strässle+(14)` etc.) oferecem, de modo semelhante, a escolha entre várias referências.
+    A platina (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), o `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), o `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), o `Re` (`Zha et al. (04)` etc.) e o `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) também oferecem a escolha entre várias referências. O corindo (`Al2O3 (Corundum)`) tem uma única referência, `Dubrovinsky (98)`, e o `Pb` tem uma, `Strässle+(14)`.
 
 ## Teoria das equações de estado
 
@@ -185,7 +185,7 @@ Jephcoat98 faz γ linear no volume: $\gamma = \gamma_0 + \gamma_1 (V/V_0)$ (γ1=
 | Tange09 Vinet | Vinet + térmico de Tange | K0=160.63, K0'=4.367; θ0=761, γ0=1.442, a=0.138, b=5.4 |
 | Tange09 BM | BM3 + térmico de Tange | K0=160.64, K0'=4.221; θ0=761, γ0=1.431, a=0.29, b=3.5 |
 
-O termo térmico de Tange usa uma dependência do volume $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ e aproxima a energia interna de Debye por um polinômio em θ/T.
+O termo térmico de Tange usa uma dependência do volume $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ e calcula a energia interna de Debye por integração numérica.
 
 ### Cloreto de sódio NaCl (estrutura B2)
 
@@ -241,7 +241,7 @@ Zhao00 avalia BM4 com $K_{T0}=K_0+(\partial K/\partial T)(T-T_0)$ e um $V_0(T)$ 
 
 ## Páginas relacionadas
 
-- Para o registro de cristais e a exibição da lista de cristais, veja páginas relacionadas como [Informações do perfil](4-profile-parameter.md).
+- Para o registro de cristais e a exibição da lista de cristais, veja páginas relacionadas como [Parâmetros do cristal](3-crystal-parameter.md).
 
 <!-- 260605Cl: P-V-T tables for spline-interpolated EOS sources (not on yseto.net) -->
 

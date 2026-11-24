@@ -3,7 +3,7 @@
 
 Cette page décrit les « données de profil » elles-mêmes (le jeu de données mesuré) que gère PDIndexer, ainsi que leur chargement, leur affichage et leur exportation. Les traitements appliqués après le chargement — lissage, soustraction du fond continu, etc. — se font dans la fenêtre [Paramètres du profil](4-profile-parameter.md). Pour la liste complète des extensions de fichier prises en charge, voir [Formats de fichier](appendix/file-formats.md).
 
-![Fenêtre principale de PDIndexer avec un profil au centre et les listes de profils et de cristaux à gauche.](../assets/cap-fr-auto/FormMain.png)
+![Fenêtre principale de PDIndexer avec un profil au centre et les listes de profils et de cristaux à droite.](../assets/cap-fr-auto/FormMain.png)
 
 ## Qu'est-ce qu'un profil
 
@@ -14,7 +14,7 @@ Un profil est un jeu de données unidimensionnel « axe horizontal vs intensité
 - Le temps de vol pour la méthode neutrons à temps de vol (TOF)
 - Dans tous les cas, les données peuvent aussi être traitées en interne après conversion en distance interréticulaire \( d \) ou en vecteur de diffusion \( q \)
 
-L'axe vertical est l'intensité de diffraction, qui peut être affichée en coups bruts (`Raw Counts`) ou en coups par pas (`Count per Step (CPS)`), sur une échelle linéaire ou logarithmique (voir `Vertical Axis` (Axe vertical) sur la page [Fenêtre principale](1-main-window.md)).
+L'axe vertical est l'intensité de diffraction, qui peut être affichée en coups bruts (`Raw Counts`) ou en coups divisés par le temps d'exposition en secondes (`Count per Step (CPS)`), sur une échelle linéaire ou logarithmique (voir `Vertical Axis` (Axe vertical) sur la page [Fenêtre principale](1-main-window.md)).
 
 ## Formats d'entrée pris en charge
 
@@ -57,7 +57,7 @@ Changez de mode d'affichage avec `Single/Multi Profile` (Profil unique/multiple)
 
 ## Liste de contrôle des profils
 
-La liste `Profile` (Profil) sur le côté gauche de la fenêtre principale affiche tous les profils chargés.
+La liste `Profile` (Profil) sur le côté droit de la fenêtre principale affiche tous les profils chargés.
 
 - Seuls les profils cochés sont tracés dans le visualiseur central. Utilisez `Check/Uncheck all` (Tout cocher/décocher) pour les basculer tous en une fois.
 - Cliquez sur la colonne `Color` (Couleur) pour changer la couleur de tracé de chaque profil.
@@ -86,10 +86,10 @@ Lorsque le type d'axe horizontal est à dispersion d'énergie (rayons X blancs, 
 ## Exporter les profils
 
 - **`File ▸ Save profile(s)` (Fichier ▸ Enregistrer le(s) profil(s))** — Enregistre tous les profils chargés au format natif `pdi2` de PDIndexer. Les réglages d'axe et les informations de traitement sont préservés.
-- **`File ▸ Export the selected profile(s)` (Fichier ▸ Exporter le(s) profil(s) sélectionné(s))** — Exporte le(s) profil(s) sélectionné(s) dans l'un des formats suivants :
-  - `as CSV (comma separated values) file` (au format CSV (valeurs séparées par des virgules)) — séparé par des virgules (angle, intensité)
-  - `as TSV (tab separated values) file` (au format TSV (valeurs séparées par des tabulations)) — séparé par des tabulations
-  - `as GSAS file` (au format GSAS) — format de données GSAS (Rietveld)
+- **`File ▸ Export the selected profile(s)` (Fichier ▸ Exporter le(s) profil(s) sélectionné(s))** — Exporte des profils dans l'un des formats suivants :
+  - `as CSV (comma separated values) file` (au format CSV (valeurs séparées par des virgules)) — Enregistre les profils cochés en valeurs séparées par des virgules (X, Y), soit ensemble dans un seul fichier, soit dans un fichier par profil. Après avoir choisi la destination, répondez `Oui` pour les fusionner ou `Non` pour les enregistrer séparément. X est la coordonnée de l'axe horizontal affiché. Les nombres utilisent toujours `.` comme séparateur décimal, quels que soient les paramètres régionaux.
+  - `as TSV (tab separated values) file` (au format TSV (valeurs séparées par des tabulations)) — Enregistre le même contenu avec des tabulations comme séparateurs.
+  - `as GSAS file` (au format GSAS) — Écrit le profil sélectionné au format de données GSAS (Rietveld). L'exportation n'est possible que lorsque l'axe horizontal est 2θ ou le TOF neutronique.
 
 !!! note "Enregistrer la figure"
     Pour enregistrer la figure rendue plutôt que les données de profil, utilisez `File ▸ Copy to Clipboard` (Fichier ▸ Copier dans le presse-papiers) ou `File ▸ Save as Metafile` (Fichier ▸ Enregistrer comme métafichier) (EMF). EMF est un format vectoriel qui peut être importé dans PowerPoint et Word.

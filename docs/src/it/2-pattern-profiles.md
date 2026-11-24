@@ -3,7 +3,7 @@
 
 Questa pagina descrive i "dati di profilo" stessi (il set di dati misurato) che PDIndexer gestisce, e come caricarli, visualizzarli ed esportarli. Le elaborazioni applicate dopo il caricamento — smoothing, sottrazione del fondo e così via — vengono eseguite nella finestra [Parametri del profilo](4-profile-parameter.md). Per l'elenco completo delle estensioni di file supportate, vedere [Formati di file](appendix/file-formats.md).
 
-![Finestra principale di PDIndexer con un profilo al centro e le liste dei profili e dei cristalli a sinistra.](../assets/cap-it-auto/FormMain.png)
+![Finestra principale di PDIndexer con un profilo al centro e le liste dei profili e dei cristalli a destra.](../assets/cap-it-auto/FormMain.png)
 
 ## Che cos'è un profilo
 
@@ -14,7 +14,7 @@ Un profilo è un set di dati unidimensionale di tipo "asse orizzontale vs. inten
 - Tempo di volo per il metodo dei neutroni a tempo di volo (TOF)
 - In ogni caso, i dati possono anche essere gestiti internamente dopo la conversione nella distanza interplanare (valore d) \( d \) o nel vettore di scattering \( q \)
 
-L'asse verticale è l'intensità di diffrazione, che può essere mostrata come `Raw Counts` o `Count per Step (CPS)`, su scala lineare o logaritmica (vedere `Vertical Axis` nella pagina [Finestra principale](1-main-window.md)).
+L'asse verticale è l'intensità di diffrazione, che può essere mostrata come `Raw Counts` o come conteggi divisi per il tempo di esposizione in secondi (`Count per Step (CPS)`), su scala lineare o logaritmica (vedere `Vertical Axis` nella pagina [Finestra principale](1-main-window.md)).
 
 ## Formati di input supportati
 
@@ -57,7 +57,7 @@ Cambiare la modalità di visualizzazione con `Single/Multi Profile` sul lato des
 
 ## Elenco di controllo dei profili
 
-L'elenco `Profile` sul lato sinistro della finestra principale mostra tutti i profili caricati.
+L'elenco `Profile` sul lato destro della finestra principale mostra tutti i profili caricati.
 
 - Solo i profili selezionati vengono disegnati nel visualizzatore centrale. Usare `Check/Uncheck all` per commutarli tutti insieme.
 - Fare clic sulla colonna `Color` per cambiare il colore di disegno di ciascun profilo.
@@ -86,10 +86,10 @@ Quando il tipo di asse orizzontale è a dispersione di energia (raggi X bianchi,
 ## Esportazione dei profili
 
 - **`File ▸ Save profile(s)`** — Salva tutti i profili caricati nel formato nativo `pdi2` di PDIndexer. Le impostazioni degli assi e le informazioni di elaborazione vengono conservate.
-- **`File ▸ Export the selected profile(s)`** — Esporta i profili selezionati in uno dei formati seguenti:
-  - `as CSV (comma separated values) file` — separato da virgole (angolo, intensità)
-  - `as TSV (tab separated values) file` — separato da tabulazioni
-  - `as GSAS file` — formato di dati GSAS (Rietveld)
+- **`File ▸ Export the selected profile(s)`** — Esporta i profili in uno dei formati seguenti:
+  - `as CSV (comma separated values) file` — Salva i profili spuntati come valori separati da virgole (X, Y), tutti insieme in un unico file oppure un file per profilo. Dopo aver scelto la destinazione, rispondere `Yes` per unirli o `No` per salvarli separatamente. X è la coordinata dell'asse orizzontale visualizzato. I numeri usano sempre `.` come separatore decimale, indipendentemente dalle impostazioni internazionali.
+  - `as TSV (tab separated values) file` — Salva lo stesso contenuto con separatori di tabulazione.
+  - `as GSAS file` — Scrive il profilo selezionato nel formato di dati GSAS (Rietveld). L'esportazione è possibile solo quando l'asse orizzontale è 2θ o TOF neutronico.
 
 !!! note "Salvataggio della figura"
     Per salvare la figura visualizzata invece dei dati di profilo, usare `File ▸ Copy to Clipboard` o `File ▸ Save as Metafile` (EMF). EMF è un formato vettoriale che può essere importato in PowerPoint e Word.

@@ -44,10 +44,10 @@ Each material's `groupBox` lets you enter or read the following values.
 | `a` / `V` | Measured lattice constant or volume. Updated automatically when you drag a diffraction line in the main window. |
 | `a0` / `V0` | Lattice constant or volume at ambient (reference) conditions. |
 | `Temperature` | Sample temperature. Used by equations of state that include thermal pressure (high-temperature EOS). |
-| `T0` | Reference temperature. Used together with `Temperature` to apply the thermal-pressure correction. |
+| `T0` | Reference temperature. Whether the entered `T0` is used depends on the reference (many equations use the reference temperature of the original study internally). |
 
 !!! tip "Temperature-dependent equations of state"
-    Some references support high-temperature equations of state that include thermal pressure. By entering `Temperature` and `T0` to match your experimental conditions, you obtain a pressure that includes the temperature correction. Formulations based on the Mie-Grüneisen(-Debye) model, such as the Vinet/BM forms of `Sakai+(11)`, fall into this category.
+    Some references support high-temperature equations of state that include thermal pressure; entering the sample temperature in `Temperature` gives a pressure that includes the temperature correction. For example, `Tange (09) Vinet` and `Tange (09) BM` for MgO use the entered temperature. In contrast, `Sakai+(11) Vinet` and `Sakai+(11) BM` for NaCl (B2) are isothermal equations and do not use the temperature. Whether the reference temperature `T0` can be changed depends on the reference.
 
 ## References per material
 
@@ -57,22 +57,22 @@ Each material's `groupBox` lists several equations of state from different refer
 
 ![List of equation-of-state references for gold](../assets/cap-en-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-For gold (`Au (Gold)`), equations of state such as `Yokoo (09)`, `Matsui (09)`, `Holmes (89)`, `Jamieson (82)`, and `Fratanduono (21)` are available.
+For gold (`Au (Gold)`), the equations of state `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)`, and `Fratanduono (21)` are available.
 
 ### NaCl (B1 structure)
 
 ![List of equation-of-state references for NaCl-B1](../assets/cap-en-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
 
-For `NaCl (B1)`, equations of state such as `Brown (99)`, `Sakai+`, and `Matsui (12)` are available.
+For `NaCl (B1)`, the equations of state `Brown (99)`, `Matsui (12)`, and `Skelton (84)` are available.
 
 ### Periclase (MgO)
 
 ![List of equation-of-state references for periclase MgO](../assets/cap-en-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
 
-For `MgO (Periclase)`, equations of state such as `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)`, and `Jackson (98)` are available.
+For `MgO (Periclase)`, the equations of state `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)`, and `Jackson (98)` are available.
 
 !!! note "Other materials"
-    Platinum (`Pt (Platinum)`: `Fratanduono (21)`, `Holmes (89)`, etc.), `NaCl (B2)` (`Sakai (02)`, `Ueda+(08)`, etc.), corundum (`Al2O3 (Corundum)`: `Sata (02)`, etc.), `Ar` (`Dubrovinsky (98)`, `Ross et al. (86)`, `Jephcoat (98)`, etc.), `Re` (`Zha et al. (04)`, etc.), `Mo` (`Zhao+(00)`, `Huang+(16) MGD`, etc.), and `Pb` (`Strässle+(14)`, etc.) likewise offer a choice of several references.
+    Platinum (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), `Re` (`Zha et al. (04)`, etc.), and `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) also offer a choice of several references. Corundum (`Al2O3 (Corundum)`) has one reference, `Dubrovinsky (98)`, and `Pb` has one, `Strässle+(14)`.
 
 ## Theory of the equations of state
 
@@ -185,7 +185,7 @@ Jephcoat98 makes γ linear in volume: $\gamma = \gamma_0 + \gamma_1 (V/V_0)$ (γ
 | Tange09 Vinet | Vinet + Tange thermal | K0=160.63, K0'=4.367; θ0=761, γ0=1.442, a=0.138, b=5.4 |
 | Tange09 BM | BM3 + Tange thermal | K0=160.64, K0'=4.221; θ0=761, γ0=1.431, a=0.29, b=3.5 |
 
-The Tange thermal term uses a volume dependence $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ and approximates the Debye internal energy by a polynomial in θ/T.
+The Tange thermal term uses a volume dependence $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ and evaluates the Debye internal energy by numerical integration.
 
 ### Sodium chloride NaCl (B2 structure)
 
@@ -241,7 +241,7 @@ Zhao00 evaluates BM4 with $K_{T0}=K_0+(\partial K/\partial T)(T-T_0)$ and a ther
 
 ## Related pages
 
-- For registering crystals and the crystal list display, see related pages such as [Profile information](4-profile-parameter.md).
+- For registering crystals and the crystal list display, see related pages such as [Crystal parameter](3-crystal-parameter.md).
 
 <!-- 260605Cl: P-V-T tables for spline-interpolated EOS sources (not on yseto.net) -->
 

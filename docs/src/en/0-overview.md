@@ -5,7 +5,7 @@
 
 PDIndexer is a software application for analyzing one-dimensional powder X-ray diffraction patterns. It can display and analyze diffraction profiles obtained from powder X-ray diffraction instruments, from synchrotron X-rays measured with Debye-Scherrer transmission optics, and from neutron time-of-flight (TOF) measurements.
 
-It provides a full set of tools for powder diffraction analysis, including overlaid display of multiple profiles, comparison with the diffraction lines of known crystals, temperature and pressure calibration against standard materials, profile fitting, and least-squares refinement of lattice parameters.
+It provides a full set of tools for powder diffraction analysis, including overlaid display of multiple profiles, comparison with the diffraction lines of known crystals, pressure estimation from the equations of state of standard materials, profile fitting, and least-squares refinement of lattice parameters.
 
 !!! note "About this manual"
     This page is an overview only. For detailed instructions on each feature, see the dedicated pages.
@@ -18,7 +18,7 @@ PDIndexer offers the following features.
 | --- | --- |
 | Display and comparison of profiles | Overlay and compare multiple diffraction profiles. The horizontal axis (\(2\theta\) / \(d\) / \(q\)) and vertical-axis scales can be switched flexibly. |
 | Comparison with known crystals | Calculate the diffraction lines of known crystals and overlay them on the observed profile for identification. See [Crystal Parameter](3-crystal-parameter.md) for details. |
-| Calibration with standards | Using equations of state (EOS) such as NaCl EOS and Pt EOS, estimate temperature and pressure from the cell volume of a standard material. See [Equation of State (EOS)](5-equation-of-states.md) for details. |
+| Calibration with standards | Using equations of state (EOS) such as NaCl EOS and Pt EOS, estimate the pressure from the measured cell volume of a standard material at the specified temperature. See [Equation of State (EOS)](5-equation-of-states.md) for details. |
 | Peak fitting | Fit the position, full width at half maximum (FWHM), and intensity of diffraction peaks. See [Fitting](6-fitting-diffraction-peaks.md) for details. |
 | Lattice-parameter refinement | Refine lattice constants from peak positions by least squares. The **Cell Finder** can also search for lattice constants from peak positions. |
 | Sequential Analysis | Batch-process a series of files with the **Sequential Analysis** feature. See [Sequential Analysis](7-sequential-analysis.md) for details. |

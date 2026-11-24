@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Paramètres du profil
 
-Cliquer sur l'icône `Profile parameter` (Paramètres du profil) dans la fenêtre principale ouvre cette sous-fenêtre. Vous y effectuez les réglages détaillés des profils chargés et appliquez divers traitements numériques.
+Cliquer sur l'icône `Profile Parameter (P)` (Paramètre de profil (P)) dans la fenêtre principale ouvre cette sous-fenêtre. Vous y effectuez les réglages détaillés des profils chargés et appliquez divers traitements numériques.
 
 ![Vue d'ensemble de la fenêtre Paramètres du profil](../assets/cap-fr-auto/FormProfileSetting.png)
 
 La partie gauche de la fenêtre contient la [liste de contrôle des profils](#profile), et la partie droite est divisée en trois pages à onglets — [Traitement du profil](#profile-processing), [Réglage des axes](#axis-setting) et [Opérateur de profil](#profile-operator). Chaque étape de traitement peut être activée/désactivée par une case à cocher et est appliquée de haut en bas dans l'ordre.
 
 !!! note
-    Les réglages effectués dans cette fenêtre sont répercutés en temps réel sur les profils de la [fenêtre principale](1-main-window.md). Pour les réglages côté cristal, tels que l'unité de l'axe horizontal et les indices des raies de diffraction, voir [Crystal Parameter](3-crystal-parameter.md).
+    Les réglages effectués dans cette fenêtre sont répercutés en temps réel sur les profils de la [fenêtre principale](1-main-window.md). Choisissez l'unité d'affichage de l'axe horizontal dans l'onglet `Horizontal Axis` (Axe horizontal) de la fenêtre principale. Pour les réglages côté cristal, tels que les indices des raies de diffraction, voir [Crystal Parameter](3-crystal-parameter.md).
 
 ---
 
@@ -136,16 +136,16 @@ Le bouton `Apply for all profiles (without background setting)` applique les ré
 
 ## Réglage des axes {#axis-setting}
 
-Dans l'onglet `Axis setting`, vous modifiez l'unité de l'axe horizontal, le type de rayonnement (faisceau incident) et l'énergie du faisceau incident du profil sélectionné.
+Dans l'onglet `Axis setting`, vous redéfinissez le type d'axe horizontal source, la longueur d'onde, l'angle de sortie et le temps d'exposition du profil sélectionné. L'unité d'affichage de l'axe horizontal ne se choisit pas ici, mais dans l'onglet `Horizontal Axis` (Axe horizontal) de la fenêtre principale.
 
 | Élément | Description |
 | --- | --- |
-| `Horizontal axis setting` | Change l'unité actuelle de l'axe horizontal (`horizontal unit`). Avec `Shift`, vous pouvez aussi décaler l'ensemble de l'axe horizontal. |
+| `Horizontal axis setting` | Définit le type d'axe horizontal source, la longueur d'onde et l'angle de sortie ; `Change` (Modifier) les réécrit dans le profil sélectionné. Avec `Shift`, vous pouvez aussi décaler l'ensemble de l'axe horizontal. |
 | `Exposure Time` | Définit le temps d'exposition (`sec.`) utilisé en mode CPS (`(for CPS mode)`). |
 | `Vertical axis setting` | Réglages relatifs à l'axe vertical. |
 
 !!! note
-    Le réglage des axes effectué ici modifie les informations physiques que le profil lui-même contient (unité, type de rayonnement, énergie). Contrairement à la transformation d'axe purement visuelle de la fenêtre principale, il affecte la façon dont les données elles-mêmes sont interprétées. Comme le type de rayonnement et l'énergie influencent directement le calcul des positions des raies de diffraction, réglez les valeurs correctes.
+    Cliquer sur `Change` (Modifier) réécrit dans le profil le type d'axe source, l'angle de sortie, la longueur d'onde et le temps d'exposition. Contrairement au changement d'axe purement visuel de la fenêtre principale, il affecte la façon dont les données elles-mêmes sont interprétées. Comme la longueur d'onde et l'angle de sortie influencent directement le calcul des positions des raies de diffraction, réglez les valeurs correctes. Une unité d'entrée erronée choisie à l'importation ne peut pas être corrigée ici ; rouvrez le fichier source.
 
 ---
 

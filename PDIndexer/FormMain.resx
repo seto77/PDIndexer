@@ -1374,7 +1374,7 @@ range. Set the axis limit via the right-click menu.</value>
     <value>2</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.Text" xml:space="preserve">
-    <value>After reading profile, change horizontanl axis</value>
+    <value>After reading profile, change horizontal axis</value>
   </data>
   <data name="checkBoxChangeHorizontalAppearance.ToolTip" xml:space="preserve">
     <value>When loading a profile, automatically switch

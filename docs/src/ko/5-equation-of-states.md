@@ -44,10 +44,10 @@
 | `a` / `V` | 측정된 격자 상수 또는 부피. 메인 창에서 회절선을 움직이면 자동으로 갱신됩니다. |
 | `a0` / `V0` | 상압(기준 상태)에서의 격자 상수 또는 부피. |
 | `Temperature` | 시료 온도. 열압력을 포함하는 상태 방정식(고온 EOS)에 사용됩니다. |
-| `T0` | 기준 온도. `Temperature`와 함께 열압력 보정에 사용합니다. |
+| `T0` | 기준 온도. 입력한 `T0`가 사용되는지는 출처에 따라 다릅니다(많은 식은 원 연구의 기준 온도를 내부적으로 사용합니다). |
 
 !!! tip "온도를 고려한 상태 방정식"
-    일부 출처는 열압력(thermal pressure)을 포함하는 고온 상태 방정식을 지원합니다. `Temperature`와 `T0`를 실험 조건에 맞게 입력하면 온도 보정을 반영한 압력을 얻을 수 있습니다. `Sakai+(11)`의 Vinet/BM 형태처럼 Mie-Grüneisen(-Debye) 모델을 사용한 식이 여기에 해당합니다.
+    일부 출처는 열압력(thermal pressure)을 포함하는 고온 상태 방정식을 지원하며, `Temperature`에 시료 온도를 입력하면 온도 보정을 반영한 압력을 얻을 수 있습니다. 예를 들어 MgO의 `Tange (09) Vinet`와 `Tange (09) BM`은 입력한 온도를 사용합니다. 반면 NaCl (B2)의 `Sakai+(11) Vinet`와 `Sakai+(11) BM`은 등온 식이므로 온도를 사용하지 않습니다. 기준 온도 `T0`를 변경할 수 있는지는 출처에 따라 다릅니다.
 
 ## 물질별 출처(참고 문헌)
 
@@ -57,22 +57,22 @@
 
 ![금의 상태 방정식 출처 목록](../assets/cap-ko-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-금(`Au (Gold)`)에서는 `Yokoo (09)`, `Matsui (09)`, `Holmes (89)`, `Jamieson (82)`, `Fratanduono (21)` 등의 상태 방정식을 사용할 수 있습니다.
+금(`Au (Gold)`)에서는 `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)`, `Fratanduono (21)`의 상태 방정식을 사용할 수 있습니다.
 
 ### NaCl(B1 구조)
 
 ![NaCl-B1의 상태 방정식 출처 목록](../assets/cap-ko-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
 
-`NaCl (B1)`에서는 `Brown (99)`, `Sakai+`, `Matsui (12)` 등의 상태 방정식을 사용할 수 있습니다.
+`NaCl (B1)`에서는 `Brown (99)`, `Matsui (12)`, `Skelton (84)`의 상태 방정식을 사용할 수 있습니다.
 
 ### 페리클레이스(Periclase, MgO)
 
 ![페리클레이스 MgO의 상태 방정식 출처 목록](../assets/cap-ko-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
 
-`MgO (Periclase)`에서는 `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)`, `Jackson (98)` 등의 상태 방정식을 사용할 수 있습니다.
+`MgO (Periclase)`에서는 `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)`, `Jackson (98)`의 상태 방정식을 사용할 수 있습니다.
 
 !!! note "그 밖의 물질"
-    백금(`Pt (Platinum)`: `Fratanduono (21)`, `Holmes (89)` 등), `NaCl (B2)`(`Sakai (02)`, `Ueda+(08)` 등), 강옥(`Al2O3 (Corundum)`: `Sata (02)` 등), `Ar`(`Dubrovinsky (98)`, `Ross et al. (86)`, `Jephcoat (98)` 등), `Re`(`Zha et al. (04)` 등), `Mo`(`Zhao+(00)`, `Huang+(16) MGD` 등), `Pb`(`Strässle+(14)` 등)도 마찬가지로 여러 출처 중에서 선택할 수 있습니다.
+    백금(`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)`(`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar`(`Ross et al. (86)`, `Jephcoat (98)`), `Re`(`Zha et al. (04)` 등), `Mo`(`Zhao+(00)`, `Huang+(16)MGD`)도 여러 출처 중에서 선택할 수 있습니다. 강옥(`Al2O3 (Corundum)`)은 `Dubrovinsky (98)`, `Pb`는 `Strässle+(14)`의 출처 하나씩만 있습니다.
 
 ## 상태 방정식의 이론
 
@@ -185,7 +185,7 @@ Jephcoat98은 γ를 부피에 선형 의존시킵니다: $\gamma = \gamma_0 + \g
 | Tange09 Vinet | Vinet + Tange 열항 | K0=160.63, K0'=4.367; θ0=761, γ0=1.442, a=0.138, b=5.4 |
 | Tange09 BM | BM3 + Tange 열항 | K0=160.64, K0'=4.221; θ0=761, γ0=1.431, a=0.29, b=3.5 |
 
-Tange 열항은 γ의 부피 의존성을 $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$로 두고, Debye 내부 에너지를 θ/T의 다항식으로 근사합니다.
+Tange 열항은 γ의 부피 의존성을 $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$로 두고, Debye 내부 에너지를 수치 적분으로 계산합니다.
 
 ### 염화나트륨 NaCl(B2 구조)
 
@@ -241,7 +241,7 @@ Zhao00은 $K_{T0}=K_0+(\partial K/\partial T)(T-T_0)$와 열팽창으로 보정�
 
 ## 관련 페이지
 
-- 결정 등록과 목록 표시에 대해서는 [프로파일 정보](4-profile-parameter.md) 등의 관련 페이지를 참조하십시오.
+- 결정 등록과 목록 표시에 대해서는 [결정 파라미터](3-crystal-parameter.md) 등의 관련 페이지를 참조하십시오.
 
 <!-- 260605Cl: P-V-T tables for spline-interpolated EOS sources (not on yseto.net) -->
 

@@ -5,7 +5,7 @@
 
 PDIndexer est une application logicielle dédiée à l'analyse des diagrammes de diffraction de poudre de rayons X unidimensionnels. Elle permet d'afficher et d'analyser les profils de diffraction obtenus à partir d'instruments de diffraction de poudre de rayons X, de rayons X synchrotron mesurés en optique de transmission Debye-Scherrer, et de mesures de neutrons par temps de vol (TOF).
 
-Elle fournit un ensemble complet d'outils pour l'analyse de la diffraction de poudre, notamment l'affichage superposé de plusieurs profils, la comparaison avec les raies de diffraction de cristaux connus, l'étalonnage en température et en pression par rapport à des matériaux étalons, l'ajustement des profils et l'affinement par moindres carrés des paramètres de maille.
+Elle fournit un ensemble complet d'outils pour l'analyse de la diffraction de poudre, notamment l'affichage superposé de plusieurs profils, la comparaison avec les raies de diffraction de cristaux connus, l'estimation de la pression à partir des équations d'état de matériaux étalons, l'ajustement des profils et l'affinement par moindres carrés des paramètres de maille.
 
 !!! note "À propos de ce manuel"
     Cette page n'est qu'une vue d'ensemble. Pour des instructions détaillées sur chaque fonctionnalité, reportez-vous aux pages dédiées.
@@ -18,7 +18,7 @@ PDIndexer offre les fonctionnalités suivantes.
 | --- | --- |
 | Affichage et comparaison des profils | Superposez et comparez plusieurs profils de diffraction. Les échelles de l'axe horizontal (\(2\theta\) / \(d\) / \(q\)) et de l'axe vertical peuvent être commutées de manière flexible. |
 | Comparaison avec des cristaux connus | Calculez les raies de diffraction de cristaux connus et superposez-les au profil observé pour l'identification. Voir [Paramètres du cristal](3-crystal-parameter.md) pour plus de détails. |
-| Étalonnage avec des étalons | À l'aide d'équations d'état (EOS) telles que NaCl EOS et Pt EOS, estimez la température et la pression à partir du volume de maille d'un matériau étalon. Voir [Équation d'état (EOS)](5-equation-of-states.md) pour plus de détails. |
+| Étalonnage avec des étalons | À l'aide d'équations d'état (EOS) telles que NaCl EOS et Pt EOS, estimez la pression à partir du volume de maille mesuré d'un matériau étalon à la température indiquée. Voir [Équation d'état (EOS)](5-equation-of-states.md) pour plus de détails. |
 | Ajustement des pics | Ajustez la position, la largeur à mi-hauteur (FWHM) et l'intensité des pics de diffraction. Voir [Ajustement des pics de diffraction](6-fitting-diffraction-peaks.md) pour plus de détails. |
 | Affinement des paramètres de maille | Affinez les paramètres de maille à partir des positions des pics par moindres carrés. Le **Cell Finder** peut également rechercher les paramètres de maille à partir des positions des pics. |
 | Analyse séquentielle | Traitez par lots une série de fichiers grâce à la fonctionnalité **Analyse séquentielle**. Voir [Analyse séquentielle](7-sequential-analysis.md) pour plus de détails. |

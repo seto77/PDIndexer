@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 谱图参数
 
-单击主窗口上的 `Profile parameter`（谱图参数）图标即可打开此子窗口。在这里可以对已加载的谱图进行详细设置，并进行各种数值处理。
+单击主窗口上的 `Profile Parameter (P)`（谱图参数 (P)）图标即可打开此子窗口。在这里可以对已加载的谱图进行详细设置，并进行各种数值处理。
 
 ![谱图参数窗口整体](../assets/cap-zh-Hans-auto/FormProfileSetting.png)
 
 窗口左侧是 [Profile 谱图列表](#profile)，右侧则分为三个标签页 —— [谱图处理](#profile-processing)、[轴设置](#axis-setting) 和 [谱图运算](#profile-operator)。每个处理步骤都可以用复选框开启/关闭，并按从上到下的顺序依次应用。
 
 !!! note
-    在此窗口中所做的设置会实时反映到 [主窗口](1-main-window.md) 的谱图上。关于晶体一侧的设置，例如横轴单位和衍射线的指数标注，请参见 [晶体参数](3-crystal-parameter.md)。
+    在此窗口中所做的设置会实时反映到 [主窗口](1-main-window.md) 的谱图上。横轴的显示单位请在主窗口的 `横轴` 选项卡中选择。关于晶体一侧的设置，例如衍射线的指数标注，请参见 [晶体参数](3-crystal-parameter.md)。
 
 ---
 
@@ -136,16 +136,16 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ## 轴设置（Axis setting） {#axis-setting}
 
-在 `Axis setting` 标签页中，可以更改所选谱图的横轴单位、入射线种类以及入射线能量。
+在 `Axis setting` 标签页中，可以重新设置所选谱图原始的横轴类型、波长、出射角和曝光时间。横轴的显示单位不在此处选择，而是在主窗口的 `横轴` 选项卡中选择。
 
 | 项目 | 说明 |
 | --- | --- |
-| `Horizontal axis setting`（横轴设置） | 更改当前的横轴单位（`horizontal unit`）。通过 `Shift`（平移）还可以对整个横轴进行偏移。 |
+| `Horizontal axis setting`（横轴设置） | 设置原始的横轴类型、波长和出射角；点击 `Change`（更改）将其写回所选谱图。通过 `Shift`（平移）还可以对整个横轴进行偏移。 |
 | `Exposure Time`（曝光时间） | 设置 CPS 模式（`(for CPS mode)`）下使用的曝光时间（`sec.`）。 |
 | `Vertical axis setting`（纵轴设置） | 与纵轴相关的设置。 |
 
 !!! note
-    此处的轴设置更改的是谱图自身所持有的物理信息（单位、入射线种类、能量）。与主窗口中仅用于显示的轴变换不同，它会影响数据本身的解读方式。由于入射线种类和能量会直接影响衍射线位置的计算，请设置正确的数值。
+    点击 `Change`（更改）会将原始的横轴类型、出射角、波长和曝光时间写回谱图。与主窗口中仅用于显示的轴切换不同，它会影响数据本身的解读方式。由于波长和出射角会直接影响衍射线位置的计算，请设置正确的数值。读取时选错的输入单位无法在此处更正，请重新打开原始文件。
 
 ---
 

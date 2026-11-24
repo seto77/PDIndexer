@@ -117,14 +117,8 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>デコンボリューション</value>
   </data>
-  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
-  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>露出時間 (/ステップ)</value>
-  </data>
-  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="numericalTextBox1.ToolTip" xml:space="preserve">
     <value>データ 1 ステップあたりの露出（測定）時間を
@@ -146,5 +140,29 @@
   </data>
   <data name="buttonCancel.ToolTip" xml:space="preserve">
     <value>変換をキャンセルします。</value>
+  </data>
+  <data name="numericBoxLowEnergyCutoff.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label6.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9pt</value>
+  </data>
+  <data name="numericalTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="horizontalAxisUserControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
 </root>

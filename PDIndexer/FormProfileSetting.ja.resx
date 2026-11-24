@@ -110,83 +110,41 @@
   </resheader>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold, Italic</value>
-  </data>
   <data name="groupBox3.Text" xml:space="preserve">
     <value>基本情報</value>
-  </data>
-  <data name="textBoxComment.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>線の色</value>
   </data>
-  <data name="label7.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="label7.Text" xml:space="preserve">
     <value>線の幅</value>
-  </data>
-  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="label22.Text" xml:space="preserve">
     <value>コメント</value>
   </data>
-  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="label8.Text" xml:space="preserve">
     <value>名前</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
     <value>露出時間</value>
   </data>
-  <data name="checkBoxSmoothing.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. スムージング</value>
-  </data>
-  <data name="checkBoxBackgroundSubtraction.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxBackgroundSubtraction.Text" xml:space="preserve">
     <value>6. バックグラウンド減算</value>
   </data>
-  <data name="buttonDeleteProfile.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
   <data name="buttonDeleteProfile.Text" xml:space="preserve">
     <value>削除</value>
-  </data>
-  <data name="buttonChangeSourceXAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>変更</value>
   </data>
-  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
-  </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>横軸</value>
   </data>
-  <data name="label12.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="label12.Text" xml:space="preserve">
     <value>現在の単位</value>
-  </data>
-  <data name="checkBoxShiftHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>横軸シフト</value>
@@ -194,80 +152,41 @@
   <data name="groupBox2.Text" xml:space="preserve">
     <value>縦軸</value>
   </data>
-  <data name="numericBoxExposureTime.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt, style=Bold</value>
-  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="radioButtonNormarizeMaximum.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonNormarizeMaximum.Text" xml:space="preserve">
     <value>最大値</value>
-  </data>
-  <data name="radioButtonNormarizeAverage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="radioButtonNormarizeAverage.Text" xml:space="preserve">
     <value>平均値</value>
   </data>
-  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt, style=Bold</value>
-  </data>
   <data name="button1.Text" xml:space="preserve">
     <value>全て削除</value>
-  </data>
-  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9.75pt</value>
   </data>
   <data name="tabPage2.Text" xml:space="preserve">
     <value>プロファイル処理</value>
   </data>
-  <data name="checkBoxTwoThetaOffset.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxTwoThetaOffset.Text" xml:space="preserve">
     <value>1. 2θ オフセット (角度が横軸の場合のみ)</value>
-  </data>
-  <data name="checkBoxMaskingMode.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxMaskingMode.Text" xml:space="preserve">
     <value>2. マスクと補間</value>
   </data>
-  <data name="checkBoxBandPassFilter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxBandPassFilter.Text" xml:space="preserve">
     <value>4. バンドパスフィルター</value>
-  </data>
-  <data name="checkBoxLowPassFilter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8.25pt</value>
   </data>
   <data name="checkBoxLowPassFilter.Text" xml:space="preserve">
     <value>高周波をカット (右値以上)</value>
   </data>
-  <data name="checkBoxHighPassFilter.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 8.25pt</value>
-  </data>
   <data name="checkBoxHighPassFilter.Text" xml:space="preserve">
     <value>低周波をカット (右値以下)</value>
   </data>
-  <data name="checkBoxRemoveKalpha2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="checkBoxRemoveKalpha2.Text" xml:space="preserve">
     <value>5. Kα2 を除去  (Kα1 が X線源として選択されている場合)</value>
-  </data>
-  <data name="checkBoxNormarizeIntensity.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="checkBoxNormarizeIntensity.Text" xml:space="preserve">
     <value>7. 強度のノーマライズ</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="buttonApplyAllProfiles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="buttonApplyAllProfiles.Text" xml:space="preserve">
     <value>全てのプロファイルに対して適用 (バックグランド減算は除く)</value>
   </data>
@@ -277,32 +196,17 @@
   <data name="tabPage1.Text" xml:space="preserve">
     <value>プロファイル演算</value>
   </data>
-  <data name="radioButtonAverage.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonAverage.Text" xml:space="preserve">
     <value>平均化</value>
   </data>
-  <data name="radioButtonProfileAndValue.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
   <data name="radioButtonProfileAndValue.Text" xml:space="preserve">
     <value>プロファイルと数値</value>
-  </data>
-  <data name="radioButtonTwoProfiles.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="radioButtonTwoProfiles.Text" xml:space="preserve">
     <value>プロファイル間</value>
   </data>
   <data name="buttonCalculate.Text" xml:space="preserve">
     <value>計算</value>
-  </data>
-  <data name="textBoxOutputFilename.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
-  </data>
-  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
-    <value>メイリオ, 9pt</value>
   </data>
   <data name="label18.Text" xml:space="preserve">
     <value>出力するプロファイルの名前</value>
@@ -542,5 +446,176 @@
   <data name="buttonCalculate.ToolTip" xml:space="preserve">
     <value>選択した演算を実行し、結果を新しい
 プロファイルとして一覧に追加します。</value>
+  </data>
+  <data name="groupBox3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Italic</value>
+  </data>
+  <data name="buttonLower.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 11.25pt</value>
+  </data>
+  <data name="buttonUpper.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 11.25pt</value>
+  </data>
+  <data name="buttonDeleteProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="textBoxComment.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label22.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="textBoxProfileName.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label8.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="colorControlLineColor.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label17.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowBackgroundProfile.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="comboBoxBackgroundReferrence.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonBackgroundAutoDetectBG.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonBackgroundReferrence.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonBagkgroundBSpline.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxSmoothing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxBackgroundSubtraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonChangeSourceXAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="xAxisUserControl.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 9.75pt, style=Bold, Italic</value>
+  </data>
+  <data name="checkBoxShiftHorizontalAxis.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="groupBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="radioButtonNormarizeMaximum.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonNormarizeAverage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="listBoxTwoProfiles1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="listBoxTwoProfiles2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="label18.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="tabControl1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Arial, 10pt</value>
+  </data>
+  <data name="flowLayoutPanel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxTwoThetaOffset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonTwoThetaCalibration.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="buttonTwoThetaOffsetReset.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxMaskingMode.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxShowMaskedRange.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="listBoxMaskRanges.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonDeleteMask.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonDeleteAllMask.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelSmoothing.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxBandPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelBandPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxLowPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxHighPassFilter.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="checkBoxRemoveKalpha2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="flowLayoutPanelBackgroundSubtraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Yu Gothic UI, 9.75pt</value>
+  </data>
+  <data name="checkBoxNormarizeIntensity.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonApplyAllProfiles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAddition.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="radioButtonSubtraction.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="radioButtonMutiplication.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="radioButtonDivision.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Symbol, 9.75pt, style=Bold</value>
+  </data>
+  <data name="textBoxOutputFilename.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="buttonCalculate.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonAverage.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonProfileAndValue.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="radioButtonTwoProfiles.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
+  </data>
+  <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI Symbol, 9.75pt</value>
   </data>
 </root>

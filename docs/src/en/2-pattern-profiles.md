@@ -3,7 +3,7 @@
 
 This page describes the "profile data" itself (the measured dataset) that PDIndexer handles, and how to load, display, and export it. Processing applied after loading — smoothing, background subtraction, and so on — is done in the [Profile Parameter](4-profile-parameter.md) window. For the full list of supported file extensions, see [File formats](appendix/file-formats.md).
 
-![PDIndexer main window with a profile in the center and the profile and crystal lists on the left.](../assets/cap-en-auto/FormMain.png)
+![PDIndexer main window with a profile in the center and the profile and crystal lists on the right.](../assets/cap-en-auto/FormMain.png)
 
 ## What a profile is
 
@@ -14,7 +14,7 @@ A profile is a one-dimensional "horizontal axis vs. intensity" dataset obtained 
 - Flight time for the neutron time-of-flight (TOF) method
 - In every case, the data can also be handled internally after conversion to the lattice spacing \( d \) or the scattering vector \( q \)
 
-The vertical axis is the diffraction intensity, which can be shown as `Raw Counts` or `Count per Step (CPS)`, on either a linear or logarithmic scale (see `Vertical Axis` on the [Main window](1-main-window.md) page).
+The vertical axis is the diffraction intensity, which can be shown as `Raw Counts` or as counts divided by the exposure time in seconds (`Count per Step (CPS)`), on either a linear or logarithmic scale (see `Vertical Axis` on the [Main window](1-main-window.md) page).
 
 ## Supported input formats
 
@@ -57,7 +57,7 @@ Switch the display mode with `Single/Multi Profile` on the right side of the mai
 
 ## Profile checklist
 
-The `Profile` list on the left side of the main window shows all loaded profiles.
+The `Profile` list on the right side of the main window shows all loaded profiles.
 
 - Only checked profiles are drawn in the central viewer. Use `Check/Uncheck all` to toggle them all at once.
 - Click the `Color` column to change the drawing color of each profile.
@@ -86,10 +86,10 @@ When the horizontal-axis type is energy-dispersive (white X-rays, EDX), enter th
 ## Exporting profiles
 
 - **`File ▸ Save profile(s)`** — Saves all loaded profiles in PDIndexer's native `pdi2` format. Axis settings and processing information are preserved.
-- **`File ▸ Export the selected profile(s)`** — Exports the selected profile(s) in one of the following formats:
-  - `as CSV (comma separated values) file` — comma-separated (angle, intensity)
-  - `as TSV (tab separated values) file` — tab-separated
-  - `as GSAS file` — GSAS (Rietveld) data format
+- **`File ▸ Export the selected profile(s)`** — Exports profiles in one of the following formats:
+  - `as CSV (comma separated values) file` — Saves the checked profiles as comma-separated values (X, Y), either together in one file or one file per profile. After you choose the destination, answer `Yes` to merge them or `No` to save them separately. X is the coordinate of the displayed horizontal axis. Numbers always use `.` as the decimal separator, regardless of the regional settings.
+  - `as TSV (tab separated values) file` — Saves the same content with tab separators.
+  - `as GSAS file` — Writes the selected profile in GSAS (Rietveld) data format. Export is possible only when the horizontal axis is 2θ or neutron TOF.
 
 !!! note "Saving the figure"
     To save the rendered figure rather than the profile data, use `File ▸ Copy to Clipboard` or `File ▸ Save as Metafile` (EMF). EMF is a vector format that can be imported into PowerPoint and Word.

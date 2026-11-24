@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Parametri del profilo
 
-Facendo clic sull'icona `Profile parameter` nella finestra principale si apre questa sottofinestra. Qui si effettuano le impostazioni dettagliate per i profili caricati e si applicano vari trattamenti numerici.
+Facendo clic sull'icona `Profile Parameter (P)` nella finestra principale si apre questa sottofinestra. Qui si effettuano le impostazioni dettagliate per i profili caricati e si applicano vari trattamenti numerici.
 
 ![L'intera finestra Parametri del profilo](../assets/cap-it-auto/FormProfileSetting.png)
 
 Il lato sinistro della finestra contiene la [Lista di controllo dei profili](#profile), mentre il lato destro è suddiviso in tre pagine a schede — [Elaborazione del profilo](#profile-processing), [Impostazione degli assi](#axis-setting) e [Operatore di profilo](#profile-operator). Ciascuna fase di elaborazione può essere attivata/disattivata con una casella di spunta e viene applicata in ordine dall'alto verso il basso.
 
 !!! note
-    Le impostazioni effettuate in questa finestra si riflettono in tempo reale sui profili nella [finestra principale](1-main-window.md). Per le impostazioni sul lato del cristallo, come l'unità dell'asse orizzontale e le etichette degli indici delle linee di diffrazione, vedere [Crystal Parameter](3-crystal-parameter.md).
+    Le impostazioni effettuate in questa finestra si riflettono in tempo reale sui profili nella [finestra principale](1-main-window.md). L'unità di visualizzazione dell'asse orizzontale si sceglie nella scheda `Horizontal Axis` della finestra principale. Per le impostazioni sul lato del cristallo, come le etichette degli indici delle linee di diffrazione, vedere [Crystal Parameter](3-crystal-parameter.md).
 
 ---
 
@@ -136,16 +136,16 @@ Il pulsante `Apply for all profiles (without background setting)` applica in una
 
 ## Impostazione degli assi {#axis-setting}
 
-Nella scheda `Axis setting` si modificano l'unità dell'asse orizzontale, il tipo di radiazione (fascio incidente) e l'energia del fascio incidente del profilo selezionato.
+Nella scheda `Axis setting` si reimpostano il tipo di asse orizzontale di origine, la lunghezza d'onda, l'angolo di take-off e il tempo di esposizione del profilo selezionato. L'unità di visualizzazione dell'asse orizzontale non si sceglie qui, ma nella scheda `Horizontal Axis` della finestra principale.
 
 | Voce | Descrizione |
 | --- | --- |
-| `Horizontal axis setting` | Cambia l'unità corrente dell'asse orizzontale (`horizontal unit`). Con `Shift` è anche possibile traslare l'intero asse orizzontale. |
+| `Horizontal axis setting` | Imposta il tipo di asse orizzontale di origine, la lunghezza d'onda e l'angolo di take-off; `Change` li riscrive nel profilo selezionato. Con `Shift` è anche possibile traslare l'intero asse orizzontale. |
 | `Exposure Time` | Imposta il tempo di esposizione (`sec.`) usato in modalità CPS (`(for CPS mode)`). |
 | `Vertical axis setting` | Impostazioni relative all'asse verticale. |
 
 !!! note
-    L'impostazione degli assi qui modifica le informazioni fisiche che il profilo stesso possiede (unità, tipo di radiazione, energia). A differenza della trasformazione degli assi solo per la visualizzazione nella finestra principale, influisce sul modo in cui i dati stessi vengono interpretati. Poiché il tipo di radiazione e l'energia influenzano direttamente il calcolo delle posizioni delle linee di diffrazione, impostare i valori corretti.
+    Facendo clic su `Change`, il tipo di asse di origine, l'angolo di take-off, la lunghezza d'onda e il tempo di esposizione vengono riscritti nel profilo. A differenza della commutazione degli assi solo per la visualizzazione nella finestra principale, influisce sul modo in cui i dati stessi vengono interpretati. Poiché la lunghezza d'onda e l'angolo di take-off influenzano direttamente il calcolo delle posizioni delle linee di diffrazione, impostare i valori corretti. Un'unità di input errata scelta durante l'importazione non può essere corretta qui; riaprire il file di origine.
 
 ---
 

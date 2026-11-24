@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 圖譜參數
 
-按一下主視窗上的 `Profile parameter` 圖示，即可開啟這個子視窗。您可以在此對已載入的圖譜進行詳細設定，並套用各種數值處理。
+按一下主視窗上的 `Profile Parameter (P)`（剖面參數 (P)）圖示，即可開啟這個子視窗。您可以在此對已載入的圖譜進行詳細設定，並套用各種數值處理。
 
 ![Profile Parameter 視窗全貌](../assets/cap-zh-Hant-auto/FormProfileSetting.png)
 
 視窗左側是 [Profile 檢查清單](#profile)，右側則分為三個頁籤 — [圖譜處理](#profile-processing)、[座標軸設定](#axis-setting)、[圖譜運算](#profile-operator)。每個處理步驟都可用核取方塊切換開/關，並依由上而下的順序套用。
 
 !!! note
-    在此視窗所做的設定，會即時反映到 [主視窗](1-main-window.md) 的圖譜上。至於晶體側的設定，例如橫軸單位、繞射線的指數標籤等，請參閱 [Crystal Parameter](3-crystal-parameter.md)。
+    在此視窗所做的設定，會即時反映到 [主視窗](1-main-window.md) 的圖譜上。水平軸的顯示單位請在主視窗的 `水平軸` 頁籤中選擇。至於晶體側的設定，例如繞射線的指數標籤等，請參閱 [Crystal Parameter](3-crystal-parameter.md)。
 
 ---
 
@@ -136,16 +136,16 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ## 座標軸設定 {#axis-setting}
 
-在 `Axis setting` 頁籤中，可變更選取圖譜的橫軸單位、輻射（入射光束）種類，以及入射光束能量。
+在 `Axis setting` 頁籤中，可重新設定選取圖譜原始的橫軸種類、波長、取出角與曝光時間。橫軸的顯示單位不在此處選擇，而是在主視窗的 `水平軸` 頁籤中選擇。
 
 | 項目 | 說明 |
 | --- | --- |
-| `Horizontal axis setting` | 變更目前的橫軸單位（`horizontal unit`）。搭配 `Shift` 也可以將整個橫軸偏移。 |
+| `Horizontal axis setting` | 設定原始的橫軸種類、波長與取出角；按下 `Change`（變更）即可將其寫回選取的圖譜。搭配 `Shift` 也可以將整個橫軸偏移。 |
 | `Exposure Time` | 設定 CPS 模式（`(for CPS mode)`）所使用的曝光時間（`sec.`）。 |
 | `Vertical axis setting` | 與縱軸相關的設定。 |
 
 !!! note
-    此處的座標軸設定會變更圖譜本身所持有的物理資訊（單位、輻射種類、能量）。這與主視窗中僅供顯示用的座標軸轉換不同，會影響資料本身的解讀方式。由於輻射種類與能量會直接影響繞射線位置的計算，請務必設定正確的數值。
+    按下 `Change`（變更）會將原始的橫軸種類、取出角、波長與曝光時間寫回圖譜。這與主視窗中僅供顯示用的座標軸切換不同，會影響資料本身的解讀方式。由於波長與取出角會直接影響繞射線位置的計算，請務必設定正確的數值。讀取時選錯的輸入單位無法在此更正，請重新開啟原始檔案。
 
 ---
 

@@ -35,6 +35,8 @@
 - [Среда выполнения и установка](appendix/runtime-and-installation.md)
 - [Форматы файлов](appendix/file-formats.md)
 - [Устранение неполадок](appendix/troubleshooting.md)
+- [Алгоритмы](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## Быстрый старт
 
@@ -45,9 +47,11 @@
 
 ## Системные требования
 
+Эти требования относятся к сборкам .NET 11 из данного исходного кода. Для опубликованных выпусков используйте требования к среде выполнения, указанные для соответствующего выпуска.
+
 | Параметр | Требование |
 |------|-------------|
-| ОС | Windows с [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (**не** .NET Runtime) |
+| ОС | Windows с [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (**не** .NET Runtime) |
 | Рекомендуется | 64-битная Windows 10/11, 16 ГБ памяти или больше, 8-ядерный ЦП или мощнее |
 
 Подробности см. в разделе [Среда выполнения и установка](appendix/runtime-and-installation.md).

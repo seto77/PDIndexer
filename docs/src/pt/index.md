@@ -35,6 +35,8 @@
 - [Runtime e instalação](appendix/runtime-and-installation.md)
 - [Formatos de arquivo](appendix/file-formats.md)
 - [Solução de problemas](appendix/troubleshooting.md)
+- [Algoritmos](appendix/algorithms.md)  <!-- 261124Cl added: in the nav but missing from this list -->
+- [Q&A](appendix/faq.md)  <!-- 261124Cl added -->
 
 ## Início rápido
 
@@ -45,9 +47,11 @@
 
 ## Requisitos do sistema
 
+Estes requisitos aplicam-se às compilações .NET 11 deste código-fonte. Para versões publicadas, siga os requisitos de runtime indicados para a versão correspondente.
+
 | Item | Requisito |
 |------|-------------|
-| SO | Windows com o [.NET Desktop Runtime 10.0](https://dotnet.microsoft.com/download/dotnet/10.0) (**não** o .NET Runtime) |
+| SO | Windows com o [.NET Desktop Runtime 11.0](https://dotnet.microsoft.com/download/dotnet/11.0) (**não** o .NET Runtime) |
 | Recomendado | Windows 10/11 de 64 bits, 16 GB ou mais de memória, CPU de 8 núcleos ou superior |
 
 Consulte [Runtime e instalação](appendix/runtime-and-installation.md) para obter detalhes.

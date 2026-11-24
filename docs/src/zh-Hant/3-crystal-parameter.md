@@ -76,14 +76,14 @@
 
 ![結晶清單](../assets/cap-zh-Hant-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-這裡顯示與主視窗的 Profile 勾選清單相同的資訊。已勾選的結晶，其繞射線會顯示於主視窗中。每一列會顯示勾選方塊（`Check`）、繪製顏色（`PeakColor`）以及結晶名稱（`Crystal`）。
+這裡顯示與主視窗中的晶體清單相同的資訊。已勾選的結晶，其繞射線會顯示於主視窗中。每一列會顯示勾選方塊（`Check`）、繪製顏色（`PeakColor`）以及結晶名稱（`Crystal`）。
 
 ### Up/Down arrow buttons (↑ / ↓)
 
 變更結晶的排列順序。
 
 !!! note
-    第 1 到第 6 列保留給狀態方程（EOS）使用，無法重新排序。詳情請參閱 [Equation of state](5-equation-of-states.md)。
+    初始結晶清單中，最上方的 Flexible Crystal 及其後的 10 種壓力標準物質（供狀態方程 EOS 使用）為保留列，無法重新排序。詳情請參閱 [Equation of state](5-equation-of-states.md)。
 
 ### Add
 
@@ -99,7 +99,7 @@
 
 ### Delete all
 
-從清單中移除所有結晶。
+從清單中移除所有非保留的結晶（移除前會先確認）。
 
 ---
 

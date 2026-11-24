@@ -100,12 +100,12 @@
 | `GetDirectoryPath` | `GetDirectoryPath(string filename = "")` | Возвращает путь к каталогу (с завершающим обратным слэшем). Если `filename` опущен, открывается диалог выбора папки. В противном случае возвращается часть пути `filename`, относящаяся к каталогу. |
 | `GetFileName` | `GetFileName()` | Открывает диалог выбора файла и возвращает полный путь к выбранному файлу. Возвращает пустую строку, если пользователь отменил выбор. |
 | `GetFileNames` | `GetFileNames()` | Открывает диалог выбора нескольких файлов и возвращает полные пути к выбранным файлам. Возвращает пустой массив, если пользователь отменил выбор. |
-| `ReadProfiles` | `ReadProfiles(string filename)` | Считывает данные профиля из указанного файла. Если `filename` опущен (или файл не существует), откроется диалог выбора файла. |
-| `SaveProfiles` | `SaveProfiles(string filename)` | Сохраняет данные профиля в указанный файл. Если `filename` опущен, откроется диалог сохранения. |
-| `ReadCrystals` | `ReadCrystals(string filename)` | Считывает данные кристалла из указанного файла. Если `filename` опущен (или файл не существует), откроется диалог выбора файла. |
-| `SaveCrystals` | `SaveCrystals(string filename)` | Сохраняет данные кристалла в указанный файл. Если `filename` опущен, откроется диалог сохранения. |
-| `SaveMetafile` | `SaveMetafile(string filename)` | Сохраняет текущую дифрактограмму как Windows Metafile (`.emf`). Если `filename` опущен, откроется диалог сохранения. |
-| `SaveText` | `SaveText(string text, string filename)` | Сохраняет заданное текстовое содержимое в файл `.txt`. Если `filename` опущен, откроется диалог сохранения. |
+| `ReadProfiles` | `ReadProfiles(string fileName = "")` | Считывает данные профиля из указанного файла. Если `fileName` опущен (или файл не существует), откроется диалог выбора файла. |
+| `SaveProfiles` | `SaveProfiles(string filename = "")` | Сохраняет данные профиля в указанный файл. Если `filename` опущен, откроется диалог сохранения. |
+| `ReadCrystals` | `ReadCrystals(string filename = "")` | Считывает данные кристалла из указанного файла. Если `filename` опущен (или файл не существует), откроется диалог выбора файла. |
+| `SaveCrystals` | `SaveCrystals(string filename = "")` | Сохраняет данные кристалла в указанный файл. Если `filename` опущен, откроется диалог сохранения. |
+| `SaveMetafile` | `SaveMetafile(string filename = "")` | Сохраняет текущую дифрактограмму как Windows Metafile (`.emf`). Если `filename` опущен, откроется диалог сохранения. |
+| `SaveText` | `SaveText(string text, string filename = "")` | Сохраняет заданное текстовое содержимое в файл `.txt`. Если `filename` опущен, откроется диалог сохранения. |
 
 ### PDI.Drawing — область отображения
 
@@ -160,15 +160,15 @@
 
 ### PDI.ProfileOperator — арифметика профилей
 
-Каждый профиль задаётся своим индексом в списке. `output` — это имя, присваиваемое результирующему профилю.
+Каждый профиль задаётся своим индексом в списке. `outputName` — это имя, присваиваемое результирующему профилю.
 
 | Член | Сигнатура | Описание |
 | --- | --- | --- |
-| `Average` | `Average(int[] indices, string output)` | Вычисляет среднее значение профилей, индексы которых перечислены в `indices` (например, `[1,3,5,9]`). `output` — это имя, присваиваемое результирующему профилю. |
-| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string output)` | Вычисляет profile1 + profile2. Каждый профиль задаётся своим индексом. `output` — это имя, присваиваемое результирующему профилю. |
-| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string output)` | Вычисляет profile1 − profile2. Каждый профиль задаётся своим индексом. `output` — это имя, присваиваемое результирующему профилю. |
-| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string output)` | Вычисляет profile1 × profile2. Каждый профиль задаётся своим индексом. `output` — это имя, присваиваемое результирующему профилю. |
-| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string output)` | Вычисляет profile1 ÷ profile2. Каждый профиль задаётся своим индексом. `output` — это имя, присваиваемое результирующему профилю. |
+| `Average` | `Average(int[] intArray, string outputName = "")` | Вычисляет среднее значение профилей, индексы которых перечислены в `intArray` (например, `[1,3,5,9]`). `outputName` — это имя, присваиваемое результирующему профилю. |
+| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string outputName = "")` | Вычисляет profile1 + profile2. Каждый профиль задаётся своим индексом. `outputName` — это имя, присваиваемое результирующему профилю. |
+| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string outputName = "")` | Вычисляет profile1 − profile2. Каждый профиль задаётся своим индексом. `outputName` — это имя, присваиваемое результирующему профилю. |
+| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string outputName = "")` | Вычисляет profile1 × profile2. Каждый профиль задаётся своим индексом. `outputName` — это имя, присваиваемое результирующему профилю. |
+| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string outputName = "")` | Вычисляет profile1 ÷ profile2. Каждый профиль задаётся своим индексом. `outputName` — это имя, присваиваемое результирующему профилю. |
 
 ### PDI.ProfileList — список профилей
 
@@ -195,7 +195,7 @@
 | --- | --- | --- |
 | `Open` | `Open()` | Открывает окно «Аппроксимация пиков». |
 | `Close` | `Close()` | Закрывает окно «Аппроксимация пиков». |
-| `Apply` | `Apply()` | Применяет оптимизированные параметры ячейки к выбранному кристаллу (эквивалентно нажатию кнопки `Confirm` в окне аппроксимации). |
+| `Apply` | `Apply()` | Применяет оптимизированные параметры ячейки к выбранному кристаллу (эквивалентно нажатию кнопки `Apply to the crystal` в окне аппроксимации). |
 | `Check` | `Check(int index = -1, bool state = true)` | Устанавливает или снимает флажок кристаллографической плоскости с заданным индексом. Если `index` равен -1, применяется к текущей выбранной плоскости. |
 | `Uncheck` | `Uncheck(int index = -1)` | Снимает флажок кристаллографической плоскости с заданным индексом. Если `index` равен -1, флажок будет снят у текущей выбранной плоскости. |
 | `Select` | `Select(int index)` | Выбирает кристаллографическую плоскость с заданным индексом. |
@@ -211,7 +211,7 @@
 | `Directory` | `Directory (get/set)` | Получает/задаёт полный путь к каталогу, в который сохраняются результаты последовательного анализа. |
 | `Open` | `Open()` | Открывает окно «Последовательный анализ». |
 | `Close` | `Close()` | Закрывает окно «Последовательный анализ». |
-| `Execute` | `Execute()` | Выполняет последовательный анализ для всех отмеченных профилей. |
+| `Execute` | `Execute()` | Выполняет последовательный анализ для всех загруженных профилей (начиная с начального номера, с учётом настройки цикла), используя кристалл и отражения, выбранные в окне аппроксимации. Окно аппроксимации должно быть открыто, и должно быть загружено не менее четырёх профилей; флажки профилей не ограничивают запуск. |
 | `GetCSV_2theta` | `GetCSV_2theta()` | Получает результаты 2θ последнего последовательного анализа в виде строки CSV. |
 | `GetCSV_D` | `GetCSV_D()` | Получает результаты межплоскостного расстояния (d) последнего последовательного анализа в виде строки CSV. |
 | `GetCSV_FWHM` | `GetCSV_FWHM()` | Получает результаты полной ширины на полувысоте (FWHM) последнего последовательного анализа в виде строки CSV. |
@@ -232,16 +232,17 @@
 В качестве одного из встроенных примеров приведён макрос, который запускает последовательный анализ и сохраняет результаты в CSV.
 
 ```python
-# Check all profiles, run sequential analysis, then obtain 2-theta / d-spacing /
-# cell-constant / pressure results as CSV strings and save each to a file.
-PDI.ProfileList.CheckAll()
+# Run the sequential analysis on all loaded profiles (at least 4) with the crystal and reflections chosen in the fitting window,
+# then obtain 2-theta / d-spacing / cell-constant / pressure results as CSV strings and save each to a file.
+PDI.Fitting.Open()
 PDI.Sequential.Open()
 PDI.Sequential.Execute()
 dir_path = PDI.File.GetDirectoryPath()
-PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
-PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
+if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancelled
+    PDI.File.SaveText(PDI.Sequential.GetCSV_2theta(),        dir_path + "seq_2theta.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_D(),             dir_path + "seq_d.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_CellConstants(), dir_path + "seq_cell.csv")
+    PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
 Остальные примеры можно просмотреть с помощью кнопки `Show samples` в редакторе.

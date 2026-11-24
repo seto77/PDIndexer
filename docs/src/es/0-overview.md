@@ -5,7 +5,7 @@
 
 PDIndexer es una aplicación de software para analizar patrones unidimensionales de difracción de polvo de rayos X. Permite mostrar y analizar perfiles de difracción obtenidos con instrumentos de difracción de polvo de rayos X, con rayos X de sincrotrón medidos mediante óptica de transmisión de Debye-Scherrer, y con mediciones de neutrones por tiempo de vuelo (TOF).
 
-Ofrece un conjunto completo de herramientas para el análisis de difracción de polvo, que incluye la visualización superpuesta de varios perfiles, la comparación con las líneas de difracción de cristales conocidos, la calibración de temperatura y presión frente a materiales estándar, el ajuste de perfiles y el refinamiento por mínimos cuadrados de los parámetros de red.
+Ofrece un conjunto completo de herramientas para el análisis de difracción de polvo, que incluye la visualización superpuesta de varios perfiles, la comparación con las líneas de difracción de cristales conocidos, la estimación de la presión a partir de las ecuaciones de estado de materiales estándar, el ajuste de perfiles y el refinamiento por mínimos cuadrados de los parámetros de red.
 
 !!! note "Acerca de este manual"
     Esta página es solo una descripción general. Para obtener instrucciones detalladas sobre cada función, consulte las páginas dedicadas.
@@ -18,7 +18,7 @@ PDIndexer ofrece las siguientes funciones.
 | --- | --- |
 | Visualización y comparación de perfiles | Superponga y compare varios perfiles de difracción. La escala del eje horizontal (\(2\theta\) / \(d\) / \(q\)) y del eje vertical se puede cambiar con flexibilidad. |
 | Comparación con cristales conocidos | Calcule las líneas de difracción de cristales conocidos y superpóngalas sobre el perfil observado para su identificación. Consulte [Parámetros del cristal](3-crystal-parameter.md) para más detalles. |
-| Calibración con estándares | Mediante ecuaciones de estado (EOS) como NaCl EOS y Pt EOS, estime la temperatura y la presión a partir del volumen de celda de un material estándar. Consulte [Ecuación de estado (EOS)](5-equation-of-states.md) para más detalles. |
+| Calibración con estándares | Mediante ecuaciones de estado (EOS) como NaCl EOS y Pt EOS, estime la presión a partir del volumen de celda medido de un material estándar a la temperatura especificada. Consulte [Ecuación de estado (EOS)](5-equation-of-states.md) para más detalles. |
 | Ajuste de picos | Ajuste la posición, la anchura total a media altura (FWHM) y la intensidad de los picos de difracción. Consulte [Ajuste de picos de difracción](6-fitting-diffraction-peaks.md) para más detalles. |
 | Refinamiento de parámetros de red | Refine los parámetros de red a partir de las posiciones de los picos por mínimos cuadrados. El **Cell Finder** también puede buscar parámetros de red a partir de las posiciones de los picos. |
 | Análisis secuencial | Procese por lotes una serie de archivos con la función **Análisis secuencial**. Consulte [Análisis secuencial](7-sequential-analysis.md) para más detalles. |

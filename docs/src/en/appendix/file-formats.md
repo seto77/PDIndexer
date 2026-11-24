@@ -21,7 +21,7 @@ This page summarizes the supported extensions, the I/O direction, and notes in t
 | `chi` | Fit2D output | The leading header lines are skipped; columns 2 and 4 of the four-column data are taken as angle and intensity. |
 | `ras` | Rigaku format | Text format that also contains instrument information. |
 | `nxs` | NeXus / HDF5 (SSD, multiple detectors) | May contain several channels (histograms); each is energy-calibrated and imported separately. |
-| `npd` | EDX profile (SSD) | Reads `EGC0/1/2`, `2Theta`, `Live time`, etc. from the header and converts the channel number to energy. |
+| `npd` | EDX profile (SSD) | Reads `2Theta` and `Live time` from the header as the take-off angle and exposure time. The data points use the energy column in the file (the channel number is not converted with the `EGC0/1/2` coefficients). |
 | `xbm` | EDX binary format (e.g. SP-8 BL04B2) | Metadata such as sample name, measurement conditions, and EGC calibration coefficients are imported as a comment. |
 | `rpt` | Genie format (SSD) | Reads the take-off angle, exposure time, and EGC from the header. |
 | `xy` | pyFAI-calibrated two-column text | Reads the wavelength from the header and imports angle vs. intensity. |
@@ -44,7 +44,7 @@ The dialog provides the following settings.
 | Horizontal Axis | The physical quantity (2θ, energy, d-spacing, wavenumber, TOF, etc.) and unit represented by the first imported column. |
 | Wave source / wavelength | X-ray / neutron / electron, and the characteristic X-ray line (Kα, etc.) or the wavelength. This determines the conversion to d-spacing and 2θ. |
 | Exposure time (per step) | The exposure time per step in seconds. Used for CPS display and intensity normalization. |
-| For SSD data | For SSD (EDX) data such as `rpt` / `npd` / `xbm` / `nxs`, set the coefficients \(a_0, a_1, a_2\) that convert the channel number \(n\) to energy \(E\). When there are multiple detectors, you can enable/disable each one and set its coefficients individually. |
+| For SSD data | For SSD (EDX) data such as `rpt` / `npd` / `xbm` / `nxs`, set the coefficients \(a_0, a_1, a_2\) that convert the channel number \(n\) to energy \(E\). When there are multiple detectors, you can enable/disable each one and set its coefficients individually. `npd` uses the energy column in the file, so these coefficients are not applied to it. |
 | Low energy cutoff | When checked, data points below the specified energy are excluded on import. |
 
 For SSD data, the channel number \(n\) is converted to energy \(E\) (in eV) by a quadratic calibration:
@@ -62,23 +62,21 @@ When reading generic text (an "other" format), the dialog shows the actual file 
 
 **File → Save profile(s)** saves all loaded profiles in PDIndexer's native `pdi2` format.
 
-**File → Export the selected profile(s)** writes the selected profile in one of the following formats.
+**File → Export the selected profile(s)** writes profiles in one of the following formats.
 
 | Extension / format | Direction | Notes |
 | --- | --- | --- |
 | `pdi2` | Out | PDIndexer native format. Saves all profiles at once. |
-| `csv` | Out | Comma separated (angle, intensity). |
-| `tsv` | Out | Tab separated (angle and intensity separated by a tab). |
-| `gsa` (GSAS) | Out | GSAS format for Rietveld analysis. You can review the contents in the export screen below. |
+| `csv` | Out | Comma separated (X, Y). Saves the checked profiles together in one file or one file per profile. X is the coordinate of the displayed horizontal axis, and the decimal separator is always `.` regardless of the regional settings. |
+| `tsv` | Out | Tab separated. Same content as `csv`. |
+| `gsa` (GSAS) | Out | GSAS format for Rietveld analysis. Writes the selected profile. |
 
 #### Exporting in GSAS format
 
-When you choose the GSAS format, an export screen appears so you can review what will be written. Line 1 is the profile name, line 2 is a `BANK 1 … CONST … FXYE` header, and the following lines hold three columns: angle, intensity, and error. The error is taken from the profile's own error data when present; otherwise \(\sqrt{\text{intensity}}\) is used.
-
-![GSAS export screen](../../assets/cap-en-auto/FormExportGSAS.png)
+When you choose the GSAS format and then the destination, the selected profile is written directly to the file. Line 1 is the profile name, line 2 is a `BANK 1 … CONST … FXYE` header, and the following lines hold three columns: angle, intensity, and error. The error is taken from the profile's own error data when present; otherwise \(\sqrt{\text{intensity}}\) is used.
 
 !!! note "Angle scaling"
-    For ordinary angle-dispersive data, the angle values are written multiplied by 100 (the GSAS `CONST` convention). For neutron TOF data, the values are written as-is, without scaling.
+    When the horizontal axis is 2θ, the values are converted from the displayed 2θ unit (degrees, centidegrees, radians or milliradians) to centidegrees (the GSAS `CONST` convention). For neutron TOF data, the values are written as-is, without conversion. For any other horizontal axis (such as d or energy), nothing is exported.
 
 ---
 
