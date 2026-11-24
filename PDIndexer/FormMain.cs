@@ -1340,7 +1340,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         {
             //var diffProf = (DiffractionProfile2)dataSet.DataTableProfile.Items[n];
             var diffProf = profiles[n]; // 261111Cl
-            if (diffProf.Profile.Pt.Count > 2)
+            //if (diffProf.Profile.Pt.Count > 2) // 261124Cl 変更前: 2 点以下のプロファイルを範囲の計算から外していた
+            if (diffProf.Profile.Pt.Count > 0) // 261124Cl 変更
             {
                 if (minimalX > diffProf.Profile.Pt[0].X)
                     minimalX = diffProf.Profile.Pt[0].X;
@@ -1353,7 +1354,16 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 }
             }
         }
-        if (double.IsInfinity(MinimalX)) return;
+        //if (double.IsInfinity(MinimalX)) return; // 261124Cl 変更前: 計算中のローカル変数 minimalX ではなく、前回の値 (プロパティ MinimalX) を見ていた
+        if (double.IsInfinity(minimalX) || double.IsInfinity(maximalX)) return; // 261124Cl 変更
+        if (maximalX <= minimalX) // 261124Cl 追加: 1 点だけ (または全点が同じ X) のときは幅を持たせる
+        {
+            var half = Math.Max(Math.Abs(minimalX) * 0.05, 1);
+            minimalX -= half;
+            maximalX += half;
+        }
+        if (maximalY <= minimalY) // 261124Cl 追加: 全点が同じ強度のときも同様
+            maximalY = minimalY + Math.Max(Math.Abs(minimalY) * 0.1, 1);
 
         if (minimalX < 0)
             minimalX = 0;
@@ -1617,7 +1627,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                         for (int w = 0; w < width; w++)
                         {
                             double realX = lowerX + (double)w / (double)width * (upperX - lowerX);
-                            xMap[w] = (int)(imageWidth * (realX - startX) / (endX - startX) + 0.5);
+                            //xMap[w] = (int)(imageWidth * (realX - startX) / (endX - startX) + 0.5); // 261124Cl 変更前: 最終点 (realX = endX) が列 imageWidth (範囲外) になり、右端の列が描かれなかった
+                            xMap[w] = (int)((imageWidth - 1) * (realX - startX) / (endX - startX) + 0.5); // 261124Cl 変更: 最初の点を列 0、最後の点を列 imageWidth - 1 に対応させる
                         }
 
                         Parallel.For(0, height, h =>
@@ -1783,7 +1794,8 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 List<Pen> pens = penSlots[j] = []; // 261111Cl
                 var dp = checkedItems[j];
                 var srcPts = dp.Profile.Pt.Select(p => new PointD(p.X, p.Y + IntervalOfProfiles * j)).ToArray();
-                if (srcPts.Length > 2)
+                //if (srcPts.Length > 2) // 261124Cl 変更前: 2 点以下のプロファイル (1 行だけの結合 CSV など) は何も描かなかった
+                if (srcPts.Length > 0) // 261124Cl 変更
                 {
                     var pen = new Pen(Color.FromArgb(dp.ColorARGB.Value), dp.LineWidth) { LineJoin = LineJoin.Round };
                     pens.Add(pen);
@@ -1791,17 +1803,32 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     foreach (var trimmedPts in Geometry.GetPointsWithinRectangle(srcPts, rect).Where(pts => pts.Length > 1))
                         lines.Add((pen, ConvToPicBoxCoord(trimmedPts)));
 
+                    if (srcPts.Length == 1 && rect.IsInside(srcPts[0])) // 261124Cl 追加: 1 点だけのときは小さな十字で示す
+                    {
+                        var c = ConvToPicBoxCoord(srcPts[0]);
+                        lines.Add((pen, [new PointF(c.X - 4, c.Y), new PointF(c.X + 4, c.Y)]));
+                        lines.Add((pen, [new PointF(c.X, c.Y - 4), new PointF(c.X, c.Y + 4)]));
+                    }
+
                     //エラーバー描画
-                    if (showErrorBar && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count)
+                    //if (showErrorBar && dp.SourceProfile.Err != null && dp.SourceProfile.Err.Count == dp.Profile.Pt.Count) // 261124Cl 変更前
+                    // 261124Cl 変更: 変換後の点 (Profile.Pt) には、変換後の σ (Profile.Err。CPS・対数・並べ替えを点と組で済ませたもの) を使う。
+                    //   旧は元データの σ (SourceProfile.Err) を足し引きしていたので、CPS や対数の表示でバーの長さが誤り、点数が変わると全部消えていた
+                    var errs = dp.Profile.Err;
+                    if (showErrorBar && errs != null && errs.Count == dp.Profile.Pt.Count)
                     {
                         var penErr = new Pen(Color.FromArgb((int)(pen.Color.R * 0.5), (int)(pen.Color.G * 0.5), (int)(pen.Color.B * 0.5)), pen.Width);
                         pens.Add(penErr);
-                        var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4;
+                        //var errbarWidth = Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4; // 261124Cl 変更前: 1 点だと範囲外
+                        var errbarWidth = srcPts.Length > 1 ? Math.Abs(ConvToPicBoxCoord(srcPts[0]).X - ConvToPicBoxCoord(srcPts[1]).X) / 4 : 4; // 261124Cl 変更
                         for (int i = 0; i < srcPts.Length; i++)
-                            if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i]))
+                            //if (!double.IsNaN(dp.SourceProfile.Err[i].Y) && rect.IsInside(srcPts[i])) // 261124Cl 変更前
+                            if (double.IsFinite(errs[i].Y) && rect.IsInside(srcPts[i])) // 261124Cl 変更
                             {
-                                var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y);
-                                var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
+                                //var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + dp.SourceProfile.Err[i].Y); // 261124Cl 変更前
+                                //var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - dp.SourceProfile.Err[i].Y);
+                                var maxErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y + errs[i].Y); // 261124Cl 変更
+                                var minErr = ConvToPicBoxCoord(srcPts[i].X, srcPts[i].Y - errs[i].Y);
                                 lines.Add((penErr, [maxErr, minErr]));
                                 lines.Add((penErr, [new PointF(maxErr.X + errbarWidth, maxErr.Y), new PointF(maxErr.X - errbarWidth, maxErr.Y)]));
                                 lines.Add((penErr, [new PointF(minErr.X + errbarWidth, minErr.Y), new PointF(minErr.X - errbarWidth, minErr.Y)]));
@@ -4419,7 +4446,9 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             if (merge)//ひとつのファイルにマージする場合
                 using (var writer = new StreamWriter(dlg.FileName))
                 {
-                    dp.ForEach(d => writer.Write($"{d.Name}{s}{s}{s}")); //一行目
+                    //dp.ForEach(d => writer.Write($"{d.Name}{s}{s}{s}")); //一行目 // 261124Cl 変更前: 名前をそのまま書いていた (名前に ',' があると列がずれた)
+                    // 261124Cl 変更: CSV では試料名を二重引用符で囲み、中の " を "" にする (共有の XYFile.ReadCSVFile が対応済み、ReciPro チャットとの取り決め)
+                    dp.ForEach(d => writer.Write($"{(s == "," ? "\"" + d.Name.Replace("\"", "\"\"") + "\"" : d.Name)}{s}{s}{s}")); //一行目
                     writer.Write("\r\n");
                     dp.ForEach(d => writer.Write($"X{s}Y{s}{s}"));//二行目
                     writer.Write("\r\n");
@@ -4496,16 +4525,19 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             //writer.WriteLine($"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE"); //260317Cl 文字列連結 → 文字列補間 // 261124Cl 変更前: 現在のカルチャで書いていた (小数点が ',' の環境で壊れる)
             writer.WriteLine(string.Create(System.Globalization.CultureInfo.InvariantCulture, $"BANK 1 {ptCount} {ptCount} CONST {startAngle:f2} {stepAngle:f2} 0 0 FXYE")); // 261124Cl 変更
 
-            //errが有効なデータかどうかを判定
-            bool validErr = true;
-            if (dp.Profile.Err != null && dp.Profile.Err.Count == dp.Profile.Pt.Count)
-            {
-                for (int i = 0; i < ptCount; i++)
-                    if (dp.Profile.Err[i].IsNaN)
-                        validErr = false;
-            }
-            else
-                validErr = false;
+            // 261124Cl 変更前: 1 点でも σ が NaN なら、全点の σ を √I で置き換えていた
+            ////errが有効なデータかどうかを判定
+            //bool validErr = true;
+            //if (dp.Profile.Err != null && dp.Profile.Err.Count == dp.Profile.Pt.Count)
+            //{
+            //    for (int i = 0; i < ptCount; i++)
+            //        if (dp.Profile.Err[i].IsNaN)
+            //            validErr = false;
+            //}
+            //else
+            //    validErr = false;
+            // 261124Cl 変更 (作者の決定 2026-11-24、共有の Profile.ToGSAS と同じ規則): 測った σ は残し、σ が無い・NaN の行だけ √I で補う
+            bool hasErr = dp.Profile.Err != null && dp.Profile.Err.Count == dp.Profile.Pt.Count;
 
             // 261124Cl 変更前: g12 の文字列を先頭 11 文字で切っていたため、指数表記 (例 1.23456789123e-05 → 1.234567891) で桁が変わり、
             //   末尾が '.' になった列には Y の値を入れていた。また現在のカルチャで書いていた
@@ -4541,13 +4573,28 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             }
             for (int i = 0; i < ptCount; i++)
             {
-                var err = validErr ? dp.Profile.Err[i].Y : Math.Sqrt(dp.Profile.Pt[i].Y);
+                //var err = validErr ? dp.Profile.Err[i].Y : Math.Sqrt(dp.Profile.Pt[i].Y); // 261124Cl 変更前
+                var err = hasErr && double.IsFinite(dp.Profile.Err[i].Y) ? dp.Profile.Err[i].Y : Math.Sqrt(dp.Profile.Pt[i].Y); // 261124Cl 変更
                 writer.WriteLine($" {field(dp.Profile.Pt[i].X * div)} {field(dp.Profile.Pt[i].Y)} {field(err)}");
             }
             writer.Close();
         }
     }
     #endregion
+
+    /// <summary>
+    /// 261124Cl 追加 (共有側 C-15 に対応するアプリ側): Kα₂ の除去を指定したのに、今の横軸では除去できなかった (共有の
+    /// DiffractionProfile2.Kalpha2RemovalSkipped が true の) プロファイルがあれば、ステータスバーに知らせる。
+    /// 除去できるのは、横軸が測定波長の 2θ (度)・同心積分・線形強度のときだけ
+    /// </summary>
+    public void ReportKalpha2RemovalSkipped()
+    {
+        var skipped = dataSet.DataTableProfile.Items.Where(d => d.Kalpha2RemovalSkipped).Select(d => d.Name).ToList();
+        if (skipped.Count == 0) return;
+        toolStripStatusLabelCalcTime.Text = Crystallography.Localization.Loc(
+            en: $"Kα2 was not removed on this axis (only on 2θ in degrees at the measured wavelength, linear intensity): {string.Join(", ", skipped)}",
+            ja: $"この横軸では Kα2 を除去できません (測定波長の 2θ (度)・線形強度のときだけ除去します): {string.Join(", ", skipped)}");
+    }
 
     #region Horizontal Axis タブ
     bool skipAxisPropertyChangedEvent { get; set; } = false;
@@ -4576,6 +4623,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
         //}
         foreach (var d in dataSet.DataTableProfile.Items) // 261111Cl 変更: Items (毎回全行から List を作る) を 1 回だけ取得
             d.SetConvertedProfile(HorizontalAxisProperty);
+        ReportKalpha2RemovalSkipped(); // 261124Cl 追加
         SetDrawRangeLimit();
         ResetDrawRange();
         InitializeCrystalPlane();
@@ -4641,6 +4689,7 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
             d.IsLogIntensity = radioButtonLogarithm.Checked;
             d.SetConvertedProfile(HorizontalAxisProperty);
         }
+        ReportKalpha2RemovalSkipped(); // 261124Cl 追加: 対数表示に切り替えると Kα2 は除去されない
         SetDrawRangeLimit();
         ResetDrawRange();
         Draw();

@@ -205,6 +205,8 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
             setCommentOption(dp);
 
             dp.SetConvertedProfile(formMain.HorizontalAxisProperty);
+            checkBoxRemoveKalpha2.ForeColor = dp.Kalpha2RemovalSkipped ? Color.Red : SystemColors.ControlText; // 261124Cl 追加: この横軸では Kα2 を除去できないことを示す
+            formMain.ReportKalpha2RemovalSkipped(); // 261124Cl 追加
 
             formMain.SetDrawRangeLimit();
             formMain.Draw();
@@ -555,46 +557,71 @@ public partial class FormProfileSetting : FormBase //260604Cl Form→FormBase (F
 
         if (radioButtonAverage.Checked && listBoxTwoProfiles1.SelectedIndices.Count >= 1)
         {
-            var baseIndex = 0;
+            var baseIndex = -1; // 261124Cl 変更: 旧 0 (点の無いプロファイルを基準に選ぶと Pt[^1] で例外)
             var max = double.NegativeInfinity;
             var dp = new DiffractionProfile2[listBoxTwoProfiles1.SelectedIndices.Count];
             for (int i = 0; i < listBoxTwoProfiles1.SelectedIndices.Count; i++)
             {
                 dp[i] = (DiffractionProfile2)dataSetProfile.DataTableProfile.Rows[listBoxTwoProfiles1.SelectedIndices[i]][1];
+                if (dp[i].Profile.Pt.Count == 0) continue; // 261124Cl 追加: 点の無いプロファイルは基準にしない
                 if (max < dp[i].Profile.Pt[^1].X - dp[i].Profile.Pt[0].X)
                 {
                     max = dp[i].Profile.Pt[^1].X - dp[i].Profile.Pt[0].X;
                     baseIndex = i;
                 }
             }
-            p.Pt.Capacity = p.Err.Capacity = dp[baseIndex].Profile.Pt.Count; //260712Cl 初期容量指定 (数万点のList再割当てを抑制)
-            for (int j = 0; j < dp[baseIndex].Profile.Pt.Count; j++)
-            {
-                p.Pt.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
-                p.Err.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
-            }
-            //強度の積算
+            if (baseIndex < 0) return; // 261124Cl 追加: 選んだプロファイルがどれも空
+            // 261124Cl 変更前: 各出力点ごとに GetValue と GetErr で入力列を線形探索していた (P 本 × N 点で最悪 O(PN²))。
+            //   誤差は err != 0 で数えていたので NaN も足していた
+            //p.Pt.Capacity = p.Err.Capacity = dp[baseIndex].Profile.Pt.Count; //260712Cl 初期容量指定 (数万点のList再割当てを抑制)
+            //for (int j = 0; j < dp[baseIndex].Profile.Pt.Count; j++)
+            //{
+            //    p.Pt.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
+            //    p.Err.Add(new PointD(dp[baseIndex].Profile.Pt[j].X, 0));
+            //}
+            ////強度の積算
+            //for (int i = 0; i < dp.Length; i++)
+            //    for (int j = 0; j < p.Pt.Count; j++)
+            //        p.Pt[j] += new PointD(0, dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length);
+            ////誤差の計算
+            //for (int j = 0; j < p.Pt.Count; j++)
+            //{
+            //    int n = 0;
+            //    for (int i = 0; i < dp.Length; i++)
+            //    {
+            //        double err = dp[i].Profile.GetErr(p.Pt[j].X);
+            //        if (err != 0)
+            //        {
+            //            n++;
+            //            p.Err[j] += new PointD(0, err * err);
+            //        }
+            //    }
+            //    if (n != 0)
+            //        p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(p.Err[j].Y) / n);
+            // 261124Cl 変更: 共有の Profile.GetValuesAndErrors (C-24。昇順なら二分探索) を各プロファイルにつき 1 回呼ぶ。値の規則は GetValue(x, 2, 1)・GetErr(x) と同じ
+            var xs = new double[dp[baseIndex].Profile.Pt.Count];
+            for (int j = 0; j < xs.Length; j++) xs[j] = dp[baseIndex].Profile.Pt[j].X;
+            var sum = new double[xs.Length];
+            var errSq = new double[xs.Length];
+            var errN = new int[xs.Length];
             for (int i = 0; i < dp.Length; i++)
-                for (int j = 0; j < p.Pt.Count; j++)
-                    //p.Pt[j].Y += dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length;
-                    p.Pt[j] += new PointD(0, dp[i].Profile.GetValue(p.Pt[j].X, 2, 1) / dp.Length);
-            //誤差の計算
-            for (int j = 0; j < p.Pt.Count; j++)
             {
-                int n = 0;
-                for (int i = 0; i < dp.Length; i++)
+                var (values, errors) = dp[i].Profile.GetValuesAndErrors(xs);
+                for (int j = 0; j < xs.Length; j++)
                 {
-                    double err = dp[i].Profile.GetErr(p.Pt[j].X);
-                    if (err != 0)
+                    sum[j] += values[j] / dp.Length;
+                    if (double.IsFinite(errors[j]) && errors[j] != 0) // NaN の σ (測っていない点) は数えない
                     {
-                        n++;
-                        //p.Err[j].Y += err * err;
-                        p.Err[j] += new PointD(0, err * err);
+                        errSq[j] += errors[j] * errors[j];
+                        errN[j]++;
                     }
                 }
-                if (n != 0)
-                    //p.Err[j].Y =  Math.Sqrt(p.Err[j].Y) / n;
-                    p.Err[j] = new PointD(p.Err[j].X, Math.Sqrt(p.Err[j].Y) / n);
+            }
+            p.Pt.Capacity = p.Err.Capacity = xs.Length;
+            for (int j = 0; j < xs.Length; j++)
+            {
+                p.Pt.Add(new PointD(xs[j], sum[j]));
+                p.Err.Add(new PointD(xs[j], errN[j] != 0 ? Math.Sqrt(errSq[j]) / errN[j] : 0));
             }
         }
         else if (radioButtonTwoProfiles.Checked
