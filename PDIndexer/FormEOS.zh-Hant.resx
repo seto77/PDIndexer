@@ -283,7 +283,7 @@ a0(T) 表於 T0 縮放至您的試樣。</value>
 壓力 P (GPa)。唯讀結果。</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>依 Sim (2002)（BM3 + Mie-Grüneisen）
+    <value>依 Shim (2002)（BM3 + Mie-Grüneisen）
 計算金的壓力 P (GPa)。唯讀結果。</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

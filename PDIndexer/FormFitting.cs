@@ -285,7 +285,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                 if (p.SerchOption == PeakFunctionForm.Simple) //Simpleもーどのときはここで処理
                 {
                     ptArray ??= TargetProfile.Pt.ToArray(); //260712Cl ループ外で1回だけ生成した配列を使い回し
-                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, ptArray);
+                    //p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange, ptArray);
+                    p.simpleParameter = FittingPeak.FitPeakAsSimple(p.XCalc, p.SerchRange * SerchRangeFactor, ptArray); // 261105Cl 探索窓 ±SerchRange·SerchRangeFactor (画面の Search Range の値、他の関数の range、Remove peaks、マクロ Fitting.Range の説明と同じ)。旧コードは内部値 SerchRange をそのまま使っていた
                     p.XObs = p.simpleParameter.X;
                     p.peakFunction.Xerr = TargetProfile.Pt[1].X - TargetProfile.Pt[0].X;
                 }
@@ -392,20 +393,22 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
 
                         if (formMain.HorizontalAxisProperty.AxisMode == HorizontalAxis.Angle)
                         {
-                            // 261124Cl 変更前: 度以外をすべてラジアンとみなしていた (センチ度・ミリラジアン表示で重みが狂い、精密化の結果が表示単位で変わった)
                             //if (formMain.HorizontalAxisProperty.TwoThetaUnit == AngleUnitEnum.Degree)
                             //    p.Weight = 1 / Math.Sin(p.XObs / 360 * Math.PI) / Math.Sin(p.XObs / 360 * Math.PI);
                             //else
                             //    p.Weight = 1 / Math.Sin(p.XObs / 2) / Math.Sin(p.XObs / 2);
-                            // 261124Cl 変更: 4 種の角度単位をラジアンにしてから同じ式 1/sin²θ に入れる (度・ラジアンでは従来と同じ値)
-                            var twoThetaRad = formMain.HorizontalAxisProperty.TwoThetaUnit switch
+                            // 261105Cl 変更: θ (rad) を横軸の単位に応じて求める。旧コードは Degree 以外をすべてラジアンとみなしたため、CentiDegree / MilliRadian では重みが sin² の振動する無意味な値になっていた
+                            var theta = formMain.HorizontalAxisProperty.TwoThetaUnit switch // 261105Cl 追加
                             {
-                                AngleUnitEnum.Degree => p.XObs / 180 * Math.PI,
-                                AngleUnitEnum.CentiDegree => p.XObs / 18000 * Math.PI,
-                                AngleUnitEnum.MilliRadian => p.XObs / 1000,
-                                _ => p.XObs,
+                                AngleUnitEnum.Degree => p.XObs / 360 * Math.PI, // 261105Cl
+                                AngleUnitEnum.CentiDegree => p.XObs / 36000 * Math.PI, // 261105Cl
+                                AngleUnitEnum.MilliRadian => p.XObs / 2000, // 261105Cl
+                                _ => p.XObs / 2, // 261105Cl Radian
                             };
-                            p.Weight = 1 / Math.Sin(twoThetaRad / 2) / Math.Sin(twoThetaRad / 2);
+                            // 261105Cl 変更 (作者判断 T-1、マニュアル「付録 アルゴリズム解説 › 重みの取り方」に合わせる): 重みを 1/sin²θ から 1/sin²2θ にする。
+                            //   2θ の誤差 σ_2θ が一定なら、G = 1/d² = 4sin²θ/λ² の誤差は σ_G = |∂G/∂θ|·σ_θ = (4sin2θ/λ²)·σ_2θ/2 ∝ sin2θ なので、重み (誤差の 2 乗の逆数) は 1/sin²2θ。
+                            //   旧式 1/sin²θ (上のコメントアウトした行と同じ) は σ_G ∝ sinθ を仮定したことになり、相対的な重みが正しい値の cos²θ 倍 (高角の反射ほど過小) だった。
+                            p.Weight = 1 / Math.Sin(2 * theta) / Math.Sin(2 * theta); // 261105Cl
                         }
                         else
                             p.Weight = 1;
@@ -434,35 +437,6 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
     }
     #endregion
 
-    /// <summary>
-    /// 261124Cl 追加: 格子定数の最小二乗の係数 C (1/d² = Σ Q_j C_j) とその共分散 cov から、単位胞体積 V の標準誤差を求める。
-    /// map[j] は C_j が逆格子計量テンソル g = (G11, G22, G33, G23, G13, G12) の各成分に与える係数
-    /// (1/d² = G11 h² + G22 k² + G33 l² + 2 G23 kl + 2 G13 lh + 2 G12 hk)。V = 1/√det G* なので
-    /// ∂V/∂G_ii = -V (G*⁻¹)_ii / 2、∂V/∂G_ij = -V (G*⁻¹)_ij (i≠j、対称な 2 成分の和)。σV² = J cov Jᵀ (J = ∂V/∂C)。
-    /// </summary>
-    private static double VolumeErrorFromCovariance(Matrix<double> C, Matrix<double> cov, double[][] map)
-    {
-        var g = new double[6];
-        for (int j = 0; j < map.Length; j++)
-            for (int n = 0; n < 6; n++)
-                g[n] += map[j][n] * C[j, 0];
-        var G = DenseMatrix.OfArray(new[,] { { g[0], g[5], g[4] }, { g[5], g[1], g[3] }, { g[4], g[3], g[2] } });
-        var det = G.Determinant();
-        if (!(det > 0)) return double.NaN;
-        var V = 1 / Math.Sqrt(det);
-        var Gi = G.Inverse();
-        var dVdg = new[] { -V * Gi[0, 0] / 2, -V * Gi[1, 1] / 2, -V * Gi[2, 2] / 2, -V * Gi[1, 2], -V * Gi[0, 2], -V * Gi[0, 1] };
-        var J = new double[map.Length];
-        for (int j = 0; j < map.Length; j++)
-            for (int n = 0; n < 6; n++)
-                J[j] += dVdg[n] * map[j][n];
-        double var2 = 0;
-        for (int j = 0; j < map.Length; j++)
-            for (int m = 0; m < map.Length; m++)
-                var2 += J[j] * cov[j, m] * J[m];
-        return var2 >= 0 ? Math.Sqrt(var2) : double.NaN;
-    }
-
     #region 現在のチェック状況と空間群から最小２乗法による格子定数フィッティング
     public void FittingDiffraction()
     {
@@ -489,6 +463,15 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
         //σi [i番目のデータの誤差]
         //Wi [i番目のデータの重み]
         Matrix<double> AlphaInverse;
+
+        // 261105Cl 追加: 1 次の誤差伝播 σ_f = √(gᵀ·Σ·g)。g = ∂f/∂C (精密化パラメータ C の各成分での偏微分)、Σ = AlphaInverse (C の分散共分散行列)。
+        //   非対角成分 (C どうしの共分散) も含める。旧コードは対角成分だけを使い、さらに V_err では偏微分係数を 2 乗しておらず次元が合わなかった。
+        static double propagate(Matrix<double> cov, params double[] g)
+        {
+            var vec = DenseVector.OfArray(g);
+            return Math.Sqrt(vec.DotProduct(cov * vec));
+        }
+
         switch (TargetCrystal.Symmetry.CrystalSystemStr)
         {
             case "cubic":
@@ -525,9 +508,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     //最後にCの誤差を実格子の誤差に直す
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
 
-                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                     //V_err = Math.Sqrt(3) * a * a_err;
-                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 1, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                    V_err = 3 * a * a * a_err; // 261105Cl V = a³ なので σ_V = 3a²·σ_a
                 }
                 break;
             #endregion
@@ -570,9 +552,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                     //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err);
-                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                    V_err = propagate(AlphaInverse, -V / C[0, 0], -V / 2 / C[1, 0]); // 261105Cl V = a²c = C0^(-1)·C1^(-1/2)
                 }
                 break;
             #endregion
@@ -616,15 +597,55 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                     //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2; ;
-                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[4.0 / 3, 4.0 / 3, 0, 0, 0, 2.0 / 3], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                    V_err = propagate(AlphaInverse, -V / C[0, 0], -V / 2 / C[1, 0]); // 261105Cl V = (√3/2)·a²c = (√3/2)·C0^(-1)·C1^(-1/2)
                 }
 
                 break;
             #endregion
             case "trigonal":
                 #region trigonal
+                // 261105Cl 追加: 菱面体軸の設定 (空間群名に "Rho"。a = b = c, α = β = γ。Crystal.SetAxis と同じ判定) は、六方晶の式ではなく菱面体の観測方程式で精密化する。
+                //   旧コードは菱面体指数のまま六方晶の式 4/3(h²+hk+k²), l² に入れていたため、まったく違う格子定数 (c, V は NaN になることも) を返していた。
+                //   1/d² = A(h²+k²+l²) + 2B(hk+kl+lh) (A = g*11 = g*22 = g*33, B = g*12 = g*23 = g*31) を C0 = A, C1 = 2B として解き、G = (G*)⁻¹ から
+                //   a² = (A+B)/((A−B)(A+2B)), cosα = −B/(A+B), V = 1/((A−B)√(A+2B))。誤差は C の分散共分散行列 (非対角も含む) で 1 次伝播 (∂/∂C1 = ½·∂/∂B)。
+                if (TargetCrystal.Symmetry.SpaceGroupHMStr.Contains("Rho", StringComparison.Ordinal)) // 261105Cl 追加
+                {
+                    Q = new DenseMatrix(column, 2); // 261105Cl
+                    A = new DenseMatrix(column, 1); // 261105Cl
+                    W = new DenseMatrix(column, column); // 261105Cl
+                    for (int i = 0; i < column; i++) // 261105Cl
+                    {
+                        Q[i, 0] = p[i].h * p[i].h + p[i].k * p[i].k + p[i].l * p[i].l; // 261105Cl
+                        Q[i, 1] = p[i].h * p[i].k + p[i].k * p[i].l + p[i].l * p[i].h; // 261105Cl
+                        A[i, 0] = 1 / p[i].dObs / p[i].dObs; // 261105Cl
+                        W[i, i] = p[i].Weight; // 261105Cl
+                    }
+                    if (!(Q.Transpose() * W * Q).TryInverse(out inv)) // 261105Cl
+                        break; // 261105Cl
+                    C = inv * Q.Transpose() * W * A; // 261105Cl
+                    double gA = C[0, 0], gB = C[1, 0] / 2; // 261105Cl
+                    a = b = c = Math.Sqrt((gA + gB) / (gA - gB) / (gA + 2 * gB)); // 261105Cl
+                    alfa = beta = gamma = Math.Acos(-gB / (gA + gB)); // 261105Cl
+                    V = 1 / (gA - gB) / Math.Sqrt(gA + 2 * gB); // 261105Cl
+
+                    if (p.Count - 2 > 0)//以下は誤差を計算する部分 261105Cl
+                    {
+                        var Dev = A - Q * C; // 261105Cl
+                        double sum = 0; // 261105Cl
+                        for (int i = 0; i < column; i++) // 261105Cl
+                            sum += Dev[i, 0] * Dev[i, 0] * p[i].Weight; // 261105Cl
+                        for (int i = 0; i < column; i++) // 261105Cl
+                            W[i, i] = p[i].Weight * (p.Count - 2) / sum; // 261105Cl
+                        if (!(Q.Transpose() * W * Q).TryInverse(out AlphaInverse)) // 261105Cl
+                            break; // 261105Cl
+                        a_err = b_err = c_err = propagate(AlphaInverse, a / 2 * (1 / (gA + gB) - 1 / (gA - gB) - 1 / (gA + 2 * gB)), a / 4 * (1 / (gA + gB) + 1 / (gA - gB) - 2 / (gA + 2 * gB))); // 261105Cl
+                        alpha_err = beta_err = gamma_err = propagate(AlphaInverse, -gB / (gA + gB) / (gA + gB) / Math.Sin(alfa), gA / 2 / (gA + gB) / (gA + gB) / Math.Sin(alfa)); // 261105Cl
+                        V_err = propagate(AlphaInverse, -V * (1 / (gA - gB) + 0.5 / (gA + 2 * gB)), V / 2 * (1 / (gA - gB) - 1 / (gA + 2 * gB))); // 261105Cl
+                    }
+                    break; // 261105Cl
+                }
+                // 261105Cl ここから下は従来どおり (六方晶軸の設定)
                 Q = new DenseMatrix(column, 2);
                 A = new DenseMatrix(column, 1);
                 W = new DenseMatrix(column, column);
@@ -663,9 +684,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
                     c_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                     //V_err = Math.Sqrt(2 * a * c * a_err * a_err + a * a * c_err * c_err) * Math.Sqrt(3) / 2;
-                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[4.0 / 3, 4.0 / 3, 0, 0, 0, 2.0 / 3], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                    V_err = propagate(AlphaInverse, -V / C[0, 0], -V / 2 / C[1, 0]); // 261105Cl V = (√3/2)·a²c = (√3/2)·C0^(-1)·C1^(-1/2)
                 }
 
                 break;
@@ -712,9 +732,8 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                     b_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
                     c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
 
-                    // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                     //V_err = Math.Sqrt(b * c * a_err * a_err + c * a * b_err * b_err + a * b * c_err * c_err);
-                    V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                    V_err = propagate(AlphaInverse, -V / 2 / C[0, 0], -V / 2 / C[1, 0], -V / 2 / C[2, 0]); // 261105Cl V = abc = (C0·C1·C2)^(-1/2)
                 }
                 break;
             #endregion
@@ -763,32 +782,38 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 break;
 
                             //最後にCの誤差を実格子の誤差に直す
-                            alpha_err = Math.Sqrt(
-                                C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[1, 0] * C[1, 0] * C[2, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
-                            + C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
-                            + 1 / (4 * C[1, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
-                                );
+                            // 261105Cl 1 次の誤差伝播を C の分散共分散行列 (AlphaInverse、非対角も含む) で行うように変更。D = 4·C1·C2 − C3²: b = 2√C2/√D, c = 2√C1/√D, cosα = −C3/(2√(C1·C2)), V = 2/√(C0·D)。
+                            //   旧式は (1) 1 / Math.Sin(alfa) * Math.Sin(alfa) が 1 と評価されて sin² と 1/4 が抜け、(2) unique axis b, c の分岐でも alfa (= π/2) を使って角度の寄与が 0 になり、
+                            //   (3) 角度と C の成分を独立として扱い、(4) V_err の係数を 2 乗しておらず次元が合わなかった。
+                            double D = 4 * C[1, 0] * C[2, 0] - C[3, 0] * C[3, 0]; // 261105Cl 追加
+                            //alpha_err = Math.Sqrt(
+                                //C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[1, 0] * C[1, 0] * C[2, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
+                            //+ C[3, 0] * C[3, 0] / (16 * C[1, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
+                            //+ 1 / (4 * C[1, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
+                                //);
+                            alpha_err = propagate(AlphaInverse, 0, -C[3, 0] / 2 / C[1, 0] / Math.Sqrt(D), -C[3, 0] / 2 / C[2, 0] / Math.Sqrt(D), 1 / Math.Sqrt(D)); // 261105Cl
 
                             a_err = Math.Sqrt(1 / 4.0 / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]);
 
-                            b_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * alpha_err * alpha_err
-                                );
+                            //b_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * alpha_err * alpha_err
+                                //);
+                            b_err = propagate(AlphaInverse, 0, -b * 2 * C[2, 0] / D, -b * C[3, 0] * C[3, 0] / 2 / C[2, 0] / D, b * C[3, 0] / D); // 261105Cl
 
-                            c_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * alpha_err * alpha_err
-                                );
+                            //c_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * alpha_err * alpha_err
+                                //);
+                            c_err = propagate(AlphaInverse, 0, -c * C[3, 0] * C[3, 0] / 2 / C[1, 0] / D, -c * 2 * C[1, 0] / D, c * C[3, 0] / D); // 261105Cl
 
-                            // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                             //V_err = Math.Sqrt(
-                            //      b * c * Math.Sin(alfa) * a_err * a_err
-                            //    + c * a * Math.Sin(alfa) * b_err * b_err
-                            //    + a * b * Math.Sin(alfa) * c_err * c_err
-                            //    + a * b * c * Math.Cos(alfa) * alpha_err * alpha_err
-                            //    );
-                            V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0.5, 0, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                                  //b * c * Math.Sin(alfa) * a_err * a_err
+                                //+ c * a * Math.Sin(alfa) * b_err * b_err
+                                //+ a * b * Math.Sin(alfa) * c_err * c_err
+                                //+ a * b * c * Math.Cos(alfa) * alpha_err * alpha_err
+                                //);
+                            V_err = propagate(AlphaInverse, -V / 2 / C[0, 0], -2 * V * C[2, 0] / D, -2 * V * C[1, 0] / D, V * C[3, 0] / D); // 261105Cl
                         }
 
 
@@ -823,32 +848,38 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 break;
 
                             //最後にCの誤差を実格子の誤差に直す
-                            beta_err = Math.Sqrt(
-                                C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[2, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
-                            + C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
-                            + 1 / (4 * C[0, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
-                                );
+                            // 261105Cl 1 次の誤差伝播を C の分散共分散行列 (AlphaInverse、非対角も含む) で行うように変更。D = 4·C0·C2 − C3²: a = 2√C2/√D, c = 2√C0/√D, cosβ = −C3/(2√(C0·C2)), V = 2/√(C1·D)。
+                            //   旧式は (1) 1 / Math.Sin(alfa) * Math.Sin(alfa) が 1 と評価されて sin² と 1/4 が抜け、(2) unique axis b, c の分岐でも alfa (= π/2) を使って角度の寄与が 0 になり、
+                            //   (3) 角度と C の成分を独立として扱い、(4) V_err の係数を 2 乗しておらず次元が合わなかった。
+                            double D = 4 * C[0, 0] * C[2, 0] - C[3, 0] * C[3, 0]; // 261105Cl 追加
+                            //beta_err = Math.Sqrt(
+                                //C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[2, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
+                            //+ C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[2, 0] * C[2, 0] * C[2, 0] - 4 * C[2, 0] * C[2, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[2, 2]
+                            //+ 1 / (4 * C[0, 0] * C[2, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
+                                //);
+                            beta_err = propagate(AlphaInverse, -C[3, 0] / 2 / C[0, 0] / Math.Sqrt(D), 0, -C[3, 0] / 2 / C[2, 0] / Math.Sqrt(D), 1 / Math.Sqrt(D)); // 261105Cl
 
-                            a_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * beta_err * beta_err
-                                );
+                            //a_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * beta_err * beta_err
+                                //);
+                            a_err = propagate(AlphaInverse, -a * 2 * C[2, 0] / D, 0, -a * C[3, 0] * C[3, 0] / 2 / C[2, 0] / D, a * C[3, 0] / D); // 261105Cl
 
                             b_err = Math.Sqrt(1 / 4.0 / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]);
 
-                            c_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * beta_err * beta_err
-                                );
+                            //c_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[2, 0]) * beta_err * beta_err
+                                //);
+                            c_err = propagate(AlphaInverse, -c * C[3, 0] * C[3, 0] / 2 / C[0, 0] / D, 0, -c * 2 * C[0, 0] / D, c * C[3, 0] / D); // 261105Cl
 
-                            // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                             //V_err = Math.Sqrt(
-                            //      b * c * Math.Sin(beta) * a_err * a_err
-                            //    + c * a * Math.Sin(beta) * b_err * b_err
-                            //    + a * b * Math.Sin(beta) * c_err * c_err
-                            //    + a * b * c * Math.Cos(beta) * beta_err * beta_err
-                            //    );
-                            V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0.5, 0]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                                  //b * c * Math.Sin(beta) * a_err * a_err
+                                //+ c * a * Math.Sin(beta) * b_err * b_err
+                                //+ a * b * Math.Sin(beta) * c_err * c_err
+                                //+ a * b * c * Math.Cos(beta) * beta_err * beta_err
+                                //);
+                            V_err = propagate(AlphaInverse, -2 * V * C[2, 0] / D, -V / 2 / C[1, 0], -2 * V * C[0, 0] / D, V * C[3, 0] / D); // 261105Cl
                         }
 
                         break;
@@ -882,32 +913,38 @@ public partial class FormFitting : FormBase //260604Cl Form→FormBase (F1ヘル
                                 break;
 
                             //最後にCの誤差を実格子の誤差に直す
-                            gamma_err = Math.Sqrt(
-                                C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[1, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
-                            + C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[1, 0] * C[1, 0] * C[1, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
-                            + 1 / (4 * C[0, 0] * C[1, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
-                                );
+                            // 261105Cl 1 次の誤差伝播を C の分散共分散行列 (AlphaInverse、非対角も含む) で行うように変更。D = 4·C0·C1 − C3²: a = 2√C1/√D, b = 2√C0/√D, cosγ = −C3/(2√(C0·C1)), V = 2/√(C2·D)。
+                            //   旧式は (1) 1 / Math.Sin(alfa) * Math.Sin(alfa) が 1 と評価されて sin² と 1/4 が抜け、(2) unique axis b, c の分岐でも alfa (= π/2) を使って角度の寄与が 0 になり、
+                            //   (3) 角度と C の成分を独立として扱い、(4) V_err の係数を 2 乗しておらず次元が合わなかった。
+                            double D = 4 * C[0, 0] * C[1, 0] - C[3, 0] * C[3, 0]; // 261105Cl 追加
+                            //gamma_err = Math.Sqrt(
+                                //C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[0, 0] * C[0, 0] * C[1, 0] - 4 * C[0, 0] * C[0, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[0, 0]
+                            //+ C[3, 0] * C[3, 0] / (16 * C[0, 0] * C[1, 0] * C[1, 0] * C[1, 0] - 4 * C[1, 0] * C[1, 0] * C[3, 0] * C[3, 0]) * AlphaInverse[1, 1]
+                            //+ 1 / (4 * C[0, 0] * C[1, 0] - C[3, 0] * C[3, 0]) * AlphaInverse[3, 3]
+                                //);
+                            gamma_err = propagate(AlphaInverse, -C[3, 0] / 2 / C[0, 0] / Math.Sqrt(D), -C[3, 0] / 2 / C[1, 0] / Math.Sqrt(D), 0, 1 / Math.Sqrt(D)); // 261105Cl
 
-                            a_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * gamma_err * gamma_err
-                                );
+                            //a_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[0, 0] / C[0, 0] / C[0, 0] * AlphaInverse[0, 0]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[0, 0]) * gamma_err * gamma_err
+                                //);
+                            a_err = propagate(AlphaInverse, -a * 2 * C[1, 0] / D, -a * C[3, 0] * C[3, 0] / 2 / C[1, 0] / D, 0, a * C[3, 0] / D); // 261105Cl
 
-                            b_err = Math.Sqrt(
-                                1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
-                                + 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * gamma_err * gamma_err
-                                );
+                            //b_err = Math.Sqrt(
+                                //1 / Math.Sin(alfa) * Math.Sin(alfa) / C[1, 0] / C[1, 0] / C[1, 0] * AlphaInverse[1, 1]
+                                //+ 1 / (Math.Tan(alfa) * Math.Tan(alfa) * Math.Sin(alfa) * Math.Sin(alfa) * C[1, 0]) * gamma_err * gamma_err
+                                //);
+                            b_err = propagate(AlphaInverse, -b * C[3, 0] * C[3, 0] / 2 / C[0, 0] / D, -b * 2 * C[0, 0] / D, 0, b * C[3, 0] / D); // 261105Cl
 
                             c_err = Math.Sqrt(1 / 4.0 / C[2, 0] / C[2, 0] / C[2, 0] * AlphaInverse[2, 2]);
 
-                            // 261124Cl 変更前: 格子定数の誤差からの近似式 (偏微分の 2 乗が欠け、相関も無視。立方晶でも √3·a·σa で次元が合わない)
                             //V_err = Math.Sqrt(
-                            //      b * c * Math.Sin(gamma) * a_err * a_err
-                            //    + c * a * Math.Sin(gamma) * b_err * b_err
-                            //    + a * b * Math.Sin(gamma) * c_err * c_err
-                            //    + a * b * c * Math.Cos(gamma) * gamma_err * gamma_err
-                            //    );
-                            V_err = VolumeErrorFromCovariance(C, AlphaInverse, [[1, 0, 0, 0, 0, 0], [0, 1, 0, 0, 0, 0], [0, 0, 1, 0, 0, 0], [0, 0, 0, 0, 0, 0.5]]); // 261124Cl 変更: 最小二乗の共分散から σV² = JΣJᵀ
+                                  //b * c * Math.Sin(gamma) * a_err * a_err
+                                //+ c * a * Math.Sin(gamma) * b_err * b_err
+                                //+ a * b * Math.Sin(gamma) * c_err * c_err
+                                //+ a * b * c * Math.Cos(gamma) * gamma_err * gamma_err
+                                //);
+                            V_err = propagate(AlphaInverse, -2 * V * C[1, 0] / D, -2 * V * C[0, 0] / D, -V / 2 / C[2, 0], V * C[3, 0] / D); // 261105Cl
                         }
 
                         break;

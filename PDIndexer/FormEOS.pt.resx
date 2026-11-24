@@ -283,7 +283,7 @@ segundo Jamieson (1982). Resultado somente leitura.</value>
 segundo Anderson (1989). Resultado somente leitura.</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>Pressão P (GPa) calculada para o ouro segundo Sim
+    <value>Pressão P (GPa) calculada para o ouro segundo Shim
 (2002), BM3 + Mie-Grüneisen. Resultado somente leitura.</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

@@ -283,7 +283,7 @@ a0 (Å)（默认 4.95059）；在 T0 处将
 压力 P (GPa)。只读结果。</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>由 Sim (2002)（BM3 + Mie-Grüneisen）
+    <value>由 Shim (2002)（BM3 + Mie-Grüneisen）
 计算的金的压力 P (GPa)。只读结果。</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

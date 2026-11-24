@@ -283,7 +283,7 @@ a0 (Å) для Pb (по умолчанию 4.95059); масштабирует
 по Anderson (1989). Результат только для чтения.</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>Вычисленное давление P (GPa) для золота по Sim
+    <value>Вычисленное давление P (GPa) для золота по Shim
 (2002), BM3 + Mie-Grüneisen. Результат только для чтения.</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

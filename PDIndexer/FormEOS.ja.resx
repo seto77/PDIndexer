@@ -231,7 +231,7 @@ Ross/Jephcoat の計算には使われません）。</value>
 状態方程式で計算して表示します（表示専用）。</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>金の圧力 P（GPa）を Sim(2002)（BM3＋
+    <value>金の圧力 P（GPa）を Shim(2002)（BM3＋
 Mie-Grüneisen）で計算して表示します（表示専用）。</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

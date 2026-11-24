@@ -277,7 +277,7 @@ nach Jamieson (1982). Schreibgeschütztes Ergebnis.</value>
 nach Anderson (1989). Schreibgeschütztes Ergebnis.</value>
   </data>
   <data name="numericalTextBoxGoldSim.ToolTip" xml:space="preserve">
-    <value>Berechneter Druck P (GPa) für Gold nach Sim
+    <value>Berechneter Druck P (GPa) für Gold nach Shim
 (2002), BM3 + Mie-Grüneisen. Schreibgeschütztes Ergebnis.</value>
   </data>
   <data name="numericalTextBoxGoldTsuchiya.ToolTip" xml:space="preserve">

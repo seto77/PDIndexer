@@ -147,7 +147,7 @@ FormEOS가 물질별로 표시하는 출처는 아래와 같습니다(파라미�
 | --- | --- | --- |
 | Jamieson82 | P-V-T 표의 스플라인 보간 | 압축비 x=1−V/V0, T=200–1500 K |
 | Anderson89 | BM3 + 선형 열항 | K0=166.65, K0'=5.4823, ∂K/∂T=−0.0115 |
-| Sim02 | BM3 + Mie-Grüneisen-Debye | K0=167, K0'=5.0; θ0=170, γ0=2.97, q=1.0, n=1 |
+| Shim02 | BM3 + Mie-Grüneisen-Debye | K0=167, K0'=5.0; θ0=170, γ0=2.97, q=1.0, n=1 |
 | Tsuchiya03 | P-V-T 표의 스플라인 보간 | T=300–2500 K |
 | Yokoo09 | P-V-T 표의 스플라인 보간 | T=0–3000 K |
 | Fratanduono21 | Vinet(등온) | K0=170.09, K0'=5.880 |
