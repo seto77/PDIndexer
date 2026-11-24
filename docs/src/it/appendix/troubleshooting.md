@@ -15,7 +15,7 @@ L'installazione MSI di PDIndexer richiede il **.NET Desktop Runtime** indicato d
 ## La lingua dell'interfaccia non cambia
 
 <!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
-Scegliere la lingua di visualizzazione (11 lingue, ciascuna indicata con il proprio nome) da **Lingua** all'estremità destra della barra dei menu. Il cambio di lingua richiede un riavvio: scegliendo **Sì** nella finestra di conferma, PDIndexer si riavvia automaticamente nella lingua selezionata.
+Scegliere la lingua di visualizzazione (11 lingue, ciascuna indicata con il proprio nome) da `Lingua` all'estremità destra della barra dei menu. Il cambio di lingua richiede un riavvio: scegliendo **Sì** nella finestra di conferma, PDIndexer si riavvia automaticamente nella lingua selezionata.
 
 !!! note
     Il riavvio elimina il lavoro non salvato (profili caricati e modifiche in corso), quindi salvare ciò che serve prima del cambio. Scegliendo **No**, la lingua non cambia.
@@ -24,7 +24,7 @@ Scegliere la lingua di visualizzazione (11 lingue, ciascuna indicata con il prop
 
 Le posizioni delle finestre, le impostazioni dei colori e le varie opzioni vengono salvate nel registro. Se le impostazioni si corrompono e il programma si comporta in modo anomalo, è possibile cancellare il registro per tornare allo stato iniziale.
 
-1. Dal menu, spuntare **Opzioni** ▸ **Cancella registro (spunta e riavvia)**.
+1. Dal menu, spuntare `Opzioni` ▸ `Cancella registro (spunta e riavvia)`.
 2. Chiudere PDIndexer. Tutte le impostazioni salvate vengono cancellate all'uscita.
 3. Avviare di nuovo PDIndexer; si aprirà nel suo stato iniziale (predefinito).
 
@@ -35,11 +35,11 @@ Le posizioni delle finestre, le impostazioni dei colori e le varie opzioni vengo
 
 I profili e i cristalli copiati in app affini come [IPAnalyzer](https://github.com/seto77/IPAnalyzer) e [CSManager](https://github.com/seto77/CSManager) possono essere importati automaticamente in PDIndexer tramite gli appunti. Se non viene importato nulla, il monitoraggio degli appunti potrebbe essere disabilitato.
 
-- Verificare che **Opzioni** ▸ **Monitora appunti** sia abilitato nel menu.
+- Verificare che `Opzioni` ▸ `Monitora appunti` sia abilitato nel menu.
 - Quando è abilitato, i profili/cristalli copiati da altre app vengono letti automaticamente.
 
 !!! tip
-    Se si desidera leggere automaticamente i file `.pdi` appena creati in una cartella specifica, utilizzare **Opzioni** ▸ **Monitora file**.
+    Se si desidera leggere automaticamente i file `.pdi` appena creati in una cartella specifica, utilizzare `Opzioni` ▸ `Monitora file`.
 
 ## I rapporti di intensità non vengono calcolati
 

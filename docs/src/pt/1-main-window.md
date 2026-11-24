@@ -35,8 +35,6 @@ Cada botão da barra de ferramentas alterna uma janela de análise dedicada.
 | `Ajuste de picos de difração (F)` | Alterna a janela Ajuste de picos para ajustar picos de difração (posição, FWHM, intensidade). | [Ajuste de picos de difração](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | Alterna a janela Cell Finder para pesquisar parâmetros de rede a partir das posições dos picos. | — |
 | `Análise sequencial` | Alterna a janela Análise sequencial para o processamento em lote de uma série de arquivos. | [Análise sequencial](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Alterna a janela Atomic Position Finder para pesquisar posições atômicas a partir das intensidades de difração. | — |
-| `LPO Analysis` | Alterna a janela de análise LPO (orientação preferencial de rede). | — |
 
 !!! note
     As janelas principais também podem ser alternadas com atalhos de teclado: `Ctrl+Shift+C` (Parâmetro de cristal), `Ctrl+Shift+E` (Equação de estado), `Ctrl+Shift+F` (Parâmetro de ajuste), `Ctrl+Shift+D` (alterar o modo de pico) e `Ctrl+Shift+S` (Análise sequencial). Além disso, `Ctrl+Shift+Space` alterna a marcação do cristal selecionado, `Ctrl+Alt+Space` alterna a marcação da reflexão selecionada na lista de reflexões da janela de ajuste de picos, e `Ctrl+Shift+V` lê o texto da área de transferência como um perfil. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
@@ -97,10 +95,10 @@ A aba `Eixo horizontal` define o modo de exibição do eixo. As configurações 
 | Item | Descrição |
 | --- | --- |
 | `Após ler o perfil, alterar o eixo horizontal` | Quando marcado, alinha automaticamente as configurações do eixo horizontal às do perfil recém-carregado. |
-| 2θ (degree) | Define o eixo horizontal como ângulo. Escolher o botão de opção `X-ray` fornece o ângulo de espalhamento para raios X; selecione uma fonte de raios X característica ou `Custom` na lista suspensa e especifique o comprimento de onda. Escolher o botão de opção `Electron` fornece o ângulo de espalhamento para elétrons; especificar a tensão de aceleração calcula o comprimento de onda corrigido relativisticamente. |
-| Energy (eV) | Define o eixo horizontal como energia (unidade eV). Isso corresponde a um experimento de difração de raios X usando um detector EDX. Defina o ângulo de saída (take-off) do EDX adequadamente. |
-| d-spacing (Å) | Define o eixo horizontal como espaçamento d (espaçamento dos planos de rede). |
-| q | Define o eixo horizontal como a magnitude do vetor de espalhamento \( q \). |
+| `2θ (ângulo)` | Define o eixo horizontal como ângulo. Escolher o botão de opção `Raios X` fornece o ângulo de espalhamento para raios X; selecione uma fonte de raios X característica ou `Custom` na lista suspensa e especifique o comprimento de onda. Escolher o botão de opção `Elétrons` fornece o ângulo de espalhamento para elétrons; especificar a tensão de aceleração calcula o comprimento de onda corrigido relativisticamente. |
+| `Energia` | Define o eixo horizontal como energia (unidade eV). Isso corresponde a um experimento de difração de raios X usando um detector EDX. Defina o ângulo de saída (take-off) do EDX adequadamente. |
+| `Distância d` | Define o eixo horizontal como espaçamento d (espaçamento dos planos de rede). |
+| `q (número de onda)` | Define o eixo horizontal como a magnitude do vetor de espalhamento \( q \). |
 
 A relação entre o ângulo de espalhamento e o espaçamento d é dada pela lei de Bragg, sendo \( \lambda \) o comprimento de onda:
 
@@ -114,9 +112,9 @@ A aba `Aparência & Perfil único/múltiplo` configura a aparência do desenho e
 
 | Item | Descrição |
 | --- | --- |
-| `Linha de escala` | Seleciona se as linhas de escala (grade) devem ser exibidas. |
+| `Linha da escala` | Seleciona se as linhas de escala (grade) devem ser exibidas. |
 | `Barra de erro` | Exibe barras de erro quando os dados contêm informações de erro. |
-| `Cor` | Define as cores de exibição, como `Cor de fundo`, `Linha de escala` e `Texto da escala`. |
+| `Cor` | Define as cores de exibição, como `Cor de fundo`, `Linha da escala` e `Texto da escala`. |
 
 ### Perfil único/múltiplo
 

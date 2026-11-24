@@ -15,7 +15,7 @@ A instalação por MSI do PDIndexer requer o **.NET Desktop Runtime** especifica
 ## O idioma da interface não muda
 
 <!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
-Escolha o idioma de exibição (11 idiomas, cada um mostrado pelo próprio nome) em **Idioma**, na extremidade direita da barra de menus. A troca de idioma exige reiniciar: escolha **Sim** na caixa de diálogo de confirmação, e o PDIndexer reinicia automaticamente no idioma selecionado.
+Escolha o idioma de exibição (11 idiomas, cada um mostrado pelo próprio nome) em `Idioma`, na extremidade direita da barra de menus. A troca de idioma exige reiniciar: escolha **Sim** na caixa de diálogo de confirmação, e o PDIndexer reinicia automaticamente no idioma selecionado.
 
 !!! note
     A reinicialização descarta o trabalho não salvo (perfis carregados e edições em andamento), portanto salve o que precisar antes de trocar. Se você escolher **Não**, o idioma não muda.
@@ -24,7 +24,7 @@ Escolha o idioma de exibição (11 idiomas, cada um mostrado pelo próprio nome)
 
 Posições das janelas, configurações de cores e várias opções são salvas no registro. Se as configurações ficarem corrompidas e o programa se comportar mal, você pode limpar o registro para retornar ao estado inicial.
 
-1. No menu, marque **Opções** ▸ **Limpar Registro (marcar e reiniciar)**.
+1. No menu, marque `Opções` ▸ `Limpar Registro (marcar e reiniciar)`.
 2. Feche o PDIndexer. Todas as configurações salvas são limpas ao sair.
 3. Inicie o PDIndexer novamente; ele será iniciado no seu estado inicial (padrão).
 
@@ -35,11 +35,11 @@ Posições das janelas, configurações de cores e várias opções são salvas 
 
 Perfis e cristais copiados em aplicativos irmãos como o [IPAnalyzer](https://github.com/seto77/IPAnalyzer) e o [CSManager](https://github.com/seto77/CSManager) podem ser importados automaticamente para o PDIndexer via área de transferência. Se nada for importado, o monitoramento da área de transferência pode estar desativado.
 
-- Verifique se **Opções** ▸ **Monitorar área de transferência** está ativado no menu.
+- Verifique se `Opções` ▸ `Monitorar área de transferência` está ativado no menu.
 - Quando ativado, perfis/cristais copiados de outros aplicativos são lidos automaticamente.
 
 !!! tip
-    Se você quiser ler automaticamente arquivos `.pdi` recém-criados em uma pasta específica, use **Opções** ▸ **Monitorar arquivo**.
+    Se você quiser ler automaticamente arquivos `.pdi` recém-criados em uma pasta específica, use `Opções` ▸ `Monitorar arquivo`.
 
 ## As razões de intensidade não são calculadas
 

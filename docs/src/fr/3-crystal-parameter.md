@@ -87,11 +87,11 @@ Modifient l'ordre des cristaux.
 
 ### Ajouter
 
-Ajoute le cristal configuré dans la zone Informations sur le cristal à droite (décrite ci-dessous) à la liste en tant que nouvelle entrée.
+Ajoute le cristal configuré dans la zone `Informations sur le cristal` à droite (décrite ci-dessous) à la liste en tant que nouvelle entrée.
 
 ### Remplacer
 
-Remplace le cristal actuellement sélectionné par celui configuré dans la zone Informations sur le cristal à droite.
+Remplace le cristal actuellement sélectionné par celui configuré dans la zone `Informations sur le cristal` à droite.
 
 ### Supprimer
 
@@ -169,7 +169,7 @@ Fournit des fonctions de recherche et d'import pour plus de 20 000 structures cr
 
 Liste les cristaux contenus dans la base de données. Si des conditions de recherche sont saisies, seuls les cristaux qui y correspondent sont affichés.
 
-Sélectionner un cristal quelconque dans le tableau transfère ses informations vers [Informations sur le cristal](#crystal-information). Pour l'ajouter à la liste des cristaux, appuyez sur le bouton `Ajouter` ou `Remplacer` dans la zone Liste des cristaux.
+Sélectionner un cristal quelconque dans le tableau transfère ses informations vers [Informations sur le cristal](#crystal-information). Pour l'ajouter à la liste des cristaux, appuyez sur le bouton `Ajouter` ou `Remplacer` dans la zone `Liste des cristaux`.
 
 ### Options de recherche
 

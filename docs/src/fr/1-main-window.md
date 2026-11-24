@@ -35,8 +35,6 @@ Chaque bouton de la barre d'outils ouvre ou ferme une fenêtre d'analyse dédié
 | `Ajustement des pics de diffraction (F)` | Ouvrir/fermer la fenêtre Ajustement des pics pour ajuster les pics de diffraction (position, FWHM, intensité). | [Ajustement des pics de diffraction](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | Ouvrir/fermer la fenêtre Cell Finder pour rechercher les paramètres de maille à partir des positions des pics. | — |
 | `Analyse séquentielle` | Ouvrir/fermer la fenêtre Analyse séquentielle pour le traitement par lots d'une série de fichiers. | [Analyse séquentielle](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Ouvrir/fermer la fenêtre Atomic Position Finder pour rechercher les positions atomiques à partir des intensités de diffraction. | — |
-| `Analyse LPO` | Ouvrir/fermer la fenêtre d'analyse LPO (orientation préférentielle du réseau). | — |
 
 !!! note
     Les fenêtres principales peuvent aussi être ouvertes/fermées par des raccourcis clavier : `Ctrl+Shift+C` (Paramètre de cristal), `Ctrl+Shift+E` (Équation d'état), `Ctrl+Shift+F` (Paramètre d'ajustement), `Ctrl+Shift+D` (changer le mode des pics) et `Ctrl+Shift+S` (Analyse séquentielle). En outre, `Ctrl+Shift+Space` bascule la coche du cristal sélectionné, `Ctrl+Alt+Space` bascule la coche de la réflexion sélectionnée dans la liste des réflexions de la fenêtre d'ajustement des pics, et `Ctrl+Shift+V` lit comme profil le texte présent dans le presse-papiers. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
@@ -97,10 +95,10 @@ L'onglet `Axe horizontal` définit le mode d'affichage de l'axe. Les réglages e
 | Élément | Description |
 | --- | --- |
 | `Après lecture du profil, changer l'axe horizontal` | Lorsque coché, aligne automatiquement les réglages de l'axe horizontal sur ceux du profil nouvellement chargé. |
-| 2θ (degree) | Régler l'axe horizontal sur l'angle. Le choix du bouton radio `X-ray` donne l'angle de diffusion pour les rayons X ; sélectionnez une source de rayons X caractéristique ou `Custom` dans la liste déroulante et spécifiez la longueur d'onde. Le choix du bouton radio `Electron` donne l'angle de diffusion pour les électrons ; spécifier la tension d'accélération calcule la longueur d'onde corrigée relativistiquement. |
-| Energy (eV) | Régler l'axe horizontal sur l'énergie (unité eV). Cela correspond à une expérience de diffraction des rayons X utilisant un détecteur EDX. Réglez correctement l'angle de sortie EDX. |
-| d-spacing (Å) | Régler l'axe horizontal sur la distance interréticulaire (espacement des plans réticulaires). |
-| q | Régler l'axe horizontal sur la norme du vecteur de diffusion \( q \). |
+| `2θ (angle)` | Régler l'axe horizontal sur l'angle. Le choix du bouton radio `Rayons X` donne l'angle de diffusion pour les rayons X ; sélectionnez une source de rayons X caractéristique ou `Custom` dans la liste déroulante et spécifiez la longueur d'onde. Le choix du bouton radio `Électrons` donne l'angle de diffusion pour les électrons ; spécifier la tension d'accélération calcule la longueur d'onde corrigée relativistiquement. |
+| `Énergie` | Régler l'axe horizontal sur l'énergie (unité eV). Cela correspond à une expérience de diffraction des rayons X utilisant un détecteur EDX. Réglez correctement l'angle de sortie EDX. |
+| `Distance interréticulaire` | Régler l'axe horizontal sur la distance interréticulaire (espacement des plans réticulaires). |
+| `q (nombre d'onde)` | Régler l'axe horizontal sur la norme du vecteur de diffusion \( q \). |
 
 La relation entre l'angle de diffusion et la distance interréticulaire est donnée par la loi de Bragg, avec \( \lambda \) la longueur d'onde :
 

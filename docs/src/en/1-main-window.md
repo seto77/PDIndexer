@@ -95,10 +95,10 @@ The `Horizontal Axis` tab sets the display mode of the axis. The settings here a
 | Item | Description |
 | --- | --- |
 | `After reading profile, change horizontal axis` | When checked, automatically aligns the horizontal-axis settings to those of the newly loaded profile. |
-| 2θ (degree) | Set the horizontal axis to angle. Choosing the `X-ray` radio button gives the scattering angle for X-rays; select a characteristic X-ray source or `Custom` from the drop-down list and specify the wavelength. Choosing the `Electron` radio button gives the scattering angle for electrons; specifying the accelerating voltage computes the relativistically corrected wavelength. |
-| Energy (eV) | Set the horizontal axis to energy (unit eV). This corresponds to an X-ray diffraction experiment using an EDX detector. Set the EDX take-off angle appropriately. |
-| d-spacing (Å) | Set the horizontal axis to d-spacing (lattice-plane spacing). |
-| q | Set the horizontal axis to the magnitude of the scattering vector \( q \). |
+| `2θ (angle)` | Set the horizontal axis to angle. Choosing the `X-ray` radio button gives the scattering angle for X-rays; select a characteristic X-ray source or `Custom` from the drop-down list and specify the wavelength. Choosing the `Electron` radio button gives the scattering angle for electrons; specifying the accelerating voltage computes the relativistically corrected wavelength. |
+| `Energy` | Set the horizontal axis to energy (unit eV). This corresponds to an X-ray diffraction experiment using an EDX detector. Set the EDX take-off angle appropriately. |
+| `d-spacing` | Set the horizontal axis to d-spacing (lattice-plane spacing). |
+| `q (wavenumber)` | Set the horizontal axis to the magnitude of the scattering vector \( q \). |
 
 The relationship between the scattering angle and the d-spacing is given by Bragg's law, with \( \lambda \) the wavelength:
 

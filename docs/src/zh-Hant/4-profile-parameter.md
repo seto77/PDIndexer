@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 圖譜參數
 
-按一下主視窗上的 `Profile Parameter (P)`（剖面參數 (P)）圖示，即可開啟這個子視窗。您可以在此對已載入的圖譜進行詳細設定，並套用各種數值處理。
+按一下主視窗上的 `剖面參數 (P)` 圖示，即可開啟這個子視窗。您可以在此對已載入的圖譜進行詳細設定，並套用各種數值處理。
 
 ![Profile Parameter 視窗全貌](../assets/cap-zh-Hant-auto/FormProfileSetting.png)
 
@@ -14,42 +14,42 @@
 
 ## Profile 檢查清單 {#profile}
 
-視窗左側的清單，顯示與主視窗 Profile 檢查清單相同的資訊。在清單中選取一個圖譜後，該圖譜即成為視窗右側各項處理與設定的對象。
+視窗左側的清單，顯示與主視窗 `剖面` 檢查清單相同的資訊。在清單中選取一個圖譜後，該圖譜即成為視窗右側各項處理與設定的對象。
 
 | 項目 | 說明 |
 | --- | --- |
 | `↑` `↓`（上下箭頭按鈕） | 變更圖譜在清單中的排列順序。 |
-| `Delete` | 刪除選取的圖譜。 |
-| `Delete all` | 刪除所有圖譜。 |
+| `刪除` | 刪除選取的圖譜。 |
+| `全部刪除` | 刪除所有圖譜。 |
 
-在清單下方的 `Basic property` 區域，可編輯選取圖譜的基本屬性。
+在清單下方的 `基本屬性` 區域，可編輯選取圖譜的基本屬性。
 
 | 項目 | 說明 |
 | --- | --- |
-| `Line Color` | 按一下即可變更選取圖譜的繪圖顏色。 |
-| `Line Width` | 設定圖譜的線條粗細（`pt`）。 |
-| `Profile Name` | 設定圖譜的名稱。 |
-| `Comment` | 自由輸入的註解欄位。 |
+| `Line color` | 按一下即可變更選取圖譜的繪圖顏色。 |
+| `Line width` | 設定圖譜的線條粗細（`pt`）。 |
+| `輪廓名稱` | 設定圖譜的名稱。 |
+| `註解` | 自由輸入的註解欄位。 |
 
 ---
 
 ## 圖譜處理 {#profile-processing}
 
-在 `Profile processing` 頁籤中，可對選取的圖譜套用各種數值處理。步驟 1–7 各自可用核取方塊獨立啟用，已啟用的項目會依編號順序套用。
+在 `圖譜處理` 頁籤中，可對選取的圖譜套用各種數值處理。步驟 1–7 各自可用核取方塊獨立啟用，已啟用的項目會依編號順序套用。
 
 ### 1. 2θ offset {#two-theta-offset}
 
 ![2θ offset 面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
-`1. 2θ offeset (for angle-dispersive diffractmetry)` 用於修正角度分散型繞射資料的角度。修正式是關於 \( \tan\theta \) 的二次函數。
+`1. 2θ 偏移 (用於角度色散繞射)` 用於修正角度分散型繞射資料的角度。修正式是關於 \( \tan\theta \) 的二次函數。
 
 $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
-若圖譜中包含內部標準物質（晶格常數已知的樣品），可按下 `Calibration using an internal standard` 按鈕，並依照提示訊息操作；二次函數的係數即會自動決定。在校正對話方塊中，觀測峰位會與標準物質的理論峰位進行對應，並擬合出係數。
+若圖譜中包含內部標準物質（晶格常數已知的樣品），可按下 `使用內部標準校正` 按鈕，並依照提示訊息操作；二次函數的係數即會自動決定。在校正對話方塊中，觀測峰位會與標準物質的理論峰位進行對應，並擬合出係數。
 
 ![2θ 校正對話方塊](../assets/cap-zh-Hant-auto/FormTwoThetaCalibration.png)
 
-`Reset` 按鈕可將您已設定的偏移係數重設。
+`重設` 按鈕可將您已設定的偏移係數重設。
 
 !!! tip
     內部標準物質通常是晶格常數已精確測定的材料，例如 Si 或 LaB₆。校正完成後，修正過的 2θ 值會直接用於後續的所有分析。
@@ -58,21 +58,21 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![遮罩與內插面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
-`2. Mask and Interpolation` 會遮罩指定的角度範圍（或能量範圍），並使用遮罩範圍外側的強度對圖譜進行內插。
+`2. 遮罩與內插` 會遮罩指定的角度範圍（或能量範圍），並使用遮罩範圍外側的強度對圖譜進行內插。
 
 | 項目 | 說明 |
 | --- | --- |
-| `Set Masking range` | 指定要遮罩的橫軸範圍。 |
+| `設定遮罩範圍` | 指定要遮罩的橫軸範圍。 |
 | `Point No.` | 指定內插時所使用的端點（各側）點數。 |
-| `Polynomial order` | 指定內插所使用多項式的次數。 |
-| `Save Masking Ranges` / `Read Masking Ranges` | 將設定的遮罩範圍儲存至檔案，或讀回設定。 |
-| `Delete` / `Delete all` | 刪除個別遮罩範圍，或刪除全部遮罩範圍。 |
+| `多項式次數` | 指定內插所使用多項式的次數。 |
+| `儲存遮罩範圍` / `讀取遮罩範圍` | 將設定的遮罩範圍儲存至檔案，或讀回設定。 |
+| `刪除` / `全部刪除` | 刪除個別遮罩範圍，或刪除全部遮罩範圍。 |
 
 ### 3. Smoothing {#smoothing}
 
 ![平滑化面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
-`3. Smoothing` 會對選取的圖譜套用平滑化處理。平滑化演算法採用 `Savitzky-Golay` 方法。
+`3. 平滑化` 會對選取的圖譜套用平滑化處理。平滑化演算法採用 `Savitzky-Golay` 方法。
 
 此方法會針對每個感興趣的 \(x\) 位置，對該點 \(\pm\) `Point No.` 範圍內的資料，以 `Order` 次多項式進行最小二乘法擬合，並將所得函數 \(F(x)\) 的值，採用為該 \(x\) 位置的新強度值。
 
@@ -83,16 +83,16 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![帶通濾波器面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
-`4. Bandpass filter` 使用傅立葉變換（FFT）截除高於或低於指定頻率的成分。
+`4. 帶通濾波器` 使用傅立葉變換（FFT）截除高於或低於指定頻率的成分。
 
 | 項目 | 說明 |
 | --- | --- |
-| `Cut high-freq. over` | 移除頻率高於指定值的成分（降低高頻雜訊）。 |
-| `Cut low-freq. under` | 移除頻率低於指定值的成分（去除緩慢變化的背景）。 |
+| `截除高頻 (大於右值)` | 移除頻率高於指定值的成分（降低高頻雜訊）。 |
+| `截除低頻 (小於右值)` | 移除頻率低於指定值的成分（去除緩慢變化的背景）。 |
 
 ### 5. Remove Kα2 {#remove-ka2}
 
-`5. Remove Kα2 (if Kα1 is used as X-ray source)`：若選取的圖譜是以 Kα1 與 Kα2 未分離的 X 射線測量所得，且載入時指定為 Kα1，勾選此項即可去除源自 Kα2 的繞射強度。
+`5. 移除 Kα2 (若使用 Kα1 作為 X射線源)`：若選取的圖譜是以 Kα1 與 Kα2 未分離的 X 射線測量所得，且載入時指定為 Kα1，勾選此項即可去除源自 Kα2 的繞射強度。
 
 !!! warning
     此處理僅在選定 Kα1 作為 X 射線源時有效。請在 [座標軸設定](#axis-setting) 頁籤中確認並設定橫軸單位與輻射種類。
@@ -101,67 +101,67 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![背景減除面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
-`6. Background` 會從圖譜中減除背景，有兩種方法。
+`6. 背景` 會從圖譜中減除背景，有兩種方法。
 
 #### B-Spline curve
 
-按下 `Auto Detect` 即可自動計算並減除背景。透過 `Point No.` 可設定自動搜尋背景控制點的最大數量。
+按下 `自動偵測` 即可自動計算並減除背景。透過 `Point No.` 可設定自動搜尋背景控制點的最大數量。
 
 您也可以手動變更控制點。以滑鼠拖曳主視窗上繪製的圓形控制點，即可建立合適的曲線。
 
 #### Reference
 
-您可以指定另一個圖譜作為選取圖譜的背景。勾選 `Show background profile` 即可顯示目前作為背景使用的圖譜。
+您可以指定另一個圖譜作為選取圖譜的背景。勾選 `顯示背景輪廓` 即可顯示目前作為背景使用的圖譜。
 
 !!! note
-    背景減除（步驟 6）不包含在下述 `Apply for all profiles` 按鈕的批次套用範圍內。
+    背景減除（步驟 6）不包含在下述 `套用至所有圖譜 (不含背景設定)` 按鈕的批次套用範圍內。
 
 ### 7. Normalize intensity {#normalize}
 
 ![強度正規化面板](../assets/cap-zh-Hant-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
-`7. Normarize intensity` 會將圖譜正規化，使指定橫軸範圍內的 `Average` 或 `Maximum` 成為指定的強度值。
+`7. 強度正規化` 會將圖譜正規化，使指定橫軸範圍內的 `平均值` 或 `最大值` 成為指定的強度值。
 
 | 項目 | 說明 |
 | --- | --- |
-| `Average` / `Maximum` | 選擇以範圍內的平均值或最大值作為基準。 |
-| `intensity between` | 指定要處理的橫軸範圍。 |
+| `平均值` / `最大值` | 選擇以範圍內的平均值或最大值作為基準。 |
+| `in the range` | 指定要處理的橫軸範圍。 |
 | `to` | 指定正規化後的目標強度值。 |
 
 ### Apply for all profiles button {#apply-all}
 
-`Apply for all profiles (without background setting)` 按鈕，會將步驟 1–7 的設定（**不含 6. Background**）一次套用到所有圖譜。
+`套用至所有圖譜 (不含背景設定)` 按鈕，會將步驟 1–7 的設定（**不含 `6. 背景`**）一次套用到所有圖譜。
 
 ---
 
 ## 座標軸設定 {#axis-setting}
 
-在 `Axis setting` 頁籤中，可重新設定選取圖譜原始的橫軸種類、波長、取出角與曝光時間。橫軸的顯示單位不在此處選擇，而是在主視窗的 `水平軸` 頁籤中選擇。
+在 `座標軸設定` 頁籤中，可重新設定選取圖譜原始的橫軸種類、波長、取出角與曝光時間。橫軸的顯示單位不在此處選擇，而是在主視窗的 `水平軸` 頁籤中選擇。
 
 | 項目 | 說明 |
 | --- | --- |
-| `Horizontal axis setting` | 設定原始的橫軸種類、波長與取出角；按下 `Change`（變更）即可將其寫回選取的圖譜。搭配 `Shift` 也可以將整個橫軸偏移。 |
-| `Exposure Time` | 設定 CPS 模式（`(for CPS mode)`）所使用的曝光時間（`sec.`）。 |
-| `Vertical axis setting` | 與縱軸相關的設定。 |
+| `橫軸設定` | 設定原始的橫軸種類、波長與取出角；按下 `變更` 即可將其寫回選取的圖譜。搭配 `平移` 也可以將整個橫軸偏移。 |
+| `曝光時間` | 設定 CPS 模式（`(用於 CPS 模式)`）所使用的曝光時間（`秒`）。 |
+| `縱軸設定` | 與縱軸相關的設定。 |
 
 !!! note
-    按下 `Change`（變更）會將原始的橫軸種類、取出角、波長與曝光時間寫回圖譜。這與主視窗中僅供顯示用的座標軸切換不同，會影響資料本身的解讀方式。由於波長與取出角會直接影響繞射線位置的計算，請務必設定正確的數值。讀取時選錯的輸入單位無法在此更正，請重新開啟原始檔案。
+    按下 `變更` 會將原始的橫軸種類、取出角、波長與曝光時間寫回圖譜。這與主視窗中僅供顯示用的座標軸切換不同，會影響資料本身的解讀方式。由於波長與取出角會直接影響繞射線位置的計算，請務必設定正確的數值。讀取時選錯的輸入單位無法在此更正，請重新開啟原始檔案。
 
 ---
 
 ## 圖譜運算 {#profile-operator}
 
-在 `Profile Operator` 頁籤中，可對多個圖譜進行平均化，以及在圖譜之間進行算術運算。
+在 `圖譜運算` 頁籤中，可對多個圖譜進行平均化，以及在圖譜之間進行算術運算。
 
-指定要計算的目標圖譜與欲執行的運算後，按下 `Calculate` 按鈕，運算結果即會以新圖譜的形式新增。
+指定要計算的目標圖譜與欲執行的運算後，按下 `計算` 按鈕，運算結果即會以新圖譜的形式新增。
 
 | 模式 | 說明 |
 | --- | --- |
-| `Average` | 將多個圖譜平均化。 |
-| `Profile and value` | 在圖譜與純量值之間進行運算。 |
-| `Two profiles` | 在兩個圖譜之間進行算術運算（例如加法）。 |
+| `平均化` | 將多個圖譜平均化。 |
+| `圖譜與數值` | 在圖譜與純量值之間進行運算。 |
+| `兩圖譜間` | 在兩個圖譜之間進行算術運算（例如加法）。 |
 
-透過 `Output name of the profile` 可指定產生之圖譜的名稱（預設值為 `Result #01`）。
+透過 `輸出圖譜的名稱` 可指定產生之圖譜的名稱（預設值為 `Result #01`）。
 
 !!! tip
     此功能可用於，例如將多次測量的資料平均化以提升訊噪比（S/N），或取兩個圖譜的差值以擷取其間的變化。

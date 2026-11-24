@@ -15,7 +15,7 @@ L'installation MSI de PDIndexer nécessite le **.NET Desktop Runtime** indiqué 
 ## La langue de l'interface ne change pas
 
 <!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
-Choisissez la langue d'affichage (11 langues, chacune affichée sous son propre nom) depuis **Langue** à l'extrémité droite de la barre de menus. Le changement de langue nécessite un redémarrage : choisissez **Oui** dans la boîte de dialogue de confirmation, et PDIndexer redémarre automatiquement dans la langue sélectionnée.
+Choisissez la langue d'affichage (11 langues, chacune affichée sous son propre nom) depuis `Langue` à l'extrémité droite de la barre de menus. Le changement de langue nécessite un redémarrage : choisissez **Oui** dans la boîte de dialogue de confirmation, et PDIndexer redémarre automatiquement dans la langue sélectionnée.
 
 !!! note
     Le redémarrage abandonne le travail non enregistré (profils chargés et modifications en cours) ; enregistrez donc ce dont vous avez besoin avant de changer. Si vous choisissez **Non**, la langue ne change pas.
@@ -24,7 +24,7 @@ Choisissez la langue d'affichage (11 langues, chacune affichée sous son propre 
 
 Les positions des fenêtres, les réglages de couleur et diverses options sont enregistrés dans le registre. Si les paramètres deviennent corrompus et que le programme se comporte mal, vous pouvez effacer le registre pour revenir à l'état initial.
 
-1. Dans le menu, cochez **Options** ▸ **Effacer le registre (cocher et redémarrer)**.
+1. Dans le menu, cochez `Options` ▸ `Effacer le registre (cocher et redémarrer)`.
 2. Fermez PDIndexer. Tous les paramètres enregistrés sont effacés à la sortie.
 3. Relancez PDIndexer ; il démarrera dans son état initial (par défaut).
 
@@ -35,11 +35,11 @@ Les positions des fenêtres, les réglages de couleur et diverses options sont e
 
 Les profils et cristaux copiés dans des applications sœurs comme [IPAnalyzer](https://github.com/seto77/IPAnalyzer) et [CSManager](https://github.com/seto77/CSManager) peuvent être importés automatiquement dans PDIndexer via le presse-papiers. Si rien n'est importé, la surveillance du presse-papiers est peut-être désactivée.
 
-- Vérifiez que **Options** ▸ **Surveiller le presse-papiers** est activé dans le menu.
+- Vérifiez que `Options` ▸ `Surveiller le presse-papiers` est activé dans le menu.
 - Lorsque cette option est activée, les profils/cristaux copiés depuis d'autres applications sont lus automatiquement.
 
 !!! tip
-    Si vous souhaitez lire automatiquement les fichiers `.pdi` nouvellement créés dans un dossier spécifique, utilisez **Options** ▸ **Surveiller le fichier**.
+    Si vous souhaitez lire automatiquement les fichiers `.pdi` nouvellement créés dans un dossier spécifique, utilisez `Options` ▸ `Surveiller le fichier`.
 
 ## Les rapports d'intensité ne sont pas calculés
 

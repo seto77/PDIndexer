@@ -69,7 +69,7 @@ Pour calculer les rapports d'intensité, le cristal doit avoir des positions ato
 ### Comment importer des cristaux depuis CSManager ou depuis des fichiers CIF ?
 
 - **Depuis CSManager** : ouvrez la fenêtre `Paramètres du cristal` de PDIndexer et activez d'abord `Options` ▸ `Surveiller le presse-papiers`, puis sélectionnez le cristal dans CSManager. Il n'est pas nécessaire d'exporter d'abord un fichier CIF.
-- Les **fichiers CIF / AMC** peuvent être glissés-déposés sur la zone des informations sur le cristal de la fenêtre Paramètres du cristal.
+- Les **fichiers CIF / AMC** peuvent être glissés-déposés sur la zone des informations sur le cristal de la fenêtre `Paramètres du cristal`.
 - Vous pouvez aussi faire une recherche dans la **base de données cristallines intégrée** (AMCSD). Voir [Paramètres du cristal](../3-crystal-parameter.md).
 
 Dans tous les cas, le cristal apparaît dans la zone des informations sur le cristal. Appuyez sur `Ajouter` pour le conserver dans la liste des cristaux.
@@ -84,8 +84,8 @@ Si `Après lecture du profil, changer l'axe horizontal` est activé dans l'ongle
 
 ### Quelle est la différence entre l'onglet `Axe horizontal` de la fenêtre principale et `Réglage des axes` dans la fenêtre Paramètres du profil ?
 
-- L'**onglet `Axe horizontal`** (fenêtre principale) décide seulement **de la façon dont les données sont affichées** ; les données du profil elles-mêmes ne changent pas.
-- **[`Réglage des axes`](../4-profile-parameter.md#axis-setting)** (fenêtre Paramètres du profil) réécrit **les conditions dans lesquelles le profil a été mesuré** (type de rayonnement, longueur d'onde, angle de sortie, etc.). Si vous avez choisi un rayonnement ou une longueur d'onde incorrects à la lecture du fichier, corrigez-les ici. Si vous avez saisi des valeurs dans une **unité** incorrecte, relisez le fichier d'origine.
+- L'onglet `Axe horizontal` (fenêtre principale) décide seulement **de la façon dont les données sont affichées** ; les données du profil elles-mêmes ne changent pas.
+- [`Réglage des axes`](../4-profile-parameter.md#axis-setting) (fenêtre `Paramètres du profil`) réécrit **les conditions dans lesquelles le profil a été mesuré** (type de rayonnement, longueur d'onde, angle de sortie, etc.). Si vous avez choisi un rayonnement ou une longueur d'onde incorrects à la lecture du fichier, corrigez-les ici. Si vous avez saisi des valeurs dans une **unité** incorrecte, relisez le fichier d'origine.
 
 ### Les données à dispersion d'énergie (rayons X blancs) (`.npd` / `.nxs`) ont un axe horizontal incorrect, ou aucune raie de diffraction n'apparaît.
 
@@ -95,8 +95,8 @@ Dans la boîte de dialogue affichée à la lecture du fichier, vérifiez que l'*
 
 Oui.
 
-- Pour un fichier `.gsa` (trois colonnes séparées par des espaces, avec 2θ en centidegrés), choisissez 2θ comme axe horizontal et les centidegrés (centi-degree) comme unité dans la boîte de dialogue de conversion des données.
-- Pour des données sur un axe q (nombre d'onde), choisissez q comme axe horizontal. Vous pouvez aussi affiner les paramètres de maille sur l'axe q.
+- Pour un fichier `.gsa` (trois colonnes séparées par des espaces, avec 2θ en centidegrés), choisissez `2θ (angle)` comme axe horizontal et `Centidegré` comme unité dans la boîte de dialogue de conversion des données.
+- Pour des données sur un axe q (nombre d'onde), choisissez `q (nombre d'onde)` comme axe horizontal. Vous pouvez aussi affiner les paramètres de maille sur l'axe q.
 
 ## Ajustement des pics et paramètres de maille {#fitting}
 

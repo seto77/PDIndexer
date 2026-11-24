@@ -68,12 +68,6 @@
   <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>谱线</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>线条颜色</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>线条宽度</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>注释</value>
   </data>
@@ -94,9 +88,6 @@
   </data>
   <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
     <value>B样条曲线</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>曝光时间</value>
   </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. 平滑</value>

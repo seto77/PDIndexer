@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Macro
 
-La maggior parte delle operazioni di PDIndexer può essere automatizzata con la funzione **Macro**. Le macro sono script Python scritti in [IronPython](https://ironpython.net/) (un'implementazione di Python che gira su .NET), modificati ed eseguiti in una finestra dedicata dell'editor delle macro. Usale per automatizzare operazioni ripetitive, elaborare in blocco più file ed esportare i risultati in file CSV o immagine in modo massivo.
+La maggior parte delle operazioni di PDIndexer può essere automatizzata con la funzione `Macro`. Le macro sono script Python scritti in [IronPython](https://ironpython.net/) (un'implementazione di Python che gira su .NET), modificati ed eseguiti in una finestra dedicata dell'editor delle macro. Usale per automatizzare operazioni ripetitive, elaborare in blocco più file ed esportare i risultati in file CSV o immagine in modo massivo.
 
 ![Finestra dell'editor delle macro](../assets/cap-it-auto/FormMacro.png)
 
@@ -10,9 +10,9 @@ La maggior parte delle operazioni di PDIndexer può essere automatizzata con la 
 
 ## Aprire l'editor delle macro
 
-Dalla barra dei menu della finestra principale, scegli **Macro → Editor** per aprire la finestra dell'editor delle macro (con titolo `Macro`).
+Dalla barra dei menu della finestra principale, scegli `Macro` ▸ `Editor` per aprire la finestra dell'editor delle macro (con titolo `Macro`).
 
-Le macro create e salvate nell'editor vengono anche elencate per nome sotto il menu **Macro**, così puoi eseguirle direttamente dal menu. L'elenco delle macro viene salvato automaticamente alla chiusura di PDIndexer e ripristinato all'avvio successivo.
+Le macro create e salvate nell'editor vengono anche elencate per nome sotto il menu `Macro`, così puoi eseguirle direttamente dal menu. L'elenco delle macro viene salvato automaticamente alla chiusura di PDIndexer e ripristinato all'avvio successivo.
 
 ## Struttura della finestra dell'editor
 
@@ -24,7 +24,7 @@ La finestra dell'editor è composta dalle seguenti parti.
 | Editor di codice (al centro) | L'area in cui digiti lo script Python. Supporta una colonna con i numeri di riga, l'auto-indentazione, il completamento dell'input (auto-completamento) e i tooltip delle funzioni. |
 | Tabella di riferimento delle funzioni | Una tabella di tutte le funzioni disponibili sotto `PDI`. Fai doppio clic su una cella per inserire il nome di quella funzione nel codice alla posizione del cursore. |
 | Pannello di debug (a destra) | Mostra i nomi e i valori delle variabili nel punto corrente durante l'esecuzione passo-passo. |
-| Barra di stato | Mostra la posizione corrente del cursore (`Line` / `Col`). |
+| Barra di stato | Mostra la posizione corrente del cursore (`Riga` / `Col`). |
 
 ### Pulsanti di gestione dell'elenco
 
@@ -32,9 +32,9 @@ Usa i seguenti pulsanti per modificare l'elenco delle macro.
 
 | Pulsante | Azione |
 | --- | --- |
-| `Add` | Aggiunge il codice corrente all'elenco con il nome digitato nella casella del nome (chiede conferma di sovrascrittura se il nome esiste già). |
-| `Replace` | Sostituisce la macro selezionata nell'elenco con il codice corrente. |
-| `Delete` | Rimuove la macro selezionata dall'elenco. |
+| `Aggiungi` | Aggiunge il codice corrente all'elenco con il nome digitato nella casella del nome (chiede conferma di sovrascrittura se il nome esiste già). |
+| `Sostituisci` | Sostituisce la macro selezionata nell'elenco con il codice corrente. |
+| `Elimina` | Rimuove la macro selezionata dall'elenco. |
 | `↑` / `↓` | Sposta la macro selezionata verso l'alto o verso il basso nell'elenco. |
 | `Mostra esempi` | Attiva/disattiva la visualizzazione delle macro di esempio incorporate (vedi sotto). |
 
@@ -195,7 +195,7 @@ Opera sulla finestra [Fitting dei picchi di diffrazione](6-fitting-diffraction-p
 | --- | --- | --- |
 | `Open` | `Open()` | Apre la finestra 'Fitting peaks'. |
 | `Close` | `Close()` | Chiude la finestra 'Fitting peaks'. |
-| `Apply` | `Apply()` | Applica i parametri di cella ottimizzati al cristallo selezionato (equivalente a cliccare il pulsante `Apply to the crystal` nella finestra di fitting). |
+| `Apply` | `Apply()` | Applica i parametri di cella ottimizzati al cristallo selezionato (equivalente a cliccare il pulsante `Applica al cristallo` nella finestra di fitting). |
 | `Check` | `Check(int index = -1, bool state = true)` | Seleziona o deseleziona la casella del piano reticolare all'indice indicato. Se `index` è -1, viene preso il piano attualmente selezionato. |
 | `Uncheck` | `Uncheck(int index = -1)` | Deseleziona la casella del piano reticolare all'indice indicato. Se `index` è -1, viene deselezionato il piano attualmente selezionato. |
 | `Select` | `Select(int index)` | Seleziona il piano reticolare all'indice indicato. |

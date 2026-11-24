@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Équations d'état
 
-En cliquant sur l'icône `Equation of States` dans la barre d'outils de la fenêtre principale, on ouvre la fenêtre illustrée ci-dessous. Cet outil calcule la pression à partir de l'équation d'état (EOS) d'un matériau étalon.
+En cliquant sur l'icône `Équation d'état (E)` dans la barre d'outils de la fenêtre principale, on ouvre la fenêtre illustrée ci-dessous. Cet outil calcule la pression à partir de l'équation d'état (EOS) d'un matériau étalon.
 
 ![Fenêtre Équations d'état complète](../assets/cap-fr-auto/FormEOS.png)
 
 Dans les expériences à haute pression, un matériau étalon (marqueur de pression) est chargé avec l'échantillon pour servir de référence de pression. La pression est alors déduite du paramètre de maille (volume) mesuré du marqueur et de son équation d'état connue. Cet outil effectue ce calcul.
 
-## Mode d'emploi
+!!! tip "Organisation de cette page"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **Lire la pression** : [Mode d'emploi](#how-to-use), [Paramètres d'entrée](#input-parameters)
+    - **Vérifier les formules** : [Théorie des équations d'état](#theory), [Formules par source](#per-source)
+    - **Consulter les tableaux** : [Tableaux P–V–T utilisés pour l'interpolation par spline](#pvt-tables)
+
+## Mode d'emploi {#how-to-use}
 
 1. Utilisez les cases à cocher en haut de la fenêtre pour sélectionner le ou les matériaux étalons dont vous voulez déterminer la pression.
 2. Pour chaque matériau sélectionné, le résultat calculé (la pression) s'affiche dans la partie inférieure de la fenêtre.
@@ -23,19 +29,19 @@ Les matériaux étalons sélectionnables à l'aide des cases à cocher en haut d
 
 | Matériau étalon | Description |
 | --- | --- |
-| `Au (Gold)` | Or |
-| `Pt (Platinum)` | Platine |
+| `Au (Or)` | Or |
+| `Pt (Platine)` | Platine |
 | `NaCl (B1)` | Chlorure de sodium (structure B1, type sel gemme) |
 | `NaCl (B2)` | Chlorure de sodium (structure B2, type CsCl) |
-| `MgO (Periclase)` | Oxyde de magnésium (périclase) |
-| `Al2O3 (Corundum)` | Oxyde d'aluminium (corindon) |
+| `MgO (Périclase)` | Oxyde de magnésium (périclase) |
+| `Al2O3 (Corindon)` | Oxyde d'aluminium (corindon) |
 | `Ar` | Argon |
 | `Re` | Rhénium |
 | `Mo` | Molybdène |
 | `Pb` | Plomb |
 | `hBN` | Nitrure de bore hexagonal |
 
-## Paramètres d'entrée
+## Paramètres d'entrée {#input-parameters}
 
 Le `groupBox` de chaque matériau permet de saisir ou de lire les valeurs suivantes.
 
@@ -43,44 +49,28 @@ Le `groupBox` de chaque matériau permet de saisir ou de lire les valeurs suivan
 | --- | --- |
 | `a` / `V` | Paramètre de maille ou volume mesuré. Mis à jour automatiquement lorsque vous faites glisser une raie de diffraction dans la fenêtre principale. |
 | `a0` / `V0` | Paramètre de maille ou volume aux conditions ambiantes (de référence). |
-| `Temperature` | Température de l'échantillon. Utilisée par les équations d'état qui incluent la pression thermique (EOS à haute température). |
+| `Température` | Température de l'échantillon. Utilisée par les équations d'état qui incluent la pression thermique (EOS à haute température). |
 | `T0` | Température de référence. L'utilisation de la valeur `T0` saisie dépend de la référence (de nombreuses équations utilisent en interne la température de référence de l'étude d'origine). |
 
 !!! tip "Équations d'état dépendant de la température"
-    Certaines références prennent en charge des équations d'état à haute température incluant la pression thermique ; saisir la température de l'échantillon dans `Temperature` donne une pression incluant la correction de température. Par exemple, `Tange (09) Vinet` et `Tange (09) BM` pour MgO utilisent la température saisie. En revanche, `Sakai+(11) Vinet` et `Sakai+(11) BM` pour NaCl (B2) sont des équations isothermes et n'utilisent pas la température. La possibilité de modifier la température de référence `T0` dépend de la référence.
+    Certaines références prennent en charge des équations d'état à haute température incluant la pression thermique ; saisir la température de l'échantillon dans `Température` donne une pression incluant la correction de température. Par exemple, `Tange (09) Vinet` et `Tange (09) BM` pour MgO utilisent la température saisie. En revanche, `Sakai+(11) Vinet` et `Sakai+(11) BM` pour NaCl (B2) sont des équations isothermes et n'utilisent pas la température. La possibilité de modifier la température de référence `T0` dépend de la référence.
 
-## Références par matériau
+## Références par matériau {#references}
 
-Le `groupBox` de chaque matériau répertorie plusieurs équations d'état issues de différentes références, et la pression calculée par chaque formule est affichée simultanément. Vous pouvez les comparer et choisir la référence la mieux adaptée à votre étude ou à vos conditions de mesure. Des exemples représentatifs sont présentés ci-dessous.
-
-### Or
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+Le cadre de chaque matériau répertorie plusieurs équations d'état issues de différentes références, et la pression calculée par chaque formule est affichée simultanément. Vous pouvez choisir et comparer les références adaptées à votre étude et à vos conditions de mesure. Le cadre de l'or, par exemple, se présente ainsi.
 
 ![Liste des références d'équation d'état pour l'or](../assets/cap-fr-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-Pour l'or (`Au (Gold)`), les équations d'état `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)` et `Fratanduono (21)` sont disponibles.
+Les références disponibles pour chaque matériau, avec leurs formules et paramètres, sont répertoriées dans [Formules par source](#per-source).
 
-### NaCl (structure B1)
-
-![Liste des références d'équation d'état pour NaCl-B1](../assets/cap-fr-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-Pour `NaCl (B1)`, les équations d'état `Brown (99)`, `Matsui (12)` et `Skelton (84)` sont disponibles.
-
-### Périclase (MgO)
-
-![Liste des références d'équation d'état pour la périclase MgO](../assets/cap-fr-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-Pour `MgO (Periclase)`, les équations d'état `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` et `Jackson (98)` sont disponibles.
-
-!!! note "Autres matériaux"
-    Le platine (`Pt (Platinum)` : `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), `Re` (`Zha et al. (04)`, etc.) et `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) offrent également le choix entre plusieurs références. Le corindon (`Al2O3 (Corundum)`) n'a qu'une référence, `Dubrovinsky (98)`, de même que `Pb`, `Strässle+(14)`.
-
-## Théorie des équations d'état
+## Théorie des équations d'état {#theory}
 
 L'équation d'état \( P = P(V, T) \) exprime la relation entre la pression, le volume et la température d'une substance ; le rôle de cet outil est d'obtenir la pression \( P \) à partir du volume mesuré \( V \). La pression est calculée comme la somme d'un **terme de compression isotherme** \( P_\text{st}(V) \) à la température de référence et d'un **terme de pression thermique** \( \Delta P_\text{th} \) dû à la différence de température.
 
 $$P(V, T) = P_\text{st}(V) + \Delta P_\text{th}(V, T)$$
 
-Les formules générales ci-dessous constituent le cadre commun que ce formulaire utilise pour calculer la pression de chaque matériau étalon ; chaque source soit insère les paramètres publiés dans ce cadre, soit utilise une équation propre à la source (voir [Formules par source](#per-source) ci-dessous pour les détails). Pour l'onglet EOS par cristal du contrôle Crystal Information, voir [Paramètres du cristal](3-crystal-parameter.md).
+Les formules générales ci-dessous constituent le cadre commun que ce formulaire utilise pour calculer la pression de chaque matériau étalon ; chaque source soit insère les paramètres publiés dans ce cadre, soit utilise une équation propre à la source (voir [Formules par source](#per-source) ci-dessous pour les détails). Pour l'onglet EOS par cristal du contrôle `Informations sur le cristal`, voir [Paramètres du cristal](3-crystal-parameter.md).
 
 ### Symboles
 

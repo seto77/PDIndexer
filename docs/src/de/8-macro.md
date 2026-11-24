@@ -10,9 +10,9 @@ Die meisten Operationen in PDIndexer lassen sich mit der **Makro**-Funktion auto
 
 ## Den Makro-Editor öffnen
 
-Wählen Sie in der Menüleiste des Hauptfensters **Makro → Editor**, um das Makro-Editor-Fenster (mit dem Titel `Macro`) zu öffnen.
+Wählen Sie in der Menüleiste des Hauptfensters `Makro` ▸ `Editor`, um das Makro-Editor-Fenster (mit dem Titel `Macro`) zu öffnen.
 
-Im Editor erstellte und gespeicherte Makros werden außerdem mit ihrem Namen im Menü **Makro** aufgelistet, sodass Sie sie direkt aus dem Menü ausführen können. Die Makroliste wird beim Beenden von PDIndexer automatisch gespeichert und beim nächsten Start wiederhergestellt.
+Im Editor erstellte und gespeicherte Makros werden außerdem mit ihrem Namen im Menü `Makro` aufgelistet, sodass Sie sie direkt aus dem Menü ausführen können. Die Makroliste wird beim Beenden von PDIndexer automatisch gespeichert und beim nächsten Start wiederhergestellt.
 
 ## Aufbau des Editor-Fensters
 
@@ -36,7 +36,7 @@ Verwenden Sie die folgenden Schaltflächen, um die Makroliste zu bearbeiten.
 | `Replace` | Ersetzt das in der Liste ausgewählte Makro durch den aktuellen Code. |
 | `Delete` | Entfernt das ausgewählte Makro aus der Liste. |
 | `↑` / `↓` | Verschiebt das ausgewählte Makro innerhalb der Liste nach oben oder unten. |
-| `Show samples` | Schaltet die Anzeige der integrierten Beispielmakros um (siehe unten). |
+| `Beispiele anzeigen` | Schaltet die Anzeige der integrierten Beispielmakros um (siehe unten). |
 
 !!! tip "Speichern und Laden"
     Makros können in einzelnen `.mcr`-Dateien gespeichert und daraus geladen werden. Ziehen Sie eine `.mcr`-Datei per Drag-and-drop auf das Editor-Fenster, um ihren Inhalt zu laden. Das Drücken von `Ctrl+S` nach dem Bearbeiten überschreibt das aktuell ausgewählte Makro.
@@ -57,7 +57,7 @@ Führen Sie das Makro über die Schaltflächen am unteren Rand des Code-Editors 
 
 ### Beispielmakros
 
-Wenn Sie die Schaltfläche `Show samples` aktivieren, werden die integrierten Beispielmakros in der Liste angezeigt (schreibgeschützt). Die Beispiele werden in der aktuellen UI-Sprache (Englisch/Japanisch) angezeigt. Verwenden Sie sie als Referenz, wenn Sie eigene Makros schreiben. Die integrierten Beispiele sind:
+Wenn Sie die Schaltfläche `Beispiele anzeigen` aktivieren, werden die integrierten Beispielmakros in der Liste angezeigt (schreibgeschützt). Die Beispiele werden in der aktuellen UI-Sprache (Englisch/Japanisch) angezeigt. Verwenden Sie sie als Referenz, wenn Sie eigene Makros schreiben. Die integrierten Beispiele sind:
 
 | Name | Inhalt |
 | --- | --- |
@@ -245,4 +245,4 @@ if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancell
     PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
-Die übrigen Beispiele können Sie über die Schaltfläche `Show samples` im Editor durchsehen.
+Die übrigen Beispiele können Sie über die Schaltfläche `Beispiele anzeigen` im Editor durchsehen.

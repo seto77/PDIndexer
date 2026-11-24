@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Ajuste de picos de difração
 
-A ferramenta `Fitting diffraction peaks` ajusta os picos de um perfil de difração com uma função apropriada, deriva o espaçamento d a partir de cada posição de pico 2θ e refina os parâmetros de rede por mínimos quadrados. Ela é iniciada a partir da barra de ferramentas da janela principal.
+A ferramenta `Ajuste de picos de difração (F)` ajusta os picos de um perfil de difração com uma função apropriada, deriva o espaçamento d a partir de cada posição de pico 2θ e refina os parâmetros de rede por mínimos quadrados. Ela é iniciada a partir da barra de ferramentas da janela principal.
 
 ![Janela completa do ajuste de picos](../assets/cap-pt-auto/FormFitting.png)
 
@@ -10,8 +10,8 @@ A ferramenta `Fitting diffraction peaks` ajusta os picos de um perfil de difraç
 1. Selecione o cristal alvo na lista de cristais (no modo multi-perfil, selecione também o perfil no qual deseja trabalhar).
 2. Na janela principal, arraste as linhas de difração com o mouse de modo que se sobreponham aos picos medidos o mais próximo possível.
 3. Escolha os índices das linhas de difração que deseja ajustar na lista de picos de difração (uma caixa de lista com marcações).
-4. Assim que índices independentes suficientes forem escolhidos para que o cálculo por mínimos quadrados seja solúvel, os parâmetros de rede mais prováveis aparecem, com seus erros, no painel `Optimized cell constants` (parâmetros de célula otimizados) no canto inferior direito.
-5. Pressione `Apply to the crystal` (aplicar ao cristal) para enviar os parâmetros de rede refinados de volta ao cristal no programa principal.
+4. Assim que índices independentes suficientes forem escolhidos para que o cálculo por mínimos quadrados seja solúvel, os parâmetros de rede mais prováveis aparecem, com seus erros, no painel `Parâmetros de célula otimizados` no canto inferior direito.
+5. Pressione `Aplicar ao cristal` para enviar os parâmetros de rede refinados de volta ao cristal no programa principal.
 
 !!! note "Marcar e selecionar um cristal"
     A lista de cristais espelha a da janela principal. Para que o ajuste tenha efeito, o cristal alvo deve estar tanto marcado quanto selecionado.
@@ -30,24 +30,24 @@ As linhas de difração do cristal selecionado são listadas aqui. Ativar a caix
 
 | Coluna | Conteúdo |
 | --- | --- |
-| `Check` | Se a linha deve ser incluída no ajuste |
-| `PeakColor` | Cor de exibição |
-| `Crystal` | Nome do cristal |
+| `Marcar` | Se a linha deve ser incluída no ajuste |
+| `Cor do pico` | Cor de exibição |
+| `Cristal` | Nome do cristal |
 | `HKL` | Índices de reflexão |
-| `Calc X` | Posição calculada da linha de difração |
-| `Func` | Função de pico utilizada |
+| `X calc.` | Posição calculada da linha de difração |
+| `Func.` | Função de pico utilizada |
 | `X` | Posição do pico obtida pelo ajuste |
-| `X Err` | Erro da posição do pico |
+| `Erro X` | Erro da posição do pico |
 | `FWHM` | Largura à meia altura |
-| `Intensity` | Intensidade do pico |
-| `Weight` | Peso no ajuste por mínimos quadrados |
+| `Intensidade` | Intensidade do pico |
+| `Peso` | Peso no ajuste por mínimos quadrados |
 | `R` | Índice de resíduo do ajuste |
 
 Os botões abaixo da lista exportam os resultados.
 
-- `Copy to Clipboard`: Copia a tabela para a área de transferência. Ela pode ser colada diretamente no Excel e aplicativos semelhantes.
-- `Save as CSV`: Salva a tabela como um arquivo `.csv`. `Effective digit` (casas significativas) define o número de algarismos significativos mostrados na tabela.
-- `Clear peaks`: Exclui todos os picos adicionados manualmente ao Flexible Crystal.
+- `Copiar para a área de transferência`: Copia a tabela para a área de transferência. Ela pode ser colada diretamente no Excel e aplicativos semelhantes.
+- `Salvar como CSV`: Salva a tabela como um arquivo `.csv`. `Casas signif.` define o número de algarismos significativos mostrados na tabela.
+- `Limpar picos`: Exclui todos os picos adicionados manualmente ao Flexible Crystal.
 
 ## Fitting option (Opções de ajuste)
 
@@ -59,10 +59,10 @@ Aqui você faz as configurações detalhadas usadas ao ajustar os perfis de pico
 
 ![Search Range e Initial FWHM](../assets/cap-pt-auto/FormFitting.groupBox3.groupBox2.png)
 
-- `Search Range` (intervalo de pesquisa): Define o intervalo sobre o qual o ajuste é realizado. Isto é, a região dentro de ±Search Range em torno da posição calculada da linha de difração é tomada como alvo do ajuste para aquele pico.
-- `Initial FWHM` (FWHM inicial): Especifica a largura à meia altura inicial da função de perfil. Ela é usada como valor de partida para a convergência dos mínimos quadrados.
+- `Intervalo de pesquisa`: Define o intervalo sobre o qual o ajuste é realizado. Isto é, a região dentro de ±`Intervalo de pesquisa` em torno da posição calculada da linha de difração é tomada como alvo do ajuste para aquele pico.
+- `FWHM inicial`: Especifica a largura à meia altura inicial da função de perfil. Ela é usada como valor de partida para a convergência dos mínimos quadrados.
 
-Pressionar `Apply to all` (aplicar a todos) aplica as configurações atuais a todas as linhas de difração de uma só vez.
+Pressionar `Aplicar a todos` aplica as configurações atuais a todas as linhas de difração de uma só vez.
 
 ### Peak function (Função de pico)
 
@@ -70,14 +70,14 @@ Seleciona a função de pico usada para o ajuste.
 
 | Função de pico | Conteúdo |
 | --- | --- |
-| `Simple Search` | Não realiza ajuste de função; reconhece o ponto mais intenso dentro de ±Search Range em torno da posição calculada da linha de difração como a posição do pico. |
-| `Symmetric Pseudo Voigt` | Ajusta com uma função pseudo-Voigt simétrica à esquerda e à direita. |
-| `Symmetric Pearson VII` | Ajusta com uma função Pearson VII simétrica à esquerda e à direita. |
-| `Split Pseudo Voigt` | Ajusta com uma função pseudo-Voigt assimétrica (dividida) à esquerda e à direita. |
-| `Split Pearson VII` | Ajusta com uma função Pearson VII assimétrica (dividida) à esquerda e à direita. |
+| `Pesquisa simples` | Não realiza ajuste de função; reconhece o ponto mais intenso dentro de ±Search Range em torno da posição calculada da linha de difração como a posição do pico. |
+| `Pseudo-Voigt simétrico` | Ajusta com uma função pseudo-Voigt simétrica à esquerda e à direita. |
+| `Pearson VII simétrico` | Ajusta com uma função Pearson VII simétrica à esquerda e à direita. |
+| `Pseudo-Voigt dividido` | Ajusta com uma função pseudo-Voigt assimétrica (dividida) à esquerda e à direita. |
+| `Pearson VII dividido` | Ajusta com uma função Pearson VII assimétrica (dividida) à esquerda e à direita. |
 
 !!! tip "Função recomendada"
-    A menos que haja uma razão específica para não fazê-lo, `Symmetric Pseudo Voigt` é recomendado por causa de sua estabilidade superior.
+    A menos que haja uma razão específica para não fazê-lo, `Pseudo-Voigt simétrico` é recomendado por causa de sua estabilidade superior.
 
 A função pseudo-Voigt é uma combinação linear de uma gaussiana \(G(x)\) e uma lorentziana \(L(x)\) com parâmetro de mistura \(\eta\), dada por:
 
@@ -91,10 +91,10 @@ onde \(\eta\) é a fração da componente lorentziana. A forma dividida represen
 
 ![Pattern Decomposition](../assets/cap-pt-auto/FormFitting.groupBox3.flowLayoutPanelPatternDecomposition.png)
 
-Quando os Search Ranges de duas ou mais linhas de difração selecionadas se sobrepõem, esta opção seleciona se deve ser realizada a decomposição do padrão (ajuste simultâneo dos picos sobrepostos).
+Quando as regiões de `Intervalo de pesquisa` de duas ou mais linhas de difração selecionadas se sobrepõem, esta opção seleciona se deve ser realizada a decomposição do padrão (ajuste simultâneo dos picos sobrepostos).
 
-- `in each crystal` (para cada cristal): Realiza a decomposição do padrão independentemente para cada cristal.
-- `between crystals` (entre cristais): Realiza a decomposição do padrão através de todos os cristais.
+- `para cada cristal`: Realiza a decomposição do padrão independentemente para cada cristal.
+- `entre cristais`: Realiza a decomposição do padrão através de todos os cristais.
 
 ## Optimized cell constants (Parâmetros de célula otimizados)
 
@@ -105,29 +105,22 @@ Assim que índices independentes suficientes forem escolhidos para que o cálcul
 !!! note "Sobre a exibição de NA"
     Quando o número de reflexões ajustadas é igual ao número de parâmetros de rede independentes, os resíduos não permitem obter erros-padrão, e por isso `NA` é exibido nos campos de erro. Quando há reflexões independentes de menos para resolver os parâmetros de rede, o programa mantém a forma original da célula e altera apenas sua escala global, e os erros são mostrados como `NA`. Escolher reflexões independentes suficientes permite que os erros sejam calculados.
 
-- `Apply to the crystal` (aplicar ao cristal): Envia os parâmetros de rede refinados de volta ao cristal selecionado no programa principal.
-- `Copy to Clipboard` (copiar para a área de transferência): Copia os parâmetros de rede otimizados para a área de transferência.
-- `Reset take off angle` (redefinir ângulo de take-off): Redefine o ângulo de take-off.
+- `Aplicar ao cristal`: Envia os parâmetros de rede refinados de volta ao cristal selecionado no programa principal.
+- `Copiar para a área de transferência`: Copia os parâmetros de rede otimizados para a área de transferência.
 
 ## Remove fitted peaks (Remover picos ajustados)
 
-Isto subtrai os picos ajustados do perfil e produz o perfil residual como um novo perfil. Digite o nome de destino em `New profile name` (nome do novo perfil) e pressione `Remove fitted peaks` (remover picos ajustados) para realizar a subtração. É útil para verificar o fundo ou a separação de picos sobrepostos.
+Isto subtrai os picos ajustados do perfil e produz o perfil residual como um novo perfil. Digite o nome de destino em `Nome do novo perfil` e pressione `Remover picos ajustados` para realizar a subtração. É útil para verificar o fundo ou a separação de picos sobrepostos.
 
 ## Ferramentas relacionadas (Send d-values)
 
-Pressionar `Send d-values to CellFinder && AtomicPositionFinder` envia os valores de d obtidos do ajuste para as seguintes ferramentas de análise, que também podem ser iniciadas a partir da barra de ferramentas.
+Pressionar `Enviar valores de d para CellFinder && AtomicPositionFinder` envia os valores de d obtidos do ajuste das reflexões marcadas para o `Cell Finder`. Abra o `Cell Finder` a partir da barra de ferramentas. <!-- 261124Cl changed (author decision): the Atomic Position Finder, not available in the current version, is no longer described -->
 
 ### Cell Finder
 
 ![Cell Finder](../assets/cap-pt-auto/FormCellFinder.png)
 
-O `Cell Finder` procura a célula unitária (parâmetros de rede) que explica um conjunto de posições de pico medidas (uma lista de valores de d), trabalhando de trás para frente a partir dessas posições. Ele é usado para indexar amostras desconhecidas.
-
-### Atomic Position Finder
-
-![Atomic Position Finder](../assets/cap-pt-auto/FormAtomicPositionFinder.png)
-
-O `Atomic Position Finder` procura as posições atômicas em uma estrutura cristalina a partir de quantidades como as intensidades das reflexões observadas.
+O `Cell Finder` procura candidatos a parâmetros de rede que expliquem um conjunto de posições de pico medidas (uma lista de valores de d). Ele é usado para indexar amostras desconhecidas.
 
 !!! tip "Identificando uma amostra desconhecida"
     Depois de determinar os parâmetros de rede com o `Cell Finder`, registre esse cristal na lista de cristais, e você poderá refinar os parâmetros de rede ainda mais com o ajuste por mínimos quadrados desta ferramenta.

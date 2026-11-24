@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 狀態方程
 
-按一下主視窗工具列上的 `Equation of States`（狀態方程）圖示，會開啟下方所示的視窗。此工具可根據標準物質的狀態方程（EOS, Equation of State）計算壓力。
+按一下主視窗工具列上的 `狀態方程 (E)` 圖示，會開啟下方所示的視窗。此工具可根據標準物質的狀態方程（EOS, Equation of State）計算壓力。
 
 ![狀態方程視窗全貌](../assets/cap-zh-Hant-auto/FormEOS.png)
 
 在高壓實驗中，會將作為壓力基準的標準物質（壓力標記物）與試料一同放入測量，再由該標準物質的晶格常數（體積）與已知的狀態方程反推壓力。本工具即用於執行此計算。
 
-## 使用方式
+!!! tip "本頁的閱讀方式"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **讀取壓力**：[使用方式](#how-to-use)、[輸入參數](#input-parameters)
+    - **確認計算公式**：[狀態方程的理論](#theory)、[各出處的計算公式](#per-source)
+    - **查閱數表**：[雲形內插所用的 P–V–T 表](#pvt-tables)
+
+## 使用方式 {#how-to-use}
 
 1. 使用視窗上方的核取方塊，選擇要求出壓力的標準物質。
 2. 針對每個選定的物質，計算結果（壓力）會顯示在視窗下方。
@@ -23,19 +29,19 @@
 
 | 標準物質 | 說明 |
 | --- | --- |
-| `Au (Gold)` | 金 |
-| `Pt (Platinum)` | 鉑 |
+| `Au（金）` | 金 |
+| `Pt（鉑）` | 鉑 |
 | `NaCl (B1)` | 氯化鈉（B1 結構，岩鹽型） |
 | `NaCl (B2)` | 氯化鈉（B2 結構，CsCl 型） |
-| `MgO (Periclase)` | 氧化鎂（方鎂石） |
-| `Al2O3 (Corundum)` | 氧化鋁（剛玉） |
+| `MgO（方鎂石）` | 氧化鎂（方鎂石） |
+| `Al2O3（剛玉）` | 氧化鋁（剛玉） |
 | `Ar` | 氬 |
 | `Re` | 錸 |
 | `Mo` | 鉬 |
 | `Pb` | 鉛 |
 | `hBN` | 六方氮化硼 |
 
-## 輸入參數
+## 輸入參數 {#input-parameters}
 
 每種物質的 `groupBox` 可輸入或讀取以下數值。
 
@@ -43,38 +49,22 @@
 | --- | --- |
 | `a` / `V` | 量測所得的晶格常數或體積。在主視窗拖曳繞射線時會自動更新。 |
 | `a0` / `V0` | 常壓（基準狀態）下的晶格常數或體積。 |
-| `Temperature` | 試料溫度。用於包含熱壓力的狀態方程（高溫 EOS）。 |
+| `溫度` | 試料溫度。用於包含熱壓力的狀態方程（高溫 EOS）。 |
 | `T0` | 基準溫度。輸入的 `T0` 是否會被使用取決於出處（許多公式在內部使用原始研究的基準溫度）。 |
 
 !!! tip "考慮溫度的狀態方程"
-    部分出處支援包含熱壓力（thermal pressure）的高溫狀態方程；在 `Temperature` 中輸入樣品溫度，即可得到含溫度修正的壓力。例如，MgO 的 `Tange (09) Vinet` 與 `Tange (09) BM` 會使用輸入的溫度。相反地，NaCl (B2) 的 `Sakai+(11) Vinet` 與 `Sakai+(11) BM` 為等溫方程，不使用溫度。基準溫度 `T0` 能否變更則取決於出處。
+    部分出處支援包含熱壓力（thermal pressure）的高溫狀態方程；在 `溫度` 中輸入樣品溫度，即可得到含溫度修正的壓力。例如，MgO 的 `Tange (09) Vinet` 與 `Tange (09) BM` 會使用輸入的溫度。相反地，NaCl (B2) 的 `Sakai+(11) Vinet` 與 `Sakai+(11) BM` 為等溫方程，不使用溫度。基準溫度 `T0` 能否變更則取決於出處。
 
-## 各物質的出處（參考文獻）
+## 各物質的出處（參考文獻） {#references}
 
-每種物質的 `groupBox` 都列出多個出處的狀態方程，並同時顯示各公式計算出的壓力。您可依研究或量測條件比較並選擇最合適的出處。以下為代表性物質的出處範例。
-
-### 金
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+每種物質的方框都列出多個出處的狀態方程，並同時顯示各公式計算出的壓力。您可依研究或量測條件選擇並比較合適的出處。例如，金的方框如下所示。
 
 ![金的狀態方程出處清單](../assets/cap-zh-Hant-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-對於金（`Au (Gold)`），可使用 `Jamieson (82)`、`Anderson (89)`、`Sim (02)`、`Tsuchiya (03)`、`Yokoo (09)`、`Fratanduono (21)` 這些狀態方程。
+各物質可使用的出處及其計算公式與參數，整理於[各出處的計算公式](#per-source)。
 
-### NaCl（B1 結構）
-
-![NaCl-B1 的狀態方程出處清單](../assets/cap-zh-Hant-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-對於 `NaCl (B1)`，可使用 `Brown (99)`、`Matsui (12)`、`Skelton (84)` 這些狀態方程。
-
-### 方鎂石（MgO）
-
-![方鎂石 MgO 的狀態方程出處清單](../assets/cap-zh-Hant-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-對於 `MgO (Periclase)`，可使用 `Tange (09) BM`、`Tange (09) Vinet`、`Aizawa (06)`、`Dewaele (00)`、`Jackson (98)` 這些狀態方程。
-
-!!! note "其他物質"
-    鉑（`Pt (Platinum)`：`Jamieson (82)`、`Holmes (89)`、`Matsui (09)`、`Yokoo (09)`、`Fratanduono (21)`）、`NaCl (B2)`（`Sata (02) (Pt)`、`Sata (02) (Mg)`、`Ueda+(08)`、`Sakai+(11) BM`、`Sakai+(11) Vinet`）、`Ar`（`Ross et al. (86)`、`Jephcoat (98)`）、`Re`（`Zha et al. (04)` 等）、`Mo`（`Zhao+(00)`、`Huang+(16)MGD`），同樣也提供多種出處可供選擇。剛玉（`Al2O3 (Corundum)`）只有 `Dubrovinsky (98)` 一個出處，`Pb` 只有 `Strässle+(14)` 一個出處。
-
-## 狀態方程的理論
+## 狀態方程的理論 {#theory}
 
 狀態方程 \( P = P(V, T) \) 表示物質的壓力、體積、溫度之間的關係；本工具的作用就是由量測所得的體積 \( V \) 求出壓力 \( P \)。壓力以基準溫度下的 **等溫壓縮項** \( P_\text{st}(V) \) 加上因溫度差而產生的 **熱壓力項** \( \Delta P_\text{th} \) 之和計算。
 

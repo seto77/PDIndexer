@@ -76,7 +76,7 @@ Selecciona qué cristales tienen etiquetados los índices (índices de Miller) d
 
 ![La lista de cristales](../assets/cap-es-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Muestra la misma información que la lista de cristales de la ventana principal. Los cristales marcados tienen sus líneas de difracción dibujadas en la ventana principal. Cada fila muestra una casilla de verificación (`Check`), un color de dibujo (`PeakColor`) y el nombre del cristal (`Crystal`).
+Muestra la misma información que la lista de cristales de la ventana principal. Los cristales marcados tienen sus líneas de difracción dibujadas en la ventana principal. Cada fila muestra una casilla de verificación (`Marcar`), un color de dibujo (`Color de pico`) y el nombre del cristal (`Cristal`).
 
 ### Botones de flecha arriba/abajo (↑ / ↓)
 
@@ -87,11 +87,11 @@ Cambian el orden de los cristales.
 
 ### Añadir
 
-Añade a la lista, como una nueva entrada, el cristal configurado en el área Información del cristal de la derecha (descrita a continuación).
+Añade a la lista, como una nueva entrada, el cristal configurado en el área `Información del cristal` de la derecha (descrita a continuación).
 
 ### Reemplazar
 
-Reemplaza el cristal actualmente seleccionado por el configurado en el área Información del cristal de la derecha.
+Reemplaza el cristal actualmente seleccionado por el configurado en el área `Información del cristal` de la derecha.
 
 ### Eliminar
 
@@ -169,7 +169,7 @@ Proporciona funciones de búsqueda e importación para más de 20.000 estructura
 
 Enumera los cristales contenidos en la base de datos. Si se introducen condiciones de búsqueda, solo se muestran los cristales que las cumplen.
 
-Al seleccionar cualquier cristal de la tabla se transfiere su información a [Información del cristal](#crystal-information). Para añadirlo a la lista de cristales, pulse el botón `Añadir` o `Reemplazar` del área Lista de cristales.
+Al seleccionar cualquier cristal de la tabla se transfiere su información a [Información del cristal](#crystal-information). Para añadirlo a la lista de cristales, pulse el botón `Añadir` o `Reemplazar` del área `Lista de cristales`.
 
 ### Opciones de búsqueda
 

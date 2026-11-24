@@ -35,8 +35,6 @@ Jede Schaltfläche der Symbolleiste blendet ein eigenes Analysefenster ein oder 
 | `Reflexe anpassen (F)` | Das Fenster Beugungspeak-Anpassung ein-/ausblenden, um Beugungspeaks anzupassen (Position, FWHM, Intensität). | [Beugungspeak-Anpassung](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | Das Fenster Cell Finder ein-/ausblenden, um Gitterkonstanten aus Peakpositionen zu suchen. | — |
 | `Sequentielle Analyse` | Das Fenster Sequentielle Analyse für die Stapelverarbeitung einer Dateiserie ein-/ausblenden. | [Sequentielle Analyse](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Das Fenster Atomic Position Finder ein-/ausblenden, um Atompositionen aus Beugungsintensitäten zu suchen. | — |
-| `LPO-Analyse` | Das Fenster LPO-Analyse (gitterbezogene Vorzugsorientierung) ein-/ausblenden. | — |
 
 !!! note
     Die Hauptfenster können auch mit Tastenkürzeln ein-/ausgeblendet werden: `Ctrl+Shift+C` (Kristallparameter), `Ctrl+Shift+E` (Zustandsgleichungen), `Ctrl+Shift+F` (Anpassungsparameter), `Ctrl+Shift+D` (Peakmodus ändern) und `Ctrl+Shift+S` (Sequentielle Analyse). Außerdem schaltet `Ctrl+Shift+Space` das Häkchen des ausgewählten Kristalls um, `Ctrl+Alt+Space` das Häkchen des ausgewählten Reflexes in der Reflexliste des Peak-Anpassungsfensters, und `Ctrl+Shift+V` liest Text aus der Zwischenablage als Profil ein. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
@@ -97,10 +95,10 @@ Der Reiter `Horizontale Achse` legt den Anzeigemodus der Achse fest. Die Einstel
 | Eintrag | Beschreibung |
 | --- | --- |
 | `Nach dem Laden des Profils horizontale Achse anpassen` | Wenn angehakt, werden die Einstellungen der horizontalen Achse automatisch an die des neu geladenen Profils angeglichen. |
-| 2θ (degree) | Die horizontale Achse auf Winkel einstellen. Die Wahl der Optionsschaltfläche `X-ray` liefert den Streuwinkel für Röntgenstrahlen; wählen Sie eine charakteristische Röntgenquelle oder `Custom` aus der Dropdown-Liste und geben Sie die Wellenlänge an. Die Wahl der Optionsschaltfläche `Electron` liefert den Streuwinkel für Elektronen; die Angabe der Beschleunigungsspannung berechnet die relativistisch korrigierte Wellenlänge. |
-| Energy (eV) | Die horizontale Achse auf Energie (Einheit eV) einstellen. Dies entspricht einem Röntgenbeugungsexperiment mit einem EDX-Detektor. Stellen Sie den EDX-Abnahmewinkel (Take-off-Winkel) passend ein. |
-| d-spacing (Å) | Die horizontale Achse auf den Netzebenenabstand (d-Wert) einstellen. |
-| q | Die horizontale Achse auf den Betrag des Streuvektors \( q \) einstellen. |
+| `2θ (Winkel)` | Die horizontale Achse auf Winkel einstellen. Die Wahl der Optionsschaltfläche `Röntgen` liefert den Streuwinkel für Röntgenstrahlen; wählen Sie eine charakteristische Röntgenquelle oder `Custom` aus der Dropdown-Liste und geben Sie die Wellenlänge an. Die Wahl der Optionsschaltfläche `Elektron` liefert den Streuwinkel für Elektronen; die Angabe der Beschleunigungsspannung berechnet die relativistisch korrigierte Wellenlänge. |
+| `Energie` | Die horizontale Achse auf Energie (Einheit eV) einstellen. Dies entspricht einem Röntgenbeugungsexperiment mit einem EDX-Detektor. Stellen Sie den EDX-Abnahmewinkel (Take-off-Winkel) passend ein. |
+| `d-Wert` | Die horizontale Achse auf den Netzebenenabstand (d-Wert) einstellen. |
+| `q (Wellenzahl)` | Die horizontale Achse auf den Betrag des Streuvektors \( q \) einstellen. |
 
 Die Beziehung zwischen dem Streuwinkel und dem Netzebenenabstand wird durch das Braggsche Gesetz gegeben, mit \( \lambda \) als Wellenlänge:
 

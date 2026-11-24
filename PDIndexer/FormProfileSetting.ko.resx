@@ -68,12 +68,6 @@
   <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>프로파일</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>선 색</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>선 너비</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>주석</value>
   </data>
@@ -94,9 +88,6 @@
   </data>
   <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
     <value>B-스플라인 곡선</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>노출 시간</value>
   </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. 평활화</value>

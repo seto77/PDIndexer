@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 晶體參數
 
-按一下主視窗工具列上的 `Crystal Parameter` 圖示，會開啟下圖所示的子視窗。在這裡設定要顯示哪些結晶的繞射峰，以及這些峰要如何繪製。視窗下半部內建了用於搜尋與匯入結構的結晶資料庫。
+按一下主視窗工具列上的 `結晶參數 (C)` 圖示，會開啟下圖所示的子視窗。在這裡設定要顯示哪些結晶的繞射峰，以及這些峰要如何繪製。視窗下半部內建了用於搜尋與匯入結構的結晶資料庫。
 
 ![晶體參數視窗](../assets/cap-zh-Hant-auto/FormCrystal.png)
 
@@ -9,10 +9,10 @@
 
 | 區域 | 用途 |
 | --- | --- |
-| `Diffraction Peak Option` | 繞射線的顯示方式 |
-| `Crystal List` | 與主視窗共用的結晶勾選清單 |
-| `Crystal Information` | 所選結晶的詳細參數（分頁） |
-| `Crystal database` | 以 AMCSD 為基礎的搜尋與匯入 |
+| `繞射峰選項` | 繞射線的顯示方式 |
+| `結晶清單` | 與主視窗共用的結晶勾選清單 |
+| `結晶資訊` | 所選結晶的詳細參數（分頁） |
+| `結晶資料庫` | 以 AMCSD 為基礎的搜尋與匯入 |
 
 ---
 
@@ -51,8 +51,8 @@
 
 | Item | Description |
 | --- | --- |
-| `Angle threshold` | 峰要多接近才會被合併，以角度（`°`）表示。 |
-| `Energy threshold` | 針對能量色散資料，以能量（`eV`）表示的合併範圍。 |
+| `角度閾值` | 峰要多接近才會被合併，以角度（`°`）表示。 |
+| `能量閾值` | 針對能量色散資料，以能量（`eV`）表示的合併範圍。 |
 
 !!! tip
     舊版手冊以埃（ångström）表示閾值，但現行版本則依橫軸類型，以角度（`°`）或能量（`eV`）指定。
@@ -67,8 +67,8 @@
 
 | Option | Target |
 | --- | --- |
-| `all checked crystals` | 所有已勾選的結晶 |
-| `only selected crystal` | 僅清單中目前選取的結晶 |
+| `所有已勾選結晶` | 所有已勾選的結晶 |
+| `僅選取的結晶` | 僅清單中目前選取的結晶 |
 
 ---
 
@@ -76,7 +76,7 @@
 
 ![結晶清單](../assets/cap-zh-Hant-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-這裡顯示與主視窗中的晶體清單相同的資訊。已勾選的結晶，其繞射線會顯示於主視窗中。每一列會顯示勾選方塊（`Check`）、繪製顏色（`PeakColor`）以及結晶名稱（`Crystal`）。
+這裡顯示與主視窗中的晶體清單相同的資訊。已勾選的結晶，其繞射線會顯示於主視窗中。每一列會顯示勾選方塊（`勾選`）、繪製顏色（`峰顏色`）以及結晶名稱（`結晶`）。
 
 ### Up/Down arrow buttons (↑ / ↓)
 
@@ -113,7 +113,7 @@
 | --- | --- |
 | `基本資訊` | 晶格常數、晶系、空間群等基本資訊 |
 | `原子資訊` | 原子種類、佔有率、座標與溫度因子 |
-| `Ref.` | 出處論文、作者等參考文獻資訊 |
+| `文獻` | 出處論文、作者等參考文獻資訊 |
 | `EOS` | 壓縮與熱膨脹的狀態方程設定 |
 
 ### 基本資訊分頁
@@ -169,13 +169,13 @@
 
 列出資料庫中所收錄的結晶。若已輸入搜尋條件，則僅顯示符合條件的結晶。
 
-在表格中選取任一結晶，會將其資訊傳送至 [Crystal Information](#crystal-information)。若要將其加入結晶清單，請在結晶清單區域按下 `Add` 或 `Replace` 按鈕。
+在表格中選取任一結晶，會將其資訊傳送至 [Crystal Information](#crystal-information)。若要將其加入結晶清單，請在結晶清單區域按下 `新增` 或 `取代` 按鈕。
 
 ### Search options
 
 ![搜尋選項](../assets/cap-zh-Hant-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.png)
 
-輸入搜尋條件。輸入後按下 `Search` 按鈕或 Enter 鍵。每個條件都可透過其勾選方塊啟用或停用。
+輸入搜尋條件。輸入後按下 `搜尋` 按鈕或 Enter 鍵。每個條件都可透過其勾選方塊啟用或停用。
 
 #### Name
 
@@ -185,7 +185,7 @@
 
 ![以元素及晶胞參數搜尋](../assets/cap-zh-Hant-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-按下 `Periodic Table` 按鈕會開啟另一個視窗，用來選擇要搜尋的元素。每個元素按鈕每按一次就會切換其狀態。
+按下 `週期表` 按鈕會開啟另一個視窗，用來選擇要搜尋的元素。每個元素按鈕每按一次就會切換其狀態。
 
 視窗上方的按鈕可一次切換所有元素的狀態。
 
@@ -196,7 +196,7 @@
 | `must exclude` | 必須排除（移除包含任一指定元素的結晶）。 |
 
 !!! tip
-    勾選 `Ignore scattering factor` 可在不考慮散射因子的情況下進行搜尋。
+    勾選 `忽略散射因子` 可在不考慮散射因子的情況下進行搜尋。
 
 #### Reference
 

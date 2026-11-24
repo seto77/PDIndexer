@@ -121,7 +121,7 @@ Se repite hasta que el cambio en \( R \) sea suficientemente pequeño. Cuando \(
 
 ### Funciones de perfil
 
-PDIndexer ofrece la **función Pseudo Voigt** (una mezcla de gaussiana y lorentziana), la **función Pearson VII** (una función de densidad de probabilidad) y sus extensiones asimétricas **Split Pseudo Voigt** / **Split Pearson VII**. Por velocidad y estabilidad de convergencia, Symmetric Pseudo Voigt es la opción por defecto. Todas las funciones están normalizadas a área unidad.
+PDIndexer ofrece la **función Pseudo Voigt** (una mezcla de gaussiana y lorentziana), la **función Pearson VII** (una función de densidad de probabilidad) y sus extensiones asimétricas **Split Pseudo Voigt** / **Split Pearson VII**. Por velocidad y estabilidad de convergencia, `Pseudo-Voigt simétrico` es la opción por defecto. Todas las funciones están normalizadas a área unidad.
 
 **Symmetric Pseudo Voigt**
 

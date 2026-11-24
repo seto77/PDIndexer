@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Equações de estado
 
-Ao clicar no ícone `Equation of States` na barra de ferramentas da janela principal, abre-se a janela mostrada abaixo. Esta ferramenta calcula a pressão a partir da equação de estado (EOS) de um material padrão.
+Ao clicar no ícone `Equação de estado (E)` na barra de ferramentas da janela principal, abre-se a janela mostrada abaixo. Esta ferramenta calcula a pressão a partir da equação de estado (EOS) de um material padrão.
 
 ![Janela completa de Equações de estado](../assets/cap-pt-auto/FormEOS.png)
 
 Em experimentos de alta pressão, um material padrão (marcador de pressão) é carregado junto com a amostra para servir de referência de pressão. A pressão é então obtida a partir do parâmetro de rede (volume) medido do marcador e de sua equação de estado conhecida. Esta ferramenta realiza esse cálculo.
 
-## Como usar
+!!! tip "Como esta página está organizada"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **Ler a pressão**: [Como usar](#how-to-use), [Parâmetros de entrada](#input-parameters)
+    - **Verificar as fórmulas**: [Teoria das equações de estado](#theory), [Fórmulas por fonte](#per-source)
+    - **Consultar as tabelas**: [Tabelas P–V–T usadas para interpolação por spline](#pvt-tables)
+
+## Como usar {#how-to-use}
 
 1. Use as caixas de seleção na parte superior da janela para selecionar o(s) material(is) padrão para os quais deseja determinar a pressão.
 2. Para cada material selecionado, o resultado calculado (pressão) é exibido na parte inferior da janela.
@@ -23,19 +29,19 @@ Os materiais padrão que podem ser selecionados com as caixas de seleção na pa
 
 | Material padrão | Descrição |
 | --- | --- |
-| `Au (Gold)` | Ouro |
-| `Pt (Platinum)` | Platina |
+| `Au (Ouro)` | Ouro |
+| `Pt (Platina)` | Platina |
 | `NaCl (B1)` | Cloreto de sódio (estrutura B1, tipo sal-gema) |
 | `NaCl (B2)` | Cloreto de sódio (estrutura B2, tipo CsCl) |
-| `MgO (Periclase)` | Óxido de magnésio (periclásio) |
-| `Al2O3 (Corundum)` | Óxido de alumínio (corindo) |
+| `MgO (Periclásio)` | Óxido de magnésio (periclásio) |
+| `Al2O3 (Coríndon)` | Óxido de alumínio (corindo) |
 | `Ar` | Argônio |
 | `Re` | Rênio |
 | `Mo` | Molibdênio |
 | `Pb` | Chumbo |
 | `hBN` | Nitreto de boro hexagonal |
 
-## Parâmetros de entrada
+## Parâmetros de entrada {#input-parameters}
 
 O `groupBox` de cada material permite inserir ou ler os seguintes valores.
 
@@ -43,38 +49,22 @@ O `groupBox` de cada material permite inserir ou ler os seguintes valores.
 | --- | --- |
 | `a` / `V` | Parâmetro de rede ou volume medido. Atualizado automaticamente ao arrastar uma linha de difração na janela principal. |
 | `a0` / `V0` | Parâmetro de rede ou volume em condições ambientes (de referência). |
-| `Temperature` | Temperatura da amostra. Usada por equações de estado que incluem pressão térmica (EOS de alta temperatura). |
+| `Temperatura` | Temperatura da amostra. Usada por equações de estado que incluem pressão térmica (EOS de alta temperatura). |
 | `T0` | Temperatura de referência. Se o `T0` inserido é usado depende da referência (muitas equações usam internamente a temperatura de referência do estudo original). |
 
 !!! tip "Equações de estado dependentes da temperatura"
-    Algumas referências suportam equações de estado de alta temperatura que incluem pressão térmica; inserir a temperatura da amostra em `Temperature` fornece uma pressão que inclui a correção de temperatura. Por exemplo, `Tange (09) Vinet` e `Tange (09) BM` para o MgO usam a temperatura inserida. Por outro lado, `Sakai+(11) Vinet` e `Sakai+(11) BM` para o NaCl (B2) são equações isotérmicas e não usam a temperatura. Se a temperatura de referência `T0` pode ser alterada depende da referência.
+    Algumas referências suportam equações de estado de alta temperatura que incluem pressão térmica; inserir a temperatura da amostra em `Temperatura` fornece uma pressão que inclui a correção de temperatura. Por exemplo, `Tange (09) Vinet` e `Tange (09) BM` para o MgO usam a temperatura inserida. Por outro lado, `Sakai+(11) Vinet` e `Sakai+(11) BM` para o NaCl (B2) são equações isotérmicas e não usam a temperatura. Se a temperatura de referência `T0` pode ser alterada depende da referência.
 
-## Referências por material
+## Referências por material {#references}
 
-O `groupBox` de cada material lista várias equações de estado de diferentes referências, e a pressão calculada por cada fórmula é exibida simultaneamente. Você pode compará-las e escolher a referência que melhor se adequa ao seu estudo ou às suas condições de medição. Exemplos representativos são mostrados abaixo.
-
-### Ouro
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+A caixa de cada material lista várias equações de estado de diferentes referências, e a pressão calculada por cada fórmula é exibida simultaneamente. Você pode escolher e comparar as referências que se adequam ao seu estudo e às suas condições de medição. A caixa do ouro, por exemplo, tem esta aparência.
 
 ![Lista de referências de equações de estado para o ouro](../assets/cap-pt-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-Para o ouro (`Au (Gold)`), estão disponíveis as equações de estado `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)` e `Fratanduono (21)`.
+As referências disponíveis para cada material, com suas fórmulas e parâmetros, estão listadas em [Fórmulas por fonte](#per-source).
 
-### NaCl (estrutura B1)
-
-![Lista de referências de equações de estado para NaCl-B1](../assets/cap-pt-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-Para `NaCl (B1)`, estão disponíveis as equações de estado `Brown (99)`, `Matsui (12)` e `Skelton (84)`.
-
-### Periclásio (MgO)
-
-![Lista de referências de equações de estado para o periclásio MgO](../assets/cap-pt-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-Para `MgO (Periclase)`, estão disponíveis as equações de estado `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` e `Jackson (98)`.
-
-!!! note "Outros materiais"
-    A platina (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), o `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), o `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), o `Re` (`Zha et al. (04)` etc.) e o `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) também oferecem a escolha entre várias referências. O corindo (`Al2O3 (Corundum)`) tem uma única referência, `Dubrovinsky (98)`, e o `Pb` tem uma, `Strässle+(14)`.
-
-## Teoria das equações de estado
+## Teoria das equações de estado {#theory}
 
 A equação de estado \( P = P(V, T) \) expressa a relação entre pressão, volume e temperatura de uma substância; o papel desta ferramenta é obter a pressão \( P \) a partir do volume medido \( V \). A pressão é calculada como a soma de um **termo de compressão isotérmica** \( P_\text{st}(V) \) na temperatura de referência e um **termo de pressão térmica** \( \Delta P_\text{th} \) devido à diferença de temperatura.
 

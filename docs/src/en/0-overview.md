@@ -20,8 +20,8 @@ PDIndexer offers the following features.
 | Comparison with known crystals | Calculate the diffraction lines of known crystals and overlay them on the observed profile for identification. See [Crystal Parameter](3-crystal-parameter.md) for details. |
 | Calibration with standards | Using equations of state (EOS) such as NaCl EOS and Pt EOS, estimate the pressure from the measured cell volume of a standard material at the specified temperature. See [Equation of State (EOS)](5-equation-of-states.md) for details. |
 | Peak fitting | Fit the position, full width at half maximum (FWHM), and intensity of diffraction peaks. See [Fitting](6-fitting-diffraction-peaks.md) for details. |
-| Lattice-parameter refinement | Refine lattice constants from peak positions by least squares. The **Cell Finder** can also search for lattice constants from peak positions. |
-| Sequential Analysis | Batch-process a series of files with the **Sequential Analysis** feature. See [Sequential Analysis](7-sequential-analysis.md) for details. |
+| Lattice-parameter refinement | Refine lattice constants from peak positions by least squares. The `Cell Finder` can also search for lattice constants from peak positions. |
+| Sequential Analysis | Batch-process a series of files with the `Sequential Analysis` feature. See [Sequential Analysis](7-sequential-analysis.md) for details. |
 | Import / export | Import crystal structures from CIF and AMC files, and export to CSV, TSV, and GSAS (Rietveld) formats. |
 | Automatic loading | Watch the clipboard or a folder to automatically read profiles/crystals copied from other apps (e.g. IPAnalyzer) or newly created files. |
 

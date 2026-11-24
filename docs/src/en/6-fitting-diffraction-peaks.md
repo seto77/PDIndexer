@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Fitting diffraction peaks
 
-The `Fitting diffraction peaks` tool fits the peaks of a diffraction profile with an appropriate function, derives the d-spacing from each peak position 2θ, and refines the lattice constants by least squares. It is launched from the toolbar of the main window.
+The `Fitting Diffraction Peaks (F)` tool fits the peaks of a diffraction profile with an appropriate function, derives the d-spacing from each peak position 2θ, and refines the lattice constants by least squares. It is launched from the toolbar of the main window.
 
 ![Whole peak-fitting window](../assets/cap-en-auto/FormFitting.png)
 
@@ -59,7 +59,7 @@ Here you make detailed settings used when fitting the peak profiles.
 
 ![Search Range and Initial FWHM](../assets/cap-en-auto/FormFitting.groupBox3.groupBox2.png)
 
-- `Search Range`: Sets the range over which fitting is performed. That is, the region within ±Search Range of the calculated diffraction-line position is taken as the fitting target for that peak.
+- `Search Range`: Sets the range over which fitting is performed. That is, the region within ±`Search Range` of the calculated diffraction-line position is taken as the fitting target for that peak.
 - `Initial FWHM`: Specifies the initial full width at half maximum of the profile function. It is used as the starting value for least-squares convergence.
 
 Pressing `Apply to all` applies the current settings to all diffraction lines at once.
@@ -91,7 +91,7 @@ where \(\eta\) is the fraction of the Lorentzian component. The split form repre
 
 ![Pattern Decomposition](../assets/cap-en-auto/FormFitting.groupBox3.flowLayoutPanelPatternDecomposition.png)
 
-When the Search Ranges of two or more selected diffraction lines overlap, this option selects whether to perform pattern decomposition (simultaneous fitting of the overlapping peaks).
+When the `Search Range` regions of two or more selected diffraction lines overlap, this option selects whether to perform pattern decomposition (simultaneous fitting of the overlapping peaks).
 
 - `in each crystal`: Performs pattern decomposition independently for each crystal.
 - `between crystals`: Performs pattern decomposition across all crystals.

@@ -65,12 +65,6 @@
   <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Perfil</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Color de línea</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Anchura de línea</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Comentario</value>
   </data>
@@ -91,9 +85,6 @@
   </data>
   <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
     <value>Curva B-Spline</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Tiempo de exposición</value>
   </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. Suavizado</value>

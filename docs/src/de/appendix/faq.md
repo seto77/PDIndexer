@@ -84,8 +84,8 @@ Wenn `Nach dem Laden des Profils horizontale Achse anpassen` auf dem Reiter `Hor
 
 ### Was ist der Unterschied zwischen dem Reiter `Horizontale Achse` des Hauptfensters und `Achseneinstellung` im Fenster Profilparameter?
 
-- Der **Reiter `Horizontale Achse`** (Hauptfenster) legt nur fest, **wie die Daten angezeigt werden**; die Profildaten selbst ändern sich nicht.
-- **[`Achseneinstellung`](../4-profile-parameter.md#axis-setting)** (Fenster Profilparameter) schreibt **die Bedingungen um, unter denen das Profil gemessen wurde** (Strahlungstyp, Wellenlänge, Take-off-Winkel usw.). Wenn Sie beim Lesen der Datei die falsche Strahlung oder Wellenlänge gewählt haben, korrigieren Sie sie hier. Wenn Sie Werte in der falschen **Einheit** eingegeben haben, lesen Sie die Originaldatei erneut ein.
+- Der Reiter `Horizontale Achse` (Hauptfenster) legt nur fest, **wie die Daten angezeigt werden**; die Profildaten selbst ändern sich nicht.
+- [`Achseneinstellung`](../4-profile-parameter.md#axis-setting) (Fenster Profilparameter) schreibt **die Bedingungen um, unter denen das Profil gemessen wurde** (Strahlungstyp, Wellenlänge, Take-off-Winkel usw.). Wenn Sie beim Lesen der Datei die falsche Strahlung oder Wellenlänge gewählt haben, korrigieren Sie sie hier. Wenn Sie Werte in der falschen **Einheit** eingegeben haben, lesen Sie die Originaldatei erneut ein.
 
 ### Energiedispersive Daten (weiße Röntgenstrahlung, `.npd` / `.nxs`) haben eine falsche horizontale Achse, oder es erscheinen keine Beugungslinien.
 
@@ -95,7 +95,7 @@ Prüfen Sie im Dialog, der beim Lesen der Datei erscheint, ob die **Energieeinhe
 
 Ja.
 
-- Für eine `.gsa`-Datei (drei durch Leerzeichen getrennte Spalten mit 2θ in Zenti-Grad) wählen Sie im Datenkonvertierungsdialog 2θ als horizontale Achse und Zenti-Grad (centi-degree) als Einheit.
+- Für eine `.gsa`-Datei (drei durch Leerzeichen getrennte Spalten mit 2θ in Zenti-Grad) wählen Sie im Datenkonvertierungsdialog 2θ als horizontale Achse und `Zenti-Grad` als Einheit.
 - Für Daten auf einer q-Achse (Wellenzahl) wählen Sie q als horizontale Achse. Sie können Gitterkonstanten auch auf der q-Achse verfeinern.
 
 ## Peak-Anpassung und Gitterkonstanten {#fitting}

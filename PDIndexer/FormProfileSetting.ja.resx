@@ -113,20 +113,11 @@
   <data name="groupBox3.Text" xml:space="preserve">
     <value>基本情報</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>線の色</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>線の幅</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>コメント</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
     <value>名前</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>露出時間</value>
   </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. スムージング</value>

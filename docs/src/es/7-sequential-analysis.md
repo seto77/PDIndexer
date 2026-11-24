@@ -71,7 +71,7 @@ El volumen de celda unidad refinado `V`, las aristas de celda `A`, `B`, `C` (Å)
 
 ![Pestaña de presión](../assets/cap-es-auto/FormSequentialAnalysis.tabControl.tabPagePressure.png)
 
-La presión derivada de las constantes de celda de cada perfil mediante una [ecuación de estado](5-equation-of-states.md). Cuando se selecciona un estándar de presión como Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo o Pb en la ventana `Equation of State`, aparece una columna por investigador (por escala publicada). Cuando no se selecciona ningún estándar, la presión se calcula a partir de la ecuación de estado asignada al cristal de destino.
+La presión derivada de las constantes de celda de cada perfil mediante una [ecuación de estado](5-equation-of-states.md). Cuando se selecciona un estándar de presión como Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo o Pb en la ventana `Ecuaciones de estado`, aparece una columna por investigador (por escala publicada). Cuando no se selecciona ningún estándar, la presión se calcula a partir de la ecuación de estado asignada al cristal de destino.
 
 ### Ecuación de Singh
 
@@ -110,12 +110,12 @@ Cada salida del análisis secuencial también está disponible desde una macro (
 | --- | --- |
 | `PDI.Sequential.Open()` / `Close()` | Abrir / cerrar la ventana |
 | `PDI.Sequential.Execute()` | Ejecutar el análisis secuencial |
-| `PDI.Sequential.GetCSV_2theta()` | 2θ |
-| `PDI.Sequential.GetCSV_D()` | Distancia interplanar |
-| `PDI.Sequential.GetCSV_FWHM()` | FWHM |
-| `PDI.Sequential.GetCSV_Intensity()` | Intensidad |
-| `PDI.Sequential.GetCSV_CellConstants()` | Constantes de celda |
-| `PDI.Sequential.GetCSV_Pressure()` | Presión |
-| `PDI.Sequential.GetCSV_Singh()` | Ecuación de Singh |
+| `PDI.Sequential.GetCSV_2theta()` | `2θ (°)` |
+| `PDI.Sequential.GetCSV_D()` | `Distancia interplanar (Å)` |
+| `PDI.Sequential.GetCSV_FWHM()` | `FWHM (grados)` |
+| `PDI.Sequential.GetCSV_Intensity()` | `Intensidad` |
+| `PDI.Sequential.GetCSV_CellConstants()` | `Constantes de celda (Å, °)` |
+| `PDI.Sequential.GetCSV_Pressure()` | `Presión (GPa)` |
+| `PDI.Sequential.GetCSV_Singh()` | `Ecuación de Singh` |
 
 Cada `GetCSV_...()` devuelve la pestaña correspondiente como una cadena CSV. `PDI.Sequential.Directory` obtiene/establece la carpeta de destino, y combinándola con `PDI.File.SaveText(...)` se escriben los resultados en archivos. Consulte [Macro](8-macro.md) para más detalles.

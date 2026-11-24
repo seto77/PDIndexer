@@ -20,8 +20,8 @@ PDIndexer offre le seguenti funzioni.
 | Confronto con cristalli noti | Calcola le linee di diffrazione di cristalli noti e le sovrappone al profilo osservato per l'identificazione. Per i dettagli, vedi [Parametri del cristallo](3-crystal-parameter.md). |
 | Calibrazione con materiali standard | Utilizzando equazioni di stato (EOS) come NaCl EOS e Pt EOS, stima la pressione dal volume di cella misurato di un materiale standard alla temperatura specificata. Per i dettagli, vedi [Equazione di stato (EOS)](5-equation-of-states.md). |
 | Fitting dei picchi | Fitta la posizione, la larghezza a metà altezza (FWHM) e l'intensità dei picchi di diffrazione. Per i dettagli, vedi [Fitting](6-fitting-diffraction-peaks.md). |
-| Raffinamento dei parametri reticolari | Raffina i parametri reticolari dalle posizioni dei picchi con i minimi quadrati. Il **Cell Finder** può anche cercare i parametri reticolari a partire dalle posizioni dei picchi. |
-| Analisi sequenziale | Elabora in blocco una serie di file con la funzione **Analisi sequenziale**. Per i dettagli, vedi [Analisi sequenziale](7-sequential-analysis.md). |
+| Raffinamento dei parametri reticolari | Raffina i parametri reticolari dalle posizioni dei picchi con i minimi quadrati. Il `Cell Finder` può anche cercare i parametri reticolari a partire dalle posizioni dei picchi. |
+| Analisi sequenziale | Elabora in blocco una serie di file con la funzione `Analisi sequenziale`. Per i dettagli, vedi [Analisi sequenziale](7-sequential-analysis.md). |
 | Importazione / esportazione | Importa strutture cristalline da file CIF e AMC ed esporta nei formati CSV, TSV e GSAS (Rietveld). |
 | Caricamento automatico | Monitora gli appunti o una cartella per leggere automaticamente profili/cristalli copiati da altre app (ad es. IPAnalyzer) o file appena creati. |
 

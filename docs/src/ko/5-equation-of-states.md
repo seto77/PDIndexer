@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 상태 방정식
 
-메인 창 툴바에서 `Equation of States`(상태 방정식) 아이콘을 클릭하면 아래와 같은 창이 열립니다. 이 도구는 표준 물질의 상태 방정식(EOS, Equation of State)으로부터 압력을 계산합니다.
+메인 창 툴바에서 `상태 방정식` 아이콘을 클릭하면 아래와 같은 창이 열립니다. 이 도구는 표준 물질의 상태 방정식(EOS, Equation of State)으로부터 압력을 계산합니다.
 
 ![상태 방정식 창 전체](../assets/cap-ko-auto/FormEOS.png)
 
 고압 실험에서는 시료와 함께 압력 기준이 되는 표준 물질(압력 마커)을 넣어 측정하고, 그 표준 물질의 격자 상수(부피)와 알려진 상태 방정식으로부터 압력을 역산합니다. 이 도구는 그 계산을 수행합니다.
 
-## 사용 방법
+!!! tip "이 페이지의 구성"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **압력 구하기**: [사용 방법](#how-to-use), [입력 파라미터](#input-parameters)
+    - **계산식 확인하기**: [상태 방정식의 이론](#theory), [출처별 계산식](#per-source)
+    - **표 찾아보기**: [스플라인 보간에 사용하는 P–V–T 표](#pvt-tables)
+
+## 사용 방법 {#how-to-use}
 
 1. 창 상단의 체크박스에서 압력을 구하려는 표준 물질을 선택합니다.
 2. 선택한 물질마다 창 하단에 계산 결과(압력)가 표시됩니다.
@@ -23,19 +29,19 @@
 
 | 표준 물질 | 설명 |
 | --- | --- |
-| `Au (Gold)` | 금 |
-| `Pt (Platinum)` | 백금 |
+| `Au (금)` | 금 |
+| `Pt (백금)` | 백금 |
 | `NaCl (B1)` | 염화나트륨(B1 구조, 암염형) |
 | `NaCl (B2)` | 염화나트륨(B2 구조, CsCl형) |
-| `MgO (Periclase)` | 산화마그네슘(페리클레이스) |
-| `Al2O3 (Corundum)` | 산화알루미늄(강옥) |
+| `MgO (페리클레이스)` | 산화마그네슘(페리클레이스) |
+| `Al2O3 (커런덤)` | 산화알루미늄(강옥) |
 | `Ar` | 아르곤 |
 | `Re` | 레늄 |
 | `Mo` | 몰리브덴 |
 | `Pb` | 납 |
 | `hBN` | 육방정 질화붕소 |
 
-## 입력 파라미터
+## 입력 파라미터 {#input-parameters}
 
 각 물질의 `groupBox`에서는 다음 값을 입력하거나 확인할 수 있습니다.
 
@@ -43,38 +49,22 @@
 | --- | --- |
 | `a` / `V` | 측정된 격자 상수 또는 부피. 메인 창에서 회절선을 움직이면 자동으로 갱신됩니다. |
 | `a0` / `V0` | 상압(기준 상태)에서의 격자 상수 또는 부피. |
-| `Temperature` | 시료 온도. 열압력을 포함하는 상태 방정식(고온 EOS)에 사용됩니다. |
+| `온도` | 시료 온도. 열압력을 포함하는 상태 방정식(고온 EOS)에 사용됩니다. |
 | `T0` | 기준 온도. 입력한 `T0`가 사용되는지는 출처에 따라 다릅니다(많은 식은 원 연구의 기준 온도를 내부적으로 사용합니다). |
 
 !!! tip "온도를 고려한 상태 방정식"
-    일부 출처는 열압력(thermal pressure)을 포함하는 고온 상태 방정식을 지원하며, `Temperature`에 시료 온도를 입력하면 온도 보정을 반영한 압력을 얻을 수 있습니다. 예를 들어 MgO의 `Tange (09) Vinet`와 `Tange (09) BM`은 입력한 온도를 사용합니다. 반면 NaCl (B2)의 `Sakai+(11) Vinet`와 `Sakai+(11) BM`은 등온 식이므로 온도를 사용하지 않습니다. 기준 온도 `T0`를 변경할 수 있는지는 출처에 따라 다릅니다.
+    일부 출처는 열압력(thermal pressure)을 포함하는 고온 상태 방정식을 지원하며, `온도`에 시료 온도를 입력하면 온도 보정을 반영한 압력을 얻을 수 있습니다. 예를 들어 MgO의 `Tange (09) Vinet`와 `Tange (09) BM`은 입력한 온도를 사용합니다. 반면 NaCl (B2)의 `Sakai+(11) Vinet`와 `Sakai+(11) BM`은 등온 식이므로 온도를 사용하지 않습니다. 기준 온도 `T0`를 변경할 수 있는지는 출처에 따라 다릅니다.
 
-## 물질별 출처(참고 문헌)
+## 물질별 출처(참고 문헌) {#references}
 
-각 물질의 `groupBox`에는 여러 출처의 상태 방정식이 나열되어 있으며, 각 식으로 계산한 압력이 동시에 표시됩니다. 연구나 측정 조건에 맞는 출처를 선택하여 비교할 수 있습니다. 아래에 대표적인 물질의 출처 예시를 나타냅니다.
-
-### 금(Gold)
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+각 물질의 상자에는 여러 출처의 상태 방정식이 나열되어 있으며, 각 식으로 계산한 압력이 동시에 표시됩니다. 연구나 측정 조건에 맞는 출처를 선택하여 비교할 수 있습니다. 예를 들어 금의 상자는 다음과 같습니다.
 
 ![금의 상태 방정식 출처 목록](../assets/cap-ko-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-금(`Au (Gold)`)에서는 `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)`, `Fratanduono (21)`의 상태 방정식을 사용할 수 있습니다.
+물질별로 사용할 수 있는 출처와 그 계산식·파라미터는 [출처별 계산식](#per-source)에 정리되어 있습니다.
 
-### NaCl(B1 구조)
-
-![NaCl-B1의 상태 방정식 출처 목록](../assets/cap-ko-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-`NaCl (B1)`에서는 `Brown (99)`, `Matsui (12)`, `Skelton (84)`의 상태 방정식을 사용할 수 있습니다.
-
-### 페리클레이스(Periclase, MgO)
-
-![페리클레이스 MgO의 상태 방정식 출처 목록](../assets/cap-ko-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-`MgO (Periclase)`에서는 `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)`, `Jackson (98)`의 상태 방정식을 사용할 수 있습니다.
-
-!!! note "그 밖의 물질"
-    백금(`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)`(`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar`(`Ross et al. (86)`, `Jephcoat (98)`), `Re`(`Zha et al. (04)` 등), `Mo`(`Zhao+(00)`, `Huang+(16)MGD`)도 여러 출처 중에서 선택할 수 있습니다. 강옥(`Al2O3 (Corundum)`)은 `Dubrovinsky (98)`, `Pb`는 `Strässle+(14)`의 출처 하나씩만 있습니다.
-
-## 상태 방정식의 이론
+## 상태 방정식의 이론 {#theory}
 
 물질의 압력·부피·온도의 관계를 나타내는 식이 상태 방정식 \( P = P(V, T) \)이며, 측정한 부피 \( V \)로부터 압력 \( P \)를 구하는 것이 이 도구의 역할입니다. 압력은 기준 온도에서의 **등온 압축항** \( P_\text{st}(V) \)와, 기준 온도와의 차이에 의한 **열압력항** \( \Delta P_\text{th} \)의 합으로 계산합니다.
 

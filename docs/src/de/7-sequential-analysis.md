@@ -8,7 +8,7 @@
 Mit der Schaltfläche `Sequentielle Analyse` in der Symbolleiste des Hauptfensters öffnen und schließen Sie dieses Fenster.
 
 !!! note "Gemeinsam mit [Beugungspeak-Anpassung](6-fitting-diffraction-peaks.md)"
-    Die sequentielle Analyse teilt ihre Anpassungseinstellungen mit dem Fenster `Fitting diffraction peaks`. Öffnen Sie zuerst das Fenster `Fitting diffraction peaks`, wählen Sie den Zielkristall aus und markieren Sie die Beugungslinien (Peaks), die Sie anpassen möchten. Sind diese nicht vorbereitet, wenn Sie `Ausführen` drücken, weist Sie eine Meldung darauf hin.
+    Die sequentielle Analyse teilt ihre Anpassungseinstellungen mit dem Fenster `Reflexe anpassen`. Öffnen Sie zuerst das Fenster `Reflexe anpassen`, wählen Sie den Zielkristall aus und markieren Sie die Beugungslinien (Peaks), die Sie anpassen möchten. Sind diese nicht vorbereitet, wenn Sie `Ausführen` drücken, weist Sie eine Meldung darauf hin.
 
 ## Grundlegender Arbeitsablauf
 
@@ -71,7 +71,7 @@ Das verfeinerte Elementarzellvolumen `V`, die Zellkanten `A`, `B`, `C` (Å), die
 
 ![Registerkarte Druck](../assets/cap-de-auto/FormSequentialAnalysis.tabControl.tabPagePressure.png)
 
-Der aus den Gitterkonstanten jedes Profils mithilfe einer [Zustandsgleichung](5-equation-of-states.md) abgeleitete Druck. Wenn im Fenster `Equation of State` ein Druckstandard wie Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo oder Pb ausgewählt ist, erscheint eine Spalte pro Forscher (pro berichteter Skala). Ist kein Standard ausgewählt, wird der Druck aus der dem Zielkristall zugewiesenen Zustandsgleichung berechnet.
+Der aus den Gitterkonstanten jedes Profils mithilfe einer [Zustandsgleichung](5-equation-of-states.md) abgeleitete Druck. Wenn im Fenster `Zustandsgleichungen` ein Druckstandard wie Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo oder Pb ausgewählt ist, erscheint eine Spalte pro Forscher (pro berichteter Skala). Ist kein Standard ausgewählt, wird der Druck aus der dem Zielkristall zugewiesenen Zustandsgleichung berechnet.
 
 ### Singh-Gleichung
 

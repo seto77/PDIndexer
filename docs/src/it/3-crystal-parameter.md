@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Parametri del cristallo
 
-Facendo clic sull'icona `Crystal Parameter` nella barra degli strumenti della finestra principale si apre la sotto-finestra mostrata di seguito. Qui si imposta di quali cristalli visualizzare i picchi di diffrazione e come tali picchi vengono disegnati. Nella parte inferiore della finestra è integrato un database di cristalli per cercare e importare strutture.
+Facendo clic sull'icona `Parametri del cristallo` nella barra degli strumenti della finestra principale si apre la sotto-finestra mostrata di seguito. Qui si imposta di quali cristalli visualizzare i picchi di diffrazione e come tali picchi vengono disegnati. Nella parte inferiore della finestra è integrato un database di cristalli per cercare e importare strutture.
 
 ![La finestra Parametri del cristallo](../assets/cap-it-auto/FormCrystal.png)
 
@@ -9,10 +9,10 @@ La finestra è divisa in quattro aree principali.
 
 | Area | Scopo |
 | --- | --- |
-| `Diffraction Peak Option` | Come vengono visualizzate le linee di diffrazione |
-| `Crystal List` | Una checklist di cristalli condivisa con la finestra principale |
-| `Crystal Information` | Parametri dettagliati per il cristallo selezionato (a schede) |
-| `Crystal database` | Ricerca e importazione basate su AMCSD |
+| `Opzioni dei picchi di diffrazione` | Come vengono visualizzate le linee di diffrazione |
+| `Elenco cristalli` | Una checklist di cristalli condivisa con la finestra principale |
+| `Informazioni sul cristallo` | Parametri dettagliati per il cristallo selezionato (a schede) |
+| `Database dei cristalli` | Ricerca e importazione basate su AMCSD |
 
 ---
 
@@ -51,8 +51,8 @@ Ad esempio, nel sistema cubico i piani (333) e (115) sono non equivalenti ma han
 
 | Elemento | Descrizione |
 | --- | --- |
-| `Angle threshold` | Quanto devono essere vicini i picchi per essere uniti, espresso in gradi (`°`). |
-| `Energy threshold` | Per i dati a dispersione di energia, l'intervallo di unione espresso in energia (`eV`). |
+| `Soglia angolare` | Quanto devono essere vicini i picchi per essere uniti, espresso in gradi (`°`). |
+| `Soglia di energia` | Per i dati a dispersione di energia, l'intervallo di unione espresso in energia (`eV`). |
 
 !!! tip
     Il vecchio manuale indicava la soglia in ångström, ma la versione attuale la specifica in gradi (`°`) o in energia (`eV`) a seconda del tipo di asse orizzontale.
@@ -67,8 +67,8 @@ Seleziona per quali cristalli etichettare gli indici delle linee di diffrazione 
 
 | Opzione | Destinazione |
 | --- | --- |
-| `all checked crystals` | Ogni cristallo selezionato |
-| `only selected crystal` | Solo il cristallo attualmente selezionato nell'elenco |
+| `tutti i cristalli spuntati` | Ogni cristallo selezionato |
+| `solo il cristallo selezionato` | Solo il cristallo attualmente selezionato nell'elenco |
 
 ---
 
@@ -76,7 +76,7 @@ Seleziona per quali cristalli etichettare gli indici delle linee di diffrazione 
 
 ![L'elenco dei cristalli](../assets/cap-it-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-Mostra le stesse informazioni dell'elenco dei cristalli nella finestra principale. I cristalli selezionati hanno le loro linee di diffrazione disegnate nella finestra principale. Ogni riga mostra una casella di controllo (`Check`), un colore di disegno (`PeakColor`) e il nome del cristallo (`Crystal`).
+Mostra le stesse informazioni dell'elenco dei cristalli nella finestra principale. I cristalli selezionati hanno le loro linee di diffrazione disegnate nella finestra principale. Ogni riga mostra una casella di controllo (`Spunta`), un colore di disegno (`Colore picco`) e il nome del cristallo (`Cristallo`).
 
 ### Pulsanti freccia su/giù (↑ / ↓)
 
@@ -113,7 +113,7 @@ Modifica e visualizza le informazioni dettagliate del cristallo selezionato su d
 | --- | --- |
 | `Info base` | Parametri reticolari, sistema cristallino, gruppo spaziale e altre informazioni di base |
 | `Info atomi` | Tipi di atomo, occupazioni, coordinate e fattori di temperatura |
-| `Ref.` | Informazioni di riferimento sull'articolo di origine, sugli autori e così via |
+| `Rif.` | Informazioni di riferimento sull'articolo di origine, sugli autori e così via |
 | `EOS` | Impostazioni dell'equazione di stato per la compressione e l'espansione termica |
 
 ### Scheda Info base
@@ -144,7 +144,7 @@ Imposta l'equazione di stato (EOS) per ciascun cristallo, che governa il modo in
 | Campo | Descrizione |
 | --- | --- |
 | `Use EOS` | Abilita il calcolo della pressione EOS per questo cristallo. |
-| `T0` / `Temperature` | Temperatura di riferimento / misurata. |
+| `T0` / `Temperatura` | Temperatura di riferimento / misurata. |
 | `V0` | Volume di riferimento della cella elementare. |
 | `K0`, `K'0` | Modulo di compressibilità isotermo e la sua derivata rispetto alla pressione. |
 | Forma isoterma | `BM3` (Birch-Murnaghan del terzo ordine, predefinito) / `BM4` / `Vinet` / `AP2` / `Keane`. |
@@ -169,13 +169,13 @@ Fornisce funzioni di ricerca e importazione per più di 20.000 strutture cristal
 
 Elenca i cristalli contenuti nel database. Se vengono inserite condizioni di ricerca, vengono mostrati solo i cristalli che le soddisfano.
 
-Selezionando un qualsiasi cristallo nella tabella si trasferiscono le sue informazioni a [Crystal Information](#crystal-information). Per aggiungerlo all'elenco dei cristalli, premi il pulsante `Add` o `Replace` nell'area Crystal List.
+Selezionando un qualsiasi cristallo nella tabella si trasferiscono le sue informazioni a [Crystal Information](#crystal-information). Per aggiungerlo all'elenco dei cristalli, premi il pulsante `Aggiungi` o `Sostituisci` nell'area Crystal List.
 
 ### Opzioni di ricerca
 
 ![Opzioni di ricerca](../assets/cap-it-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.png)
 
-Inserisci le condizioni di ricerca. Dopo averle inserite, premi il pulsante `Search` o il tasto Invio. Ogni condizione può essere abilitata o disabilitata con la sua casella di controllo.
+Inserisci le condizioni di ricerca. Dopo averle inserite, premi il pulsante `Cerca` o il tasto Invio. Ogni condizione può essere abilitata o disabilitata con la sua casella di controllo.
 
 #### Name
 
@@ -185,7 +185,7 @@ Inserisci il nome del cristallo.
 
 ![Ricerca per elemento e parametri di cella](../assets/cap-it-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Premendo il pulsante `Periodic Table` si apre una finestra separata in cui scegliere gli elementi da cercare. Ogni pulsante di elemento cambia il proprio stato ogni volta che lo si preme.
+Premendo il pulsante `Tavola periodica` si apre una finestra separata in cui scegliere gli elementi da cercare. Ogni pulsante di elemento cambia il proprio stato ogni volta che lo si preme.
 
 I pulsanti nella parte superiore della finestra cambiano lo stato di tutti gli elementi contemporaneamente.
 
@@ -196,7 +196,7 @@ I pulsanti nella parte superiore della finestra cambiano lo stato di tutti gli e
 | `must exclude` | Deve escludere (vengono rimossi i cristalli che contengono uno qualsiasi degli elementi specificati). |
 
 !!! tip
-    Selezionando `Ignore scattering factor` è possibile eseguire la ricerca senza tenere conto dei fattori di scattering.
+    Selezionando `Ignora fattore di diffusione` è possibile eseguire la ricerca senza tenere conto dei fattori di scattering.
 
 #### Reference
 

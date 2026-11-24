@@ -35,8 +35,6 @@ Ogni pulsante della barra degli strumenti apre e chiude una finestra di analisi 
 | `Adattamento picchi di diffrazione (F)` | Apre e chiude la finestra Adattamento picchi per adattare i picchi di diffrazione (posizione, FWHM, intensità). | [Fitting dei picchi di diffrazione](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | Apre e chiude la finestra Cell Finder per cercare i parametri reticolari dalle posizioni dei picchi. | — |
 | `Analisi sequenziale` | Apre e chiude la finestra Analisi sequenziale per l'elaborazione in batch di una serie di file. | [Analisi sequenziale](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Apre e chiude la finestra Atomic Position Finder per cercare le posizioni atomiche dalle intensità di diffrazione. | — |
-| `Analisi LPO` | Apre e chiude la finestra Analisi LPO (orientazione preferenziale del reticolo). | — |
 
 !!! note
     Le finestre principali possono essere aperte e chiuse anche con le scorciatoie da tastiera: `Ctrl+Shift+C` (Parametri cristallo), `Ctrl+Shift+E` (Equazioni di stato), `Ctrl+Shift+F` (Parametri adattamento), `Ctrl+Shift+D` (cambia modalità picco) e `Ctrl+Shift+S` (Analisi sequenziale). Inoltre, `Ctrl+Shift+Space` attiva/disattiva la spunta del cristallo selezionato, `Ctrl+Alt+Space` attiva/disattiva la spunta della riflessione selezionata nell'elenco delle riflessioni della finestra di adattamento dei picchi, e `Ctrl+Shift+V` legge come profilo il testo presente negli appunti. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
@@ -97,10 +95,10 @@ La scheda `Asse orizzontale` imposta la modalità di visualizzazione dell'asse. 
 | Voce | Descrizione |
 | --- | --- |
 | `Dopo la lettura del profilo, cambia l'asse orizzontale` | Se spuntato, allinea automaticamente le impostazioni dell'asse orizzontale a quelle del profilo appena caricato. |
-| 2θ (degree) | Imposta l'asse orizzontale sull'angolo. Scegliendo il pulsante di opzione `X-ray` si ottiene l'angolo di diffusione per i raggi X; seleziona una sorgente di raggi X caratteristica o `Custom` dall'elenco a discesa e specifica la lunghezza d'onda. Scegliendo il pulsante di opzione `Electron` si ottiene l'angolo di diffusione per gli elettroni; specificando la tensione di accelerazione si calcola la lunghezza d'onda corretta relativisticamente. |
-| Energy (eV) | Imposta l'asse orizzontale sull'energia (unità eV). Corrisponde a un esperimento di diffrazione a raggi X che utilizza un rivelatore EDX. Imposta correttamente l'angolo di uscita (take-off) EDX. |
-| d-spacing (Å) | Imposta l'asse orizzontale sulla distanza interplanare (spaziatura dei piani reticolari). |
-| q | Imposta l'asse orizzontale sul modulo del vettore di diffusione \( q \). |
+| `2θ (Angolo)` | Imposta l'asse orizzontale sull'angolo. Scegliendo il pulsante di opzione `Raggi X` si ottiene l'angolo di diffusione per i raggi X; seleziona una sorgente di raggi X caratteristica o `Custom` dall'elenco a discesa e specifica la lunghezza d'onda. Scegliendo il pulsante di opzione `Elettroni` si ottiene l'angolo di diffusione per gli elettroni; specificando la tensione di accelerazione si calcola la lunghezza d'onda corretta relativisticamente. |
+| `Energia` | Imposta l'asse orizzontale sull'energia (unità eV). Corrisponde a un esperimento di diffrazione a raggi X che utilizza un rivelatore EDX. Imposta correttamente l'angolo di uscita (take-off) EDX. |
+| `Distanza interpl.` | Imposta l'asse orizzontale sulla distanza interplanare (spaziatura dei piani reticolari). |
+| `q (num. d'onda)` | Imposta l'asse orizzontale sul modulo del vettore di diffusione \( q \). |
 
 La relazione tra l'angolo di diffusione e la distanza interplanare è data dalla legge di Bragg, con \( \lambda \) la lunghezza d'onda:
 

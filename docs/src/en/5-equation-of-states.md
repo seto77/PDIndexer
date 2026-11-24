@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Equation of states
 
-Clicking the `Equation of States` icon on the main window toolbar opens the window shown below. This tool calculates pressure from the equation of state (EOS) of a standard material.
+Clicking the `Equation of State (E)` icon on the main window toolbar opens the window shown below. This tool calculates pressure from the equation of state (EOS) of a standard material.
 
 ![Full Equation of States window](../assets/cap-en-auto/FormEOS.png)
 
@@ -70,7 +70,7 @@ The equation of state \( P = P(V, T) \) expresses the relationship between a sub
 
 $$P(V, T) = P_\text{st}(V) + \Delta P_\text{th}(V, T)$$
 
-The general formulas below are the common framework this form uses to compute the pressure of each standard material; each source either plugs published parameters into this framework or uses a source-specific equation (see [Formulas by source](#per-source) below for the specifics). For the per-crystal EOS tab of the Crystal Information control, see [Crystal parameter](3-crystal-parameter.md).
+The general formulas below are the common framework this form uses to compute the pressure of each standard material; each source either plugs published parameters into this framework or uses a source-specific equation (see [Formulas by source](#per-source) below for the specifics). For the per-crystal `EOS` tab of the `Crystal Information` control, see [Crystal parameter](3-crystal-parameter.md).
 
 ### Symbols
 

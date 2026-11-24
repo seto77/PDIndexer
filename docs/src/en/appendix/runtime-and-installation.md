@@ -14,7 +14,7 @@ The recommended method is the MSI installer. Download `PDIndexer-setup.msi` (x64
 If MSI installation is blocked on a managed Windows PC, use the no-install ZIP package as an alternative. Download the portable ZIP (`PDIndexer-v.<ver>.zip` for x64, or `PDIndexer-v.<ver>_arm64.zip` for Arm), extract the full folder to a user-writable location, and run `PDIndexer.exe` from the extracted folder. Do not run `PDIndexer.exe` directly from inside the ZIP viewer. <!-- 260601Ch / 260625Cl -->
 
 !!! note "About the Windows protection warning"
-    When you run newly downloaded unsigned research software, Windows may display a SmartScreen warning ("Windows protected your PC"). If this happens, click **More info** and then choose **Run anyway** to continue.
+    When you run newly downloaded unsigned research software, Windows may display a SmartScreen warning ("Windows protected your PC"). If this happens, click `More info` and then choose `Run anyway` to continue.
 
 !!! note "About the no-install ZIP package"
     The ZIP package is intended as an alternative for environments where MSI installation, administrator approval, or separate .NET Desktop Runtime installation is difficult. It is not a fully self-contained settings folder: PDIndexer still stores user settings and copied default data under the current user's AppData folder, and may store per-user options under `HKEY_CURRENT_USER\Software\Crystallography\PDIndexer`.
@@ -55,19 +55,19 @@ Some PDIndexer features require substantial computational resources. To improve 
 
 ## Updates (checking for new versions)
 
-From the **Help** menu of the main window, PDIndexer lets you update to the latest version and view author information.
+From the `Help` menu of the main window, PDIndexer lets you update to the latest version and view author information.
 
 | Menu | Function |
 | --- | --- |
-| **Help** ▸ **Program Updates** | Checks whether a newer version has been released and updates the program. |
-| **Help** ▸ **About Me** | Displays version and author information. |
+| `Help` ▸ `Program Updates` | Checks whether a newer version has been released and updates the program. |
+| `Help` ▸ `About Me` | Displays version and author information. |
 
-Choosing **Help** ▸ **About Me** opens a window like the one below, where you can check the current version number and author information.
+Choosing `Help` ▸ `About Me` opens a window like the one below, where you can check the current version number and author information.
 
 ![PDIndexer version information window](../../assets/cap-en-auto/FormAboutMe.png)
 
 !!! tip "Update regularly"
-    Bug fixes and new features are added continuously. Run **Help** ▸ **Program Updates** from time to time to keep PDIndexer up to date.
+    Bug fixes and new features are added continuously. Run `Help` ▸ `Program Updates` from time to time to keep PDIndexer up to date.
 
 ## License
 

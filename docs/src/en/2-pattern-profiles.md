@@ -18,7 +18,7 @@ The vertical axis is the diffraction intensity, which can be shown as `Raw Count
 
 ## Supported input formats
 
-`File ▸ Read profile(s)` loads PDIndexer's own format as well as output from other programs and generic text formats.
+`File` ▸ `Read profile(s)` loads PDIndexer's own format as well as output from other programs and generic text formats.
 
 | Extension | Contents |
 | --- | --- |
@@ -40,10 +40,10 @@ The detailed specification of each format is collected in [File formats](appendi
 
 Profiles can be loaded in several ways.
 
-- **Menu** — `File ▸ Read profile(s)`. Multiple files can be selected at once.
+- **Menu** — `File` ▸ `Read profile(s)`. Multiple files can be selected at once.
 - **Drag and drop** — Drop files from Explorer onto the main window.
-- **Watch Clipboard** — When `Option ▸ Watch Clipboard` is enabled, profiles/crystals copied from other apps (e.g. IPAnalyzer or CSManager) are imported automatically.
-- **Watch File** — When `Option ▸ Watch File` is enabled and a folder is chosen with `Set Directory to the watch`, newly created `pdi` profile files in that folder are read automatically. This is convenient for real-time display during continuous measurement.
+- **Watch Clipboard** — When `Option` ▸ `Watch Clipboard` is enabled, profiles/crystals copied from other apps (e.g. IPAnalyzer or CSManager) are imported automatically.
+- **Watch File** — When `Option` ▸ `Watch File` is enabled and a folder is chosen with `Set Directory to the watch`, newly created `pdi` profile files in that folder are read automatically. This is convenient for real-time display during continuous measurement.
 
 !!! tip "Aligning the horizontal axis automatically"
     Checking `After reading profile, change horizontal axis` switches the horizontal-axis display to match the newly loaded profile immediately after it is read.
@@ -52,8 +52,8 @@ Profiles can be loaded in several ways.
 
 Switch the display mode with `Single/Multi Profile` on the right side of the main window.
 
-- **`Single Profile`** — Loading a new profile replaces the previous data; only one profile is shown at a time.
-- **`Multi Profiles`** — Loaded profiles are overlaid. Use `Increasing intensity by a profile` to offset each profile's intensity slightly so that multiple curves are easier to distinguish. Enabling `Change automatically color` assigns a drawing color to each profile automatically.
+- `Single Profile` — Loading a new profile replaces the previous data; only one profile is shown at a time.
+- `Multi Profiles` — Loaded profiles are overlaid. Use `Increasing intensity by a profile` to offset each profile's intensity slightly so that multiple curves are easier to distinguish. Enabling `Change automatically color` assigns a drawing color to each profile automatically.
 
 ## Profile checklist
 
@@ -62,7 +62,7 @@ The `Profile` list on the right side of the main window shows all loaded profile
 - Only checked profiles are drawn in the central viewer. Use `Check/Uncheck all` to toggle them all at once.
 - Click the `Color` column to change the drawing color of each profile.
 - Reorder the entries in the list to adjust the overlay drawing order.
-- The list is disabled in Single Profile mode and shows multiple profiles in Multi Profiles mode.
+- The list is disabled in `Single Profile` mode and shows multiple profiles in `Multi Profiles` mode.
 
 More detailed profile settings (name, line style, smoothing, background subtraction, axis correction, profile operations, and so on) are made in the [Profile Parameter](4-profile-parameter.md) window, opened by checking the `Profile Parameter` checkbox below the list.
 
@@ -85,11 +85,11 @@ When the horizontal-axis type is energy-dispersive (white X-rays, EDX), enter th
 
 ## Exporting profiles
 
-- **`File ▸ Save profile(s)`** — Saves all loaded profiles in PDIndexer's native `pdi2` format. Axis settings and processing information are preserved.
-- **`File ▸ Export the selected profile(s)`** — Exports profiles in one of the following formats:
+- `File` ▸ `Save profile(s)` — Saves all loaded profiles in PDIndexer's native `pdi2` format. Axis settings and processing information are preserved.
+- `File` ▸ `Export the selected profile(s)` — Exports profiles in one of the following formats:
   - `as CSV (comma separated values) file` — Saves the checked profiles as comma-separated values (X, Y), either together in one file or one file per profile. After you choose the destination, answer `Yes` to merge them or `No` to save them separately. X is the coordinate of the displayed horizontal axis. Numbers always use `.` as the decimal separator, regardless of the regional settings.
   - `as TSV (tab separated values) file` — Saves the same content with tab separators.
   - `as GSAS file` — Writes the selected profile in GSAS (Rietveld) data format. Export is possible only when the horizontal axis is 2θ or neutron TOF.
 
 !!! note "Saving the figure"
-    To save the rendered figure rather than the profile data, use `File ▸ Copy to Clipboard` or `File ▸ Save as Metafile` (EMF). EMF is a vector format that can be imported into PowerPoint and Word.
+    To save the rendered figure rather than the profile data, use `File` ▸ `Copy to Clipboard` or `File` ▸ `Save as Metafile` (EMF). EMF is a vector format that can be imported into PowerPoint and Word.

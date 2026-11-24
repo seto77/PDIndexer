@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # File formats
 
-The files that PDIndexer reads and writes fall into three groups: **profile data**, **crystal lists / crystal structures**, and **drawing output**. All of these I/O operations are accessed from the **File** menu of the [main window](../1-main-window.md).
+The files that PDIndexer reads and writes fall into three groups: **profile data**, **crystal lists / crystal structures**, and **drawing output**. All of these I/O operations are accessed from the `File` menu of the [main window](../1-main-window.md).
 
 This page summarizes the supported extensions, the I/O direction, and notes in table form.
 
@@ -11,7 +11,7 @@ This page summarizes the supported extensions, the I/O direction, and notes in t
 
 ### Reading (Read profile(s))
 
-**File → Read profile(s)** lets you load several files at once. In addition to PDIndexer's own `pdi` / `pdi2` format, it supports a variety of angle-vs-intensity (or energy-vs-intensity) text and binary formats such as WinPIP's `csv`, Fit2D's `chi`, and Rigaku's `ras`. Even formats not listed below can usually be read: any plain angle-vs-intensity text file falls back to a generic parser.
+`File` ▸ `Read profile(s)` lets you load several files at once. In addition to PDIndexer's own `pdi` / `pdi2` format, it supports a variety of angle-vs-intensity (or energy-vs-intensity) text and binary formats such as WinPIP's `csv`, Fit2D's `chi`, and Rigaku's `ras`. Even formats not listed below can usually be read: any plain angle-vs-intensity text file falls back to a generic parser.
 
 | Extension | Origin / format | Notes |
 | --- | --- | --- |
@@ -29,11 +29,11 @@ This page summarizes the supported extensions, the I/O direction, and notes in t
 | Other | Generic angle-vs-intensity text | The comma / whitespace / tab delimiter is detected automatically (via the Data Converter dialog). |
 
 !!! note "Loading several files at once"
-    When you select and read multiple files, after you confirm the Data Converter settings for the first file a message asks whether to reuse the same settings for the remaining files. Choosing **Yes** processes the rest without showing the dialog, which speeds up loading.
+    When you select and read multiple files, after you confirm the Data Converter settings for the first file a message asks whether to reuse the same settings for the remaining files. Choosing `Yes` processes the rest without showing the dialog, which speeds up loading.
 
 ### Data Converter dialog
 
-When you read any file other than `pdi` / `pdi2` (`csv`, `chi`, `ras`, `nxs`, `npd`, `xbm`, `rpt`, `xy`, `gsa`, and generic text), the **Data Converter** dialog opens. It is where you map the imported numeric columns to the correct physical quantities used internally by PDIndexer.
+When you read any file other than `pdi` / `pdi2` (`csv`, `chi`, `ras`, `nxs`, `npd`, `xbm`, `rpt`, `xy`, `gsa`, and generic text), the `Data Converter` dialog opens. It is where you map the imported numeric columns to the correct physical quantities used internally by PDIndexer.
 
 ![Data Converter dialog](../../assets/cap-en-auto/FormDataConverter.png)
 
@@ -41,11 +41,11 @@ The dialog provides the following settings.
 
 | Setting | Description |
 | --- | --- |
-| Horizontal Axis | The physical quantity (2θ, energy, d-spacing, wavenumber, TOF, etc.) and unit represented by the first imported column. |
-| Wave source / wavelength | X-ray / neutron / electron, and the characteristic X-ray line (Kα, etc.) or the wavelength. This determines the conversion to d-spacing and 2θ. |
-| Exposure time (per step) | The exposure time per step in seconds. Used for CPS display and intensity normalization. |
-| For SSD data | For SSD (EDX) data such as `rpt` / `npd` / `xbm` / `nxs`, set the coefficients \(a_0, a_1, a_2\) that convert the channel number \(n\) to energy \(E\). When there are multiple detectors, you can enable/disable each one and set its coefficients individually. `npd` uses the energy column in the file, so these coefficients are not applied to it. |
-| Low energy cutoff | When checked, data points below the specified energy are excluded on import. |
+| `Horizontal axis` | The physical quantity (2θ, energy, d-spacing, wavenumber, TOF, etc.) and unit represented by the first imported column. |
+| `Wave properties` | X-ray / neutron / electron, and the characteristic X-ray line (Kα, etc.) or the wavelength. This determines the conversion to d-spacing and 2θ. |
+| `Exposure time (per step)` | The exposure time per step in seconds. Used for CPS display and intensity normalization. |
+| `For SSD data` | For SSD (EDX) data such as `rpt` / `npd` / `xbm` / `nxs`, set the coefficients \(a_0, a_1, a_2\) that convert the channel number \(n\) to energy \(E\). When there are multiple detectors, you can enable/disable each one and set its coefficients individually. `npd` uses the energy column in the file, so these coefficients are not applied to it. |
+| `Low energy cutoff` | When checked, data points below the specified energy are excluded on import. |
 
 For SSD data, the channel number \(n\) is converted to energy \(E\) (in eV) by a quadratic calibration:
 
@@ -56,13 +56,13 @@ $$
 When reading generic text (an "other" format), the dialog shows the actual file contents in a text box so you can set the horizontal axis, wave source, and so on while inspecting the data. The delimiter (comma / whitespace / tab) and the number of leading header lines to skip are detected automatically.
 
 !!! tip "Watching the clipboard / a folder"
-    Enabling **Option → Watch Clipboard** lets PDIndexer automatically import profiles copied from other apps such as IPAnalyzer. Enabling **Watch File** automatically reads newly created `pdi` files in a chosen folder.
+    Enabling `Option` ▸ `Watch Clipboard` lets PDIndexer automatically import profiles copied from other apps such as IPAnalyzer. Enabling `Option` ▸ `Watch File` automatically reads newly created `pdi` files in a chosen folder.
 
 ### Saving and exporting
 
-**File → Save profile(s)** saves all loaded profiles in PDIndexer's native `pdi2` format.
+`File` ▸ `Save profile(s)` saves all loaded profiles in PDIndexer's native `pdi2` format.
 
-**File → Export the selected profile(s)** writes profiles in one of the following formats.
+`File` ▸ `Export the selected profile(s)` writes profiles in one of the following formats.
 
 | Extension / format | Direction | Notes |
 | --- | --- | --- |
@@ -86,12 +86,12 @@ Crystal lists are saved and loaded as XML files (extension `xml`). Individual cr
 
 | Operation (File menu) | Extension | Direction | Notes |
 | --- | --- | --- | --- |
-| Load crystals (as a new list) | `xml` | In | Loads a crystal list and replaces the current list (the current list is discarded). |
-| Load crystals (and add to the present list) | `xml` | In | Loads a crystal list and appends it to the end of the current list. |
-| Save crystals | `xml` | Out | Saves the current crystal list to a file. |
-| Import CIF, AMC... | `cif` / `amc` | In | Adds structure data in CIF format or AMC (AMCSD) format to the current crystal list. |
-| Export the selected crystal to CIF | `cif` | Out | Saves the selected crystal as a CIF structure-data file. |
-| Revert crystals to the initial state | — | — | Restores the crystal list to its default state as installed. |
+| `Load crystals (as a new list)` | `xml` | In | Loads a crystal list and replaces the current list (the current list is discarded). |
+| `Load crystals (and add to the present list)` | `xml` | In | Loads a crystal list and appends it to the end of the current list. |
+| `Save crystals` | `xml` | Out | Saves the current crystal list to a file. |
+| `Import CIF, AMC...` | `cif` / `amc` | In | Adds structure data in CIF format or AMC (AMCSD) format to the current crystal list. |
+| `Export the selected crystal to CIF` | `cif` | Out | Saves the selected crystal as a CIF structure-data file. |
+| `Revert crystals to the initial state` | — | — | Restores the crystal list to its default state as installed. |
 
 ---
 
@@ -101,8 +101,8 @@ The profile currently shown in the main window can be copied to the clipboard as
 
 | Operation (File menu) | Format | Direction | Notes |
 | --- | --- | --- | --- |
-| Copy to Clipboard (as Bitmap data) | Bitmap | Clipboard | Copies the viewer contents to the clipboard as a bitmap image. |
-| Copy to Clipboard (as Metafile data) | Metafile (vector) | Clipboard | Copies the viewer contents to the clipboard in vector form. |
-| Save as Metafile | `emf` (EMF) | Out | Saves in EMF (Enhanced Metafile) format. Because it preserves vector and font information, the saved `emf` can be read into PowerPoint and Word. |
+| `Copy to Clipboard` ▸ `as Bitmap data` | Bitmap | Clipboard | Copies the viewer contents to the clipboard as a bitmap image. |
+| `Copy to Clipboard` ▸ `as Metafile data` | Metafile (vector) | Clipboard | Copies the viewer contents to the clipboard in vector form. |
+| `Save as Metafile` | `emf` (EMF) | Out | Saves in EMF (Enhanced Metafile) format. Because it preserves vector and font information, the saved `emf` can be read into PowerPoint and Word. |
 
-In addition, **Page Setup**, **Print Preview**, and **Print** let you print the current angle and intensity range directly.
+In addition, `Page Setup`, `Print Preview`, and `Print` let you print the current angle and intensity range directly.

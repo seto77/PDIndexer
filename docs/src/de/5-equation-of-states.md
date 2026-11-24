@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Zustandsgleichungen
 
-Wenn Sie in der Symbolleiste des Hauptfensters auf das Symbol `Equation of States` klicken, öffnet sich das unten gezeigte Fenster. Dieses Werkzeug berechnet den Druck aus der Zustandsgleichung (EOS, Equation of State) eines Standardmaterials.
+Wenn Sie in der Symbolleiste des Hauptfensters auf das Symbol `Zustandsgleichung (E)` klicken, öffnet sich das unten gezeigte Fenster. Dieses Werkzeug berechnet den Druck aus der Zustandsgleichung (EOS, Equation of State) eines Standardmaterials.
 
 ![Vollständiges Fenster der Zustandsgleichungen](../assets/cap-de-auto/FormEOS.png)
 
 Bei Hochdruckexperimenten wird zusammen mit der Probe ein Standardmaterial (Druckmarker) eingebracht, das als Druckreferenz dient. Der Druck wird dann aus der gemessenen Gitterkonstante (Volumen) des Markers und seiner bekannten Zustandsgleichung abgeleitet. Dieses Werkzeug führt diese Berechnung durch.
 
-## Verwendung
+!!! tip "Aufbau dieser Seite"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **Den Druck ablesen**: [Verwendung](#how-to-use), [Eingabeparameter](#input-parameters)
+    - **Die Formeln prüfen**: [Theorie der Zustandsgleichungen](#theory), [Formeln nach Quelle](#per-source)
+    - **Die Tabellen nachschlagen**: [Für die Spline-Interpolation verwendete P–V–T-Tabellen](#pvt-tables)
+
+## Verwendung {#how-to-use}
 
 1. Wählen Sie mit den Kontrollkästchen am oberen Rand des Fensters das oder die Standardmaterialien aus, für die Sie den Druck bestimmen möchten.
 2. Für jedes ausgewählte Material wird das berechnete Ergebnis (Druck) im unteren Teil des Fensters angezeigt.
@@ -24,18 +30,18 @@ Die Standardmaterialien, die mit den Kontrollkästchen am oberen Rand des Fenste
 | Standardmaterial | Beschreibung |
 | --- | --- |
 | `Au (Gold)` | Gold |
-| `Pt (Platinum)` | Platin |
+| `Pt (Platin)` | Platin |
 | `NaCl (B1)` | Natriumchlorid (B1-Struktur, Steinsalztyp) |
 | `NaCl (B2)` | Natriumchlorid (B2-Struktur, CsCl-Typ) |
-| `MgO (Periclase)` | Magnesiumoxid (Periklas) |
-| `Al2O3 (Corundum)` | Aluminiumoxid (Korund) |
+| `MgO (Periklas)` | Magnesiumoxid (Periklas) |
+| `Al2O3 (Korund)` | Aluminiumoxid (Korund) |
 | `Ar` | Argon |
 | `Re` | Rhenium |
 | `Mo` | Molybdän |
 | `Pb` | Blei |
 | `hBN` | Hexagonales Bornitrid |
 
-## Eingabeparameter
+## Eingabeparameter {#input-parameters}
 
 In der `groupBox` jedes Materials können Sie die folgenden Werte eingeben oder ablesen.
 
@@ -43,38 +49,22 @@ In der `groupBox` jedes Materials können Sie die folgenden Werte eingeben oder 
 | --- | --- |
 | `a` / `V` | Gemessene Gitterkonstante oder Volumen. Wird automatisch aktualisiert, wenn Sie eine Beugungslinie im Hauptfenster ziehen. |
 | `a0` / `V0` | Gitterkonstante oder Volumen unter Umgebungsbedingungen (Referenzbedingungen). |
-| `Temperature` | Probentemperatur. Wird von Zustandsgleichungen verwendet, die den thermischen Druck einbeziehen (Hochtemperatur-EOS). |
+| `Temperatur` | Probentemperatur. Wird von Zustandsgleichungen verwendet, die den thermischen Druck einbeziehen (Hochtemperatur-EOS). |
 | `T0` | Referenztemperatur. Ob das eingegebene `T0` verwendet wird, hängt von der Quelle ab (viele Gleichungen verwenden intern die Referenztemperatur der Originalarbeit). |
 
 !!! tip "Temperaturabhängige Zustandsgleichungen"
-    Einige Quellen unterstützen Hochtemperatur-Zustandsgleichungen, die den thermischen Druck einbeziehen; wenn Sie die Probentemperatur in `Temperature` eingeben, erhalten Sie einen Druck, der die Temperaturkorrektur enthält. Beispielsweise verwenden `Tange (09) Vinet` und `Tange (09) BM` für MgO die eingegebene Temperatur. Dagegen sind `Sakai+(11) Vinet` und `Sakai+(11) BM` für NaCl (B2) isotherme Gleichungen und verwenden die Temperatur nicht. Ob die Referenztemperatur `T0` geändert werden kann, hängt von der Quelle ab.
+    Einige Quellen unterstützen Hochtemperatur-Zustandsgleichungen, die den thermischen Druck einbeziehen; wenn Sie die Probentemperatur in `Temperatur` eingeben, erhalten Sie einen Druck, der die Temperaturkorrektur enthält. Beispielsweise verwenden `Tange (09) Vinet` und `Tange (09) BM` für MgO die eingegebene Temperatur. Dagegen sind `Sakai+(11) Vinet` und `Sakai+(11) BM` für NaCl (B2) isotherme Gleichungen und verwenden die Temperatur nicht. Ob die Referenztemperatur `T0` geändert werden kann, hängt von der Quelle ab.
 
-## Quellen je Material
+## Quellen je Material {#references}
 
-In der `groupBox` jedes Materials sind mehrere Zustandsgleichungen aus verschiedenen Quellen aufgeführt, und der von jeder Formel berechnete Druck wird gleichzeitig angezeigt. Sie können sie vergleichen und die Quelle wählen, die am besten zu Ihrer Studie oder Ihren Messbedingungen passt. Nachfolgend werden repräsentative Beispiele gezeigt.
-
-### Gold
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+Im Feld jedes Materials sind mehrere Zustandsgleichungen aus verschiedenen Quellen aufgeführt, und der von jeder Formel berechnete Druck wird gleichzeitig angezeigt. Sie können die Quellen wählen und vergleichen, die zu Ihrer Studie und Ihren Messbedingungen passen. Das Feld für Gold sieht zum Beispiel so aus.
 
 ![Liste der Zustandsgleichungs-Quellen für Gold](../assets/cap-de-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-Für Gold (`Au (Gold)`) stehen die Zustandsgleichungen `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)` und `Fratanduono (21)` zur Verfügung.
+Die für jedes Material verfügbaren Quellen mit ihren Formeln und Parametern sind unter [Formeln nach Quelle](#per-source) aufgeführt.
 
-### NaCl (B1-Struktur)
-
-![Liste der Zustandsgleichungs-Quellen für NaCl-B1](../assets/cap-de-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-Für `NaCl (B1)` stehen die Zustandsgleichungen `Brown (99)`, `Matsui (12)` und `Skelton (84)` zur Verfügung.
-
-### Periklas (MgO)
-
-![Liste der Zustandsgleichungs-Quellen für Periklas MgO](../assets/cap-de-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-Für `MgO (Periclase)` stehen die Zustandsgleichungen `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` und `Jackson (98)` zur Verfügung.
-
-!!! note "Weitere Materialien"
-    Platin (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), `Re` (`Zha et al. (04)` usw.) und `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) bieten ebenfalls eine Auswahl mehrerer Quellen. Für Korund (`Al2O3 (Corundum)`) gibt es eine Quelle, `Dubrovinsky (98)`, und für `Pb` eine, `Strässle+(14)`.
-
-## Theorie der Zustandsgleichungen
+## Theorie der Zustandsgleichungen {#theory}
 
 Die Zustandsgleichung \( P = P(V, T) \) drückt den Zusammenhang zwischen Druck, Volumen und Temperatur einer Substanz aus; die Aufgabe dieses Werkzeugs besteht darin, aus dem gemessenen Volumen \( V \) den Druck \( P \) zu ermitteln. Der Druck wird als Summe eines **isothermen Kompressionsterms** \( P_\text{st}(V) \) bei der Referenztemperatur und eines **thermischen Druckterms** \( \Delta P_\text{th} \) aufgrund der Temperaturdifferenz berechnet.
 

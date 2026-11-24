@@ -20,8 +20,8 @@ PDIndexer bietet die folgenden Funktionen.
 | Vergleich mit bekannten Kristallen | Berechnen Sie die Beugungslinien bekannter Kristalle und überlagern Sie sie zur Identifizierung mit dem beobachteten Profil. Siehe [Kristallparameter](3-crystal-parameter.md) für Details. |
 | Kalibrierung mit Standards | Schätzen Sie mithilfe von Zustandsgleichungen (EOS) wie NaCl EOS und Pt EOS den Druck aus dem gemessenen Zellvolumen eines Standardmaterials bei der angegebenen Temperatur. Siehe [Zustandsgleichung (EOS)](5-equation-of-states.md) für Details. |
 | Peak-Anpassung | Passen Sie Position, Halbwertsbreite (FWHM) und Intensität von Beugungspeaks an. Siehe [Beugungspeak-Anpassung](6-fitting-diffraction-peaks.md) für Details. |
-| Verfeinerung der Gitterparameter | Verfeinern Sie Gitterkonstanten aus Peak-Positionen nach der Methode der kleinsten Quadrate. Der **Cell Finder** kann zudem aus Peak-Positionen nach Gitterkonstanten suchen. |
-| Sequentielle Analyse | Verarbeiten Sie eine Reihe von Dateien stapelweise mit der Funktion **Sequentielle Analyse**. Siehe [Sequentielle Analyse](7-sequential-analysis.md) für Details. |
+| Verfeinerung der Gitterparameter | Verfeinern Sie Gitterkonstanten aus Peak-Positionen nach der Methode der kleinsten Quadrate. Der `Cell Finder` kann zudem aus Peak-Positionen nach Gitterkonstanten suchen. |
+| Sequentielle Analyse | Verarbeiten Sie eine Reihe von Dateien stapelweise mit der Funktion `Sequentielle Analyse`. Siehe [Sequentielle Analyse](7-sequential-analysis.md) für Details. |
 | Import / Export | Importieren Sie Kristallstrukturen aus CIF- und AMC-Dateien und exportieren Sie in die Formate CSV, TSV und GSAS (Rietveld). |
 | Automatisches Laden | Überwachen Sie die Zwischenablage oder einen Ordner, um Profile/Kristalle, die aus anderen Anwendungen (z. B. IPAnalyzer) kopiert wurden, oder neu erstellte Dateien automatisch einzulesen. |
 

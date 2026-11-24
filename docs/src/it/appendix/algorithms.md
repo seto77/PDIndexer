@@ -121,9 +121,9 @@ Si ripete finché la variazione di \( R \) è sufficientemente piccola. Per \( \
 
 ### Funzioni di profilo
 
-PDIndexer offre la **funzione Pseudo Voigt** (una miscela di gaussiana e lorentziana), la **funzione Pearson VII** (una funzione di densità di probabilità), e le loro estensioni asimmetriche **Split Pseudo Voigt** / **Split Pearson VII**. Per velocità e stabilità di convergenza, Symmetric Pseudo Voigt è quella predefinita. Tutte le funzioni sono normalizzate ad area unitaria.
+PDIndexer offre la **funzione Pseudo Voigt** (una miscela di gaussiana e lorentziana), la **funzione Pearson VII** (una funzione di densità di probabilità), e le loro estensioni asimmetriche `Pseudo-Voigt asimmetrica` / `Pearson VII asimmetrica`. Per velocità e stabilità di convergenza, Symmetric Pseudo Voigt è quella predefinita. Tutte le funzioni sono normalizzate ad area unitaria.
 
-**Symmetric Pseudo Voigt**
+`Pseudo-Voigt simmetrica`
 
 $$f(x,\eta,H_k)=\frac{2}{H_k\pi}\left(\eta\,\frac{1}{1+4\left(\dfrac{x}{H_k}\right)^2}+(1-\eta)\sqrt{\pi\ln 2}\cdot 2^{-4\left(\frac{x}{H_k}\right)^2}\right)$$
 
@@ -133,7 +133,7 @@ $$f(x,\eta_l,\eta_h,A,H_k)=\frac{2}{H_k\pi+\dfrac{H_k\pi(\eta_h-\eta_l)(Z-1)}{(1
 
 $$f(x,\eta_l,\eta_h,A,H_k)=\frac{2}{H_k\pi+\dfrac{H_k\pi(\eta_l-\eta_h)(Z-1)}{(1+e^{-A})(\eta_h+Z(1-\eta_h))}}\left(\eta_h\,\frac{1}{1+(1+e^{A})\left(\dfrac{x}{H_k}\right)^2}+(1-\eta_h)Z\cdot 2^{-4(1+e^{A})\left(\frac{x}{H_k}\right)^2}\right)\quad(x>0)$$
 
-**Symmetric Pearson VII**
+`Pearson VII simmetrica`
 
 $$f(x,R,H_k)=\frac{2\sqrt{2^{1/R}-1}\,\Gamma(R)}{\sqrt{\pi}\,\Gamma(R-1/2)\,H_k}\left(1+4(2^{1/R}-1)\left(\frac{x}{H_k}\right)^2\right)^{-R}$$
 
