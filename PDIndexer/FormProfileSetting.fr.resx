@@ -101,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>unité horizontale</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Décaler</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Réglage de l'axe horizontal</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(pour le mode CPS)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>s</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Réglage de l'axe vertical</value>
@@ -153,9 +144,6 @@ l'ordre du polynôme). Plus grand = fenêtre d'ajustement plus large.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Tout supprimer</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Degré du polynôme</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Supprimer</value>

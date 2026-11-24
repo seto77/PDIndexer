@@ -101,17 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Cambia</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>unità orizzontale</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Trasla</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Impostazione asse orizzontale</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(per modalità CPS)</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Impostazione asse verticale</value>
@@ -153,9 +147,6 @@ l'ordine del polinomio). Maggiore = finestra di adattamento più ampia.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Elimina tutto</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Grado del polinomio</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Elimina</value>

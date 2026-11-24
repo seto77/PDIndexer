@@ -101,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>변경</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>가로축 단위</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>이동</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>가로축 설정</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(CPS 모드용)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>초</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>세로축 설정</value>
@@ -156,9 +147,6 @@
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>모두 삭제</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>다항식 차수</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>삭제</value>

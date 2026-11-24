@@ -4448,12 +4448,18 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 {
                     //dp.ForEach(d => writer.Write($"{d.Name}{s}{s}{s}")); //一行目 // 261124Cl 変更前: 名前をそのまま書いていた (名前に ',' があると列がずれた)
                     // 261124Cl 変更: CSV では試料名を二重引用符で囲み、中の " を "" にする (共有の XYFile.ReadCSVFile が対応済み、ReciPro チャットとの取り決め)
-                    //dp.ForEach(d => writer.Write($"{(s == "," ? "\"" + d.Name.Replace("\"", "\"\"") + "\"" : d.Name)}{s}{s}{s}")); //一行目 // 261124Cl 変更前 (直前の版)
+                    //dp.ForEach(d => writer.Write($"{(s == "," ? "\"" + d.Name.Replace("\"", "\"\"") + "\"" : d.Name)}{s}{s}{s}")); //一行目 // 261124Cl 変更前 (2 つ前の版)
                     // 261124Cl 変更 (作者の決定 2026-11-24): 名前の中の改行は空白に置き換える (見出しを 1 行に保ち、どの読込側でも読めるようにする)
+                    //dp.ForEach(d =>
+                    //{
+                    //    var name = d.Name.Replace("\r\n", " ").Replace('\r', ' ').Replace('\n', ' ');
+                    //    writer.Write($"{(s == "," ? "\"" + name.Replace("\"", "\"\"") + "\"" : name)}{s}{s}{s}");
+                    //}); //一行目 // 261125Cl 変更前
+                    // 261125Cl 変更: 改行は ReplaceLineEndings でまとめて空白に (U+0085・U+2028 なども)。TSV では名前の中のタブも空白にする (列がずれないように)
                     dp.ForEach(d =>
                     {
-                        var name = d.Name.Replace("\r\n", " ").Replace('\r', ' ').Replace('\n', ' ');
-                        writer.Write($"{(s == "," ? "\"" + name.Replace("\"", "\"\"") + "\"" : name)}{s}{s}{s}");
+                        var name = d.Name.ReplaceLineEndings(" "); // 261125Cl
+                        writer.Write($"{(s == "," ? "\"" + name.Replace("\"", "\"\"") + "\"" : name.Replace('\t', ' '))}{s}{s}{s}"); // 261125Cl
                     }); //一行目
                     writer.Write("\r\n");
                     dp.ForEach(d => writer.Write($"X{s}Y{s}{s}"));//二行目
@@ -4472,15 +4478,20 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                     }
                 }
             else//個別のファイルに分ける場合
+            {
+                var invalidChars = Path.GetInvalidFileNameChars(); // 261125Cl 追加: ファイル名に使えない文字 (1 文字ごとに配列を作らないよう、ループの外で 1 回だけ取る)
                 dp.ForEach(d =>
                 {
-                    var filename = $"{dlg.FileName[0..^4]} + {d.Name}{(s == "," ? ".csv" : ".tsv")}";
+                    //var filename = $"{dlg.FileName[0..^4]} + {d.Name}{(s == "," ? ".csv" : ".tsv")}"; // 261125Cl 変更前: 名前に改行やファイル名に使えない文字があると StreamWriter が例外
+                    var safeName = string.Concat(d.Name.ReplaceLineEndings(" ").Select(c => Array.IndexOf(invalidChars, c) >= 0 ? '_' : c)); // 261125Cl 追加
+                    var filename = $"{dlg.FileName[0..^4]} + {safeName}{(s == "," ? ".csv" : ".tsv")}"; // 261125Cl 変更
                     using var writer = new StreamWriter(filename);
                     writer.WriteLine($"X{s}Y");//一行目
                     for (int i = 0; i < d.Profile.Pt.Count; i++)
                         //writer.WriteLine($"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}"); // 261124Cl 変更前: 現在のカルチャで書いていた
                         writer.WriteLine(string.Create(System.Globalization.CultureInfo.InvariantCulture, $"{d.Profile.Pt[i].X}{s}{d.Profile.Pt[i].Y}")); // 261124Cl 変更
                 });
+            }
         }
     }
 

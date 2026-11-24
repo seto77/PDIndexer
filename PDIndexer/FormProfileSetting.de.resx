@@ -101,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Ändern</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>horizontale Einheit</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Verschieben</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Einstellung der horizontalen Achse</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(für CPS-Modus)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>Sek.</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Einstellung der vertikalen Achse</value>
@@ -153,9 +144,6 @@ verwendet werden (zusammen mit dem Polynomgrad). Größer = breiteres Anpassungs
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Alle löschen</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Polynomgrad</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Löschen</value>

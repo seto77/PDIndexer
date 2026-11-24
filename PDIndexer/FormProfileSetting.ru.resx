@@ -101,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>единица по горизонтали</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Сдвиг</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Настройка горизонтальной оси</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(для режима CPS)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>сек.</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Настройка вертикальной оси</value>
@@ -156,9 +147,6 @@
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Удалить все</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Степень полинома</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Удалить</value>

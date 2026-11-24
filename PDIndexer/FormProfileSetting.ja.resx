@@ -134,9 +134,6 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>横軸</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>現在の単位</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>横軸シフト</value>
   </data>

@@ -98,20 +98,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Cambiar</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>unidad horizontal</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Desplazar</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Configuración del eje horizontal</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(para modo CPS)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>seg.</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Configuración del eje vertical</value>
@@ -153,9 +144,6 @@ orden polinómico). Mayor = ventana de ajuste más ancha.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Eliminar todo</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Grado del polinomio</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Eliminar</value>
