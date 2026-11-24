@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 状態方程式
 
-メイン画面のツールバーで `Equation of States`（状態方程式）アイコンをクリックすると、下のようなウィンドウが開きます。これは標準物質の状態方程式（EOS, Equation of State）から圧力を計算するためのツールです。
+メイン画面のツールバーで `状態方程式 (E)` アイコンをクリックすると、下のようなウィンドウが開きます。これは標準物質の状態方程式（EOS, Equation of State）から圧力を計算するためのツールです。
 
 ![状態方程式ウィンドウ全体](../assets/cap-ja-auto/FormEOS.png)
 
@@ -44,10 +44,10 @@
 | `a` / `V` | 測定された格子定数、または体積。メイン画面で回折線を動かすと自動的に更新されます。 |
 | `a0` / `V0` | 常圧（基準状態）での格子定数、または体積。 |
 | `Temperature` | 試料の温度。熱圧力を含む状態方程式（高温 EOS）で使用します。 |
-| `T0` | 基準温度。`Temperature` とあわせて熱圧力の補正に使います。 |
+| `T0` | 基準温度。入力した `T0` を使うかどうかは出典によります（多くの式は出典の基準温度を内部で使います）。 |
 
 !!! tip "温度を考慮した状態方程式"
-    一部の出典は熱圧力（thermal pressure）を含む高温状態方程式に対応しています。`Temperature` と `T0` を実験条件に合わせて入力することで、温度補正を加えた圧力が得られます。`Sakai+(11)` の Vinet/BM など、Mie-Grüneisen(-Debye) モデルを用いた式がこれにあたります。
+    一部の出典は熱圧力（thermal pressure）を含む高温状態方程式に対応しており、`Temperature` に試料の温度を入力すると温度補正を加えた圧力が得られます。たとえば MgO の `Tange (09) Vinet`・`Tange (09) BM` は入力した温度を使います。一方、NaCl（B2）の `Sakai+(11) Vinet`・`Sakai+(11) BM` は等温式で、温度を使いません。基準温度 `T0` を変更できるかは出典によります。
 
 ## 物質ごとの出典（参考文献）
 
@@ -57,22 +57,22 @@
 
 ![金の状態方程式の出典一覧](../assets/cap-ja-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-金（`Au (Gold)`）では、`Yokoo (09)`、`Matsui (09)`、`Holmes (89)`、`Jamieson (82)`、`Fratanduono (21)` などの状態方程式が利用できます。
+金（`Au (Gold)`）では、`Jamieson (82)`、`Anderson (89)`、`Sim (02)`、`Tsuchiya (03)`、`Yokoo (09)`、`Fratanduono (21)` の状態方程式が利用できます。
 
 ### NaCl（B1 構造）
 
 ![NaCl-B1 の状態方程式の出典一覧](../assets/cap-ja-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
 
-`NaCl (B1)` では、`Brown (99)`、`Sakai+`、`Matsui (12)` などの状態方程式が利用できます。
+`NaCl (B1)` では、`Brown (99)`、`Matsui (12)`、`Skelton (84)` の状態方程式が利用できます。
 
 ### ペリクレース（Periclase, MgO）
 
 ![ペリクレース MgO の状態方程式の出典一覧](../assets/cap-ja-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
 
-`MgO (Periclase)` では、`Tange (09) BM`、`Tange (09) Vinet`、`Aizawa (06)`、`Dewaele (00)`、`Jackson (98)` などの状態方程式が利用できます。
+`MgO (Periclase)` では、`Tange (09) BM`、`Tange (09) Vinet`、`Aizawa (06)`、`Dewaele (00)`、`Jackson (98)` の状態方程式が利用できます。
 
 !!! note "そのほかの物質"
-    白金（`Pt (Platinum)`：`Fratanduono (21)`、`Holmes (89)` ほか）、`NaCl (B2)`（`Sakai (02)`、`Ueda+(08)` ほか）、コランダム（`Al2O3 (Corundum)`：`Sata (02)` ほか）、`Ar`（`Dubrovinsky (98)`、`Ross et al. (86)`、`Jephcoat (98)` ほか）、`Re`（`Zha et al. (04)` ほか）、`Mo`（`Zhao+(00)`、`Huang+(16) MGD` ほか）、`Pb`（`Strässle+(14)` ほか）も同様に、複数の出典から選択できます。
+    白金（`Pt (Platinum)`：`Jamieson (82)`、`Holmes (89)`、`Matsui (09)`、`Yokoo (09)`、`Fratanduono (21)`）、`NaCl (B2)`（`Sata (02) (Pt)`、`Sata (02) (Mg)`、`Ueda+(08)`、`Sakai+(11) BM`、`Sakai+(11) Vinet`）、`Ar`（`Ross et al. (86)`、`Jephcoat (98)`）、`Re`（`Zha et al. (04)` ほか）、`Mo`（`Zhao+(00)`、`Huang+(16)MGD`）も、複数の出典から選択できます。コランダム（`Al2O3 (Corundum)`）は `Dubrovinsky (98)`、`Pb` は `Strässle+(14)` の 1 つです。
 
 ## 状態方程式の理論
 
@@ -187,7 +187,7 @@ Jephcoat98 は γ を体積に線形依存させます: $\gamma = \gamma_0 + \ga
 | Tange09 Vinet | Vinet + Tange 熱項 | K0=160.63, K0'=4.367；θ0=761, γ0=1.442, a=0.138, b=5.4 |
 | Tange09 BM | BM3 + Tange 熱項 | K0=160.64, K0'=4.221；θ0=761, γ0=1.431, a=0.29, b=3.5 |
 
-Tange 熱項は γ の体積依存を $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ とし、Debye 内部エネルギーを θ/T の多項式で近似します。
+Tange 熱項は γ の体積依存を $\gamma=\gamma_0\left[1+a\left((V/V_0)^{b}-1\right)\right]$ とし、Debye 内部エネルギーを数値積分で求めます。
 
 ### 塩化ナトリウム NaCl（B2 構造）
 

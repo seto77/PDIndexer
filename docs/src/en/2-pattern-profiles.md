@@ -86,10 +86,10 @@ When the horizontal-axis type is energy-dispersive (white X-rays, EDX), enter th
 ## Exporting profiles
 
 - **`File ▸ Save profile(s)`** — Saves all loaded profiles in PDIndexer's native `pdi2` format. Axis settings and processing information are preserved.
-- **`File ▸ Export the selected profile(s)`** — Exports the selected profile(s) in one of the following formats:
-  - `as CSV (comma separated values) file` — comma-separated (angle, intensity)
-  - `as TSV (tab separated values) file` — tab-separated
-  - `as GSAS file` — GSAS (Rietveld) data format
+- **`File ▸ Export the selected profile(s)`** — Exports profiles in one of the following formats:
+  - `as CSV (comma separated values) file` — Saves the checked profiles as comma-separated values (X, Y), either together in one file or one file per profile. After you choose the destination, answer `Yes` to merge them or `No` to save them separately. X is the coordinate of the displayed horizontal axis. Numbers always use `.` as the decimal separator, regardless of the regional settings.
+  - `as TSV (tab separated values) file` — Saves the same content with tab separators.
+  - `as GSAS file` — Writes the selected profile in GSAS (Rietveld) data format. Export is possible only when the horizontal axis is 2θ or neutron TOF.
 
 !!! note "Saving the figure"
     To save the rendered figure rather than the profile data, use `File ▸ Copy to Clipboard` or `File ▸ Save as Metafile` (EMF). EMF is a vector format that can be imported into PowerPoint and Word.

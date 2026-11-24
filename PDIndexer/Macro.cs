@@ -372,7 +372,8 @@ public class Macro : MacroBase
             return dlg.ShowDialog() == DialogResult.OK ? dlg.FileNames : [];
         });
 
-        [Help("Read profile data from the given file.\r\n If 'filename' is omitted (or does not exist), a file selection dialog will open.", "string filename")]
+        //[Help("Read profile data from the given file.\r\n If 'filename' is omitted (or does not exist), a file selection dialog will open.", "string filename")] // 261124Cl 変更前
+        [Help("Read profile data from the given file.\r\n If 'fileName' is omitted (or does not exist), a file selection dialog will open.", "string fileName")] // 261124Cl 変更: ヘルプの引数名を実際のシグネチャに合わせた (キーワード引数で呼ぶときに効く)
         public void ReadProfiles(string fileName = "") => Execute(() =>
         {
             if (!System.IO.File.Exists(fileName))
@@ -632,23 +633,28 @@ public class Macro : MacroBase
         // 旧版は main.formProfile.radioButton*.Checked と listBoxTwoProfiles1/2 を直接触り、
         // private void arithmetic() ヘルパを持っていたが FormMain 側の runProfileArithmetic に集約済み。
 
-        [Help("Calculate the average of the profiles whose indices are listed in 'indices' (e.g. [1,3,5,9]).\r\n 'output' is the name given to the resulting profile.", "int[] indices, string output")]
+        //[Help("Calculate the average of the profiles whose indices are listed in 'indices' (e.g. [1,3,5,9]).\r\n 'output' is the name given to the resulting profile.", "int[] indices, string output")] // 261124Cl 変更前
+        [Help("Calculate the average of the profiles whose indices are listed in 'intArray' (e.g. [1,3,5,9]).\r\n 'outputName' is the name given to the resulting profile.", "int[] intArray, string outputName")] // 261124Cl 変更: ヘルプの引数名を実際のシグネチャに合わせた (キーワード引数で呼ぶときに効く)
         public void Average(int[] intArray, string outputName = "")
             => Execute(() => main.RunProfileAverage(intArray, outputName));
 
-        [Help("Calculate profile1 + profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")]
+        //[Help("Calculate profile1 + profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")] // 261124Cl 変更前
+        [Help("Calculate profile1 + profile2.\r\n Each profile is specified by its index.\r\n 'outputName' is the name given to the resulting profile.", "int index1, int index2, string outputName")] // 261124Cl 変更: ヘルプの引数名を実際のシグネチャに合わせた (キーワード引数で呼ぶときに効く)
         public void AddTwoProfiles(int index1, int index2, string outputName = "")
             => Execute(() => main.RunProfileAddition(index1, index2, outputName));
 
-        [Help("Calculate profile1 - profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")]
+        //[Help("Calculate profile1 - profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")] // 261124Cl 変更前
+        [Help("Calculate profile1 - profile2.\r\n Each profile is specified by its index.\r\n 'outputName' is the name given to the resulting profile.", "int index1, int index2, string outputName")] // 261124Cl 変更: ヘルプの引数名を実際のシグネチャに合わせた (キーワード引数で呼ぶときに効く)
         public void SubtractTwoProfiles(int index1, int index2, string outputName = "")
             => Execute(() => main.RunProfileSubtraction(index1, index2, outputName));
 
-        [Help("Calculate profile1 * profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")]
+        //[Help("Calculate profile1 * profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")] // 261124Cl 変更前
+        [Help("Calculate profile1 * profile2.\r\n Each profile is specified by its index.\r\n 'outputName' is the name given to the resulting profile.", "int index1, int index2, string outputName")] // 261124Cl 変更: ヘルプの引数名を実際のシグネチャに合わせた (キーワード引数で呼ぶときに効く)
         public void MultiplyTwoProfiles(int index1, int index2, string outputName = "")
             => Execute(() => main.RunProfileMultiplication(index1, index2, outputName));
 
-        [Help("Calculate profile1 / profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")]
+        //[Help("Calculate profile1 / profile2.\r\n Each profile is specified by its index.\r\n 'output' is the name given to the resulting profile.", "int index1, int index2, string output")] // 261124Cl 変更前
+        [Help("Calculate profile1 / profile2.\r\n Each profile is specified by its index.\r\n 'outputName' is the name given to the resulting profile.", "int index1, int index2, string outputName")] // 261124Cl 変更: ヘルプの引数名を実際のシグネチャに合わせた (キーワード引数で呼ぶときに効く)
         public void DivideTwoProfiles(int index1, int index2, string outputName = "")
             => Execute(() => main.RunProfileDivision(index1, index2, outputName));
     }

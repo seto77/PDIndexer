@@ -76,14 +76,14 @@ Selects which crystals have their diffraction-line indices (Miller indices) labe
 
 ![The crystal list](../assets/cap-en-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-This shows the same information as the Profile checklist on the main window. Checked crystals have their diffraction lines drawn on the main window. Each row shows a checkbox (`Check`), a drawing color (`PeakColor`), and the crystal name (`Crystal`).
+This shows the same information as the crystal list in the main window. Checked crystals have their diffraction lines drawn on the main window. Each row shows a checkbox (`Check`), a drawing color (`PeakColor`), and the crystal name (`Crystal`).
 
 ### Up/Down arrow buttons (↑ / ↓)
 
 Change the order of the crystals.
 
 !!! note
-    Rows 1 through 6 are reserved for the equation of state (EOS) and cannot be reordered. See [Equation of state](5-equation-of-states.md) for details.
+    The initial crystal list reserves the Flexible Crystal at the top and the next ten pressure standards (for the equation of state, EOS); these rows cannot be reordered. See [Equation of state](5-equation-of-states.md) for details.
 
 ### Add
 
@@ -99,7 +99,7 @@ Removes the currently selected crystal from the list.
 
 ### Delete all
 
-Removes every crystal from the list.
+Removes all unreserved crystals from the list (after a confirmation).
 
 ---
 

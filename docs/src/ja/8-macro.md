@@ -100,12 +100,12 @@ PDIndexer 固有の機能は、すべてルートオブジェクト `PDI` 以下
 | `GetDirectoryPath` | `GetDirectoryPath(string filename = "")` | ディレクトリパス（末尾に `\` 付き）を取得します。`filename` を省略するとフォルダ選択ダイアログが開きます。指定した場合は `filename` のディレクトリ部分を返します。 |
 | `GetFileName` | `GetFileName()` | ファイル選択ダイアログを開き、選択されたファイルのフルパスを返します。キャンセル時は空文字列を返します。 |
 | `GetFileNames` | `GetFileNames()` | 複数選択可能なファイルダイアログを開き、選択されたファイルのフルパスを返します。キャンセル時は空配列を返します。 |
-| `ReadProfiles` | `ReadProfiles(string filename)` | 指定したファイルからプロファイルデータを読み込みます。`filename` を省略（または存在しない）場合はファイル選択ダイアログが開きます。 |
-| `SaveProfiles` | `SaveProfiles(string filename)` | プロファイルデータを指定したファイルへ保存します。`filename` を省略すると保存ダイアログが開きます。 |
-| `ReadCrystals` | `ReadCrystals(string filename)` | 指定したファイルから結晶データを読み込みます。`filename` を省略（または存在しない）場合はファイル選択ダイアログが開きます。 |
-| `SaveCrystals` | `SaveCrystals(string filename)` | 結晶データを指定したファイルへ保存します。`filename` を省略すると保存ダイアログが開きます。 |
-| `SaveMetafile` | `SaveMetafile(string filename)` | 現在のパターンを Windows メタファイル（`.emf`）として保存します。`filename` を省略すると保存ダイアログが開きます。 |
-| `SaveText` | `SaveText(string text, string filename)` | 指定したテキスト内容を `.txt` ファイルへ保存します。`filename` を省略すると保存ダイアログが開きます。 |
+| `ReadProfiles` | `ReadProfiles(string fileName = "")` | 指定したファイルからプロファイルデータを読み込みます。`fileName` を省略（または存在しない）場合はファイル選択ダイアログが開きます。 |
+| `SaveProfiles` | `SaveProfiles(string filename = "")` | プロファイルデータを指定したファイルへ保存します。`filename` を省略すると保存ダイアログが開きます。 |
+| `ReadCrystals` | `ReadCrystals(string filename = "")` | 指定したファイルから結晶データを読み込みます。`filename` を省略（または存在しない）場合はファイル選択ダイアログが開きます。 |
+| `SaveCrystals` | `SaveCrystals(string filename = "")` | 結晶データを指定したファイルへ保存します。`filename` を省略すると保存ダイアログが開きます。 |
+| `SaveMetafile` | `SaveMetafile(string filename = "")` | 現在のパターンを Windows メタファイル（`.emf`）として保存します。`filename` を省略すると保存ダイアログが開きます。 |
+| `SaveText` | `SaveText(string text, string filename = "")` | 指定したテキスト内容を `.txt` ファイルへ保存します。`filename` を省略すると保存ダイアログが開きます。 |
 
 ### PDI.Drawing — 描画範囲
 
@@ -160,15 +160,15 @@ PDIndexer 固有の機能は、すべてルートオブジェクト `PDI` 以下
 
 ### PDI.ProfileOperator — プロファイルの演算
 
-各プロファイルはリスト内のインデックスで指定します。`output` は結果のプロファイルに付ける名前です。
+各プロファイルはリスト内のインデックスで指定します。`outputName` は結果のプロファイルに付ける名前です。
 
 | メンバー | シグネチャ | 説明 |
 | --- | --- | --- |
-| `Average` | `Average(int[] indices, string output)` | `indices` に列挙したインデックス（例: `[1,3,5,9]`）のプロファイルの平均を計算します。`output` は結果のプロファイルに付ける名前です。 |
-| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string output)` | profile1 + profile2 を計算します。各プロファイルはインデックスで指定します。`output` は結果のプロファイルに付ける名前です。 |
-| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string output)` | profile1 − profile2 を計算します。各プロファイルはインデックスで指定します。`output` は結果のプロファイルに付ける名前です。 |
-| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string output)` | profile1 × profile2 を計算します。各プロファイルはインデックスで指定します。`output` は結果のプロファイルに付ける名前です。 |
-| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string output)` | profile1 ÷ profile2 を計算します。各プロファイルはインデックスで指定します。`output` は結果のプロファイルに付ける名前です。 |
+| `Average` | `Average(int[] intArray, string outputName = "")` | `intArray` に列挙したインデックス（例: `[1,3,5,9]`）のプロファイルの平均を計算します。`outputName` は結果のプロファイルに付ける名前です。 |
+| `AddTwoProfiles` | `AddTwoProfiles(int index1, int index2, string outputName = "")` | profile1 + profile2 を計算します。各プロファイルはインデックスで指定します。`outputName` は結果のプロファイルに付ける名前です。 |
+| `SubtractTwoProfiles` | `SubtractTwoProfiles(int index1, int index2, string outputName = "")` | profile1 − profile2 を計算します。各プロファイルはインデックスで指定します。`outputName` は結果のプロファイルに付ける名前です。 |
+| `MultiplyTwoProfiles` | `MultiplyTwoProfiles(int index1, int index2, string outputName = "")` | profile1 × profile2 を計算します。各プロファイルはインデックスで指定します。`outputName` は結果のプロファイルに付ける名前です。 |
+| `DivideTwoProfiles` | `DivideTwoProfiles(int index1, int index2, string outputName = "")` | profile1 ÷ profile2 を計算します。各プロファイルはインデックスで指定します。`outputName` は結果のプロファイルに付ける名前です。 |
 
 ### PDI.ProfileList — プロファイルリスト
 
@@ -195,7 +195,7 @@ PDIndexer 固有の機能は、すべてルートオブジェクト `PDI` 以下
 | --- | --- | --- |
 | `Open` | `Open()` | 「ピークフィッティング」ウィンドウを開きます。 |
 | `Close` | `Close()` | 「ピークフィッティング」ウィンドウを閉じます。 |
-| `Apply` | `Apply()` | 最適化された格子定数を選択中の結晶へ反映します（フィッティングウィンドウの `Confirm` ボタンを押すのと同等）。 |
+| `Apply` | `Apply()` | 最適化された格子定数を選択中の結晶へ反映します（フィッティングウィンドウの `選択中の結晶に適用` ボタンを押すのと同等）。 |
 | `Check` | `Check(int index = -1, bool state = true)` | 指定したインデックスの格子面のチェック状態を変更します。`index` が -1 のときは現在選択中の面が対象です。 |
 | `Uncheck` | `Uncheck(int index = -1)` | 指定したインデックスの格子面のチェックを外します。`index` が -1 のときは現在選択中の面のチェックを外します。 |
 | `Select` | `Select(int index)` | 指定したインデックスの格子面を選択します。 |

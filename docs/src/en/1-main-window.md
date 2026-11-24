@@ -92,7 +92,7 @@ Switch the display language from `Language` at the right end of the menu bar (11
 
 ## Horizontal Axis tab {#horizontal-axis-tab}
 
-The `Horizontal Axis` tab sets the display mode of the axis. The settings here are display-only and are unrelated to the actual horizontal-axis data (the actual horizontal-axis information can be changed from the [Profile parameter](4-profile-parameter.md)). Because of this, you can align the horizontal axis for comparison even when different X-ray sources were used. For example, even if the loaded profile was acquired with the Cu Kα line, it can be displayed as if it had been acquired at the wavelength of the Mo Kα line.
+The `Horizontal Axis` tab sets the display mode of the axis. The settings here are display-only and are unrelated to the actual horizontal-axis data (the actual horizontal-axis information can be changed in the [Profile Parameter](4-profile-parameter.md) window). Because of this, you can align the horizontal axis for comparison even when different X-ray sources were used. For example, even if the loaded profile was acquired with the Cu Kα line, it can be displayed as if it had been acquired at the wavelength of the Mo Kα line.
 
 | Item | Description |
 | --- | --- |
@@ -141,7 +141,7 @@ In multi-profile mode, the loaded profiles are shown as a list, and only the che
 
 ## Crystal list
 
-Displays and configures the list of crystals. Checking an entry draws diffraction lines at the positions of the diffraction peaks. By default, about 80 crystals are pre-registered.
+Displays and configures the list of crystals. Checking an entry draws diffraction lines at the positions of the diffraction peaks. The initial list includes pressure standards and other crystals.
 
 !!! note "Special rows"
     - The first row (row 0) is the **Flexible Crystal** (cyan background), used for drawing arbitrary diffraction lines.

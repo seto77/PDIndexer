@@ -28,14 +28,14 @@ MSI インストーラーでインストールした PDIndexer の実行には�
 | 項目 | 内容 |
 | --- | --- |
 | OS | Windows（64 bit 版、x64 または Arm64） |
-| ランタイム | `.NET デスクトップ ランタイム 11.0`（**.NET ランタイム** ではなく **デスクトップ ランタイム**。Windows on Arm では **Arm64** 版） |
+| ランタイム | 使うリリースが指定する `.NET デスクトップ ランタイム`（このソースツリーのビルドでは 11.0）。**.NET ランタイム** ではなく **デスクトップ ランタイム** を、アプリと同じアーキテクチャ（x64 または Arm64）でインストールします。 |
 
 !!! warning "「デスクトップ ランタイム」を選んでください"
     ダウンロードページには「.NET ランタイム」と「.NET デスクトップ ランタイム」の 2 種類があります。PDIndexer は WinForms アプリケーションのため、必ず **デスクトップ ランタイム（.NET Desktop Runtime）** の方をインストールしてください。「.NET ランタイム」だけでは起動しません。
 
 - ランタイムのダウンロード先: <https://dotnet.microsoft.com/ja-jp/download/dotnet/11.0>
 
-no-install ZIP 版は対応アーキテクチャ（x64 または Arm64）向けの self-contained パッケージであり、別途 .NET Desktop Runtime をインストールする必要はありません。 <!-- 260601Ch / 260625Cl arm64 -->
+no-install ZIP 版は対応アーキテクチャ（x64 または Arm64）向けの self-contained パッケージで、ランタイムが同梱されているため、別途 .NET Desktop Runtime をインストールする必要はありません。 <!-- 260601Ch / 260625Cl arm64 -->
 
 !!! note "旧バージョンの記載について"
     旧マニュアル（docx）には「.NET Desktop Runtime 6.0 以上」と記載されていますが、現在の PDIndexer は **.NET 11.0** を必要とします。最新版の要件に従ってください。

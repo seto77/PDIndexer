@@ -1,14 +1,14 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Profile parameter
 
-Clicking the `Profile parameter` icon on the main window opens this sub window. Here you make detailed settings for the loaded profiles and apply various numerical processing.
+Clicking the `Profile Parameter (P)` icon on the main window opens this sub window. Here you make detailed settings for the loaded profiles and apply various numerical processing.
 
 ![The whole Profile Parameter window](../assets/cap-en-auto/FormProfileSetting.png)
 
 The left side of the window holds the [Profile checklist](#profile), and the right side is split into three tabbed pages — [Profile processing](#profile-processing), [Axis setting](#axis-setting), and [Profile Operator](#profile-operator). Each processing step can be toggled on/off with a check box and is applied in order from top to bottom.
 
 !!! note
-    Settings made in this window are reflected on the profiles in the [main window](1-main-window.md) in real time. For settings on the crystal side, such as the horizontal-axis unit and the index labels of diffraction lines, see [Crystal Parameter](3-crystal-parameter.md).
+    Settings made in this window are reflected on the profiles in the [main window](1-main-window.md) in real time. Choose the display unit of the horizontal axis on the `Horizontal Axis` tab of the main window. For settings on the crystal side, such as the index labels of diffraction lines, see [Crystal Parameter](3-crystal-parameter.md).
 
 ---
 
@@ -136,16 +136,16 @@ The `Apply for all profiles (without background setting)` button applies the set
 
 ## Axis setting {#axis-setting}
 
-On the `Axis setting` tab you change the horizontal-axis unit, the radiation (incident-beam) type, and the incident-beam energy of the selected profile.
+On the `Axis setting` tab you reset the source horizontal-axis type, wavelength, take-off angle and exposure time of the selected profile. The display unit of the horizontal axis is chosen not here but on the `Horizontal Axis` tab of the main window.
 
 | Item | Description |
 | --- | --- |
-| `Horizontal axis setting` | Changes the current horizontal-axis unit (`horizontal unit`). With `Shift` you can also offset the whole horizontal axis. |
+| `Horizontal axis setting` | Sets the source horizontal-axis type, wavelength and take-off angle; `Change` writes them back to the selected profile. With `Shift` you can also offset the whole horizontal axis. |
 | `Exposure Time` | Sets the exposure time (`sec.`) used in CPS mode (`(for CPS mode)`). |
 | `Vertical axis setting` | Settings related to the vertical axis. |
 
 !!! note
-    The axis setting here changes the physical information that the profile itself holds (unit, radiation type, energy). Unlike the display-only axis transformation in the main window, it affects how the data itself is interpreted. Since the radiation type and energy directly influence the calculation of diffraction-line positions, set the correct values.
+    Clicking `Change` writes the source axis type, take-off angle, wavelength and exposure time back to the profile. Unlike the display-only axis switching in the main window, it affects how the data itself is interpreted. Since the wavelength and take-off angle directly influence the calculation of diffraction-line positions, set the correct values. A wrong input unit chosen at import cannot be corrected here; reopen the source file.
 
 ---
 

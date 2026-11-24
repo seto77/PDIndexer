@@ -35,19 +35,19 @@ The controls around the `Execute` button govern the analysis range and the handl
 
 ## Output tabs
 
-Each tab is a table for one output quantity. Each row corresponds to one profile (the profile name), and each column corresponds to a selected diffraction line (hkl index, or `Peak No.` for a flexible crystal). The tables are held as tab-separated text and are converted to comma-separated values (CSV) when you `Copy` or `Save` them.
+Each tab is a table for one output quantity. Each row corresponds to one profile (the profile name), and each column corresponds to a selected diffraction line (hkl index, or `Peak No.` for a flexible crystal). The tables are held as tab-separated text. `Copy` places it on the clipboard as tab-separated text, and `Save` writes a comma-separated (CSV) file.
 
 ### 2θ (°)
 
 ![2θ tab](../assets/cap-en-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-The fitted peak position, in 2θ (degrees), for each profile and each diffraction line.
+The fitted peak position, in 2θ (degrees), for each profile and each diffraction line. When the horizontal axis is 2θ, the value is converted to degrees whatever the display unit (degrees, centidegrees, radians or milliradians). For other axes such as energy or TOF the column shows `NaN`. For reflections in `Simple` mode, the observed maximum within the search range is written. <!-- 261124Cl changed -->
 
 ### d-spacing (Å)
 
 ![d-spacing tab](../assets/cap-en-auto/FormSequentialAnalysis.tabControl.tabPageDspacing.png)
 
-The interplanar spacing d, in Å, computed from each peak position. It is obtained from the wavelength and 2θ by \( d = \dfrac{\lambda}{2\sin\theta} \).
+The interplanar spacing d, in Å, computed from each peak position with the current horizontal-axis settings (radiation, wavelength, energy or TOF conditions). For angle-dispersive data this is \( d = \dfrac{\lambda}{2\sin\theta} \). <!-- 261124Cl changed -->
 
 ### FWHM (deg.)
 
@@ -80,7 +80,7 @@ The pressure derived from each profile's cell constants using an [equation of st
 The results of Singh's uniaxial-stress / lattice-strain analysis. The trailing number of each profile name is interpreted as the azimuth angle \( \psi \) (degrees), and for each reflection the azimuth-versus-d relation is fitted by least squares (Levenberg–Marquardt). For each reflection it yields the stress-free lattice spacing `d0`, the maximum-strain azimuth `Ψmax`, and a stress-proportional quantity `t/6Ghkl` (the ratio of the differential stress \( t \) to the shear modulus \( G_{hkl} \)). The fitted curves are also drawn in the graph on the tab.
 
 !!! note "When Singh's equation applies"
-    This tab operates on a "stress-analysis mode" series whose profile names end in `...-whole`. Each profile name must carry an azimuth angle as its trailing token (for example `...-30`). For an ordinary series this tab is not updated.
+    If the name of the first profile ends in `whole`, the run enters "stress-analysis mode". In this mode the first profile is skipped, and the text after the last hyphen in each remaining profile name (for example `30` in `...-30`) is read as the azimuth in degrees. An ordinary run that is not in stress-analysis mode clears this tab.
 
 The azimuth-dependent lattice spacing expressed by Singh's equation is approximately
 
@@ -92,7 +92,7 @@ where \( \alpha \) corresponds to `t/6Ghkl` and \( \psi_{\max} \) is the azimuth
 
 | Action | Description |
 | --- | --- |
-| `Copy` | Copy the currently displayed tab to the clipboard as CSV (comma-separated). |
+| `Copy` | Copy the currently displayed tab to the clipboard as tab-separated text. |
 | `Save` | Save the currently displayed tab as a CSV file (filename chosen in a dialog). |
 
 ### Auto save

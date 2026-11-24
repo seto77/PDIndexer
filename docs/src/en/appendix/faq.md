@@ -130,7 +130,7 @@ Use [Sequential analysis](../7-sequential-analysis.md) (open it from the toolbar
 
 ### Can sequential analysis fit several phases (e.g. the sample and a pressure marker) at the same time?
 
-Peaks of all checked crystals are fitted together. However, each sequential run records lattice constants and pressure only for the one crystal selected in the peak-fitting window. To obtain the results for another phase, select that crystal and run again, or use a [macro](../8-macro.md) that switches between the crystals.
+The peaks of all checked crystals are fitted (with pattern decomposition set to `between crystals`, overlapping peaks of different phases are separated together). However, each sequential run records lattice constants and pressure only for the one crystal selected in the peak-fitting window. To obtain the results for another phase, select that crystal and run again, or use a [macro](../8-macro.md) that switches between the crystals.
 
 ### I ran a stress analysis on profiles split by azimuth, but the `Singh` tab is empty.
 

@@ -7,10 +7,10 @@ If you run into a problem while using PDIndexer, check the items below first. Mo
 
 These requirements apply to .NET 11 builds from this source tree. For published releases, follow the runtime requirement stated for that release.
 
-PDIndexer requires the **.NET Desktop Runtime 11.0**. If the runtime is not installed, you may see an error at startup, or the program may exit without doing anything.
+The MSI installation of PDIndexer requires the **.NET Desktop Runtime** specified by that release (builds from this source tree target .NET 11). The no-install ZIP includes its runtime. If the runtime is not installed for an MSI installation, you may see an error at startup, or the program may exit without doing anything.
 
 !!! warning "Fix"
-    Follow [Runtime and Installation](runtime-and-installation.md) to install the latest **.NET Desktop Runtime 11.0** (x64), then restart PDIndexer.
+    Follow [Runtime and Installation](runtime-and-installation.md) to install the **.NET Desktop Runtime** required by the release you use, matching the application architecture (x64 or Arm64), then restart PDIndexer.
 
 ## The UI language does not switch
 
@@ -50,7 +50,7 @@ To calculate theoretical diffraction intensities, the crystal structure must con
 
 ## Fitting reports NA (not available) lattice constants
 
-When refining lattice constants with peak fitting, an insufficient number of independent reflections can leave the lattice constants undetermined, and the result may be reported as NA (not available).
+When refining lattice constants with peak fitting, an insufficient number of independent reflections leaves the lattice constants undetermined. In that case the program keeps the original cell shape and changes only its overall scale, and the error fields show NA (not available). When the number of reflections equals the number of independent lattice constants, the residuals cannot provide standard errors, so the error fields also show NA.
 
 - Depending on the crystal system, you must supply enough reflections for the number of independent lattice constants to be determined (e.g. only \(a\) for cubic, but six values \(a, b, c, \alpha, \beta, \gamma\) for triclinic).
 - If the reflections are linearly dependent (biased toward one direction), certain lattice constants cannot be determined. Include reflections of different orientations.
