@@ -107,7 +107,6 @@ $$
 
 - `選択中の結晶に適用`: 求めた格子定数を、メインプログラム側の選択中の結晶に反映します。
 - `クリップボードにコピー`: 最適化した格子定数をクリップボードにコピーします。
-- `Reset take off angle`: テイクオフ角（取り出し角）をリセットします。
 
 ## Remove fitted peaks（フィッティングしたピークの除去）
 
@@ -115,19 +114,13 @@ $$
 
 ## 関連ツール（Send d-values）
 
-`Send d-values to CellFinder && AtomicPositionFinder` ボタンを押すと、フィッティングで得られた d 値を、ツールバーから起動できる次の解析ツールに送ることができます。
+`Send d-values to CellFinder && AtomicPositionFinder` ボタンを押すと、チェックした反射のフィッティングで得られた d 値を `Cell Finder` に送ります。`Cell Finder` はツールバーから開きます。<!-- 261124Cl 変更 (作者の決定): 現行版で使えない Atomic Position Finder の案内を外した -->
 
 ### Cell Finder（格子定数の探索）
 
 ![Cell Finder](../assets/cap-ja-auto/FormCellFinder.png)
 
 `Cell Finder` は、測定されたピーク位置（d 値の一覧）から、それを説明する格子定数の候補を探索するツールです。未知試料の指数付けに利用します。
-
-### Atomic Position Finder（原子位置の探索）
-
-![Atomic Position Finder](../assets/cap-ja-auto/FormAtomicPositionFinder.png)
-
-`Atomic Position Finder` は、観測された反射の強度などから、結晶構造中の原子位置を探索するツールです。
 
 !!! tip "未知試料の同定"
     `Cell Finder` で格子定数を決めたあと、その結晶を結晶リストに登録すれば、本ツールの最小2乗フィッティングでさらに格子定数を精密化できます。

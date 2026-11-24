@@ -107,7 +107,6 @@ Once enough independent indices are chosen for the least-squares calculation to 
 
 - `Apply to the crystal`: Pushes the refined lattice constants back to the selected crystal in the main program.
 - `Copy to Clipboard`: Copies the optimized lattice constants to the clipboard.
-- `Reset take off angle`: Resets the take-off angle.
 
 ## Remove fitted peaks
 
@@ -115,19 +114,13 @@ This subtracts the fitted peaks from the profile and outputs the residual profil
 
 ## Related tools (Send d-values)
 
-Pressing `Send d-values to CellFinder && AtomicPositionFinder` sends the d-values obtained from the fit to the following analysis tools, which can also be launched from the toolbar.
+Pressing `Send d-values to CellFinder && AtomicPositionFinder` sends the d-values obtained from the fit of the checked reflections to `Cell Finder`. Open `Cell Finder` from the toolbar. <!-- 261124Cl changed (author decision): the Atomic Position Finder, not available in the current version, is no longer described -->
 
 ### Cell Finder
 
 ![Cell Finder](../assets/cap-en-auto/FormCellFinder.png)
 
-`Cell Finder` searches for the unit cell (lattice constants) that explains a set of measured peak positions (a list of d-values), working backward from those positions. It is used to index unknown samples.
-
-### Atomic Position Finder
-
-![Atomic Position Finder](../assets/cap-en-auto/FormAtomicPositionFinder.png)
-
-`Atomic Position Finder` searches for the atomic positions in a crystal structure from quantities such as the intensities of the observed reflections.
+`Cell Finder` searches for candidate lattice constants that explain a set of measured peak positions (a list of d-values). It is used to index unknown samples.
 
 !!! tip "Identifying an unknown sample"
     After determining the lattice constants with `Cell Finder`, register that crystal in the crystal list, and you can refine the lattice constants further with the least-squares fitting of this tool.

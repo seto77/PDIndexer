@@ -35,8 +35,6 @@ Each button on the toolbar toggles a dedicated analysis window.
 | `Fitting Diffraction Peaks (F)` | Toggle the Peak Fitting window to fit diffraction peaks (position, FWHM, intensity). | [Fitting diffraction peaks](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | Toggle the Cell Finder window to search lattice constants from peak positions. | — |
 | `Sequential Analysis` | Toggle the Sequential Analysis window for batch processing of a file series. | [Sequential analysis](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Toggle the Atomic Position Finder window to search atomic positions from diffraction intensities. | — |
-| `LPO Analysis` | Toggle the LPO (lattice-preferred orientation) Analysis window. | — |
 
 !!! note
     The main windows can also be toggled with keyboard shortcuts: `Ctrl+Shift+C` (Crystal Parameter), `Ctrl+Shift+E` (Equation of States), `Ctrl+Shift+F` (Fitting Parameter), `Ctrl+Shift+D` (change peak mode), and `Ctrl+Shift+S` (Sequential Analysis). In addition, `Ctrl+Shift+Space` toggles the check of the selected crystal, `Ctrl+Alt+Space` toggles the check of the selected reflection in the reflection list of the peak-fitting window, and `Ctrl+Shift+V` reads text on the clipboard as a profile. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->

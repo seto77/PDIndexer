@@ -4448,7 +4448,13 @@ public partial class FormMain : FormBase //260604Cl Form→FormBase (F1ヘルプ
                 {
                     //dp.ForEach(d => writer.Write($"{d.Name}{s}{s}{s}")); //一行目 // 261124Cl 変更前: 名前をそのまま書いていた (名前に ',' があると列がずれた)
                     // 261124Cl 変更: CSV では試料名を二重引用符で囲み、中の " を "" にする (共有の XYFile.ReadCSVFile が対応済み、ReciPro チャットとの取り決め)
-                    dp.ForEach(d => writer.Write($"{(s == "," ? "\"" + d.Name.Replace("\"", "\"\"") + "\"" : d.Name)}{s}{s}{s}")); //一行目
+                    //dp.ForEach(d => writer.Write($"{(s == "," ? "\"" + d.Name.Replace("\"", "\"\"") + "\"" : d.Name)}{s}{s}{s}")); //一行目 // 261124Cl 変更前 (直前の版)
+                    // 261124Cl 変更 (作者の決定 2026-11-24): 名前の中の改行は空白に置き換える (見出しを 1 行に保ち、どの読込側でも読めるようにする)
+                    dp.ForEach(d =>
+                    {
+                        var name = d.Name.Replace("\r\n", " ").Replace('\r', ' ').Replace('\n', ' ');
+                        writer.Write($"{(s == "," ? "\"" + name.Replace("\"", "\"\"") + "\"" : name)}{s}{s}{s}");
+                    }); //一行目
                     writer.Write("\r\n");
                     dp.ForEach(d => writer.Write($"X{s}Y{s}{s}"));//二行目
                     writer.Write("\r\n");
