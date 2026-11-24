@@ -26,8 +26,8 @@
 
 | 項目 | 説明 |
 | --- | --- |
-| `Line Color`（線の色） | クリックすると、選択しているプロファイルの描画色を変更できます。 |
-| `Line Width`（線の幅） | プロファイルの線の太さ（`pt`）を設定します。 |
+| `Line color`（線の色） | クリックすると、選択しているプロファイルの描画色を変更できます。 |
+| `Line width`（線の幅） | プロファイルの線の太さ（`pt`）を設定します。 |
 | `名前` | プロファイルの名称を設定します。 |
 | `コメント` | 自由記入のコメント欄です。 |
 
@@ -35,13 +35,13 @@
 
 ## プロファイル処理（Profile processing） {#profile-processing}
 
-`Profile processing` タブでは、選択したプロファイルに対してさまざまな数値処理を施します。処理 1〜7 はそれぞれ独立したチェックボックスで有効化でき、有効にしたものが番号順に適用されます。
+`プロファイル処理` タブでは、選択したプロファイルに対してさまざまな数値処理を施します。処理 1〜7 はそれぞれ独立したチェックボックスで有効化でき、有効にしたものが番号順に適用されます。
 
 ### 1. 2θ オフセット {#two-theta-offset}
 
 ![2θ オフセットのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelTwoThetaOffset.png)
 
-`1. 2θ offeset (for angle-dispersive diffractmetry)` は、角度分散型のデータに対して角度の補正をおこないます。補正式は \( \tan\theta \) に関する二次関数です。
+`1. 2θ オフセット (角度が横軸の場合のみ)` は、角度分散型のデータに対して角度の補正をおこないます。補正式は \( \tan\theta \) に関する二次関数です。
 
 $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
@@ -58,7 +58,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![マスクと補間のパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelMaskingMode.png)
 
-`2. Mask and Interpolation` は、指定した角度範囲（あるいはエネルギー範囲）をマスクし、マスク範囲の外側の強度を用いてプロファイルを補間します。
+`2. マスクと補間` は、指定した角度範囲（あるいはエネルギー範囲）をマスクし、マスク範囲の外側の強度を用いてプロファイルを補間します。
 
 | 項目 | 説明 |
 | --- | --- |
@@ -72,7 +72,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![スムージングのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelSmoothing.png)
 
-`3. Smoothing` は、選択しているプロファイルに平滑化を施します。平滑化アルゴリズムには `Savitzky-Golay` 法を用います。
+`3. スムージング` は、選択しているプロファイルに平滑化を施します。平滑化アルゴリズムには `Savitzky-Golay` 法を用います。
 
 この方法は、注目している \(x\) 位置から \(\pm\) `Point No.` 分のデータに対して、`Order`（次数）の多項式による最小二乗フィッティングをおこない、得られた関数 \(F(x)\) の値を改めてその \(x\) 位置の強度値として採用するものです。
 
@@ -83,7 +83,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![バンドパスフィルターのパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBandPassFilter.png)
 
-`4. Bandpass filter` は、フーリエ変換（FFT）を用いて、指定した周波数より大きい、あるいは小さい成分をカットします。
+`4. バンドパスフィルター` は、フーリエ変換（FFT）を用いて、指定した周波数より大きい、あるいは小さい成分をカットします。
 
 | 項目 | 説明 |
 | --- | --- |
@@ -92,7 +92,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ### 5. Kα2 を除去（Remove Kα2） {#remove-ka2}
 
-`5. Remove Kα2 (if Kα1 is used as X-ray source)` は、選択したプロファイルが Kα1 と Kα2 を分離していない X 線で測定され、かつ Kα1 を指定して読み込まれている場合に、これをチェックすると Kα2 由来の回折強度を除去します。
+`5. Kα2 を除去 (Kα1 が X線源として選択されている場合)` は、選択したプロファイルが Kα1 と Kα2 を分離していない X 線で測定され、かつ Kα1 を指定して読み込まれている場合に、これをチェックすると Kα2 由来の回折強度を除去します。
 
 !!! warning
     この処理は、X 線源として Kα1 を選択している場合にのみ有効です。横軸の単位や入射線の種類は [軸変換](#axis-setting) タブで確認・設定してください。
@@ -101,7 +101,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ![バックグラウンド減算のパネル](../assets/cap-ja-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelBackgroundSubtraction.png)
 
-`6. Background` は、プロファイルからバックグラウンドを減算します。減算方法は 2 通りあります。
+`6. バックグラウンド減算` は、プロファイルからバックグラウンドを減算します。減算方法は 2 通りあります。
 
 #### B-Spline curve（B スプライン曲線）
 
@@ -114,7 +114,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 選択したプロファイルに対して、別のプロファイルをバックグラウンドとして指定できます。`Show background profile` をチェックすると、バックグラウンドとして使用しているプロファイルを表示できます。
 
 !!! note
-    バックグラウンド減算（処理 6）は、後述の `Apply for all profiles` ボタンによる一括適用の対象外です。
+    バックグラウンド減算（処理 6）は、後述の `全てのプロファイルに対して適用 (バックグランド減算は除く)` ボタンによる一括適用の対象外です。
 
 ### 7. 強度のノーマライズ（Normalize intensity） {#normalize}
 
@@ -125,7 +125,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 | 項目 | 説明 |
 | --- | --- |
 | `平均値` / `最大値` | 範囲内の平均値または最大値のどちらを基準にするかを選びます。 |
-| `intensity between`（横軸範囲） | 対象とする横軸範囲を指定します。 |
+| `in the range`（横軸範囲） | 対象とする横軸範囲を指定します。 |
 | `to`（にノーマライズ） | ノーマライズ後の目標強度値を指定します。 |
 
 ### Apply for all profiles ボタン {#apply-all}
@@ -151,7 +151,7 @@ $$ \Delta(2\theta) = a_0 + a_1 \tan\theta + a_2 \tan^2\theta $$
 
 ## プロファイル演算（Profile Operator） {#profile-operator}
 
-`Profile Operator` タブでは、複数プロファイルの平均化や、プロファイル間の算術演算をおこないます。
+`プロファイル演算` タブでは、複数プロファイルの平均化や、プロファイル間の算術演算をおこないます。
 
 計算対象のプロファイルと、おこないたい演算を指定したのち、`計算` ボタンを押すと、演算結果が新しいプロファイルとして追加されます。
 

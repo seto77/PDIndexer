@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Equazioni di stato
 
-Facendo clic sull'icona `Equation of States` nella barra degli strumenti della finestra principale si apre la finestra mostrata di seguito. Questo strumento calcola la pressione a partire dall'equazione di stato (EOS) di un materiale standard.
+Facendo clic sull'icona `Equazione di stato (E)` nella barra degli strumenti della finestra principale si apre la finestra mostrata di seguito. Questo strumento calcola la pressione a partire dall'equazione di stato (EOS) di un materiale standard.
 
 ![Finestra completa delle Equazioni di stato](../assets/cap-it-auto/FormEOS.png)
 
 Negli esperimenti ad alta pressione, insieme al campione viene caricato un materiale standard (marcatore di pressione) che funge da riferimento di pressione. La pressione viene quindi ricavata dal parametro reticolare (volume) misurato del marcatore e dalla sua equazione di stato nota. Questo strumento esegue tale calcolo.
 
-## Come si usa
+!!! tip "Come è organizzata questa pagina"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **Leggere la pressione**: [Come si usa](#how-to-use), [Parametri di ingresso](#input-parameters)
+    - **Verificare le formule**: [Teoria delle equazioni di stato](#theory), [Formule per fonte](#per-source)
+    - **Consultare le tabelle**: [Tabelle P–V–T usate per l'interpolazione con spline](#pvt-tables)
+
+## Come si usa {#how-to-use}
 
 1. Usa le caselle di spunta nella parte superiore della finestra per selezionare il materiale (o i materiali) standard per cui vuoi determinare la pressione.
 2. Per ciascun materiale selezionato, il risultato calcolato (la pressione) viene mostrato nella parte inferiore della finestra.
@@ -23,19 +29,19 @@ I materiali standard selezionabili con le caselle di spunta nella parte superior
 
 | Materiale standard | Descrizione |
 | --- | --- |
-| `Au (Gold)` | Oro |
-| `Pt (Platinum)` | Platino |
+| `Au (Oro)` | Oro |
+| `Pt (Platino)` | Platino |
 | `NaCl (B1)` | Cloruro di sodio (struttura B1, tipo salgemma) |
 | `NaCl (B2)` | Cloruro di sodio (struttura B2, tipo CsCl) |
-| `MgO (Periclase)` | Ossido di magnesio (periclasio) |
-| `Al2O3 (Corundum)` | Ossido di alluminio (corindone) |
+| `MgO (Periclasio)` | Ossido di magnesio (periclasio) |
+| `Al2O3 (Corindone)` | Ossido di alluminio (corindone) |
 | `Ar` | Argon |
 | `Re` | Renio |
 | `Mo` | Molibdeno |
 | `Pb` | Piombo |
 | `hBN` | Nitruro di boro esagonale |
 
-## Parametri di ingresso
+## Parametri di ingresso {#input-parameters}
 
 Il `groupBox` di ciascun materiale consente di inserire o leggere i valori seguenti.
 
@@ -43,38 +49,22 @@ Il `groupBox` di ciascun materiale consente di inserire o leggere i valori segue
 | --- | --- |
 | `a` / `V` | Parametro reticolare o volume misurato. Aggiornato automaticamente quando trascini una linea di diffrazione nella finestra principale. |
 | `a0` / `V0` | Parametro reticolare o volume nelle condizioni ambiente (di riferimento). |
-| `Temperature` | Temperatura del campione. Usata dalle equazioni di stato che includono la pressione termica (EOS ad alta temperatura). |
+| `Temperatura` | Temperatura del campione. Usata dalle equazioni di stato che includono la pressione termica (EOS ad alta temperatura). |
 | `T0` | Temperatura di riferimento. L'uso del valore `T0` inserito dipende dal riferimento (molte equazioni usano internamente la temperatura di riferimento dello studio originale). |
 
 !!! tip "Equazioni di stato dipendenti dalla temperatura"
-    Alcuni riferimenti supportano equazioni di stato ad alta temperatura che includono la pressione termica; inserendo la temperatura del campione in `Temperature` si ottiene una pressione che include la correzione in temperatura. Ad esempio, `Tange (09) Vinet` e `Tange (09) BM` per MgO usano la temperatura inserita. Al contrario, `Sakai+(11) Vinet` e `Sakai+(11) BM` per NaCl (B2) sono equazioni isoterme e non usano la temperatura. La possibilità di modificare la temperatura di riferimento `T0` dipende dal riferimento.
+    Alcuni riferimenti supportano equazioni di stato ad alta temperatura che includono la pressione termica; inserendo la temperatura del campione in `Temperatura` si ottiene una pressione che include la correzione in temperatura. Ad esempio, `Tange (09) Vinet` e `Tange (09) BM` per MgO usano la temperatura inserita. Al contrario, `Sakai+(11) Vinet` e `Sakai+(11) BM` per NaCl (B2) sono equazioni isoterme e non usano la temperatura. La possibilità di modificare la temperatura di riferimento `T0` dipende dal riferimento.
 
-## Riferimenti per materiale
+## Riferimenti per materiale {#references}
 
-Il `groupBox` di ciascun materiale elenca diverse equazioni di stato di riferimenti differenti, e la pressione calcolata da ogni formula viene visualizzata simultaneamente. Puoi confrontarle e scegliere il riferimento più adatto al tuo studio o alle tue condizioni di misura. Di seguito sono mostrati alcuni esempi rappresentativi.
-
-### Oro
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+Il riquadro di ciascun materiale elenca diverse equazioni di stato di riferimenti differenti, e la pressione calcolata da ogni formula viene visualizzata simultaneamente. Puoi scegliere e confrontare i riferimenti adatti al tuo studio e alle tue condizioni di misura. Il riquadro dell'oro, ad esempio, si presenta così.
 
 ![Elenco dei riferimenti di equazioni di stato per l'oro](../assets/cap-it-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-Per l'oro (`Au (Gold)`) sono disponibili le equazioni di stato `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)` e `Fratanduono (21)`.
+I riferimenti disponibili per ciascun materiale, con le relative formule e i parametri, sono elencati in [Formule per fonte](#per-source).
 
-### NaCl (struttura B1)
-
-![Elenco dei riferimenti di equazioni di stato per NaCl-B1](../assets/cap-it-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-Per `NaCl (B1)` sono disponibili le equazioni di stato `Brown (99)`, `Matsui (12)` e `Skelton (84)`.
-
-### Periclasio (MgO)
-
-![Elenco dei riferimenti di equazioni di stato per il periclasio MgO](../assets/cap-it-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-Per `MgO (Periclase)` sono disponibili le equazioni di stato `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)` e `Jackson (98)`.
-
-!!! note "Altri materiali"
-    Anche il platino (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), `Re` (`Zha et al. (04)`, ecc.) e `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) offrono la scelta tra diversi riferimenti. Il corindone (`Al2O3 (Corundum)`) ha un solo riferimento, `Dubrovinsky (98)`, e anche `Pb` ne ha uno solo, `Strässle+(14)`.
-
-## Teoria delle equazioni di stato
+## Teoria delle equazioni di stato {#theory}
 
 L'equazione di stato \( P = P(V, T) \) esprime la relazione tra pressione, volume e temperatura di una sostanza; il compito di questo strumento è ottenere la pressione \( P \) dal volume misurato \( V \). La pressione è calcolata come somma di un **termine di compressione isoterma** \( P_\text{st}(V) \) alla temperatura di riferimento e di un **termine di pressione termica** \( \Delta P_\text{th} \) dovuto alla differenza di temperatura.
 

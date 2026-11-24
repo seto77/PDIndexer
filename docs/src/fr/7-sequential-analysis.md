@@ -71,7 +71,7 @@ Le volume de maille élémentaire affiné `V`, les arêtes de maille `A`, `B`, `
 
 ![Onglet pression](../assets/cap-fr-auto/FormSequentialAnalysis.tabControl.tabPagePressure.png)
 
-La pression dérivée des paramètres de maille de chaque profil à l'aide d'une [équation d'état](5-equation-of-states.md). Lorsqu'un étalon de pression tel que Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo ou Pb est sélectionné dans la fenêtre `Equation of State`, une colonne apparaît par chercheur (par échelle publiée). Lorsqu'aucun étalon n'est sélectionné, la pression est calculée à partir de l'équation d'état attribuée au cristal cible.
+La pression dérivée des paramètres de maille de chaque profil à l'aide d'une [équation d'état](5-equation-of-states.md). Lorsqu'un étalon de pression tel que Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo ou Pb est sélectionné dans la fenêtre `Équations d'état`, une colonne apparaît par chercheur (par échelle publiée). Lorsqu'aucun étalon n'est sélectionné, la pression est calculée à partir de l'équation d'état attribuée au cristal cible.
 
 ### Équation de Singh
 

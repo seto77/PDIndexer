@@ -144,7 +144,7 @@ Define a equação de estado (EOS) por cristal, que governa como os parâmetros 
 | Campo | Descrição |
 | --- | --- |
 | `Use EOS` | Habilita o cálculo de pressão por EOS para este cristal. |
-| `T0` / `Temperature` | Temperatura de referência / medida. |
+| `T0` / `Temperatura` | Temperatura de referência / medida. |
 | `V0` | Volume de referência da célula unitária. |
 | `K0`, `K'0` | Módulo de compressibilidade isotérmico e sua derivada em relação à pressão. |
 | Forma isotérmica | `BM3` (Birch-Murnaghan de terceira ordem, padrão) / `BM4` / `Vinet` / `AP2` / `Keane`. |
@@ -185,7 +185,7 @@ Insira o nome do cristal.
 
 ![Busca por elemento e parâmetros de célula](../assets/cap-pt-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Pressionar o botão `Tabela Periódica` abre uma janela separada onde você escolhe os elementos a buscar. Cada botão de elemento alterna seu estado a cada vez que você o pressiona.
+Pressionar o botão `Tabela periódica` abre uma janela separada onde você escolhe os elementos a buscar. Cada botão de elemento alterna seu estado a cada vez que você o pressiona.
 
 Os botões no topo da janela alternam o estado de todos os elementos de uma só vez.
 

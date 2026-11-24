@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Macro
 
-La plupart des opérations de PDIndexer peuvent être automatisées grâce à la fonction **Macro**. Les macros sont des scripts Python écrits en [IronPython](https://ironpython.net/) (une implémentation de Python qui s'exécute sur .NET), édités et exécutés dans une fenêtre d'éditeur de macros dédiée. Utilisez-les pour automatiser des tâches répétitives, traiter par lots plusieurs fichiers et exporter en masse des résultats vers des fichiers CSV ou image.
+La plupart des opérations de PDIndexer peuvent être automatisées grâce à la fonction `Macro`. Les macros sont des scripts Python écrits en [IronPython](https://ironpython.net/) (une implémentation de Python qui s'exécute sur .NET), édités et exécutés dans une fenêtre d'éditeur de macros dédiée. Utilisez-les pour automatiser des tâches répétitives, traiter par lots plusieurs fichiers et exporter en masse des résultats vers des fichiers CSV ou image.
 
 ![Fenêtre de l'éditeur de macros](../assets/cap-fr-auto/FormMacro.png)
 
@@ -10,9 +10,9 @@ La plupart des opérations de PDIndexer peuvent être automatisées grâce à la
 
 ## Ouvrir l'éditeur de macros
 
-Dans la barre de menus de la fenêtre principale, choisissez **Macro → Éditeur** pour ouvrir la fenêtre de l'éditeur de macros (intitulée `Macro`).
+Dans la barre de menus de la fenêtre principale, choisissez `Macro` ▸ `Éditeur` pour ouvrir la fenêtre de l'éditeur de macros (intitulée `Macro`).
 
-Les macros créées et enregistrées dans l'éditeur sont également listées par leur nom sous le menu **Macro**, ce qui vous permet de les exécuter directement depuis le menu. La liste des macros est enregistrée automatiquement à la fermeture de PDIndexer et restaurée au lancement suivant.
+Les macros créées et enregistrées dans l'éditeur sont également listées par leur nom sous le menu `Macro`, ce qui vous permet de les exécuter directement depuis le menu. La liste des macros est enregistrée automatiquement à la fermeture de PDIndexer et restaurée au lancement suivant.
 
 ## Disposition de la fenêtre de l'éditeur
 
@@ -36,7 +36,7 @@ Utilisez les boutons suivants pour modifier la liste des macros.
 | `Replace` | Remplace la macro sélectionnée dans la liste par le code actuel. |
 | `Delete` | Supprime de la liste la macro sélectionnée. |
 | `↑` / `↓` | Déplace la macro sélectionnée vers le haut ou vers le bas dans la liste. |
-| `Show samples` | Bascule l'affichage des macros d'exemple intégrées (voir ci-dessous). |
+| `Afficher les exemples` | Bascule l'affichage des macros d'exemple intégrées (voir ci-dessous). |
 
 !!! tip "Enregistrement et chargement"
     Les macros peuvent être enregistrées dans des fichiers `.mcr` individuels et chargées depuis ceux-ci. Faites glisser et déposez un fichier `.mcr` sur la fenêtre de l'éditeur pour en charger le contenu. Appuyer sur `Ctrl+S` après l'édition écrase la macro actuellement sélectionnée.
@@ -57,7 +57,7 @@ Exécutez la macro à l'aide des boutons situés en bas de l'éditeur de code.
 
 ### Macros d'exemple
 
-Cocher le bouton `Show samples` affiche dans la liste les macros d'exemple intégrées (en lecture seule). Les exemples sont affichés dans la langue d'interface actuelle (anglais/japonais). Utilisez-les comme référence lorsque vous écrivez vos propres macros. Les exemples intégrés sont :
+Cocher le bouton `Afficher les exemples` affiche dans la liste les macros d'exemple intégrées (en lecture seule). Les exemples sont affichés dans la langue d'interface actuelle (anglais/japonais). Utilisez-les comme référence lorsque vous écrivez vos propres macros. Les exemples intégrés sont :
 
 | Nom | Contenu |
 | --- | --- |
@@ -141,8 +141,8 @@ Les constantes de maille `CellA`–`CellC` sont en \( \mathrm{\AA} \), et `CellA
 
 | Membre | Signature | Description |
 | --- | --- | --- |
-| `Open` | `Open()` | Ouvre la fenêtre 'Crystal List'. |
-| `Close` | `Close()` | Ferme la fenêtre 'Crystal List'. |
+| `Open` | `Open()` | Ouvre la fenêtre `Liste des cristaux`. |
+| `Close` | `Close()` | Ferme la fenêtre `Liste des cristaux`. |
 | `Count` | `Count (get)` | Obtient le nombre total de cristaux dans la liste. |
 | `SelectedName` | `SelectedName (get)` | Obtient le nom du cristal actuellement sélectionné. Renvoie une chaîne vide si aucun cristal n'est sélectionné. |
 | `SelectedIndex` | `SelectedIndex (get/set)` | Obtient/Définit l'index du cristal actuellement sélectionné. |
@@ -174,8 +174,8 @@ Chaque profil est spécifié par son index dans la liste. `outputName` est le no
 
 | Membre | Signature | Description |
 | --- | --- | --- |
-| `Open` | `Open()` | Ouvre la fenêtre 'Profile List'. |
-| `Close` | `Close()` | Ferme la fenêtre 'Profile List'. |
+| `Open` | `Open()` | Ouvre la fenêtre `Profile List`. |
+| `Close` | `Close()` | Ferme la fenêtre `Profile List`. |
 | `DeleteAll` | `DeleteAll()` | Supprime tous les profils de la liste (sans boîte de dialogue de confirmation). |
 | `Delete` | `Delete(int index)` | Supprime le profil à l'index indiqué. |
 | `Count` | `Count (get)` | Obtient le nombre total de profils dans la liste. |
@@ -193,9 +193,9 @@ Pilote la fenêtre [Ajustement des pics de diffraction](6-fitting-diffraction-pe
 
 | Membre | Signature | Description |
 | --- | --- | --- |
-| `Open` | `Open()` | Ouvre la fenêtre 'Fitting peaks'. |
-| `Close` | `Close()` | Ferme la fenêtre 'Fitting peaks'. |
-| `Apply` | `Apply()` | Applique les constantes de maille optimisées au cristal sélectionné (équivalent à cliquer sur le bouton `Apply to the crystal` de la fenêtre d'ajustement). |
+| `Open` | `Open()` | Ouvre la fenêtre `Fitting peaks`. |
+| `Close` | `Close()` | Ferme la fenêtre `Fitting peaks`. |
+| `Apply` | `Apply()` | Applique les constantes de maille optimisées au cristal sélectionné (équivalent à cliquer sur le bouton `Appliquer au cristal` de la fenêtre d'ajustement). |
 | `Check` | `Check(int index = -1, bool state = true)` | Coche ou décoche le plan réticulaire à l'index indiqué. Si `index` vaut -1, le plan actuellement sélectionné est ciblé. |
 | `Uncheck` | `Uncheck(int index = -1)` | Décoche le plan réticulaire à l'index indiqué. Si `index` vaut -1, le plan actuellement sélectionné est décoché. |
 | `Select` | `Select(int index)` | Sélectionne le plan réticulaire à l'index indiqué. |
@@ -209,8 +209,8 @@ Pilote la fenêtre [Analyse séquentielle](7-sequential-analysis.md). Les access
 | Membre | Signature | Description |
 | --- | --- | --- |
 | `Directory` | `Directory (get/set)` | Obtient/Définit le chemin de répertoire complet où les résultats de l'analyse séquentielle sont enregistrés. |
-| `Open` | `Open()` | Ouvre la fenêtre 'Sequential Analysis'. |
-| `Close` | `Close()` | Ferme la fenêtre 'Sequential Analysis'. |
+| `Open` | `Open()` | Ouvre la fenêtre `Analyse séquentielle`. |
+| `Close` | `Close()` | Ferme la fenêtre `Analyse séquentielle`. |
 | `Execute` | `Execute()` | Exécute l'analyse séquentielle sur tous les profils chargés (à partir du numéro de départ, avec le réglage de boucle), en utilisant le cristal et les réflexions sélectionnés dans la fenêtre d'ajustement. La fenêtre d'ajustement doit être ouverte et au moins quatre profils doivent être chargés ; les cases à cocher des profils ne limitent pas l'exécution. |
 | `GetCSV_2theta` | `GetCSV_2theta()` | Obtient les résultats en 2-theta de la dernière analyse séquentielle sous forme de chaîne CSV. |
 | `GetCSV_D` | `GetCSV_D()` | Obtient les résultats de distance interréticulaire (valeur d) de la dernière analyse séquentielle sous forme de chaîne CSV. |
@@ -245,4 +245,4 @@ if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancell
     PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
-Vous pouvez parcourir les autres exemples à partir du bouton `Show samples` de l'éditeur.
+Vous pouvez parcourir les autres exemples à partir du bouton `Afficher les exemples` de l'éditeur.

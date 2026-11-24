@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # ピークフィッティング
 
-`Fitting diffraction peaks` ツールは、回折プロファイルのピークを適当な関数でフィッティングし、ピーク位置 2θ から d 値を求め、最小2乗法によって格子定数を最適化する一連の作業を行います。メインウィンドウのツールバーから起動します。
+`ピークフィッティング (F)` ツールは、回折プロファイルのピークを適当な関数でフィッティングし、ピーク位置 2θ から d 値を求め、最小2乗法によって格子定数を最適化する一連の作業を行います。メインウィンドウのツールバーから起動します。
 
 ![ピークフィッティングのウィンドウ全体](../assets/cap-ja-auto/FormFitting.png)
 
@@ -46,7 +46,7 @@
 リスト下部のボタンで結果を書き出せます。
 
 - `クリップボードにコピー`: 表の内容をクリップボードにコピーします。Excel などに直接貼り付けできます。
-- `Save as CSV`: 表の内容を `.csv` ファイルとして保存します。`Effective digit` で、表に表示する有効桁数を指定できます。
+- `CSV形式で保存`: 表の内容を `.csv` ファイルとして保存します。`小数点以下桁数` で、表に表示する有効桁数を指定できます。
 - `Clear peaks`: Flexible Crystal に手動で追加したピークをすべて削除します。
 
 ## Fitting option（フィッティング条件）
@@ -70,7 +70,7 @@
 
 | ピーク関数 | 内容 |
 | --- | --- |
-| `Simple Search` | 関数フィッティングは行わず、計算上の回折線位置から ±Search Range の範囲でもっとも強度の強い点をピーク位置と認識します。 |
+| `Simple Search` | 関数フィッティングは行わず、計算上の回折線位置から ±（`範囲` の値）の範囲でもっとも強度の強い点をピーク位置と認識します。 |
 | `Symmetric Pseudo Voigt` | 左右対称の擬似フォークト関数でフィッティングします。 |
 | `Symmetric Pearson VII` | 左右対称のピアソン VII 関数でフィッティングします。 |
 | `Split Pseudo Voigt` | 左右非対称の擬似フォークト関数でフィッティングします。 |
@@ -91,10 +91,10 @@ $$
 
 ![パターン分解](../assets/cap-ja-auto/FormFitting.groupBox3.flowLayoutPanelPatternDecomposition.png)
 
-選択された 2 本以上の回折線の Search Range に重なり合いがあるとき、ピーク分解（複数ピークの同時フィッティング）を行うかどうかを選択します。
+選択された 2 本以上の回折線の `範囲` に重なり合いがあるとき、ピーク分解（複数ピークの同時フィッティング）を行うかどうかを選択します。
 
-- `in each crystal`（個々の結晶に対して）: 結晶ごとに独立にピーク分解を行います。
-- `between crystals`（全ての結晶に対して）: すべての結晶にまたがってピーク分解を行います。
+- `個々の結晶に対して`: 結晶ごとに独立にピーク分解を行います。
+- `全ての結晶に対して`: すべての結晶にまたがってピーク分解を行います。
 
 ## Optimized cell constants（最適化した格子定数）
 
@@ -107,7 +107,6 @@ $$
 
 - `選択中の結晶に適用`: 求めた格子定数を、メインプログラム側の選択中の結晶に反映します。
 - `クリップボードにコピー`: 最適化した格子定数をクリップボードにコピーします。
-- `Reset take off angle`: テイクオフ角（取り出し角）をリセットします。
 
 ## Remove fitted peaks（フィッティングしたピークの除去）
 
@@ -115,19 +114,13 @@ $$
 
 ## 関連ツール（Send d-values）
 
-`Send d-values to CellFinder && AtomicPositionFinder` ボタンを押すと、フィッティングで得られた d 値を、ツールバーから起動できる次の解析ツールに送ることができます。
+`Send d-values to CellFinder && AtomicPositionFinder` ボタンを押すと、チェックした反射のフィッティングで得られた d 値を `Cell Finder` に送ります。`Cell Finder` はツールバーから開きます。<!-- 261124Cl 変更 (作者の決定): 現行版で使えない Atomic Position Finder の案内を外した -->
 
 ### Cell Finder（格子定数の探索）
 
 ![Cell Finder](../assets/cap-ja-auto/FormCellFinder.png)
 
 `Cell Finder` は、測定されたピーク位置（d 値の一覧）から、それを説明する格子定数の候補を探索するツールです。未知試料の指数付けに利用します。
-
-### Atomic Position Finder（原子位置の探索）
-
-![Atomic Position Finder](../assets/cap-ja-auto/FormAtomicPositionFinder.png)
-
-`Atomic Position Finder` は、観測された反射の強度などから、結晶構造中の原子位置を探索するツールです。
 
 !!! tip "未知試料の同定"
     `Cell Finder` で格子定数を決めたあと、その結晶を結晶リストに登録すれば、本ツールの最小2乗フィッティングでさらに格子定数を精密化できます。

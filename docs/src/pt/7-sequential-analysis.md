@@ -30,7 +30,7 @@ Os controles em torno do botão `Executar` governam o intervalo de análise e o 
 | Opção | Descrição |
 | --- | --- |
 | `Executar a análise a partir do número especificado (nota: o primeiro é 0)` | Quando marcado, inicia a análise a partir do número de perfil definido na caixa à direita, em vez de a partir do primeiro perfil. O primeiro perfil é o número 0. |
-| `Ciclo` | Ao iniciar a partir de um número, também processa os perfis anteriores ignorados (0 … início − 1) após chegar ao fim, dando a volta para que a série inteira seja analisada. Disponível somente quando o número inicial está habilitado. |
+| `Loop` | Ao iniciar a partir de um número, também processa os perfis anteriores ignorados (0 … início − 1) após chegar ao fim, dando a volta para que a série inteira seja analisada. Disponível somente quando o número inicial está habilitado. |
 | `Fator de tolerância (gera NaN se a variação de volume exceder o valor durante a análise sequencial)` | Quando marcado, rejeita um ajuste (gera `NaN` para essa linha) quando o volume de célula refinado varia em relação ao valor inicial mais do que o valor (em %) à direita. Isso descarta automaticamente os valores discrepantes causados por um ajuste que falhou. |
 
 ## Abas de saída
@@ -41,7 +41,7 @@ Cada aba é uma tabela para uma quantidade de saída. Cada linha corresponde a u
 
 ![Aba 2θ](../assets/cap-pt-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-A posição de pico ajustada, em 2θ (graus), para cada perfil e cada linha de difração. Quando o eixo horizontal é 2θ, o valor é convertido em graus, qualquer que seja a unidade de exibição (graus, centigraus, radianos ou miliradianos). Para outros eixos, como energia ou TOF, a coluna mostra `NaN`. Para reflexões no modo `Simple`, é gravado o máximo observado dentro do intervalo de pesquisa. <!-- 261124Cl changed -->
+A posição de pico ajustada, em 2θ (graus), para cada perfil e cada linha de difração. Quando o eixo horizontal é 2θ, o valor é convertido em graus, qualquer que seja a unidade de exibição (graus, centigraus, radianos ou miliradianos). Para outros eixos, como energia ou TOF, a coluna mostra `NaN`. Para reflexões no modo `Pesquisa simples`, é gravado o máximo observado dentro do intervalo de pesquisa. <!-- 261124Cl changed -->
 
 ### Distância interplanar (Å)
 
@@ -71,7 +71,7 @@ O volume de célula unitária refinado `V`, as arestas da célula `A`, `B`, `C` 
 
 ![Aba de pressão](../assets/cap-pt-auto/FormSequentialAnalysis.tabControl.tabPagePressure.png)
 
-A pressão derivada das constantes de célula de cada perfil usando uma [equação de estado](5-equation-of-states.md). Quando um padrão de pressão como Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo ou Pb é selecionado na janela `Equation of State`, aparece uma coluna por pesquisador (por escala reportada). Quando nenhum padrão é selecionado, a pressão é calculada a partir da equação de estado atribuída ao cristal alvo.
+A pressão derivada das constantes de célula de cada perfil usando uma [equação de estado](5-equation-of-states.md). Quando um padrão de pressão como Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo ou Pb é selecionado na janela `Equações de estado`, aparece uma coluna por pesquisador (por escala reportada). Quando nenhum padrão é selecionado, a pressão é calculada a partir da equação de estado atribuída ao cristal alvo.
 
 ### Equação de Singh
 

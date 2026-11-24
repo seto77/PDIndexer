@@ -8,7 +8,7 @@
 Usa il pulsante `Analisi sequenziale` nella barra degli strumenti della finestra principale per aprire e chiudere questa finestra.
 
 !!! note "Condiviso con [Fitting dei picchi di diffrazione](6-fitting-diffraction-peaks.md)"
-    L'analisi sequenziale condivide la configurazione del fitting con la finestra `Fitting diffraction peaks`. Apri prima la finestra `Fitting diffraction peaks`, seleziona il cristallo di interesse e spunta le linee di diffrazione (picchi) da adattare. Se questi non sono preparati quando premi `Esegui`, un messaggio ti invita a farlo.
+    L'analisi sequenziale condivide la configurazione del fitting con la finestra `Adattamento picchi di diffrazione`. Apri prima la finestra `Adattamento picchi di diffrazione`, seleziona il cristallo di interesse e spunta le linee di diffrazione (picchi) da adattare. Se questi non sono preparati quando premi `Esegui`, un messaggio ti invita a farlo.
 
 ## Flusso di lavoro di base
 
@@ -41,7 +41,7 @@ Ogni scheda è una tabella per una grandezza di output. Ogni riga corrisponde a 
 
 ![Scheda 2θ](../assets/cap-it-auto/FormSequentialAnalysis.tabControl.tabPage2theta.png)
 
-La posizione del picco adattata, in 2θ (gradi), per ogni profilo e ogni linea di diffrazione. Quando l'asse orizzontale è 2θ, il valore viene convertito in gradi qualunque sia l'unità di visualizzazione (gradi, centesimi di grado, radianti o milliradianti). Per altri assi, come energia o TOF, la colonna mostra `NaN`. Per le riflessioni in modalità `Simple Search`, viene scritto il massimo osservato entro l'intervallo di ricerca. <!-- 261124Cl changed -->
+La posizione del picco adattata, in 2θ (gradi), per ogni profilo e ogni linea di diffrazione. Quando l'asse orizzontale è 2θ, il valore viene convertito in gradi qualunque sia l'unità di visualizzazione (gradi, centesimi di grado, radianti o milliradianti). Per altri assi, come energia o TOF, la colonna mostra `NaN`. Per le riflessioni in modalità `Ricerca semplice`, viene scritto il massimo osservato entro l'intervallo di ricerca. <!-- 261124Cl changed -->
 
 ### Distanza interplanare (Å)
 
@@ -71,7 +71,7 @@ Il volume di cella elementare raffinato `V`, gli spigoli di cella `A`, `B`, `C` 
 
 ![Scheda pressione](../assets/cap-it-auto/FormSequentialAnalysis.tabControl.tabPagePressure.png)
 
-La pressione ricavata dai parametri di cella di ciascun profilo tramite un'[equazione di stato](5-equation-of-states.md). Quando nella finestra `Equation of State` è selezionato uno standard di pressione come Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo o Pb, compare una colonna per ciascun ricercatore (per ciascuna scala riportata). Quando non è selezionato alcuno standard, la pressione è calcolata dall'equazione di stato assegnata al cristallo di interesse.
+La pressione ricavata dai parametri di cella di ciascun profilo tramite un'[equazione di stato](5-equation-of-states.md). Quando nella finestra `Equazioni di stato` è selezionato uno standard di pressione come Gold, Pt, NaCl (B1/B2), MgO, Corundum, Ar, Re, Mo o Pb, compare una colonna per ciascun ricercatore (per ciascuna scala riportata). Quando non è selezionato alcuno standard, la pressione è calcolata dall'equazione di stato assegnata al cristallo di interesse.
 
 ### Equazione di Singh
 

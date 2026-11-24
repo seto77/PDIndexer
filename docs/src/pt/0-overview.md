@@ -20,8 +20,8 @@ O PDIndexer oferece os seguintes recursos.
 | Comparação com cristais conhecidos | Calcule as linhas de difração de cristais conhecidos e sobreponha-as ao perfil observado para identificação. Consulte [Parâmetros do cristal](3-crystal-parameter.md) para detalhes. |
 | Calibração com padrões | Usando equações de estado (EOS) como NaCl EOS e Pt EOS, estime a pressão a partir do volume de célula medido de um material padrão na temperatura especificada. Consulte [Equação de estado (EOS)](5-equation-of-states.md) para detalhes. |
 | Ajuste de picos | Ajuste a posição, a largura total a meia altura (FWHM) e a intensidade dos picos de difração. Consulte [Ajuste de picos de difração](6-fitting-diffraction-peaks.md) para detalhes. |
-| Refinamento de parâmetros de rede | Refine os parâmetros de rede a partir das posições dos picos por mínimos quadrados. O **Cell Finder** também pode pesquisar parâmetros de rede a partir das posições dos picos. |
-| Análise sequencial | Processe em lote uma série de arquivos com o recurso **Análise sequencial**. Consulte [Análise sequencial](7-sequential-analysis.md) para detalhes. |
+| Refinamento de parâmetros de rede | Refine os parâmetros de rede a partir das posições dos picos por mínimos quadrados. O `Cell Finder` também pode pesquisar parâmetros de rede a partir das posições dos picos. |
+| Análise sequencial | Processe em lote uma série de arquivos com o recurso `Análise sequencial`. Consulte [Análise sequencial](7-sequential-analysis.md) para detalhes. |
 | Importação / exportação | Importe estruturas cristalinas de arquivos CIF e AMC e exporte para os formatos CSV, TSV e GSAS (Rietveld). |
 | Carregamento automático | Monitore a área de transferência ou uma pasta para ler automaticamente perfis/cristais copiados de outros aplicativos (por exemplo, IPAnalyzer) ou arquivos recém-criados. |
 

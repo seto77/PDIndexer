@@ -68,12 +68,6 @@
   <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Профиль</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Цвет линии</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Ширина линии</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Комментарий</value>
   </data>
@@ -95,9 +89,6 @@
   <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
     <value>Кривая B-сплайна</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Время экспозиции</value>
-  </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. Сглаживание</value>
   </data>
@@ -110,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Изменить</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>единица по горизонтали</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Сдвиг</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Настройка горизонтальной оси</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(для режима CPS)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>сек.</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Настройка вертикальной оси</value>
@@ -165,9 +147,6 @@
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Удалить все</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Степень полинома</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Удалить</value>

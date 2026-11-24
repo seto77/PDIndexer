@@ -68,12 +68,6 @@
   <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>輪廓</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>線條顏色</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>線條寬度</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>註解</value>
   </data>
@@ -95,9 +89,6 @@
   <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
     <value>B-Spline 曲線</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>曝光時間</value>
-  </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. 平滑化</value>
   </data>
@@ -110,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>變更</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>橫軸單位</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>平移</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>橫軸設定</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(用於 CPS 模式)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>秒</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>縱軸設定</value>
@@ -165,9 +147,6 @@
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>全部刪除</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>多項式次數</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>刪除</value>

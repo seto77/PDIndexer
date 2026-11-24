@@ -20,8 +20,8 @@ PDIndexer offre les fonctionnalités suivantes.
 | Comparaison avec des cristaux connus | Calculez les raies de diffraction de cristaux connus et superposez-les au profil observé pour l'identification. Voir [Paramètres du cristal](3-crystal-parameter.md) pour plus de détails. |
 | Étalonnage avec des étalons | À l'aide d'équations d'état (EOS) telles que NaCl EOS et Pt EOS, estimez la pression à partir du volume de maille mesuré d'un matériau étalon à la température indiquée. Voir [Équation d'état (EOS)](5-equation-of-states.md) pour plus de détails. |
 | Ajustement des pics | Ajustez la position, la largeur à mi-hauteur (FWHM) et l'intensité des pics de diffraction. Voir [Ajustement des pics de diffraction](6-fitting-diffraction-peaks.md) pour plus de détails. |
-| Affinement des paramètres de maille | Affinez les paramètres de maille à partir des positions des pics par moindres carrés. Le **Cell Finder** peut également rechercher les paramètres de maille à partir des positions des pics. |
-| Analyse séquentielle | Traitez par lots une série de fichiers grâce à la fonctionnalité **Analyse séquentielle**. Voir [Analyse séquentielle](7-sequential-analysis.md) pour plus de détails. |
+| Affinement des paramètres de maille | Affinez les paramètres de maille à partir des positions des pics par moindres carrés. Le `Cell Finder` peut également rechercher les paramètres de maille à partir des positions des pics. |
+| Analyse séquentielle | Traitez par lots une série de fichiers grâce à la fonctionnalité `Analyse séquentielle`. Voir [Analyse séquentielle](7-sequential-analysis.md) pour plus de détails. |
 | Importation / exportation | Importez des structures cristallines depuis des fichiers CIF et AMC, et exportez aux formats CSV, TSV et GSAS (Rietveld). |
 | Chargement automatique | Surveillez le presse-papiers ou un dossier pour lire automatiquement les profils/cristaux copiés depuis d'autres applications (par ex. IPAnalyzer) ou les fichiers nouvellement créés. |
 

@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 状态方程
 
-在主窗口工具栏中点击 `Equation of States`（状态方程）图标，会打开如下所示的窗口。此工具用于根据标准物质的状态方程（EOS, Equation of State）计算压力。
+在主窗口工具栏中点击 `状态方程 (E)` 图标，会打开如下所示的窗口。此工具用于根据标准物质的状态方程（EOS, Equation of State）计算压力。
 
 ![状态方程窗口全貌](../assets/cap-zh-Hans-auto/FormEOS.png)
 
 在高压实验中，会将作为压力基准的标准物质（压力标）与样品一起装入并测量，再根据该标准物质的晶格常数（体积）与已知的状态方程反推出压力。本工具正是用于完成这一计算。
 
-## 使用方法
+!!! tip "本页的阅读方式"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **读取压力**：[使用方法](#how-to-use)、[输入参数](#input-parameters)
+    - **查看公式**：[状态方程的理论](#theory)、[各出处的计算公式](#per-source)
+    - **查阅数表**：[用于样条插值的 P–V–T 数表](#pvt-tables)
+
+## 使用方法 {#how-to-use}
 
 1. 使用窗口上部的复选框，选择需要求取压力的标准物质。
 2. 对于每个选中的物质，计算结果（压力）会显示在窗口下部。
@@ -23,19 +29,19 @@
 
 | 标准物质 | 说明 |
 | --- | --- |
-| `Au (Gold)` | 金 |
-| `Pt (Platinum)` | 铂 |
+| `Au（金）` | 金 |
+| `Pt（铂）` | 铂 |
 | `NaCl (B1)` | 氯化钠（B1 结构，岩盐型） |
 | `NaCl (B2)` | 氯化钠（B2 结构，CsCl 型） |
-| `MgO (Periclase)` | 氧化镁（方镁石） |
-| `Al2O3 (Corundum)` | 氧化铝（刚玉） |
+| `MgO（方镁石）` | 氧化镁（方镁石） |
+| `Al2O3（刚玉）` | 氧化铝（刚玉） |
 | `Ar` | 氩 |
 | `Re` | 铼 |
 | `Mo` | 钼 |
 | `Pb` | 铅 |
 | `hBN` | 六方氮化硼 |
 
-## 输入参数
+## 输入参数 {#input-parameters}
 
 在各物质的 `groupBox` 中可以输入或查看以下数值。
 
@@ -43,44 +49,28 @@
 | --- | --- |
 | `a` / `V` | 测得的晶格常数或体积。在主窗口中拖动衍射线时会自动更新。 |
 | `a0` / `V0` | 常压（基准状态）下的晶格常数或体积。 |
-| `Temperature` | 样品温度。用于包含热压力的状态方程（高温 EOS）。 |
+| `温度` | 样品温度。用于包含热压力的状态方程（高温 EOS）。 |
 | `T0` | 基准温度。输入的 `T0` 是否被使用取决于出处（许多公式在内部使用原始研究的基准温度）。 |
 
 !!! tip "与温度相关的状态方程"
-    部分出处支持包含热压力（thermal pressure）的高温状态方程；在 `Temperature` 中输入样品温度，即可获得包含温度校正的压力。例如，MgO 的 `Tange (09) Vinet` 和 `Tange (09) BM` 会使用输入的温度。相反，NaCl (B2) 的 `Sakai+(11) Vinet` 和 `Sakai+(11) BM` 是等温方程，不使用温度。基准温度 `T0` 能否更改取决于出处。
+    部分出处支持包含热压力（thermal pressure）的高温状态方程；在 `温度` 中输入样品温度，即可获得包含温度校正的压力。例如，MgO 的 `Tange (09) Vinet` 和 `Tange (09) BM` 会使用输入的温度。相反，NaCl (B2) 的 `Sakai+(11) Vinet` 和 `Sakai+(11) BM` 是等温方程，不使用温度。基准温度 `T0` 能否更改取决于出处。
 
-## 各物质的出处（参考文献）
+## 各物质的出处（参考文献） {#references}
 
-各物质的 `groupBox` 中列出了多个出处的状态方程，各公式计算出的压力会同时显示。您可以根据研究或测量条件进行比较，选择合适的出处。以下给出代表性的示例。
-
-### 金（Gold）
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+各物质的框中列出了多个出处的状态方程，各公式计算出的压力会同时显示。您可以根据研究或测量条件选择出处并进行比较。例如，金的框如下所示。
 
 ![金的状态方程出处列表](../assets/cap-zh-Hans-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-对于金 (`Au (Gold)`)，可使用 `Jamieson (82)`、`Anderson (89)`、`Sim (02)`、`Tsuchiya (03)`、`Yokoo (09)`、`Fratanduono (21)` 这些状态方程。
+各物质可用的出处及其公式和参数，汇总在 [各出处的计算公式](#per-source) 中。
 
-### NaCl（B1 结构）
-
-![NaCl-B1 的状态方程出处列表](../assets/cap-zh-Hans-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-对于 `NaCl (B1)`，可使用 `Brown (99)`、`Matsui (12)`、`Skelton (84)` 这些状态方程。
-
-### 方镁石（Periclase, MgO）
-
-![方镁石 MgO 的状态方程出处列表](../assets/cap-zh-Hans-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-对于 `MgO (Periclase)`，可使用 `Tange (09) BM`、`Tange (09) Vinet`、`Aizawa (06)`、`Dewaele (00)`、`Jackson (98)` 这些状态方程。
-
-!!! note "其他物质"
-    铂 (`Pt (Platinum)`：`Jamieson (82)`、`Holmes (89)`、`Matsui (09)`、`Yokoo (09)`、`Fratanduono (21)`)、`NaCl (B2)`（`Sata (02) (Pt)`、`Sata (02) (Mg)`、`Ueda+(08)`、`Sakai+(11) BM`、`Sakai+(11) Vinet`）、`Ar`（`Ross et al. (86)`、`Jephcoat (98)`）、`Re`（`Zha et al. (04)` 等）、`Mo`（`Zhao+(00)`、`Huang+(16)MGD`）同样也可以从多个出处中选择。刚玉（`Al2O3 (Corundum)`）只有 `Dubrovinsky (98)` 一个出处，`Pb` 只有 `Strässle+(14)` 一个出处。
-
-## 状态方程的理论
+## 状态方程的理论 {#theory}
 
 表示物质压力、体积、温度之间关系的公式即为状态方程 \( P = P(V, T) \)，本工具的作用就是根据测得的体积 \( V \) 求出压力 \( P \)。压力由基准温度下的**等温压缩项** \( P_\text{st}(V) \) 与因温度差异产生的**热压力项** \( \Delta P_\text{th} \) 之和计算得出。
 
 $$P(V, T) = P_\text{st}(V) + \Delta P_\text{th}(V, T)$$
 
-以下的通用公式，是本窗体计算各标准物质压力时所用的共同框架；各出处要么将已发表的参数代入该框架，要么使用该出处特有的公式（各出处的具体公式与参数请参见下文的 [各出处的计算公式](#per-source)）。关于按晶体设置 EOS 的 Crystal Information 状态方程标签页，请参见 [晶体参数](3-crystal-parameter.md)。
+以下的通用公式，是本窗体计算各标准物质压力时所用的共同框架；各出处要么将已发表的参数代入该框架，要么使用该出处特有的公式（各出处的具体公式与参数请参见下文的 [各出处的计算公式](#per-source)）。关于按晶体设置 EOS 的 `晶体信息` 中的 `EOS` 标签页，请参见 [晶体参数](3-crystal-parameter.md)。
 
 ### 符号
 

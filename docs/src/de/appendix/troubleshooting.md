@@ -15,7 +15,7 @@ Die MSI-Installation von PDIndexer benötigt die von der jeweiligen Version ange
 ## Die UI-Sprache wechselt nicht
 
 <!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
-Wählen Sie die Anzeigesprache (11 Sprachen, jeweils mit ihrem eigenen Namen angezeigt) über **Sprache** am rechten Ende der Menüleiste. Der Sprachwechsel erfordert einen Neustart: Wählen Sie im Bestätigungsdialog **Ja**, und PDIndexer startet automatisch in der gewählten Sprache neu.
+Wählen Sie die Anzeigesprache (11 Sprachen, jeweils mit ihrem eigenen Namen angezeigt) über `Sprache` am rechten Ende der Menüleiste. Der Sprachwechsel erfordert einen Neustart: Wählen Sie im Bestätigungsdialog **Ja**, und PDIndexer startet automatisch in der gewählten Sprache neu.
 
 !!! note
     Der Neustart verwirft nicht gespeicherte Arbeit (geladene Profile und laufende Bearbeitungen); speichern Sie daher vor dem Wechsel, was Sie benötigen. Wenn Sie **Nein** wählen, ändert sich die Sprache nicht.
@@ -24,7 +24,7 @@ Wählen Sie die Anzeigesprache (11 Sprachen, jeweils mit ihrem eigenen Namen ang
 
 Fensterpositionen, Farbeinstellungen und verschiedene Optionen werden in der Registry gespeichert. Wenn die Einstellungen beschädigt werden und sich das Programm fehlerhaft verhält, können Sie die Registry löschen, um in den Ausgangszustand zurückzukehren.
 
-1. Setzen Sie im Menü unter **Optionen** ▸ **Registry löschen (anhaken und neu starten)** ein Häkchen.
+1. Setzen Sie im Menü unter `Optionen` ▸ `Registry löschen (anhaken und neu starten)` ein Häkchen.
 2. Schließen Sie PDIndexer. Beim Beenden werden alle gespeicherten Einstellungen gelöscht.
 3. Starten Sie PDIndexer erneut; es wird im anfänglichen (Standard-)Zustand gestartet.
 
@@ -35,11 +35,11 @@ Fensterpositionen, Farbeinstellungen und verschiedene Optionen werden in der Reg
 
 Profile und Kristalle, die in Schwester-Apps wie [IPAnalyzer](https://github.com/seto77/IPAnalyzer) und [CSManager](https://github.com/seto77/CSManager) kopiert wurden, können über die Zwischenablage automatisch in PDIndexer importiert werden. Wenn nichts importiert wird, ist möglicherweise die Zwischenablage-Überwachung deaktiviert.
 
-- Prüfen Sie, ob im Menü **Optionen** ▸ **Zwischenablage überwachen** aktiviert ist.
+- Prüfen Sie, ob im Menü `Optionen` ▸ `Zwischenablage überwachen` aktiviert ist.
 - Wenn aktiviert, werden aus anderen Apps kopierte Profile/Kristalle automatisch eingelesen.
 
 !!! tip
-    Wenn Sie neu erstellte `.pdi`-Dateien in einem bestimmten Ordner automatisch einlesen möchten, verwenden Sie **Optionen** ▸ **Datei überwachen**.
+    Wenn Sie neu erstellte `.pdi`-Dateien in einem bestimmten Ordner automatisch einlesen möchten, verwenden Sie `Optionen` ▸ `Datei überwachen`.
 
 ## Intensitätsverhältnisse werden nicht berechnet
 

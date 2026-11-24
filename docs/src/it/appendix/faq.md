@@ -46,7 +46,7 @@ La causa è di solito una delle seguenti.
 
 Controlla prima quanto segue.
 
-- [`Mostra i picchi sopra i profili`](../3-crystal-parameter.md) (Show peaks over profiles) è attivo e il cristallo è spuntato nell'elenco dei cristalli.
+- [`Mostra i picchi sopra i profili`](../3-crystal-parameter.md) è attivo e il cristallo è spuntato nell'elenco dei cristalli.
 - **La radiazione e la lunghezza d'onda (o l'energia) della misura sono impostate correttamente.** I dati di testo come i CSV spesso non contengono informazioni sulla lunghezza d'onda; in tal caso, specifica la radiazione e la lunghezza d'onda usate per la misura nella finestra di dialogo mostrata alla lettura del file. Controlla la radiazione e la lunghezza d'onda usate per la visualizzazione nella [scheda `Asse orizzontale`](../1-main-window.md#horizontal-axis-tab) della finestra principale.
 - Le linee non sono fuori dall'intervallo di disegno. Prova ad allargare l'intervallo orizzontale (soprattutto per il TOF neutronico).
 - Se non compare un solo cristallo, controlla che i suoi parametri reticolari e le posizioni atomiche non siano molto lontani dal vero e confrontalo con la stessa sostanza nel database incorporato.
@@ -64,7 +64,7 @@ I parametri reticolari modificati trascinando una linea di diffrazione vengono s
 
 ### I rapporti di intensità non vengono calcolati; tutte le linee hanno la stessa altezza.
 
-Per calcolare i rapporti di intensità, il cristallo deve avere le posizioni atomiche e [`Calcola il rapporto di intensità`](../3-crystal-parameter.md) (Calculate intensity ratio) deve essere attivo. Anche impostazioni errate della radiazione danno intensità errate. Vedi [Risoluzione dei problemi](troubleshooting.md) per i dettagli.
+Per calcolare i rapporti di intensità, il cristallo deve avere le posizioni atomiche e [`Calcola il rapporto di intensità`](../3-crystal-parameter.md) deve essere attivo. Anche impostazioni errate della radiazione danno intensità errate. Vedi [Risoluzione dei problemi](troubleshooting.md) per i dettagli.
 
 ### Come importo cristalli da CSManager o da file CIF?
 
@@ -84,8 +84,8 @@ Se nella scheda `Asse orizzontale` è attivo `Dopo la lettura del profilo, cambi
 
 ### Qual è la differenza tra la scheda `Asse orizzontale` della finestra principale e `Impostazione assi` nella finestra dei parametri del profilo?
 
-- La **scheda `Asse orizzontale`** (finestra principale) decide solo **come vengono visualizzati i dati**; i dati del profilo non cambiano.
-- **[`Impostazione assi`](../4-profile-parameter.md#axis-setting)** (Axis setting, finestra dei parametri del profilo) riscrive **le condizioni in cui il profilo è stato misurato** (tipo di radiazione, lunghezza d'onda, angolo di take-off, ecc.). Se alla lettura del file hai scelto la radiazione o la lunghezza d'onda sbagliata, correggila qui. Se hai inserito valori nell'**unità** sbagliata, rileggi il file originale.
+- La scheda `Asse orizzontale` (finestra principale) decide solo **come vengono visualizzati i dati**; i dati del profilo non cambiano.
+- [`Impostazione assi`](../4-profile-parameter.md#axis-setting) (finestra dei parametri del profilo) riscrive **le condizioni in cui il profilo è stato misurato** (tipo di radiazione, lunghezza d'onda, angolo di take-off, ecc.). Se alla lettura del file hai scelto la radiazione o la lunghezza d'onda sbagliata, correggila qui. Se hai inserito valori nell'**unità** sbagliata, rileggi il file originale.
 
 ### I dati a dispersione di energia (raggi X bianchi) (`.npd` / `.nxs`) hanno un asse orizzontale errato, oppure non compaiono linee di diffrazione.
 
@@ -95,18 +95,18 @@ Nella finestra di dialogo mostrata alla lettura del file, controlla che l'**unit
 
 Sì.
 
-- Per un file `.gsa` (tre colonne separate da spazi, con 2θ in centesimi di grado), nella finestra di dialogo di conversione dei dati scegli 2θ come asse orizzontale e centesimi di grado (centi-degree) come unità.
+- Per un file `.gsa` (tre colonne separate da spazi, con 2θ in centesimi di grado), nella finestra di dialogo di conversione dei dati scegli 2θ come asse orizzontale e `Centi-grado` come unità.
 - Per i dati su un asse q (numero d'onda), scegli q come asse orizzontale. Puoi anche raffinare i parametri reticolari sull'asse q.
 
 ## Fitting dei picchi e parametri reticolari {#fitting}
 
 ### Quale valore devo usare per `Intervallo di ricerca`? Il volume cambia quando lo modifico.
 
-`Intervallo di ricerca` (Search Range) è l'ampiezza di ricerca su ciascun lato del centro del picco. Parti da **2–3 volte la larghezza a metà altezza (FWHM)** del picco e restringilo se il picco vicino si sovrappone. Un intervallo troppo ampio cattura altri picchi o il fondo, mentre uno troppo stretto taglia le code del picco; in entrambi i casi la posizione fittata si sposta. Usare molti **picchi ad alto angolo** migliora la precisione dei parametri reticolari.
+`Intervallo di ricerca` è l'ampiezza di ricerca su ciascun lato del centro del picco. Parti da **2–3 volte la larghezza a metà altezza (FWHM)** del picco e restringilo se il picco vicino si sovrappone. Un intervallo troppo ampio cattura altri picchi o il fondo, mentre uno troppo stretto taglia le code del picco; in entrambi i casi la posizione fittata si sposta. Usare molti **picchi ad alto angolo** migliora la precisione dei parametri reticolari.
 
 ### I valori mostrati in `Parametri di cella ottimizzati` sono già applicati al cristallo?
 
-No. `Parametri di cella ottimizzati` (Optimized cell constants) si limita a **visualizzare** i valori ottenuti dalle riflessioni selezionate e dalle condizioni di fitting. Per sovrascrivere i parametri reticolari del cristallo, premi `Applica al cristallo` (Apply to the crystal). Per usare i valori senza modificare il cristallo, usa `Copia negli appunti` (Copy to Clipboard). Premere `Applica al cristallo` alcune volte può favorire la convergenza, perché le posizioni calcolate delle linee vengono aggiornate ogni volta.
+No. `Parametri di cella ottimizzati` si limita a **visualizzare** i valori ottenuti dalle riflessioni selezionate e dalle condizioni di fitting. Per sovrascrivere i parametri reticolari del cristallo, premi `Applica al cristallo`. Per usare i valori senza modificare il cristallo, usa `Copia negli appunti`. Premere `Applica al cristallo` alcune volte può favorire la convergenza, perché le posizioni calcolate delle linee vengono aggiornate ogni volta.
 
 ### Seleziono le stesse riflessioni, ma l'errore del volume diventa improvvisamente grande.
 
@@ -130,7 +130,7 @@ Usa l'[Analisi sequenziale](../7-sequential-analysis.md) (aprila dalla barra deg
 
 ### L'analisi sequenziale può fittare più fasi (ad es. il campione e un marcatore di pressione) contemporaneamente?
 
-Vengono fittati i picchi di tutti i cristalli spuntati (con la separazione dei picchi impostata su `tra i cristalli` (between crystals), anche i picchi sovrapposti di fasi diverse vengono separati insieme). Tuttavia, ogni esecuzione sequenziale registra i parametri reticolari e la pressione solo per l'unico cristallo selezionato nella finestra di fitting dei picchi. Per ottenere i risultati di un'altra fase, seleziona quel cristallo ed esegui di nuovo, oppure usa una [macro](../8-macro.md) che passa da un cristallo all'altro.
+Vengono fittati i picchi di tutti i cristalli spuntati (con la separazione dei picchi impostata su `tra i cristalli`, anche i picchi sovrapposti di fasi diverse vengono separati insieme). Tuttavia, ogni esecuzione sequenziale registra i parametri reticolari e la pressione solo per l'unico cristallo selezionato nella finestra di fitting dei picchi. Per ottenere i risultati di un'altra fase, seleziona quel cristallo ed esegui di nuovo, oppure usa una [macro](../8-macro.md) che passa da un cristallo all'altro.
 
 ### Ho eseguito un'analisi degli sforzi su profili suddivisi per azimut, ma la scheda `Equazione di Singh` è vuota.
 

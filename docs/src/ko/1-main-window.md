@@ -35,8 +35,6 @@
 | `회절 피크 피팅 (F)` | 회절 피크(위치, 반치전폭, 강도)를 피팅하기 위해 피크 피팅 창을 열고 닫습니다. | [회절 피크 피팅](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | 피크 위치로부터 격자 상수를 검색하기 위해 Cell Finder 창을 열고 닫습니다. | — |
 | `연속 분석` | 여러 파일을 일괄 처리하기 위해 연속 분석 창을 열고 닫습니다. | [연속 분석](7-sequential-analysis.md) |
-| `Atomic Position Finder` | 회절 강도로부터 원자 위치를 검색하기 위해 원자 위치 검색 창을 열고 닫습니다. | — |
-| `LPO 분석` | LPO(격자 선호 배향) 분석 창을 열고 닫습니다. | — |
 
 !!! note
     주요 창은 키보드 단축키로도 열고 닫을 수 있습니다: `Ctrl+Shift+C`(결정 매개변수), `Ctrl+Shift+E`(상태 방정식), `Ctrl+Shift+F`(피팅 매개변수), `Ctrl+Shift+D`(피크 모드 변경), `Ctrl+Shift+S`(연속 분석). 또한 `Ctrl+Shift+Space`는 선택한 결정의 체크를 전환하고, `Ctrl+Alt+Space`는 피크 피팅 창의 반사 목록에서 선택한 반사의 체크를 전환하며, `Ctrl+Shift+V`는 클립보드의 텍스트를 프로파일로 읽어들입니다. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->

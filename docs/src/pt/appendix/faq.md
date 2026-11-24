@@ -84,8 +84,8 @@ Se `Após ler o perfil, alterar o eixo horizontal` estiver ativado na aba `Eixo 
 
 ### Qual é a diferença entre a aba `Eixo horizontal` da janela principal e `Ajuste de eixo` na janela de parâmetros do perfil?
 
-- A **aba `Eixo horizontal`** (janela principal) decide apenas **como os dados são exibidos**; os próprios dados do perfil não mudam.
-- **[`Ajuste de eixo`](../4-profile-parameter.md#axis-setting)** (janela de parâmetros do perfil) reescreve **as condições em que o perfil foi medido** (tipo de radiação, comprimento de onda, ângulo de saída etc.). Se você escolheu a radiação ou o comprimento de onda errados ao ler o arquivo, corrija aqui. Se você inseriu valores na **unidade** errada, leia novamente o arquivo original.
+- A aba `Eixo horizontal` (janela principal) decide apenas **como os dados são exibidos**; os próprios dados do perfil não mudam.
+- [`Ajuste de eixo`](../4-profile-parameter.md#axis-setting) (janela de parâmetros do perfil) reescreve **as condições em que o perfil foi medido** (tipo de radiação, comprimento de onda, ângulo de saída etc.). Se você escolheu a radiação ou o comprimento de onda errados ao ler o arquivo, corrija aqui. Se você inseriu valores na **unidade** errada, leia novamente o arquivo original.
 
 ### Dados de dispersão de energia (raios X brancos) (`.npd` / `.nxs`) têm o eixo horizontal errado, ou nenhuma linha de difração aparece.
 
@@ -95,7 +95,7 @@ Na caixa de diálogo exibida ao ler o arquivo, verifique se a **unidade de energ
 
 Sim.
 
-- Para um arquivo `.gsa` (três colunas separadas por espaços, com 2θ em centigraus), escolha 2θ como eixo horizontal e centigraus (centi-degree) como unidade na caixa de diálogo de conversão de dados.
+- Para um arquivo `.gsa` (três colunas separadas por espaços, com 2θ em centigraus), escolha 2θ como eixo horizontal e `Centigrau` como unidade na caixa de diálogo de conversão de dados.
 - Para dados em um eixo q (número de onda), escolha q como eixo horizontal. Também é possível refinar os parâmetros de rede no eixo q.
 
 ## Ajuste de picos e parâmetros de rede {#fitting}
@@ -106,7 +106,7 @@ Sim.
 
 ### Os valores mostrados em `Parâmetros de célula otimizados` (Optimized cell constants) já foram aplicados ao cristal?
 
-Não. `Parâmetros de célula otimizados` apenas **exibe** os valores obtidos a partir das reflexões selecionadas e das condições de ajuste. Para sobrescrever os parâmetros de rede do cristal, pressione `Aplicar ao cristal` (Apply to the crystal). Para usar os valores sem alterar o cristal, use `Copiar para a área de transferência`. Pressionar `Aplicar ao cristal` algumas vezes pode ajudar a convergência, porque as posições calculadas das linhas são atualizadas a cada vez.
+Não. `Parâmetros de célula otimizados` apenas **exibe** os valores obtidos a partir das reflexões selecionadas e das condições de ajuste. Para sobrescrever os parâmetros de rede do cristal, pressione `Aplicar ao cristal`. Para usar os valores sem alterar o cristal, use `Copiar para a área de transferência`. Pressionar `Aplicar ao cristal` algumas vezes pode ajudar a convergência, porque as posições calculadas das linhas são atualizadas a cada vez.
 
 ### Seleciono as mesmas reflexões, mas o erro do volume de repente fica grande.
 
@@ -130,7 +130,7 @@ Use a [Análise sequencial](../7-sequential-analysis.md) (abra-a pela barra de f
 
 ### A análise sequencial pode ajustar várias fases (por exemplo, a amostra e um marcador de pressão) ao mesmo tempo?
 
-Os picos de todos os cristais marcados são ajustados (com a decomposição do padrão definida como `entre cristais` (between crystals), os picos sobrepostos de fases diferentes são separados em conjunto). No entanto, cada execução sequencial registra parâmetros de rede e pressão apenas para o único cristal selecionado na janela de ajuste de picos. Para obter os resultados de outra fase, selecione esse cristal e execute novamente, ou use uma [macro](../8-macro.md) que alterne entre os cristais.
+Os picos de todos os cristais marcados são ajustados (com a decomposição do padrão definida como `entre cristais`, os picos sobrepostos de fases diferentes são separados em conjunto). No entanto, cada execução sequencial registra parâmetros de rede e pressão apenas para o único cristal selecionado na janela de ajuste de picos. Para obter os resultados de outra fase, selecione esse cristal e execute novamente, ou use uma [macro](../8-macro.md) que alterne entre os cristais.
 
 ### Executei uma análise de tensão em perfis divididos por azimute, mas a aba `Equação de Singh` está vazia.
 

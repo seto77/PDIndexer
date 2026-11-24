@@ -35,8 +35,6 @@
 | `繞射峰擬合 (F)` | 開關繞射峰擬合視窗，以擬合繞射峰（位置、半高全寬、強度）。 | [繞射峰擬合](6-fitting-diffraction-peaks.md) |
 | `晶胞搜尋器` | 開關晶胞搜尋器視窗，以從峰位置搜尋晶格常數。 | — |
 | `連續分析` | 開關連續分析視窗，以批次處理一系列檔案。 | [連續分析](7-sequential-analysis.md) |
-| `原子位置搜尋器` | 開關原子位置搜尋視窗，以從繞射強度搜尋原子位置。 | — |
-| `LPO 分析` | 開關 LPO（晶格優選取向）分析視窗。 | — |
 
 !!! note
     主要視窗也能以鍵盤快速鍵開關：`Ctrl+Shift+C`（晶體參數）、`Ctrl+Shift+E`（狀態方程）、`Ctrl+Shift+F`（擬合參數）、`Ctrl+Shift+D`（變更峰模式）、`Ctrl+Shift+S`（連續分析）。此外，`Ctrl+Shift+Space` 可切換所選晶體的勾選狀態，`Ctrl+Alt+Space` 可切換峰擬合視窗反射清單中所選反射的勾選狀態，`Ctrl+Shift+V` 可將剪貼簿中的文字當作圖譜讀取。 <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->

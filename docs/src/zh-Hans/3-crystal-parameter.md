@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # 晶体参数
 
-点击主窗口工具栏上的 `Crystal Parameter` 图标，会打开如下所示的子窗口。在这里可以设置要显示哪些晶体的衍射峰，以及这些峰的显示方式。窗口下部内置了用于搜索和导入结构的晶体数据库。
+点击主窗口工具栏上的 `晶体参数 (C)` 图标，会打开如下所示的子窗口。在这里可以设置要显示哪些晶体的衍射峰，以及这些峰的显示方式。窗口下部内置了用于搜索和导入结构的晶体数据库。
 
 ![晶体参数窗口](../assets/cap-zh-Hans-auto/FormCrystal.png)
 
@@ -9,10 +9,10 @@
 
 | 区域 | 用途 |
 | --- | --- |
-| `Diffraction Peak Option` | 衍射线的显示方式 |
-| `Crystal List` | 与主窗口共享的晶体检查列表 |
-| `Crystal Information` | 所选晶体的详细参数（分标签页） |
-| `Crystal database` | 基于 AMCSD 的搜索与导入 |
+| `衍射峰选项` | 衍射线的显示方式 |
+| `晶体列表` | 与主窗口共享的晶体检查列表 |
+| `晶体信息` | 所选晶体的详细参数（分标签页） |
+| `晶体数据库` | 基于 AMCSD 的搜索与导入 |
 
 ---
 
@@ -41,7 +41,7 @@
 
 #### Peak height
 
-设置谱图下方所绘制峰的高度，单位为像素（`pixel`）。
+设置谱图下方所绘制峰的高度，单位为 `像素`。
 
 ### Combine adjacent peaks
 
@@ -51,8 +51,8 @@
 
 | 项目 | 说明 |
 | --- | --- |
-| `Angle threshold` | 用角度（`°`）指定峰需要接近到何种程度才会被合并。 |
-| `Energy threshold` | 对于能量色散数据，用能量（`eV`）指定合并范围。 |
+| `角度阈值` | 用角度（`°`）指定峰需要接近到何种程度才会被合并。 |
+| `能量阈值` | 对于能量色散数据，用能量（`eV`）指定合并范围。 |
 
 !!! tip
     旧版手册中以埃（Å）表示该阈值，但当前版本会根据横轴类型，以角度（`°`）或能量（`eV`）指定。
@@ -67,8 +67,8 @@
 
 | 选项 | 对象 |
 | --- | --- |
-| `all checked crystals` | 所有已勾选的晶体 |
-| `only selected crystal` | 仅列表中当前选中的晶体 |
+| `所有勾选的晶体` | 所有已勾选的晶体 |
+| `仅所选晶体` | 仅列表中当前选中的晶体 |
 
 ---
 
@@ -76,7 +76,7 @@
 
 ![晶体列表](../assets/cap-zh-Hans-auto/FormCrystal.splitContainer1.groupBox3.crystalControl.png)
 
-此处显示的信息与主窗口中的晶体列表相同。已勾选的晶体，其衍射线会在主窗口中绘制。每一行显示一个复选框（`Check`）、绘制颜色（`PeakColor`）以及晶体名称（`Crystal`）。
+此处显示的信息与主窗口中的晶体列表相同。已勾选的晶体，其衍射线会在主窗口中绘制。每一行显示一个复选框（`勾选`）、绘制颜色（`峰颜色`）以及晶体名称（`晶体`）。
 
 ### Up/Down arrow buttons (↑ / ↓)
 
@@ -113,7 +113,7 @@
 | --- | --- |
 | `基本信息` | 晶格常数、晶系、空间群等基本信息 |
 | `原子信息` | 原子种类、占有率、坐标及温度因子 |
-| `Ref.` | 出处论文、作者等参考文献信息 |
+| `文献` | 出处论文、作者等参考文献信息 |
 | `EOS` | 用于压缩和热膨胀的状态方程设置 |
 
 ### 基本信息标签页
@@ -169,13 +169,13 @@
 
 列出数据库中包含的晶体。如果输入了搜索条件，则仅显示符合条件的晶体。
 
-在表中选择任意晶体，会将其信息传送到 [Crystal Information](#crystal-information)。若要将其添加到晶体列表，请在晶体列表区域按下 `Add` 或 `Replace` 按钮。
+在表中选择任意晶体，会将其信息传送到 [Crystal Information](#crystal-information)。若要将其添加到晶体列表，请在晶体列表区域按下 `添加` 或 `替换` 按钮。
 
 ### Search options
 
 ![搜索选项](../assets/cap-zh-Hans-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.png)
 
-输入搜索条件。输入完成后，按下 `Search` 按钮或按 Enter 键。每个条件都可以通过其复选框启用或禁用。
+输入搜索条件。输入完成后，按下 `搜索` 按钮或按 Enter 键。每个条件都可以通过其复选框启用或禁用。
 
 #### Name
 
@@ -185,7 +185,7 @@
 
 ![按元素及晶胞参数搜索](../assets/cap-zh-Hans-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-按下 `Periodic Table` 按钮会打开一个单独的窗口，用于选择要搜索的元素。每个元素按钮每次按下都会切换其状态。
+按下 `周期表` 按钮会打开一个单独的窗口，用于选择要搜索的元素。每个元素按钮每次按下都会切换其状态。
 
 窗口顶部的按钮可以一次性切换所有元素的状态。
 
@@ -196,7 +196,7 @@
 | `must exclude` | 必须排除（移除包含任一指定元素的晶体）。 |
 
 !!! tip
-    勾选 `Ignore scattering factor` 可以在不考虑散射因子的情况下进行搜索。
+    勾选 `忽略散射因子` 可以在不考虑散射因子的情况下进行搜索。
 
 #### Reference
 

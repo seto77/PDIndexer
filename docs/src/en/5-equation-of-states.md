@@ -1,13 +1,19 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Equation of states
 
-Clicking the `Equation of States` icon on the main window toolbar opens the window shown below. This tool calculates pressure from the equation of state (EOS) of a standard material.
+Clicking the `Equation of State (E)` icon on the main window toolbar opens the window shown below. This tool calculates pressure from the equation of state (EOS) of a standard material.
 
 ![Full Equation of States window](../assets/cap-en-auto/FormEOS.png)
 
 In high-pressure experiments, a standard material (pressure marker) is loaded together with the sample to serve as a pressure reference. The pressure is then derived from the marker's measured lattice constant (volume) and its known equation of state. This tool performs that calculation.
 
-## How to use
+!!! tip "How this page is organised"
+    <!-- 261124Cl added (author decision): entry points by purpose for this long page -->
+    - **Read the pressure**: [How to use](#how-to-use), [Input parameters](#input-parameters)
+    - **Check the formulas**: [Theory of the equations of state](#theory), [Formulas by source](#per-source)
+    - **Look up the tables**: [P–V–T tables used for spline interpolation](#pvt-tables)
+
+## How to use {#how-to-use}
 
 1. Use the checkboxes at the top of the window to select the standard material(s) for which you want to determine the pressure.
 2. For each selected material, the calculated result (pressure) is displayed in the lower part of the window.
@@ -35,7 +41,7 @@ The standard materials that can be selected with the checkboxes at the top of th
 | `Pb` | Lead |
 | `hBN` | Hexagonal boron nitride |
 
-## Input parameters
+## Input parameters {#input-parameters}
 
 Each material's `groupBox` lets you enter or read the following values.
 
@@ -49,38 +55,22 @@ Each material's `groupBox` lets you enter or read the following values.
 !!! tip "Temperature-dependent equations of state"
     Some references support high-temperature equations of state that include thermal pressure; entering the sample temperature in `Temperature` gives a pressure that includes the temperature correction. For example, `Tange (09) Vinet` and `Tange (09) BM` for MgO use the entered temperature. In contrast, `Sakai+(11) Vinet` and `Sakai+(11) BM` for NaCl (B2) are isothermal equations and do not use the temperature. Whether the reference temperature `T0` can be changed depends on the reference.
 
-## References per material
+## References per material {#references}
 
-Each material's `groupBox` lists several equations of state from different references, and the pressure computed by each formula is displayed simultaneously. You can compare them and choose the reference that best suits your study or measurement conditions. Representative examples are shown below.
-
-### Gold
+<!-- 261124Cl changed (author decision): the reference lists for gold, NaCl (B1), MgO and the "Other materials" note duplicated "Formulas by source" below, so they now point there -->
+Each material's box lists several equations of state from different references, and the pressure computed by each formula is displayed simultaneously. You can choose and compare the references that suit your study and measurement conditions. The box for gold, for example, looks like this.
 
 ![List of equation-of-state references for gold](../assets/cap-en-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxGold.png)
 
-For gold (`Au (Gold)`), the equations of state `Jamieson (82)`, `Anderson (89)`, `Sim (02)`, `Tsuchiya (03)`, `Yokoo (09)`, and `Fratanduono (21)` are available.
+The references available for each material, with their formulas and parameters, are listed in [Formulas by source](#per-source).
 
-### NaCl (B1 structure)
-
-![List of equation-of-state references for NaCl-B1](../assets/cap-en-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxNaClB1.png)
-
-For `NaCl (B1)`, the equations of state `Brown (99)`, `Matsui (12)`, and `Skelton (84)` are available.
-
-### Periclase (MgO)
-
-![List of equation-of-state references for periclase MgO](../assets/cap-en-auto/FormEOS.tableLayoutPanel1.flowLayoutPanel1.groupBoxPericlase.png)
-
-For `MgO (Periclase)`, the equations of state `Tange (09) BM`, `Tange (09) Vinet`, `Aizawa (06)`, `Dewaele (00)`, and `Jackson (98)` are available.
-
-!!! note "Other materials"
-    Platinum (`Pt (Platinum)`: `Jamieson (82)`, `Holmes (89)`, `Matsui (09)`, `Yokoo (09)`, `Fratanduono (21)`), `NaCl (B2)` (`Sata (02) (Pt)`, `Sata (02) (Mg)`, `Ueda+(08)`, `Sakai+(11) BM`, `Sakai+(11) Vinet`), `Ar` (`Ross et al. (86)`, `Jephcoat (98)`), `Re` (`Zha et al. (04)`, etc.), and `Mo` (`Zhao+(00)`, `Huang+(16)MGD`) also offer a choice of several references. Corundum (`Al2O3 (Corundum)`) has one reference, `Dubrovinsky (98)`, and `Pb` has one, `Strässle+(14)`.
-
-## Theory of the equations of state
+## Theory of the equations of state {#theory}
 
 The equation of state \( P = P(V, T) \) expresses the relationship between a substance's pressure, volume, and temperature; this tool's role is to obtain the pressure \( P \) from the measured volume \( V \). The pressure is computed as the sum of an **isothermal compression term** \( P_\text{st}(V) \) at the reference temperature and a **thermal pressure term** \( \Delta P_\text{th} \) due to the temperature difference.
 
 $$P(V, T) = P_\text{st}(V) + \Delta P_\text{th}(V, T)$$
 
-The general formulas below are the common framework this form uses to compute the pressure of each standard material; each source either plugs published parameters into this framework or uses a source-specific equation (see [Formulas by source](#per-source) below for the specifics). For the per-crystal EOS tab of the Crystal Information control, see [Crystal parameter](3-crystal-parameter.md).
+The general formulas below are the common framework this form uses to compute the pressure of each standard material; each source either plugs published parameters into this framework or uses a source-specific equation (see [Formulas by source](#per-source) below for the specifics). For the per-crystal `EOS` tab of the `Crystal Information` control, see [Crystal parameter](3-crystal-parameter.md).
 
 ### Symbols
 

@@ -10,9 +10,9 @@ Most operations in PDIndexer can be automated with the **Macro** feature. Macros
 
 ## Opening the macro editor
 
-From the main window menu bar, choose **Macro → Editor** to open the macro editor window (titled `Macro`).
+From the main window menu bar, choose `Macro` ▸ `Editor` to open the macro editor window (titled `Macro`).
 
-Macros created and saved in the editor are also listed by name under the **Macro** menu, so you can run them directly from the menu. The macro list is saved automatically when PDIndexer exits and restored on the next launch.
+Macros created and saved in the editor are also listed by name under the `Macro` menu, so you can run them directly from the menu. The macro list is saved automatically when PDIndexer exits and restored on the next launch.
 
 ## Layout of the editor window
 

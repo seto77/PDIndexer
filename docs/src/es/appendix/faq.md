@@ -69,7 +69,7 @@ Para calcular las relaciones de intensidad, el cristal necesita posiciones atóm
 ### ¿Cómo importo cristales desde CSManager o desde archivos CIF?
 
 - **Desde CSManager**: abra primero la ventana `Parámetros del cristal` de PDIndexer y active `Opciones` ▸ `Vigilar portapapeles`; a continuación, seleccione el cristal en CSManager. No es necesario exportar antes un CIF.
-- **Los archivos CIF / AMC** se pueden arrastrar y soltar en el área de información del cristal de la ventana Parámetros del cristal.
+- **Los archivos CIF / AMC** se pueden arrastrar y soltar en el área de información del cristal de la ventana `Parámetros del cristal`.
 - También puede buscar en la **base de datos de cristales integrada** (AMCSD). Consulte [Parámetros del cristal](../3-crystal-parameter.md).
 
 En todos los casos, el cristal aparece en el área de información del cristal. Pulse `Añadir` para conservarlo en la lista de cristales.
@@ -84,8 +84,8 @@ Si `Tras leer el perfil, cambiar el eje horizontal` está activado en la pestañ
 
 ### ¿Qué diferencia hay entre la pestaña `Eje horizontal` de la ventana principal y `Configuración de ejes` de la ventana de parámetros del perfil?
 
-- La **pestaña `Eje horizontal`** (ventana principal) solo decide **cómo se muestran los datos**; los datos del perfil en sí no cambian.
-- **[`Configuración de ejes`](../4-profile-parameter.md#axis-setting)** (ventana de parámetros del perfil) reescribe **las condiciones en las que se midió el perfil** (tipo de radiación, longitud de onda, ángulo de salida, etc.). Si eligió una radiación o una longitud de onda incorrectas al leer el archivo, corríjalas aquí. Si introdujo los valores en una **unidad** incorrecta, vuelva a leer el archivo original.
+- La pestaña `Eje horizontal` (ventana principal) solo decide **cómo se muestran los datos**; los datos del perfil en sí no cambian.
+- [`Configuración de ejes`](../4-profile-parameter.md#axis-setting) (ventana de parámetros del perfil) reescribe **las condiciones en las que se midió el perfil** (tipo de radiación, longitud de onda, ángulo de salida, etc.). Si eligió una radiación o una longitud de onda incorrectas al leer el archivo, corríjalas aquí. Si introdujo los valores en una **unidad** incorrecta, vuelva a leer el archivo original.
 
 ### Los datos de dispersión de energía (rayos X blancos) (`.npd` / `.nxs`) tienen un eje horizontal incorrecto, o no aparecen líneas de difracción.
 
@@ -95,8 +95,8 @@ En el cuadro de diálogo que se muestra al leer el archivo, compruebe que la **u
 
 Sí.
 
-- Para un archivo `.gsa` (tres columnas separadas por espacios con 2θ en centésimas de grado), elija 2θ como eje horizontal y centésimas de grado (centi-degree) como unidad en el cuadro de diálogo de conversión de datos.
-- Para datos en un eje q (número de onda), elija q como eje horizontal. También puede refinar los parámetros de red en el eje q.
+- Para un archivo `.gsa` (tres columnas separadas por espacios con 2θ en centésimas de grado), elija `2θ (ángulo)` como eje horizontal y `Centigrado` como unidad en el cuadro de diálogo de conversión de datos.
+- Para datos en un eje q (número de onda), elija `q (número de onda)` como eje horizontal. También puede refinar los parámetros de red en el eje q.
 
 ## Ajuste de picos y parámetros de red {#fitting}
 

@@ -55,19 +55,19 @@ Certaines fonctionnalités de PDIndexer nécessitent des ressources de calcul im
 
 ## Mises à jour (recherche de nouvelles versions)
 
-Depuis le menu **Aide** de la fenêtre principale, PDIndexer vous permet de mettre à jour vers la dernière version et de consulter les informations sur l'auteur.
+Depuis le menu `Aide` de la fenêtre principale, PDIndexer vous permet de mettre à jour vers la dernière version et de consulter les informations sur l'auteur.
 
 | Menu | Fonction |
 | --- | --- |
-| **Aide** ▸ **Rechercher des mises à jour** | Vérifie si une version plus récente a été publiée et met à jour le programme. |
-| **Aide** ▸ **À propos de PDIndexer** | Affiche les informations de version et sur l'auteur. |
+| `Aide` ▸ `Rechercher des mises à jour` | Vérifie si une version plus récente a été publiée et met à jour le programme. |
+| `Aide` ▸ `À propos de PDIndexer` | Affiche les informations de version et sur l'auteur. |
 
-Choisir **Aide** ▸ **À propos de PDIndexer** ouvre une fenêtre semblable à celle ci-dessous, où vous pouvez vérifier le numéro de version actuel et les informations sur l'auteur.
+Choisir `Aide` ▸ `À propos de PDIndexer` ouvre une fenêtre semblable à celle ci-dessous, où vous pouvez vérifier le numéro de version actuel et les informations sur l'auteur.
 
 ![Fenêtre d'informations sur la version de PDIndexer](../../assets/cap-fr-auto/FormAboutMe.png)
 
 !!! tip "Mettez à jour régulièrement"
-    Des corrections de bogues et de nouvelles fonctionnalités sont ajoutées en continu. Exécutez **Aide** ▸ **Rechercher des mises à jour** de temps en temps pour garder PDIndexer à jour.
+    Des corrections de bogues et de nouvelles fonctionnalités sont ajoutées en continu. Exécutez `Aide` ▸ `Rechercher des mises à jour` de temps en temps pour garder PDIndexer à jour.
 
 ## Licence
 

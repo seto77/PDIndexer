@@ -15,16 +15,16 @@ The MSI installation of PDIndexer requires the **.NET Desktop Runtime** specifie
 ## The UI language does not switch
 
 <!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
-Choose the display language (11 languages, each shown by its own name) from **Language** at the right end of the menu bar. Switching the language requires a restart: choose **Yes** in the confirmation dialog, and PDIndexer restarts automatically in the selected language.
+Choose the display language (11 languages, each shown by its own name) from `Language` at the right end of the menu bar. Switching the language requires a restart: choose `Yes` in the confirmation dialog, and PDIndexer restarts automatically in the selected language.
 
 !!! note
-    The restart discards unsaved work (loaded profiles and edits in progress), so save what you need before switching. If you choose **No**, the language does not change.
+    The restart discards unsaved work (loaded profiles and edits in progress), so save what you need before switching. If you choose `No`, the language does not change.
 
 ## Reset corrupted settings
 
 Window positions, color settings, and various options are saved in the registry. If the settings become corrupted and the program misbehaves, you can clear the registry to return to the initial state.
 
-1. From the menu, check **Option** ▸ **Clear Registry (check and restart)**.
+1. From the menu, check `Option` ▸ `Clear Registry (check and restart)`.
 2. Close PDIndexer. All saved settings are cleared on exit.
 3. Start PDIndexer again; it will launch in its initial (default) state.
 
@@ -35,11 +35,11 @@ Window positions, color settings, and various options are saved in the registry.
 
 Profiles and crystals copied in sibling apps such as [IPAnalyzer](https://github.com/seto77/IPAnalyzer) and [CSManager](https://github.com/seto77/CSManager) can be imported into PDIndexer automatically via the clipboard. If nothing is imported, clipboard watching may be disabled.
 
-- Check that **Option** ▸ **Watch Clipboard** is enabled in the menu.
+- Check that `Option` ▸ `Watch Clipboard` is enabled in the menu.
 - When enabled, profiles/crystals copied from other apps are read automatically.
 
 !!! tip
-    If you want to automatically read newly created `.pdi` files in a specific folder, use **Option** ▸ **Watch File**.
+    If you want to automatically read newly created `.pdi` files in a specific folder, use `Option` ▸ `Watch File`.
 
 ## Intensity ratios are not calculated
 

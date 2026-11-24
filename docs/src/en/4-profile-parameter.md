@@ -26,8 +26,8 @@ In the `Basic property` area below the list, you edit the basic attributes of th
 
 | Item | Description |
 | --- | --- |
-| `Line Color` | Click to change the drawing color of the selected profile. |
-| `Line Width` | Sets the line thickness of the profile (`pt`). |
+| `Line color` | Click to change the drawing color of the selected profile. |
+| `Line width` | Sets the line thickness of the profile (`pt`). |
 | `Profile Name` | Sets the name of the profile. |
 | `Comment` | A free-form comment field. |
 
@@ -114,18 +114,18 @@ You can also change the control points manually. Drag the round control points d
 You can specify another profile as the background for the selected profile. Checking `Show background profile` displays the profile being used as the background.
 
 !!! note
-    Background subtraction (step 6) is excluded from the bulk application performed by the `Apply for all profiles` button described below.
+    Background subtraction (step 6) is excluded from the bulk application performed by the `Apply for all profiles (without background setting)` button described below.
 
 ### 7. Normalize intensity {#normalize}
 
 ![Normalize intensity panel](../assets/cap-en-auto/FormProfileSetting.tabControl1.tabPage2.flowLayoutPanel1.flowLayoutPanelNormarizeIntensity.png)
 
-`7. Normarize intensity` normalizes the profile so that the `Average` or `Maximum` over a specified horizontal-axis range becomes a specified intensity.
+`7. Normarize intensity` normalizes the profile so that the `average` or `maximum` over a specified horizontal-axis range becomes a specified intensity.
 
 | Item | Description |
 | --- | --- |
-| `Average` / `Maximum` | Choose whether the average or the maximum within the range is used as the reference. |
-| `intensity between` | Specifies the target horizontal-axis range. |
+| `average` / `maximum` | Choose whether the average or the maximum within the range is used as the reference. |
+| `in the range` | Specifies the target horizontal-axis range. |
 | `to` | Specifies the target intensity value after normalization. |
 
 ### Apply for all profiles button {#apply-all}

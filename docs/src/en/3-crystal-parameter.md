@@ -51,7 +51,7 @@ For example, in the cubic system the (333) and (115) planes are inequivalent yet
 
 | Item | Description |
 | --- | --- |
-| `Angle threshold` | How close peaks must be to be merged, given in degrees (`°`). |
+| `Angle Threshold` | How close peaks must be to be merged, given in degrees (`°`). |
 | `Energy threshold` | For energy-dispersive data, the merging range given in energy (`eV`). |
 
 !!! tip
@@ -111,8 +111,8 @@ Edits and displays detailed information for the selected crystal across several 
 
 | Tab | Contents |
 | --- | --- |
-| `Basic Info.` | Lattice parameters, crystal system, space group, and other basic information |
-| `Atom Info.` | Atom types, occupancies, coordinates, and temperature factors |
+| `Basic info.` | Lattice parameters, crystal system, space group, and other basic information |
+| `Atom info.` | Atom types, occupancies, coordinates, and temperature factors |
 | `Ref.` | Reference information for the source paper, authors, and so on |
 | `EOS` | Equation-of-state settings for compression and thermal expansion |
 
@@ -185,7 +185,7 @@ Enter the crystal name.
 
 ![Search by element and cell parameters](../assets/cap-en-auto/FormCrystal.splitContainer1.groupBox4.panel1.searchCrystalControl.flowLayoutPanel1.groupBoxCellParameter.png)
 
-Pressing the `Periodic Table` button opens a separate window where you choose the elements to search for. Each element button toggles its state every time you press it.
+Pressing the `Periodic table` button opens a separate window where you choose the elements to search for. Each element button toggles its state every time you press it.
 
 The buttons at the top of the window switch the state of all elements at once.
 

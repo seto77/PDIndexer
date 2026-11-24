@@ -55,19 +55,19 @@ Algunas funciones de PDIndexer requieren recursos de cálculo considerables. Par
 
 ## Actualizaciones (comprobación de nuevas versiones)
 
-Desde el menú **Ayuda** de la ventana principal, PDIndexer le permite actualizar a la versión más reciente y consultar la información del autor.
+Desde el menú `Ayuda` de la ventana principal, PDIndexer le permite actualizar a la versión más reciente y consultar la información del autor.
 
 | Menú | Función |
 | --- | --- |
-| **Ayuda** ▸ **Buscar actualizaciones** | Comprueba si se ha publicado una versión más reciente y actualiza el programa. |
-| **Ayuda** ▸ **Acerca de PDIndexer** | Muestra la versión y la información del autor. |
+| `Ayuda` ▸ `Buscar actualizaciones` | Comprueba si se ha publicado una versión más reciente y actualiza el programa. |
+| `Ayuda` ▸ `Acerca de PDIndexer` | Muestra la versión y la información del autor. |
 
-Al elegir **Ayuda** ▸ **Acerca de PDIndexer** se abre una ventana como la de abajo, donde puede comprobar el número de versión actual y la información del autor.
+Al elegir `Ayuda` ▸ `Acerca de PDIndexer` se abre una ventana como la de abajo, donde puede comprobar el número de versión actual y la información del autor.
 
 ![Ventana de información de versión de PDIndexer](../../assets/cap-es-auto/FormAboutMe.png)
 
 !!! tip "Actualice con regularidad"
-    Se añaden correcciones de errores y nuevas funciones de forma continua. Ejecute **Ayuda** ▸ **Buscar actualizaciones** de vez en cuando para mantener PDIndexer actualizado.
+    Se añaden correcciones de errores y nuevas funciones de forma continua. Ejecute `Ayuda` ▸ `Buscar actualizaciones` de vez en cuando para mantener PDIndexer actualizado.
 
 ## Licencia
 

@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Macro
 
-A maior parte das operações do PDIndexer pode ser automatizada com o recurso **Macro**. As macros são scripts Python escritos em [IronPython](https://ironpython.net/) (uma implementação de Python que roda sobre o .NET), editados e executados em uma janela de editor de macros dedicada. Use-as para automatizar tarefas repetitivas, processar vários arquivos em lote e exportar resultados para arquivos CSV ou de imagem em massa.
+A maior parte das operações do PDIndexer pode ser automatizada com o recurso `Macro`. As macros são scripts Python escritos em [IronPython](https://ironpython.net/) (uma implementação de Python que roda sobre o .NET), editados e executados em uma janela de editor de macros dedicada. Use-as para automatizar tarefas repetitivas, processar vários arquivos em lote e exportar resultados para arquivos CSV ou de imagem em massa.
 
 ![Janela do editor de macros](../assets/cap-pt-auto/FormMacro.png)
 
@@ -10,9 +10,9 @@ A maior parte das operações do PDIndexer pode ser automatizada com o recurso *
 
 ## Abrindo o editor de macros
 
-Na barra de menus da janela principal, escolha **Macro → Editor** para abrir a janela do editor de macros (com o título `Macro`).
+Na barra de menus da janela principal, escolha `Macro` ▸ `Editor` para abrir a janela do editor de macros (com o título `Macro`).
 
-As macros criadas e salvas no editor também são listadas por nome no menu **Macro**, para que você possa executá-las diretamente pelo menu. A lista de macros é salva automaticamente quando o PDIndexer é fechado e restaurada na próxima inicialização.
+As macros criadas e salvas no editor também são listadas por nome no menu `Macro`, para que você possa executá-las diretamente pelo menu. A lista de macros é salva automaticamente quando o PDIndexer é fechado e restaurada na próxima inicialização.
 
 ## Layout da janela do editor
 
@@ -24,7 +24,7 @@ A janela do editor é composta pelas seguintes partes.
 | Editor de código (centro) | A área onde você digita o script Python. Ele oferece uma calha de números de linha, recuo automático, complemento de entrada (autocompletar) e dicas de ferramenta de funções. |
 | Tabela de referência de funções | Uma tabela com todas as funções disponíveis sob `PDI`. Dê um duplo clique em uma célula para inserir aquele nome de função no código, na posição do cursor. |
 | Painel de depuração (à direita) | Exibe os nomes e valores das variáveis no ponto atual durante a execução passo a passo. |
-| Barra de status | Mostra a posição atual do cursor (`Line` / `Col`). |
+| Barra de status | Mostra a posição atual do cursor (`Linha` / `Col`). |
 
 ### Botões de operação da lista
 
@@ -32,11 +32,11 @@ Use os botões a seguir para editar a lista de macros.
 
 | Botão | Ação |
 | --- | --- |
-| `Add` | Adiciona o código atual à lista com o nome digitado na caixa de nome (solicita confirmação para sobrescrever se o nome já existir). |
-| `Replace` | Substitui a macro selecionada na lista pelo código atual. |
-| `Delete` | Remove a macro selecionada da lista. |
+| `Adicionar` | Adiciona o código atual à lista com o nome digitado na caixa de nome (solicita confirmação para sobrescrever se o nome já existir). |
+| `Substituir` | Substitui a macro selecionada na lista pelo código atual. |
+| `Excluir` | Remove a macro selecionada da lista. |
 | `↑` / `↓` | Move a macro selecionada para cima ou para baixo dentro da lista. |
-| `Show samples` | Alterna a exibição das macros de exemplo incorporadas (veja abaixo). |
+| `Mostrar exemplos` | Alterna a exibição das macros de exemplo incorporadas (veja abaixo). |
 
 !!! tip "Salvando e carregando"
     As macros podem ser salvas em e carregadas de arquivos `.mcr` individuais. Arraste e solte um arquivo `.mcr` sobre a janela do editor para carregar seu conteúdo. Pressionar `Ctrl+S` após a edição sobrescreve a macro atualmente selecionada.
@@ -57,7 +57,7 @@ Execute a macro usando os botões na parte inferior do editor de código.
 
 ### Macros de exemplo
 
-Marcar o botão `Show samples` exibe as macros de exemplo incorporadas na lista (somente leitura). Os exemplos são mostrados no idioma atual da interface (inglês/japonês). Use-os como referência ao escrever suas próprias macros. Os exemplos incorporados são:
+Marcar o botão `Mostrar exemplos` exibe as macros de exemplo incorporadas na lista (somente leitura). Os exemplos são mostrados no idioma atual da interface (inglês/japonês). Use-os como referência ao escrever suas próprias macros. Os exemplos incorporados são:
 
 | Nome | Conteúdo |
 | --- | --- |
@@ -195,7 +195,7 @@ Opera a janela [Ajuste de picos de difração](6-fitting-diffraction-peaks.md).
 | --- | --- | --- |
 | `Open` | `Open()` | Abre a janela 'Fitting peaks'. |
 | `Close` | `Close()` | Fecha a janela 'Fitting peaks'. |
-| `Apply` | `Apply()` | Aplica os parâmetros de rede otimizados ao cristal selecionado (equivalente a clicar no botão `Apply to the crystal` na janela de ajuste). |
+| `Apply` | `Apply()` | Aplica os parâmetros de rede otimizados ao cristal selecionado (equivalente a clicar no botão `Aplicar ao cristal` na janela de ajuste). |
 | `Check` | `Check(int index = -1, bool state = true)` | Marca ou desmarca o plano de rede no índice indicado. Se `index` for -1, o plano atualmente selecionado é o alvo. |
 | `Uncheck` | `Uncheck(int index = -1)` | Desmarca o plano de rede no índice indicado. Se `index` for -1, o plano atualmente selecionado será desmarcado. |
 | `Select` | `Select(int index)` | Seleciona o plano de rede no índice indicado. |
@@ -245,4 +245,4 @@ if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancell
     PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
-Você pode navegar pelos outros exemplos usando o botão `Show samples` no editor.
+Você pode navegar pelos outros exemplos usando o botão `Mostrar exemplos` no editor.

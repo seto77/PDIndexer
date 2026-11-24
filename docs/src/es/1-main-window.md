@@ -29,17 +29,15 @@ Cada botón de la barra de herramientas alterna una ventana de análisis especí
 
 | Botón | Función | Véase |
 | --- | --- | --- |
-| `Parámetro de cristal (C)` | Alterna la ventana Parámetro de cristal. | [Parámetros del cristal](3-crystal-parameter.md) |
-| `Parámetro de perfil (P)` | Alterna la ventana Parámetro de perfil. | [Parámetros del perfil](4-profile-parameter.md) |
-| `Ecuación de estado (E)` | Alterna la ventana Ecuación de estado para estimar la presión a partir del volumen de celda de un material estándar. | [Ecuaciones de estado](5-equation-of-states.md) |
-| `Ajustar picos de difracción (F)` | Alterna la ventana Ajuste de picos para ajustar los picos de difracción (posición, FWHM, intensidad). | [Ajuste de picos de difracción](6-fitting-diffraction-peaks.md) |
-| `Cell Finder` | Alterna la ventana Cell Finder para buscar parámetros de red a partir de las posiciones de los picos. | — |
-| `Análisis secuencial` | Alterna la ventana Análisis secuencial para el procesamiento por lotes de una serie de archivos. | [Análisis secuencial](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Alterna la ventana Atomic Position Finder para buscar posiciones atómicas a partir de las intensidades de difracción. | — |
-| `Análisis LPO` | Alterna la ventana de análisis LPO (orientación preferente de la red). | — |
+| `Parámetro de cristal (C)` | Alterna la ventana `Parámetros del cristal`. | [Parámetros del cristal](3-crystal-parameter.md) |
+| `Parámetro de perfil (P)` | Alterna la ventana `Parámetros del perfil`. | [Parámetros del perfil](4-profile-parameter.md) |
+| `Ecuación de estado (E)` | Alterna la ventana `Ecuaciones de estado` para estimar la presión a partir del volumen de celda de un material estándar. | [Ecuaciones de estado](5-equation-of-states.md) |
+| `Ajustar picos de difracción (F)` | Alterna la ventana de ajuste de picos para ajustar los picos de difracción (posición, FWHM, intensidad). | [Ajuste de picos de difracción](6-fitting-diffraction-peaks.md) |
+| `Cell Finder` | Alterna la ventana `Cell Finder` para buscar parámetros de red a partir de las posiciones de los picos. | — |
+| `Análisis secuencial` | Alterna la ventana `Análisis secuencial` para el procesamiento por lotes de una serie de archivos. | [Análisis secuencial](7-sequential-analysis.md) |
 
 !!! note
-    Las ventanas principales también pueden alternarse con atajos de teclado: `Ctrl+Shift+C` (Parámetro de cristal), `Ctrl+Shift+E` (Ecuaciones de estado), `Ctrl+Shift+F` (Parámetro de ajuste), `Ctrl+Shift+D` (cambiar modo de pico) y `Ctrl+Shift+S` (Análisis secuencial). Además, `Ctrl+Shift+Space` alterna la marca del cristal seleccionado, `Ctrl+Alt+Space` alterna la marca de la reflexión seleccionada en la lista de reflexiones de la ventana de ajuste de picos, y `Ctrl+Shift+V` lee el texto del portapapeles como un perfil. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
+    Las ventanas principales también pueden alternarse con atajos de teclado: `Ctrl+Shift+C` (`Parámetros del cristal`), `Ctrl+Shift+E` (`Ecuaciones de estado`), `Ctrl+Shift+F` (Parámetro de ajuste), `Ctrl+Shift+D` (cambiar modo de pico) y `Ctrl+Shift+S` (`Análisis secuencial`). Además, `Ctrl+Shift+Space` alterna la marca del cristal seleccionado, `Ctrl+Alt+Space` alterna la marca de la reflexión seleccionada en la lista de reflexiones de la ventana de ajuste de picos, y `Ctrl+Shift+V` lee el texto del portapapeles como un perfil. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
 
 ## Barra de menús
 
@@ -97,10 +95,10 @@ La pestaña `Eje horizontal` establece el modo de visualización del eje. Los aj
 | Elemento | Descripción |
 | --- | --- |
 | `Tras leer el perfil, cambiar el eje horizontal` | Cuando está marcado, alinea automáticamente los ajustes del eje horizontal con los del perfil recién cargado. |
-| 2θ (degree) | Establece el eje horizontal en ángulo. Al elegir el botón de opción `X-ray` se obtiene el ángulo de dispersión para rayos X; seleccione una fuente de rayos X característica o `Custom` de la lista desplegable y especifique la longitud de onda. Al elegir el botón de opción `Electron` se obtiene el ángulo de dispersión para electrones; al especificar el voltaje de aceleración se calcula la longitud de onda corregida relativísticamente. |
-| Energy (eV) | Establece el eje horizontal en energía (unidad eV). Esto corresponde a un experimento de difracción de rayos X usando un detector EDX. Ajuste adecuadamente el ángulo de salida (take-off) del EDX. |
-| d-spacing (Å) | Establece el eje horizontal en el espaciado d (espaciado de planos de red). |
-| q | Establece el eje horizontal en la magnitud del vector de dispersión \( q \). |
+| `2θ (ángulo)` | Establece el eje horizontal en ángulo. Al elegir el botón de opción `Rayos X` se obtiene el ángulo de dispersión para rayos X; seleccione una fuente de rayos X característica o `Custom` de la lista desplegable y especifique la longitud de onda. Al elegir el botón de opción `Electrones` se obtiene el ángulo de dispersión para electrones; al especificar el voltaje de aceleración se calcula la longitud de onda corregida relativísticamente. |
+| `Energía` | Establece el eje horizontal en energía (unidad eV). Esto corresponde a un experimento de difracción de rayos X usando un detector EDX. Ajuste adecuadamente el ángulo de salida (take-off) del EDX. |
+| `Distancia interplanar` | Establece el eje horizontal en el espaciado d (espaciado de planos de red). |
+| `q (número de onda)` | Establece el eje horizontal en la magnitud del vector de dispersión \( q \). |
 
 La relación entre el ángulo de dispersión y el espaciado d viene dada por la ley de Bragg, siendo \( \lambda \) la longitud de onda:
 

@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Macro
 
-La mayoría de las operaciones de PDIndexer se pueden automatizar con la función **Macro**. Las macros son scripts de Python escritos en [IronPython](https://ironpython.net/) (una implementación de Python que se ejecuta sobre .NET), que se editan y ejecutan en una ventana de editor de macros dedicada. Úselas para automatizar tareas repetitivas, procesar varios archivos por lotes y exportar resultados a archivos CSV o de imagen de forma masiva.
+La mayoría de las operaciones de PDIndexer se pueden automatizar con la función `Macro`. Las macros son scripts de Python escritos en [IronPython](https://ironpython.net/) (una implementación de Python que se ejecuta sobre .NET), que se editan y ejecutan en una ventana de editor de macros dedicada. Úselas para automatizar tareas repetitivas, procesar varios archivos por lotes y exportar resultados a archivos CSV o de imagen de forma masiva.
 
 ![Ventana del editor de macros](../assets/cap-es-auto/FormMacro.png)
 
@@ -10,9 +10,9 @@ La mayoría de las operaciones de PDIndexer se pueden automatizar con la funció
 
 ## Abrir el editor de macros
 
-En la barra de menú de la ventana principal, elija **Macro → Editor** para abrir la ventana del editor de macros (con el título `Macro`).
+En la barra de menú de la ventana principal, elija `Macro` ▸ `Editor` para abrir la ventana del editor de macros (con el título `Macro`).
 
-Las macros creadas y guardadas en el editor también aparecen por nombre en el menú **Macro**, de modo que puede ejecutarlas directamente desde el menú. La lista de macros se guarda automáticamente al cerrar PDIndexer y se restaura en el siguiente inicio.
+Las macros creadas y guardadas en el editor también aparecen por nombre en el menú `Macro`, de modo que puede ejecutarlas directamente desde el menú. La lista de macros se guarda automáticamente al cerrar PDIndexer y se restaura en el siguiente inicio.
 
 ## Disposición de la ventana del editor
 
@@ -36,7 +36,7 @@ Use los siguientes botones para editar la lista de macros.
 | `Replace` | Reemplaza la macro seleccionada en la lista por el código actual. |
 | `Delete` | Elimina la macro seleccionada de la lista. |
 | `↑` / `↓` | Mueve la macro seleccionada hacia arriba o hacia abajo dentro de la lista. |
-| `Show samples` | Alterna la visualización de las macros de ejemplo integradas (véase más abajo). |
+| `Mostrar ejemplos` | Alterna la visualización de las macros de ejemplo integradas (véase más abajo). |
 
 !!! tip "Guardar y cargar"
     Las macros se pueden guardar y cargar como archivos `.mcr` individuales. Arrastre y suelte un archivo `.mcr` sobre la ventana del editor para cargar su contenido. Al pulsar `Ctrl+S` después de editar se sobrescribe la macro seleccionada actualmente.
@@ -57,7 +57,7 @@ Ejecute la macro con los botones situados en la parte inferior del editor de có
 
 ### Macros de ejemplo
 
-Al marcar el botón `Show samples` se muestran en la lista las macros de ejemplo integradas (de solo lectura). Los ejemplos se muestran en el idioma actual de la interfaz (inglés/japonés). Úselos como referencia al escribir sus propias macros. Los ejemplos integrados son:
+Al marcar el botón `Mostrar ejemplos` se muestran en la lista las macros de ejemplo integradas (de solo lectura). Los ejemplos se muestran en el idioma actual de la interfaz (inglés/japonés). Úselos como referencia al escribir sus propias macros. Los ejemplos integrados son:
 
 | Nombre | Contenido |
 | --- | --- |
@@ -245,4 +245,4 @@ if dir_path != "\\":  # GetDirectoryPath returns "\\" when the dialog is cancell
     PDI.File.SaveText(PDI.Sequential.GetCSV_Pressure(),      dir_path + "seq_pressure.csv")
 ```
 
-Puede consultar los demás ejemplos desde el botón `Show samples` del editor.
+Puede consultar los demás ejemplos desde el botón `Mostrar ejemplos` del editor.

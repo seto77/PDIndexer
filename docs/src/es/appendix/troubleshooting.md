@@ -15,7 +15,7 @@ La instalación MSI de PDIndexer requiere el **.NET Desktop Runtime** especifica
 ## El idioma de la interfaz no cambia
 
 <!-- 261124Cl changed: the old text described an English/Japanese choice and a manual restart; now there are 11 languages and PDIndexer restarts itself after a confirmation dialog -->
-Elija el idioma de visualización (11 idiomas, cada uno mostrado con su propio nombre) en **Idioma**, en el extremo derecho de la barra de menús. Cambiar el idioma requiere un reinicio: elija **Sí** en el cuadro de diálogo de confirmación y PDIndexer se reiniciará automáticamente en el idioma seleccionado.
+Elija el idioma de visualización (11 idiomas, cada uno mostrado con su propio nombre) en `Idioma`, en el extremo derecho de la barra de menús. Cambiar el idioma requiere un reinicio: elija **Sí** en el cuadro de diálogo de confirmación y PDIndexer se reiniciará automáticamente en el idioma seleccionado.
 
 !!! note
     El reinicio descarta el trabajo no guardado (perfiles cargados y ediciones en curso), así que guarde lo que necesite antes de cambiar. Si elige **No**, el idioma no cambia.
@@ -24,7 +24,7 @@ Elija el idioma de visualización (11 idiomas, cada uno mostrado con su propio n
 
 Las posiciones de las ventanas, la configuración de colores y diversas opciones se guardan en el registro. Si la configuración se daña y el programa se comporta de forma incorrecta, puede borrar el registro para volver al estado inicial.
 
-1. En el menú, marque **Opciones** ▸ **Borrar el registro (marcar y reiniciar)**.
+1. En el menú, marque `Opciones` ▸ `Borrar el registro (marcar y reiniciar)`.
 2. Cierre PDIndexer. Toda la configuración guardada se borra al salir.
 3. Inicie PDIndexer de nuevo; arrancará en su estado inicial (predeterminado).
 
@@ -35,11 +35,11 @@ Las posiciones de las ventanas, la configuración de colores y diversas opciones
 
 Los perfiles y cristales copiados en aplicaciones hermanas como [IPAnalyzer](https://github.com/seto77/IPAnalyzer) y [CSManager](https://github.com/seto77/CSManager) pueden importarse automáticamente en PDIndexer a través del portapapeles. Si no se importa nada, es posible que la vigilancia del portapapeles esté desactivada.
 
-- Compruebe que **Opciones** ▸ **Vigilar portapapeles** esté activado en el menú.
+- Compruebe que `Opciones` ▸ `Vigilar portapapeles` esté activado en el menú.
 - Cuando está activado, los perfiles/cristales copiados desde otras aplicaciones se leen automáticamente.
 
 !!! tip
-    Si desea leer automáticamente los archivos `.pdi` recién creados en una carpeta concreta, use **Opciones** ▸ **Vigilar archivo**.
+    Si desea leer automáticamente los archivos `.pdi` recién creados en una carpeta concreta, use `Opciones` ▸ `Vigilar archivo`.
 
 ## Los cocientes de intensidad no se calculan
 

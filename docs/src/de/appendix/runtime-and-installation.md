@@ -55,19 +55,19 @@ Einige Funktionen von PDIndexer benötigen erhebliche Rechenressourcen. Zur Verb
 
 ## Updates (Prüfen auf neue Versionen)
 
-Über das Menü **Hilfe** des Hauptfensters können Sie mit PDIndexer auf die neueste Version aktualisieren und Autoreninformationen anzeigen.
+Über das Menü `Hilfe` des Hauptfensters können Sie mit PDIndexer auf die neueste Version aktualisieren und Autoreninformationen anzeigen.
 
 | Menü | Funktion |
 | --- | --- |
-| **Hilfe** ▸ **Auf Updates prüfen** | Prüft, ob eine neuere Version veröffentlicht wurde, und aktualisiert das Programm. |
-| **Hilfe** ▸ **Über PDIndexer** | Zeigt Versions- und Autoreninformationen an. |
+| `Hilfe` ▸ `Auf Updates prüfen` | Prüft, ob eine neuere Version veröffentlicht wurde, und aktualisiert das Programm. |
+| `Hilfe` ▸ `Über PDIndexer` | Zeigt Versions- und Autoreninformationen an. |
 
-Wenn Sie **Hilfe** ▸ **Über PDIndexer** wählen, öffnet sich ein Fenster wie das untenstehende, in dem Sie die aktuelle Versionsnummer und die Autoreninformationen prüfen können.
+Wenn Sie `Hilfe` ▸ `Über PDIndexer` wählen, öffnet sich ein Fenster wie das untenstehende, in dem Sie die aktuelle Versionsnummer und die Autoreninformationen prüfen können.
 
 ![PDIndexer-Fenster mit Versionsinformationen](../../assets/cap-de-auto/FormAboutMe.png)
 
 !!! tip "Regelmäßig aktualisieren"
-    Fehlerbehebungen und neue Funktionen werden laufend hinzugefügt. Führen Sie von Zeit zu Zeit **Hilfe** ▸ **Auf Updates prüfen** aus, um PDIndexer auf dem neuesten Stand zu halten.
+    Fehlerbehebungen und neue Funktionen werden laufend hinzugefügt. Führen Sie von Zeit zu Zeit `Hilfe` ▸ `Auf Updates prüfen` aus, um PDIndexer auf dem neuesten Stand zu halten.
 
 ## Lizenz
 

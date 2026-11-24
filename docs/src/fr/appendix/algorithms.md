@@ -121,7 +121,7 @@ On répète jusqu'à ce que la variation de \( R \) soit suffisamment faible. Lo
 
 ### Fonctions de profil
 
-PDIndexer propose la **fonction Pseudo Voigt** (un mélange de gaussienne et de lorentzienne), la **fonction Pearson VII** (une fonction de densité de probabilité), et leurs extensions asymétriques **Split Pseudo Voigt** / **Split Pearson VII**. Pour la rapidité et la stabilité de convergence, Symmetric Pseudo Voigt est la fonction par défaut. Toutes les fonctions sont normalisées à une aire unité.
+PDIndexer propose la **fonction Pseudo Voigt** (un mélange de gaussienne et de lorentzienne), la **fonction Pearson VII** (une fonction de densité de probabilité), et leurs extensions asymétriques `Pseudo-Voigt asymétrique` / `Pearson VII asymétrique`. Pour la rapidité et la stabilité de convergence, `Pseudo-Voigt symétrique` est la fonction par défaut. Toutes les fonctions sont normalisées à une aire unité.
 
 **Symmetric Pseudo Voigt**
 
@@ -143,7 +143,7 @@ $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l
 
 $$f(x,R_l,R_h,A,H_k)=\frac{2(1+e^{A})}{H_k\sqrt{\pi}}\left(e^{A}\frac{\Gamma(R_l-1/2)}{\Gamma(R_l)\sqrt{2^{1/R_l}-1}}+\frac{\Gamma(R_h-1/2)}{\Gamma(R_h)\sqrt{2^{1/R_h}-1}}\right)^{-1}\left(1+(1+e^{A})^2(2^{1/R_h}-1)\left(\frac{x}{H_k}\right)^2\right)^{-R_h}\quad(x>0)$$
 
-Symmetric Pseudo Voigt et Symmetric Pearson VII sont symétriques par rapport à \( x=0 \), tandis que les formes split changent de forme selon le signe de \( x \) pour exprimer l'asymétrie (telle qu'une traîne du côté des bas angles). En général, Pearson VII tend à donner le meilleur ajustement (résidu plus faible), tandis que Pseudo Voigt tend à converger plus stablement.
+`Pseudo-Voigt symétrique` et `Pearson VII symétrique` sont symétriques par rapport à \( x=0 \), tandis que les formes split changent de forme selon le signe de \( x \) pour exprimer l'asymétrie (telle qu'une traîne du côté des bas angles). En général, Pearson VII tend à donner le meilleur ajustement (résidu plus faible), tandis que Pseudo Voigt tend à converger plus stablement.
 
 #### Symboles
 

@@ -68,12 +68,6 @@
   <data name="profileDataGridViewTextBoxColumn.HeaderText" xml:space="preserve">
     <value>Profil</value>
   </data>
-  <data name="label2.Text" xml:space="preserve">
-    <value>Couleur de ligne</value>
-  </data>
-  <data name="label7.Text" xml:space="preserve">
-    <value>Largeur de ligne</value>
-  </data>
   <data name="label22.Text" xml:space="preserve">
     <value>Commentaire</value>
   </data>
@@ -95,9 +89,6 @@
   <data name="radioButtonBagkgroundBSpline.Text" xml:space="preserve">
     <value>Courbe B-spline</value>
   </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Temps d'exposition</value>
-  </data>
   <data name="checkBoxSmoothing.Text" xml:space="preserve">
     <value>3. Lissage</value>
   </data>
@@ -110,20 +101,11 @@
   <data name="buttonChangeSourceXAxis.Text" xml:space="preserve">
     <value>Modifier</value>
   </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>unité horizontale</value>
-  </data>
   <data name="checkBoxShiftHorizontalAxis.Text" xml:space="preserve">
     <value>Décaler</value>
   </data>
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Réglage de l'axe horizontal</value>
-  </data>
-  <data name="label24.Text" xml:space="preserve">
-    <value>(pour le mode CPS)</value>
-  </data>
-  <data name="label6.Text" xml:space="preserve">
-    <value>s</value>
   </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Réglage de l'axe vertical</value>
@@ -162,9 +144,6 @@ l'ordre du polynôme). Plus grand = fenêtre d'ajustement plus large.</value>
   </data>
   <data name="buttonDeleteAllMask.Text" xml:space="preserve">
     <value>Tout supprimer</value>
-  </data>
-  <data name="label19.Text" xml:space="preserve">
-    <value>Degré du polynôme</value>
   </data>
   <data name="buttonDeleteMask.Text" xml:space="preserve">
     <value>Supprimer</value>

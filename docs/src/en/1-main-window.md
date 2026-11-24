@@ -35,8 +35,6 @@ Each button on the toolbar toggles a dedicated analysis window.
 | `Fitting Diffraction Peaks (F)` | Toggle the Peak Fitting window to fit diffraction peaks (position, FWHM, intensity). | [Fitting diffraction peaks](6-fitting-diffraction-peaks.md) |
 | `Cell Finder` | Toggle the Cell Finder window to search lattice constants from peak positions. | — |
 | `Sequential Analysis` | Toggle the Sequential Analysis window for batch processing of a file series. | [Sequential analysis](7-sequential-analysis.md) |
-| `Atomic Position Finder` | Toggle the Atomic Position Finder window to search atomic positions from diffraction intensities. | — |
-| `LPO Analysis` | Toggle the LPO (lattice-preferred orientation) Analysis window. | — |
 
 !!! note
     The main windows can also be toggled with keyboard shortcuts: `Ctrl+Shift+C` (Crystal Parameter), `Ctrl+Shift+E` (Equation of States), `Ctrl+Shift+F` (Fitting Parameter), `Ctrl+Shift+D` (change peak mode), and `Ctrl+Shift+S` (Sequential Analysis). In addition, `Ctrl+Shift+Space` toggles the check of the selected crystal, `Ctrl+Alt+Space` toggles the check of the selected reflection in the reflection list of the peak-fitting window, and `Ctrl+Shift+V` reads text on the clipboard as a profile. <!-- 261124Cl added: shortcuts in FormMain_KeyDown that were missing from this list -->
@@ -97,10 +95,10 @@ The `Horizontal Axis` tab sets the display mode of the axis. The settings here a
 | Item | Description |
 | --- | --- |
 | `After reading profile, change horizontal axis` | When checked, automatically aligns the horizontal-axis settings to those of the newly loaded profile. |
-| 2θ (degree) | Set the horizontal axis to angle. Choosing the `X-ray` radio button gives the scattering angle for X-rays; select a characteristic X-ray source or `Custom` from the drop-down list and specify the wavelength. Choosing the `Electron` radio button gives the scattering angle for electrons; specifying the accelerating voltage computes the relativistically corrected wavelength. |
-| Energy (eV) | Set the horizontal axis to energy (unit eV). This corresponds to an X-ray diffraction experiment using an EDX detector. Set the EDX take-off angle appropriately. |
-| d-spacing (Å) | Set the horizontal axis to d-spacing (lattice-plane spacing). |
-| q | Set the horizontal axis to the magnitude of the scattering vector \( q \). |
+| `2θ (angle)` | Set the horizontal axis to angle. Choosing the `X-ray` radio button gives the scattering angle for X-rays; select a characteristic X-ray source or `Custom` from the drop-down list and specify the wavelength. Choosing the `Electron` radio button gives the scattering angle for electrons; specifying the accelerating voltage computes the relativistically corrected wavelength. |
+| `Energy` | Set the horizontal axis to energy (unit eV). This corresponds to an X-ray diffraction experiment using an EDX detector. Set the EDX take-off angle appropriately. |
+| `d-spacing` | Set the horizontal axis to d-spacing (lattice-plane spacing). |
+| `q (wavenumber)` | Set the horizontal axis to the magnitude of the scattering vector \( q \). |
 
 The relationship between the scattering angle and the d-spacing is given by Bragg's law, with \( \lambda \) the wavelength:
 

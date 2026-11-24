@@ -8,7 +8,7 @@
 Use the `Sequential Analysis` button on the main-window toolbar to open and close this window.
 
 !!! note "Shared with [Fitting diffraction peaks](6-fitting-diffraction-peaks.md)"
-    Sequential analysis shares its fitting setup with the `Fitting diffraction peaks` window. Open the `Fitting diffraction peaks` window first, select the target crystal, and check the diffraction lines (peaks) you want to fit. If these are not prepared when you press `Execute`, a message tells you to do so.
+    Sequential analysis shares its fitting setup with the `Fitting Diffraction Peaks` window. Open the `Fitting Diffraction Peaks` window first, select the target crystal, and check the diffraction lines (peaks) you want to fit. If these are not prepared when you press `Execute`, a message tells you to do so.
 
 ## Basic workflow
 

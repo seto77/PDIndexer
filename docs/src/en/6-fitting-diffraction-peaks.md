@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Fitting diffraction peaks
 
-The `Fitting diffraction peaks` tool fits the peaks of a diffraction profile with an appropriate function, derives the d-spacing from each peak position 2θ, and refines the lattice constants by least squares. It is launched from the toolbar of the main window.
+The `Fitting Diffraction Peaks (F)` tool fits the peaks of a diffraction profile with an appropriate function, derives the d-spacing from each peak position 2θ, and refines the lattice constants by least squares. It is launched from the toolbar of the main window.
 
 ![Whole peak-fitting window](../assets/cap-en-auto/FormFitting.png)
 
@@ -59,7 +59,7 @@ Here you make detailed settings used when fitting the peak profiles.
 
 ![Search Range and Initial FWHM](../assets/cap-en-auto/FormFitting.groupBox3.groupBox2.png)
 
-- `Search Range`: Sets the range over which fitting is performed. That is, the region within ±Search Range of the calculated diffraction-line position is taken as the fitting target for that peak.
+- `Search Range`: Sets the range over which fitting is performed. That is, the region within ±`Search Range` of the calculated diffraction-line position is taken as the fitting target for that peak.
 - `Initial FWHM`: Specifies the initial full width at half maximum of the profile function. It is used as the starting value for least-squares convergence.
 
 Pressing `Apply to all` applies the current settings to all diffraction lines at once.
@@ -91,7 +91,7 @@ where \(\eta\) is the fraction of the Lorentzian component. The split form repre
 
 ![Pattern Decomposition](../assets/cap-en-auto/FormFitting.groupBox3.flowLayoutPanelPatternDecomposition.png)
 
-When the Search Ranges of two or more selected diffraction lines overlap, this option selects whether to perform pattern decomposition (simultaneous fitting of the overlapping peaks).
+When the `Search Range` regions of two or more selected diffraction lines overlap, this option selects whether to perform pattern decomposition (simultaneous fitting of the overlapping peaks).
 
 - `in each crystal`: Performs pattern decomposition independently for each crystal.
 - `between crystals`: Performs pattern decomposition across all crystals.
@@ -107,7 +107,6 @@ Once enough independent indices are chosen for the least-squares calculation to 
 
 - `Apply to the crystal`: Pushes the refined lattice constants back to the selected crystal in the main program.
 - `Copy to Clipboard`: Copies the optimized lattice constants to the clipboard.
-- `Reset take off angle`: Resets the take-off angle.
 
 ## Remove fitted peaks
 
@@ -115,19 +114,13 @@ This subtracts the fitted peaks from the profile and outputs the residual profil
 
 ## Related tools (Send d-values)
 
-Pressing `Send d-values to CellFinder && AtomicPositionFinder` sends the d-values obtained from the fit to the following analysis tools, which can also be launched from the toolbar.
+Pressing `Send d-values to CellFinder && AtomicPositionFinder` sends the d-values obtained from the fit of the checked reflections to `Cell Finder`. Open `Cell Finder` from the toolbar. <!-- 261124Cl changed (author decision): the Atomic Position Finder, not available in the current version, is no longer described -->
 
 ### Cell Finder
 
 ![Cell Finder](../assets/cap-en-auto/FormCellFinder.png)
 
-`Cell Finder` searches for the unit cell (lattice constants) that explains a set of measured peak positions (a list of d-values), working backward from those positions. It is used to index unknown samples.
-
-### Atomic Position Finder
-
-![Atomic Position Finder](../assets/cap-en-auto/FormAtomicPositionFinder.png)
-
-`Atomic Position Finder` searches for the atomic positions in a crystal structure from quantities such as the intensities of the observed reflections.
+`Cell Finder` searches for candidate lattice constants that explain a set of measured peak positions (a list of d-values). It is used to index unknown samples.
 
 !!! tip "Identifying an unknown sample"
     After determining the lattice constants with `Cell Finder`, register that crystal in the crystal list, and you can refine the lattice constants further with the least-squares fitting of this tool.

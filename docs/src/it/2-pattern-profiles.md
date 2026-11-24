@@ -14,11 +14,11 @@ Un profilo è un set di dati unidimensionale di tipo "asse orizzontale vs. inten
 - Tempo di volo per il metodo dei neutroni a tempo di volo (TOF)
 - In ogni caso, i dati possono anche essere gestiti internamente dopo la conversione nella distanza interplanare (valore d) \( d \) o nel vettore di scattering \( q \)
 
-L'asse verticale è l'intensità di diffrazione, che può essere mostrata come `Raw Counts` o come conteggi divisi per il tempo di esposizione in secondi (`Count per Step (CPS)`), su scala lineare o logaritmica (vedere `Vertical Axis` nella pagina [Finestra principale](1-main-window.md)).
+L'asse verticale è l'intensità di diffrazione, che può essere mostrata come `Conteggi grezzi` o come conteggi divisi per il tempo di esposizione in secondi (`Conteggi per passo (CPS)`), su scala lineare o logaritmica (vedere `Asse verticale` nella pagina [Finestra principale](1-main-window.md)).
 
 ## Formati di input supportati
 
-`File ▸ Read profile(s)` carica il formato nativo di PDIndexer, così come l'output di altri programmi e i formati di testo generici.
+`File` ▸ `Leggi profilo/i` carica il formato nativo di PDIndexer, così come l'output di altri programmi e i formati di testo generici.
 
 | Estensione | Contenuto |
 | --- | --- |
@@ -32,7 +32,7 @@ L'asse verticale è l'intensità di diffrazione, che può essere mostrata come `
 | Altro testo | Qualsiasi testo a due colonne angolo (o valore d)–intensità è generalmente leggibile |
 
 !!! note "Lettura di testo generico"
-    I file memorizzati come testo angolo–intensità possono di solito essere letti anche se non appartengono a uno dei formati standard sopra elencati. Se il tipo di asse orizzontale o la lunghezza d'onda/energia non possono essere determinati, specificarli nella finestra di dialogo `Data Converter` descritta di seguito.
+    I file memorizzati come testo angolo–intensità possono di solito essere letti anche se non appartengono a uno dei formati standard sopra elencati. Se il tipo di asse orizzontale o la lunghezza d'onda/energia non possono essere determinati, specificarli nella finestra di dialogo `Convertitore di dati` descritta di seguito.
 
 La specifica dettagliata di ciascun formato è raccolta in [Formati di file](appendix/file-formats.md).
 
@@ -40,35 +40,35 @@ La specifica dettagliata di ciascun formato è raccolta in [Formati di file](app
 
 I profili possono essere caricati in diversi modi.
 
-- **Menu** — `File ▸ Read profile(s)`. È possibile selezionare più file contemporaneamente.
+- **Menu** — `File` ▸ `Leggi profilo/i`. È possibile selezionare più file contemporaneamente.
 - **Trascinamento (drag and drop)** — Trascinare i file da Esplora file sulla finestra principale.
-- **Watch Clipboard** — Quando `Option ▸ Watch Clipboard` è abilitato, i profili/cristalli copiati da altre applicazioni (ad es. IPAnalyzer o CSManager) vengono importati automaticamente.
-- **Watch File** — Quando `Option ▸ Watch File` è abilitato e una cartella viene scelta con `Set Directory to the watch`, i file di profilo `pdi` appena creati in quella cartella vengono letti automaticamente. Questo è comodo per la visualizzazione in tempo reale durante una misura continua.
+- **Watch Clipboard** — Quando `Opzioni` ▸ `Monitora appunti` è abilitato, i profili/cristalli copiati da altre applicazioni (ad es. IPAnalyzer o CSManager) vengono importati automaticamente.
+- **Watch File** — Quando `Opzioni` ▸ `Monitora file` è abilitato e una cartella viene scelta con `Imposta la cartella da monitorare`, i file di profilo `pdi` appena creati in quella cartella vengono letti automaticamente. Questo è comodo per la visualizzazione in tempo reale durante una misura continua.
 
 !!! tip "Allineare automaticamente l'asse orizzontale"
-    Selezionando `After reading profile, change horizontal axis` la visualizzazione dell'asse orizzontale viene commutata per corrispondere al profilo appena caricato immediatamente dopo la sua lettura.
+    Selezionando `Dopo la lettura del profilo, cambia l'asse orizzontale` la visualizzazione dell'asse orizzontale viene commutata per corrispondere al profilo appena caricato immediatamente dopo la sua lettura.
 
 ## Modalità Single Profile e Multi Profiles
 
-Cambiare la modalità di visualizzazione con `Single/Multi Profile` sul lato destro della finestra principale.
+Cambiare la modalità di visualizzazione con `Profilo singolo/multiplo` sul lato destro della finestra principale.
 
-- **`Single Profile`** — Il caricamento di un nuovo profilo sostituisce i dati precedenti; viene mostrato un solo profilo alla volta.
-- **`Multi Profiles`** — I profili caricati vengono sovrapposti. Usare `Increasing intensity by a profile` per sfalsare leggermente l'intensità di ciascun profilo, così da rendere più facile distinguere le diverse curve. Abilitando `Change automatically color` viene assegnato automaticamente un colore di disegno a ciascun profilo.
+- `Profilo singolo` — Il caricamento di un nuovo profilo sostituisce i dati precedenti; viene mostrato un solo profilo alla volta.
+- `Profili multipli` — I profili caricati vengono sovrapposti. Usare `Incremento di intensità per profilo` per sfalsare leggermente l'intensità di ciascun profilo, così da rendere più facile distinguere le diverse curve. Abilitando `Change automatically color` viene assegnato automaticamente un colore di disegno a ciascun profilo.
 
 ## Elenco di controllo dei profili
 
-L'elenco `Profile` sul lato destro della finestra principale mostra tutti i profili caricati.
+L'elenco `Profilo` sul lato destro della finestra principale mostra tutti i profili caricati.
 
-- Solo i profili selezionati vengono disegnati nel visualizzatore centrale. Usare `Check/Uncheck all` per commutarli tutti insieme.
-- Fare clic sulla colonna `Color` per cambiare il colore di disegno di ciascun profilo.
+- Solo i profili selezionati vengono disegnati nel visualizzatore centrale. Usare `Seleziona/Deseleziona tutto` per commutarli tutti insieme.
+- Fare clic sulla colonna `Colore` per cambiare il colore di disegno di ciascun profilo.
 - Riordinare le voci nell'elenco per regolare l'ordine di disegno della sovrapposizione.
-- L'elenco è disabilitato nella modalità Single Profile e mostra più profili nella modalità Multi Profiles.
+- L'elenco è disabilitato nella modalità `Profilo singolo` e mostra più profili nella modalità `Profili multipli`.
 
-Le impostazioni più dettagliate del profilo (nome, stile della linea, smoothing, sottrazione del fondo, correzione degli assi, operazioni sui profili e così via) vengono effettuate nella finestra [Parametri del profilo](4-profile-parameter.md), aperta selezionando la casella `Profile Parameter` sotto l'elenco.
+Le impostazioni più dettagliate del profilo (nome, stile della linea, smoothing, sottrazione del fondo, correzione degli assi, operazioni sui profili e così via) vengono effettuate nella finestra [Parametri del profilo](4-profile-parameter.md), aperta selezionando la casella `Parametri profilo` sotto l'elenco.
 
 ## Finestra di dialogo Data Converter
 
-Quando si carica un file di testo generico il cui tipo di asse orizzontale non può essere determinato, oppure dati grezzi SSD (a dispersione di energia), si apre la finestra di dialogo `Data Converter` così da poter specificare l'asse orizzontale dei dati letti e i relativi parametri.
+Quando si carica un file di testo generico il cui tipo di asse orizzontale non può essere determinato, oppure dati grezzi SSD (a dispersione di energia), si apre la finestra di dialogo `Convertitore di dati` così da poter specificare l'asse orizzontale dei dati letti e i relativi parametri.
 
 ![Finestra di dialogo Data Converter con le impostazioni dell'asse orizzontale, il tempo di esposizione e le opzioni EDX.](../assets/cap-it-auto/FormDataConverter.png)
 
@@ -81,15 +81,15 @@ La finestra di dialogo imposta i seguenti elementi.
 | `Deconvoluzione` | La rimozione di Kα2 è stata spostata nel modulo [Parametri del profilo](4-profile-parameter.md). Per rimuoverla, selezionare Kα1 come sorgente di raggi X. |
 | `Taglio a bassa energia` sotto `Per dati SSD` | Scarta il lato a bassa energia dello spettro EDX al di sotto della soglia (eV) indicata a destra. |
 
-Quando il tipo di asse orizzontale è a dispersione di energia (raggi X bianchi, EDX), inserire i coefficienti di calibrazione dell'energia di `E = a₀ + a₁ n + a₂ n²` (E: energia in eV, n: numero di canale) per convertire i numeri di canale in energia. Fare clic su `OK` per applicare le impostazioni e convertire i dati, oppure su `Cancel` per interrompere l'importazione.
+Quando il tipo di asse orizzontale è a dispersione di energia (raggi X bianchi, EDX), inserire i coefficienti di calibrazione dell'energia di `E = a₀ + a₁ n + a₂ n²` (E: energia in eV, n: numero di canale) per convertire i numeri di canale in energia. Fare clic su `OK` per applicare le impostazioni e convertire i dati, oppure su `Annulla` per interrompere l'importazione.
 
 ## Esportazione dei profili
 
-- **`File ▸ Save profile(s)`** — Salva tutti i profili caricati nel formato nativo `pdi2` di PDIndexer. Le impostazioni degli assi e le informazioni di elaborazione vengono conservate.
-- **`File ▸ Export the selected profile(s)`** — Esporta i profili in uno dei formati seguenti:
-  - `as CSV (comma separated values) file` — Salva i profili spuntati come valori separati da virgole (X, Y), tutti insieme in un unico file oppure un file per profilo. Dopo aver scelto la destinazione, rispondere `Yes` per unirli o `No` per salvarli separatamente. X è la coordinata dell'asse orizzontale visualizzato. I numeri usano sempre `.` come separatore decimale, indipendentemente dalle impostazioni internazionali.
-  - `as TSV (tab separated values) file` — Salva lo stesso contenuto con separatori di tabulazione.
-  - `as GSAS file` — Scrive il profilo selezionato nel formato di dati GSAS (Rietveld). L'esportazione è possibile solo quando l'asse orizzontale è 2θ o TOF neutronico.
+- `File` ▸ `Salva profilo/i` — Salva tutti i profili caricati nel formato nativo `pdi2` di PDIndexer. Le impostazioni degli assi e le informazioni di elaborazione vengono conservate.
+- `File` ▸ `Esporta il/i profilo/i selezionato/i` — Esporta i profili in uno dei formati seguenti:
+  - `come file CSV (valori separati da virgola)` — Salva i profili spuntati come valori separati da virgole (X, Y), tutti insieme in un unico file oppure un file per profilo. Dopo aver scelto la destinazione, rispondere `Yes` per unirli o `No` per salvarli separatamente. X è la coordinata dell'asse orizzontale visualizzato. I numeri usano sempre `.` come separatore decimale, indipendentemente dalle impostazioni internazionali.
+  - `come file TSV (valori separati da tabulazione)` — Salva lo stesso contenuto con separatori di tabulazione.
+  - `come file GSAS` — Scrive il profilo selezionato nel formato di dati GSAS (Rietveld). L'esportazione è possibile solo quando l'asse orizzontale è 2θ o TOF neutronico.
 
 !!! note "Salvataggio della figura"
-    Per salvare la figura visualizzata invece dei dati di profilo, usare `File ▸ Copy to Clipboard` o `File ▸ Save as Metafile` (EMF). EMF è un formato vettoriale che può essere importato in PowerPoint e Word.
+    Per salvare la figura visualizzata invece dei dati di profilo, usare `File` ▸ `Copia negli appunti` o `File` ▸ `Salva come Metafile` (EMF). EMF è un formato vettoriale che può essere importato in PowerPoint e Word.

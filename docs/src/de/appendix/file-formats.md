@@ -1,7 +1,7 @@
 <!-- 260601Cl: migrated from legacy docx + yseto.net web manual -->
 # Dateiformate
 
-Die Dateien, die PDIndexer liest und schreibt, lassen sich in drei Gruppen einteilen: **Profildaten**, **Kristalllisten / Kristallstrukturen** und **Zeichnungsausgabe**. Alle diese Ein-/Ausgabevorgänge werden über das Menü **Datei** des [Hauptfensters](../1-main-window.md) aufgerufen.
+Die Dateien, die PDIndexer liest und schreibt, lassen sich in drei Gruppen einteilen: **Profildaten**, **Kristalllisten / Kristallstrukturen** und **Zeichnungsausgabe**. Alle diese Ein-/Ausgabevorgänge werden über das Menü `Datei` des [Hauptfensters](../1-main-window.md) aufgerufen.
 
 Diese Seite fasst die unterstützten Erweiterungen, die Ein-/Ausgaberichtung und Hinweise in Tabellenform zusammen.
 
@@ -11,7 +11,7 @@ Diese Seite fasst die unterstützten Erweiterungen, die Ein-/Ausgaberichtung und
 
 ### Lesen (Read profile(s))
 
-Über **Datei → Profil(e) lesen (Read profile(s))** können Sie mehrere Dateien auf einmal laden. Neben PDIndexers eigenem Format `pdi` / `pdi2` werden verschiedene Winkel-gegen-Intensität- (oder Energie-gegen-Intensität-) Text- und Binärformate unterstützt, etwa das `csv` von WinPIP, das `chi` von Fit2D und das `ras` von Rigaku. Auch nicht in der folgenden Liste aufgeführte Formate lassen sich meist lesen: jede einfache Winkel-gegen-Intensität-Textdatei greift auf einen generischen Parser zurück.
+Über `Datei` ▸ `Profil(e) lesen` können Sie mehrere Dateien auf einmal laden. Neben PDIndexers eigenem Format `pdi` / `pdi2` werden verschiedene Winkel-gegen-Intensität- (oder Energie-gegen-Intensität-) Text- und Binärformate unterstützt, etwa das `csv` von WinPIP, das `chi` von Fit2D und das `ras` von Rigaku. Auch nicht in der folgenden Liste aufgeführte Formate lassen sich meist lesen: jede einfache Winkel-gegen-Intensität-Textdatei greift auf einen generischen Parser zurück.
 
 | Erweiterung | Herkunft / Format | Hinweise |
 | --- | --- | --- |
@@ -33,7 +33,7 @@ Diese Seite fasst die unterstützten Erweiterungen, die Ein-/Ausgaberichtung und
 
 ### Datenkonverter-Dialog
 
-Wenn Sie eine andere Datei als `pdi` / `pdi2` lesen (`csv`, `chi`, `ras`, `nxs`, `npd`, `xbm`, `rpt`, `xy`, `gsa` sowie generischen Text), öffnet sich der Dialog **Datenkonverter (Data Converter)**. Hier ordnen Sie die importierten numerischen Spalten den korrekten physikalischen Größen zu, die PDIndexer intern verwendet.
+Wenn Sie eine andere Datei als `pdi` / `pdi2` lesen (`csv`, `chi`, `ras`, `nxs`, `npd`, `xbm`, `rpt`, `xy`, `gsa` sowie generischen Text), öffnet sich der Dialog `Datenkonverter`. Hier ordnen Sie die importierten numerischen Spalten den korrekten physikalischen Größen zu, die PDIndexer intern verwendet.
 
 ![Datenkonverter-Dialog](../../assets/cap-de-auto/FormDataConverter.png)
 
@@ -41,11 +41,11 @@ Der Dialog bietet die folgenden Einstellungen.
 
 | Einstellung | Beschreibung |
 | --- | --- |
-| Horizontale Achse (Horizontal Axis) | Die physikalische Größe (2θ, Energie, Netzebenenabstand (d-Wert), Wellenzahl, TOF usw.) und Einheit, die die erste importierte Spalte darstellt. |
-| Strahlungsquelle / Wellenlänge | Röntgen / Neutron / Elektron sowie die charakteristische Röntgenlinie (Kα usw.) oder die Wellenlänge. Dies bestimmt die Umrechnung in Netzebenenabstand (d-Wert) und 2θ. |
-| Belichtungszeit (pro Schritt) | Die Belichtungszeit pro Schritt in Sekunden. Wird für die CPS-Anzeige und die Intensitätsnormierung verwendet. |
-| Für SSD-Daten | Für SSD-(EDX-)Daten wie `rpt` / `npd` / `xbm` / `nxs` legen Sie die Koeffizienten \(a_0, a_1, a_2\) fest, die die Kanalnummer \(n\) in Energie \(E\) umrechnen. Bei mehreren Detektoren können Sie jeden einzeln aktivieren/deaktivieren und seine Koeffizienten separat einstellen. `npd` verwendet die Energiespalte der Datei, daher werden diese Koeffizienten darauf nicht angewendet. |
-| Niederenergie-Grenzwert | Wenn aktiviert, werden Datenpunkte unterhalb der angegebenen Energie beim Import ausgeschlossen. |
+| `Horizontale Achse` | Die physikalische Größe (2θ, Energie, Netzebenenabstand (d-Wert), Wellenzahl, TOF usw.) und Einheit, die die erste importierte Spalte darstellt. |
+| `Welleneigenschaften` | Röntgen / Neutron / Elektron sowie die charakteristische Röntgenlinie (Kα usw.) oder die Wellenlänge. Dies bestimmt die Umrechnung in Netzebenenabstand (d-Wert) und 2θ. |
+| `Belichtungszeit (pro Schritt)` | Die Belichtungszeit pro Schritt in Sekunden. Wird für die CPS-Anzeige und die Intensitätsnormierung verwendet. |
+| `Für SSD-Daten (*.rpf, *.npd, *.xbm, *.nxs)` | Für SSD-(EDX-)Daten wie `rpt` / `npd` / `xbm` / `nxs` legen Sie die Koeffizienten \(a_0, a_1, a_2\) fest, die die Kanalnummer \(n\) in Energie \(E\) umrechnen. Bei mehreren Detektoren können Sie jeden einzeln aktivieren/deaktivieren und seine Koeffizienten separat einstellen. `npd` verwendet die Energiespalte der Datei, daher werden diese Koeffizienten darauf nicht angewendet. |
+| `Niederenergie-Grenzwert` | Wenn aktiviert, werden Datenpunkte unterhalb der angegebenen Energie beim Import ausgeschlossen. |
 
 Für SSD-Daten wird die Kanalnummer \(n\) durch eine quadratische Kalibrierung in Energie \(E\) (in eV) umgerechnet:
 
@@ -56,13 +56,13 @@ $$
 Beim Lesen von generischem Text (einem "sonstigen" Format) zeigt der Dialog den tatsächlichen Dateiinhalt in einem Textfeld an, sodass Sie die horizontale Achse, die Strahlungsquelle usw. einstellen können, während Sie die Daten begutachten. Das Trennzeichen (Komma / Leerraum / Tabulator) und die Anzahl der zu überspringenden führenden Kopfzeilen werden automatisch erkannt.
 
 !!! tip "Zwischenablage / Ordner überwachen"
-    Das Aktivieren von **Optionen → Zwischenablage überwachen (Watch Clipboard)** lässt PDIndexer Profile, die aus anderen Apps wie IPAnalyzer kopiert wurden, automatisch importieren. Das Aktivieren von **Datei überwachen (Watch File)** liest neu erstellte `pdi`-Dateien in einem gewählten Ordner automatisch ein.
+    Das Aktivieren von `Optionen` ▸ `Zwischenablage überwachen` lässt PDIndexer Profile, die aus anderen Apps wie IPAnalyzer kopiert wurden, automatisch importieren. Das Aktivieren von `Optionen` ▸ `Datei überwachen` liest neu erstellte `pdi`-Dateien in einem gewählten Ordner automatisch ein.
 
 ### Speichern und Exportieren
 
-**Datei → Profil(e) speichern (Save profile(s))** speichert alle geladenen Profile im nativen PDIndexer-Format `pdi2`.
+`Datei` ▸ `Profil(e) speichern` speichert alle geladenen Profile im nativen PDIndexer-Format `pdi2`.
 
-**Datei → Ausgewählte Profil(e) exportieren (Export the selected profile(s))** schreibt Profile in einem der folgenden Formate.
+`Datei` ▸ `Ausgewählte Profil(e) exportieren` schreibt Profile in einem der folgenden Formate.
 
 | Erweiterung / Format | Richtung | Hinweise |
 | --- | --- | --- |
@@ -86,12 +86,12 @@ Kristalllisten werden als XML-Dateien (Erweiterung `xml`) gespeichert und gelade
 
 | Vorgang (Menü Datei) | Erweiterung | Richtung | Hinweise |
 | --- | --- | --- | --- |
-| Kristalle laden (als neue Liste) | `xml` | Ein | Lädt eine Kristallliste und ersetzt die aktuelle Liste (die aktuelle Liste wird verworfen). |
-| Kristalle laden (zur aktuellen Liste hinzufügen) | `xml` | Ein | Lädt eine Kristallliste und hängt sie ans Ende der aktuellen Liste an. |
-| Kristalle speichern | `xml` | Aus | Speichert die aktuelle Kristallliste in eine Datei. |
-| CIF, AMC importieren... | `cif` / `amc` | Ein | Fügt der aktuellen Kristallliste Strukturdaten im CIF-Format oder AMC-(AMCSD-)Format hinzu. |
-| Ausgewählten Kristall als CIF exportieren | `cif` | Aus | Speichert den ausgewählten Kristall als CIF-Strukturdatendatei. |
-| Kristalle in den Anfangszustand zurücksetzen | — | — | Stellt die Kristallliste auf ihren Standardzustand wie installiert zurück. |
+| `Kristalle laden (als neue Liste)` | `xml` | Ein | Lädt eine Kristallliste und ersetzt die aktuelle Liste (die aktuelle Liste wird verworfen). |
+| `Kristalle laden (zur aktuellen Liste hinzufügen)` | `xml` | Ein | Lädt eine Kristallliste und hängt sie ans Ende der aktuellen Liste an. |
+| `Kristalle speichern` | `xml` | Aus | Speichert die aktuelle Kristallliste in eine Datei. |
+| `CIF, AMC importieren...` | `cif` / `amc` | Ein | Fügt der aktuellen Kristallliste Strukturdaten im CIF-Format oder AMC-(AMCSD-)Format hinzu. |
+| `Ausgewählten Kristall als CIF exportieren` | `cif` | Aus | Speichert den ausgewählten Kristall als CIF-Strukturdatendatei. |
+| `Kristalle in den Anfangszustand zurücksetzen` | — | — | Stellt die Kristallliste auf ihren Standardzustand wie installiert zurück. |
 
 ---
 
@@ -101,8 +101,8 @@ Das aktuell im Hauptfenster angezeigte Profil kann als Bild in die Zwischenablag
 
 | Vorgang (Menü Datei) | Format | Richtung | Hinweise |
 | --- | --- | --- | --- |
-| In Zwischenablage kopieren (als Bitmap-Daten) | Bitmap | Zwischenablage | Kopiert den Inhalt des Betrachters als Bitmap-Bild in die Zwischenablage. |
-| In Zwischenablage kopieren (als Metafile-Daten) | Metafile (Vektor) | Zwischenablage | Kopiert den Inhalt des Betrachters in Vektorform in die Zwischenablage. |
-| Als Metafile speichern | `emf` (EMF) | Aus | Speichert im EMF-Format (Enhanced Metafile). Da Vektor- und Schriftinformationen erhalten bleiben, kann das gespeicherte `emf` in PowerPoint und Word eingelesen werden. |
+| `In Zwischenablage kopieren` ▸ `als Bitmap-Daten` | Bitmap | Zwischenablage | Kopiert den Inhalt des Betrachters als Bitmap-Bild in die Zwischenablage. |
+| `In Zwischenablage kopieren` ▸ `als Metafile-Daten` | Metafile (Vektor) | Zwischenablage | Kopiert den Inhalt des Betrachters in Vektorform in die Zwischenablage. |
+| `Als Metafile speichern` | `emf` (EMF) | Aus | Speichert im EMF-Format (Enhanced Metafile). Da Vektor- und Schriftinformationen erhalten bleiben, kann das gespeicherte `emf` in PowerPoint und Word eingelesen werden. |
 
-Darüber hinaus können Sie mit **Seite einrichten**, **Druckvorschau** und **Drucken** den aktuellen Winkel- und Intensitätsbereich direkt ausdrucken.
+Darüber hinaus können Sie mit `Seite einrichten`, `Druckvorschau` und `Drucken` den aktuellen Winkel- und Intensitätsbereich direkt ausdrucken.

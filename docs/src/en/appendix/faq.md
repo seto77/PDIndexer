@@ -30,7 +30,7 @@ Use the **no-install ZIP package** (`PDIndexer-v.<ver>.zip` for x64, `PDIndexer-
 See [Runtime and installation](runtime-and-installation.md) for the differences between the MSI and ZIP packages.
 
 !!! note
-    PDIndexer is unsigned research software, so Windows (SmartScreen) or your browser may warn you when you download or first run it. In the browser's download list choose **More info** ▸ **Keep**; at the run-time warning choose **More info** ▸ **Run anyway**.
+    PDIndexer is unsigned research software, so Windows (SmartScreen) or your browser may warn you when you download or first run it. In the browser's download list choose `More info` ▸ `Keep`; at the run-time warning choose `More info` ▸ `Run anyway`.
 
 ### It says "You must install .NET Desktop Runtime", although I installed .NET.
 
@@ -84,8 +84,8 @@ If `After reading profile, change horizontal axis` on the `Horizontal Axis` tab 
 
 ### What is the difference between the `Horizontal Axis` tab of the main window and `Axis setting` in the profile parameter window?
 
-- The **`Horizontal Axis` tab** (main window) only decides **how the data are displayed**; the profile data themselves do not change.
-- **[`Axis setting`](../4-profile-parameter.md#axis-setting)** (profile parameter window) rewrites **the conditions under which the profile was measured** (radiation type, wavelength, take-off angle, etc.). If you chose the wrong radiation or wavelength when reading the file, correct it here. If you entered values in the wrong **unit**, read the original file again.
+- The `Horizontal Axis` tab (main window) only decides **how the data are displayed**; the profile data themselves do not change.
+- [`Axis setting`](../4-profile-parameter.md#axis-setting) (profile parameter window) rewrites **the conditions under which the profile was measured** (radiation type, wavelength, take-off angle, etc.). If you chose the wrong radiation or wavelength when reading the file, correct it here. If you entered values in the wrong **unit**, read the original file again.
 
 ### Energy-dispersive (white X-ray) data (`.npd` / `.nxs`) have a wrong horizontal axis, or no diffraction lines appear.
 
@@ -95,7 +95,7 @@ In the dialog shown when the file is read, check that the **energy unit (eV / ke
 
 Yes.
 
-- For a `.gsa` file (three space-separated columns with 2θ in centidegrees), choose 2θ as the horizontal axis and centidegrees (centi-degree) as the unit in the data-conversion dialog.
+- For a `.gsa` file (three space-separated columns with 2θ in centidegrees), choose 2θ as the horizontal axis and `Centi-degree` as the unit in the data-conversion dialog.
 - For data on a q (wave-number) axis, choose q as the horizontal axis. You can also refine lattice constants on the q axis.
 
 ## Peak fitting and lattice constants {#fitting}
@@ -134,7 +134,7 @@ The peaks of all checked crystals are fitted (with pattern decomposition set to 
 
 ### I ran a stress analysis on profiles split by azimuth, but the `Singh` tab is empty.
 
-Stress-analysis mode is selected only when **the name of the first profile in the profile list ends with `whole`**. For the second and later profiles, the text **after the last hyphen** of the name is read as the azimuth in degrees (e.g. `sample-30`). Also check that at least four profiles are loaded and that the peak-fitting window is open. In an ordinary run (not in stress mode), the `Singh` tab is left empty. See [Sequential analysis](../7-sequential-analysis.md) for details.
+Stress-analysis mode is selected only when **the name of the first profile in the profile list ends with `whole`**. For the second and later profiles, the text **after the last hyphen** of the name is read as the azimuth in degrees (e.g. `sample-30`). Also check that at least four profiles are loaded and that the peak-fitting window is open. In an ordinary run (not in stress mode), the `Singh's equation` tab is left empty. See [Sequential analysis](../7-sequential-analysis.md) for details.
 
 ### With a comma as the decimal separator, the columns of the sequential-analysis CSV are shifted.
 

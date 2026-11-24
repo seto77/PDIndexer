@@ -20,8 +20,8 @@ PDIndexer ofrece las siguientes funciones.
 | Comparación con cristales conocidos | Calcule las líneas de difracción de cristales conocidos y superpóngalas sobre el perfil observado para su identificación. Consulte [Parámetros del cristal](3-crystal-parameter.md) para más detalles. |
 | Calibración con estándares | Mediante ecuaciones de estado (EOS) como NaCl EOS y Pt EOS, estime la presión a partir del volumen de celda medido de un material estándar a la temperatura especificada. Consulte [Ecuación de estado (EOS)](5-equation-of-states.md) para más detalles. |
 | Ajuste de picos | Ajuste la posición, la anchura total a media altura (FWHM) y la intensidad de los picos de difracción. Consulte [Ajuste de picos de difracción](6-fitting-diffraction-peaks.md) para más detalles. |
-| Refinamiento de parámetros de red | Refine los parámetros de red a partir de las posiciones de los picos por mínimos cuadrados. El **Cell Finder** también puede buscar parámetros de red a partir de las posiciones de los picos. |
-| Análisis secuencial | Procese por lotes una serie de archivos con la función **Análisis secuencial**. Consulte [Análisis secuencial](7-sequential-analysis.md) para más detalles. |
+| Refinamiento de parámetros de red | Refine los parámetros de red a partir de las posiciones de los picos por mínimos cuadrados. El `Cell Finder` también puede buscar parámetros de red a partir de las posiciones de los picos. |
+| Análisis secuencial | Procese por lotes una serie de archivos con la función `Análisis secuencial`. Consulte [Análisis secuencial](7-sequential-analysis.md) para más detalles. |
 | Importación / exportación | Importe estructuras cristalinas desde archivos CIF y AMC, y exporte a los formatos CSV, TSV y GSAS (Rietveld). |
 | Carga automática | Supervise el portapapeles o una carpeta para leer automáticamente perfiles/cristales copiados desde otras aplicaciones (p. ej. IPAnalyzer) o archivos recién creados. |
 
